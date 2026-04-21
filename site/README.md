@@ -33,9 +33,13 @@ Every page on the site is pre-rendered (`generateStaticParams` for the per-card 
 
 ## Deployment
 
-Configured for Vercel via the repo-root `vercel.json`. Vercel runs Python 3 during the build, so `npm run build` → `scripts/prebuild.mjs` → `python scripts/build.py` works out of the box.
+Deployed to Vercel. Because the Next.js app lives under `site/` (not at repo root), the deploy requires one explicit setting:
 
-Set `NEXT_PUBLIC_SITE_URL` to the production URL so the sitemap has the correct host.
+- In Vercel **Project Settings → General → Root Directory**, set to **`site`**.
+
+With that set, Vercel auto-detects Next.js, runs `npm install`, then `npm run build` which triggers `scripts/prebuild.mjs` to regenerate `../dist/*.json` via Python. Python 3 is preinstalled on Vercel's default build image.
+
+Set `NEXT_PUBLIC_SITE_URL` in project env vars to the production URL so the sitemap has the correct host.
 
 ## Folder layout
 

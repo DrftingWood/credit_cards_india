@@ -1,0 +1,99 @@
+id: slice-slice-rupay
+name: slice UPI Credit Card (RuPay)
+issuer: slice
+network: rupay
+network_tier: classic
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-04-01
+discontinued_on: null
+
+# NOTE: Pre-2024 "slice super card" was a PPI-linked BNPL product. Post the
+# merger with North East SFB (renamed slice Small Finance Bank), slice
+# launched RuPay credit cards with UPI linkage. This entry tracks the
+# post-merger card.
+
+fees:
+  - effective_from: 2024-04-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.0
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "Lifetime-free card; fully app-managed lifecycle."
+    source:
+      url: https://www.sliceit.com
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2024-04-01
+    effective_until: null
+    currency: cashback
+    currency_name: slice Cashback
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: upi-spend
+        multiplier: 1
+        effective_rate: 2
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "2% cashback on UPI-QR spends via the slice UPI card."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.sliceit.com
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2024-04-01
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    other:
+      - name: UPI linkage
+        description: RuPay credit card fully integrated with UPI apps (GPay / PhonePe / Paytm) for scan-and-pay.
+      - name: App-first lifecycle
+        description: Application, limit management, statements and repayment all in the slice app.
+    concierge: false
+    source:
+      url: https://www.sliceit.com
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 240000
+    self_employed: 240000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sliceit.com
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [lifetime-free, fintech, rupay, upi, entry, cashback]

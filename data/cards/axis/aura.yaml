@@ -1,0 +1,90 @@
+id: axis-aura
+name: Axis Bank Aura Credit Card
+issuer: axis
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2021-06-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-06-01
+    effective_until: null
+    joining_fee_inr: 749
+    annual_fee_inr: 749
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/aura-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2021-06-01
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.2
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+    redemption:
+      - type: catalog
+        program: EDGE Rewards
+        rate_inr_per_unit: 0.2
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/aura-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2021-06-01
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    other:
+      - name: Annual health check-up
+        description: Complimentary annual health check-up at partner labs.
+      - name: Doctor consultations
+        description: 4 complimentary online GP consultations per year.
+      - name: Fitness / gym discounts
+        description: Discounts at partner gyms and fitness apps.
+    concierge: false
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/aura-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axisbank.com/retail/cards/credit-card/aura-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [entry, health-wellness, points]

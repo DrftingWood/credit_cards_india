@@ -1,0 +1,8 @@
+id: boi
+name: Bank of India
+short_name: BoI
+legal_name: Bank of India
+website: https://www.bankofindia.co.in
+customer_care:
+  phone: "1800-103-1906"
+type: bank

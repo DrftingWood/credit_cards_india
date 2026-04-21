@@ -1,0 +1,106 @@
+id: au-ixigo
+name: ixigo AU Bank Credit Card
+issuer: au
+network: rupay
+network_tier: select
+tier: entry
+card_type: credit
+co_brand:
+  partner: ixigo
+  category: travel-agency
+  partner_website: https://www.ixigo.com
+status: active
+launched_on: 2024-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: ixigo Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.5
+    accelerated:
+      - category: ixigo-bookings
+        multiplier: 1
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        merchants: [ixigo, confirmtkt, abhibus]
+        notes: "6% value-back on ixigo flight, train, bus and hotel bookings."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    redemption:
+      - type: voucher
+        program: ixigo Money
+        rate_inr_per_unit: 0.5
+        constraints: "Redeemable as ixigo Money on the app."
+    source:
+      url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [rupay]
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "ixigo voucher worth ₹1,000"
+        value_inr: 1000
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, travel, ixigo, rupay, entry]

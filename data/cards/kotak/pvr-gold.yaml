@@ -1,0 +1,103 @@
+id: kotak-pvr-gold
+name: PVR INOX Kotak Gold Credit Card
+issuer: kotak
+network: visa
+network_tier: classic
+tier: entry
+card_type: credit
+co_brand:
+  partner: PVR INOX
+  category: lifestyle
+  partner_website: https://www.pvrinox.com
+status: active
+launched_on: 2019-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2019-01-01
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    fee_waiver:
+      spend_inr: 75000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2019-01-01
+    effective_until: null
+    currency: points
+    currency_name: PVR Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+    accelerated:
+      - category: pvr-tickets-fnb
+        multiplier: 1
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        merchants: [pvr, inox]
+        notes: "3% value-back on PVR / INOX tickets and F&B."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: voucher
+        program: PVR movie vouchers
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2019-01-01
+    effective_until: null
+    lounge_access: null
+    movies:
+      type: free
+      partner: PVR INOX
+      max_per_cycle: 4
+      cycle: quarterly
+      cap_inr: 300
+      notes: "4 complimentary PVR INOX movie tickets per quarter on min spend of ₹10,000/month."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 3500
+      cycle: annual
+    concierge: false
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, movies, pvr, entry]

@@ -1,0 +1,114 @@
+id: icici-adani-one-signature
+name: Adani One ICICI Bank Signature Credit Card
+issuer: icici
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand:
+  partner: Adani One
+  category: travel-agency
+  partner_website: https://www.adanione.com
+status: active
+launched_on: 2023-03-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-03-01
+    effective_until: null
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/adani-one-signature-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2023-03-01
+    effective_until: null
+    currency: cashback
+    currency_name: Adani Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: adani-airports-retail
+        multiplier: 1
+        effective_rate: 7
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [adani-airports, adani-one-app, trainman]
+        notes: "7% back at Adani Airports retail / F&B and Adani One app."
+      - category: dining-grocery
+        multiplier: 1
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: cashback-bank
+        program: Adani One wallet
+        rate_inr_per_unit: 1.0
+        constraints: "Redeemable across Adani Airports services and Adani One app."
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/adani-one-signature-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2023-03-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [issuer-direct]
+        notes: "At Adani Airports lounges."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "1,000 Adani Reward Points"
+        value_inr: 1000
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/adani-one-signature-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 730
+  residency: resident-indian
+
+application:
+  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/adani-one-signature-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, travel, adani, airports, premium, cashback]

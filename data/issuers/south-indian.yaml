@@ -1,0 +1,8 @@
+id: south-indian
+name: South Indian Bank
+short_name: SIB
+legal_name: The South Indian Bank Limited
+website: https://www.southindianbank.com
+customer_care:
+  phone: "1800-425-1809"
+type: bank

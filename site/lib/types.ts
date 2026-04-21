@@ -19,6 +19,7 @@ export interface NetworkRecord {
   name: string;
   tiers: string[];
   website?: string;
+  logo_path?: string | null;
   notes?: string;
 }
 
@@ -30,6 +31,8 @@ export interface IssuerRecord {
   website: string;
   customer_care?: { phone?: string; email?: string };
   type?: string;
+  logo_path?: string | null;
+  brand_color?: string | null;
   notes?: string;
 }
 
@@ -198,6 +201,7 @@ export interface CardRecord {
   status: CardStatus;
   launched_on?: string | null;
   discontinued_on?: string | null;
+  image_path?: string | null;
   fees: FeeRecord[];
   rewards: RewardRecord[];
   benefits: BenefitRecord[];

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { EnrichedCard } from "@/lib/types";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
+import { IssuerLogo } from "@/components/logos/issuer-logo";
+import { NetworkLogo } from "@/components/logos/network-logo";
 import { rankCards, type CardScore, type SpendProfile } from "@/lib/calculator";
 import { formatInr, formatPct } from "@/lib/utils";
 
@@ -100,8 +102,11 @@ function ResultRow({ rank, score }: { rank: number; score: CardScore }) {
             <Link href={href} className="font-semibold text-slate-900 hover:text-slate-900">
               {c.name}
             </Link>
-            <div className="text-xs text-slate-500 mt-0.5">
-              {c.issuer_detail.name} · {c.tier.replace("-", " ")} · {c.current_rewards?.currency}
+            <div className="mt-1 flex items-center gap-2 text-xs text-slate-500">
+              <IssuerLogo issuer={c.issuer_detail} height={14} />
+              <span>· {c.tier.replace("-", " ")}</span>
+              <span>·</span>
+              <NetworkLogo network={c.network_detail} height={14} />
             </div>
           </div>
         </div>

@@ -7,6 +7,9 @@ import { FeeSection } from "@/components/fee-section";
 import { RewardsSection } from "@/components/rewards-section";
 import { BenefitsSection } from "@/components/benefits-section";
 import { HistoryTimeline } from "@/components/history-timeline";
+import { CardImage } from "@/components/card-image";
+import { IssuerLogo } from "@/components/logos/issuer-logo";
+import { NetworkLogo } from "@/components/logos/network-logo";
 
 interface Params {
   issuer: string;
@@ -50,14 +53,15 @@ export default async function CardPage({
       </nav>
 
       <header className="rounded-xl border border-slate-200 bg-white p-5">
+        <div className="grid md:grid-cols-[280px_1fr] gap-5 items-start">
+          <CardImage card={card} size="hero" />
+
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
-            <div className="text-xs uppercase tracking-wide text-slate-500">
-              {card.issuer_detail.name}
-            </div>
-            <h1 className="mt-1 text-2xl font-semibold text-slate-900">{card.name}</h1>
-            <div className="mt-2 flex flex-wrap gap-1.5">
-              <span className="chip capitalize">{card.network}</span>
+            <IssuerLogo issuer={card.issuer_detail} variant="with-name" height={22} />
+            <h1 className="mt-2 text-2xl font-semibold text-slate-900">{card.name}</h1>
+            <div className="mt-2 flex flex-wrap items-center gap-1.5">
+              <NetworkLogo network={card.network_detail} height={18} />
               {card.network_tier ? (
                 <span className="chip capitalize">{card.network_tier.replace("-", " ")}</span>
               ) : null}
@@ -91,8 +95,9 @@ export default async function CardPage({
             ) : null}
           </div>
         </div>
+        </div>
 
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-4 text-xs text-slate-500">
           Last verified {formatDate(verified)}. Always confirm with the issuer before applying.
         </p>
       </header>

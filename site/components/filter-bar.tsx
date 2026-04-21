@@ -3,6 +3,8 @@
 import { useMemo } from "react";
 import type { EnrichedCard, IssuerRecord } from "@/lib/types";
 import type { FilterState } from "@/lib/filters";
+import { IssuerLogo } from "./logos/issuer-logo";
+import { NetworkLogo } from "./logos/network-logo";
 
 interface Props {
   state: FilterState;
@@ -60,10 +62,10 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
               checked={state.issuers.includes(iss.id)}
               onChange={() => toggle("issuers", iss.id)}
               label={
-                <>
-                  {iss.short_name || iss.name}
-                  <span className="ml-1 text-xs text-slate-500">({counts.get(iss.id) ?? 0})</span>
-                </>
+                <span className="inline-flex items-center gap-1.5">
+                  <IssuerLogo issuer={iss} variant="with-name" height={14} />
+                  <span className="text-xs text-slate-500">({counts.get(iss.id) ?? 0})</span>
+                </span>
               }
             />
           ))}
@@ -76,7 +78,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
             key={n}
             checked={state.networks.includes(n)}
             onChange={() => toggle("networks", n)}
-            label={<span className="capitalize">{n}</span>}
+            label={<NetworkLogo network={n} height={14} />}
           />
         ))}
       </Group>

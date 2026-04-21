@@ -79,6 +79,10 @@
     },
     "launched_on": { "type": ["string", "null"], "format": "date" },
     "discontinued_on": { "type": ["string", "null"], "format": "date" },
+    "image_path": {
+      "type": ["string", "null"],
+      "description": "Optional public URL / site-relative path to a card face image (e.g. /cards/hdfc/infinia.webp). When missing, the site renders a stylised placeholder using the issuer's brand color."
+    },
 
     "fees": {
       "type": "array",

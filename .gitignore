@@ -8,3 +8,4 @@ site/out/
 site/next-env.d.ts
 site/.vercel/
 site/.env*.local
+site/tsconfig.tsbuildinfo

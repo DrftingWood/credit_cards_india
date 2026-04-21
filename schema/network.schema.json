@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/drftingwood/credit_cards_india/schema/network.schema.json",
+  "title": "Card Network",
+  "type": "object",
+  "required": ["id", "name", "tiers"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Lowercase slug. Must match the filename.",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "tiers": {
+      "type": "array",
+      "description": "Valid tier slugs for this network (e.g. infinite, signature, world, world-elite, platinum).",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+      "uniqueItems": true
+    },
+    "website": { "type": "string", "format": "uri" },
+    "notes": { "type": "string" }
+  }
+}

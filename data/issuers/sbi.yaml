@@ -1,0 +1,9 @@
+id: sbi
+name: SBI Card
+short_name: SBI
+legal_name: SBI Cards and Payment Services Limited
+website: https://www.sbicard.com
+customer_care:
+  phone: "1860-180-1290"
+type: nbfc
+notes: SBI Card is a listed NBFC subsidiary of State Bank of India, not the bank itself.

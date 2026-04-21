@@ -1,0 +1,537 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/drftingwood/credit_cards_india/schema/card.schema.json",
+  "title": "Credit Card (India)",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "issuer",
+    "network",
+    "tier",
+    "status",
+    "fees",
+    "rewards",
+    "benefits",
+    "eligibility",
+    "metadata"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable slug: <issuer>-<card-slug>. Must match folder/filename.",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Official marketed name."
+    },
+    "issuer": {
+      "type": "string",
+      "description": "Slug of an entry under data/issuers/.",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "network": {
+      "type": "string",
+      "description": "Slug of an entry under data/networks/.",
+      "enum": ["visa", "mastercard", "rupay", "amex", "diners"]
+    },
+    "network_tier": {
+      "type": ["string", "null"],
+      "description": "Network-specific tier (e.g. infinite, signature, world-elite). Must exist in the network's `tiers`.",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "tier": {
+      "type": "string",
+      "description": "Market positioning tier.",
+      "enum": ["entry", "mid", "premium", "super-premium", "invite-only"]
+    },
+    "card_type": {
+      "type": "string",
+      "description": "Credit behaviour. 'charge' means no revolving credit (Amex).",
+      "enum": ["credit", "charge", "secured"],
+      "default": "credit"
+    },
+    "co_brand": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["partner", "category"],
+          "additionalProperties": false,
+          "properties": {
+            "partner": { "type": "string", "minLength": 1 },
+            "category": {
+              "type": "string",
+              "enum": ["airline", "hotel", "ecommerce", "fuel", "travel-agency", "retail", "telecom", "lifestyle", "railway", "other"]
+            },
+            "partner_website": { "type": "string", "format": "uri" }
+          }
+        }
+      ],
+      "default": null
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "invite-only", "on-hold", "discontinued"]
+    },
+    "launched_on": { "type": ["string", "null"], "format": "date" },
+    "discontinued_on": { "type": ["string", "null"], "format": "date" },
+
+    "fees": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/FeeRecord" }
+    },
+    "rewards": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/RewardRecord" }
+    },
+    "benefits": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/BenefitRecord" }
+    },
+
+    "eligibility": { "$ref": "#/$defs/Eligibility" },
+
+    "application": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "apply_url": { "type": ["string", "null"], "format": "uri" },
+        "pre_approval_check_url": { "type": ["string", "null"], "format": "uri" },
+        "replaces_card": {
+          "type": ["string", "null"],
+          "description": "Card id this card is the upgrade of.",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        }
+      }
+    },
+
+    "metadata": { "$ref": "#/$defs/Metadata" }
+  },
+
+  "$defs": {
+    "Source": {
+      "type": "object",
+      "required": ["url", "retrieved_on"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "retrieved_on": { "type": "string", "format": "date" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "Cycle": {
+      "type": "string",
+      "enum": ["monthly", "quarterly", "annual", "statement", "per-txn"]
+    },
+
+    "FeeRecord": {
+      "type": "object",
+      "required": ["effective_from", "effective_until", "joining_fee_inr", "annual_fee_inr", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "effective_from": { "type": "string", "format": "date" },
+        "effective_until": { "type": ["string", "null"], "format": "date" },
+        "joining_fee_inr": { "type": "integer", "minimum": 0 },
+        "annual_fee_inr": { "type": "integer", "minimum": 0 },
+        "renewal_fee_inr": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "If different from annual_fee_inr (rare)."
+        },
+        "fee_waiver": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["spend_inr", "cycle"],
+              "additionalProperties": false,
+              "properties": {
+                "spend_inr": { "type": "integer", "minimum": 0 },
+                "cycle": { "$ref": "#/$defs/Cycle" },
+                "conditions": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "forex_markup_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 10 },
+        "finance_charge_monthly_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 10 },
+        "cash_advance_fee": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pct": { "type": "number", "minimum": 0 },
+                "min_inr": { "type": "integer", "minimum": 0 }
+              }
+            }
+          ]
+        },
+        "late_payment_slabs": {
+          "type": ["array", "null"],
+          "items": {
+            "type": "object",
+            "required": ["up_to_inr", "fee_inr"],
+            "additionalProperties": false,
+            "properties": {
+              "up_to_inr": {
+                "oneOf": [
+                  { "type": "integer", "minimum": 0 },
+                  { "type": "string", "const": "any" }
+                ]
+              },
+              "fee_inr": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "overlimit_fee": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pct": { "type": "number", "minimum": 0 },
+                "min_inr": { "type": "integer", "minimum": 0 },
+                "max_inr": { "type": "integer", "minimum": 0 }
+              }
+            }
+          ]
+        },
+        "gst_applicable": { "type": "boolean", "default": true },
+        "source": { "$ref": "#/$defs/Source" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "RewardRecord": {
+      "type": "object",
+      "required": ["effective_from", "effective_until", "currency", "base", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "effective_from": { "type": "string", "format": "date" },
+        "effective_until": { "type": ["string", "null"], "format": "date" },
+        "currency": {
+          "type": "string",
+          "enum": ["points", "cashback", "miles"]
+        },
+        "currency_name": {
+          "type": ["string", "null"],
+          "description": "e.g. 'Reward Points', 'EDGE Miles', 'Membership Rewards'."
+        },
+        "base": {
+          "type": "object",
+          "required": ["rate", "per_inr"],
+          "additionalProperties": false,
+          "properties": {
+            "rate": { "type": "number", "minimum": 0 },
+            "per_inr": { "type": "integer", "minimum": 1 },
+            "unit_value_inr": {
+              "type": ["number", "null"],
+              "minimum": 0,
+              "description": "Best-case INR value of one unit on redemption (for comparability)."
+            }
+          }
+        },
+        "accelerated": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["category", "multiplier"],
+            "additionalProperties": false,
+            "properties": {
+              "category": { "type": "string", "minLength": 1 },
+              "multiplier": { "type": "number", "minimum": 0 },
+              "effective_rate": {
+                "type": ["number", "null"],
+                "description": "If multiplier semantics don't fit, use this absolute rate per_inr."
+              },
+              "cap_per_cycle": {
+                "oneOf": [
+                  { "type": "integer", "minimum": 0 },
+                  { "type": "string", "const": "unlimited" }
+                ]
+              },
+              "cap_unit": {
+                "type": "string",
+                "enum": ["points", "cashback-inr", "miles", "spend-inr"],
+                "default": "points"
+              },
+              "cycle": { "$ref": "#/$defs/Cycle" },
+              "merchants": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "mcc_list": {
+                "type": "array",
+                "items": { "type": "string", "pattern": "^[0-9]{4}$" }
+              },
+              "notes": { "type": "string" }
+            }
+          }
+        },
+        "exclusions": {
+          "type": "array",
+          "description": "Categories earning zero rewards.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "fuel", "wallet-loads", "rent", "government", "utilities",
+              "insurance-premiums", "education", "jewellery", "emi",
+              "cash-advance", "gift-cards", "mutual-funds", "crypto", "other"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "capping_rules": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Freeform caps not modellable above (e.g. monthly combined cap)."
+        },
+        "redemption": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["statement-credit", "catalog", "airmiles", "hotel-points", "voucher", "cashback-bank", "product", "other"]
+              },
+              "program": { "type": "string" },
+              "rate_inr_per_unit": { "type": ["number", "null"], "minimum": 0 },
+              "ratio": { "type": ["string", "null"], "description": "e.g. '2:1' (points:miles)." },
+              "min_units": { "type": ["integer", "null"], "minimum": 0 },
+              "fee_inr": { "type": ["integer", "null"], "minimum": 0 },
+              "constraints": { "type": "string" }
+            }
+          }
+        },
+        "source": { "$ref": "#/$defs/Source" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "BenefitRecord": {
+      "type": "object",
+      "required": ["effective_from", "effective_until", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "effective_from": { "type": "string", "format": "date" },
+        "effective_until": { "type": ["string", "null"], "format": "date" },
+        "lounge_access": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "domestic": { "$ref": "#/$defs/LoungeDetails" },
+            "international": { "$ref": "#/$defs/LoungeDetails" }
+          }
+        },
+        "golf": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "rounds_per_cycle": {
+              "oneOf": [
+                { "type": "integer", "minimum": 0 },
+                { "type": "string", "const": "unlimited" }
+              ]
+            },
+            "lessons_per_cycle": {
+              "oneOf": [
+                { "type": "integer", "minimum": 0 },
+                { "type": "string", "const": "unlimited" }
+              ]
+            },
+            "cycle": { "$ref": "#/$defs/Cycle" },
+            "notes": { "type": "string" }
+          }
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["spend_inr", "cycle", "benefit"],
+            "additionalProperties": false,
+            "properties": {
+              "spend_inr": { "type": "integer", "minimum": 0 },
+              "cycle": { "$ref": "#/$defs/Cycle" },
+              "benefit": { "type": "string", "minLength": 1 },
+              "value_inr": { "type": ["integer", "null"], "minimum": 0 }
+            }
+          }
+        },
+        "welcome": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["benefit"],
+            "additionalProperties": false,
+            "properties": {
+              "condition": { "type": "string" },
+              "benefit": { "type": "string", "minLength": 1 },
+              "value_inr": { "type": ["integer", "null"], "minimum": 0 },
+              "window_days": { "type": ["integer", "null"], "minimum": 0 }
+            }
+          }
+        },
+        "insurance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "sum_insured_inr"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "air-accident", "personal-accident", "lost-card-liability",
+                  "purchase-protection", "travel-medical", "trip-delay",
+                  "baggage-loss", "credit-shield", "fraud-liability", "other"
+                ]
+              },
+              "sum_insured_inr": { "type": "integer", "minimum": 0 },
+              "conditions": { "type": "string" }
+            }
+          }
+        },
+        "fuel_surcharge_waiver": {
+          "type": ["object", "null"],
+          "required": ["pct"],
+          "additionalProperties": false,
+          "properties": {
+            "pct": { "type": "number", "minimum": 0, "maximum": 5 },
+            "min_txn_inr": { "type": ["integer", "null"], "minimum": 0 },
+            "max_txn_inr": { "type": ["integer", "null"], "minimum": 0 },
+            "cap_per_cycle_inr": { "type": ["integer", "null"], "minimum": 0 },
+            "cycle": { "$ref": "#/$defs/Cycle" }
+          }
+        },
+        "dining": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "program": { "type": "string" },
+            "discount_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "notes": { "type": "string" }
+          }
+        },
+        "movies": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "type": "string", "enum": ["bogo", "discount", "free"] },
+            "partner": { "type": "string" },
+            "max_per_cycle": { "type": ["integer", "null"], "minimum": 0 },
+            "cycle": { "$ref": "#/$defs/Cycle" },
+            "cap_inr": { "type": ["integer", "null"], "minimum": 0 }
+          }
+        },
+        "concierge": { "type": "boolean", "default": false },
+        "other": {
+          "type": "array",
+          "description": "Anything that doesn't fit above (e.g. free OTT subscription).",
+          "items": {
+            "type": "object",
+            "required": ["name", "description"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "value_inr": { "type": ["integer", "null"], "minimum": 0 }
+            }
+          }
+        },
+        "source": { "$ref": "#/$defs/Source" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "LoungeDetails": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "visits_per_cycle": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "string", "const": "unlimited" }
+          ]
+        },
+        "cycle": { "$ref": "#/$defs/Cycle" },
+        "guests_per_visit": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "string", "const": "unlimited" }
+          ]
+        },
+        "via": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["visa", "mastercard", "rupay", "amex", "diners", "priority-pass", "dreamfolks", "dragonpass", "loungekey", "issuer-direct"]
+          },
+          "uniqueItems": true
+        },
+        "spend_threshold_inr": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Prior-cycle spend required to unlock complimentary visits (common on Axis/HDFC post-2024)."
+        },
+        "spend_threshold_cycle": { "$ref": "#/$defs/Cycle" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "Eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "min_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 },
+        "max_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 },
+        "income_inr_annual": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "salaried": { "type": ["integer", "null"], "minimum": 0 },
+            "self_employed": { "type": ["integer", "null"], "minimum": 0 }
+          }
+        },
+        "credit_score_min": { "type": ["integer", "null"], "minimum": 300, "maximum": 900 },
+        "residency": {
+          "type": "string",
+          "enum": ["resident-indian", "nri", "either"],
+          "default": "resident-indian"
+        },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "Metadata": {
+      "type": "object",
+      "required": ["last_verified_on"],
+      "additionalProperties": false,
+      "properties": {
+        "last_verified_on": { "type": "string", "format": "date" },
+        "maintainers": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

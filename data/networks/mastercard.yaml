@@ -1,0 +1,9 @@
+id: mastercard
+name: Mastercard
+tiers:
+  - standard
+  - titanium
+  - platinum
+  - world
+  - world-elite
+website: https://www.mastercard.co.in

@@ -1,0 +1,158 @@
+id: axis-magnus
+name: Axis Bank Magnus Credit Card
+issuer: axis
+network: mastercard
+network_tier: world
+tier: super-premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2019-07-01
+discontinued_on: null
+
+# NOTE: Magnus has been revised multiple times (notably the Sept-2023 nerf).
+# The fee/reward/benefit arrays below demonstrate the effective-dated pattern:
+# old records are closed with an effective_until date, new records open-ended.
+
+fees:
+  - effective_from: 2019-07-01
+    effective_until: null
+    joining_fee_inr: 12500
+    annual_fee_inr: 12500
+    fee_waiver:
+      spend_inr: 2500000
+      cycle: annual
+      conditions: "Annual fee waived on spends of ₹25L in the preceding year."
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2019-07-01
+    effective_until: 2023-08-31
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 12
+      per_inr: 200
+      unit_value_inr: 0.2
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+    redemption:
+      - type: airmiles
+        program: Multiple (Axis Gift Edge transfer)
+        ratio: "5:4"
+        constraints: "Pre-Sept-2023 transfer ratio across partners."
+    source:
+      url: https://web.archive.org/web/2023/https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card
+      retrieved_on: 2026-04-15
+      notes: "Historical record; values prior to the Sept-2023 revision."
+
+  - effective_from: 2023-09-01
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.2
+    accelerated:
+      - category: monthly-spend-above-threshold
+        multiplier: 1
+        effective_rate: 35
+        cap_per_cycle: 35000
+        cap_unit: points
+        cycle: monthly
+        notes: "35 EDGE points per ₹200 spent above ₹1.5L in a calendar month, capped at 35,000 points/month."
+      - category: travel-edge-portal
+        multiplier: 5
+        cap_per_cycle: 40000
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - utilities
+      - education
+    capping_rules:
+      - "Transfer to airline partners capped at 5,00,000 EDGE points per year."
+    redemption:
+      - type: airmiles
+        program: Multiple (EDGE transfer)
+        ratio: "5:2"
+        constraints: "Post-revision transfer ratio across most partners."
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2023-09-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: quarterly
+        guests_per_visit: 2
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [priority-pass]
+    golf:
+      rounds_per_cycle: 4
+      cycle: monthly
+      lessons_per_cycle: 2
+    milestones:
+      - spend_inr: 150000
+        cycle: monthly
+        benefit: "Eligibility for 25,000 EDGE Miles voucher (one-time per tenure)"
+        value_inr: 25000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Tata CLiQ voucher worth ₹12,500"
+        value_inr: 12500
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 25000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 2400000
+    self_employed: 2400000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [travel, points, super-premium, forex-friendly]

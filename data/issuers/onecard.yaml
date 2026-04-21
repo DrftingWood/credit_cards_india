@@ -1,0 +1,9 @@
+id: onecard
+name: OneCard
+short_name: OneCard
+legal_name: FPL Technologies Private Limited
+website: https://www.getonecard.app
+customer_care:
+  email: help@getonecard.app
+type: fintech
+notes: OneCard is a fintech; cards are co-issued with partner banks (e.g. BoB, IDFC FIRST, Federal, SBM).

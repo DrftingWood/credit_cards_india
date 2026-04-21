@@ -1,0 +1,8 @@
+id: standard-chartered
+name: Standard Chartered Bank
+short_name: SCB
+legal_name: Standard Chartered Bank (India)
+website: https://www.sc.com/in
+customer_care:
+  phone: "6601-4444"
+type: foreign-bank

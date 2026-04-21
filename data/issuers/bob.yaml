@@ -1,0 +1,9 @@
+id: bob
+name: Bank of Baroda
+short_name: BoB
+legal_name: BOB Financial Solutions Limited
+website: https://www.bobfinancial.com
+customer_care:
+  phone: "1800-103-1006"
+type: nbfc
+notes: Cards issued by BOB Financial Solutions, a wholly-owned subsidiary of Bank of Baroda.

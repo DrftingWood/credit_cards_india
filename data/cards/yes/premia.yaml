@@ -1,0 +1,110 @@
+id: yes-premia
+name: YES Bank Premia Credit Card
+issuer: "yes"
+network: mastercard
+network_tier: world
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2017-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2017-01-01
+    effective_until: null
+    joining_fee_inr: 2499
+    annual_fee_inr: 2499
+    fee_waiver:
+      spend_inr: 500000
+      cycle: annual
+    forex_markup_pct: 2.75
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2017-01-01
+    effective_until: null
+    currency: points
+    currency_name: YES Reward Points
+    base:
+      rate: 4
+      per_inr: 200
+      unit_value_inr: 0.25
+    accelerated:
+      - category: travel-dining
+        multiplier: 3
+        effective_rate: 12
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: YES Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2017-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 12
+        cycle: annual
+        guests_per_visit: 0
+        via: [mastercard, dreamfolks]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 0
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Amazon / Flipkart voucher worth ₹2,500"
+        value_inr: 2500
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [premium, travel, dining, points]

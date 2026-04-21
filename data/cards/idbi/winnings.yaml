@@ -1,0 +1,89 @@
+id: idbi-winnings
+name: IDBI Bank Winnings Credit Card
+issuer: idbi
+network: visa
+network_tier: platinum
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2021-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 120000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.idbibank.in/credit-card-winnings.aspx
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2021-01-01
+    effective_until: null
+    currency: points
+    currency_name: Delight Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: IDBI Delight
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.idbibank.in/credit-card-winnings.aspx
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2021-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.idbibank.in/credit-card-winnings.aspx
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.idbibank.in/credit-card-winnings.aspx
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [mid, points, lounge]

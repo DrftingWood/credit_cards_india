@@ -1,0 +1,105 @@
+id: federal-scapia
+name: Scapia Federal Bank Credit Card
+issuer: federal
+network: visa
+network_tier: signature
+tier: entry
+card_type: credit
+co_brand:
+  partner: Scapia
+  category: travel-agency
+  partner_website: https://www.scapia.cards
+status: active
+launched_on: 2023-04-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-04-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 0.0
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "Lifetime-free card; zero forex markup is a headline feature."
+    source:
+      url: https://www.scapia.cards
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2023-04-01
+    effective_until: null
+    currency: cashback
+    currency_name: Scapia Coins
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: scapia-app-bookings
+        multiplier: 1
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [scapia-app]
+        notes: "10% back on flight and hotel bookings via the Scapia app."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: voucher
+        program: Scapia travel
+        rate_inr_per_unit: 1.0
+        constraints: "Scapia Coins redeemable only on Scapia travel bookings at 1:1."
+    source:
+      url: https://www.scapia.cards
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2023-04-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+        spend_threshold_inr: 10000
+        spend_threshold_cycle: monthly
+        notes: "Lounge access unlocked on ₹10k monthly spend."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 500
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.scapia.cards
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 60
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+  notes: "Application via Scapia mobile app; issued by Federal Bank."
+
+application:
+  apply_url: https://www.scapia.cards
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [lifetime-free, co-branded, fintech, travel, zero-forex]

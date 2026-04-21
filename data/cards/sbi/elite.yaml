@@ -1,0 +1,134 @@
+id: sbi-elite
+name: SBI Card ELITE
+issuer: sbi
+network: mastercard
+network_tier: world
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2015-09-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2015-09-01
+    effective_until: null
+    joining_fee_inr: 4999
+    annual_fee_inr: 4999
+    fee_waiver:
+      spend_inr: 1000000
+      cycle: annual
+    forex_markup_pct: 1.99
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-elite.page
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2015-09-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+    accelerated:
+      - category: dining-grocery-departmental
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-elite.page
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2015-09-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: 6
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    milestones:
+      - spend_inr: 300000
+        cycle: annual
+        benefit: "Spend milestone reward worth ₹5,000"
+        value_inr: 5000
+      - spend_inr: 400000
+        cycle: annual
+        benefit: "Additional reward worth ₹5,000"
+        value_inr: 5000
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Further reward worth ₹5,000"
+        value_inr: 5000
+      - spend_inr: 800000
+        cycle: annual
+        benefit: "Further reward worth ₹5,000"
+        value_inr: 5000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "e-Gift voucher worth ₹5,000 (Pantaloons / Yatra / Aldo / Bata / Shoppers Stop / Marks & Spencer / Hamleys)"
+        value_inr: 5000
+        window_days: 90
+    movies:
+      type: free
+      partner: BookMyShow
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 250
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: true
+    other:
+      - name: Club Vistara Silver tier (historical)
+        description: Complimentary Club Vistara Silver (discontinued post Vistara-AI merger; replaced with equivalent partner offer).
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-elite.page
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-elite.page
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [premium, points, lifestyle, movies]

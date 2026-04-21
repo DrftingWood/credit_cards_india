@@ -1,0 +1,121 @@
+id: axis-select
+name: Axis Bank Select Credit Card
+issuer: axis
+network: visa
+network_tier: platinum
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2015-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2015-01-01
+    effective_until: null
+    joining_fee_inr: 3000
+    annual_fee_inr: 3000
+    fee_waiver:
+      spend_inr: 600000
+      cycle: annual
+    forex_markup_pct: 1.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/select-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2015-01-01
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 10
+      per_inr: 200
+      unit_value_inr: 0.2
+    accelerated:
+      - category: dining-international
+        multiplier: 2
+        effective_rate: 20
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+    redemption:
+      - type: catalog
+        program: EDGE Rewards
+        rate_inr_per_unit: 0.2
+      - type: airmiles
+        program: Multiple (EDGE transfer)
+        ratio: "5:2"
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/select-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2015-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: 12
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    dining:
+      program: EazyDiner Prime
+      discount_pct: 25
+      notes: "Up to 25% off at partner restaurants."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "BookMyShow voucher worth ₹500"
+        value_inr: 500
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 25000000
+      - type: travel-medical
+        sum_insured_inr: 2500000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: true
+    other:
+      - name: BookMyShow BOGO
+        description: "Buy one get one on movie tickets via BookMyShow, up to ₹500 off, twice a month."
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/select-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 1800000
+    self_employed: 1800000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axisbank.com/retail/cards/credit-card/select-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [premium, dining, lounge, points]

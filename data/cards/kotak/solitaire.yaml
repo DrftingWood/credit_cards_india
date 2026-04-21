@@ -1,0 +1,98 @@
+id: kotak-solitaire
+name: Kotak Solitaire Credit Card
+issuer: kotak
+network: visa
+network_tier: infinite
+tier: invite-only
+card_type: credit
+co_brand: null
+status: invite-only
+launched_on: 2021-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Invite-only; no fee."
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/solitaire-credit-card.html
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2021-01-01
+    effective_until: null
+    currency: cashback
+    currency_name: Whites Pass
+    base:
+      rate: 4
+      per_inr: 150
+      unit_value_inr: 1.0
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: Whites Catalogue
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/solitaire-credit-card.html
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2021-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 0
+    concierge: true
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 3500
+      cycle: annual
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/solitaire-credit-card.html
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 70
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 780
+  residency: resident-indian
+  notes: "Invite-only to Kotak Private Banking / Solitaire banking customers."
+
+application:
+  apply_url: null
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [invite-only, super-premium, private-banking]

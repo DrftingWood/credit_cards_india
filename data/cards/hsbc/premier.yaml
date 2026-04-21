@@ -1,0 +1,118 @@
+id: hsbc-premier
+name: HSBC Premier Credit Card
+issuer: hsbc
+network: mastercard
+network_tier: world-elite
+tier: super-premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2021-11-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-11-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 20000
+    fee_waiver:
+      spend_inr: 1600000
+      cycle: annual
+    forex_markup_pct: 0.99
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Annual fee waived if the customer maintains an HSBC Premier relationship. Otherwise ₹20,000 + GST."
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2021-11-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 3
+      per_inr: 100
+      unit_value_inr: 0.25
+    accelerated:
+      - category: international-spend
+        multiplier: 2
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: HSBC Rewards
+        rate_inr_per_unit: 0.25
+      - type: airmiles
+        program: Multiple (MakeMyTrip / airline partners)
+        ratio: "2:1"
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2021-11-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [mastercard, dreamfolks]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [loungekey]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 0
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 50000000
+      - type: travel-medical
+        sum_insured_inr: 25000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    dining:
+      program: EazyDiner Prime
+      discount_pct: 25
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 4000000
+    self_employed: 4000000
+  credit_score_min: 780
+  residency: resident-indian
+  notes: "Typically requires HSBC Premier banking relationship (qualifying relationship balance)."
+
+application:
+  apply_url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [super-premium, premier-banking, low-forex, travel]

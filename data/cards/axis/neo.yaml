@@ -1,0 +1,95 @@
+id: axis-neo
+name: Axis Bank NEO Credit Card
+issuer: axis
+network: visa
+network_tier: classic
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2018-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2018-01-01
+    effective_until: null
+    joining_fee_inr: 250
+    annual_fee_inr: 250
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/neo-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2018-01-01
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 1
+      per_inr: 200
+      unit_value_inr: 0.2
+    accelerated:
+      - category: bill-payments-online
+        multiplier: 2
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+    redemption:
+      - type: catalog
+        program: EDGE Rewards
+        rate_inr_per_unit: 0.2
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/neo-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2018-01-01
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "Spend ₹2,500 within 45 days"
+        benefit: "Amazon voucher worth ₹250"
+        value_inr: 250
+        window_days: 45
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/neo-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 180000
+    self_employed: 180000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axisbank.com/retail/cards/credit-card/neo-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [entry, points, bill-payments]

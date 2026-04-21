@@ -45,6 +45,7 @@ rewards:
       unit_value_inr: 0.35
     accelerated:
       - category: fine-hotels-resorts
+        canonical_categories: [travel]
         multiplier: 5
         effective_rate: 5
         cap_per_cycle: "unlimited"

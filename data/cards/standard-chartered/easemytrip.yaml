@@ -42,6 +42,7 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: emt-flights-domestic
+        canonical_categories: [travel]
         multiplier: 1
         effective_rate: 10
         cap_per_cycle: "unlimited"
@@ -50,6 +51,7 @@ rewards:
         merchants: [easemytrip]
         notes: "10% instant discount on domestic flight bookings via EaseMyTrip."
       - category: emt-flights-international
+        canonical_categories: [travel, international]
         multiplier: 1
         effective_rate: 20
         cap_per_cycle: "unlimited"
@@ -57,6 +59,7 @@ rewards:
         cycle: monthly
         merchants: [easemytrip]
       - category: emt-hotels
+        canonical_categories: [travel]
         multiplier: 1
         effective_rate: 20
         cap_per_cycle: "unlimited"

@@ -47,6 +47,7 @@ rewards:
         cycle: monthly
         notes: "5% cashback on 2 self-selected merchant packs (e.g. Swiggy+Zomato, Amazon+Flipkart, travel)."
       - category: online-other
+        canonical_categories: [online]
         multiplier: 1
         effective_rate: 3
         cap_per_cycle: 500

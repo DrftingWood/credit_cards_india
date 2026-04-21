@@ -40,6 +40,7 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: makemytrip-all-spends
+        canonical_categories: [travel]
         multiplier: 1
         effective_rate: 6
         cap_per_cycle: "unlimited"

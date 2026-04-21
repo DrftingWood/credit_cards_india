@@ -42,6 +42,7 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: swiggy-ecosystem
+        canonical_categories: [dining]
         multiplier: 1
         effective_rate: 10
         cap_per_cycle: 1500
@@ -50,6 +51,7 @@ rewards:
         merchants: [swiggy-food, swiggy-instamart, swiggy-dineout, swiggy-genie]
         notes: "10% cashback on Swiggy app (Food, Instamart, Dineout, Genie)."
       - category: online-mcc
+        canonical_categories: [online]
         multiplier: 1
         effective_rate: 5
         cap_per_cycle: 1500

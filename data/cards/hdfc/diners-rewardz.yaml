@@ -39,6 +39,7 @@ rewards:
       unit_value_inr: 0.5
     accelerated:
       - category: weekend-dining
+        canonical_categories: [dining]
         multiplier: 2
         effective_rate: 8
         cap_per_cycle: "unlimited"

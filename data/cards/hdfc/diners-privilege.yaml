@@ -39,6 +39,7 @@ rewards:
       unit_value_inr: 0.5
     accelerated:
       - category: smartbuy-flights-hotels
+        canonical_categories: [travel]
         multiplier: 10
         effective_rate: 40
         cap_per_cycle: 7500

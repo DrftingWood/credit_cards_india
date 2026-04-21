@@ -39,6 +39,7 @@ rewards:
       unit_value_inr: 0.4
     accelerated:
       - category: grocery-supermarket
+        canonical_categories: [groceries]
         multiplier: 10
         effective_rate: 20
         cap_per_cycle: 1000

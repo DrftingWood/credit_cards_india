@@ -39,6 +39,7 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: travel-online-offline
+        canonical_categories: [online, travel]
         multiplier: 3
         effective_rate: 6
         cap_per_cycle: "unlimited"

@@ -39,6 +39,7 @@ rewards:
       unit_value_inr: 0.4
     accelerated:
       - category: ott-gaming-dining-entertainment
+        canonical_categories: [dining, entertainment]
         multiplier: 10
         effective_rate: 10
         cap_per_cycle: 1000

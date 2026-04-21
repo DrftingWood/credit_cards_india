@@ -39,6 +39,7 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: travel-edge-portal
+        canonical_categories: [travel]
         multiplier: 3
         effective_rate: 30
         cap_per_cycle: "unlimited"

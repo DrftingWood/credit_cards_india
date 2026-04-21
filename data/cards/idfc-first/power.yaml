@@ -42,6 +42,7 @@ rewards:
       unit_value_inr: 0.25
     accelerated:
       - category: hpcl-fuel-via-hp-pay
+        canonical_categories: [fuel]
         multiplier: 1
         effective_rate: 4
         cap_per_cycle: 500
@@ -50,6 +51,7 @@ rewards:
         merchants: [hpcl-fuel-stations, hp-pay]
         notes: "4% cashback on fuel at HPCL via HP Pay app."
       - category: grocery-utility
+        canonical_categories: [groceries, utilities]
         multiplier: 1
         effective_rate: 2
         cap_per_cycle: 300

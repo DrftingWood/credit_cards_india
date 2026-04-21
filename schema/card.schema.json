@@ -414,7 +414,8 @@
             "min_txn_inr": { "type": ["integer", "null"], "minimum": 0 },
             "max_txn_inr": { "type": ["integer", "null"], "minimum": 0 },
             "cap_per_cycle_inr": { "type": ["integer", "null"], "minimum": 0 },
-            "cycle": { "$ref": "#/$defs/Cycle" }
+            "cycle": { "$ref": "#/$defs/Cycle" },
+            "notes": { "type": "string" }
           }
         },
         "dining": {
@@ -434,7 +435,8 @@
             "partner": { "type": "string" },
             "max_per_cycle": { "type": ["integer", "null"], "minimum": 0 },
             "cycle": { "$ref": "#/$defs/Cycle" },
-            "cap_inr": { "type": ["integer", "null"], "minimum": 0 }
+            "cap_inr": { "type": ["integer", "null"], "minimum": 0 },
+            "notes": { "type": "string" }
           }
         },
         "concierge": { "type": "boolean", "default": false },

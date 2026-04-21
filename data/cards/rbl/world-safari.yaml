@@ -1,0 +1,120 @@
+id: rbl-world-safari
+name: RBL Bank World Safari Credit Card
+issuer: rbl
+network: mastercard
+network_tier: world
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2018-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2018-01-01
+    effective_until: null
+    joining_fee_inr: 3000
+    annual_fee_inr: 3000
+    fee_waiver:
+      spend_inr: 500000
+      cycle: annual
+    forex_markup_pct: 0.0
+    finance_charge_monthly_pct: 3.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Zero forex markup is the card's headline feature."
+    source:
+      url: https://www.rblbank.com/category/credit-cards/world-safari-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2018-01-01
+    effective_until: null
+    currency: points
+    currency_name: Travel Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.4
+    accelerated:
+      - category: international-spend
+        multiplier: 5
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "5x Travel Points on international spends."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    redemption:
+      - type: airmiles
+        program: Multiple airline / hotel partners
+        ratio: "2:1"
+      - type: voucher
+        program: Travel partners
+        rate_inr_per_unit: 0.4
+    source:
+      url: https://www.rblbank.com/category/credit-cards/world-safari-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2018-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [mastercard, dreamfolks]
+      international:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    milestones:
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Travel voucher worth ₹3,000"
+        value_inr: 3000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "MakeMyTrip voucher worth ₹3,000"
+        value_inr: 3000
+        window_days: 90
+    insurance:
+      - type: travel-medical
+        sum_insured_inr: 5000000
+      - type: baggage-loss
+        sum_insured_inr: 100000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 500
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.rblbank.com/category/credit-cards/world-safari-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 1500000
+    self_employed: 1500000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.rblbank.com/category/credit-cards/world-safari-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [premium, travel, zero-forex, points]

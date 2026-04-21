@@ -1,0 +1,110 @@
+id: standard-chartered-ultimate
+name: Standard Chartered Ultimate Credit Card
+issuer: standard-chartered
+network: mastercard
+network_tier: world-elite
+tier: super-premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2019-03-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2019-03-01
+    effective_until: null
+    joining_fee_inr: 5000
+    annual_fee_inr: 5000
+    fee_waiver: null
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.sc.com/in/credit-cards/ultimate/
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2019-03-01
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 5
+      per_inr: 150
+      unit_value_inr: 1.0
+    accelerated:
+      - category: forex-spend
+        multiplier: 1
+        effective_rate: 3.33
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "Effectively 3.33% cashback on forex after the 2% markup (5 points per ₹150, unit value ₹1)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        min_units: 1000
+    source:
+      url: https://www.sc.com/in/credit-cards/ultimate/
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2019-03-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [mastercard]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    golf:
+      rounds_per_cycle: 1
+      cycle: monthly
+      lessons_per_cycle: 0
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 10000000
+      - type: travel-medical
+        sum_insured_inr: 4500000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.sc.com/in/credit-cards/ultimate/
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 2100000
+    self_employed: 2100000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sc.com/in/credit-cards/ultimate/
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [super-premium, flat-cashback, points]

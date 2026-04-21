@@ -1,5 +1,5 @@
 import type { EnrichedCard, AcceleratedReward, RewardRecord } from "./types";
-import { CanonicalCategory, classifyCategory } from "./category-mapping";
+import { CanonicalCategory, resolveBuckets } from "./category-mapping";
 
 export type SpendProfile = Record<CanonicalCategory, number>;
 
@@ -40,7 +40,7 @@ function acceleratedRateForBucket(
   const baseUnitValue = rewards.base.unit_value_inr;
 
   for (const a of accelerated) {
-    const buckets = classifyCategory(a.category);
+    const buckets = resolveBuckets(a.category, a.canonical_categories);
     if (!buckets.includes(bucket)) continue;
 
     let ratePct: number | null = null;

@@ -38,6 +38,7 @@ rewards:
       unit_value_inr: 0.25
     accelerated:
       - category: online-spend-under-20k
+        canonical_categories: [online]
         multiplier: 2
         effective_rate: 6
         cap_per_cycle: "unlimited"
@@ -45,6 +46,7 @@ rewards:
         cycle: monthly
         notes: "6X rewards on online spends up to ₹20,000/month."
       - category: online-spend-above-20k
+        canonical_categories: [online]
         multiplier: 3
         effective_rate: 10
         cap_per_cycle: "unlimited"

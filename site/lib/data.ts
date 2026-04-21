@@ -1,5 +1,3 @@
-import { readFileSync, existsSync } from "node:fs";
-import path from "node:path";
 import type {
   EnrichedCard,
   IssuerRecord,
@@ -8,72 +6,66 @@ import type {
 } from "./types";
 
 /**
- * Data layer. Reads the build artefact produced by `python scripts/build.py`.
- * Called at build time from server components and generateStaticParams.
+ * Data layer. The build artefact under ../dist/*.json is imported directly
+ * so Next's bundler embeds it at build time — runtime-safe, CWD-independent.
  *
- * Artifacts live at <repoRoot>/dist/*.json. `site/scripts/prebuild.mjs` runs
- * build.py automatically before `next dev` / `next build`.
+ * Build order: `npm run prebuild` (site/scripts/prebuild.mjs → build.mjs)
+ * regenerates ../dist/*.json from data/**\/*.yaml, then `next build` sees
+ * the fresh JSON via these imports.
  */
 
-const DIST = path.resolve(process.cwd(), "..", "dist");
+// Static imports require site/scripts/prebuild.mjs to have run.
+// JSON imports widen to a permissive inferred type; cast to the schema shape
+// at the boundary so downstream code is strongly typed.
+import cardsData from "../../dist/cards.json";
+import issuersData from "../../dist/issuers.json";
+import networksData from "../../dist/networks.json";
+import indexData from "../../dist/index.json";
 
-function readJson<T>(file: string): T {
-  const fp = path.join(DIST, file);
-  if (!existsSync(fp)) {
-    throw new Error(
-      `Build artefact missing: ${fp}\n  Run 'python ../scripts/build.py' from site/ (or 'npm run dev' which does it automatically).`,
-    );
-  }
-  return JSON.parse(readFileSync(fp, "utf8")) as T;
-}
-
-let _cards: EnrichedCard[] | null = null;
-let _issuers: IssuerRecord[] | null = null;
-let _networks: NetworkRecord[] | null = null;
-let _index: DatasetIndex | null = null;
+const cards = cardsData as unknown as EnrichedCard[];
+const issuers = issuersData as unknown as IssuerRecord[];
+const networks = networksData as unknown as NetworkRecord[];
+const datasetIndex = indexData as unknown as DatasetIndex;
 
 export function getAllCards(): EnrichedCard[] {
-  if (!_cards) _cards = readJson<EnrichedCard[]>("cards.json");
-  return _cards;
+  return cards;
 }
 
 export function getAllIssuers(): IssuerRecord[] {
-  if (!_issuers) _issuers = readJson<IssuerRecord[]>("issuers.json");
-  return _issuers;
+  return issuers;
 }
 
 export function getAllNetworks(): NetworkRecord[] {
-  if (!_networks) _networks = readJson<NetworkRecord[]>("networks.json");
-  return _networks;
+  return networks;
 }
 
 export function getIndex(): DatasetIndex {
-  if (!_index) _index = readJson<DatasetIndex>("index.json");
-  return _index;
+  return datasetIndex;
 }
 
 export function getCardById(id: string): EnrichedCard | null {
-  return getAllCards().find((c) => c.id === id) ?? null;
+  return cards.find((c) => c.id === id) ?? null;
 }
 
 export function getCardByIssuerAndSlug(
   issuer: string,
   slug: string,
 ): EnrichedCard | null {
-  const id = `${issuer}-${slug}`;
-  return getCardById(id);
+  return getCardById(`${issuer}-${slug}`);
 }
 
 /** Route params for SSG of /card/[issuer]/[slug] */
 export function allCardRouteParams(): Array<{ issuer: string; slug: string }> {
-  return getAllCards().map((c) => {
+  return cards.map((c) => {
     const issuer = c.issuer;
-    const slug = c.id.startsWith(`${issuer}-`) ? c.id.slice(issuer.length + 1) : c.id;
+    const slug = c.id.startsWith(`${issuer}-`)
+      ? c.id.slice(issuer.length + 1)
+      : c.id;
     return { issuer, slug };
   });
 }
 
 /** Active (including invite-only) cards only. */
 export function getActiveCards(): EnrichedCard[] {
-  return getAllCards().filter((c) => c.computed.is_active);
+  return cards.filter((c) => c.computed.is_active);
 }

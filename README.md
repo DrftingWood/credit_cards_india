@@ -73,6 +73,18 @@ python scripts/build.py        # writes dist/cards.json, issuers.json, networks.
 
 `dist/` is git-ignored; the artifact is meant to be regenerated in CI / at site-build time. Publish to a GitHub Release if a versioned consumer-facing dump is needed.
 
+## Site
+
+The consumer-facing site lives under [`site/`](site/README.md) — Next.js 15 + Tailwind. It reads the build artefact at build time and pre-renders every page.
+
+```
+cd site
+npm install
+npm run dev          # auto-runs python scripts/build.py first
+```
+
+Deployed to Vercel (see `vercel.json`).
+
 ## License
 
 Data and code are released under the [MIT License](LICENSE). Attribution appreciated when reusing the dataset.

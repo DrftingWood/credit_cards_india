@@ -39,6 +39,7 @@ rewards:
       unit_value_inr: 0.25
     accelerated:
       - category: international-spend
+        canonical_categories: [international]
         multiplier: 1
         effective_rate: 6
         cap_per_cycle: "unlimited"

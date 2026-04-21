@@ -62,6 +62,7 @@ export interface RewardBase {
 
 export interface AcceleratedReward {
   category: string;
+  canonical_categories?: string[] | null;
   multiplier: number;
   effective_rate?: number | null;
   cap_per_cycle?: number | "unlimited";

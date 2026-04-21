@@ -72,16 +72,24 @@ export default async function CardPage({
             </div>
           </div>
 
-          {card.application?.apply_url ? (
-            <a
-              href={card.application.apply_url}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-medium text-white no-underline hover:bg-brand-700 hover:text-white"
+          <div className="flex items-center gap-2 flex-wrap">
+            <Link
+              href={`/compare?cards=${card.id}`}
+              className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
             >
-              Apply on issuer site
-            </a>
-          ) : null}
+              + Compare
+            </Link>
+            {card.application?.apply_url ? (
+              <a
+                href={card.application.apply_url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-medium text-white no-underline hover:bg-brand-700 hover:text-white"
+              >
+                Apply on issuer site
+              </a>
+            ) : null}
+          </div>
         </div>
 
         <p className="mt-3 text-xs text-slate-500">

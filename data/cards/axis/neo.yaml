@@ -39,6 +39,7 @@ rewards:
       unit_value_inr: 0.2
     accelerated:
       - category: bill-payments-online
+        canonical_categories: [online, utilities]
         multiplier: 2
         effective_rate: 2
         cap_per_cycle: "unlimited"

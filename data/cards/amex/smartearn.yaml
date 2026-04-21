@@ -39,6 +39,7 @@ rewards:
       unit_value_inr: 0.25
     accelerated:
       - category: amazon-flipkart-makemytrip
+        canonical_categories: [online, travel]
         multiplier: 10
         effective_rate: 10
         cap_per_cycle: 500
@@ -47,6 +48,7 @@ rewards:
         merchants: [amazon.in, flipkart, makemytrip]
         notes: "10x MR points on Amazon, Flipkart and MakeMyTrip; cap 500 points/month per merchant."
       - category: uber-bookmyshow
+        canonical_categories: [entertainment]
         multiplier: 5
         effective_rate: 5
         cap_per_cycle: 500

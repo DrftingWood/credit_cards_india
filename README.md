@@ -83,7 +83,19 @@ npm install
 npm run dev          # auto-runs python scripts/build.py first
 ```
 
-Deployed to Vercel (see `vercel.json`).
+### Deploying to Vercel
+
+The Next.js app lives in `site/`, not at the repo root, so Vercel's framework auto-detection needs to be pointed at it explicitly:
+
+1. Import the repo in the Vercel dashboard.
+2. **Project Settings → General → Root Directory → `site`**. This is the key step — Vercel will cd into `site/` (with the rest of the repo still checked out, so `../scripts/build.py` resolves from `site/scripts/prebuild.mjs`).
+3. Framework preset: **Next.js** (auto-detected once the root directory is correct).
+4. Install command: leave default (`npm install`).
+5. Build command: leave default (`next build`) — `site/package.json` wires `prebuild` to regenerate `../dist/*.json` via Python.
+6. Output directory: leave default (`.next`).
+7. (Optional) Set `NEXT_PUBLIC_SITE_URL` in project env vars to the production URL so the sitemap has the right host.
+
+Python 3 is available on Vercel's default build image, so no extra runtime configuration is needed.
 
 ## License
 

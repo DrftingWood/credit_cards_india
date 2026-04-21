@@ -31,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <nav className="flex gap-5 text-sm">
               <Link href="/browse">Browse</Link>
+              <Link href="/compare">Compare</Link>
               <Link href="/calculator">Calculator</Link>
               <Link href="/about">About</Link>
             </nav>

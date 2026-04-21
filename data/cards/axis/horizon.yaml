@@ -40,6 +40,7 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: travel-edge-portal
+        canonical_categories: [travel]
         multiplier: 5
         effective_rate: 5
         cap_per_cycle: "unlimited"
@@ -47,6 +48,7 @@ rewards:
         cycle: monthly
         notes: "5 EDGE Miles per ₹100 on direct airline and Axis Travel EDGE bookings."
       - category: international-spend
+        canonical_categories: [international]
         multiplier: 2
         effective_rate: 2
         cap_per_cycle: "unlimited"

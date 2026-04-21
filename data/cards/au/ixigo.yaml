@@ -42,6 +42,7 @@ rewards:
       unit_value_inr: 0.5
     accelerated:
       - category: ixigo-bookings
+        canonical_categories: [travel]
         multiplier: 1
         effective_rate: 6
         cap_per_cycle: "unlimited"

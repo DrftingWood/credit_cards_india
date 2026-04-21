@@ -1,0 +1,8 @@
+id: visa
+name: Visa
+tiers:
+  - classic
+  - platinum
+  - signature
+  - infinite
+website: https://www.visa.co.in

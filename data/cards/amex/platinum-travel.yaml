@@ -1,0 +1,121 @@
+id: amex-platinum-travel
+name: American Express Platinum Travel Credit Card
+issuer: amex
+network: amex
+network_tier: platinum
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2014-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2014-01-01
+    effective_until: null
+    joining_fee_inr: 3500
+    annual_fee_inr: 5000
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 3.5
+      min_inr: 250
+    gst_applicable: true
+    source:
+      url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2014-01-01
+    effective_until: null
+    currency: points
+    currency_name: Membership Rewards
+    base:
+      rate: 1
+      per_inr: 50
+      unit_value_inr: 0.25
+    exclusions:
+      - fuel
+      - wallet-loads
+      - insurance-premiums
+      - emi
+      - cash-advance
+      - utilities
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: airmiles
+        program: Multiple (MR transfer)
+        ratio: "1:1"
+        constraints: "Transfer to partners like Marriott Bonvoy, Singapore KrisFlyer, British Airways Avios."
+      - type: voucher
+        program: Amex gift vouchers
+        rate_inr_per_unit: 0.5
+    source:
+      url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2014-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: 0
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Priority Pass available as paid add-on; no complimentary international visits."
+    milestones:
+      - spend_inr: 190000
+        cycle: annual
+        benefit: "Travel vouchers worth ₹7,700"
+        value_inr: 7700
+      - spend_inr: 400000
+        cycle: annual
+        benefit: "Travel vouchers worth ₹11,800 + Taj Experiences Gift Card worth ₹10,000"
+        value_inr: 21800
+    welcome:
+      - condition: "Spend ₹15,000 within 90 days"
+        benefit: "10,000 Membership Rewards points"
+        value_inr: 2500
+        window_days: 90
+    insurance:
+      - type: travel-medical
+        sum_insured_inr: 5000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: false
+    other:
+      - name: Taj Epicure membership
+        description: Complimentary enrolment in Taj Epicure Plus programme.
+    source:
+      url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 750
+  residency: resident-indian
+  notes: "Amex acceptance in India is narrower than Visa/Mastercard; factor into suitability."
+
+application:
+  apply_url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [travel, points, amex, milestone-heavy]

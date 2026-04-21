@@ -1,0 +1,8 @@
+id: au
+name: AU Small Finance Bank
+short_name: AU
+legal_name: AU Small Finance Bank Limited
+website: https://www.aubank.in
+customer_care:
+  phone: "1800-1200-1200"
+type: small-finance-bank

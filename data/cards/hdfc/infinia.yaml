@@ -1,0 +1,136 @@
+id: hdfc-infinia
+name: HDFC Bank Infinia Credit Card (Metal Edition)
+issuer: hdfc
+network: visa
+network_tier: infinite
+tier: super-premium
+card_type: credit
+co_brand: null
+status: invite-only
+launched_on: 2017-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2017-01-01
+    effective_until: null
+    joining_fee_inr: 12500
+    annual_fee_inr: 12500
+    fee_waiver:
+      spend_inr: 1000000
+      cycle: annual
+      conditions: "Renewal fee waived on spends of ₹10L in the preceding membership year."
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    late_payment_slabs:
+      - { up_to_inr: 100, fee_inr: 0 }
+      - { up_to_inr: 500, fee_inr: 100 }
+      - { up_to_inr: 5000, fee_inr: 500 }
+      - { up_to_inr: 10000, fee_inr: 600 }
+      - { up_to_inr: 25000, fee_inr: 800 }
+      - { up_to_inr: 50000, fee_inr: 1100 }
+      - { up_to_inr: "any", fee_inr: 1300 }
+    gst_applicable: true
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2017-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 150
+      unit_value_inr: 1.0
+    accelerated:
+      - category: smartbuy-flights-hotels
+        multiplier: 10
+        cap_per_cycle: 15000
+        cap_unit: points
+        cycle: monthly
+        notes: "Via HDFC SmartBuy portal."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: SmartBuy
+        rate_inr_per_unit: 1.0
+      - type: airmiles
+        program: Multiple (Airmiles hub)
+        ratio: "1:1"
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2024-04-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [visa, priority-pass]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [priority-pass]
+    golf:
+      rounds_per_cycle: unlimited
+      cycle: monthly
+      lessons_per_cycle: 0
+    milestones: []
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "12,500 bonus Reward Points"
+        value_inr: 12500
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 30000000
+      - type: travel-medical
+        sum_insured_inr: 5000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 1000
+      cycle: statement
+    concierge: true
+    other:
+      - name: Club Marriott membership
+        description: Complimentary Club Marriott membership for the first year.
+        value_inr: 5000
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 800
+  residency: resident-indian
+  notes: "Invite-only. Typically extended to HDFC Preferred/Imperia/Private Banking customers or high-net-worth profiles."
+
+application:
+  apply_url: null
+  pre_approval_check_url: null
+  replaces_card: null
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [metal, travel, forex-friendly, invite-only, points]

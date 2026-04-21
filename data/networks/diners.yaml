@@ -1,0 +1,9 @@
+id: diners
+name: Diners Club International
+tiers:
+  - black
+  - privilege
+  - premium
+  - rewardz
+website: https://www.dinersclub.com
+notes: Operated under the Discover network globally; issued in India primarily by HDFC Bank.

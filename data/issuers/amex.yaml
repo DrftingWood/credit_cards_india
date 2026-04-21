@@ -1,0 +1,9 @@
+id: amex
+name: American Express
+short_name: Amex
+legal_name: American Express Banking Corp. (India)
+website: https://www.americanexpress.com/in
+customer_care:
+  phone: "1800-419-1414"
+type: foreign-bank
+notes: Amex in India issues both charge cards and revolving credit cards.

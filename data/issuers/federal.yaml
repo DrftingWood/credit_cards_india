@@ -1,0 +1,8 @@
+id: federal
+name: Federal Bank
+short_name: Federal
+legal_name: The Federal Bank Limited
+website: https://www.federalbank.co.in
+customer_care:
+  phone: "1800-425-1199"
+type: bank

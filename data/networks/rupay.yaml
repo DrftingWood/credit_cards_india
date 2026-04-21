@@ -1,0 +1,8 @@
+id: rupay
+name: RuPay
+tiers:
+  - classic
+  - platinum
+  - select
+website: https://www.npci.org.in/what-we-do/rupay/product-overview
+notes: Domestic network operated by NPCI. Supports UPI linkage for credit cards.

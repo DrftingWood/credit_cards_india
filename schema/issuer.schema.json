@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/drftingwood/credit_cards_india/schema/issuer.schema.json",
+  "title": "Card Issuer",
+  "type": "object",
+  "required": ["id", "name", "legal_name", "website"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Lowercase slug. Must match the filename and be used as the `issuer` key on cards.",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Common name used in UI, e.g. 'HDFC Bank'."
+    },
+    "short_name": {
+      "type": "string",
+      "description": "Optional shorthand, e.g. 'HDFC'."
+    },
+    "legal_name": {
+      "type": "string",
+      "description": "Registered legal name, e.g. 'HDFC Bank Limited'."
+    },
+    "website": { "type": "string", "format": "uri" },
+    "customer_care": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "phone": { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+    "type": {
+      "type": "string",
+      "description": "Broad issuer category.",
+      "enum": ["bank", "small-finance-bank", "nbfc", "fintech", "foreign-bank", "charge-card-company"]
+    },
+    "notes": { "type": "string" }
+  }
+}

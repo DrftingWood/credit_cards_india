@@ -1,0 +1,8 @@
+id: rbl
+name: RBL Bank
+short_name: RBL
+legal_name: RBL Bank Limited
+website: https://www.rblbank.com
+customer_care:
+  phone: "022-6232-7777"
+type: bank

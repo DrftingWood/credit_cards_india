@@ -1,0 +1,115 @@
+id: hdfc-millennia
+name: HDFC Bank Millennia Credit Card
+issuer: hdfc
+network: visa
+network_tier: platinum
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2020-02-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2020-02-01
+    effective_until: null
+    joining_fee_inr: 1000
+    annual_fee_inr: 1000
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Renewal fee waived on spends of ₹1L in the preceding year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2020-02-01
+    effective_until: null
+    currency: cashback
+    currency_name: CashPoints
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: online-partner-merchants
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: 1000
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [amazon, bookmyshow, cult.fit, flipkart, myntra, sony-liv, swiggy, tata-cliq, uber, zomato]
+        notes: "5% cashback (as CashPoints) at 10 partner merchants."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - government
+      - emi
+      - utilities
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        min_units: 500
+      - type: catalog
+        program: HDFC SmartBuy / NetBanking
+        rate_inr_per_unit: 0.3
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2020-02-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+        notes: "Complimentary access on cardholder; 2 visits per quarter."
+    milestones:
+      - spend_inr: 100000
+        cycle: quarterly
+        benefit: "₹1,000 gift voucher"
+        value_inr: 1000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "1,000 CashPoints"
+        value_inr: 1000
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 420000
+    self_employed: 600000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [cashback, online-spend, mid-tier]

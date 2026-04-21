@@ -1,0 +1,122 @@
+id: axis-horizon
+name: Axis Bank Horizon Credit Card
+issuer: axis
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-08-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-08-01
+    effective_until: null
+    joining_fee_inr: 3000
+    annual_fee_inr: 3000
+    fee_waiver:
+      spend_inr: 1000000
+      cycle: annual
+      conditions: "Annual fee waived on spends of ₹10L in the preceding year."
+    forex_markup_pct: 1.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2024-08-01
+    effective_until: null
+    currency: miles
+    currency_name: EDGE Miles
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: travel-edge-portal
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        notes: "5 EDGE Miles per ₹100 on direct airline and Axis Travel EDGE bookings."
+      - category: international-spend
+        multiplier: 2
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - utilities
+    redemption:
+      - type: airmiles
+        program: Multiple (EDGE Miles transfer)
+        ratio: "2:1"
+        constraints: "Transfer to 20+ airline/hotel partners."
+      - type: catalog
+        program: Axis Travel EDGE
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2024-08-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "Priority Pass lounge visits activated after ₹50k spend in preceding quarter."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "1,000 EDGE Miles"
+        value_inr: 1000
+        window_days: 30
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 900000
+    self_employed: 900000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [travel, miles, premium, low-forex]

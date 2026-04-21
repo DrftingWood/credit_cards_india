@@ -9,8 +9,12 @@ Exits 0 on success, 1 on any error. Prints warnings but still exits 0 if only wa
 from __future__ import annotations
 
 import json
+import socket
 import sys
 from datetime import date, datetime, timedelta
+from urllib.error import HTTPError, URLError
+from urllib.parse import urlparse
+from urllib.request import Request, urlopen
 from pathlib import Path
 
 import yaml
@@ -20,6 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_DIR = ROOT / "schema"
 DATA_DIR = ROOT / "data"
 STALENESS_WARN_DAYS = 180
+URL_CHECK_TIMEOUT_SECONDS = 10
 
 
 def _normalize(value):
@@ -115,7 +120,50 @@ def check_dated_array(errors, card_path: Path, section_name: str, records, card_
             )
 
 
+def collect_sources(node):
+    """Yield all nested `source` objects from a card payload."""
+    if isinstance(node, dict):
+        source = node.get("source")
+        if isinstance(source, dict):
+            yield source
+        for value in node.values():
+            yield from collect_sources(value)
+    elif isinstance(node, list):
+        for item in node:
+            yield from collect_sources(item)
+
+
+def check_source_urls(warnings, path: Path, instance: dict):
+    """Best-effort source URL availability check via GET request."""
+    sources = [src for src in collect_sources(instance) if src.get("url")]
+    unique_urls = sorted({src["url"] for src in sources})
+    for url in unique_urls:
+        parsed = urlparse(url)
+        if parsed.scheme not in {"http", "https"}:
+            warnings.append(
+                f"[warn] {path.relative_to(ROOT)} :: source url '{url}' does not use http/https and was not checked"
+            )
+            continue
+        req = Request(url, method="GET", headers={"User-Agent": "credit-cards-india-validator/1.0"})
+        try:
+            with urlopen(req, timeout=URL_CHECK_TIMEOUT_SECONDS) as resp:
+                status = getattr(resp, "status", 200)
+                if status >= 400:
+                    warnings.append(
+                        f"[warn] {path.relative_to(ROOT)} :: source url '{url}' returned HTTP {status}"
+                    )
+        except HTTPError as exc:
+            warnings.append(
+                f"[warn] {path.relative_to(ROOT)} :: source url '{url}' returned HTTP {exc.code}"
+            )
+        except (URLError, TimeoutError, socket.timeout) as exc:
+            warnings.append(
+                f"[warn] {path.relative_to(ROOT)} :: source url '{url}' could not be reached ({exc.__class__.__name__})"
+            )
+
+
 def main() -> int:
+    check_urls = "--check-urls" in sys.argv[1:]
     errors: list[str] = []
     warnings: list[str] = []
 
@@ -228,6 +276,18 @@ def main() -> int:
                     f"[warn] {path.relative_to(ROOT)} :: metadata.last_verified_on is {age} days old "
                     f"(> {STALENESS_WARN_DAYS})"
                 )
+        source_dates = [as_date(src.get("retrieved_on")) for src in collect_sources(instance) if src.get("retrieved_on")]
+        source_dates = [d for d in source_dates if d is not None]
+        if source_dates:
+            max_source_date = max(source_dates)
+            if last_verified and last_verified < max_source_date:
+                errors.append(
+                    f"[lint] {path.relative_to(ROOT)} :: metadata.last_verified_on ({last_verified}) is earlier than "
+                    f"latest source.retrieved_on ({max_source_date})"
+                )
+
+        if check_urls:
+            check_source_urls(warnings, path, instance)
 
     # deferred: replaces_card references
     for path, instance in cards:

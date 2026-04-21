@@ -6,6 +6,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
 import type { EnrichedCard } from "@/lib/types";
 import { CompareTable } from "@/components/compare-table";
+import { IssuerLogo } from "@/components/logos/issuer-logo";
+import { NetworkLogo } from "@/components/logos/network-logo";
 
 const MAX_CARDS = 4;
 
@@ -113,8 +115,10 @@ export function CompareClient({ cards }: { cards: EnrichedCard[] }) {
                   className="w-full text-left px-3 py-2 text-sm hover:bg-slate-50 border-b border-slate-100 last:border-0"
                 >
                   <div className="font-medium text-slate-900">{s.name}</div>
-                  <div className="text-xs text-slate-500">
-                    {s.issuer_detail.name} · {s.tier.replace("-", " ")} · {s.network}
+                  <div className="mt-0.5 flex items-center gap-1.5 text-xs text-slate-500">
+                    <IssuerLogo issuer={s.issuer_detail} height={12} />
+                    <span>· {s.tier.replace("-", " ")} ·</span>
+                    <NetworkLogo network={s.network_detail} height={12} />
                   </div>
                 </button>
               ))}

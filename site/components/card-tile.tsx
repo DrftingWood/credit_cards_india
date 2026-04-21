@@ -1,6 +1,9 @@
 import Link from "next/link";
 import type { EnrichedCard } from "@/lib/types";
 import { cn, formatInr, formatPct } from "@/lib/utils";
+import { IssuerLogo } from "./logos/issuer-logo";
+import { NetworkLogo } from "./logos/network-logo";
+import { CardImage } from "./card-image";
 
 export function CardTile({ card }: { card: EnrichedCard }) {
   const issuerSlug = card.issuer;
@@ -22,16 +25,16 @@ export function CardTile({ card }: { card: EnrichedCard }) {
         "no-underline",
       )}
     >
-      <div className="flex items-start justify-between gap-3">
+      <CardImage card={card} size="tile" />
+
+      <div className="mt-3 flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-xs uppercase tracking-wide text-slate-500">
-            {card.issuer_detail.short_name || card.issuer_detail.name}
-          </div>
-          <h3 className="mt-0.5 text-sm font-semibold text-slate-900 leading-snug line-clamp-2">
+          <IssuerLogo issuer={card.issuer_detail} height={16} />
+          <h3 className="mt-1 text-sm font-semibold text-slate-900 leading-snug line-clamp-2">
             {card.name}
           </h3>
         </div>
-        <span className="chip shrink-0 capitalize">{card.network}</span>
+        <NetworkLogo network={card.network_detail} height={16} className="shrink-0" />
       </div>
 
       <div className="mt-3 grid grid-cols-2 gap-2 text-xs">

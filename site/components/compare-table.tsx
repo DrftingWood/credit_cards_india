@@ -1,6 +1,9 @@
 import Link from "next/link";
 import type { BenefitRecord, EnrichedCard } from "@/lib/types";
 import { formatInr, formatPct } from "@/lib/utils";
+import { IssuerLogo } from "./logos/issuer-logo";
+import { NetworkLogo } from "./logos/network-logo";
+import { CardImage } from "./card-image";
 
 interface Row {
   label: string;
@@ -55,8 +58,14 @@ function topAcceleratedRow(card: EnrichedCard): React.ReactNode {
 }
 
 const ROWS: Row[] = [
-  { label: "Issuer", render: (c) => c.issuer_detail.name },
-  { label: "Network", render: (c) => <span className="capitalize">{c.network}</span> },
+  {
+    label: "Issuer",
+    render: (c) => <IssuerLogo issuer={c.issuer_detail} variant="with-name" height={20} />,
+  },
+  {
+    label: "Network",
+    render: (c) => <NetworkLogo network={c.network_detail} height={18} />,
+  },
   {
     label: "Tier",
     render: (c) => <span className="capitalize">{c.tier.replace("-", " ")}</span>,
@@ -163,9 +172,10 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
                   className="text-left p-3 align-top"
                   style={{ width: `${Math.floor(80 / colCount)}%` }}
                 >
-                  <div className="text-xs uppercase tracking-wide text-slate-500">
-                    {c.issuer_detail.short_name || c.issuer_detail.name}
+                  <div className="w-40 mb-2">
+                    <CardImage card={c} size="tile" />
                   </div>
+                  <IssuerLogo issuer={c.issuer_detail} height={16} />
                   <Link
                     href={`/card/${c.issuer}/${slug}`}
                     className="block mt-1 text-sm font-semibold text-slate-900 hover:text-slate-900"

@@ -61,6 +61,18 @@ See [`docs/SCHEMA.md`](docs/SCHEMA.md). The source of truth is `schema/*.schema.
 
 Fees, rewards, and benefits are modelled as **arrays of effective-dated records** — when an issuer revises an annual fee or reward rate, the old record is closed with `effective_until` and a new record is appended. Site queries like "what was this card's annual fee on 2024-06-01" become a one-line lookup without going through git history.
 
+## Build artifact
+
+```
+python scripts/build.py        # writes dist/cards.json, issuers.json, networks.json, index.json
+```
+
+`dist/cards.json` is the consumer-friendly form: each card has the full historical arrays **plus** `issuer_detail`, `network_detail`, `current_fees` / `current_rewards` / `current_benefits` (the currently-open records), and a `computed` block with derived fields the site can filter/sort on (`is_active`, `is_lifetime_free`, `headline_rate_pct`, `has_domestic_lounge`, etc.).
+
+`dist/index.json` summarises counts by issuer / network / tier / reward currency + tag vocabulary — useful for landing-page badges, filter sidebars, and tag clouds without scanning every card.
+
+`dist/` is git-ignored; the artifact is meant to be regenerated in CI / at site-build time. Publish to a GitHub Release if a versioned consumer-facing dump is needed.
+
 ## License
 
 Data and code are released under the [MIT License](LICENSE). Attribution appreciated when reusing the dataset.

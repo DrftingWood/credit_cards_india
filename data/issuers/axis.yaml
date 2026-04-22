@@ -6,3 +6,5 @@ website: https://www.axisbank.com
 customer_care:
   phone: "1860-419-5555"
 type: bank
+logo_path: "/logos/issuers/axis.svg"
+brand_color: "#9E1C2F"

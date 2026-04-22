@@ -6,3 +6,5 @@ website: https://www.kotak.com
 customer_care:
   phone: "1860-266-2666"
 type: bank
+logo_path: "/logos/issuers/kotak.svg"
+brand_color: "#EF3E42"

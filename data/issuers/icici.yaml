@@ -6,3 +6,5 @@ website: https://www.icicibank.com
 customer_care:
   phone: "1860-120-7777"
 type: bank
+logo_path: /logos/issuers/icici.svg
+brand_color: "#B02A30"

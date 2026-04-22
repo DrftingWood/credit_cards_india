@@ -6,4 +6,5 @@ tiers:
   - platinum
   - centurion
 website: https://www.americanexpress.com/in
+logo_path: /logos/networks/amex.svg
 notes: Amex is both a network and an issuer in India (via American Express Banking Corp).

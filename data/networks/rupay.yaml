@@ -5,4 +5,5 @@ tiers:
   - platinum
   - select
 website: https://www.npci.org.in/what-we-do/rupay/product-overview
+logo_path: /logos/networks/rupay.svg
 notes: Domestic network operated by NPCI. Supports UPI linkage for credit cards.

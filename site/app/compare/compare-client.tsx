@@ -116,9 +116,9 @@ export function CompareClient({ cards }: { cards: EnrichedCard[] }) {
                 >
                   <div className="font-medium text-slate-900">{s.name}</div>
                   <div className="mt-0.5 flex items-center gap-1.5 text-xs text-slate-500">
-                    <IssuerLogo issuer={s.issuer_detail} height={12} />
+                    <IssuerLogo issuer={s.issuer_detail} height={16} />
                     <span>· {s.tier.replace("-", " ")} ·</span>
-                    <NetworkLogo network={s.network_detail} height={12} />
+                    <NetworkLogo network={s.network_detail} height={16} />
                   </div>
                 </button>
               ))}

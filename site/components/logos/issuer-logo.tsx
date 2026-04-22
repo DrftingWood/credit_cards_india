@@ -8,14 +8,15 @@ import type { IssuerRecord } from "@/lib/types";
  *   - "mark-only" (default) — logo only; falls back to the short-name chip.
  *   - "with-name"           — logo + common name on a pill; fallback is full name.
  *
+ * Each logo renders at its native aspect ratio (no fixed-box letterboxing)
+ * so wordmarks keep their natural width and square marks stay square.
  * Gracefully degrades to a text chip when the issuer record has no logo_path.
- * Safe to ship before any assets land in site/public/logos/issuers/.
  */
 
 interface IssuerLogoProps {
   issuer: IssuerRecord;
   variant?: "mark-only" | "with-name";
-  /** Height of the logo in pixels; width is auto. */
+  /** Rendered height in px. Width is auto to preserve the logo's aspect. */
   height?: number;
   className?: string;
 }
@@ -23,7 +24,7 @@ interface IssuerLogoProps {
 export function IssuerLogo({
   issuer,
   variant = "mark-only",
-  height = 20,
+  height = 22,
   className,
 }: IssuerLogoProps) {
   const displayName = issuer.short_name || issuer.name;
@@ -31,13 +32,14 @@ export function IssuerLogo({
 
   if (issuer.logo_path) {
     return (
-      <span className={wrapperClass} aria-label={`${issuer.name}`}>
+      <span className={wrapperClass} aria-label={issuer.name}>
         <Image
           src={issuer.logo_path}
           alt={`${issuer.name} logo`}
           height={height}
-          width={Math.round(height * 2.5)}
-          style={{ height, width: "auto", objectFit: "contain" }}
+          width={height * 4}
+          sizes={`${height * 4}px`}
+          style={{ height, width: "auto", maxWidth: "none" }}
           unoptimized
         />
         {variant === "with-name" ? (

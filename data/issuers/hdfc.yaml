@@ -6,3 +6,5 @@ website: https://www.hdfcbank.com
 customer_care:
   phone: "1860-266-4332"
 type: bank
+logo_path: "/logos/issuers/hdfc.svg"
+brand_color: "#004C8F"

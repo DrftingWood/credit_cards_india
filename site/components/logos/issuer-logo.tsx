@@ -8,21 +8,17 @@ import type { IssuerRecord } from "@/lib/types";
  *   - "mark-only" (default) — logo only; falls back to the short-name chip.
  *   - "with-name"           — logo + common name on a pill; fallback is full name.
  *
- * Renders the logo inside a fixed-size box with object-fit: contain so logos
- * with very different native aspect ratios (some are square, some are wide
- * wordmarks) all feel visually consistent on the page. Gracefully degrades
- * to a text chip when the issuer record has no logo_path.
+ * Gracefully degrades to a text chip when the issuer record has no logo_path.
+ * Safe to ship before any assets land in site/public/logos/issuers/.
  */
 
 interface IssuerLogoProps {
   issuer: IssuerRecord;
   variant?: "mark-only" | "with-name";
-  /** Visual height in px. Logo rendered inside a fixed-ratio box. */
+  /** Height of the logo in pixels; width is auto. */
   height?: number;
   className?: string;
 }
-
-const ASPECT = 2.4;
 
 export function IssuerLogo({
   issuer,
@@ -34,22 +30,16 @@ export function IssuerLogo({
   const wrapperClass = `inline-flex items-center gap-1.5 ${className ?? ""}`.trim();
 
   if (issuer.logo_path) {
-    const width = Math.round(height * ASPECT);
     return (
-      <span className={wrapperClass} aria-label={issuer.name}>
-        <span
-          className="inline-block align-middle"
-          style={{ width, height, position: "relative" }}
-        >
-          <Image
-            src={issuer.logo_path}
-            alt={`${issuer.name} logo`}
-            fill
-            sizes={`${width}px`}
-            style={{ objectFit: "contain", objectPosition: "left center" }}
-            unoptimized
-          />
-        </span>
+      <span className={wrapperClass} aria-label={`${issuer.name}`}>
+        <Image
+          src={issuer.logo_path}
+          alt={`${issuer.name} logo`}
+          height={height}
+          width={Math.round(height * 2.5)}
+          style={{ height, width: "auto", objectFit: "contain" }}
+          unoptimized
+        />
         {variant === "with-name" ? (
           <span className="text-sm text-slate-700">{displayName}</span>
         ) : null}

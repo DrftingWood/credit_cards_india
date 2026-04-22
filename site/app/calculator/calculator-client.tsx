@@ -103,10 +103,10 @@ function ResultRow({ rank, score }: { rank: number; score: CardScore }) {
               {c.name}
             </Link>
             <div className="mt-1 flex items-center gap-2 text-xs text-slate-500">
-              <IssuerLogo issuer={c.issuer_detail} height={14} />
+              <IssuerLogo issuer={c.issuer_detail} height={18} />
               <span>· {c.tier.replace("-", " ")}</span>
               <span>·</span>
-              <NetworkLogo network={c.network_detail} height={14} />
+              <NetworkLogo network={c.network_detail} height={18} />
             </div>
           </div>
         </div>

@@ -63,7 +63,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
               onChange={() => toggle("issuers", iss.id)}
               label={
                 <span className="inline-flex items-center gap-1.5">
-                  <IssuerLogo issuer={iss} variant="with-name" height={14} />
+                  <IssuerLogo issuer={iss} variant="with-name" height={16} />
                   <span className="text-xs text-slate-500">({counts.get(iss.id) ?? 0})</span>
                 </span>
               }
@@ -78,7 +78,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
             key={n}
             checked={state.networks.includes(n)}
             onChange={() => toggle("networks", n)}
-            label={<NetworkLogo network={n} height={14} />}
+            label={<NetworkLogo network={n} height={18} />}
           />
         ))}
       </Group>

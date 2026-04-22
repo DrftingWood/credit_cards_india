@@ -29,12 +29,12 @@ export function CardTile({ card }: { card: EnrichedCard }) {
 
       <div className="mt-3 flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <IssuerLogo issuer={card.issuer_detail} height={20} />
+          <IssuerLogo issuer={card.issuer_detail} height={16} />
           <h3 className="mt-1 text-sm font-semibold text-slate-900 leading-snug line-clamp-2">
             {card.name}
           </h3>
         </div>
-        <NetworkLogo network={card.network_detail} height={20} className="shrink-0" />
+        <NetworkLogo network={card.network_detail} height={16} className="shrink-0" />
       </div>
 
       <div className="mt-3 grid grid-cols-2 gap-2 text-xs">

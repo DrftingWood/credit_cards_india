@@ -61,7 +61,7 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
         <div className="flex items-center justify-between">
           {/* Issuer mark: wrap in a chip for contrast on arbitrary brand colors */}
           <span className="rounded bg-white/90 px-2 py-1 shadow-sm">
-            <IssuerLogo issuer={card.issuer_detail} height={size === "hero" ? 22 : 18} />
+            <IssuerLogo issuer={card.issuer_detail} height={16} />
           </span>
           {size === "hero" ? (
             <span className="text-xs uppercase tracking-wider text-white/80">
@@ -77,7 +77,7 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
             {card.name}
           </div>
           <span className="rounded bg-white/90 px-1.5 py-0.5 shadow-sm shrink-0">
-            <NetworkLogo network={card.network_detail} height={size === "hero" ? 20 : 18} />
+            <NetworkLogo network={card.network_detail} height={14} />
           </span>
         </div>
       </div>

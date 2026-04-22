@@ -6,3 +6,5 @@ website: https://www.rblbank.com
 customer_care:
   phone: "022-6232-7777"
 type: bank
+logo_path: "/logos/issuers/rbl.svg"
+brand_color: "#ED1C24"

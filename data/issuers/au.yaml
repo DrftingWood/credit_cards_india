@@ -6,3 +6,5 @@ website: https://www.aubank.in
 customer_care:
   phone: "1800-1200-1200"
 type: small-finance-bank
+logo_path: "/logos/issuers/au.svg"
+brand_color: "#6E276C"

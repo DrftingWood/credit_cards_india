@@ -6,3 +6,5 @@ website: https://www.sc.com/in
 customer_care:
   phone: "6601-4444"
 type: foreign-bank
+logo_path: "/logos/issuers/standard-chartered.svg"
+brand_color: "#0473EA"

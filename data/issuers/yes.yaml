@@ -6,3 +6,5 @@ website: https://www.yesbank.in
 customer_care:
   phone: "1800-1200"
 type: bank
+logo_path: "/logos/issuers/yes.svg"
+brand_color: "#002EDC"

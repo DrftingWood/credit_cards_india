@@ -6,3 +6,5 @@ website: https://www.idfcfirstbank.com
 customer_care:
   phone: "1860-500-1111"
 type: bank
+logo_path: "/logos/issuers/idfc-first.svg"
+brand_color: "#9D1D27"

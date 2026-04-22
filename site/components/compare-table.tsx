@@ -175,7 +175,7 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
                   <div className="w-40 mb-2">
                     <CardImage card={c} size="tile" />
                   </div>
-                  <IssuerLogo issuer={c.issuer_detail} height={20} />
+                  <IssuerLogo issuer={c.issuer_detail} height={16} />
                   <Link
                     href={`/card/${c.issuer}/${slug}`}
                     className="block mt-1 text-sm font-semibold text-slate-900 hover:text-slate-900"

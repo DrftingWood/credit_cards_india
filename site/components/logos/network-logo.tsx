@@ -5,19 +5,17 @@ import type { NetworkRecord, Network } from "@/lib/types";
  * Renders a network brand-mark (Visa / Mastercard / RuPay / Amex / Diners).
  *
  * Accepts either a full NetworkRecord (preferred, used wherever the enriched
- * card is available) or a bare network slug (used where we only have the
- * slug, e.g. the filter sidebar).
- *
- * Each logo renders at its native aspect ratio — wide wordmarks (Visa, RuPay)
- * stay wide; square marks (Amex, Diners) stay square. This keeps each brand
- * at its natural proportions, not letterboxed inside a shared box. Callers
- * pick a height that's large enough to keep square marks legible.
+ * card is available) or a bare network slug (used where we only have the slug,
+ * e.g. the filter sidebar). Gracefully degrades to a text chip when the
+ * network record has no logo_path set, so pages stay meaningful even before
+ * any logo assets are committed under site/public/logos/networks/.
  */
 
 interface NetworkLogoProps {
   network: NetworkRecord | Network;
-  /** Rendered height in px. Width scales to preserve the logo's aspect. */
+  /** Height in pixels. The width scales to preserve the logo's aspect ratio. */
   height?: number;
+  /** Optional className on the wrapper. */
   className?: string;
 }
 
@@ -29,7 +27,7 @@ const NETWORK_NAMES: Record<Network, string> = {
   diners: "Diners Club",
 };
 
-export function NetworkLogo({ network, height = 20, className }: NetworkLogoProps) {
+export function NetworkLogo({ network, height = 18, className }: NetworkLogoProps) {
   const isRecord = typeof network !== "string";
   const slug = isRecord ? network.id : network;
   const name = isRecord ? network.name : NETWORK_NAMES[slug as Network] ?? slug;
@@ -38,16 +36,16 @@ export function NetworkLogo({ network, height = 20, className }: NetworkLogoProp
   if (logoPath) {
     return (
       <span
-        className={`inline-flex items-center align-middle ${className ?? ""}`.trim()}
+        className={className}
+        style={{ display: "inline-flex", alignItems: "center" }}
         aria-label={`${name} logo`}
       >
         <Image
           src={logoPath}
           alt={`${name} logo`}
           height={height}
-          width={height * 4}
-          sizes={`${height * 4}px`}
-          style={{ height, width: "auto", maxWidth: "none" }}
+          width={Math.round(height * 2.2)}
+          style={{ height, width: "auto", objectFit: "contain" }}
           unoptimized
         />
       </span>

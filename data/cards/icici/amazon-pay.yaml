@@ -1,5 +1,6 @@
 id: icici-amazon-pay
 name: Amazon Pay ICICI Bank Credit Card
+image_path: "/cards/icici/amazon-pay.webp"
 issuer: icici
 network: visa
 network_tier: signature

@@ -6,7 +6,7 @@
  * narrowly focused on layout.
  */
 
-import type { EnrichedCard } from "./types";
+import type { AcceleratedReward, EnrichedCard } from "./types";
 import { formatInr, formatPct } from "./utils";
 
 /** Map co-brand category to a human "Best suited for" label. */
@@ -133,13 +133,15 @@ export function productDetails(card: EnrichedCard): string[] {
   } else {
     bullets.push(`${card.tier.replace("-", " ")} card issued by ${card.issuer_detail.name}.`);
   }
-  bullets.push(
-    fee === 0
-      ? `Lifetime free — no joining or annual fee.`
-      : `Joining / annual fee of ${formatInr(fee)} + GST${
-          waiver ? `, waived on annual spends of ${formatInr(waiver)}` : "."
-        }${waiver ? "." : ""}`,
-  );
+  if (fee === 0) {
+    bullets.push(`Lifetime free — no joining or annual fee.`);
+  } else if (fee !== null) {
+    bullets.push(
+      `Joining / annual fee of ${formatInr(fee)} + GST${
+        waiver ? `, waived on annual spends of ${formatInr(waiver)}` : ""
+      }.`,
+    );
+  }
   bullets.push(`Available on the ${networkName} network.`);
   const lounge = card.current_benefits?.lounge_access;
   if (lounge?.domestic || lounge?.international) {
@@ -164,8 +166,11 @@ export function derivePros(card: EnrichedCard): string[] {
   }
   const base = card.computed.headline_rate_pct;
   if (base !== null && base >= 1.5) pros.push(`Strong base reward rate of ${formatPct(base, 2)}.`);
+  // 2.5% is the practical cutoff — standard forex markup is 3.5% on most
+  // cards, so anything below 3 reads as "preferential" even without the
+  // sub-1% outliers (OneCard, Scapia).
   const forex = card.current_fees?.forex_markup_pct;
-  if (forex !== null && forex !== undefined && forex <= 2) {
+  if (forex !== null && forex !== undefined && forex < 3) {
     pros.push(`Low forex markup of ${formatPct(forex, 2)} — suited to international spends.`);
   }
   if (card.current_benefits?.lounge_access?.international) {
@@ -227,9 +232,7 @@ export function pickTopAccelerated(card: EnrichedCard) {
 }
 
 /** Format an accelerated reward as a one-line summary. */
-export function formatAccelerated(
-  a: NonNullable<EnrichedCard["current_rewards"]>["accelerated"] extends (infer T)[] | undefined ? T : never,
-): string {
+export function formatAccelerated(a: AcceleratedReward): string {
   const rate = a.effective_rate != null ? `${a.effective_rate}%` : `${a.multiplier}×`;
   const where = a.category.replace(/-/g, " ");
   const cap =

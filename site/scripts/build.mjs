@@ -68,13 +68,26 @@ function listCardFiles(dir) {
 
 // --- Enrichment ----------------------------------------------------------
 
+/**
+ * Returns the "current" dated record. For active cards that's the open-ended
+ * record (effective_until: null). For discontinued cards — which have no
+ * open-ended record — it falls back to the record with the latest
+ * effective_until, so downstream consumers can still render "the state of
+ * the card when it was last issued" rather than a blank shell.
+ */
 function openRecord(records) {
-  for (const r of records ?? []) {
+  const list = records ?? [];
+  for (const r of list) {
     if (r.effective_until === null || r.effective_until === undefined) {
       return r;
     }
   }
-  return null;
+  if (list.length === 0) return null;
+  let latest = list[0];
+  for (const r of list.slice(1)) {
+    if ((r.effective_until ?? "") > (latest.effective_until ?? "")) latest = r;
+  }
+  return latest;
 }
 
 function computeHeadlineRatePct(rewards) {

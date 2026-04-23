@@ -1,0 +1,141 @@
+id: kotak-indigo
+name: IndiGo Kotak Credit Card
+issuer: kotak
+network: mastercard
+network_tier: world
+tier: mid
+card_type: credit
+co_brand:
+  partner: IndiGo
+  category: airline
+  partner_website: https://www.goindigo.in
+status: active
+launched_on: 2025-06-01
+discontinued_on: null
+
+# Base variant of IndiGo's 2025 Kotak partnership — uses BluChip as the
+# loyalty currency (not the older 6E Rewards). Companion XL variant at
+# kotak/indigo-xl.yaml. Supersedes the older Kotak Ka-ching 6E Rewards XL
+# product line.
+
+fees:
+  - effective_from: 2025-06-01
+    effective_until: null
+    joining_fee_inr: 1500
+    annual_fee_inr: 1500
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/kotak-mahindra-bank/kotak-indigo-credit-card/
+      retrieved_on: 2026-04-22
+      notes: "Joining + annual fee ₹1,500 per Paisabazaar (2026-03-06 article). Fee waiver not documented on the base variant."
+
+rewards:
+  - effective_from: 2025-06-01
+    effective_until: null
+    currency: miles
+    currency_name: IndiGo BluChips
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: indigo-flights-direct
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 19
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        merchants: [indigo-web, indigo-app]
+        notes: "Up to 19 IndiGo BluChips per ₹100 on flight bookings via IndiGo web/app — combines 5 BluChips (card earn), 4 BluChips (channel earn), 8 BluChips (BluChip member earn), up to 4 status-tier bonus. Actual rate depends on the cardholder's BluChip tier."
+      - category: dining-entertainment
+        canonical_categories: [dining, entertainment]
+        multiplier: 1
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - education
+      - government
+      - utilities
+      - emi
+    capping_rules:
+      - "Card earns 1 BluChip per ₹100 on default spends; IndiGo earn-rate stacks only when booking through IndiGo web/app."
+    redemption:
+      - type: voucher
+        program: IndiGo flights + 6E Prime add-ons
+        rate_inr_per_unit: 1.0
+        constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
+    source:
+      url: https://cardinsider.com/kotak/indigo-kotak-credit-card/
+      retrieved_on: 2026-04-22
+
+benefits:
+  - effective_from: 2025-06-01
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "2,500 IndiGo BluChips welcome voucher — renews annually on fee payment"
+        value_inr: 2500
+        window_days: 90
+    milestones:
+      - spend_inr: 150000
+        cycle: annual
+        benefit: "4,000 IndiGo BluChips bonus voucher"
+        value_inr: 4000
+      - spend_inr: 400000
+        cycle: annual
+        benefit: "Additional 4,000 IndiGo BluChips bonus voucher"
+        value_inr: 4000
+      - spend_inr: 750000
+        cycle: annual
+        benefit: "Additional 4,000 IndiGo BluChips bonus voucher"
+        value_inr: 4000
+      - spend_inr: 1200000
+        cycle: annual
+        benefit: "Additional 4,000 IndiGo BluChips bonus voucher"
+        value_inr: 4000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 3500
+      cycle: annual
+    other:
+      - name: IndiGo priority check-in
+        description: Priority check-in counter access on IndiGo bookings made with the card.
+      - name: IndiGo preferred seat selection
+        description: Complimentary preferred seat selection on IndiGo.
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/kotak-mahindra-bank/kotak-indigo-credit-card/
+      retrieved_on: 2026-04-22
+      notes: "Base variant — no complimentary lounge access. Lounge benefit reserved for the XL variant."
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indigo-credit-card.html
+
+metadata:
+  last_verified_on: 2026-04-22
+  maintainers: []
+  tags: [co-branded, airline, indigo, mid, miles, bluchip]

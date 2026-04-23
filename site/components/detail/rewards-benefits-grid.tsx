@@ -15,7 +15,8 @@ function loungeText(
   const threshold = lounge.spend_threshold_inr
     ? ` on making spends of ${formatInr(lounge.spend_threshold_inr)} in the previous ${lounge.spend_threshold_cycle ?? "quarter"}`
     : "";
-  return `${visits} ${visits === "Unlimited" || Number(visits) === 1 ? "visit" : "visits"} each ${cycle}${threshold}.`;
+  const noun = Number(visits) === 1 ? "visit" : "visits";
+  return `${visits} ${noun} each ${cycle}${threshold}.`;
 }
 
 /** The scannable Rewards & Benefits summary grid on the detail page. */
@@ -68,7 +69,7 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
     : "N/A";
 
   const travel = card.co_brand?.category === "airline"
-    ? `Co-branded with ${card.co_brand.partner}; ${top ? formatAccelerated(top).replace(/%/, "%") : "travel-forward rewards"}.`
+    ? `Co-branded with ${card.co_brand.partner}; ${top ? formatAccelerated(top) : "travel-forward rewards"}.`
     : benefits?.insurance?.find((i) => /travel/.test(i.type))
     ? "Travel insurance cover bundled (see Insurance section)."
     : "N/A";

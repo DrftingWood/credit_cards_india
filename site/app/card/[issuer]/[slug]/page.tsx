@@ -63,17 +63,18 @@ export default async function CardPage({
           <span>Updated {formatDate(verified)}</span>
           <span aria-hidden>·</span>
           <span>Source-linked</span>
-          {card.status === "discontinued" ? (
-            <>
-              <span aria-hidden>·</span>
-              <span className="chip chip-warn">
-                Discontinued
-                {card.discontinued_on ? ` ${formatDate(card.discontinued_on)}` : ""}
-              </span>
-            </>
-          ) : null}
         </div>
       </header>
+
+      {card.status === "discontinued" ? (
+        <aside className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          <strong>
+            This card was discontinued
+            {card.discontinued_on ? ` on ${formatDate(card.discontinued_on)}` : ""}.
+          </strong>{" "}
+          It is no longer accepting new applications. The details below reflect the card&apos;s final state before discontinuation.
+        </aside>
+      ) : null}
 
       {/* Summary prose */}
       <SummaryProse card={card} />

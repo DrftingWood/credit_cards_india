@@ -1,0 +1,128 @@
+id: axis-indigo-premium
+name: IndiGo Axis Bank Premium Credit Card
+issuer: axis
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand:
+  partner: IndiGo
+  category: airline
+  partner_website: https://www.goindigo.in
+status: active
+launched_on: 2026-02-18
+discontinued_on: null
+
+# Premium variant of IndiGo's February 2026 Axis Bank partnership — BluChip
+# loyalty, Visa Signature, positioned for affluent frequent travellers.
+# Companion base variant at axis/indigo.yaml.
+
+fees:
+  - effective_from: 2026-02-18
+    effective_until: null
+    joining_fee_inr: 5000
+    annual_fee_inr: 5000
+    fee_waiver: null
+    forex_markup_pct: 2.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+      retrieved_on: 2026-04-22
+      notes: "Joining + annual fee ₹5,000 per Axis Bank press release (Feb-2026). Low forex markup 2.5% vs base 3.5%."
+
+rewards:
+  - effective_from: 2026-02-18
+    effective_until: null
+    currency: miles
+    currency_name: IndiGo BluChips
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: indigo-flights-direct
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 7
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        merchants: [indigo-web, indigo-app]
+        notes: "7 BluChips per ₹100 on IndiGo flight bookings via IndiGo web/app."
+      - category: hotels-groceries
+        canonical_categories: [travel, groceries]
+        multiplier: 1
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: voucher
+        program: IndiGo flights + 6E Prime add-ons
+        rate_inr_per_unit: 1.0
+        constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only."
+    source:
+      url: https://cardinsider.com/blog/axis-bank-indigo-launch-two-new-credit-cards/
+      retrieved_on: 2026-04-22
+
+benefits:
+  - effective_from: 2026-02-18
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+        notes: "Complimentary domestic lounge visits via Dreamfolks."
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Complimentary international lounge visits via Priority Pass."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "IndiGo BluChips welcome voucher worth ₹5,000 + bonus BluChips"
+        value_inr: 5000
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    other:
+      - name: Entertainment / dining discounts
+        description: Bundled lifestyle privileges — entertainment offers and dining discounts via Axis partner network.
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/about-us/press-releases/unlock-more-with-every-swipe-axis-bank-and-indigo-unveil-co-branded-credit-cards-to-redefine-travel-and-lifestyle-experiences
+      retrieved_on: 2026-04-22
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1500000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+
+metadata:
+  last_verified_on: 2026-04-22
+  maintainers: []
+  tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex]

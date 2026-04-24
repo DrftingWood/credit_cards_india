@@ -168,22 +168,7 @@ def check_source_urls(warnings, path: Path, instance: dict):
                 f"[warn] {path.relative_to(ROOT)} :: source url '{url}' does not use http/https and was not checked"
             )
             continue
-        req = Request(url, method="GET", headers={"User-Agent": "credit-cards-india-validator/1.0"})
-        try:
-            with urlopen(req, timeout=URL_CHECK_TIMEOUT_SECONDS) as resp:
-                status = getattr(resp, "status", 200)
-                if status >= 400:
-                    warnings.append(
-                        f"[warn] {path.relative_to(ROOT)} :: source url '{url}' returned HTTP {status}"
-                    )
-        except HTTPError as exc:
-            warnings.append(
-                f"[warn] {path.relative_to(ROOT)} :: source url '{url}' returned HTTP {exc.code}"
-            )
-        except (URLError, TimeoutError, socket.timeout) as exc:
-            warnings.append(
-                f"[warn] {path.relative_to(ROOT)} :: source url '{url}' could not be reached ({exc.__class__.__name__})"
-            )
+        check_url_reachability(warnings, path, "source url", url)
 
 
 def check_url_reachability(warnings, path: Path, label: str, url: str):

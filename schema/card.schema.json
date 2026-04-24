@@ -297,6 +297,16 @@
           "items": { "type": "string" },
           "description": "Freeform caps not modellable above (e.g. monthly combined cap)."
         },
+        "redemption_floor_value_inr": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "description": "Conservative/typical INR value per unit across practical redemptions."
+        },
+        "redemption_ceiling_value_inr": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "description": "Best-case achievable INR value per unit on high-value redemptions."
+        },
         "redemption": {
           "type": "array",
           "items": {
@@ -313,7 +323,29 @@
               "ratio": { "type": ["string", "null"], "description": "e.g. '2:1' (points:miles)." },
               "min_units": { "type": ["integer", "null"], "minimum": 0 },
               "fee_inr": { "type": ["integer", "null"], "minimum": 0 },
-              "constraints": { "type": "string" }
+              "constraints": { "type": "string" },
+              "transfer_partners": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["partner_name", "partner_type"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "partner_name": { "type": "string", "minLength": 1 },
+                    "partner_type": {
+                      "type": "string",
+                      "enum": ["airline", "hotel", "bank-loyalty", "voucher-marketplace"]
+                    },
+                    "transfer_ratio": { "type": ["string", "null"], "description": "e.g. '5:2' (source:target)." },
+                    "min_transfer_units": { "type": ["integer", "null"], "minimum": 0 },
+                    "transfer_block_units": { "type": ["integer", "null"], "minimum": 0 },
+                    "transfer_fee_inr": { "type": ["integer", "null"], "minimum": 0 },
+                    "expected_transfer_time": { "type": ["string", "null"] },
+                    "last_verified_on": { "type": ["string", "null"], "format": "date" },
+                    "notes": { "type": "string" }
+                  }
+                }
+              }
             }
           }
         },
@@ -363,14 +395,27 @@
             "type": "object",
             "required": ["spend_inr", "cycle", "benefit"],
             "additionalProperties": false,
-            "properties": {
-              "spend_inr": { "type": "integer", "minimum": 0 },
-              "cycle": { "$ref": "#/$defs/Cycle" },
-              "benefit": { "type": "string", "minLength": 1 },
-              "value_inr": { "type": ["integer", "null"], "minimum": 0 }
-            }
-          }
-        },
+                "properties": {
+                  "spend_inr": { "type": "integer", "minimum": 0 },
+                  "cycle": { "$ref": "#/$defs/Cycle" },
+                  "benefit": { "type": "string", "minLength": 1 },
+                  "value_inr": { "type": ["integer", "null"], "minimum": 0 },
+                  "reward_kind": {
+                    "type": "string",
+                    "enum": ["points", "miles", "cashback", "voucher", "fee-waiver", "other"]
+                  },
+                  "reward_units": { "type": ["number", "null"], "minimum": 0 },
+                  "reward_currency_name": { "type": ["string", "null"] },
+                  "trigger_window": {
+                    "type": "string",
+                    "enum": ["first-year", "anniversary-year", "rolling", "one-time"]
+                  },
+                  "is_repeatable": { "type": ["boolean", "null"] },
+                  "max_awards_per_cycle": { "type": ["integer", "null"], "minimum": 0 },
+                  "redemption_constraint_ref": { "type": ["string", "null"] }
+                }
+              }
+            },
         "welcome": {
           "type": "array",
           "items": {

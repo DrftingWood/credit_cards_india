@@ -24,7 +24,7 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card."
     source:
-      url: https://www.idfcfirstbank.com/credit-card/select
+      url: https://www.idfcfirst.bank.in/credit-card/select
       retrieved_on: 2026-04-15
 
 rewards:
@@ -74,7 +74,7 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirstbank.com/credit-card/select
+      url: https://www.idfcfirst.bank.in/credit-card/select
       retrieved_on: 2026-04-15
 
 benefits:
@@ -119,7 +119,7 @@ benefits:
       cap_inr: 250
     concierge: false
     source:
-      url: https://www.idfcfirstbank.com/credit-card/select
+      url: https://www.idfcfirst.bank.in/credit-card/select
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -132,9 +132,9 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idfcfirstbank.com/credit-card/select
+  apply_url: https://www.idfcfirst.bank.in/credit-card/select
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-04-24
   maintainers: []
   tags: [lifetime-free, points, online-spend, mid-tier]

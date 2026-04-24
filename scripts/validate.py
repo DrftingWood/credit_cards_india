@@ -25,6 +25,30 @@ SCHEMA_DIR = ROOT / "schema"
 DATA_DIR = ROOT / "data"
 STALENESS_WARN_DAYS = 180
 URL_CHECK_TIMEOUT_SECONDS = 10
+AGGREGATOR_SOURCE_DOMAINS = {
+    "cardinsider.com",
+    "www.cardinsider.com",
+    "bankbazaar.com",
+    "www.bankbazaar.com",
+    "paisabazaar.com",
+    "www.paisabazaar.com",
+    "cardexpert.in",
+    "www.cardexpert.in",
+    "cardmaven.in",
+    "www.cardmaven.in",
+    "cardnavy.in",
+    "www.cardnavy.in",
+}
+ISSUER_ALLOWED_DOMAINS = {
+    "amex": {"americanexpress.com", "www.americanexpress.com"},
+    "au": {"aubank.in", "www.aubank.in"},
+    "axis": {"axisbank.com", "www.axisbank.com", "axis.bank.in", "www.axis.bank.in"},
+    "hdfc": {"hdfcbank.com", "www.hdfcbank.com"},
+    "icici": {"icicibank.com", "www.icicibank.com", "icici.bank.in", "www.icici.bank.in"},
+    "idfc-first": {"idfcfirstbank.com", "www.idfcfirstbank.com", "idfcfirst.bank.in", "www.idfcfirst.bank.in"},
+    "rbl": {"rblbank.com", "www.rblbank.com", "irctc.co.in", "www.irctc.co.in"},
+    "sbi": {"sbicard.com", "www.sbicard.com"},
+}
 
 
 def _normalize(value):
@@ -144,22 +168,51 @@ def check_source_urls(warnings, path: Path, instance: dict):
                 f"[warn] {path.relative_to(ROOT)} :: source url '{url}' does not use http/https and was not checked"
             )
             continue
-        req = Request(url, method="GET", headers={"User-Agent": "credit-cards-india-validator/1.0"})
-        try:
-            with urlopen(req, timeout=URL_CHECK_TIMEOUT_SECONDS) as resp:
-                status = getattr(resp, "status", 200)
-                if status >= 400:
-                    warnings.append(
-                        f"[warn] {path.relative_to(ROOT)} :: source url '{url}' returned HTTP {status}"
-                    )
-        except HTTPError as exc:
-            warnings.append(
-                f"[warn] {path.relative_to(ROOT)} :: source url '{url}' returned HTTP {exc.code}"
+        check_url_reachability(warnings, path, "source url", url)
+
+
+def check_url_reachability(warnings, path: Path, label: str, url: str):
+    req = Request(url, method="GET", headers={"User-Agent": "credit-cards-india-validator/1.0"})
+    try:
+        with urlopen(req, timeout=URL_CHECK_TIMEOUT_SECONDS) as resp:
+            status = getattr(resp, "status", 200)
+            if status >= 400:
+                warnings.append(
+                    f"[warn] {path.relative_to(ROOT)} :: {label} '{url}' returned HTTP {status}"
+                )
+    except HTTPError as exc:
+        warnings.append(
+            f"[warn] {path.relative_to(ROOT)} :: {label} '{url}' returned HTTP {exc.code}"
+        )
+    except (URLError, TimeoutError, socket.timeout) as exc:
+        warnings.append(
+            f"[warn] {path.relative_to(ROOT)} :: {label} '{url}' could not be reached ({exc.__class__.__name__})"
+        )
+
+
+def check_application_urls(errors, warnings, path: Path, instance: dict, check_urls: bool):
+    application = instance.get("application") or {}
+    issuer_slug = instance.get("issuer")
+    card_id = instance.get("id")
+    for field in ("apply_url", "pre_approval_check_url"):
+        url = application.get(field)
+        if not url:
+            continue
+        parsed = urlparse(url)
+        if parsed.scheme not in {"http", "https"}:
+            errors.append(
+                f"[lint] {path.relative_to(ROOT)} :: application.{field} must use http/https (got '{url}')"
             )
-        except (URLError, TimeoutError, socket.timeout) as exc:
+            continue
+        hostname = (parsed.hostname or "").lower()
+        allowed = ISSUER_ALLOWED_DOMAINS.get(issuer_slug, set())
+        if allowed and hostname not in allowed:
             warnings.append(
-                f"[warn] {path.relative_to(ROOT)} :: source url '{url}' could not be reached ({exc.__class__.__name__})"
+                f"[warn] {path.relative_to(ROOT)} :: application.{field} host '{hostname}' is outside "
+                f"issuer allowlist for '{issuer_slug}' (card id: {card_id})"
             )
+        if check_urls:
+            check_url_reachability(warnings, path, f"application.{field}", url)
 
 
 def main() -> int:
@@ -288,6 +341,17 @@ def main() -> int:
 
         if check_urls:
             check_source_urls(warnings, path, instance)
+
+        primary_source = next((src for src in collect_sources(instance) if src.get("url")), None)
+        if primary_source:
+            source_host = (urlparse(primary_source["url"]).hostname or "").lower()
+            if source_host in AGGREGATOR_SOURCE_DOMAINS and status in {"active", "invite-only"}:
+                warnings.append(
+                    f"[warn] {path.relative_to(ROOT)} :: primary source host '{source_host}' appears to be an aggregator; "
+                    "prefer issuer-owned source URLs for active cards"
+                )
+
+        check_application_urls(errors, warnings, path, instance, check_urls)
 
     # deferred: replaces_card references
     for path, instance in cards:

@@ -61,10 +61,13 @@ Late-payment slabs use `up_to_inr` (integer) or `"any"` for the top slab.
 | `accelerated[].canonical_categories` | **Optional.** One or more of the canonical spend buckets (`online`, `groceries`, `dining`, `fuel`, `travel`, `utilities`, `rent`, `international`, `entertainment`, `government`, `insurance`, `education`, `wallet-loads`, `emi`, `other`). The reward calculator uses these to match against a user's spend profile. If omitted, the calculator falls back to heuristic substring matching on the freeform `category` string — prefer tagging new entries. |
 | `exclusions` | Controlled list (fuel, rent, government, ...). |
 | `capping_rules` | Freeform strings for caps not expressible structurally. |
-| `redemption` | Options: statement-credit, catalog, airmiles, voucher, etc. |
+| `redemption` | Options: statement-credit, catalog, airmiles, voucher, etc.; can include `transfer_partners[]` details for partner-level conversion rules. |
+| `redemption_floor_value_inr` / `redemption_ceiling_value_inr` | Conservative vs best-case value range per reward unit. |
 
 ### Benefits (array of records)
-Lounge access (domestic/international, with optional `spend_threshold_inr` for cards that gate visits behind prior-cycle spend — common post-2024), golf, milestones, welcome, insurance, fuel-surcharge waiver, dining, movies, concierge, and an `other[]` escape hatch.
+Lounge access (domestic/international, with optional `spend_threshold_inr` + `spend_threshold_cycle` for cards that gate visits behind prior-cycle spend — common post-2024), golf, milestones, welcome, insurance, fuel-surcharge waiver, dining, movies, concierge, and an `other[]` escape hatch.
+
+Milestones support both human-readable and structured payout metadata (`reward_kind`, `reward_units`, `trigger_window`, repeatability controls) so analytics consumers can compute milestone value without parsing prose.
 
 ### Eligibility, Application, Metadata
 Age, income (salaried/self-employed separately), credit-score minimum, residency; apply/pre-approval URLs and `replaces_card` (for upgrade paths); `last_verified_on` + `maintainers` + `tags`.
@@ -80,3 +83,6 @@ Run `python scripts/validate.py` locally; CI runs it on every PR.
 - `application.replaces_card` points to a known card id.
 - `status: discontinued` ⇒ `discontinued_on` set.
 - `metadata.last_verified_on` older than 180 days ⇒ warning (non-blocking).
+- `metadata.last_verified_on` earlier than any nested `source.retrieved_on` ⇒ error.
+- `application.apply_url` / `application.pre_approval_check_url` must use `http(s)`; off-allowlist domains warn.
+- Optional URL checks (`python scripts/validate.py --check-urls`) perform best-effort reachability checks for `source.url` + application URLs.

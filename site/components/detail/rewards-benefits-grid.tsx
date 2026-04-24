@@ -90,10 +90,27 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
     ? benefits.welcome[0].benefit
     : "N/A";
 
+  const milestones = benefits?.milestones ?? [];
+  const milestoneContent = milestones.length > 0 ? (
+    <ul className="space-y-0.5 list-none">
+      {milestones.slice(0, 4).map((m, i) => (
+        <li key={i}>
+          <strong>{formatInr(m.spend_inr)}</strong> / {m.cycle}: {m.benefit}
+        </li>
+      ))}
+      {milestones.length > 4 ? (
+        <li className="text-slate-500">+{milestones.length - 4} more milestones</li>
+      ) : null}
+    </ul>
+  ) : (
+    "N/A"
+  );
+
   const cells: InfoCell[] = [
     { label: "Rewards Rate", value: rewardsRate },
     { label: "Reward Redemption", value: rewardRedemption },
     { label: "Welcome Benefits", value: welcome },
+    { label: "Milestone Rewards", value: milestoneContent },
     { label: "Domestic Lounge Access", value: domLounge },
     { label: "International Lounge Access", value: intlLounge },
     { label: "Travel", value: travel },

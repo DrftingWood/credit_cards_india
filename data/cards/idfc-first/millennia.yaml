@@ -1,0 +1,125 @@
+id: idfc-first-millennia
+name: IDFC FIRST Millennia Credit Card
+issuer: idfc-first
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2021-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Lifetime-free card."
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/millennia
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2021-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 3
+      per_inr: 150
+      unit_value_inr: 0.25
+    accelerated:
+      - category: online-spend-under-20k
+        canonical_categories: [online]
+        multiplier: 2
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+      - category: online-spend-above-20k
+        multiplier: 3
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+      - category: incremental-above-20k
+        multiplier: 3
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+      - education
+    redemption:
+      - type: catalog
+        program: IDFC FIRST Rewards
+        rate_inr_per_unit: 0.25
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/millennia
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2021-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+        spend_threshold_inr: 20000
+        spend_threshold_cycle: quarterly
+    welcome:
+      - condition: "Spend ₹15,000 within 30 days"
+        benefit: "Welcome voucher worth ₹500"
+        value_inr: 500
+        window_days: 30
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 300
+      cycle: monthly
+    movies:
+      type: bogo
+      partner: Paytm Movies
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 150
+    concierge: false
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/millennia
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.idfcfirstbank.com/credit-card/millennia
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [lifetime-free, entry, points, online-spend]

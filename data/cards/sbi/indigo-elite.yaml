@@ -1,0 +1,155 @@
+id: sbi-indigo-elite
+name: IndiGo SBI Card ELITE
+issuer: sbi
+network: mastercard
+network_tier: world
+tier: premium
+card_type: credit
+co_brand:
+  partner: IndiGo
+  category: airline
+  partner_website: https://www.goindigo.in
+status: active
+launched_on: 2025-09-27
+discontinued_on: null
+
+# Premium variant of IndiGo × SBI Card partnership. Available only to
+# existing IndiGo BluChip members (invite-style gating). High-fee card
+# that compensates through rich milestone bonuses, dual lounge access,
+# and insurance cover.
+
+fees:
+  - effective_from: 2025-09-27
+    effective_until: null
+    joining_fee_inr: 4999
+    annual_fee_inr: 4999
+    fee_waiver: null
+    forex_markup_pct: 1.99
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/travel/indigo-sbi-card-elite.page
+      retrieved_on: 2026-04-22
+      notes: "Joining + annual fee ₹4,999 per SBI Card page. No option to waive. Low forex markup 1.99%."
+
+rewards:
+  - effective_from: 2025-09-27
+    effective_until: null
+    currency: miles
+    currency_name: IndiGo BluChips
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: indigo-flights-direct
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 7
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        merchants: [indigo-web, indigo-app]
+        notes: "7 IndiGo BluChips per ₹100 on flight bookings via IndiGo web/app."
+      - category: hotels-travel
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        notes: "3 BluChips per ₹100 on other travel and hotel bookings."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: voucher
+        program: IndiGo flights + 6E Prime add-ons
+        rate_inr_per_unit: 1.0
+        constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only."
+    source:
+      url: https://www.paisabazaar.com/sbi-bank/indigo-sbi-elite-credit-card/
+      retrieved_on: 2026-04-22
+
+benefits:
+  - effective_from: 2025-09-27
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+        spend_threshold_inr: 100000
+        spend_threshold_cycle: quarterly
+        notes: "8 complimentary domestic lounge visits per year, activated by ₹1,00,000 spend per quarter."
+      international:
+        visits_per_cycle: 6
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "6 complimentary international lounge visits per year via Priority Pass."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "5,000 IndiGo BluChips welcome voucher + 6E Eats voucher — renews every year on fee payment"
+        value_inr: 5000
+        window_days: 90
+    milestones:
+      - spend_inr: 300000
+        cycle: annual
+        benefit: "6,000 IndiGo BluChips bonus voucher"
+        value_inr: 6000
+      - spend_inr: 600000
+        cycle: annual
+        benefit: "Additional 6,000 IndiGo BluChips bonus voucher"
+        value_inr: 6000
+      - spend_inr: 900000
+        cycle: annual
+        benefit: "Additional 6,000 IndiGo BluChips bonus voucher"
+        value_inr: 6000
+      - spend_inr: 1200000
+        cycle: annual
+        benefit: "Additional 6,000 IndiGo BluChips bonus voucher"
+        value_inr: 6000
+    insurance:
+      - type: other
+        sum_insured_inr: 12000
+        conditions: "Up to 4 free IndiGo flight cancellation claims per year, ₹3,000 each."
+      - type: lost-card-liability
+        sum_insured_inr: 100000
+      - type: baggage-loss
+        sum_insured_inr: 72000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.paisabazaar.com/sbi-bank/indigo-sbi-elite-credit-card/
+      retrieved_on: 2026-04-22
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1500000
+  credit_score_min: 750
+  residency: resident-indian
+  notes: "Issued only to existing IndiGo BluChip members."
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/indigo-sbi-card-elite.page
+
+metadata:
+  last_verified_on: 2026-04-22
+  maintainers: []
+  tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex, lounge]

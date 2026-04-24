@@ -1,0 +1,83 @@
+id: hsbc-visa-platinum
+name: HSBC Visa Platinum Credit Card
+issuer: hsbc
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2010-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2010-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Lifetime-free card."
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2010-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 150
+      unit_value_inr: 0.25
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: HSBC Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2010-01-01
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 400000
+    self_employed: 400000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [lifetime-free, entry, points]

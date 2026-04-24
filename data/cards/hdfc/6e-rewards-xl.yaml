@@ -1,0 +1,140 @@
+id: hdfc-6e-rewards-xl
+name: 6E Rewards XL IndiGo HDFC Bank Credit Card
+issuer: hdfc
+network: mastercard
+network_tier: world
+tier: premium
+card_type: credit
+co_brand:
+  partner: IndiGo
+  category: airline
+  partner_website: https://www.goindigo.in
+status: discontinued
+launched_on: 2022-10-01
+discontinued_on: 2025-11-01
+
+# Discontinued by HDFC Bank effective 2025-11-01. Benefits active until
+# 2025-10-31. Unused 6E Rewards auto-credited to IndiGo BluChip programme
+# at 1:1. New applications stopped ahead of discontinuation.
+#
+# Each effective-dated record below is closed at 2025-10-31 to mark the
+# final day of benefits, per our discontinued-card convention.
+
+fees:
+  - effective_from: 2022-11-07
+    effective_until: 2025-10-31
+    joining_fee_inr: 1500
+    annual_fee_inr: 1500
+    fee_waiver:
+      spend_inr: 400000
+      cycle: annual
+      conditions: "Annual fee waiver on retail spends of ₹4L in the preceding year (verify against HDFC T&C PDF)."
+    forex_markup_pct: 2.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/6e-rewards-xl-indigo-hdfc-bank-credit-card/fees-and-charges
+      retrieved_on: 2026-04-22
+      notes: "Joining + annual fee ₹1,500 effective 2022-11-07 per HDFC's own fee page and Paisabazaar; forex markup 2.5% (lower than the base 6E Rewards variant at 3.5%)."
+
+rewards:
+  - effective_from: 2022-11-07
+    effective_until: 2025-10-31
+    currency: miles
+    currency_name: 6E Rewards
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: indigo-flights-direct
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        merchants: [indigo-web, indigo-app]
+        notes: "5 6E Rewards per ₹100 on flight bookings made via IndiGo website or app."
+      - category: dining-grocery-entertainment
+        canonical_categories: [dining, groceries, entertainment]
+        multiplier: 1
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: voucher
+        program: IndiGo flights + 6E Prime add-ons
+        rate_inr_per_unit: 1.0
+        constraints: "Redeemable only for IndiGo bookings and 6E Prime add-ons at 6E Reward = ₹1."
+    source:
+      url: https://www.paisabazaar.com/hdfc-bank/6e-rewards-xl-indigo-hdfc-credit-card/
+      retrieved_on: 2026-04-22
+
+benefits:
+  - effective_from: 2022-11-07
+    effective_until: 2025-10-31
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass, dreamfolks]
+        notes: "8 complimentary domestic lounge visits per year via Priority Pass / Dreamfolks."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "IndiGo air-ticket voucher worth ₹3,000 + 6E Prime add-ons"
+        value_inr: 3000
+        window_days: 90
+    milestones:
+      - spend_inr: 100000
+        cycle: quarterly
+        benefit: "1,500 bonus 6E Rewards"
+        value_inr: 1500
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    other:
+      - name: Complimentary IndiGo seat selection
+        description: Complimentary seat selection on IndiGo bookings.
+      - name: IndiGo priority check-in
+        description: Priority check-in counter access at IndiGo.
+      - name: 6E Prime add-ons on welcome
+        description: 6E Prime add-ons bundle (seat, meal, priority) on first transaction.
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/hdfc-bank/6e-rewards-xl-indigo-hdfc-credit-card/
+      retrieved_on: 2026-04-22
+      notes: "International lounge access removed from previous YAML draft pending verification — some sources claim 4/yr via Priority Pass but HDFC's own T&C did not clearly include it for the XL variant."
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1500000
+  credit_score_min: 750
+  residency: resident-indian
+  notes: "Discontinued; eligibility reflects final-state underwriting."
+
+application:
+  apply_url: null
+  replaces_card: null
+
+metadata:
+  last_verified_on: 2026-04-22
+  maintainers: []
+  tags: [co-branded, airline, indigo, premium, miles, discontinued]

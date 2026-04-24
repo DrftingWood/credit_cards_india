@@ -1,0 +1,126 @@
+id: sbi-prime
+name: SBI Card PRIME
+issuer: sbi
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2016-09-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2016-09-01
+    effective_until: null
+    joining_fee_inr: 2999
+    annual_fee_inr: 2999
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-prime.page
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2016-09-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+    accelerated:
+      - category: dining-grocery-departmental-movies
+        canonical_categories: [groceries, dining, entertainment]
+        multiplier: 1
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "10 Reward Points per ₹100 on Dining, Groceries, Departmental Stores and Movies."
+      - category: birthday-spend
+        multiplier: 1
+        effective_rate: 20
+        cap_per_cycle: 2000
+        cap_unit: points
+        cycle: annual
+        notes: "20x points on the birthday day, capped 2,000 points."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-prime.page
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2016-09-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa, mastercard, dreamfolks]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    milestones:
+      - spend_inr: 50000
+        cycle: quarterly
+        benefit: "Pizza Hut voucher worth ₹1,000"
+        value_inr: 1000
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Yatra / Pantaloons e-voucher worth ₹7,000"
+        value_inr: 7000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "e-voucher worth ₹3,000 (Bata / Aldo / Yatra / Pantaloons / Shoppers Stop)"
+        value_inr: 3000
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-prime.page
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-prime.page
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [premium, points, everyday-spend]

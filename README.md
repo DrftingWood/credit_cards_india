@@ -61,6 +61,47 @@ See [`docs/SCHEMA.md`](docs/SCHEMA.md). The source of truth is `schema/*.schema.
 
 Fees, rewards, and benefits are modelled as **arrays of effective-dated records** — when an issuer revises an annual fee or reward rate, the old record is closed with `effective_until` and a new record is appended. Site queries like "what was this card's annual fee on 2024-06-01" become a one-line lookup without going through git history.
 
+## Build artifact
+
+The site compiles `data/**/*.yaml` into a flat JSON bundle under `dist/` before rendering. The build step lives inside the Node toolchain:
+
+```
+cd site
+node scripts/build.mjs        # writes ../dist/cards.json, issuers.json, networks.json, index.json
+```
+
+`site/scripts/prebuild.mjs` auto-runs this before `next dev` / `next build` so you never call it directly in normal use.
+
+`dist/cards.json` is the consumer-friendly form: each card has the full historical arrays **plus** `issuer_detail`, `network_detail`, `current_fees` / `current_rewards` / `current_benefits` (the currently-open records), and a `computed` block with derived fields the site can filter/sort on (`is_active`, `is_lifetime_free`, `headline_rate_pct`, `has_domestic_lounge`, etc.).
+
+`dist/index.json` summarises counts by issuer / network / tier / reward currency + tag vocabulary — useful for landing-page badges, filter sidebars, and tag clouds without scanning every card.
+
+`dist/` is git-ignored; the artifact is meant to be regenerated at site-build time. Publish to a GitHub Release if a versioned consumer-facing dump is needed.
+
+## Site
+
+The consumer-facing site lives under [`site/`](site/README.md) — Next.js 15 + Tailwind. It reads the build artefact at build time and pre-renders every page.
+
+```
+cd site
+npm install
+npm run dev          # auto-runs python scripts/build.py first
+```
+
+### Deploying to Vercel
+
+The Next.js app lives in `site/`, not at the repo root, so Vercel's framework auto-detection needs to be pointed at it explicitly:
+
+1. Import the repo in the Vercel dashboard.
+2. **Project Settings → General → Root Directory → `site`**. This is the key step — Vercel will cd into `site/` (with the rest of the repo still checked out, so `../scripts/build.py` resolves from `site/scripts/prebuild.mjs`).
+3. Framework preset: **Next.js** (auto-detected once the root directory is correct).
+4. Install command: leave default (`npm install`).
+5. Build command: leave default (`next build`) — `site/package.json` wires `prebuild` to regenerate `../dist/*.json` via Python.
+6. Output directory: leave default (`.next`).
+7. (Optional) Set `NEXT_PUBLIC_SITE_URL` in project env vars to the production URL so the sitemap has the right host.
+
+Python 3 is available on Vercel's default build image, so no extra runtime configuration is needed.
+
 ## License
 
 Data and code are released under the [MIT License](LICENSE). Attribution appreciated when reusing the dataset.

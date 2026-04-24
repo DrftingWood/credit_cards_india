@@ -1,0 +1,117 @@
+id: idfc-first-first-private
+name: IDFC FIRST Private Credit Card
+issuer: idfc-first
+network: visa
+network_tier: infinite
+tier: invite-only
+card_type: credit
+co_brand: null
+status: invite-only
+launched_on: 2022-10-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-10-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 1.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Lifetime-free (invite-only)."
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/first-private
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2022-10-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 3
+      per_inr: 150
+      unit_value_inr: 0.25
+    accelerated:
+      - category: online-spend-above-20k
+        multiplier: 3
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+      - category: incremental-above-30k
+        multiplier: 3
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+    redemption:
+      - type: catalog
+        program: IDFC FIRST Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/first-private
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2022-10-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [visa, dreamfolks]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [priority-pass, loungekey]
+    golf:
+      rounds_per_cycle: unlimited
+      cycle: monthly
+      lessons_per_cycle: unlimited
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 50000000
+      - type: travel-medical
+        sum_insured_inr: 10000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/first-private
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 780
+  residency: resident-indian
+  notes: "Invite-only to IDFC FIRST Private / Wealth banking customers."
+
+application:
+  apply_url: null
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [invite-only, super-premium, lifetime-free, points]

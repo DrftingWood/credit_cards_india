@@ -1,0 +1,125 @@
+id: hdfc-tata-neu-infinity
+name: Tata Neu Infinity HDFC Bank Credit Card
+issuer: hdfc
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand:
+  partner: Tata Neu
+  category: ecommerce
+  partner_website: https://www.tataneu.com
+status: active
+launched_on: 2022-08-01
+discontinued_on: null
+
+# Card is also issued on the RuPay network with UPI linkage; the RuPay variant
+# is tracked as a separate card if added (not included here).
+
+fees:
+  - effective_from: 2022-08-01
+    effective_until: null
+    joining_fee_inr: 1499
+    annual_fee_inr: 1499
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2022-08-01
+    effective_until: null
+    currency: cashback
+    currency_name: NeuCoins
+    base:
+      rate: 1.5
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: tata-neu-app-partners
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [tata-neu-app, bigbasket, 1mg, air-india, croma, westside, tata-cliq, ihcl]
+        notes: "5% NeuCoins on Tata brands purchased via Tata Neu app (subject to NeuPass)."
+      - category: tata-neu-app-non-partner
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 1.5
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - emi
+      - utilities
+    redemption:
+      - type: cashback-bank
+        program: Tata Neu wallet
+        rate_inr_per_unit: 1.0
+        constraints: "NeuCoins redeemable across Tata Neu app ecosystem at 1 NeuCoin = ₹1."
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2022-08-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "1,499 NeuCoins"
+        value_inr: 1499
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1500000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, tata-neu, cashback, premium]

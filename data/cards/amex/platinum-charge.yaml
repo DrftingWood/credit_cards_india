@@ -1,0 +1,149 @@
+id: amex-platinum-charge
+name: American Express Platinum Card (Charge)
+issuer: amex
+network: amex
+network_tier: platinum
+tier: super-premium
+card_type: charge
+co_brand: null
+status: active
+launched_on: 2001-01-01
+discontinued_on: null
+
+# NOTE: This is Amex's flagship charge card — no pre-set spending limit, and
+# the full outstanding balance is due each billing cycle (no revolve).
+# finance_charge_monthly_pct is 0 because the product has no revolving credit.
+
+fees:
+  - effective_from: 2001-01-01
+    effective_until: null
+    joining_fee_inr: 60000
+    annual_fee_inr: 60000
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 0
+    cash_advance_fee:
+      pct: 3.5
+      min_inr: 500
+    late_payment_slabs:
+      - { up_to_inr: 100, fee_inr: 0 }
+      - { up_to_inr: "any", fee_inr: 1500 }
+    gst_applicable: true
+    notes: "Charge card — no revolving credit. Full statement balance due each cycle; late/non-payment attracts flat delinquency fees."
+    source:
+      url: https://www.americanexpress.com/in/credit-cards/platinum-card/
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2001-01-01
+    effective_until: null
+    currency: points
+    currency_name: Membership Rewards
+    base:
+      rate: 1
+      per_inr: 40
+      unit_value_inr: 0.35
+    accelerated:
+      - category: fine-hotels-resorts
+        canonical_categories: [travel]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "5x MR points on prepaid hotels via Fine Hotels + Resorts programme."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - insurance-premiums
+      - cash-advance
+      - utilities
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.35
+      - type: airmiles
+        program: Multiple (MR transfer)
+        ratio: "1:1"
+      - type: voucher
+        program: Amex gift vouchers
+        rate_inr_per_unit: 0.5
+    source:
+      url: https://www.americanexpress.com/in/credit-cards/platinum-card/
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2024-04-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 1
+        via: [dreamfolks, issuer-direct]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 1
+        via: [priority-pass, issuer-direct]
+        notes: "Access to Amex Centurion Lounges globally plus Priority Pass network."
+    golf:
+      rounds_per_cycle: unlimited
+      cycle: monthly
+      lessons_per_cycle: unlimited
+    milestones:
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Marriott / Taj stay vouchers worth ₹40,000 (choice)"
+        value_inr: 40000
+      - spend_inr: 2000000
+        cycle: annual
+        benefit: "₹1,00,000 hotel/airline voucher"
+        value_inr: 100000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Hotel stay voucher worth ₹45,000 (Taj / Marriott choice) + 50,000 MR bonus points"
+        value_inr: 57500
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 100000000
+      - type: travel-medical
+        sum_insured_inr: 50000000
+      - type: purchase-protection
+        sum_insured_inr: 100000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 500
+      cycle: monthly
+    dining:
+      program: Amex Dining Partners / Taj Epicure
+      discount_pct: 25
+    concierge: true
+    other:
+      - name: Taj / Marriott Bonvoy elite status
+        description: Complimentary Taj Epicure + Marriott Bonvoy Gold + Hilton Honors Gold status.
+      - name: Fine Hotels + Resorts benefits
+        description: Complimentary breakfast, room upgrade, late checkout at 1,000+ luxury properties globally.
+    source:
+      url: https://www.americanexpress.com/in/credit-cards/platinum-card/
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 2500000
+    self_employed: 2500000
+  credit_score_min: 780
+  residency: resident-indian
+  notes: "Amex acceptance in India is narrower than Visa/Mastercard. Charge card — no pre-set spending limit but balance due in full each cycle."
+
+application:
+  apply_url: https://www.americanexpress.com/in/credit-cards/platinum-card/
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [super-premium, charge-card, amex, travel, invite-like]

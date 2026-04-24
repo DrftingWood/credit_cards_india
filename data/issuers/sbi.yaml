@@ -6,4 +6,6 @@ website: https://www.sbicard.com
 customer_care:
   phone: "1860-180-1290"
 type: nbfc
+logo_path: "/logos/issuers/sbi.svg"
+brand_color: "#2C5FA8"
 notes: SBI Card is a listed NBFC subsidiary of State Bank of India, not the bank itself.

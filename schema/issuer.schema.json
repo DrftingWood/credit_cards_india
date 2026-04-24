@@ -38,6 +38,15 @@
       "description": "Broad issuer category.",
       "enum": ["bank", "small-finance-bank", "nbfc", "fintech", "foreign-bank", "charge-card-company"]
     },
+    "logo_path": {
+      "type": ["string", "null"],
+      "description": "Public URL or site-relative path to the issuer's logo (e.g. /logos/issuers/hdfc.svg). When present, the site renders the logo in place of the short/long name text."
+    },
+    "brand_color": {
+      "type": ["string", "null"],
+      "description": "Issuer's primary brand color as a #RRGGBB hex string. Used as the background for the card-image placeholder tile when a card has no real card-face image.",
+      "pattern": "^#[0-9A-Fa-f]{6}$"
+    },
     "notes": { "type": "string" }
   }
 }

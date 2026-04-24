@@ -1,0 +1,126 @@
+id: icici-times-black
+name: Times Black ICICI Bank Credit Card
+issuer: icici
+network: visa
+network_tier: infinite
+tier: super-premium
+card_type: credit
+co_brand:
+  partner: Times Internet
+  category: lifestyle
+  partner_website: https://www.timesprime.com
+status: invite-only
+launched_on: 2024-03-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-03-01
+    effective_until: null
+    joining_fee_inr: 20000
+    annual_fee_inr: 20000
+    fee_waiver:
+      spend_inr: 2500000
+      cycle: annual
+    forex_markup_pct: 1.49
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2024-03-01
+    effective_until: null
+    currency: points
+    currency_name: Times Points
+    base:
+      rate: 3
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: travel-dining-international
+        canonical_categories: [dining, travel, international]
+        multiplier: 2
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+      - type: voucher
+        program: Times Prime partners
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2024-03-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [priority-pass, dragonpass]
+    golf:
+      rounds_per_cycle: unlimited
+      cycle: monthly
+      lessons_per_cycle: unlimited
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Times Prime Premium membership + lifestyle vouchers worth ₹25,000"
+        value_inr: 25000
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 30000000
+      - type: travel-medical
+        sum_insured_inr: 5000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    other:
+      - name: Times Prime Premium membership
+        description: Complimentary Times Prime Premium (ET Prime, Gaana Plus, Docubay, etc.).
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 3000000
+    self_employed: 3000000
+  credit_score_min: 780
+  residency: resident-indian
+  notes: "Invite-only / by application; curated customer base."
+
+application:
+  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [super-premium, invite-only, co-branded, times-prime, lifestyle]

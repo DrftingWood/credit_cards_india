@@ -6,3 +6,5 @@ website: https://www.hsbc.co.in
 customer_care:
   phone: "1800-267-3456"
 type: foreign-bank
+logo_path: "/logos/issuers/hsbc.svg"
+brand_color: "#DB0011"

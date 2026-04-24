@@ -1,0 +1,140 @@
+id: idfc-first-indigo
+name: IndiGo IDFC FIRST Dual Credit Card
+issuer: idfc-first
+network: mastercard
+network_tier: world
+tier: premium
+card_type: credit
+co_brand:
+  partner: IndiGo
+  category: airline
+  partner_website: https://www.goindigo.in
+status: active
+launched_on: 2025-08-18
+discontinued_on: null
+
+# Dual-network card — combines Mastercard (global acceptance, low forex)
+# with a RuPay chip for UPI transactions in a single plastic. Launched
+# 2025-08-18 as IndiGo × IDFC FIRST Bank partnership. Offered as either a
+# ₹4,999 joining-fee card or a ₹0-fee variant secured against a ₹1L FD.
+
+fees:
+  - effective_from: 2025-08-18
+    effective_until: null
+    joining_fee_inr: 4999
+    annual_fee_inr: 4999
+    fee_waiver: null
+    forex_markup_pct: 1.49
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Fee-based variant; FD-backed variant at ₹0 joining fee is available against a ₹1,00,000 fixed deposit pledge."
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+      retrieved_on: 2026-04-22
+
+rewards:
+  - effective_from: 2025-08-18
+    effective_until: null
+    currency: miles
+    currency_name: IndiGo BluChips
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: indigo-flights-direct
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 22
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        merchants: [indigo-web, indigo-app]
+        notes: "Up to 22 IndiGo BluChips per ₹100 on IndiGo web/app bookings — the highest headline earn rate on any IndiGo co-brand."
+      - category: dining-entertainment
+        canonical_categories: [dining, entertainment]
+        multiplier: 1
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: voucher
+        program: IndiGo flights + 6E Prime add-ons
+        rate_inr_per_unit: 1.0
+        constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
+    source:
+      url: https://www.business-standard.com/finance/personal-finance/every-swipe-counts-how-indigo-s-new-credit-card-can-cut-your-travel-costs-125081800470_1.html
+      retrieved_on: 2026-04-22
+
+benefits:
+  - effective_from: 2025-08-18
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [dreamfolks]
+        notes: "Complimentary domestic lounge visits via Dreamfolks (exact cap pending IDFC FIRST T&C verification)."
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [loungekey]
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "5,000 IndiGo BluChips welcome voucher + 6E Eats voucher — renews on fee payment"
+        value_inr: 5000
+        window_days: 90
+    milestones:
+      - spend_inr: 100000
+        cycle: quarterly
+        benefit: "3,000 IndiGo BluChips activation bonus (first 90 days only)"
+        value_inr: 3000
+    insurance:
+      - type: other
+        sum_insured_inr: 25000
+        conditions: "Flight and hotel cancellation coverage up to ₹25,000."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 300
+      cycle: monthly
+    other:
+      - name: Dual network (Mastercard + RuPay)
+        description: "Card combines Mastercard (global acceptance, 1.49% forex) with a RuPay chip for seamless UPI transactions — one of the few dual-network cards in the Indian market."
+      - name: 6E Eats voucher
+        description: Complimentary 6E Eats voucher redeemable on IndiGo in-flight meals as part of the welcome and renewal benefit.
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/idfc-first-bank/indigo-idfc-first-dual-credit-card/
+      retrieved_on: 2026-04-22
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 900000
+    self_employed: 900000
+  credit_score_min: 750
+  residency: resident-indian
+  notes: "FD-backed variant available for customers without credit history — ₹1L FD pledge unlocks the card."
+
+application:
+  apply_url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+
+metadata:
+  last_verified_on: 2026-04-22
+  maintainers: []
+  tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex, dual-network]

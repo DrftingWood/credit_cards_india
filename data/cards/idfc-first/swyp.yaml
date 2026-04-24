@@ -1,0 +1,102 @@
+id: idfc-first-swyp
+name: IDFC FIRST SWYP Credit Card
+issuer: idfc-first
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-02-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-02-01
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    fee_waiver:
+      spend_inr: 90000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 0.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Card is EMI-first: every spend above ₹2,500 auto-converts to EMI at 0.99% p.m. (tiered)."
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/swyp
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2024-02-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 3
+      per_inr: 150
+      unit_value_inr: 0.25
+    accelerated:
+      - category: online-spend
+        canonical_categories: [online]
+        multiplier: 2
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - utilities
+    redemption:
+      - type: catalog
+        program: IDFC FIRST Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/swyp
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2024-02-01
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 200
+      cycle: monthly
+    movies:
+      type: bogo
+      partner: Paytm Movies
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 150
+    other:
+      - name: EMI-first design
+        description: Spends above ₹2,500 auto-convert to tenure-EMI at 0.99% monthly (interest rate may vary by risk tier).
+    concierge: false
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/swyp
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.idfcfirstbank.com/credit-card/swyp
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [emi-first, entry, points]

@@ -1,0 +1,113 @@
+id: icici-manchester-united-signature
+name: Manchester United Platinum ICICI Bank Credit Card
+issuer: icici
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand:
+  partner: Manchester United
+  category: lifestyle
+  partner_website: https://www.manutd.com
+status: active
+launched_on: 2019-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2019-01-01
+    effective_until: null
+    joining_fee_inr: 3500
+    annual_fee_inr: 1500
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2019-01-01
+    effective_until: null
+    currency: points
+    currency_name: PAYBACK Points
+    base:
+      rate: 4
+      per_inr: 100
+      unit_value_inr: 0.25
+    accelerated:
+      - category: international-spend
+        canonical_categories: [international]
+        multiplier: 1
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: ICICI Rewards / PAYBACK
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2019-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+        spend_threshold_inr: 35000
+        spend_threshold_cycle: quarterly
+      international:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Manchester United merchandise voucher worth ₹3,500"
+        value_inr: 3500
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    other:
+      - name: Manchester United experiences
+        description: Access to exclusive Manchester United events and merchandise offers.
+    concierge: false
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 900000
+    self_employed: 900000
+  credit_score_min: 740
+  residency: resident-indian
+
+application:
+  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, manchester-united, sports, premium, niche]

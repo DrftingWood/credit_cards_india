@@ -1,0 +1,115 @@
+id: idfc-first-power-plus
+name: IDFC FIRST Power+ Credit Card
+issuer: idfc-first
+network: rupay
+network_tier: select
+tier: entry
+card_type: credit
+co_brand:
+  partner: Hindustan Petroleum (HPCL)
+  category: fuel
+  partner_website: https://www.hindustanpetroleum.com
+status: active
+launched_on: 2022-09-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-09-01
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/power-plus
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2022-09-01
+    effective_until: null
+    currency: cashback
+    currency_name: Reward Points
+    base:
+      rate: 2.5
+      per_inr: 150
+      unit_value_inr: 0.25
+    accelerated:
+      - category: hpcl-fuel-via-hp-pay
+        canonical_categories: [fuel]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: 1000
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [hpcl-fuel-stations, hp-pay]
+        notes: "5% cashback on fuel at HPCL via HP Pay app (up to ₹1,000/month)."
+      - category: grocery-utility
+        canonical_categories: [groceries, utilities]
+        multiplier: 1
+        effective_rate: 2.5
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: monthly
+    exclusions:
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: catalog
+        program: IDFC FIRST Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/power-plus
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2022-09-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [rupay]
+    welcome:
+      - condition: "Spend ₹5,000 within 90 days"
+        benefit: "BookMyShow voucher worth ₹500 + ₹250 HPCL fuel voucher"
+        value_inr: 750
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 200
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.idfcfirstbank.com/credit-card/power-plus
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.idfcfirstbank.com/credit-card/power-plus
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, fuel, hpcl, rupay, entry]

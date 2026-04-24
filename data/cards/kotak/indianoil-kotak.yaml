@@ -1,0 +1,103 @@
+id: kotak-indianoil-kotak
+name: IndianOil Kotak Credit Card
+issuer: kotak
+network: rupay
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand:
+  partner: IndianOil
+  category: fuel
+  partner_website: https://www.iocl.com
+status: active
+launched_on: 2018-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2018-01-01
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 75000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indian-oil-kotak-credit-card.html
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2018-01-01
+    effective_until: null
+    currency: points
+    currency_name: Fuel Points
+    base:
+      rate: 1
+      per_inr: 150
+      unit_value_inr: 1.0
+    accelerated:
+      - category: indianoil-fuel
+        canonical_categories: [fuel]
+        multiplier: 1
+        effective_rate: 6
+        cap_per_cycle: 300
+        cap_unit: points
+        cycle: monthly
+        merchants: [indianoil-fuel-stations]
+        notes: "24 points per ₹150 at IOC outlets (effectively ~16% on fuel in XtraRewards equivalent), capped 300 points/month."
+      - category: groceries-dining-utility
+        canonical_categories: [groceries, dining, utilities]
+        multiplier: 1
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: voucher
+        program: IndianOil XtraRewards
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indian-oil-kotak-credit-card.html
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2018-01-01
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 3500
+      cycle: annual
+    concierge: false
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indian-oil-kotak-credit-card.html
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indian-oil-kotak-credit-card.html
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, fuel, indianoil, rupay, entry]

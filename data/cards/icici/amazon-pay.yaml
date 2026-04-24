@@ -1,5 +1,6 @@
 id: icici-amazon-pay
 name: Amazon Pay ICICI Bank Credit Card
+image_path: "/cards/icici/amazon-pay.webp"
 issuer: icici
 network: visa
 network_tier: signature
@@ -41,6 +42,7 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: amazon-in-prime
+        canonical_categories: [online]
         multiplier: 5
         effective_rate: 5
         cap_per_cycle: "unlimited"
@@ -49,6 +51,7 @@ rewards:
         merchants: [amazon.in]
         notes: "5% back for Amazon Prime members on Amazon.in purchases."
       - category: amazon-in-non-prime
+        canonical_categories: [online]
         multiplier: 3
         effective_rate: 3
         cap_per_cycle: "unlimited"
@@ -56,6 +59,7 @@ rewards:
         cycle: monthly
         merchants: [amazon.in]
       - category: amazon-pay-partners
+        canonical_categories: [online]
         multiplier: 2
         effective_rate: 2
         cap_per_cycle: "unlimited"

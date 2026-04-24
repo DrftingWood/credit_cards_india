@@ -6,3 +6,5 @@ website: https://www.federalbank.co.in
 customer_care:
   phone: "1800-425-1199"
 type: bank
+logo_path: "/logos/issuers/federal.svg"
+brand_color: "#004E96"

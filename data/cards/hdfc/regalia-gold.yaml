@@ -40,6 +40,7 @@ rewards:
       unit_value_inr: 0.5
     accelerated:
       - category: travel-dining-grocery-marquee
+        canonical_categories: [groceries, dining, travel]
         multiplier: 5
         effective_rate: 20
         cap_per_cycle: 5000

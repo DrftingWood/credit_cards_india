@@ -1,0 +1,114 @@
+id: onecard-metal
+name: OneCard Metal Credit Card
+issuer: onecard
+network: visa
+network_tier: signature
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2020-07-01
+discontinued_on: null
+
+# NOTE: OneCard is the issuer-facing brand operated by FPL Technologies; the
+# card is co-issued with partner banks (BoB / IDFC FIRST / Federal / SBM / SIB)
+# depending on the applicant. Features below are the unified OneCard product
+# features as marketed by OneCard; the partner bank may differ per user.
+
+fees:
+  - effective_from: 2020-07-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 1.0
+    finance_charge_monthly_pct: 2.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "Lifetime-free card marketed by OneCard; monthly finance charge starts at 2.5% (tiered by internal risk)."
+    source:
+      url: https://www.getonecard.app/card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2020-07-01
+    effective_until: null
+    currency: points
+    currency_name: OneCard Reward Points
+    base:
+      rate: 1
+      per_inr: 50
+      unit_value_inr: 1.0
+    accelerated:
+      - category: top-2-categories-monthly
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "5x points on your top 2 spend categories each calendar month (auto-selected)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        min_units: 100
+        constraints: "In-app redemption at 1 point = ₹1."
+      - type: catalog
+        program: OneCard catalogue
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.getonecard.app/card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2020-07-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "Lounge access unlocked on ₹50k quarterly spend."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    other:
+      - name: App-first experience
+        description: Full card lifecycle (application, limit, PIN, statements, reward redemption, block/unblock) runs inside the OneCard mobile app.
+      - name: Metal body
+        description: Premium metal card body on all active OneCards.
+    source:
+      url: https://www.getonecard.app/card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+  notes: "Co-issued with partner banks; exact underwriting and credit limit depend on the assigned partner."
+
+application:
+  apply_url: https://www.getonecard.app/card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [lifetime-free, metal, fintech, low-forex, points]

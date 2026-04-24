@@ -75,6 +75,7 @@ rewards:
         cycle: monthly
         notes: "35 EDGE points per ₹200 spent above ₹1.5L in a calendar month, capped at 35,000 points/month."
       - category: travel-edge-portal
+        canonical_categories: [travel]
         multiplier: 5
         cap_per_cycle: 40000
         cap_unit: points

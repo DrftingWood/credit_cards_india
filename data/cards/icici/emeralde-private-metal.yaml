@@ -1,0 +1,134 @@
+id: icici-emeralde-private-metal
+name: ICICI Bank Emeralde Private Metal Credit Card
+issuer: icici
+network: visa
+network_tier: infinite
+tier: super-premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2023-08-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-08-01
+    effective_until: null
+    joining_fee_inr: 12499
+    annual_fee_inr: 12499
+    fee_waiver:
+      spend_inr: 1000000
+      cycle: annual
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2023-08-01
+    effective_until: null
+    currency: points
+    currency_name: ICICI Reward Points
+    base:
+      rate: 6
+      per_inr: 200
+      unit_value_inr: 1.0
+    accelerated:
+      - category: international-spend
+        canonical_categories: [international]
+        multiplier: 1
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+      - education
+    redemption:
+      - type: catalog
+        program: ICICI Rewards
+        rate_inr_per_unit: 1.0
+      - type: airmiles
+        program: Multiple
+        ratio: "1:1"
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2023-08-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [priority-pass, dragonpass]
+    golf:
+      rounds_per_cycle: unlimited
+      cycle: monthly
+      lessons_per_cycle: unlimited
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "12,500 ICICI Reward Points + Taj Epicure + EazyDiner Prime memberships"
+        value_inr: 25000
+        window_days: 90
+    milestones:
+      - spend_inr: 1000000
+        cycle: annual
+        benefit: "Renewal-fee waiver + bonus points"
+        value_inr: 12499
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 30000000
+      - type: travel-medical
+        sum_insured_inr: 5000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    dining:
+      program: Culinary Treats / EazyDiner Prime
+      discount_pct: 25
+    concierge: true
+    other:
+      - name: Taj Epicure Plus membership
+        description: Complimentary Taj Epicure Plus enrolment.
+      - name: EazyDiner Prime membership
+        description: Complimentary EazyDiner Prime for 1 year.
+    source:
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 4200000
+    self_employed: 4200000
+  credit_score_min: 780
+  residency: resident-indian
+
+application:
+  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [super-premium, metal, travel, dining, points]

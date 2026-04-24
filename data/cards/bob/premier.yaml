@@ -1,0 +1,97 @@
+id: bob-premier
+name: BoBcard Premier Credit Card
+issuer: bob
+network: visa
+network_tier: platinum
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2020-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2020-01-01
+    effective_until: null
+    joining_fee_inr: 1000
+    annual_fee_inr: 1000
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.bobfinancial.com/premier-credit-card.jsp
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2020-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 100
+      unit_value_inr: 0.25
+    accelerated:
+      - category: travel-dining
+        canonical_categories: [dining, travel]
+        multiplier: 2
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: BoBcard Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.bobfinancial.com/premier-credit-card.jsp
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2020-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.bobfinancial.com/premier-credit-card.jsp
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 360000
+    self_employed: 360000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.bobfinancial.com/premier-credit-card.jsp
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [mid, points, travel, dining]

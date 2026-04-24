@@ -1,0 +1,129 @@
+id: axis-indigo
+name: IndiGo Axis Bank Credit Card
+issuer: axis
+network: rupay
+network_tier: select
+tier: entry
+card_type: credit
+co_brand:
+  partner: IndiGo
+  category: airline
+  partner_website: https://www.goindigo.in
+status: active
+launched_on: 2026-02-18
+discontinued_on: null
+
+# Base variant of IndiGo's February 2026 Axis Bank partnership — uses
+# BluChip loyalty, RuPay network (UPI-linkable), targets the mass retail
+# segment. Companion premium variant at axis/indigo-premium.yaml.
+
+fees:
+  - effective_from: 2026-02-18
+    effective_until: null
+    joining_fee_inr: 799
+    annual_fee_inr: 799
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card
+      retrieved_on: 2026-04-22
+      notes: "Joining + annual fee ₹799 per Axis Bank press release (Feb-2026) and Paisabazaar."
+
+rewards:
+  - effective_from: 2026-02-18
+    effective_until: null
+    currency: miles
+    currency_name: IndiGo BluChips
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: indigo-flights-direct
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        merchants: [indigo-web, indigo-app]
+        notes: "3 BluChips per ₹100 on IndiGo flight bookings via IndiGo web/app."
+      - category: grocery-dining
+        canonical_categories: [groceries, dining]
+        multiplier: 1
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+      - category: upi-rupay-spend
+        canonical_categories: [utilities, groceries, dining]
+        multiplier: 1
+        effective_rate: 1
+        cap_per_cycle: 750
+        cap_unit: miles
+        cycle: monthly
+        notes: "Up to 750 BluChips per month on eligible UPI transactions (RuPay variant only)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: voucher
+        program: IndiGo flights + 6E Prime add-ons
+        rate_inr_per_unit: 1.0
+        constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only."
+    source:
+      url: https://cardinsider.com/axis-bank/indigo-axis-bank-credit-card/
+      retrieved_on: 2026-04-22
+
+benefits:
+  - effective_from: 2026-02-18
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [dreamfolks]
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "1 complimentary domestic lounge visit per quarter, activated by ₹50,000 spend in the preceding quarter."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "1,200 IndiGo BluChips welcome voucher"
+        value_inr: 1200
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/axis-bank/indigo-axis-bank-credit-card/
+      retrieved_on: 2026-04-22
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-04-22
+  maintainers: []
+  tags: [co-branded, airline, indigo, entry, miles, bluchip, rupay, upi-linkable]

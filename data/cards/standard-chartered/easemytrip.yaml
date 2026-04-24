@@ -1,0 +1,117 @@
+id: standard-chartered-easemytrip
+name: EaseMyTrip Standard Chartered Credit Card
+issuer: standard-chartered
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand:
+  partner: EaseMyTrip
+  category: travel-agency
+  partner_website: https://www.easemytrip.com
+status: active
+launched_on: 2022-09-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-09-01
+    effective_until: null
+    joining_fee_inr: 350
+    annual_fee_inr: 350
+    fee_waiver:
+      spend_inr: 120000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2022-09-01
+    effective_until: null
+    currency: cashback
+    currency_name: EaseMyTrip Cashback
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: emt-flights-domestic
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [easemytrip]
+        notes: "10% instant discount on domestic flight bookings via EaseMyTrip."
+      - category: emt-flights-international
+        canonical_categories: [travel, international]
+        multiplier: 1
+        effective_rate: 20
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [easemytrip]
+      - category: emt-hotels
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 20
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [easemytrip]
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        constraints: "Instant discount at EMT checkout; general cashback as statement credit."
+    source:
+      url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2022-09-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 360000
+    self_employed: 360000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, travel, easemytrip, entry, cashback]

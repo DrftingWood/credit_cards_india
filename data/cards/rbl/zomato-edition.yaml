@@ -1,0 +1,110 @@
+id: rbl-zomato-edition
+name: Zomato RBL Bank Edition Credit Card
+issuer: rbl
+network: mastercard
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand:
+  partner: Zomato
+  category: lifestyle
+  partner_website: https://www.zomato.com
+status: active
+launched_on: 2023-03-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-03-01
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.rblbank.com/category/credit-cards/zomato-rbl-edition-credit-card
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2023-03-01
+    effective_until: null
+    currency: cashback
+    currency_name: Zomato Credits
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: zomato-ordering-dining
+        canonical_categories: [dining]
+        multiplier: 1
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [zomato, zomato-dining]
+        notes: "10% back on Zomato food delivery and Zomato Dining Out."
+      - category: other-online
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+      - insurance-premiums
+    redemption:
+      - type: cashback-bank
+        program: Zomato Credits
+        rate_inr_per_unit: 1.0
+        constraints: "Redeemable only on Zomato at 1 credit = ₹1."
+    source:
+      url: https://www.rblbank.com/category/credit-cards/zomato-rbl-edition-credit-card
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2023-03-01
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "First transaction within 30 days"
+        benefit: "Zomato Gold membership for 3 months"
+        value_inr: 500
+        window_days: 30
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.rblbank.com/category/credit-cards/zomato-rbl-edition-credit-card
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.rblbank.com/category/credit-cards/zomato-rbl-edition-credit-card
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, zomato, food-delivery, cashback, entry]

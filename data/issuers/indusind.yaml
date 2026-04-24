@@ -6,3 +6,5 @@ website: https://www.indusind.com
 customer_care:
   phone: "1860-267-7777"
 type: bank
+logo_path: "/logos/issuers/indusind.svg"
+brand_color: "#98272A"

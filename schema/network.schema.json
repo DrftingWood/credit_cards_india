@@ -20,6 +20,10 @@
       "uniqueItems": true
     },
     "website": { "type": "string", "format": "uri" },
+    "logo_path": {
+      "type": ["string", "null"],
+      "description": "Public URL or site-relative path to the network's logo (e.g. /logos/networks/visa.svg). When present, the site renders the logo in place of the text label."
+    },
     "notes": { "type": "string" }
   }
 }

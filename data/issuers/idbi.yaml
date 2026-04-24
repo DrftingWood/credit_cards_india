@@ -1,0 +1,8 @@
+id: idbi
+name: IDBI Bank
+short_name: IDBI
+legal_name: IDBI Bank Limited
+website: https://www.idbibank.in
+customer_care:
+  phone: "1800-209-4324"
+type: bank

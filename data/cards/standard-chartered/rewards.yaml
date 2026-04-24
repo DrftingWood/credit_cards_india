@@ -1,0 +1,98 @@
+id: standard-chartered-rewards
+name: Standard Chartered Rewards Credit Card
+issuer: standard-chartered
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2022-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-01-01
+    effective_until: null
+    joining_fee_inr: 1000
+    annual_fee_inr: 1000
+    fee_waiver:
+      spend_inr: 120000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.sc.com/in/credit-cards/rewards/
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2022-01-01
+    effective_until: null
+    currency: points
+    currency_name: 360 Reward Points
+    base:
+      rate: 1
+      per_inr: 150
+      unit_value_inr: 1.0
+    accelerated:
+      - category: online-retail-department
+        canonical_categories: [online]
+        multiplier: 4
+        effective_rate: 4
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "4x points on retail / departmental / online spends."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        min_units: 2000
+    source:
+      url: https://www.sc.com/in/credit-cards/rewards/
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2022-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.sc.com/in/credit-cards/rewards/
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 360000
+    self_employed: 360000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sc.com/in/credit-cards/rewards/
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [entry, points, online-spend]

@@ -1,0 +1,113 @@
+id: indusind-legend
+name: IndusInd Bank Legend Credit Card
+issuer: indusind
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2015-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2015-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 1.8
+    finance_charge_monthly_pct: 3.83
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "Lifetime-free card."
+    source:
+      url: https://www.indusind.com/in/en/personal/cards/credit-card/legend-credit-card.html
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2015-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.35
+    accelerated:
+      - category: weekend-spend
+        multiplier: 2
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "2x points on weekend spends (Sat, Sun)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: IndusMoments
+        rate_inr_per_unit: 0.35
+      - type: statement-credit
+        rate_inr_per_unit: 0.35
+    source:
+      url: https://www.indusind.com/in/en/personal/cards/credit-card/legend-credit-card.html
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2015-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+      international:
+        visits_per_cycle: 0
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Priority Pass available at nominal per-visit fee."
+    golf:
+      rounds_per_cycle: 1
+      cycle: monthly
+      lessons_per_cycle: 1
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 25000000
+      - type: travel-medical
+        sum_insured_inr: 2500000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.indusind.com/in/en/personal/cards/credit-card/legend-credit-card.html
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.indusind.com/in/en/personal/cards/credit-card/legend-credit-card.html
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [lifetime-free, premium, points, low-forex]

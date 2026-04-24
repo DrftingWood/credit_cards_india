@@ -1,0 +1,113 @@
+id: kotak-myntra-kaching
+name: Myntra Kotak Credit Card
+issuer: kotak
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand:
+  partner: Myntra
+  category: ecommerce
+  partner_website: https://www.myntra.com
+status: active
+launched_on: 2021-07-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-07-01
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
+      retrieved_on: 2026-04-15
+
+rewards:
+  - effective_from: 2021-07-01
+    effective_until: null
+    currency: cashback
+    currency_name: Instant Discount
+    base:
+      rate: 1.25
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: myntra-spends
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 7.5
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [myntra]
+        notes: "7.5% instant discount at Myntra checkout."
+      - category: preferred-merchants
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: 1000
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [swiggy, zomato, urbanclap, pvr, cleartrip]
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
+      retrieved_on: 2026-04-15
+
+benefits:
+  - effective_from: 2021-07-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Myntra voucher worth ₹500"
+        value_inr: 500
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 3500
+      cycle: annual
+    concierge: false
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
+      retrieved_on: 2026-04-15
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
+
+metadata:
+  last_verified_on: 2026-04-15
+  maintainers: []
+  tags: [co-branded, myntra, cashback, entry, fashion]

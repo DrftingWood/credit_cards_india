@@ -32,7 +32,7 @@ fees:
     gst_applicable: true
     notes: "Fee-based variant; FD-backed variant at ₹0 joining fee is available against a ₹1,00,000 fixed deposit pledge."
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+      url: https://www.idfcfirstbank.com/credit-card/indigo-credit-card
       retrieved_on: 2026-04-22
 
 rewards:
@@ -132,7 +132,7 @@ eligibility:
   notes: "FD-backed variant available for customers without credit history — ₹1L FD pledge unlocks the card."
 
 application:
-  apply_url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+  apply_url: https://www.idfcfirstbank.com/credit-card/indigo-credit-card
 
 metadata:
   last_verified_on: 2026-04-22

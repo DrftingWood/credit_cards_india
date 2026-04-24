@@ -30,7 +30,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card
+      url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-credit-card
       retrieved_on: 2026-04-22
       notes: "Joining + annual fee ₹799 per Axis Bank press release (Feb-2026) and Paisabazaar."
 
@@ -121,7 +121,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card
+  apply_url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-credit-card
 
 metadata:
   last_verified_on: 2026-04-22

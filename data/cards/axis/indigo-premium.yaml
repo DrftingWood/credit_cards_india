@@ -30,7 +30,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+      url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-premium-credit-card
       retrieved_on: 2026-04-22
       notes: "Joining + annual fee ₹5,000 per Axis Bank press release (Feb-2026). Low forex markup 2.5% vs base 3.5%."
 
@@ -107,7 +107,7 @@ benefits:
         description: Bundled lifestyle privileges — entertainment offers and dining discounts via Axis partner network.
     concierge: false
     source:
-      url: https://www.axis.bank.in/about-us/press-releases/unlock-more-with-every-swipe-axis-bank-and-indigo-unveil-co-branded-credit-cards-to-redefine-travel-and-lifestyle-experiences
+      url: https://www.axisbank.com/about-us/press-releases/unlock-more-with-every-swipe-axis-bank-and-indigo-unveil-co-branded-credit-cards-to-redefine-travel-and-lifestyle-experiences
       retrieved_on: 2026-04-22
 
 eligibility:
@@ -120,7 +120,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+  apply_url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-premium-credit-card
 
 metadata:
   last_verified_on: 2026-04-22

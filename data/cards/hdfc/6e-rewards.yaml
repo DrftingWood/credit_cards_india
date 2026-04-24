@@ -117,7 +117,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfc.bank.in/credit-cards/6e-rewards-indigo-credit-card
+  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/6e-rewards-indigo-hdfc-bank-credit-card
   replaces_card: null
 
 metadata:

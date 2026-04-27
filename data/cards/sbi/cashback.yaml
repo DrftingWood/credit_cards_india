@@ -26,7 +26,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page
+      url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
       retrieved_on: 2026-04-15
 
 rewards:
@@ -62,7 +62,7 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page
+      url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
       retrieved_on: 2026-04-15
 
 benefits:
@@ -77,7 +77,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page
+      url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -91,8 +91,8 @@ eligibility:
   notes: "Specific income threshold not published; internal underwriting applies."
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/rewards/cashback-sbi-card.page
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-04-24
   tags: [cashback, online-spend, mid-tier]

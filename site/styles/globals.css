@@ -32,3 +32,14 @@
     @apply bg-emerald-50 text-emerald-800 border-emerald-200;
   }
 }
+
+@keyframes step-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-step-in {
+  animation: step-fade-in 200ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-step-in { animation: none; }
+}

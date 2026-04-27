@@ -106,6 +106,23 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
     "N/A"
   );
 
+  const otherList = benefits?.other ?? [];
+  const otherContent = otherList.length > 0 ? (
+    <ul className="space-y-0.5 list-none">
+      {otherList.slice(0, 3).map((o, i) => (
+        <li key={i}>
+          <strong>{o.name}</strong>
+          {o.description ? <span className="text-slate-600"> — {o.description}</span> : null}
+        </li>
+      ))}
+      {otherList.length > 3 ? (
+        <li className="text-slate-500">+{otherList.length - 3} more</li>
+      ) : null}
+    </ul>
+  ) : (
+    "N/A"
+  );
+
   const cells: InfoCell[] = [
     { label: "Rewards Rate", value: rewardsRate },
     { label: "Reward Redemption", value: rewardRedemption },
@@ -117,6 +134,7 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
     { label: "Movie & Dining", value: movieDining },
     { label: "Golf", value: golf },
     { label: "Insurance Benefits", value: insurance },
+    { label: "Other Benefits", value: otherContent },
   ];
 
   return <InfoGrid title="Rewards and Benefits" cells={cells} />;

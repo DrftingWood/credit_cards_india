@@ -75,9 +75,15 @@ function hasAny(s: ReturnType<typeof paramsToState>): boolean {
     s.networks.length > 0 ||
     s.tiers.length > 0 ||
     s.currencies.length > 0 ||
+    s.coBrandCategories.length > 0 ||
+    s.tags.length > 0 ||
+    s.forexBand !== null ||
     s.lifetimeFree ||
+    s.feeWaiver ||
     s.domesticLounge ||
     s.intlLounge ||
+    s.hasMilestones ||
+    s.hasWelcomeBonus ||
     s.inviteOnly !== null ||
     s.coBrandOnly
   );

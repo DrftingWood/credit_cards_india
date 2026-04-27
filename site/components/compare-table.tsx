@@ -79,6 +79,10 @@ const ROWS: Row[] = [
     render: (c) => formatInr(c.current_fees?.annual_fee_inr ?? null),
   },
   {
+    label: "Joining fee",
+    render: (c) => formatInr(c.current_fees?.joining_fee_inr ?? null),
+  },
+  {
     label: "Fee waiver",
     render: (c) =>
       c.computed.fee_waiver_spend_inr
@@ -88,6 +92,21 @@ const ROWS: Row[] = [
   {
     label: "Forex markup",
     render: (c) => formatPct(c.current_fees?.forex_markup_pct, 2),
+  },
+  {
+    label: "Finance charge",
+    render: (c) => {
+      const v = c.current_fees?.finance_charge_monthly_pct;
+      return v != null ? `${formatPct(v, 2)} / mo` : "—";
+    },
+  },
+  {
+    label: "Cash advance fee",
+    render: (c) => {
+      const ca = c.current_fees?.cash_advance_fee;
+      if (!ca) return "—";
+      return `${formatPct(ca.pct ?? null, 1)} or ${formatInr(ca.min_inr ?? null)} (whichever higher)`;
+    },
   },
   {
     label: "Reward currency",
@@ -108,6 +127,59 @@ const ROWS: Row[] = [
   },
   { label: "Best accelerated", render: topAcceleratedRow },
   {
+    label: "Welcome benefit",
+    render: (c) => {
+      const w = c.current_benefits?.welcome?.[0];
+      if (!w) return "—";
+      return (
+        <span>
+          {w.benefit}
+          {w.value_inr != null ? (
+            <span className="block text-xs text-slate-500 mt-0.5">
+              ≈ {formatInr(w.value_inr)} value
+            </span>
+          ) : null}
+        </span>
+      );
+    },
+  },
+  {
+    label: "Milestones",
+    render: (c) => {
+      const m = c.current_benefits?.milestones ?? [];
+      if (!m.length) return "—";
+      return (
+        <ul className="list-none space-y-0.5">
+          {m.slice(0, 3).map((x, i) => (
+            <li key={i} className="text-xs">
+              <strong>{formatInr(x.spend_inr)}</strong>: {x.benefit}
+            </li>
+          ))}
+          {m.length > 3 ? (
+            <li className="text-xs text-slate-500">+{m.length - 3} more</li>
+          ) : null}
+        </ul>
+      );
+    },
+  },
+  {
+    label: "Redemption fee",
+    render: (c) => {
+      const r = c.current_rewards?.redemption?.[0];
+      return r?.fee_inr != null ? `${formatInr(r.fee_inr)} per claim` : "—";
+    },
+  },
+  {
+    label: "Fuel surcharge waiver",
+    render: (c) => {
+      const f = c.current_benefits?.fuel_surcharge_waiver;
+      if (!f) return "—";
+      return `${formatPct(f.pct, 1)}${
+        f.cap_per_cycle_inr ? ` (cap ${formatInr(f.cap_per_cycle_inr)}/${f.cycle ?? "cycle"})` : ""
+      }`;
+    },
+  },
+  {
     label: "Domestic lounge",
     render: (c) => loungeSummary(c.current_benefits?.lounge_access ?? null, "domestic"),
   },
@@ -125,6 +197,25 @@ const ROWS: Row[] = [
           ? "Unlimited"
           : `${g.rounds_per_cycle ?? 0}/${g.cycle ?? "cycle"}`;
       return rounds;
+    },
+  },
+  {
+    label: "Insurance",
+    render: (c) => {
+      const ins = c.current_benefits?.insurance ?? [];
+      if (!ins.length) return "—";
+      return (
+        <ul className="list-none space-y-0.5">
+          {ins.slice(0, 3).map((x, i) => (
+            <li key={i} className="text-xs capitalize">
+              {x.type.replace(/-/g, " ")}: {formatInr(x.sum_insured_inr)}
+            </li>
+          ))}
+          {ins.length > 3 ? (
+            <li className="text-xs text-slate-500">+{ins.length - 3} more</li>
+          ) : null}
+        </ul>
+      );
     },
   },
   {

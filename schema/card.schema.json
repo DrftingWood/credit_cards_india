@@ -212,6 +212,49 @@
           ]
         },
         "gst_applicable": { "type": "boolean", "default": true },
+        "emi_conversion": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Charges for converting purchases to EMI on the card.",
+              "properties": {
+                "interest_pct_annual": { "type": ["number", "null"], "minimum": 0, "maximum": 50 },
+                "processing_fee_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 5 },
+                "processing_fee_min_inr": { "type": ["integer", "null"], "minimum": 0 },
+                "notes": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "balance_transfer": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Cost of transferring an outstanding balance from another card onto this one.",
+              "properties": {
+                "interest_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 10 },
+                "processing_fee_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 5 },
+                "processing_fee_min_inr": { "type": ["integer", "null"], "minimum": 0 },
+                "tenure_months": { "type": ["integer", "null"], "minimum": 0 },
+                "notes": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "foreign_atm_inr": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Flat fee per international ATM withdrawal (separate from cash_advance_fee on domestic ATMs)."
+        },
+        "supplementary_card_fee_inr": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Annual fee for an additional / family / add-on card. Often free."
+        },
         "source": { "$ref": "#/$defs/Source" },
         "notes": { "type": "string" }
       }
@@ -346,6 +389,29 @@
             }
           }
         },
+        "transfer_partners": {
+          "type": "array",
+          "description": "External loyalty programs the card's points can be transferred to (e.g. Marriott Bonvoy, Accor Live Limitless, Air India Maharajah Club, KrisFlyer).",
+          "items": {
+            "type": "object",
+            "required": ["program"],
+            "additionalProperties": false,
+            "properties": {
+              "program": { "type": "string", "minLength": 1 },
+              "category": {
+                "type": "string",
+                "enum": ["airline", "hotel", "other"]
+              },
+              "ratio": {
+                "type": ["string", "null"],
+                "description": "Conversion ratio expressed as 'X:Y' where X = source points and Y = partner units. e.g. '2:1'."
+              },
+              "min_transfer": { "type": ["integer", "null"], "minimum": 0 },
+              "fee_inr": { "type": ["integer", "null"], "minimum": 0 },
+              "notes": { "type": "string" }
+            }
+          }
+        },
         "source": { "$ref": "#/$defs/Source" },
         "notes": { "type": "string" }
       }
@@ -469,6 +535,27 @@
           }
         },
         "concierge": { "type": "boolean", "default": false },
+        "surcharge_waivers": {
+          "type": "array",
+          "description": "Surcharge waivers other than fuel (e.g. railway booking, utility bill, online education). Fuel has its own dedicated `fuel_surcharge_waiver` field.",
+          "items": {
+            "type": "object",
+            "required": ["category", "pct"],
+            "additionalProperties": false,
+            "properties": {
+              "category": {
+                "type": "string",
+                "enum": ["railway", "utilities", "telecom", "education", "online", "wallet-loads", "rent", "other"]
+              },
+              "pct": { "type": "number", "minimum": 0, "maximum": 5 },
+              "min_txn_inr": { "type": ["integer", "null"], "minimum": 0 },
+              "max_txn_inr": { "type": ["integer", "null"], "minimum": 0 },
+              "cap_per_cycle_inr": { "type": ["integer", "null"], "minimum": 0 },
+              "cycle": { "$ref": "#/$defs/Cycle" },
+              "notes": { "type": "string" }
+            }
+          }
+        },
         "other": {
           "type": "array",
           "description": "Anything that doesn't fit above (e.g. free OTT subscription).",
@@ -553,10 +640,6 @@
       "additionalProperties": false,
       "properties": {
         "last_verified_on": { "type": "string", "format": "date" },
-        "maintainers": {
-          "type": "array",
-          "items": { "type": "string", "minLength": 1 }
-        },
         "tags": {
           "type": "array",
           "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },

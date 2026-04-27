@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { EnrichedCard } from "@/lib/types";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
@@ -22,8 +23,18 @@ const DEFAULT_SPEND: SpendProfile = {
 
 export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
   const [spend, setSpend] = useState<SpendProfile>(DEFAULT_SPEND);
+  const selectedId = useSearchParams().get("card");
 
-  const ranked = useMemo(() => rankCards(cards, spend).slice(0, 10), [cards, spend]);
+  const { ranked, pinnedSelected } = useMemo(() => {
+    const all = rankCards(cards, spend);
+    const top = all.slice(0, 10);
+    if (!selectedId) return { ranked: top, pinnedSelected: null as CardScore | null };
+    const inTop = top.some((r) => r.card.id === selectedId);
+    if (inTop) return { ranked: top, pinnedSelected: null };
+    const pinned = all.find((r) => r.card.id === selectedId) ?? null;
+    return { ranked: top, pinnedSelected: pinned };
+  }, [cards, spend, selectedId]);
+
   const monthlyTotal = Object.values(spend).reduce((a, b) => a + (b || 0), 0);
 
   return (
@@ -72,9 +83,20 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
         <p className="text-xs text-slate-500 mt-0.5">
           Approximate. Ignores welcome bonuses, milestone vouchers and some complex caps; for the full picture open the detail page.
         </p>
+        {pinnedSelected ? (
+          <div className="mt-4">
+            <div className="text-xs uppercase tracking-wide text-brand-700 mb-1">Selected card</div>
+            <ResultRow rank={null} score={pinnedSelected} highlighted />
+          </div>
+        ) : null}
         <ol className="mt-4 space-y-3">
           {ranked.map((r, i) => (
-            <ResultRow key={r.card.id} rank={i + 1} score={r} />
+            <ResultRow
+              key={r.card.id}
+              rank={i + 1}
+              score={r}
+              highlighted={r.card.id === selectedId}
+            />
           ))}
         </ol>
         {ranked.length === 0 ? (
@@ -87,17 +109,33 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
   );
 }
 
-function ResultRow({ rank, score }: { rank: number; score: CardScore }) {
+function ResultRow({
+  rank,
+  score,
+  highlighted = false,
+}: {
+  rank: number | null;
+  score: CardScore;
+  highlighted?: boolean;
+}) {
   const c = score.card;
   const issuer = c.issuer;
   const slug = c.id.startsWith(`${issuer}-`) ? c.id.slice(issuer.length + 1) : c.id;
   const href = `/card/${issuer}/${slug}`;
 
   return (
-    <li className="rounded-xl border border-slate-200 bg-white p-4">
+    <li
+      className={
+        highlighted
+          ? "rounded-xl border-2 border-brand-500 bg-brand-50 p-4"
+          : "rounded-xl border border-slate-200 bg-white p-4"
+      }
+    >
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-3">
-          <div className="text-slate-400 font-semibold tabular-nums w-6 text-right">#{rank}</div>
+          <div className="text-slate-400 font-semibold tabular-nums w-6 text-right">
+            {rank != null ? `#${rank}` : "★"}
+          </div>
           <div>
             <Link href={href} className="font-semibold text-slate-900 hover:text-slate-900">
               {c.name}
@@ -125,7 +163,7 @@ function ResultRow({ rank, score }: { rank: number; score: CardScore }) {
         </div>
       </div>
 
-      <details className="mt-3 text-sm">
+      <details className="mt-3 text-sm" open={highlighted}>
         <summary className="cursor-pointer text-slate-600 hover:text-slate-900 text-xs uppercase tracking-wide">
           Breakdown
         </summary>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { getActiveCards } from "@/lib/data";
 import { CalculatorClient } from "./calculator-client";
 
@@ -20,7 +21,9 @@ export default function CalculatorPage() {
           before applying.
         </p>
       </header>
-      <CalculatorClient cards={cards} />
+      <Suspense fallback={<div className="text-slate-500 text-sm">Loading…</div>}>
+        <CalculatorClient cards={cards} />
+      </Suspense>
     </div>
   );
 }

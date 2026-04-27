@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import type { EnrichedCard, IssuerRecord } from "@/lib/types";
-import type { FilterState } from "@/lib/filters";
+import type { FilterState, ForexBand } from "@/lib/filters";
 import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
 
@@ -16,6 +16,23 @@ interface Props {
 const NETWORKS = ["visa", "mastercard", "rupay", "amex", "diners"] as const;
 const TIERS = ["entry", "mid", "premium", "super-premium", "invite-only"] as const;
 const CURRENCIES = ["points", "cashback", "miles"] as const;
+const CO_BRAND_CATEGORIES = [
+  "airline",
+  "hotel",
+  "ecommerce",
+  "fuel",
+  "retail",
+  "travel-agency",
+  "telecom",
+  "lifestyle",
+  "railway",
+  "other",
+] as const;
+const FOREX_BANDS: Array<{ value: ForexBand; label: string }> = [
+  { value: "low", label: "< 2%" },
+  { value: "mid", label: "2 – 3%" },
+  { value: "high", label: "≥ 3%" },
+];
 
 export function FilterBar({ state, onChange, cards, issuers }: Props) {
   // Show issuer counts so users see which options are populated.
@@ -105,11 +122,55 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
         ))}
       </Group>
 
+      <Group title="Co-brand category">
+        {CO_BRAND_CATEGORIES.map((cat) => (
+          <Check
+            key={cat}
+            checked={state.coBrandCategories.includes(cat)}
+            onChange={() => toggle("coBrandCategories", cat)}
+            label={<span className="capitalize">{cat.replace("-", " ")}</span>}
+          />
+        ))}
+      </Group>
+
+      <Group title="Forex markup">
+        <label className="flex items-center gap-2 cursor-pointer select-none hover:text-slate-900">
+          <input
+            type="radio"
+            name="forex-band"
+            className="border-slate-400 text-brand-600 focus:ring-brand-500"
+            checked={state.forexBand === null}
+            onChange={() => onChange({ ...state, forexBand: null })}
+          />
+          <span className="text-sm text-slate-700">Any</span>
+        </label>
+        {FOREX_BANDS.map((b) => (
+          <label
+            key={b.value}
+            className="flex items-center gap-2 cursor-pointer select-none hover:text-slate-900"
+          >
+            <input
+              type="radio"
+              name="forex-band"
+              className="border-slate-400 text-brand-600 focus:ring-brand-500"
+              checked={state.forexBand === b.value}
+              onChange={() => onChange({ ...state, forexBand: b.value })}
+            />
+            <span className="text-sm text-slate-700">{b.label}</span>
+          </label>
+        ))}
+      </Group>
+
       <Group title="Features">
         <Check
           checked={state.lifetimeFree}
           onChange={() => onChange({ ...state, lifetimeFree: !state.lifetimeFree })}
           label="Lifetime free"
+        />
+        <Check
+          checked={state.feeWaiver}
+          onChange={() => onChange({ ...state, feeWaiver: !state.feeWaiver })}
+          label="Annual-fee waivable"
         />
         <Check
           checked={state.domesticLounge}
@@ -120,6 +181,16 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
           checked={state.intlLounge}
           onChange={() => onChange({ ...state, intlLounge: !state.intlLounge })}
           label="International lounge"
+        />
+        <Check
+          checked={state.hasMilestones}
+          onChange={() => onChange({ ...state, hasMilestones: !state.hasMilestones })}
+          label="Milestone rewards"
+        />
+        <Check
+          checked={state.hasWelcomeBonus}
+          onChange={() => onChange({ ...state, hasWelcomeBonus: !state.hasWelcomeBonus })}
+          label="Welcome bonus"
         />
         <Check
           checked={state.coBrandOnly}
@@ -134,6 +205,23 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
           label="Exclude invite-only"
         />
       </Group>
+
+      {state.tags.length > 0 ? (
+        <Group title="Active tags">
+          <div className="flex flex-wrap gap-1">
+            {state.tags.map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => toggle("tags", t)}
+                className="chip hover:bg-slate-100"
+              >
+                {t.replace(/-/g, " ")} ✕
+              </button>
+            ))}
+          </div>
+        </Group>
+      ) : null}
     </aside>
   );
 }

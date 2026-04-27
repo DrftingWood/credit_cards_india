@@ -52,7 +52,24 @@ export interface FeeRecord {
   forex_markup_pct?: number | null;
   finance_charge_monthly_pct?: number | null;
   cash_advance_fee?: { pct?: number; min_inr?: number } | null;
+  late_payment_slabs?: Array<{ up_to_inr: number | "any"; fee_inr: number }> | null;
+  overlimit_fee?: { pct?: number; min_inr?: number; max_inr?: number } | null;
   gst_applicable?: boolean;
+  emi_conversion?: {
+    interest_pct_annual?: number | null;
+    processing_fee_pct?: number | null;
+    processing_fee_min_inr?: number | null;
+    notes?: string;
+  } | null;
+  balance_transfer?: {
+    interest_pct?: number | null;
+    processing_fee_pct?: number | null;
+    processing_fee_min_inr?: number | null;
+    tenure_months?: number | null;
+    notes?: string;
+  } | null;
+  foreign_atm_inr?: number | null;
+  supplementary_card_fee_inr?: number | null;
   source: Source;
   notes?: string;
 }
@@ -86,6 +103,15 @@ export interface RedemptionOption {
   constraints?: string;
 }
 
+export interface TransferPartner {
+  program: string;
+  category?: "airline" | "hotel" | "other";
+  ratio?: string | null;
+  min_transfer?: number | null;
+  fee_inr?: number | null;
+  notes?: string;
+}
+
 export interface RewardRecord {
   effective_from: string;
   effective_until: string | null;
@@ -96,6 +122,7 @@ export interface RewardRecord {
   exclusions?: string[];
   capping_rules?: string[];
   redemption?: RedemptionOption[];
+  transfer_partners?: TransferPartner[];
   source: Source;
   notes?: string;
 }
@@ -162,6 +189,15 @@ export interface BenefitRecord {
     notes?: string;
   } | null;
   concierge?: boolean;
+  surcharge_waivers?: Array<{
+    category: "railway" | "utilities" | "telecom" | "education" | "online" | "wallet-loads" | "rent" | "other";
+    pct: number;
+    min_txn_inr?: number | null;
+    max_txn_inr?: number | null;
+    cap_per_cycle_inr?: number | null;
+    cycle?: Cycle;
+    notes?: string;
+  }>;
   other?: Array<{ name: string; description: string; value_inr?: number | null }>;
   source: Source;
   notes?: string;
@@ -181,7 +217,6 @@ export interface Eligibility {
 
 export interface CardMetadata {
   last_verified_on: string;
-  maintainers?: string[];
   tags?: string[];
 }
 

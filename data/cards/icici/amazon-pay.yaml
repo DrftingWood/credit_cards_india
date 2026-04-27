@@ -28,7 +28,7 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card."
     source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/amazon-pay-credit-card
       retrieved_on: 2026-04-15
 
 rewards:
@@ -78,7 +78,7 @@ rewards:
         rate_inr_per_unit: 1.0
         constraints: "Credited as Amazon Pay balance, usable across Amazon.in and Amazon Pay merchants."
     source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/amazon-pay-credit-card
       retrieved_on: 2026-04-15
 
 benefits:
@@ -93,7 +93,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
+      url: https://www.icicibank.com/personal-banking/cards/credit-card/amazon-pay-credit-card
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -107,9 +107,8 @@ eligibility:
   notes: "Application routed via Amazon.in; instant approval for pre-qualified users."
 
 application:
-  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
+  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/amazon-pay-credit-card
 
 metadata:
   last_verified_on: 2026-04-24
-  maintainers: []
   tags: [co-branded, amazon, cashback, lifetime-free, entry]

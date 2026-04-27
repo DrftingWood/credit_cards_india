@@ -30,7 +30,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
+      url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card
       retrieved_on: 2026-04-15
 
 rewards:
@@ -96,7 +96,7 @@ rewards:
         ratio: "5:2"
         constraints: "Post-revision transfer ratio across most partners."
     source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
+      url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card
       retrieved_on: 2026-04-15
 
 benefits:
@@ -138,7 +138,7 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
+      url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -151,9 +151,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
+  apply_url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card
 
 metadata:
   last_verified_on: 2026-04-24
-  maintainers: []
   tags: [travel, points, super-premium, forex-friendly]

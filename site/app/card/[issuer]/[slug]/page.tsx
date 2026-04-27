@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { allCardRouteParams, getCardByIssuerAndSlug } from "@/lib/data";
+import { allCardRouteParams, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
 import { formatDate, formatInr } from "@/lib/utils";
+import { pickTopAccelerated } from "@/lib/detail-derivations";
 import { HistoryTimeline } from "@/components/history-timeline";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
@@ -14,6 +15,7 @@ import { FeesChargesGrid } from "@/components/detail/fees-charges-grid";
 import { ProductDetails } from "@/components/detail/product-details";
 import { ProsCons } from "@/components/detail/pros-cons";
 import { DeepDive } from "@/components/detail/deep-dive";
+import type { EnrichedCard } from "@/lib/types";
 
 interface Params {
   issuer: string;
@@ -32,10 +34,78 @@ export async function generateMetadata({
   const { issuer, slug } = await params;
   const card = getCardByIssuerAndSlug(issuer, slug);
   if (!card) return { title: "Card not found" };
-  const fee = card.current_fees?.annual_fee_inr ?? null;
   return {
     title: card.name,
-    description: `${card.name} — fees (${formatInr(fee)} annual), rewards and benefits. Source-linked and versioned.`,
+    description: composeMetaDescription(card),
+  };
+}
+
+/**
+ * Per-card meta description that highlights the actual differentiator —
+ * top accelerated rate, lounge counts, co-brand partner, fee — instead of
+ * the same generic stub on every page.
+ */
+function composeMetaDescription(card: EnrichedCard): string {
+  const parts: string[] = [];
+  const fee = card.current_fees?.annual_fee_inr ?? null;
+  const top = pickTopAccelerated(card);
+  const lounge = card.current_benefits?.lounge_access;
+  const partner = card.co_brand?.partner;
+
+  if (partner) {
+    parts.push(`${card.name} — co-branded with ${partner}`);
+  } else {
+    parts.push(`${card.name} from ${card.issuer_detail.name}`);
+  }
+  if (top) {
+    const rate = top.effective_rate != null ? `${top.effective_rate}%` : `${top.multiplier}×`;
+    parts.push(`earns ${rate} on ${top.category.replace(/-/g, " ")}`);
+  }
+  if (lounge?.international || lounge?.domestic) {
+    const bits: string[] = [];
+    if (lounge.international) bits.push(`${lounge.international.visits_per_cycle ?? "—"} international`);
+    if (lounge.domestic) bits.push(`${lounge.domestic.visits_per_cycle ?? "—"} domestic`);
+    parts.push(`${bits.join(" + ")} lounge visits/yr`);
+  }
+  if (fee !== null) {
+    parts.push(fee === 0 ? "lifetime free" : `${formatInr(fee)} annual fee`);
+  }
+  return parts.join("; ") + ".";
+}
+
+/** Static JSON-LD Product schema for SEO rich snippets. */
+function jsonLdForCard(card: EnrichedCard): Record<string, unknown> {
+  const fee = card.current_fees?.annual_fee_inr;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: card.name,
+    category: "Credit Card",
+    brand: {
+      "@type": "Organization",
+      name: card.issuer_detail.name,
+      url: card.issuer_detail.website,
+    },
+    description: composeMetaDescription(card),
+    ...(fee != null
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: String(fee),
+            priceCurrency: "INR",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: String(fee),
+              priceCurrency: "INR",
+              unitText: "ANNUM",
+            },
+            availability:
+              card.status === "discontinued"
+                ? "https://schema.org/Discontinued"
+                : "https://schema.org/InStock",
+          },
+        }
+      : {}),
   };
 }
 
@@ -95,11 +165,28 @@ export default async function CardPage({
             <span className="chip chip-success">Lifetime free</span>
           ) : null}
           {card.co_brand ? (
-            <span className="chip chip-brand">Co-brand · {card.co_brand.partner}</span>
+            card.co_brand.partner_website ? (
+              <a
+                href={card.co_brand.partner_website}
+                target="_blank"
+                rel="noreferrer"
+                className="chip chip-brand no-underline hover:underline"
+              >
+                Co-brand · {card.co_brand.partner} ↗
+              </a>
+            ) : (
+              <span className="chip chip-brand">Co-brand · {card.co_brand.partner}</span>
+            )
           ) : null}
         </div>
 
         <div className="flex items-center gap-2">
+          <Link
+            href={`/calculator?card=${card.id}`}
+            className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
+          >
+            Calculate rewards
+          </Link>
           <Link
             href={`/compare?cards=${card.id}`}
             className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
@@ -135,6 +222,28 @@ export default async function CardPage({
 
       {/* History */}
       <HistoryTimeline card={card} />
+
+      {/* Tag chips for discoverability */}
+      {(card.metadata.tags ?? []).length > 0 ? (
+        <section className="flex flex-wrap items-center gap-1.5 pt-1">
+          <span className="text-xs uppercase tracking-wide text-slate-500 mr-1">Tags</span>
+          {(card.metadata.tags ?? []).map((t) => (
+            <Link
+              key={t}
+              href={`/browse?tag=${t}`}
+              className="chip no-underline hover:bg-slate-100 hover:text-slate-900"
+            >
+              {t.replace(/-/g, " ")}
+            </Link>
+          ))}
+        </section>
+      ) : null}
+
+      {/* JSON-LD structured data for SEO. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdForCard(card)) }}
+      />
     </article>
   );
 }
@@ -142,6 +251,8 @@ export default async function CardPage({
 function EligibilitySection({ card }: { card: ReturnType<typeof getCardByIssuerAndSlug> }) {
   if (!card) return null;
   const e = card.eligibility;
+  const replacesId = card.application?.replaces_card ?? null;
+  const replaces = replacesId ? getCardById(replacesId) : null;
   return (
     <section className="rounded-xl border border-slate-200 bg-white">
       <header className="border-b border-slate-200 bg-slate-50 px-5 py-3">
@@ -165,6 +276,18 @@ function EligibilitySection({ card }: { card: ReturnType<typeof getCardByIssuerA
           }
         />
       </dl>
+      {replaces ? (
+        <p className="px-5 pb-3 text-sm text-slate-700">
+          Supersedes{" "}
+          <Link
+            href={`/card/${replaces.issuer}/${replaces.id.startsWith(`${replaces.issuer}-`) ? replaces.id.slice(replaces.issuer.length + 1) : replaces.id}`}
+            className="text-brand-700 hover:text-brand-800"
+          >
+            {replaces.name}
+          </Link>
+          .
+        </p>
+      ) : null}
       {e.notes ? <p className="px-5 pb-5 text-sm text-slate-700">{e.notes}</p> : null}
     </section>
   );

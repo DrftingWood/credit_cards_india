@@ -9,11 +9,32 @@ Example:
 """
 from __future__ import annotations
 
+import re
 import sys
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+# Heuristic: when a card slug or name contains any of these substrings, it is
+# probably a co-brand of the listed loyalty programme. The scaffold prints a
+# suggestion; the author still has to wire `rewards[].loyalty_program` and
+# verify earn structure against the issuer's product page.
+PROGRAM_HEURISTICS = [
+    (re.compile(r"indigo|6e[\s-]rewards"), "indigo-bluchip"),
+    (re.compile(r"marriott|bonvoy"), "marriott-bonvoy"),
+    (re.compile(r"tata[\s-]?neu"), "tata-neu-points"),
+    (re.compile(r"irctc"), "irctc-loyalty"),
+    (re.compile(r"air[\s-]india|flying[\s-]returns|maharaja"), "air-india-flying-returns"),
+]
+
+
+def infer_program(slug: str, name: str) -> str | None:
+    text = f"{slug} {name}".lower()
+    for pattern, program_id in PROGRAM_HEURISTICS:
+        if pattern.search(text):
+            return program_id
+    return None
 TEMPLATE = """id: {issuer}-{slug}
 name: {name}
 issuer: {issuer}
@@ -104,6 +125,18 @@ def main(argv: list[str]) -> int:
     content = TEMPLATE.format(issuer=issuer, slug=slug, name=name, today=date.today().isoformat())
     out_path.write_text(content, encoding="utf-8")
     print(f"Created {out_path.relative_to(ROOT)}. Fill in the TODOs, then run scripts/validate.py.")
+
+    program = infer_program(slug, name)
+    if program is not None:
+        program_path = ROOT / "data" / "loyalty_programs"
+        if any(program_path.rglob(f"{program}.yaml")):
+            print(
+                f"\nHint: this card looks like a co-brand of '{program}' "
+                f"(see data/loyalty_programs/**/{program}.yaml). Consider:\n"
+                f"  - Adding `loyalty_program: {program}` to the rewards record.\n"
+                f"  - Setting `card_attributable_rate` separately from `effective_rate`.\n"
+                f"  - Using `stacks_with_program: true` on accelerators that stack programme earn."
+            )
     return 0
 
 

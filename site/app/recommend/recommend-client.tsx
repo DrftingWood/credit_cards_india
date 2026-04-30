@@ -21,7 +21,7 @@ type AirlinePref = "indigo" | "air-india-vistara" | "ota";
 type FoodEcosystem = "swiggy" | "zomato-blinkit" | "bigbasket-zepto" | "offline";
 type FuelStation = "iocl" | "bpcl" | "hpcl" | "none";
 type LoungePref = "none" | "domestic-only" | "domestic-unlimited" | "international";
-type RecurringSpend = "utilities-rent" | "movies-entertainment" | "high-forex";
+type RecurringSpend = "utilities-rent" | "movies-entertainment" | "high-forex" | "bank-portal-bookings";
 
 interface FormState {
   income: IncomeBand | null;
@@ -122,10 +122,15 @@ const LOUNGE_OPTIONS: Array<{ id: LoungePref; label: string }> = [
   { id: "international", label: "International (Priority Pass)" },
 ];
 
-const RECURRING_OPTIONS: Array<{ id: RecurringSpend; label: string }> = [
+const RECURRING_OPTIONS: Array<{ id: RecurringSpend; label: string; hint?: string }> = [
   { id: "utilities-rent", label: "Utility bills & rent" },
   { id: "movies-entertainment", label: "Movies & entertainment" },
   { id: "high-forex", label: "High forex / international spend" },
+  {
+    id: "bank-portal-bookings",
+    label: "I book travel via bank portals",
+    hint: "Unlocks SmartBuy / Travel EDGE / iShop accelerators on your shortlist.",
+  },
 ];
 
 const STEP_LABELS = ["Profile", "Spend", "Brand fit", "Loyalty", "Lifestyle"];
@@ -620,6 +625,7 @@ function Step5({ state, setState }: { state: FormState; setState: SetState }) {
               checked={state.recurring.includes(opt.id)}
               onChange={() => toggleRecurring(opt.id)}
               label={opt.label}
+              hint={opt.hint}
             />
           ))}
         </div>

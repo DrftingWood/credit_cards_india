@@ -1,4 +1,9 @@
-import type { EnrichedCard, AcceleratedReward, RewardRecord } from "./types";
+import type {
+  EnrichedCard,
+  AcceleratedReward,
+  RewardRecord,
+  LoyaltyProgram,
+} from "./types";
 import { CanonicalCategory, resolveBuckets } from "./category-mapping";
 
 export type SpendProfile = Record<CanonicalCategory, number>;
@@ -8,6 +13,7 @@ export interface BucketBreakdown {
   monthly_spend: number;
   effective_rate_pct: number;
   monthly_value_inr: number;
+  basis?: "general" | "channel-locked";
   note?: string;
 }
 
@@ -22,68 +28,181 @@ export interface CardScore {
   disclaimer?: string;
 }
 
+export interface ScoringContext {
+  /** Merchant tokens the user is willing to transact through. When omitted, the calculator is "optimistic" — channel-locked accelerators fire as if the user always books on the right channel. */
+  channelMix?: Set<string>;
+  /** program-id → tier-id (e.g. {"indigo-bluchip": "silver"}). */
+  tierMap?: Record<string, string | null>;
+  /** id → loyalty program record. */
+  programs?: Record<string, LoyaltyProgram>;
+}
+
 const MONTHS_PER_YEAR = 12;
 
-function baseRatePct(rewards: RewardRecord | null): number {
+/** Best-available unit value: program.realized > base.realized > base.face. */
+function unitValueFor(rewards: RewardRecord, programs?: Record<string, LoyaltyProgram>): number | null {
+  const program = rewards.loyalty_program ? programs?.[rewards.loyalty_program] : null;
+  if (program) return program.unit_value_inr.realized;
+  if (rewards.base.unit_value_inr_realized != null) return rewards.base.unit_value_inr_realized;
+  if (rewards.base.unit_value_inr != null) return rewards.base.unit_value_inr;
+  return null;
+}
+
+function baseRatePct(rewards: RewardRecord | null, programs?: Record<string, LoyaltyProgram>): number {
   if (!rewards) return 0;
-  const b = rewards.base;
-  if (b.unit_value_inr == null) return 0;
-  return (b.rate * b.unit_value_inr) / b.per_inr;
+  const uv = unitValueFor(rewards, programs);
+  if (uv == null) return 0;
+  return (rewards.base.rate * uv) / rewards.base.per_inr;
+}
+
+/** Returns true if the accelerator's channel constraint is satisfied (or absent). */
+function channelSatisfied(a: AcceleratedReward, ctx: ScoringContext | undefined): boolean {
+  const ch = a.channel;
+  if (!ch) return true;
+  const required = ch.required !== false;
+  if (!required) return true;
+  // If caller didn't specify a channel mix, treat as optimistic (current /calculator behaviour).
+  if (!ctx || !ctx.channelMix) return true;
+  if (ctx.channelMix.size === 0) return false;
+  for (const m of ch.merchants) {
+    if (ctx.channelMix.has(m)) return true;
+  }
+  return false;
+}
+
+/** Sum of program baseline + matching channel bonuses + matching tier bonus, expressed as percent of spend. */
+function programStackPct(
+  rewards: RewardRecord,
+  ctx: ScoringContext | undefined,
+  unitValue: number,
+): number {
+  if (!rewards.loyalty_program || !ctx?.programs) return 0;
+  const program = ctx.programs[rewards.loyalty_program];
+  if (!program?.earn) return 0;
+  let pct = 0;
+
+  const baseline = program.earn.baseline;
+  if (baseline) pct += (baseline.rate * unitValue) / baseline.per_inr;
+
+  if (program.earn.channels && ctx.channelMix) {
+    for (const c of program.earn.channels) {
+      const hit = c.merchants.some((m) => ctx.channelMix!.has(m));
+      if (hit) pct += (c.rate * unitValue) / c.per_inr;
+    }
+  }
+
+  const tierId = ctx.tierMap?.[rewards.loyalty_program] ?? null;
+  if (tierId && program.earn.tiers) {
+    const tier = program.earn.tiers.find((t) => t.id === tierId);
+    if (tier) pct += (tier.bonus_rate * unitValue) / tier.bonus_per_inr;
+  }
+
+  return pct;
+}
+
+function acceleratorRatePct(
+  a: AcceleratedReward,
+  rewards: RewardRecord,
+  ctx: ScoringContext | undefined,
+): number | null {
+  const unitValue = unitValueFor(rewards, ctx?.programs);
+
+  // earn_components form takes precedence — sum components whose gates are satisfied.
+  if (a.earn_components && a.earn_components.length > 0) {
+    if (unitValue == null) return null;
+    let pct = 0;
+    for (const c of a.earn_components) {
+      const perInr = c.per_inr ?? 100;
+      // Tier gate
+      if (c.requires_tier) {
+        const programId = rewards.loyalty_program;
+        const userTier = programId ? ctx?.tierMap?.[programId] : null;
+        if (userTier !== c.requires_tier) continue;
+      }
+      // Channel gate
+      if (c.requires_channel && c.requires_channel.length > 0) {
+        if (!ctx?.channelMix) {
+          // optimistic: count it
+        } else {
+          const hit = c.requires_channel.some((m) => ctx.channelMix!.has(m));
+          if (!hit) continue;
+        }
+      }
+      pct += (c.rate * unitValue) / perInr;
+    }
+    return pct;
+  }
+
+  // Card-attributable scalar form.
+  if (a.card_attributable_rate != null && unitValue != null) {
+    const perInr = a.card_attributable_per_inr ?? 100;
+    let pct = (a.card_attributable_rate * unitValue) / perInr;
+    if (a.stacks_with_program) {
+      pct += programStackPct(rewards, ctx, unitValue);
+    }
+    return pct;
+  }
+
+  // Legacy effective_rate / multiplier paths (back-compat, optimistic).
+  const baseUnitValue = unitValue;
+  if (a.effective_rate != null && (a.cap_unit === "cashback-inr" || a.cap_unit === undefined)) {
+    return a.effective_rate;
+  }
+  if (a.effective_rate != null && baseUnitValue != null) {
+    return (a.effective_rate * baseUnitValue) / 1;
+  }
+  if (baseUnitValue != null) {
+    const base = (rewards.base.rate * baseUnitValue) / rewards.base.per_inr;
+    return base * a.multiplier;
+  }
+  return null;
 }
 
 function acceleratedRateForBucket(
   accelerated: AcceleratedReward[],
   bucket: CanonicalCategory,
   rewards: RewardRecord,
-): { rate_pct: number; cap_monthly_inr: number | null } | null {
-  let best: { rate_pct: number; cap_monthly_inr: number | null } | null = null;
-  const baseUnitValue = rewards.base.unit_value_inr;
+  ctx: ScoringContext | undefined,
+): { rate_pct: number; cap_monthly_inr: number | null; basis: "general" | "channel-locked" } | null {
+  let best: { rate_pct: number; cap_monthly_inr: number | null; basis: "general" | "channel-locked" } | null = null;
+  const unitValue = unitValueFor(rewards, ctx?.programs);
 
   for (const a of accelerated) {
     const buckets = resolveBuckets(a.category, a.canonical_categories);
     if (!buckets.includes(bucket)) continue;
 
-    let ratePct: number | null = null;
-    if (a.effective_rate != null && (a.cap_unit === "cashback-inr" || a.cap_unit === undefined)) {
-      // When cap_unit is cashback-inr, effective_rate is effectively a %.
-      ratePct = a.effective_rate;
-    } else if (a.effective_rate != null && baseUnitValue != null) {
-      // `effective_rate` is points per ₹100 (schema convention) — convert via unit value.
-      ratePct = (a.effective_rate * baseUnitValue) / 1; // per ₹100 with unit_value_inr is already pct-like
-    } else if (baseUnitValue != null) {
-      // Fall back to multiplier × base rate
-      const base = (rewards.base.rate * baseUnitValue) / rewards.base.per_inr;
-      ratePct = base * a.multiplier;
-    }
+    if (!channelSatisfied(a, ctx)) continue;
 
+    const ratePct = acceleratorRatePct(a, rewards, ctx);
     if (ratePct == null) continue;
 
     let capMonthlyInr: number | null = null;
     if (typeof a.cap_per_cycle === "number") {
-      // Convert cap to INR cap:
       if (a.cap_unit === "cashback-inr") {
         capMonthlyInr = a.cap_per_cycle;
-      } else if (baseUnitValue != null) {
-        // "points" or "miles" — multiply by unit value
-        capMonthlyInr = a.cap_per_cycle * baseUnitValue;
+      } else if (unitValue != null) {
+        capMonthlyInr = a.cap_per_cycle * unitValue;
       } else if (a.cap_unit === "spend-inr") {
-        // Cap is on spend itself
         capMonthlyInr = (a.cap_per_cycle * ratePct) / 100;
       }
-      // Normalise caps by cycle length (approximate)
       if (a.cycle === "quarterly" && capMonthlyInr != null) capMonthlyInr = capMonthlyInr / 3;
       if (a.cycle === "annual" && capMonthlyInr != null) capMonthlyInr = capMonthlyInr / 12;
     }
 
-    const candidate = { rate_pct: ratePct, cap_monthly_inr: capMonthlyInr };
+    const basis: "general" | "channel-locked" = a.channel ? "channel-locked" : "general";
+    const candidate = { rate_pct: ratePct, cap_monthly_inr: capMonthlyInr, basis };
     if (!best || candidate.rate_pct > best.rate_pct) best = candidate;
   }
   return best;
 }
 
-export function scoreCard(card: EnrichedCard, spend: SpendProfile): CardScore {
+export function scoreCard(
+  card: EnrichedCard,
+  spend: SpendProfile,
+  ctx?: ScoringContext,
+): CardScore {
   const rewards = card.current_rewards;
-  const baseRate = baseRatePct(rewards);
+  const baseRate = baseRatePct(rewards, ctx?.programs);
   const buckets: BucketBreakdown[] = [];
   let monthlyValue = 0;
   let totalSpend = 0;
@@ -95,13 +214,15 @@ export function scoreCard(card: EnrichedCard, spend: SpendProfile): CardScore {
 
     let rate = baseRate;
     let cap: number | null = null;
+    let basis: "general" | "channel-locked" = "general";
     let note: string | undefined;
 
     if (rewards?.accelerated?.length) {
-      const hit = acceleratedRateForBucket(rewards.accelerated, bucket, rewards);
+      const hit = acceleratedRateForBucket(rewards.accelerated, bucket, rewards, ctx);
       if (hit) {
         rate = hit.rate_pct;
         cap = hit.cap_monthly_inr;
+        basis = hit.basis;
       }
     }
 
@@ -117,6 +238,7 @@ export function scoreCard(card: EnrichedCard, spend: SpendProfile): CardScore {
       monthly_spend: amount,
       effective_rate_pct: rate,
       monthly_value_inr: monthlyValueForBucket,
+      basis,
       note,
     });
   }
@@ -145,9 +267,13 @@ export function scoreCard(card: EnrichedCard, spend: SpendProfile): CardScore {
   };
 }
 
-export function rankCards(cards: EnrichedCard[], spend: SpendProfile): CardScore[] {
+export function rankCards(
+  cards: EnrichedCard[],
+  spend: SpendProfile,
+  ctx?: ScoringContext,
+): CardScore[] {
   return cards
     .filter((c) => c.current_rewards && c.computed.is_active && !c.computed.is_invite_only)
-    .map((c) => scoreCard(c, spend))
+    .map((c) => scoreCard(c, spend, ctx))
     .sort((a, b) => b.annual_net_inr - a.annual_net_inr);
 }

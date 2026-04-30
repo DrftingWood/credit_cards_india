@@ -1,0 +1,67 @@
+# Authoritative merchant token index for accelerator channel.merchants[].
+# Validator (scripts/validate.py) cross-checks every accelerator's tokens
+# against this file. Adding a new merchant means a one-line PR here, not a
+# schema change.
+#
+# Keys are the closed channel.class enum values from schema/card.schema.json;
+# values are the tokens admissible under each class.
+
+issuer-portal:
+  - smartbuy            # HDFC SmartBuy
+  - edge-travel         # Axis Travel EDGE
+  - edge-mall           # Axis Edge Mall / shopping portal
+  - ishop               # ICICI iShop
+  - sbi-rewardz         # SBI Card Rewardz portal
+  - amex-travel         # Amex India travel portal
+
+cobrand-merchant:
+  - indigo-app
+  - indigo-web
+  - air-india-direct
+  - amazon-pay
+  - tata-neu
+  - marriott-direct
+  - irctc-direct
+  - flipkart
+  - myntra
+  - reliance-retail
+  - adani-one
+  - swiggy-one
+  - vistara-direct
+
+third-party-ota:
+  - mmt
+  - easemytrip
+  - cleartrip
+  - yatra
+  - ixigo
+  - ota-any              # generic OTA bucket when user signals "no preference"
+
+food-delivery:
+  - swiggy
+  - zomato
+  - eazy-diner
+
+quick-commerce:
+  - blinkit
+  - zepto
+  - bigbasket
+  - instamart
+
+fuel-network:
+  - iocl
+  - bpcl
+  - hpcl
+  - shell
+  - reliance-bp
+  - fuel-network-any
+
+utility-rail:
+  - bbps
+  - irctc-rail
+
+physical:
+  - pos-any
+
+online-any:
+  - any

@@ -1,0 +1,61 @@
+id: indigo-bluchip
+name: IndiGo BluChip
+type: airline
+partner: IndiGo
+currency: miles
+currency_name: IndiGo BluChips
+
+unit_value_inr:
+  face: 1.0
+  realized: 0.5
+  realized_source:
+    method: midpoint
+    range: [0.4, 0.6]
+    notes: "BluChip face value is ₹1 on IndiGo bookings, but realized ₹0.4-0.6 due to fare inflation on award redemptions and limited blackout-free availability. Midpoint used for math; band documented for reviewability. BluChips redeem only on IndiGo (no transfer partners), so no upside."
+
+earn:
+  baseline:
+    rate: 6
+    per_inr: 100
+    notes: "Earned by any BluChip member booking direct on IndiGo, regardless of credit card."
+  channels:
+    - channel: merchant-app
+      merchants: [indigo-app]
+      rate: 3
+      per_inr: 100
+      notes: "Bonus for booking via the IndiGo mobile app."
+    - channel: merchant-web
+      merchants: [indigo-web]
+      rate: 3
+      per_inr: 100
+      notes: "Bonus for booking via goindigo.in."
+  tiers:
+    - id: standard
+      name: BluChip Standard
+      bonus_rate: 0
+      bonus_per_inr: 100
+    - id: silver
+      name: BluChip Silver
+      requirements: "Achieved on threshold IndiGo flight count or annual spend; reset annually."
+      bonus_rate: 4
+      bonus_per_inr: 100
+    - id: gold
+      name: BluChip Gold
+      requirements: "Top-tier BluChip status."
+      bonus_rate: 8
+      bonus_per_inr: 100
+
+redemption_paths:
+  - type: voucher
+    program: IndiGo flights and 6E Prime add-ons
+    rate_inr_per_unit:
+      face: 1.0
+      realized: 0.5
+    constraints: "Redeemable on IndiGo bookings only. No airline / hotel transfer partners."
+
+metadata:
+  last_verified_on: 2026-04-22
+  source:
+    url: https://www.goindigo.in/bluchip.html
+    retrieved_on: 2026-04-22
+    notes: "Earn structure decomposed from IndiGo BluChip programme docs and SBI co-brand product pages. Tier bonus rates are illustrative midpoints; refine when issuer-confirmed slabs are published."

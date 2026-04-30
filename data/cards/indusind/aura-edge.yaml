@@ -1,0 +1,76 @@
+id: indusind-aura-edge
+name: IndusInd Bank Aura Edge Credit Card
+issuer: indusind
+network: visa
+network_tier: platinum
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2020-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2020-01-01
+    effective_until: null
+    joining_fee_inr: 350
+    annual_fee_inr: 350
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/indusind-bank/indusind-bank-aura-edge-credit-card/
+      retrieved_on: 2026-04-30
+
+rewards:
+  - effective_from: 2020-01-01
+    effective_until: null
+    currency: cashback
+    currency_name: CashBack
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: shopping-dining-entertainment
+        canonical_categories: [online, dining, entertainment]
+        multiplier: 4
+        effective_rate: 4
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    source:
+      url: https://www.paisabazaar.com/indusind-bank/indusind-bank-aura-edge-credit-card/
+      retrieved_on: 2026-04-30
+
+benefits:
+  - effective_from: 2020-01-01
+    effective_until: null
+    lounge_access: null
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/indusind-bank/indusind-bank-aura-edge-credit-card/
+      retrieved_on: 2026-04-30
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 240000
+    self_employed: null
+  credit_score_min: 720
+  residency: resident-indian
+
+metadata:
+  last_verified_on: 2026-04-30
+  tags: [mid, cashback]

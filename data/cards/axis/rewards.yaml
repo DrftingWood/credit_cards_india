@@ -1,0 +1,78 @@
+id: axis-rewards
+name: Axis Bank Rewards Credit Card
+issuer: axis
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2018-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2018-01-01
+    effective_until: null
+    joining_fee_inr: 1000
+    annual_fee_inr: 1000
+    fee_waiver:
+      spend_inr: 250000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/axis-bank/axis-bank-rewards-credit-card/
+      retrieved_on: 2026-04-30
+
+rewards:
+  - effective_from: 2018-01-01
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 2
+      per_inr: 125
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
+    accelerated:
+      - category: departmental-stores
+        canonical_categories: [groceries]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    source:
+      url: https://www.paisabazaar.com/axis-bank/axis-bank-rewards-credit-card/
+      retrieved_on: 2026-04-30
+
+benefits:
+  - effective_from: 2018-01-01
+    effective_until: null
+    lounge_access: null
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/axis-bank/axis-bank-rewards-credit-card/
+      retrieved_on: 2026-04-30
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 240000
+    self_employed: null
+  credit_score_min: 720
+  residency: resident-indian
+
+metadata:
+  last_verified_on: 2026-04-30
+  tags: [entry, groceries]

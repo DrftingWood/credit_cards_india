@@ -1,0 +1,80 @@
+id: icici-manchester-united-platinum
+name: Manchester United ICICI Bank Platinum Credit Card
+issuer: icici
+network: mastercard
+network_tier: world
+tier: mid
+card_type: credit
+co_brand:
+  partner: Manchester United
+  category: lifestyle
+status: active
+launched_on: 2018-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2018-01-01
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/icici-bank/manchester-united-platinum-credit-card/
+      retrieved_on: 2026-04-30
+
+rewards:
+  - effective_from: 2018-01-01
+    effective_until: null
+    currency: points
+    currency_name: ICICI Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
+    accelerated:
+      - category: online-departmental-grocery
+        canonical_categories: [online, groceries]
+        multiplier: 4
+        effective_rate: 4
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    source:
+      url: https://www.paisabazaar.com/icici-bank/manchester-united-platinum-credit-card/
+      retrieved_on: 2026-04-30
+
+benefits:
+  - effective_from: 2018-01-01
+    effective_until: null
+    lounge_access: null
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/icici-bank/manchester-united-platinum-credit-card/
+      retrieved_on: 2026-04-30
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 300000
+    self_employed: null
+  credit_score_min: 720
+  residency: resident-indian
+
+metadata:
+  last_verified_on: 2026-04-30
+  tags: [mid, co-branded, lifestyle]

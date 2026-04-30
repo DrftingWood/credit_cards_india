@@ -1,0 +1,80 @@
+id: axis-samsung-signature
+name: Samsung Axis Bank Signature Credit Card
+issuer: axis
+network: visa
+network_tier: signature
+tier: mid
+card_type: credit
+co_brand:
+  partner: Samsung
+  category: retail
+status: active
+launched_on: 2024-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/axis-bank/samsung-axis-bank-signature-credit-card/
+      retrieved_on: 2026-04-30
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: cashback
+    currency_name: CashPoints
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: samsung-purchases
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    source:
+      url: https://www.paisabazaar.com/axis-bank/samsung-axis-bank-signature-credit-card/
+      retrieved_on: 2026-04-30
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access: null
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/axis-bank/samsung-axis-bank-signature-credit-card/
+      retrieved_on: 2026-04-30
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 240000
+    self_employed: null
+  credit_score_min: 720
+  residency: resident-indian
+
+metadata:
+  last_verified_on: 2026-04-30
+  tags: [mid, co-branded, shopping, cashback]

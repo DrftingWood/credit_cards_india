@@ -1,0 +1,71 @@
+id: icici-british-airways-classic
+name: British Airways American Express Classic Card (ICICI Bank)
+issuer: icici
+network: amex
+network_tier: platinum
+tier: premium
+card_type: credit
+co_brand:
+  partner: British Airways
+  category: airline
+status: discontinued
+launched_on: 2018-01-01
+discontinued_on: 2024-01-01
+
+fees:
+  - effective_from: 2018-01-01
+    effective_until: null
+    joining_fee_inr: 1500
+    annual_fee_inr: 1500
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/icici-bank/british-airways-american-express-credit-card/
+      retrieved_on: 2026-04-30
+
+rewards:
+  - effective_from: 2018-01-01
+    effective_until: null
+    currency: miles
+    currency_name: Avios
+    base:
+      rate: 5
+      per_inr: 100
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.4
+    accelerated: []
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    source:
+      url: https://www.paisabazaar.com/icici-bank/british-airways-american-express-credit-card/
+      retrieved_on: 2026-04-30
+
+benefits:
+  - effective_from: 2018-01-01
+    effective_until: null
+    lounge_access: null
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/icici-bank/british-airways-american-express-credit-card/
+      retrieved_on: 2026-04-30
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 600000
+    self_employed: null
+  credit_score_min: 750
+  residency: resident-indian
+
+metadata:
+  last_verified_on: 2026-04-30
+  tags: [premium, airline, miles, discontinued]

@@ -1,0 +1,75 @@
+id: bob-select
+name: BoB Select Credit Card
+issuer: bob
+network: rupay
+network_tier: select
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2022-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-01-01
+    effective_until: null
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/bob-bank/bob-select-credit-card/
+      retrieved_on: 2026-04-30
+
+rewards:
+  - effective_from: 2022-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
+    accelerated: []
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    source:
+      url: https://www.paisabazaar.com/bob-bank/bob-select-credit-card/
+      retrieved_on: 2026-04-30
+
+benefits:
+  - effective_from: 2022-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        via: [dreamfolks]
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/bob-bank/bob-select-credit-card/
+      retrieved_on: 2026-04-30
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 240000
+    self_employed: null
+  credit_score_min: 720
+  residency: resident-indian
+
+metadata:
+  last_verified_on: 2026-04-30
+  tags: [mid, rupay, lounge]

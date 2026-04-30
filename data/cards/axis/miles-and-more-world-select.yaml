@@ -1,0 +1,75 @@
+id: axis-miles-and-more-world-select
+name: Axis Bank Miles & More World Select Credit Card
+issuer: axis
+network: mastercard
+network_tier: world-elite
+tier: premium
+card_type: credit
+co_brand:
+  partner: Miles & More (Lufthansa)
+  category: airline
+status: active
+launched_on: 2019-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2019-01-01
+    effective_until: null
+    joining_fee_inr: 5000
+    annual_fee_inr: 5000
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/axis-bank/axis-bank-miles-and-more-world-select-credit-card/
+      retrieved_on: 2026-04-30
+
+rewards:
+  - effective_from: 2019-01-01
+    effective_until: null
+    currency: miles
+    currency_name: Miles & More Award Miles
+    base:
+      rate: 6
+      per_inr: 200
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.6
+    accelerated: []
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    source:
+      url: https://www.paisabazaar.com/axis-bank/axis-bank-miles-and-more-world-select-credit-card/
+      retrieved_on: 2026-04-30
+
+benefits:
+  - effective_from: 2019-01-01
+    effective_until: null
+    lounge_access:
+      international:
+        visits_per_cycle: 8
+        cycle: annual
+        via: [priority-pass]
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/axis-bank/axis-bank-miles-and-more-world-select-credit-card/
+      retrieved_on: 2026-04-30
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: null
+  credit_score_min: 750
+  residency: resident-indian
+
+metadata:
+  last_verified_on: 2026-04-30
+  tags: [premium, airline, miles, international]

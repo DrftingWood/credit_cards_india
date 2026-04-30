@@ -1,0 +1,79 @@
+id: indusind-avios-visa-infinite
+name: IndusInd Bank Avios Visa Infinite Credit Card
+issuer: indusind
+network: visa
+network_tier: infinite
+tier: super-premium
+card_type: credit
+co_brand:
+  partner: British Airways Avios
+  category: airline
+status: active
+launched_on: 2024-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 40000
+    annual_fee_inr: 40000
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/indusind-bank/indusind-avios-visa-infinite-credit-card/
+      retrieved_on: 2026-04-30
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: miles
+    currency_name: Avios
+    base:
+      rate: 3
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.7
+    accelerated: []
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    source:
+      url: https://www.paisabazaar.com/indusind-bank/indusind-avios-visa-infinite-credit-card/
+      retrieved_on: 2026-04-30
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: "unlimited"
+        cycle: annual
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: "unlimited"
+        cycle: annual
+        via: [priority-pass]
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/indusind-bank/indusind-avios-visa-infinite-credit-card/
+      retrieved_on: 2026-04-30
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 3500000
+    self_employed: null
+  credit_score_min: 780
+  residency: resident-indian
+
+metadata:
+  last_verified_on: 2026-04-30
+  tags: [super-premium, metal, airline, miles, lounge]

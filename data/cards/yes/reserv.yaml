@@ -37,6 +37,7 @@ rewards:
       rate: 3
       per_inr: 200
       unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
     accelerated:
       - category: grocery-dining-supermarket
         canonical_categories: [groceries, dining]

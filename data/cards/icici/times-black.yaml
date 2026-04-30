@@ -40,6 +40,7 @@ rewards:
       rate: 3
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: travel-dining-international
         canonical_categories: [dining, travel, international]

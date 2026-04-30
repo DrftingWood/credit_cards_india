@@ -36,6 +36,7 @@ rewards:
       rate: 2
       per_inr: 100
       unit_value_inr: 0.15
+      unit_value_inr_realized: 0.12
     accelerated:
       - category: online-spend
         canonical_categories: [online]

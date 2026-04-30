@@ -37,6 +37,7 @@ rewards:
       rate: 12
       per_inr: 200
       unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
     accelerated:
       - category: international-spend
         canonical_categories: [international]

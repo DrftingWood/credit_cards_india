@@ -37,6 +37,7 @@ rewards:
       rate: 1
       per_inr: 150
       unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
     accelerated:
       - category: dining-movies-grocery-departmental
         canonical_categories: [groceries, dining, entertainment]

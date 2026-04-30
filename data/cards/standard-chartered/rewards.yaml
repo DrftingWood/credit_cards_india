@@ -37,6 +37,7 @@ rewards:
       rate: 1
       per_inr: 150
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.4
     accelerated:
       - category: online-retail-department
         canonical_categories: [online]

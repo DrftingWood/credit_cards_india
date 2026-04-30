@@ -37,6 +37,7 @@ rewards:
       rate: 2
       per_inr: 200
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: travel-online-offline
         canonical_categories: [online, travel]

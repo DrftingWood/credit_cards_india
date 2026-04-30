@@ -7,20 +7,25 @@ currency_name: Maharaja Points
 
 unit_value_inr:
   face: 1.0
-  realized: 0.45
+  realized: 0.5
   realized_source:
     method: midpoint
-    range: [0.35, 0.55]
+    range: [0.35, 0.70]
     notes: |
-      PROVISIONAL realized number — placeholder. Award tickets carry
-      meaningful taxes / fuel surcharges and fare-class restrictions; Star
-      Alliance partner redemptions can extract better cents-per-mile but
-      aren't the typical use. The 0.45 midpoint is unsourced; refine
-      against a basket of representative redemptions in audit.
+      Confirmed band, partial. Air India sells Maharaja Points at
+      ₹1.50/point (their selling price ≠ realized redemption value).
+      Community-sourced optimal redemption hacks extract up to ₹1.30/pt
+      on specific Star Alliance partner sweet spots; typical award
+      redemptions on Air India directly are much lower (~₹0.35-0.50/pt
+      after tax/fuel-surcharge drag). The 0.50 midpoint reflects a
+      realistic blend of typical-case and occasional optimisation.
     references:
       - url: https://thepointsguy.com/loyalty-programs/air-india-flying-returns/
         retrieved_on: 2026-04-30
-        notes: "Community valuation context for Maharaja Points post-rebrand."
+        notes: "TPG guide to Maharaja Club; covers redemption mechanics post-rebrand."
+      - url: https://www.paisabazaar.com/credit-card/air-india-maharaja-club-programme/
+        retrieved_on: 2026-04-30
+        notes: "Paisabazaar overview of Maharaja Club earn and redeem options."
 
 earn:
   baseline:

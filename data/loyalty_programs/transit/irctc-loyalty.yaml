@@ -11,7 +11,11 @@ unit_value_inr:
   realized_source:
     method: midpoint
     range: [0.85, 1.0]
-    notes: "1 RP = ₹1 toward IRCTC rail bookings. Realized close to face because rail fares are not award-inflated; small drag from convenience fees on award bookings."
+    notes: |
+      PROVISIONAL — placeholder. The "1 RP = ₹1 against IRCTC rail" face
+      value is widely cited; the small haircut to 0.9 is an unsourced
+      assumption (no real fare inflation on rail awards, only minor
+      convenience-fee drag). Refine with a primary source.
 
 earn:
   baseline:
@@ -38,4 +42,8 @@ metadata:
   source:
     url: https://www.irctc.co.in
     retrieved_on: 2026-04-22
-    notes: "IRCTC's points are essentially card-issued; this file exists primarily to centralise the realized unit value and let card YAMLs reference it."
+    notes: |
+      PROVISIONAL — IRCTC's points are essentially card-issued (no programme
+      baseline). This file primarily centralises the realized unit value
+      so the three IRCTC co-brand cards can reference it. Refine with a
+      primary source on the IRCTC redemption mechanics.

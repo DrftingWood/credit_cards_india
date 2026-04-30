@@ -51,7 +51,7 @@ rewards:
         canonical_categories: [travel]
         multiplier: 1
         effective_rate: 19
-        card_attributable_rate: 5
+        card_attributable_rate: 3
         card_attributable_per_inr: 100
         stacks_with_program: true
         cap_per_cycle: "unlimited"

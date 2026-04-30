@@ -11,7 +11,12 @@ unit_value_inr:
   realized_source:
     method: midpoint
     range: [0.85, 1.0]
-    notes: "1 NeuCoin = ₹1 across the Tata Neu ecosystem (Croma, BigBasket, AirAsia/Air India bookings, Westside, IHCL/Taj). Realized value sits just below face because some Tata brands (e.g. some Westside SKUs) cap NeuCoin redemption per cart. No transfer partners."
+    notes: |
+      PROVISIONAL — placeholder. The "1 NeuCoin = ₹1 across Tata brands"
+      face value is widely advertised, but the realized haircut to 0.85-1.0
+      (for per-cart redemption caps on some brands) is an unsourced
+      estimate. Refine against a primary source on Tata Neu redemption
+      mechanics.
 
 earn:
   baseline:
@@ -38,4 +43,7 @@ metadata:
   source:
     url: https://www.tataneu.com/neupass
     retrieved_on: 2026-04-22
-    notes: "Earn structure decomposed from Tata NeuPass programme docs and HDFC Tata Neu card product pages."
+    notes: |
+      PROVISIONAL — baseline 1.5 + channel 3.5 earn structure is
+      illustrative, not verified against Tata NeuPass docs. Refine with a
+      primary source.

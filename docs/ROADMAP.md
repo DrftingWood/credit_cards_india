@@ -9,6 +9,42 @@ For the design rationale that motivated this list, see
 
 ---
 
+## ⚠ Provisional realized unit values — must be sourced
+
+Every `unit_value_inr_realized` in the dataset today is a **placeholder**,
+not a researched value:
+
+- The five `data/loyalty_programs/*/*.yaml` files (BluChip, Bonvoy,
+  Tata Neu, IRCTC, Flying Returns) carry `realized` numbers and
+  `realized_source.notes` blocks marked `PROVISIONAL`. The earn baseline
+  / channel / tier rates inside `earn:` are equally provisional.
+- The 17 wave-7 cards that got inline `unit_value_inr_realized` (see
+  the Wave 7 row below) used per-issuer haircuts of 30-60% off face. The
+  haircuts are within community-cited bands but no individual number
+  is sourced.
+- The card-level `card_attributable_rate` numbers on co-brand cards
+  (the IndiGo-on-Kotak/IDFC/SBI splits in particular) are conservative
+  estimates from product-page narratives, not issuer-confirmed slabs.
+
+**Practical impact**: relative ordering across cards is probably roughly
+right (issuer-relative haircuts move together); absolute ₹/yr figures
+in `/recommend` will be off — possibly meaningfully. The schema and
+calculator are sound; the numbers feeding them are not.
+
+**To unblock production trust**, an audit pass needs to:
+1. Fetch the primary product page or T&Cs PDF for each loyalty programme
+   and each migrated card.
+2. Replace each `realized` number with a sourced value, populate
+   `realized_source.references[]` on the programme YAML.
+3. Verify `card_attributable_rate` decomposition against issuer slab
+   tables; switch to `earn_components[]` where the per-source breakdown
+   matters.
+
+Until then, treat ranked output as "directionally correct, magnitudes
+approximate."
+
+---
+
 ## Card data migration
 
 The schema/calculator/recommender redesign (D-8 through D-12) ships

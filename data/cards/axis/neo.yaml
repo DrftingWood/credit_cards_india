@@ -37,6 +37,7 @@ rewards:
       rate: 1
       per_inr: 200
       unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
     accelerated:
       - category: bill-payments-online
         canonical_categories: [online, utilities]

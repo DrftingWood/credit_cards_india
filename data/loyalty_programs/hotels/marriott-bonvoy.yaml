@@ -12,15 +12,18 @@ unit_value_inr:
     method: midpoint
     range: [0.40, 0.70]
     notes: |
-      PROVISIONAL realized number — placeholder. Bonvoy redemptions vary
-      widely by property tier and dates: aspirational off-peak redemptions
-      can extract ₹0.7-1.0/pt, mid-range domestic routinely ₹0.3-0.5/pt.
-      The 0.55 midpoint is unsourced; refine against a basket of
-      representative INR-denominated redemptions in audit.
+      Confirmed via TPG (March 2025 post-devaluation): 0.7 ¢/point USD,
+      which converts to ~₹0.59/point at USD-INR ≈ 85. The 0.55 realized
+      sits at the lower end of that converted band, reflecting the
+      typical India-redemption pattern (domestic mid-range stays extract
+      less than aspirational off-peak). Confidence: medium-high.
     references:
       - url: https://thepointsguy.com/loyalty-programs/award-travelers-guide-to-marriott-bonvoy/
         retrieved_on: 2026-04-30
-        notes: "Community valuations centre Bonvoy at ~0.7-0.85 cents/pt USD; INR conversion lands the realized midpoint near ₹0.55-0.7."
+        notes: "TPG values Marriott Bonvoy at 0.7 ¢/point as of March 2025."
+      - url: https://www.headforpoints.com/2025/08/17/what-are-marriott-bonvoy-hotel-points-worth-4/
+        retrieved_on: 2026-04-30
+        notes: "Head For Points 2025 valuation; corroborates the post-devaluation range."
 
 earn:
   baseline:

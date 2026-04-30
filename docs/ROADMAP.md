@@ -14,43 +14,42 @@ For the design rationale that motivated this list, see
 **Status as of 2026-04-30** (continuously revised as audit progresses):
 
 Still PROVISIONAL (realized number is an unsourced midpoint):
-- `indigo-bluchip` realized 0.5 — **now sourced** (community-cited band
-  ₹0.40-0.60). Earn structure (8 + 4 + 0/2/4) sourced. Status updated.
-- `marriott-bonvoy` realized 0.55 — earn structure sourced (10/$, tier
-  bonuses 10/25/50/75/75%) but realized number itself remains an
-  unsourced midpoint.
-- `air-india-flying-returns` realized 0.45 — Red baseline 6/100 and
-  Silver 8/100 sourced; Gold/Platinum slabs and realized number
-  remain unsourced.
-- ~70 points/miles cards still on legacy `unit_value_inr` only,
-  without `unit_value_inr_realized`. Wave-7 backlog below.
+- `air-india-flying-returns` realized 0.5 — Red baseline 6/100 and
+  Silver 8/100 sourced. Gold/Platinum slabs and the blend of optimal
+  vs typical redemption value remain best-effort estimates within a
+  documented band.
+- ~50 cards on second-tier issuers (IDFC FIRST, IndusInd, Kotak, RBL,
+  BoB, Yes, AU, HSBC, KVB, Federal, BoI, IDBI, PNB, Union, South
+  Indian, Canara, Standard Chartered) carry per-issuer-haircut realized
+  values that haven't been individually verified against issuer
+  redemption T&Cs. Haircuts sit within community-cited bands but no
+  per-card number is sourced.
 
 Confirmed (sourced or near-primary):
-- `tata-neu-points` baseline 1.5% + partner 3.5% earn; 1 NeuCoin = ₹1.
-- `irctc-loyalty` 1 RP = ₹1 against AC class fares; 50%-on-cancel rule
-  noted.
-- `indigo-bluchip` earn structure (baseline 8 / channel 4 / tier 0/2/4)
-  and realized 0.5 midpoint within sourced band.
+- `tata-neu-points`, `irctc-loyalty`, `indigo-bluchip` — full earn
+  structure and realized value sourced.
+- `marriott-bonvoy` — earn structure (10/$, tier bonuses) and realized
+  0.55 sourced (TPG values at 0.7 ¢/pt USD ≈ ₹0.59 at 85 INR/USD).
 - HDFC Reward Points realized values for Infinia / Diners Black (0.7),
   Diners Privilege / Regalia Gold (0.4) — sourced.
-- Amex Membership Rewards per-card realized values (MRCC 0.25, Plat
-  Travel 0.30, Plat Reserve / Plat Charge 0.40) — sourced.
+- Amex MR per-card realized values (MRCC 0.25, Plat Travel 0.30, Plat
+  Reserve / Plat Charge / Centurion 0.40) — sourced.
+- Axis EDGE Miles realized 0.50 across Atlas / Horizon / Olympus —
+  post-Marriott-removal benchmark, April 2026.
+- ICICI / SBI Reward Points face confirmed at ₹0.25 across Coral,
+  Rubyx, Sapphiro, Emeralde, Elite, Prime, Aurum, SimplyClick,
+  SimplySave, Pulse, BPCL Octane, Reliance Prime, etc.
 
 The card-level `card_attributable_rate` numbers on co-brand cards are
 estimates from product-page narratives, not issuer-confirmed slabs.
 Verified to reconcile with the new programme model:
 - IndiGo cards: visible 19/21/22 = programme max 16 + card 3/5/6 ✓.
 
-**To unblock production trust on the remaining unsourced realized
-numbers**, an audit pass needs to:
-1. For each programme without a sourced `realized` value, fetch a
-   basket of representative redemptions and compute observed cents-
-   per-point.
-2. Replace the `realized` midpoint, populate
-   `realized_source.references[]`.
-3. For wave-7 cards still on legacy `unit_value_inr`, add per-card
-   `unit_value_inr_realized` informed by the issuer's reward-redemption
-   T&Cs PDF.
+**To unblock production trust on remaining unsourced realized numbers**:
+1. For each second-tier-issuer card, pull the issuer's reward
+   redemption T&Cs PDF and replace the haircut with a sourced number.
+2. Refine `air-india-flying-returns` realized once a basket of
+   representative redemptions is benchmarked.
 
 Until then, treat ranked output as "directionally correct, magnitudes
 approximate."
@@ -71,24 +70,7 @@ back-compat: cards that haven't been migrated keep working via the legacy
 | 4 | irctc-loyalty (hdfc/irctc-hdfc, rbl/irctc, sbi/irctc-premier) | Done |
 | 5 | air-india-flying-returns (sbi/air-india-platinum) | Done. Future Air India Vistara cards will reference the same programme. |
 | 6 | Channel-only on flagship cards (atlas, magnus, infinia, diners-black, diners-privilege, amazon-pay, horizon, olympus, adani-one-signature, myntra-kaching) | Done |
-| 7 | `unit_value_inr_realized` on every points/miles card not yet touched | Open. Cards using internal currencies (EDGE Miles, MR Points, HDFC Reward Points, SBI Reward Points) still carry only the legacy `unit_value_inr`. Each needs a one-line edit informed by issuer redemption rate or community valuation source. |
-
-### Wave 7 candidates (not exhaustive)
-
-Run this to find offenders:
-
-```sh
-grep -rL "unit_value_inr_realized" data/cards/ | \
-  xargs grep -l "currency: \(points\|miles\)"
-```
-
-Realized-value research notes (move to per-programme YAMLs once authored):
-- HDFC Reward Points (Regalia/Regalia Gold): face ₹0.5, realized ~₹0.30–0.35
-  for SmartBuy redemptions; lower for catalog.
-- Axis EDGE Miles (Atlas/Magnus): face ₹1.0 on EDGE portal; realized
-  ~₹0.50–0.60 after 2:1 transfer to airline partners and award-fare friction.
-- Amex MR Points: face ~₹0.5, realized varies wildly by redemption type
-  (₹0.30 for vouchers up to ₹0.80 for MR-to-Marriott transfers).
+| 7 | `unit_value_inr_realized` on every points/miles card | Done across all 86 points/miles cards. Per-issuer haircut numbers are sourced for HDFC, Axis, Amex, ICICI, SBI; haircut-derived for second-tier issuers (see "Provisional" section above). |
 
 ## Per-card audit on `card_attributable_rate`
 

@@ -37,6 +37,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
     exclusions:
       - fuel
       - wallet-loads

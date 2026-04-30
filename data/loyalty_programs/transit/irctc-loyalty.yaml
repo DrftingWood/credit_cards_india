@@ -7,15 +7,24 @@ currency_name: IRCTC Reward Points
 
 unit_value_inr:
   face: 1.0
-  realized: 0.9
+  realized: 0.95
   realized_source:
     method: midpoint
-    range: [0.85, 1.0]
+    range: [0.9, 1.0]
     notes: |
-      PROVISIONAL — placeholder. The "1 RP = ₹1 against IRCTC rail" face
-      value is widely cited; the small haircut to 0.9 is an unsourced
-      assumption (no real fare inflation on rail awards, only minor
-      convenience-fee drag). Refine with a primary source.
+      Confirmed face: 1 RP = ₹1 redeemable against AC class rail fares on
+      irctc.co.in. Realized very close to face — rail fares are revenue-
+      stable (no award-fare inflation) and convenience-fee drag on award
+      bookings is minor. Slight haircut for a known cancellation
+      asymmetry (cancelling a redeemed ticket refunds only 50% of the
+      reward points used). Confidence: high.
+    references:
+      - url: https://contents.irctc.co.in/en/AboutLoyalty.pdf
+        retrieved_on: 2026-04-30
+        notes: "Official IRCTC Loyalty programme T&Cs."
+      - url: https://cardmaven.in/irctc-sbi-premier-credit-card/
+        retrieved_on: 2026-04-30
+        notes: "Confirms 1 RP = ₹1 against AC tickets and the 50%-on-cancel rule."
 
 earn:
   baseline:

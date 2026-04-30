@@ -53,7 +53,11 @@ rewards:
         cap_per_cycle: 15000
         cap_unit: points
         cycle: monthly
-        notes: "Via HDFC SmartBuy portal."
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [smartbuy]
+        notes: "10x reward points on flight + hotel bookings via HDFC SmartBuy. Rate applies only when booked via SmartBuy; direct/OTA bookings drop to the base 5/₹150."
     exclusions:
       - fuel
       - wallet-loads

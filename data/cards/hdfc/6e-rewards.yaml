@@ -48,15 +48,23 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
         multiplier: 1
         effective_rate: 2.5
+        card_attributable_rate: 2.5
+        card_attributable_per_inr: 100
+        stacks_with_program: false
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
         merchants: [indigo-web, indigo-app]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [indigo-app, indigo-web]
         notes: "2.5 6E Rewards per ₹100 on flight bookings made via IndiGo website or app."
       - category: dining-grocery-entertainment
         canonical_categories: [dining, groceries, entertainment]

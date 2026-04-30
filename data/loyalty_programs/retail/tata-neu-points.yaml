@@ -1,0 +1,41 @@
+id: tata-neu-points
+name: Tata NeuPass (NeuCoins)
+type: retail
+partner: Tata Digital
+currency: points
+currency_name: NeuCoins
+
+unit_value_inr:
+  face: 1.0
+  realized: 0.9
+  realized_source:
+    method: midpoint
+    range: [0.85, 1.0]
+    notes: "1 NeuCoin = ₹1 across the Tata Neu ecosystem (Croma, BigBasket, AirAsia/Air India bookings, Westside, IHCL/Taj). Realized value sits just below face because some Tata brands (e.g. some Westside SKUs) cap NeuCoin redemption per cart. No transfer partners."
+
+earn:
+  baseline:
+    rate: 1.5
+    per_inr: 100
+    notes: "Standard NeuPass member earn on most Tata-Neu-routed spend (varies by brand 0.5-2%; midpoint used)."
+  channels:
+    - channel: cobrand-merchant
+      merchants: [tata-neu]
+      rate: 3.5
+      per_inr: 100
+      notes: "Top-up earn when transacting through the Tata Neu app on partnered Tata brands."
+
+redemption_paths:
+  - type: voucher
+    program: Tata Neu ecosystem (Croma, BigBasket, AirAsia/Air India, Taj, Westside)
+    rate_inr_per_unit:
+      face: 1.0
+      realized: 0.9
+    constraints: "1 NeuCoin = ₹1 within the ecosystem; not transferable to airlines or hotels outside Tata."
+
+metadata:
+  last_verified_on: 2026-04-22
+  source:
+    url: https://www.tataneu.com/neupass
+    retrieved_on: 2026-04-22
+    notes: "Earn structure decomposed from Tata NeuPass programme docs and HDFC Tata Neu card product pages."

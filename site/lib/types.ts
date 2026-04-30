@@ -1,5 +1,11 @@
-// Hand-authored TypeScript mirror of schema/card.schema.json.
-// Replace with output of `npm run gen-types` once json-schema-to-typescript is wired up.
+// Hand-authored consumer-facing types facade. Includes the enriched /
+// computed shapes that don't exist in any single JSON Schema (those are
+// produced by site/scripts/build.mjs at build time).
+//
+// The schema-faithful raw types are auto-generated into ./generated-types.ts
+// by site/scripts/gen-types.mjs (wired into prebuild). When you add a field
+// to a schema, cross-check generated-types.ts to keep this file from
+// drifting silently.
 
 export type Network = "visa" | "mastercard" | "rupay" | "amex" | "diners";
 export type RewardCurrency = "points" | "cashback" | "miles";

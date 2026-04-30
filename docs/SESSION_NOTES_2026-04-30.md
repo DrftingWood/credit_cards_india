@@ -121,15 +121,15 @@ authoring overhead with no join-key benefit.
 Phase 0+1+2 ship together (schema + dual-mode calculator + recommender +
 one wave-1 card migrated as proof). Subsequent waves are data-only PRs:
 
-| Wave | Program | Cards |
-|----|----|----|
-| 1 | indigo-bluchip | 8 IndiGo co-brands (SBI, HDFC×2, Kotak×2, Axis×2, IDFC FIRST) — **only sbi-indigo done in this PR** |
-| 2 | tata-neu-points | HDFC Tata Neu Plus + Infinity |
-| 3 | marriott-bonvoy | HDFC Marriott Bonvoy (+ future) |
-| 4 | irctc-loyalty | HDFC + RBL + SBI IRCTC |
-| 5 | air-india-flying-returns | SBI Air India + future Air India Vistara |
-| 6 | Channel-only migrations | Atlas, Magnus, Infinia, Amazon Pay, Diners Black, etc. |
-| 7 | unit_value_inr_realized audit | All points/miles cards |
+| Wave | Program | Cards | Status |
+|----|----|----|----|
+| 1 | indigo-bluchip | 8 IndiGo co-brands (SBI, HDFC×2, Kotak×2, Axis×2, IDFC FIRST) | Done (axis×2, hdfc/6e-rewards, idfc-first, kotak×2, sbi×2). hdfc/6e-rewards-xl skipped (discontinued). |
+| 2 | tata-neu-points | HDFC Tata Neu Plus + Infinity | Done |
+| 3 | marriott-bonvoy | HDFC Marriott Bonvoy | Done |
+| 4 | irctc-loyalty | HDFC + RBL + SBI IRCTC | Done |
+| 5 | air-india-flying-returns | SBI Air India Platinum | Done. Future Air India Vistara cards will reference the same program. |
+| 6 | Channel-only migrations | Atlas, Magnus, Infinia, Diners Black, Amazon Pay | Done for the listed cards (channel field on the channel-locked accelerator). Other SmartBuy/EDGE cards remain to migrate in subsequent PRs. |
+| 7 | unit_value_inr_realized audit | All points/miles cards | Realized values are set on every migrated card via the `loyalty_program` join and on standalone cards via `base.unit_value_inr_realized`. Cards not yet touched (mostly internal-currency, e.g. EDGE Miles, MR Points, SBI cashback cards) keep the legacy single `unit_value_inr` until per-card audit. |
 
 Validator promotions to errors (Phase 4) happen wave-by-wave once offender
 count is zero per rule. The new validator additions in this PR (loyalty
@@ -178,13 +178,13 @@ opacity.)
 
 | | |
 |---|---|
-| **12a** Type generation | **Not done in this PR.** `site/scripts/gen-types.mjs` reviv­al + `types.ts` thin re-export deferred to a follow-up. Hand-rolled types in `types.ts` extended manually for the new fields; flagged as drift risk. |
-| **12b** Validator new lints | Done. Loyalty-ref existence, channel merchant token validity, stacks-with-program coherence — all hard errors when the new fields are used. Heuristic warnings (regex on category names lacking `channel`) deferred to Phase 4 when offender count is zero. |
-| **12c** Tag canonical categories | Deferred. `scripts/tag_canonical_categories.py` continues to run on demand; consolidating its rules with `site/lib/category-mapping.ts` into a single `category_rules.yaml` is a follow-up. |
+| **12a** Type generation | Done in follow-up commit. `site/scripts/gen-types.mjs` rewritten to fan out across `card`/`issuer`/`network`/`loyalty_program` schemas; wired into `prebuild.mjs` so `site/lib/generated-types.ts` regenerates on every dev/build cycle. `types.ts` retains the consumer-facing facade (it still owns the enriched/computed shapes that aren't in any single schema) with a banner pointing at the generated file as a drift-detection reference. |
+| **12b** Validator new lints | Done. Loyalty-ref existence, channel merchant token validity, stacks-with-program coherence — all hard errors when the new fields are used. Plus a category-rule warning: an accelerator whose `category` matches a known regex but lacks `canonical_categories` warns at PR time. |
+| **12c** Tag canonical categories | Done in follow-up commit. `scripts/category_rules.yaml` is now the single source of truth; `scripts/tag_canonical_categories.py` and `scripts/validate.py` both read it. JS-side consolidation (have `site/lib/category-mapping.ts` read the same YAML at build time) remains a follow-up — it requires plumbing the YAML into the site bundle. |
 | **12d** Loyalty program effective-dating | Deferred. Single record per file; `metadata.last_verified_on` is the freshness signal. Promote to dated arrays only when historical valuations become a real product need. |
 | **12e** Co-brand vs canonical_categories | Both kept; they mean different things (partnership type vs. spend bucket). |
-| **12f** /calculator UI | Unchanged. Stays at "ongoing rewards − fee" as the optimistic upper-bound. Numbers will shift on future card migrations as `card_attributable_rate` and `unit_value_inr_realized` are filled in; this is correct. |
-| **12g** README docs | Not yet updated. `data/loyalty_programs/` and `data/channels/` exist; user-facing docs follow in a docs PR. |
+| **12f** /calculator UI | Unchanged. Stays at "ongoing rewards − fee" as the optimistic upper-bound. Numbers shift on migrated cards as `card_attributable_rate` and `unit_value_inr_realized` land; this is correct. |
+| **12g** README docs | Done in follow-up commit. README's layout diagram lists `data/loyalty_programs/` and `data/channels/`; `prebuild.mjs` reference fixed (was `python scripts/build.py`); Vercel section notes the build pipeline is pure Node now; `docs/SCHEMA.md` has a new "Loyalty programs and channel taxonomy" section, and the validator-invariants list mentions the new lints. |
 
 ---
 

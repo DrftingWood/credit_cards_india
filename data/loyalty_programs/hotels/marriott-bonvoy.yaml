@@ -1,0 +1,70 @@
+id: marriott-bonvoy
+name: Marriott Bonvoy
+type: hotel
+partner: Marriott International
+currency: points
+currency_name: Bonvoy Points
+
+unit_value_inr:
+  face: 0.85
+  realized: 0.55
+  realized_source:
+    method: midpoint
+    range: [0.40, 0.70]
+    notes: "Realized value depends heavily on redemption type: aspirational properties (~₹0.7-1.0/pt) vs. domestic mid-range (~₹0.3-0.5/pt). Midpoint used; users who redeem only at top-tier resorts can extract more, casual users much less."
+
+earn:
+  baseline:
+    rate: 10
+    per_inr: 100
+    notes: "Bonvoy member earn on direct Marriott bookings: 10 points per USD ≈ 10 points per ₹85 base; we model as 10 per ₹100 because INR-denominated stays at Indian Marriott properties earn close to 1 point per ₹10 spent."
+  channels:
+    - channel: cobrand-merchant
+      merchants: [marriott-direct]
+      rate: 5
+      per_inr: 100
+      notes: "Bonus earn when booking direct (vs OTA); approximates the welcome-bonus and member-rate stacking effect."
+  tiers:
+    - id: silver
+      name: Silver Elite
+      requirements: "10 nights/year"
+      bonus_rate: 1
+      bonus_per_inr: 100
+    - id: gold
+      name: Gold Elite
+      requirements: "25 nights/year"
+      bonus_rate: 2.5
+      bonus_per_inr: 100
+    - id: platinum
+      name: Platinum Elite
+      requirements: "50 nights/year"
+      bonus_rate: 5
+      bonus_per_inr: 100
+    - id: titanium
+      name: Titanium Elite
+      requirements: "75 nights/year"
+      bonus_rate: 7.5
+      bonus_per_inr: 100
+    - id: ambassador
+      name: Ambassador Elite
+      requirements: "100 nights/year and >$23k qualifying spend"
+      bonus_rate: 7.5
+      bonus_per_inr: 100
+
+redemption_paths:
+  - type: hotel-points
+    program: Marriott Bonvoy free-night and points-and-cash redemptions
+    rate_inr_per_unit:
+      face: 0.85
+      realized: 0.55
+    constraints: "Best value at category 5+ properties off-peak. Variable redemption pricing as of 2023."
+  - type: transfer
+    program: 40+ airline transfer partners (typically 3:1 ratio + 5k bonus per 60k transferred)
+    constraints: "Transfer values vary widely by partner."
+
+metadata:
+  last_verified_on: 2026-04-22
+  source:
+    url: https://www.marriott.com/loyalty/about/member-benefits.mi
+    retrieved_on: 2026-04-22
+    notes: "Earn structure approximated for INR-denominated stays; tier bonuses are illustrative midpoints of published 10-50% boost ranges."

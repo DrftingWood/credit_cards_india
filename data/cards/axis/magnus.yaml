@@ -80,6 +80,10 @@ rewards:
         cap_per_cycle: 40000
         cap_unit: points
         cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [edge-travel]
     exclusions:
       - fuel
       - wallet-loads

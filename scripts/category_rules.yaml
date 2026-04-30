@@ -1,0 +1,36 @@
+# Single source of truth for the canonical-category heuristic.
+#
+# Consumers (in priority order):
+#   - scripts/tag_canonical_categories.py    (one-shot tagger; reads this file)
+#   - scripts/validate.py                    (warns when a category matches a
+#                                             rule but lacks canonical_categories)
+#   - site/lib/category-mapping.ts           (mirrors these rules in code today;
+#                                             a follow-up will surface this YAML
+#                                             into the site bundle so the JS
+#                                             fallback reads it directly)
+#
+# Order matters: first match wins for buckets that could overlap.
+
+rules:
+  - match: "amazon|flipkart|myntra|ajio|tata-?cliq|tata-?neu|jiomart|shopping|online|retail"
+    buckets: [online]
+  - match: "grocery|groceries|bigbasket|supermarket|departmental"
+    buckets: [groceries]
+  - match: "dining|restaurant|swiggy|zomato|eazydiner|food-delivery|instamart"
+    buckets: [dining]
+  - match: "fuel|bpcl|hpcl|indianoil|ioc(?!n)|petrol|diesel"
+    buckets: [fuel]
+  - match: "travel|flight|hotel|airline|makemytrip|mmt|yatra|cleartrip|ixigo|goibibo|easemytrip|edge-portal|indigo|air-india|vistara|irctc|marriott|taj|fine-hotels|adani-airports|smartbuy"
+    buckets: [travel]
+  - match: "utility|bill-payments|recharge|airtel-thanks|utilities"
+    buckets: [utilities]
+  - match: "rent"
+    buckets: [rent]
+  - match: "international|forex"
+    buckets: [international]
+  - match: "entertainment|movies|bookmyshow|pvr|cinema|gaming|ott"
+    buckets: [entertainment]
+
+# Categories whose names are intentionally not bucket-specific
+# (cross-category spend uplifts, birthday boosts, etc). Skip tagging.
+untaggable: "spend-above|incremental-above|birthday|monthly-spend|weekend-spend|top-\\d|any-spend|emi-spends|bundle"

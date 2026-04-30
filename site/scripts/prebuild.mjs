@@ -10,9 +10,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const build = path.join(here, "build.mjs");
 
-const res = spawnSync(process.execPath, [build], { stdio: "inherit" });
-if (res.status !== 0) {
-  process.exit(res.status ?? 1);
+for (const script of ["gen-types.mjs", "build.mjs"]) {
+  const res = spawnSync(process.execPath, [path.join(here, script)], { stdio: "inherit" });
+  if (res.status !== 0) {
+    process.exit(res.status ?? 1);
+  }
 }

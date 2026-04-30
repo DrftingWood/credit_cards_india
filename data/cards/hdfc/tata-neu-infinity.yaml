@@ -39,24 +39,36 @@ rewards:
     effective_until: null
     currency: cashback
     currency_name: NeuCoins
+    loyalty_program: tata-neu-points
     base:
       rate: 1.5
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: tata-neu-app-partners
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 5
+        card_attributable_rate: 5
+        card_attributable_per_inr: 100
+        stacks_with_program: false
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [tata-neu-app, bigbasket, 1mg, air-india, croma, westside, tata-cliq, ihcl]
-        notes: "5% NeuCoins on Tata brands purchased via Tata Neu app (subject to NeuPass)."
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [tata-neu]
+        notes: "5% NeuCoins on Tata brands purchased via Tata Neu app (subject to NeuPass). Card credits the full 5% directly in NeuCoins; programme baseline is not additive (NeuCoins are the card's reward currency, not a separate stack)."
       - category: tata-neu-app-non-partner
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 1.5
+        card_attributable_rate: 1.5
+        card_attributable_per_inr: 100
+        stacks_with_program: false
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly

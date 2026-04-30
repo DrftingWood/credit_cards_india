@@ -1,0 +1,41 @@
+id: irctc-loyalty
+name: IRCTC Loyalty (Reward Points)
+type: transit
+partner: IRCTC
+currency: points
+currency_name: IRCTC Reward Points
+
+unit_value_inr:
+  face: 1.0
+  realized: 0.9
+  realized_source:
+    method: midpoint
+    range: [0.85, 1.0]
+    notes: "1 RP = ₹1 toward IRCTC rail bookings. Realized close to face because rail fares are not award-inflated; small drag from convenience fees on award bookings."
+
+earn:
+  baseline:
+    rate: 0
+    per_inr: 100
+    notes: "IRCTC's loyalty programme awards points via co-brand credit cards rather than membership status; baseline outside cards is zero."
+  channels:
+    - channel: cobrand-merchant
+      merchants: [irctc-direct]
+      rate: 0
+      per_inr: 100
+      notes: "Co-brand cards earn elevated rates here (encoded on the card); the programme itself adds no extra layer."
+
+redemption_paths:
+  - type: voucher
+    program: IRCTC ticket bookings on irctc.co.in / IRCTC rail app
+    rate_inr_per_unit:
+      face: 1.0
+      realized: 0.9
+    constraints: "Redeemable only on IRCTC rail bookings."
+
+metadata:
+  last_verified_on: 2026-04-22
+  source:
+    url: https://www.irctc.co.in
+    retrieved_on: 2026-04-22
+    notes: "IRCTC's points are essentially card-issued; this file exists primarily to centralise the realized unit value and let card YAMLs reference it."

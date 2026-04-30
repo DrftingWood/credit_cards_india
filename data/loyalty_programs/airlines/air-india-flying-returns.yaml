@@ -1,0 +1,54 @@
+id: air-india-flying-returns
+name: Air India Flying Returns / Maharaja Club
+type: airline
+partner: Air India
+currency: miles
+currency_name: Flying Returns Miles
+
+unit_value_inr:
+  face: 1.0
+  realized: 0.45
+  realized_source:
+    method: midpoint
+    range: [0.35, 0.55]
+    notes: "Flying Returns redemptions are quoted in miles + taxes/fees. Realized value is depressed by high taxes/fuel surcharges on award tickets and fare-class restrictions. Star Alliance partner redemptions can extract higher value but are not the typical use."
+
+earn:
+  baseline:
+    rate: 4
+    per_inr: 100
+    notes: "Approximate base earn for a Flying Returns member booking Air India direct (varies 3-6 miles per ₹100 by fare class; midpoint used)."
+  channels:
+    - channel: cobrand-merchant
+      merchants: [air-india-direct, vistara-direct]
+      rate: 2
+      per_inr: 100
+      notes: "Direct-booking bonus and fare-class uplift, post-Vistara merger."
+  tiers:
+    - id: silver
+      name: Silver Edge
+      bonus_rate: 1
+      bonus_per_inr: 100
+    - id: gold
+      name: Golden Edge
+      bonus_rate: 2
+      bonus_per_inr: 100
+    - id: platinum
+      name: Platinum Edge / The Maharajah Club
+      bonus_rate: 4
+      bonus_per_inr: 100
+
+redemption_paths:
+  - type: airmiles
+    program: Air India award flights and Star Alliance partners
+    rate_inr_per_unit:
+      face: 1.0
+      realized: 0.45
+    constraints: "Award taxes/surcharges are significant; partner redemptions can yield better cents-per-mile."
+
+metadata:
+  last_verified_on: 2026-04-22
+  source:
+    url: https://www.airindia.com/in/en/flying-returns.html
+    retrieved_on: 2026-04-22
+    notes: "Tier bonuses approximated post Air India / Vistara consolidation."

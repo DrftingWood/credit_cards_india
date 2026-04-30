@@ -38,19 +38,29 @@ rewards:
     effective_until: null
     currency: miles
     currency_name: Flying Returns Miles
+    loyalty_program: air-india-flying-returns
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.5
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.45
     accelerated:
       - category: air-india-bookings
         canonical_categories: [travel]
         multiplier: 1
         effective_rate: 10
+        card_attributable_rate: 4
+        card_attributable_per_inr: 100
+        stacks_with_program: true
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
         merchants: [air-india]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [air-india-direct, vistara-direct]
+        notes: "Up to 10 miles per ₹100 visible on Air India bookings, of which ~4 is card-attributable; the remainder stacks from Flying Returns baseline + channel + tier (joined via loyalty_program at calculator time)."
     exclusions:
       - fuel
       - wallet-loads

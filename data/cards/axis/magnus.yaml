@@ -66,6 +66,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
     accelerated:
       - category: monthly-spend-above-threshold
         multiplier: 1
@@ -80,6 +81,10 @@ rewards:
         cap_per_cycle: 40000
         cap_unit: points
         cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [edge-travel]
     exclusions:
       - fuel
       - wallet-loads

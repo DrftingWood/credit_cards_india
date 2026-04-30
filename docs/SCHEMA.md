@@ -72,6 +72,45 @@ Milestones support both human-readable and structured payout metadata (`reward_k
 ### Eligibility, Application, Metadata
 Age, income (salaried/self-employed separately), credit-score minimum, residency; apply/pre-approval URLs and `replaces_card` (for upgrade paths); `last_verified_on` + `maintainers` + `tags`.
 
+## Loyalty programs and channel taxonomy
+
+`schema/loyalty_program.schema.json` models third-party programmes (BluChip,
+Bonvoy, Flying Returns, ...) as denormalised peers of cards. Files live
+under `data/loyalty_programs/<type>/<id>.yaml` and carry:
+
+- `unit_value_inr.face` and `unit_value_inr.realized`. Calculator math uses
+  `realized` (a single midpoint scalar); `face` is documentary. The
+  optional `realized_source` block captures method, observed range, and
+  sources for review.
+- `earn.baseline` / `earn.channels[]` / `earn.tiers[]` — what any member of
+  the programme earns regardless of which credit card. Cards reference the
+  programme via `rewards[].loyalty_program: <id>`.
+
+A card-side accelerator can opt into stacking via:
+
+```yaml
+accelerated:
+  - category: indigo-flights-direct
+    canonical_categories: [travel]
+    card_attributable_rate: 3       # the card's own contribution per ₹100
+    card_attributable_per_inr: 100
+    stacks_with_program: true       # add programme baseline+channel+tier on top
+    channel:
+      class: cobrand-merchant
+      merchants: [indigo-app, indigo-web]
+```
+
+The legacy `effective_rate` field stays as the receipt-visible total (useful
+for marketing copy and source verification). Calculator math prefers
+`card_attributable_rate` when present, falling back to `effective_rate`
+otherwise — so existing untagged cards keep working until migrated.
+
+`channel.class` is a closed enum (issuer-portal, cobrand-merchant,
+third-party-ota, food-delivery, quick-commerce, fuel-network, physical,
+utility-rail, online-any). `channel.merchants[]` is an open list of tokens
+that must exist under that class in `data/channels/known.yaml` — adding a
+new merchant is a one-line PR there, not a schema change.
+
 ## Validator invariants
 
 Run `python scripts/validate.py` locally; CI runs it on every PR.
@@ -86,3 +125,7 @@ Run `python scripts/validate.py` locally; CI runs it on every PR.
 - `metadata.last_verified_on` earlier than any nested `source.retrieved_on` ⇒ error.
 - `application.apply_url` / `application.pre_approval_check_url` must use `http(s)`; off-allowlist domains warn.
 - Optional URL checks (`python scripts/validate.py --check-urls`) perform best-effort reachability checks for `source.url` + application URLs.
+- `rewards[].loyalty_program` must reference an id under `data/loyalty_programs/`.
+- `accelerated[].channel.merchants[]` tokens must exist under the declared class in `data/channels/known.yaml`.
+- `accelerated[].stacks_with_program: true` requires the parent rewards record to have `loyalty_program` set.
+- An accelerator whose `category` matches a known regex in `scripts/category_rules.yaml` but lacks `canonical_categories` warns (run `scripts/tag_canonical_categories.py --apply` to bulk-tag).

@@ -7,16 +7,22 @@ The dataset is authored as YAML, one file per card, validated by JSON Schema. A 
 ## Layout
 
 ```
-schema/                             # JSON Schemas (card, issuer, network)
+schema/                             # JSON Schemas (card, issuer, network, loyalty_program)
 data/
   networks/                         # visa, mastercard, rupay, amex, diners
   issuers/                          # hdfc, icici, sbi, axis, ...
   cards/<issuer>/<slug>.yaml        # one file per card
+  loyalty_programs/<type>/<id>.yaml # third-party programs (BluChip, Bonvoy, ...)
+  channels/known.yaml               # authoritative merchant token index
 scripts/
   validate.py                       # JSON Schema + cross-file lints
   new_card.py                       # scaffold a new card file
+  category_rules.yaml               # heuristic regex → canonical bucket map
+  tag_canonical_categories.py       # one-shot tagger using the rules above
 docs/
   SCHEMA.md                         # field-by-field reference
+  DECISIONS.md                      # architectural decisions (recommender, schema, build)
+  ROADMAP.md                        # open work and migration backlog
   CONTRIBUTING.md                   # how to add/update a card
 .github/workflows/validate.yml      # CI runs validate.py on every PR
 ```
@@ -55,9 +61,11 @@ python scripts/new_card.py hdfc millennia "HDFC Bank Millennia Credit Card"
 python scripts/validate.py
 ```
 
-## Schema
+## Schema and design
 
-See [`docs/SCHEMA.md`](docs/SCHEMA.md). The source of truth is `schema/*.schema.json`.
+- [`docs/SCHEMA.md`](docs/SCHEMA.md) — field-by-field reference. Source of truth is `schema/*.schema.json`.
+- [`docs/DECISIONS.md`](docs/DECISIONS.md) — architectural decisions for the recommender, loyalty/channel schema, and build pipeline.
+- [`docs/ROADMAP.md`](docs/ROADMAP.md) — open work, migration waves, and validator promotions.
 
 Fees, rewards, and benefits are modelled as **arrays of effective-dated records** — when an issuer revises an annual fee or reward rate, the old record is closed with `effective_until` and a new record is appended. Site queries like "what was this card's annual fee on 2024-06-01" become a one-line lookup without going through git history.
 
@@ -85,22 +93,26 @@ The consumer-facing site lives under [`site/`](site/README.md) — Next.js 15 + 
 ```
 cd site
 npm install
-npm run dev          # auto-runs python scripts/build.py first
+npm run dev          # auto-runs site/scripts/prebuild.mjs first
 ```
+
+`prebuild.mjs` runs `gen-types.mjs` (regenerates `site/lib/generated-types.ts`
+from every JSON Schema) followed by `build.mjs` (regenerates the
+`dist/*.json` artefacts).
 
 ### Deploying to Vercel
 
 The Next.js app lives in `site/`, not at the repo root, so Vercel's framework auto-detection needs to be pointed at it explicitly:
 
 1. Import the repo in the Vercel dashboard.
-2. **Project Settings → General → Root Directory → `site`**. This is the key step — Vercel will cd into `site/` (with the rest of the repo still checked out, so `../scripts/build.py` resolves from `site/scripts/prebuild.mjs`).
+2. **Project Settings → General → Root Directory → `site`**. This is the key step — Vercel will cd into `site/` (with the rest of the repo still checked out, so `../schema/*.json` and `../data/**` resolve from `site/scripts/prebuild.mjs`).
 3. Framework preset: **Next.js** (auto-detected once the root directory is correct).
 4. Install command: leave default (`npm install`).
-5. Build command: leave default (`next build`) — `site/package.json` wires `prebuild` to regenerate `../dist/*.json` via Python.
+5. Build command: leave default (`next build`) — `site/package.json` wires `prebuild` to regenerate `../dist/*.json` via Node.
 6. Output directory: leave default (`.next`).
 7. (Optional) Set `NEXT_PUBLIC_SITE_URL` in project env vars to the production URL so the sitemap has the right host.
 
-Python 3 is available on Vercel's default build image, so no extra runtime configuration is needed.
+The build pipeline is pure Node — no Python required at deploy time. `scripts/validate.py` only runs in CI.
 
 ## License
 

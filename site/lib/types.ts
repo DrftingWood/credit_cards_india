@@ -1,5 +1,11 @@
-// Hand-authored TypeScript mirror of schema/card.schema.json.
-// Replace with output of `npm run gen-types` once json-schema-to-typescript is wired up.
+// Hand-authored consumer-facing types facade. Includes the enriched /
+// computed shapes that don't exist in any single JSON Schema (those are
+// produced by site/scripts/build.mjs at build time).
+//
+// The schema-faithful raw types are auto-generated into ./generated-types.ts
+// by site/scripts/gen-types.mjs (wired into prebuild). When you add a field
+// to a schema, cross-check generated-types.ts to keep this file from
+// drifting silently.
 
 export type Network = "visa" | "mastercard" | "rupay" | "amex" | "diners";
 export type RewardCurrency = "points" | "cashback" | "miles";
@@ -78,6 +84,33 @@ export interface RewardBase {
   rate: number;
   per_inr: number;
   unit_value_inr?: number | null;
+  unit_value_inr_realized?: number | null;
+}
+
+export type ChannelClass =
+  | "issuer-portal"
+  | "cobrand-merchant"
+  | "third-party-ota"
+  | "food-delivery"
+  | "quick-commerce"
+  | "fuel-network"
+  | "physical"
+  | "utility-rail"
+  | "online-any";
+
+export interface AcceleratorChannel {
+  required?: boolean;
+  class: ChannelClass;
+  merchants: string[];
+}
+
+export interface EarnComponent {
+  source: "card" | "channel-bonus" | "loyalty-program" | "loyalty-tier";
+  rate: number;
+  per_inr?: number;
+  requires_channel?: string[];
+  requires_tier?: string | null;
+  notes?: string;
 }
 
 export interface AcceleratedReward {
@@ -90,7 +123,65 @@ export interface AcceleratedReward {
   cycle?: Cycle;
   merchants?: string[];
   mcc_list?: string[];
+  card_attributable_rate?: number | null;
+  card_attributable_per_inr?: number | null;
+  stacks_with_program?: boolean;
+  channel?: AcceleratorChannel | null;
+  earn_components?: EarnComponent[];
   notes?: string;
+}
+
+export interface LoyaltyProgramTier {
+  id: string;
+  name?: string;
+  requirements?: string;
+  bonus_rate: number;
+  bonus_per_inr: number;
+  notes?: string;
+}
+
+export interface LoyaltyProgramChannel {
+  channel: string;
+  merchants: string[];
+  rate: number;
+  per_inr: number;
+  notes?: string;
+}
+
+export interface LoyaltyProgram {
+  id: string;
+  name: string;
+  type: "airline" | "hotel" | "retail" | "transit" | "other";
+  partner?: string;
+  currency: "points" | "miles" | "cashback";
+  currency_name?: string | null;
+  unit_value_inr: {
+    face: number;
+    realized: number;
+    realized_source?: {
+      method?: "midpoint" | "low" | "observed-redemption" | "survey";
+      range?: [number, number];
+      notes?: string;
+      references?: Array<{ url: string; retrieved_on: string; notes?: string }>;
+    } | null;
+  };
+  earn?: {
+    baseline?: { rate: number; per_inr: number; notes?: string } | null;
+    channels?: LoyaltyProgramChannel[];
+    tiers?: LoyaltyProgramTier[];
+  };
+  redemption_paths?: Array<{
+    type: string;
+    program?: string;
+    rate_inr_per_unit?: { face?: number; realized?: number } | null;
+    constraints?: string;
+    notes?: string;
+  }>;
+  metadata: {
+    last_verified_on: string;
+    source?: { url: string; retrieved_on: string; notes?: string };
+    notes?: string;
+  };
 }
 
 export interface RedemptionOption {
@@ -117,6 +208,7 @@ export interface RewardRecord {
   effective_until: string | null;
   currency: RewardCurrency;
   currency_name?: string | null;
+  loyalty_program?: string | null;
   base: RewardBase;
   accelerated?: AcceleratedReward[];
   exclusions?: string[];

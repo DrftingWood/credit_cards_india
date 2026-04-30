@@ -36,19 +36,28 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
+    loyalty_program: irctc-loyalty
     base:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
         multiplier: 1
         effective_rate: 10
+        card_attributable_rate: 10
+        card_attributable_per_inr: 100
+        stacks_with_program: false
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         merchants: [irctc]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [irctc-direct]
         notes: "10% value-back (as points) on AC class bookings via IRCTC."
       - category: dining-grocery
         canonical_categories: [groceries, dining]

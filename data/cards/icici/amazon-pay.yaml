@@ -49,6 +49,10 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [amazon.in]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [amazon-pay]
         notes: "5% back for Amazon Prime members on Amazon.in purchases."
       - category: amazon-in-non-prime
         canonical_categories: [online]
@@ -58,6 +62,10 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [amazon.in]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [amazon-pay]
       - category: amazon-pay-partners
         canonical_categories: [online]
         multiplier: 2
@@ -65,6 +73,10 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [amazon-pay]
         notes: "2% back on 100+ Amazon Pay partner merchants."
     exclusions:
       - fuel

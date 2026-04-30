@@ -23,6 +23,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_DIR = ROOT / "schema"
 DATA_DIR = ROOT / "data"
+CATEGORY_RULES_PATH = ROOT / "scripts" / "category_rules.yaml"
 STALENESS_WARN_DAYS = 180
 URL_CHECK_TIMEOUT_SECONDS = 10
 AGGREGATOR_SOURCE_DOMAINS = {
@@ -215,18 +216,55 @@ def check_application_urls(errors, warnings, path: Path, instance: dict, check_u
             check_url_reachability(warnings, path, f"application.{field}", url)
 
 
+def _load_category_rules():
+    """Load scripts/category_rules.yaml; returns (rules, untaggable_re) or ([], None) on miss."""
+    import re as _re
+    if not CATEGORY_RULES_PATH.exists():
+        return [], None
+    raw = yaml.safe_load(CATEGORY_RULES_PATH.read_text(encoding="utf-8"))
+    rules = [(_re.compile(r["match"]), list(r["buckets"])) for r in raw.get("rules", [])]
+    untaggable = _re.compile(raw.get("untaggable", r"$^"), _re.IGNORECASE)
+    return rules, untaggable
+
+
 def main() -> int:
     check_urls = "--check-urls" in sys.argv[1:]
     errors: list[str] = []
     warnings: list[str] = []
+    category_rules, untaggable_re = _load_category_rules()
 
     card_schema = load_schema("card")
     issuer_schema = load_schema("issuer")
     network_schema = load_schema("network")
+    loyalty_schema_path = SCHEMA_DIR / "loyalty_program.schema.json"
+    loyalty_schema = json.loads(loyalty_schema_path.read_text(encoding="utf-8")) if loyalty_schema_path.exists() else None
 
     card_validator = validator_for(card_schema)
     issuer_validator = validator_for(issuer_schema)
     network_validator = validator_for(network_schema)
+    loyalty_validator = validator_for(loyalty_schema) if loyalty_schema else None
+
+    # --- loyalty programs ---
+    loyalty_programs: dict[str, dict] = {}
+    loyalty_dir = DATA_DIR / "loyalty_programs"
+    if loyalty_dir.exists() and loyalty_validator is not None:
+        for path in sorted(loyalty_dir.rglob("*.yaml")):
+            instance = load_yaml(path)
+            validate_schema_instance(errors, loyalty_validator, instance, path, "loyalty_program")
+            if isinstance(instance, dict) and "id" in instance:
+                if instance["id"] != path.stem:
+                    errors.append(f"[lint] {path.relative_to(ROOT)} :: id '{instance['id']}' must match filename '{path.stem}'")
+                loyalty_programs[instance["id"]] = instance
+
+    # --- channel taxonomy ---
+    channels_known: dict[str, set] = {}
+    channels_path = DATA_DIR / "channels" / "known.yaml"
+    if channels_path.exists():
+        raw = load_yaml(channels_path)
+        if isinstance(raw, dict):
+            for cls, tokens in raw.items():
+                if isinstance(tokens, list):
+                    channels_known[cls] = set(tokens)
 
     # --- networks ---
     networks: dict[str, dict] = {}
@@ -316,6 +354,55 @@ def main() -> int:
         check_dated_array(errors, path, "rewards", instance.get("rewards", []), card_is_active)
         check_dated_array(errors, path, "benefits", instance.get("benefits", []), card_is_active)
 
+        # loyalty program / channel / stacks-with-program lints
+        for r_idx, rec in enumerate(instance.get("rewards", []) or []):
+            program_ref = rec.get("loyalty_program")
+            if program_ref and program_ref not in loyalty_programs:
+                errors.append(
+                    f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].loyalty_program "
+                    f"'{program_ref}' not found in data/loyalty_programs/"
+                )
+            for a_idx, acc in enumerate(rec.get("accelerated", []) or []):
+                ch = acc.get("channel")
+                if isinstance(ch, dict):
+                    cls = ch.get("class")
+                    merchants = ch.get("merchants") or []
+                    known = channels_known.get(cls, set()) if cls else set()
+                    if cls and channels_known and not known:
+                        errors.append(
+                            f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}].channel.class "
+                            f"'{cls}' not declared in data/channels/known.yaml"
+                        )
+                    for m in merchants:
+                        if known and m not in known:
+                            errors.append(
+                                f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}].channel.merchants "
+                                f"token '{m}' not declared under class '{cls}' in data/channels/known.yaml"
+                            )
+                if acc.get("stacks_with_program") and not program_ref:
+                    errors.append(
+                        f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}].stacks_with_program=true "
+                        f"requires rewards[{r_idx}].loyalty_program to be set"
+                    )
+                cat_str = (acc.get("category") or "").lower()
+                tags = acc.get("canonical_categories")
+                if (
+                    category_rules
+                    and cat_str
+                    and not tags
+                    and not (untaggable_re and untaggable_re.search(cat_str))
+                ):
+                    matched = False
+                    for pattern, _ in category_rules:
+                        if pattern.search(cat_str):
+                            matched = True
+                            break
+                    if matched:
+                        warnings.append(
+                            f"[warn] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}] "
+                            f"category '{cat_str}' matches a known rule but has no canonical_categories tag"
+                        )
+
         # discontinued cards should have discontinued_on
         if status == "discontinued" and not instance.get("discontinued_on"):
             errors.append(f"[lint] {path.relative_to(ROOT)} :: status is 'discontinued' but discontinued_on is null")
@@ -361,7 +448,10 @@ def main() -> int:
                 f"[lint] {path.relative_to(ROOT)} :: application.replaces_card '{replaces}' does not match any known card id"
             )
 
-    print(f"Checked {len(cards)} cards, {len(issuers)} issuers, {len(networks)} networks.")
+    print(
+        f"Checked {len(cards)} cards, {len(issuers)} issuers, {len(networks)} networks, "
+        f"{len(loyalty_programs)} loyalty programs."
+    )
     if warnings:
         print(f"\n{len(warnings)} warning(s):")
         for w in warnings:

@@ -275,6 +275,11 @@
           "type": ["string", "null"],
           "description": "e.g. 'Reward Points', 'EDGE Miles', 'Membership Rewards'."
         },
+        "loyalty_program": {
+          "type": ["string", "null"],
+          "description": "Slug of an entry under data/loyalty_programs/. When set, the card's reward currency is the program's currency, and stacking accelerators may credit program baseline/tier/channel earn on top of the card's slice.",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
         "base": {
           "type": "object",
           "required": ["rate", "per_inr"],
@@ -285,7 +290,12 @@
             "unit_value_inr": {
               "type": ["number", "null"],
               "minimum": 0,
-              "description": "Best-case INR value of one unit on redemption (for comparability)."
+              "description": "Best-case (face) INR value of one unit on redemption. When loyalty_program is set, prefer the program's unit_value_inr.realized for math."
+            },
+            "unit_value_inr_realized": {
+              "type": ["number", "null"],
+              "minimum": 0,
+              "description": "Conservative realized INR value of one unit. Calculator math prefers this when present."
             }
           }
         },
@@ -346,6 +356,75 @@
               "mcc_list": {
                 "type": "array",
                 "items": { "type": "string", "pattern": "^[0-9]{4}$" }
+              },
+              "card_attributable_rate": {
+                "type": ["number", "null"],
+                "minimum": 0,
+                "description": "The card's own contribution per ₹100 (i.e. excluding loyalty-program baseline/tier/channel earn). Calculator math prefers this when set; effective_rate is the receipt-visible total."
+              },
+              "card_attributable_per_inr": {
+                "type": ["integer", "null"],
+                "minimum": 1
+              },
+              "stacks_with_program": {
+                "type": "boolean",
+                "default": false,
+                "description": "When true, the calculator may add program baseline/tier/channel earn on top of card_attributable_rate (requires the parent rewards record to have loyalty_program set)."
+              },
+              "channel": {
+                "oneOf": [
+                  { "type": "null" },
+                  {
+                    "type": "object",
+                    "required": ["class", "merchants"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "required": { "type": "boolean", "default": true },
+                      "class": {
+                        "type": "string",
+                        "enum": [
+                          "issuer-portal",
+                          "cobrand-merchant",
+                          "third-party-ota",
+                          "food-delivery",
+                          "quick-commerce",
+                          "fuel-network",
+                          "physical",
+                          "utility-rail",
+                          "online-any"
+                        ]
+                      },
+                      "merchants": {
+                        "type": "array",
+                        "items": { "type": "string" },
+                        "minItems": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              "earn_components": {
+                "type": "array",
+                "description": "Optional decomposed earn structure for accelerators where the headline rate stacks distinct sources. When present, calculator sums components whose require_* gates the user satisfies.",
+                "items": {
+                  "type": "object",
+                  "required": ["source", "rate"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "source": {
+                      "type": "string",
+                      "enum": ["card", "channel-bonus", "loyalty-program", "loyalty-tier"]
+                    },
+                    "rate": { "type": "number", "minimum": 0 },
+                    "per_inr": { "type": "integer", "minimum": 1 },
+                    "requires_channel": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "requires_tier": { "type": ["string", "null"] },
+                    "notes": { "type": "string" }
+                  }
+                }
               },
               "notes": { "type": "string" }
             }

@@ -66,6 +66,26 @@ function listCardFiles(dir) {
     .sort();
 }
 
+function existsDir(dir) {
+  try {
+    readdirSync(dir);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function loadLoyaltyPrograms(rootDir) {
+  if (!existsDir(rootDir)) return [];
+  const out = [];
+  const entries = readdirSync(rootDir, { recursive: true });
+  for (const f of entries) {
+    if (typeof f !== "string" || !f.endsWith(".yaml")) continue;
+    out.push(loadYaml(path.join(rootDir, f)));
+  }
+  return out.sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+}
+
 // --- Enrichment ----------------------------------------------------------
 
 /**
@@ -203,6 +223,20 @@ function main() {
     .map((p) => enrichCard(loadYaml(p), issuers, networks))
     .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 
+  const loyaltyPrograms = loadLoyaltyPrograms(path.join(DATA_DIR, "loyalty_programs"));
+  writeJson(path.join(OUT_DIR, "loyalty_programs.json"), loyaltyPrograms);
+
+  // Surface scripts/category_rules.yaml into the site bundle so the JS-side
+  // heuristic in site/lib/category-mapping.ts reads from the same source of
+  // truth as scripts/validate.py and scripts/tag_canonical_categories.py.
+  const categoryRulesPath = path.join(REPO_ROOT, "scripts", "category_rules.yaml");
+  try {
+    const rules = loadYaml(categoryRulesPath);
+    writeJson(path.join(OUT_DIR, "category_rules.json"), rules);
+  } catch (err) {
+    if (!err || err.code !== "ENOENT") throw err;
+  }
+
   writeJson(path.join(OUT_DIR, "cards.json"), cards);
   writeJson(
     path.join(OUT_DIR, "issuers.json"),
@@ -223,7 +257,7 @@ function main() {
 
   const relOut = path.relative(REPO_ROOT, OUT_DIR);
   console.log(
-    `Wrote ${cards.length} cards, ${Object.keys(issuers).length} issuers, ${Object.keys(networks).length} networks to ${relOut}/`,
+    `Wrote ${cards.length} cards, ${Object.keys(issuers).length} issuers, ${Object.keys(networks).length} networks, ${loyaltyPrograms.length} loyalty programs to ${relOut}/`,
   );
 }
 

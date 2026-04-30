@@ -35,6 +35,7 @@ rewards:
       rate: 2
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: travel-edge-portal
         canonical_categories: [travel]
@@ -43,7 +44,11 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
-        notes: "5 EDGE Miles per ₹100 on travel bookings via Axis Travel EDGE."
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [edge-travel]
+        notes: "5 EDGE Miles per ₹100 on travel bookings via Axis Travel EDGE. Rate fires only on bookings routed through the EDGE portal — direct/OTA bookings drop to base."
       - category: international-spend
         canonical_categories: [international]
         multiplier: 1

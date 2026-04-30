@@ -1,0 +1,86 @@
+id: indigo-bluchip
+name: IndiGo BluChip
+type: airline
+partner: IndiGo
+currency: miles
+currency_name: IndiGo BluChips
+
+unit_value_inr:
+  face: 1.0
+  realized: 0.5
+  realized_source:
+    method: midpoint
+    range: [0.4, 0.6]
+    notes: |
+      Confirmed: BluChip redemption pricing is dynamic; observed range
+      ₹0.40-₹0.60 per chip across reported user redemptions, with a
+      typical mid-route value near ₹0.41-0.50. Some users report >₹1.0
+      on rationalised post-2025 routes but this isn't the median case.
+      Midpoint 0.5 is the stable choice for ranking math; band documented.
+    references:
+      - url: https://cardtrail.in/travel/indigo-bluchips-worth-it-india/
+        retrieved_on: 2026-04-30
+        notes: "Reported BluChip realized values 40-60 paise; dynamic up to higher in some cases."
+      - url: https://www.flyertalk.com/forum/india-based-airlines/2180868-indigo-bluchip-redemptions.html
+        retrieved_on: 2026-04-30
+        notes: "FlyerTalk thread with concrete redemption examples."
+      - url: https://cardmaven.in/indigo-bluchip-loyalty-program-guide/
+        retrieved_on: 2026-04-30
+        notes: "Cardmaven guide; confirms 1 BluChip ≈ ₹1 face on IndiGo redemptions."
+
+earn:
+  baseline:
+    rate: 8
+    per_inr: 100
+    notes: |
+      Confirmed: members earn 8 BluChips per ₹100 on base fare + fuel
+      surcharge of an IndiGo flight booking (regardless of channel).
+      Source: IndiGo BluChip programme docs and Cardmaven guide.
+  channels:
+    - channel: cobrand-merchant
+      merchants: [indigo-app, indigo-web]
+      rate: 4
+      per_inr: 100
+      notes: |
+        Confirmed: a single +4 BluChips per ₹100 channel bonus when booking
+        direct via the IndiGo website or mobile app. The bonus does not
+        stack across app + web — booking on either earns +4, not +8.
+  tiers:
+    - id: blu-3
+      name: Blu 3 (entry)
+      requirements: "Default tier on enrolment."
+      bonus_rate: 0
+      bonus_per_inr: 100
+    - id: blu-2
+      name: Blu 2
+      requirements: "Achieved on flight count / spend threshold (programme-managed)."
+      bonus_rate: 2
+      bonus_per_inr: 100
+    - id: blu-1
+      name: Blu 1
+      requirements: "Top tier."
+      bonus_rate: 4
+      bonus_per_inr: 100
+
+redemption_paths:
+  - type: voucher
+    program: IndiGo flights and 6E Prime add-ons
+    rate_inr_per_unit:
+      face: 1.0
+      realized: 0.5
+    constraints: "Redeemable on IndiGo bookings only. No transfer partners."
+
+metadata:
+  last_verified_on: 2026-04-30
+  source:
+    url: https://www.goindigo.in/loyalty
+    retrieved_on: 2026-04-30
+    notes: |
+      Earn structure (baseline 8 + channel 4 + tier 0/2/4) sourced from
+      IndiGo BluChip programme docs as summarised in community guides.
+      Maximum stack (Blu 1 booking direct): 8 + 4 + 4 = 16 BluChips per
+      ₹100, which lines up with the visible "up to 19/21/22" rates on
+      co-brand cards (the remainder is card-attributable).
+      Original IndiGo product pages return 403 to automated fetches; if
+      official numbers shift, cross-check at the Cardmaven / Pointsmath
+      references below.

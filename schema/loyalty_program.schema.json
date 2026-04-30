@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/drftingwood/credit_cards_india/schema/loyalty_program.schema.json",
+  "title": "Loyalty Program (third-party, joined to cards by id)",
+  "type": "object",
+  "required": ["id", "name", "type", "currency", "unit_value_inr", "metadata"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Stable slug. Must match filename. Cards reference this via rewards[].loyalty_program."
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "type": {
+      "type": "string",
+      "enum": ["airline", "hotel", "retail", "transit", "other"]
+    },
+    "partner": { "type": "string", "minLength": 1 },
+    "currency": { "type": "string", "enum": ["points", "miles", "cashback"] },
+    "currency_name": { "type": ["string", "null"] },
+    "unit_value_inr": {
+      "type": "object",
+      "required": ["face", "realized"],
+      "additionalProperties": false,
+      "properties": {
+        "face": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Marketing/face redemption value of one unit (e.g. 1 BluChip = ₹1 on IndiGo bookings)."
+        },
+        "realized": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Observed effective value after fare inflation, blackouts, redemption friction. Single scalar; usually midpoint of an observed range. Calculator math uses this number."
+        },
+        "realized_source": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": ["midpoint", "low", "observed-redemption", "survey"]
+            },
+            "range": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "number", "minimum": 0 }
+            },
+            "notes": { "type": "string" },
+            "references": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["url", "retrieved_on"],
+                "additionalProperties": false,
+                "properties": {
+                  "url": { "type": "string", "format": "uri" },
+                  "retrieved_on": { "type": "string", "format": "date" },
+                  "notes": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "earn": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseline": {
+          "type": ["object", "null"],
+          "required": ["rate", "per_inr"],
+          "additionalProperties": false,
+          "properties": {
+            "rate": { "type": "number", "minimum": 0 },
+            "per_inr": { "type": "integer", "minimum": 1 },
+            "notes": { "type": "string" }
+          }
+        },
+        "channels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["channel", "merchants", "rate", "per_inr"],
+            "additionalProperties": false,
+            "properties": {
+              "channel": {
+                "type": "string",
+                "enum": [
+                  "issuer-portal",
+                  "cobrand-merchant",
+                  "third-party-ota",
+                  "merchant-app",
+                  "merchant-web",
+                  "physical",
+                  "online-any"
+                ]
+              },
+              "merchants": {
+                "type": "array",
+                "items": { "type": "string" },
+                "minItems": 1
+              },
+              "rate": { "type": "number", "minimum": 0 },
+              "per_inr": { "type": "integer", "minimum": 1 },
+              "notes": { "type": "string" }
+            }
+          }
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "bonus_rate", "bonus_per_inr"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+              "name": { "type": "string" },
+              "requirements": { "type": "string" },
+              "bonus_rate": { "type": "number", "minimum": 0 },
+              "bonus_per_inr": { "type": "integer", "minimum": 1 },
+              "notes": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "redemption_paths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["voucher", "airmiles", "hotel-points", "statement-credit", "cashback-bank", "transfer", "other"]
+          },
+          "program": { "type": "string" },
+          "rate_inr_per_unit": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "face": { "type": "number", "minimum": 0 },
+              "realized": { "type": "number", "minimum": 0 }
+            }
+          },
+          "constraints": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["last_verified_on"],
+      "additionalProperties": false,
+      "properties": {
+        "last_verified_on": { "type": "string", "format": "date" },
+        "source": {
+          "type": "object",
+          "required": ["url", "retrieved_on"],
+          "additionalProperties": false,
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "retrieved_on": { "type": "string", "format": "date" },
+            "notes": { "type": "string" }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

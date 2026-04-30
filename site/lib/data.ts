@@ -3,6 +3,7 @@ import type {
   IssuerRecord,
   NetworkRecord,
   DatasetIndex,
+  LoyaltyProgram,
 } from "./types";
 
 /**
@@ -21,11 +22,13 @@ import cardsData from "../../dist/cards.json";
 import issuersData from "../../dist/issuers.json";
 import networksData from "../../dist/networks.json";
 import indexData from "../../dist/index.json";
+import loyaltyData from "../../dist/loyalty_programs.json";
 
 const cards = cardsData as unknown as EnrichedCard[];
 const issuers = issuersData as unknown as IssuerRecord[];
 const networks = networksData as unknown as NetworkRecord[];
 const datasetIndex = indexData as unknown as DatasetIndex;
+const loyaltyPrograms = loyaltyData as unknown as LoyaltyProgram[];
 
 export function getAllCards(): EnrichedCard[] {
   return cards;
@@ -68,4 +71,12 @@ export function allCardRouteParams(): Array<{ issuer: string; slug: string }> {
 /** Active (including invite-only) cards only. */
 export function getActiveCards(): EnrichedCard[] {
   return cards.filter((c) => c.computed.is_active);
+}
+
+export function getAllLoyaltyPrograms(): LoyaltyProgram[] {
+  return loyaltyPrograms;
+}
+
+export function getLoyaltyProgramsById(): Record<string, LoyaltyProgram> {
+  return Object.fromEntries(loyaltyPrograms.map((p) => [p.id, p]));
 }

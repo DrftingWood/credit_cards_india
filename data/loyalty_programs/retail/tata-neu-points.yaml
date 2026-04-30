@@ -1,0 +1,66 @@
+id: tata-neu-points
+name: Tata NeuPass (NeuCoins)
+type: retail
+partner: Tata Digital
+currency: points
+currency_name: NeuCoins
+
+unit_value_inr:
+  face: 1.0
+  realized: 0.95
+  realized_source:
+    method: midpoint
+    range: [0.85, 1.0]
+    notes: |
+      Confirmed face: 1 NeuCoin = ₹1 across the Tata Neu ecosystem.
+      Realized close to face for routine ecosystem redemptions; minor
+      drag from per-cart caps on certain Tata brands. Refine if a
+      sourced redemption-friction study lands.
+    references:
+      - url: https://www.tataneu.com/about-neupass
+        retrieved_on: 2026-04-30
+        notes: "Tata NeuPass programme overview confirms 1 NeuCoin = ₹1 redemption."
+
+earn:
+  baseline:
+    rate: 1.5
+    per_inr: 100
+    notes: |
+      Confirmed: NeuPass members earn 1.5% NeuCoins as the base rate on
+      Tata Neu platform spend. Source: Tata Neu / NeuPass docs as
+      summarised on Paisabazaar HDFC Tata Neu pages.
+  channels:
+    - channel: cobrand-merchant
+      merchants: [tata-neu]
+      rate: 3.5
+      per_inr: 100
+      notes: |
+        Confirmed: +3.5% additional NeuCoins on partner Tata Brands
+        transactions (BigBasket, Croma, Westside, Tata CLiQ, IHCL/Taj,
+        Air India). Combined with the 1.5% baseline this lands at the
+        widely-advertised 5% NeuCoins on Tata-brand spend through the
+        app. The +3.5% does NOT apply on non-partner spend within the app.
+  # NeuPass introduced 4 tiers (Explorer/Insider/Elite/Legend) in 2024,
+  # but NeuCard (HDFC Tata Neu credit card) holders are exempt from the
+  # tier system and continue to earn the flat 5% on Tata brands.
+  # Modelling tiers is therefore not load-bearing for any current card in
+  # the dataset; tiers field omitted pending demand.
+
+redemption_paths:
+  - type: voucher
+    program: Tata Neu ecosystem (Croma, BigBasket, Air India, Taj, Westside, Tata CLiQ)
+    rate_inr_per_unit:
+      face: 1.0
+      realized: 0.95
+    constraints: "1 NeuCoin = ₹1 within the ecosystem; not transferable to airlines or hotels outside Tata."
+
+metadata:
+  last_verified_on: 2026-04-30
+  source:
+    url: https://www.tataneu.com/about-neupass
+    retrieved_on: 2026-04-30
+    notes: |
+      Earn structure (1.5% baseline + 3.5% partner bonus = 5% on Tata
+      brands) sourced via Paisabazaar HDFC Tata Neu pages and HDFC
+      product FAQs. NeuPass tier system exists since 2024 but is bypassed
+      for NeuCard holders so isn't modelled here.

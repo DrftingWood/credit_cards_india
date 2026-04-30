@@ -1,0 +1,58 @@
+id: irctc-loyalty
+name: IRCTC Loyalty (Reward Points)
+type: transit
+partner: IRCTC
+currency: points
+currency_name: IRCTC Reward Points
+
+unit_value_inr:
+  face: 1.0
+  realized: 0.95
+  realized_source:
+    method: midpoint
+    range: [0.9, 1.0]
+    notes: |
+      Confirmed face: 1 RP = ₹1 redeemable against AC class rail fares on
+      irctc.co.in. Realized very close to face — rail fares are revenue-
+      stable (no award-fare inflation) and convenience-fee drag on award
+      bookings is minor. Slight haircut for a known cancellation
+      asymmetry (cancelling a redeemed ticket refunds only 50% of the
+      reward points used). Confidence: high.
+    references:
+      - url: https://contents.irctc.co.in/en/AboutLoyalty.pdf
+        retrieved_on: 2026-04-30
+        notes: "Official IRCTC Loyalty programme T&Cs."
+      - url: https://cardmaven.in/irctc-sbi-premier-credit-card/
+        retrieved_on: 2026-04-30
+        notes: "Confirms 1 RP = ₹1 against AC tickets and the 50%-on-cancel rule."
+
+earn:
+  baseline:
+    rate: 0
+    per_inr: 100
+    notes: "IRCTC's loyalty programme awards points via co-brand credit cards rather than membership status; baseline outside cards is zero."
+  channels:
+    - channel: cobrand-merchant
+      merchants: [irctc-direct]
+      rate: 0
+      per_inr: 100
+      notes: "Co-brand cards earn elevated rates here (encoded on the card); the programme itself adds no extra layer."
+
+redemption_paths:
+  - type: voucher
+    program: IRCTC ticket bookings on irctc.co.in / IRCTC rail app
+    rate_inr_per_unit:
+      face: 1.0
+      realized: 0.9
+    constraints: "Redeemable only on IRCTC rail bookings."
+
+metadata:
+  last_verified_on: 2026-04-22
+  source:
+    url: https://www.irctc.co.in
+    retrieved_on: 2026-04-22
+    notes: |
+      PROVISIONAL — IRCTC's points are essentially card-issued (no programme
+      baseline). This file primarily centralises the realized unit value
+      so the three IRCTC co-brand cards can reference it. Refine with a
+      primary source on the IRCTC redemption mechanics.

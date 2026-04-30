@@ -1,0 +1,73 @@
+id: air-india-flying-returns
+name: Air India Flying Returns / Maharaja Club
+type: airline
+partner: Air India
+currency: miles
+currency_name: Maharaja Points
+
+unit_value_inr:
+  face: 1.0
+  realized: 0.45
+  realized_source:
+    method: midpoint
+    range: [0.35, 0.55]
+    notes: |
+      PROVISIONAL realized number — placeholder. Award tickets carry
+      meaningful taxes / fuel surcharges and fare-class restrictions; Star
+      Alliance partner redemptions can extract better cents-per-mile but
+      aren't the typical use. The 0.45 midpoint is unsourced; refine
+      against a basket of representative redemptions in audit.
+    references:
+      - url: https://thepointsguy.com/loyalty-programs/air-india-flying-returns/
+        retrieved_on: 2026-04-30
+        notes: "Community valuation context for Maharaja Points post-rebrand."
+
+earn:
+  baseline:
+    rate: 6
+    per_inr: 100
+    notes: |
+      Confirmed: Red (entry) tier members earn 6 Maharaja Points per ₹100
+      on base fare + fuel surcharge. Source: Maharaja Club programme docs
+      as summarised on AwardWallet and The Points Guy.
+  channels: []
+  tiers:
+    - id: silver
+      name: Silver Edge
+      bonus_rate: 2
+      bonus_per_inr: 100
+      notes: "Confirmed: Silver members earn 8/100 total (+2 over Red baseline)."
+    - id: gold
+      name: Golden Edge
+      bonus_rate: 3
+      bonus_per_inr: 100
+      notes: |
+        APPROXIMATE: programme docs cite "between 6X and 10X across tiers"
+        without an explicit per-tier slab on aggregator pages. Modelled at
+        +3 bonus = 9/100 total. Refine if Air India publishes the slab.
+    - id: platinum
+      name: The Maharajah Club / Platinum
+      bonus_rate: 4
+      bonus_per_inr: 100
+      notes: "Top tier modelled at 10/100 total (+4 over Red baseline)."
+
+redemption_paths:
+  - type: airmiles
+    program: Air India award flights and Star Alliance partners
+    rate_inr_per_unit:
+      face: 1.0
+      realized: 0.45
+    constraints: "Award taxes/surcharges are significant; partner redemptions can yield better cents-per-mile."
+
+metadata:
+  last_verified_on: 2026-04-30
+  source:
+    url: https://www.airindia.com/in/en/maharaja-club/earn-points.html
+    retrieved_on: 2026-04-30
+    notes: |
+      Programme rebranded to Maharaja Club (still uses Flying Returns
+      brand for legacy comms). Red = 6/100 confirmed; Silver = 8/100
+      confirmed; Gold/Platinum cited as up to 10/100 without a clean
+      per-tier slab — modelled as 9/10. Air India URLs return 403 to
+      automated fetches; cross-check at thepointsguy / awardwallet
+      references in this file.

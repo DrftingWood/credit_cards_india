@@ -1,0 +1,88 @@
+id: marriott-bonvoy
+name: Marriott Bonvoy
+type: hotel
+partner: Marriott International
+currency: points
+currency_name: Bonvoy Points
+
+unit_value_inr:
+  face: 0.85
+  realized: 0.55
+  realized_source:
+    method: midpoint
+    range: [0.40, 0.70]
+    notes: |
+      PROVISIONAL realized number — placeholder. Bonvoy redemptions vary
+      widely by property tier and dates: aspirational off-peak redemptions
+      can extract ₹0.7-1.0/pt, mid-range domestic routinely ₹0.3-0.5/pt.
+      The 0.55 midpoint is unsourced; refine against a basket of
+      representative INR-denominated redemptions in audit.
+    references:
+      - url: https://thepointsguy.com/loyalty-programs/award-travelers-guide-to-marriott-bonvoy/
+        retrieved_on: 2026-04-30
+        notes: "Community valuations centre Bonvoy at ~0.7-0.85 cents/pt USD; INR conversion lands the realized midpoint near ₹0.55-0.7."
+
+earn:
+  baseline:
+    rate: 10
+    per_inr: 85
+    notes: |
+      Confirmed: 10 Bonvoy points per USD spent at most participating
+      Marriott properties (5/USD at extended-stay brands like Element,
+      Residence Inn, TownePlace Suites, Protea, Homes & Villas). Modelled
+      here as 10 per ₹85 (USD-INR ≈ 85 at time of authoring).
+  channels: []
+  tiers:
+    - id: silver
+      name: Silver Elite
+      requirements: "10 qualifying nights/year."
+      bonus_rate: 1
+      bonus_per_inr: 85
+      notes: "+10% bonus on base points (i.e. +1 per USD)."
+    - id: gold
+      name: Gold Elite
+      requirements: "25 qualifying nights/year."
+      bonus_rate: 2.5
+      bonus_per_inr: 85
+      notes: "+25% bonus."
+    - id: platinum
+      name: Platinum Elite
+      requirements: "50 qualifying nights/year."
+      bonus_rate: 5
+      bonus_per_inr: 85
+      notes: "+50% bonus."
+    - id: titanium
+      name: Titanium Elite
+      requirements: "75 qualifying nights/year."
+      bonus_rate: 7.5
+      bonus_per_inr: 85
+      notes: "+75% bonus."
+    - id: ambassador
+      name: Ambassador Elite
+      requirements: "100 nights + ~$23k qualifying spend."
+      bonus_rate: 7.5
+      bonus_per_inr: 85
+      notes: "Same +75% earn bonus as Titanium plus invite-only services."
+
+redemption_paths:
+  - type: hotel-points
+    program: Marriott Bonvoy free-night and points-and-cash redemptions
+    rate_inr_per_unit:
+      face: 0.85
+      realized: 0.55
+    constraints: "Best value at category 5+ properties off-peak. Variable redemption pricing since 2023."
+  - type: transfer
+    program: 40+ airline transfer partners (typically 3:1 + 5k bonus per 60k transferred)
+    constraints: "Transfer values vary widely by partner."
+
+metadata:
+  last_verified_on: 2026-04-30
+  source:
+    url: https://www.marriott.com/loyalty/earn/hotels.mi
+    retrieved_on: 2026-04-30
+    notes: |
+      Earn rates and tier bonuses sourced from Marriott Bonvoy programme
+      docs as summarised on The Points Guy and Marriott's earn page.
+      Marriott URLs return 403 to automated fetches; if official numbers
+      shift (Marriott has periodically adjusted tier bonuses), cross-check
+      at the references below.

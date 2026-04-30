@@ -40,20 +40,29 @@ rewards:
     effective_until: null
     currency: miles
     currency_name: IndiGo BluChips
+    loyalty_program: indigo-bluchip
     base:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
         multiplier: 1
         effective_rate: 22
+        card_attributable_rate: 6
+        card_attributable_per_inr: 100
+        stacks_with_program: true
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
         merchants: [indigo-web, indigo-app]
-        notes: "Up to 22 IndiGo BluChips per ₹100 on IndiGo web/app bookings — the highest headline earn rate on any IndiGo co-brand."
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [indigo-app, indigo-web]
+        notes: "Up to 22 visible BluChips per ₹100 on IndiGo web/app bookings. ~6 is card-attributable; the rest stacks from BluChip baseline + channel + tier earn (joined via loyalty_program: indigo-bluchip). Headline of 22 assumes top-tier BluChip status."
       - category: dining-entertainment
         canonical_categories: [dining, entertainment]
         multiplier: 1

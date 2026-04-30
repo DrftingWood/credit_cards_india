@@ -20,29 +20,26 @@ import argparse
 import re
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parent.parent
 CARDS_DIR = ROOT / "data" / "cards"
+RULES_PATH = ROOT / "scripts" / "category_rules.yaml"
 
-# Mirrors site/lib/category-mapping.ts RULES. Keep in sync.
-# Order matters: first match wins for buckets that could overlap.
-RULES: list[tuple[re.Pattern[str], list[str]]] = [
-    (re.compile(r"amazon|flipkart|myntra|ajio|tata-?cliq|tata-?neu|jiomart|shopping|online|retail"), ["online"]),
-    (re.compile(r"grocery|groceries|bigbasket|supermarket|departmental"), ["groceries"]),
-    (re.compile(r"dining|restaurant|swiggy|zomato|eazydiner|food-delivery|instamart"), ["dining"]),
-    (re.compile(r"fuel|bpcl|hpcl|indianoil|ioc(?!n)|petrol|diesel"), ["fuel"]),
-    (re.compile(r"travel|flight|hotel|airline|makemytrip|mmt|yatra|cleartrip|ixigo|goibibo|easemytrip|edge-portal|indigo|air-india|vistara|irctc|marriott|taj|fine-hotels|adani-airports"), ["travel"]),
-    (re.compile(r"utility|bill-payments|recharge|airtel-thanks|utilities"), ["utilities"]),
-    (re.compile(r"rent"), ["rent"]),
-    (re.compile(r"international|forex"), ["international"]),
-    (re.compile(r"entertainment|movies|bookmyshow|pvr|cinema|gaming|ott"), ["entertainment"]),
-]
 
-# Entries whose category string is intentionally *not* category-specific
-# (cross-category spend-threshold boosts, "any spend" uplifts). Skip tagging.
-UNTAGGABLE = re.compile(
-    r"spend-above|incremental-above|birthday|monthly-spend|weekend-spend|top-\d|any-spend|emi-spends|bundle",
-    re.IGNORECASE,
-)
+def _load_rules() -> tuple[list[tuple[re.Pattern[str], list[str]]], re.Pattern[str]]:
+    """Single source of truth: scripts/category_rules.yaml. Mirrored in
+    site/lib/category-mapping.ts; consolidating both onto this YAML is the
+    Q12c follow-up. Keep them in sync until then."""
+    raw = yaml.safe_load(RULES_PATH.read_text(encoding="utf-8"))
+    rules: list[tuple[re.Pattern[str], list[str]]] = []
+    for entry in raw.get("rules", []):
+        rules.append((re.compile(entry["match"]), list(entry["buckets"])))
+    untaggable = re.compile(raw.get("untaggable", r"$^"), re.IGNORECASE)
+    return rules, untaggable
+
+
+RULES, UNTAGGABLE = _load_rules()
 
 
 def classify(category: str) -> list[str]:

@@ -26,7 +26,7 @@ export type IncomeBand = "lt-30k" | "30k-75k" | "75k-1.5L" | "1.5L-3L" | "gt-3L"
 export type Goal = "cashback" | "travel" | "lounge" | "premium" | "credit-score";
 export type SpendBand = "0" | "lt-5k" | "5k-15k" | "15k-30k" | "gt-30k";
 export type LoungePref = "none" | "domestic-only" | "domestic-unlimited" | "international";
-export type RecurringSpend = "utilities-rent" | "movies-entertainment" | "high-forex";
+export type RecurringSpend = "utilities-rent" | "movies-entertainment" | "high-forex" | "bank-portal-bookings";
 
 export interface RecommendPayload {
   income_band: IncomeBand | null;
@@ -127,6 +127,14 @@ function channelMixFromPayload(p: RecommendPayload): Set<string> {
   }
   if (p.brand_preferences.fuel_station) {
     for (const m of BRAND_PREF_TO_CHANNELS.fuel[p.brand_preferences.fuel_station] ?? []) out.add(m);
+  }
+  // Power-user opt-in: when the user signals they book via bank portals,
+  // unlock issuer-portal tokens. By default these stay out of the mix
+  // because casual users don't book via SmartBuy / Travel EDGE.
+  if (p.lifestyle.recurring.includes("bank-portal-bookings")) {
+    for (const m of ["smartbuy", "edge-travel", "edge-mall", "ishop", "sbi-rewardz", "amex-travel"]) {
+      out.add(m);
+    }
   }
   return out;
 }

@@ -41,6 +41,7 @@ rewards:
       rate: 1
       per_inr: 50
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.4
     accelerated:
       - category: top-2-categories-monthly
         multiplier: 5

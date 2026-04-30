@@ -35,6 +35,7 @@ rewards:
       rate: 2
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.55
     accelerated:
       - category: travel-edge-portal
         canonical_categories: [travel]

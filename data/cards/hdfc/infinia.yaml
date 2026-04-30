@@ -46,6 +46,7 @@ rewards:
       rate: 5
       per_inr: 150
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: smartbuy-flights-hotels
         canonical_categories: [travel]

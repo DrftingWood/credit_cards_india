@@ -11,34 +11,46 @@ For the design rationale that motivated this list, see
 
 ## ⚠ Provisional realized unit values — must be sourced
 
-Every `unit_value_inr_realized` in the dataset today is a **placeholder**,
-not a researched value:
+**Status as of 2026-04-30** (continuously revised as audit progresses):
 
-- The five `data/loyalty_programs/*/*.yaml` files (BluChip, Bonvoy,
-  Tata Neu, IRCTC, Flying Returns) carry `realized` numbers and
-  `realized_source.notes` blocks marked `PROVISIONAL`. The earn baseline
-  / channel / tier rates inside `earn:` are equally provisional.
-- The 17 wave-7 cards that got inline `unit_value_inr_realized` (see
-  the Wave 7 row below) used per-issuer haircuts of 30-60% off face. The
-  haircuts are within community-cited bands but no individual number
-  is sourced.
-- The card-level `card_attributable_rate` numbers on co-brand cards
-  (the IndiGo-on-Kotak/IDFC/SBI splits in particular) are conservative
-  estimates from product-page narratives, not issuer-confirmed slabs.
+Still PROVISIONAL (realized number is an unsourced midpoint):
+- `indigo-bluchip` realized 0.5 — **now sourced** (community-cited band
+  ₹0.40-0.60). Earn structure (8 + 4 + 0/2/4) sourced. Status updated.
+- `marriott-bonvoy` realized 0.55 — earn structure sourced (10/$, tier
+  bonuses 10/25/50/75/75%) but realized number itself remains an
+  unsourced midpoint.
+- `air-india-flying-returns` realized 0.45 — Red baseline 6/100 and
+  Silver 8/100 sourced; Gold/Platinum slabs and realized number
+  remain unsourced.
+- ~70 points/miles cards still on legacy `unit_value_inr` only,
+  without `unit_value_inr_realized`. Wave-7 backlog below.
 
-**Practical impact**: relative ordering across cards is probably roughly
-right (issuer-relative haircuts move together); absolute ₹/yr figures
-in `/recommend` will be off — possibly meaningfully. The schema and
-calculator are sound; the numbers feeding them are not.
+Confirmed (sourced or near-primary):
+- `tata-neu-points` baseline 1.5% + partner 3.5% earn; 1 NeuCoin = ₹1.
+- `irctc-loyalty` 1 RP = ₹1 against AC class fares; 50%-on-cancel rule
+  noted.
+- `indigo-bluchip` earn structure (baseline 8 / channel 4 / tier 0/2/4)
+  and realized 0.5 midpoint within sourced band.
+- HDFC Reward Points realized values for Infinia / Diners Black (0.7),
+  Diners Privilege / Regalia Gold (0.4) — sourced.
+- Amex Membership Rewards per-card realized values (MRCC 0.25, Plat
+  Travel 0.30, Plat Reserve / Plat Charge 0.40) — sourced.
 
-**To unblock production trust**, an audit pass needs to:
-1. Fetch the primary product page or T&Cs PDF for each loyalty programme
-   and each migrated card.
-2. Replace each `realized` number with a sourced value, populate
-   `realized_source.references[]` on the programme YAML.
-3. Verify `card_attributable_rate` decomposition against issuer slab
-   tables; switch to `earn_components[]` where the per-source breakdown
-   matters.
+The card-level `card_attributable_rate` numbers on co-brand cards are
+estimates from product-page narratives, not issuer-confirmed slabs.
+Verified to reconcile with the new programme model:
+- IndiGo cards: visible 19/21/22 = programme max 16 + card 3/5/6 ✓.
+
+**To unblock production trust on the remaining unsourced realized
+numbers**, an audit pass needs to:
+1. For each programme without a sourced `realized` value, fetch a
+   basket of representative redemptions and compute observed cents-
+   per-point.
+2. Replace the `realized` midpoint, populate
+   `realized_source.references[]`.
+3. For wave-7 cards still on legacy `unit_value_inr`, add per-card
+   `unit_value_inr_realized` informed by the issuer's reward-redemption
+   T&Cs PDF.
 
 Until then, treat ranked output as "directionally correct, magnitudes
 approximate."

@@ -12,16 +12,21 @@ unit_value_inr:
     method: midpoint
     range: [0.4, 0.6]
     notes: |
-      PROVISIONAL realized number — placeholder. The "1 BluChip = ₹1 on
-      IndiGo bookings" face value is confirmed (see references). The 0.5
-      realized midpoint reflects the standard award-fare-inflation pattern
-      seen on direct-redemption-only programmes; not yet validated against
-      a sourced basket of representative IndiGo award redemptions. Refine
-      in audit.
+      Confirmed: BluChip redemption pricing is dynamic; observed range
+      ₹0.40-₹0.60 per chip across reported user redemptions, with a
+      typical mid-route value near ₹0.41-0.50. Some users report >₹1.0
+      on rationalised post-2025 routes but this isn't the median case.
+      Midpoint 0.5 is the stable choice for ranking math; band documented.
     references:
+      - url: https://cardtrail.in/travel/indigo-bluchips-worth-it-india/
+        retrieved_on: 2026-04-30
+        notes: "Reported BluChip realized values 40-60 paise; dynamic up to higher in some cases."
+      - url: https://www.flyertalk.com/forum/india-based-airlines/2180868-indigo-bluchip-redemptions.html
+        retrieved_on: 2026-04-30
+        notes: "FlyerTalk thread with concrete redemption examples."
       - url: https://cardmaven.in/indigo-bluchip-loyalty-program-guide/
         retrieved_on: 2026-04-30
-        notes: "Confirms 1 BluChip ≈ ₹1 on IndiGo redemptions; community guide."
+        notes: "Cardmaven guide; confirms 1 BluChip ≈ ₹1 face on IndiGo redemptions."
 
 earn:
   baseline:

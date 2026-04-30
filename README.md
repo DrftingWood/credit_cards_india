@@ -21,6 +21,8 @@ scripts/
   tag_canonical_categories.py       # one-shot tagger using the rules above
 docs/
   SCHEMA.md                         # field-by-field reference
+  DECISIONS.md                      # architectural decisions (recommender, schema, build)
+  ROADMAP.md                        # open work and migration backlog
   CONTRIBUTING.md                   # how to add/update a card
 .github/workflows/validate.yml      # CI runs validate.py on every PR
 ```
@@ -59,9 +61,11 @@ python scripts/new_card.py hdfc millennia "HDFC Bank Millennia Credit Card"
 python scripts/validate.py
 ```
 
-## Schema
+## Schema and design
 
-See [`docs/SCHEMA.md`](docs/SCHEMA.md). The source of truth is `schema/*.schema.json`.
+- [`docs/SCHEMA.md`](docs/SCHEMA.md) — field-by-field reference. Source of truth is `schema/*.schema.json`.
+- [`docs/DECISIONS.md`](docs/DECISIONS.md) — architectural decisions for the recommender, loyalty/channel schema, and build pipeline.
+- [`docs/ROADMAP.md`](docs/ROADMAP.md) — open work, migration waves, and validator promotions.
 
 Fees, rewards, and benefits are modelled as **arrays of effective-dated records** — when an issuer revises an annual fee or reward rate, the old record is closed with `effective_until` and a new record is appended. Site queries like "what was this card's annual fee on 2024-06-01" become a one-line lookup without going through git history.
 

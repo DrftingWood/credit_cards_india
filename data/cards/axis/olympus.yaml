@@ -45,6 +45,10 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [edge-travel]
     exclusions:
       - fuel
       - wallet-loads

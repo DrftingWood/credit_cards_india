@@ -45,6 +45,10 @@ rewards:
         cap_per_cycle: 7500
         cap_unit: points
         cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [smartbuy]
     exclusions:
       - fuel
       - wallet-loads

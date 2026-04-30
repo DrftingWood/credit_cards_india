@@ -56,18 +56,26 @@ export const CATEGORY_LABELS: Record<CanonicalCategory, string> = {
  * Heuristic fallback: maps freeform accelerated-category strings to
  * calculator buckets via keyword rules. Only consulted when the schema
  * entry has no `canonical_categories` array.
+ *
+ * Rules come from scripts/category_rules.yaml — the same file
+ * scripts/validate.py and scripts/tag_canonical_categories.py read.
+ * site/scripts/build.mjs surfaces it into dist/category_rules.json so
+ * this module can import it at build time.
  */
-const RULES: Array<{ match: RegExp; buckets: CanonicalCategory[] }> = [
-  { match: /amazon|flipkart|myntra|ajio|tata-?cliq|shopping|online/, buckets: ["online"] },
-  { match: /grocery|groceries|bigbasket|supermarket|departmental/, buckets: ["groceries"] },
-  { match: /dining|restaurant|swiggy|zomato|eazydiner|food-delivery|instamart/, buckets: ["dining"] },
-  { match: /fuel|bpcl|hpcl|indianoil|ioc|petrol|diesel/, buckets: ["fuel"] },
-  { match: /travel|flight|hotel|airline|makemytrip|mmt|yatra|cleartrip|ixigo|goibibo|easemytrip|edge-portal|ticket|indigo|air-india|vistara|irctc|marriott|taj|fine-hotels/, buckets: ["travel"] },
-  { match: /utility|bill-payments|recharge|airtel-thanks|utilities/, buckets: ["utilities"] },
-  { match: /rent/, buckets: ["rent"] },
-  { match: /international|forex/, buckets: ["international"] },
-  { match: /entertainment|movies|bookmyshow|pvr|cinema|gaming/, buckets: ["online"] },
-];
+import categoryRulesData from "../../dist/category_rules.json";
+
+interface RawRule {
+  match: string;
+  buckets: string[];
+}
+
+const ALLOWED = new Set<string>(CANONICAL_CATEGORIES);
+const RULES: Array<{ match: RegExp; buckets: CanonicalCategory[] }> = (
+  (categoryRulesData as { rules?: RawRule[] }).rules ?? []
+).map((r) => ({
+  match: new RegExp(r.match),
+  buckets: r.buckets.filter((b): b is CanonicalCategory => ALLOWED.has(b)),
+}));
 
 export function classifyCategory(raw: string): CanonicalCategory[] {
   const s = raw.toLowerCase();

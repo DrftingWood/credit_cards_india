@@ -49,6 +49,10 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [adani-airports, adani-one-app, trainman]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [adani-one]
         notes: "7% back at Adani Airports retail / F&B and Adani One app."
       - category: dining-grocery
         canonical_categories: [groceries, dining]

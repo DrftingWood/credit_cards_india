@@ -46,7 +46,11 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
-        notes: "5 EDGE Miles per ₹100 on direct airline and Axis Travel EDGE bookings."
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [edge-travel]
+        notes: "5 EDGE Miles per ₹100 on direct airline and Axis Travel EDGE bookings. Rate fires only when routed through the EDGE portal."
       - category: international-spend
         canonical_categories: [international]
         multiplier: 2

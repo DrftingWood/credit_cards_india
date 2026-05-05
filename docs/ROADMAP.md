@@ -93,9 +93,9 @@ Currently warnings — promote to errors once offender count is zero per rule:
 
 | Rule | Status |
 |------|--------|
-| Accelerator `category` matches a known regex but lacks `canonical_categories` | Warning. Run `scripts/tag_canonical_categories.py --apply` to bulk-tag, then promote. |
-| Card has `co_brand.partner` matching a known programme partner but no `loyalty_program` ref | Not yet implemented. Add once Wave 1+ migration is settled. |
-| Accelerator `effective_rate > 5` and `card_attributable_rate` is unset (likely a stacking rate that wasn't decomposed) | Not yet implemented. Add after Wave 7. |
+| Accelerator `category` matches a known regex but lacks `canonical_categories` | **Promoted to error** (zero offenders across 127 cards as of 2026-05). |
+| Card has `co_brand.partner` matching a known programme partner but no `loyalty_program` ref | **Implemented as warning.** Driven by `co_brand_partner_aliases[]` on each loyalty programme. One legitimate offender (`hdfc/6e-rewards`, separate "6E Rewards" currency that auto-converts to BluChip). Promote to error once that card is reviewed. |
+| Accelerator `effective_rate > 5` and `card_attributable_rate` is unset (likely a stacking rate that wasn't decomposed) | **Promoted to error** (zero offenders at landing time; only fires for accelerators that also set `loyalty_program`). |
 
 ## Recommender follow-ups
 

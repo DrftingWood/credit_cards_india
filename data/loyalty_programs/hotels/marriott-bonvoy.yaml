@@ -2,6 +2,10 @@ id: marriott-bonvoy
 name: Marriott Bonvoy
 type: hotel
 partner: Marriott International
+co_brand_partner_aliases:
+  - Marriott Bonvoy
+  - Marriott International
+  - Marriott
 currency: points
 currency_name: Bonvoy Points
 

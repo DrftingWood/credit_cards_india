@@ -354,6 +354,30 @@ def main() -> int:
         check_dated_array(errors, path, "rewards", instance.get("rewards", []), card_is_active)
         check_dated_array(errors, path, "benefits", instance.get("benefits", []), card_is_active)
 
+        # co-brand partner ↔ loyalty programme alias lint
+        # Warning-tier per the validator-promotion pattern: promote to error
+        # once offender count is zero (see docs/ROADMAP.md).
+        co_brand = instance.get("co_brand")
+        if isinstance(co_brand, dict) and status != "discontinued":
+            partner_str = (co_brand.get("partner") or "").lower()
+            referenced_programs = {
+                rec.get("loyalty_program")
+                for rec in (instance.get("rewards") or [])
+                if rec.get("loyalty_program")
+            }
+            for prog_id, prog in loyalty_programs.items():
+                aliases = prog.get("co_brand_partner_aliases") or []
+                if not aliases:
+                    continue
+                if any(alias.lower() in partner_str for alias in aliases):
+                    if prog_id not in referenced_programs:
+                        warnings.append(
+                            f"[warn] {path.relative_to(ROOT)} :: co_brand.partner "
+                            f"'{co_brand.get('partner')}' matches loyalty programme "
+                            f"'{prog_id}' aliases but no rewards[].loyalty_program "
+                            f"references '{prog_id}'"
+                        )
+
         # loyalty program / channel / stacks-with-program lints
         for r_idx, rec in enumerate(instance.get("rewards", []) or []):
             program_ref = rec.get("loyalty_program")
@@ -398,10 +422,24 @@ def main() -> int:
                             matched = True
                             break
                     if matched:
-                        warnings.append(
-                            f"[warn] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}] "
-                            f"category '{cat_str}' matches a known rule but has no canonical_categories tag"
+                        errors.append(
+                            f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}] "
+                            f"category '{cat_str}' matches a known rule but has no canonical_categories tag "
+                            f"(run scripts/tag_canonical_categories.py --apply)"
                         )
+
+                if (
+                    program_ref
+                    and acc.get("effective_rate") is not None
+                    and acc["effective_rate"] > 5
+                    and acc.get("card_attributable_rate") is None
+                ):
+                    errors.append(
+                        f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}] "
+                        f"effective_rate {acc['effective_rate']} > 5 with loyalty_program "
+                        f"'{program_ref}' but no card_attributable_rate set; "
+                        f"likely a stacked rate that should be decomposed"
+                    )
 
         # discontinued cards should have discontinued_on
         if status == "discontinued" and not instance.get("discontinued_on"):

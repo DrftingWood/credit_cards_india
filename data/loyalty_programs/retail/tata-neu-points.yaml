@@ -2,6 +2,9 @@ id: tata-neu-points
 name: Tata NeuPass (NeuCoins)
 type: retail
 partner: Tata Digital
+co_brand_partner_aliases:
+  - Tata Neu
+  - Tata Digital
 currency: points
 currency_name: NeuCoins
 

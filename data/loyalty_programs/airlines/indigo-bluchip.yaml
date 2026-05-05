@@ -2,6 +2,8 @@ id: indigo-bluchip
 name: IndiGo BluChip
 type: airline
 partner: IndiGo
+co_brand_partner_aliases:
+  - IndiGo
 currency: miles
 currency_name: IndiGo BluChips
 

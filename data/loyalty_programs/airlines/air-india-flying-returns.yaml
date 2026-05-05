@@ -2,6 +2,8 @@ id: air-india-flying-returns
 name: Air India Flying Returns / Maharaja Club
 type: airline
 partner: Air India
+co_brand_partner_aliases:
+  - Air India
 currency: miles
 currency_name: Maharaja Points
 

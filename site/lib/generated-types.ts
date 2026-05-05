@@ -520,6 +520,12 @@ export interface LoyaltyProgramThirdPartyJoinedToCardsById {
   name: string;
   type: "airline" | "hotel" | "retail" | "transit" | "other";
   partner?: string;
+  /**
+   * Case-insensitive substring tokens that, if present in a card's `co_brand.partner`, mean the card should reference this programme via `rewards[].loyalty_program`. Used by the validator to flag missing loyalty links on co-brand cards.
+   *
+   * @minItems 1
+   */
+  co_brand_partner_aliases?: [string, ...string[]];
   currency: "points" | "miles" | "cashback";
   currency_name?: string | null;
   unit_value_inr: {

@@ -305,6 +305,9 @@
             "type": "object",
             "required": ["category", "multiplier"],
             "additionalProperties": false,
+            "dependentRequired": {
+              "cap_per_cycle": ["cycle"]
+            },
             "properties": {
               "category": { "type": "string", "minLength": 1 },
               "multiplier": { "type": "number", "minimum": 0 },

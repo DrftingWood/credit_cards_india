@@ -2,6 +2,8 @@ id: irctc-loyalty
 name: IRCTC Loyalty (Reward Points)
 type: transit
 partner: IRCTC
+co_brand_partner_aliases:
+  - IRCTC
 currency: points
 currency_name: IRCTC Reward Points
 

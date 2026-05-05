@@ -17,6 +17,13 @@
       "enum": ["airline", "hotel", "retail", "transit", "other"]
     },
     "partner": { "type": "string", "minLength": 1 },
+    "co_brand_partner_aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Case-insensitive substring tokens that, if present in a card's `co_brand.partner`, mean the card should reference this programme via `rewards[].loyalty_program`. Used by the validator to flag missing loyalty links on co-brand cards.",
+      "items": { "type": "string", "minLength": 1 }
+    },
     "currency": { "type": "string", "enum": ["points", "miles", "cashback"] },
     "currency_name": { "type": ["string", "null"] },
     "unit_value_inr": {

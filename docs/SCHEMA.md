@@ -85,6 +85,10 @@ under `data/loyalty_programs/<type>/<id>.yaml` and carry:
 - `earn.baseline` / `earn.channels[]` / `earn.tiers[]` — what any member of
   the programme earns regardless of which credit card. Cards reference the
   programme via `rewards[].loyalty_program: <id>`.
+- `co_brand_partner_aliases[]` — substring tokens (case-insensitive) that
+  identify a co-brand card as belonging to this programme. The validator
+  warns when a card with a matching `co_brand.partner` doesn't reference
+  the programme via `rewards[].loyalty_program`.
 
 A card-side accelerator can opt into stacking via:
 
@@ -128,4 +132,7 @@ Run `python scripts/validate.py` locally; CI runs it on every PR.
 - `rewards[].loyalty_program` must reference an id under `data/loyalty_programs/`.
 - `accelerated[].channel.merchants[]` tokens must exist under the declared class in `data/channels/known.yaml`.
 - `accelerated[].stacks_with_program: true` requires the parent rewards record to have `loyalty_program` set.
-- An accelerator whose `category` matches a known regex in `scripts/category_rules.yaml` but lacks `canonical_categories` warns (run `scripts/tag_canonical_categories.py --apply` to bulk-tag).
+- An accelerator whose `category` matches a known regex in `scripts/category_rules.yaml` but lacks `canonical_categories` errors out (run `scripts/tag_canonical_categories.py --apply` to bulk-tag).
+- An accelerator with `loyalty_program` set, `effective_rate > 5`, and no `card_attributable_rate` errors out — the headline rate almost certainly stacks distinct sources and needs decomposition.
+- A card whose `co_brand.partner` matches a loyalty programme's `co_brand_partner_aliases[]` but doesn't reference that programme in any `rewards[].loyalty_program` warns. Discontinued cards are skipped.
+- An `accelerated[]` entry with `cap_per_cycle` must also set `cycle` (schema-enforced via `dependentRequired`).

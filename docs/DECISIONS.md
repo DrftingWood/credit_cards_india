@@ -205,6 +205,37 @@ when a card opts into the new schema:
 - `accelerated[].stacks_with_program: true` requires the parent rewards
   record to have `loyalty_program` set.
 
+### D-16a. Promotion of canonical_categories and stacking-decomposition lints to errors
+
+`accelerated[].canonical_categories` missing when `category` matches a
+known regex was a warning while back-tagging was in progress; promoted to
+error once `tag_canonical_categories.py --apply` reported zero changes
+across all 127 cards. New cards are now expected to land tagged.
+
+The same pass added an error for `accelerated[].effective_rate > 5` with
+a `loyalty_program` set but no `card_attributable_rate`: such headline
+rates almost always stack distinct sources and need decomposition (D-12)
+to keep `/recommend` honest.
+
+### D-16b. Co-brand ↔ loyalty programme alias lint (warning)
+
+Loyalty programmes declare `co_brand_partner_aliases[]` — the substring
+tokens that, when present in a card's `co_brand.partner`, mean the card
+should reference the programme via `rewards[].loyalty_program`. The
+validator emits a warning when a co-brand card matches but doesn't link.
+Warning-tier (not error) because legitimate exceptions exist — e.g.
+`hdfc/6e-rewards` earns a separate "6E Rewards" currency that
+auto-converts to BluChip 1:1 at redemption rather than directly being
+the BluChip programme. Discontinued cards are skipped.
+
+### D-16c. Accelerator caps require a cycle
+
+`accelerated[]` schema sets `dependentRequired: { cap_per_cycle:
+[cycle] }`. A bare `cap_per_cycle` without `cycle` is ambiguous (`5000
+points per what?`) and previously type-checked but was undefined for the
+calculator. All 127 cards already comply; the dependency makes that
+implicit invariant explicit.
+
 ### D-17. Build pipeline is pure Node
 
 `site/scripts/prebuild.mjs` runs `gen-types.mjs` then `build.mjs`. No

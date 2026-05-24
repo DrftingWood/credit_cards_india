@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Link from "next/link";
 import type { EnrichedCard } from "@/lib/types";
 import { cardHref } from "@/lib/data";
@@ -6,7 +7,13 @@ import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
 import { CardImage } from "./card-image";
 
-export function CardTile({ card }: { card: EnrichedCard }) {
+/**
+ * Memoised because CardGrid renders 100+ tiles and re-renders on every browse
+ * filter toggle. The card prop is a stable object from the build artifact
+ * (referentially stable across renders), so default React.memo === comparison
+ * is enough — no custom comparator needed.
+ */
+function CardTileImpl({ card }: { card: EnrichedCard }) {
   const href = cardHref(card);
 
   const fee = card.current_fees?.annual_fee_inr ?? null;
@@ -66,3 +73,5 @@ export function CardTile({ card }: { card: EnrichedCard }) {
     </Link>
   );
 }
+
+export const CardTile = memo(CardTileImpl);

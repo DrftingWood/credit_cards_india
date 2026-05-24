@@ -5,17 +5,23 @@ import { useEffect, useState } from "react";
 const STORAGE_KEY = "cci.beta_banner_dismissed";
 
 export function BetaBanner() {
-  const [visible, setVisible] = useState(false);
+  // Initial render shows the banner — matches SSR exactly, so no hydration
+  // mismatch and no CLS for the (majority) case of users who haven't dismissed.
+  // Effect then checks localStorage and hides if previously dismissed.
+  // localStorage (was sessionStorage) so the dismissal persists across tabs
+  // and visits — the previous behaviour annoyed users with the banner every
+  // time they opened a new tab.
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     try {
-      setVisible(sessionStorage.getItem(STORAGE_KEY) !== "1");
+      if (localStorage.getItem(STORAGE_KEY) === "1") setDismissed(true);
     } catch {
-      setVisible(true);
+      // localStorage blocked (private mode / embed) — accept showing the banner.
     }
   }, []);
 
-  if (!visible) return null;
+  if (dismissed) return null;
 
   return (
     <div className="bg-amber-50 border-b border-amber-200 text-amber-900 text-sm">
@@ -30,9 +36,9 @@ export function BetaBanner() {
           className="shrink-0 text-amber-900/70 hover:text-amber-900"
           onClick={() => {
             try {
-              sessionStorage.setItem(STORAGE_KEY, "1");
+              localStorage.setItem(STORAGE_KEY, "1");
             } catch {}
-            setVisible(false);
+            setDismissed(true);
           }}
         >
           ×

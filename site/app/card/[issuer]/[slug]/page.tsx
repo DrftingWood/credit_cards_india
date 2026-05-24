@@ -169,7 +169,7 @@ export default async function CardPage({
               <a
                 href={card.co_brand.partner_website}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="chip chip-brand no-underline hover:underline"
               >
                 Co-brand · {card.co_brand.partner} ↗
@@ -197,7 +197,7 @@ export default async function CardPage({
             <a
               href={card.application.apply_url}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-medium text-white no-underline hover:bg-brand-700 hover:text-white"
             >
               Apply Now ↗

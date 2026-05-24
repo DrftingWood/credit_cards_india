@@ -3,16 +3,22 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { EnrichedCard, LoyaltyProgram } from "../../lib/types";
-import { recommend, type RecommendResult, type RecommendPayload } from "../../lib/recommender";
+import {
+  recommend,
+  type RecommendResult,
+  type RecommendPayload,
+  type IncomeBand,
+} from "../../lib/recommender";
 import { BRAND_PREF_TO_CHANNELS } from "../../lib/recommender-constants";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types — kept narrow so TypeScript catches every option mismatch.
 // The on-submit JSON payload uses these literal strings as-is so a downstream
 // recommendation algorithm can switch on them without re-parsing free text.
+// IncomeBand is imported (rather than redeclared) so the type and the
+// INCOME_BAND_ANNUAL_INR record can't drift.
 // ─────────────────────────────────────────────────────────────────────────────
 
-type IncomeBand = "lt-30k" | "30k-75k" | "75k-1.5L" | "1.5L-3L" | "gt-3L";
 type Goal = "cashback" | "travel" | "lounge" | "premium" | "credit-score";
 type MacroCategory = "online" | "travel" | "dining" | "groceries" | "fuel";
 type SpendBand = "0" | "lt-5k" | "5k-15k" | "15k-30k" | "gt-30k";

@@ -5,6 +5,8 @@
  * scoring code.
  */
 
+import type { IncomeBand } from "./recommender";
+
 /** Fair-market value of one complimentary domestic lounge visit (per industry-standard pay-per-visit rates). */
 export const LOUNGE_VALUE_DOMESTIC_INR = 1500;
 
@@ -20,8 +22,8 @@ export const WELCOME_SPEND_FLOOR_INR_PER_MONTH = 17000;
 /** Proxy international spend per month (₹) used when the user signals high-forex but we don't ask for an amount. */
 export const PROXY_INTL_SPEND_INR_PER_MONTH = 15000;
 
-/** Income-band upper bounds (₹/year), used to gate cards by stated minimum income. */
-export const INCOME_BAND_ANNUAL_INR: Record<string, number> = {
+/** Income-band upper bounds (₹/year), used to gate cards by stated minimum income. Typed exhaustively against IncomeBand so a band added in one place fails compile in the other. */
+export const INCOME_BAND_ANNUAL_INR: Record<IncomeBand, number> = {
   "lt-30k": 360000,
   "30k-75k": 900000,
   "75k-1.5L": 1800000,

@@ -7,14 +7,24 @@ function loungeText(
   lounge: NonNullable<BenefitRecord["lounge_access"]>["domestic"] | null | undefined,
 ) {
   if (!lounge) return "N/A";
+  // {visits_per_cycle: 0} reads worse than no lounge at all — "0 visits each year"
+  // misrepresents the card. Treat as N/A so the row aligns with has_*_lounge.
+  if (lounge.visits_per_cycle === 0 || lounge.visits_per_cycle == null) {
+    // Spend-threshold lounges (without a fixed visit count) still count.
+    if (lounge.spend_threshold_inr == null) return "N/A";
+  }
   const visits =
     lounge.visits_per_cycle === "unlimited"
       ? "Unlimited"
-      : `${lounge.visits_per_cycle ?? 0}`;
+      : `${lounge.visits_per_cycle}`;
   const cycle = lounge.cycle ?? "year";
   const threshold = lounge.spend_threshold_inr
     ? ` on making spends of ${formatInr(lounge.spend_threshold_inr)} in the previous ${lounge.spend_threshold_cycle ?? "quarter"}`
     : "";
+  if (lounge.visits_per_cycle == null) {
+    // Threshold-only path
+    return `Lounge access${threshold}.`;
+  }
   const noun = Number(visits) === 1 ? "visit" : "visits";
   return `${visits} ${noun} each ${cycle}${threshold}.`;
 }

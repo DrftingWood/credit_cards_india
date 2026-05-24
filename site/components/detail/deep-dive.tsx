@@ -179,7 +179,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <section className="rounded-xl border border-slate-200 bg-white">
       <header className="border-b border-slate-200 bg-slate-50 px-5 py-3">
-        <h3 className="text-sm font-semibold text-slate-900">{title}</h3>
+        <h2 className="text-sm font-semibold text-slate-900">{title}</h2>
       </header>
       <div className="p-5 text-sm text-slate-800">{children}</div>
     </section>
@@ -188,9 +188,11 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function LoungeDetails({ d }: { d: NonNullable<NonNullable<EnrichedCard["current_benefits"]>["lounge_access"]>["domestic"] }) {
   if (!d) return null;
+  // Skip the row when nothing meaningful is declared — "0 visit(s)" reads worse than no row.
+  if (d.visits_per_cycle === 0 || d.visits_per_cycle == null) return null;
   return (
     <div className="text-sm text-slate-700 mt-1">
-      {d.visits_per_cycle === "unlimited" ? "Unlimited" : d.visits_per_cycle ?? 0} visit(s) / {d.cycle ?? "year"}.
+      {d.visits_per_cycle === "unlimited" ? "Unlimited" : d.visits_per_cycle} visit(s) / {d.cycle ?? "year"}.
       {d.via?.length ? (
         <span className="text-slate-500"> Via {d.via.join(", ")}.</span>
       ) : null}

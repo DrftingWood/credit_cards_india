@@ -1,16 +1,13 @@
 import Link from "next/link";
 import type { EnrichedCard } from "@/lib/types";
-import { cn, formatInr, formatPct } from "@/lib/utils";
+import { cardHref } from "@/lib/data";
+import { cn, formatFeeInr, formatInr, formatPct } from "@/lib/utils";
 import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
 import { CardImage } from "./card-image";
 
 export function CardTile({ card }: { card: EnrichedCard }) {
-  const issuerSlug = card.issuer;
-  const cardSlug = card.id.startsWith(`${issuerSlug}-`)
-    ? card.id.slice(issuerSlug.length + 1)
-    : card.id;
-  const href = `/card/${issuerSlug}/${cardSlug}`;
+  const href = cardHref(card);
 
   const fee = card.current_fees?.annual_fee_inr ?? null;
   const waiverAt = card.computed.fee_waiver_spend_inr;
@@ -40,7 +37,7 @@ export function CardTile({ card }: { card: EnrichedCard }) {
       <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
         <div className="rounded-md bg-slate-50 px-2 py-1.5">
           <div className="text-slate-500">Annual fee</div>
-          <div className="prose-card-value">{formatInr(fee)}</div>
+          <div className="prose-card-value">{formatFeeInr(fee)}</div>
           {waiverAt ? (
             <div className="text-slate-500 mt-0.5">
               Waived at {formatInr(waiverAt)} spend

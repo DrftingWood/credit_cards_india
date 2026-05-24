@@ -245,21 +245,39 @@ const ROWS: Row[] = [
 ];
 
 export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
-  const colCount = cards.length;
+  // Defensive early-return — every caller already gates on cards.length >= 2,
+  // but the component shouldn't divide by 0 (used to produce "Infinity%" widths)
+  // if a future caller passes an empty array.
+  if (cards.length === 0) {
+    return (
+      <div className="rounded-xl border border-slate-200 bg-white p-6 text-sm text-slate-500">
+        No cards selected to compare.
+      </div>
+    );
+  }
+
+  // colgroup + table-fixed gives each card column an equal share, keeping
+  // header and body cells aligned regardless of content width. The first
+  // column is sticky on mobile (overflow-x-auto wrapper) so the row label
+  // stays visible while users scroll horizontally.
+  const cardColPct = Math.floor(80 / cards.length);
+
   return (
     <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-      <table className="min-w-full text-sm">
+      <table className="min-w-full text-sm table-fixed">
+        <colgroup>
+          <col style={{ width: "20%" }} />
+          {cards.map((c) => (
+            <col key={c.id} style={{ width: `${cardColPct}%` }} />
+          ))}
+        </colgroup>
         <thead>
           <tr className="border-b border-slate-200 bg-slate-50">
-            <th className="text-left p-3 text-xs uppercase tracking-wide text-slate-500 w-40">
+            <th className="text-left p-3 text-xs uppercase tracking-wide text-slate-500 sticky left-0 bg-slate-50 z-10">
               Field
             </th>
             {cards.map((c) => (
-              <th
-                key={c.id}
-                className="text-left p-3 align-top"
-                style={{ width: `${Math.floor(80 / colCount)}%` }}
-              >
+              <th key={c.id} className="text-left p-3 align-top">
                 <div className="w-40 mb-2">
                   <CardImage card={c} size="tile" />
                 </div>
@@ -277,7 +295,7 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
         <tbody>
           {ROWS.map((row, i) => (
             <tr key={i} className="border-b border-slate-100 last:border-0">
-              <td className="p-3 text-xs uppercase tracking-wide text-slate-500 align-top">
+              <td className="p-3 text-xs uppercase tracking-wide text-slate-500 align-top sticky left-0 bg-white z-10">
                 {row.label}
               </td>
               {cards.map((c) => (

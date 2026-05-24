@@ -4,9 +4,9 @@
 
 // ─── card (from card.schema.json) ─────────────────────────────────
 
-export type Cycle = "monthly" | "quarterly" | "annual" | "statement" | "per-txn";
-
-export interface CreditCardIndia {
+export type CreditCardIndia = {
+  [k: string]: unknown;
+} & {
   /**
    * Stable slug: <issuer>-<card-slug>. Must match folder/filename.
    */
@@ -37,21 +37,32 @@ export interface CreditCardIndia {
   card_type?: "credit" | "charge" | "secured";
   co_brand?: null | {
     partner: string;
+    /**
+     * Broad sector of the co-brand partner. Drives filter facets and recommender heuristics — enum expansion needs to coordinate with site/lib code.
+     */
     category:
       | "airline"
       | "hotel"
       | "ecommerce"
+      | "food-delivery"
+      | "quick-commerce"
       | "fuel"
       | "travel-agency"
       | "retail"
       | "telecom"
       | "lifestyle"
       | "railway"
+      | "conglomerate"
+      | "automotive"
+      | "healthcare"
       | "other";
     partner_website?: string;
   };
   status: "active" | "invite-only" | "on-hold" | "discontinued";
   launched_on?: string | null;
+  /**
+   * Required when status is 'discontinued' (enforced via allOf/if-then below). Nullable otherwise.
+   */
   discontinued_on?: string | null;
   /**
    * Optional public URL / site-relative path to a card face image (e.g. /cards/hdfc/infinia.webp). When missing, the site renders a stylised placeholder using the issuer's brand color.
@@ -79,7 +90,64 @@ export interface CreditCardIndia {
     replaces_card?: string | null;
   };
   metadata: Metadata;
-}
+};
+export type Cycle = "monthly" | "quarterly" | "annual" | "statement" | "per-txn";
+/**
+ * At least one of visits_per_cycle or spend_threshold_inr must be present — an empty {} or a lounge entry with neither produces a ghost 'lounge access ✓' badge with no real benefit.
+ */
+export type LoungeDetails = LoungeDetails1 & {
+  visits_per_cycle?: number | "unlimited";
+  cycle?: Cycle;
+  guests_per_visit?: number | "unlimited";
+  via?: (
+    | "visa"
+    | "mastercard"
+    | "rupay"
+    | "amex"
+    | "diners"
+    | "priority-pass"
+    | "dreamfolks"
+    | "dragonpass"
+    | "loungekey"
+    | "issuer-direct"
+  )[];
+  /**
+   * Prior-cycle spend required to unlock complimentary visits (common on Axis/HDFC post-2024).
+   */
+  spend_threshold_inr?: number | null;
+  spend_threshold_cycle?: Cycle;
+  notes?: string;
+} & LoungeDetails1 & {
+    visits_per_cycle?: number | "unlimited";
+    cycle?: Cycle;
+    guests_per_visit?: number | "unlimited";
+    via?: (
+      | "visa"
+      | "mastercard"
+      | "rupay"
+      | "amex"
+      | "diners"
+      | "priority-pass"
+      | "dreamfolks"
+      | "dragonpass"
+      | "loungekey"
+      | "issuer-direct"
+    )[];
+    /**
+     * Prior-cycle spend required to unlock complimentary visits (common on Axis/HDFC post-2024).
+     */
+    spend_threshold_inr?: number | null;
+    spend_threshold_cycle?: Cycle;
+    notes?: string;
+  };
+export type LoungeDetails1 =
+  | {
+      [k: string]: unknown;
+    }
+  | {
+      [k: string]: unknown;
+    };
+
 export interface FeeRecord {
   effective_from: string;
   effective_until: string | null;
@@ -408,29 +476,6 @@ export interface BenefitRecord {
     value_inr?: number | null;
   }[];
   source: Source;
-  notes?: string;
-}
-export interface LoungeDetails {
-  visits_per_cycle?: number | "unlimited";
-  cycle?: Cycle;
-  guests_per_visit?: number | "unlimited";
-  via?: (
-    | "visa"
-    | "mastercard"
-    | "rupay"
-    | "amex"
-    | "diners"
-    | "priority-pass"
-    | "dreamfolks"
-    | "dragonpass"
-    | "loungekey"
-    | "issuer-direct"
-  )[];
-  /**
-   * Prior-cycle spend required to unlock complimentary visits (common on Axis/HDFC post-2024).
-   */
-  spend_threshold_inr?: number | null;
-  spend_threshold_cycle?: Cycle;
   notes?: string;
 }
 export interface Eligibility {

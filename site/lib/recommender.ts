@@ -107,7 +107,10 @@ function spendFromPayload(p: RecommendPayload): SpendProfile {
     if (!bucket) continue;
     sp[bucket] = BAND_TO_INR[band];
   }
-  if (p.lifestyle.recurring.includes("utilities-rent")) sp.utilities = 5000;
+  if (p.lifestyle.recurring.includes("utilities-rent")) {
+    sp.utilities = 5000;
+    sp.rent = 5000;
+  }
   if (p.lifestyle.recurring.includes("high-forex")) {
     sp.international = PROXY_INTL_SPEND_INR_PER_MONTH;
   }
@@ -182,8 +185,12 @@ function loungeValue(b: BenefitRecord | null, pref: LoungePref | null): number {
   if (pref === "domestic-only") {
     if (dom) inr += visitsAnnual(dom.visits_per_cycle, dom.cycle) * LOUNGE_VALUE_DOMESTIC_INR;
   } else if (pref === "domestic-unlimited") {
-    if (dom?.visits_per_cycle === "unlimited") {
-      inr += 24 * LOUNGE_VALUE_DOMESTIC_INR;
+    // Stronger preference, but a card offering 16 visits/yr is still ~16 visits
+    // of real value — don't zero it out. Cap at the unlimited proxy (24/yr) so
+    // a card with a nominal "unlimited" doesn't get rewarded beyond the cap.
+    if (dom) {
+      const visits = Math.min(visitsAnnual(dom.visits_per_cycle, dom.cycle), 24);
+      inr += visits * LOUNGE_VALUE_DOMESTIC_INR;
     }
   } else if (pref === "international") {
     if (dom) inr += visitsAnnual(dom.visits_per_cycle, dom.cycle) * LOUNGE_VALUE_DOMESTIC_INR;
@@ -212,30 +219,66 @@ function milestonesValue(b: BenefitRecord | null, annualSpendInr: number): numbe
   return total;
 }
 
+/** Parses a welcome `condition` string into (spend ₹, window days), or null if no spend target is stated. Exported for tests; not part of the recommender's public contract. */
+export function parseWelcomeCondition(condition: string | null | undefined): { spendInr: number; days: number } | null {
+  if (!condition) return null;
+  // Matches: "₹50,000 in 90 days", "Rs 1,50,000 within 60 days", "Spend 2 lakh in 90 days", "2L within 60 days".
+  const m = condition.match(
+    /(?:₹|rs\.?|inr|spend\s+)?\s*([\d,]+(?:\.\d+)?)\s*(lakh|lac|l|k)?\b[\s\S]*?(?:within|in)\s+(\d+)\s*days?/i,
+  );
+  if (!m) return null;
+  let amount = parseFloat(m[1].replace(/,/g, ""));
+  const unit = m[2]?.toLowerCase();
+  if (unit === "lakh" || unit === "lac" || unit === "l") amount *= 100000;
+  else if (unit === "k") amount *= 1000;
+  const days = parseInt(m[3], 10);
+  if (!Number.isFinite(amount) || amount <= 0 || !Number.isFinite(days) || days <= 0) return null;
+  return { spendInr: amount, days };
+}
+
 function welcomeValue(b: BenefitRecord | null, monthlyTotalSpend: number): number {
   if (!b?.welcome?.length) return 0;
-  if (monthlyTotalSpend < WELCOME_SPEND_FLOOR_INR_PER_MONTH) {
-    // Be conservative: only credit welcome items with no spend condition
-    let bare = 0;
-    for (const w of b.welcome) {
-      if (!w.condition || /joining/i.test(w.condition)) {
-        bare += w.value_inr ?? 0;
-      }
-    }
-    return bare / WELCOME_AMORTIZATION_YEARS;
-  }
   let total = 0;
-  for (const w of b.welcome) total += w.value_inr ?? 0;
+  for (const w of b.welcome) {
+    const value = w.value_inr ?? 0;
+    if (value === 0) continue;
+    // No condition or a joining-fee-only condition: always credit.
+    if (!w.condition || /joining/i.test(w.condition)) {
+      total += value;
+      continue;
+    }
+    // Parse spend-target conditions per-item so the floor matches the actual ask.
+    const parsed = parseWelcomeCondition(w.condition);
+    if (parsed) {
+      const requiredMonthly = (parsed.spendInr / parsed.days) * 30;
+      if (monthlyTotalSpend >= requiredMonthly) total += value;
+      continue;
+    }
+    // Unparseable condition — fall back to the global floor (current behaviour).
+    if (monthlyTotalSpend >= WELCOME_SPEND_FLOOR_INR_PER_MONTH) total += value;
+  }
   return total / WELCOME_AMORTIZATION_YEARS;
 }
 
-function premiumExtrasValue(b: BenefitRecord | null, goals: Goal[]): number {
-  if (!goals.includes("premium")) return 0;
+function premiumExtrasValue(
+  b: BenefitRecord | null,
+  goals: Goal[],
+  recurring: RecurringSpend[],
+): number {
   if (!b) return 0;
   let inr = 0;
-  if (b.concierge) inr += 2000;
-  if (b.golf) inr += 3000;
-  for (const o of b.other ?? []) inr += o.value_inr ?? 0;
+  if (goals.includes("premium")) {
+    if (b.concierge) inr += 2000;
+    if (b.golf) inr += 3000;
+    for (const o of b.other ?? []) inr += o.value_inr ?? 0;
+  }
+  // Credit movies/entertainment perks when the user signals that spend, even
+  // outside the premium goal — BookMyShow/PVR perks are valuable for entry-tier
+  // cards too. Flat ₹3,000/yr proxy: typical BOGO / discount caps work out to
+  // ₹200–500/mo for moderate movie-goers.
+  if (recurring.includes("movies-entertainment") && b.movies) {
+    inr += 3000;
+  }
   return inr;
 }
 
@@ -276,12 +319,16 @@ export function recommend(
       passesIncomeFilter(c, payload.income_band),
   );
 
-  // Hard filters from goals
+  // Hard filters from goals — honour the user's lounge_pref so an international-only
+  // card doesn't pass a "domestic lounge access" filter.
   const filtered = eligible.filter((c) => {
-    if (payload.goals.includes("lounge") && !c.computed.has_domestic_lounge && !c.computed.has_international_lounge) {
-      return false;
+    if (!payload.goals.includes("lounge")) return true;
+    const pref = payload.lifestyle.lounge_pref;
+    if (pref === "domestic-only" || pref === "domestic-unlimited") {
+      return c.computed.has_domestic_lounge;
     }
-    return true;
+    // pref === "international" | "none" | null — accept any meaningful lounge access.
+    return c.computed.has_domestic_lounge || c.computed.has_international_lounge;
   });
 
   const monthlyTotal = Object.values(spend).reduce((a, b) => a + b, 0);
@@ -295,7 +342,7 @@ export function recommend(
     const lounge = loungeValue(benefits, payload.lifestyle.lounge_pref);
     const milestones = milestonesValue(benefits, annualSpend);
     const welcome = welcomeValue(benefits, monthlyTotal);
-    const premiumExtras = premiumExtrasValue(benefits, payload.goals);
+    const premiumExtras = premiumExtrasValue(benefits, payload.goals, payload.lifestyle.recurring);
     const fee = primary.annual_fee_effective_inr;
     const forex = forexCost(card, payload.lifestyle);
 
@@ -340,7 +387,12 @@ export function recommend(
     };
   });
 
-  ranked.sort((a, b) => b.rank_total_inr - a.rank_total_inr);
+  // Secondary sort by card.id keeps the order deterministic on ties — ties are
+  // common when many cards collapse to similar low-spend scores.
+  ranked.sort((a, b) => {
+    const delta = b.rank_total_inr - a.rank_total_inr;
+    return delta !== 0 ? delta : a.card.id.localeCompare(b.card.id);
+  });
   return ranked.slice(0, topN);
 }
 

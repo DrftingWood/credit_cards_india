@@ -54,13 +54,14 @@ export function pointsToPct(rate, perInr, unitValue) {
 }
 ```
 
-TypeScript callers import via `import { pointsToPct } from './rate-math.mjs';`. Strict-mode TS infers the types from the JSDoc annotations — no `.d.ts` file or `any` casts needed.
+TypeScript callers import via `import { pointsToPct } from './rate-math.mjs';`. Because `site/tsconfig.json` has `"allowJs": false`, TypeScript cannot read JSDoc types directly from the `.mjs`; a one-line declaration file `site/lib/rate-math.d.mts` provides the type signature for TS callers. The `.mjs` retains its JSDoc as runtime documentation and as the source-of-truth that Node consumers see.
 
 ## Components
 
 | Action | File | Notes |
 |---|---|---|
-| Create | `site/lib/rate-math.mjs` | ~12 lines |
+| Create | `site/lib/rate-math.mjs` | ~12 lines, JSDoc-typed |
+| Create | `site/lib/rate-math.d.mts` | 1-line TypeScript declaration (required because tsconfig has `allowJs: false`) |
 | Create | `site/lib/rate-math.test.ts` | ~6 vitest cases |
 | Modify | `site/lib/calculator.ts` | Delete local `pointsToPct` definition; add import. Internal call sites unchanged. |
 | Modify | `site/lib/detail-derivations.ts` | `effectivePctOf` swaps inline `((rate * uv) / per_inr) * 100` for `pointsToPct(rate, per_inr, uv)`. |

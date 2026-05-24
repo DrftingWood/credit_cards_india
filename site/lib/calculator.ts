@@ -150,15 +150,14 @@ function acceleratorRatePct(
   }
 
   // Legacy effective_rate / multiplier paths (back-compat, optimistic).
-  const baseUnitValue = unitValue;
-  if (a.effective_rate != null && (a.cap_unit === "cashback-inr" || a.cap_unit === undefined)) {
+  // effective_rate is the absolute % rate (e.g. 5 = 5%) — never multiply by
+  // unit_value, that double-counts and collapses high-rate accelerators (a 5%
+  // entry with unit_value=0.25 became 1.25% under the old code).
+  if (a.effective_rate != null) {
     return a.effective_rate;
   }
-  if (a.effective_rate != null && baseUnitValue != null) {
-    return (a.effective_rate * baseUnitValue) / 1;
-  }
-  if (baseUnitValue != null) {
-    const base = pointsToPct(rewards.base.rate, rewards.base.per_inr, baseUnitValue);
+  if (unitValue != null) {
+    const base = pointsToPct(rewards.base.rate, rewards.base.per_inr, unitValue);
     return base * a.multiplier;
   }
   return null;
@@ -167,10 +166,12 @@ function acceleratorRatePct(
 function acceleratedRateForBucket(
   accelerated: AcceleratedReward[],
   bucket: CanonicalCategory,
+  amount: number,
   rewards: RewardRecord,
   ctx: ScoringContext | undefined,
 ): { rate_pct: number; cap_monthly_inr: number | null; basis: "general" | "channel-locked" } | null {
-  let best: { rate_pct: number; cap_monthly_inr: number | null; basis: "general" | "channel-locked" } | null = null;
+  type Candidate = { rate_pct: number; cap_monthly_inr: number | null; basis: "general" | "channel-locked"; value: number };
+  let best: Candidate | null = null;
   const unitValue = unitValueFor(rewards, ctx?.programs);
 
   for (const a of accelerated) {
@@ -197,11 +198,18 @@ function acceleratedRateForBucket(
       if (a.cycle === "annual" && capMonthlyInr != null) capMonthlyInr = capMonthlyInr / 12;
     }
 
+    // Rank by realised monthly value for THIS user's spend on this bucket, not
+    // by headline rate — otherwise a 10% accelerator capped at ₹500/mo always
+    // beats a 5% uncapped one on ₹50k spend (where uncapped 5% = ₹2,500 wins).
+    const grossValue = (amount * ratePct) / 100;
+    const value = capMonthlyInr != null ? Math.min(grossValue, capMonthlyInr) : grossValue;
+
     const basis: "general" | "channel-locked" = a.channel ? "channel-locked" : "general";
-    const candidate = { rate_pct: ratePct, cap_monthly_inr: capMonthlyInr, basis };
-    if (!best || candidate.rate_pct > best.rate_pct) best = candidate;
+    const candidate: Candidate = { rate_pct: ratePct, cap_monthly_inr: capMonthlyInr, basis, value };
+    if (!best || candidate.value > best.value) best = candidate;
   }
-  return best;
+  if (!best) return null;
+  return { rate_pct: best.rate_pct, cap_monthly_inr: best.cap_monthly_inr, basis: best.basis };
 }
 
 export function scoreCard(
@@ -226,7 +234,7 @@ export function scoreCard(
     let note: string | undefined;
 
     if (rewards?.accelerated?.length) {
-      const hit = acceleratedRateForBucket(rewards.accelerated, bucket, rewards, ctx);
+      const hit = acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx);
       if (hit) {
         rate = hit.rate_pct;
         cap = hit.cap_monthly_inr;

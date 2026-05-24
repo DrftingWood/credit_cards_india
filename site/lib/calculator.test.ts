@@ -1,5 +1,6 @@
 import { describe, test, expect } from "vitest";
 import { scoreCard, type SpendProfile } from "./calculator";
+import { pickTopAccelerated } from "./detail-derivations";
 import type {
   EnrichedCard,
   RewardRecord,
@@ -210,6 +211,95 @@ describe("scoreCard — per_inr=0 guards (blocker #3)", () => {
   });
 });
 
+describe("scoreCard — effective_rate not collapsed by unit_value (B3-BL4)", () => {
+  test("effective_rate=5 with cap_unit=points returns 5%, not 5 * unit_value", () => {
+    const card = makeCard({
+      currency: "points",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 0.25 },
+      accelerated: [
+        {
+          category: "online",
+          canonical_categories: ["online"],
+          multiplier: 0,
+          effective_rate: 5,
+          cap_per_cycle: 10000, // 10,000 points/mo cap
+          cap_unit: "points",
+          cycle: "monthly",
+        },
+      ],
+    });
+    // 5% of ₹20k/mo = ₹1000/mo. Cap = 10000 points * 0.25 = ₹2500/mo (not bites).
+    // Annual: ₹12000. Pre-fix returned 5 * 0.25 = 1.25% → ₹3000/yr.
+    const score = scoreCard(card, spend({ online: 20000 }));
+    expect(score.annual_gross_inr).toBe(12000);
+  });
+});
+
+describe("scoreCard — cap-aware accelerator selection (B3-SF2)", () => {
+  test("uncapped 5% beats capped 10% when user spend exceeds the cap break-even", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 0, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "dining",
+          canonical_categories: ["dining"],
+          multiplier: 0,
+          effective_rate: 10,
+          cap_per_cycle: 500, // 10% capped at ₹500/mo
+          cap_unit: "cashback-inr",
+          cycle: "monthly",
+        },
+        {
+          category: "dining-uncapped",
+          canonical_categories: ["dining"],
+          multiplier: 0,
+          effective_rate: 5,
+          // no cap
+          cycle: "monthly",
+        },
+      ],
+    });
+    // At ₹50k/mo: capped-10% = min(5000, 500) = ₹500. Uncapped-5% = ₹2500.
+    // Uncapped should win. Pre-fix: selection by rate_pct picked the 10% candidate
+    // first and only then min'd at ₹500, returning ₹6000/yr instead of ₹30k/yr.
+    const score = scoreCard(card, spend({ dining: 50000 }));
+    expect(score.annual_gross_inr).toBe(30000);
+    // basis should be the uncapped one ("general"; both happen to be general here).
+    expect(score.buckets[0].effective_rate_pct).toBe(5);
+  });
+
+  test("capped-10% wins when user spend is low enough that the cap doesn't bite", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 0, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "dining",
+          canonical_categories: ["dining"],
+          multiplier: 0,
+          effective_rate: 10,
+          cap_per_cycle: 500,
+          cap_unit: "cashback-inr",
+          cycle: "monthly",
+        },
+        {
+          category: "dining-uncapped",
+          canonical_categories: ["dining"],
+          multiplier: 0,
+          effective_rate: 5,
+          cycle: "monthly",
+        },
+      ],
+    });
+    // At ₹3k/mo: capped-10% = min(300, 500) = ₹300. Uncapped-5% = ₹150.
+    // Capped should win.
+    const score = scoreCard(card, spend({ dining: 3000 }));
+    expect(score.annual_gross_inr).toBe(3600);
+    expect(score.buckets[0].effective_rate_pct).toBe(10);
+  });
+});
+
 describe("scoreCard — base rate unit correctness (bonus blocker)", () => {
   test("real card: SBI Cashback @ ₹20k/mo dining (1% base, no accelerator on dining) ≈ ₹2.4k/yr", async () => {
     const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
@@ -224,6 +314,34 @@ describe("scoreCard — base rate unit correctness (bonus blocker)", () => {
     const score = scoreCard(infinia, spend({ dining: 50000 }));
     // 5 points per ₹150 * ₹0.70/point * 50000 * 12 = 14000
     expect(score.annual_gross_inr).toBeCloseTo(14000, 0);
+  });
+});
+
+describe("pickTopAccelerated — normalises effective_rate (%) vs multiplier (×) (B3-SF8)", () => {
+  test("a 6% effective_rate entry beats a 10× multiplier on a low-base card", () => {
+    // Base 1pt/₹100 at ₹0.25 = 0.25% effective. 10× = 2.5% effective.
+    // A 6% entry should rank higher than the 10× one.
+    const card = makeCard({
+      currency: "points",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 0.25 },
+      accelerated: [
+        {
+          category: "smartbuy",
+          canonical_categories: ["travel"],
+          multiplier: 10, // = 2.5% effective
+          cycle: "monthly",
+        },
+        {
+          category: "dining",
+          canonical_categories: ["dining"],
+          multiplier: 0,
+          effective_rate: 6, // = 6% explicit
+          cycle: "monthly",
+        },
+      ],
+    });
+    const top = pickTopAccelerated(card);
+    expect(top?.category).toBe("dining");
   });
 });
 

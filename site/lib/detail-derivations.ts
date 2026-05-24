@@ -6,8 +6,24 @@
  * narrowly focused on layout.
  */
 
-import type { AcceleratedReward, EnrichedCard } from "./types";
+import type { AcceleratedReward, EnrichedCard, RewardRecord } from "./types";
 import { formatInr, formatPct } from "./utils";
+
+/**
+ * Comparable "marketing rate" percentage for an accelerator. Normalises
+ * `effective_rate` (already %) and `multiplier` (× base) onto one scale so
+ * pickTopAccelerated doesn't compare "5% effective" against "10×" naively
+ * and pick the wrong headline.
+ */
+function effectivePctOf(a: AcceleratedReward, rewards: RewardRecord | null): number {
+  if (a.effective_rate != null) return a.effective_rate;
+  if (a.multiplier != null && rewards?.base && rewards.base.per_inr > 0) {
+    const unitValue = rewards.base.unit_value_inr_realized ?? rewards.base.unit_value_inr ?? 1;
+    const basePct = ((rewards.base.rate * unitValue) / rewards.base.per_inr) * 100;
+    return basePct * a.multiplier;
+  }
+  return 0;
+}
 
 /** Map co-brand category to a human "Best suited for" label. */
 export function bestSuitedFor(card: EnrichedCard): string {
@@ -220,15 +236,12 @@ export function deriveCons(card: EnrichedCard): string[] {
   return cons;
 }
 
-/** Returns the highest-rate accelerated reward entry. */
+/** Returns the highest-rate accelerated reward entry, normalising effective_rate (%) and multiplier (×) to a comparable scale. */
 export function pickTopAccelerated(card: EnrichedCard) {
   const acc = card.current_rewards?.accelerated ?? [];
   if (!acc.length) return null;
-  return [...acc].sort((a, b) => {
-    const ar = a.effective_rate ?? a.multiplier ?? 0;
-    const br = b.effective_rate ?? b.multiplier ?? 0;
-    return br - ar;
-  })[0];
+  const rewards = card.current_rewards;
+  return [...acc].sort((a, b) => effectivePctOf(b, rewards) - effectivePctOf(a, rewards))[0];
 }
 
 /** Format an accelerated reward as a one-line summary. */

@@ -143,6 +143,15 @@ function channelMixFromPayload(p: RecommendPayload): Set<string> {
 function passesIncomeFilter(card: EnrichedCard, band: IncomeBand | null): boolean {
   if (!band) return true;
   const ceiling = INCOME_BAND_ANNUAL_INR[band];
+  if (ceiling == null) {
+    // Defensive: TS guarantees the band matches IncomeBand at compile time, but
+    // payloads deserialized from JSON can carry an unknown string. Don't silently
+    // drop every card on type drift — fail open.
+    if (typeof console !== "undefined") {
+      console.warn(`[recommender] Unknown income band "${band}" — skipping income filter`);
+    }
+    return true;
+  }
   const inc = card.eligibility?.income_inr_annual ?? {};
   const minStated = Math.min(
     inc.salaried ?? Number.POSITIVE_INFINITY,

@@ -110,6 +110,16 @@ function openRecord(records) {
   return latest;
 }
 
+/** True iff the lounge entry represents real access (non-zero visits or a spend-threshold path). An object that exists but has visits_per_cycle: 0 or no visit information is treated as no-lounge — otherwise computed.has_*_lounge produces false-positive badges and filter passes for cards that don't actually offer the benefit. */
+function hasMeaningfulLounge(lounge) {
+  if (!lounge) return false;
+  const v = lounge.visits_per_cycle;
+  if (v === "unlimited") return true;
+  if (typeof v === "number" && v > 0) return true;
+  if (lounge.spend_threshold_inr != null) return true;
+  return false;
+}
+
 function computeHeadlineRatePct(rewards) {
   if (!rewards) return null;
   const b = rewards.base ?? {};
@@ -146,8 +156,8 @@ function enrichCard(card, issuers, networks) {
       fee_waiver_spend_inr: feeWaiver?.spend_inr ?? null,
       primary_reward_currency: currentRewards?.currency ?? null,
       headline_rate_pct: computeHeadlineRatePct(currentRewards),
-      has_domestic_lounge: !!(currentBenefits?.lounge_access?.domestic),
-      has_international_lounge: !!(currentBenefits?.lounge_access?.international),
+      has_domestic_lounge: hasMeaningfulLounge(currentBenefits?.lounge_access?.domestic),
+      has_international_lounge: hasMeaningfulLounge(currentBenefits?.lounge_access?.international),
       co_brand_partner: card.co_brand?.partner ?? null,
       co_brand_category: card.co_brand?.category ?? null,
     },

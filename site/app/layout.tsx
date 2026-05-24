@@ -3,7 +3,10 @@ import Link from "next/link";
 import "../styles/globals.css";
 import { BetaBanner } from "@/components/beta-banner";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://credit-cards-india.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Credit Cards of India — open, versioned, source-linked",
     template: "%s · Credit Cards of India",
@@ -15,6 +18,13 @@ export const metadata: Metadata = {
     description:
       "Open dataset and comparison site for Indian credit cards. Fees, rewards, benefits, history — all source-linked.",
     type: "website",
+    siteName: "Credit Cards of India",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Credit Cards of India",
+    description:
+      "Open dataset and comparison site for Indian credit cards. Fees, rewards, benefits, history — all source-linked.",
   },
   robots: { index: true, follow: true },
 };

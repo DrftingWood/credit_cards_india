@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { EnrichedCard } from "@/lib/types";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
+import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
 import { rankCards, type CardScore, type SpendProfile } from "@/lib/calculator";
@@ -119,9 +120,7 @@ function ResultRow({
   highlighted?: boolean;
 }) {
   const c = score.card;
-  const issuer = c.issuer;
-  const slug = c.id.startsWith(`${issuer}-`) ? c.id.slice(issuer.length + 1) : c.id;
-  const href = `/card/${issuer}/${slug}`;
+  const href = cardHref(c);
 
   return (
     <li

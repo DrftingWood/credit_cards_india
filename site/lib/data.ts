@@ -57,15 +57,19 @@ export function getCardByIssuerAndSlug(
   return getCardById(`${issuer}-${slug}`);
 }
 
+/** Slug portion of a card's URL — the part after /card/<issuer>/. Strips the redundant "{issuer}-" prefix from the id when present so /card/hdfc/infinia matches what generateStaticParams produces. */
+export function cardSlug(card: { id: string; issuer: string }): string {
+  return card.id.startsWith(`${card.issuer}-`) ? card.id.slice(card.issuer.length + 1) : card.id;
+}
+
+/** Canonical detail-page href for a card. Single source of truth — use everywhere instead of inlining the slug math, which is duplicated easily and breaks when the slug convention shifts. */
+export function cardHref(card: { id: string; issuer: string }): string {
+  return `/card/${card.issuer}/${cardSlug(card)}`;
+}
+
 /** Route params for SSG of /card/[issuer]/[slug] */
 export function allCardRouteParams(): Array<{ issuer: string; slug: string }> {
-  return cards.map((c) => {
-    const issuer = c.issuer;
-    const slug = c.id.startsWith(`${issuer}-`)
-      ? c.id.slice(issuer.length + 1)
-      : c.id;
-    return { issuer, slug };
-  });
+  return cards.map((c) => ({ issuer: c.issuer, slug: cardSlug(c) }));
 }
 
 /** Active (including invite-only) cards only. */

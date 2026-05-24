@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { allCardRouteParams, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
+import { allCardRouteParams, cardHref, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
 import { formatDate, formatInr } from "@/lib/utils";
 import { pickTopAccelerated } from "@/lib/detail-derivations";
 import { HistoryTimeline } from "@/components/history-timeline";
@@ -33,10 +33,28 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { issuer, slug } = await params;
   const card = getCardByIssuerAndSlug(issuer, slug);
-  if (!card) return { title: "Card not found" };
+  if (!card) return { title: "Card not found", robots: { index: false } };
+  const description = composeMetaDescription(card);
+  // Per-card OG/Twitter so share previews aren't identical across all 150+ pages.
+  // Falls back to the layout's site-level images when the card has no licensed art.
+  const images = card.image_path ? [{ url: card.image_path, alt: card.name }] : undefined;
   return {
     title: card.name,
-    description: composeMetaDescription(card),
+    description,
+    alternates: { canonical: cardHref(card) },
+    openGraph: {
+      title: card.name,
+      description,
+      type: "article",
+      url: cardHref(card),
+      ...(images ? { images } : {}),
+    },
+    twitter: {
+      card: images ? "summary_large_image" : "summary",
+      title: card.name,
+      description,
+      ...(images ? { images } : {}),
+    },
   };
 }
 
@@ -61,10 +79,16 @@ function composeMetaDescription(card: EnrichedCard): string {
     const rate = top.effective_rate != null ? `${top.effective_rate}%` : `${top.multiplier}×`;
     parts.push(`earns ${rate} on ${top.category.replace(/-/g, " ")}`);
   }
-  if (lounge?.international || lounge?.domestic) {
+  // Only mention lounge visits when the count is real — `visits_per_cycle: 0` or
+  // missing reads as misleading marketing.
+  const intlVisits = lounge?.international?.visits_per_cycle;
+  const domVisits = lounge?.domestic?.visits_per_cycle;
+  const intlReal = intlVisits === "unlimited" || (typeof intlVisits === "number" && intlVisits > 0);
+  const domReal = domVisits === "unlimited" || (typeof domVisits === "number" && domVisits > 0);
+  if (intlReal || domReal) {
     const bits: string[] = [];
-    if (lounge.international) bits.push(`${lounge.international.visits_per_cycle ?? "—"} international`);
-    if (lounge.domestic) bits.push(`${lounge.domestic.visits_per_cycle ?? "—"} domestic`);
+    if (intlReal) bits.push(`${intlVisits} international`);
+    if (domReal) bits.push(`${domVisits} domestic`);
     parts.push(`${bits.join(" + ")} lounge visits/yr`);
   }
   if (fee !== null) {
@@ -280,7 +304,7 @@ function EligibilitySection({ card }: { card: ReturnType<typeof getCardByIssuerA
         <p className="px-5 pb-3 text-sm text-slate-700">
           Supersedes{" "}
           <Link
-            href={`/card/${replaces.issuer}/${replaces.id.startsWith(`${replaces.issuer}-`) ? replaces.id.slice(replaces.issuer.length + 1) : replaces.id}`}
+            href={cardHref(replaces)}
             className="text-brand-700 hover:text-brand-800"
           >
             {replaces.name}

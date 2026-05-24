@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { BenefitRecord, EnrichedCard } from "@/lib/types";
-import { formatInr, formatPct } from "@/lib/utils";
+import { cardHref } from "@/lib/data";
+import { formatFeeInr, formatInr, formatPct } from "@/lib/utils";
 import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
 import { CardImage } from "./card-image";
@@ -76,11 +77,11 @@ const ROWS: Row[] = [
   },
   {
     label: "Annual fee",
-    render: (c) => formatInr(c.current_fees?.annual_fee_inr ?? null),
+    render: (c) => formatFeeInr(c.current_fees?.annual_fee_inr ?? null),
   },
   {
     label: "Joining fee",
-    render: (c) => formatInr(c.current_fees?.joining_fee_inr ?? null),
+    render: (c) => formatFeeInr(c.current_fees?.joining_fee_inr ?? null),
   },
   {
     label: "Fee waiver",
@@ -253,29 +254,24 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
             <th className="text-left p-3 text-xs uppercase tracking-wide text-slate-500 w-40">
               Field
             </th>
-            {cards.map((c) => {
-              const slug = c.id.startsWith(`${c.issuer}-`)
-                ? c.id.slice(c.issuer.length + 1)
-                : c.id;
-              return (
-                <th
-                  key={c.id}
-                  className="text-left p-3 align-top"
-                  style={{ width: `${Math.floor(80 / colCount)}%` }}
+            {cards.map((c) => (
+              <th
+                key={c.id}
+                className="text-left p-3 align-top"
+                style={{ width: `${Math.floor(80 / colCount)}%` }}
+              >
+                <div className="w-40 mb-2">
+                  <CardImage card={c} size="tile" />
+                </div>
+                <IssuerLogo issuer={c.issuer_detail} height={16} />
+                <Link
+                  href={cardHref(c)}
+                  className="block mt-1 text-sm font-semibold text-slate-900 hover:text-slate-900"
                 >
-                  <div className="w-40 mb-2">
-                    <CardImage card={c} size="tile" />
-                  </div>
-                  <IssuerLogo issuer={c.issuer_detail} height={16} />
-                  <Link
-                    href={`/card/${c.issuer}/${slug}`}
-                    className="block mt-1 text-sm font-semibold text-slate-900 hover:text-slate-900"
-                  >
-                    {c.name}
-                  </Link>
-                </th>
-              );
-            })}
+                  {c.name}
+                </Link>
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>

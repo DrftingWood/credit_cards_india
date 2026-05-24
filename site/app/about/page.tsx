@@ -14,7 +14,7 @@ export default function AboutPage() {
       <p className="mt-4 text-slate-700">
         Credit Cards of India is an open dataset and comparison site for every major credit card
         issued in India. It&apos;s built on top of a YAML dataset in the{" "}
-        <a href="https://github.com/DrftingWood/credit_cards_india" target="_blank" rel="noreferrer">
+        <a href="https://github.com/DrftingWood/credit_cards_india" target="_blank" rel="noopener noreferrer">
           DrftingWood/credit_cards_india
         </a>{" "}
         repository — every value on this site links back to the issuer page it came from.
@@ -55,7 +55,7 @@ export default function AboutPage() {
         <a
           href="https://github.com/DrftingWood/credit_cards_india/blob/main/docs/CONTRIBUTING.md"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           CONTRIBUTING.md
         </a>{" "}

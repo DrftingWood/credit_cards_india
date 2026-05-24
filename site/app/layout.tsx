@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-slate-600 flex flex-wrap justify-between gap-3">
             <div>
               Open dataset — MIT licensed.{" "}
-              <a href="https://github.com/DrftingWood/credit_cards_india" target="_blank" rel="noreferrer">
+              <a href="https://github.com/DrftingWood/credit_cards_india" target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>
               .

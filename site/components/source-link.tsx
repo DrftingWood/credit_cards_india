@@ -6,7 +6,7 @@ export function SourceLink({ source, prefix = "Source" }: { source?: Source | nu
   return (
     <div className="text-xs text-slate-500 mt-2">
       {prefix}:{" "}
-      <a href={source.url} target="_blank" rel="noreferrer">
+      <a href={source.url} target="_blank" rel="noopener noreferrer">
         {hostOf(source.url)}
       </a>{" "}
       · retrieved {formatDate(source.retrieved_on)}

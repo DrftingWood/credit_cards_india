@@ -17,6 +17,15 @@
     "metadata"
   ],
   "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "discontinued" } }, "required": ["status"] },
+      "then": {
+        "required": ["discontinued_on"],
+        "properties": { "discontinued_on": { "type": "string", "format": "date" } }
+      }
+    }
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -65,7 +74,24 @@
             "partner": { "type": "string", "minLength": 1 },
             "category": {
               "type": "string",
-              "enum": ["airline", "hotel", "ecommerce", "fuel", "travel-agency", "retail", "telecom", "lifestyle", "railway", "other"]
+              "description": "Broad sector of the co-brand partner. Drives filter facets and recommender heuristics — enum expansion needs to coordinate with site/lib code.",
+              "enum": [
+                "airline",
+                "hotel",
+                "ecommerce",
+                "food-delivery",
+                "quick-commerce",
+                "fuel",
+                "travel-agency",
+                "retail",
+                "telecom",
+                "lifestyle",
+                "railway",
+                "conglomerate",
+                "automotive",
+                "healthcare",
+                "other"
+              ]
             },
             "partner_website": { "type": "string", "format": "uri" }
           }
@@ -78,7 +104,11 @@
       "enum": ["active", "invite-only", "on-hold", "discontinued"]
     },
     "launched_on": { "type": ["string", "null"], "format": "date" },
-    "discontinued_on": { "type": ["string", "null"], "format": "date" },
+    "discontinued_on": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Required when status is 'discontinued' (enforced via allOf/if-then below). Nullable otherwise."
+    },
     "image_path": {
       "type": ["string", "null"],
       "description": "Optional public URL / site-relative path to a card face image (e.g. /cards/hdfc/infinia.webp). When missing, the site renders a stylised placeholder using the issuer's brand color."
@@ -705,6 +735,11 @@
     "LoungeDetails": {
       "type": "object",
       "additionalProperties": false,
+      "description": "At least one of visits_per_cycle or spend_threshold_inr must be present — an empty {} or a lounge entry with neither produces a ghost 'lounge access ✓' badge with no real benefit.",
+      "anyOf": [
+        { "required": ["visits_per_cycle"] },
+        { "required": ["spend_threshold_inr"] }
+      ],
       "properties": {
         "visits_per_cycle": {
           "oneOf": [

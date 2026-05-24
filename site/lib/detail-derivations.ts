@@ -8,6 +8,7 @@
 
 import type { AcceleratedReward, EnrichedCard, RewardRecord } from "./types";
 import { formatInr, formatPct } from "./utils";
+import { pointsToPct } from "./rate-math.mjs";
 
 /**
  * Comparable "marketing rate" percentage for an accelerator. Normalises
@@ -17,10 +18,9 @@ import { formatInr, formatPct } from "./utils";
  */
 function effectivePctOf(a: AcceleratedReward, rewards: RewardRecord | null): number {
   if (a.effective_rate != null) return a.effective_rate;
-  if (a.multiplier != null && rewards?.base && rewards.base.per_inr > 0) {
+  if (a.multiplier != null && rewards?.base) {
     const unitValue = rewards.base.unit_value_inr_realized ?? rewards.base.unit_value_inr ?? 1;
-    const basePct = ((rewards.base.rate * unitValue) / rewards.base.per_inr) * 100;
-    return basePct * a.multiplier;
+    return pointsToPct(rewards.base.rate, rewards.base.per_inr, unitValue) * a.multiplier;
   }
   return 0;
 }

@@ -97,8 +97,12 @@ npm run dev          # auto-runs site/scripts/prebuild.mjs first
 ```
 
 `prebuild.mjs` runs `gen-types.mjs` (regenerates `site/lib/generated-types.ts`
-from every JSON Schema) followed by `build.mjs` (regenerates the
-`dist/*.json` artefacts).
+from every JSON Schema), then `validate-schema.mjs` (ajv-checks every YAML
+against its schema — fails the build on missing required fields, invalid
+enums, malformed records), then `build.mjs` (regenerates the `dist/*.json`
+artefacts). Cross-file lints (no-overlap dated arrays, channel-token
+vocabulary, source staleness, etc.) live in `scripts/validate.py` and only
+run in CI on PR — keeping the deploy pipeline Node-only.
 
 ### Deploying to Vercel
 

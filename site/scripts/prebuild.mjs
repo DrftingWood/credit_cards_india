@@ -11,9 +11,10 @@ import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
-for (const script of ["gen-types.mjs", "build.mjs"]) {
+for (const script of ["gen-types.mjs", "validate-schema.mjs", "build.mjs"]) {
   const res = spawnSync(process.execPath, [path.join(here, script)], { stdio: "inherit" });
   if (res.status !== 0) {
+    console.error(`prebuild: ${script} exited with status ${res.status ?? "unknown"}`);
     process.exit(res.status ?? 1);
   }
 }

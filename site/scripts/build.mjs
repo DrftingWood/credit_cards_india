@@ -20,6 +20,7 @@ import {
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
+import { pointsToPct } from "../lib/rate-math.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(HERE, "..", "..");
@@ -124,8 +125,10 @@ function computeHeadlineRatePct(rewards) {
   if (!rewards) return null;
   const b = rewards.base ?? {};
   const { rate, per_inr, unit_value_inr } = b;
+  // KEEP this guard — pointsToPct returns 0 for per_inr <= 0, but this
+  // caller's contract is to return null (so the site renders "—" not "0.00%").
   if (rate == null || !per_inr || unit_value_inr == null) return null;
-  const pct = (Number(rate) * Number(unit_value_inr) / Number(per_inr)) * 100;
+  const pct = pointsToPct(Number(rate), Number(per_inr), Number(unit_value_inr));
   if (!Number.isFinite(pct)) return null;
   return Math.round(pct * 10000) / 10000;
 }

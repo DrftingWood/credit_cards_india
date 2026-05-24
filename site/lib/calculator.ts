@@ -5,6 +5,7 @@ import type {
   LoyaltyProgram,
 } from "./types";
 import { CanonicalCategory, resolveBuckets } from "./category-mapping";
+import { pointsToPct } from "./rate-math.mjs";
 
 export type SpendProfile = Record<CanonicalCategory, number>;
 
@@ -46,12 +47,6 @@ function unitValueFor(rewards: RewardRecord, programs?: Record<string, LoyaltyPr
   if (rewards.base.unit_value_inr_realized != null) return rewards.base.unit_value_inr_realized;
   if (rewards.base.unit_value_inr != null) return rewards.base.unit_value_inr;
   return null;
-}
-
-/** Points/miles rate as % of spend (e.g. returns 1 for 1%). Returns 0 if per_inr is non-positive — guards against a YAML typo producing Infinity that would sort to rank 1. */
-function pointsToPct(rate: number, perInr: number, unitValue: number): number {
-  if (perInr <= 0) return 0;
-  return ((rate * unitValue) / perInr) * 100;
 }
 
 function baseRatePct(rewards: RewardRecord | null, programs?: Record<string, LoyaltyProgram>): number {

@@ -212,7 +212,7 @@ describe("scoreCard — per_inr=0 guards (blocker #3)", () => {
 });
 
 describe("scoreCard — effective_rate not collapsed by unit_value (B3-BL4)", () => {
-  test("effective_rate=5 with cap_unit=points returns 5%, not 5 * unit_value", () => {
+  test("effective_rate=5 (pts/₹100 at ₹0.25/pt) values to 1.25% with a points cap", () => {
     const card = makeCard({
       currency: "points",
       base: { rate: 1, per_inr: 100, unit_value_inr: 0.25 },
@@ -228,10 +228,11 @@ describe("scoreCard — effective_rate not collapsed by unit_value (B3-BL4)", ()
         },
       ],
     });
-    // 5% of ₹20k/mo = ₹1000/mo. Cap = 10000 points * 0.25 = ₹2500/mo (not bites).
-    // Annual: ₹12000. Pre-fix returned 5 * 0.25 = 1.25% → ₹3000/yr.
+    // effective_rate is receipt-visible units: 5 pts/₹100 × ₹0.25/pt = 1.25%.
+    // ₹20k/mo → ₹250/mo. Cap = 10000 points × 0.25 = ₹2500/mo (doesn't bite).
+    // Annual: ₹3000. (An earlier regression read 5 as "5%" → ₹12000/yr.)
     const score = scoreCard(card, spend({ online: 20000 }));
-    expect(score.annual_gross_inr).toBe(12000);
+    expect(score.annual_gross_inr).toBe(3000);
   });
 });
 
@@ -317,10 +318,10 @@ describe("scoreCard — base rate unit correctness (bonus blocker)", () => {
   });
 });
 
-describe("pickTopAccelerated — normalises effective_rate (%) vs multiplier (×) (B3-SF8)", () => {
-  test("a 6% effective_rate entry beats a 10× multiplier on a low-base card", () => {
-    // Base 1pt/₹100 at ₹0.25 = 0.25% effective. 10× = 2.5% effective.
-    // A 6% entry should rank higher than the 10× one.
+describe("pickTopAccelerated — normalises effective_rate (units/₹N) vs multiplier (×) (B3-SF8)", () => {
+  test("a higher-value effective_rate entry beats a 10× multiplier on a low-base card", () => {
+    // Base 1pt/₹100 at ₹0.25 = 0.25% value. 10× = 2.5% value.
+    // 12 pts/₹100 explicit = 3% value — should rank higher than the 10× one.
     const card = makeCard({
       currency: "points",
       base: { rate: 1, per_inr: 100, unit_value_inr: 0.25 },
@@ -328,14 +329,14 @@ describe("pickTopAccelerated — normalises effective_rate (%) vs multiplier (×
         {
           category: "smartbuy",
           canonical_categories: ["travel"],
-          multiplier: 10, // = 2.5% effective
+          multiplier: 10, // = 2.5% value
           cycle: "monthly",
         },
         {
           category: "dining",
           canonical_categories: ["dining"],
           multiplier: 0,
-          effective_rate: 6, // = 6% explicit
+          effective_rate: 12, // 12 pts/₹100 × ₹0.25 = 3% value
           cycle: "monthly",
         },
       ],
@@ -380,5 +381,82 @@ describe("scoreCard — canonical reward math regressions", () => {
     const justNot = scoreCard(card, spend({ dining: 24999 }));
     expect(justNot.fee_waived).toBe(false);
     expect(justNot.annual_fee_effective_inr).toBe(1500);
+  });
+});
+
+describe("scoreCard — effective_rate is receipt-visible units, not percent (audit A1)", () => {
+  test("points-card effective_rate converts via base.per_inr and unit value", () => {
+    // IDFC-shaped: 10 pts per ₹150 at ₹0.22/pt = 1.4667% value — NOT 10%.
+    const card = makeCard({
+      currency: "points",
+      base: { rate: 3, per_inr: 150, unit_value_inr: 0.22 },
+      accelerated: [
+        {
+          category: "online",
+          canonical_categories: ["online"],
+          multiplier: 0,
+          effective_rate: 10,
+        },
+      ],
+    });
+    const score = scoreCard(card, spend({ online: 10000 }));
+    // ₹10k/mo × (10 × 0.22 / 150) = ₹146.67/mo → ₹1,760/yr.
+    expect(score.buckets[0].effective_rate_pct).toBeCloseTo(1.4667, 3);
+    expect(score.annual_gross_inr).toBeCloseTo(1760, 0);
+  });
+
+  test("effective_per_inr overrides base.per_inr (Magnus-shaped)", () => {
+    // 35 pts per ₹200 at ₹0.18/pt = 3.15%, on a card whose base earns per ₹100.
+    const card = makeCard({
+      currency: "points",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 0.18 },
+      accelerated: [
+        {
+          category: "online",
+          canonical_categories: ["online"],
+          multiplier: 1,
+          effective_rate: 35,
+          effective_per_inr: 200,
+        },
+      ],
+    });
+    const score = scoreCard(card, spend({ online: 10000 }));
+    expect(score.buckets[0].effective_rate_pct).toBeCloseTo(3.15, 6);
+  });
+
+  test("high-rate points accelerator no longer scores as an absurd percent (Reserve-shaped)", () => {
+    // 45 pts per ₹200 at ₹0.35/pt = 7.875% — the percent reading said 45%.
+    const card = makeCard({
+      currency: "points",
+      base: { rate: 15, per_inr: 200, unit_value_inr: 0.35 },
+      accelerated: [
+        {
+          category: "dining",
+          canonical_categories: ["dining"],
+          multiplier: 3,
+          effective_rate: 45,
+        },
+      ],
+    });
+    const score = scoreCard(card, spend({ dining: 10000 }));
+    expect(score.buckets[0].effective_rate_pct).toBeCloseTo(7.875, 6);
+    expect(score.buckets[0].effective_rate_pct).toBeLessThan(10);
+  });
+
+  test("cashback effective_rate without explicit unit value treats units as ₹1", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100 },
+      accelerated: [
+        {
+          category: "online",
+          canonical_categories: ["online"],
+          multiplier: 0,
+          effective_rate: 5,
+        },
+      ],
+    });
+    const score = scoreCard(card, spend({ online: 10000 }));
+    expect(score.buckets[0].effective_rate_pct).toBe(5);
   });
 });

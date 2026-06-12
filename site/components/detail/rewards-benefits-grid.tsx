@@ -39,7 +39,7 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
   const rewardsRate = rewards ? (
     <div className="space-y-0.5">
       {rewards.accelerated?.slice(0, 3).map((a, i) => (
-        <div key={i}>{formatAccelerated(a)}</div>
+        <div key={i}>{formatAccelerated(a, rewards)}</div>
       ))}
       {base !== null ? <div>Base {formatPct(base, 2)} on other spends.</div> : null}
     </div>
@@ -79,7 +79,7 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
     : "N/A";
 
   const travel = card.co_brand?.category === "airline"
-    ? `Co-branded with ${card.co_brand.partner}; ${top ? formatAccelerated(top) : "travel-forward rewards"}.`
+    ? `Co-branded with ${card.co_brand.partner}; ${top ? formatAccelerated(top, card.current_rewards) : "travel-forward rewards"}.`
     : benefits?.insurance?.find((i) => /travel/.test(i.type))
     ? "Travel insurance cover bundled (see Insurance section)."
     : "N/A";

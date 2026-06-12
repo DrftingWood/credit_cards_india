@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 9999
     annual_fee_inr: 4999
     fee_waiver:
-      spend_inr: 2500000
+      spend_inr: 1000000
       cycle: annual
     forex_markup_pct: 1.0
     finance_charge_monthly_pct: 3.5
@@ -34,18 +34,18 @@ rewards:
     currency: points
     currency_name: YES Reward Points
     base:
-      rate: 12
+      rate: 18
       per_inr: 200
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
     accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 24
-        cap_per_cycle: "unlimited"
+      - category: online-spend
+        canonical_categories: [online]
+        effective_rate: 36
+        cap_per_cycle: 100000
         cap_unit: points
         cycle: monthly
+        notes: "36 RP per ₹200 on online spends, capped 1,00,000 points/statement cycle (offline earns base 18/₹200). The earlier international accelerator does not exist."
     exclusions:
       - fuel
       - wallet-loads
@@ -53,6 +53,8 @@ rewards:
       - insurance-premiums
       - emi
       - utilities
+    capping_rules:
+      - "From 1-Dec-2024: flight/hotel redemptions capped at 70% of cart value and 3,00,000 points per month."
     redemption:
       - type: catalog
         program: YES Rewardz
@@ -61,12 +63,13 @@ rewards:
         program: Multiple
         ratio: "4:1"
     source:
-      url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.cardexpert.in/yes-bank-marquee-credit-card-review/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: earn is 36/₹200 online (capped 1L pts/cycle) + 18/₹200 offline; waiver ₹10L (med); welcome 40,000 pts."
 
 benefits:
   - effective_from: 2021-05-01
-    effective_until: null
+    effective_until: 2025-03-31
     lounge_access:
       domestic:
         visits_per_cycle: unlimited
@@ -84,8 +87,8 @@ benefits:
       lessons_per_cycle: 0
     welcome:
       - condition: "Joining fee paid"
-        benefit: "10,000 YES Reward Points + Amazon / Flipkart voucher worth ₹10,000"
-        value_inr: 12500
+        benefit: "40,000 YES Rewardz points (cut from 60,000 in the 2024-25 revision)"
+        value_inr: 7200
         window_days: 90
     insurance:
       - type: air-accident
@@ -102,6 +105,50 @@ benefits:
     source:
       url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; unconditional lounge era."
+
+  - effective_from: 2025-04-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        spend_threshold_inr: 100000
+        spend_threshold_cycle: quarterly
+        cycle: annual
+        guests_per_visit: 2
+        via: [mastercard, dreamfolks]
+      international:
+        visits_per_cycle: unlimited
+        spend_threshold_inr: 100000
+        spend_threshold_cycle: quarterly
+        cycle: annual
+        guests_per_visit: 2
+        via: [priority-pass]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 0
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "40,000 YES Rewardz points (cut from 60,000 in the 2024-25 revision)"
+        value_inr: 7200
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 30000000
+      - type: travel-medical
+        sum_insured_inr: 25000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://cardinsider.com/blog/yes-bank-credit-cards-face-another-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "1-Apr-2025: lounge access conditional on ₹1L spend in the previous quarter."
 
 eligibility:
   min_age: 21
@@ -116,5 +163,5 @@ application:
   apply_url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, low-forex, points, travel]

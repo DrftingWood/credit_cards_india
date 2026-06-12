@@ -35,7 +35,7 @@ rewards:
   - effective_from: 2022-01-01
     effective_until: null
     currency: points
-    currency_name: PAYBACK Points
+    currency_name: ICICI Bank Reward Points
     base:
       rate: 2
       per_inr: 100
@@ -44,20 +44,19 @@ rewards:
     accelerated:
       - category: hpcl-fuel-via-hp-pay
         canonical_categories: [fuel]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 1000
+        effective_rate: 4
+        cap_per_cycle: 200
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [hpcl-fuel-stations, hp-pay]
-        notes: "5% cashback on fuel at HPCL via HP Pay app (up to ₹1,000/month)."
-      - category: grocery-dining-departmental-utility
-        canonical_categories: [groceries, dining, utilities]
-        multiplier: 1
+        merchants: [hp-pay, hpcl-fuel-stations]
+        notes: "4% cashback on HPCL fuel via HP Pay, capped ₹200/month (+1% surcharge waiver ≈ 5% total)."
+      - category: grocery-utility-departmental
+        canonical_categories: [groceries, utilities]
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 400
         cap_unit: points
         cycle: monthly
+        notes: "5% as Reward Points on grocery/utility/departmental, capped 400 RP/month (~₹100). Dining is NOT included (earlier data wrongly included it)."
     exclusions:
       - wallet-loads
       - rent
@@ -70,8 +69,9 @@ rewards:
         program: ICICI Rewards / PAYBACK
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/icici-bank/hpcl-super-saver-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: fuel is 4% capped ₹200/mo (was 5% capped ₹1,000); grocery/utility 400 RP/mo cap; dining removed."
 
 benefits:
   - effective_from: 2022-01-01
@@ -82,7 +82,7 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [dreamfolks]
-        spend_threshold_inr: 35000
+        spend_threshold_inr: 75000
         spend_threshold_cycle: quarterly
     welcome:
       - condition: "Joining fee paid"
@@ -113,5 +113,5 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, fuel, hpcl, entry, points]

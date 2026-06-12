@@ -18,7 +18,7 @@ fees:
     fee_waiver:
       spend_inr: 200000
       cycle: annual
-    forex_markup_pct: 1.99
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
@@ -38,9 +38,8 @@ rewards:
       per_inr: 100
       unit_value_inr: 1.0
     accelerated:
-      - category: dining-food-delivery-entertainment
-        canonical_categories: [dining, entertainment]
-        multiplier: 1
+      - category: dining-food-delivery-groceries
+        canonical_categories: [dining, groceries]
         effective_rate: 10
         cap_per_cycle: 1000
         cap_unit: cashback-inr
@@ -59,7 +58,8 @@ rewards:
         min_units: 500
     source:
       url: https://www.hsbc.co.in/credit-cards/products/live-plus/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: 10% categories are dining/food-delivery/groceries (not entertainment); forex is the standard 3.5% (1.99% was wrong)."
 
 benefits:
   - effective_from: 2023-02-01
@@ -72,7 +72,7 @@ benefits:
         via: [visa, dreamfolks]
     welcome:
       - condition: "Spend ₹20,000 within 90 days"
-        benefit: "Amazon voucher worth ₹1,000"
+        benefit: "₹1,000 cashback on ₹20k spend within 30 days + activation vouchers up to ₹750"
         value_inr: 1000
         window_days: 90
     fuel_surcharge_waiver:
@@ -99,5 +99,5 @@ application:
   apply_url: https://www.hsbc.co.in/credit-cards/products/live-plus/
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [cashback, dining, entertainment, premium, low-forex]
+  last_verified_on: 2026-06-12
+  tags: [cashback, dining, groceries, premium]

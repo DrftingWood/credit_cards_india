@@ -16,10 +16,10 @@ discontinued_on: null
 fees:
   - effective_from: 2018-01-01
     effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
+    joining_fee_inr: 449
+    annual_fee_inr: 449
     fee_waiver:
-      spend_inr: 75000
+      spend_inr: 50000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.5
@@ -37,24 +37,22 @@ rewards:
     currency: points
     currency_name: Fuel Points
     base:
-      rate: 1
+      rate: 3
       per_inr: 150
       unit_value_inr: 1.0
       unit_value_inr_realized: 0.5
     accelerated:
       - category: indianoil-fuel
         canonical_categories: [fuel]
-        multiplier: 1
-        effective_rate: 6
-        cap_per_cycle: 300
+        effective_rate: 24
+        cap_per_cycle: 1200
         cap_unit: points
         cycle: monthly
         merchants: [indianoil-fuel-stations]
         notes: "24 points per ₹150 at IOC outlets (effectively ~16% on fuel in XtraRewards equivalent), capped 300 points/month."
       - category: groceries-dining-utility
         canonical_categories: [groceries, dining, utilities]
-        multiplier: 1
-        effective_rate: 3
+        effective_rate: 12
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
@@ -68,8 +66,9 @@ rewards:
         program: IndianOil XtraRewards
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indian-oil-kotak-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/kotak/indianoil-kotak-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: base 3 FP/₹150 (was 1); fuel 24/₹150 capped 1,200/mo (was 6/300); grocery-dining 12/₹150."
 
 benefits:
   - effective_from: 2018-01-01
@@ -99,5 +98,5 @@ application:
   apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indian-oil-kotak-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, fuel, indianoil, rupay, entry]

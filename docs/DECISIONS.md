@@ -236,6 +236,26 @@ points per what?`) and previously type-checked but was undefined for the
 calculator. All 127 cards already comply; the dependency makes that
 implicit invariant explicit.
 
+### D-16d. `effective_rate` is receipt-visible units, never a percent
+
+The 2026-06 audit (docs/AUDIT-2026-06.md §A1) found the three site
+consumers treating `effective_rate` as an absolute percent while the
+schema, this document (D-8 "documentary total"), the validator's
+`effective_rate > 5` rule, and all 127 data files author it as **units of
+the reward currency per ₹N** — Axis Reserve's `45` means "45 points per
+₹200", not 45 %. The percent reading mis-scored 127 of 158 open
+accelerators on 86 cards by 4–20×.
+
+Decision: the data semantics win. `effective_rate` is units per
+`effective_per_inr` rupees, defaulting to the record's `base.per_inr`
+(`effective_per_inr` exists for the rare "35 per ₹200 on a per-₹100 card"
+case). Every consumer converts through
+`pointsToPct(effective_rate, effective_per_inr ?? base.per_inr,
+unit_value)`; cashback unit value defaults to 1 (₹1 per unit by
+definition). Cashback rates on a ₹100 basis coincide with percent — which
+is why the regression survived a cashback-only test suite; the suite now
+carries points-card fixtures that fail under a percent reading.
+
 ### D-17. Build pipeline is pure Node
 
 `site/scripts/prebuild.mjs` runs `gen-types.mjs` then `build.mjs`. No

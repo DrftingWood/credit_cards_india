@@ -16,11 +16,9 @@ discontinued_on: null
 fees:
   - effective_from: 2022-08-01
     effective_until: null
-    joining_fee_inr: 1500
-    annual_fee_inr: 1500
-    fee_waiver:
-      spend_inr: 250000
-      cycle: annual
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.83
     cash_advance_fee:
@@ -33,7 +31,7 @@ fees:
 
 rewards:
   - effective_from: 2022-08-01
-    effective_until: null
+    effective_until: 2025-07-14
     currency: points
     currency_name: EazyPoints
     base:
@@ -44,7 +42,6 @@ rewards:
     accelerated:
       - category: eazydiner-dining
         canonical_categories: [dining]
-        multiplier: 1
         effective_rate: 15
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
@@ -53,7 +50,6 @@ rewards:
         notes: "15% value-back as EazyPoints on dining via EazyDiner."
       - category: dining-other
         canonical_categories: [dining]
-        multiplier: 1
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
@@ -73,10 +69,43 @@ rewards:
     source:
       url: https://www.indusind.com/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
       retrieved_on: 2026-04-15
+      notes: "Historical record; 15%/10% dining EazyPoints era, ended by the 15-Jul-2025 devaluation."
+
+  - effective_from: 2025-07-15
+    effective_until: null
+    currency: points
+    currency_name: EazyPoints
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
+    accelerated:
+      - category: all-spends-2x
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "2X EazyPoints on all spends. Dining is rewarded via a 20% PayEazy discount (≤₹500/booking) capped ₹2,000/month (₹5,000 if ₹30k non-dining spend that month) — discount, not points."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: cashback-bank
+        program: EazyDiner wallet
+        rate_inr_per_unit: 1.0
+        constraints: "EazyPoints redeemable at 1:1 on EazyDiner platform."
+    source:
+      url: https://select.finology.in/articles/credit-card/indusind-eazydiner-credit-card-devaluation
+      retrieved_on: 2026-06-12
+      notes: "15-Jul-2025 devaluation: dining points replaced by capped PayEazy discounts; 2X on all spends."
 
 benefits:
   - effective_from: 2022-08-01
-    effective_until: null
+    effective_until: 2025-07-14
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -102,6 +131,31 @@ benefits:
     source:
       url: https://www.indusind.com/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
       retrieved_on: 2026-04-15
+      notes: "Historical record; lounge era."
+
+  - effective_from: 2025-07-15
+    effective_until: null
+    lounge_access: null
+    dining:
+      program: EazyDiner Prime
+      discount_pct: 50
+      notes: "Up to 50% off at 2,500+ partner restaurants via EazyDiner Prime (complimentary)."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "EazyDiner Prime membership + ₹1,500 EazyPoints"
+        value_inr: 2500
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://select.finology.in/articles/credit-card/indusind-eazydiner-credit-card-devaluation
+      retrieved_on: 2026-06-12
+      notes: "15-Jul-2025: lounge access removed (med). Card is lifetime-free (₹1,500 fee was wrong); welcome is 3-month EazyDiner Prime + 500 EazyPoints (med)."
 
 eligibility:
   min_age: 21
@@ -116,5 +170,5 @@ application:
   apply_url: https://www.indusind.com/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, dining, eazydiner, mid]

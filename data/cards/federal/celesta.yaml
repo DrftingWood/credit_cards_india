@@ -18,12 +18,13 @@ fees:
     fee_waiver:
       spend_inr: 500000
       cycle: annual
-    forex_markup_pct: 1.5
+    forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
       min_inr: 300
     gst_applicable: true
+    notes: "Currently issued lifetime-free under a limited-period offer (med confidence); fees shown apply outside the offer."
     source:
       url: https://www.federalbank.co.in/celesta
       retrieved_on: 2026-04-15
@@ -39,17 +40,16 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
     accelerated:
-      - category: dining
-        canonical_categories: [dining]
-        multiplier: 3
+      - category: travel-international
+        canonical_categories: [travel, international]
         effective_rate: 15
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 3
-        effective_rate: 15
+        notes: "3x on travel and international spends; 2x dining (10/₹150); 1x others — 3-2-1 structure (med confidence)."
+      - category: dining
+        canonical_categories: [dining]
+        effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
@@ -71,7 +71,7 @@ rewards:
 
 benefits:
   - effective_from: 2022-03-01
-    effective_until: null
+    effective_until: 2025-09-30
     lounge_access:
       domestic:
         visits_per_cycle: 8
@@ -107,6 +107,48 @@ benefits:
     source:
       url: https://www.federalbank.co.in/celesta
       retrieved_on: 2026-04-15
+      notes: "Historical record; unconditional 8+8 lounge era (welcome shown was also wrong — actual ₹600 voucher)."
+
+  - effective_from: 2025-10-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        spend_threshold_inr: 40000
+        spend_threshold_cycle: quarterly
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+      international:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 0
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "₹600 Amazon Pay voucher on ₹10k spend within 30 days"
+        value_inr: 600
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 25000000
+      - type: travel-medical
+        sum_insured_inr: 2500000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://cardinsider.com/blog/federal-bank-revises-airport-lounge-access-credit-cards/
+      retrieved_on: 2026-06-12
+      notes: "1-Oct-2025 tiers: 1 visit on ₹20k / 2 visits on ₹40k prior-quarter spend; international 2/yr."
 
 eligibility:
   min_age: 21
@@ -121,5 +163,5 @@ application:
   apply_url: https://www.federalbank.co.in/celesta
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [premium, travel, dining, low-forex, points]
+  last_verified_on: 2026-06-12
+  tags: [premium, travel, dining, points]

@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 1000
     annual_fee_inr: 1000
     fee_waiver:
-      spend_inr: 200000
+      spend_inr: 120000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.49
@@ -25,8 +25,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.bobfinancial.com/premier-credit-card.jsp
-      retrieved_on: 2026-04-15
+      url: https://www.bobcard.co.in/credit-card-types/premier
+      retrieved_on: 2026-06-12
 
 rewards:
   - effective_from: 2020-01-01
@@ -34,14 +34,13 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 5
+      rate: 2
       per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
     accelerated:
       - category: travel-dining
         canonical_categories: [dining, travel]
-        multiplier: 2
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -57,12 +56,12 @@ rewards:
         program: BoBcard Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.bobfinancial.com/premier-credit-card.jsp
-      retrieved_on: 2026-04-15
+      url: https://www.bobcard.co.in/credit-card-types/premier
+      retrieved_on: 2026-06-12
 
 benefits:
   - effective_from: 2020-01-01
-    effective_until: null
+    effective_until: 2024-12-31
     lounge_access:
       domestic:
         visits_per_cycle: 2
@@ -77,8 +76,32 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.bobfinancial.com/premier-credit-card.jsp
-      retrieved_on: 2026-04-15
+      url: https://www.bobcard.co.in/credit-card-types/premier
+      retrieved_on: 2026-06-12
+      notes: "Historical record; unconditional lounge era."
+
+  - effective_from: 2025-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+        spend_threshold_inr: 20000
+        spend_threshold_cycle: quarterly
+        notes: "1 visit/quarter, gated on ₹20k spend in the preceding quarter (1-Jan-2025)."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/premier
+      retrieved_on: 2026-06-12
+      notes: "1-Jan-2025: lounge 1/quarter gated ₹20k. Base corrected to 2 RP/₹100; 5X includes international spends."
 
 eligibility:
   min_age: 21
@@ -90,8 +113,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.bobfinancial.com/premier-credit-card.jsp
+  apply_url: https://www.bobcard.co.in/credit-card-types/premier
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [mid, points, travel, dining]

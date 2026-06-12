@@ -34,17 +34,20 @@ rewards:
     currency: cashback
     currency_name: Cashback
     base:
-      rate: 1.5
+      rate: 1
       per_inr: 100
       unit_value_inr: 1.0
     accelerated:
-      - category: grocery-dining-departmental
-        canonical_categories: [groceries, dining]
-        multiplier: 1
-        effective_rate: 1.5
-        cap_per_cycle: 250
+      - category: grocery-departmental-utility
+        canonical_categories: [groceries, utilities]
+        effective_rate: 2
+        cap_per_cycle: 50
         cap_unit: cashback-inr
         cycle: monthly
+        notes: "2% cashback on grocery, departmental and utility spends, capped ₹50/month."
+    capping_rules:
+      - "Base 1% on other retail POS spends capped at ₹50/month."
+      - "Education, government and BBPS spends earn nothing (eff. 1-Apr-2024)."
     exclusions:
       - fuel
       - wallet-loads
@@ -60,12 +63,15 @@ rewards:
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [rupay]
+    lounge_access: null
+    milestones:
+      - spend_inr: 10000
+        cycle: monthly
+        benefit: "₹50 bonus cashback"
+        value_inr: 50
+    other:
+      - name: Railway station lounge access
+        description: 2 complimentary railway station lounge visits per quarter (no airport lounge on this card).
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -74,8 +80,9 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/altura
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/au-bank/altura-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: caps are ₹50/month each (base was wrongly 1.5% unlimited); lounge is railway-station only."
 
 eligibility:
   min_age: 21
@@ -90,5 +97,5 @@ application:
   apply_url: https://www.aubank.in/personal-banking/credit-cards/altura
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entry, cashback, rupay]

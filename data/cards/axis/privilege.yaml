@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 1500
     annual_fee_inr: 1500
     fee_waiver:
-      spend_inr: 250000
+      spend_inr: 500000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.6
@@ -27,6 +27,7 @@ fees:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/privilege-credit-card
       retrieved_on: 2026-04-15
+      notes: "Waiver corrected 2026-06 to ₹5L (was ₹2.5L; medium confidence — cardinsider)."
 
 rewards:
   - effective_from: 2010-01-01
@@ -54,7 +55,7 @@ rewards:
 
 benefits:
   - effective_from: 2010-01-01
-    effective_until: null
+    effective_until: 2024-04-30
     lounge_access:
       domestic:
         visits_per_cycle: 8
@@ -81,6 +82,84 @@ benefits:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/privilege-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; unconditional-lounge era. (Yatra ₹5,000 welcome and intl PP shown here were wrong — actual welcome 12,500 EDGE points; no intl lounge.)"
+
+  - effective_from: 2024-05-01
+    effective_until: 2025-06-19
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [dreamfolks]
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "2 visits/quarter, gated on ₹50k spend in the preceding 3 months (1-May-2024). No international/Priority Pass on this card."
+    milestones:
+      - spend_inr: 250000
+        cycle: annual
+        benefit: "10,000 EDGE Reward Points"
+        value_inr: 1800
+        reward_kind: points
+        reward_units: 10000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "12,500 EDGE Reward Points"
+        value_inr: 2500
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://cardinsider.com/axis-bank/axis-bank-privilege-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "Historical record; pre-District-app benefits. 1-May-2024 lounge gating; welcome/milestone corrected; intl PP removed (was never current)."
+
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [dreamfolks]
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "2 visits/quarter, gated on ₹50k spend in the preceding 3 months (1-May-2024). No international/Priority Pass on this card."
+    milestones:
+      - spend_inr: 250000
+        cycle: annual
+        benefit: "10,000 EDGE Reward Points"
+        value_inr: 1800
+        reward_kind: points
+        reward_units: 10000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "12,500 EDGE Reward Points"
+        value_inr: 2500
+        window_days: 90
+    movies:
+      type: bogo
+      partner: District app
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 250
+      notes: "BOGO up to ₹250 once a month via District app (added 20-Jun-2025)."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/credit-card/axis-bank-credit-card-changes-2025/
+      retrieved_on: 2026-06-12
+      notes: "20-Jun-2025: District app BOGO added."
 
 eligibility:
   min_age: 18
@@ -95,5 +174,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/privilege-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, travel, points]

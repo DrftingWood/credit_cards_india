@@ -35,31 +35,27 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 3
-      per_inr: 150
+      rate: 0
+      per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
-    accelerated:
-      - category: online-spend
-        canonical_categories: [online]
-        multiplier: 2
-        effective_rate: 6
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - utilities
+    capping_rules:
+      - "No per-transaction earn — monthly spend milestones instead: 200 RP at ₹5k, 500 RP at ₹10k, 1,000 RP at ₹15k (1 RP = ₹0.25)."
+      - "FASTag/railway spends excluded from milestone computation from the Mar-2026 cycle."
     redemption:
       - type: catalog
         program: IDFC FIRST Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirstbank.com/credit-card/swyp
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/idfc-first-bank/swyp-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 rewrite: SWYP has milestone-only earn (the per-transaction model was wrong); EMI conversion is user-initiated for txns >₹3,000 at a flat fee (med)."
 
 benefits:
   - effective_from: 2024-02-01
@@ -98,5 +94,5 @@ application:
   apply_url: https://www.idfcfirstbank.com/credit-card/swyp
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [emi-first, entry, points]

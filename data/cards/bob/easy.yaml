@@ -13,9 +13,12 @@ discontinued_on: null
 fees:
   - effective_from: 2019-01-01
     effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 35000
+      cycle: annual
+      conditions: "Annual fee waived on ₹35k annual spends; joining fee waived on ₹6k spend within 60 days."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
@@ -24,8 +27,9 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card."
     source:
-      url: https://www.bobfinancial.com/easy-credit-card.jsp
-      retrieved_on: 2026-04-15
+      url: https://www.bobcard.co.in/credit-card-types/easy
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: card is NOT lifetime-free (₹500 fee with waivers); base 1 RP/₹100 (was wrongly 5); 5X capped 1,000 RP/mo; ₹0.20/pt; BOBCARD Ltd rebrand URLs."
 
 rewards:
   - effective_from: 2019-01-01
@@ -33,16 +37,15 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 5
+      rate: 1
       per_inr: 100
-      unit_value_inr: 0.25
+      unit_value_inr: 0.2
       unit_value_inr_realized: 0.18
     accelerated:
-      - category: grocery-departmental-utility
-        canonical_categories: [groceries, utilities]
-        multiplier: 1
+      - category: departmental-stores-movies
+        canonical_categories: [groceries, entertainment]
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 1000
         cap_unit: points
         cycle: monthly
     exclusions:
@@ -54,10 +57,10 @@ rewards:
     redemption:
       - type: catalog
         program: BoBcard Rewards
-        rate_inr_per_unit: 0.25
+        rate_inr_per_unit: 0.2
     source:
-      url: https://www.bobfinancial.com/easy-credit-card.jsp
-      retrieved_on: 2026-04-15
+      url: https://www.bobcard.co.in/credit-card-types/easy
+      retrieved_on: 2026-06-12
 
 benefits:
   - effective_from: 2019-01-01
@@ -71,8 +74,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.bobfinancial.com/easy-credit-card.jsp
-      retrieved_on: 2026-04-15
+      url: https://www.bobcard.co.in/credit-card-types/easy
+      retrieved_on: 2026-06-12
 
 eligibility:
   min_age: 21
@@ -84,8 +87,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.bobfinancial.com/easy-credit-card.jsp
+  apply_url: https://www.bobcard.co.in/credit-card-types/easy
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [lifetime-free, entry, points]
+  last_verified_on: 2026-06-12
+  tags: [entry, points]

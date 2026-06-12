@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
-      spend_inr: 75000
+      spend_inr: 150000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: grocery-supermarket
         canonical_categories: [groceries]
-        multiplier: 10
         effective_rate: 20
         cap_per_cycle: 1000
         cap_unit: points
@@ -65,6 +64,18 @@ benefits:
   - effective_from: 2016-01-01
     effective_until: null
     lounge_access: null
+    welcome:
+      - condition: "Card issuance"
+        benefit: "2,000 bonus Reward Points"
+        value_inr: 600
+        window_days: 90
+    movies:
+      type: discount
+      partner: BookMyShow
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 100
+      notes: "10% off BMS up to ₹100, 15 times/year (approximated as 2/month here)."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -89,5 +100,5 @@ application:
   apply_url: https://www.rblbank.com/category/credit-cards/shoprite-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [entry, grocery, points]
+  last_verified_on: 2026-06-12
+  tags: [entry, groceries, points]

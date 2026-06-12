@@ -18,18 +18,18 @@ fees:
     effective_until: null
     joining_fee_inr: 3000
     annual_fee_inr: 3000
-    fee_waiver:
-      spend_inr: 600000
-      cycle: annual
+    fee_waiver: null
     forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.6
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
+    notes: "No spend-based fee waiver; paying the renewal fee grants a Free Night Award (up to 15,000 points) instead."
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/marriott-bonvoy-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://cardmaven.in/marriott-bonvoy-hdfc-bank-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "Waiver corrected 2026-06: the earlier ₹6L spend waiver was wrong."
 
 rewards:
   - effective_from: 2022-10-01
@@ -45,7 +45,6 @@ rewards:
     accelerated:
       - category: marriott-properties
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 8
         card_attributable_rate: 8
         card_attributable_per_inr: 150
@@ -60,7 +59,6 @@ rewards:
         notes: "8 Bonvoy points per ₹150 on spends at participating Marriott hotels. Stacks with Bonvoy member earn (handled via loyalty_program: marriott-bonvoy at calculator time)."
       - category: travel-dining
         canonical_categories: [travel, dining]
-        multiplier: 1
         effective_rate: 4
         card_attributable_rate: 4
         card_attributable_per_inr: 150
@@ -90,7 +88,7 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
+        visits_per_cycle: 12
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
@@ -102,20 +100,20 @@ benefits:
     milestones:
       - spend_inr: 600000
         cycle: annual
-        benefit: "1 complimentary night at any Marriott category 1-4 property"
-        value_inr: 12000
+        benefit: "Free Night Award worth up to 15,000 Bonvoy points"
+        value_inr: 8250
       - spend_inr: 900000
         cycle: annual
-        benefit: "additional free night (cat 1-4)"
-        value_inr: 12000
+        benefit: "additional Free Night Award (up to 15,000 points)"
+        value_inr: 8250
       - spend_inr: 1500000
         cycle: annual
-        benefit: "additional free night (cat 1-4)"
-        value_inr: 12000
+        benefit: "additional Free Night Award (up to 15,000 points)"
+        value_inr: 8250
     welcome:
       - condition: "Joining fee paid"
-        benefit: "1 complimentary night at any Marriott category 1-4 property + Silver Elite status"
-        value_inr: 12000
+        benefit: "1 Free Night Award (up to 15,000 points) + Silver Elite status + 10 Elite Night Credits"
+        value_inr: 8250
         window_days: 90
     insurance:
       - type: air-accident
@@ -131,8 +129,9 @@ benefits:
       - name: Marriott Bonvoy Silver Elite status
         description: Complimentary Silver Elite status on the Marriott Bonvoy programme.
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/marriott-bonvoy-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://cardmaven.in/marriott-bonvoy-hdfc-bank-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: lounge is 12 dom + 12 intl/yr; FNA-based milestones/welcome (Marriott dropped category awards; FNAs valued at 15,000 pts × realized ₹0.55). FNA top-up with up to 25,000 extra points allowed since 2025-26."
 
 eligibility:
   min_age: 21
@@ -147,5 +146,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/marriott-bonvoy-hdfc-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, hotel, marriott, premium, points]

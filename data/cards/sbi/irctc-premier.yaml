@@ -15,7 +15,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2021-01-01
-    effective_until: null
+    effective_until: 2024-10-31
     joining_fee_inr: 1499
     annual_fee_inr: 1499
     fee_waiver:
@@ -30,10 +30,29 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/travel/irctc-sbi-card-premier.page
       retrieved_on: 2026-04-15
+      notes: "Historical record; finance charge before the 1-Nov-2024 hike."
+
+  - effective_from: 2024-11-01
+    effective_until: null
+    joining_fee_inr: 1499
+    annual_fee_inr: 1499
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://cardinsider.com/blog/important-update-on-sbi-credit-cards-finance-charges-and-utility-bill-payments/
+      retrieved_on: 2026-06-12
+      notes: "Finance charge 3.75%/month on all unsecured SBI cards from 1-Nov-2024."
 
 rewards:
   - effective_from: 2021-01-01
-    effective_until: null
+    effective_until: 2024-11-30
     currency: points
     currency_name: Reward Points
     loyalty_program: irctc-loyalty
@@ -41,11 +60,10 @@ rewards:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 0.95
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 10
         card_attributable_rate: 10
         card_attributable_per_inr: 100
@@ -61,7 +79,6 @@ rewards:
         notes: "10% value-back (as points) on AC class bookings via IRCTC."
       - category: dining-grocery
         canonical_categories: [groceries, dining]
-        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -78,16 +95,68 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/travel/irctc-sbi-card-premier.page
       retrieved_on: 2026-04-15
+      notes: "Historical record; structure before the 1-Dec-2024 exclusion wave."
+
+  - effective_from: 2024-12-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    loyalty_program: irctc-loyalty
+    base:
+      rate: 1
+      per_inr: 125
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.95
+    accelerated:
+      - category: irctc-rail-bookings
+        canonical_categories: [travel]
+        effective_rate: 10
+        card_attributable_rate: 10
+        card_attributable_per_inr: 100
+        stacks_with_program: false
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        merchants: [irctc]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [irctc-direct]
+        notes: "10% value-back (as points) on AC class bookings via IRCTC."
+      - category: dining-grocery
+        canonical_categories: [groceries, dining]
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+      - government
+      - other
+    capping_rules:
+      - "From 1-Dec-2024: digital gaming spends earn no rewards; government-related spends excluded; utility payments above ₹50,000/cycle attract a 1% fee."
+      - "Rent payments attract a ₹199 processing fee; third-party education payments a 1% fee (2024)."
+    redemption:
+      - type: voucher
+        program: IRCTC
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.business-standard.com/finance/personal-finance/sbi-card-update-no-reward-points-for-spending-on-digital-gaming-platforms-124120500479_1.html
+      retrieved_on: 2026-06-12
+      notes: "1-Dec-2024 wave: digital gaming earns nothing, government excluded, utility >₹50k 1% fee."
 
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [issuer-direct]
+    lounge_access: null
+    welcome:
+      - condition: "Payment of first annual fee"
+        benefit: "1,500 Reward Points"
+        value_inr: 1500
+        window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -95,12 +164,15 @@ benefits:
       cap_per_cycle_inr: 100
       cycle: monthly
     other:
+      - name: Railway station lounge access
+        description: 8 complimentary IRCTC railway station lounge visits per year (2 per quarter). No airport lounge access on this card.
       - name: IRCTC transaction charge waiver
         description: 1% + GST transaction charge waiver on IRCTC ticket bookings.
     concierge: false
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/irctc-sbi-card-premier.page
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/sbi-bank/irctc-sbi-card-premier/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: lounge benefit is RAILWAY station lounges (the airport-style entry was wrong); welcome 1,500 RP added. Annual milestone bonus (up to 5,000 RP, med confidence) not yet modelled."
 
 eligibility:
   min_age: 21
@@ -115,5 +187,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/irctc-sbi-card-premier.page
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, railway, irctc, rupay, entry]

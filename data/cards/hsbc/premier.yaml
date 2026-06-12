@@ -13,7 +13,7 @@ discontinued_on: null
 fees:
   - effective_from: 2021-11-01
     effective_until: null
-    joining_fee_inr: 0
+    joining_fee_inr: 12000
     annual_fee_inr: 20000
     fee_waiver:
       spend_inr: 1600000
@@ -24,7 +24,7 @@ fees:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "Annual fee waived if the customer maintains an HSBC Premier relationship. Otherwise ₹20,000 + GST."
+    notes: "Joining ₹12,000 / renewal ₹20,000 — both waived while the customer maintains an HSBC Premier relationship (the usual case)."
     source:
       url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
       retrieved_on: 2026-04-15
@@ -42,7 +42,6 @@ rewards:
     accelerated:
       - category: international-spend
         canonical_categories: [international]
-        multiplier: 2
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -59,7 +58,7 @@ rewards:
         rate_inr_per_unit: 0.25
       - type: airmiles
         program: Multiple (MakeMyTrip / airline partners)
-        ratio: "2:1"
+        ratio: "1:1"
     source:
       url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
       retrieved_on: 2026-04-15
@@ -76,7 +75,7 @@ benefits:
       international:
         visits_per_cycle: unlimited
         cycle: annual
-        guests_per_visit: 0
+        guests_per_visit: 8
         via: [loungekey]
     golf:
       rounds_per_cycle: 2
@@ -87,6 +86,11 @@ benefits:
         sum_insured_inr: 50000000
       - type: travel-medical
         sum_insured_inr: 25000000
+    welcome:
+      - condition: "Card issuance"
+        benefit: "Taj Epicure membership + ₹12,000 Taj Experiences gift card + EazyDiner Prime"
+        value_inr: 12000
+        window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -109,11 +113,11 @@ eligibility:
     self_employed: 4000000
   credit_score_min: 780
   residency: resident-indian
-  notes: "Typically requires HSBC Premier banking relationship (qualifying relationship balance)."
+  notes: "Premier relationship required: ₹50L average quarterly TRB, or ₹3L net monthly salary credit, or ₹1.15Cr+ mortgage (med confidence)."
 
 application:
   apply_url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, premier-banking, low-forex, travel]

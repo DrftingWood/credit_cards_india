@@ -33,7 +33,7 @@ export function QuickFacts({ card }: { card: EnrichedCard }) {
 
           <Group title="Rewards Rate">
             {accelerated.slice(0, 3).map((a, i) => (
-              <li key={i} className="prose-card-value leading-snug">{formatAccelerated(a)}</li>
+              <li key={i} className="prose-card-value leading-snug">{formatAccelerated(a, rewards)}</li>
             ))}
             {accelerated.length === 0 && base !== null ? (
               <li className="prose-card-value">Base rate {formatPct(base, 2)}</li>

@@ -6,7 +6,7 @@ network_tier: signature
 tier: premium
 card_type: credit
 co_brand: null
-status: active
+status: on-hold  # withdrawn for new applications; Regalia Gold is the successor (existing holders continue)
 launched_on: 2009-01-01
 discontinued_on: null
 
@@ -65,15 +65,19 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 12
-        cycle: annual
+        visits_per_cycle: 2
+        cycle: quarterly
         guests_per_visit: 0
-        via: [priority-pass]
+        via: [issuer-direct]
+        spend_threshold_inr: 100000
+        spend_threshold_cycle: quarterly
+        notes: "2 lounge-access vouchers per quarter (max 8/yr), unlocked by ₹1L spend in the prior calendar quarter (since ~Dec-2023)."
       international:
         visits_per_cycle: 6
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
+        notes: "Priority Pass issued after 4 card transactions; up to 6 complimentary visits/yr."
     milestones:
       - spend_inr: 500000
         cycle: annual
@@ -99,8 +103,9 @@ benefits:
       cycle: statement
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/hdfc-bank/hdfc-bank-regalia-credit-cards/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: card withdrawn for new applications; domestic lounge is voucher-based and spend-gated (₹1L/quarter); intl PP after 4 transactions."
 
 eligibility:
   min_age: 21
@@ -112,8 +117,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia
+  apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, travel, points]

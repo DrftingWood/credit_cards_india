@@ -1,13 +1,27 @@
 # Roadmap and open work
 
-Concrete deferred items, in rough priority order. When an item lands, move
-it to [`DECISIONS.md`](DECISIONS.md) if it represents a durable design
-choice; otherwise just delete it from this file.
+## 2026-06 audit follow-ups (see docs/AUDIT-2026-06.md)
 
-For the design rationale that motivated this list, see
-[`DECISIONS.md`](DECISIONS.md).
+Phases 0, 1, 2 and 4 are done. Phase 3 (full-catalogue re-verification) is
+in progress — HDFC (18), Axis (14), SBI (13) and the flagship wave are
+encoded; per-card detail in docs/verification-notes-2026-06.md. Open:
 
----
+1. **Phase 3 remaining batches** (~32 cards): RBL (6), IndusInd (4), IDFC
+   remainder (ashva/mayura/swyp/first-private/indigo — mayura/ashva blocked
+   on issuer T&C), Amex remainder (centurion, platinum-charge/reserve),
+   Yes (3), StanC (3), HSBC (2), BoB (3), Federal (3), OneCard, slice,
+   small PSUs (boi/canara/idbi/kvb/pnb/union/south-indian).
+2. **New card file**: PVR INOX Kotak (₹499, 2023) — successor to the
+   discontinued pvr-gold.
+3. **Deferred encodings** (verified, ambiguous or unmodellable): see the
+   "deferred" markers in verification-notes — air-india decomposition +
+   Maharaja Club programme rename, aurum Club Marriott, miles-elite
+   per-₹1L lounge accrual, irctc-premier milestone, Amex exact waiver
+   withdrawal date, my-zone SonyLIV renewal date conflict.
+4. **Aggregator source replacement**: ~30 records now cite cardinsider/
+   paisabazaar/cardmaven (flagged by the validator) — replace with issuer
+   T&C PDFs issuer-by-issuer during Phase 3.
+
 
 ## ⚠ Provisional realized unit values — must be sourced
 

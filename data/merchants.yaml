@@ -1,0 +1,78 @@
+# Controlled vocabulary for accelerated[].merchants — the display-tier
+# merchant list shown on card detail pages (distinct from channel.merchants,
+# whose tokens live in data/channels/known.yaml and gate calculator math).
+# scripts/validate.py errors on any token not listed here.
+# Token style: lowercase slug, '-' separators (amazon-in, cult-fit).
+
+merchants:
+  - 1mg
+  - 2gud
+  - abhibus
+  - adani-airports
+  - adani-one-app
+  - air-india
+  - airtel-thanks-app
+  - ajio
+  - amazon
+  - amazon-in
+  - amazon-prime
+  - apollo-24-7
+  - bigbasket
+  - blinkit
+  - bookmyshow
+  - bpcl-fuel-stations
+  - cleartrip
+  - confirmtkt
+  - croma
+  - dominos
+  - cult-fit
+  - easemytrip
+  - eazydiner
+  - flipkart
+  - goibibo
+  - google-pay-bills
+  - google-pay-recharges
+  - hotstar
+  - hp-pay
+  - hpcl-fuel-stations
+  - igp
+  - ihcl
+  - indianoil-fuel-stations
+  - indigo-app
+  - indigo-web
+  - inox
+  - irctc
+  - ixigo
+  - jiomart
+  - lenskart
+  - makemytrip
+  - marks-and-spencer
+  - myntra
+  - netflix
+  - netmeds
+  - oyo
+  - nykaa
+  - ola
+  - paytm-movies
+  - pvr
+  - reliance-digital
+  - reliance-smart
+  - reliance-smart-superstore
+  - scapia-app
+  - sony-liv
+  - swiggy
+  - swiggy-dineout
+  - swiggy-food
+  - swiggy-genie
+  - swiggy-instamart
+  - tata-cliq
+  - tata-neu-app
+  - trainman
+  - trends
+  - uber
+  - urbanclap
+  - westside
+  - yatra
+  - zee5
+  - zomato
+  - zomato-dining

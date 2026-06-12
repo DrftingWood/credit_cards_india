@@ -41,12 +41,11 @@ rewards:
     accelerated:
       - category: online-partner-merchants
         canonical_categories: [online, dining, entertainment]
-        multiplier: 5
         effective_rate: 5
         cap_per_cycle: 1000
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [amazon, bookmyshow, cult.fit, flipkart, myntra, sony-liv, swiggy, tata-cliq, uber, zomato]
+        merchants: [amazon, bookmyshow, cult-fit, flipkart, myntra, sony-liv, swiggy, tata-cliq, uber, zomato]
         notes: "5% cashback (as CashPoints) at 10 partner merchants."
     exclusions:
       - fuel
@@ -69,7 +68,7 @@ rewards:
 
 benefits:
   - effective_from: 2020-02-01
-    effective_until: null
+    effective_until: 2025-09-19
     lounge_access:
       domestic:
         visits_per_cycle: 8
@@ -97,6 +96,32 @@ benefits:
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; standing lounge visits ended per HDFC notice of 20-Sep-2025."
+
+  - effective_from: 2025-09-20
+    effective_until: null
+    lounge_access: null
+    milestones:
+      - spend_inr: 100000
+        cycle: quarterly
+        benefit: "Choice of ₹1,000 brand gift voucher OR a domestic lounge-access voucher"
+        value_inr: 1000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "1,000 CashPoints"
+        value_inr: 1000
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?path=/Personal/Pay/Cards/Millennia+Cards/CashBack+Credit+Card/Change-in-Lounge-access-Millenia.pdf
+      retrieved_on: 2026-06-12
+      notes: "No standing complimentary lounge visits — lounge is available only as the quarterly milestone redemption choice (₹1L spend/quarter → ₹1,000 voucher OR lounge voucher). HDFC notice 20-Sep-2025, reconfirmed in the Feb-2026 lounge-voucher PDF."
 
 eligibility:
   min_age: 21
@@ -111,5 +136,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [cashback, online-spend, mid-tier]
+  last_verified_on: 2026-06-12
+  tags: [cashback, online-spend, mid]

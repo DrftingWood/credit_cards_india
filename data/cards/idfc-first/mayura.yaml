@@ -15,10 +15,8 @@ fees:
     effective_until: null
     joining_fee_inr: 5999
     annual_fee_inr: 5999
-    fee_waiver:
-      spend_inr: 1200000
-      cycle: annual
-    forex_markup_pct: 0.99
+    fee_waiver: null
+    forex_markup_pct: 0.0
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
@@ -30,7 +28,7 @@ fees:
 
 rewards:
   - effective_from: 2024-05-01
-    effective_until: null
+    effective_until: 2026-01-17
     currency: points
     currency_name: Reward Points
     base:
@@ -41,14 +39,12 @@ rewards:
     accelerated:
       - category: international-spend
         canonical_categories: [international]
-        multiplier: 2
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
       - category: dining-online-travel
         canonical_categories: [online, dining, travel]
-        multiplier: 2
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -70,20 +66,60 @@ rewards:
     source:
       url: https://www.idfcfirstbank.com/credit-card/mayura
       retrieved_on: 2026-04-15
+      notes: "Historical record; pre-18-Jan-2026 structure."
+
+  - effective_from: 2026-01-18
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: monthly-spend-above-20k
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "10X (10/₹100) above ₹20,000/month and on birthdays; 5X otherwise; 3X on rent/wallet/education/government. International cut from 10X to 5X in the 18-Jan-2026 wave."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+    redemption:
+      - type: catalog
+        program: IDFC FIRST Rewards
+        rate_inr_per_unit: 0.25
+      - type: airmiles
+        program: Multiple
+        ratio: "2:1"
+    source:
+      url: https://upstox.com/news/personal-finance/latest-updates/idfc-first-bank-revises-credit-card-benefits-cuts-rewards-for-mayura-ashva-and-other-cards/article-186757/
+      retrieved_on: 2026-06-12
+      notes: "18-Jan-2026 wave: 5X/10X tiering; intl 5X. Forex corrected to 0%; no fee waiver (₹12L waiver was wrong)."
 
 benefits:
   - effective_from: 2024-05-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: unlimited
+        visits_per_cycle: 16
         cycle: annual
-        guests_per_visit: 2
+        guests_per_visit: 0
+        spend_threshold_inr: 20000
+        spend_threshold_cycle: monthly
         via: [visa, dreamfolks]
       international:
-        visits_per_cycle: unlimited
+        visits_per_cycle: 16
         cycle: annual
-        guests_per_visit: 2
+        guests_per_visit: 0
+        spend_threshold_inr: 20000
+        spend_threshold_cycle: monthly
         via: [priority-pass, loungekey]
     golf:
       rounds_per_cycle: 4
@@ -107,8 +143,9 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.idfcfirstbank.com/credit-card/mayura
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/idfc-first-bank/mayura-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: lounge is 16+16/yr gated on ₹20k previous-month spend (was wrongly unlimited with guests)."
 
 eligibility:
   min_age: 21
@@ -123,5 +160,5 @@ application:
   apply_url: https://www.idfcfirstbank.com/credit-card/mayura
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, travel, low-forex, points]

@@ -5,6 +5,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * 1" # weekly URL-health run (Mon 03:00 UTC)
 
 jobs:
   validate:
@@ -22,3 +24,19 @@ jobs:
 
       - name: Validate
         run: python scripts/validate.py
+
+  # Weekly source-URL health check (separate job: network-dependent and slow,
+  # so it never blocks PR validation; failures surface as workflow alerts).
+  url-health:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install deps
+        run: pip install -r scripts/requirements.txt
+      - name: Validate with URL reachability checks
+        run: python scripts/validate.py --check-urls

@@ -13,16 +13,16 @@ discontinued_on: null
 fees:
   - effective_from: 2022-10-01
     effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
+    joining_fee_inr: 50000
+    annual_fee_inr: 50000
     fee_waiver: null
-    forex_markup_pct: 1.5
+    forex_markup_pct: 0.0
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "Lifetime-free (invite-only)."
+    notes: "₹50,000 + GST; offered lifetime-free as an invite to ~₹1Cr total-relationship-value clients (the usual route). 0% interest on international cash withdrawals."
     source:
       url: https://www.idfcfirstbank.com/credit-card/first-private
       retrieved_on: 2026-04-15
@@ -39,13 +39,12 @@ rewards:
       unit_value_inr_realized: 0.22
     accelerated:
       - category: online-spend-above-20k
-        multiplier: 3
+        canonical_categories: [online]
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
       - category: incremental-above-30k
-        multiplier: 3
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -57,6 +56,8 @@ rewards:
       - insurance-premiums
       - emi
       - utilities
+    capping_rules:
+      - "Revamped Jun-2025: up to 10 RP/₹100 with 1 RP = ₹1 on the Travel & Shop portal (med confidence — earn tiers pending re-verification; base shown predates the revamp)."
     redemption:
       - type: catalog
         program: IDFC FIRST Rewards
@@ -88,6 +89,10 @@ benefits:
         sum_insured_inr: 50000000
       - type: travel-medical
         sum_insured_inr: 10000000
+    welcome:
+      - condition: "Card issuance"
+        benefit: "1,00,000 Reward Points + Club ITC Culinaire Select + Accor Plus Explorer memberships"
+        window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 200
@@ -113,5 +118,5 @@ application:
   apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [invite-only, super-premium, lifetime-free, points]
+  last_verified_on: 2026-06-12
+  tags: [invite-only, super-premium, points]

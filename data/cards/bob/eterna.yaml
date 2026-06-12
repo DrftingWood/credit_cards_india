@@ -1,8 +1,8 @@
 id: bob-eterna
 name: BoBcard Eterna Credit Card
 issuer: bob
-network: visa
-network_tier: signature
+network: mastercard
+network_tier: world
 tier: premium
 card_type: credit
 co_brand: null
@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 2499
     annual_fee_inr: 2499
     fee_waiver:
-      spend_inr: 400000
+      spend_inr: 250000
       cycle: annual
     forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.49
@@ -25,8 +25,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.bobfinancial.com/eterna-credit-card.jsp
-      retrieved_on: 2026-04-15
+      url: https://www.bobcard.co.in/credit-card-types/eterna
+      retrieved_on: 2026-06-12
 
 rewards:
   - effective_from: 2022-01-01
@@ -34,16 +34,15 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 5
+      rate: 3
       per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
     accelerated:
       - category: travel-dining-online-shopping
         canonical_categories: [online, dining, travel]
-        multiplier: 3
         effective_rate: 15
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 5000
         cap_unit: points
         cycle: monthly
     exclusions:
@@ -59,12 +58,12 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.bobfinancial.com/eterna-credit-card.jsp
-      retrieved_on: 2026-04-15
+      url: https://www.bobcard.co.in/credit-card-types/eterna
+      retrieved_on: 2026-06-12
 
 benefits:
   - effective_from: 2022-01-01
-    effective_until: null
+    effective_until: 2024-12-31
     lounge_access:
       domestic:
         visits_per_cycle: 2
@@ -92,8 +91,47 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.bobfinancial.com/eterna-credit-card.jsp
-      retrieved_on: 2026-04-15
+      url: https://www.bobcard.co.in/credit-card-types/eterna
+      retrieved_on: 2026-06-12
+      notes: "Historical record; unconditional lounge era."
+
+  - effective_from: 2025-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+        spend_threshold_inr: 40000
+        spend_threshold_cycle: quarterly
+        notes: "Unlimited domestic visits, gated on ₹40k spend in the preceding calendar quarter (1-Jan-2025)."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Welcome gift worth ₹2,500"
+        value_inr: 2500
+        window_days: 90
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 10000000
+    milestones:
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "20,000 bonus Reward Points"
+        value_inr: 4000
+        reward_kind: points
+        reward_units: 20000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/eterna
+      retrieved_on: 2026-06-12
+      notes: "1-Jan-2025: domestic lounge unlimited-but-gated (₹40k/prior quarter). Intl Priority Pass no longer offered (med); 15X capped 5,000 RP/mo per the 2025 devaluation; LTF acquisition offer running to mid-2026 (not modelled)."
 
 eligibility:
   min_age: 21
@@ -105,8 +143,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.bobfinancial.com/eterna-credit-card.jsp
+  apply_url: https://www.bobcard.co.in/credit-card-types/eterna
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, points, travel, online-spend]

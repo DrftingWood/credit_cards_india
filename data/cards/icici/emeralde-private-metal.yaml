@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: international-spend
         canonical_categories: [international]
-        multiplier: 1
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -93,6 +92,14 @@ benefits:
         cycle: annual
         benefit: "Renewal-fee waiver + bonus points"
         value_inr: 12499
+      - spend_inr: 400000
+        cycle: annual
+        benefit: "EaseMyTrip voucher worth ₹3,000"
+        value_inr: 3000
+      - spend_inr: 800000
+        cycle: annual
+        benefit: "Additional EaseMyTrip voucher worth ₹3,000"
+        value_inr: 3000
     insurance:
       - type: air-accident
         sum_insured_inr: 30000000
@@ -130,5 +137,5 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, metal, travel, dining, points]

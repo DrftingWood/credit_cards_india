@@ -34,7 +34,7 @@ fees:
 
 rewards:
   - effective_from: 2014-01-01
-    effective_until: null
+    effective_until: 2026-01-14
     currency: points
     currency_name: PAYBACK Points
     base:
@@ -45,7 +45,6 @@ rewards:
     accelerated:
       - category: international-spend
         canonical_categories: [international]
-        multiplier: 1
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -65,10 +64,48 @@ rewards:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/rubyx-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; pre-15-Jan-2026 earn structure. (currency_name kept as PAYBACK here although ICICI exited PAYBACK in 2022 — rename pending history review.)"
+
+  - effective_from: 2026-01-15
+    effective_until: null
+    currency: points
+    currency_name: ICICI Bank Reward Points
+    base:
+      rate: 6
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
+    accelerated:
+      - category: international-spend
+        canonical_categories: [international]
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - government
+      - other
+    capping_rules:
+      - "From 15-Jan-2026: rewards on transport MCCs capped at ₹20,000 spends/month; government services and tax payments excluded."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: catalog
+        program: ICICI Rewards / PAYBACK
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://cardinsider.com/blog/massive-icici-credit-card-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "15-Jan-2026 devaluation: base 6 RP/₹200, transport caps, government/tax exclusions (CardInsider/CardMaven/TechnoFino)."
 
 benefits:
   - effective_from: 2014-01-01
-    effective_until: null
+    effective_until: 2025-06-30
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -101,6 +138,48 @@ benefits:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/rubyx-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; ₹35k/quarter lounge gate era."
+
+  - effective_from: 2025-07-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+        spend_threshold_inr: 75000
+        spend_threshold_cycle: quarterly
+      international:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 0
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "3,000 bonus PAYBACK points + welcome voucher"
+        value_inr: 750
+        window_days: 90
+    milestones:
+      - spend_inr: 300000
+        cycle: annual
+        benefit: "3,000 bonus Reward Points (+1,500 per additional ₹1L, anniversary year)"
+        value_inr: 750
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/icici-bank/coral-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "Lounge spend gate raised to ₹75,000/quarter (~Jul-2025, bank-wide)."
 
 eligibility:
   min_age: 21
@@ -115,5 +194,5 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/rubyx-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [mid, points, golf, travel]

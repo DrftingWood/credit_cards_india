@@ -41,22 +41,36 @@ rewards:
       per_inr: 100
       unit_value_inr: 1.0
     accelerated:
-      - category: flipkart-cleartrip
-        canonical_categories: [online, travel]
-        multiplier: 1
+      - category: flipkart
+        canonical_categories: [online]
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 4000
         cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [flipkart, myntra, cleartrip, 2gud]
-        notes: "5% cashback on Flipkart, Myntra, Cleartrip and 2GUD."
+        cycle: quarterly
+        merchants: [flipkart]
+        notes: "5% cashback on Flipkart, capped ₹4,000/quarter."
+      - category: myntra
+        canonical_categories: [online]
+        effective_rate: 7.5
+        cap_per_cycle: 4000
+        cap_unit: cashback-inr
+        cycle: quarterly
+        merchants: [myntra]
+        notes: "7.5% cashback on Myntra, capped ₹4,000/quarter."
+      - category: cleartrip
+        canonical_categories: [travel]
+        effective_rate: 5
+        cap_per_cycle: 4000
+        cap_unit: cashback-inr
+        cycle: quarterly
+        merchants: [cleartrip]
+        notes: "5% cashback on Cleartrip, capped ₹4,000/quarter. (2GUD defunct.)"
       - category: preferred-merchants
-        multiplier: 1
         effective_rate: 4
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [swiggy, pvr, uber, cult.fit]
+        merchants: [swiggy, pvr, uber, cult-fit]
         notes: "4% cashback on preferred merchants."
     exclusions:
       - fuel
@@ -64,17 +78,24 @@ rewards:
       - rent
       - emi
       - insurance-premiums
+      - utilities
+      - jewellery
+      - education
+      - government
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
         constraints: "Credited to next statement."
+    capping_rules:
+      - "Telecom spends also excluded from cashback (no schema token; per 1finance review 2026)."
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://1finance.co.in/blog/flipkart-axis-bank-credit-card-review-2026/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: Myntra is its own 7.5% bucket; ₹4,000/quarter caps were missing; 2GUD defunct; exclusions extended."
 
 benefits:
   - effective_from: 2019-07-30
-    effective_until: null
+    effective_until: 2025-06-30
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -83,8 +104,8 @@ benefits:
         via: [dreamfolks]
     welcome:
       - condition: "First transaction within 30 days"
-        benefit: "Flipkart voucher worth ₹500"
-        value_inr: 500
+        benefit: "Flipkart voucher worth ₹250 + Swiggy voucher worth ₹100"
+        value_inr: 350
         window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
@@ -96,6 +117,27 @@ benefits:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; the 4 annual lounge visits were withdrawn in June-2025."
+
+  - effective_from: 2025-07-01
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "First transaction within 30 days"
+        benefit: "Flipkart voucher worth ₹250 + Swiggy voucher worth ₹100"
+        value_inr: 350
+        window_days: 30
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://1finance.co.in/blog/flipkart-axis-bank-credit-card-review-2026/
+      retrieved_on: 2026-06-12
+      notes: "Lounge access discontinued June-2025 (exact day unpinned; 1-Jul-2025 boundary approximate). Welcome corrected to ₹250 Flipkart + ₹100 Swiggy (the ₹500 figure was wrong)."
 
 eligibility:
   min_age: 18
@@ -110,5 +152,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, flipkart, cashback, entry]

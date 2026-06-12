@@ -12,11 +12,11 @@ discontinued_on: null
 
 fees:
   - effective_from: 2024-03-01
-    effective_until: null
+    effective_until: 2024-10-31
     joining_fee_inr: 4999
     annual_fee_inr: 4999
     fee_waiver:
-      spend_inr: 1000000
+      spend_inr: 1500000
       cycle: annual
     forex_markup_pct: 1.99
     finance_charge_monthly_pct: 3.5
@@ -27,10 +27,29 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page
       retrieved_on: 2026-04-15
+      notes: "Historical record; finance charge before the 1-Nov-2024 hike."
+
+  - effective_from: 2024-11-01
+    effective_until: null
+    joining_fee_inr: 4999
+    annual_fee_inr: 4999
+    fee_waiver:
+      spend_inr: 1500000
+      cycle: annual
+    forex_markup_pct: 1.99
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://cardinsider.com/blog/important-update-on-sbi-credit-cards-finance-charges-and-utility-bill-payments/
+      retrieved_on: 2026-06-12
+      notes: "Finance charge 3.75%/month on all unsecured SBI cards from 1-Nov-2024."
 
 rewards:
   - effective_from: 2024-03-01
-    effective_until: null
+    effective_until: 2024-11-30
     currency: miles
     currency_name: Travel Credits
     base:
@@ -41,7 +60,6 @@ rewards:
     accelerated:
       - category: travel-online-offline
         canonical_categories: [online, travel]
-        multiplier: 3
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: miles
@@ -62,9 +80,54 @@ rewards:
       - type: airmiles
         program: Multiple
         ratio: "1:1"
+        constraints: "1:1 only on select partners (Air India, BA, Etihad, AF-KLM, IHG…); 2:1 for Emirates, Qatar, Turkish, Accor, ITC."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page
       retrieved_on: 2026-04-15
+      notes: "Historical record; structure before the 1-Dec-2024 exclusion wave."
+
+  - effective_from: 2024-12-01
+    effective_until: null
+    currency: miles
+    currency_name: Travel Credits
+    base:
+      rate: 2
+      per_inr: 200
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
+    accelerated:
+      - category: travel-online-offline
+        canonical_categories: [online, travel]
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+      - education
+      - government
+      - other
+    capping_rules:
+      - "From 1-Dec-2024: digital gaming spends earn no rewards; government-related spends excluded; utility payments above ₹50,000/cycle attract a 1% fee."
+      - "Rent payments attract a ₹199 processing fee; third-party education payments a 1% fee (2024)."
+    redemption:
+      - type: voucher
+        program: Flight / hotel bookings
+        rate_inr_per_unit: 1.0
+        constraints: "Travel Credits redeemable against flights and hotels via SBI Card portal at 1 credit = ₹1."
+      - type: airmiles
+        program: Multiple
+        ratio: "1:1"
+        constraints: "1:1 only on select partners (Air India, BA, Etihad, AF-KLM, IHG…); 2:1 for Emirates, Qatar, Turkish, Accor, ITC."
+    source:
+      url: https://www.business-standard.com/finance/personal-finance/sbi-card-update-no-reward-points-for-spending-on-digital-gaming-platforms-124120500479_1.html
+      retrieved_on: 2026-06-12
+      notes: "1-Dec-2024 wave: digital gaming earns nothing, government excluded, utility >₹50k 1% fee."
 
 benefits:
   - effective_from: 2024-03-01
@@ -81,18 +144,16 @@ benefits:
         guests_per_visit: 0
         via: [priority-pass]
     milestones:
-      - spend_inr: 1000000
+      - spend_inr: 1200000
         cycle: annual
-        benefit: "10,000 Travel Credits bonus"
+        benefit: "20,000 bonus Travel Credits"
         value_inr: 10000
-      - spend_inr: 2500000
-        cycle: annual
-        benefit: "25,000 Travel Credits bonus"
-        value_inr: 25000
+        reward_kind: miles
+        reward_units: 20000
     welcome:
-      - condition: "Joining fee paid"
+      - condition: "Spend ₹1L within 60 days"
         benefit: "5,000 bonus Travel Credits"
-        value_inr: 5000
+        value_inr: 2500
         window_days: 60
     fuel_surcharge_waiver:
       pct: 1.0
@@ -102,8 +163,9 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/sbi-bank/sbi-miles-elite-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: waiver ₹15L (was ₹10L); milestone is 20,000 TC at ₹12L (was 10k/25k at 10L/25L); welcome requires ₹1L spend; +1 extra domestic lounge visit per ₹1L cumulative spend (not modelled); ₹1Cr air-accident cover discontinued 15-Jul-2025; transfers 1:1 only on some partners, 2:1 on Emirates/Qatar/Turkish/Accor/ITC."
 
 eligibility:
   min_age: 21
@@ -118,5 +180,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, travel, miles, low-forex]

@@ -7,35 +7,48 @@ tier: invite-only
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2021-01-01
+launched_on: 2024-09-01  # Solitaire programme launch, 2024
 discontinued_on: null
 
 fees:
-  - effective_from: 2021-01-01
+  - effective_from: 2024-09-01
     effective_until: null
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 2.0
+    forex_markup_pct: 0.0
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "Invite-only; no fee."
+    notes: "Invite-only; ₹0 fees while the holder stays in the Solitaire programme — ₹25,000 + GST if downgraded out of the programme."
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/solitaire-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
+      retrieved_on: 2026-06-12
 
 rewards:
-  - effective_from: 2021-01-01
+  - effective_from: 2024-09-01
     effective_until: null
-    currency: cashback
-    currency_name: Whites Pass
+    currency: miles
+    currency_name: Kotak Air Miles
     base:
-      rate: 4
-      per_inr: 150
+      rate: 3
+      per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.7
+    accelerated:
+      - category: travel-via-kotak-unbox
+        canonical_categories: [travel]
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [kotak-unbox]
+        notes: "10 Air Miles per ₹100 on travel booked via Kotak Unbox."
     exclusions:
       - fuel
       - wallet-loads
@@ -43,26 +56,27 @@ rewards:
       - insurance-premiums
       - emi
     redemption:
-      - type: catalog
-        program: Whites Catalogue
+      - type: airmiles
+        program: Kotak Air Miles partners
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/solitaire-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
+      retrieved_on: 2026-06-12
+      notes: "2026-06 rewrite: rewards are Air Miles 3/₹100 base + 10/₹100 Unbox travel (the Whites-Pass cashback 4/₹150 model was wrong). Realized value provisional pending redemption T&C review."
 
 benefits:
-  - effective_from: 2021-01-01
+  - effective_from: 2024-09-01
     effective_until: null
     lounge_access:
       domestic:
         visits_per_cycle: unlimited
         cycle: annual
-        guests_per_visit: 0
+        guests_per_visit: 2
         via: [visa, dreamfolks]
       international:
         visits_per_cycle: unlimited
         cycle: annual
-        guests_per_visit: 0
+        guests_per_visit: 2
         via: [priority-pass]
     golf:
       rounds_per_cycle: 2
@@ -76,8 +90,8 @@ benefits:
       cap_per_cycle_inr: 3500
       cycle: annual
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/solitaire-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
+      retrieved_on: 2026-06-12
 
 eligibility:
   min_age: 21
@@ -93,5 +107,5 @@ application:
   apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [invite-only, super-premium, private-banking]

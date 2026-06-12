@@ -53,7 +53,6 @@ rewards:
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: miles
@@ -62,7 +61,6 @@ rewards:
         notes: "5 6E Rewards per ₹100 on flight bookings made via IndiGo website or app."
       - category: dining-grocery-entertainment
         canonical_categories: [dining, groceries, entertainment]
-        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: miles
@@ -137,4 +135,5 @@ application:
 
 metadata:
   last_verified_on: 2026-04-22
+  last_swept_on: 2026-06-12
   tags: [co-branded, airline, indigo, premium, miles, discontinued]

@@ -14,7 +14,7 @@ fees:
   - effective_from: 2005-01-01
     effective_until: null
     joining_fee_inr: 10000
-    annual_fee_inr: 5000
+    annual_fee_inr: 10000
     fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.5
@@ -24,7 +24,8 @@ fees:
     gst_applicable: true
     source:
       url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: annual fee ₹10,000 (was ₹5,000); 100% renewal waiver on ₹10L (med — not modelled as fee_waiver pending confirmation)."
 
 rewards:
   - effective_from: 2005-01-01
@@ -61,12 +62,12 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
-        cycle: annual
+        visits_per_cycle: 3
+        cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
       international:
-        visits_per_cycle: 0
+        visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
@@ -76,13 +77,13 @@ benefits:
       cycle: monthly
       lessons_per_cycle: 2
     milestones:
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "Taj Hotels Reservations vouchers worth ₹10,000"
+      - spend_inr: 50000
+        cycle: monthly
+        benefit: "Voucher worth ₹1,000 per ₹50k calendar-month spend + Accor ALL+ Explorer membership"
         value_inr: 10000
     welcome:
       - condition: "Spend ₹75,000 within 90 days"
-        benefit: "₹11,000 Taj Hotels gift card"
+        benefit: "11,000 Membership Rewards points on ₹30,000 spend within 90 days (first year, fee paid)"
         value_inr: 11000
         window_days: 90
     insurance:
@@ -123,5 +124,5 @@ application:
   apply_url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, dining, amex, points]

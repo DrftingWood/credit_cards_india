@@ -18,7 +18,7 @@ fees:
     fee_waiver:
       spend_inr: 600000
       cycle: annual
-    forex_markup_pct: 1.5
+    forex_markup_pct: 1.0
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
@@ -30,7 +30,7 @@ fees:
 
 rewards:
   - effective_from: 2024-05-01
-    effective_until: null
+    effective_until: 2026-01-17
     currency: points
     currency_name: Reward Points
     base:
@@ -41,14 +41,12 @@ rewards:
     accelerated:
       - category: weekend-dining
         canonical_categories: [dining]
-        multiplier: 3
         effective_rate: 9
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
       - category: international-spend
         canonical_categories: [international]
-        multiplier: 3
         effective_rate: 9
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -67,6 +65,39 @@ rewards:
     source:
       url: https://www.idfcfirstbank.com/credit-card/ashva
       retrieved_on: 2026-04-15
+      notes: "Historical record; pre-18-Jan-2026 structure (3X base + 9X weekend-dining/intl shown here was itself inaccurate — actual was 5X/10X tiering)."
+
+  - effective_from: 2026-01-18
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: monthly-spend-above-20k
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "10X (10/₹100) on spends in months crossing ₹20,000; 5X otherwise. International cut to 5X in the 18-Jan-2026 wave."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+    redemption:
+      - type: catalog
+        program: IDFC FIRST Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://cardinsider.com/blog/idfc-first-credit-cards-major-devaluation-mayura-ashva-first-power-impacted/
+      retrieved_on: 2026-06-12
+      notes: "18-Jan-2026 wave: 5X up to ₹20k/month, 10X above; international 5X. Lounge is 16 dom (incl. spa) + 8 intl/yr spend-gated (med — lounge record not yet revised); welcome ₹2,000 cashback + 2,500 RP (med, not modelled)."
 
 benefits:
   - effective_from: 2024-05-01
@@ -115,5 +146,5 @@ application:
   apply_url: https://www.idfcfirstbank.com/credit-card/ashva
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, dining, travel, low-forex]

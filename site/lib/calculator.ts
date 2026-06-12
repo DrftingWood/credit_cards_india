@@ -145,13 +145,18 @@ function acceleratorRatePct(
   }
 
   // Legacy effective_rate / multiplier paths (back-compat, optimistic).
-  // effective_rate is the absolute % rate (e.g. 5 = 5%) — never multiply by
-  // unit_value, that double-counts and collapses high-rate accelerators (a 5%
-  // entry with unit_value=0.25 became 1.25% under the old code).
+  // effective_rate is the receipt-visible total in reward units per
+  // effective_per_inr (default: base.per_inr) rupees — e.g. Axis Reserve's
+  // "45 points per ₹200" — NOT a percent (schema/DECISIONS.md contract).
+  // Convert through unit value like every other earn rate; cashback units
+  // are worth ₹1 by definition.
   if (a.effective_rate != null) {
-    return a.effective_rate;
+    const uv = unitValue ?? (rewards.currency === "cashback" ? 1 : null);
+    if (uv == null) return null;
+    const perInr = a.effective_per_inr ?? rewards.base.per_inr;
+    return pointsToPct(a.effective_rate, perInr, uv);
   }
-  if (unitValue != null) {
+  if (a.multiplier != null && unitValue != null) {
     const base = pointsToPct(rewards.base.rate, rewards.base.per_inr, unitValue);
     return base * a.multiplier;
   }

@@ -9,7 +9,7 @@ co_brand:
   partner: Air India
   category: airline
   partner_website: https://www.airindia.com
-status: active
+status: on-hold  # discontinued for new issuance 10-Oct-2024 (cardinsider); existing holders continue
 launched_on: 2013-01-01
 discontinued_on: null
 
@@ -35,7 +35,7 @@ fees:
 
 rewards:
   - effective_from: 2013-01-01
-    effective_until: null
+    effective_until: 2025-03-30
     currency: miles
     currency_name: Flying Returns Miles
     loyalty_program: air-india-flying-returns
@@ -47,7 +47,6 @@ rewards:
     accelerated:
       - category: air-india-bookings
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 10
         card_attributable_rate: 4
         card_attributable_per_inr: 100
@@ -75,6 +74,46 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/travel/air-india-sbi-platinum.page
       retrieved_on: 2026-04-15
+      notes: "Historical record; pre-31-Mar-2025 accelerator. Note: cardinsider cites the pre-cut visible rate as 15/₹100; the 10/₹100 modelled here was not re-verified before the cut."
+
+  - effective_from: 2025-03-31
+    effective_until: null
+    currency: miles
+    currency_name: Flying Returns Miles
+    loyalty_program: air-india-flying-returns
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
+    accelerated:
+      - category: air-india-bookings
+        canonical_categories: [travel]
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        merchants: [air-india]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [air-india-direct]
+        notes: "Accelerator cut to 5 miles per ₹100 on Air India bookings effective 31-Mar-2025 (pre-cut sources cite 15 visible vs the 10 previously modelled — decomposition pending re-verification after the Maharaja Club rebrand)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: airmiles
+        program: Air India Flying Returns
+        ratio: "1:1"
+        constraints: "Directly credited to Flying Returns account; redeemable for Air India / Star Alliance award tickets."
+    source:
+      url: https://cardinsider.com/blog/air-india-sbi-credit-cards-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "31-Mar-2025 devaluation; card closed to new issuance 10-Oct-2024; accident insurance covers withdrawn 26-Jul-2025; Flying Returns rebranded Maharaja Club (programme file rename pending)."
 
 benefits:
   - effective_from: 2013-01-01
@@ -111,8 +150,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/air-india-sbi-platinum.page
+  apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, airline, air-india, miles, entry]

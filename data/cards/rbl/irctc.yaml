@@ -39,12 +39,12 @@ rewards:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 0.95
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 10
+        effective_per_inr: 100
         card_attributable_rate: 10
         card_attributable_per_inr: 100
         stacks_with_program: false
@@ -59,7 +59,6 @@ rewards:
         notes: "10 points per ₹100 spent on AC train ticket bookings via IRCTC portal/app."
       - category: groceries-department-stores-utilities
         canonical_categories: [groceries, utilities]
-        multiplier: 1
         effective_rate: 2
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -116,4 +115,5 @@ application:
 
 metadata:
   last_verified_on: 2026-04-15
+  last_swept_on: 2026-06-12
   tags: [co-branded, railway, entry, niche]

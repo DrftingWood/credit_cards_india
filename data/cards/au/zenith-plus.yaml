@@ -13,10 +13,10 @@ discontinued_on: null
 fees:
   - effective_from: 2023-06-01
     effective_until: null
-    joining_fee_inr: 7999
-    annual_fee_inr: 7999
+    joining_fee_inr: 4999
+    annual_fee_inr: 4999
     fee_waiver:
-      spend_inr: 1800000
+      spend_inr: 800000
       cycle: annual
     forex_markup_pct: 0.99
     finance_charge_monthly_pct: 3.49
@@ -25,8 +25,9 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/zenith-plus
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/au-bank/zenith-plus-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: fee ₹4,999 (was wrongly ₹7,999), waiver ₹8L (was ₹18L)."
 
 rewards:
   - effective_from: 2023-06-01
@@ -34,18 +35,18 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 10
+      rate: 1
       per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.9
     accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 20
+      - category: travel-dining-international
+        canonical_categories: [travel, dining, international]
+        effective_rate: 2
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "2 RP per ₹100 on travel, dining and international spends."
     exclusions:
       - fuel
       - wallet-loads
@@ -56,36 +57,45 @@ rewards:
     redemption:
       - type: catalog
         program: AU Rewardz
-        rate_inr_per_unit: 0.25
-      - type: airmiles
-        program: Multiple
-        ratio: "4:1"
+        rate_inr_per_unit: 1.0
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/zenith-plus
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/au-bank/zenith-plus-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 rewrite: earn is 1 RP/₹100 base + 2/₹100 travel-dining-intl at ~₹1/RP (the 10/20 per ₹100 at ₹0.25 model was wrong); realized 0.9 provisional."
 
 benefits:
   - effective_from: 2023-06-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
+        visits_per_cycle: 4
+        cycle: quarterly
+        guests_per_visit: 0
         via: [visa, dreamfolks]
       international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
+        visits_per_cycle: 4
+        cycle: quarterly
+        guests_per_visit: 0
         via: [priority-pass]
     golf:
-      rounds_per_cycle: unlimited
-      cycle: monthly
-      lessons_per_cycle: unlimited
+      rounds_per_cycle: 2
+      cycle: quarterly
+      lessons_per_cycle: 0
+    milestones:
+      - spend_inr: 75000
+        cycle: monthly
+        benefit: "1,000 bonus Reward Points"
+        value_inr: 1000
+        reward_kind: points
+        reward_units: 1000
+      - spend_inr: 1200000
+        cycle: annual
+        benefit: "Taj Epicure membership"
+        value_inr: 5000
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Luxury voucher + membership bundle worth ₹20,000"
-        value_inr: 20000
+        benefit: "Vouchers worth ₹5,000 (Taj / Michael Kors) or 5,000 Reward Points"
+        value_inr: 5000
         window_days: 90
     insurance:
       - type: air-accident
@@ -100,8 +110,9 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/zenith-plus
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/au-bank/zenith-plus-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 rewrite: lounge is 16 dom + 16 intl/yr (was wrongly unlimited); golf 2/quarter; welcome ₹5,000 (was ₹20,000); milestones added."
 
 eligibility:
   min_age: 21
@@ -116,5 +127,5 @@ application:
   apply_url: https://www.aubank.in/personal-banking/credit-cards/zenith-plus
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, travel, low-forex, points]

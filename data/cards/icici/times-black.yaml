@@ -9,7 +9,7 @@ co_brand:
   partner: Times Internet
   category: lifestyle
   partner_website: https://www.timesprime.com
-status: invite-only
+status: active  # open application via timesblack.com (was wrongly invite-only)
 launched_on: 2024-03-01
 discontinued_on: null
 
@@ -37,25 +37,22 @@ rewards:
     currency: points
     currency_name: Times Points
     base:
-      rate: 3
+      rate: 2
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr_realized: 0.4
     accelerated:
-      - category: travel-dining-international
-        canonical_categories: [dining, travel, international]
-        multiplier: 2
-        effective_rate: 6
+      - category: international-spend
+        canonical_categories: [international]
+        effective_rate: 2.5
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "2.5 Times Points per ₹100 on international spends (2/₹100 domestic base)."
     exclusions:
-      - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
-      - utilities
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -63,8 +60,9 @@ rewards:
         program: Times Prime partners
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/icici-bank/times-black-icici-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections (med): earn is 2% domestic / 2.5% international Times Points; utilities/insurance/education/govt DO earn (earlier exclusions were wrong); realized ₹0.40 (cashback) / ₹1 (vouchers)."
 
 benefits:
   - effective_from: 2024-03-01
@@ -86,7 +84,7 @@ benefits:
       lessons_per_cycle: unlimited
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Times Prime Premium membership + lifestyle vouchers worth ₹25,000"
+        benefit: "₹12,000 Lohono voucher or ₹10,000 EaseMyTrip luxury-stay voucher + ₹3,000 Toni&Guy + Zomato Gold + Times Prime"
         value_inr: 25000
         window_days: 90
     insurance:
@@ -94,6 +92,11 @@ benefits:
         sum_insured_inr: 30000000
       - type: travel-medical
         sum_insured_inr: 5000000
+    milestones:
+      - spend_inr: 2000000
+        cycle: annual
+        benefit: "₹20,000 Lohono/Ayatana stay voucher (tiered ladder up to ₹70,000/yr at ₹25L spend)"
+        value_inr: 20000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -122,5 +125,5 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, invite-only, co-branded, times-prime, lifestyle]

@@ -19,7 +19,7 @@ fees:
     joining_fee_inr: 350
     annual_fee_inr: 350
     fee_waiver:
-      spend_inr: 120000
+      spend_inr: 50000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
@@ -43,26 +43,23 @@ rewards:
     accelerated:
       - category: emt-flights-domestic
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 1000
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [easemytrip]
         notes: "10% instant discount on domestic flight bookings via EaseMyTrip."
       - category: emt-flights-international
         canonical_categories: [travel, international]
-        multiplier: 1
         effective_rate: 20
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 5000
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [easemytrip]
       - category: emt-hotels
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 20
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 10000
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [easemytrip]
@@ -71,6 +68,9 @@ rewards:
       - wallet-loads
       - rent
       - emi
+    capping_rules:
+      - "Discount caps are PER TRANSACTION: domestic flights ₹1,000, international flights ₹5,000, domestic hotels ₹5,000, international hotels ₹10,000 (cap fields above approximate this per-cycle)."
+      - "Base earn outside EMT is 2 RP/₹100 redeemable at ₹0.50/RP (≈1%) + 10x RP on standalone airline/hotel spends — modelled here as 1% cashback pending a points migration."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -81,7 +81,7 @@ rewards:
 
 benefits:
   - effective_from: 2022-09-01
-    effective_until: null
+    effective_until: 2024-10-14
     lounge_access:
       domestic:
         visits_per_cycle: 8
@@ -98,6 +98,27 @@ benefits:
     source:
       url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
       retrieved_on: 2026-04-15
+      notes: "Historical record; 8 visits/yr + Priority Pass era."
+
+  - effective_from: 2024-10-15
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.sc.com/in/credit-cards/easemytrip-card-faqs/
+      retrieved_on: 2026-06-12
+      notes: "15-Oct-2024: lounge cut to 2 domestic visits/calendar year; Priority Pass withdrawn. Waiver corrected to ₹50k."
 
 eligibility:
   min_age: 21
@@ -112,5 +133,5 @@ application:
   apply_url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, travel, easemytrip, entry, cashback]

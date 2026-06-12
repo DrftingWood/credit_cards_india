@@ -39,7 +39,7 @@ fees:
 
 rewards:
   - effective_from: 2017-01-01
-    effective_until: null
+    effective_until: 2025-07-31
     currency: points
     currency_name: Reward Points
     base:
@@ -76,6 +76,54 @@ rewards:
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
       retrieved_on: 2026-04-15
+      notes: "Historical record; SmartBuy 10x era (cut to 5x in August 2025)."
+
+  - effective_from: 2025-08-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 150
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.7
+    accelerated:
+      - category: smartbuy-flights-hotels
+        canonical_categories: [travel]
+        multiplier: 5
+        cap_per_cycle: 15000
+        cap_unit: points
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [smartbuy]
+        notes: "5x reward points on flight + hotel bookings via HDFC SmartBuy (reduced from 10x in August 2025). Direct/OTA bookings earn the base 5/₹150."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - emi
+    capping_rules:
+      - "From 1-Feb-2026: max 5 redemption requests per month; statement-credit redemption capped at 50,000 points/month; total redemption capped at ₹2,00,000 per statement cycle."
+      - "From 1-Feb-2026: Apple products and Tanishq voucher redemptions capped at 70% of product value."
+    redemption:
+      - type: catalog
+        program: SmartBuy
+        rate_inr_per_unit: 1.0
+        constraints: "From Feb-2026, Apple/Tanishq redemptions capped at 70% of product value."
+      - type: airmiles
+        program: Multiple (Airmiles hub)
+        ratio: "1:1"
+      - type: statement-credit
+        rate_inr_per_unit: 0.3
+        constraints: "Capped at 50,000 points per month from Feb-2026."
+    source:
+      url: https://livefromalounge.com/hdfc-bank-infinia-2026-changes/
+      retrieved_on: 2026-06-12
+      notes: "SmartBuy 5x effective Aug-2025; Feb-2026 redemption restrictions per Business Standard / Live From A Lounge. Replace with HDFC T&C PDF on next sweep."
 
 benefits:
   - effective_from: 2024-04-01
@@ -129,7 +177,7 @@ eligibility:
     self_employed: null
   credit_score_min: 800
   residency: resident-indian
-  notes: "Invite-only. Typically extended to HDFC Preferred/Imperia/Private Banking customers or high-net-worth profiles."
+  notes: "Invite-only. Typically extended to HDFC Preferred/Imperia/Private Banking customers or high-net-worth profiles. Retention (announced 26-Feb-2026): ₹18L retail card spend between Apr-2026 and Mar-2027 OR ₹50L bank relationship value, else downgrade/removal in 2027."
 
 application:
   apply_url: null
@@ -137,5 +185,5 @@ application:
   replaces_card: null
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [metal, travel, forex-friendly, invite-only, points]
+  last_verified_on: 2026-06-12
+  tags: [metal, travel, low-forex, invite-only, points]

@@ -6,7 +6,7 @@ network_tier: platinum
 tier: mid
 card_type: credit
 co_brand: null
-status: active
+status: on-hold  # not in SIB's current lineup (only One Card / SIB-SBI co-brands listed); old product URL dead — med confidence, re-verify
 launched_on: 2020-01-01
 discontinued_on: null
 
@@ -82,8 +82,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.southindianbank.com/content/credit-cards/platinum
+  apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [mid, points, lounge]

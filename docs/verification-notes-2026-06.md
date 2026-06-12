@@ -185,3 +185,51 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   ₹0.40 cashback / ₹1 voucher (high; YAML 0.5); welcome ₹12k Lohono or ₹10k
   EMT + extras (med); milestones up to ₹70k/yr tiered (med); OPEN
   application via timesblack.com (med — YAML invite-only).
+
+## Kotak/AU batch (agent sweep 2026-06-12) — encoding in progress
+
+- **kotak/myntra-kaching**: DISCONTINUED 2025-07-10, holders migrated to
+  Kotak League Platinum; 7.5% Myntra discount withdrawn. cardinsider +
+  business-standard. high
+- **kotak/pvr-gold**: discontinued (Kotak lists "(Discontinued)"; date
+  unknown); replacement product is PVR INOX Kotak (₹499, 2023) — new card
+  file needed; 1 free ticket ≤₹300 per ₹10k monthly spend + 5% tickets /
+  20% F&B; milestone exclusions eff 2025-06-01. high
+- **kotak/white-reserve**: fees ₹12,500 (YAML ₹3,000), waiver ₹10L; NO
+  per-transaction earn — milestone-only White Pass (₹5k @₹3L scaling to
+  ₹2.5L value @₹1Cr); lounge unlimited dom+intl; welcome Club Marriott
+  (med); fuel waiver ₹400–7,500 cap ₹4,500/yr (med). high
+- **kotak/solitaire**: launched 2024 (YAML 2021); forex 0% (YAML 2%);
+  rewards are Air Miles 3/₹100 base + 10/₹100 travel via Kotak Unbox (YAML
+  Whites-Pass cashback 4/₹150); fee ₹0 in programme / ₹25,000 if
+  downgraded; lounge guests 2+2/yr (med). high
+- **kotak/indianoil-kotak**: fee ₹449 waiver ₹50k (YAML ₹500/₹75k); base
+  3 RP/₹150 (YAML 1); fuel cap 1,200 pts/mo (YAML 300); grocery/dining
+  12 RP/₹150 (med); fsw ₹100–5,000 cap ₹100/cycle; welcome 1,000 RP (med). high
+- **kotak/indigo**: milestones are 2,500 BluChips @₹1.25L/₹2.5L/₹6L max
+  7,500/yr (YAML wrongly had XL's 4×4,000); first-year-free LTO (med). high
+- **kotak/indigo-xl**: welcome 4,000 BluChips + 6E Eats voucher (YAML
+  2,500); rest verified OK. high
+- **kotak/811-dreamdifferent**: base 1 RP/₹100 offline (YAML 2); online 4
+  OK; uv ₹0.20 (med); milestone ₹1,000 Amazon @₹72k/yr (med). high
+- **au/altura**: base 1% cap ₹50/mo (YAML 1.5% unlimited); accel 2%
+  grocery/dept/utility cap ₹50/mo; NO airport lounge — 2 railway/quarter;
+  edu/govt/BBPS earn nothing eff 2024-04-01; milestone ₹50 @₹10k/cycle
+  (med). high
+- **au/altura-plus**: currency is Reward Points ₹0.25 (YAML cashback);
+  1/₹100 offline, 2/₹100 online uncapped; milestone 500 RP @₹20k/mo; NO
+  airport lounge — 2 railway/quarter; waiver ₹80k (med). high
+- **au/ixigo**: lifetime-free (YAML ₹999) (med); forex 0% but intl earns
+  nothing; eff 2026-04-13 flat 5 RP/₹200 all spends + 5,000 RP @₹75k/qtr
+  milestone (med) + lounge 2/qtr gated ₹50k prior-quarter (was ₹20k from
+  2025-04-01; train accel removed 2025-04-01; edu/govt/rent/BBPS excluded
+  2024-12-22). high
+- **au/vetta**: waiver ₹1.5L (YAML ₹3L); forex 2.99 (med); earn 4/₹100
+  grocery/dept, 2/₹100 retail, 1/₹100 utility/telecom, no intl accel
+  (med); lounge 1 dom + 1 intl per quarter, dom gated ₹50k/qtr eff
+  2026-04-10; milestones 500 RP @₹50k/qtr +1,000 @₹1L/qtr +1,000 birthday
+  (med). high
+- **au/zenith-plus**: fee ₹4,999 waiver ₹8L (YAML ₹7,999/₹18L); earn
+  1 RP/₹100 base, 2/₹100 travel-dining-intl, 1 RP ≈ ₹1 (YAML 10/20 @
+  ₹0.25); lounge 16+16/yr (YAML unlimited); welcome ₹5,000 (YAML ₹20k);
+  golf 2/quarter; milestones 1,000 RP @₹75k/mo + Taj Epicure @₹12L (med). high

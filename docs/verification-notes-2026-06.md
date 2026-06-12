@@ -143,3 +143,45 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
 - **irctc-premier**: lounge is 8 RAILWAY station visits/yr (2/quarter), no
   airport lounge; welcome 1,500 RP on first annual fee; milestone up to
   5,000 RP (med). paisabazaar. high
+
+## ICICI batch (agent sweep 2026-06-12) — encoding in progress
+
+- **BANK-WIDE**: domestic-lounge spend gate ₹35k → ₹75k/quarter (~Jul-2025,
+  high); currency_name "PAYBACK Points" → "ICICI Bank Reward Points" (high);
+  Jan/Feb-2026 devaluation eff **2026-01-15**: base 6 RP/₹200 on Coral/
+  Rubyx/Sapphiro, transport-MCC reward caps (₹10k spends/mo Coral, ₹20k
+  Rubyx/Sapphiro), government-services/tax exclusions (med-high across 4
+  sources); BOGO movies gated on ₹25k prior-quarter spend eff **2026-04-01**
+  (high). cardinsider/cardmaven/technofino/paisabazaar.
+- **coral**: base was 2/₹100 → 6/₹200 (Jan-2026); milestones 2,000 RP @₹2L
+  + 1,000/addl ₹1L max 10,000/yr (med). high/med
+- **rubyx**: base 4/₹100 → 6/₹200; welcome = travel/shopping vouchers
+  ₹5,000 (med); golf is spend-linked (1 per ₹50k prior-month, max 2/mo,
+  high); milestones 3,000 RP @₹3L + 1,500/addl ₹1L (med).
+- **sapphiro**: base 4/₹100 wrong (2/₹100 pre-2026, 6/₹200 after); intl
+  accel 4/₹100 not 6 (med); lounge 4/quarter @₹75k gate; intl 2/yr + PP for
+  post-15-Nov-2024 applicants (med); welcome ~₹13k (med); milestones 4,000
+  RP @₹4L + 2,000/addl ₹1L cap 20k/yr (med).
+- **emeralde**: movies gate 2026-04-01; govt/tax exclusions; still OPEN for
+  applications (med). Otherwise OK.
+- **emeralde-private-metal**: milestones add EaseMyTrip ₹3,000 @₹4L and
+  @₹8L (high); Q4-2025 retention restructure to ₹23k iShop credit (low —
+  NOT encoded). Otherwise verified OK.
+- **hpcl-super-saver**: fuel is 4% capped ₹200/mo (+1% surcharge waiver);
+  grocery/utility 5% as RP capped 400 RP/mo, dining NOT included; PAYBACK
+  rename; ₹75k lounge gate. all high.
+- **mmt-signature**: product restructured ~Oct-2024 (old Signature closed):
+  fees ₹999/₹999 waiver ₹3L; dual-network MC+RuPay; 6% myCash MMT hotels /
+  3% MMT flights-holidays-cabs-bus / 1% other; lounge 8 dom/yr (2/qtr) + 1
+  intl/yr, exempt from spend gates (med); welcome MMTBLACK Gold. high.
+- **manchester-united-signature**: still OPEN (discontinuation not
+  corroborated, med); fees ₹2,499/₹2,499 waiver ₹2.5L (med); welcome is MU
+  holdall + football (med); ₹75k lounge gate; PAYBACK rename.
+- **adani-one-signature**: fees ₹5,000/₹5,000 waiver ₹6L (high — YAML had
+  ₹999/₹3L); welcome ~₹9,000 vouchers (med); base 1.5% dom / 2% intl (med);
+  lounge 4 dom + 2 intl + Adani perks (med).
+- **times-black**: earn 2% dom / 2.5% intl Times Points (utilities/
+  insurance/education/govt EARN — YAML wrongly excludes, med); realized
+  ₹0.40 cashback / ₹1 voucher (high; YAML 0.5); welcome ₹12k Lohono or ₹10k
+  EMT + extras (med); milestones up to ₹70k/yr tiered (med); OPEN
+  application via timesblack.com (med — YAML invite-only).

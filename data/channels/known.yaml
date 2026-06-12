@@ -13,6 +13,7 @@ issuer-portal:
   - ishop               # ICICI iShop
   - sbi-rewardz         # SBI Card Rewardz portal
   - amex-travel         # Amex India travel portal
+  - kotak-unbox        # Kotak Unbox travel portal
 
 cobrand-merchant:
   - indigo-app

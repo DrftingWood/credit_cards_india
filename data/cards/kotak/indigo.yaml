@@ -97,22 +97,18 @@ benefits:
         value_inr: 2500
         window_days: 90
     milestones:
-      - spend_inr: 150000
+      - spend_inr: 125000
         cycle: annual
-        benefit: "4,000 IndiGo BluChips bonus voucher"
-        value_inr: 4000
-      - spend_inr: 400000
+        benefit: "2,500 IndiGo BluChips bonus voucher"
+        value_inr: 1250
+      - spend_inr: 250000
         cycle: annual
-        benefit: "Additional 4,000 IndiGo BluChips bonus voucher"
-        value_inr: 4000
-      - spend_inr: 750000
+        benefit: "Additional 2,500 IndiGo BluChips bonus voucher"
+        value_inr: 1250
+      - spend_inr: 600000
         cycle: annual
-        benefit: "Additional 4,000 IndiGo BluChips bonus voucher"
-        value_inr: 4000
-      - spend_inr: 1200000
-        cycle: annual
-        benefit: "Additional 4,000 IndiGo BluChips bonus voucher"
-        value_inr: 4000
+        benefit: "Additional 2,500 IndiGo BluChips bonus voucher (max 7,500 BluChips/year)"
+        value_inr: 1250
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -143,5 +139,5 @@ application:
   apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indigo-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-22
+  last_verified_on: 2026-06-12
   tags: [co-branded, airline, indigo, mid, miles, bluchip]

@@ -9,7 +9,7 @@ co_brand:
   partner: PVR INOX
   category: lifestyle
   partner_website: https://www.pvrinox.com
-status: active
+status: on-hold  # Kotak lists this card as "(Discontinued)"; discontinuation date unpublished, so on-hold rather than discontinued. Successor: PVR INOX Kotak (₹499, 2023) — separate card file pending.
 launched_on: 2019-01-01
 discontinued_on: null
 
@@ -96,8 +96,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+  apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, movies, pvr, entry]

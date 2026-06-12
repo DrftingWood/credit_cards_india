@@ -95,8 +95,8 @@ benefits:
         notes: "2 complimentary domestic lounge visits per quarter (8 per year) via Dreamfolks."
     welcome:
       - condition: "Joining fee paid"
-        benefit: "2,500 IndiGo BluChips welcome voucher — renews annually on fee payment"
-        value_inr: 2500
+        benefit: "4,000 IndiGo BluChips welcome voucher + 6E Eats voucher — renews annually on fee payment"
+        value_inr: 2000
         window_days: 90
     milestones:
       - spend_inr: 150000
@@ -146,5 +146,5 @@ application:
   apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indigo-credit-card-xl.html
 
 metadata:
-  last_verified_on: 2026-04-22
+  last_verified_on: 2026-06-12
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex]

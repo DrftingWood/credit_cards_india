@@ -16,24 +16,23 @@ discontinued_on: null
 fees:
   - effective_from: 2024-01-01
     effective_until: null
-    joining_fee_inr: 999
-    annual_fee_inr: 999
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-    forex_markup_pct: 3.5
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 0.0
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.bankbazaar.com/credit-card/ixigo-au-credit-card.html
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: lifetime-free (₹999 fee was wrong, med confidence); forex 0% — but international spends earn no reward points."
 
 rewards:
   - effective_from: 2024-01-01
-    effective_until: null
+    effective_until: 2026-04-12
     currency: points
     currency_name: ixigo Reward Points
     base:
@@ -63,10 +62,37 @@ rewards:
     source:
       url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record. Intermediate changes not separately modelled: edu/govt/rent/BBPS excluded 22-Dec-2024; train-booking acceleration removed 1-Apr-2025; lounge gate ₹20k from Apr-2025."
+
+  - effective_from: 2026-04-13
+    effective_until: null
+    currency: points
+    currency_name: ixigo Reward Points
+    base:
+      rate: 5
+      per_inr: 200
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.4
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    capping_rules:
+      - "International spends earn no reward points."
+    redemption:
+      - type: voucher
+        program: ixigo Money
+        rate_inr_per_unit: 0.5
+        constraints: "Redeemable as ixigo Money on the app."
+    source:
+      url: https://cardinsider.com/blog/ixigo-au-credit-card-devaluation-2025/
+      retrieved_on: 2026-06-12
+      notes: "13-Apr-2026 devaluation: flat 5 RP/₹200 on all spends (~1.25%), ixigo acceleration gone."
 
 benefits:
   - effective_from: 2024-01-01
-    effective_until: null
+    effective_until: 2026-04-12
     lounge_access:
       domestic:
         visits_per_cycle: 2
@@ -88,6 +114,34 @@ benefits:
     source:
       url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; lounge gate was ₹20k/quarter from Apr-2025 (intermediate step not separately modelled)."
+
+  - effective_from: 2026-04-13
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [rupay]
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "ixigo voucher worth ₹1,000"
+        value_inr: 1000
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://cardinsider.com/blog/ixigo-au-credit-card-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "13-Apr-2026: lounge gated on ₹50k prior-quarter spend; 5,000 RP @₹75k/quarter milestone introduced (med — not modelled)."
 
 eligibility:
   min_age: 21
@@ -102,5 +156,5 @@ application:
   apply_url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, travel, ixigo, rupay, entry]

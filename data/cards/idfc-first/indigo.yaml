@@ -86,28 +86,17 @@ rewards:
 benefits:
   - effective_from: 2025-08-18
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-        notes: "Complimentary domestic lounge visits via Dreamfolks (exact cap pending IDFC FIRST T&C verification)."
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [loungekey]
+    lounge_access: null
     welcome:
       - condition: "Joining fee paid"
         benefit: "5,000 IndiGo BluChips welcome voucher + 6E Eats voucher — renews on fee payment"
         value_inr: 5000
         window_days: 90
     milestones:
-      - spend_inr: 100000
-        cycle: quarterly
-        benefit: "3,000 IndiGo BluChips activation bonus (first 90 days only)"
-        value_inr: 3000
+      - spend_inr: 200000
+        cycle: annual
+        benefit: "5,000 BluChips voucher (repeats at ₹5L / ₹8L / ₹10L / ₹12L annual spend)"
+        value_inr: 2500
     insurance:
       - type: other
         sum_insured_inr: 25000
@@ -125,8 +114,9 @@ benefits:
         description: Complimentary 6E Eats voucher redeemable on IndiGo in-flight meals as part of the welcome and renewal benefit.
     concierge: false
     source:
-      url: https://www.paisabazaar.com/idfc-first-bank/indigo-idfc-first-dual-credit-card/
-      retrieved_on: 2026-04-22
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-privileges-document.pdf
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: this card has NO lounge access (the 4/quarter + 4/yr entry was wrong); 5,000-BluChips milestone ladder at 2L/5L/8L/10L/12L per issuer PDF; fuel/rent/insurance earn 0.5 BluChips/₹100, not zero (med — exclusions left pending re-model)."
 
 eligibility:
   min_age: 21
@@ -142,5 +132,5 @@ application:
   apply_url: https://www.idfcfirstbank.com/credit-card/indigo-credit-card
 
 metadata:
-  last_verified_on: 2026-04-22
+  last_verified_on: 2026-06-12
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex, dual-network]

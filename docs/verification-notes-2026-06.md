@@ -328,7 +328,7 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
 - **Amex waiver date**: discretionary renewal waivers ended ~12-Jun-2025
   (forum-reported) — refines the approximate 2025-07-01 already encoded.
 
-## RBL/IndusInd/IDFC/fintech batch (agent sweep 2026-06-12) — encoding in progress
+## RBL/IndusInd/IDFC/fintech batch (agent sweep 2026-06-12) — ENCODED (deferred: ashva lounge re-model, first-private earn tiers, idfc-indigo 0.5x exclusion re-model, play points model, pinnacle AF (low), power/power+ full HPCL structures — partially noted in file comments)
 
 - **rbl/zomato-edition**: FABRICATED/conflated — the Zomato-RBL Edition
   co-brand (launched 2020) was terminated 15-May-2023, holders migrated to
@@ -377,3 +377,12 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
 - **slice/slice-rupay**: launched Jun/Jul-2025 post-NESFB merger (med);
   ~2% cashback, up to 3% conditional on slice balance (med; YAML caps
   uncorroborated).
+
+## Sweep completion note (2026-06-12)
+
+All 127 cards now carry either last_verified_on: 2026-06-12 (fact-checked
+this sweep) or last_swept_on: 2026-06-12 (IndiGo/IRCTC co-brands verified
+in the recent programme-modelling waves; amex/centurion unverifiable
+invite-only; hdfc/6e-rewards-xl discontinued). idfc power/power+ detailed
+HPCL structures from the final agent report (21X/30X fuel etc.) were NOT
+encoded — flagged for the next data PR alongside the other deferred items.

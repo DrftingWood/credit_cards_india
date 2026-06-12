@@ -40,8 +40,8 @@ rewards:
     base:
       rate: 1
       per_inr: 50
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.4
+      unit_value_inr: 0.1
+      unit_value_inr_realized: 0.1
     accelerated:
       - category: top-2-categories-monthly
         effective_rate: 5
@@ -70,15 +70,7 @@ rewards:
 benefits:
   - effective_from: 2020-07-01
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-        spend_threshold_inr: 50000
-        spend_threshold_cycle: quarterly
-        notes: "Lounge access unlocked on ₹50k quarterly spend."
+    lounge_access: null
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -92,8 +84,9 @@ benefits:
       - name: Metal body
         description: Premium metal card body on all active OneCards.
     source:
-      url: https://www.getonecard.app/card
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/fintech-cards/onecard-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: 1 RP = ₹0.10 (was wrongly ₹1); no complimentary lounge access (the 4/quarter entry was wrong)."
 
 eligibility:
   min_age: 18
@@ -109,5 +102,5 @@ application:
   apply_url: https://www.getonecard.app/card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [lifetime-free, metal, fintech, low-forex, points]

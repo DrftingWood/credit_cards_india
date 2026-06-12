@@ -7,7 +7,7 @@ tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-04-01
+launched_on: 2025-06-01  # slice UPI credit card launched Jun/Jul-2025 post NESFB merger (med)
 discontinued_on: null
 
 # NOTE: Pre-2024 "slice super card" was a PPI-linked BNPL product. Post the
@@ -53,6 +53,8 @@ rewards:
       - wallet-loads
       - rent
       - emi
+    capping_rules:
+      - "~2% cashback on spends, up to 3% conditional on slice bank balance criteria (med confidence; earlier per-category caps uncorroborated)."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -93,5 +95,5 @@ application:
   apply_url: https://www.sliceit.com
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [lifetime-free, fintech, rupay, upi-linkable, entry, cashback]

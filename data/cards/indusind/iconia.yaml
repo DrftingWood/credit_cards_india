@@ -6,7 +6,7 @@ network_tier: gold
 tier: premium
 card_type: credit
 co_brand: null
-status: active
+status: on-hold  # discontinued for new sourcing (issuer page retained for existing holders)
 launched_on: 2017-01-01
 discontinued_on: null
 
@@ -107,8 +107,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.indusind.com/in/en/personal/cards/credit-card/iconia-amex-credit-card.html
+  apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, amex, golf, lounge, points]

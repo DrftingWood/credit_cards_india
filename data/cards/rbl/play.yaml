@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
-      spend_inr: 100000
+      spend_inr: 150000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
@@ -53,6 +53,8 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    capping_rules:
+      - "Card is BookMyShow-centric: 2 free BMS tickets per ₹5,000 monthly spend + ₹100/month F&B; the BMS Super Star benefit was devalued in Dec-2024 (med confidence — points model pending re-verification)."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.4
@@ -75,6 +77,11 @@ benefits:
       max_per_cycle: 2
       cycle: monthly
       cap_inr: 150
+    welcome:
+      - condition: "Purchase within 30 days"
+        benefit: "₹500 BookMyShow discount"
+        value_inr: 500
+        window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -99,5 +106,5 @@ application:
   apply_url: https://www.rblbank.com/category/credit-cards/play-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entry, entertainment, ott, gaming, points]

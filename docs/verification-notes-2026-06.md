@@ -66,3 +66,43 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
 - **idfc-first mayura/ashva** — Jan-2026 intl cut left unencoded: agent
   phrasing ("10X→5X") doesn't reconcile with Ashva's 9/₹100 accelerator;
   needs the issuer T&C before encoding.
+
+## Axis batch (agent sweep 2026-06-12) — encoding in progress
+
+- **ace**: finance charge 3.75 (Dec-2024); lounge 4/yr gated ₹50k/3mo
+  (1-May-2024); 5%+4% share a ₹500/mo combined hard cap (per-category
+  "unlimited" was wrong); category-based (not MCC) cashback eligibility +
+  jewellery/education/government exclusions from 20-Jun-2025. cardinsight.in,
+  technofino. high
+- **flipkart**: Myntra is 7.5% (own bucket), Flipkart 5%, Cleartrip 5%,
+  each capped ₹4,000/quarter; welcome ₹250 Flipkart (+₹100 Swiggy) not
+  ₹500; lounge REMOVED Jun-2025; exclusions += utilities/telecom/jewellery/
+  education/government (med). 1finance.co.in. high
+- **select**: waiver ₹8L not ₹6L; forex 3.5 not 1.5; earn = 20/₹200 on
+  first ₹20k/mo then 10/₹200 (since 20-Apr-2024), no dining-intl accel;
+  lounge 2/quarter gated ₹50k/3mo; welcome 10,000 EDGE pts; District BOGO
+  ₹250 ×2/mo replaced BMS (20-Jun-2025). cardinsider. high
+- **privilege**: waiver ₹5L (med); welcome 12,500 EDGE pts; milestone
+  10,000 pts @ ₹2.5L/yr (missing); lounge 2/quarter gated ₹50k, NO intl/PP;
+  District BOGO ₹250 ×1/mo (20-Jun-2025); still open for applications.
+  cardinsider. high
+- **my-zone**: NO spend-based waiver (med); lounge 1/quarter gated ₹50k/3mo
+  (1-May-2024); District BOGO cap ₹200/mo; SonyLIV ₹1,499 value, renewal
+  benefit replaced by 1,000 EDGE pts on ₹1.5L (Apr-2025 vs Apr-2026
+  conflicting — med). cardinsider. high/med
+- **neo**: now lifetime-free (limited-period, current); NO 2% bill-payments
+  accelerator — discount-based benefits instead (Zomato 40% ×2/mo, Blinkit
+  10%, Myntra ₹150, BMS 10%); welcome = 100% cashback up to ₹300 on first
+  utility bill in 30 days. cardinsider. high
+- **aura**: discontinued for new applications (date unconfirmed) — on-hold.
+  paisabazaar. med
+- **horizon**: NO fee waiver; forex 3.5 (med); welcome 5,000 miles on
+  ₹1,000/30d + 1,500 renewal; lounge 32 dom/yr (Visa; 8/quarter) + 8
+  intl/yr, no spend criterion; transfers 1:1 standard / 2:1 premium (BA,
+  Finnair, Lotusmiles), 5L miles/yr cap; launched mid-2025 (Citi
+  PremierMiles successor, med). cardinsider. high
+- **olympus**: invite-only (Citi Prestige migrants); NO fee waiver; forex
+  1.8 not 0.99; base 1 mile/₹100 dom + 2/₹100 intl (NOT 10/₹100), 7.5L
+  miles/yr cap; 30/₹100 portal rate unverified-likely-wrong; welcome 2,500
+  miles + ₹10,000 Taj/ITC vouchers (also renewal); transfers 1 mile = 4
+  partner points; 10 guest visits/yr; golf 8 + 1 per ₹50k. cardinsider. high

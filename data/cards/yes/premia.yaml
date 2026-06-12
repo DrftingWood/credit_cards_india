@@ -1,5 +1,6 @@
 id: yes-premia
-name: YES Bank Premia Credit Card
+name: YES Bank ELITE+ Credit Card
+# Renamed from "YES Premia" (~2023-24); id kept for stability.
 issuer: "yes"
 network: mastercard
 network_tier: world
@@ -13,8 +14,8 @@ discontinued_on: null
 fees:
   - effective_from: 2017-01-01
     effective_until: null
-    joining_fee_inr: 2499
-    annual_fee_inr: 2499
+    joining_fee_inr: 999
+    annual_fee_inr: 999
     fee_waiver:
       spend_inr: 500000
       cycle: annual
@@ -34,17 +35,18 @@ rewards:
     currency: points
     currency_name: YES Reward Points
     base:
-      rate: 4
+      rate: 6
       per_inr: 200
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
     accelerated:
-      - category: travel-dining
-        canonical_categories: [dining, travel]
+      - category: online-spend
+        canonical_categories: [online]
         effective_rate: 12
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 12000
         cap_unit: points
         cycle: monthly
+        notes: "12 RP/₹200 online, 6/₹200 offline, 4/₹200 utilities/government/education/insurance; combined cap 12,000 points/cycle (med confidence)."
     exclusions:
       - fuel
       - wallet-loads
@@ -61,7 +63,7 @@ rewards:
 
 benefits:
   - effective_from: 2017-01-01
-    effective_until: null
+    effective_until: 2025-03-31
     lounge_access:
       domestic:
         visits_per_cycle: 12
@@ -92,6 +94,43 @@ benefits:
     source:
       url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; unconditional lounge era."
+
+  - effective_from: 2025-04-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 12
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        cycle: annual
+        guests_per_visit: 0
+        via: [mastercard, dreamfolks]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 0
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Amazon / Flipkart voucher worth ₹2,500"
+        value_inr: 2500
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://cardinsider.com/blog/yes-bank-credit-cards-face-another-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "1-Apr-2025: domestic lounge conditional on ₹50k previous-quarter spend. Rent 1% (min ₹199) and utility>₹15k/mo 1% fees apply (2024, not modelled as fields)."
 
 eligibility:
   min_age: 21
@@ -106,5 +145,5 @@ application:
   apply_url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, travel, dining, points]

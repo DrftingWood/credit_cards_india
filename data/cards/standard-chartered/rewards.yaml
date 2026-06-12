@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 1000
     annual_fee_inr: 1000
     fee_waiver:
-      spend_inr: 120000
+      spend_inr: 300000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
@@ -34,15 +34,15 @@ rewards:
     currency: points
     currency_name: 360 Reward Points
     base:
-      rate: 1
+      rate: 4
       per_inr: 150
       unit_value_inr: 1.0
       unit_value_inr_realized: 0.4
     accelerated:
       - category: online-retail-department
         canonical_categories: [online]
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
+        effective_rate: 8
+        cap_per_cycle: 2000
         cap_unit: cashback-inr
         cycle: monthly
         notes: "4x points on retail / departmental / online spends."
@@ -52,13 +52,16 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    capping_rules:
+      - "4x bonus applies to retail spends only after ₹20,000 total monthly spend, capped at 2,000 bonus RP/month; government and insurance spends earn 1 RP/₹150."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
         min_units: 2000
     source:
-      url: https://www.sc.com/in/credit-cards/rewards/
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/standard-chartered-bank/standard-chartered-rewards-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: base 4 RP/₹150 retail (was 1); bonus gated on ₹20k/mo and capped; waiver ₹3L (was ₹1.2L)."
 
 benefits:
   - effective_from: 2022-01-01
@@ -93,5 +96,5 @@ application:
   apply_url: https://www.sc.com/in/credit-cards/rewards/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entry, points, online-spend]

@@ -47,9 +47,7 @@ rewards:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
-      - utilities
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -81,6 +79,10 @@ benefits:
         sum_insured_inr: 10000000
       - type: travel-medical
         sum_insured_inr: 4500000
+    other:
+      - name: Renewal benefit
+        description: 6,000 reward points credited on paying the ₹5,000 renewal fee (med confidence).
+        value_inr: 6000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -105,5 +107,5 @@ application:
   apply_url: https://www.sc.com/in/credit-cards/ultimate/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, flat-cashback, points]

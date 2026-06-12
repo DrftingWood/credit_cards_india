@@ -17,8 +17,8 @@ discontinued_on: null
 fees:
   - effective_from: 2001-01-01
     effective_until: null
-    joining_fee_inr: 60000
-    annual_fee_inr: 60000
+    joining_fee_inr: 66000
+    annual_fee_inr: 66000
     fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 0
@@ -31,8 +31,9 @@ fees:
     gst_applicable: true
     notes: "Charge card — no revolving credit. Full statement balance due each cycle; late/non-payment attracts flat delinquency fees."
     source:
-      url: https://www.americanexpress.com/in/credit-cards/platinum-card/
-      retrieved_on: 2026-04-15
+      url: https://livefromalounge.com/american-express-platinum-card-refresh/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: fee ₹66,000 + GST (~2023 refresh; was ₹60,000)."
 
 rewards:
   - effective_from: 2001-01-01
@@ -91,18 +92,14 @@ benefits:
       cycle: monthly
       lessons_per_cycle: unlimited
     milestones:
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "Marriott / Taj stay vouchers worth ₹40,000 (choice)"
-        value_inr: 40000
       - spend_inr: 2000000
         cycle: annual
-        benefit: "₹1,00,000 hotel/airline voucher"
-        value_inr: 100000
+        benefit: "Renewal benefit: vouchers worth ₹35,000"
+        value_inr: 35000
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Hotel stay voucher worth ₹45,000 (Taj / Marriott choice) + 50,000 MR bonus points"
-        value_inr: 57500
+        benefit: "Vouchers worth ₹45,000 on ₹50,000 spend within first 2 months (no MR point bonus)"
+        value_inr: 45000
         window_days: 90
     insurance:
       - type: air-accident
@@ -144,5 +141,5 @@ application:
   apply_url: https://www.americanexpress.com/in/credit-cards/platinum-card/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, charge-card, amex, travel, invite-like]

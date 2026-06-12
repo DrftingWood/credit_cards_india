@@ -24,6 +24,7 @@ fees:
       pct: 2.5
       min_inr: 300
     gst_applicable: true
+    notes: "Currently issued with zero joining/annual fee (limited-period, med confidence); fees shown apply outside the offer."
     source:
       url: https://www.federalbank.co.in/signet
       retrieved_on: 2026-04-15
@@ -39,8 +40,15 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
     accelerated:
-      - category: international-spend
-        canonical_categories: [international]
+      - category: electronics-apparel
+        canonical_categories: [online]
+        effective_rate: 9
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "3x (9/₹150) on electronics & apparel; 2x (6/₹150) entertainment; 1x others. The earlier international accelerator was wrong (med confidence)."
+      - category: entertainment
+        canonical_categories: [entertainment]
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -61,7 +69,7 @@ rewards:
 
 benefits:
   - effective_from: 2022-03-01
-    effective_until: null
+    effective_until: 2024-12-31
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -78,6 +86,29 @@ benefits:
     source:
       url: https://www.federalbank.co.in/signet
       retrieved_on: 2026-04-15
+      notes: "Historical record; 4 unconditional visits/yr era."
+
+  - effective_from: 2025-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        spend_threshold_inr: 20000
+        spend_threshold_cycle: quarterly
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/federal-bank/federal-bank-visa-signet-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2025 revision: 1 domestic visit/quarter gated on ₹20k prior-quarter spend (exact date unpinned; 1-Jan-2025 boundary approximate). Welcome ₹200 voucher on ₹3k/30d (med, not modelled)."
 
 eligibility:
   min_age: 21
@@ -92,5 +123,5 @@ application:
   apply_url: https://www.federalbank.co.in/signet
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [mid, low-forex, points]

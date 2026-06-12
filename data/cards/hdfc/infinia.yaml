@@ -177,7 +177,7 @@ eligibility:
     self_employed: null
   credit_score_min: 800
   residency: resident-indian
-  notes: "Invite-only. Typically extended to HDFC Preferred/Imperia/Private Banking customers or high-net-worth profiles."
+  notes: "Invite-only. Typically extended to HDFC Preferred/Imperia/Private Banking customers or high-net-worth profiles. Retention (announced 26-Feb-2026): ₹18L retail card spend between Apr-2026 and Mar-2027 OR ₹50L bank relationship value, else downgrade/removal in 2027."
 
 application:
   apply_url: null

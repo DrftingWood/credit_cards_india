@@ -12,7 +12,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2019-04-01
-    effective_until: null
+    effective_until: 2026-05-14
     joining_fee_inr: 2500
     annual_fee_inr: 2500
     fee_waiver:
@@ -28,9 +28,27 @@ fees:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-privilege
       retrieved_on: 2026-04-15
 
+  - effective_from: 2026-05-15
+    effective_until: null
+    joining_fee_inr: 2500
+    annual_fee_inr: 2500
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "From 15-May-2026: card reissuance fee ₹199 + GST; dynamic currency conversion (DCC) markup 1.75% added."
+    source:
+      url: https://cardinsider.com/blog/hdfc-diners-club-privilege-update/
+      retrieved_on: 2026-06-12
+
 rewards:
   - effective_from: 2019-04-01
-    effective_until: null
+    effective_until: 2025-07-31
     currency: points
     currency_name: Reward Points
     base:
@@ -66,10 +84,100 @@ rewards:
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-privilege
       retrieved_on: 2026-04-15
+      notes: "Historical record; SmartBuy 10X era. The 7,500/mo cap shown here may have been DCB's (DCP community reports say 2,500) — unresolved."
+
+  - effective_from: 2025-08-01
+    effective_until: 2026-05-14
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 4
+      per_inr: 150
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.4
+    accelerated:
+      - category: smartbuy-flights-hotels
+        canonical_categories: [travel]
+        effective_rate: 20
+        cap_per_cycle: 2500
+        cap_unit: points
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [smartbuy]
+        notes: "SmartBuy cut to 5X (20 points per ₹150) in the Aug-2025 programme-wide revision; cap 2,500 points/month."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: SmartBuy
+        rate_inr_per_unit: 0.5
+      - type: airmiles
+        program: Multiple (Airmiles hub)
+        ratio: "1:0.5"
+    source:
+      url: https://cardinsider.com/blog/hdfc-diners-club-privilege-update/
+      retrieved_on: 2026-06-12
+      notes: "SmartBuy 5X per the Aug-2025 HDFC revision (same wave as Infinia/DCB)."
+
+  - effective_from: 2026-05-15
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 4
+      per_inr: 200
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.4
+    accelerated:
+      - category: smartbuy-flights-hotels
+        canonical_categories: [travel]
+        effective_rate: 20
+        cap_per_cycle: 2500
+        cap_unit: points
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [smartbuy]
+      - category: swiggy-zomato
+        canonical_categories: [dining]
+        effective_rate: 20
+        cap_per_cycle: 2500
+        cap_unit: points
+        cycle: monthly
+        merchants: [swiggy, zomato]
+        notes: "5X on Swiggy/Zomato (20 points per ₹200 post-basis-change)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - emi
+    capping_rules:
+      - "15-May-2026 devaluation: base earn basis moved from ₹150 to ₹200 per 4 points (~25% cut)."
+    redemption:
+      - type: catalog
+        program: SmartBuy
+        rate_inr_per_unit: 0.5
+      - type: airmiles
+        program: Multiple (Airmiles hub)
+        ratio: "1:0.5"
+    source:
+      url: https://cardinsider.com/blog/hdfc-diners-club-privilege-update/
+      retrieved_on: 2026-06-12
+      notes: "15-May-2026 devaluation per CardInsider; replace with HDFC T&C PDF on next sweep."
 
 benefits:
   - effective_from: 2024-10-01
-    effective_until: null
+    effective_until: 2026-06-30
     lounge_access:
       domestic:
         visits_per_cycle: 8
@@ -85,10 +193,14 @@ benefits:
       rounds_per_cycle: 4
       cycle: quarterly
       lessons_per_cycle: 0
+    milestones:
+      - spend_inr: 150000
+        cycle: quarterly
+        benefit: "Quarterly vouchers worth ₹1,500 (Swiggy/BookMyShow etc.)"
+        value_inr: 1500
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "2,500 bonus Reward Points"
-        value_inr: 1250
+      - condition: "Spend ₹1.5L within 90 days"
+        benefit: "Complimentary Swiggy One and Times Prime memberships"
         window_days: 90
     insurance:
       - type: air-accident
@@ -101,8 +213,56 @@ benefits:
       cycle: statement
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-privilege
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/hdfc-bank/diners-club-privilege-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "Milestone/welcome corrected 2026-06 (quarterly ₹1,500 vouchers on ₹1.5L; membership welcome). Record closes ahead of the announced 1-Jul-2026 lounge revision."
+
+  - effective_from: 2026-07-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [issuer-direct]
+        spend_threshold_inr: 60000
+        spend_threshold_cycle: quarterly
+        notes: "2 domestic vouchers/quarter on ₹60k prior-quarter spend (part of 3 total vouchers/quarter from 1-Jul-2026)."
+      international:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [issuer-direct]
+        spend_threshold_inr: 60000
+        spend_threshold_cycle: quarterly
+        notes: "1 international voucher/quarter on ₹60k prior-quarter spend."
+    golf:
+      rounds_per_cycle: 4
+      cycle: quarterly
+      lessons_per_cycle: 0
+    milestones:
+      - spend_inr: 150000
+        cycle: quarterly
+        benefit: "Quarterly vouchers worth ₹1,500 (Swiggy/BookMyShow etc.)"
+        value_inr: 1500
+    welcome:
+      - condition: "Spend ₹1.5L within 90 days"
+        benefit: "Complimentary Swiggy One and Times Prime memberships"
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 20000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 500
+      cycle: statement
+    concierge: false
+    source:
+      url: https://cardinsider.com/blog/hdfc-diners-club-privilege-update/
+      retrieved_on: 2026-06-12
+      notes: "1-Jul-2026 revision: 3 spend-gated lounge vouchers/quarter (2 domestic + 1 international) on ₹60k prior-quarter spend. Future-dated record entered 2026-06-12."
 
 eligibility:
   min_age: 21
@@ -117,5 +277,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-privilege
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, diners, travel, points]

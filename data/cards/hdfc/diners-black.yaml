@@ -129,18 +129,15 @@ benefits:
       lessons_per_cycle: 0
       notes: "6 complimentary golf games per calendar quarter (24/year)."
     milestones:
-      - spend_inr: 80000
-        cycle: monthly
-        benefit: "Weekend dining voucher / Ola / BookMyShow / Times Prime vouchers worth ₹500"
-        value_inr: 500
-      - spend_inr: 500000
+      - spend_inr: 400000
         cycle: quarterly
-        benefit: "Travel voucher worth ₹10,000"
-        value_inr: 10000
+        benefit: "10,000 bonus Reward Points per calendar quarter"
+        value_inr: 7000
+        reward_kind: points
+        reward_units: 10000
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "10,000 bonus Reward Points"
-        value_inr: 10000
+      - condition: "Spend ₹1.5L within 90 days"
+        benefit: "Complimentary Club Marriott, Swiggy One (3 months) and Amazon Prime memberships"
         window_days: 90
     insurance:
       - type: air-accident
@@ -156,7 +153,8 @@ benefits:
     concierge: true
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-black-metal-edition
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-06-12
+      notes: "Milestone/welcome corrected 2026-06: the previous values described the old non-metal DCB. Metal edition: 10,000 pts on ₹4L/quarter (valued at realized ₹0.7/pt); memberships welcome on ₹1.5L/90d."
 
 eligibility:
   min_age: 21

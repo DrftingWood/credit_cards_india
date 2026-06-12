@@ -52,6 +52,12 @@ Confidence tags: high/med/low per the source quality.
 
 ## Verified, NOT yet encoded (next data PR)
 
+(Encoded since first commit of this file: Magnus fees + 2-Apr-2026 partner
+removal, Reserve waiver/2025 revision, IDFC 18-Jan-2026 wave (classic/
+select/wealth/millennia), DCB Metal milestones/welcome, Infinia retention
+note, Regalia on-hold + lounge, Diners Rewardz corrections, Diners
+Privilege 2025-2026 records.)
+
 - **hdfc/tata-neu-plus** — four missing dated changes (all high, hdfc.bank.in):
   UPI earn 0.25% (+0.75% with Tata Neu UPI id) cap 500 NC/mo eff 2024-08-01;
   grocery cap 1,000 NC/mo + utility cap 2,000 NC/mo eff 2024-09-01;

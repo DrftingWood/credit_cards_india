@@ -6,7 +6,7 @@ network_tier: rewardz
 tier: entry
 card_type: credit
 co_brand: null
-status: active
+status: on-hold  # discontinued for new applications (cardinsider, 2026-06)
 launched_on: 2017-01-01
 discontinued_on: null
 
@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 1000
     annual_fee_inr: 1000
     fee_waiver:
-      spend_inr: 200000
+      spend_inr: 100000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.6
@@ -34,17 +34,18 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 4
+      rate: 3
       per_inr: 150
       unit_value_inr: 0.5
       unit_value_inr_realized: 0.4
     accelerated:
-      - category: weekend-dining
-        canonical_categories: [dining]
-        effective_rate: 8
-        cap_per_cycle: "unlimited"
+      - category: partner-brands-10x
+        canonical_categories: [online]
+        effective_rate: 30
+        cap_per_cycle: 2000
         cap_unit: points
         cycle: monthly
+        notes: "10X (30 points per ₹150) on partner brands, capped 2,000 points/month. The earlier 2X weekend-dining accelerator was discontinued."
     exclusions:
       - fuel
       - wallet-loads
@@ -57,18 +58,14 @@ rewards:
         program: SmartBuy
         rate_inr_per_unit: 0.5
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-rewardz
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/hdfc-bank/hdfc-bank-diners-club-rewardz-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: base is 3 RP/₹150 (was wrongly 4), 10X partner-brand accelerator replaces the discontinued weekend-dining 2X."
 
 benefits:
   - effective_from: 2017-01-01
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [issuer-direct]
+    lounge_access: null
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -77,8 +74,9 @@ benefits:
       cycle: statement
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-rewardz
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/hdfc-bank/hdfc-bank-diners-club-rewardz-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: no lounge access on this card (earlier 4/yr was wrong)."
 
 eligibility:
   min_age: 21
@@ -93,5 +91,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-rewardz
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entry, diners, points]

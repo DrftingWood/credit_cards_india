@@ -12,7 +12,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2015-09-01
-    effective_until: null
+    effective_until: 2023-08-31
     joining_fee_inr: 50000
     annual_fee_inr: 50000
     fee_waiver:
@@ -27,10 +27,30 @@ fees:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/reserve-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; ₹25L waiver threshold before Sep-2023."
+
+  - effective_from: 2023-09-01
+    effective_until: null
+    joining_fee_inr: 50000
+    annual_fee_inr: 50000
+    fee_waiver:
+      spend_inr: 3500000
+      cycle: annual
+      conditions: "₹35L annual spend; insurance, gold, fuel, government and utility spends excluded from the waiver calculation. Community reports of a ₹25L grandfathered tier for pre-Sep-2023 customers are unconfirmed."
+    forex_markup_pct: 1.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/credit-card/axis-reserve-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "Waiver ₹35L for customers onboarded on/after 1-Sep-2023."
 
 rewards:
   - effective_from: 2015-09-01
-    effective_until: null
+    effective_until: 2025-06-19
     currency: points
     currency_name: EDGE Reward Points
     base:
@@ -61,6 +81,44 @@ rewards:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/reserve-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; 3X dining+international (45/₹200) era, ended by the 20-Jun-2025 revision."
+
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 15
+      per_inr: 200
+      unit_value_inr: 0.4
+      unit_value_inr_realized: 0.35
+    accelerated:
+      - category: international-spend
+        canonical_categories: [international]
+        effective_rate: 30
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "2X on international spends: 30 EDGE points per ₹200, accelerated portion capped at the card's credit limit per calendar month (base 15/₹200 beyond). Base 15 credited within 7 days; bonus 15 on the 45th day after month-end. The earlier 3X dining accelerator was withdrawn."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+    capping_rules:
+      - "Marriott Bonvoy, Accor and Qatar Airways removed as EDGE transfer partners effective 2-Apr-2026."
+    redemption:
+      - type: catalog
+        program: EDGE Rewards
+        rate_inr_per_unit: 0.4
+      - type: airmiles
+        program: Multiple (EDGE transfer)
+        ratio: "5:2"
+    source:
+      url: https://www.paisabazaar.com/credit-card/axis-reserve-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "20-Jun-2025 revision per Paisabazaar / CardInsider Reserve pages."
 
 benefits:
   - effective_from: 2015-09-01
@@ -122,5 +180,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/reserve-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, travel, dining, invite-like]

@@ -44,7 +44,6 @@ rewards:
     accelerated:
       - category: indianoil-fuel
         canonical_categories: [fuel]
-        multiplier: 1
         effective_rate: 6
         cap_per_cycle: 300
         cap_unit: points
@@ -53,7 +52,6 @@ rewards:
         notes: "24 points per ₹150 at IOC outlets (effectively ~16% on fuel in XtraRewards equivalent), capped 300 points/month."
       - category: groceries-dining-utility
         canonical_categories: [groceries, dining, utilities]
-        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: points

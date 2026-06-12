@@ -40,7 +40,6 @@ rewards:
     accelerated:
       - category: grocery-departmental-utility
         canonical_categories: [groceries, utilities]
-        multiplier: 1
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: points

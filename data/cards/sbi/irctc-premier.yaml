@@ -41,11 +41,10 @@ rewards:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 0.95
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 10
         card_attributable_rate: 10
         card_attributable_per_inr: 100
@@ -61,7 +60,6 @@ rewards:
         notes: "10% value-back (as points) on AC class bookings via IRCTC."
       - category: dining-grocery
         canonical_categories: [groceries, dining]
-        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: points

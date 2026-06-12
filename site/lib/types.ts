@@ -116,7 +116,7 @@ export interface EarnComponent {
 export interface AcceleratedReward {
   category: string;
   canonical_categories?: string[] | null;
-  multiplier: number;
+  multiplier?: number | null;
   effective_rate?: number | null;
   effective_per_inr?: number | null;
   cap_per_cycle?: number | "unlimited";

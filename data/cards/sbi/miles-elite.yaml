@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: travel-online-offline
         canonical_categories: [online, travel]
-        multiplier: 3
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: miles

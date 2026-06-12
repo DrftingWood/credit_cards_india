@@ -44,11 +44,10 @@ rewards:
       rate: 1.5
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 0.95
     accelerated:
       - category: tata-neu-app-partners
         canonical_categories: [online]
-        multiplier: 1
         effective_rate: 5
         card_attributable_rate: 5
         card_attributable_per_inr: 100
@@ -64,7 +63,6 @@ rewards:
         notes: "5% NeuCoins on Tata brands purchased via Tata Neu app (subject to NeuPass). Card credits the full 5% directly in NeuCoins; programme baseline is not additive (NeuCoins are the card's reward currency, not a separate stack)."
       - category: tata-neu-app-non-partner
         canonical_categories: [online]
-        multiplier: 1
         effective_rate: 1.5
         card_attributable_rate: 1.5
         card_attributable_per_inr: 100

@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: international-spend
         canonical_categories: [international]
-        multiplier: 2
         effective_rate: 24
         cap_per_cycle: "unlimited"
         cap_unit: points

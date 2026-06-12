@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: dining-grocery-departmental
         canonical_categories: [groceries, dining]
-        multiplier: 1
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: points

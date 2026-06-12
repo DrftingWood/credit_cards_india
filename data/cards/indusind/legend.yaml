@@ -39,7 +39,6 @@ rewards:
       unit_value_inr_realized: 0.3
     accelerated:
       - category: weekend-spend
-        multiplier: 2
         effective_rate: 2
         cap_per_cycle: "unlimited"
         cap_unit: points

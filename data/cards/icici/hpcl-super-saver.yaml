@@ -44,7 +44,6 @@ rewards:
     accelerated:
       - category: hpcl-fuel-via-hp-pay
         canonical_categories: [fuel]
-        multiplier: 1
         effective_rate: 5
         cap_per_cycle: 1000
         cap_unit: cashback-inr
@@ -53,7 +52,6 @@ rewards:
         notes: "5% cashback on fuel at HPCL via HP Pay app (up to ₹1,000/month)."
       - category: grocery-dining-departmental-utility
         canonical_categories: [groceries, dining, utilities]
-        multiplier: 1
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: points

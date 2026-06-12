@@ -233,81 +233,14 @@ export interface RewardRecord {
      */
     unit_value_inr_realized?: number | null;
   };
-  accelerated?: {
-    category: string;
-    multiplier: number;
-    /**
-     * If multiplier semantics don't fit, use this absolute rate: units of the reward currency earned per `effective_per_inr` rupees (default: the record's base.per_inr). This is the receipt-visible total, NOT a percent — consumers must convert via pointsToPct(effective_rate, effective_per_inr ?? base.per_inr, unit_value) to get a value percentage.
-     */
-    effective_rate?: number | null;
-    /**
-     * Rupee basis for effective_rate when it differs from base.per_inr (e.g. '35 points per ₹200' on a card whose base earn is per ₹100).
-     */
-    effective_per_inr?: number | null;
-    cap_per_cycle?: number | "unlimited";
-    cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
-    cycle?: Cycle;
-    /**
-     * Canonical spend buckets this accelerated rate applies to. Used by the reward calculator to score cards against a user's spend profile. If omitted, consumers fall back to heuristic keyword matching on `category`.
-     */
-    canonical_categories?: (
-      | "online"
-      | "groceries"
-      | "dining"
-      | "fuel"
-      | "travel"
-      | "utilities"
-      | "rent"
-      | "international"
-      | "entertainment"
-      | "government"
-      | "insurance"
-      | "education"
-      | "wallet-loads"
-      | "emi"
-      | "other"
-    )[];
-    merchants?: string[];
-    mcc_list?: string[];
-    /**
-     * The card's own contribution per ₹100 (i.e. excluding loyalty-program baseline/tier/channel earn). Calculator math prefers this when set; effective_rate is the receipt-visible total.
-     */
-    card_attributable_rate?: number | null;
-    card_attributable_per_inr?: number | null;
-    /**
-     * When true, the calculator may add program baseline/tier/channel earn on top of card_attributable_rate (requires the parent rewards record to have loyalty_program set).
-     */
-    stacks_with_program?: boolean;
-    channel?: null | {
-      required?: boolean;
-      class:
-        | "issuer-portal"
-        | "cobrand-merchant"
-        | "third-party-ota"
-        | "food-delivery"
-        | "quick-commerce"
-        | "fuel-network"
-        | "physical"
-        | "utility-rail"
-        | "online-any";
-      /**
-       * @minItems 1
-       */
-      merchants: [string, ...string[]];
-    };
-    /**
-     * Optional decomposed earn structure for accelerators where the headline rate stacks distinct sources. When present, calculator sums components whose require_* gates the user satisfies.
-     */
-    earn_components?: {
-      source: "card" | "channel-bonus" | "loyalty-program" | "loyalty-tier";
-      rate: number;
-      per_inr?: number;
-      requires_channel?: string[];
-      requires_tier?: string | null;
-      notes?: string;
-    }[];
-    notes?: string;
-  }[];
+  accelerated?: (
+    | {
+        [k: string]: unknown;
+      }
+    | {
+        [k: string]: unknown;
+      }
+  )[];
   /**
    * Categories earning zero rewards.
    */

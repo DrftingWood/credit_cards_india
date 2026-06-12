@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: travel-dining
         canonical_categories: [dining, travel]
-        multiplier: 3
         effective_rate: 12
         cap_per_cycle: "unlimited"
         cap_unit: points

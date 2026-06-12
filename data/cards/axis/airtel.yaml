@@ -43,7 +43,6 @@ rewards:
     accelerated:
       - category: airtel-thanks-utility
         canonical_categories: [utilities]
-        multiplier: 1
         effective_rate: 25
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
@@ -52,7 +51,6 @@ rewards:
         notes: "25% cashback on Airtel bill payments (mobile, DTH, broadband) via Airtel Thanks app."
       - category: swiggy-zomato-preferred
         canonical_categories: [dining]
-        multiplier: 1
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
@@ -60,7 +58,6 @@ rewards:
         merchants: [swiggy, zomato, bigbasket]
       - category: utility-bills-general
         canonical_categories: [utilities]
-        multiplier: 1
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr

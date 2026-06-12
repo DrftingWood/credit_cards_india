@@ -40,7 +40,6 @@ rewards:
     accelerated:
       - category: dining-food-delivery-entertainment
         canonical_categories: [dining, entertainment]
-        multiplier: 1
         effective_rate: 10
         cap_per_cycle: 1000
         cap_unit: cashback-inr

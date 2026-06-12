@@ -41,11 +41,10 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 0.95
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 5
         card_attributable_rate: 5
         card_attributable_per_inr: 100
@@ -60,7 +59,6 @@ rewards:
           merchants: [irctc-direct]
       - category: groceries-departmental
         canonical_categories: [groceries]
-        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: points

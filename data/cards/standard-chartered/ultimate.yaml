@@ -38,7 +38,6 @@ rewards:
     accelerated:
       - category: forex-spend
         canonical_categories: [international]
-        multiplier: 1
         effective_rate: 3.33
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr

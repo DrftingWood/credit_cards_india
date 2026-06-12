@@ -44,7 +44,6 @@ rewards:
     accelerated:
       - category: travel-dining-international
         canonical_categories: [dining, travel, international]
-        multiplier: 2
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: points

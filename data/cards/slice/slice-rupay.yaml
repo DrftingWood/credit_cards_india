@@ -43,7 +43,6 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: upi-spend
-        multiplier: 1
         effective_rate: 2
         cap_per_cycle: 500
         cap_unit: cashback-inr

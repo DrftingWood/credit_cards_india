@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: dining-movies-grocery-departmental
         canonical_categories: [groceries, dining, entertainment]
-        multiplier: 10
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points

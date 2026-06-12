@@ -43,7 +43,6 @@ rewards:
     accelerated:
       - category: myntra-spends
         canonical_categories: [online]
-        multiplier: 1
         effective_rate: 7.5
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
@@ -55,7 +54,6 @@ rewards:
           merchants: [myntra]
         notes: "7.5% instant discount at Myntra checkout."
       - category: preferred-merchants
-        multiplier: 1
         effective_rate: 5
         cap_per_cycle: 1000
         cap_unit: cashback-inr

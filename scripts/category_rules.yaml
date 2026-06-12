@@ -33,4 +33,4 @@ rules:
 
 # Categories whose names are intentionally not bucket-specific
 # (cross-category spend uplifts, birthday boosts, etc). Skip tagging.
-untaggable: "spend-above|incremental-above|birthday|monthly-spend|weekend-spend|top-\\d|any-spend|emi-spends|bundle"
+untaggable: "spend-above|incremental-above|birthday|monthly-spend|weekend-spend|top-\\d|any-spend|emi-spends|bundle|user-chosen|upi-spend"

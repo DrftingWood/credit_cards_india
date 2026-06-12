@@ -43,6 +43,22 @@ AGGREGATOR_SOURCE_DOMAINS = {
 ISSUER_ALLOWED_DOMAINS = {
     "amex": {"americanexpress.com", "www.americanexpress.com"},
     "au": {"aubank.in", "www.aubank.in"},
+    "bob": {"bobfinancial.com", "www.bobfinancial.com", "bobcard.co.in", "www.bobcard.co.in"},
+    "boi": {"bankofindia.co.in", "www.bankofindia.co.in"},
+    "canara": {"canarabank.com", "www.canarabank.com"},
+    "federal": {"federalbank.co.in", "www.federalbank.co.in", "scapia.cards", "www.scapia.cards"},
+    "hsbc": {"hsbc.co.in", "www.hsbc.co.in"},
+    "idbi": {"idbibank.in", "www.idbibank.in"},
+    "indusind": {"indusind.com", "www.indusind.com"},
+    "kotak": {"kotak.com", "www.kotak.com"},
+    "kvb": {"kvb.co.in", "www.kvb.co.in"},
+    "onecard": {"getonecard.app", "www.getonecard.app"},
+    "pnb": {"pnbindia.in", "www.pnbindia.in", "pnbcard.in", "www.pnbcard.in"},
+    "slice": {"sliceit.com", "www.sliceit.com"},
+    "south-indian": {"southindianbank.com", "www.southindianbank.com"},
+    "standard-chartered": {"sc.com", "www.sc.com"},
+    "union": {"unionbankofindia.co.in", "www.unionbankofindia.co.in"},
+    "yes": {"yesbank.in", "www.yesbank.in"},
     "axis": {"axisbank.com", "www.axisbank.com", "axis.bank.in", "www.axis.bank.in"},
     "hdfc": {"hdfcbank.com", "www.hdfcbank.com"},
     "icici": {"icicibank.com", "www.icicibank.com", "icici.bank.in", "www.icici.bank.in"},
@@ -95,8 +111,8 @@ def validate_schema_instance(errors, validator, instance, path: Path, kind: str)
         errors.append(f"[schema:{kind}] {path.relative_to(ROOT)} :: {loc} :: {err.message}")
 
 
-def check_dated_array(errors, card_path: Path, section_name: str, records, card_is_active: bool):
-    """Verify an effective-dated array: sorted, non-overlapping, exactly one open-ended if active."""
+def check_dated_array(errors, card_path: Path, section_name: str, records, card_is_active: bool, discontinued_on=None):
+    """Verify an effective-dated array: sorted, non-overlapping, gap-free, exactly one open-ended if active, all closed if discontinued."""
     if not records:
         errors.append(f"[lint] {card_path.relative_to(ROOT)} :: {section_name} must have at least 1 record")
         return
@@ -122,7 +138,7 @@ def check_dated_array(errors, card_path: Path, section_name: str, records, card_
             )
             break
 
-    # non-overlapping
+    # non-overlapping and gap-free
     sorted_spans = sorted(spans, key=lambda s: s[0])
     for a, b in zip(sorted_spans, sorted_spans[1:]):
         a_end = a[1] if a[1] is not None else date.max
@@ -130,6 +146,11 @@ def check_dated_array(errors, card_path: Path, section_name: str, records, card_
             errors.append(
                 f"[lint] {card_path.relative_to(ROOT)} :: {section_name}[{a[2]}] and [{b[2]}] overlap "
                 f"({a[0]}..{a[1]} vs {b[0]}..{b[1]})"
+            )
+        elif a[1] is not None and (b[0] - a[1]).days > 1:
+            errors.append(
+                f"[lint] {card_path.relative_to(ROOT)} :: {section_name}[{a[2]}] ends {a[1]} but [{b[2]}] "
+                f"starts {b[0]} — {(b[0] - a[1]).days - 1} day gap with no record"
             )
 
     open_records = [s for s in spans if s[1] is None]
@@ -143,6 +164,18 @@ def check_dated_array(errors, card_path: Path, section_name: str, records, card_
             errors.append(
                 f"[lint] {card_path.relative_to(ROOT)} :: {section_name} has {len(open_records)} open-ended records; must be exactly 1"
             )
+    if discontinued_on is not None:
+        for start, end, i in spans:
+            if end is None:
+                errors.append(
+                    f"[lint] {card_path.relative_to(ROOT)} :: {section_name}[{i}] is open-ended but the card "
+                    f"was discontinued on {discontinued_on}; close it with effective_until"
+                )
+            elif end > discontinued_on:
+                errors.append(
+                    f"[lint] {card_path.relative_to(ROOT)} :: {section_name}[{i}] ends {end}, after "
+                    f"discontinued_on {discontinued_on}"
+                )
 
 
 def collect_sources(node):
@@ -350,9 +383,10 @@ def main() -> int:
 
         # dated-array invariants
         card_is_active = status == "active" or status == "invite-only"
-        check_dated_array(errors, path, "fees", instance.get("fees", []), card_is_active)
-        check_dated_array(errors, path, "rewards", instance.get("rewards", []), card_is_active)
-        check_dated_array(errors, path, "benefits", instance.get("benefits", []), card_is_active)
+        disc_date = as_date(instance.get("discontinued_on")) if status == "discontinued" else None
+        check_dated_array(errors, path, "fees", instance.get("fees", []), card_is_active, disc_date)
+        check_dated_array(errors, path, "rewards", instance.get("rewards", []), card_is_active, disc_date)
+        check_dated_array(errors, path, "benefits", instance.get("benefits", []), card_is_active, disc_date)
 
         # co-brand partner ↔ loyalty programme alias lint
         # Warning-tier per the validator-promotion pattern: promote to error
@@ -386,7 +420,69 @@ def main() -> int:
                     f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].loyalty_program "
                     f"'{program_ref}' not found in data/loyalty_programs/"
                 )
+
+            base = rec.get("base") or {}
+            # cashback units are rupees by definition.
+            if rec.get("currency") == "cashback" and base.get("unit_value_inr") not in (None, 1, 1.0):
+                errors.append(
+                    f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}] currency is 'cashback' but "
+                    f"base.unit_value_inr is {base.get('unit_value_inr')} (must be 1 or null); "
+                    f"if a unit is worth less than ₹1 the currency is points, not cashback"
+                )
+            # card-level realized value must agree with the referenced programme's.
+            card_realized = base.get("unit_value_inr_realized")
+            if program_ref and program_ref in loyalty_programs and card_realized is not None:
+                prog_uv = (loyalty_programs[program_ref].get("unit_value_inr") or {})
+                prog_realized = prog_uv.get("realized") if isinstance(prog_uv, dict) else None
+                if prog_realized is not None and abs(card_realized - prog_realized) > 1e-9:
+                    errors.append(
+                        f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].base.unit_value_inr_realized "
+                        f"({card_realized}) disagrees with programme '{program_ref}' realized "
+                        f"({prog_realized}); the calculator uses the programme value, so align or drop the card-level one"
+                    )
+            rec_is_open = rec.get("effective_until") is None
+            unit_value = (
+                base.get("unit_value_inr_realized")
+                if base.get("unit_value_inr_realized") is not None
+                else base.get("unit_value_inr")
+            )
+            if unit_value is None and rec.get("currency") == "cashback":
+                unit_value = 1
             for a_idx, acc in enumerate(rec.get("accelerated", []) or []):
+                has_mult = acc.get("multiplier") is not None
+                has_eff = acc.get("effective_rate") is not None
+                if has_mult and has_eff:
+                    errors.append(
+                        f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}] sets both "
+                        f"multiplier and effective_rate; they use different conventions and have repeatedly "
+                        f"contradicted each other — set exactly one"
+                    )
+                if not has_mult and not has_eff:
+                    errors.append(
+                        f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}] sets neither "
+                        f"multiplier nor effective_rate"
+                    )
+                # Plausibility band: a broad-category accelerator worth >12% of spend is
+                # almost certainly a units error or an undecomposed stacked rate.
+                # Narrow merchant promos (channel / merchants set) can legitimately exceed it.
+                if (
+                    rec_is_open
+                    and has_eff
+                    and unit_value is not None
+                    and not acc.get("channel")
+                    and not acc.get("merchants")
+                    and acc.get("card_attributable_rate") is None
+                    and not acc.get("earn_components")
+                ):
+                    eff_per = acc.get("effective_per_inr") or base.get("per_inr") or 1
+                    value_pct = acc["effective_rate"] / eff_per * unit_value * 100
+                    if value_pct > 12:
+                        errors.append(
+                            f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}] "
+                            f"({acc.get('category')}) is worth {value_pct:.1f}% of spend with no channel/merchant "
+                            f"restriction and no decomposition — check units (effective_rate is units per "
+                            f"effective_per_inr/base.per_inr rupees, not a percent)"
+                        )
                 ch = acc.get("channel")
                 if isinstance(ch, dict):
                     cls = ch.get("class")
@@ -467,12 +563,16 @@ def main() -> int:
         if check_urls:
             check_source_urls(warnings, path, instance)
 
-        primary_source = next((src for src in collect_sources(instance) if src.get("url")), None)
-        if primary_source:
-            source_host = (urlparse(primary_source["url"]).hostname or "").lower()
-            if source_host in AGGREGATOR_SOURCE_DOMAINS and status in {"active", "invite-only"}:
+        if status in {"active", "invite-only"}:
+            aggregator_hosts = sorted({
+                (urlparse(src["url"]).hostname or "").lower()
+                for src in collect_sources(instance)
+                if src.get("url")
+                and (urlparse(src["url"]).hostname or "").lower() in AGGREGATOR_SOURCE_DOMAINS
+            })
+            for source_host in aggregator_hosts:
                 warnings.append(
-                    f"[warn] {path.relative_to(ROOT)} :: primary source host '{source_host}' appears to be an aggregator; "
+                    f"[warn] {path.relative_to(ROOT)} :: source host '{source_host}' appears to be an aggregator; "
                     "prefer issuer-owned source URLs for active cards"
                 )
 

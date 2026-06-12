@@ -43,7 +43,6 @@ rewards:
       unit_value_inr_realized: 0.22
     accelerated:
       - category: toggle-5x-merchant-bundle
-        multiplier: 5
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: points

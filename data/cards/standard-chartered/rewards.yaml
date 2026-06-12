@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: online-retail-department
         canonical_categories: [online]
-        multiplier: 4
         effective_rate: 4
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr

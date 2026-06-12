@@ -44,7 +44,6 @@ rewards:
     accelerated:
       - category: reliance-retail
         canonical_categories: [online]
-        multiplier: 1
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points

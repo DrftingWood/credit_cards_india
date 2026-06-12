@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: online-partner-merchants
         canonical_categories: [online]
-        multiplier: 5
         effective_rate: 10
         cap_per_cycle: 2500
         cap_unit: points
@@ -49,7 +48,6 @@ rewards:
         merchants: [amazon, flipkart, swiggy, reliance-smart-superstore]
         notes: "10 CashPoints per ₹150 on partner merchants."
       - category: emi-spends
-        multiplier: 5
         effective_rate: 10
         cap_per_cycle: 2500
         cap_unit: points

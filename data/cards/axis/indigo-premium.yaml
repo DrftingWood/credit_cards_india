@@ -48,7 +48,6 @@ rewards:
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 7
         card_attributable_rate: 7
         card_attributable_per_inr: 100
@@ -64,7 +63,6 @@ rewards:
         notes: "7 BluChips per ₹100 on IndiGo flight bookings via IndiGo web/app. Card-side rate only on this product line."
       - category: hotels-groceries
         canonical_categories: [travel, groceries]
-        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: miles

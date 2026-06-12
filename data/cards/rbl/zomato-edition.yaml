@@ -43,7 +43,6 @@ rewards:
     accelerated:
       - category: zomato-ordering-dining
         canonical_categories: [dining]
-        multiplier: 1
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
@@ -52,7 +51,6 @@ rewards:
         notes: "10% back on Zomato food delivery and Zomato Dining Out."
       - category: other-online
         canonical_categories: [online]
-        multiplier: 1
         effective_rate: 5
         cap_per_cycle: 500
         cap_unit: cashback-inr

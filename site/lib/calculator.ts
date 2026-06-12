@@ -156,7 +156,7 @@ function acceleratorRatePct(
     const perInr = a.effective_per_inr ?? rewards.base.per_inr;
     return pointsToPct(a.effective_rate, perInr, uv);
   }
-  if (unitValue != null) {
+  if (a.multiplier != null && unitValue != null) {
     const base = pointsToPct(rewards.base.rate, rewards.base.per_inr, unitValue);
     return base * a.multiplier;
   }

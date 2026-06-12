@@ -69,7 +69,6 @@ rewards:
       unit_value_inr_realized: 0.18
     accelerated:
       - category: monthly-spend-above-threshold
-        multiplier: 1
         effective_rate: 35
         effective_per_inr: 200
         cap_per_cycle: 35000

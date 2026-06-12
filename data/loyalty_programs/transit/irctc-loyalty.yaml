@@ -45,7 +45,7 @@ redemption_paths:
     program: IRCTC ticket bookings on irctc.co.in / IRCTC rail app
     rate_inr_per_unit:
       face: 1.0
-      realized: 0.9
+      realized: 0.95
     constraints: "Redeemable only on IRCTC rail bookings."
 
 metadata:

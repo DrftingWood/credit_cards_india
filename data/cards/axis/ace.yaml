@@ -40,7 +40,6 @@ rewards:
     accelerated:
       - category: bill-payments-recharges-google-pay
         canonical_categories: [utilities]
-        multiplier: 1
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
@@ -49,7 +48,6 @@ rewards:
         notes: "5% cashback on bill payments, DTH recharges and mobile recharges via Google Pay."
       - category: swiggy-zomato-ola-partners
         canonical_categories: [dining]
-        multiplier: 1
         effective_rate: 4
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr

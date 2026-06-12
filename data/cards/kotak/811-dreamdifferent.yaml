@@ -40,7 +40,6 @@ rewards:
     accelerated:
       - category: online-spend
         canonical_categories: [online]
-        multiplier: 2
         effective_rate: 4
         cap_per_cycle: "unlimited"
         cap_unit: points

@@ -47,7 +47,6 @@ rewards:
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 19
         card_attributable_rate: 3
         card_attributable_per_inr: 100
@@ -63,7 +62,6 @@ rewards:
         notes: "Receipt-visible total can reach ~19 BluChips per ₹100 on IndiGo bookings via app/web. Of that, ~3 is the card's own contribution; the remainder (BluChip baseline + channel bonus + tier) comes from the loyalty programme and is stacked at calculator time via loyalty_program: indigo-bluchip."
       - category: hotels-travel
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 2
         card_attributable_rate: 2
         card_attributable_per_inr: 100

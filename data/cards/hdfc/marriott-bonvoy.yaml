@@ -45,7 +45,6 @@ rewards:
     accelerated:
       - category: marriott-properties
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 8
         card_attributable_rate: 8
         card_attributable_per_inr: 150
@@ -60,7 +59,6 @@ rewards:
         notes: "8 Bonvoy points per ₹150 on spends at participating Marriott hotels. Stacks with Bonvoy member earn (handled via loyalty_program: marriott-bonvoy at calculator time)."
       - category: travel-dining
         canonical_categories: [travel, dining]
-        multiplier: 1
         effective_rate: 4
         card_attributable_rate: 4
         card_attributable_per_inr: 150

@@ -43,7 +43,6 @@ rewards:
     accelerated:
       - category: adani-airports-retail
         canonical_categories: [online, travel]
-        multiplier: 1
         effective_rate: 7
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
@@ -56,7 +55,6 @@ rewards:
         notes: "7% back at Adani Airports retail / F&B and Adani One app."
       - category: dining-grocery
         canonical_categories: [groceries, dining]
-        multiplier: 1
         effective_rate: 2
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr

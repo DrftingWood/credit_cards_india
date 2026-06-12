@@ -44,7 +44,6 @@ rewards:
       unit_value_inr_realized: 0.4
     accelerated:
       - category: top-2-categories-monthly
-        multiplier: 5
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: points

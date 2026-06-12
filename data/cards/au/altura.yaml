@@ -40,7 +40,6 @@ rewards:
     accelerated:
       - category: grocery-dining-departmental
         canonical_categories: [groceries, dining]
-        multiplier: 1
         effective_rate: 1.5
         cap_per_cycle: 250
         cap_unit: cashback-inr

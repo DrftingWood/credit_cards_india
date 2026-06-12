@@ -44,7 +44,6 @@ rewards:
     accelerated:
       - category: pvr-tickets-fnb
         canonical_categories: [entertainment]
-        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: points

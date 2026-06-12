@@ -49,7 +49,6 @@ rewards:
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
-        multiplier: 1
         effective_rate: 22
         card_attributable_rate: 6
         card_attributable_per_inr: 100
@@ -65,7 +64,6 @@ rewards:
         notes: "Up to 22 visible BluChips per ₹100 on IndiGo web/app bookings. ~6 is card-attributable; the rest stacks from BluChip baseline + channel + tier earn (joined via loyalty_program: indigo-bluchip). Headline of 22 assumes top-tier BluChip status."
       - category: dining-entertainment
         canonical_categories: [dining, entertainment]
-        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: miles

@@ -39,13 +39,12 @@ rewards:
       unit_value_inr_realized: 0.22
     accelerated:
       - category: online-spend-above-20k
-        multiplier: 3
+        canonical_categories: [online]
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
       - category: incremental-above-30k
-        multiplier: 3
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points

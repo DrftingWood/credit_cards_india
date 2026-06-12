@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: grocery-supermarket
         canonical_categories: [groceries]
-        multiplier: 10
         effective_rate: 20
         cap_per_cycle: 1000
         cap_unit: points

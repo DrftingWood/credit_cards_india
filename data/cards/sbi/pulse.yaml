@@ -41,7 +41,6 @@ rewards:
     accelerated:
       - category: chemist-pharmacy-dining-movies
         canonical_categories: [dining, entertainment]
-        multiplier: 1
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points

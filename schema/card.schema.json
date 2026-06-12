@@ -815,6 +815,11 @@
       "additionalProperties": false,
       "properties": {
         "last_verified_on": { "type": "string", "format": "date" },
+        "last_swept_on": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date of the last bulk/automated freshness sweep. Distinct from last_verified_on, which may only move when a human/agent actually compared the record's fields against the cited sources."
+        },
         "tags": {
           "type": "array",
           "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },

@@ -428,6 +428,10 @@ export interface Eligibility {
 }
 export interface Metadata {
   last_verified_on: string;
+  /**
+   * Date of the last bulk/automated freshness sweep. Distinct from last_verified_on, which may only move when a human/agent actually compared the record's fields against the cited sources.
+   */
+  last_swept_on?: string | null;
   tags?: string[];
 }
 

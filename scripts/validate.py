@@ -25,6 +25,11 @@ SCHEMA_DIR = ROOT / "schema"
 DATA_DIR = ROOT / "data"
 CATEGORY_RULES_PATH = ROOT / "scripts" / "category_rules.yaml"
 STALENESS_WARN_DAYS = 180
+# Premium-tier active cards churn fastest (2024-26 devaluation cycle) and get
+# the most traffic — tighter budget. Hard error budget applies to every card.
+STALENESS_WARN_DAYS_PREMIUM = 90
+STALENESS_ERROR_DAYS = 270
+PREMIUM_TIERS = {"premium", "super-premium", "invite-only"}
 URL_CHECK_TIMEOUT_SECONDS = 10
 AGGREGATOR_SOURCE_DOMAINS = {
     "cardinsider.com",
@@ -572,14 +577,24 @@ def main() -> int:
         if status == "discontinued" and not instance.get("discontinued_on"):
             errors.append(f"[lint] {path.relative_to(ROOT)} :: status is 'discontinued' but discontinued_on is null")
 
-        # staleness warning
+        # staleness budget — tiered warning, hard error at STALENESS_ERROR_DAYS
         last_verified = as_date((instance.get("metadata") or {}).get("last_verified_on"))
         if last_verified:
             age = (date.today() - last_verified).days
-            if age > STALENESS_WARN_DAYS:
+            warn_days = (
+                STALENESS_WARN_DAYS_PREMIUM
+                if card_is_active and instance.get("tier") in PREMIUM_TIERS
+                else STALENESS_WARN_DAYS
+            )
+            if age > STALENESS_ERROR_DAYS and status != "discontinued":
+                errors.append(
+                    f"[lint] {path.relative_to(ROOT)} :: metadata.last_verified_on is {age} days old "
+                    f"(> {STALENESS_ERROR_DAYS}); re-verify the card against its sources"
+                )
+            elif age > warn_days:
                 warnings.append(
                     f"[warn] {path.relative_to(ROOT)} :: metadata.last_verified_on is {age} days old "
-                    f"(> {STALENESS_WARN_DAYS})"
+                    f"(> {warn_days})"
                 )
         source_dates = [as_date(src.get("retrieved_on")) for src in collect_sources(instance) if src.get("retrieved_on")]
         source_dates = [d for d in source_dates if d is not None]

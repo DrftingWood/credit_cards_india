@@ -234,7 +234,7 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   ₹0.25); lounge 16+16/yr (YAML unlimited); welcome ₹5,000 (YAML ₹20k);
   golf 2/quarter; milestones 1,000 RP @₹75k/mo + Taj Epicure @₹12L (med). high
 
-## BoB/PSU/misc batch (agent sweep 2026-06-12) — encoding in progress
+## BoB/PSU/misc batch (agent sweep 2026-06-12) — ENCODED (deferred: idbi network re-verification, pnb intl lounge count, eterna LTF offer modelling, league LTF variant)
 
 - **bob/easy**: NOT lifetime-free — ₹500 JF/AF (JF waived on ₹6k/60d, AF on
   ₹35k/yr); base 1 RP/₹100 (was 5); 5X only on departmental stores + movies
@@ -272,3 +272,58 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   → ICICI Rewards); utilities/insurance earn 1 RP/₹100 tier (YAML excluded
   insurance entirely); Jan-2026 exclusions (govt, tax, property mgmt, rent,
   wallets) eff 2026-01-15; BMS movie benefit gone/gated (med-high). high
+
+## Amex/Yes/StanC/HSBC/Federal batch (agent sweep 2026-06-12) — encoding in progress
+
+- **amex/centurion**: joining fee unverifiable (invite-only; YAML notes
+  self-contradict 2L vs 1.5L) — low, flag only.
+- **amex/platinum-charge**: fee ₹66,000 (was ₹60k, ~2023 refresh); welcome
+  ₹45k vouchers on ₹50k/2mo (no 50k MR bonus); renewal ₹35k vouchers @₹20L
+  (med). livefromalounge. high/med
+- **amex/platinum-reserve**: fee ₹10,000 (was ₹5k); 100% renewal waiver
+  @₹10L (med); welcome 11,000 MR on ₹30k/90d; lounge 12 dom (3/qtr) + 2
+  intl PP (med); golf gated ₹50k/mo (med); monthly ₹1,000 voucher @₹50k +
+  Accor ALL+ (med). high/med
+- **yes/marquee**: earn 36/₹200 online (cap 1,00,000 pts/cycle) + 18/₹200
+  offline, no intl accel (was 12/24); waiver ₹10L (med); lounge gated ₹1L
+  prior-quarter eff 2025-04-01; welcome 40,000 pts; redemption capped 70%
+  cart / 3L pts/mo eff 2024-12-01 (med). high
+- **yes/premia**: renamed YES ELITE+ (~2023-24); AF ₹999 (med); earn
+  12/₹200 online, 6 offline, 4 utilities/govt/edu/insurance, cap 12,000/
+  cycle (med); lounge gated ₹50k/qtr eff 2025-04-01; rent 1% + utility>₹15k
+  1% fees (med). high(rename, lounge)
+- **yes/reserv**: AF ₹1,999 waiver ₹3L (med); forex 1.75 (med); earn
+  24/₹200 online, 12 offline, 6 select, cap 75,000/cycle (med); lounge 3
+  dom/qtr gated ₹1L + 6 intl/yr eff 2025-04-01 (med).
+- **standard-chartered/easemytrip**: per-txn caps (dom flights ₹1k, intl
+  ₹5k, dom hotels ₹5k, intl ₹10k); base is 2 RP/₹100 @ ₹0.50 (points, not
+  cashback — med); waiver ₹50k (was 1.2L); lounge 2/yr, PP withdrawn eff
+  2024-10-15. high
+- **standard-chartered/rewards**: base 4 RP/₹150 retail + 1/₹150 govt/
+  insurance (was 1/₹150); 4x bonus only after ₹20k/mo, cap 2,000 bonus
+  RP/mo; waiver ₹3L (was 1.2L). high
+- **standard-chartered/ultimate**: utilities/supermarkets/insurance/etc
+  earn REDUCED 3 RP/₹150 (not zero) since 2023-04-02; renewal 6,000 RP
+  (med). high
+- **hsbc/live-plus**: 10% categories are dining/food-delivery/GROCERIES
+  (not entertainment); forex 3.5 (was 1.99); welcome ₹1,000 cashback on
+  ₹20k/30d (med). high
+- **hsbc/premier**: JF ₹12,000 / renewal ₹20,000 waived for Premier (med);
+  transfers 1:1 (was 2:1, med); eligibility is Premier relationship (TRB
+  ₹50L / ₹3L salary / ₹1.15Cr mortgage, med); 8 intl guest visits (med);
+  Taj Epicure + ₹12k welcome (med).
+- **hsbc/visa-platinum**: verified OK.
+- **federal/celesta**: LTF limited-period offer (med); forex 2.0 (was
+  1.5); earn 3x travel-intl / 2x dining / 1x other (med); lounge 2 intl/yr
+  + dom tiered spend-gated (₹20k→1, ₹40k→2 per quarter from 2025-10-01);
+  welcome ₹600 Amazon Pay (high). high
+- **federal/scapia**: 20% Scapia coins on app travel = 4% value, coins are
+  ₹0.20 each (unit value was wrongly ₹1); base 10% coins = 2% value;
+  lounge unlimited dom on ₹20k preceding-month spend (raised from ₹10k;
+  min-spend rule eff 2026-02-27); RuPay UPI variant (Jun-2025) not
+  modelled. high
+- **federal/signet**: currently LTF (med); earn 3x electronics/apparel +
+  2x entertainment (no intl accel, med); lounge 1/quarter gated ₹20k
+  (2025, high); welcome ₹200 voucher (med).
+- **Amex waiver date**: discretionary renewal waivers ended ~12-Jun-2025
+  (forum-reported) — refines the approximate 2025-07-01 already encoded.

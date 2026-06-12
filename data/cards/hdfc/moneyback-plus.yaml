@@ -45,13 +45,14 @@ rewards:
         cap_per_cycle: 2500
         cap_unit: points
         cycle: monthly
-        merchants: [amazon, flipkart, swiggy, reliance-smart-superstore]
+        merchants: [amazon, flipkart, swiggy, reliance-smart-superstore, bigbasket]
         notes: "10 CashPoints per ₹150 on partner merchants."
       - category: emi-spends
-        effective_rate: 10
+        effective_rate: 5
         cap_per_cycle: 2500
         cap_unit: points
         cycle: monthly
+        notes: "5X CashPoints on EMI spends (shared 2,500 CP/month cap with the partner-merchant accelerator)."
     exclusions:
       - fuel
       - wallet-loads
@@ -59,13 +60,16 @@ rewards:
       - government
       - utilities
       - insurance-premiums
+    capping_rules:
+      - "Grocery spends earn capped at 1,000 CashPoints per month."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
         min_units: 500
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: EMI accelerator is 5X (was wrongly 10X); BigBasket added to partner merchants; grocery earn capped 1,000 CP/month."
 
 benefits:
   - effective_from: 2020-07-01
@@ -100,5 +104,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entry, points, online-spend]

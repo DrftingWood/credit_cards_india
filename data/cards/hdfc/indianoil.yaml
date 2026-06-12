@@ -45,17 +45,18 @@ rewards:
       - category: indianoil-fuel
         canonical_categories: [fuel]
         effective_rate: 5
-        cap_per_cycle: 250
+        cap_per_cycle: 150
         cap_unit: points
         cycle: monthly
         merchants: [indianoil-fuel-stations]
-        notes: "5% back (as Fuel Points) on fuel at IOC outlets, capped at 250 Fuel Points/month."
+        notes: "5% back (as Fuel Points) on fuel at IOC outlets — capped at 250 Fuel Points/month for the first 6 months, 150/month thereafter (cap field shows the steady-state 150)."
       - category: groceries-bill-payments
         canonical_categories: [groceries, utilities]
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 100
         cap_unit: points
         cycle: monthly
+        notes: "Capped at 100 Fuel Points per month per category."
     exclusions:
       - wallet-loads
       - rent
@@ -64,11 +65,12 @@ rewards:
     redemption:
       - type: voucher
         program: IndianOil fuel
-        rate_inr_per_unit: 1.0
-        constraints: "Redeemable as fuel at IOC outlets via XtraRewards programme."
+        rate_inr_per_unit: 0.96
+        constraints: "Redeemable as fuel at IOC outlets via XtraRewards programme (1 FP ≈ ₹0.96 of fuel)."
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/indianoil-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: fuel cap is 150 FP/mo steady-state (250 only first 6 months); non-fuel accelerators capped 100 FP/mo each (were wrongly unlimited)."
 
 benefits:
   - effective_from: 2017-01-01
@@ -98,5 +100,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/indianoil-hdfc-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, fuel, indianoil, rupay, entry]

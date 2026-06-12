@@ -9,7 +9,7 @@ co_brand:
   partner: Swiggy
   category: lifestyle
   partner_website: https://www.swiggy.com
-status: active
+status: active  # superseded for NEW applications by Swiggy BLCK (10%) / ORNGE (5%) variants announced 12-Mar-2026; phased rollout, existing-card mapping unannounced (livefromalounge.com). Existing cards continue on these terms.
 launched_on: 2023-09-01
 discontinued_on: null
 
@@ -63,6 +63,8 @@ rewards:
       - insurance-premiums
       - emi
       - utilities
+      - government
+      - jewellery
     redemption:
       - type: cashback-bank
         program: Swiggy Money wallet
@@ -105,5 +107,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, swiggy, cashback, entry, food-delivery]

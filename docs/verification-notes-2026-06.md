@@ -52,36 +52,12 @@ Confidence tags: high/med/low per the source quality.
 
 ## Verified, NOT yet encoded (next data PR)
 
-(Encoded since first commit of this file: Magnus fees + 2-Apr-2026 partner
-removal, Reserve waiver/2025 revision, IDFC 18-Jan-2026 wave (classic/
-select/wealth/millennia), DCB Metal milestones/welcome, Infinia retention
-note, Regalia on-hold + lounge, Diners Rewardz corrections, Diners
-Privilege 2025-2026 records.)
+(Encoded so far: Magnus fees + 2-Apr-2026 partner removal, Reserve, IDFC
+18-Jan-2026 wave, DCB Metal, Infinia retention, Regalia, Diners Rewardz,
+Diners Privilege, tata-neu-plus (3 dated records; RuPay-only UPI change
+noted, not modelled), marriott-bonvoy, freedom, moneyback-plus, indianoil,
+pixel-play, swiggy-hdfc exclusions + successor note.)
 
-- **hdfc/tata-neu-plus** — four missing dated changes (all high, hdfc.bank.in):
-  UPI earn 0.25% (+0.75% with Tata Neu UPI id) cap 500 NC/mo eff 2024-08-01;
-  grocery cap 1,000 NC/mo + utility cap 2,000 NC/mo eff 2024-09-01;
-  gaming (MCC 5816) zero + insurance cap 2,000/mo eff 2025-07-01;
-  NeuCoin validity 12 months eff 2025-08-01.
-- **hdfc/marriott-bonvoy** — lounge is 12 dom + 12 intl/yr (YAML says 8 dom);
-  welcome = 1 FNA ≤15,000 pts + Silver Elite + 10 ENCs (no more "categories");
-  NO spend-based fee waiver (renewal grants FNA); milestones are 15,000-pt
-  FNAs at 6L/9L/15L; FNA top-up +25k pts allowed 2025-26. cardmaven. high/med
-- **hdfc/swiggy-hdfc** — split into Swiggy BLCK (10%) and ORNGE (5%)
-  announced 2026-03-12, phased rollout; original superseded for new
-  applications (med). Add exclusions: government, jewellery (med).
-- **hdfc/freedom** — accelerated is 10X on BigBasket/BookMyShow/OYO/Swiggy/
-  Uber cap 2,500 CP/mo + 5X EMI (high); CashPoint value ₹0.15 not ₹0.25
-  (med); education-payments exclusion eff 2024-09-01 (med).
-- **hdfc/moneyback-plus** — EMI accelerator is 5X not 10X (shared 2,500
-  CP/mo cap); merchants include BigBasket; grocery cap 1,000 CP/mo (med).
-- **hdfc/indianoil** — fuel cap 250 FP/mo only first 6 months then 150
-  (high); other accelerators capped 100 FP/mo each (high); redemption
-  ₹0.96/FP on fuel (med).
-- **hdfc/pixel-play** — renewal waiver ₹1L (not ₹2.5L) + joining waived on
-  ₹20k/90d (high); packs cap 500 CP/mo not ₹750 (high); "online-other 3%"
-  is actually ONE chosen e-commerce merchant cap 500/mo (high); missing 1%
-  UPI cashback cap 500/mo (med).
 - **axis/reserve & axis/atlas & axis/magnus** — Reserve ₹25L grandfathered
   waiver tier unverified (low); Oberoi offer discontinued 1-Oct-2025 +
   EDGE forfeiture rules (med, from first sweep).

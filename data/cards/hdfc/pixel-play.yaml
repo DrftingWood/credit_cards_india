@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
-      spend_inr: 250000
+      spend_inr: 100000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.6
@@ -27,7 +27,8 @@ fees:
     notes: "RuPay variant supports UPI linkage."
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: renewal waiver is ₹1L/yr (was wrongly ₹2.5L); joining fee waived on ₹20k spend within 90 days."
 
 rewards:
   - effective_from: 2024-03-01
@@ -41,16 +42,23 @@ rewards:
     accelerated:
       - category: user-chosen-packs
         effective_rate: 5
-        cap_per_cycle: 750
+        cap_per_cycle: 500
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "5% cashback on 2 self-selected merchant packs (e.g. Swiggy+Zomato, Amazon+Flipkart, travel)."
-      - category: online-other
+        notes: "5% cashback on 2 self-selected merchant packs (e.g. Swiggy+Zomato, Amazon+Flipkart, travel), capped 500 CashPoints/month."
+      - category: chosen-ecommerce-merchant
         canonical_categories: [online]
         effective_rate: 3
         cap_per_cycle: 500
         cap_unit: cashback-inr
         cycle: monthly
+        notes: "3% on ONE self-selected e-commerce merchant (Amazon / Flipkart / PayZapp), capped 500 CashPoints/month."
+      - category: upi-rupay-spend
+        effective_rate: 1
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "1% cashback on UPI spends (RuPay variant), capped 500 CashPoints/month."
     exclusions:
       - fuel
       - wallet-loads
@@ -95,5 +103,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [digital-first, rupay, customisable, entry, cashback]

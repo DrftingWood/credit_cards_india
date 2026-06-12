@@ -37,27 +37,36 @@ rewards:
       rate: 1
       per_inr: 150
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
+      unit_value_inr_realized: 0.15
     accelerated:
-      - category: dining-entertainment-grocery
+      - category: partner-brands-10x
         canonical_categories: [groceries, dining, entertainment]
+        effective_rate: 10
+        cap_per_cycle: 2500
+        cap_unit: points
+        cycle: monthly
+        merchants: [bigbasket, bookmyshow, oyo, swiggy, uber]
+        notes: "10X CashPoints on BigBasket, BookMyShow, OYO, Swiggy and Uber, capped 2,500 CashPoints/month."
+      - category: emi-spends
         effective_rate: 5
         cap_per_cycle: 2500
         cap_unit: points
         cycle: monthly
+        notes: "5X CashPoints on EMI spends (shared monthly cap)."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
-      - emi
+      - education
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
         min_units: 500
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: accelerator is 10X on five partner brands (was wrongly 5X broad categories) + 5X EMI; realized CashPoint value ~₹0.15; third-party education payments excluded since Sep-2024 (EMI no longer fully excluded — it earns 5X)."
 
 benefits:
   - effective_from: 2014-01-01
@@ -87,5 +96,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entry, points]

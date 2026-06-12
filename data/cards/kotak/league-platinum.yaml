@@ -44,6 +44,9 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    capping_rules:
+      - "Tiered earn: 8X/₹150 on special categories; other spends earn 4X/₹150 only up to ₹2L per year, beyond which only special categories earn."
+      - "Kotak Myntra Kaching holders were migrated to this card on 10-Jul-2025; a no-joining/annual-fee acquisition variant is advertised (med confidence)."
     redemption:
       - type: catalog
         program: Kotak Rewards
@@ -90,5 +93,5 @@ application:
   apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/league-platinum-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [mid, points, lounge]

@@ -14,9 +14,9 @@ fees:
   - effective_from: 2022-01-01
     effective_until: null
     joining_fee_inr: 0
-    annual_fee_inr: 1000
+    annual_fee_inr: 999
     fee_waiver:
-      spend_inr: 200000
+      spend_inr: 300000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.25
@@ -38,6 +38,14 @@ rewards:
       per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
+    accelerated:
+      - category: restaurants-medical-books-rail-movies
+        canonical_categories: [dining, entertainment]
+        effective_rate: 4
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "2X (4 RP/₹100-equivalent on the 3/₹150 base) on restaurants, medical, books, insurance, rail/movie tickets and car rentals."
     exclusions:
       - fuel
       - wallet-loads
@@ -49,18 +57,24 @@ rewards:
         program: KVB Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.kvb.co.in/personal-banking/cards/credit-cards/honour/
-      retrieved_on: 2026-04-15
+      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-honour-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections (official page): AF ₹999, waiver ₹3L, lounge 4 dom/yr (1/quarter), 2X category accelerator + 700 RP welcome added."
 
 benefits:
   - effective_from: 2022-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 2
+        visits_per_cycle: 1
         cycle: quarterly
         guests_per_visit: 0
         via: [visa]
+    welcome:
+      - condition: "Card activation"
+        benefit: "700 bonus Reward Points"
+        value_inr: 175
+        window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -85,5 +99,5 @@ application:
   apply_url: https://www.kvb.co.in/personal-banking/cards/credit-cards/honour/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, points, lounge]

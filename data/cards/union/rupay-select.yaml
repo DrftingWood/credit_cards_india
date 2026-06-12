@@ -14,7 +14,7 @@ fees:
   - effective_from: 2022-04-01
     effective_until: null
     joining_fee_inr: 0
-    annual_fee_inr: 750
+    annual_fee_inr: 499
     fee_waiver:
       spend_inr: 75000
       cycle: annual
@@ -25,8 +25,9 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.unionbankofindia.co.in/english/credit-card-rupay-select.aspx
-      retrieved_on: 2026-04-15
+      url: https://www.unionbankofindia.bank.in/en/details/rupay-select-credit-card
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections (official page): base 4 RP/₹100 (was 2/₹150); AF ₹499; fuel waiver cap ₹100/cycle."
 
 rewards:
   - effective_from: 2022-04-01
@@ -34,8 +35,8 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 2
-      per_inr: 150
+      rate: 4
+      per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
     exclusions:
@@ -61,11 +62,14 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [rupay]
+    other:
+      - name: International lounge access
+        description: 2 complimentary international lounge visits per year via the RuPay programme.
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
-      cap_per_cycle_inr: 250
+      cap_per_cycle_inr: 100
       cycle: monthly
     concierge: false
     source:
@@ -85,5 +89,5 @@ application:
   apply_url: https://www.unionbankofindia.co.in/english/credit-card-rupay-select.aspx
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [mid, rupay, points, upi-linkable, psu-bank]

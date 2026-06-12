@@ -273,7 +273,7 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   insurance entirely); Jan-2026 exclusions (govt, tax, property mgmt, rent,
   wallets) eff 2026-01-15; BMS movie benefit gone/gated (med-high). high
 
-## Amex/Yes/StanC/HSBC/Federal batch (agent sweep 2026-06-12) — encoding in progress
+## Amex/Yes/StanC/HSBC/Federal batch (agent sweep 2026-06-12) — ENCODED (deferred: centurion fee verification, reserve Rs10L waiver, premia/reserv med-conf earn tiers re-check, EMT points migration, scapia RuPay variant)
 
 - **amex/centurion**: joining fee unverifiable (invite-only; YAML notes
   self-contradict 2L vs 1.5L) — low, flag only.
@@ -327,3 +327,53 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   (2025, high); welcome ₹200 voucher (med).
 - **Amex waiver date**: discretionary renewal waivers ended ~12-Jun-2025
   (forum-reported) — refines the approximate 2025-07-01 already encoded.
+
+## RBL/IndusInd/IDFC/fintech batch (agent sweep 2026-06-12) — encoding in progress
+
+- **rbl/zomato-edition**: FABRICATED/conflated — the Zomato-RBL Edition
+  co-brand (launched 2020) was terminated 15-May-2023, holders migrated to
+  ShopRite; no 2023 "Zomato Edition" exists. Mark discontinued 2023-05-15.
+  paisabazaar. high
+- **rbl/insignia**: fee ₹7,000 (LTF for Insignia Preferred clients; YAML
+  ₹10k, med-high); welcome 28,000 RP (med); lounge 2/quarter + PP 6 intl/yr
+  (med-high, was unlimited); milestone ₹8,000 vouchers @₹8L (med).
+- **rbl/play**: BMS-centric now — 2 free BMS tickets per ₹5,000 spend +
+  ₹100/mo F&B; Super Star benefit devalued Dec-2024 (med); waiver ₹1.5L
+  (high); welcome ₹500 BMS (med).
+- **rbl/shoprite**: waiver ₹1.5L (high); welcome 2,000 RP (med); movies 10%
+  BMS ≤₹100 15×/yr (med).
+- **rbl/world-safari**: intl accel 5/₹100 not 10 (med); milestones 10,000
+  @2.5L / 15,000 @5L / ₹10k voucher @7.5L (high); lounge spend-gated eff
+  1-Jul-2025 + PP extra visit per ₹50k/qtr (med).
+- **indusind/eazydiner-platinum**: LTF (₹1,500 fee wrong, high); 15-Jul-2025
+  devaluation — 2X EazyPoints all spends + 20% PayEazy discount ≤₹500
+  capped ₹2,000/mo (₹5,000 on ₹30k non-dining), dining points wiped,
+  lounge removed (med); welcome 3-mo Prime + 500 pts (med).
+- **indusind/iconia**: discontinued for new sourcing (Amex variant) — high.
+- **indusind/legend**: lounge discontinued eff 7-Mar-2025 (high).
+- **indusind/pinnacle**: intl lounge 1/quarter PP + golf halved (1+1/mo)
+  eff 13-Mar-2025 (high); AF possibly ₹14,999 (low-med, not applied).
+- **idfc/ashva**: forex 1% (was 1.5); earn 5X ≤₹20k/mo, 10X above; intl
+  cut to 5X eff 18-Jan-2026 (high); lounge 16 dom (incl spa) + 8 intl/yr
+  spend-gated (med); welcome ₹2,000 cashback + 2,500 RP (med); waiver
+  unverified (low).
+- **idfc/mayura**: forex 0% (was 0.99); NO waiver (₹5,999 fee); earn 5X
+  ≤₹20k, 10X above + birthday, 3X rent/wallet/edu/govt; intl 10X→5X eff
+  18-Jan-2026 (high); lounge 16+16/yr gated ₹20k prev-month (high);
+  welcome unverified (low).
+- **idfc/swyp**: NO per-transaction earn — monthly milestones 200 RP @₹5k,
+  500 @₹10k, 1,000 @₹15k (₹0.25/RP); FASTag/railway excluded from
+  milestones eff Mar-2026 (high); EMI is user-initiated >₹3,000 flat-fee
+  (med).
+- **idfc/first-private**: fee ₹50,000 (LTF only as ~₹1Cr-TRV invite; YAML
+  said ₹0, high); forex 0%; up to 10 RP/₹100 with 1 RP = ₹1 on Travel &
+  Shop portal eff Jun-2025 (med); welcome 1,00,000 RP + ITC Culinaire +
+  Accor Plus (med).
+- **idfc/indigo**: NO lounge access at all (high, was 4/q + 4/yr);
+  milestones 5,000 BluChips @ 2L/5L/8L/10L/12L (high, issuer PDF);
+  fuel/rent/insurance earn 0.5/₹100 not zero (med).
+- **onecard/metal**: 1 RP = ₹0.10 (was ₹1, high); NO complimentary lounge
+  (high, was 4/q on ₹50k).
+- **slice/slice-rupay**: launched Jun/Jul-2025 post-NESFB merger (med);
+  ~2% cashback, up to 3% conditional on slice balance (med; YAML caps
+  uncorroborated).

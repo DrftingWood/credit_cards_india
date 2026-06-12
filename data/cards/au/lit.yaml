@@ -20,7 +20,7 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 0.99
+    forex_markup_pct: 3.49
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
@@ -28,8 +28,9 @@ fees:
     gst_applicable: true
     notes: "LIT base card is lifetime-free; individual features carry per-activation fees billed in-app."
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/lit
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/au-bank/au-bank-credit-cards-forex-markup-charges/
+      retrieved_on: 2026-06-12
+      notes: "Forex corrected from an erroneous 0.99% to AU's standard 3.49% markup; cross-checked against Paisabazaar's LIT page."
 
 rewards:
   - effective_from: 2022-04-01
@@ -68,13 +69,7 @@ rewards:
 benefits:
   - effective_from: 2022-04-01
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-        notes: "Base feature; additional visits unlockable via toggleable LIT feature for a fee."
+    lounge_access: null
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -84,12 +79,13 @@ benefits:
     concierge: false
     other:
       - name: Customisable feature menu
-        description: In-app menu of togglable features (accelerated rewards, extra lounges, insurance add-ons, fuel-surcharge boost) activated per statement cycle for a fee.
-      - name: Low forex markup
-        description: Sub-1% forex markup is a standout for this tier.
+        description: In-app menu of togglable features (accelerated rewards, lounge access, insurance add-ons, fuel-surcharge boost) activated per statement cycle for a fee.
+      - name: Paid lounge toggle
+        description: Domestic lounge access is a paid toggleable feature (~₹399 per 90 days), not a complimentary benefit.
     source:
       url: https://www.aubank.in/personal-banking/credit-cards/lit
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-06-12
+      notes: "Lounge moved out of lounge_access — it is a paid add-on, not complimentary (PerkPilot / Paisabazaar, June 2026)."
 
 eligibility:
   min_age: 21
@@ -104,5 +100,5 @@ application:
   apply_url: https://www.aubank.in/personal-banking/credit-cards/lit
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [lifetime-free, customisable, low-forex, mid-tier]
+  last_verified_on: 2026-06-12
+  tags: [lifetime-free, customisable, mid-tier]

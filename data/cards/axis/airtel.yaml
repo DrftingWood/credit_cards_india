@@ -33,6 +33,52 @@ fees:
 
 rewards:
   - effective_from: 2021-01-01
+    effective_until: 2026-04-11
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: airtel-thanks-utility
+        canonical_categories: [utilities]
+        effective_rate: 25
+        cap_per_cycle: 250
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [airtel-thanks-app]
+        notes: "25% cashback on Airtel bill payments (mobile, DTH, broadband) via Airtel Thanks app, capped ₹250/month."
+      - category: swiggy-zomato-preferred
+        canonical_categories: [dining]
+        effective_rate: 10
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [swiggy, zomato, bigbasket]
+        notes: "10% on Swiggy, Zomato, BigBasket, capped ₹500/month."
+      - category: utility-bills-general
+        canonical_categories: [utilities]
+        effective_rate: 5
+        cap_per_cycle: 250
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "5% on non-Airtel utility bills, capped ₹250/month."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.paisabazaar.com/credit-card/airtel-axis-credit-card-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "Historical record; caps corrected from 'unlimited' (they were always ₹250/₹500/₹250 per month). Structure before the 12-Apr-2026 devaluation."
+
+  - effective_from: 2026-04-12
     effective_until: null
     currency: cashback
     currency_name: Cashback
@@ -48,36 +94,42 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [airtel-thanks-app]
-        notes: "25% cashback on Airtel bill payments (mobile, DTH, broadband) via Airtel Thanks app."
-      - category: swiggy-zomato-preferred
+        notes: "25% on Airtel bills via Airtel Thanks, now capped at 2× the base (1%) cashback earned on other retail spends that cycle — zero retail spend means zero accelerated cashback."
+      - category: zomato-blinkit-value-back
         canonical_categories: [dining]
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [swiggy, zomato, bigbasket]
+        merchants: [zomato, blinkit]
+        notes: "10% on Zomato/Blinkit paid as partner-wallet 'value back' (min order ₹499), no longer bank cashback. Swiggy and BigBasket withdrawn."
       - category: utility-bills-general
         canonical_categories: [utilities]
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
+        notes: "5% on non-Airtel utilities, capped at 1× the base cashback earned that cycle."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
+    capping_rules:
+      - "Accelerated caps are re-linked to base earn from 12-Apr-2026: Airtel 25% capped at 2× base cashback of the cycle; utilities 5% capped at 1× base cashback."
+      - "Zomato/Blinkit 10% is partner-wallet value back with minimum order ₹499, not statement cashback."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/airtel-axis-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/blog/airtel-axis-bank-credit-card-benefits-changed/
+      retrieved_on: 2026-06-12
+      notes: "12-Apr-2026 devaluation per CardInsider / Live From A Lounge / Card Maven."
 
 benefits:
   - effective_from: 2021-01-01
-    effective_until: null
+    effective_until: 2026-04-11
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -99,6 +151,27 @@ benefits:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/airtel-axis-bank-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; the 4 annual lounge visits were removed on 12-Apr-2026."
+
+  - effective_from: 2026-04-12
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Amazon voucher worth ₹500"
+        value_inr: 500
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://cardinsider.com/blog/airtel-axis-bank-credit-card-benefits-changed/
+      retrieved_on: 2026-06-12
+      notes: "Lounge access removed entirely in the 12-Apr-2026 devaluation."
 
 eligibility:
   min_age: 18
@@ -113,5 +186,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/airtel-axis-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, telecom, airtel, cashback, bill-payments, entry]

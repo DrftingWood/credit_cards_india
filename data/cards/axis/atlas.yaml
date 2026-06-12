@@ -6,9 +6,15 @@ network_tier: signature
 tier: premium
 card_type: credit
 co_brand: null
-status: active
+status: on-hold
 launched_on: 2022-08-01
 discontinued_on: null
+
+# NOTE: Axis quietly stopped accepting new Atlas applications around
+# late-2025 (confirmed via customer care and community reports; no official
+# press release). Existing cardholders are unaffected — hence on-hold, not
+# discontinued. Sources: cardtrail.in/news/axis-atlas-discontinued-2026/,
+# livefromalounge.com (Aug-2025), rewardmatrix.in.
 
 fees:
   - effective_from: 2022-08-01
@@ -28,7 +34,7 @@ fees:
 
 rewards:
   - effective_from: 2022-08-01
-    effective_until: null
+    effective_until: 2025-06-19
     currency: miles
     currency_name: EDGE Miles
     base:
@@ -72,10 +78,61 @@ rewards:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-atlas-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; uncapped/ungrouped transfer partners before the 20-Jun-2025 revision."
+
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: miles
+    currency_name: EDGE Miles
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.5
+    accelerated:
+      - category: travel-edge-portal
+        canonical_categories: [travel]
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [edge-travel]
+        notes: "5 EDGE Miles per ₹100 on travel bookings via Axis Travel EDGE. Rate fires only on bookings routed through the EDGE portal — direct/OTA bookings drop to base."
+      - category: international-spend
+        canonical_categories: [international]
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - utilities
+    capping_rules:
+      - "Transfer partners split into Group A (capped 30,000 miles/year) and Group B (capped 1,20,000 miles/year); 1,50,000 miles/year combined."
+      - "Marriott Bonvoy, Accor and Qatar Airways removed as transfer partners (2025); British Airways, Finnair and Lotusmiles added."
+    redemption:
+      - type: airmiles
+        program: Multiple (EDGE Miles transfer)
+        ratio: "2:1"
+        constraints: "Group A partners capped 30,000 miles/yr; Group B capped 1,20,000 miles/yr; 1,50,000 total."
+      - type: catalog
+        program: Axis Travel EDGE
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.axisbank.com/docs/default-source/default-document-library/credit-cards/terms-and-conditions-atlas-credit-card.pdf
+      retrieved_on: 2026-06-12
+      notes: "20-Jun-2025 revision: transfer-partner groups and annual caps per Axis T&C PDF and Paisabazaar's Atlas devaluation tracker."
 
 benefits:
   - effective_from: 2022-08-01
-    effective_until: null
+    effective_until: 2024-04-19
     lounge_access:
       domestic:
         visits_per_cycle: 8
@@ -115,6 +172,56 @@ benefits:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-atlas-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; milestone structure (17,500 miles total) before the 20-Apr-2024 revision."
+
+  - effective_from: 2024-04-20
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    milestones:
+      - spend_inr: 300000
+        cycle: annual
+        benefit: "Silver tier: 2,500 EDGE Miles bonus"
+        value_inr: 2500
+        reward_kind: miles
+        reward_units: 2500
+      - spend_inr: 750000
+        cycle: annual
+        benefit: "Gold tier: additional 2,500 EDGE Miles + 2 extra intl. lounge visits"
+        value_inr: 2500
+        reward_kind: miles
+        reward_units: 2500
+      - spend_inr: 1500000
+        cycle: annual
+        benefit: "Platinum tier: additional 5,000 EDGE Miles + 4 extra intl. lounge visits"
+        value_inr: 5000
+        reward_kind: miles
+        reward_units: 5000
+    welcome:
+      - condition: "First transaction within 30 days of joining fee payment"
+        benefit: "5,000 EDGE Miles"
+        value_inr: 5000
+        window_days: 30
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.paisabazaar.com/credit-card/axis-atlas-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "20-Apr-2024 revision: annual milestone earnings capped at 10,000 EDGE Miles total (2,500 + 2,500 + 5,000 across tiers)."
 
 eligibility:
   min_age: 18
@@ -126,8 +233,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-atlas-credit-card
+  apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-24
+  last_verified_on: 2026-06-12
   tags: [travel, miles, premium]

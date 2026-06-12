@@ -7,7 +7,7 @@ tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-03-01
+launched_on: 2022-09-01
 discontinued_on: null
 
 fees:
@@ -31,7 +31,7 @@ fees:
 
 rewards:
   - effective_from: 2023-03-01
-    effective_until: null
+    effective_until: 2026-03-31
     currency: cashback
     currency_name: Cashback
     base:
@@ -63,6 +63,46 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
       retrieved_on: 2026-04-15
+      notes: "Historical record; pre-April-2026 structure (5% online capped ₹5,000/month)."
+
+  - effective_from: 2026-04-01
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: online-spend
+        canonical_categories: [online]
+        effective_rate: 5
+        cap_per_cycle: 2000
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "5% cashback on online spends, capped at ₹2,000 per statement cycle (down from ₹5,000 before April 2026)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - utilities
+      - insurance-premiums
+      - education
+      - jewellery
+      - emi
+      - government
+      - other
+    capping_rules:
+      - "1% cashback on offline spends capped at ₹2,000 per statement cycle."
+      - "New exclusions from April 2026: digital gaming, tolls, government payments, railways."
+      - "Cashback credited automatically to statement within 2 days of next statement."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://cardinsider.com/blog/sbi-cashback-credit-card-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "April-2026 devaluation: online cap halved to ₹2,000/cycle, offline 1% capped ₹2,000/cycle, new exclusion list. Cross-checked against TechnoFino thread; issuer T&C PDF to replace this source on next sweep."
 
 benefits:
   - effective_from: 2023-03-01
@@ -93,5 +133,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-04-24
+  last_verified_on: 2026-06-12
   tags: [cashback, online-spend, mid-tier]

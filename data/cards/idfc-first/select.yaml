@@ -78,7 +78,7 @@ rewards:
 
 benefits:
   - effective_from: 2021-01-01
-    effective_until: null
+    effective_until: 2025-04-30
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -120,6 +120,100 @@ benefits:
     source:
       url: https://www.idfcfirstbank.com/credit-card/select
       retrieved_on: 2026-04-15
+      notes: "Historical record; 4 domestic visits/quarter ended 1-May-2025."
+
+  - effective_from: 2025-05-01
+    effective_until: 2026-03-31
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [loungekey]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 2
+    welcome:
+      - condition: "Spend ₹15,000 within 90 days"
+        benefit: "Welcome voucher worth ₹500"
+        value_inr: 500
+        window_days: 90
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 1000000
+      - type: lost-card-liability
+        sum_insured_inr: 2500000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 300
+      cycle: monthly
+    movies:
+      type: bogo
+      partner: Paytm Movies
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 250
+    concierge: false
+    source:
+      url: https://livefromalounge.com/idfc-bank-credit-cards-devaluation-railway-lounge-access/
+      retrieved_on: 2026-06-12
+      notes: "1-May-2025 devaluation: domestic lounge cut from 4 to 2 visits/quarter."
+
+  - effective_from: 2026-04-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+        spend_threshold_inr: 20000
+        spend_threshold_cycle: monthly
+        notes: "1 visit/quarter, unlocked by ₹20,000 spend in the previous month (April-2026 revision)."
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [loungekey]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 2
+    welcome:
+      - condition: "Spend ₹15,000 within 90 days"
+        benefit: "Welcome voucher worth ₹500"
+        value_inr: 500
+        window_days: 90
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 1000000
+      - type: lost-card-liability
+        sum_insured_inr: 2500000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 300
+      cycle: monthly
+    movies:
+      type: bogo
+      partner: Paytm Movies
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 250
+    concierge: false
+    source:
+      url: https://cardinsider.com/blog/devaluation-railway-lounge-access-idfc-first-credit-cards/
+      retrieved_on: 2026-06-12
+      notes: "April-2026 revision: 1 domestic visit/quarter gated on ₹20k previous-month spend. Reward earn basis reportedly moved ₹150→₹200 in the same wave but the effective date is unpinned — rewards record deliberately not yet revised; see ROADMAP."
 
 eligibility:
   min_age: 21
@@ -134,5 +228,5 @@ application:
   apply_url: https://www.idfcfirstbank.com/credit-card/select
 
 metadata:
-  last_verified_on: 2026-04-24
+  last_verified_on: 2026-06-12
   tags: [lifetime-free, points, online-spend, mid-tier]

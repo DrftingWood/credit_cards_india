@@ -16,7 +16,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2018-10-16
-    effective_until: null
+    effective_until: 2025-10-10
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
@@ -30,10 +30,27 @@ fees:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/amazon-pay-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; forex markup before the 11-Oct-2025 partnership renewal."
+
+  - effective_from: 2025-10-11
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 1.99
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Lifetime-free card. Forex markup cut to 1.99% with the October-2025 Amazon-ICICI partnership renewal."
+    source:
+      url: https://www.icici.bank.in/about-us/news-room/2025/amazon-pay-and-icici-bank-renew-partnership-enhance-indias-most-adopted-co-branded-credit-card
+      retrieved_on: 2026-06-12
 
 rewards:
   - effective_from: 2018-10-16
-    effective_until: null
+    effective_until: 2025-10-10
     currency: cashback
     currency_name: Amazon Pay Balance
     base:
@@ -89,6 +106,74 @@ rewards:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/amazon-pay-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; cashback structure before the 11-Oct-2025 revamp."
+
+  - effective_from: 2025-10-11
+    effective_until: null
+    currency: cashback
+    currency_name: Amazon Pay Balance
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: amazon-in-prime
+        canonical_categories: [online]
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [amazon.in]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [amazon-pay]
+        notes: "5% back for Prime members on Amazon.in, now explicitly including travel bookings via Amazon Pay."
+      - category: amazon-in-non-prime
+        canonical_categories: [online]
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [amazon.in]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [amazon-pay]
+      - category: amazon-pay-partners
+        canonical_categories: [online]
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [amazon-pay]
+        notes: "2% back on 100+ Amazon Pay partner merchants."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+      - cash-advance
+      - government
+      - education
+      - utilities
+      - gift-cards
+      - other
+    capping_rules:
+      - "On Amazon/Amazon Pay: no cashback on gold coins, EMI, rent, tax and education payments."
+      - "On other merchants: fuel, utilities and international transactions additionally excluded."
+    redemption:
+      - type: cashback-bank
+        program: Amazon Pay
+        rate_inr_per_unit: 1.0
+        constraints: "Credited as Amazon Pay balance, usable across Amazon.in and Amazon Pay merchants."
+    source:
+      url: https://cardinsider.com/blog/amazon-pay-icici-credit-card-cashback-no-longer-universal-devaluation-alert/
+      retrieved_on: 2026-06-12
+      notes: "11-Oct-2025 revamp exclusion structure; cross-checked against ICICI newsroom announcement and TechnoFino thread."
 
 benefits:
   - effective_from: 2018-10-16
@@ -119,5 +204,5 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/amazon-pay-credit-card
 
 metadata:
-  last_verified_on: 2026-04-24
+  last_verified_on: 2026-06-12
   tags: [co-branded, amazon, cashback, lifetime-free, entry]

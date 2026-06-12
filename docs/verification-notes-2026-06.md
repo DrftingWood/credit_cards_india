@@ -106,3 +106,40 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   miles/yr cap; 30/₹100 portal rate unverified-likely-wrong; welcome 2,500
   miles + ₹10,000 Taj/ITC vouchers (also renewal); transfers 1 mile = 4
   partner points; 10 guest visits/yr; golf 8 + 1 per ₹50k. cardinsider. high
+
+## SBI batch (agent sweep 2026-06-12) — encoding in progress
+
+- **GLOBAL (all 11 SBI cards)**: finance charge 3.5 → 3.75 eff 2024-11-01
+  (cardinsider, high); Dec-2024 wave eff 2024-12-01: digital-gaming spends
+  earn nothing, government spends excluded on most cards, utility payments
+  >₹50k/cycle attract 1% fee; rent ₹199 processing fee + third-party
+  education 1% fee (2024). business-standard. high
+- **prime**: OK apart from global items. paisabazaar. high
+- **elite**: milestones are points (10k/10k/15k/15k pts at 3L/4L/5L/8L =
+  ₹2,500/2,500/3,750/3,750); movies 2 tickets/mo ₹250 each; CV Silver +
+  Trident Red discontinued post-merger, no replacement (med). high
+- **simplyclick**: 10X list = Apollo 24x7, BookMyShow, Cleartrip, Dominos,
+  IGP, Myntra, Netmeds, Yatra (Amazon 10X discontinued; lenskart/ola gone);
+  Swiggy cut 10X→5X eff 2025-04-01. businesstoday. high
+- **simplysave**: OK apart from global. med
+- **pulse**: milestone is ₹4L annual → ₹1,500 e-voucher (YAML had ₹2L);
+  welcome watch model is ColorFit Pulse 4 Pro (med). high
+- **bpcl-octane**: milestone ₹3L annual → ₹2,000 e-voucher (YAML ₹2L). high
+- **aurum**: waiver = fee reversed on ₹12L (YAML null); domestic lounge
+  4/quarter not unlimited; welcome 40,000 pts (med); milestones Tata CLiQ
+  ₹5,000 @5L + Taj ₹10,000 @10L + Club Marriott (med); applications via
+  aurumcreditcard.com income ≥₹40L (med). high/med
+- **miles-elite**: waiver ₹15L (YAML 10L); welcome 5,000 TC on ₹1L/60d;
+  milestone ₹12L → 20,000 TC (+1 dom lounge per ₹1L cumulative); transfer
+  1:1 some partners, 2:1 Emirates/Qatar/Turkish/Accor/ITC (med); ₹1Cr
+  air-accident cover discontinued eff 2025-07-15 (sbicard notice). high
+- **air-india-platinum**: discontinued for new issuance eff 2024-10-10;
+  AI-ticket accelerator was 15/₹100 (YAML 10) cut to 5/₹100 eff 2025-03-31;
+  insurance withdrawn 2025-07-26; programme rebranded Maharaja Club (med).
+  cardinsider + sbicard notices. high
+- **reliance-prime**: milestones = Reliance vouchers ₹1,500 @75k, ₹2,250
+  @1.5L, ₹5,000 @3L annual (YAML ₹7,000 @5L); 1 free BMS ticket/mo ₹250
+  missing; welcome also includes ₹11,999 Reliance discount vouchers (med). high
+- **irctc-premier**: lounge is 8 RAILWAY station visits/yr (2/quarter), no
+  airport lounge; welcome 1,500 RP on first annual fee; milestone up to
+  5,000 RP (med). paisabazaar. high

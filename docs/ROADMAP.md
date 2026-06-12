@@ -2,36 +2,23 @@
 
 ## 2026-06 audit follow-ups (see docs/AUDIT-2026-06.md)
 
-Phases 0-1 (code semantics fix, schema/validator hardening) and the
-high-confidence half of Phase 2 (flagship refresh) landed 2026-06-12.
-Still open, in priority order:
+Phases 0, 1, 2 and 4 are done. Phase 3 (full-catalogue re-verification) is
+in progress — HDFC (18), Axis (14), SBI (13) and the flagship wave are
+encoded; per-card detail in docs/verification-notes-2026-06.md. Open:
 
-1. **Phase 2 leftovers — verified discrepancies not yet encoded** (need an
-   effective date or issuer confirmation before writing the record):
-   - idfc-first/select (+ siblings): reward earn basis reportedly moved
-     ₹150→₹200 with structure simplification; effective date unpinned.
-   - axis/magnus: 20-Jun-2025 transfer-partner removals (Marriott, Accor,
-     Qatar); fee history still flattened (launch fee was ₹10,000, raised
-     Apr-2023 — fees[0] wrongly claims ₹12,500 since 2019).
-   - axis/reserve: ₹35L waiver (post-Sep-2023 onboardings), 2x-intl-only
-     accelerator, 2024/2025 devaluation records.
-   - hdfc/diners-black: milestone/welcome structure appears to be the old
-     non-metal card's (medium confidence — verify against HDFC PDF).
-   - hdfc/infinia: FY27 retention criteria (₹18L spend or ₹50L RV).
-2. **Phase 3 — full-catalogue re-verification sweep**: 113 cards not yet
-   fact-checked; every flagship sampled in the audit had errors. Batch by
-   issuer; replace aggregator sources (12 warnings) with issuer PDFs.
-3. **Process**: tiered staleness budgets, weekly devaluation watch,
-   metadata.last_swept_on vs last_verified_on split (audit Phase 4).
+1. **Phase 3 remaining batches** (~55 cards): ICICI and Kotak/AU agent
+   sweeps in flight as of 2026-06-12; then RBL, IndusInd, IDFC remainder
+   (incl. mayura/ashva Jan-2026 change — blocked on issuer T&C), Amex
+   remainder, Yes, StanC, HSBC, BoB, Federal, OneCard, slice, small PSUs.
+2. **Deferred encodings** (verified, ambiguous or unmodellable): see the
+   "deferred" markers in verification-notes — air-india decomposition +
+   Maharaja Club programme rename, aurum Club Marriott, miles-elite
+   per-₹1L lounge accrual, irctc-premier milestone, Amex exact waiver
+   withdrawal date, my-zone SonyLIV renewal date conflict.
+3. **Aggregator source replacement**: ~30 records now cite cardinsider/
+   paisabazaar/cardmaven (flagged by the validator) — replace with issuer
+   T&C PDFs issuer-by-issuer during Phase 3.
 
-Concrete deferred items, in rough priority order. When an item lands, move
-it to [`DECISIONS.md`](DECISIONS.md) if it represents a durable design
-choice; otherwise just delete it from this file.
-
-For the design rationale that motivated this list, see
-[`DECISIONS.md`](DECISIONS.md).
-
----
 
 ## ⚠ Provisional realized unit values — must be sourced
 

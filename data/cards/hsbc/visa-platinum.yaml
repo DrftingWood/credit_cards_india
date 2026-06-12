@@ -79,6 +79,5 @@ application:
   apply_url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
 
 metadata:
-  last_verified_on: 2026-04-15
-  last_swept_on: 2026-06-12
+  last_verified_on: 2026-06-12
   tags: [lifetime-free, entry, points]

@@ -12,7 +12,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2018-01-01
-    effective_until: null
+    effective_until: 2025-12-31
     joining_fee_inr: 250
     annual_fee_inr: 250
     fee_waiver:
@@ -27,10 +27,27 @@ fees:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/neo-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; ₹250 fee era."
+
+  - effective_from: 2026-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.6
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://cardinsider.com/axis-bank/axis-bank-neo-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "Currently issued lifetime-free under a limited-period offer; 2026-01-01 boundary is approximate (exact date unpinned)."
 
 rewards:
   - effective_from: 2018-01-01
-    effective_until: null
+    effective_until: 2025-12-31
     currency: points
     currency_name: EDGE Reward Points
     base:
@@ -57,16 +74,43 @@ rewards:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/neo-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; 2% bill-payments accelerator era (withdrawn; date unpinned)."
+
+  - effective_from: 2026-01-01
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 1
+      per_inr: 200
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+    redemption:
+      - type: catalog
+        program: EDGE Rewards
+        rate_inr_per_unit: 0.2
+    source:
+      url: https://cardinsider.com/axis-bank/axis-bank-neo-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "No accelerated earn currently — value comes from merchant discounts (see benefits.other); boundary approximate."
 
 benefits:
   - effective_from: 2018-01-01
     effective_until: null
     lounge_access: null
     welcome:
-      - condition: "Spend ₹2,500 within 45 days"
-        benefit: "Amazon voucher worth ₹250"
-        value_inr: 250
-        window_days: 45
+      - condition: "First utility bill payment within 30 days"
+        benefit: "100% cashback up to ₹300 on first utility bill"
+        value_inr: 300
+        window_days: 30
+    other:
+      - name: Merchant discounts
+        description: 40% off Zomato (×2/month), 10% off Blinkit, ₹150 off Myntra, 10% off BookMyShow.
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -75,8 +119,9 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/neo-credit-card
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/axis-bank/axis-bank-neo-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: welcome was wrongly an Amazon ₹250 voucher; merchant-discount menu added."
 
 eligibility:
   min_age: 18
@@ -91,5 +136,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/neo-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entry, points, bill-payments]

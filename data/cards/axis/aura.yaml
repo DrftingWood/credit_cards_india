@@ -6,7 +6,7 @@ network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
-status: active
+status: on-hold  # discontinued for new applications (paisabazaar, 2026-06; date unconfirmed); existing holders keep benefits
 launched_on: 2021-06-01
 discontinued_on: null
 
@@ -83,8 +83,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.axisbank.com/retail/cards/credit-card/aura-credit-card
+  apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entry, health-wellness, points]

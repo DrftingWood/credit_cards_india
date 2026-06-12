@@ -86,9 +86,30 @@ def _normalize(value):
     return value
 
 
+class _StrictLoader(yaml.SafeLoader):
+    """SafeLoader that rejects duplicate mapping keys (PyYAML silently keeps the last one; js-yaml in the site build errors — keep both pipelines consistent)."""
+
+
+def _strict_map(loader, node, deep=False):
+    mapping = {}
+    for key_node, value_node in node.value:
+        key = loader.construct_object(key_node, deep=deep)
+        if key in mapping:
+            raise yaml.constructor.ConstructorError(
+                None, None, f"duplicate mapping key {key!r}", key_node.start_mark
+            )
+        mapping[key] = loader.construct_object(value_node, deep=deep)
+    return mapping
+
+
+_StrictLoader.add_constructor(
+    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, _strict_map
+)
+
+
 def load_yaml(path: Path):
     with path.open("r", encoding="utf-8") as f:
-        return _normalize(yaml.safe_load(f))
+        return _normalize(yaml.load(f, Loader=_StrictLoader))
 
 
 def load_schema(name: str) -> dict:

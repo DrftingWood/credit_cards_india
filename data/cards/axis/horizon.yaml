@@ -7,30 +7,29 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-08-01
+launched_on: 2025-06-01  # approximate; Citi PremierMiles successor, ~mid-2025 (livefromalounge)
 discontinued_on: null
 
 fees:
-  - effective_from: 2024-08-01
+  - effective_from: 2025-06-01
     effective_until: null
     joining_fee_inr: 3000
     annual_fee_inr: 3000
-    fee_waiver:
-      spend_inr: 1000000
-      cycle: annual
-      conditions: "Annual fee waived on spends of ₹10L in the preceding year."
-    forex_markup_pct: 1.5
+    fee_waiver: null
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.6
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
+    notes: "No spend-based fee waiver."
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/axis-bank/axis-bank-horizon-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: no fee waiver (₹10L waiver was wrong); forex 3.5% (1.5% was wrong)."
 
 rewards:
-  - effective_from: 2024-08-01
+  - effective_from: 2025-06-01
     effective_until: null
     currency: miles
     currency_name: EDGE Miles
@@ -64,39 +63,41 @@ rewards:
       - government
       - insurance-premiums
       - utilities
+    capping_rules:
+      - "Transfers to partners capped at 5,00,000 EDGE Miles per year."
     redemption:
       - type: airmiles
         program: Multiple (EDGE Miles transfer)
-        ratio: "2:1"
-        constraints: "Transfer to 20+ airline/hotel partners."
+        ratio: "1:1"
+        constraints: "1:1 to standard partners; 2:1 only to premium partners (British Airways, Finnair, Lotusmiles)."
       - type: catalog
         program: Axis Travel EDGE
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/axis-bank/axis-bank-horizon-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: transfer ratio is 1:1 standard / 2:1 premium (was wrongly 2:1 across the board); 5L miles/yr transfer cap added."
 
 benefits:
-  - effective_from: 2024-08-01
+  - effective_from: 2025-06-01
     effective_until: null
     lounge_access:
       domestic:
         visits_per_cycle: 8
-        cycle: annual
+        cycle: quarterly
         guests_per_visit: 0
-        via: [dreamfolks]
+        via: [visa]
+        notes: "8 visits/quarter (32/yr) on the Visa variant (24/yr on Mastercard); no spend criterion."
       international:
-        visits_per_cycle: 4
-        cycle: annual
+        visits_per_cycle: 2
+        cycle: quarterly
         guests_per_visit: 0
         via: [priority-pass]
-        spend_threshold_inr: 50000
-        spend_threshold_cycle: quarterly
-        notes: "Priority Pass lounge visits activated after ₹50k spend in preceding quarter."
+        notes: "2 visits/quarter (8/yr) via Priority Pass; no spend criterion."
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "1,000 EDGE Miles"
-        value_inr: 1000
+      - condition: "Spend ₹1,000 within 30 days"
+        benefit: "5,000 EDGE Miles (plus 1,500 EDGE Miles on each renewal)"
+        value_inr: 2500
         window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
@@ -106,8 +107,9 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
-      retrieved_on: 2026-04-15
+      url: https://cardinsider.com/axis-bank/axis-bank-horizon-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: lounge is 32 dom/yr + 8 intl/yr with no spend gate (was wrongly 8/4 with ₹50k gate); welcome is 5,000 miles (was 1,000)."
 
 eligibility:
   min_age: 18
@@ -122,5 +124,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [travel, miles, premium, low-forex]
+  last_verified_on: 2026-06-12
+  tags: [travel, miles, premium]

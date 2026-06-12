@@ -15,9 +15,7 @@ fees:
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
+    fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -27,6 +25,7 @@ fees:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card
       retrieved_on: 2026-04-15
+      notes: "Waiver corrected 2026-06: no spend-based fee waiver on this card (medium confidence — cardinsider)."
 
 rewards:
   - effective_from: 2018-01-01
@@ -56,7 +55,7 @@ rewards:
 
 benefits:
   - effective_from: 2018-01-01
-    effective_until: null
+    effective_until: 2024-04-30
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -86,6 +85,43 @@ benefits:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; unconditional lounge era."
+
+  - effective_from: 2024-05-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [mastercard, dreamfolks]
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "1 visit/quarter, gated on ₹50k spend in the preceding 3 months (1-May-2024)."
+    dining:
+      program: EazyDiner
+      discount_pct: 15
+    movies:
+      type: bogo
+      partner: District app
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 200
+    other:
+      - name: SonyLIV subscription
+        description: Complimentary 12-month SonyLIV Premium subscription on joining (worth ₹1,499). Renewal-year SonyLIV reportedly replaced by 1,000 EDGE points on ₹1.5L spend (sources conflict on Apr-2025 vs Apr-2026 — not yet modelled).
+        value_inr: 1499
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://cardinsider.com/axis-bank/axis-bank-my-zone-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "1-May-2024 lounge gating; movie BOGO via District app (cap ₹200/mo); SonyLIV value corrected to ₹1,499."
 
 eligibility:
   min_age: 18
@@ -100,5 +136,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entertainment, entry, points]

@@ -12,7 +12,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2022-05-01
-    effective_until: null
+    effective_until: 2024-10-31
     joining_fee_inr: 1499
     annual_fee_inr: 1499
     fee_waiver:
@@ -27,10 +27,29 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-pulse.page
       retrieved_on: 2026-04-15
+      notes: "Historical record; finance charge before the 1-Nov-2024 hike."
+
+  - effective_from: 2024-11-01
+    effective_until: null
+    joining_fee_inr: 1499
+    annual_fee_inr: 1499
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://cardinsider.com/blog/important-update-on-sbi-credit-cards-finance-charges-and-utility-bill-payments/
+      retrieved_on: 2026-06-12
+      notes: "Finance charge 3.75%/month on all unsecured SBI cards from 1-Nov-2024."
 
 rewards:
   - effective_from: 2022-05-01
-    effective_until: null
+    effective_until: 2024-11-30
     currency: points
     currency_name: Reward Points
     base:
@@ -58,6 +77,43 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-pulse.page
       retrieved_on: 2026-04-15
+      notes: "Historical record; structure before the 1-Dec-2024 exclusion wave."
+
+  - effective_from: 2024-12-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: chemist-pharmacy-dining-movies
+        canonical_categories: [dining, entertainment]
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "10x points on Chemist, Pharmacy, Dining and Movies."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - government
+      - other
+    capping_rules:
+      - "From 1-Dec-2024: digital gaming spends earn no rewards; government-related spends excluded; utility payments above ₹50,000/cycle attract a 1% fee."
+      - "Rent payments attract a ₹199 processing fee; third-party education payments a 1% fee (2024)."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.business-standard.com/finance/personal-finance/sbi-card-update-no-reward-points-for-spending-on-digital-gaming-platforms-124120500479_1.html
+      retrieved_on: 2026-06-12
+      notes: "1-Dec-2024 wave: digital gaming earns nothing, government excluded, utility >₹50k 1% fee."
 
 benefits:
   - effective_from: 2022-05-01
@@ -70,13 +126,13 @@ benefits:
         via: [visa, dreamfolks]
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Noise smartwatch worth ₹5,999"
+        benefit: "Noise ColorFit Pulse 4 Pro smartwatch worth ₹5,999"
         value_inr: 5999
         window_days: 90
     milestones:
-      - spend_inr: 200000
+      - spend_inr: 400000
         cycle: annual
-        benefit: "Netmeds voucher worth ₹1,500"
+        benefit: "e-voucher worth ₹1,500"
         value_inr: 1500
     insurance:
       - type: personal-accident
@@ -97,6 +153,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-pulse.page
       retrieved_on: 2026-04-15
+      notes: "milestone threshold corrected 2026-06 (₹2L in the old data was the fee-waiver threshold)"
 
 eligibility:
   min_age: 21
@@ -111,5 +168,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-pulse.page
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [health-wellness, mid, points, lifestyle]

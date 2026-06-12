@@ -12,7 +12,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2015-09-01
-    effective_until: null
+    effective_until: 2024-10-31
     joining_fee_inr: 4999
     annual_fee_inr: 4999
     fee_waiver:
@@ -27,10 +27,29 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-elite.page
       retrieved_on: 2026-04-15
+      notes: "Historical record; finance charge before the 1-Nov-2024 hike."
+
+  - effective_from: 2024-11-01
+    effective_until: null
+    joining_fee_inr: 4999
+    annual_fee_inr: 4999
+    fee_waiver:
+      spend_inr: 1000000
+      cycle: annual
+    forex_markup_pct: 1.99
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://cardinsider.com/blog/important-update-on-sbi-credit-cards-finance-charges-and-utility-bill-payments/
+      retrieved_on: 2026-06-12
+      notes: "Finance charge 3.75%/month on all unsecured SBI cards from 1-Nov-2024."
 
 rewards:
   - effective_from: 2015-09-01
-    effective_until: null
+    effective_until: 2024-11-30
     currency: points
     currency_name: Reward Points
     base:
@@ -60,6 +79,45 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-elite.page
       retrieved_on: 2026-04-15
+      notes: "Historical record; structure before the 1-Dec-2024 exclusion wave."
+
+  - effective_from: 2024-12-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: dining-grocery-departmental
+        canonical_categories: [groceries, dining]
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - government
+      - other
+    capping_rules:
+      - "From 1-Dec-2024: digital gaming spends earn no rewards; government-related spends excluded; utility payments above ₹50,000/cycle attract a 1% fee."
+      - "Rent payments attract a ₹199 processing fee; third-party education payments a 1% fee (2024)."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.business-standard.com/finance/personal-finance/sbi-card-update-no-reward-points-for-spending-on-digital-gaming-platforms-124120500479_1.html
+      retrieved_on: 2026-06-12
+      notes: "1-Dec-2024 wave: digital gaming earns nothing, government excluded, utility >₹50k 1% fee."
 
 benefits:
   - effective_from: 2015-09-01
@@ -78,20 +136,28 @@ benefits:
     milestones:
       - spend_inr: 300000
         cycle: annual
-        benefit: "Spend milestone reward worth ₹5,000"
-        value_inr: 5000
+        benefit: "10,000 bonus Reward Points"
+        value_inr: 2500
+        reward_kind: points
+        reward_units: 10000
       - spend_inr: 400000
         cycle: annual
-        benefit: "Additional reward worth ₹5,000"
-        value_inr: 5000
+        benefit: "10,000 bonus Reward Points"
+        value_inr: 2500
+        reward_kind: points
+        reward_units: 10000
       - spend_inr: 500000
         cycle: annual
-        benefit: "Further reward worth ₹5,000"
-        value_inr: 5000
+        benefit: "15,000 bonus Reward Points"
+        value_inr: 3750
+        reward_kind: points
+        reward_units: 15000
       - spend_inr: 800000
         cycle: annual
-        benefit: "Further reward worth ₹5,000"
-        value_inr: 5000
+        benefit: "15,000 bonus Reward Points"
+        value_inr: 3750
+        reward_kind: points
+        reward_units: 15000
     welcome:
       - condition: "Joining fee paid"
         benefit: "e-Gift voucher worth ₹5,000 (Pantaloons / Yatra / Aldo / Bata / Shoppers Stop / Marks & Spencer / Hamleys)"
@@ -100,9 +166,10 @@ benefits:
     movies:
       type: free
       partner: BookMyShow
-      max_per_cycle: 1
+      max_per_cycle: 2
       cycle: monthly
       cap_inr: 250
+      notes: "2 tickets/month, ₹250 each (₹500/mo, ₹6,000/yr). Club Vistara Silver and Trident Red memberships discontinued post Air India merger, no replacement."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -114,8 +181,9 @@ benefits:
       - name: Club Vistara Silver tier (historical)
         description: Complimentary Club Vistara Silver (discontinued post Vistara-AI merger; replaced with equivalent partner offer).
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-elite.page
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/sbi-bank/sbi-elite-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections: milestones are points (10k/10k/15k/15k at 3L/4L/5L/8L), movies 2 tickets/month."
 
 eligibility:
   min_age: 21
@@ -130,5 +198,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-elite.page
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [premium, points, lifestyle, movies]

@@ -67,7 +67,7 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   phrasing ("10X→5X") doesn't reconcile with Ashva's 9/₹100 accelerator;
   needs the issuer T&C before encoding.
 
-## Axis batch (agent sweep 2026-06-12) — encoding in progress
+## Axis batch (agent sweep 2026-06-12) — ENCODED
 
 - **ace**: finance charge 3.75 (Dec-2024); lounge 4/yr gated ₹50k/3mo
   (1-May-2024); 5%+4% share a ₹500/mo combined hard cap (per-category
@@ -107,7 +107,7 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   miles + ₹10,000 Taj/ITC vouchers (also renewal); transfers 1 mile = 4
   partner points; 10 guest visits/yr; golf 8 + 1 per ₹50k. cardinsider. high
 
-## SBI batch (agent sweep 2026-06-12) — encoding in progress
+## SBI batch (agent sweep 2026-06-12) — ENCODED (deferred: irctc-premier annual milestone (med), aurum Club Marriott, miles-elite per-₹1L lounge accrual, air-india decomposition + Maharaja Club programme rename)
 
 - **GLOBAL (all 11 SBI cards)**: finance charge 3.5 → 3.75 eff 2024-11-01
   (cardinsider, high); Dec-2024 wave eff 2024-12-01: digital-gaming spends

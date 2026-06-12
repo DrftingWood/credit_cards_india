@@ -12,7 +12,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2010-01-01
-    effective_until: null
+    effective_until: 2025-06-30
     joining_fee_inr: 1000
     annual_fee_inr: 4500
     fee_waiver:
@@ -28,6 +28,23 @@ fees:
     source:
       url: https://www.americanexpress.com/in/credit-cards/membership-rewards-credit-card/
       retrieved_on: 2026-04-15
+      notes: "Historical record; spend-based renewal-fee waiver era."
+
+  - effective_from: 2025-07-01
+    effective_until: null
+    joining_fee_inr: 1000
+    annual_fee_inr: 4500
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 3.5
+      min_inr: 250
+    gst_applicable: true
+    source:
+      url: https://www.americanexpress.com/in/credit-cards/
+      retrieved_on: 2026-06-12
+      notes: "Amex India withdrew spend-based renewal-fee waivers programme-wide in mid-2025; effective_from 2025-07-01 is approximate (exact date unpinned — refine on next sweep)."
 
 rewards:
   - effective_from: 2010-01-01
@@ -103,5 +120,5 @@ application:
   apply_url: https://www.americanexpress.com/in/credit-cards/membership-rewards-credit-card/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [entry, points, amex, mr-points]

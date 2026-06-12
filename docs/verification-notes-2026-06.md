@@ -61,6 +61,8 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
 - **axis/reserve & axis/atlas & axis/magnus** — Reserve ₹25L grandfathered
   waiver tier unverified (low); Oberoi offer discontinued 1-Oct-2025 +
   EDGE forfeiture rules (med, from first sweep).
-- **idfc-first mayura/ashva** — intl 10X→5X, 10X gated ₹20k/mo (med).
-- **amex** — renewal-fee spend waivers ended mid-2025 programme-wide (med);
-  per-card YAML notes not yet added beyond platinum-travel.
+- **amex** — renewal-fee waiver withdrawal encoded on mrcc/smartearn with
+  approximate 2025-07-01 effective date; pin the exact date on next sweep.
+- **idfc-first mayura/ashva** — Jan-2026 intl cut left unencoded: agent
+  phrasing ("10X→5X") doesn't reconcile with Ashva's 9/₹100 accelerator;
+  needs the issuer T&C before encoding.

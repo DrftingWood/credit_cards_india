@@ -121,19 +121,25 @@ function hasMeaningfulLounge(lounge) {
   return false;
 }
 
-function computeHeadlineRatePct(rewards) {
+function computeHeadlineRatePct(rewards, programsById) {
   if (!rewards) return null;
   const b = rewards.base ?? {};
-  const { rate, per_inr, unit_value_inr } = b;
+  const { rate, per_inr } = b;
+  // Unit-value preference mirrors site/lib/calculator.ts unitValueFor —
+  // programme realized > base realized > base face — so the listing badge
+  // and the recommender score the same card on the same basis.
+  const program = rewards.loyalty_program ? programsById?.[rewards.loyalty_program] : null;
+  const unitValue =
+    program?.unit_value_inr?.realized ?? b.unit_value_inr_realized ?? b.unit_value_inr;
   // KEEP this guard — pointsToPct returns 0 for per_inr <= 0, but this
   // caller's contract is to return null (so the site renders "—" not "0.00%").
-  if (rate == null || !per_inr || unit_value_inr == null) return null;
-  const pct = pointsToPct(Number(rate), Number(per_inr), Number(unit_value_inr));
+  if (rate == null || !per_inr || unitValue == null) return null;
+  const pct = pointsToPct(Number(rate), Number(per_inr), Number(unitValue));
   if (!Number.isFinite(pct)) return null;
   return Math.round(pct * 10000) / 10000;
 }
 
-function enrichCard(card, issuers, networks) {
+function enrichCard(card, issuers, networks, programsById) {
   const issuer = issuers[card.issuer] ?? null;
   const network = networks[card.network] ?? null;
   const currentFees = openRecord(card.fees);
@@ -158,7 +164,7 @@ function enrichCard(card, issuers, networks) {
       has_fee_waiver: feeWaiver !== null && feeWaiver !== undefined,
       fee_waiver_spend_inr: feeWaiver?.spend_inr ?? null,
       primary_reward_currency: currentRewards?.currency ?? null,
-      headline_rate_pct: computeHeadlineRatePct(currentRewards),
+      headline_rate_pct: computeHeadlineRatePct(currentRewards, programsById),
       has_domestic_lounge: hasMeaningfulLounge(currentBenefits?.lounge_access?.domestic),
       has_international_lounge: hasMeaningfulLounge(currentBenefits?.lounge_access?.international),
       co_brand_partner: card.co_brand?.partner ?? null,
@@ -231,13 +237,14 @@ function main() {
   const networks = loadMany(path.join(DATA_DIR, "networks"));
   const issuers = loadMany(path.join(DATA_DIR, "issuers"));
 
-  const cardFiles = listCardFiles(path.join(DATA_DIR, "cards"));
-  const cards = cardFiles
-    .map((p) => enrichCard(loadYaml(p), issuers, networks))
-    .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
-
   const loyaltyPrograms = loadLoyaltyPrograms(path.join(DATA_DIR, "loyalty_programs"));
   writeJson(path.join(OUT_DIR, "loyalty_programs.json"), loyaltyPrograms);
+  const programsById = Object.fromEntries(loyaltyPrograms.map((p) => [p.id, p]));
+
+  const cardFiles = listCardFiles(path.join(DATA_DIR, "cards"));
+  const cards = cardFiles
+    .map((p) => enrichCard(loadYaml(p), issuers, networks, programsById))
+    .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 
   // Surface scripts/category_rules.yaml into the site bundle so the JS-side
   // heuristic in site/lib/category-mapping.ts reads from the same source of

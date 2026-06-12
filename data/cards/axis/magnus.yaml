@@ -71,6 +71,7 @@ rewards:
       - category: monthly-spend-above-threshold
         multiplier: 1
         effective_rate: 35
+        effective_per_inr: 200
         cap_per_cycle: 35000
         cap_unit: points
         cycle: monthly

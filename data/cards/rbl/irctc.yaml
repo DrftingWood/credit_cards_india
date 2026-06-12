@@ -45,6 +45,7 @@ rewards:
         canonical_categories: [travel]
         multiplier: 1
         effective_rate: 10
+        effective_per_inr: 100
         card_attributable_rate: 10
         card_attributable_per_inr: 100
         stacks_with_program: false

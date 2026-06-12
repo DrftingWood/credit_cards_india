@@ -11,18 +11,42 @@ import { formatInr, formatPct } from "./utils";
 import { pointsToPct } from "./rate-math.mjs";
 
 /**
- * Comparable "marketing rate" percentage for an accelerator. Normalises
- * `effective_rate` (already %) and `multiplier` (× base) onto one scale so
- * pickTopAccelerated doesn't compare "5% effective" against "10×" naively
- * and pick the wrong headline.
+ * Comparable value percentage for an accelerator. Normalises
+ * `effective_rate` (reward units per effective_per_inr/base.per_inr rupees —
+ * the receipt-visible total, NOT a percent) and `multiplier` (× base) onto
+ * one scale so pickTopAccelerated doesn't compare "45 pts/₹200" against
+ * "10×" naively and pick the wrong headline.
  */
 function effectivePctOf(a: AcceleratedReward, rewards: RewardRecord | null): number {
-  if (a.effective_rate != null) return a.effective_rate;
-  if (a.multiplier != null && rewards?.base) {
-    const unitValue = rewards.base.unit_value_inr_realized ?? rewards.base.unit_value_inr ?? 1;
-    return pointsToPct(rewards.base.rate, rewards.base.per_inr, unitValue) * a.multiplier;
+  if (!rewards?.base) return 0;
+  const unitValue =
+    rewards.base.unit_value_inr_realized ??
+    rewards.base.unit_value_inr ??
+    (rewards.currency === "cashback" ? 1 : null);
+  if (a.effective_rate != null) {
+    if (unitValue == null) return 0;
+    const perInr = a.effective_per_inr ?? rewards.base.per_inr;
+    return pointsToPct(a.effective_rate, perInr, unitValue);
+  }
+  if (a.multiplier != null) {
+    return pointsToPct(rewards.base.rate, rewards.base.per_inr, unitValue ?? 1) * a.multiplier;
   }
   return 0;
+}
+
+/**
+ * Receipt-visible rate string for an accelerator: "5%" for cashback,
+ * "45 pts per ₹200" for points/miles, "10×" when only a multiplier is set.
+ */
+export function formatAcceleratedRate(a: AcceleratedReward, rewards: RewardRecord | null): string {
+  if (a.effective_rate == null) return `${a.multiplier}×`;
+  const perInr = a.effective_per_inr ?? rewards?.base.per_inr ?? 100;
+  if (!rewards || rewards.currency === "cashback") {
+    const pct = (a.effective_rate / perInr) * 100;
+    return `${Number(pct.toFixed(2))}%`;
+  }
+  const unit = rewards.currency === "miles" ? "miles" : "pts";
+  return `${a.effective_rate} ${unit} per ₹${perInr}`;
 }
 
 /** Map co-brand category to a human "Best suited for" label. */
@@ -92,13 +116,16 @@ export function summaryProse(card: EnrichedCard): string[] {
 
   // Sentence 2: headline reward
   if (topAccel) {
-    const rate =
-      topAccel.effective_rate != null
-        ? `${topAccel.effective_rate}%`
-        : `${topAccel.multiplier}×`;
+    const rewards = card.current_rewards ?? null;
+    const rate = formatAcceleratedRate(topAccel, rewards);
+    const valuePct = effectivePctOf(topAccel, rewards);
+    const value =
+      rewards && rewards.currency !== "cashback" && valuePct > 0
+        ? ` (≈${formatPct(valuePct, 1)} value)`
+        : "";
     const where = partner ? partner : topAccel.category.replace(/-/g, " ");
     sentences.push(
-      `It earns up to ${rate} back on ${where} spends` +
+      `It earns up to ${rate}${value} on ${where} spends` +
         (card.current_rewards?.currency
           ? ` in the form of ${rewardTypeLabel(card).toLowerCase()}.`
           : "."),
@@ -202,10 +229,13 @@ export function derivePros(card: EnrichedCard): string[] {
     pros.push("Milestone-based bonus rewards on annual / quarterly spend thresholds.");
   }
   const topAccel = pickTopAccelerated(card);
-  if (topAccel && topAccel.effective_rate != null && topAccel.effective_rate >= 5) {
-    pros.push(
-      `Accelerated earn rate of ${topAccel.effective_rate}% on ${topAccel.category.replace(/-/g, " ")}.`,
-    );
+  if (topAccel) {
+    const pct = effectivePctOf(topAccel, card.current_rewards ?? null);
+    if (pct >= 3) {
+      pros.push(
+        `Accelerated earn worth ≈${formatPct(pct, 1)} on ${topAccel.category.replace(/-/g, " ")}.`,
+      );
+    }
   }
   return pros;
 }
@@ -236,7 +266,7 @@ export function deriveCons(card: EnrichedCard): string[] {
   return cons;
 }
 
-/** Returns the highest-rate accelerated reward entry, normalising effective_rate (%) and multiplier (×) to a comparable scale. */
+/** Returns the highest-value accelerated reward entry, normalising effective_rate (units per ₹N) and multiplier (×) to a comparable value-% scale. */
 export function pickTopAccelerated(card: EnrichedCard) {
   const acc = card.current_rewards?.accelerated ?? [];
   if (!acc.length) return null;
@@ -245,8 +275,8 @@ export function pickTopAccelerated(card: EnrichedCard) {
 }
 
 /** Format an accelerated reward as a one-line summary. */
-export function formatAccelerated(a: AcceleratedReward): string {
-  const rate = a.effective_rate != null ? `${a.effective_rate}%` : `${a.multiplier}×`;
+export function formatAccelerated(a: AcceleratedReward, rewards: RewardRecord | null): string {
+  const rate = formatAcceleratedRate(a, rewards);
   const where = a.category.replace(/-/g, " ");
   const cap =
     a.cap_per_cycle === "unlimited" || a.cap_per_cycle == null

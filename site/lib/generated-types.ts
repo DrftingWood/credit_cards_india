@@ -237,9 +237,13 @@ export interface RewardRecord {
     category: string;
     multiplier: number;
     /**
-     * If multiplier semantics don't fit, use this absolute rate per_inr.
+     * If multiplier semantics don't fit, use this absolute rate: units of the reward currency earned per `effective_per_inr` rupees (default: the record's base.per_inr). This is the receipt-visible total, NOT a percent — consumers must convert via pointsToPct(effective_rate, effective_per_inr ?? base.per_inr, unit_value) to get a value percentage.
      */
     effective_rate?: number | null;
+    /**
+     * Rupee basis for effective_rate when it differs from base.per_inr (e.g. '35 points per ₹200' on a card whose base earn is per ₹100).
+     */
+    effective_per_inr?: number | null;
     cap_per_cycle?: number | "unlimited";
     cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
     cycle?: Cycle;

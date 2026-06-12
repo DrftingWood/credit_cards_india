@@ -57,7 +57,8 @@ Late-payment slabs use `up_to_inr` (integer) or `"any"` for the top slab.
 | --- | --- |
 | `currency` | `points` / `cashback` / `miles`. |
 | `base` | `{ rate, per_inr, unit_value_inr }` — `unit_value_inr` is best-case INR value of one unit, used for comparability. |
-| `accelerated` | List of `{ category, multiplier, effective_rate, cap_per_cycle, cap_unit, cycle, canonical_categories, merchants, mcc_list }`. |
+| `accelerated` | List of `{ category, multiplier, effective_rate, effective_per_inr, cap_per_cycle, cap_unit, cycle, canonical_categories, merchants, mcc_list }`. |
+| `accelerated[].effective_rate` | **Units of the reward currency per `effective_per_inr` rupees** (default basis: the record's `base.per_inr`) — the receipt-visible total, e.g. `45` for "45 points per ₹200". **Not a percent.** Consumers convert to a value percentage via `pointsToPct(effective_rate, effective_per_inr ?? base.per_inr, unit_value)`. For cashback (1 unit = ₹1, basis ₹100) the number coincides with a percent. |
 | `accelerated[].canonical_categories` | **Optional.** One or more of the canonical spend buckets (`online`, `groceries`, `dining`, `fuel`, `travel`, `utilities`, `rent`, `international`, `entertainment`, `government`, `insurance`, `education`, `wallet-loads`, `emi`, `other`). The reward calculator uses these to match against a user's spend profile. If omitted, the calculator falls back to heuristic substring matching on the freeform `category` string — prefer tagging new entries. |
 | `exclusions` | Controlled list (fuel, rent, government, ...). |
 | `capping_rules` | Freeform strings for caps not expressible structurally. |

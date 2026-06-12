@@ -43,7 +43,7 @@ export function DeepDive({ card }: { card: EnrichedCard }) {
           <ul className="space-y-1">
             {accelerated.map((a, i) => (
               <li key={i}>
-                <strong>{formatAccelerated(a)}</strong>
+                <strong>{formatAccelerated(a, card.current_rewards)}</strong>
                 {a.merchants?.length ? (
                   <div className="text-xs text-slate-600 mt-0.5">
                     Merchants: {a.merchants.slice(0, 8).join(", ")}

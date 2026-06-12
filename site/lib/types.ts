@@ -118,6 +118,7 @@ export interface AcceleratedReward {
   canonical_categories?: string[] | null;
   multiplier: number;
   effective_rate?: number | null;
+  effective_per_inr?: number | null;
   cap_per_cycle?: number | "unlimited";
   cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
   cycle?: Cycle;

@@ -144,7 +144,7 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   airport lounge; welcome 1,500 RP on first annual fee; milestone up to
   5,000 RP (med). paisabazaar. high
 
-## ICICI batch (agent sweep 2026-06-12) — encoding in progress
+## ICICI batch (agent sweep 2026-06-12) — ENCODED (deferred: EPM Q4-2025 retention restructure (low), Times Black full milestone ladder, MMT dual-network modelling, ManU exact fee date, PAYBACK rename in historical records)
 
 - **BANK-WIDE**: domestic-lounge spend gate ₹35k → ₹75k/quarter (~Jul-2025,
   high); currency_name "PAYBACK Points" → "ICICI Bank Reward Points" (high);
@@ -186,7 +186,7 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   EMT + extras (med); milestones up to ₹70k/yr tiered (med); OPEN
   application via timesblack.com (med — YAML invite-only).
 
-## Kotak/AU batch (agent sweep 2026-06-12) — encoding in progress
+## Kotak/AU batch (agent sweep 2026-06-12) — ENCODED (deferred: PVR INOX Kotak successor card file, kotak/indigo first-year-free LTO, White Pass top tiers, AU vetta/ixigo milestones (med), solitaire realized value sourcing)
 
 - **kotak/myntra-kaching**: DISCONTINUED 2025-07-10, holders migrated to
   Kotak League Platinum; 7.5% Myntra discount withdrawn. cardinsider +

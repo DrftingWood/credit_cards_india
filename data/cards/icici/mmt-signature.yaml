@@ -1,5 +1,8 @@
 id: icici-mmt-signature
-name: MakeMyTrip ICICI Bank Signature Credit Card
+name: MakeMyTrip ICICI Bank Credit Card
+# Restructured ~Oct-2024: the Signature variant closed to new applications and
+# the product relaunched as the (dual-network MC + RuPay) "MakeMyTrip ICICI
+# Bank Credit Card". This file tracks the live product; id kept for stability.
 issuer: icici
 network: mastercard
 network_tier: world
@@ -15,7 +18,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2019-12-01
-    effective_until: null
+    effective_until: 2024-10-31
     joining_fee_inr: 2500
     annual_fee_inr: 2500
     fee_waiver: null
@@ -28,10 +31,29 @@ fees:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/makemytrip-icici-bank-signature-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; Signature-variant fees."
+
+  - effective_from: 2024-11-01
+    effective_until: null
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.paisabazaar.com/icici-bank/makemytrip-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "Restructured product (~Oct-2024): ₹999 joining/annual, waiver ₹3L. Issued dual-network (Mastercard + RuPay; schema models the Mastercard)."
 
 rewards:
   - effective_from: 2019-12-01
-    effective_until: null
+    effective_until: 2024-10-31
     currency: cashback
     currency_name: myCash
     base:
@@ -61,10 +83,60 @@ rewards:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/makemytrip-icici-bank-signature-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; Signature-variant earn (3% base / 6% all MMT)."
+
+  - effective_from: 2024-11-01
+    effective_until: null
+    currency: cashback
+    currency_name: myCash
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: mmt-hotels
+        canonical_categories: [travel]
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [makemytrip]
+        channel:
+          required: true
+          class: third-party-ota
+          merchants: [mmt]
+        notes: "6% myCash on MakeMyTrip hotel bookings."
+      - category: mmt-flights-holidays-cabs-bus
+        canonical_categories: [travel]
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [makemytrip]
+        channel:
+          required: true
+          class: third-party-ota
+          merchants: [mmt]
+        notes: "3% myCash on MMT flights, holidays, cabs and buses."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+      - insurance-premiums
+    redemption:
+      - type: cashback-bank
+        program: MakeMyTrip myCash
+        rate_inr_per_unit: 1.0
+        constraints: "myCash redeemable on MakeMyTrip for hotel / flight / holiday bookings."
+    source:
+      url: https://www.makemytrip.com/cards/makemytrip-icici-bank-credit-card
+      retrieved_on: 2026-06-12
+      notes: "Restructured earn: 6% myCash MMT hotels / 3% MMT flights-holidays-cabs-bus / 1% other spends; myCash never expires."
 
 benefits:
   - effective_from: 2019-12-01
-    effective_until: null
+    effective_until: 2024-10-31
     lounge_access:
       domestic:
         visits_per_cycle: 8
@@ -96,6 +168,40 @@ benefits:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/makemytrip-icici-bank-signature-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; Signature-variant benefits."
+
+  - effective_from: 2024-11-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: 1
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "MMTBLACK Gold tier membership (12 months) + MMT voucher"
+        value_inr: 3000
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    other:
+      - name: MMT Black Gold tier
+        description: Complimentary MMT Black Gold tier for 12 months.
+    source:
+      url: https://cardnitty.com/icici-bank/makemytrip-icici-bank-credit-card
+      retrieved_on: 2026-06-12
+      notes: "Restructured: 8 domestic visits/yr (2/quarter) + 1 international/yr, exempt from ICICI's spend-gate rules; welcome is MMTBLACK Gold (med confidence on details)."
 
 eligibility:
   min_age: 21
@@ -110,5 +216,5 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/makemytrip-icici-bank-signature-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, travel, mmt, premium, cashback]

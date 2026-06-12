@@ -33,7 +33,7 @@ fees:
 
 rewards:
   - effective_from: 2017-01-01
-    effective_until: null
+    effective_until: 2026-01-14
     currency: points
     currency_name: ICICI Reward Points
     base:
@@ -65,10 +65,50 @@ rewards:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; pre-15-Jan-2026 exclusions."
+
+  - effective_from: 2026-01-15
+    effective_until: null
+    currency: points
+    currency_name: ICICI Reward Points
+    base:
+      rate: 4
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
+    accelerated:
+      - category: international-spend
+        canonical_categories: [international]
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+      - government
+      - other
+    capping_rules:
+      - "From 15-Jan-2026: government services and tax payments excluded from rewards."
+    redemption:
+      - type: catalog
+        program: ICICI Rewards
+        rate_inr_per_unit: 0.25
+      - type: airmiles
+        program: Multiple
+        ratio: "1:1"
+    source:
+      url: https://cardinsider.com/blog/massive-icici-credit-card-devaluation/
+      retrieved_on: 2026-06-12
+      notes: "15-Jan-2026: government/tax exclusions (bank-wide wave)."
 
 benefits:
   - effective_from: 2017-01-01
-    effective_until: null
+    effective_until: 2026-03-31
     lounge_access:
       domestic:
         visits_per_cycle: unlimited
@@ -113,6 +153,56 @@ benefits:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-credit-card
       retrieved_on: 2026-04-15
+      notes: "Historical record; BOGO movies unconditional until 31-Mar-2026."
+
+  - effective_from: 2026-04-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [dreamfolks]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
+        via: [priority-pass, dragonpass]
+    golf:
+      rounds_per_cycle: unlimited
+      cycle: monthly
+      lessons_per_cycle: unlimited
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "12,000 ICICI Reward Points"
+        value_inr: 3000
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 30000000
+      - type: travel-medical
+        sum_insured_inr: 5000000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    dining:
+      program: Culinary Treats
+      discount_pct: 25
+    movies:
+      type: bogo
+      # BOGO requires ₹25,000 spend in the preceding calendar quarter (1-Apr-2026)
+      partner: BookMyShow
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 500
+    concierge: true
+    source:
+      url: https://cardinsider.com/icici-bank/icici-bank-emeralde-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "1-Apr-2026: BOGO movie offer gated on ₹25,000 prior-quarter spend. Card remains open for applications."
 
 eligibility:
   min_age: 21
@@ -127,5 +217,5 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [super-premium, world-elite, golf, lounge, points]

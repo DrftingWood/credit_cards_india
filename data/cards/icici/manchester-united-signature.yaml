@@ -16,9 +16,11 @@ discontinued_on: null
 fees:
   - effective_from: 2019-01-01
     effective_until: null
-    joining_fee_inr: 3500
-    annual_fee_inr: 1500
-    fee_waiver: null
+    joining_fee_inr: 2499
+    annual_fee_inr: 2499
+    fee_waiver:
+      spend_inr: 250000
+      cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -26,14 +28,15 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card
-      retrieved_on: 2026-04-15
+      url: https://bankcliq.com/credit-card/manchester-united-signature-credit-card
+      retrieved_on: 2026-06-12
+      notes: "2026-06 corrections (med confidence): fee ₹2,499 joining and annual with ₹2.5L waiver (was ₹3,500/₹1,500 no waiver). Card remains open for applications per ICICI page — earlier discontinuation reports not corroborated."
 
 rewards:
   - effective_from: 2019-01-01
     effective_until: null
     currency: points
-    currency_name: PAYBACK Points
+    currency_name: ICICI Bank Reward Points
     base:
       rate: 4
       per_inr: 100
@@ -69,7 +72,7 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [dreamfolks]
-        spend_threshold_inr: 35000
+        spend_threshold_inr: 75000
         spend_threshold_cycle: quarterly
       international:
         visits_per_cycle: 2
@@ -78,7 +81,7 @@ benefits:
         via: [dreamfolks]
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Manchester United merchandise voucher worth ₹3,500"
+        benefit: "Manchester United branded holdall + football (dispatched within 60 working days)"
         value_inr: 3500
         window_days: 90
     fuel_surcharge_waiver:
@@ -108,5 +111,5 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   tags: [co-branded, manchester-united, sports, premium, niche]

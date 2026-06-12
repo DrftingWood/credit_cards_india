@@ -233,3 +233,42 @@ pixel-play, swiggy-hdfc exclusions + successor note.)
   1 RP/₹100 base, 2/₹100 travel-dining-intl, 1 RP ≈ ₹1 (YAML 10/20 @
   ₹0.25); lounge 16+16/yr (YAML unlimited); welcome ₹5,000 (YAML ₹20k);
   golf 2/quarter; milestones 1,000 RP @₹75k/mo + Taj Epicure @₹12L (med). high
+
+## BoB/PSU/misc batch (agent sweep 2026-06-12) — encoding in progress
+
+- **bob/easy**: NOT lifetime-free — ₹500 JF/AF (JF waived on ₹6k/60d, AF on
+  ₹35k/yr); base 1 RP/₹100 (was 5); 5X only on departmental stores + movies
+  capped 1,000 RP/mo; redemption ₹0.20/pt; bobfinancial.com URLs dead →
+  bobcard.co.in. high
+- **bob/eterna**: network is Mastercard World (med); waiver ₹2.5L (was 4L);
+  base 3 RP/₹100 (was 5); 15X capped 5,000 RP/mo (2025 devaluation); lounge
+  unlimited dom gated ₹40k/prior-quarter eff 2025-01-01; NO intl PP (med);
+  milestone 20,000 RP @₹5L (med); LTF acquisition offer to mid-2026 (med). high
+- **bob/premier**: waiver ₹1.2L (was 2L); base 2 RP/₹100 (was 5, med); 5X
+  incl international; lounge 1/quarter gated ₹20k eff 2025-01-01. high
+- **boi/boi-select**: AF ₹800 (med); waiver ₹2L (med); intl lounge 2/yr
+  missing; welcome Amazon Prime + health checkup (med).
+- **canara/rupay-select**: actually LTF (YAML had ₹1,000 AF) + ₹300
+  inactivity fee if spends <₹10k; lounge gated ₹10k prior-quarter (RuPay
+  programme change); concierge true (med). high
+- **idbi/winnings**: AF ₹899 (med); waiver ₹90k (med); marketed as RuPay
+  Select (YAML visa platinum, med); intl lounge (low); welcome 10% cashback
+  ≥₹500 txns in 90d (med).
+- **kvb/honour**: AF ₹999; waiver ₹3L (was 2L); lounge 4 dom/yr (was 8);
+  2X accel on restaurants/medical/books/insurance/rail/movies/car-rentals;
+  welcome 700 RP. all high (official page).
+- **pnb/rupay-select**: JF ₹500 (med); AF ₹500 (med); waiver is usage-based
+  (quarterly card use), not spend threshold (med); intl lounge 4/yr (low —
+  conflicting); welcome 300 RP (med).
+- **union/rupay-select**: base 4 RP/₹100 @ ₹0.25 (was 2/₹150); AF ₹499 nil
+  joining (med); intl lounge 2/yr missing; fuel waiver cap ₹100/cycle. high
+- **south-indian/sib-platinum**: no longer listed/open — SIB lineup is only
+  co-brands (One Card, SIB-SBI); old URL dead (med) — on-hold.
+- **kotak/league-platinum**: tiered earn — 8X/₹150 special categories, 4X
+  other spends up to ₹2L p.a., beyond ₹2L only special earns (high);
+  Myntra-migration context (2025-07-10); possible first-year-free/LTF
+  variant (med).
+- **icici/platinum-chip**: PAYBACK → ICICI Reward Points (PAYBACK → Zillion
+  → ICICI Rewards); utilities/insurance earn 1 RP/₹100 tier (YAML excluded
+  insurance entirely); Jan-2026 exclusions (govt, tax, property mgmt, rent,
+  wallets) eff 2026-01-15; BMS movie benefit gone/gated (med-high). high

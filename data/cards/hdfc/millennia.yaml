@@ -45,7 +45,7 @@ rewards:
         cap_per_cycle: 1000
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [amazon, bookmyshow, cult.fit, flipkart, myntra, sony-liv, swiggy, tata-cliq, uber, zomato]
+        merchants: [amazon, bookmyshow, cult-fit, flipkart, myntra, sony-liv, swiggy, tata-cliq, uber, zomato]
         notes: "5% cashback (as CashPoints) at 10 partner merchants."
     exclusions:
       - fuel
@@ -137,4 +137,4 @@ application:
 
 metadata:
   last_verified_on: 2026-06-12
-  tags: [cashback, online-spend, mid-tier]
+  tags: [cashback, online-spend, mid]

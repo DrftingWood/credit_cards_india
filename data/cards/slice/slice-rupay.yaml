@@ -94,4 +94,4 @@ application:
 
 metadata:
   last_verified_on: 2026-04-15
-  tags: [lifetime-free, fintech, rupay, upi, entry, cashback]
+  tags: [lifetime-free, fintech, rupay, upi-linkable, entry, cashback]

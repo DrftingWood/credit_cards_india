@@ -21,12 +21,7 @@ Still open, in priority order:
 2. **Phase 3 — full-catalogue re-verification sweep**: 113 cards not yet
    fact-checked; every flagship sampled in the audit had errors. Batch by
    issuer; replace aggregator sources (12 warnings) with issuer PDFs.
-3. **Tags vocabulary** (audit D2): add data/tags.yaml + alias map; merge
-   mid/mid-tier, low-forex/zero-forex/forex-friendly, etc.
-4. **Merchant token namespace** (audit D1): fold free-form
-   accelerated[].merchants into the channel vocabulary; reconcile
-   eazydiner/eazy-diner, irctc/irctc-rail spellings.
-5. **Process**: tiered staleness budgets, weekly devaluation watch,
+3. **Process**: tiered staleness budgets, weekly devaluation watch,
    metadata.last_swept_on vs last_verified_on split (audit Phase 4).
 
 Concrete deferred items, in rough priority order. When an item lands, move

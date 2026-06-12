@@ -40,7 +40,7 @@ third-party-ota:
 food-delivery:
   - swiggy
   - zomato
-  - eazy-diner
+  - eazydiner
 
 quick-commerce:
   - blinkit

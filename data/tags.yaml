@@ -1,0 +1,105 @@
+# Controlled vocabulary for metadata.tags on card files.
+# scripts/validate.py errors on any tag not listed here — add new tags via
+# a one-line PR to this file (same pattern as data/channels/known.yaml).
+# Merged synonyms (do not reintroduce): mid-tier->mid, mid-premium/mass-premium->premium,
+# lowest-tier->entry, forex-friendly->low-forex, invite-only-like->invite-like,
+# everyday->everyday-spend, grocery->groceries, upi->upi-linkable.
+
+tags:
+  # Reward currency / mechanics
+  - cashback
+  - emi-first
+  - flat-cashback
+  - miles
+  - milestone-heavy
+  - mr-points
+  - points
+
+  # Market tier (mirrors `tier`)
+  - entry
+  - invite-like
+  - invite-only
+  - mid
+  - premium
+  - super-premium
+
+  # Fees / forex
+  - lifetime-free
+  - low-forex
+  - zero-forex
+
+  # Network / card type
+  - amex
+  - black-card
+  - charge-card
+  - diners
+  - dual-network
+  - metal
+  - rupay
+  - upi-linkable
+  - world-elite
+
+  # Spend focus
+  - airline
+  - airports
+  - bill-payments
+  - dining
+  - entertainment
+  - everyday-spend
+  - fashion
+  - food-delivery
+  - fuel
+  - gaming
+  - golf
+  - groceries
+  - health-wellness
+  - hotel
+  - lifestyle
+  - lounge
+  - movies
+  - online-spend
+  - ott
+  - railway
+  - retail
+  - sports
+  - telecom
+  - travel
+
+  # Co-brand / partner
+  - adani
+  - air-india
+  - airtel
+  - amazon
+  - bluchip
+  - bpcl
+  - co-branded
+  - easemytrip
+  - eazydiner
+  - flipkart
+  - hpcl
+  - indianoil
+  - indigo
+  - irctc
+  - ixigo
+  - manchester-united
+  - marriott
+  - mmt
+  - myntra
+  - pvr
+  - reliance
+  - swiggy
+  - tata-neu
+  - times-prime
+  - whites-pass
+  - zomato
+
+  # Issuer / distribution
+  - customisable
+  - digital-first
+  - discontinued
+  - fintech
+  - niche
+  - preferred-banking
+  - premier-banking
+  - private-banking
+  - psu-bank

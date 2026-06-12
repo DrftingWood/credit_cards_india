@@ -289,6 +289,22 @@ def main() -> int:
                     errors.append(f"[lint] {path.relative_to(ROOT)} :: id '{instance['id']}' must match filename '{path.stem}'")
                 loyalty_programs[instance["id"]] = instance
 
+    # --- tag vocabulary ---
+    allowed_tags: set = set()
+    tags_path = DATA_DIR / "tags.yaml"
+    if tags_path.exists():
+        raw_tags = yaml.safe_load(tags_path.read_text(encoding="utf-8"))
+        if isinstance(raw_tags, dict) and isinstance(raw_tags.get("tags"), list):
+            allowed_tags = set(raw_tags["tags"])
+
+    # --- display-merchant vocabulary ---
+    allowed_merchants: set = set()
+    merchants_path = DATA_DIR / "merchants.yaml"
+    if merchants_path.exists():
+        raw_merchants = yaml.safe_load(merchants_path.read_text(encoding="utf-8"))
+        if isinstance(raw_merchants, dict) and isinstance(raw_merchants.get("merchants"), list):
+            allowed_merchants = set(raw_merchants["merchants"])
+
     # --- channel taxonomy ---
     channels_known: dict[str, set] = {}
     channels_path = DATA_DIR / "channels" / "known.yaml"
@@ -483,6 +499,13 @@ def main() -> int:
                             f"restriction and no decomposition — check units (effective_rate is units per "
                             f"effective_per_inr/base.per_inr rupees, not a percent)"
                         )
+                if allowed_merchants:
+                    for m_tok in acc.get("merchants") or []:
+                        if m_tok not in allowed_merchants:
+                            errors.append(
+                                f"[lint] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}].merchants "
+                                f"token '{m_tok}' not declared in data/merchants.yaml"
+                            )
                 ch = acc.get("channel")
                 if isinstance(ch, dict):
                     cls = ch.get("class")
@@ -535,6 +558,14 @@ def main() -> int:
                         f"effective_rate {acc['effective_rate']} > 5 with loyalty_program "
                         f"'{program_ref}' but no card_attributable_rate set; "
                         f"likely a stacked rate that should be decomposed"
+                    )
+
+        # tags must come from the controlled vocabulary
+        if allowed_tags:
+            for tag in (instance.get("metadata") or {}).get("tags") or []:
+                if tag not in allowed_tags:
+                    errors.append(
+                        f"[lint] {path.relative_to(ROOT)} :: metadata.tags '{tag}' not declared in data/tags.yaml"
                     )
 
         # discontinued cards should have discontinued_on

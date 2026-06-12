@@ -64,7 +64,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [amazon.in]
+        merchants: [amazon-in]
         channel:
           required: true
           class: cobrand-merchant
@@ -76,7 +76,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [amazon.in]
+        merchants: [amazon-in]
         channel:
           required: true
           class: cobrand-merchant
@@ -123,7 +123,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [amazon.in]
+        merchants: [amazon-in]
         channel:
           required: true
           class: cobrand-merchant
@@ -135,7 +135,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [amazon.in]
+        merchants: [amazon-in]
         channel:
           required: true
           class: cobrand-merchant

@@ -54,7 +54,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [swiggy, pvr, uber, cult.fit]
+        merchants: [swiggy, pvr, uber, cult-fit]
         notes: "4% cashback on preferred merchants."
     exclusions:
       - fuel

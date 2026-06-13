@@ -2,27 +2,32 @@
 
 ## 2026-06 audit follow-ups (see docs/AUDIT-2026-06.md)
 
-Phases 0, 1, 2 and 4 are done. Phase 3 (full-catalogue re-verification) is
-in progress — HDFC (18), Axis (14), SBI (13) and the flagship wave are
-encoded; per-card detail in docs/verification-notes-2026-06.md. Open:
+Phases 0–4 are **complete** and merged (PR #37 data/code + audit; PR #38
+UI/UX + portfolio review). All 127 cards carry a 2026-06-12 stamp (117
+`last_verified_on`, 10 `last_swept_on`). Remaining open work, in priority
+order:
 
-1. **Phase 3 remaining batches** (~32 cards): RBL (6), IndusInd (4), IDFC
-   remainder (ashva/mayura/swyp/first-private/indigo — mayura/ashva blocked
-   on issuer T&C), Amex remainder (centurion, platinum-charge/reserve),
-   Yes (3), StanC (3), HSBC (2), BoB (3), Federal (3), OneCard, slice,
-   small PSUs (boi/canara/idbi/kvb/pnb/union/south-indian).
-2. **Portfolio gaps** (docs/PORTFOLIO-GAPS.md): big-bank cards missing
-   from the catalogue — most material is the SBI Miles base/Prime sub-family;
-   plus the PVR INOX Kotak successor file (₹499, 2023) — successor to the
-   discontinued pvr-gold.
-3. **Deferred encodings** (verified, ambiguous or unmodellable): see the
-   "deferred" markers in verification-notes — air-india decomposition +
-   Maharaja Club programme rename, aurum Club Marriott, miles-elite
-   per-₹1L lounge accrual, irctc-premier milestone, Amex exact waiver
-   withdrawal date, my-zone SonyLIV renewal date conflict.
-4. **Aggregator source replacement**: ~30 records now cite cardinsider/
-   paisabazaar/cardmaven (flagged by the validator) — replace with issuer
-   T&C PDFs issuer-by-issuer during Phase 3.
+1. **Aggregator source replacement** (largest item): **79** active/invite
+   cards cite an aggregator (cardinsider / paisabazaar / cardmaven /
+   cardexpert / 1finance / technofino …) as a source — the Phase 3 sweep
+   added many when issuer T&C PDFs weren't machine-fetchable. Replace with
+   issuer-owned PDFs, issuer by issuer. The validator already flags these as
+   warnings.
+2. **New card files** (docs/PORTFOLIO-GAPS.md): blocked on a verification
+   sweep (no unsourced data). Most material: the **SBI Miles base/Prime**
+   sub-family (only `miles-elite` is held). Plus the **PVR INOX Kotak**
+   successor file (₹499, 2023) for the discontinued `pvr-gold`. Then decide
+   the network-variant convention (Tata Neu RuPay, ICICI Amex).
+3. **Deferred encodings** (verified but ambiguous/unmodellable — see the
+   "deferred" markers in docs/verification-notes-2026-06.md): air-india
+   accelerator decomposition + Flying Returns → Maharaja Club programme
+   rename; aurum Club Marriott; miles-elite per-₹1L lounge accrual;
+   irctc-premier annual milestone; Amex exact renewal-waiver withdrawal
+   date; my-zone SonyLIV renewal-date conflict; idfc mayura/ashva exact
+   Jan-2026 numbers (encoded at best-estimate, flag in source notes).
+4. **`image_path` on 126/127 cards** (audit D5): card-face art not yet
+   sourced; site renders brand-colour placeholders. Asset-licensing task,
+   tracked in docs/ASSETS.md.
 
 
 ## ⚠ Provisional realized unit values — must be sourced

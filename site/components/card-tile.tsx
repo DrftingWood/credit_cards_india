@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { EnrichedCard } from "@/lib/types";
 import { cardHref } from "@/lib/data";
 import { cn, formatFeeInr, formatInr, formatPct } from "@/lib/utils";
+import { bestAcceleratedPct } from "@/lib/detail-derivations";
 import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
 import { CardImage } from "./card-image";
@@ -19,6 +20,10 @@ function CardTileImpl({ card }: { card: EnrichedCard }) {
   const fee = card.current_fees?.annual_fee_inr ?? null;
   const waiverAt = card.computed.fee_waiver_spend_inr;
   const rate = card.computed.headline_rate_pct;
+  // The base rate alone misrepresents points/co-brand cards (Magnus's 0.18%
+  // base hides its accelerators). Surface the best accelerated value-% too.
+  const bestRate = bestAcceleratedPct(card);
+  const closed = card.status === "discontinued" || card.status === "on-hold";
 
   return (
     <Link
@@ -52,16 +57,25 @@ function CardTileImpl({ card }: { card: EnrichedCard }) {
           ) : null}
         </div>
         <div className="rounded-md bg-slate-50 px-2 py-1.5">
-          <div className="text-slate-500">Base reward</div>
-          <div className="prose-card-value">{formatPct(rate, 2)}</div>
+          <div className="text-slate-500">{bestRate != null ? "Rewards" : "Base reward"}</div>
+          <div className="prose-card-value">
+            {bestRate != null ? `up to ${formatPct(bestRate, 1)}` : formatPct(rate, 2)}
+          </div>
           <div className="text-slate-500 capitalize mt-0.5">
-            {card.current_rewards?.currency ?? "—"}
+            {rate !== null && bestRate != null
+              ? `${formatPct(rate, 1)} base · ${card.current_rewards?.currency ?? ""}`.trim()
+              : (card.current_rewards?.currency ?? "—")}
           </div>
         </div>
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
-        {card.computed.is_lifetime_free ? <span className="chip chip-success">Lifetime free</span> : null}
+        {closed ? (
+          <span className="chip chip-warn">
+            {card.status === "discontinued" ? "Discontinued" : "Closed to new applicants"}
+          </span>
+        ) : null}
+        {card.computed.is_lifetime_free && !closed ? <span className="chip chip-success">Lifetime free</span> : null}
         {card.computed.is_invite_only ? <span className="chip chip-warn">Invite only</span> : null}
         {card.computed.has_domestic_lounge ? <span className="chip">Domestic lounge</span> : null}
         {card.computed.has_international_lounge ? <span className="chip">Intl lounge</span> : null}

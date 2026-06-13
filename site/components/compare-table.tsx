@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { BenefitRecord, EnrichedCard } from "@/lib/types";
 import { cardHref } from "@/lib/data";
 import { formatFeeInr, formatInr, formatPct } from "@/lib/utils";
+import { pickTopAccelerated, formatAcceleratedRate } from "@/lib/detail-derivations";
 import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
 import { CardImage } from "./card-image";
@@ -38,16 +39,12 @@ function loungeSummary(
 }
 
 function topAcceleratedRow(card: EnrichedCard): React.ReactNode {
-  const acc = card.current_rewards?.accelerated ?? [];
-  if (acc.length === 0) return "—";
-  // Pick the entry with the highest effective_rate / multiplier.
-  const ranked = [...acc].sort((a, b) => {
-    const ar = a.effective_rate ?? a.multiplier ?? 0;
-    const br = b.effective_rate ?? b.multiplier ?? 0;
-    return br - ar;
-  });
-  const top = ranked[0];
-  const rate = top.effective_rate != null ? `${top.effective_rate}%` : `${top.multiplier}×`;
+  // Rank by realised value-%, not raw effective_rate — otherwise a "45 pts/₹200"
+  // points entry outranks a true 5% cashback one, and renders "45%". Both the
+  // ranking and the rendered rate route through the shared, units-correct helpers.
+  const top = pickTopAccelerated(card);
+  if (!top) return "—";
+  const rate = formatAcceleratedRate(top, card.current_rewards);
   return (
     <>
       <span className="prose-card-value">{rate}</span>

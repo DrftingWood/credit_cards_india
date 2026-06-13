@@ -11,7 +11,9 @@ encoded; per-card detail in docs/verification-notes-2026-06.md. Open:
    on issuer T&C), Amex remainder (centurion, platinum-charge/reserve),
    Yes (3), StanC (3), HSBC (2), BoB (3), Federal (3), OneCard, slice,
    small PSUs (boi/canara/idbi/kvb/pnb/union/south-indian).
-2. **New card file**: PVR INOX Kotak (₹499, 2023) — successor to the
+2. **Portfolio gaps** (docs/PORTFOLIO-GAPS.md): big-bank cards missing
+   from the catalogue — most material is the SBI Miles base/Prime sub-family;
+   plus the PVR INOX Kotak successor file (₹499, 2023) — successor to the
    discontinued pvr-gold.
 3. **Deferred encodings** (verified, ambiguous or unmodellable): see the
    "deferred" markers in verification-notes — air-india decomposition +

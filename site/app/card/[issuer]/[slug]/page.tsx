@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allCardRouteParams, cardHref, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
 import { formatDate, formatInr } from "@/lib/utils";
-import { pickTopAccelerated } from "@/lib/detail-derivations";
+import { pickTopAccelerated, formatAcceleratedRate } from "@/lib/detail-derivations";
 import { HistoryTimeline } from "@/components/history-timeline";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
@@ -76,7 +76,9 @@ function composeMetaDescription(card: EnrichedCard): string {
     parts.push(`${card.name} from ${card.issuer_detail.name}`);
   }
   if (top) {
-    const rate = top.effective_rate != null ? `${top.effective_rate}%` : `${top.multiplier}×`;
+    // Receipt-visible rate ("45 pts per ₹200" / "5%"), NOT the raw effective_rate
+    // as a percent — that read points cards as absurd ("45% on dining").
+    const rate = formatAcceleratedRate(top, card.current_rewards);
     parts.push(`earns ${rate} on ${top.category.replace(/-/g, " ")}`);
   }
   // Only mention lounge visits when the count is real — `visits_per_cycle: 0` or
@@ -160,15 +162,7 @@ export default async function CardPage({
         </div>
       </header>
 
-      {card.status === "discontinued" ? (
-        <aside className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          <strong>
-            This card was discontinued
-            {card.discontinued_on ? ` on ${formatDate(card.discontinued_on)}` : ""}.
-          </strong>{" "}
-          It is no longer accepting new applications. The details below reflect the card&apos;s final state before discontinuation.
-        </aside>
-      ) : null}
+      <StatusNotice card={card} />
 
       {/* Summary prose */}
       <SummaryProse card={card} />
@@ -269,6 +263,41 @@ export default async function CardPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdForCard(card)) }}
       />
     </article>
+  );
+}
+
+/**
+ * Lifecycle notice shown under the title. `discontinued` and `on-hold` both
+ * mean "closed to new applicants" (the 2026-06 audit marked ~10 cards on-hold);
+ * rendering them like live cards is misleading. `invite-only` gets a softer note
+ * since it IS obtainable, just not via open application.
+ */
+function StatusNotice({ card }: { card: EnrichedCard }) {
+  if (card.status === "active") return null;
+
+  if (card.status === "invite-only") {
+    return (
+      <aside className="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+        <strong>Invite-only.</strong> This card is not available through an open
+        application — it is extended by the issuer to select customers.
+      </aside>
+    );
+  }
+
+  const discontinued = card.status === "discontinued";
+  return (
+    <aside className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+      <strong>
+        {discontinued ? "This card was discontinued" : "Closed to new applicants"}
+        {discontinued && card.discontinued_on
+          ? ` on ${formatDate(card.discontinued_on)}`
+          : ""}
+        .
+      </strong>{" "}
+      {discontinued
+        ? "It is no longer accepting new applications. The details below reflect the card's final state before discontinuation."
+        : "The issuer has stopped sourcing new applications; existing cardholders keep these benefits. Details below reflect the latest known terms."}
+    </aside>
   );
 }
 

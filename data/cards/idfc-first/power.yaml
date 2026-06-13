@@ -43,18 +43,26 @@ rewards:
     accelerated:
       - category: hpcl-fuel-via-hp-pay
         canonical_categories: [fuel]
-        effective_rate: 4
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
+        effective_rate: 21
+        cap_per_cycle: 5000
+        cap_unit: spend-inr
         cycle: monthly
         merchants: [hpcl-fuel-stations, hp-pay]
-        notes: "4% cashback on fuel at HPCL via HP Pay app."
+        notes: "21X (21 RP/₹150 ≈ 3.5% value) on HPCL fuel, on fuel spends up to ₹5,000/cycle (₹10,000 if via HP Pay). HP Pay additionally credits 6 Happy Coins/₹100 programme-side (~5% total, not modelled)."
       - category: grocery-utility
         canonical_categories: [groceries, utilities]
-        effective_rate: 2
-        cap_per_cycle: 300
-        cap_unit: cashback-inr
+        effective_rate: 15
+        cap_per_cycle: 4000
+        cap_unit: spend-inr
         cycle: monthly
+        notes: "15X (≈2.5% value) on grocery/utility spends up to ₹4,000/cycle."
+      - category: fastag-recharge
+        canonical_categories: [utilities]
+        effective_rate: 1
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "FASTag cut to 1X with a 1% fee above ₹10,000/cycle effective 18-Jan-2026 (earlier ≈2.5% on ≤₹2,000/cycle — history not separately modelled)."
     exclusions:
       - wallet-loads
       - rent
@@ -64,8 +72,9 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirstbank.com/credit-card/power
-      retrieved_on: 2026-04-15
+      url: https://www.paisabazaar.com/idfc-first-bank/idfc-first-hpcl-power-credit-card/
+      retrieved_on: 2026-06-12
+      notes: "2026-06 rewrite: verified HPCL structure (21X fuel / 15X grocery-utility with per-cycle spend caps); the earlier percent-style values were wrong. Welcome ₹250 voucher on first HPCL txn ≥₹250 (med, not modelled)."
 
 benefits:
   - effective_from: 2022-09-01
@@ -95,6 +104,6 @@ application:
   apply_url: https://www.idfcfirstbank.com/credit-card/power
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-06-12
   last_swept_on: 2026-06-12
   tags: [co-branded, fuel, hpcl, rupay, entry]

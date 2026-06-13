@@ -274,6 +274,19 @@ export function pickTopAccelerated(card: EnrichedCard) {
   return [...acc].sort((a, b) => effectivePctOf(b, rewards) - effectivePctOf(a, rewards))[0];
 }
 
+/**
+ * Best realised value-% across the card's accelerators — what a "rewards up to
+ * X%" badge should show. Returns null when there is no accelerator or no unit
+ * value to convert through. Use this, never the raw `effective_rate`, for any
+ * headline percent (effective_rate is units-per-₹N, not a percent).
+ */
+export function bestAcceleratedPct(card: EnrichedCard): number | null {
+  const top = pickTopAccelerated(card);
+  if (!top) return null;
+  const pct = effectivePctOf(top, card.current_rewards);
+  return pct > 0 ? pct : null;
+}
+
 /** Format an accelerated reward as a one-line summary. */
 export function formatAccelerated(a: AcceleratedReward, rewards: RewardRecord | null): string {
   const rate = formatAcceleratedRate(a, rewards);

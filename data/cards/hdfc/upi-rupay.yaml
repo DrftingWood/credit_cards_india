@@ -1,0 +1,105 @@
+id: hdfc-upi-rupay
+name: HDFC Bank UPI RuPay Credit Card
+issuer: hdfc
+network: rupay
+network_tier: null   # TODO verify — page does not state a RuPay tier (classic/platinum/select)
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null   # TODO verify — launch date not stated on page
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 0      # TODO verify — page does not state joining fee amount
+    annual_fee_inr: 0       # TODO verify — page does not state renewal fee amount (a renewal fee exists per waiver note below)
+    fee_waiver:
+      spend_inr: 25000
+      cycle: annual
+      conditions: "Renewal membership fee waived on annual spends of ₹25,000 and above."
+    forex_markup_pct: 3.5   # TODO verify — not stated on page (HDFC typical)
+    finance_charge_monthly_pct: 3.6   # TODO verify — not stated on page (HDFC typical); page notes 50-day interest-free period
+    cash_advance_fee: null  # TODO verify — ATM withdrawal supported per FAQ, fee not stated on page
+    gst_applicable: true
+    notes: "Interest-free period of up to 50 days. Fee amounts not published on the product page; verify against the Fees & Charges schedule."
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: CashPoints
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: groceries-supermarket-dining-payzapp
+        canonical_categories: [groceries, dining]
+        multiplier: 3
+        effective_rate: 3
+        merchants: [payzapp]
+        notes: "3% CashPoints on supermarket, groceries and dining spends and on PayZapp transactions. Applies to both UPI and regular credit card spends."
+      - category: utilities
+        canonical_categories: [utilities]
+        multiplier: 2
+        effective_rate: 2
+        notes: "2% CashPoints on all utility bill payments."
+    exclusions:
+      - rent
+      - wallet-loads
+      - emi
+      - fuel
+      - insurance-premiums
+      - government
+    capping_rules:
+      - "TODO verify — monthly/cycle CashPoint caps not stated on product page."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+    notes: "1% CashPoints on all other spends (excluding rent, wallet loads, EMI, fuel, insurance and government categories). CashPoints computed on calendar-month cycle for settled transactions."
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access: null
+    milestones:
+      - spend_inr: 25000
+        cycle: annual
+        benefit: "Renewal membership fee waived"
+        reward_kind: fee-waiver
+        trigger_window: anniversary-year
+    fuel_surcharge_waiver:
+      pct: 1.0   # TODO verify — page states "Zero Fuel surcharge"; exact pct/thresholds/cap not published
+      notes: "Page advertises zero fuel surcharge; min/max transaction and per-cycle cap not stated."
+    concierge: false
+    other:
+      - name: UPI-linked virtual credit card
+        description: "Virtual RuPay credit card linkable to any UPI app (PayZapp, GPay, PhonePe, Paytm, BHIM, etc.) via a UPI PIN; earns CashPoints on UPI transactions. Managed through MyCards."
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: null       # TODO verify — not stated on page
+  max_age: null       # TODO verify — not stated on page
+  income_inr_annual:
+    salaried: null     # TODO verify — not stated on page
+    self_employed: null   # TODO verify — not stated on page
+  credit_score_min: null   # TODO verify — not stated on page
+  residency: resident-indian
+  notes: "Issued as an additional UPI RuPay card alongside a primary HDFC Bank Visa/Mastercard/Diners credit card, or to existing HDFC card holders via MyCards."
+
+application:
+  apply_url: https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [rupay, upi, entry, cashpoints, virtual-card, companion-card]

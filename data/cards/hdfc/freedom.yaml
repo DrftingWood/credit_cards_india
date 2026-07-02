@@ -25,8 +25,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2014-01-01
@@ -34,18 +34,20 @@ rewards:
     currency: points
     currency_name: CashPoints
     base:
-      rate: 1
-      per_inr: 150
+      rate: 2
+      per_inr: 200
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
     accelerated:
-      - category: dining-entertainment-grocery
-        canonical_categories: [groceries, dining, entertainment]
-        multiplier: 5
-        effective_rate: 5
+      - category: select-merchants
+        canonical_categories: [groceries, dining, entertainment, travel]
+        multiplier: 10
+        effective_rate: 20
         cap_per_cycle: 2500
         cap_unit: points
         cycle: monthly
+        merchants: [bigbasket, bookmyshow, oyo, swiggy, uber]
+        notes: "10X CashPoints on Big Basket, BookMyShow, OYO, Swiggy & Uber (capped 2,500 CashPoints/month)."
     exclusions:
       - fuel
       - wallet-loads
@@ -57,8 +59,8 @@ rewards:
         rate_inr_per_unit: 0.25
         min_units: 500
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2014-01-01
@@ -72,8 +74,8 @@ benefits:
       cycle: statement
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -85,8 +87,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
+  apply_url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [entry, points, lowest-tier]

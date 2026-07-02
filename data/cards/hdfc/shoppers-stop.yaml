@@ -1,0 +1,105 @@
+id: hdfc-shoppers-stop
+name: Shoppers Stop HDFC Bank Credit Card
+issuer: hdfc
+network: visa  # TODO verify network (page only references RuPay in generic UPI boilerplate)
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Shoppers Stop
+  category: retail
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 0  # TODO verify - fee amount not stated on page
+    annual_fee_inr: 0  # TODO verify - fee amount not stated on page
+    fee_waiver: null
+    forex_markup_pct: 3.5  # TODO verify - not stated on page
+    finance_charge_monthly_pct: 3.6  # TODO verify - not stated on page
+    gst_applicable: true
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Fees & Charges section present on page but numeric values not in crawled text."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+    accelerated:
+      - category: shoppers-stop-purchases
+        canonical_categories: [other]
+        multiplier: 3
+        effective_rate: 3
+        merchants: [shoppers-stop]
+        notes: "3% Reward Points on every Shoppers Stop purchase (vs 1% base on non-Shoppers Stop spends)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - emi
+    capping_rules:
+      - "TODO verify Reward Points caps and exclusion list (not detailed on page)."
+    redemption:
+      - type: voucher
+        program: Shoppers Stop
+        constraints: "Redemption Limit applicable from 1st Jan, 2023. TODO verify rate_inr_per_unit."
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access: null
+    milestones:
+      - spend_inr: 15000
+        cycle: monthly
+        benefit: "Reward Points worth ₹500 for a purchase of ₹15,000 or above on weekends at Shoppers Stop."
+        value_inr: 500
+        reward_kind: points
+        reward_currency_name: Reward Points
+        trigger_window: rolling
+        is_repeatable: true
+    welcome:
+      - condition: "On card issuance"
+        benefit: "₹500 Shoppers Stop voucher, redeemable on any transaction at a Shoppers Stop store via the card."
+        value_inr: 500
+      - condition: "On card issuance"
+        benefit: "Complimentary Shoppers Stop Silver Edge membership."
+        value_inr: 350
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: null  # TODO verify
+      max_txn_inr: null  # TODO verify
+      cap_per_cycle_inr: null  # TODO verify
+    concierge: false
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 240000
+    self_employed: 600000
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Salaried: age 21-60, monthly income ₹20,000 (₹2.4L annual). Self-employed: age 21-65, annual ITR > ₹6,00,000."
+
+application:
+  apply_url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, shoppers-stop, retail, points, entry]

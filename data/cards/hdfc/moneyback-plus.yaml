@@ -25,8 +25,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-07-01
@@ -35,7 +35,7 @@ rewards:
     currency_name: CashPoints
     base:
       rate: 2
-      per_inr: 150
+      per_inr: 200
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
     accelerated:
@@ -47,7 +47,7 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [amazon, flipkart, swiggy, reliance-smart-superstore]
-        notes: "10 CashPoints per ₹150 on partner merchants."
+        notes: "10 CashPoints per ₹200 on partner merchants (up to 2.5% valueback)."
       - category: emi-spends
         multiplier: 5
         effective_rate: 10
@@ -66,8 +66,8 @@ rewards:
         rate_inr_per_unit: 0.25
         min_units: 500
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2020-07-01
@@ -86,8 +86,8 @@ benefits:
       cycle: statement
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -99,8 +99,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
+  apply_url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [entry, points, online-spend]

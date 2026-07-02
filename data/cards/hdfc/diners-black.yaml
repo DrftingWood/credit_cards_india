@@ -18,7 +18,7 @@ fees:
     fee_waiver:
       spend_inr: 800000
       cycle: annual
-      conditions: "Renewal fee waived on spends of ₹8L in the preceding year."
+      conditions: "Renewal fee waived on spends of ₹8L in the preceding 12 months."
     forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.6
     cash_advance_fee:
@@ -26,8 +26,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-black-metal-edition
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2014-01-01
@@ -50,6 +50,12 @@ rewards:
           required: true
           class: issuer-portal
           merchants: [smartbuy]
+      - category: weekend-dining
+        canonical_categories: [dining]
+        multiplier: 2
+        effective_rate: 10
+        cap_unit: points
+        notes: "2X Reward Points on weekend dining at participating restaurants."
     exclusions:
       - fuel
       - wallet-loads
@@ -65,8 +71,8 @@ rewards:
         program: Multiple (Airmiles hub)
         ratio: "1:1"
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-black-metal-edition
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-04-01
@@ -84,27 +90,26 @@ benefits:
         via: [priority-pass]
     golf:
       rounds_per_cycle: 6
-      cycle: monthly
+      cycle: quarterly
       lessons_per_cycle: 0
     milestones:
-      - spend_inr: 80000
-        cycle: monthly
-        benefit: "Weekend dining voucher / Ola / BookMyShow / Times Prime vouchers worth ₹500"
-        value_inr: 500
-      - spend_inr: 500000
+      - spend_inr: 400000
         cycle: quarterly
-        benefit: "Travel voucher worth ₹10,000"
-        value_inr: 10000
-    welcome:
-      - condition: "Joining fee paid"
         benefit: "10,000 bonus Reward Points"
         value_inr: 10000
+        reward_kind: points
+        reward_units: 10000
+    welcome:
+      - condition: "₹1.5 lakh spend within first 90 days"
+        benefit: "Complimentary annual memberships of Club Marriott, Amazon Prime and Swiggy One"
         window_days: 90
     insurance:
       - type: air-accident
         sum_insured_inr: 20000000
       - type: travel-medical
         sum_insured_inr: 5000000
+      - type: credit-shield
+        sum_insured_inr: 900000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -113,21 +118,22 @@ benefits:
       cycle: statement
     concierge: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-black-metal-edition
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
-    salaried: 2100000
-    self_employed: 2500000
+    salaried: 3000000
+    self_employed: 3000000
   credit_score_min: 780
   residency: resident-indian
+  notes: "Net monthly income > ₹2.5 lakh (salaried); net income > ₹30 lakh p.a. (self-employed, per ITR)."
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-black-metal-edition
+  apply_url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [metal, diners, travel, super-premium, points]

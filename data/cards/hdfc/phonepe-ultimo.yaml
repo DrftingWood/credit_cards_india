@@ -1,0 +1,109 @@
+id: hdfc-phonepe-ultimo
+name: PhonePe HDFC Bank Ultimo Credit Card
+issuer: hdfc
+network: rupay  # TODO verify network
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: PhonePe
+  category: other
+status: active
+launched_on: null  # TODO verify
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03  # TODO verify effective_from
+    effective_until: null
+    joining_fee_inr: 1000  # TODO verify (not stated on page)
+    annual_fee_inr: 1000  # TODO verify (not stated on page)
+    fee_waiver: null  # TODO verify
+    forex_markup_pct: 3.5  # TODO verify
+    finance_charge_monthly_pct: 3.6  # TODO verify
+    gst_applicable: true
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Fee amounts not shown on product page crawl; welcome benefits apply only to cardholders for whom joining fee is applicable."
+
+rewards:
+  - effective_from: 2026-07-03  # TODO verify effective_from
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0  # TODO verify unit value of a Reward Point
+      unit_value_inr_realized: null  # TODO verify
+    accelerated:
+      - category: phonepe-select-categories
+        canonical_categories: [utilities, travel]
+        multiplier: 10
+        effective_rate: 10
+        cap_per_cycle: 1000
+        cap_unit: points
+        cycle: monthly
+        merchants: [phonepe-recharges, phonepe-utilities, phonepe-bill-payments, phonepe-travel]
+        notes: "10% Reward Points on select PhonePe categories (Recharges, Utilities, Bill Payments and Travel). Capped at 1000 Reward Points per calendar month. Rewards on PhonePe PINCODE valid until 5th Dec'25."
+      - category: online-brands
+        canonical_categories: [online, dining]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: 500
+        cap_unit: points
+        cycle: monthly
+        merchants: [amazon, flipkart, myntra, ajio, swiggy, zomato, uber]
+        notes: "5% Reward Points on select online brands (Amazon, Flipkart, Myntra, Ajio, Swiggy, Zomato, Uber). Capped at 500 Reward Points per calendar month."
+    capping_rules:
+      - "1% Reward Points on all UPI Scan & Pay spends, capped at 500 Reward Points per calendar month."
+      - "Overall earn capped at up to 2000 Reward Points per month across all categories."
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Base rate models the 1% Reward Points on UPI Scan & Pay spends. Reward points posted monthly for eligible transactions settled in the previous calendar month."
+
+benefits:
+  - effective_from: 2026-07-03  # TODO verify effective_from
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        spend_threshold_inr: 75000
+        spend_threshold_cycle: quarterly
+        via: [issuer-direct]  # TODO verify lounge program
+        notes: "8 complimentary domestic lounge visits per year (2 per quarter). Conditional: spend ₹75,000 in a quarter to be eligible for lounge access."
+    welcome:
+      - condition: "Joining fee applicable; first RuPay CC on UPI transaction (min ₹100)"
+        benefit: "PhonePe Gift card worth ₹499"
+        value_inr: 499
+      - condition: "Next 10 RuPay CC on UPI transactions (min ₹100 each)"
+        benefit: "Additional scratch cards worth ₹50 each"
+        value_inr: 500
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: null  # TODO verify
+  max_age: null  # TODO verify
+  income_inr_annual:
+    salaried: null  # TODO verify
+    self_employed: null  # TODO verify
+  credit_score_min: null  # TODO verify
+  residency: resident-indian
+
+application:
+  apply_url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, phonepe, rupay, upi, reward-points, mid-tier]

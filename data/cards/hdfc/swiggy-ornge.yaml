@@ -1,0 +1,106 @@
+id: hdfc-swiggy-ornge
+name: Swiggy Ornge HDFC Bank Credit Card
+issuer: hdfc
+network: mastercard
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: Swiggy
+  category: food-delivery
+  partner_website: https://www.swiggy.com
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+      conditions: "Renewal fee waived on spends of Rs 1,50,000+ before renewal date. Excludes Cash on Call, Balance Transfer and Cash Withdrawal."
+    forex_markup_pct: 3.5   # TODO verify
+    finance_charge_monthly_pct: 3.6   # TODO verify
+    cash_advance_fee: null   # TODO verify
+    gst_applicable: true
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: cashback
+    currency_name: CashBack
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: swiggy-app
+        canonical_categories: [dining]
+        multiplier: 1
+        effective_rate: 5
+        channel:
+          class: food-delivery
+          merchants: [swiggy]
+        notes: "5% CashBack on all eligible Swiggy app spends (Food orders, Instamart, Dineout). # TODO verify monthly cap"
+      - category: online-mcc
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 5
+        notes: "5% CashBack on online spends across select online merchants/MCCs. # TODO verify eligible merchants and monthly cap"
+    exclusions:
+      - fuel
+      - rent
+      - emi
+      - wallet-loads
+      - jewellery
+      - government
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        constraints: "CashBack credited directly to the card account as statement credit, per the CashBack cycle and applicable terms."
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access: null
+    golf:
+      rounds_per_cycle: 4
+      lessons_per_cycle: 12
+      cycle: annual
+      notes: "Mastercard Golf: 4 complimentary green-fee rounds per calendar year, 12 free golf lessons per year, 50% discount on additional sessions."
+    welcome:
+      - condition: "Card activation completed"
+        benefit: "Complimentary Swiggy One membership for 12 months"
+        value_inr: null   # TODO verify
+        window_days: null
+    fuel_surcharge_waiver: null
+    concierge: false
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 240000
+    self_employed: 600000
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Salaried: net monthly income > Rs 20,000, age 21-60. Self-employed: annual ITR > Rs 6 lakh, age 21-65."
+
+application:
+  apply_url: https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, swiggy, cashback, mid, food-delivery]

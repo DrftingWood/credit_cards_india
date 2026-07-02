@@ -34,8 +34,8 @@ fees:
       - { up_to_inr: "any", fee_inr: 1300 }
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2017-01-01
@@ -74,8 +74,8 @@ rewards:
         program: Multiple (Airmiles hub)
         ratio: "1:1"
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-04-01
@@ -117,9 +117,14 @@ benefits:
       - name: Club Marriott membership
         description: Complimentary Club Marriott membership for the first year.
         value_inr: 5000
+      - name: Renewal benefit
+        description: "12,500 Reward Points on renewal-fee realisation and card activation (separate from the joining welcome points)."
+        value_inr: 12500
+      - name: ITC hotels buffet
+        description: "1+1 complimentary buffet at participating ITC hotels."
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -137,5 +142,5 @@ application:
   replaces_card: null
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [metal, travel, forex-friendly, invite-only, points]

@@ -1,0 +1,91 @@
+id: hdfc-pine-labs-pro
+name: Pine Labs HDFC Bank Pro Credit Card
+issuer: hdfc
+network: visa  # TODO verify network (live page is silent on network)
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: Pine Labs
+  category: other
+status: on-hold  # "Sourcing of this Credit Card has been stopped. Existing customers continue to enjoy benefits."
+launched_on: null  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-01-01  # TODO verify effective_from (launch/fee-effective date unknown)
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 1000
+    fee_waiver:
+      spend_inr: 75000
+      cycle: quarterly
+      conditions: "First-year annual fee (levied after 90 days of card issuance) waived on ₹75,000 non-EMI spends within the first 90 days."
+    forex_markup_pct: 3.5  # TODO verify (not stated on live page)
+    finance_charge_monthly_pct: 3.6  # TODO verify (not stated on live page)
+    cash_advance_fee: null
+    gst_applicable: true
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Annual fee of ₹1,000 is levied after 90 days of card issuance."
+
+rewards:
+  - effective_from: 2021-01-01  # TODO verify effective_from
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 4
+      per_inr: 150
+      unit_value_inr: null  # TODO verify reward point redemption value
+    accelerated:
+      - category: business-essentials-cashback
+        canonical_categories: [utilities, government]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: 250
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "5% CashBack on business essentials: Utility, Telecom, IRCTC, Govt. and tax payments. Capped at ₹250 per month. (Telecom/IRCTC not distinct canonical buckets; modelled under utilities/government.)"
+    exclusions:
+      - emi
+      - fuel
+      - wallet-loads
+    capping_rules:
+      - "5% CashBack on business essentials capped at ₹250 per month."
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Base 4 Reward Points per ₹150 on all e-com and POS spends (except EMI, fuel and wallet-load transactions). Up to 50 days free credit period. A launch promo offered 3% CashBack on all non-EMI spends (capped ₹1,500/month, excl. wallet load/fuel/Pine Labs Vendor Payment) until 30-Sep-2022 — now expired, not modelled."
+
+benefits:
+  - effective_from: 2021-01-01  # TODO verify effective_from
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      cap_per_cycle_inr: 250
+      cycle: statement
+      notes: "1% fuel surcharge waived; minimum transaction ₹400, maximum cashback ₹250 per statement cycle."
+    concierge: false
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: null  # TODO verify (not stated on live page)
+  max_age: null  # TODO verify
+  income_inr_annual:
+    salaried: null  # TODO verify
+    self_employed: null  # TODO verify
+  credit_score_min: null  # TODO verify
+  residency: resident-indian
+
+application:
+  apply_url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, pine-labs, business, points, cashback, mid, on-hold]

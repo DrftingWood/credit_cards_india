@@ -44,7 +44,7 @@ ISSUER_ALLOWED_DOMAINS = {
     "amex": {"americanexpress.com", "www.americanexpress.com"},
     "au": {"aubank.in", "www.aubank.in"},
     "axis": {"axisbank.com", "www.axisbank.com", "axis.bank.in", "www.axis.bank.in"},
-    "hdfc": {"hdfcbank.com", "www.hdfcbank.com"},
+    "hdfc": {"hdfcbank.com", "www.hdfcbank.com", "hdfc.bank.in", "www.hdfc.bank.in"},
     "icici": {"icicibank.com", "www.icicibank.com", "icici.bank.in", "www.icici.bank.in"},
     "idfc-first": {"idfcfirstbank.com", "www.idfcfirstbank.com", "idfcfirst.bank.in", "www.idfcfirst.bank.in"},
     "rbl": {"rblbank.com", "www.rblbank.com", "irctc.co.in", "www.irctc.co.in"},

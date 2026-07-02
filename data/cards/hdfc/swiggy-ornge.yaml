@@ -60,7 +60,8 @@ rewards:
         cap_per_cycle: 1500
         cap_unit: cashback-inr
         cycle: statement
-        notes: "5% CashBack on online spends across select online merchants/MCCs. # TODO verify eligible merchants"
+        mcc_list: ["5137", "5139", "5611", "5621", "5631", "5641", "5651", "5655", "5661", "5691", "5697", "5699", "5948", "5122", "5912", "5975", "8042", "8043", "5192", "5733", "5735", "5941", "5942", "5945", "5995", "7829", "7941", "5977", "7230", "7297", "7298", "4111", "4121", "5511", "5521", "7512", "1731", "5045", "5046", "5065", "5099", "5722", "5732", "5734", "5946", "7372", "7622", "7623", "7629", "7631", "4112", "4131", "4722", "7011"]
+        notes: "5% CashBack on eligible online MCCs (Table 2.1: Apparels, Pharmacies, Pet Stores, Personal Care, Local Cabs (Ola/Zoom/Uber), Electronics (Reliance Retail/Vijay Sales/Croma), Travel (Paytm Travel/EaseMyTrip/Ixigo/Yatra/Ibibo)). Only select merchants mapped under these MCCs qualify."
     exclusions:
       - fuel
       - rent
@@ -70,6 +71,7 @@ rewards:
       - government
     capping_rules:
       - "Base 1% CashBack capped at ₹1,000 per statement cycle."
+      - "Excluded MCCs: 5172, 5541, 5542, 5983, 6513, 6540, 5094, 5944, 9211, 9222, 9223, 9311, 9399, 9402, 9405, 9950, 5947, 5816, 8211, 8220, 8241, 8244, 8249, 8299"
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0

@@ -55,6 +55,7 @@ rewards:
         multiplier: 2
         effective_rate: 10
         cap_unit: points
+        mcc_list: ["5812", "5813", "5814"]
         notes: "2X Reward Points on weekend dining at participating restaurants."
     exclusions:
       - fuel

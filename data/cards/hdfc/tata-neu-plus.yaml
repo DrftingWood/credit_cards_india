@@ -67,6 +67,8 @@ rewards:
       - insurance-premiums
       - emi
       - utilities
+    capping_rules:
+      - "Excluded MCCs: 5816 (online skill-based gaming) earns no NeuCoins (w.e.f. 1 Jul 2025)."
     redemption:
       - type: cashback-bank
         program: Tata Neu wallet

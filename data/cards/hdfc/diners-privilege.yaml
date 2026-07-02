@@ -58,6 +58,7 @@ rewards:
         cap_per_cycle: 2500
         cap_unit: points
         cycle: monthly
+        mcc_list: ["5812", "5814"]
         channel:
           required: true
           class: food-delivery

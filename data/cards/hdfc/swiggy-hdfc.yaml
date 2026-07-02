@@ -57,7 +57,8 @@ rewards:
         cap_per_cycle: 1500
         cap_unit: cashback-inr
         cycle: statement
-        notes: "5% cashback on online spends across eligible MCCs."
+        mcc_list: ["5137", "5139", "5611", "5621", "5631", "5641", "5651", "5655", "5661", "5691", "5697", "5699", "5948", "5200", "5300", "5311", "5331", "5949", "5973", "1731", "5045", "5046", "5065", "5099", "5722", "5732", "5734", "5946", "7372", "7622", "7623", "7629", "7631", "4411", "4899", "5193", "5992", "7032", "7033", "7333", "7832", "7911", "7922", "7929", "7933", "7991", "7996", "7997", "5198", "5211", "5231", "5251", "5712", "5713", "5714", "5718", "5719", "5950", "7641", "5122", "5912", "5975", "8042", "8043", "5977", "7230", "7297", "7298", "4121", "4111", "5511", "5521", "7512", "5192", "5733", "5735", "5941", "5942", "5945", "5995", "7829", "7941", "5399", "5411"]
+        notes: "5% cashback on online spends across eligible MCCs (Table 1.2: Apparels, Department Store, Electronics, Entertainment, Home Decor, Pharmacies, Personal Care, Local Cabs, Pet Stores, Discount Stores, Grocery). Only select merchants mapped under these MCCs qualify."
     exclusions:
       - fuel
       - wallet-loads

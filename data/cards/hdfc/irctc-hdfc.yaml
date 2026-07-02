@@ -61,6 +61,7 @@ rewards:
         notes: "IRCTC rail accelerator capped at 1,000 Reward Points per month (12,000 per year)."
     capping_rules:
       - "Grocery/departmental spends earn base 1× only (no 3× accelerator), subject to a monthly cap."
+      - "Excluded MCCs: 5816 (online skill-based gaming), 6540 (wallet / prepaid / gift card load) earn no Reward Points."
     exclusions:
       - fuel
       - wallet-loads

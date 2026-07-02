@@ -54,6 +54,10 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    capping_rules:
+      - "Excluded MCCs (earn no CashPoints): 6540 (wallet/gift/prepaid/voucher loads); 8211, 8220, 8241, 8244, 8249, 8299 (education via third-party apps)."
+      - "Utility MCC 4900 capped at 2,000 CashPoints/month."
+      - "Telecom & Cable MCCs 4812, 4814, 4899 capped at 2,000 CashPoints/month."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.15

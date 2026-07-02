@@ -46,6 +46,7 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [payzapp]
+        mcc_list: ["5411","5812","5814"]
         notes: "3% CashPoints on supermarket, groceries and dining spends and on PayZapp transactions. Applies to both UPI and regular credit card spends. Capped at 500 CashPoints per calendar month."
       - category: utilities
         canonical_categories: [utilities]
@@ -54,6 +55,7 @@ rewards:
         cap_per_cycle: 500
         cap_unit: points
         cycle: monthly
+        mcc_list: ["4900"]
         notes: "2% CashPoints on all utility bill payments. Capped at 500 CashPoints per calendar month."
     exclusions:
       - rent
@@ -65,6 +67,7 @@ rewards:
       - education
     capping_rules:
       - "1% CashPoints on all other spends, capped at 500 CashPoints per calendar month."
+      - "Excluded MCCs: 6540 (prepaid/gift/wallet/prepaid-card loads and voucher purchases) not eligible for CashPoints on any tier."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25

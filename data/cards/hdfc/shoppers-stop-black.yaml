@@ -51,6 +51,7 @@ rewards:
     capping_rules:
       - "Shoppers Stop accelerated earn (7%) capped at 2,000 Reward Points per month."
       - "Base earn (2%) capped at 2,000 Reward Points per month."
+      - "Excluded MCCs (earn no Reward Points): Rent 6513; Fuel 1361, 5172, 5541, 5542, 5983, 9752."
     redemption:
       - type: voucher
         program: Shoppers Stop

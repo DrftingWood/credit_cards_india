@@ -55,6 +55,8 @@ rewards:
       - government
       - utilities
       - insurance-premiums
+    capping_rules:
+      - "Excluded MCCs (earn no CashPoints): 6540 (wallet/gift/prepaid/voucher loads); 8211, 8220, 8241, 8244, 8249, 8299 (education via third-party apps)."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25

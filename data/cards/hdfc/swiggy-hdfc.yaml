@@ -40,6 +40,9 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      cap_per_cycle: 500
+      cap_unit: cashback-inr
+      cycle: statement
     accelerated:
       - category: swiggy-ecosystem
         canonical_categories: [dining]
@@ -67,10 +70,10 @@ rewards:
       - emi
       - utilities
     redemption:
-      - type: cashback-bank
-        program: Swiggy Money wallet
+      - type: statement-credit
+        program: Swiggy cashback (auto statement credit)
         rate_inr_per_unit: 1.0
-        constraints: "Redeemable only on Swiggy app."
+        constraints: "Auto-credited against the card statement balance (w.e.f. 21 Jun 2024). Prior to that, Swiggy Money was redeemable only on the Swiggy app."
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
       retrieved_on: 2026-07-03

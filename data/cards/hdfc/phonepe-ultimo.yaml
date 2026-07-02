@@ -39,6 +39,9 @@ rewards:
       per_inr: 100
       unit_value_inr: 1.0  # TODO verify unit value of a Reward Point
       unit_value_inr_realized: null  # TODO verify
+      cap_per_cycle: 500   # 1% Scan & Pay capped at 500 RP/calendar month
+      cap_unit: points
+      cycle: monthly
     accelerated:
       - category: phonepe-select-categories
         canonical_categories: [utilities, travel]
@@ -60,8 +63,6 @@ rewards:
         merchants: [amazon, flipkart, myntra, ajio, swiggy, zomato, uber]
         mcc_list: ["4121", "4214", "5137", "5262", "5311", "5399", "5691", "5699", "5732", "5811", "5812", "5814"]
         notes: "5% Reward Points on select online brands (Amazon, Flipkart, Myntra, Ajio, Swiggy, Zomato, Uber). Capped at 500 Reward Points per calendar month."
-    capping_rules:
-      - "1% Reward Points on all UPI Scan & Pay spends, capped at 500 Reward Points per calendar month."
     exclusions:
       - emi
       - fuel

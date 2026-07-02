@@ -37,6 +37,9 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 0.25
+      cap_per_cycle: 500   # 1% on other spends capped at 500 CashPoints/calendar month
+      cap_unit: points
+      cycle: monthly
     accelerated:
       - category: groceries-supermarket-dining-payzapp
         canonical_categories: [groceries, dining]
@@ -65,8 +68,6 @@ rewards:
       - insurance-premiums
       - government
       - education
-    capping_rules:
-      - "1% CashPoints on all other spends, capped at 500 CashPoints per calendar month."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25

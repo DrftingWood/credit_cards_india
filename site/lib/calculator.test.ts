@@ -26,11 +26,24 @@ function spend(overrides: Partial<Record<CanonicalCategory, number>>): SpendProf
   return { ...ZERO_SPEND, ...overrides };
 }
 
+type CapUnit = "points" | "cashback-inr" | "miles" | "spend-inr";
+type Cycle = "monthly" | "quarterly" | "annual" | "statement" | "per-txn";
+
 interface CardOpts {
   id?: string;
   currency?: RewardCurrency;
-  base: { rate: number; per_inr: number; unit_value_inr?: number };
+  base: {
+    rate: number;
+    per_inr: number;
+    unit_value_inr?: number;
+    cap_per_cycle?: number;
+    cap_unit?: CapUnit;
+    cycle?: Cycle;
+  };
   accelerated?: AcceleratedReward[];
+  exclusions?: string[];
+  mcc_exclusions?: string[];
+  rewardCap?: { max_units: number; cap_unit?: CapUnit; cycle: Cycle };
   annualFee?: number;
   feeWaiverSpend?: number | null;
   isInviteOnly?: boolean;
@@ -47,10 +60,16 @@ function makeCard(opts: CardOpts): EnrichedCard {
       ...(opts.base.unit_value_inr != null
         ? { unit_value_inr: opts.base.unit_value_inr }
         : {}),
+      ...(opts.base.cap_per_cycle != null ? { cap_per_cycle: opts.base.cap_per_cycle } : {}),
+      ...(opts.base.cap_unit != null ? { cap_unit: opts.base.cap_unit } : {}),
+      ...(opts.base.cycle != null ? { cycle: opts.base.cycle } : {}),
     },
     accelerated: opts.accelerated ?? [],
+    ...(opts.exclusions ? { exclusions: opts.exclusions } : {}),
+    ...(opts.mcc_exclusions ? { mcc_exclusions: opts.mcc_exclusions } : {}),
+    ...(opts.rewardCap ? { reward_cap: opts.rewardCap } : {}),
     source: SOURCE,
-  };
+  } as RewardRecord;
 
   const card = {
     id: opts.id ?? "test-card",
@@ -308,6 +327,22 @@ describe("scoreCard — base rate unit correctness (bonus blocker)", () => {
     expect(score.annual_gross_inr).toBe(2400); // 1% * 20000 * 12
   });
 
+  test("real card: Swiggy HDFC optimal spend hits all caps at ₹42k/yr", async () => {
+    const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
+    const swiggy = (cards as unknown as EnrichedCard[]).find((c) => c.id === "hdfc-swiggy-hdfc")!;
+    // dining 10% cap ₹1500 (at ₹15k) + online 5% cap ₹1500 (at ₹30k) + base 1% on
+    // groceries capped ₹500 (at ₹50k) = ₹3500/mo → ₹42,000/yr.
+    const score = scoreCard(swiggy, spend({ dining: 15000, online: 30000, groceries: 50000 }));
+    expect(score.annual_gross_inr).toBe(42000);
+  });
+
+  test("real card: Swiggy HDFC excludes fuel (0 rewards there)", async () => {
+    const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
+    const swiggy = (cards as unknown as EnrichedCard[]).find((c) => c.id === "hdfc-swiggy-hdfc")!;
+    const score = scoreCard(swiggy, spend({ fuel: 20000 }));
+    expect(score.annual_gross_inr).toBe(0);
+  });
+
   test("real card: HDFC Infinia @ ₹50k/mo dining (5pt/₹150 * ₹0.70 realized = 2.33% base) ≈ ₹14k/yr", async () => {
     const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
     const infinia = (cards as unknown as EnrichedCard[]).find((c) => c.id === "hdfc-infinia")!;
@@ -362,6 +397,46 @@ describe("scoreCard — canonical reward math regressions", () => {
     });
     const score = scoreCard(card, spend({ online: 10000 }));
     expect(score.annual_gross_inr).toBe(600);
+  });
+
+  test("category exclusion: excluded bucket earns 0", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      exclusions: ["fuel"],
+    });
+    // fuel excluded → 0; dining 1% on ₹10k = ₹100/mo → ₹1200/yr
+    const score = scoreCard(card, spend({ fuel: 20000, dining: 10000 }));
+    expect(score.annual_gross_inr).toBe(1200);
+    const fuel = score.buckets.find((b) => b.category === "fuel")!;
+    expect(fuel.monthly_value_inr).toBe(0);
+    expect(fuel.effective_rate_pct).toBe(0);
+    expect(fuel.note).toMatch(/excluded/i);
+  });
+
+  test("base.cap_per_cycle caps base earn across buckets (accelerated unaffected)", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1, cap_per_cycle: 500, cap_unit: "cashback-inr", cycle: "statement" },
+      accelerated: [
+        { category: "dining", canonical_categories: ["dining"], multiplier: 0, effective_rate: 10, cycle: "monthly" },
+      ],
+    });
+    // base 1% on ₹100k other spend = ₹1000/mo but capped at ₹500; dining 10% on ₹20k = ₹2000/mo (accelerated, uncapped).
+    // monthly = 500 + 2000 = 2500 → ₹30,000/yr.
+    const score = scoreCard(card, spend({ online: 50000, groceries: 50000, dining: 20000 }));
+    expect(score.annual_gross_inr).toBe(30000);
+  });
+
+  test("reward_cap clamps card-wide total per cycle", () => {
+    const card = makeCard({
+      currency: "points",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      rewardCap: { max_units: 1000, cap_unit: "points", cycle: "monthly" },
+    });
+    // 1% (1pt/₹100 * ₹1) on ₹200k/mo = ₹2000/mo, clamped by reward_cap 1000pts*₹1 = ₹1000/mo → ₹12,000/yr.
+    const score = scoreCard(card, spend({ online: 100000, dining: 100000 }));
+    expect(score.annual_gross_inr).toBe(12000);
   });
 
   test("fee waiver crossing at threshold", () => {

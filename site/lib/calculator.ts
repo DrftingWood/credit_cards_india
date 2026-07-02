@@ -207,6 +207,38 @@ function acceleratedRateForBucket(
   return { rate_pct: best.rate_pct, cap_monthly_inr: best.cap_monthly_inr, basis: best.basis };
 }
 
+/** Converts a cap spec (units + unit-type + cycle) to a monthly INR ceiling. */
+function capToMonthlyInr(
+  cap: number,
+  capUnit: string | undefined,
+  cycle: string | undefined,
+  unitValue: number | null,
+): number | null {
+  const unit = capUnit ?? "points";
+  let inr: number | null;
+  if (unit === "cashback-inr") inr = cap;
+  else if (unit === "points" || unit === "miles") inr = unitValue != null ? cap * unitValue : null;
+  else inr = null; // spend-inr and unknowns don't apply to base/card-wide caps
+  if (inr == null) return null;
+  if (cycle === "quarterly") return inr / 3;
+  if (cycle === "annual") return inr / 12;
+  return inr; // monthly / statement / per-txn ≈ monthly
+}
+
+const inr0 = (n: number) => `₹${n.toLocaleString("en-IN", { maximumFractionDigits: 0 })}`;
+
+/**
+ * Maps a reward `exclusions[]` category token to a calculator bucket. Only the
+ * tokens that overlap the calculator's UI bucket set matter; the rest
+ * (wallet-loads, government, insurance-premiums, education, emi, ...) aren't
+ * scored buckets anyway.
+ */
+const EXCLUSION_TO_BUCKET: Partial<Record<string, CanonicalCategory>> = {
+  fuel: "fuel",
+  rent: "rent",
+  utilities: "utilities",
+};
+
 export function scoreCard(
   card: EnrichedCard,
   spend: SpendProfile,
@@ -214,8 +246,17 @@ export function scoreCard(
 ): CardScore {
   const rewards = card.current_rewards;
   const baseRate = baseRatePct(rewards, ctx?.programs);
+  const unitValue = rewards ? unitValueFor(rewards, ctx?.programs) : null;
+
+  const excluded = new Set<CanonicalCategory>();
+  for (const ex of rewards?.exclusions ?? []) {
+    const b = EXCLUSION_TO_BUCKET[ex];
+    if (b) excluded.add(b);
+  }
+
   const buckets: BucketBreakdown[] = [];
   let monthlyValue = 0;
+  let baseMonthly = 0; // portion earned at the base rate (subject to base.cap_per_cycle)
   let totalSpend = 0;
 
   for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
@@ -223,10 +264,23 @@ export function scoreCard(
     totalSpend += amount;
     if (amount <= 0) continue;
 
+    if (excluded.has(bucket)) {
+      buckets.push({
+        category: bucket,
+        monthly_spend: amount,
+        effective_rate_pct: 0,
+        monthly_value_inr: 0,
+        basis: "general",
+        note: "Not eligible — excluded category",
+      });
+      continue;
+    }
+
     let rate = baseRate;
     let cap: number | null = null;
     let basis: "general" | "channel-locked" = "general";
     let note: string | undefined;
+    let usedBase = true;
 
     if (rewards?.accelerated?.length) {
       const hit = acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx);
@@ -234,15 +288,17 @@ export function scoreCard(
         rate = hit.rate_pct;
         cap = hit.cap_monthly_inr;
         basis = hit.basis;
+        usedBase = false;
       }
     }
 
     let monthlyValueForBucket = (amount * rate) / 100;
     if (cap != null && monthlyValueForBucket > cap) {
-      note = `Capped at ₹${cap.toLocaleString("en-IN", { maximumFractionDigits: 0 })}/mo`;
+      note = `Capped at ${inr0(cap)}/mo`;
       monthlyValueForBucket = cap;
     }
 
+    if (usedBase) baseMonthly += monthlyValueForBucket;
     monthlyValue += monthlyValueForBucket;
     buckets.push({
       category: bucket,
@@ -254,6 +310,36 @@ export function scoreCard(
     });
   }
 
+  const capNotes: string[] = [];
+
+  // Base-rate cap: clamp the base-earned portion (accelerated earn is unaffected).
+  if (rewards && typeof rewards.base.cap_per_cycle === "number") {
+    const baseCapMonthly = capToMonthlyInr(
+      rewards.base.cap_per_cycle,
+      rewards.base.cap_unit,
+      rewards.base.cycle,
+      unitValue,
+    );
+    if (baseCapMonthly != null && baseMonthly > baseCapMonthly) {
+      monthlyValue -= baseMonthly - baseCapMonthly;
+      capNotes.push(`Base earn capped at ${inr0(baseCapMonthly)}/mo`);
+    }
+  }
+
+  // Card-wide reward cap: clamp the total across all categories.
+  if (rewards?.reward_cap) {
+    const rewardCapMonthly = capToMonthlyInr(
+      rewards.reward_cap.max_units,
+      rewards.reward_cap.cap_unit,
+      rewards.reward_cap.cycle,
+      unitValue,
+    );
+    if (rewardCapMonthly != null && monthlyValue > rewardCapMonthly) {
+      monthlyValue = rewardCapMonthly;
+      capNotes.push(`Total rewards capped at ${inr0(rewardCapMonthly)}/mo`);
+    }
+  }
+
   const annualGross = monthlyValue * MONTHS_PER_YEAR;
   const annualSpend = totalSpend * MONTHS_PER_YEAR;
 
@@ -261,6 +347,12 @@ export function scoreCard(
   const waiverSpend = card.computed.fee_waiver_spend_inr;
   const feeWaived = waiverSpend != null && annualSpend >= waiverSpend;
   const annualFeeEffective = feeWaived ? 0 : annualFee;
+
+  const disclaimerParts: string[] = [...capNotes];
+  if (rewards?.capping_rules?.length) disclaimerParts.push(...rewards.capping_rules);
+  const mccEx = rewards?.mcc_exclusions;
+  if (mccEx?.length) disclaimerParts.push(`Zero rewards on ${mccEx.length} excluded MCC${mccEx.length > 1 ? "s" : ""}`);
+  if (rewards?.exclusions?.length) disclaimerParts.push(`Excludes: ${rewards.exclusions.join(", ")}`);
 
   return {
     card,
@@ -270,11 +362,7 @@ export function scoreCard(
     fee_waived: feeWaived,
     buckets,
     base_value_inr_monthly: monthlyValue,
-    disclaimer:
-      card.current_rewards?.capping_rules?.join("; ") ||
-      (card.current_rewards?.exclusions?.length
-        ? `Excludes: ${card.current_rewards.exclusions.join(", ")}`
-        : undefined),
+    disclaimer: disclaimerParts.length ? disclaimerParts.join("; ") : undefined,
   };
 }
 

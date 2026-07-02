@@ -85,6 +85,9 @@ export interface RewardBase {
   per_inr: number;
   unit_value_inr?: number | null;
   unit_value_inr_realized?: number | null;
+  cap_per_cycle?: number | "unlimited";
+  cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
+  cycle?: Cycle;
 }
 
 export type ChannelClass =
@@ -212,6 +215,12 @@ export interface RewardRecord {
   base: RewardBase;
   accelerated?: AcceleratedReward[];
   exclusions?: string[];
+  mcc_exclusions?: string[];
+  reward_cap?: {
+    max_units: number;
+    cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
+    cycle: Cycle;
+  } | null;
   capping_rules?: string[];
   redemption?: RedemptionOption[];
   transfer_partners?: TransferPartner[];

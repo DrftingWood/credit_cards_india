@@ -314,6 +314,7 @@
           "type": "object",
           "required": ["rate", "per_inr"],
           "additionalProperties": false,
+          "dependentRequired": { "cap_per_cycle": ["cycle"] },
           "properties": {
             "rate": { "type": "number", "minimum": 0 },
             "per_inr": { "type": "integer", "minimum": 1 },
@@ -326,7 +327,20 @@
               "type": ["number", "null"],
               "minimum": 0,
               "description": "Conservative realized INR value of one unit. Calculator math prefers this when present."
-            }
+            },
+            "cap_per_cycle": {
+              "description": "Ceiling on units earned at the base rate per cycle (e.g. Swiggy 1% capped at 1000 cashback-inr/statement). Distinct from accelerator caps and the card-wide reward_cap.",
+              "oneOf": [
+                { "type": "integer", "minimum": 0 },
+                { "type": "string", "const": "unlimited" }
+              ]
+            },
+            "cap_unit": {
+              "type": "string",
+              "enum": ["points", "cashback-inr", "miles", "spend-inr"],
+              "default": "points"
+            },
+            "cycle": { "$ref": "#/$defs/Cycle" }
           }
         },
         "accelerated": {
@@ -343,7 +357,7 @@
               "multiplier": { "type": "number", "minimum": 0 },
               "effective_rate": {
                 "type": ["number", "null"],
-                "description": "If multiplier semantics don't fit, use this absolute rate per_inr."
+                "description": "Absolute reward units earned on this tier per the card's base.per_inr denominator (e.g. effective_rate 20 with base.per_inr 200 = 20 units per ₹200 spent). Set this when the issuer quotes an absolute rate rather than a clean multiple of base; the calculator prefers effective_rate over multiplier×base.rate when present. Keep it consistent with base.per_inr, NOT a fixed ₹100/₹150 basis."
               },
               "cap_per_cycle": {
                 "oneOf": [
@@ -476,10 +490,36 @@
           },
           "uniqueItems": true
         },
+        "mcc_exclusions": {
+          "type": "array",
+          "description": "Specific 4-digit MCCs that earn ZERO rewards on this card (from the card's T&C). Machine-readable complement to the category-level `exclusions`; the calculator scores spend on these MCCs at 0.",
+          "items": { "type": "string", "pattern": "^[0-9]{4}$" },
+          "uniqueItems": true
+        },
+        "reward_cap": {
+          "description": "Card-wide ceiling on reward units earned per cycle across ALL categories (e.g. 50,000 points per statement cycle). Distinct from per-accelerator caps and base.cap_per_cycle.",
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["max_units", "cycle"],
+              "additionalProperties": false,
+              "properties": {
+                "max_units": { "type": "integer", "minimum": 0 },
+                "cap_unit": {
+                  "type": "string",
+                  "enum": ["points", "cashback-inr", "miles", "spend-inr"],
+                  "default": "points"
+                },
+                "cycle": { "$ref": "#/$defs/Cycle" }
+              }
+            }
+          ]
+        },
         "capping_rules": {
           "type": "array",
           "items": { "type": "string" },
-          "description": "Freeform caps not modellable above (e.g. monthly combined cap)."
+          "description": "Freeform caps that genuinely cannot be modelled by mcc_exclusions / reward_cap / base.cap_per_cycle / accelerated caps (e.g. per-MCC-scoped caps, minimum-transaction thresholds)."
         },
         "redemption_floor_value_inr": {
           "type": ["number", "null"],

@@ -82,8 +82,6 @@ rewards:
       - emi
       - government
       - cash-advance
-    capping_rules:
-      - "Excluded MCCs (no CashPoints on 5%/3%/1% tiers): 1361, 5172, 5541, 5542, 5983, 9752, 6513, 6540, 7349, 9211, 9222, 9223, 9311, 9399, 9402, 9405, 9950 (fuel, rent, wallet/gift/prepaid loads, government)."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -91,6 +89,7 @@ rewards:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['1361', '5172', '5541', '5542', '5983', '9752', '6513', '6540', '7349', '9211', '9222', '9223', '9311', '9399', '9402', '9405', '9950']
 benefits:
   - effective_from: 2024-03-01
     effective_until: null

@@ -56,8 +56,6 @@ rewards:
       - government
       - insurance-premiums
       - emi
-    capping_rules:
-      - "Maximum 50,000 Reward Points can be earned in a statement cycle."
     redemption:
       - type: catalog
         program: SmartBuy Gold Catalogue
@@ -79,6 +77,10 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
       retrieved_on: 2026-07-03
 
+    reward_cap:
+      max_units: 50000
+      cap_unit: points
+      cycle: statement
 benefits:
   - effective_from: 2024-10-01
     effective_until: null

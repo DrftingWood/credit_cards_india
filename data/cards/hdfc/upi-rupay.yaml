@@ -46,7 +46,7 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [payzapp]
-        mcc_list: ["5411","5812","5814"]
+        mcc_list: ["5411", "5812", "5814"]
         notes: "3% CashPoints on supermarket, groceries and dining spends and on PayZapp transactions. Applies to both UPI and regular credit card spends. Capped at 500 CashPoints per calendar month."
       - category: utilities
         canonical_categories: [utilities]
@@ -67,7 +67,6 @@ rewards:
       - education
     capping_rules:
       - "1% CashPoints on all other spends, capped at 500 CashPoints per calendar month."
-      - "Excluded MCCs: 6540 (prepaid/gift/wallet/prepaid-card loads and voucher purchases) not eligible for CashPoints on any tier."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
@@ -76,6 +75,7 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6540']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

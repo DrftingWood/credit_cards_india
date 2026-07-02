@@ -55,7 +55,6 @@ rewards:
       - insurance-premiums
       - emi
     capping_rules:
-      - "Excluded MCCs (earn no CashPoints): 6540 (wallet/gift/prepaid/voucher loads); 8211, 8220, 8241, 8244, 8249, 8299 (education via third-party apps)."
       - "Utility MCC 4900 capped at 2,000 CashPoints/month."
       - "Telecom & Cable MCCs 4812, 4814, 4899 capped at 2,000 CashPoints/month."
     redemption:
@@ -66,6 +65,7 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
 benefits:
   - effective_from: 2014-01-01
     effective_until: null

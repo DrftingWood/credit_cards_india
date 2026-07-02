@@ -34,6 +34,9 @@ rewards:
       rate: 2
       per_inr: 100
       unit_value_inr: null  # TODO verify RP unit value; page frames earn as "2% Reward Points"
+      cap_per_cycle: 2000
+      cap_unit: points
+      cycle: monthly
     accelerated:
       - category: shoppers-stop-purchases
         canonical_categories: [other]
@@ -41,6 +44,9 @@ rewards:
         effective_rate: 7
         merchants: [shoppers-stop]
         notes: "7% Reward Points on every Shoppers Stop purchase (vs 2% base on non-Shoppers Stop spends)."
+        cap_per_cycle: 2000
+        cap_unit: points
+        cycle: monthly
     exclusions:
       - fuel
       - wallet-loads
@@ -48,10 +54,6 @@ rewards:
       - government
       - insurance-premiums
       - emi
-    capping_rules:
-      - "Shoppers Stop accelerated earn (7%) capped at 2,000 Reward Points per month."
-      - "Base earn (2%) capped at 2,000 Reward Points per month."
-      - "Excluded MCCs (earn no Reward Points): Rent 6513; Fuel 1361, 5172, 5541, 5542, 5983, 9752."
     redemption:
       - type: voucher
         program: Shoppers Stop
@@ -68,6 +70,7 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513', '1361', '5172', '5541', '5542', '5983', '9752']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

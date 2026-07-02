@@ -67,8 +67,6 @@ rewards:
       - insurance-premiums
       - emi
       - utilities
-    capping_rules:
-      - "Excluded MCCs: 5816 (online skill-based gaming) earns no NeuCoins (w.e.f. 1 Jul 2025)."
     redemption:
       - type: cashback-bank
         program: Tata Neu wallet
@@ -77,6 +75,7 @@ rewards:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['5816']
 benefits:
   - effective_from: 2022-08-01
     effective_until: null

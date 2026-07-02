@@ -232,12 +232,18 @@ export interface RewardRecord {
      * Conservative realized INR value of one unit. Calculator math prefers this when present.
      */
     unit_value_inr_realized?: number | null;
+    /**
+     * Ceiling on units earned at the base rate per cycle (e.g. Swiggy 1% capped at 1000 cashback-inr/statement). Distinct from accelerator caps and the card-wide reward_cap.
+     */
+    cap_per_cycle?: number | "unlimited";
+    cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
+    cycle?: Cycle;
   };
   accelerated?: {
     category: string;
     multiplier: number;
     /**
-     * If multiplier semantics don't fit, use this absolute rate per_inr.
+     * Absolute reward units earned on this tier per the card's base.per_inr denominator (e.g. effective_rate 20 with base.per_inr 200 = 20 units per ₹200 spent). Set this when the issuer quotes an absolute rate rather than a clean multiple of base; the calculator prefers effective_rate over multiplier×base.rate when present. Keep it consistent with base.per_inr, NOT a fixed ₹100/₹150 basis.
      */
     effective_rate?: number | null;
     cap_per_cycle?: number | "unlimited";
@@ -324,7 +330,19 @@ export interface RewardRecord {
     | "other"
   )[];
   /**
-   * Freeform caps not modellable above (e.g. monthly combined cap).
+   * Specific 4-digit MCCs that earn ZERO rewards on this card (from the card's T&C). Machine-readable complement to the category-level `exclusions`; the calculator scores spend on these MCCs at 0.
+   */
+  mcc_exclusions?: string[];
+  /**
+   * Card-wide ceiling on reward units earned per cycle across ALL categories (e.g. 50,000 points per statement cycle). Distinct from per-accelerator caps and base.cap_per_cycle.
+   */
+  reward_cap?: null | {
+    max_units: number;
+    cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
+    cycle: Cycle;
+  };
+  /**
+   * Freeform caps that genuinely cannot be modelled by mcc_exclusions / reward_cap / base.cap_per_cycle / accelerated caps (e.g. per-MCC-scoped caps, minimum-transaction thresholds).
    */
   capping_rules?: string[];
   /**

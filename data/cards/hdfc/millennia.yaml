@@ -57,8 +57,6 @@ rewards:
       - government
       - emi
       - utilities
-    capping_rules:
-      - "Excluded MCCs (earn no CashPoints): 6540 (wallet/gift/prepaid/voucher loads); 8211, 8220, 8241, 8244, 8249, 8299 (education via third-party apps)."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -70,6 +68,7 @@ rewards:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
 benefits:
   - effective_from: 2020-02-01
     effective_until: null

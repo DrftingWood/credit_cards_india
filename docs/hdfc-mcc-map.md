@@ -83,9 +83,11 @@ infinia, regalia, regalia-gold, diners-rewardz (category/TID-gated); shoppers-st
 
 ## Structural note
 
-Positive MCCs live in `accelerated[].mcc_list` (machine-readable). **Excluded
-MCCs currently live as freeform strings in `capping_rules`** because the schema's
-`exclusions[]` is a category enum, not an MCC list, and `base` has no MCC/cap
-fields. To make exclusions and base caps calculator-usable, the schema needs a
-structured `mcc_exclusions` field and optional `base` caps — tracked as a
-proposed follow-up schema change (see the structure review).
+Positive MCCs live in `accelerated[].mcc_list` (machine-readable). Excluded MCCs
+now live in the structured **`rewards[].mcc_exclusions`** field (added in the
+schema revision), card-wide ceilings in **`rewards[].reward_cap`**, and base-rate
+caps in **`base.cap_per_cycle`** — migrated out of the old freeform `capping_rules`.
+`capping_rules` now holds only genuinely unmodellable notes (per-MCC-scoped caps,
+minimum-transaction thresholds). The reward calculator can consume `mcc_exclusions`
+(score 0), `reward_cap`, and base caps directly — a follow-up on the calculator
+logic can honour them.

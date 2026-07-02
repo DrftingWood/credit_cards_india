@@ -61,8 +61,6 @@ rewards:
       - emi
       - insurance-premiums
       - government
-    capping_rules:
-      - "Excluded MCCs (earn no CashPoints): 1361, 5172, 5541, 5542, 5983, 9752, 6513, 6540, 7349, 9211, 9222, 9223, 9311, 9399, 9402, 9405, 9950 (fuel, rent, wallet/gift/prepaid loads, government)."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -70,6 +68,7 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['1361', '5172', '5541', '5542', '5983', '9752', '6513', '6540', '7349', '9211', '9222', '9223', '9311', '9399', '9402', '9405', '9950']
 benefits:
   - effective_from: 2026-07-03   # TODO verify actual effective date
     effective_until: null

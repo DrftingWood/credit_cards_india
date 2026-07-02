@@ -54,8 +54,6 @@ rewards:
       - emi
       - fuel
       - wallet-loads
-    capping_rules:
-      - "5% CashBack on business essentials capped at ₹250 per month."
     source:
       url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
       retrieved_on: 2026-07-03

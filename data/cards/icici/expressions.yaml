@@ -1,0 +1,102 @@
+id: icici-expressions
+name: ICICI Bank Expressions Credit Card
+issuer: icici
+network: visa  # TODO verify network
+network_tier: null
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2020-01-01
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+    forex_markup_pct: null  # TODO verify forex markup
+    finance_charge_monthly_pct: 3.75
+    gst_applicable: true
+    notes: "Late payment fee ranges ₹100–₹1,300 depending on outstanding."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/expressions-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2020-01-01
+    effective_until: null
+    currency: points
+    currency_name: ICICI Bank Reward Points
+    base:
+      rate: 3
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
+    accelerated:
+      - category: utility-insurance
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.3333
+        effective_rate: 1
+        notes: "1 Reward Point per ₹100 on utility and insurance spends."
+    exclusions:
+      - fuel
+    redemption:
+      - type: voucher
+        program: ICICI Bank Rewards
+        constraints: "Redeemable for health & beauty, travel & luggage, shopping vouchers, home appliances, electronics, fashion & lifestyle."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/expressions-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2020-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [issuer-direct]
+    movies:
+      type: discount
+      partner: BookMyShow
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 100
+      notes: "25% off up to ₹100 on INOX & BookMyShow, twice a month."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+      notes: "1% waiver on fuel transactions worth ₹400–₹4,000 at HPCL pumps."
+    concierge: false
+    other:
+      - name: Custom card design
+        description: "Personalise the card face with 175+ pre-installed templates (Zodiac, Sports, Travel, etc.) or a custom image."
+        value_inr: null
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/expressions-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Indian citizen over 21 years of age. Income criteria not stated on the page."
+
+application:
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/expressions-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, customisable, movies, lounge, points]

@@ -1,0 +1,133 @@
+id: icici-mmt
+name: MakeMyTrip ICICI Bank Credit Card
+issuer: icici
+network: rupay
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: MakeMyTrip
+  category: travel-agency
+  partner_website: https://www.makemytrip.com
+status: active
+launched_on: null # TODO verify
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+      conditions: "Spend over ₹3 lakh in a year to get next year's annual fee waived."
+    forex_markup_pct: 0.99
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee: null # TODO verify
+    gst_applicable: true
+    notes: "Late payment fee ranges from ₹100 to ₹1300."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: cashback
+    currency_name: myCash
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: makemytrip-hotel-booking
+        canonical_categories: [travel]
+        multiplier: 6
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [mmt]
+        notes: "6% myCash (6 points per ₹100) on hotel bookings via MakeMyTrip."
+      - category: makemytrip-flight-bus-cab
+        canonical_categories: [travel]
+        multiplier: 3
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [mmt]
+        notes: "3% myCash (3 points per ₹100) on flight, bus and cab spends via MakeMyTrip."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+      - insurance-premiums
+    redemption:
+      - type: cashback-bank
+        program: MakeMyTrip myCash
+        rate_inr_per_unit: 1.0
+        constraints: "Reward points credited to MakeMyTrip account as myCash; redeemable on MakeMyTrip for flight / hotel / holiday bookings. myCash never expires."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+      international:
+        visits_per_cycle: 1
+        cycle: annual
+        guests_per_visit: 0
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "MakeMyTrip voucher (valid for 1 year)"
+        value_inr: null # TODO verify
+        window_days: null
+      - condition: "Annual fee paid"
+        benefit: "MakeMyTrip hotel voucher worth ₹1,000 (valid for 3 months)"
+        value_inr: 1000
+        window_days: 90
+    movies:
+      type: discount
+      partner: INOX / BookMyShow
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 150
+      notes: "25% off up to ₹150 on 2 movie tickets per month via INOX & BookMyShow."
+    dining:
+      program: Culinary Treats
+      discount_pct: null # TODO verify
+    concierge: true
+    other:
+      - name: MMTBLACK Gold membership
+        description: "Complimentary 1-year MMTBLACK Gold membership (excludes myCash benefit of MMTBLACK)."
+      - name: No-cost EMI on MakeMyTrip
+        description: "3 months' no-cost EMI on MakeMyTrip bookings."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: null
+  income_inr_annual:
+    salaried: 240000
+    self_employed: 240000
+  credit_score_min: null # TODO verify
+  residency: resident-indian
+  notes: "Salaried: monthly income of ₹20,000. Self-employed: annual income of at least ₹2,40,000."
+
+application:
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, travel, mmt, cashback, forex-friendly]

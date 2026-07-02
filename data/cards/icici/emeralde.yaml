@@ -19,17 +19,17 @@ fees:
     joining_fee_inr: 12000
     annual_fee_inr: 12000
     fee_waiver:
-      spend_inr: 1500000
+      spend_inr: 1000000
       cycle: annual
-    forex_markup_pct: 1.49
-    finance_charge_monthly_pct: 3.5
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2017-01-01
@@ -45,7 +45,7 @@ rewards:
       - category: international-spend
         canonical_categories: [international]
         multiplier: 1
-        effective_rate: 6
+        effective_rate: 4
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
@@ -53,9 +53,9 @@ rewards:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
-      - utilities
+    capping_rules:
+      - "Utility and insurance spends earn 1 Reward Point per ₹100"
     redemption:
       - type: catalog
         program: ICICI Rewards
@@ -64,8 +64,8 @@ rewards:
         program: Multiple
         ratio: "1:1"
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2017-01-01
@@ -82,9 +82,9 @@ benefits:
         guests_per_visit: unlimited
         via: [priority-pass, dragonpass]
     golf:
-      rounds_per_cycle: unlimited
+      rounds_per_cycle: 4
       cycle: monthly
-      lessons_per_cycle: unlimited
+      lessons_per_cycle: 0  # TODO verify: page lists up to 4 rounds/month, silent on lessons
     welcome:
       - condition: "Joining fee paid"
         benefit: "12,000 ICICI Reward Points"
@@ -107,26 +107,30 @@ benefits:
     movies:
       type: bogo
       partner: BookMyShow
-      max_per_cycle: 2
+      max_per_cycle: 4
       cycle: monthly
-      cap_inr: 500
+      cap_inr: 750
     concierge: true
+    other:
+      - name: Birthday benefit (Amex variant)
+        description: Tata CLiQ shopping voucher for American Express Cardholders.
+        value_inr: 5000
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 3500000
-    self_employed: 3500000
+    salaried: 1800000
+    self_employed: 1800000
   credit_score_min: 780
   residency: resident-indian
 
 application:
-  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-credit-card
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [super-premium, world-elite, golf, lounge, points]

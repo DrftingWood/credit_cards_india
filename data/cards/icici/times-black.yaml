@@ -22,30 +22,30 @@ fees:
       spend_inr: 2500000
       cycle: annual
     forex_markup_pct: 1.49
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2024-03-01
     effective_until: null
     currency: points
-    currency_name: Times Points
+    currency_name: ICICI Reward Points
     base:
-      rate: 3
+      rate: 2
       per_inr: 100
       unit_value_inr: 1.0
       unit_value_inr_realized: 0.5
     accelerated:
-      - category: travel-dining-international
-        canonical_categories: [dining, travel, international]
-        multiplier: 2
-        effective_rate: 6
+      - category: international-spend
+        canonical_categories: [international]
+        multiplier: 1.25
+        effective_rate: 2.5
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
@@ -59,12 +59,12 @@ rewards:
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
-      - type: voucher
-        program: Times Prime partners
+      - type: catalog
+        program: ICICI Rewards
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-03-01
@@ -86,9 +86,35 @@ benefits:
       lessons_per_cycle: unlimited
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Times Prime Premium membership + lifestyle vouchers worth ₹25,000"
-        value_inr: 25000
+        benefit: "Luxury Stay Gift Card from EaseMyTrip (₹10,000) or Lohono (₹12,000)"
+        value_inr: 12000
         window_days: 90
+      - benefit: "Lifestyle Gift Cards from Toni & Guy (₹3,000) and Interflora (₹1,000)"
+        value_inr: 4000
+      - benefit: "Travel visa benefits with Atlys and OneVasco"
+        value_inr: 10000
+      - benefit: "Zomato Gold annual membership"
+    milestones:
+      - spend_inr: 200000
+        cycle: annual
+        benefit: "Klook international experiences voucher"
+        value_inr: 10000
+        trigger_window: anniversary-year
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "WeWork day passes (India) or airport transfers (Thumby Aviation / Avis / Indian Travel House)"
+        value_inr: 10000
+        trigger_window: anniversary-year
+      - spend_inr: 1000000
+        cycle: annual
+        benefit: "Tata CLiQ Luxury Gift Card"
+        value_inr: 10000
+        trigger_window: anniversary-year
+      - spend_inr: 2000000
+        cycle: annual
+        benefit: "One night luxury stay at Ayatana or Lohono"
+        value_inr: 20000
+        trigger_window: anniversary-year
     insurance:
       - type: air-accident
         sum_insured_inr: 30000000
@@ -102,25 +128,27 @@ benefits:
       cycle: monthly
     concierge: true
     other:
-      - name: Times Prime Premium membership
-        description: Complimentary Times Prime Premium (ET Prime, Gaana Plus, Docubay, etc.).
+      - name: The Quorum Club
+        description: Special membership offers and access to events at The Quorum Club, plus dining discounts at select restaurants.
+      - name: CribLife lifestyle management
+        description: Lifestyle management services from CribLife with 6 exclusive offerings.
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 3000000
-    self_employed: 3000000
+    salaried: 2400000
+    self_employed: 2400000
   credit_score_min: 780
   residency: resident-indian
   notes: "Invite-only / by application; curated customer base."
 
 application:
-  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/times-black-icici-bank-credit-card
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [super-premium, invite-only, co-branded, times-prime, lifestyle]

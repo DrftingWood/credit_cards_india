@@ -1,0 +1,91 @@
+id: icici-parakram
+name: ICICI Bank Parakram Credit Card
+issuer: icici
+network: rupay # TODO verify
+network_tier: null
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null # TODO verify
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee: null # TODO verify
+    gst_applicable: true
+    notes: "Lifetime-free for defence personnel: joining fee Nil, annual fee Nil. Late payment fee ranges from ₹100 to ₹1300."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: ICICI Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+    exclusions:
+      - fuel
+    redemption:
+      - type: catalog
+        program: ICICI Rewards
+        rate_inr_per_unit: 0.25
+        constraints: "Redeem for Health & Beauty, Travel & Luggage, shopping vouchers, home appliances, electronics, fashion & lifestyle."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 200000
+      - type: air-accident
+        sum_insured_inr: 2000000
+        conditions: "Air Accident Insurance cover up to ₹20 lakh."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: null
+      max_txn_inr: null
+      cap_per_cycle_inr: null
+      cycle: monthly
+      notes: "1% fuel surcharge waiver on fuel purchases at all fuel stations."
+    other:
+      - name: Title embossing
+        description: "Defence Services title embossed on the card."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null # TODO verify
+  residency: resident-indian
+  notes: "For Indian Defence and Paramilitary personnel. Indian citizen over 21 years of age."
+
+application:
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [defence, lifetime-free, points, entry]

@@ -1,0 +1,96 @@
+id: icici-hpcl-coral
+name: ICICI Bank HPCL Coral Credit Card
+issuer: icici
+network: visa  # TODO verify network
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: HPCL
+  category: fuel
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2020-01-01
+    effective_until: null
+    joining_fee_inr: 199
+    annual_fee_inr: 199
+    fee_waiver:
+      spend_inr: 50000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    gst_applicable: true
+    notes: "Late payment fee ranges ₹100–₹1,300 depending on outstanding."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2020-01-01
+    effective_until: null
+    currency: points
+    currency_name: ICICI Bank Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
+    accelerated:
+      - category: utility-insurance
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.5
+        effective_rate: 1
+        notes: "1 Reward Point per ₹100 on utility and insurance spends."
+    redemption:
+      - type: voucher
+        program: ICICI Bank Rewards
+        constraints: "Redeemable for health & beauty, travel & luggage, shopping vouchers, home appliances, electronics, fashion & lifestyle."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2020-01-01
+    effective_until: null
+    movies:
+      type: discount
+      partner: BookMyShow
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 100
+      notes: "25% off up to ₹100 on BookMyShow, twice a month."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+      notes: "1% waiver on fuel transactions worth ₹400–₹4,000 at HPCL pumps."
+    concierge: false
+    other:
+      - name: Fuel savings at HPCL
+        description: "Up to 3.5% savings on fuel transactions at HPCL petrol pumps (reward points plus fuel surcharge waiver)."
+        value_inr: null
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: null
+  income_inr_annual:
+    salaried: 240000
+    self_employed: 240000
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Salaried: monthly income ₹20,000. Self-employed: annual income ₹2,40,000."
+
+application:
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, co-brand, fuel, movies, points]

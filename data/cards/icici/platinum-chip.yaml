@@ -24,68 +24,70 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card."
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/platinum-chip-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2014-01-01
     effective_until: null
     currency: points
-    currency_name: PAYBACK Points
+    currency_name: ICICI Reward Points
     base:
       rate: 2
       per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
+    accelerated:
+      - category: utility-and-insurance
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.5
+        effective_rate: 1
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
       - type: catalog
-        program: ICICI Rewards / PAYBACK
+        program: ICICI Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/platinum-chip-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2014-01-01
     effective_until: null
     lounge_access: null
-    movies:
-      type: bogo
-      partner: BookMyShow
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 100
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
       cap_per_cycle_inr: null
       cycle: monthly
+      notes: "At HPCL pumps."
     concierge: false
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/platinum-chip-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 200000
-    self_employed: 200000
+    salaried: 240000
+    self_employed: 240000
   credit_score_min: 700
   residency: resident-indian
 
 application:
-  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/platinum-chip-credit-card
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, entry, points]

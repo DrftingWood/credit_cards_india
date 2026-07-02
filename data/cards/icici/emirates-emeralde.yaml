@@ -1,0 +1,116 @@
+id: icici-emirates-emeralde
+name: Emirates Skywards ICICI Bank Emeralde Credit Card
+issuer: icici
+network: mastercard  # TODO verify - network not stated on live page (ICICI Emirates variants commonly Mastercard World)
+network_tier: null
+tier: super-premium
+card_type: credit
+co_brand:
+  partner: Emirates Skywards
+  category: airline
+status: active
+launched_on: null  # TODO verify
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 10000
+    annual_fee_inr: 10000
+    fee_waiver: null
+    forex_markup_pct: null  # TODO verify
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee: null  # TODO verify (ATM withdrawal charged interest at 3.75%/month)
+    late_payment_slabs: null  # crawl states range ₹100 to ₹1,300; exact slabs not published
+    gst_applicable: true
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
+      retrieved_on: 2026-07-03
+    notes: "Late payment fee ranges ₹100 to ₹1,300. ATM withdrawal and revolve (minimum due paid) charged 3.75% interest per month."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: miles
+    currency_name: Skywards Miles
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: null  # TODO verify
+      unit_value_inr_realized: null  # TODO verify
+    redemption:
+      - type: airmiles
+        program: Emirates Skywards
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
+      retrieved_on: 2026-07-03
+    notes: "Earn 2 Skywards Miles per ₹100 on both domestic and international spend; miles credited to Emirates Skywards account at end of billing cycle."
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+    movies:
+      type: bogo
+      partner: BookMyShow
+      max_per_cycle: 4
+      cycle: monthly
+      cap_inr: 750
+      notes: "Buy one ticket and get up to ₹750 off on the second ticket, four times every month."
+    milestones:
+      - spend_inr: 1500000
+        cycle: annual
+        benefit: "Emirates Skywards Gold Tier Membership on ₹15 lakh spend (including minimum ₹50,000 on Emirates.com) in the anniversary year"
+        value_inr: null
+        reward_kind: other
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "10,000 Skywards Miles"
+        value_inr: null  # TODO verify
+        window_days: null
+      - condition: "Card issuance"
+        benefit: "Emirates Skywards Silver Tier Membership"
+        value_inr: null
+        window_days: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: null
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    other:
+      - name: "Annual renewal miles"
+        description: "10,000 Skywards Miles and upgrade to Emirates Skywards Gold Tier on annual renewal"
+        value_inr: null
+      - name: "Emirates flight discount"
+        description: "Up to 10% discount on Emirates flight bookings via Emirates.com using promo code INICI26"
+        value_inr: null
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: null
+  income_inr_annual:
+    salaried: 3000000
+    self_employed: 3000000
+  credit_score_min: null  # TODO verify
+  residency: resident-indian
+  notes: "Indian citizen over 21. Salaried minimum monthly income ₹2,50,000; self-employed minimum annual income ₹30,00,000."
+
+application:
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [super-premium, airline, co-brand, miles, lounge, travel]

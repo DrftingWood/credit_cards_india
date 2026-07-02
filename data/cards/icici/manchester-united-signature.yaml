@@ -9,13 +9,18 @@ co_brand:
   partner: Manchester United
   category: lifestyle
   partner_website: https://www.manutd.com
-status: active
+status: discontinued
 launched_on: 2019-01-01
-discontinued_on: null
+discontinued_on: 2026-07-03
+
+# The ICICI x Manchester United co-brand has been withdrawn — all MU card
+# URLs return 404 on the live site as of 2026-07-03 and it no longer appears
+# in ICICI's credit-card catalogue. discontinued_on is the observed-withdrawal
+# date; the exact sunset date is unconfirmed.
 
 fees:
   - effective_from: 2019-01-01
-    effective_until: null
+    effective_until: 2026-07-02
     joining_fee_inr: 3500
     annual_fee_inr: 1500
     fee_waiver: null
@@ -31,7 +36,7 @@ fees:
 
 rewards:
   - effective_from: 2019-01-01
-    effective_until: null
+    effective_until: 2026-07-02
     currency: points
     currency_name: PAYBACK Points
     base:
@@ -63,7 +68,7 @@ rewards:
 
 benefits:
   - effective_from: 2019-01-01
-    effective_until: null
+    effective_until: 2026-07-02
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -109,5 +114,5 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, manchester-united, sports, premium, niche]

@@ -20,7 +20,7 @@ fees:
       cycle: annual
       conditions: "Renewal fee waived on spends of ₹3L in the preceding year."
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -101,10 +101,6 @@ benefits:
         spend_threshold_inr: 60000
         spend_threshold_cycle: quarterly
         notes: "1 international lounge voucher per calendar quarter, unlocked by ₹60,000 spend in the preceding quarter."
-    golf:
-      rounds_per_cycle: 4
-      cycle: quarterly
-      lessons_per_cycle: 0
     milestones:
       - spend_inr: 150000
         cycle: quarterly
@@ -116,15 +112,19 @@ benefits:
         window_days: 90
     insurance:
       - type: air-accident
-        sum_insured_inr: 20000000
+        sum_insured_inr: 10000000
+      - type: travel-medical
+        sum_insured_inr: 2500000
+        conditions: "Emergency medical expenses on international travel (USD 31,250); pre-existing illness excluded."
       - type: credit-shield
         sum_insured_inr: 900000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 500
-      cycle: statement
+    movies:
+      type: bogo
+      partner: BookMyShow
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 250
+      notes: "Buy One Get One Free on BookMyShow for Fri/Sat/Sun shows; max ₹250/ticket, up to 2 free tickets per calendar month (min 2 tickets per booking)."
     concierge: false
     source:
       url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card

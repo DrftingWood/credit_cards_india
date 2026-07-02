@@ -20,7 +20,7 @@ fees:
       cycle: annual
       conditions: "Renewal membership fee waived on annual spends of ₹25,000 and above."
     forex_markup_pct: 3.5   # TODO verify — not stated on page (HDFC typical)
-    finance_charge_monthly_pct: 3.6   # TODO verify — not stated on page (HDFC typical); page notes 50-day interest-free period
+    finance_charge_monthly_pct: 3.75  # MITC v4.3 (Jul-2026): 3.75%/mo (45% p.a.) standard rate
     cash_advance_fee: null  # TODO verify — ATM withdrawal supported per FAQ, fee not stated on page
     gst_applicable: true
     notes: "Interest-free period of up to 50 days. Fee amounts not published on the product page; verify against the Fees & Charges schedule."
@@ -36,19 +36,25 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 1.0
+      unit_value_inr: 0.25
     accelerated:
       - category: groceries-supermarket-dining-payzapp
         canonical_categories: [groceries, dining]
         multiplier: 3
         effective_rate: 3
+        cap_per_cycle: 500
+        cap_unit: points
+        cycle: monthly
         merchants: [payzapp]
-        notes: "3% CashPoints on supermarket, groceries and dining spends and on PayZapp transactions. Applies to both UPI and regular credit card spends."
+        notes: "3% CashPoints on supermarket, groceries and dining spends and on PayZapp transactions. Applies to both UPI and regular credit card spends. Capped at 500 CashPoints per calendar month."
       - category: utilities
         canonical_categories: [utilities]
         multiplier: 2
         effective_rate: 2
-        notes: "2% CashPoints on all utility bill payments."
+        cap_per_cycle: 500
+        cap_unit: points
+        cycle: monthly
+        notes: "2% CashPoints on all utility bill payments. Capped at 500 CashPoints per calendar month."
     exclusions:
       - rent
       - wallet-loads
@@ -56,11 +62,12 @@ rewards:
       - fuel
       - insurance-premiums
       - government
+      - education
     capping_rules:
-      - "TODO verify — monthly/cycle CashPoint caps not stated on product page."
+      - "1% CashPoints on all other spends, capped at 500 CashPoints per calendar month."
     redemption:
       - type: statement-credit
-        rate_inr_per_unit: 1.0
+        rate_inr_per_unit: 0.25
     notes: "1% CashPoints on all other spends (excluding rent, wallet loads, EMI, fuel, insurance and government categories). CashPoints computed on calendar-month cycle for settled transactions."
     source:
       url: https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card

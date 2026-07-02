@@ -19,7 +19,7 @@ fees:
       spend_inr: 50000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -34,15 +34,15 @@ rewards:
     currency: points
     currency_name: CashPoints
     base:
-      rate: 2
+      rate: 1
       per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
+      unit_value_inr: 0.15
+      unit_value_inr_realized: 0.15
     accelerated:
       - category: select-merchants
         canonical_categories: [groceries, dining, entertainment, travel]
         multiplier: 10
-        effective_rate: 20
+        effective_rate: 10
         cap_per_cycle: 2500
         cap_unit: points
         cycle: monthly
@@ -56,7 +56,7 @@ rewards:
       - emi
     redemption:
       - type: statement-credit
-        rate_inr_per_unit: 0.25
+        rate_inr_per_unit: 0.15
         min_units: 500
     source:
       url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
@@ -66,6 +66,13 @@ benefits:
   - effective_from: 2014-01-01
     effective_until: null
     lounge_access: null
+    welcome:
+      - condition: "Joining membership fee paid"
+        benefit: "500 CashPoints"
+        value_inr: 75
+      - condition: "Renewal membership fee paid"
+        benefit: "500 CashPoints"
+        value_inr: 75
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400

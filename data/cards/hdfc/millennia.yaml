@@ -20,14 +20,14 @@ fees:
       cycle: annual
       conditions: "Renewal fee waived on spends of ₹1L in the preceding year."
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-02-01
@@ -65,22 +65,16 @@ rewards:
         rate_inr_per_unit: 0.3
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2020-02-01
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-        notes: "Complimentary access on cardholder; 2 visits per quarter."
+    lounge_access: null
     milestones:
       - spend_inr: 100000
         cycle: quarterly
-        benefit: "₹1,000 gift voucher"
+        benefit: "Millennia Milestone Voucher: cardholder's choice of a ₹1,000 brand gift voucher OR one complimentary airport lounge access voucher (DreamFolks lounge program discontinued 01 Dec 2023)."
         value_inr: 1000
     welcome:
       - condition: "Joining fee paid"
@@ -96,7 +90,7 @@ benefits:
     concierge: false
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -111,5 +105,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [cashback, online-spend, mid-tier]

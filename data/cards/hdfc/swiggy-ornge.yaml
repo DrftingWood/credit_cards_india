@@ -23,8 +23,10 @@ fees:
       cycle: annual
       conditions: "Renewal fee waived on spends of Rs 1,50,000+ before renewal date. Excludes Cash on Call, Balance Transfer and Cash Withdrawal."
     forex_markup_pct: 3.5   # TODO verify
-    finance_charge_monthly_pct: 3.6   # TODO verify
-    cash_advance_fee: null   # TODO verify
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card
@@ -44,15 +46,21 @@ rewards:
         canonical_categories: [dining]
         multiplier: 1
         effective_rate: 5
+        cap_per_cycle: 1500
+        cap_unit: cashback-inr
+        cycle: statement
         channel:
           class: food-delivery
           merchants: [swiggy]
-        notes: "5% CashBack on all eligible Swiggy app spends (Food orders, Instamart, Dineout). # TODO verify monthly cap"
+        notes: "5% CashBack on all eligible Swiggy app spends (Food orders, Instamart, Dineout)."
       - category: online-mcc
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 5
-        notes: "5% CashBack on online spends across select online merchants/MCCs. # TODO verify eligible merchants and monthly cap"
+        cap_per_cycle: 1500
+        cap_unit: cashback-inr
+        cycle: statement
+        notes: "5% CashBack on online spends across select online merchants/MCCs. # TODO verify eligible merchants"
     exclusions:
       - fuel
       - rent
@@ -60,6 +68,8 @@ rewards:
       - wallet-loads
       - jewellery
       - government
+    capping_rules:
+      - "Base 1% CashBack capped at ₹1,000 per statement cycle."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -72,11 +82,6 @@ benefits:
   - effective_from: 2026-07-03
     effective_until: null
     lounge_access: null
-    golf:
-      rounds_per_cycle: 4
-      lessons_per_cycle: 12
-      cycle: annual
-      notes: "Mastercard Golf: 4 complimentary green-fee rounds per calendar year, 12 free golf lessons per year, 50% discount on additional sessions."
     welcome:
       - condition: "Card activation completed"
         benefit: "Complimentary Swiggy One membership for 12 months"

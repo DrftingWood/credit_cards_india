@@ -23,7 +23,7 @@ fees:
       cycle: annual
       conditions: "Renewal fee waived on ₹2,00,000 annual spend before renewal date (excludes Cash on Call, Balance Transfer, Cash Withdrawal). Joining fee separately waived on ₹75,000 spend within 90 days of issuance (first year only)."
     forex_markup_pct: 3.5   # TODO verify (premium HDFC forex sometimes 2%; page silent)
-    finance_charge_monthly_pct: 3.6   # TODO verify (page silent; typical HDFC premium rate)
+    finance_charge_monthly_pct: 3.75
     gst_applicable: true
     source:
       url: https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card
@@ -43,16 +43,22 @@ rewards:
         canonical_categories: [dining]
         multiplier: 10
         effective_rate: 10
+        cap_per_cycle: 1500
+        cap_unit: cashback-inr
+        cycle: statement
         channel:
           required: true
           class: food-delivery
           merchants: [swiggy]
-        notes: "10% CashBack on Swiggy app spends (Food ordering, Instamart, Dineout). Monthly cap not disclosed on page. # TODO verify cap"
+        notes: "10% CashBack on Swiggy app spends (Food ordering, Instamart, Dineout)."
       - category: online-select
         canonical_categories: [online]
         multiplier: 5
         effective_rate: 5
-        notes: "5% CashBack on select online merchants/MCCs. Eligible merchant list not disclosed on page. # TODO verify cap and merchant list"
+        cap_per_cycle: 1500
+        cap_unit: cashback-inr
+        cycle: statement
+        notes: "5% CashBack on select online merchants/MCCs. Eligible merchant list not disclosed on page. # TODO verify merchant list"
     exclusions:
       - fuel
       - wallet-loads
@@ -61,7 +67,7 @@ rewards:
       - emi
       - utilities
     capping_rules:
-      - "Monthly CashBack caps not disclosed on the page. # TODO verify"
+      - "Base 1% CashBack capped at ₹1,000 per statement cycle."
     redemption:
       - type: statement-credit
         program: HDFC CashBack
@@ -75,15 +81,10 @@ benefits:
   - effective_from: 2026-07-03
     effective_until: null
     lounge_access: null
-    golf:
-      rounds_per_cycle: 4
-      lessons_per_cycle: 12
-      cycle: annual
-      notes: "Mastercard Golf Benefits: access to golf courses worldwide, 12 free lessons per year, 4 complimentary rounds of green fees per calendar year; 50% discount on green fees beyond complimentary sessions."
     welcome:
       - condition: "Card activation"
         benefit: "Complimentary Swiggy BLCK membership for 3 months"
-        window_days: 90
+        window_days: 37
     fuel_surcharge_waiver: null
     concierge: false
     source:

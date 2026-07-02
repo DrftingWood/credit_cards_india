@@ -20,18 +20,8 @@ fees:
       cycle: annual
       conditions: "Renewal fee waived on spends of ₹10L in the preceding membership year."
     forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.6
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    late_payment_slabs:
-      - { up_to_inr: 100, fee_inr: 0 }
-      - { up_to_inr: 500, fee_inr: 100 }
-      - { up_to_inr: 5000, fee_inr: 500 }
-      - { up_to_inr: 10000, fee_inr: 600 }
-      - { up_to_inr: 25000, fee_inr: 800 }
-      - { up_to_inr: 50000, fee_inr: 1100 }
-      - { up_to_inr: "any", fee_inr: 1300 }
+    finance_charge_monthly_pct: 1.99
+    cash_advance_fee: null
     gst_applicable: true
     source:
       url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
@@ -94,7 +84,7 @@ benefits:
     golf:
       rounds_per_cycle: unlimited
       cycle: monthly
-      lessons_per_cycle: 0
+      lessons_per_cycle: unlimited
     milestones: []
     welcome:
       - condition: "Joining fee paid"
@@ -106,10 +96,14 @@ benefits:
         sum_insured_inr: 30000000
       - type: travel-medical
         sum_insured_inr: 5000000
+      - type: credit-shield
+        sum_insured_inr: 900000
+      - type: lost-card-liability
+        sum_insured_inr: 900000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
-      max_txn_inr: 5000
+      max_txn_inr: 100000
       cap_per_cycle_inr: 1000
       cycle: statement
     concierge: true

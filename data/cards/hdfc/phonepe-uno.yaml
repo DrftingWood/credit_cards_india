@@ -16,11 +16,14 @@ discontinued_on: null
 fees:
   - effective_from: 2026-07-03  # TODO verify effective date
     effective_until: null
-    joining_fee_inr: 0  # TODO verify fee (page mentions "cardholders for whom Joining Fee is applicable" but does not state amount)
-    annual_fee_inr: 0  # TODO verify annual/renewal fee
-    fee_waiver: null  # TODO verify fee waiver terms
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Renewal/annual membership fee waived on spends of ₹1,00,000 in the preceding 12 months."
     forex_markup_pct: 3.5  # TODO verify (HDFC entry-card norm; not stated on page)
-    finance_charge_monthly_pct: 3.6  # TODO verify (HDFC entry-card norm; not stated on page)
+    finance_charge_monthly_pct: 3.75
     gst_applicable: true
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
@@ -65,7 +68,16 @@ rewards:
         notes: "1% Reward Points on all UPI Scan & Pay spends. Capped at 500 reward points per calendar month."
     capping_rules:
       - "Up to 1500 Reward Points per month total across the three accelerated categories (500 each)."
-    # TODO verify reward exclusions (not listed on product page)
+    exclusions:
+      - emi
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - education
+      - gift-cards
+      - cash-advance
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
       retrieved_on: 2026-07-03

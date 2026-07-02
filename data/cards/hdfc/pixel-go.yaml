@@ -12,14 +12,14 @@ launched_on: null             # TODO verify launch date
 fees:
   - effective_from: 2026-07-03   # TODO verify actual effective date
     effective_until: null
-    joining_fee_inr: 0           # TODO verify: page states a joining-fee waiver exists but does not disclose the fee amount
-    annual_fee_inr: 0            # TODO verify: renewal fee amount not disclosed on page
+    joining_fee_inr: 250
+    annual_fee_inr: 250
     fee_waiver:
       spend_inr: 50000
       cycle: annual
       conditions: "Renewal/annual membership fee waived on spends of ₹50,000 in the preceding 12 months."
     forex_markup_pct: 3.5        # TODO verify (page silent; HDFC default)
-    finance_charge_monthly_pct: 3.6  # TODO verify (page silent; HDFC default)
+    finance_charge_monthly_pct: 3.75
     gst_applicable: true
     notes: "RuPay variant supports UPI linkage. Interest-free credit period of up to 50 days. Fee amounts not disclosed on the product page."
     source:
@@ -40,22 +40,27 @@ rewards:
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 5
+        cap_per_cycle: 500
         cap_unit: cashback-inr
+        cycle: monthly
         channel:
           class: issuer-portal
           merchants: [smartbuy]
-        notes: "5% CashBack on eligible transactions via HDFC SmartBuy. Cap not disclosed on page. # TODO verify cap"
+        notes: "5% CashBack on eligible transactions via HDFC SmartBuy. Capped at 500 CashPoints per calendar month."
       - category: upi-spends
         multiplier: 1
         effective_rate: 1
+        cap_per_cycle: 500
         cap_unit: cashback-inr
-        notes: "1% Cashback on UPI spends (RuPay variant). Cap not disclosed on page. # TODO verify cap"
+        cycle: monthly
+        notes: "1% Cashback on UPI spends (RuPay variant). Capped at 500 CashPoints per calendar month."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - emi
       - insurance-premiums
+      - government
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -78,9 +83,9 @@ benefits:
       cap_per_cycle_inr: 250
       cycle: statement
     dining:
-      program: Swiggy Dineout
-      discount_pct: 10
-      notes: "Up to 10% savings on restaurant bill payments via Swiggy Dineout."
+      program: Dineout Pay
+      discount_pct: 25
+      notes: "Save up to 25% on restaurant bills via Dineout Pay, capped at ₹300 per month. Offer stated valid till 31 Dec 2024 in the T&C, so may be time-limited/expired."
     concierge: false
     other:
       - name: Digital-first card

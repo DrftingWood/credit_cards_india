@@ -17,8 +17,8 @@ fees:
     effective_until: null
     joining_fee_inr: 4500
     annual_fee_inr: 4500
-    forex_markup_pct: 2.0  # TODO verify (premium HDFC typically ~2%; not stated on page)
-    finance_charge_monthly_pct: 3.6  # TODO verify (standard HDFC; not stated on page)
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     gst_applicable: true
     source:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
@@ -48,6 +48,21 @@ rewards:
       - government
       - insurance-premiums
       - emi
+    capping_rules:
+      - "Shoppers Stop accelerated earn (7%) capped at 2,000 Reward Points per month."
+      - "Base earn (2%) capped at 2,000 Reward Points per month."
+    redemption:
+      - type: voucher
+        program: Shoppers Stop
+        rate_inr_per_unit: 1.0
+        constraints: "1 Reward Point = ₹1 when redeemed against a Shoppers Stop voucher."
+      - type: catalog
+        rate_inr_per_unit: 0.35
+      - type: airmiles
+        rate_inr_per_unit: 0.5
+      - type: other
+        program: SmartBuy
+        rate_inr_per_unit: 0.5
     source:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
       retrieved_on: 2026-07-03

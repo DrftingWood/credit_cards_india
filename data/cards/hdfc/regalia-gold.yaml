@@ -20,7 +20,7 @@ fees:
       cycle: annual
       conditions: "Renewal fee waived on spends of ₹4L in the preceding year."
     forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -47,8 +47,8 @@ rewards:
         cap_per_cycle: 5000
         cap_unit: points
         cycle: monthly
-        merchants: [myntra, nykaa, reliance-digital]
-        notes: "5X Reward Points at Marquee partners (Myntra, Nykaa, Reliance Digital and more)."
+        merchants: [myntra, nykaa, reliance-digital, marks-spencer]
+        notes: "5X Reward Points at select merchants (Myntra, Nykaa, Reliance Digital, Marks & Spencer). Minimum transaction value of ₹150 to be eligible; 5X cap of 5,000 RP/month across all brands combined."
     exclusions:
       - fuel
       - wallet-loads
@@ -66,6 +66,12 @@ rewards:
         program: SmartBuy Flights & Hotels
         rate_inr_per_unit: 0.5
         constraints: "Redeem up to a maximum of 70% of the travel booking value using Reward Points."
+      - type: catalog
+        program: SmartBuy Products & Vouchers
+        rate_inr_per_unit: 0.35
+      - type: statement-credit
+        program: Statement balance (cashback)
+        rate_inr_per_unit: 0.20
       - type: airmiles
         program: Multiple (Airmiles hub)
         ratio: "1:0.5"
@@ -81,7 +87,7 @@ benefits:
         visits_per_cycle: 3
         cycle: quarterly
         guests_per_visit: 0
-        via: [priority-pass]
+        via: [issuer-direct]
         spend_threshold_inr: 60000
         spend_threshold_cycle: quarterly
         notes: "3 domestic lounge visits per calendar quarter, unlocked by ₹60,000 spend in the preceding quarter."
@@ -93,18 +99,18 @@ benefits:
     milestones:
       - spend_inr: 150000
         cycle: quarterly
-        benefit: "Flipkart / Myntra / Marriott / MakeMyTrip voucher worth ₹1,500"
+        benefit: "Myntra / Nykaa / Reliance Digital / Marriott voucher worth ₹1,500"
         value_inr: 1500
-      - spend_inr: 500000
+      - spend_inr: 750000
         cycle: annual
-        benefit: "Marriott / Club Vistara / MakeMyTrip voucher worth ₹5,000"
+        benefit: "SmartBuy flight voucher worth ₹5,000"
         value_inr: 5000
     welcome:
       - condition: "Joining fee paid"
         benefit: "Gift voucher worth ₹2,500"
         value_inr: 2500
         window_days: 90
-      - condition: "Card issued"
+      - condition: "₹1,00,000 net retail spend within 90 days of card issuance"
         benefit: "Complimentary Swiggy One & MakeMyTrip (MMT) Black Gold memberships"
     insurance:
       - type: air-accident

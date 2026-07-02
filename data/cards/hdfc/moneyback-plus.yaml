@@ -19,7 +19,7 @@ fees:
       spend_inr: 50000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -42,18 +42,12 @@ rewards:
       - category: online-partner-merchants
         canonical_categories: [online]
         multiplier: 5
-        effective_rate: 10
+        effective_rate: 20
         cap_per_cycle: 2500
         cap_unit: points
         cycle: monthly
-        merchants: [amazon, flipkart, swiggy, reliance-smart-superstore]
-        notes: "10 CashPoints per ₹200 on partner merchants (up to 2.5% valueback)."
-      - category: emi-spends
-        multiplier: 5
-        effective_rate: 10
-        cap_per_cycle: 2500
-        cap_unit: points
-        cycle: monthly
+        merchants: [amazon, bigbasket, flipkart, swiggy, reliance-smart-superstore]
+        notes: "10X CashPoints (20 CashPoints per ₹200) on Amazon, BigBasket, Flipkart, Reliance Smart SuperStore & Swiggy, capped at 2,500 CashPoints/month."
     exclusions:
       - fuel
       - wallet-loads
@@ -64,7 +58,7 @@ rewards:
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
-        min_units: 500
+        min_units: 2000
     source:
       url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
       retrieved_on: 2026-07-03
@@ -78,6 +72,13 @@ benefits:
         cycle: quarterly
         benefit: "₹500 gift voucher"
         value_inr: 500
+    welcome:
+      - condition: "Joining membership fee paid"
+        benefit: "500 CashPoints"
+        value_inr: 125
+      - condition: "Renewal membership fee paid"
+        benefit: "500 CashPoints"
+        value_inr: 125
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400

@@ -21,9 +21,11 @@ fees:
       spend_inr: 75000
       cycle: quarterly
       conditions: "First-year annual fee (levied after 90 days of card issuance) waived on ₹75,000 non-EMI spends within the first 90 days."
-    forex_markup_pct: 3.5  # TODO verify (not stated on live page)
-    finance_charge_monthly_pct: 3.6  # TODO verify (not stated on live page)
-    cash_advance_fee: null
+    forex_markup_pct: 3.5  # confirmed via KFS
+    finance_charge_monthly_pct: 3.6  # confirmed via KFS (do not change to 3.75)
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
@@ -63,6 +65,10 @@ benefits:
   - effective_from: 2021-01-01  # TODO verify effective_from
     effective_until: null
     lounge_access: null
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 3000000
+        conditions: "HDFC Ergo accidental death / permanent total disability cover up to ₹30 lakh, tiered by spend."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400

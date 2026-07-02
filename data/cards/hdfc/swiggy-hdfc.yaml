@@ -2,7 +2,7 @@ id: hdfc-swiggy-hdfc
 name: Swiggy HDFC Bank Credit Card
 issuer: hdfc
 network: mastercard
-network_tier: platinum
+network_tier: world
 tier: entry
 card_type: credit
 co_brand:
@@ -22,14 +22,14 @@ fees:
       spend_inr: 200000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2023-09-01
@@ -47,7 +47,7 @@ rewards:
         effective_rate: 10
         cap_per_cycle: 1500
         cap_unit: cashback-inr
-        cycle: monthly
+        cycle: statement
         merchants: [swiggy-food, swiggy-instamart, swiggy-dineout, swiggy-genie]
         notes: "10% cashback on Swiggy app (Food, Instamart, Dineout, Genie)."
       - category: online-mcc
@@ -56,7 +56,7 @@ rewards:
         effective_rate: 5
         cap_per_cycle: 1500
         cap_unit: cashback-inr
-        cycle: monthly
+        cycle: statement
         notes: "5% cashback on online spends across eligible MCCs."
     exclusions:
       - fuel
@@ -72,7 +72,7 @@ rewards:
         constraints: "Redeemable only on Swiggy app."
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2023-09-01
@@ -83,16 +83,11 @@ benefits:
         benefit: "Complimentary Swiggy One membership for 3 months"
         value_inr: 1000
         window_days: 30
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: statement
+    fuel_surcharge_waiver: null
     concierge: false
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -107,5 +102,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, swiggy, cashback, entry, food-delivery]

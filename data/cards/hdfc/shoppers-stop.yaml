@@ -1,7 +1,7 @@
 id: hdfc-shoppers-stop
 name: Shoppers Stop HDFC Bank Credit Card
 issuer: hdfc
-network: visa  # TODO verify network (page only references RuPay in generic UPI boilerplate)
+network: rupay  # FAQ: Mass variant is RuPay / UPI-linkable
 network_tier: null
 tier: entry
 card_type: credit
@@ -15,16 +15,16 @@ discontinued_on: null
 fees:
   - effective_from: 2026-07-03
     effective_until: null
-    joining_fee_inr: 0  # TODO verify - fee amount not stated on page
-    annual_fee_inr: 0  # TODO verify - fee amount not stated on page
+    joining_fee_inr: 299
+    annual_fee_inr: 299
     fee_waiver: null
-    forex_markup_pct: 3.5  # TODO verify - not stated on page
-    finance_charge_monthly_pct: 3.6  # TODO verify - not stated on page
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     gst_applicable: true
     source:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
       retrieved_on: 2026-07-03
-      notes: "Fees & Charges section present on page but numeric values not in crawled text."
+    notes: "₹299 joining and annual fee for customers joining from Mar-2024; earlier customers are lifetime-free."
 
 rewards:
   - effective_from: 2026-07-03
@@ -48,11 +48,21 @@ rewards:
       - government
       - emi
     capping_rules:
-      - "TODO verify Reward Points caps and exclusion list (not detailed on page)."
+      - "Shoppers Stop accelerated earn (3%) capped at 500 Reward Points per month."
+      - "Base earn (1%) capped at 1,000 Reward Points per month."
+      - "Minimum transaction of ₹150 required to earn Reward Points."
     redemption:
       - type: voucher
         program: Shoppers Stop
-        constraints: "Redemption Limit applicable from 1st Jan, 2023. TODO verify rate_inr_per_unit."
+        rate_inr_per_unit: 1.0
+        constraints: "1 Reward Point = ₹1 when redeemed against a Shoppers Stop voucher. Redemption Limit applicable from 1st Jan, 2023."
+      - type: catalog
+        rate_inr_per_unit: 0.25
+      - type: cashback-bank
+        rate_inr_per_unit: 0.20
+      - type: other
+        program: SmartBuy
+        rate_inr_per_unit: 0.20
     source:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
       retrieved_on: 2026-07-03

@@ -16,17 +16,17 @@ fees:
     joining_fee_inr: 1000
     annual_fee_inr: 1000
     fee_waiver:
-      spend_inr: 200000
+      spend_inr: 100000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-rewardz
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2017-01-01
@@ -59,7 +59,7 @@ rewards:
         rate_inr_per_unit: 0.5
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-rewardz
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2017-01-01
@@ -79,7 +79,7 @@ benefits:
     concierge: false
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-rewardz
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -94,5 +94,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/diners-club-rewardz
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [entry, diners, points]

@@ -15,11 +15,14 @@ discontinued_on: null
 fees:
   - effective_from: 2026-07-03  # TODO verify effective_from
     effective_until: null
-    joining_fee_inr: 1000  # TODO verify (not stated on page)
-    annual_fee_inr: 1000  # TODO verify (not stated on page)
-    fee_waiver: null  # TODO verify
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+      conditions: "Renewal/annual membership fee waived on spends of ₹2,00,000 in the preceding 12 months."
     forex_markup_pct: 3.5  # TODO verify
-    finance_charge_monthly_pct: 3.6  # TODO verify
+    finance_charge_monthly_pct: 3.75
     gst_applicable: true
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
@@ -58,6 +61,16 @@ rewards:
     capping_rules:
       - "1% Reward Points on all UPI Scan & Pay spends, capped at 500 Reward Points per calendar month."
       - "Overall earn capped at up to 2000 Reward Points per month across all categories."
+    exclusions:
+      - emi
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - education
+      - gift-cards
+      - cash-advance
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
       retrieved_on: 2026-07-03
@@ -72,8 +85,8 @@ benefits:
         cycle: annual
         spend_threshold_inr: 75000
         spend_threshold_cycle: quarterly
-        via: [issuer-direct]  # TODO verify lounge program
-        notes: "8 complimentary domestic lounge visits per year (2 per quarter). Conditional: spend ₹75,000 in a quarter to be eligible for lounge access."
+        via: [issuer-direct]
+        notes: "8 complimentary domestic lounge visits per year (2 per quarter). Milestone-based: a lounge voucher is issued via Gyftr on ₹75,000 net spend in the preceding calendar quarter."
     welcome:
       - condition: "Joining fee applicable; first RuPay CC on UPI transaction (min ₹100)"
         benefit: "PhonePe Gift card worth ₹499"

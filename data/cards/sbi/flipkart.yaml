@@ -1,7 +1,7 @@
 id: sbi-flipkart
 name: Flipkart SBI Card
 issuer: sbi
-network: visa  # TODO verify network — inferred (default Visa)
+network: visa
 network_tier: null
 tier: mid
 card_type: credit
@@ -24,7 +24,7 @@ fees:
       cycle: annual
       conditions: "Renewal fee reversed on annual spends of ₹3,50,000 in the previous year (second year onwards)."
     forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: 3.75  # TODO verify
+    finance_charge_monthly_pct: 3.75
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:

@@ -1,7 +1,7 @@
 id: sbi-paytm
 name: "Paytm SBI Card"
 issuer: sbi
-network: visa  # TODO verify network — inferred (default Visa)
+network: visa
 network_tier: null
 tier: entry
 card_type: credit
@@ -20,7 +20,7 @@ fees:
     renewal_fee_inr: 499
     fee_waiver: null  # TODO verify (no renewal-fee waiver stated on crawl for base Paytm SBI Card)
     forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: 3.75  # TODO verify
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee: null  # TODO verify
     gst_applicable: true
     supplementary_card_fee_inr: 0

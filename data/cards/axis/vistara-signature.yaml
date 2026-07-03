@@ -1,7 +1,7 @@
 id: axis-vistara-signature
 name: Axis Bank Vistara Signature Credit Card
 issuer: axis
-network: visa            # TODO verify network — inferred default (Visa)
+network: visa
 network_tier: signature  # TODO verify
 tier: premium
 card_type: credit

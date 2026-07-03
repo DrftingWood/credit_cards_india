@@ -18,7 +18,7 @@ fees:
       spend_inr: 50000
       cycle: annual
       conditions: "Renewal/annual membership fee waived on spends of ₹50,000 in the preceding 12 months."
-    forex_markup_pct: 3.5        # TODO verify (page silent; HDFC default)
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     gst_applicable: true
     notes: "RuPay variant supports UPI linkage. Interest-free credit period of up to 50 days. Fee amounts not disclosed on the product page."

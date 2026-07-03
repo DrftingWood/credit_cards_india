@@ -1,7 +1,7 @@
 id: sbi-shaurya-select
 name: SBI Card SHAURYA Select
 issuer: sbi
-network: visa  # TODO verify network — inferred (default Visa)
+network: visa
 network_tier: null
 tier: mid
 card_type: credit
@@ -21,7 +21,7 @@ fees:
       cycle: annual
       conditions: "First year fee waived. Renewal fee reversed if annual spends of last year >= Rs. 1,50,000."
     forex_markup_pct: null            # TODO verify
-    finance_charge_monthly_pct: 3.75  # TODO verify
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee: null            # TODO verify
     supplementary_card_fee_inr: 0
     gst_applicable: true

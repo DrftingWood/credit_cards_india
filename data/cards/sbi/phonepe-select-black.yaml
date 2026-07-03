@@ -23,7 +23,7 @@ fees:
       cycle: annual
       conditions: "Annual fee reversal on spends of Rs. 3 lakh or more in the previous membership year."
     forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: 3.75  # TODO verify
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee: null  # TODO verify
     gst_applicable: true
     supplementary_card_fee_inr: 0

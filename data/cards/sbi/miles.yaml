@@ -1,7 +1,7 @@
 id: sbi-miles
 name: SBI Card MILES
 issuer: sbi
-network: visa        # TODO verify network — inferred (default Visa)
+network: visa
 network_tier: null   # TODO verify
 tier: mid
 card_type: credit

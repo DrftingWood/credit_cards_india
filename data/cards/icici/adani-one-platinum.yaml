@@ -1,7 +1,7 @@
 id: icici-adani-one-platinum
 name: Adani One ICICI Bank Platinum Credit Card
 issuer: icici
-network: visa  # TODO verify network — inferred default (Visa)
+network: visa
 network_tier: null
 tier: mid
 card_type: credit

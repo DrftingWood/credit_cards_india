@@ -1,7 +1,7 @@
 id: sbi-tata-neu-plus
 name: Tata Neu Plus SBI Card
 issuer: sbi
-network: rupay  # TODO verify network — inferred (UPI=RuPay)
+network: rupay
 network_tier: null
 tier: entry
 card_type: credit
@@ -24,7 +24,7 @@ fees:
       cycle: annual
       conditions: "Annual/renewal fee reversed on net retail spends of Rs. 1 lakh in the preceding 365 days."
     forex_markup_pct: null             # TODO verify
-    finance_charge_monthly_pct: 3.75   # TODO verify
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee: null             # TODO verify
     gst_applicable: true
     supplementary_card_fee_inr: 0

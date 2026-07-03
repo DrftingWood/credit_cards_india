@@ -1,7 +1,7 @@
 id: hdfc-phonepe-ultimo
 name: PhonePe HDFC Bank Ultimo Credit Card
 issuer: hdfc
-network: rupay  # TODO verify network — inferred (UPI card = RuPay)
+network: rupay
 network_tier: null
 tier: mid
 card_type: credit
@@ -21,7 +21,7 @@ fees:
       spend_inr: 200000
       cycle: annual
       conditions: "Renewal/annual membership fee waived on spends of ₹2,00,000 in the preceding 12 months."
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     gst_applicable: true
     source:

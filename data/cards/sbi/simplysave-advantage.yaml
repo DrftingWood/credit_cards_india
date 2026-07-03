@@ -1,7 +1,7 @@
 id: sbi-simplysave-advantage
 name: SimplySAVE Advantage SBI Card
 issuer: sbi
-network: visa  # TODO verify network — inferred (default Visa)
+network: visa
 network_tier: null
 tier: entry
 card_type: secured
@@ -20,8 +20,8 @@ fees:
       spend_inr: 100000
       cycle: annual
       conditions: "Renewal fee reversed on annual spends >= Rs. 1,00,000."
-    forex_markup_pct: 3.5 # TODO verify
-    finance_charge_monthly_pct: 3.75 # TODO verify
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5 # TODO verify
       min_inr: 500 # TODO verify
@@ -89,7 +89,7 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 18 # TODO verify
+  min_age: 18
   max_age: null
   income_inr_annual:
     salaried: null

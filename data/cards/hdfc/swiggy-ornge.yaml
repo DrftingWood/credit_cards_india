@@ -22,7 +22,7 @@ fees:
       spend_inr: 150000
       cycle: annual
       conditions: "Renewal fee waived on spends of Rs 1,50,000+ before renewal date. Excludes Cash on Call, Balance Transfer and Cash Withdrawal."
-    forex_markup_pct: 3.5   # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5

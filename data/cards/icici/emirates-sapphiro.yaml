@@ -1,7 +1,7 @@
 id: icici-emirates-sapphiro
 name: Emirates Skywards ICICI Bank Sapphiro Credit Card
 issuer: icici
-network: visa  # TODO verify network — inferred default (Visa)
+network: visa
 network_tier: null
 tier: premium
 card_type: credit

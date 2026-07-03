@@ -1,7 +1,7 @@
 id: sbi-tata-neu-infinity
 name: Tata Neu Infinity SBI Card
 issuer: sbi
-network: rupay  # TODO verify network — inferred (UPI=RuPay)
+network: rupay
 network_tier: null
 tier: premium
 card_type: credit
@@ -24,7 +24,7 @@ fees:
       cycle: annual
       conditions: "Annual/renewal fee reversed on net retail spends of Rs. 3 lakh in the preceding 365 days."
     forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.75   # TODO verify
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee: null             # TODO verify
     gst_applicable: true
     supplementary_card_fee_inr: 0

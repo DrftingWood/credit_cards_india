@@ -1,7 +1,7 @@
 id: hdfc-phonepe-uno
 name: PhonePe HDFC Bank Uno Credit Card
 issuer: hdfc
-network: rupay  # TODO verify network — inferred (UPI card = RuPay)
+network: rupay
 network_tier: null
 tier: entry
 card_type: credit
@@ -22,7 +22,7 @@ fees:
       spend_inr: 100000
       cycle: annual
       conditions: "Renewal/annual membership fee waived on spends of ₹1,00,000 in the preceding 12 months."
-    forex_markup_pct: 3.5  # TODO verify (HDFC entry-card norm; not stated on page)
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     gst_applicable: true
     source:

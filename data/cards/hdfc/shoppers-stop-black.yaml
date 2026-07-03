@@ -1,7 +1,7 @@
 id: hdfc-shoppers-stop-black
 name: Shoppers Stop Black HDFC Bank Credit Card
 issuer: hdfc
-network: visa  # TODO verify network — inferred default (Visa)
+network: visa
 network_tier: null
 tier: premium
 card_type: credit

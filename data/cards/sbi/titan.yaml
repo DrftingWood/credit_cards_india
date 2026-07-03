@@ -24,7 +24,7 @@ fees:
       cycle: annual
       conditions: "Renewal fee reversed (spend-based reversal) on annual spends of ₹3,00,000 (second year onwards)."
     forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: 3.75  # TODO verify
+    finance_charge_monthly_pct: 3.75
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:

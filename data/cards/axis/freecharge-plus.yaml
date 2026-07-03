@@ -1,7 +1,7 @@
 id: axis-freecharge-plus
 name: Axis Bank FreeCharge Plus Credit Card
 issuer: axis
-network: rupay  # TODO verify network — inferred (UPI card = RuPay)
+network: rupay
 network_tier: null
 tier: entry
 card_type: credit

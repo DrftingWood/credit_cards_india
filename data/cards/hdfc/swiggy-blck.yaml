@@ -22,7 +22,7 @@ fees:
       spend_inr: 200000
       cycle: annual
       conditions: "Renewal fee waived on ₹2,00,000 annual spend before renewal date (excludes Cash on Call, Balance Transfer, Cash Withdrawal). Joining fee separately waived on ₹75,000 spend within 90 days of issuance (first year only)."
-    forex_markup_pct: 3.5   # TODO verify (premium HDFC forex sometimes 2%; page silent)
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     gst_applicable: true
     source:

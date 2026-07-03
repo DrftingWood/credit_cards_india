@@ -1,7 +1,7 @@
 id: sbi-doctors-ima
 name: Doctor's SBI Card (IMA)
 issuer: sbi
-network: visa  # TODO verify network — inferred (default Visa)
+network: visa
 network_tier: null
 tier: mid
 card_type: credit

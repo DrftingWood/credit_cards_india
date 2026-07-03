@@ -1,7 +1,7 @@
 id: axis-pride-platinum
 name: Axis Bank Pride Platinum Credit Card
 issuer: axis
-network: visa  # TODO verify network — inferred default (Visa)
+network: visa
 network_tier: null
 tier: entry
 card_type: credit

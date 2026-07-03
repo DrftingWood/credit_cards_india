@@ -1,7 +1,7 @@
 id: axis-miles-more
 name: Axis Bank Miles & More Credit Card
 issuer: axis
-network: visa            # TODO verify network — inferred default (Visa)
+network: visa
 network_tier: null       # TODO verify
 tier: premium
 card_type: credit

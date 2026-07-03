@@ -19,7 +19,7 @@ fees:
       spend_inr: 25000
       cycle: annual
       conditions: "Renewal membership fee waived on annual spends of ₹25,000 and above."
-    forex_markup_pct: 3.5   # TODO verify — not stated on page (HDFC typical)
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75  # MITC v4.3 (Jul-2026): 3.75%/mo (45% p.a.) standard rate
     cash_advance_fee: null  # TODO verify — ATM withdrawal supported per FAQ, fee not stated on page
     gst_applicable: true

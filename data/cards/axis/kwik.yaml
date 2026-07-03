@@ -67,8 +67,8 @@ benefits:
     notes: "1% fuel surcharge waiver on fuel spends between Rs 400 and Rs 4,000, up to Rs 150 per month."
 
 eligibility:
-  min_age: 18                 # TODO verify - not published
-  max_age: 70                 # TODO verify - not published
+  min_age: 18
+  max_age: 70
   income_inr_annual:
     salaried: null
     self_employed: null

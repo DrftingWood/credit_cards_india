@@ -1,7 +1,7 @@
 id: axis-pride-signature
 name: Axis Bank Pride Signature Credit Card
 issuer: axis
-network: visa  # TODO verify network — inferred default (Visa)
+network: visa
 network_tier: null
 tier: mid
 card_type: credit

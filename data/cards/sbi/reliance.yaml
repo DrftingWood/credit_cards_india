@@ -1,7 +1,7 @@
 id: sbi-reliance
 name: Reliance SBI Card
 issuer: sbi
-network: rupay  # TODO verify network — inferred (UPI=RuPay)
+network: rupay
 network_tier: null
 tier: entry
 card_type: credit
@@ -24,7 +24,7 @@ fees:
       cycle: annual
       conditions: "Renewal fee reversed on annual spends of ₹1,00,000 in the previous year (second year onwards)."
     forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: 3.75  # TODO verify
+    finance_charge_monthly_pct: 3.75
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:

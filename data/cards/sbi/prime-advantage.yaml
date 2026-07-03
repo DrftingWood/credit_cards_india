@@ -1,7 +1,7 @@
 id: sbi-prime-advantage
 name: SBI Card PRIME Advantage
 issuer: sbi
-network: visa        # TODO verify network — inferred (default Visa)
+network: visa
 network_tier: null   # TODO verify
 tier: premium
 card_type: secured

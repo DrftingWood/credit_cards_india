@@ -1,7 +1,7 @@
 id: sbi-doctors
 name: Doctor's SBI Card
 issuer: sbi
-network: visa  # TODO verify network — inferred (default Visa)
+network: visa
 network_tier: null
 tier: mid
 card_type: credit

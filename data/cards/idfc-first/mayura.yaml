@@ -36,7 +36,7 @@ rewards:
     currency_name: Reward Points
     base:
       rate: 5
-      per_inr: 100
+      per_inr: 150
       unit_value_inr: 0.50
       unit_value_inr_realized: 0.30
     accelerated:

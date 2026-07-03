@@ -46,6 +46,7 @@ ISSUER_ALLOWED_DOMAINS = {
     "axis": {"axisbank.com", "www.axisbank.com", "axis.bank.in", "www.axis.bank.in"},
     "hdfc": {"hdfcbank.com", "www.hdfcbank.com", "hdfc.bank.in", "www.hdfc.bank.in"},
     "icici": {"icicibank.com", "www.icicibank.com", "icici.bank.in", "www.icici.bank.in"},
+    "hsbc": {"hsbc.co.in", "www.hsbc.co.in"},
     "idfc-first": {"idfcfirstbank.com", "www.idfcfirstbank.com", "idfcfirst.bank.in", "www.idfcfirst.bank.in"},
     "indusind": {"indusind.com", "www.indusind.com", "indusind.bank.in", "www.indusind.bank.in"},
     "kotak": {"kotak.com", "www.kotak.com", "kotak.bank.in", "www.kotak.bank.in"},

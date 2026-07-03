@@ -26,8 +26,8 @@ fees:
     gst_applicable: true
     notes: "Annual fee waived if the customer maintains an HSBC Premier relationship. Otherwise ₹20,000 + GST."
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
-      retrieved_on: 2026-04-15
+      url: https://www.hsbc.co.in/credit-cards/products/premier/
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-11-01
@@ -40,13 +40,14 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
     accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 6
-        cap_per_cycle: "unlimited"
+      - category: travel-bookings
+        canonical_categories: [travel]
+        multiplier: 4
+        effective_rate: 12
+        cap_per_cycle: "unlimited"  # TODO verify cap
         cap_unit: points
         cycle: monthly
+        notes: "12X reward points on hotels, flights & car rentals booked via HSBC Travel Edit; 3 RP per ₹100 base."
     exclusions:
       - fuel
       - wallet-loads
@@ -59,11 +60,11 @@ rewards:
         program: HSBC Rewards
         rate_inr_per_unit: 0.25
       - type: airmiles
-        program: Multiple (MakeMyTrip / airline partners)
-        ratio: "2:1"
+        program: HSBC India Rewards (airline & hotel loyalty partners)
+        ratio: "1:1"
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
-      retrieved_on: 2026-04-15
+      url: https://www.hsbc.co.in/credit-cards/products/premier/
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-11-01
@@ -77,8 +78,9 @@ benefits:
       international:
         visits_per_cycle: unlimited
         cycle: annual
-        guests_per_visit: 0
+        guests_per_visit: 8
         via: [loungekey]
+        notes: "Unlimited cardholder access + 8 international guest visits/year."
     golf:
       rounds_per_cycle: 2
       cycle: monthly
@@ -96,11 +98,12 @@ benefits:
       cycle: monthly
     concierge: true
     dining:
-      program: EazyDiner Prime
-      discount_pct: 25
+      program: EazyDiner
+      discount_pct: 30
+      notes: "30% off dining (up to ₹1,500) via EazyDiner; 20% off Agoda hotels + one free night."
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
-      retrieved_on: 2026-04-15
+      url: https://www.hsbc.co.in/credit-cards/products/premier/
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -113,8 +116,8 @@ eligibility:
   notes: "Typically requires HSBC Premier banking relationship (qualifying relationship balance)."
 
 application:
-  apply_url: https://www.hsbc.co.in/credit-cards/products/premier-mastercard/
+  apply_url: https://www.hsbc.co.in/credit-cards/products/premier/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [super-premium, premier-banking, low-forex, travel]

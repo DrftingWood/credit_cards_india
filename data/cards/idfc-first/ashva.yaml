@@ -18,15 +18,16 @@ fees:
     fee_waiver:
       spend_inr: 600000
       cycle: annual
-    forex_markup_pct: 1.5
+    forex_markup_pct: 1.0
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
+    notes: "Metal card; joining fee payable upfront (non-refundable) for card dispatch."
     source:
-      url: https://www.idfcfirstbank.com/credit-card/ashva
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2024-05-01
@@ -36,8 +37,8 @@ rewards:
     base:
       rate: 3
       per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr: 0.40
+      unit_value_inr_realized: 0.25
     accelerated:
       - category: weekend-dining
         canonical_categories: [dining]
@@ -59,27 +60,28 @@ rewards:
       - rent
       - insurance-premiums
       - emi
-      - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: IDFC FIRST Rewards
         rate_inr_per_unit: 0.25
+        constraints: "Up to ₹0.40 per reward point when redeemed for hotel & flight bookings via FIRST Rewards Gallery."
     source:
-      url: https://www.idfcfirstbank.com/credit-card/ashva
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-05-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
-        cycle: annual
+        visits_per_cycle: 4
+        cycle: quarterly
         guests_per_visit: 0
         via: [visa, dreamfolks]
       international:
-        visits_per_cycle: 4
-        cycle: annual
+        visits_per_cycle: 2
+        cycle: quarterly
         guests_per_visit: 0
         via: [loungekey]
     golf:
@@ -88,19 +90,29 @@ benefits:
       lessons_per_cycle: 0
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Taj / Marriott gift voucher worth ₹5,000"
-        value_inr: 5000
+        benefit: "7,500 reward points (worth up to ₹3,000)"
+        value_inr: 3000
         window_days: 90
+    insurance:
+      - type: trip-delay
+        sum_insured_inr: 25000
+        conditions: "Reimbursement for non-refundable flight & hotel cancellations, up to ₹25,000, twice a year."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 200
       max_txn_inr: 5000
       cap_per_cycle_inr: 300
       cycle: monthly
+    other:
+      - name: Railway lounge access
+        description: "4 complimentary railway lounge visits per quarter."
+      - name: Hotel booking discount
+        description: "Flat ₹5,000 off on a minimum hotel booking of ₹25,000."
+        value_inr: 5000
     concierge: true
     source:
-      url: https://www.idfcfirstbank.com/credit-card/ashva
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -112,8 +124,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idfcfirstbank.com/credit-card/ashva
+  apply_url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [premium, dining, travel, low-forex]
+  last_verified_on: 2026-07-03
+  tags: [premium, metal, dining, travel, low-forex]

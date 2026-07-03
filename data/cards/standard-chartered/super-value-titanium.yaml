@@ -1,0 +1,112 @@
+id: standard-chartered-super-value-titanium
+name: Standard Chartered Super Value Titanium Credit Card
+issuer: standard-chartered
+network: visa  # TODO verify network
+network_tier: platinum  # TODO verify
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2018-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-01-01
+    effective_until: null
+    joining_fee_inr: 750  # TODO verify
+    annual_fee_inr: 750  # TODO verify
+    fee_waiver:
+      spend_inr: 60000  # TODO verify
+      cycle: annual
+    forex_markup_pct: 3.5  # TODO verify
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Fuel/utility/telecom cashback card. Dial-a-loan & balance transfer at 0.99% p.m. (first 6 months)."
+    source:
+      url: https://www.sc.bank.in/credit-cards/super-value-titanium/
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-01-01
+    effective_until: null
+    currency: points
+    currency_name: 360 Reward Points
+    base:
+      rate: 1
+      per_inr: 150
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.5
+    accelerated:
+      - category: fuel
+        canonical_categories: [fuel]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: 200
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "5% cashback on fuel (max ₹100/txn, ₹200/month); transactions up to ₹2,000 eligible."
+      - category: utilities
+        canonical_categories: [utilities]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: 100
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "5% cashback on utility bills (min txn ₹750, max ₹100/txn, ₹100/month)."
+      - category: telephone
+        canonical_categories: [utilities]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: 100
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "5% cashback on phone/telephone bills (min txn ₹750, max ₹100/txn, ₹100/month)."
+    exclusions:
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    capping_rules:
+      - "Each 5% category (fuel/phone/utility) capped ₹100/txn; fuel ₹200/month, phone ₹100/month, utility ₹100/month."
+    redemption:
+      - type: catalog
+        program: 360 Rewards
+        rate_inr_per_unit: 0.5
+    source:
+      url: https://www.sc.bank.in/credit-cards/super-value-titanium/
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-01-01
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.sc.bank.in/credit-cards/super-value-titanium/
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 360000  # TODO verify
+    self_employed: 360000  # TODO verify
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sc.bank.in/credit-cards/super-value-titanium/
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, cashback, fuel, utilities, points]

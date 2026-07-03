@@ -1,0 +1,101 @@
+id: au-xcite-ace
+name: AU Bank Xcite Ace Credit Card
+issuer: au
+network: visa  # TODO verify network
+network_tier: platinum  # TODO verify
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 749
+    annual_fee_inr: 749
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+    forex_markup_pct: 3.49  # TODO verify
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "SwipeUp program (mid tier). Renewal fee waived from 2nd year on ₹2,00,000 retail spend."
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 1.0
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated: []
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    capping_rules:
+      - "Up to 3% cashback on monthly spends, earned progressively as you complete monthly spend milestones — # TODO verify exact slabs/caps."
+    redemption:
+      - type: statement-credit
+        program: Cashback
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+        notes: "2 domestic lounge visits on ₹50,000 previous-quarter spend; plus 8 complimentary lounge (incl. Railway) per annum."
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 5000000
+    other:
+      - name: "Device Protection Plan"
+        description: "Complimentary device protection plan."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 200
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 400000  # TODO verify
+    self_employed: 400000  # TODO verify
+  credit_score_min: 730
+  residency: resident-indian
+
+application:
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, cashback, swipeup]

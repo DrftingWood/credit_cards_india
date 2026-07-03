@@ -1,0 +1,116 @@
+id: au-xcite-ultra
+name: AU Bank Xcite Ultra Credit Card
+issuer: au
+network: visa  # TODO verify network
+network_tier: signature  # TODO verify
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 749
+    annual_fee_inr: 749
+    fee_waiver:
+      spend_inr: 200000  # TODO verify
+      cycle: annual
+    forex_markup_pct: 3.49  # TODO verify
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "SwipeUp program (top rewards tier). Points-based counterpart to Xcite Ace (cashback)."
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ultra-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated: []
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: AU Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ultra-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+        notes: "2 domestic lounge visits per quarter; plus complimentary Railway Lounge (max 2 per calendar quarter)."
+    milestones:
+      - spend_inr: 5000
+        cycle: monthly
+        benefit: "Additional 500 Reward Points on ₹5,000 spend between 1st-5th of the calendar month"
+        value_inr: 125
+        reward_kind: points
+        reward_units: 500
+        reward_currency_name: Reward Points
+        trigger_window: rolling
+        is_repeatable: true
+      - spend_inr: 250000
+        cycle: annual
+        benefit: "Bonus Reward Points on ₹2.5 lakh retail spend"
+        value_inr: 250
+        reward_kind: points
+        trigger_window: anniversary-year
+        is_repeatable: true
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 2000000
+    other:
+      - name: "Device Protection Plan"
+        description: "Complimentary device protection plan."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 200
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ultra-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 400000  # TODO verify
+    self_employed: 400000  # TODO verify
+  credit_score_min: 730
+  residency: resident-indian
+
+application:
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ultra-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, points, swipeup, lounge]

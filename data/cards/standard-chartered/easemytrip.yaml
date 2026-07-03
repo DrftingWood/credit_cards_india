@@ -28,7 +28,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
+      url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
       retrieved_on: 2026-04-15
 
 rewards:
@@ -71,12 +71,13 @@ rewards:
       - wallet-loads
       - rent
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
         constraints: "Instant discount at EMT checkout; general cashback as statement credit."
     source:
-      url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
+      url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
       retrieved_on: 2026-04-15
 
 benefits:
@@ -96,7 +97,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
+      url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -109,7 +110,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sc.com/in/credit-cards/easemytrip-credit-card/
+  apply_url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
 
 metadata:
   last_verified_on: 2026-04-15

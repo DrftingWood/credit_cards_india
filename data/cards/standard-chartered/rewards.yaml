@@ -25,7 +25,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sc.com/in/credit-cards/rewards/
+      url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
       retrieved_on: 2026-04-15
 
 rewards:
@@ -53,12 +53,13 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
         min_units: 2000
     source:
-      url: https://www.sc.com/in/credit-cards/rewards/
+      url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
       retrieved_on: 2026-04-15
 
 benefits:
@@ -78,7 +79,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.sc.com/in/credit-cards/rewards/
+      url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -91,7 +92,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sc.com/in/credit-cards/rewards/
+  apply_url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
 
 metadata:
   last_verified_on: 2026-04-15

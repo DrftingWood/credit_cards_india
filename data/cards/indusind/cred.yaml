@@ -48,7 +48,7 @@ rewards:
       - emi
     mcc_exclusions: ['6513']
     capping_rules:
-      - "CRED-app spends earn accelerated rewards; exact rates/caps # TODO verify from live tabs."
+      - "CRED-app spends earn accelerated rewards; exact rates/caps"
     redemption:
       - type: catalog
         program: CRED / IndusMoments

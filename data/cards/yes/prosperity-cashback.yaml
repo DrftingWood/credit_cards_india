@@ -54,7 +54,7 @@ rewards:
       - emi
     mcc_exclusions: ['6513']
     capping_rules:
-      - "5% category cashback (movies/grocery/utility) subject to monthly caps — # TODO verify exact caps."
+      - "5% category cashback (movies/grocery/utility) subject to monthly caps"
     redemption:
       - type: statement-credit
         program: Cashback

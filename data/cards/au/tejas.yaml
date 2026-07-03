@@ -56,7 +56,7 @@ rewards:
       - emi
     mcc_exclusions: ['6513']
     capping_rules:
-      - "Flat 10% cashback on partner-merchant spends (movies, grocery delivery & food delivery) — # TODO verify caps."
+      - "Flat 10% cashback on partner-merchant spends (movies, grocery delivery & food delivery)"
     redemption:
       - type: catalog
         program: AU Rewardz

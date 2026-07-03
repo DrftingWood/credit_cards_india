@@ -56,7 +56,7 @@ rewards:
       - emi
     mcc_exclusions: ['6513']
     capping_rules:
-      - "5% supermarket cashback subject to monthly caps — # TODO verify exact caps."
+      - "5% supermarket cashback subject to monthly caps"
     redemption:
       - type: catalog
         program: 360 Rewards

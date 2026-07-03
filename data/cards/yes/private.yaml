@@ -84,7 +84,7 @@ benefits:
       notes: "Buy 1 Get 1 offer on BookMyShow."
     other:
       - name: "Purchase Protection Plan"
-        description: "Purchase Protection Plan covering eligible purchases. # TODO verify sum insured."
+        description: "Purchase Protection Plan covering eligible purchases"
     concierge: true
     source:
       url: https://www.yes.bank.in/personal-banking/nri/credit-cards/yes-private-credit-card

@@ -62,7 +62,7 @@ rewards:
       - emi
     mcc_exclusions: ['6513']
     capping_rules:
-      - "Category cashback (5% / 3%) is subject to monthly caps — # TODO verify exact caps."
+      - "Category cashback (5% / 3%) is subject to monthly caps"
     redemption:
       - type: statement-credit
         program: Kotak Cashback

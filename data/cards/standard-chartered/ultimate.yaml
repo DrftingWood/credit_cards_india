@@ -24,7 +24,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sc.bank.in/credit-cards/ultimate-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2019-03-01
@@ -36,14 +36,14 @@ rewards:
       per_inr: 150
       unit_value_inr: 1.0
     accelerated:
-      - category: forex-spend
+      - category: duty-free
         canonical_categories: [international]
         multiplier: 1
         effective_rate: 3.33
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "Effectively 3.33% cashback on forex after the 2% markup (5 points per ₹150, unit value ₹1)."
+        notes: "Flat 5 RP per ₹150 on all spends (= 3.33% at 1 RP = ₹1). Additional cashback on duty-free spends; reduced 2% foreign-currency markup."
     exclusions:
       - fuel
       - wallet-loads
@@ -58,14 +58,14 @@ rewards:
         min_units: 1000
     source:
       url: https://www.sc.bank.in/credit-cards/ultimate-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2019-03-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 1
+        visits_per_cycle: 4
         cycle: quarterly
         guests_per_visit: 0
         via: [mastercard]
@@ -74,10 +74,16 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
+        notes: "International (outside India) Priority Pass access subject to ₹20,000 spend in the previous month."
     golf:
-      rounds_per_cycle: 1
+      rounds_per_cycle: 1  # TODO verify exact complimentary golf count
       cycle: monthly
       lessons_per_cycle: 0
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Reward Points worth ₹6,000"
+        value_inr: 6000
+        window_days: 90
     insurance:
       - type: air-accident
         sum_insured_inr: 10000000
@@ -92,7 +98,7 @@ benefits:
     concierge: true
     source:
       url: https://www.sc.bank.in/credit-cards/ultimate-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -107,5 +113,5 @@ application:
   apply_url: https://www.sc.bank.in/credit-cards/ultimate-card/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [super-premium, flat-cashback, points]

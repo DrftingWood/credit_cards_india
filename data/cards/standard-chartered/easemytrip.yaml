@@ -19,7 +19,7 @@ fees:
     joining_fee_inr: 350
     annual_fee_inr: 350
     fee_waiver:
-      spend_inr: 120000
+      spend_inr: 50000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
@@ -29,43 +29,27 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-09-01
     effective_until: null
-    currency: cashback
-    currency_name: EaseMyTrip Cashback
+    currency: points
+    currency_name: 360 Reward Points
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 1.0
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.5
     accelerated:
-      - category: emt-flights-domestic
+      - category: travel-bookings
         canonical_categories: [travel]
-        multiplier: 1
+        multiplier: 10
         effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
+        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_unit: points
         cycle: monthly
-        merchants: [easemytrip]
-        notes: "10% instant discount on domestic flight bookings via EaseMyTrip."
-      - category: emt-flights-international
-        canonical_categories: [travel, international]
-        multiplier: 1
-        effective_rate: 20
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [easemytrip]
-      - category: emt-hotels
-        canonical_categories: [travel]
-        multiplier: 1
-        effective_rate: 20
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [easemytrip]
+        notes: "10 Reward Points per ₹100 on standalone hotel & airline bookings; 1 RP per ₹100 on all other retail (1 RP = ₹0.50). Instant booking discounts (20% hotels / 10% flights via EaseMyTrip app, promo EMTSCB) are separate — see benefits."
     exclusions:
       - fuel
       - wallet-loads
@@ -78,17 +62,21 @@ rewards:
         constraints: "Instant discount at EMT checkout; general cashback as statement credit."
     source:
       url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-09-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
+        visits_per_cycle: 8  # TODO verify exact count
         cycle: annual
         guests_per_visit: 0
         via: [visa]
+        notes: "International lounge access (both within and outside India) discontinued w.e.f. 15-Oct-2024; domestic only remains."
+    other:
+      - name: "EaseMyTrip booking discounts"
+        description: "Flat 20% instant discount on hotels + 10% off domestic/international flights (capped) on EaseMyTrip website/app with promo code EMTSCB; ₹125 off bus bookings."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -98,7 +86,7 @@ benefits:
     concierge: false
     source:
       url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -113,5 +101,5 @@ application:
   apply_url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, travel, easemytrip, entry, cashback]

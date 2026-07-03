@@ -1,0 +1,125 @@
+id: idfc-first-gaj
+name: IDFC FIRST Gaj Credit Card
+issuer: idfc-first
+network: visa  # TODO verify network
+network_tier: infinite  # TODO verify
+tier: super-premium
+card_type: credit
+co_brand: null
+status: invite-only
+launched_on: 2025-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-01-01
+    effective_until: null
+    joining_fee_inr: 12500
+    annual_fee_inr: 12500
+    fee_waiver: null
+    forex_markup_pct: 0.0
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Invite-only metal card; joining fee payable upfront for card dispatch. Zero forex markup. # TODO verify fee (₹12,500 from listing badge)."
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2025-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 150
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.30
+    accelerated:
+      - category: hotels-app
+        canonical_categories: [travel]
+        multiplier: 10
+        effective_rate: 50
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "50 RP per ₹150 (33.33% value back) on hotels booked via the IDFC FIRST app."
+      - category: flights-app
+        canonical_categories: [travel]
+        multiplier: 5
+        effective_rate: 25
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "25 RP per ₹150 (16.67% value back) on flights booked via the IDFC FIRST app."
+      - category: international-spend
+        canonical_categories: [international]
+        multiplier: 0.6
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "3 RP per ₹150 (2%) on international spends."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: IDFC FIRST Rewards
+        rate_inr_per_unit: 0.25
+        constraints: "1 RP = ₹1 on travel bookings via the IDFC FIRST app (₹0.25 elsewhere)."
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2025-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: "unlimited"
+        cycle: annual
+        guests_per_visit: 1
+        via: [visa, dreamfolks]
+      international:
+        visits_per_cycle: "unlimited"
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass, loungekey]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    other:
+      - name: Railway lounge access
+        description: "Complimentary railway lounge access."
+      - name: UPI rewards
+        description: "1 reward point per ₹150 on UPI spends."
+    concierge: true
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21  # TODO verify
+  max_age: 60  # TODO verify
+  income_inr_annual:
+    salaried: null  # TODO verify — invite-only
+    self_employed: null  # TODO verify
+  credit_score_min: null  # TODO verify
+  residency: resident-indian
+  notes: "Invite-only."
+
+application:
+  apply_url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [super-premium, metal, invite-only, travel, zero-forex, lounge]

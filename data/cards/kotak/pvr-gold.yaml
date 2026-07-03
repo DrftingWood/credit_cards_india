@@ -9,13 +9,13 @@ co_brand:
   partner: PVR INOX
   category: lifestyle
   partner_website: https://www.pvrinox.com
-status: active
+status: discontinued
 launched_on: 2019-01-01
-discontinued_on: null
+discontinued_on: 2026-07-03
 
 fees:
   - effective_from: 2019-01-01
-    effective_until: null
+    effective_until: 2026-07-03
     joining_fee_inr: 499
     annual_fee_inr: 499
     fee_waiver:
@@ -33,7 +33,7 @@ fees:
 
 rewards:
   - effective_from: 2019-01-01
-    effective_until: null
+    effective_until: 2026-07-03
     currency: points
     currency_name: PVR Points
     base:
@@ -68,7 +68,7 @@ rewards:
 
 benefits:
   - effective_from: 2019-01-01
-    effective_until: null
+    effective_until: 2026-07-03
     lounge_access: null
     movies:
       type: free
@@ -101,5 +101,5 @@ application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, movies, pvr, entry]

@@ -25,7 +25,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.federalbank.co.in/celesta
+      url: https://www.federal.bank.in/visa-celesta-credit-card
       retrieved_on: 2026-04-15
 
 rewards:
@@ -59,6 +59,7 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: FedRewards
@@ -66,7 +67,7 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.federalbank.co.in/celesta
+      url: https://www.federal.bank.in/visa-celesta-credit-card
       retrieved_on: 2026-04-15
 
 benefits:
@@ -105,7 +106,7 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.federalbank.co.in/celesta
+      url: https://www.federal.bank.in/visa-celesta-credit-card
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -118,7 +119,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.federalbank.co.in/celesta
+  apply_url: https://www.federal.bank.in/visa-celesta-credit-card
 
 metadata:
   last_verified_on: 2026-04-15

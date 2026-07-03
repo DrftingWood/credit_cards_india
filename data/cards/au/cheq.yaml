@@ -1,0 +1,110 @@
+id: au-cheq
+name: AU Bank CheQ AU Credit Card
+issuer: au
+network: visa
+network_tier: platinum  # TODO verify
+tier: mid
+card_type: credit
+co_brand:
+  partner: CheQ
+  category: other
+  partner_website: https://www.cheq.one
+status: active
+launched_on: 2024-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    fee_waiver: null
+    forex_markup_pct: 3.49  # TODO verify
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "Co-branded with CheQ (bill-payment fintech). India's first LED-enabled card (illuminates on POS). LED variant: joining ₹1,499 / renewal ₹499."
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: CheQ Points
+    base:
+      rate: 1
+      per_inr: 200
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: favourite-brands
+        canonical_categories: [online]
+        multiplier: 24
+        effective_rate: 12
+        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "12% rewards on favourite brands (e.g. Amazon); 5% on select categories."
+      - category: cheq-upi
+        canonical_categories: [other]
+        multiplier: 5
+        effective_rate: 2.5
+        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "2.5% rewards on CheQ UPI transactions; 1 CheQ point per ₹200 base."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    capping_rules:
+      - "Accelerated 12% / 5% / 2.5% reward rates subject to monthly caps — # TODO verify."
+    redemption:
+      - type: statement-credit
+        program: CheQ Points
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access: null
+    dining:
+      program: EazyDiner
+      discount_pct: null
+      notes: "Complimentary EazyDiner membership for 3 months."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 150
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 400000  # TODO verify
+    self_employed: 400000  # TODO verify
+  credit_score_min: 730
+  residency: resident-indian
+
+application:
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, co-brand, online, upi, points]

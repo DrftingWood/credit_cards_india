@@ -17,7 +17,7 @@ fees:
   - effective_from: 2021-03-01
     effective_until: null
     joining_fee_inr: 500
-    annual_fee_inr: 350
+    annual_fee_inr: 500
     fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99

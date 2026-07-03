@@ -31,7 +31,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.paisabazaar.com/kotak-mahindra-bank/kotak-indigo-credit-card/
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html
       retrieved_on: 2026-04-22
       notes: "Joining + annual fee ₹1,500 per Paisabazaar (2026-03-06 article). Fee waiver not documented on the base variant."
 
@@ -80,13 +80,14 @@ rewards:
       - emi
     capping_rules:
       - "Card earns 1 BluChip per ₹100 on default spends; IndiGo earn-rate stacks only when booking through IndiGo web/app."
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: IndiGo flights + 6E Prime add-ons
         rate_inr_per_unit: 1.0
         constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
     source:
-      url: https://cardinsider.com/kotak/indigo-kotak-credit-card/
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html
       retrieved_on: 2026-04-22
 
 benefits:
@@ -128,7 +129,7 @@ benefits:
         description: Complimentary preferred seat selection on IndiGo.
     concierge: false
     source:
-      url: https://www.paisabazaar.com/kotak-mahindra-bank/kotak-indigo-credit-card/
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html
       retrieved_on: 2026-04-22
       notes: "Base variant — no complimentary lounge access. Lounge benefit reserved for the XL variant."
 
@@ -142,7 +143,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indigo-credit-card.html
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html
 
 metadata:
   last_verified_on: 2026-04-22

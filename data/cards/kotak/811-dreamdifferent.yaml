@@ -24,7 +24,7 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card for Kotak 811 account holders."
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
       retrieved_on: 2026-04-15
 
 rewards:
@@ -51,12 +51,13 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: Kotak Rewards
         rate_inr_per_unit: 0.15
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
       retrieved_on: 2026-04-15
 
 benefits:
@@ -71,7 +72,7 @@ benefits:
       cycle: annual
     concierge: false
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -85,7 +86,7 @@ eligibility:
   notes: "Typically offered against fixed deposits via the Kotak 811 app."
 
 application:
-  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
 
 metadata:
   last_verified_on: 2026-04-15

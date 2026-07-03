@@ -25,7 +25,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
       retrieved_on: 2026-04-15
 
 rewards:
@@ -52,13 +52,14 @@ rewards:
       - insurance-premiums
       - emi
       - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: Whites Catalogue
         rate_inr_per_unit: 1.0
         constraints: "Whites Pass redeemable on curated lifestyle catalogue."
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
       retrieved_on: 2026-04-15
 
 benefits:
@@ -95,7 +96,7 @@ benefits:
       cycle: annual
     concierge: true
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -108,7 +109,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
 
 metadata:
   last_verified_on: 2026-04-15

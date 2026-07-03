@@ -29,7 +29,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.paisabazaar.com/kotak-mahindra-bank/indigo-kotak-xl-credit-card/
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html
       retrieved_on: 2026-04-22
       notes: "Joining + annual fee ₹3,000 per Paisabazaar (2026-04-18 article). Forex markup 2.5% (preferential vs 3.5% on base variant)."
 
@@ -76,13 +76,14 @@ rewards:
       - government
       - utilities
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: IndiGo flights + 6E Prime add-ons
         rate_inr_per_unit: 1.0
         constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
     source:
-      url: https://cardinsider.com/kotak/indigo-kotak-xl-credit-card/
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html
       retrieved_on: 2026-04-22
 
 benefits:
@@ -132,7 +133,7 @@ benefits:
         description: Baggage assistance services at select airports via IndiGo.
     concierge: false
     source:
-      url: https://www.paisabazaar.com/kotak-mahindra-bank/indigo-kotak-xl-credit-card/
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html
       retrieved_on: 2026-04-22
 
 eligibility:
@@ -145,7 +146,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indigo-credit-card-xl.html
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card-xl.html
 
 metadata:
   last_verified_on: 2026-04-22

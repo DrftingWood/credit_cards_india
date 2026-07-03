@@ -28,7 +28,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
       retrieved_on: 2026-04-15
 
 rewards:
@@ -57,12 +57,13 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: PVR movie vouchers
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
       retrieved_on: 2026-04-15
 
 benefits:
@@ -84,7 +85,7 @@ benefits:
       cycle: annual
     concierge: false
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -97,7 +98,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
 
 metadata:
   last_verified_on: 2026-04-15

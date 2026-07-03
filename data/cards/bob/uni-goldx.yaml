@@ -1,0 +1,99 @@
+id: bob-uni-goldx
+name: BOBCARD Uni GoldX Credit Card
+issuer: bob
+network: visa  # TODO verify network — not stated on page
+network_tier: platinum  # TODO verify
+tier: mid
+card_type: credit
+co_brand:
+  partner: Uni
+  category: other
+  partner_website: https://www.uni.club
+status: active
+launched_on: 2024-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 0.0
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Lifetime-free — zero joining and zero annual charges."
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/bobcard-uni-goldx
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: Uni Coins
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: uni-store-vouchers
+        canonical_categories: [online]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: statement
+        channel:
+          class: cobrand-merchant
+          merchants: [uni-store]
+        notes: "5% value back (Uni Coins) on voucher purchases at the Uni Store."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        program: Uni Coins
+        rate_inr_per_unit: 1.0
+        constraints: "1 Uni Coin = ₹1; coins do not expire."
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/bobcard-uni-goldx
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 7500
+      cap_per_cycle_inr: 500
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/bobcard-uni-goldx
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: null  # TODO verify — not stated on page
+    self_employed: null  # TODO verify
+  credit_score_min: null  # TODO verify
+  residency: resident-indian
+
+application:
+  apply_url: https://www.bobcard.co.in/credit-card-types/bobcard-uni-goldx
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, points, lifetime-free, online, co-brand]

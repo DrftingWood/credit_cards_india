@@ -26,7 +26,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2016-01-01
@@ -60,7 +60,7 @@ rewards:
         rate_inr_per_unit: 0.4
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2016-01-01
@@ -75,7 +75,7 @@ benefits:
     concierge: false
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -90,5 +90,5 @@ application:
   apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [entry, grocery, points]

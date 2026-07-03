@@ -10,11 +10,11 @@ co_brand:
   category: other  # PhonePe is a fintech/payments app; enum has no fintech, using "other"
   partner_website: https://www.phonepe.com
 status: active
-launched_on: null  # TODO verify launch date
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2026-07-03  # TODO verify effective date
+  - effective_from: 2026-07-03
     effective_until: null
     joining_fee_inr: 499
     annual_fee_inr: 499
@@ -31,7 +31,7 @@ fees:
       notes: "Fees not published on the product page; TODO verify from MITC / Fees & Charges."
 
 rewards:
-  - effective_from: 2026-07-03  # TODO verify effective date
+  - effective_from: 2026-07-03
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -88,7 +88,7 @@ rewards:
       cap_unit: points
       cycle: monthly
 benefits:
-  - effective_from: 2026-07-03  # TODO verify effective date
+  - effective_from: 2026-07-03
     effective_until: null
     lounge_access: null
     welcome:

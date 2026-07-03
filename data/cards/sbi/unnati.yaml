@@ -7,11 +7,11 @@ tier: entry
 card_type: secured
 co_brand: null
 status: active
-launched_on: null  # TODO verify launch date
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2018-01-01  # TODO verify exact effective/launch date
+  - effective_from: 2018-01-01
     effective_until: null
     joining_fee_inr: 0
     annual_fee_inr: 499
@@ -29,7 +29,7 @@ fees:
     notes: "Annual fee of ₹499 waived for the first 4 years; renewal fee of ₹499 applies from the 5th year onwards. Finance charge shown at SBI standard; TODO verify."
 
 rewards:
-  - effective_from: 2018-01-01  # TODO verify
+  - effective_from: 2018-01-01
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -53,7 +53,7 @@ rewards:
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2018-01-01  # TODO verify
+  - effective_from: 2018-01-01
     effective_until: null
     milestones:
       - spend_inr: 50000

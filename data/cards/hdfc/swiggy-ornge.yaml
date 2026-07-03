@@ -88,7 +88,7 @@ benefits:
     welcome:
       - condition: "Card activation completed"
         benefit: "Complimentary Swiggy One membership for 12 months"
-        value_inr: null   # TODO verify
+        value_inr: null
         window_days: null
     fuel_surcharge_waiver: null
     concierge: false

@@ -2,7 +2,7 @@ id: axis-vistara
 name: Axis Bank Vistara Credit Card
 issuer: axis
 network: visa
-network_tier: null       # TODO verify
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:

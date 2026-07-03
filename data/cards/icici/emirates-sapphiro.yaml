@@ -9,7 +9,7 @@ co_brand:
   partner: Emirates Skywards
   category: airline
 status: active
-launched_on: null  # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:
@@ -105,7 +105,7 @@ benefits:
     welcome:
       - condition: "Joining fee paid"
         benefit: "5,000 Skywards Miles"
-        value_inr: null  # TODO verify
+        value_inr: null
         window_days: null
       - condition: "Card issuance"
         benefit: "Emirates Skywards Silver Tier Membership"

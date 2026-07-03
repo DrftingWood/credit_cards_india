@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [online, wallet-loads]
         multiplier: 5
         effective_rate: 5
-        cap_per_cycle: "unlimited"   # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
         notes: "5% cashback on Freecharge spends (value chart: Rs 15,000 spend -> Rs 750 = 5%)."
@@ -52,7 +52,7 @@ rewards:
         canonical_categories: [travel]
         multiplier: 2
         effective_rate: 2
-        cap_per_cycle: "unlimited"   # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
         notes: "2% cashback on local commute spends (value chart: Rs 10,000 spend -> Rs 200 = 2%)."

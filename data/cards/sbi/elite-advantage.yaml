@@ -2,16 +2,16 @@ id: sbi-elite-advantage
 name: SBI Card ELITE Advantage
 issuer: sbi
 network: visa
-network_tier: null   # TODO verify
+network_tier: null
 tier: premium
 card_type: secured
 co_brand: null
 status: active
-launched_on: null  # TODO verify launch date
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2024-01-01  # TODO verify exact effective/launch date
+  - effective_from: 2024-01-01
     effective_until: null
     joining_fee_inr: 4999
     annual_fee_inr: 4999
@@ -33,7 +33,7 @@ fees:
     notes: "Secured 'Advantage' variant of SBI Card ELITE (FD-backed). Fees mirror SBI Card ELITE per crawl; TODO verify dedicated Advantage page/URL and any fee differences."
 
 rewards:
-  - effective_from: 2024-01-01  # TODO verify
+  - effective_from: 2024-01-01
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -78,7 +78,7 @@ rewards:
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2024-01-01  # TODO verify
+  - effective_from: 2024-01-01
     effective_until: null
     lounge_access:
       domestic:

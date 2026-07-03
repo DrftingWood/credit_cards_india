@@ -9,7 +9,7 @@ co_brand:
   partner: Emirates Skywards
   category: airline
 status: active
-launched_on: null  # TODO verify
+launched_on: null
 discontinued_on: null
 
 # NOTE: Live page states "We are currently not accepting applications for

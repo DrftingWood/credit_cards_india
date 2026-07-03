@@ -9,7 +9,7 @@ co_brand:
   partner: "Paytm"
   category: other
 status: active
-launched_on: null  # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:
@@ -24,7 +24,7 @@ fees:
       conditions: "Renewal fee waived if annual spends in the previous year >= Rs. 2 Lakhs."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null  # TODO verify
+    cash_advance_fee: null
     gst_applicable: true
     supplementary_card_fee_inr: 0
     source:

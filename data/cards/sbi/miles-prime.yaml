@@ -2,16 +2,16 @@ id: sbi-miles-prime
 name: SBI Card MILES PRIME
 issuer: sbi
 network: visa
-network_tier: null   # TODO verify
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: null  # TODO verify launch date
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2024-01-01  # TODO verify exact effective/launch date
+  - effective_from: 2024-01-01
     effective_until: null
     joining_fee_inr: 2999
     annual_fee_inr: 2999
@@ -33,7 +33,7 @@ fees:
     notes: "Add-on card fee: Nil. Finance charge shown at SBI standard; TODO verify."
 
 rewards:
-  - effective_from: 2024-01-01  # TODO verify
+  - effective_from: 2024-01-01
     effective_until: null
     currency: miles
     currency_name: Travel Credits
@@ -52,7 +52,7 @@ rewards:
         cycle: monthly
         notes: "4 Travel Credits per ₹200 spent on travel (vs 2 per ₹200 on other spends)."
     exclusions:
-      - fuel  # TODO verify full reward exclusion list
+      - fuel
     redemption:
       - type: airmiles
         rate_inr_per_unit: 1.0
@@ -70,7 +70,7 @@ rewards:
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2024-01-01  # TODO verify
+  - effective_from: 2024-01-01
     effective_until: null
     lounge_access:
       domestic:
@@ -117,7 +117,7 @@ benefits:
       pct: 1.0
       min_txn_inr: 500
       max_txn_inr: 4000
-      cap_per_cycle_inr: null  # TODO verify cap
+      cap_per_cycle_inr: null
       cycle: monthly
       notes: "SBI standard 1% fuel surcharge waiver; exact slab/cap TODO verify."
     other:

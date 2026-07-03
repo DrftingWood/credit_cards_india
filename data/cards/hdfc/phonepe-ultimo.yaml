@@ -9,11 +9,11 @@ co_brand:
   partner: PhonePe
   category: other
 status: active
-launched_on: null  # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2026-07-03  # TODO verify effective_from
+  - effective_from: 2026-07-03
     effective_until: null
     joining_fee_inr: 999
     annual_fee_inr: 999
@@ -30,7 +30,7 @@ fees:
     notes: "Fee amounts not shown on product page crawl; welcome benefits apply only to cardholders for whom joining fee is applicable."
 
 rewards:
-  - effective_from: 2026-07-03  # TODO verify effective_from
+  - effective_from: 2026-07-03
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -83,7 +83,7 @@ rewards:
       cap_unit: points
       cycle: monthly
 benefits:
-  - effective_from: 2026-07-03  # TODO verify effective_from
+  - effective_from: 2026-07-03
     effective_until: null
     lounge_access:
       domestic:

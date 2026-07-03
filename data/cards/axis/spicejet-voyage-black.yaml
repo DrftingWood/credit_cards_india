@@ -10,7 +10,7 @@ co_brand:
   category: airline
   partner_website: https://www.spicejet.com
 status: active
-launched_on: null  # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:

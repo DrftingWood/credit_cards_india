@@ -7,7 +7,7 @@ tier: mid
 card_type: credit
 co_brand: null           # defence-personnel card, not a co-brand partnership
 status: active
-launched_on: null        # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:
@@ -22,7 +22,7 @@ fees:
       conditions: "First year fee waived. Renewal fee reversed if annual spends of last year >= Rs. 1,50,000."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null            # TODO verify
+    cash_advance_fee: null
     supplementary_card_fee_inr: 0
     gst_applicable: true
     notes: "First-year annual fee waived off."
@@ -50,7 +50,7 @@ rewards:
         cycle: monthly
         notes: "5X Reward Points (5 per Rs. 100) on CSD, Dining, Movies, Departmental Stores and Grocery spends. Base is 2 per Rs. 100, so 5X headline resolves to 5 points per Rs. 100."
     exclusions:
-      - wallet-loads          # TODO verify full exclusion list from MITC
+      - wallet-loads
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25

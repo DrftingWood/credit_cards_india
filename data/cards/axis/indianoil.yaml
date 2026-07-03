@@ -18,7 +18,7 @@ fees:
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 500
-    fee_waiver: null   # TODO verify — MITC shows no waiver threshold for base IndianOil (the ₹3.5L figure was misattributed from the Flipkart card)
+    fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -89,7 +89,7 @@ benefits:
     movies:
       type: discount
       partner: BookMyShow
-      cap_inr: null   # TODO verify
+      cap_inr: null
       notes: "Up to 10% instant discount on movie tickets booked via BookMyShow app or website."
     welcome:
       - condition: "First fuel transaction within 30 days of card issuance."

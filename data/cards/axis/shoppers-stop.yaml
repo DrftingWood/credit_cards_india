@@ -10,7 +10,7 @@ co_brand:
   category: retail
   partner_website: https://www.shoppersstop.com
 status: active
-launched_on: null  # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:

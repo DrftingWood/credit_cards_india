@@ -10,7 +10,7 @@ co_brand:
   category: conglomerate
   partner_website: https://www.tataneu.com
 status: active
-launched_on: null           # TODO verify launch date
+launched_on: null
 discontinued_on: null
 
 fees:
@@ -25,7 +25,7 @@ fees:
       conditions: "Annual/renewal fee reversed on net retail spends of Rs. 1 lakh in the preceding 365 days."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null             # TODO verify
+    cash_advance_fee: null
     gst_applicable: true
     supplementary_card_fee_inr: 0
     source:

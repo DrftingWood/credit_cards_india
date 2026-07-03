@@ -10,11 +10,11 @@ co_brand:
   category: ecommerce
   partner_website: https://www.flipkart.com
 status: active
-launched_on: null  # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2023-01-01  # TODO verify
+  - effective_from: 2023-01-01
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 500
@@ -31,7 +31,7 @@ fees:
       notes: "Joining + annual fee ₹500 + GST (Axis MITC fee table). Finance charge 3.75%/mo, forex 3.5%, cash advance 2.5% (min ₹500) per Axis MITC."
 
 rewards:
-  - effective_from: 2023-01-01  # TODO verify
+  - effective_from: 2023-01-01
     effective_until: null
     currency: points
     currency_name: SuperCoins
@@ -66,12 +66,12 @@ rewards:
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2023-01-01  # TODO verify
+  - effective_from: 2023-01-01
     effective_until: null
     welcome:
       - condition: "On card activation"
         benefit: "500 SuperCoins"
-        value_inr: null  # TODO verify
+        value_inr: null
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400

@@ -9,11 +9,11 @@ co_brand:
   partner: Pine Labs
   category: other
 status: on-hold  # "Sourcing of this Credit Card has been stopped. Existing customers continue to enjoy benefits."
-launched_on: null  # TODO verify launch date
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2021-01-01  # TODO verify effective_from (launch/fee-effective date unknown)
+  - effective_from: 2021-01-01
     effective_until: null
     joining_fee_inr: 0
     annual_fee_inr: 1000
@@ -33,7 +33,7 @@ fees:
     notes: "Annual fee of ₹1,000 is levied after 90 days of card issuance."
 
 rewards:
-  - effective_from: 2021-01-01  # TODO verify effective_from
+  - effective_from: 2021-01-01
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -60,7 +60,7 @@ rewards:
     notes: "Base 4 Reward Points per ₹150 on all e-com and POS spends (except EMI, fuel and wallet-load transactions). Up to 50 days free credit period. A launch promo offered 3% CashBack on all non-EMI spends (capped ₹1,500/month, excl. wallet load/fuel/Pine Labs Vendor Payment) until 30-Sep-2022 — now expired, not modelled."
 
 benefits:
-  - effective_from: 2021-01-01  # TODO verify effective_from
+  - effective_from: 2021-01-01
     effective_until: null
     lounge_access: null
     insurance:

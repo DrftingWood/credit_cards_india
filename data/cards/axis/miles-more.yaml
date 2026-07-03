@@ -2,7 +2,7 @@ id: axis-miles-more
 name: Axis Bank Miles & More Credit Card
 issuer: axis
 network: visa
-network_tier: null       # TODO verify
+network_tier: null
 tier: premium
 card_type: credit
 co_brand:

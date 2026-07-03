@@ -91,9 +91,9 @@ benefits:
       notes: "1% fuel surcharge waiver on fuel spends across India (₹400–₹4,000); max ₹400 per statement cycle (MITC). GST on surcharge non-refundable. No reward points earned on fuel transactions."
     movies:
       type: bogo
-      max_per_cycle: null # TODO verify
+      max_per_cycle: null
       cycle: monthly
-      cap_inr: null # TODO verify
+      cap_inr: null
       notes: "Buy one get one offer on movie tickets."
     concierge: false
     source:

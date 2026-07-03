@@ -2,12 +2,12 @@ id: hdfc-upi-rupay
 name: HDFC Bank UPI RuPay Credit Card
 issuer: hdfc
 network: rupay
-network_tier: null   # TODO verify — page does not state a RuPay tier (classic/platinum/select)
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: null   # TODO verify — launch date not stated on page
+launched_on: null
 discontinued_on: null
 
 fees:
@@ -21,7 +21,7 @@ fees:
       conditions: "Renewal membership fee waived on annual spends of ₹25,000 and above."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75  # MITC v4.3 (Jul-2026): 3.75%/mo (45% p.a.) standard rate
-    cash_advance_fee: null  # TODO verify — ATM withdrawal supported per FAQ, fee not stated on page
+    cash_advance_fee: null
     gst_applicable: true
     notes: "Interest-free period of up to 50 days. Fee amounts not published on the product page; verify against the Fees & Charges schedule."
     source:

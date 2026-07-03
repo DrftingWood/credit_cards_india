@@ -9,7 +9,7 @@ co_brand:
   partner: Shoppers Stop
   category: retail
 status: active
-launched_on: null  # TODO verify launch date
+launched_on: null
 discontinued_on: null
 
 fees:

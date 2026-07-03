@@ -11,7 +11,7 @@ launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2026-07-03    # TODO verify effective date - not published
+  - effective_from: 2026-07-03
     effective_until: null
     joining_fee_inr: 0
     annual_fee_inr: 0
@@ -26,7 +26,7 @@ fees:
     notes: "Lifetime free card - zero joining and annual fees (confirmed Nil/Nil in Axis MITC). Forex 3.5%; finance charge 3.75%/mo (extended credit) per Axis MITC (eff 20 Dec 2024, KWIK listed at 55.55% p.a.). Instant virtual RuPay Credit Card on UPI."
 
 rewards:
-  - effective_from: 2026-07-03    # TODO verify effective date - not published
+  - effective_from: 2026-07-03
     effective_until: null
     currency: points
     currency_name: EDGE REWARD Points
@@ -51,7 +51,7 @@ rewards:
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2026-07-03    # TODO verify effective date - not published
+  - effective_from: 2026-07-03
     effective_until: null
     lounge_access: null
     fuel_surcharge_waiver:

@@ -10,11 +10,11 @@ co_brand:
   category: lifestyle
   partner_website: https://www.samsung.com/in
 status: active
-launched_on: null  # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2023-01-01  # TODO verify
+  - effective_from: 2023-01-01
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 500
@@ -32,7 +32,7 @@ fees:
       notes: "Fees, forex (3.5%) and finance charge (3.0%/mo extended credit) per Axis MITC (eff 20 Dec 2024)."
 
 rewards:
-  - effective_from: 2023-01-01  # TODO verify
+  - effective_from: 2023-01-01
     effective_until: null
     currency: points
     currency_name: EDGE Reward Points
@@ -70,7 +70,7 @@ rewards:
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2023-01-01  # TODO verify
+  - effective_from: 2023-01-01
     effective_until: null
     lounge_access:
       domestic:

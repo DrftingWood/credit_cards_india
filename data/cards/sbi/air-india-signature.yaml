@@ -10,7 +10,7 @@ co_brand:
   category: airline
   partner_website: https://www.airindia.com
 status: active
-launched_on: null        # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:
@@ -36,7 +36,7 @@ rewards:
     effective_until: null
     currency: miles
     currency_name: Reward Points
-    loyalty_program: null   # TODO verify (Air India Maharaja Club program not yet in data/loyalty_programs)
+    loyalty_program: null
     base:
       rate: 4
       per_inr: 100
@@ -110,7 +110,7 @@ benefits:
     welcome:
       - condition: "Joining fee paid"
         benefit: "20,000 Reward Points and complimentary Air India Maharaja Club membership"
-        value_inr: null       # TODO verify realized value
+        value_inr: null
         window_days: 15
     fuel_surcharge_waiver:
       pct: 1.0
@@ -122,7 +122,7 @@ benefits:
     other:
       - name: Anniversary gift
         description: "5,000 Reward Points every year on card anniversary."
-        value_inr: null       # TODO verify realized value
+        value_inr: null
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
       retrieved_on: 2026-07-03

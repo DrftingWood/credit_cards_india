@@ -7,7 +7,7 @@ tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: null # TODO verify
+launched_on: null
 discontinued_on: null
 
 fees:

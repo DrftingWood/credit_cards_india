@@ -13,7 +13,7 @@ launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2022-01-01 # TODO verify
+  - effective_from: 2022-01-01
     effective_until: null
     joining_fee_inr: 2999
     annual_fee_inr: 2999
@@ -31,7 +31,7 @@ fees:
       retrieved_on: 2026-07-03
 
 rewards:
-  - effective_from: 2022-01-01 # TODO verify
+  - effective_from: 2022-01-01
     effective_until: null
     currency: miles
     currency_name: KrisFlyer Miles
@@ -68,7 +68,7 @@ rewards:
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2022-01-01 # TODO verify
+  - effective_from: 2022-01-01
     effective_until: null
     lounge_access:
       domestic:

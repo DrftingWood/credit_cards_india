@@ -13,7 +13,7 @@ launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2020-01-01 # TODO verify
+  - effective_from: 2020-01-01
     effective_until: null
     joining_fee_inr: 1499
     annual_fee_inr: 1499
@@ -32,7 +32,7 @@ fees:
       notes: "Renewal fee shown as Nil on the live page."
 
 rewards:
-  - effective_from: 2020-01-01 # TODO verify
+  - effective_from: 2020-01-01
     effective_until: null
     currency: miles
     currency_name: CV Points
@@ -52,7 +52,7 @@ rewards:
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2020-01-01 # TODO verify
+  - effective_from: 2020-01-01
     effective_until: null
     lounge_access:
       domestic:
@@ -81,7 +81,7 @@ benefits:
       - type: baggage-loss
         sum_insured_inr: 7500
         conditions: "Delay of check-in baggage cover."
-    fuel_surcharge_waiver: null # TODO verify
+    fuel_surcharge_waiver: null
     concierge: false
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card.html

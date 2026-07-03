@@ -13,7 +13,7 @@ launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2026-07-03    # TODO verify effective date - not published
+  - effective_from: 2026-07-03
     effective_until: null
     joining_fee_inr: 0
     annual_fee_inr: 0
@@ -24,7 +24,7 @@ fees:
     gst_applicable: true
     emi_conversion:
       interest_pct_annual: null   # portfolio-rate based per T&C; specific rate not published
-      processing_fee_pct: null    # TODO verify
+      processing_fee_pct: null
       processing_fee_min_inr: null
       notes: "Balance-on-EMI feature available after paying Minimum Amount Due; interest rate is the cardholder's portfolio rate."
     source:
@@ -33,7 +33,7 @@ fees:
     notes: "UPI-first digital credit card available exclusively on the Google Pay app. Nil/Nil joining/annual fee per Axis MITC. Forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). Flexible repayment (full or EMI)."
 
 rewards:
-  - effective_from: 2026-07-03    # TODO verify effective date - not published
+  - effective_from: 2026-07-03
     effective_until: null
     currency: points
     currency_name: Stars
@@ -74,7 +74,7 @@ rewards:
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2026-07-03    # TODO verify effective date - not published
+  - effective_from: 2026-07-03
     effective_until: null
     lounge_access: null
     welcome:

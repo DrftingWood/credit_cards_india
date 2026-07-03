@@ -60,9 +60,9 @@ benefits:
     effective_until: null
     movies:
       type: discount
-      max_per_cycle: null # TODO verify
+      max_per_cycle: null
       cycle: monthly
-      cap_inr: null # TODO verify
+      cap_inr: null
       notes: "25% cashback on online and box office movie ticket purchases, all week."
     fuel_surcharge_waiver:
       pct: 1.0

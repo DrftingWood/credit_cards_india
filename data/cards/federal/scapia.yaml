@@ -28,7 +28,7 @@ fees:
     notes: "Lifetime-free card; zero forex markup is a headline feature."
     source:
       url: https://www.scapia.cards
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2023-04-01
@@ -62,7 +62,7 @@ rewards:
         constraints: "Scapia Coins redeemable only on Scapia travel bookings at 1:1."
     source:
       url: https://www.scapia.cards
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2023-04-01
@@ -85,7 +85,7 @@ benefits:
     concierge: false
     source:
       url: https://www.scapia.cards
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -101,5 +101,5 @@ application:
   apply_url: https://www.scapia.cards
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, co-branded, fintech, travel, zero-forex]

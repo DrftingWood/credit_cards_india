@@ -26,7 +26,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.federal.bank.in/visa-celesta-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-03-01
@@ -68,7 +68,7 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.federal.bank.in/visa-celesta-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-03-01
@@ -89,10 +89,10 @@ benefits:
       cycle: monthly
       lessons_per_cycle: 0
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome gift worth ₹3,000"
-        value_inr: 3000
-        window_days: 90
+      - condition: "Spend ₹10,000 within first 30 days"
+        benefit: "Amazon Pay e-Voucher worth ₹600"
+        value_inr: 600
+        window_days: 30
     insurance:
       - type: air-accident
         sum_insured_inr: 25000000
@@ -107,7 +107,7 @@ benefits:
     concierge: true
     source:
       url: https://www.federal.bank.in/visa-celesta-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -122,5 +122,5 @@ application:
   apply_url: https://www.federal.bank.in/visa-celesta-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [premium, travel, dining, low-forex, points]

@@ -26,7 +26,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.federal.bank.in/visa-signet-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-03-01
@@ -59,7 +59,7 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.federal.bank.in/visa-signet-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-03-01
@@ -70,6 +70,19 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [visa]
+    welcome:
+      - condition: "Spend ₹3,000 within first 30 days"
+        benefit: "Amazon Pay e-Voucher worth ₹200"
+        value_inr: 200
+        window_days: 30
+    milestones:
+      - spend_inr: 20000
+        cycle: quarterly
+        benefit: "Vouchers on quarterly spend of ₹20,000"
+        value_inr: 250  # TODO verify voucher value
+        reward_kind: voucher
+        trigger_window: rolling
+        is_repeatable: true
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -79,7 +92,7 @@ benefits:
     concierge: false
     source:
       url: https://www.federal.bank.in/visa-signet-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -94,5 +107,5 @@ application:
   apply_url: https://www.federal.bank.in/visa-signet-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [mid, low-forex, points]

@@ -26,7 +26,7 @@ fees:
     gst_applicable: true
     notes: "Zero forex markup is the card's headline feature."
     source:
-      url: https://www.rblbank.com/category/credit-cards/world-safari-credit-card
+      url: https://www.rbl.bank.in/category/credit-cards/world-safari-credit-card
       retrieved_on: 2026-04-15
 
 rewards:
@@ -53,6 +53,7 @@ rewards:
       - wallet-loads
       - rent
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: airmiles
         program: Multiple airline / hotel partners
@@ -61,7 +62,7 @@ rewards:
         program: Travel partners
         rate_inr_per_unit: 0.4
     source:
-      url: https://www.rblbank.com/category/credit-cards/world-safari-credit-card
+      url: https://www.rbl.bank.in/category/credit-cards/world-safari-credit-card
       retrieved_on: 2026-04-15
 
 benefits:
@@ -101,7 +102,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.rblbank.com/category/credit-cards/world-safari-credit-card
+      url: https://www.rbl.bank.in/category/credit-cards/world-safari-credit-card
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -114,7 +115,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.rblbank.com/category/credit-cards/world-safari-credit-card
+  apply_url: https://www.rbl.bank.in/category/credit-cards/world-safari-credit-card
 
 metadata:
   last_verified_on: 2026-04-15

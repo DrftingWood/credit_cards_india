@@ -26,7 +26,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.rblbank.com/category/credit-cards/irctc-rbl-bank-credit-card
+      url: https://www.rbl.bank.in/category/credit-cards/irctc-rbl-bank-credit-card
       retrieved_on: 2026-04-15
 
 rewards:
@@ -69,13 +69,14 @@ rewards:
       - wallet-loads
       - rent
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: IRCTC
         rate_inr_per_unit: 1.0
         constraints: "Redeemable against IRCTC rail ticket bookings."
     source:
-      url: https://www.rblbank.com/category/credit-cards/irctc-rbl-bank-credit-card
+      url: https://www.rbl.bank.in/category/credit-cards/irctc-rbl-bank-credit-card
       retrieved_on: 2026-04-15
 
 benefits:
@@ -99,7 +100,7 @@ benefits:
         description: Waiver of the 1% + GST transaction charge on IRCTC ticket bookings.
     concierge: false
     source:
-      url: https://www.rblbank.com/category/credit-cards/irctc-rbl-bank-credit-card
+      url: https://www.rbl.bank.in/category/credit-cards/irctc-rbl-bank-credit-card
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -112,7 +113,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.rblbank.com/category/credit-cards/irctc-rbl-bank-credit-card
+  apply_url: https://www.rbl.bank.in/category/credit-cards/irctc-rbl-bank-credit-card
 
 metadata:
   last_verified_on: 2026-04-15

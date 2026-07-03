@@ -30,8 +30,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-credit-card
-      retrieved_on: 2026-04-22
+      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card
+      retrieved_on: 2026-07-03
       notes: "Joining + annual fee ₹799 per Axis Bank press release (Feb-2026) and Paisabazaar."
 
 rewards:
@@ -89,8 +89,8 @@ rewards:
         rate_inr_per_unit: 1.0
         constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only."
     source:
-      url: https://cardinsider.com/axis-bank/indigo-axis-bank-credit-card/
-      retrieved_on: 2026-04-22
+      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2026-02-18
@@ -109,6 +109,31 @@ benefits:
         benefit: "1,200 IndiGo BluChips welcome voucher"
         value_inr: 1200
         window_days: 90
+    milestones:
+      - spend_inr: 0
+        cycle: annual
+        benefit: "1,200 IndiGo BluChips renewal voucher on payment of annual fee"
+        value_inr: 1200
+        reward_kind: miles
+        reward_units: 1200
+        reward_currency_name: IndiGo BluChips
+        trigger_window: anniversary-year
+      - spend_inr: 150000
+        cycle: annual
+        benefit: "1,200 IndiGo BluChips on ₹1.5 Lakh cumulative annual spends"
+        value_inr: 1200
+        reward_kind: miles
+        reward_units: 1200
+        reward_currency_name: IndiGo BluChips
+        trigger_window: anniversary-year
+      - spend_inr: 300000
+        cycle: annual
+        benefit: "1,200 IndiGo BluChips on ₹3 Lakh cumulative annual spends"
+        value_inr: 1200
+        reward_kind: miles
+        reward_units: 1200
+        reward_currency_name: IndiGo BluChips
+        trigger_window: anniversary-year
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -117,8 +142,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.paisabazaar.com/axis-bank/indigo-axis-bank-credit-card/
-      retrieved_on: 2026-04-22
+      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -133,5 +158,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-22
+  last_verified_on: 2026-07-03
   tags: [co-branded, airline, indigo, entry, miles, bluchip, rupay, upi-linkable]

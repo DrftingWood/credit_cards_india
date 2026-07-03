@@ -25,8 +25,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-ace-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-07-15
@@ -69,8 +69,8 @@ rewards:
         rate_inr_per_unit: 1.0
         constraints: "Auto-credited to next statement."
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-ace-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2020-07-15
@@ -85,16 +85,16 @@ benefits:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
+      cap_per_cycle_inr: 500
+      cycle: statement
     dining:
       program: EazyDiner Prime
       discount_pct: 15
       notes: "Up to 15% off at partner restaurants via EazyDiner."
     concierge: false
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-ace-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -109,5 +109,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-ace-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [cashback, bill-payments, entry]

@@ -25,8 +25,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/reserve-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2015-09-01
@@ -60,8 +60,8 @@ rewards:
         program: Multiple (EDGE transfer)
         ratio: "5:2"
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/reserve-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2015-09-01
@@ -100,14 +100,27 @@ benefits:
       cap_per_cycle_inr: 400
       cycle: monthly
     concierge: true
+    dining:
+      program: EazyDiner Prime
+      notes: "Complimentary EazyDiner Prime membership; Visa Dining Delights."
+    movies:
+      type: free
+      partner: BookMyShow
+      notes: "Complimentary movie tickets on BookMyShow."
     other:
-      - name: Taj Epicure Plus membership
-        description: Complimentary Taj Epicure Plus membership.
-      - name: ITC Culinaire membership
-        description: Complimentary ITC Culinaire membership.
+      - name: Club ITC Culinaire membership
+        description: Complimentary Club ITC Culinaire membership.
+      - name: Accor Plus membership
+        description: Complimentary Accor Plus membership.
+      - name: Club Marriott Asia Pacific membership
+        description: Complimentary handcrafted Club Marriott Asia Pacific membership.
+      - name: Swiggy One membership
+        description: Complimentary Swiggy One membership.
+      - name: Postcard Hotel savings
+        description: 15% savings at Postcard Hotel.
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/reserve-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -123,5 +136,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/reserve-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [super-premium, travel, dining, invite-only-like]

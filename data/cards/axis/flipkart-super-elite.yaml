@@ -1,0 +1,92 @@
+id: axis-flipkart-super-elite
+name: Flipkart Axis Bank Super Elite Credit Card
+issuer: axis
+network: mastercard  # TODO verify (network not stated on crawl page)
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Flipkart
+  category: ecommerce
+  partner_website: https://www.flipkart.com
+status: active
+launched_on: null  # TODO verify
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-01-01  # TODO verify
+    effective_until: null
+    joining_fee_inr: 500  # TODO verify (fee table not in crawl)
+    annual_fee_inr: 500  # TODO verify (fee table not in crawl)
+    fee_waiver: null
+    forex_markup_pct: null  # TODO verify
+    finance_charge_monthly_pct: null  # TODO verify
+    cash_advance_fee: null
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Fees & Charges table not captured in crawl."
+
+rewards:
+  - effective_from: 2023-01-01  # TODO verify
+    effective_until: null
+    currency: points
+    currency_name: SuperCoins
+    base:
+      rate: 1  # TODO verify (base SuperCoin earn rate not stated on crawl page)
+      per_inr: 100
+      unit_value_inr: null  # TODO verify
+    accelerated:
+      - category: flipkart-plus-members
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 12
+        merchants: [flipkart]
+        notes: "Additional 12 SuperCoins per ₹100 spent on Flipkart by Flipkart Plus members."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    redemption:
+      - type: other
+        program: Flipkart SuperCoins
+        constraints: "SuperCoins credited to the Flipkart app; redeemable for purchases and offers on Flipkart."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2023-01-01  # TODO verify
+    effective_until: null
+    welcome:
+      - condition: "On card activation"
+        benefit: "500 SuperCoins"
+        value_inr: null  # TODO verify
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: null  # TODO verify
+      max_txn_inr: null  # TODO verify
+      cap_per_cycle_inr: null  # TODO verify
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null  # TODO verify
+    self_employed: null  # TODO verify
+  credit_score_min: null  # TODO verify
+  residency: either
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, flipkart, ecommerce, supercoins, entry]

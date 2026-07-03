@@ -1,0 +1,105 @@
+id: axis-cashback
+name: Axis Bank Cashback Credit Card
+issuer: axis
+network: visa   # TODO verify (network not stated on crawled page)
+network_tier: null
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 1000   # TODO verify (fees linked out; value chart implies ~₹1000 fee waived)
+    annual_fee_inr: 1000    # TODO verify
+    fee_waiver:
+      spend_inr: 400000
+      cycle: annual
+      conditions: "Spend ₹4,00,000 or above in an anniversary year for annual fee waiver."
+    forex_markup_pct: null       # TODO verify
+    finance_charge_monthly_pct: null   # TODO verify
+    cash_advance_fee: null       # TODO verify
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 0.75
+      per_inr: 100
+      unit_value_inr: 1.0
+      cap_per_cycle: "unlimited"
+      cap_unit: cashback-inr
+      cycle: monthly
+    accelerated:
+      - category: online-spends
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 7
+        cap_per_cycle: 4000
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "Up to 7% cashback on online spends; earn up to ₹4,000 per statement month."
+      - category: utilities-bill-payments
+        canonical_categories: [utilities]
+        multiplier: 1
+        effective_rate: 0.5
+        cap_per_cycle: 100
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "0.5% cashback on utility bill payments, capped at ₹100 per month."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    capping_rules:
+      - "Online-spend cashback (up to 7%) capped at ₹4,000 per statement month."
+      - "Utility bill-payment cashback (0.5%) capped at ₹100 per month."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        constraints: "Cashback auto-credited before next statement with no minimum amount requirement."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver: null   # TODO verify (not stated on crawled page)
+    welcome:
+      - condition: "First transaction within 30 days of card issuance."
+        benefit: "EDGE Reward Points worth ₹1,000."
+        value_inr: 1000
+        window_days: 30
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null       # TODO verify
+    self_employed: null  # TODO verify
+  credit_score_min: null # TODO verify
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [cashback, online, entry]

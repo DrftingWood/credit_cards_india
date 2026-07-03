@@ -1,0 +1,66 @@
+id: axis-rupay
+name: Axis Bank RuPay Credit Card
+issuer: axis
+network: rupay
+network_tier: null
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 0   # TODO verify (generic RuPay landing page; fees vary by underlying card)
+    annual_fee_inr: 0    # TODO verify
+    fee_waiver: null
+    forex_markup_pct: null       # TODO verify
+    finance_charge_monthly_pct: null   # TODO verify
+    cash_advance_fee: null       # TODO verify
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 0   # TODO verify (generic RuPay landing page; no base earn rate published)
+      per_inr: 100
+    notes: "Generic RuPay landing page; earn rates depend on the specific Axis RuPay card selected. Verify per underlying product."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access: null
+    concierge: false
+    other:
+      - name: UPI on RuPay
+        description: "RuPay Credit Card can be linked to UPI-enabled apps for cashless payments online and in-store without swiping the card."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: null        # TODO verify
+  max_age: null        # TODO verify
+  income_inr_annual:
+    salaried: null       # TODO verify
+    self_employed: null  # TODO verify
+  credit_score_min: null # TODO verify
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [rupay, upi, entry]

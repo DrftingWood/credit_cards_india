@@ -6,13 +6,17 @@ network_tier: infinite
 tier: super-premium
 card_type: credit
 co_brand: null
-status: active
+status: discontinued
 launched_on: 2023-12-01
-discontinued_on: null
+discontinued_on: 2026-07-03
+
+# The Axis Bank Olympus product page returns 404 on the live site as of
+# 2026-07-03 and it no longer appears in Axis's credit-card catalogue.
+# discontinued_on is the observed-withdrawal date; exact sunset unconfirmed.
 
 fees:
   - effective_from: 2023-12-01
-    effective_until: null
+    effective_until: 2026-07-02
     joining_fee_inr: 20000
     annual_fee_inr: 20000
     fee_waiver:
@@ -30,7 +34,7 @@ fees:
 
 rewards:
   - effective_from: 2023-12-01
-    effective_until: null
+    effective_until: 2026-07-02
     currency: miles
     currency_name: EDGE Miles
     base:
@@ -70,7 +74,7 @@ rewards:
 
 benefits:
   - effective_from: 2023-12-01
-    effective_until: null
+    effective_until: 2026-07-02
     lounge_access:
       domestic:
         visits_per_cycle: unlimited
@@ -121,5 +125,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/olympus-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [super-premium, travel, miles, low-forex, invite-like]

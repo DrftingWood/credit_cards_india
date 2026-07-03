@@ -6,7 +6,7 @@ network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
-status: active
+status: on-hold
 launched_on: 2021-06-01
 discontinued_on: null
 
@@ -25,8 +25,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/aura-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-06-01
@@ -48,13 +48,17 @@ rewards:
         program: EDGE Rewards
         rate_inr_per_unit: 0.2
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/aura-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-06-01
     effective_until: null
     lounge_access: null
+    welcome:
+      - condition: "Card welcome benefit"
+        benefit: "Decathlon & Amazon voucher worth ₹750"
+        value_inr: 750
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -62,16 +66,19 @@ benefits:
       cap_per_cycle_inr: 400
       cycle: monthly
     other:
-      - name: Annual health check-up
-        description: Complimentary annual health check-up at partner labs.
-      - name: Doctor consultations
-        description: 4 complimentary online GP consultations per year.
-      - name: Fitness / gym discounts
-        description: Discounts at partner gyms and fitness apps.
+      - name: Free doctor consultations
+        description: 4 video doctor consultations free per month via Practo.
+      - name: Free fitness sessions
+        description: 4 interactive video fitness sessions free per month via Fitternity.
+      - name: Health checkup discount
+        description: Annual discount up to ₹500 on health checkup.
+        value_inr: 500
+      - name: Nutrition consultation discount
+        description: Minimum 30% discount on nutritional/diet consultation from renowned nutritionists.
     concierge: false
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/aura-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -80,11 +87,11 @@ eligibility:
     salaried: 300000
     self_employed: 300000
   credit_score_min: 720
-  residency: resident-indian
+  residency: either
 
 application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/aura-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [entry, health-wellness, points]

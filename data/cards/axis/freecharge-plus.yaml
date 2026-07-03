@@ -1,0 +1,109 @@
+id: axis-freecharge-plus
+name: Axis Bank FreeCharge Plus Credit Card
+issuer: axis
+network: rupay              # TODO verify - network not stated on page
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: FreeCharge
+  category: other
+status: invite-only
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 350       # TODO verify - inferred from value chart annual fee waiver benefit of Rs 350
+    annual_fee_inr: 350        # TODO verify - inferred from value chart
+    fee_waiver:
+      spend_inr: 50000
+      cycle: annual
+      conditions: "Annual fee waived on spends of Rs 50,000 in the preceding card anniversary year."
+    forex_markup_pct: null     # TODO verify
+    finance_charge_monthly_pct: null   # TODO verify
+    cash_advance_fee: null
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Invite-only card sourced via the Freecharge app. Fee amount not explicitly published; inferred from the value chart. T&C updated w.e.f 20 June 2025."
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: freecharge-spends
+        canonical_categories: [online, wallet-loads]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"   # TODO verify cap
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "5% cashback on Freecharge spends (value chart: Rs 15,000 spend -> Rs 750 = 5%)."
+      - category: local-commute
+        canonical_categories: [travel]
+        multiplier: 2
+        effective_rate: 2
+        cap_per_cycle: "unlimited"   # TODO verify cap
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "2% cashback on local commute spends (value chart: Rs 10,000 spend -> Rs 200 = 2%)."
+    exclusions:
+      - fuel
+      - rent
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        constraints: "Cashback adjusted against statement."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Value chart: Freecharge 5%, local commute 2%, other spends 1% (Rs 85,000 -> Rs 850). Total illustrative annual benefit 2.59%."
+
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "Card issued before 4 January 2023"
+        benefit: "Welcome voucher worth Rs 700"
+        value_inr: 700
+        window_days: null
+    fuel_surcharge_waiver: null   # TODO verify
+    dining:
+      discount_pct: null
+      notes: "Benefits on dining (details/partner not published - # TODO verify)."
+    concierge: false
+    other:
+      - name: Wednesday Delight
+        description: "Exciting offers every Wednesday for cardholders."
+        value_inr: null
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Welcome voucher not applicable for cards issued on or after 4 January 2023."
+
+eligibility:
+  min_age: null              # TODO verify
+  max_age: null              # TODO verify
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Invite-only: eligible customers see the banner on their Freecharge mobile app."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, cashback, co-branded, invite-only]

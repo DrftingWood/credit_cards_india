@@ -1,0 +1,102 @@
+id: axis-fibe
+name: Fibe Axis Bank Credit Card
+issuer: axis
+network: rupay
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Fibe
+  category: other
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: null     # TODO verify
+    finance_charge_monthly_pct: null   # TODO verify
+    cash_advance_fee: null
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Lifetime free card - zero joining and annual fee. RuPay Credit Card on UPI. T&C updated w.e.f 20 June 2025."
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+      # TODO verify base cashback rate on non-accelerated spends
+    accelerated:
+      - category: food-delivery-entertainment-local-commute
+        canonical_categories: [dining, entertainment, travel]
+        multiplier: 3
+        effective_rate: 3
+        cap_per_cycle: "unlimited"   # TODO verify cap
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [swiggy, zomato]
+        notes: "Up to 3% cashback on food delivery, entertainment and local commute spends."
+    exclusions:
+      - fuel
+      - rent
+      - wallet-loads
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Headline 'up to 3% cashback on every transaction'; detailed 3% applies to food delivery, entertainment and local commute."
+
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [dreamfolks]
+        notes: "4 complimentary domestic lounge visits per calendar year (select airport lounges); may be spend-linked - # TODO verify."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null    # TODO verify
+      cycle: monthly
+    concierge: false
+    other:
+      - name: Wednesday Delight
+        description: "Exciting offers every Wednesday for cardholders."
+        value_inr: null
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: either
+  notes: "Sourced only to existing Fibe customers. Resident Indian or NRI. Criteria indicative."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, cashback, co-branded, upi, lifetime-free]

@@ -26,8 +26,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2024-08-01
@@ -75,41 +75,50 @@ rewards:
         program: Axis Travel EDGE
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-08-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
-        cycle: annual
+        visits_per_cycle: 6
+        cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
       international:
-        visits_per_cycle: 4
-        cycle: annual
+        visits_per_cycle: 2
+        cycle: quarterly
         guests_per_visit: 0
         via: [priority-pass]
         spend_threshold_inr: 50000
         spend_threshold_cycle: quarterly
         notes: "Priority Pass lounge visits activated after ₹50k spend in preceding quarter."
+    milestones:
+      - spend_inr: 0
+        cycle: annual
+        benefit: "1,500 EDGE Miles on completion of anniversary year (renewal benefit)"
+        value_inr: 1500
+        reward_kind: miles
+        reward_units: 1500
+        reward_currency_name: EDGE Miles
+        trigger_window: anniversary-year
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "1,000 EDGE Miles"
-        value_inr: 1000
+      - condition: "First transaction greater than or equal to ₹1,000"
+        benefit: "5,000 EDGE Miles"
+        value_inr: 5000
         window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
-      max_txn_inr: 4000
+      max_txn_inr: 5000
       cap_per_cycle_inr: 400
-      cycle: monthly
+      cycle: statement
     concierge: false
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -124,5 +133,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [travel, miles, premium, low-forex]

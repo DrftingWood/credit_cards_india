@@ -28,8 +28,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2019-07-30
@@ -41,6 +41,15 @@ rewards:
       per_inr: 100
       unit_value_inr: 1.0
     accelerated:
+      - category: myntra
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 7.5
+        cap_per_cycle: 4000
+        cap_unit: cashback-inr
+        cycle: quarterly
+        merchants: [myntra]
+        notes: "7.5% cashback on Myntra spends, capped at ₹4,000 per statement quarter."
       - category: flipkart-cleartrip
         canonical_categories: [online, travel]
         multiplier: 1
@@ -48,8 +57,8 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [flipkart, myntra, cleartrip, 2gud]
-        notes: "5% cashback on Flipkart, Myntra, Cleartrip and 2GUD."
+        merchants: [flipkart, cleartrip]
+        notes: "5% cashback on Flipkart and Cleartrip."
       - category: preferred-merchants
         multiplier: 1
         effective_rate: 4
@@ -69,22 +78,17 @@ rewards:
         rate_inr_per_unit: 1.0
         constraints: "Credited to next statement."
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2019-07-30
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
+    lounge_access: null
     welcome:
-      - condition: "First transaction within 30 days"
-        benefit: "Flipkart voucher worth ₹500"
-        value_inr: 500
+      - condition: "Card activation"
+        benefit: "₹350 worth of activation benefits"
+        value_inr: 350
         window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
@@ -94,8 +98,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -110,5 +114,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, flipkart, cashback, entry]

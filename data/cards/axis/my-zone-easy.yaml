@@ -1,0 +1,88 @@
+id: axis-my-zone-easy
+name: Axis Bank My Zone Easy Credit Card
+issuer: axis
+network: mastercard # TODO verify network ("Platinum Chip" contactless; matches My Zone Mastercard)
+network_tier: null
+tier: entry
+card_type: secured
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: null # TODO verify
+    finance_charge_monthly_pct: null # TODO verify
+    cash_advance_fee: null # TODO verify
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Lifetime free. Fixed Deposit backed secured credit card with guaranteed approval. Cash withdrawal up to 100% of credit limit from day one; up to 50 days interest-free credit."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 4
+      per_inr: 200
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+    redemption:
+      - type: catalog
+        program: EDGE Rewards
+        rate_inr_per_unit: 0.2
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    movies:
+      type: discount
+      max_per_cycle: null # TODO verify
+      cycle: monthly
+      cap_inr: null # TODO verify
+      notes: "25% cashback on online and box office movie ticket purchases, all week."
+    concierge: false
+    other:
+      - name: Contactless payments
+        description: "Platinum Chip contactless technology; tap-and-pay for transactions up to ₹5,000."
+        value_inr: null
+      - name: High cash withdrawal
+        description: "Cash withdrawals up to 100% of credit limit from day one."
+        value_inr: null
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: null # TODO verify
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Fixed Deposit backed (secured). Minimum FD ₹15,000, maximum ₹25 lakh. Guaranteed approval. Not issued against Tax Saver FDs, Flexi/auto-sweep FDs, or FDs of HUFs/societies/trusts/companies. Minors not eligible."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, points, secured, entertainment]

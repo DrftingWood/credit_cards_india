@@ -1,0 +1,96 @@
+id: axis-google-pay-flex
+name: Google Pay Flex Axis Bank Credit Card
+issuer: axis
+network: rupay
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Google Pay
+  category: other
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03    # TODO verify effective date - not published
+    effective_until: null
+    joining_fee_inr: 0            # TODO verify - fees not published on page
+    annual_fee_inr: 0            # TODO verify - fees not published on page
+    fee_waiver: null
+    forex_markup_pct: null        # TODO verify
+    finance_charge_monthly_pct: null   # TODO verify
+    cash_advance_fee: null
+    gst_applicable: true
+    emi_conversion:
+      interest_pct_annual: null   # TODO verify
+      processing_fee_pct: null    # TODO verify
+      processing_fee_min_inr: null
+      notes: "Transactions of Rs 2,500 or more can be converted into EMI."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+    notes: "UPI-first digital credit card available exclusively on the Google Pay app. Fees not published on product page - # TODO verify. Flexible repayment (full or EMI)."
+
+rewards:
+  - effective_from: 2026-07-03    # TODO verify effective date - not published
+    effective_until: null
+    currency: points
+    currency_name: Stars
+    base:
+      rate: 2
+      per_inr: 500
+      unit_value_inr: 1.0
+      cap_per_cycle: "unlimited"   # TODO verify
+      cap_unit: points
+      cycle: monthly
+    accelerated:
+      - category: 4x-boost-on-high-spends
+        multiplier: 2
+        effective_rate: 4
+        cap_per_cycle: "unlimited"   # TODO verify
+        cap_unit: points
+        cycle: monthly
+        notes: "Unlock 4X (earn 4 stars per cumulative Rs 500 spent) if you start at 2X and spend more than Rs 15,000 in the current reward period. An 8X tier is also referenced - # TODO verify 8X conditions."
+    redemption:
+      - type: cashback-bank
+        program: Google Pay
+        rate_inr_per_unit: 1.0
+        constraints: "1 star = Rs 1. Redeem stars instantly on the Google Pay app for cashback while paying."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Earn stars on all eligible spends including fuel; no minimum transaction amount. Base 2X = 2 stars per Rs 500; 4X = 4 stars per Rs 500."
+
+benefits:
+  - effective_from: 2026-07-03    # TODO verify effective date - not published
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "Earn 2 stars on eligible spends of Rs 500 in the first rewards cycle"
+        benefit: "Rs 250 gift card and 250 stars on the Google Pay app (welcome rewards worth Rs 500)"
+        value_inr: 500
+        window_days: null
+    fuel_surcharge_waiver: null   # TODO verify
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Welcome reward subject to offers run by Google Pay."
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Criteria indicative. Apply via the 'Money' tab -> 'Flex by Google Pay' section on the Google Pay app."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, points, co-branded, upi]

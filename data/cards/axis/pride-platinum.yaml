@@ -1,0 +1,94 @@
+id: axis-pride-platinum
+name: Axis Bank Pride Platinum Credit Card
+issuer: axis
+network: visa # TODO verify network (not stated on live page; "Platinum" implies Visa Platinum)
+network_tier: null
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 0 # TODO verify (fee not stated on live page)
+    annual_fee_inr: 0 # TODO verify (fee not stated on live page)
+    fee_waiver: null
+    forex_markup_pct: null # TODO verify
+    finance_charge_monthly_pct: null # TODO verify
+    cash_advance_fee: null # TODO verify
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Exclusively for Indian Defence Forces and Government of India employees."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 4 # TODO verify (rate not numerically stated on Platinum page; matches Axis EDGE family)
+      per_inr: 200
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+    redemption:
+      - type: catalog
+        program: EDGE Rewards
+        rate_inr_per_unit: 0.2
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    dining:
+      program: Dining Delights
+      discount_pct: 15
+      notes: "15% discount at partnered restaurants."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: null # TODO verify
+      max_txn_inr: null # TODO verify
+      cap_per_cycle_inr: 250
+      cycle: monthly
+      notes: "1% fuel surcharge waiver on all fuel transactions in India; waiver up to ₹250."
+    insurance:
+      - type: lost-card-liability
+        sum_insured_inr: 0 # TODO verify (Zero Lost Card Liability protection; amount not stated)
+        conditions: "Zero lost card liability against fraudulent use once reported."
+    concierge: false
+    other:
+      - name: Free add-on cards
+        description: "Free add-on cards for spouse, parents, children and siblings over 18 years of age."
+        value_inr: null
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null # TODO verify
+    self_employed: null # TODO verify
+  credit_score_min: null # TODO verify
+  residency: either
+  notes: "For Indian Defence personnel and Government of India employees. Resident Indian or NRI."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, points, dining, defence]

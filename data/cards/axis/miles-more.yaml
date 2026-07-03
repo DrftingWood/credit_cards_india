@@ -1,0 +1,97 @@
+id: axis-miles-more
+name: Axis Bank Miles & More Credit Card
+issuer: axis
+network: mastercard      # TODO verify (Miles & More World / World Select are Mastercard World)
+network_tier: world      # TODO verify
+tier: premium
+card_type: credit
+co_brand:
+  partner: Miles & More (Lufthansa)
+  category: airline
+status: active
+launched_on: null
+discontinued_on: null
+
+# NOTE: Sold in two variants — Miles & More Axis Bank "World" and "World Select".
+# This record models the line; variant-specific fees/earn TODO verify.
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 2500             # TODO verify — fee table not captured on live page
+    annual_fee_inr: 2500             # TODO verify (World vs World Select differ)
+    fee_waiver: null
+    forex_markup_pct: null            # TODO verify
+    finance_charge_monthly_pct: null  # TODO verify
+    cash_advance_fee: null
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: miles
+    currency_name: Miles & More Award Miles
+    base:
+      rate: 2                          # TODO verify base accrual — not stated on live page
+      per_inr: 200
+      unit_value_inr: null
+      unit_value_inr_realized: null
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+    redemption:
+      - type: airmiles
+        program: Miles & More (India)
+        constraints: "Unlimited, never-expiring Award Miles; redeem on the Miles & More (India) website."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Earn unlimited, never-expiring Award Miles. Exact per-₹ base accrual not stated on live page (TODO verify; two variants World & World Select)."
+
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access:
+      international:
+        visits_per_cycle: 2           # TODO verify count
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Priority Pass with complimentary lounge visits; exact number not stated on live page (TODO verify)."
+    welcome:
+      - condition: "First transaction on the card"
+        benefit: "Up to 15,000 Bonus Welcome Miles + Priority Pass membership"
+        value_inr: null
+    other:
+      - name: Insurance cover
+        description: "Insurance benefits including air accident and baggage loss cover; sum insured not stated on live page (TODO verify)."
+        value_inr: null
+      - name: Pay bills from any bank account
+        description: "Enroll for auto-debit to pay Axis Bank Credit Card bills from any other bank account."
+        value_inr: null
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null                    # TODO verify
+    self_employed: null
+  credit_score_min: null
+  residency: either
+  notes: "Primary cardholder 18–70 years; add-on cardholder 18+. Resident Indian or NRI."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [travel, miles, co-brand, airline, lufthansa]

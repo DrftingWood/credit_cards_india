@@ -28,8 +28,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/airtel-axis-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-01-01
@@ -50,21 +50,25 @@ rewards:
         cycle: monthly
         merchants: [airtel-thanks-app]
         notes: "25% cashback on Airtel bill payments (mobile, DTH, broadband) via Airtel Thanks app."
-      - category: swiggy-zomato-preferred
-        canonical_categories: [dining]
+      - category: preferred-partners-zomato-blinkit-district
+        canonical_categories: [dining, groceries, entertainment]
         multiplier: 1
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [swiggy, zomato, bigbasket]
-      - category: utility-bills-general
+        merchants: [zomato, blinkit, district]
+        notes: "10% value back at preferred partners Zomato, Blinkit & District Movies."
+      - category: utility-bills-airtel-thanks
         canonical_categories: [utilities]
         multiplier: 1
-        effective_rate: 5
+        effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
+        notes: "10% cashback on utility bill payments made via the Airtel Thanks app."
+    capping_rules:
+      - "25% Airtel bill/recharge cashback capped at twice the base cashback earned in the same statement month."
     exclusions:
       - fuel
       - wallet-loads
@@ -75,23 +79,18 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/airtel-axis-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
+    lounge_access: null
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "Amazon voucher worth ₹500"
-        value_inr: 500
-        window_days: 90
+      - condition: "First transaction within 30 days of card issuance"
+        benefit: "Amazon eVoucher worth ₹250"
+        value_inr: 250
+        window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -100,8 +99,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/airtel-axis-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -116,5 +115,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/airtel-axis-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, telecom, airtel, cashback, bill-payments, entry]

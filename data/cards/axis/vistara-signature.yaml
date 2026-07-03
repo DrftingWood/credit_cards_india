@@ -1,0 +1,94 @@
+id: axis-vistara-signature
+name: Axis Bank Vistara Signature Credit Card
+issuer: axis
+network: visa            # TODO verify (name implies Visa Signature)
+network_tier: signature  # TODO verify
+tier: premium
+card_type: credit
+co_brand:
+  partner: Vistara
+  category: airline
+status: active
+launched_on: null
+discontinued_on: null
+
+# NOTE: Vistara merged into Air India (12-Nov-2024); Club Vistara points migrated to
+# the Air India "Maharaja Club" (Maharaja Points). Sourcing of new Axis Vistara cards
+# has been discontinued and existing cards are being wound down / migrated.
+
+fees:
+  - effective_from: 2024-11-12
+    effective_until: null
+    joining_fee_inr: 3000             # TODO verify — fee table not captured on live page
+    annual_fee_inr: 3000             # TODO verify
+    fee_waiver: null
+    forex_markup_pct: null            # TODO verify
+    finance_charge_monthly_pct: null  # TODO verify
+    cash_advance_fee: null
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-11-12
+    effective_until: null
+    currency: miles
+    currency_name: Maharaja Points     # post-merger; formerly CV (Club Vistara) Points
+    base:
+      rate: 4
+      per_inr: 200
+      unit_value_inr: null             # TODO verify Maharaja Point value
+      unit_value_inr_realized: null
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+    redemption:
+      - type: airmiles
+        program: Air India Maharaja Club (formerly Club Vistara)
+        constraints: "Redeem Maharaja Points for upgrades & award flights."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Earn 4 Maharaja Points per ₹200 of eligible spends."
+
+benefits:
+  - effective_from: 2024-11-12
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        notes: "2 complimentary lounge visits at select airports within India, subject to spends criteria."
+    insurance:
+      - type: purchase-protection
+        sum_insured_inr: 100000
+        conditions: "Purchase protection cover up to ₹1 lakh (or up to USD 300)."
+    other:
+      - name: Wednesday Delight
+        description: "Exciting mid-week offers every Wednesday on flights & hotels."
+        value_inr: null
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Min net income ₹6 lakhs p.a. Following the Vistara–Air India merger (effective 12-Nov-2024), the card's T&C were revised and cardholders are being migrated to Air India's Maharaja Club programme; sourcing of new cards is discontinued."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [travel, miles, co-brand, airline, premium]

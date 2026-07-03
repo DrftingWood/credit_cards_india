@@ -30,8 +30,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-premium-credit-card
-      retrieved_on: 2026-04-22
+      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+      retrieved_on: 2026-07-03
       notes: "Joining + annual fee ₹5,000 per Axis Bank press release (Feb-2026). Low forex markup 2.5% vs base 3.5%."
 
 rewards:
@@ -81,8 +81,8 @@ rewards:
         rate_inr_per_unit: 1.0
         constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only."
     source:
-      url: https://cardinsider.com/blog/axis-bank-indigo-launch-two-new-credit-cards/
-      retrieved_on: 2026-04-22
+      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2026-02-18
@@ -102,9 +102,50 @@ benefits:
         notes: "Complimentary international lounge visits via Priority Pass."
     welcome:
       - condition: "Joining fee paid"
-        benefit: "IndiGo BluChips welcome voucher worth ₹5,000 + bonus BluChips"
+        benefit: "Voucher worth 5,000 IndiGo BluChips + one complimentary 6E Eats voucher"
         value_inr: 5000
         window_days: 90
+    milestones:
+      - spend_inr: 0
+        cycle: annual
+        benefit: "Voucher worth 5,000 IndiGo BluChips + 6E Eats voucher as renewal benefit on payment of annual fee"
+        value_inr: 5000
+        reward_kind: miles
+        reward_units: 5000
+        reward_currency_name: IndiGo BluChips
+        trigger_window: anniversary-year
+      - spend_inr: 200000
+        cycle: annual
+        benefit: "Voucher worth 5,000 IndiGo BluChips on ₹2 Lakh annual spends"
+        value_inr: 5000
+        reward_kind: miles
+        reward_units: 5000
+        reward_currency_name: IndiGo BluChips
+        trigger_window: anniversary-year
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Voucher worth 5,000 IndiGo BluChips on ₹5 Lakh annual spends"
+        value_inr: 5000
+        reward_kind: miles
+        reward_units: 5000
+        reward_currency_name: IndiGo BluChips
+        trigger_window: anniversary-year
+      - spend_inr: 800000
+        cycle: annual
+        benefit: "Voucher worth 5,000 IndiGo BluChips on ₹8 Lakh annual spends"
+        value_inr: 5000
+        reward_kind: miles
+        reward_units: 5000
+        reward_currency_name: IndiGo BluChips
+        trigger_window: anniversary-year
+      - spend_inr: 1200000
+        cycle: annual
+        benefit: "Voucher worth 5,000 IndiGo BluChips on ₹12 Lakh annual spends"
+        value_inr: 5000
+        reward_kind: miles
+        reward_units: 5000
+        reward_currency_name: IndiGo BluChips
+        trigger_window: anniversary-year
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -116,15 +157,15 @@ benefits:
         description: Bundled lifestyle privileges — entertainment offers and dining discounts via Axis partner network.
     concierge: false
     source:
-      url: https://www.axisbank.com/about-us/press-releases/unlock-more-with-every-swipe-axis-bank-and-indigo-unveil-co-branded-credit-cards-to-redefine-travel-and-lifestyle-experiences
-      retrieved_on: 2026-04-22
+      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1500000
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 750
   residency: resident-indian
 
@@ -132,5 +173,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-premium-credit-card
 
 metadata:
-  last_verified_on: 2026-04-22
+  last_verified_on: 2026-07-03
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex]

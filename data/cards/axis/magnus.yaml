@@ -24,14 +24,13 @@ fees:
       cycle: annual
       conditions: "Annual fee waived on spends of ₹25L in the preceding year."
     forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.6
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
+    finance_charge_monthly_pct: 3.0
+    cash_advance_fee: null
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
+      retrieved_on: 2026-07-03
+      notes: "No cash withdrawal fees per live page; 3% finance charge; 2% forex markup."
 
 rewards:
   - effective_from: 2019-07-01
@@ -63,8 +62,8 @@ rewards:
     currency: points
     currency_name: EDGE Reward Points
     base:
-      rate: 1
-      per_inr: 100
+      rate: 12
+      per_inr: 200
       unit_value_inr: 0.2
       unit_value_inr_realized: 0.18
     accelerated:
@@ -74,7 +73,7 @@ rewards:
         cap_per_cycle: 35000
         cap_unit: points
         cycle: monthly
-        notes: "35 EDGE points per ₹200 spent above ₹1.5L in a calendar month, capped at 35,000 points/month."
+        notes: "35 EDGE Reward points per ₹200 on incremental spends above ₹1.5L in a calendar month; the 35-point rate applies on spends up to (assigned credit limit + ₹1.5L) per calendar month."
       - category: travel-edge-portal
         canonical_categories: [travel]
         multiplier: 5
@@ -99,25 +98,25 @@ rewards:
       - type: airmiles
         program: Multiple (EDGE transfer)
         ratio: "5:2"
-        constraints: "Post-revision transfer ratio across most partners."
+        constraints: "Post-revision transfer ratio across most partners (2 partner miles per 5 EDGE points, 20 travel partners)."
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2023-09-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
-        cycle: quarterly
-        guests_per_visit: 2
+        visits_per_cycle: unlimited
+        cycle: annual
         via: [dreamfolks]
       international:
         visits_per_cycle: unlimited
         cycle: annual
-        guests_per_visit: unlimited
+        guests_per_visit: 4
         via: [priority-pass]
+        notes: "4 guest visits per year (revised w.e.f 20th April 2024)."
     golf:
       rounds_per_cycle: 4
       cycle: monthly
@@ -129,7 +128,7 @@ benefits:
         value_inr: 25000
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Tata CLiQ voucher worth ₹12,500"
+        benefit: "Choose one voucher worth ₹12,500: Luxe gift card / The Postcard Hotels voucher / Yatra gift voucher"
         value_inr: 12500
         window_days: 90
     insurance:
@@ -143,8 +142,8 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -156,8 +155,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-credit-card
+  apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
 
 metadata:
-  last_verified_on: 2026-04-24
+  last_verified_on: 2026-07-03
   tags: [travel, points, super-premium, forex-friendly]

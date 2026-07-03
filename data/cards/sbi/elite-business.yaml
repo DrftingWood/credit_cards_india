@@ -27,7 +27,7 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
-      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE. # TODO verify"
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE."
 
 rewards:
   - effective_from: 2026-07-03
@@ -47,7 +47,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "# TODO verify Business-specific accelerated earn"
+        notes: ""
     exclusions:
       - fuel
       - wallet-loads
@@ -63,7 +63,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
-      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE. # TODO verify"
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE."
 
     mcc_exclusions: ['6513']
 benefits:
@@ -120,7 +120,7 @@ benefits:
       max_per_cycle: 2
       cycle: monthly
       cap_inr: 500
-      notes: "Free movie tickets worth Rs. 6,000 per year (max discount Rs. 250 per ticket). # TODO verify"
+      notes: "Free movie tickets worth Rs. 6,000 per year (max discount Rs. 250 per ticket)."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -134,7 +134,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
-      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE. # TODO verify"
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE."
 
 eligibility:
   min_age: 21

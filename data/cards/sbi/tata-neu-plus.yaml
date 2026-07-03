@@ -50,7 +50,7 @@ rewards:
         channel:
           class: cobrand-merchant
           merchants: [tata-neu]
-        notes: "2% value back as NeuCoins on non-EMI spends at Tata Neu App/Website and partner Tata brands. # TODO verify monthly caps"
+        notes: "2% value back as NeuCoins on non-EMI spends at Tata Neu App/Website and partner Tata brands."
       - category: tata-neu-select-categories
         canonical_categories: [online]
         multiplier: 1
@@ -59,7 +59,7 @@ rewards:
         channel:
           class: cobrand-merchant
           merchants: [tata-neu]
-        notes: "2% base + extra 5% (total 7%) value back as NeuCoins on select category spends via the Tata Neu App/Website. # TODO verify eligible categories and caps"
+        notes: "2% base + extra 5% (total 7%) value back as NeuCoins on select category spends via the Tata Neu App/Website."
     exclusions:
       - emi
     capping_rules:

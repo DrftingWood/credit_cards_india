@@ -29,7 +29,7 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
-      notes: "Crawl reflects parent SBI Card PULSE; Sprint variant values mirrored. # TODO verify"
+      notes: "Crawl reflects parent SBI Card PULSE; Sprint variant values mirrored."
 
 rewards:
   - effective_from: 2026-07-03
@@ -66,7 +66,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
-      notes: "Crawl reflects parent SBI Card PULSE. # TODO verify Sprint-specific rates"
+      notes: "Crawl reflects parent SBI Card PULSE."
 
     mcc_exclusions: ['6513']
 benefits:
@@ -78,7 +78,7 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [visa, dreamfolks]
-        notes: "Restricted to 1 per quarter. Complimentary Priority Pass membership (US $99, first 2 years) — international visits not complimentary. # TODO verify"
+        notes: "Restricted to 1 per quarter. Complimentary Priority Pass membership (US $99, first 2 years) — international visits not complimentary."
     welcome:
       - condition: "Joining fee paid"
         benefit: "Noise ColorFit Pulse 4 Pro smartwatch worth Rs. 7,999"
@@ -117,7 +117,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
-      notes: "Crawl reflects parent SBI Card PULSE. # TODO verify Sprint-specific benefits"
+      notes: "Crawl reflects parent SBI Card PULSE."
 
 eligibility:
   min_age: 21

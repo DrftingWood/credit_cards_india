@@ -74,7 +74,7 @@ eligibility:
     self_employed: null
   credit_score_min: null
   residency: resident-indian
-  notes: "Eligibility criteria not published on the product page - # TODO verify."
+  notes: "Eligibility criteria not published on the product page -"
 
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card

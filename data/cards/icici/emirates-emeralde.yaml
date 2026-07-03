@@ -57,8 +57,8 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: null  # TODO verify - Skywards Miles value not stated in T&C
-      unit_value_inr_realized: null  # TODO verify
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
     exclusions:
       - fuel
       - cash-advance

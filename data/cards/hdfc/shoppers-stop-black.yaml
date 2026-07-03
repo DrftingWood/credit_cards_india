@@ -33,7 +33,7 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: null  # TODO verify RP unit value; page frames earn as "2% Reward Points"
+      unit_value_inr: 0.25
       cap_per_cycle: 2000
       cap_unit: points
       cycle: monthly

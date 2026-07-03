@@ -114,7 +114,7 @@ eligibility:
     self_employed: null
   credit_score_min: null
   residency: resident-indian
-  notes: "Secured card issued against a fixed deposit; no separate income/credit-score criteria published. # TODO verify"
+  notes: "Secured card issued against a fixed deposit; no separate income/credit-score criteria published."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html

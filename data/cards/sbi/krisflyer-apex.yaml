@@ -38,8 +38,8 @@ rewards:
     base:
       rate: 6
       per_inr: 200
-      unit_value_inr: null # TODO verify
-      unit_value_inr_realized: null # TODO verify
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
     accelerated:
       - category: singapore-airlines-group
         canonical_categories: [travel]

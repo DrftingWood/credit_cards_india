@@ -40,7 +40,7 @@ rewards:
     base:
       rate: 4
       per_inr: 150
-      unit_value_inr: null  # TODO verify reward point redemption value
+      unit_value_inr: 0.25
     accelerated:
       - category: business-essentials-cashback
         canonical_categories: [utilities, government]

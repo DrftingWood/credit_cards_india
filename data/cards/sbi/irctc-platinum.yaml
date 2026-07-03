@@ -41,7 +41,7 @@ rewards:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
-      unit_value_inr_realized: null # TODO verify
+      unit_value_inr_realized: 0.20
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]

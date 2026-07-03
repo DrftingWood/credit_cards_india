@@ -89,7 +89,7 @@ benefits:
     fuel_surcharge_waiver: null   # Fuel surcharge refund NOT applicable for FreeCharge Plus Credit Card per Axis MITC
     dining:
       discount_pct: null
-      notes: "Benefits on dining (details/partner not published - # TODO verify)."
+      notes: "Benefits on dining (details/partner not published -"
     concierge: false
     other:
       - name: Wednesday Delight

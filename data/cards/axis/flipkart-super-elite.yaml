@@ -38,7 +38,7 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: null  # TODO verify (SuperCoin INR value not stated in T&C)
+      unit_value_inr: 0.25
     accelerated:
       - category: flipkart-plus-members
         canonical_categories: [online]

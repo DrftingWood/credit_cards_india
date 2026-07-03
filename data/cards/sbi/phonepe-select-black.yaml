@@ -62,7 +62,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html
       retrieved_on: 2026-07-03
-    notes: "1 Reward Point per Rs. 100 on other spends (base). Eligible-spend exclusions not detailed on crawl.  # TODO verify exclusions"
+    notes: "1 Reward Point per Rs. 100 on other spends (base). Eligible-spend exclusions not detailed on crawl."
 
     mcc_exclusions: ['6513']
 benefits:

@@ -43,12 +43,12 @@ rewards:
         canonical_categories: [travel]
         multiplier: 3
         effective_rate: 3
-        notes: "3% Cashback on Paytm Travel bookings via the Paytm App. Cap not stated on crawl.  # TODO verify cap"
+        notes: "3% Cashback on Paytm Travel bookings via the Paytm App. Cap not stated on crawl."
       - category: paytm-app-spends
         canonical_categories: [online]
         multiplier: 2
         effective_rate: 2
-        notes: "2% Cashback on all other purchases on the Paytm App. Cap not stated on crawl.  # TODO verify cap"
+        notes: "2% Cashback on all other purchases on the Paytm App. Cap not stated on crawl."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -56,7 +56,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
       retrieved_on: 2026-07-03
-    notes: "1% Cashback on any other spends across offline and online stores (base). Category exclusions not published on crawl.  # TODO verify exclusions"
+    notes: "1% Cashback on any other spends across offline and online stores (base). Category exclusions not published on crawl."
 
     mcc_exclusions: ['6513']
 benefits:

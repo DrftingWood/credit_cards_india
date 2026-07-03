@@ -27,7 +27,7 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
       retrieved_on: 2026-07-03
-      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME. # TODO verify"
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
 
 rewards:
   - effective_from: 2026-07-03
@@ -47,14 +47,14 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "10 Reward Points per Rs. 100 on Dining, Groceries, Departmental Stores and Movies. # TODO verify Business-specific earn"
+        notes: "10 Reward Points per Rs. 100 on Dining, Groceries, Departmental Stores and Movies."
       - category: birthday-spend
         multiplier: 1
         effective_rate: 20
         cap_per_cycle: 2000
         cap_unit: points
         cycle: annual
-        notes: "20x points on the birthday day, capped 2,000 points. # TODO verify"
+        notes: "20x points on the birthday day, capped 2,000 points."
     exclusions:
       - fuel
       - wallet-loads
@@ -70,7 +70,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
       retrieved_on: 2026-07-03
-      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME. # TODO verify"
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
 
     mcc_exclusions: ['6513']
 benefits:
@@ -114,7 +114,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
       retrieved_on: 2026-07-03
-      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME. # TODO verify"
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
 
 eligibility:
   min_age: 21

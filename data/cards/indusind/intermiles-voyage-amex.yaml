@@ -1,0 +1,106 @@
+id: indusind-intermiles-voyage-amex
+name: InterMiles IndusInd Bank Voyage Amex Credit Card
+issuer: indusind
+network: amex
+network_tier: null  # TODO verify
+tier: premium
+card_type: credit
+co_brand:
+  partner: InterMiles
+  category: airline
+  partner_website: https://www.intermiles.com
+status: active
+launched_on: 2021-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-01-01
+    effective_until: null
+    joining_fee_inr: 0  # TODO verify
+    annual_fee_inr: 0  # TODO verify
+    fee_waiver: null
+    forex_markup_pct: 1.5  # TODO verify
+    finance_charge_monthly_pct: 3.83
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "InterMiles co-brand (voyage tier, Amex network). Earns InterMiles."
+    source:
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-amex-credit-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2021-01-01
+    effective_until: null
+    currency: miles
+    currency_name: InterMiles
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.40  # TODO verify InterMiles valuation
+      unit_value_inr_realized: 0.30
+    accelerated:
+      - category: flight-amazon-hotel-portal
+        canonical_categories: [travel, online]
+        multiplier: 2
+        effective_rate: 4
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        notes: "2X InterMiles on flights & hotels via intermiles.com / interbook.intermiles.com and Amazon (# TODO verify)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: airmiles
+        program: InterMiles
+        rate_inr_per_unit: 0.40
+    source:
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-amex-credit-card.html
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2021-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2  # TODO verify
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [amex, dreamfolks]
+    welcome:
+      - condition: "On joining (fee payment + eligible spend)"
+        benefit: "3,000 InterMiles welcome bonus"
+        value_inr: 1200
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-amex-credit-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null  # TODO verify
+    self_employed: null  # TODO verify
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-amex-credit-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, miles, airline, intermiles, travel, co-brand]

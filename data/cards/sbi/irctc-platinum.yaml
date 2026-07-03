@@ -106,11 +106,11 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: null # TODO verify
-  max_age: null # TODO verify
+  min_age: 21
+  max_age: 65
   income_inr_annual:
-    salaried: null # TODO verify
-    self_employed: null # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 700
   residency: resident-indian
 

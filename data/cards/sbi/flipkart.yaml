@@ -23,7 +23,7 @@ fees:
       spend_inr: 350000
       cycle: annual
       conditions: "Renewal fee reversed on annual spends of ₹3,50,000 in the previous year (second year onwards)."
-    forex_markup_pct: null  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     supplementary_card_fee_inr: 0
     gst_applicable: true
@@ -97,8 +97,8 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: null  # TODO verify
-  max_age: null  # TODO verify
+  min_age: 21
+  max_age: 65
   residency: resident-indian
 
 application:

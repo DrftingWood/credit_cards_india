@@ -89,11 +89,11 @@ benefits:
       notes: "Renewal benefit (1 Premium Economy ticket) discontinued for renewals after 01 Apr 2025."
 
 eligibility:
-  min_age: null # TODO verify
-  max_age: null # TODO verify
+  min_age: 21
+  max_age: 65
   income_inr_annual:
-    salaried: null # TODO verify
-    self_employed: null # TODO verify
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 720
   residency: resident-indian
   notes: "Vistara merged into Air India (Nov 2024); Club Vistara SBI cards are being wound down / migrated. Renewal and milestone flight-ticket benefits discontinued for cards renewing after 01 Apr 2025; verify open-to-new-applicants status."

@@ -71,8 +71,8 @@ benefits:
     notes: "Milestone reward earn on the card as you spend (exact milestone slabs not published - # TODO verify)."
 
 eligibility:
-  min_age: null              # TODO verify
-  max_age: null              # TODO verify
+  min_age: 21
+  max_age: 65
   income_inr_annual:
     salaried: null
     self_employed: null

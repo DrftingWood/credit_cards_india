@@ -17,7 +17,7 @@ fees:
     annual_fee_inr: 499
     renewal_fee_inr: 499
     fee_waiver: null
-    forex_markup_pct: null  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5

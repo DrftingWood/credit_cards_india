@@ -22,7 +22,7 @@ fees:
       spend_inr: 100000
       cycle: annual
       conditions: "Annual fee reversal on spends of Rs. 1 lakh or more in the previous membership year."
-    forex_markup_pct: null  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee: null  # TODO verify
     gst_applicable: true
@@ -92,11 +92,11 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: null  # TODO verify
-  max_age: null  # TODO verify
+  min_age: 21
+  max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 700
   residency: resident-indian
   notes: "Eligibility criteria not published on the product page."

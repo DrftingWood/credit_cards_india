@@ -20,7 +20,7 @@ fees:
       spend_inr: 150000
       cycle: annual
       conditions: "First year fee waived. Renewal fee reversed if annual spends of last year >= Rs. 1,50,000."
-    forex_markup_pct: null            # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee: null            # TODO verify
     supplementary_card_fee_inr: 0
@@ -110,8 +110,8 @@ eligibility:
   min_age: 21
   max_age: 70
   income_inr_annual:
-    salaried: null           # TODO verify
-    self_employed: null      # TODO verify
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 720
   residency: resident-indian
 

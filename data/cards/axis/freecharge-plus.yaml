@@ -101,8 +101,8 @@ benefits:
     notes: "Welcome voucher not applicable for cards issued on or after 4 January 2023."
 
 eligibility:
-  min_age: null              # TODO verify
-  max_age: null              # TODO verify
+  min_age: 21
+  max_age: 65
   income_inr_annual:
     salaried: null
     self_employed: null

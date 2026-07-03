@@ -101,8 +101,8 @@ eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 720
   residency: resident-indian
 

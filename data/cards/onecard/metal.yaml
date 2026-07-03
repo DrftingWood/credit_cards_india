@@ -30,7 +30,7 @@ fees:
     notes: "Lifetime-free card marketed by OneCard; monthly finance charge starts at 2.5% (tiered by internal risk)."
     source:
       url: https://www.getonecard.app/card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-07-01
@@ -56,6 +56,7 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -66,7 +67,7 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.getonecard.app/card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2020-07-01
@@ -94,7 +95,7 @@ benefits:
         description: Premium metal card body on all active OneCards.
     source:
       url: https://www.getonecard.app/card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -110,5 +111,5 @@ application:
   apply_url: https://www.getonecard.app/card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, metal, fintech, low-forex, points]

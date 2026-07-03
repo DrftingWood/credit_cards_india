@@ -42,6 +42,7 @@ AGGREGATOR_SOURCE_DOMAINS = {
 }
 ISSUER_ALLOWED_DOMAINS = {
     "amex": {"americanexpress.com", "www.americanexpress.com"},
+    "boi": {"bankofindia.co.in", "www.bankofindia.co.in", "bankofindia.bank.in", "www.bankofindia.bank.in"},
     "au": {"aubank.in", "www.aubank.in", "au.bank.in", "www.au.bank.in"},
     "axis": {"axisbank.com", "www.axisbank.com", "axis.bank.in", "www.axis.bank.in"},
     "hdfc": {"hdfcbank.com", "www.hdfcbank.com", "hdfc.bank.in", "www.hdfc.bank.in"},

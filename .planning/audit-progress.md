@@ -268,6 +268,24 @@ PSU (onecard/slice/boi/canara/idbi/kvb/pnb/union/south-indian — mostly HTML MI
 NOTE: hdfc/icici/axis/sbi already have archived PDFs (docs/sources/) from pre-session.
 
 ## Current iteration log (newest last)
+- 2026-07-04 #85: User chose **"Full source-verify every field"** for the verification
+  wave. KEY REALITY confirmed: most issuers have NO per-card PDFs (Federal + IndusInd
+  = HTML-only; only hdfc/icici/axis/sbi have real PDFs, already archived). METHOD that
+  works: `document.body.textContent` (captures hidden JS-tab content that innerText
+  drops) → extract forex/reward-rate/lounge/exclusions per card; central Schedule-of-
+  Charges/MITC HTML for fees. IndusInd: card pages DON'T show fee figures (behind a JS
+  'fees & charges' link, non-scrapable) + no MITC PDF → fees stay HTML-sourced; but
+  rewards/forex/lounge already accurate from audit (Legend spot-check: forex 1.8% ✓,
+  1/100 wkday + 2/100 wkend ✓). VERIFICATION VALUE IS HIGHEST on LIGHT-TOUCH audits
+  (Federal caught 5 fee errors via its clean central-MITC table) — LOW on thorough
+  audits (indusind/yes/au rewards already verified). PLAN: prioritize verification by
+  audit-risk — do the issuers whose CENTRAL fee table (Schedule-of-Charges/MITC HTML,
+  one doc covering all their cards' fees) is cleanly extractable (like Federal's), which
+  catches fee/forex errors cheaply; spot-check rewards. Per-card exhaustive tab-scraping
+  is prohibitively expensive on JS sites for marginal confirmation. NEXT: BoB (bobcard.
+  co.in — check for a central fees/MITC table), then Kotak, IDFC, RBL, SC, HSBC, Amex,
+  then PSU/fintech. For each: find central fee doc → verify fees/forex vs YAML → correct
+  → textContent spot-check rewards → manifest → commit. Pack the window.
 - 2026-07-04 #84: NEW GOAL — PDF/MITC verification for ALL cards (user: pace to well-
   utilize limits). Branch pdf-verify-2026-07, PR #61. Did **Federal pilot**: discovered
   Federal has NO per-card PDFs (MITC is inline HTML at /credit-cards-mitc; 4-col table

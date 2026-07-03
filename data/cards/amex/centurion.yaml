@@ -30,7 +30,7 @@ fees:
     notes: "Charge card — full statement balance due each cycle. Invitation-only; fees widely reported as ~₹1.5L joining + ₹2L annual, with GST."
     source:
       url: https://www.americanexpress.com/in/credit-cards/centurion/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 1999-01-01
@@ -58,7 +58,7 @@ rewards:
         rate_inr_per_unit: 0.5
     source:
       url: https://www.americanexpress.com/in/credit-cards/centurion/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 1999-01-01
@@ -101,7 +101,7 @@ benefits:
         description: Meet-and-greet and expedited transit at select international airports.
     source:
       url: https://www.americanexpress.com/in/credit-cards/centurion/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -117,5 +117,5 @@ application:
   apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [invite-only, charge-card, amex, super-premium, black-card]

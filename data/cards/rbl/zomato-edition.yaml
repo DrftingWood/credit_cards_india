@@ -9,13 +9,13 @@ co_brand:
   partner: Zomato
   category: lifestyle
   partner_website: https://www.zomato.com
-status: active
+status: discontinued
 launched_on: 2023-03-01
-discontinued_on: null
+discontinued_on: 2026-07-03
 
 fees:
   - effective_from: 2023-03-01
-    effective_until: null
+    effective_until: 2026-07-03
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
@@ -33,7 +33,7 @@ fees:
 
 rewards:
   - effective_from: 2023-03-01
-    effective_until: null
+    effective_until: 2026-07-03
     currency: cashback
     currency_name: Zomato Credits
     base:
@@ -75,7 +75,7 @@ rewards:
 
 benefits:
   - effective_from: 2023-03-01
-    effective_until: null
+    effective_until: 2026-07-03
     lounge_access: null
     welcome:
       - condition: "First transaction within 30 days"
@@ -106,5 +106,5 @@ application:
   apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, zomato, food-delivery, cashback, entry]

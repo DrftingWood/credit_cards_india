@@ -268,6 +268,20 @@ PSU (onecard/slice/boi/canara/idbi/kvb/pnb/union/south-indian — mostly HTML MI
 NOTE: hdfc/icici/axis/sbi already have archived PDFs (docs/sources/) from pre-session.
 
 ## Current iteration log (newest last)
+- 2026-07-04 #87: More source-verification (packed window). **IDFC First — 2 FIXES via
+  per-card Communication PDFs** (idfcfirst.bank.in/content/dam/.../pdf/credit-card/<Card>-
+  Credit-Card-Communication-*.pdf; pypdf-read): Ashva + Mayura modelled rewards per Rs100
+  but PDFs say **per Rs150** → Ashva per_inr 100→150 + accel 9→10 (1 RP=Rs0.40); Mayura
+  per_inr 100→150 (1 RP=Rs0.50). Fees (2999/5999) + forex (1%/0%) confirmed. **IDFC + BoB
+  both publish downloadable per-card PDFs** (curl + pypdf = fast, high-confidence). RUNNING
+  TALLY: federal 5 fixes, kotak 1 fix, idfc 2 fixes = **8 corrections**; bob + indusind
+  confirmed. PSU cards (boi/canara/pnb/union/idbi/kvb/south-indian) have plausible seeded
+  values (joining 0, annual 500-1000, forex 3.5) but need each bank's slow JS schedule-of-
+  charges to confirm — low yield/call. VERIFIED: federal, indusind, bob, kotak, idfc (5/20).
+  NEXT (loop): probe rbl/standard-chartered/hsbc/amex/yes/au card pages for downloadable
+  PDFs (like BoB/IDFC → fast verify); RBL/SC/AU had full audits (expect confirmations +
+  occasional per-unit fixes). Then PSU banks (verify fee/forex vs schedule-of-charges,
+  accept plausible if unreachable). Pack each window; commit per issuer.
 - 2026-07-04 #86: Source-verification progress (packed window). **BoB — VERIFIED via REAL
   PDF** (bobcard.co.in publishes a central "Features & Rewards Important T&C" PDF, 14pp,
   covers ALL cards' core+accelerated rates+caps). pypdf extracts text (Read tool's poppler

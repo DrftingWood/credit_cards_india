@@ -268,6 +268,20 @@ PSU (onecard/slice/boi/canara/idbi/kvb/pnb/union/south-indian — mostly HTML MI
 NOTE: hdfc/icici/axis/sbi already have archived PDFs (docs/sources/) from pre-session.
 
 ## Current iteration log (newest last)
+- 2026-07-04 #88: BIG window — 3 more issuers, 5 more fixes. **RBL — 4 FIXES** via its
+  central `CardsScheduleCharges.pdf` (webassets.rbl.bank.in — one PDF = all cards' annual
+  fees + forex): Insignia annual 10000→7000, Icon forex 2.0→3.5, Platinum-Maxima-Plus
+  2000→2500, IRCTC 350→500 (World Safari 3000+0%, Shoprite 500, Play/Cookies 500 confirmed).
+  **SC — confirmed** via Ultimate 11pp T&C PDF (av.sc.com; 5% duty-free cashback + joining-
+  fee reward + lounge match). **HSBC — 1 FIX**: Premier joining 0→12000 (page: 12k joining
+  + 20k annual waived for Premier; forex 0.99% ✓). RUNNING TALLY: **13 corrections**
+  (federal 5, rbl 4, idfc 2, kotak 1, hsbc 1); bob/indusind/sc confirmed. VERIFIED 8/20:
+  federal, indusind, bob, kotak, idfc, rbl, sc, hsbc. KEY: central Schedule-of-Charges PDF
+  (RBL) or per-card T&C PDF (BoB/IDFC/SC) = fastest. HSBC = HTML product pages (textContent).
+  REMAINING 12: amex(6 - MR cards, americanexpress.com/in may block), yes(28 - yes.bank.in
+  HTML/MITC), au(21 - au.bank.in), onecard(1 - done-ish, LTF), slice(1), + 7 PSU banks
+  (boi/canara/idbi/kvb/pnb/union/south-indian - RuPay-Select, verify vs each schedule-of-
+  charges). NEXT: amex, yes, au (probe PDFs; check fees vs pages), then PSU. Pack window.
 - 2026-07-04 #87: More source-verification (packed window). **IDFC First — 2 FIXES via
   per-card Communication PDFs** (idfcfirst.bank.in/content/dam/.../pdf/credit-card/<Card>-
   Credit-Card-Communication-*.pdf; pypdf-read): Ashva + Mayura modelled rewards per Rs100

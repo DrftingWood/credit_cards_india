@@ -1,0 +1,96 @@
+id: yes-first-preferred
+name: YES Bank YES FIRST Preferred Credit Card
+issuer: "yes"
+network: mastercard  # TODO verify network
+network_tier: world  # TODO verify
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2018-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-06-15
+    effective_until: null
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver: null
+    forex_markup_pct: 2.75  # TODO verify
+    finance_charge_monthly_pct: 3.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "YES FIRST programme premium card. Membership & renewal fee ₹999."
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-06-15
+    effective_until: null
+    currency: points
+    currency_name: YES Rewardz Points
+    base:
+      rate: 8
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
+    accelerated: []
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: YES Rewardz
+        rate_inr_per_unit: 0.25
+    notes: "8 Reward Points per ₹200 on all categories; 4 per ₹200 on Select categories."
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-06-15
+    effective_until: null
+    lounge_access: null  # TODO verify
+    golf:
+      cycle: monthly
+      notes: "Green fee waiver on golf rounds. # TODO verify rounds per cycle."
+    movies:
+      type: discount
+      partner: BookMyShow
+      max_per_cycle: null
+      cycle: monthly
+      cap_inr: null  # TODO verify cap
+      notes: "25% discount on BookMyShow."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 1500000  # TODO verify
+    self_employed: 1500000  # TODO verify
+  credit_score_min: 730
+  residency: resident-indian
+
+application:
+  apply_url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, points, golf, movies]

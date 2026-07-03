@@ -1,0 +1,93 @@
+id: yes-zagg
+name: YES Bank Zagg Credit Card
+issuer: "yes"
+network: mastercard  # TODO verify network
+network_tier: platinum  # TODO verify
+tier: mid
+card_type: credit
+co_brand:
+  partner: Zaggle
+  category: other
+  partner_website: https://www.zaggle.in
+status: active
+launched_on: 2023-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-06-15
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5  # TODO verify
+    finance_charge_monthly_pct: 3.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Lifetime-free (zero renewal). Co-branded with Zaggle. Lounge access is spends-threshold-based per calendar quarter."
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-06-15
+    effective_until: null
+    currency: points
+    currency_name: YES Rewardz Points
+    base:
+      rate: 2  # TODO verify exact rate (page JS-gated)
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
+    accelerated: []
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: YES Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-06-15
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1  # TODO verify (spends-threshold-based, per quarter)
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [mastercard, dreamfolks]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 400000  # TODO verify
+    self_employed: 400000  # TODO verify
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, points, co-brand, lifetime-free, lounge]

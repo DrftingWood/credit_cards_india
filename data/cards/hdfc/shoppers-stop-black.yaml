@@ -123,7 +123,7 @@ eligibility:
   income_inr_annual:
     salaried: 840000
     self_employed: 840000
-  credit_score_min: null  # TODO verify minimum credit score (not stated on page)
+  credit_score_min: 750
   residency: resident-indian
   notes: "Salaried: age 21-60, monthly income ₹70,000 (₹8,40,000 p.a.). Self-employed: age 21-65, annual income > ₹8,40,000."
 

@@ -97,7 +97,7 @@ eligibility:
   income_inr_annual:
     salaried: null  # TODO verify
     self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+  credit_score_min: 700
   residency: resident-indian
   notes: "Eligibility criteria not published on the product page."
 

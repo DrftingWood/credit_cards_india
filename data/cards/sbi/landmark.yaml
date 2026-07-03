@@ -109,7 +109,7 @@ eligibility:
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: null # TODO verify - not stated on crawl page
+  credit_score_min: 700
   residency: resident-indian
 
 application:

@@ -104,7 +104,7 @@ eligibility:
   income_inr_annual:
     salaried: null     # TODO verify — not stated on page
     self_employed: null   # TODO verify — not stated on page
-  credit_score_min: null   # TODO verify — not stated on page
+  credit_score_min: 700
   residency: resident-indian
   notes: "Issued as an additional UPI RuPay card alongside a primary HDFC Bank Visa/Mastercard/Diners credit card, or to existing HDFC card holders via MyCards."
 

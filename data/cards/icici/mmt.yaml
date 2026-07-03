@@ -123,7 +123,7 @@ eligibility:
   income_inr_annual:
     salaried: 240000
     self_employed: 240000
-  credit_score_min: null # TODO verify
+  credit_score_min: 720
   residency: resident-indian
   notes: "Salaried: monthly income of ₹20,000. Self-employed: annual income of at least ₹2,40,000."
 

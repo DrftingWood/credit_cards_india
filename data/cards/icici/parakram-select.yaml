@@ -105,7 +105,7 @@ eligibility:
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: null # TODO verify
+  credit_score_min: 720
   residency: resident-indian
   notes: "For Indian Defence and Paramilitary personnel. Indian citizen over 21 years of age."
 

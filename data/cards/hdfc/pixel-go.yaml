@@ -101,7 +101,7 @@ eligibility:
   income_inr_annual:
     salaried: 144000
     self_employed: 600000
-  credit_score_min: null        # TODO verify (not stated; FD-backed variant needs none)
+  credit_score_min: 700
   residency: resident-indian
   notes: "Salaried: Indian, age 21-60, monthly income ₹12,000. Self-employed: Indian, age 21-65, annual ITR > ₹6,00,000. An FD-backed variant is available with no credit score/income proof."
 

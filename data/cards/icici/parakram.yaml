@@ -18,9 +18,12 @@ fees:
     fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null # TODO verify
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    supplementary_card_fee_inr: 0
     gst_applicable: true
-    notes: "Lifetime-free for defence personnel: joining fee Nil, annual fee Nil. Late payment fee ranges from ₹100 to ₹1300."
+    notes: "Lifetime-free for defence personnel: joining fee Nil, annual fee Nil. Up to 3 free add-on cards. Late payment fee ranges from ₹100 to ₹1300. Cash advance 2.5% (min ₹500) and finance charge 3.75%/mo per ICICI MITC."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram
       retrieved_on: 2026-07-03
@@ -34,13 +37,27 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 0.25
+    accelerated:
+      - category: grocery-department-stores
+        canonical_categories: [groceries]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: 1000
+        cap_unit: points
+        cycle: monthly
+        notes: "5 Reward Points per ₹100 on grocery & department stores (capped at 1,000 RP/month, w.e.f Apr 15, 2024)."
     exclusions:
-      - fuel
+      - insurance-premiums
+      - utilities
+      - emi
+      - cash-advance
     redemption:
       - type: catalog
         program: ICICI Rewards
         rate_inr_per_unit: 0.25
-        constraints: "Redeem for Health & Beauty, Travel & Luggage, shopping vouchers, home appliances, electronics, fashion & lifestyle."
+        fee_inr: 99
+        constraints: "Redeem for Health & Beauty, Travel & Luggage, shopping vouchers, home appliances, electronics, fashion & lifestyle. Redemption handling fee ₹99 + GST."
+    notes: "Base 1 RP/₹100 on all categories; 5 RP/₹100 on grocery & department stores (cap 1,000 RP/month). Insurance, utility and international spends earn 0 RP (w.e.f Apr 15, 2024)."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram
       retrieved_on: 2026-07-03
@@ -61,11 +78,11 @@ benefits:
         conditions: "Air Accident Insurance cover up to ₹20 lakh."
     fuel_surcharge_waiver:
       pct: 1.0
-      min_txn_inr: null
-      max_txn_inr: null
-      cap_per_cycle_inr: null
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
       cycle: monthly
-      notes: "1% fuel surcharge waiver on fuel purchases at all fuel stations."
+      notes: "1% fuel surcharge waiver on transactions of ₹400–₹4,000 at all petrol pumps; max ₹250/month."
     other:
       - name: Title embossing
         description: "Defence Services title embossed on the card."

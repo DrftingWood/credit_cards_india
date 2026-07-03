@@ -18,7 +18,7 @@ fees:
     fee_waiver:
       spend_inr: 150000
       cycle: annual
-    forex_markup_pct: null  # TODO verify forex markup
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     gst_applicable: true
     notes: "Late payment fee ranges ₹100–₹1,300 depending on outstanding."
@@ -61,6 +61,9 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [issuer-direct]
+        spend_threshold_inr: 75000
+        spend_threshold_cycle: quarterly
+        notes: "Complimentary domestic lounge access requires ₹75,000 spend in the preceding calendar quarter (MITC, w.e.f. Jan 1, 2025)."
     movies:
       type: discount
       partner: BookMyShow

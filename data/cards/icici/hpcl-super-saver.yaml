@@ -44,21 +44,21 @@ rewards:
     accelerated:
       - category: hpcl-fuel-via-hp-pay
         canonical_categories: [fuel]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 1000
+        multiplier: 2
+        effective_rate: 4
+        cap_per_cycle: 200
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [hpcl-fuel-stations, hp-pay]
-        notes: "5% cashback on fuel at HPCL petrol pumps and the HP Pay app (up to ₹1,000/month)."
-      - category: daily-essential-spend
-        canonical_categories: [groceries, dining, utilities]
+        notes: "4% cashback on fuel purchases at HPCL fuel pumps and the HP Pay app, capped at ₹200/month (no minimum threshold). An additional 1.5% cashback (6 Happy Coins per ₹100) is credited to the HP Pay app wallet on fuel spends made via the HP Pay app."
+      - category: utilities-and-departmental-stores
+        canonical_categories: [groceries, utilities, government]
         multiplier: 10
         effective_rate: 20
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 400
         cap_unit: points
-        cycle: monthly
-        notes: "20 Reward Points per ₹100 on daily essential spend."
+        cycle: statement
+        notes: "5% back as 20 Reward Points per ₹100 on utilities (groceries, telecom, government, tax) and departmental stores, capped at 400 Reward Points per statement cycle."
     exclusions:
       - wallet-loads
       - rent
@@ -83,13 +83,13 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
-        spend_threshold_inr: 35000
+        spend_threshold_inr: 75000
         spend_threshold_cycle: quarterly
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "2,000 Reward Points"
+      - condition: "Pay joining fee and spend ₹5,000 within 45 days of issuance"
+        benefit: "2,000 ICICI Bank Reward Points"
         value_inr: 500
-        window_days: 90
+        window_days: 45
     movies:
       type: discount
       partner: BookMyShow and INOX
@@ -103,7 +103,7 @@ benefits:
       max_txn_inr: 4000
       cap_per_cycle_inr: null
       cycle: monthly
-    concierge: true
+    concierge: false
     other:
       - name: Roadside Assistance
         description: 24/7 roadside assistance in case of vehicle breakdown.

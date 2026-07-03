@@ -70,9 +70,9 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
-        spend_threshold_inr: 35000
+        spend_threshold_inr: 75000
         spend_threshold_cycle: quarterly
-        notes: "1 complimentary visit/quarter on prior-quarter spend criteria."
+        notes: "Complimentary domestic lounge access requires ₹75,000 spend in the preceding calendar quarter (MITC, w.e.f. Jan 1, 2025)."
     milestones:
       - spend_inr: 200000
         cycle: annual

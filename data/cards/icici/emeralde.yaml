@@ -84,7 +84,7 @@ benefits:
     golf:
       rounds_per_cycle: 4
       cycle: monthly
-      lessons_per_cycle: 0  # TODO verify: page lists up to 4 rounds/month, silent on lessons
+      lessons_per_cycle: 0  # Golf T&C: combined "round/lesson" allowance, max 4/month (1 per Rs50k prev-month spend)
     welcome:
       - condition: "Joining fee paid"
         benefit: "12,000 ICICI Reward Points"
@@ -92,7 +92,7 @@ benefits:
         window_days: 90
     insurance:
       - type: air-accident
-        sum_insured_inr: 30000000
+        sum_insured_inr: 10000000
       - type: travel-medical
         sum_insured_inr: 5000000
     fuel_surcharge_waiver:

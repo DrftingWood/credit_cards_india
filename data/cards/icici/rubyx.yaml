@@ -81,6 +81,9 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
+        spend_threshold_inr: 75000
+        spend_threshold_cycle: quarterly
+        notes: "Complimentary domestic lounge access requires ₹75,000 spend in the preceding calendar quarter (MITC, w.e.f. Jan 1, 2025)."
       international:
         visits_per_cycle: 2
         cycle: annual
@@ -107,9 +110,9 @@ benefits:
         trigger_window: anniversary-year
         is_repeatable: true
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome vouchers worth over ₹15,000 (Tata CLiQ, Tata Croma, EazyDiner, EaseMyTrip, Avis, Elivaas)"
-        value_inr: 15000
+      - condition: "Joining fee paid; claimed via iMobile/Net Banking"
+        benefit: "Welcome gift vouchers: Tata CLiQ ₹2,000, EaseMyTrip ₹2,000 (2×₹1,000), Croma ₹1,000 (2×₹500) and EazyDiner 3-month Prime membership"
+        value_inr: 5000
     movies:
       type: discount
       partner: BookMyShow and INOX

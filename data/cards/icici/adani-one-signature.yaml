@@ -61,11 +61,15 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
+      - category: utility-insurance
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.33
+        effective_rate: 0.5
+        notes: "0.5 Adani Reward Points per ₹100 on utility and insurance spends."
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
     redemption:
       - type: cashback-bank
@@ -116,10 +120,11 @@ benefits:
       notes: "Buy one ticket & get up to ₹500 off on the second ticket, twice every month."
     fuel_surcharge_waiver:
       pct: 1.0
-      min_txn_inr: 400
+      min_txn_inr: null
       max_txn_inr: 4000
       cap_per_cycle_inr: null
       cycle: monthly
+      notes: "1% fuel surcharge waiver on all fuel transactions up to ₹4,000 at any fuel outlet."
     concierge: false
     other:
       - name: Pranaam meet-and-greet

@@ -49,6 +49,11 @@ rewards:
         multiplier: 1.5
         effective_rate: 1.5
         notes: "1.5 points per ₹100 on international spends."
+      - category: utility-insurance
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.5
+        effective_rate: 0.5
+        notes: "0.5 Adani Reward Point per ₹100 on utility and insurance spends."
     notes: "Reward points credited to the Adani OneApp as Adani OneApp Rewards at the end of the billing cycle."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card
@@ -76,10 +81,13 @@ benefits:
         benefit: "Flight vouchers worth ₹2,000"
         value_inr: 2000
         window_days: 60
+      - condition: "On card activation"
+        benefit: "Hotel vouchers worth ₹1,000"
+        value_inr: 1000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: null
-      max_txn_inr: null
+      max_txn_inr: 4000
       cap_per_cycle_inr: null
       cycle: monthly
       notes: "1% fuel surcharge waiver up to ₹4,000 on all fuel transactions at any fuel outlet."
@@ -95,7 +103,7 @@ benefits:
         description: "2 instances of premium car parking annually on card activation."
         value_inr: null
       - name: Porter services
-        description: "Up to 4 porter services in a year for every ₹1 lakh spent annually."
+        description: "2 porter services on every ₹1 lakh spent, up to 4 per year (until ₹2 lakh annual spend)."
         value_inr: null
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card

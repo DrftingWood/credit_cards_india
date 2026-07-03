@@ -39,11 +39,20 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
     accelerated:
-      - category: utility-insurance
-        canonical_categories: [utilities, insurance]
+      - category: hpcl-fuel
+        canonical_categories: [fuel]
+        multiplier: 1.25
+        effective_rate: 2.5
+        cap_per_cycle: 100
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [hpcl-fuel-stations]
+        notes: "2.5% cashback on fuel purchases at HPCL fuel pumps (minimum ₹500 per transaction), capped at ₹100 per month."
+      - category: utilities-and-departmental-stores
+        canonical_categories: [utilities, groceries, government]
         multiplier: 0.5
         effective_rate: 1
-        notes: "1 Reward Point per ₹100 on utility and insurance spends."
+        notes: "1 Reward Point per ₹100 on utility (groceries, telecom, government, tax) and departmental store spends."
     redemption:
       - type: voucher
         program: ICICI Bank Rewards
@@ -72,7 +81,7 @@ benefits:
     concierge: false
     other:
       - name: Fuel savings at HPCL
-        description: "Up to 3.5% savings on fuel transactions at HPCL petrol pumps (reward points plus fuel surcharge waiver)."
+        description: "Up to 3.5% savings on fuel transactions at HPCL petrol pumps (2.5% cashback plus 1% fuel surcharge waiver)."
         value_inr: null
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card

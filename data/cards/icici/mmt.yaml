@@ -24,9 +24,11 @@ fees:
       conditions: "Spend over ₹3 lakh in a year to get next year's annual fee waived."
     forex_markup_pct: 0.99
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null # TODO verify
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
-    notes: "Late payment fee ranges from ₹100 to ₹1300."
+    notes: "Late payment fee ranges from ₹100 to ₹1300. Cash advance 2.5% (min ₹500) and finance charge 3.75%/mo per ICICI MITC."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
       retrieved_on: 2026-07-03
@@ -60,16 +62,14 @@ rewards:
         merchants: [mmt]
         notes: "3% myCash (3 points per ₹100) on flight, bus and cab spends via MakeMyTrip."
     exclusions:
-      - fuel
-      - wallet-loads
       - rent
       - emi
-      - insurance-premiums
     redemption:
       - type: cashback-bank
         program: MakeMyTrip myCash
         rate_inr_per_unit: 1.0
         constraints: "Reward points credited to MakeMyTrip account as myCash; redeemable on MakeMyTrip for flight / hotel / holiday bookings. myCash never expires."
+    notes: "Base 1% on other retail (excl rent & EMI). Insurance spends earn 1% capped at 1,000 myCash/anniversary year. Train bookings earn 25 myCash each."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
       retrieved_on: 2026-07-03
@@ -86,11 +86,12 @@ benefits:
         visits_per_cycle: 1
         cycle: annual
         guests_per_visit: 0
+        via: [priority-pass]
     welcome:
       - condition: "Joining fee paid"
-        benefit: "MakeMyTrip voucher (valid for 1 year)"
-        value_inr: null # TODO verify
-        window_days: null
+        benefit: "MakeMyTrip voucher worth ₹1,000 (valid 12 months)"
+        value_inr: 1000
+        window_days: 365
       - condition: "Annual fee paid"
         benefit: "MakeMyTrip hotel voucher worth ₹1,000 (valid for 3 months)"
         value_inr: 1000

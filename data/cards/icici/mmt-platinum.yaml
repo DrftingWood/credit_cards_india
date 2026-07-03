@@ -21,9 +21,11 @@ fees:
     fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null # TODO verify
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
-    notes: "One-time joining fee ₹500; annual fee Nil. Late payment fee ranges from ₹100 to ₹1300."
+    notes: "One-time joining fee ₹500; annual fee Nil. Late payment fee ranges from ₹100 to ₹1300. Cash advance 2.5% (min ₹500) and finance charge 3.75%/mo per ICICI MITC."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
       retrieved_on: 2026-07-03
@@ -56,12 +58,17 @@ rewards:
         cycle: monthly
         merchants: [mmt]
         notes: "2 myCash per ₹200 on flight bookings via MakeMyTrip."
+      - category: international-spends
+        canonical_categories: [international]
+        multiplier: 1.25
+        effective_rate: 1.25
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "₹1.25 myCash per ₹200 on international spends outside MakeMyTrip."
     exclusions:
       - fuel
-      - wallet-loads
-      - rent
       - emi
-      - insurance-premiums
     redemption:
       - type: cashback-bank
         program: MakeMyTrip myCash
@@ -79,26 +86,36 @@ benefits:
         visits_per_cycle: 1
         cycle: quarterly
         guests_per_visit: 0
+        via: [dreamfolks]
     milestones:
       - spend_inr: 50000
         cycle: annual
-        benefit: "1,000 myCash on spends of ₹50,000 on the MakeMyTrip platform"
+        benefit: "1,000 myCash on ₹50,000 spend on flights/hotels/holidays on MakeMyTrip"
         reward_kind: cashback
         reward_units: 1000
         reward_currency_name: myCash
-        trigger_window: rolling
+        trigger_window: anniversary-year
       - spend_inr: 250000
         cycle: annual
-        benefit: "1,000 myCash on spends of ₹2.5 lakh on the MakeMyTrip platform"
+        benefit: "1,000 myCash on total card spends of ₹2.5 lakh"
         reward_kind: cashback
         reward_units: 1000
         reward_currency_name: myCash
-        trigger_window: rolling
+        trigger_window: anniversary-year
     welcome:
-      - condition: "Card activation"
-        benefit: "MakeMyTrip holiday voucher and ₹500 myCash"
-        value_inr: 500
-        window_days: null
+      - condition: "Joining fee paid"
+        benefit: "₹500 myCash + MakeMyTrip holiday voucher worth ₹3,000"
+        value_inr: 3500
+        window_days: 10
+    movies:
+      type: discount
+      partner: BookMyShow / INOX
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 100
+      notes: "25% off up to ₹100 on min two tickets per transaction, up to twice a month."
+    dining:
+      program: Culinary Treats
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400

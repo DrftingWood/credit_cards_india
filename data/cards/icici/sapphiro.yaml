@@ -72,6 +72,9 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
+        spend_threshold_inr: 75000
+        spend_threshold_cycle: quarterly
+        notes: "w.e.f. Jan 01, 2025 complimentary domestic lounge access requires Rs 75,000 spend in the preceding calendar quarter (MITC §8; Sapphiro not on the exemption list)."
       international:
         visits_per_cycle: 2
         cycle: annual
@@ -89,8 +92,8 @@ benefits:
       cap_inr: 500
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Welcome vouchers worth over ₹13,000 (Tata CLiQ, EazyDiner, Da Milano, EaseMyTrip, Tata Croma)"
-        value_inr: 13000
+        benefit: "Welcome vouchers: Tata CLiQ ₹3,000 + EaseMyTrip ₹4,000 (4×₹1,000) + Croma ₹1,500 (3×₹500) + EazyDiner 3-month Prime membership"
+        value_inr: 8500
         window_days: 90
     milestones:
       - spend_inr: 400000
@@ -101,7 +104,7 @@ benefits:
         trigger_window: anniversary-year
     insurance:
       - type: air-accident
-        sum_insured_inr: 30000000
+        sum_insured_inr: 10000000
       - type: personal-accident
         sum_insured_inr: 200000
         conditions: "RuPay variant"

@@ -18,15 +18,36 @@ fees:
     joining_fee_inr: 5000
     annual_fee_inr: 5000
     fee_waiver: null
-    forex_markup_pct: null  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null  # TODO verify (ATM withdrawal charged interest at 3.75%/month)
-    late_payment_slabs: null  # crawl states range ₹100 to ₹1,300; exact slabs not published
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    late_payment_slabs:
+      - up_to_inr: 100
+        fee_inr: 0
+      - up_to_inr: 500
+        fee_inr: 100
+      - up_to_inr: 1000
+        fee_inr: 500
+      - up_to_inr: 5000
+        fee_inr: 600
+      - up_to_inr: 10000
+        fee_inr: 750
+      - up_to_inr: 25000
+        fee_inr: 900
+      - up_to_inr: 50000
+        fee_inr: 1100
+      - up_to_inr: any
+        fee_inr: 1300
+    overlimit_fee:
+      pct: 2.5
+      min_inr: 550
     gst_applicable: true
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-sapphiro
       retrieved_on: 2026-07-03
-    notes: "Late payment fee ranges ₹100 to ₹1,300. ATM withdrawal and revolve (minimum due paid) charged 3.75% interest per month."
+    notes: "Forex markup 3.5%; cash advance 2.5% (min ₹500); over-limit 2.5% (min ₹550). Late payment fee ₹100 to ₹1,300 by slab. Revolve and cash advances charged 3.75% interest per month. Per ICICI MITC (mitc_cc.txt)."
 
 rewards:
   - effective_from: 2026-07-03
@@ -36,8 +57,18 @@ rewards:
     base:
       rate: 1.5
       per_inr: 100
-      unit_value_inr: null  # TODO verify
+      unit_value_inr: null  # TODO verify - Skywards Miles value not stated in T&C
       unit_value_inr_realized: null  # TODO verify
+    exclusions:
+      - fuel
+      - cash-advance
+      - emi
+      - wallet-loads
+      - rent
+      - government
+      - utilities
+      - insurance-premiums
+      - education
     redemption:
       - type: airmiles
         program: Emirates Skywards
@@ -61,6 +92,8 @@ benefits:
         visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
+        via: [priority-pass]
+        notes: "2 complimentary international lounge accesses; Priority Pass membership for the primary Cardholder (DreamFolks for cards issued before Nov 15, 2024). Primary Cardholder only."
     movies:
       type: bogo
       partner: BookMyShow
@@ -85,7 +118,7 @@ benefits:
       cycle: monthly
     other:
       - name: "Annual renewal miles"
-        description: "5,000 Skywards Miles on annual renewal"
+        description: "Bonus 5,000 Skywards Miles as annual benefit, subject to ₹5 lakh spends in the previous year and payment of the annual fee; Silver Tier retained with ₹5 lakh annual spend"
         value_inr: null
       - name: "Emirates flight discount"
         description: "Up to 10% discount on Emirates flight bookings via Emirates.com using promo code INICI26"

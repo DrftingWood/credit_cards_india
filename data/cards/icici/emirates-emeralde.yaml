@@ -18,10 +18,31 @@ fees:
     joining_fee_inr: 10000
     annual_fee_inr: 10000
     fee_waiver: null
-    forex_markup_pct: null  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null  # TODO verify (ATM withdrawal charged interest at 3.75%/month)
-    late_payment_slabs: null  # crawl states range ₹100 to ₹1,300; exact slabs not published
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    late_payment_slabs:
+      - up_to_inr: 100
+        fee_inr: 0
+      - up_to_inr: 500
+        fee_inr: 100
+      - up_to_inr: 1000
+        fee_inr: 500
+      - up_to_inr: 5000
+        fee_inr: 600
+      - up_to_inr: 10000
+        fee_inr: 750
+      - up_to_inr: 25000
+        fee_inr: 900
+      - up_to_inr: 50000
+        fee_inr: 1100
+      - up_to_inr: any
+        fee_inr: 1300
+    overlimit_fee:
+      pct: 2.5
+      min_inr: 550
     gst_applicable: true
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
@@ -36,8 +57,18 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: null  # TODO verify
+      unit_value_inr: null  # TODO verify - Skywards Miles value not stated in T&C
       unit_value_inr_realized: null  # TODO verify
+    exclusions:
+      - fuel
+      - cash-advance
+      - emi
+      - wallet-loads
+      - rent
+      - government
+      - utilities
+      - insurance-premiums
+      - education
     redemption:
       - type: airmiles
         program: Emirates Skywards
@@ -58,6 +89,7 @@ benefits:
         visits_per_cycle: unlimited
         cycle: annual
         guests_per_visit: 0
+        via: [priority-pass]
     movies:
       type: bogo
       partner: BookMyShow
@@ -68,7 +100,7 @@ benefits:
     milestones:
       - spend_inr: 1500000
         cycle: annual
-        benefit: "Emirates Skywards Gold Tier Membership on ₹15 lakh spend (including minimum ₹50,000 on Emirates.com) in the anniversary year"
+        benefit: "Emirates Skywards Gold Tier Membership on ₹15 lakh spend (including minimum ₹50,000 on Emirates flights via Emirates.com or the Emirates Contact Centre) in the anniversary year; Gold Tier active upon payment of the next year's annual fee, must be re-achieved each year to retain"
         value_inr: null
         reward_kind: other
         trigger_window: anniversary-year
@@ -89,7 +121,7 @@ benefits:
       cycle: monthly
     other:
       - name: "Annual renewal miles"
-        description: "10,000 Skywards Miles and upgrade to Emirates Skywards Gold Tier on annual renewal"
+        description: "Bonus 10,000 Skywards Miles as annual benefit on payment of the annual fee; Emirates Skywards Silver Tier retained while the card is active (Gold Tier is milestone-linked, not automatic on renewal)"
         value_inr: null
       - name: "Emirates flight discount"
         description: "Up to 10% discount on Emirates flight bookings via Emirates.com using promo code INICI26"

@@ -60,12 +60,17 @@ rewards:
         cycle: monthly
         merchants: [makemytrip, goibibo]
         notes: "2 myCash per ₹200 on flight bookings."
+      - category: international-spends
+        canonical_categories: [international]
+        multiplier: 1.2
+        effective_rate: 1.5
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "₹1.50 myCash per ₹200 on international spends outside MakeMyTrip."
     exclusions:
       - fuel
-      - wallet-loads
-      - rent
       - emi
-      - insurance-premiums
     redemption:
       - type: cashback-bank
         program: MakeMyTrip myCash
@@ -80,12 +85,10 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
-        cycle: annual
+        visits_per_cycle: 1
+        cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
-        spend_threshold_inr: 35000
-        spend_threshold_cycle: quarterly
       international:
         visits_per_cycle: 1
         cycle: annual
@@ -108,9 +111,20 @@ benefits:
         trigger_window: anniversary-year
     welcome:
       - condition: "Joining fee paid"
-        benefit: "MMTBLACK Platinum Tier Membership + MakeMyTrip Holiday Voucher"
-        value_inr: 3000
-        window_days: 90
+        benefit: "₹1,500 myCash (Joining Benefit)"
+        value_inr: 1500
+        window_days: 10
+      - benefit: "MakeMyTrip holiday voucher (max discount ₹2,500 on holiday bookings)"
+        value_inr: 2500
+      - condition: "Joining fee paid"
+        benefit: "Complimentary MMTBLACK Exclusive membership (includes ₹20,000 holiday voucher)"
+    movies:
+      type: discount
+      partner: BookMyShow / INOX
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 150
+      notes: "25% off up to ₹150 on min two tickets per transaction, up to twice a month."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -120,8 +134,8 @@ benefits:
       notes: "At HPCL pumps on ICICI Bank POS machines."
     concierge: false
     other:
-      - name: MMTBLACK Platinum Tier
-        description: Complimentary MMTBLACK Platinum Tier membership.
+      - name: MMTBLACK Exclusive Tier
+        description: Complimentary MMTBLACK Exclusive tier membership (top tier of the new MMTBLACK programme).
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card
       retrieved_on: 2026-07-03

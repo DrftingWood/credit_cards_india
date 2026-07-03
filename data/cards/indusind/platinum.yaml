@@ -24,7 +24,7 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card."
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/platinum-credit-card.html
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-credit-card.html
       retrieved_on: 2026-04-15
 
 rewards:
@@ -43,12 +43,13 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: IndusMoments
         rate_inr_per_unit: 0.35
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/platinum-credit-card.html
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-credit-card.html
       retrieved_on: 2026-04-15
 
 benefits:
@@ -63,7 +64,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/platinum-credit-card.html
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-credit-card.html
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -76,7 +77,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.indusind.com/in/en/personal/cards/credit-card/platinum-credit-card.html
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-credit-card.html
 
 metadata:
   last_verified_on: 2026-04-15

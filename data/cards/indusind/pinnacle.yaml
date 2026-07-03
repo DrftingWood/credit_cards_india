@@ -23,7 +23,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
       retrieved_on: 2026-04-15
 
 rewards:
@@ -50,6 +50,7 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: IndusMoments
@@ -58,7 +59,7 @@ rewards:
         program: Multiple
         ratio: "1:1"
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
       retrieved_on: 2026-04-15
 
 benefits:
@@ -97,7 +98,7 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -110,7 +111,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.indusind.com/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
 
 metadata:
   last_verified_on: 2026-04-15

@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 499
     annual_fee_inr: 499
     fee_waiver:
-      spend_inr: 100000
+      spend_inr: 80000
       cycle: annual
     forex_markup_pct: 3.49
     finance_charge_monthly_pct: 3.49
@@ -25,8 +25,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-01-01
@@ -37,6 +37,7 @@ rewards:
       rate: 1.5
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: merchant-categories
         multiplier: 1
@@ -55,33 +56,38 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
+        visits_per_cycle: 8
+        cycle: annual
         guests_per_visit: 0
         via: [rupay]
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "500 bonus Reward Points"
+    milestones:
+      - spend_inr: 20000
+        cycle: monthly
+        benefit: "500 bonus Reward Points on Rs 20,000 retail spend in a calendar month"
         value_inr: 125
-        window_days: 90
+        reward_kind: points
+        reward_units: 500
+        reward_currency_name: Reward Points
+        trigger_window: rolling
+        is_repeatable: true
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 100
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 150
       cycle: monthly
     concierge: false
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -93,8 +99,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [entry, cashback, rupay]

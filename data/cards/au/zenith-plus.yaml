@@ -13,10 +13,10 @@ discontinued_on: null
 fees:
   - effective_from: 2023-06-01
     effective_until: null
-    joining_fee_inr: 7999
-    annual_fee_inr: 7999
+    joining_fee_inr: 4999
+    annual_fee_inr: 4999
     fee_waiver:
-      spend_inr: 1800000
+      spend_inr: 800000
       cycle: annual
     forex_markup_pct: 0.99
     finance_charge_monthly_pct: 3.49
@@ -25,8 +25,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/zenith-plus
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2023-06-01
@@ -34,18 +34,19 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 10
+      rate: 1
       per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
     accelerated:
-      - category: international-spend
-        canonical_categories: [international]
+      - category: dining-travel-international
+        canonical_categories: [dining, travel, international]
         multiplier: 2
-        effective_rate: 20
-        cap_per_cycle: "unlimited"
+        effective_rate: 2
+        cap_per_cycle: "unlimited"  # TODO verify cap
         cap_unit: points
         cycle: monthly
+        notes: "2 Reward Points per Rs 100 on dining, travel & international; 1 RP per Rs 100 on other spends (base)"
     exclusions:
       - fuel
       - wallet-loads
@@ -62,8 +63,8 @@ rewards:
         program: Multiple
         ratio: "4:1"
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/zenith-plus
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2023-06-01
@@ -85,8 +86,8 @@ benefits:
       lessons_per_cycle: unlimited
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Luxury voucher + membership bundle worth ₹20,000"
-        value_inr: 20000
+        benefit: "Taj Epicure Membership + brand voucher worth Rs 5,000 (or 5,000 Reward Points)"
+        value_inr: 5000
         window_days: 90
     insurance:
       - type: air-accident
@@ -101,8 +102,8 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/zenith-plus
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -114,8 +115,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.au.bank.in/personal-banking/credit-cards/zenith-plus
+  apply_url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [super-premium, travel, low-forex, points]

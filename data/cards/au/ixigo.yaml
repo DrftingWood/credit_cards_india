@@ -16,12 +16,10 @@ discontinued_on: null
 fees:
   - effective_from: 2024-01-01
     effective_until: null
-    joining_fee_inr: 999
-    annual_fee_inr: 999
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-    forex_markup_pct: 3.5
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 0.0
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
@@ -29,7 +27,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2024-01-01
@@ -37,10 +35,10 @@ rewards:
     currency: points
     currency_name: ixigo Reward Points
     base:
-      rate: 1
+      rate: 2.5
       per_inr: 100
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.4
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: ixigo-bookings
         canonical_categories: [travel]
@@ -64,32 +62,45 @@ rewards:
         constraints: "Redeemable as ixigo Money on the app."
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-01-01
     effective_until: null
     lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
+      international:
+        visits_per_cycle: 1
+        cycle: annual
         guests_per_visit: 0
         via: [rupay]
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "ixigo voucher worth ₹1,000"
-        value_inr: 1000
+      - condition: "Card activation"
+        benefit: "1,000 Reward Points + 1,000 ixigo Money + 10% off on hotels/flights/bus"
+        value_inr: 2000
         window_days: 90
+    milestones:
+      - spend_inr: 75000
+        cycle: annual
+        benefit: "5,000 bonus Reward Points on Rs 75,000 spend"
+        value_inr: 5000
+        reward_kind: points
+        reward_units: 5000
+        reward_currency_name: ixigo Reward Points
+        trigger_window: anniversary-year
+        is_repeatable: true
+    insurance:
+      - type: credit-shield
+        sum_insured_inr: 150000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 100
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
       cycle: monthly
     concierge: false
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -104,5 +115,5 @@ application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, travel, ixigo, rupay, entry]

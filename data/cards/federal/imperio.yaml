@@ -13,12 +13,12 @@ discontinued_on: null
 fees:
   - effective_from: 2022-03-01
     effective_until: null
-    joining_fee_inr: 1000
-    annual_fee_inr: 1000
+    joining_fee_inr: 1500
+    annual_fee_inr: 1500
     fee_waiver:
       spend_inr: 200000
       cycle: annual
-    forex_markup_pct: 1.5
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5

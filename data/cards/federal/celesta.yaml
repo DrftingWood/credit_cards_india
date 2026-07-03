@@ -18,7 +18,7 @@ fees:
     fee_waiver:
       spend_inr: 500000
       cycle: annual
-    forex_markup_pct: 1.5
+    forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5

@@ -25,7 +25,7 @@ fees:
     notes: "Lifetime-free card."
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2015-01-01
@@ -35,8 +35,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 0.35
-      unit_value_inr_realized: 0.3
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
     accelerated:
       - category: weekend-spend
         multiplier: 2
@@ -55,32 +55,31 @@ rewards:
     redemption:
       - type: catalog
         program: IndusMoments
-        rate_inr_per_unit: 0.35
+        rate_inr_per_unit: 0.25
       - type: statement-credit
-        rate_inr_per_unit: 0.35
+        rate_inr_per_unit: 0.25
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2015-01-01
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa]
-      international:
-        visits_per_cycle: 0
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-        notes: "Priority Pass available at nominal per-visit fee."
+    lounge_access: null  # Lounge access discontinued effective 7-Mar-2025 (per live page).
     golf:
-      rounds_per_cycle: 1
+      rounds_per_cycle: 1  # TODO verify still offered post-2025 revamp
       cycle: monthly
       lessons_per_cycle: 1
+    milestones:
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "3,000 bonus reward points on ₹5,00,000 annual spend"
+        value_inr: 750
+        reward_kind: points
+        reward_units: 3000
+        reward_currency_name: Reward Points
+        trigger_window: anniversary-year
+        is_repeatable: true
     insurance:
       - type: air-accident
         sum_insured_inr: 25000000
@@ -95,7 +94,7 @@ benefits:
     concierge: true
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -110,5 +109,5 @@ application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, premium, points, low-forex]

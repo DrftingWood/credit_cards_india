@@ -1,0 +1,113 @@
+id: au-nomo
+name: AU Bank NOMO Credit Card
+issuer: au
+network: visa  # TODO verify network
+network_tier: platinum  # TODO verify
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 0  # TODO verify
+    annual_fee_inr: 0  # TODO verify
+    fee_waiver: null
+    forex_markup_pct: 0.99
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "Secured credit card issued against a Fixed Deposit with AU (FD-backed; 'From Fixed Deposit to Flexible Credit'). Good for building/rebuilding credit."
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/nomo-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: utility-insurance
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.5
+        effective_rate: 1
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "1 Reward Point per ₹100 on utility & insurance; 2 RP per ₹100 on other retail (base)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: AU Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/nomo-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+        notes: "Domestic airport lounge visits each quarter upon ₹50,000 spend; plus Railway Lounge access each quarter (incl. add-on)."
+    welcome:
+      - condition: "First transaction within 30 days of setup"
+        benefit: "500 Reward Points"
+        value_inr: 125
+        window_days: 30
+    milestones:
+      - spend_inr: 25000
+        cycle: quarterly
+        benefit: "500 Reward Points on ₹25,000 retail spend in a quarter (1,000 at ₹50,000; fuel & cash excluded)"
+        value_inr: 125
+        reward_kind: points
+        reward_units: 500
+        reward_currency_name: Reward Points
+        trigger_window: rolling
+        is_repeatable: true
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/nomo-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null  # FD-backed — income not the primary criterion
+    self_employed: null
+  credit_score_min: 300
+  residency: resident-indian
+
+application:
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/nomo-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, secured, fd-backed, points, low-forex]

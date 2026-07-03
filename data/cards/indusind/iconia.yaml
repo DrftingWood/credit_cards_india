@@ -26,7 +26,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-amex-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2017-01-01
@@ -34,25 +34,20 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 2
+      rate: 0.75
       per_inr: 100
-      unit_value_inr: 0.35
-      unit_value_inr_realized: 0.3
+      unit_value_inr: 0.75
+      unit_value_inr_realized: 0.50
     accelerated:
-      - category: weekend-dining
-        canonical_categories: [dining]
-        multiplier: 1.5
-        effective_rate: 3
+      - category: weekend-spend
+        multiplier: 1.33
+        effective_rate: 1
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 1.5
-        effective_rate: 3
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
+        notes: "1 RP per ₹100 on weekends (Sat/Sun); 0.75 RP per ₹100 on weekdays (base)."
+    capping_rules:
+      - "Redemption value (eff 1-Mar-2024): 1 RP = ₹0.75 non-cash (excl airmiles), ₹0.50 cash; cash redemption capped 5,000 RP/calendar month (eff 1-Sep-2024)."
     exclusions:
       - fuel
       - wallet-loads
@@ -63,10 +58,10 @@ rewards:
     redemption:
       - type: catalog
         program: IndusMoments
-        rate_inr_per_unit: 0.35
+        rate_inr_per_unit: 0.50
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-amex-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2017-01-01
@@ -98,7 +93,7 @@ benefits:
     concierge: true
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-amex-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -113,5 +108,5 @@ application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-amex-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [premium, amex, golf, lounge, points]

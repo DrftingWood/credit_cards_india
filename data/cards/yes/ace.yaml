@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: yes-ace
 name: YES Bank ACE Credit Card
 issuer: "yes"

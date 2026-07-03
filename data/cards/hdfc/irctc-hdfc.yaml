@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hdfc-irctc-hdfc
 name: IRCTC HDFC Bank Credit Card
 issuer: hdfc

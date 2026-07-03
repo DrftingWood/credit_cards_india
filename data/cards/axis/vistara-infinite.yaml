@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: axis-vistara-infinite
 name: Axis Bank Vistara Infinite Credit Card
 issuer: axis

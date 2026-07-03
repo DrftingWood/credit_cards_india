@@ -1,3 +1,10 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Canara Bank — RuPay/Visa program card (live page redirects; no extractable source)
+#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
+#   Values are RuPay/Visa program-standard estimates; the live card page redirects
+# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+# ---------------------------------------------------------------------------
 id: canara-rupay-select
 name: Canara Bank RuPay Select Credit Card
 issuer: canara

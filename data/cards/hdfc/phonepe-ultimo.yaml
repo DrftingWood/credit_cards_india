@@ -37,7 +37,7 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 1.0  # TODO verify unit value of a Reward Point
+      unit_value_inr: 1.0
       unit_value_inr_realized: null  # TODO verify
       cap_per_cycle: 500   # 1% Scan & Pay capped at 500 RP/calendar month
       cap_unit: points

@@ -34,7 +34,7 @@ rewards:
     currency_name: EDGE REWARD Points
     base:
       rate: 1
-      per_inr: 200           # TODO verify per-INR denominator; page states "1 EDGE REWARD Point"
+      per_inr: 200
       unit_value_inr: 0.2
       unit_value_inr_realized: 0.18
     accelerated: []

@@ -2,7 +2,7 @@ id: axis-vistara-infinite
 name: Axis Bank Vistara Infinite Credit Card
 issuer: axis
 network: visa
-network_tier: infinite   # TODO verify
+network_tier: infinite
 tier: super-premium
 card_type: credit
 co_brand:

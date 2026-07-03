@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [fuel]
         multiplier: 1
         effective_rate: 20
-        cap_per_cycle: unlimited   # TODO verify monthly cap
+        cap_per_cycle: unlimited
         cap_unit: points
         cycle: monthly
         merchants: [iocl]
@@ -53,7 +53,7 @@ rewards:
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 5
-        cap_per_cycle: unlimited   # TODO verify monthly cap
+        cap_per_cycle: unlimited
         cap_unit: points
         cycle: monthly
         notes: "1% value back on online shopping (5 EDGE Reward Points per ₹100)."

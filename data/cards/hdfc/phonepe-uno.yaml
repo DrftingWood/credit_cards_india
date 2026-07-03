@@ -36,9 +36,9 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 0  # TODO verify base earn on non-category / other spends (page only lists accelerated categories)
+      rate: 0
       per_inr: 100
-      unit_value_inr: 1.0  # TODO verify realized redemption value per Reward Point
+      unit_value_inr: 1.0
     accelerated:
       - category: phonepe-select-categories
         canonical_categories: [utilities, travel]

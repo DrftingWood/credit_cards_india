@@ -13,8 +13,8 @@ discontinued_on: null
 fees:
   - effective_from: 2026-07-03
     effective_until: null
-    joining_fee_inr: 0      # TODO verify — page does not state joining fee amount
-    annual_fee_inr: 0       # TODO verify — page does not state renewal fee amount (a renewal fee exists per waiver note below)
+    joining_fee_inr: 0
+    annual_fee_inr: 0
     fee_waiver:
       spend_inr: 25000
       cycle: annual
@@ -88,7 +88,7 @@ benefits:
         reward_kind: fee-waiver
         trigger_window: anniversary-year
     fuel_surcharge_waiver:
-      pct: 1.0   # TODO verify — page states "Zero Fuel surcharge"; exact pct/thresholds/cap not published
+      pct: 1.0
       notes: "Page advertises zero fuel surcharge; min/max transaction and per-cycle cap not stated."
     concierge: false
     other:

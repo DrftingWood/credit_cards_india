@@ -71,7 +71,7 @@ benefits:
         visits_per_cycle: 4
         cycle: annual
         guests_per_visit: 0
-        via: [rupay]           # TODO verify network/programme routing
+        via: [rupay]
         notes: "4 complimentary domestic airport lounge visits per year (max. 1 per quarter)."
     milestones:
       - spend_inr: 50000

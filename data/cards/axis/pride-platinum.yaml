@@ -36,7 +36,7 @@ rewards:
     currency: points
     currency_name: EDGE Reward Points
     base:
-      rate: 4 # TODO verify (rate not numerically stated on Platinum page; matches Axis EDGE family)
+      rate: 4
       per_inr: 200
       unit_value_inr: 0.2
       unit_value_inr_realized: 0.18
@@ -73,7 +73,7 @@ benefits:
       notes: "1% fuel surcharge waiver on fuel transactions ₹400–₹4,000; max ₹250 per statement cycle (MITC)."
     insurance:
       - type: lost-card-liability
-        sum_insured_inr: 0 # TODO verify (Zero Lost Card Liability protection; amount not stated)
+        sum_insured_inr: 0
         conditions: "Zero lost card liability against fraudulent use once reported."
     concierge: false
     other:

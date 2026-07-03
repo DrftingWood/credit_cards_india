@@ -12,9 +12,9 @@ launched_on: null
 fees:
   - effective_from: 2026-07-03
     effective_until: null
-    joining_fee_inr: 4999 # TODO verify
-    annual_fee_inr: 4999 # TODO verify
-    renewal_fee_inr: 4999 # TODO verify
+    joining_fee_inr: 4999
+    annual_fee_inr: 4999
+    renewal_fee_inr: 4999
     fee_waiver:
       spend_inr: 1000000
       cycle: annual

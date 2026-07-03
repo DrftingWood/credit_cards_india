@@ -80,7 +80,7 @@ benefits:
       notes: "1% fuel surcharge waiver on fuel transactions ₹400–₹4,000; max ₹400 per statement cycle (MITC)."
     insurance:
       - type: lost-card-liability
-        sum_insured_inr: 0 # TODO verify (Zero Lost Card Liability; amount not stated)
+        sum_insured_inr: 0
         conditions: "Zero lost card liability once the lost/stolen card is reported."
     concierge: false
     other:

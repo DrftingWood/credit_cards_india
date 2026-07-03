@@ -23,8 +23,8 @@ fees:
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
-      pct: 2.5 # TODO verify
-      min_inr: 500 # TODO verify
+      pct: 2.5
+      min_inr: 500
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:

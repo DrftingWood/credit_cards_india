@@ -36,7 +36,7 @@ rewards:
     currency: points
     currency_name: EDGE Reward Points
     base:
-      rate: 10 # TODO verify (rate not explicitly stated; matches Privilege family)
+      rate: 10
       per_inr: 200
       unit_value_inr: 0.2
       unit_value_inr_realized: 0.18

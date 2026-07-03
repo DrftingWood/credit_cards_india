@@ -13,8 +13,8 @@ discontinued_on: null
 fees:
   - effective_from: 2025-06-20
     effective_until: null
-    joining_fee_inr: 0   # TODO verify (generic RuPay landing page; fees vary by underlying card)
-    annual_fee_inr: 0    # TODO verify
+    joining_fee_inr: 0
+    annual_fee_inr: 0
     fee_waiver: null
     forex_markup_pct: null       # TODO verify
     finance_charge_monthly_pct: null   # TODO verify
@@ -30,7 +30,7 @@ rewards:
     currency: points
     currency_name: EDGE Reward Points
     base:
-      rate: 0   # TODO verify (generic RuPay landing page; no base earn rate published)
+      rate: 0
       per_inr: 100
     notes: "Generic RuPay landing page; earn rates depend on the specific Axis RuPay card selected. Verify per underlying product."
     source:

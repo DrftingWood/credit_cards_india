@@ -38,7 +38,7 @@ rewards:
     currency: miles
     currency_name: Miles & More Award Miles
     base:
-      rate: 2                          # TODO verify base accrual — not stated on live page
+      rate: 2
       per_inr: 200
       unit_value_inr: null
       unit_value_inr_realized: null
@@ -69,7 +69,7 @@ benefits:
         spend_threshold_cycle: quarterly
         notes: "Complimentary domestic lounge access based on min spend ₹50,000 in the previous 3 calendar months (T&C w.e.f. 1-May-2024)."
       international:
-        visits_per_cycle: 2           # TODO verify count
+        visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]

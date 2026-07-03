@@ -1,0 +1,94 @@
+id: standard-chartered-platinum-rewards
+name: Standard Chartered Platinum Rewards Credit Card
+issuer: standard-chartered
+network: visa  # TODO verify network
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2018-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-01-01
+    effective_until: null
+    joining_fee_inr: 250  # TODO verify
+    annual_fee_inr: 250  # TODO verify
+    fee_waiver:
+      spend_inr: 6000  # TODO verify (Rs 500/mo equivalent)
+      cycle: annual
+    forex_markup_pct: 3.5  # TODO verify
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Joining fee reversed on ₹500 spend within 30 days of card issuance."
+    source:
+      url: https://www.sc.bank.in/credit-cards/platinum-rewards/
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-01-01
+    effective_until: null
+    currency: points
+    currency_name: 360 Reward Points
+    base:
+      rate: 1
+      per_inr: 150
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.5
+    accelerated:
+      - category: dining-fuel
+        canonical_categories: [dining, fuel]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "5 Reward Points per ₹150 on fine-dining & fuel (no limit); 1 RP per ₹150 on other categories."
+    exclusions:
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: 360 Rewards
+        rate_inr_per_unit: 0.5
+    source:
+      url: https://www.sc.bank.in/credit-cards/platinum-rewards/
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-01-01
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.sc.bank.in/credit-cards/platinum-rewards/
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000  # TODO verify
+    self_employed: 300000  # TODO verify
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sc.bank.in/credit-cards/platinum-rewards/
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, points, dining, fuel]

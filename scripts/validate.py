@@ -54,6 +54,7 @@ ISSUER_ALLOWED_DOMAINS = {
     "onecard": {"getonecard.app", "www.getonecard.app", "onecard.io", "www.onecard.io"},
     "rbl": {"rblbank.com", "www.rblbank.com", "rbl.bank.in", "www.rbl.bank.in", "irctc.co.in", "www.irctc.co.in"},
     "sbi": {"sbicard.com", "www.sbicard.com"},
+    "slice": {"sliceit.com", "www.sliceit.com", "slice.bank.in", "www.slice.bank.in"},
     "standard-chartered": {"sc.com", "www.sc.com", "sc.bank.in", "www.sc.bank.in"},
     "yes": {"yesbank.in", "www.yesbank.in", "yes.bank.in", "www.yes.bank.in"},
 }

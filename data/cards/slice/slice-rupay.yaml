@@ -29,8 +29,8 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card; fully app-managed lifecycle."
     source:
-      url: https://www.sliceit.com
-      retrieved_on: 2026-04-15
+      url: https://www.slice.bank.in
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2024-04-01
@@ -54,12 +54,13 @@ rewards:
       - wallet-loads
       - rent
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.sliceit.com
-      retrieved_on: 2026-04-15
+      url: https://www.slice.bank.in
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-04-01
@@ -78,8 +79,8 @@ benefits:
         description: Application, limit management, statements and repayment all in the slice app.
     concierge: false
     source:
-      url: https://www.sliceit.com
-      retrieved_on: 2026-04-15
+      url: https://www.slice.bank.in
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -91,8 +92,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sliceit.com
+  apply_url: https://www.slice.bank.in
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, fintech, rupay, upi, entry, cashback]

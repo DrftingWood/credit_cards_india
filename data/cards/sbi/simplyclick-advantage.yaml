@@ -1,0 +1,133 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-simplyclick-advantage
+name: SimplyCLICK Advantage SBI Card
+issuer: sbi
+network: visa
+network_tier: null
+tier: entry
+card_type: secured
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    renewal_fee_inr: 499
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Renewal fee reversed on annual spends >= Rs. 1,00,000."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
+      retrieved_on: 2026-07-03
+      notes: "Secured 'Advantage' variant of SimplyCLICK SBI Card (issued against a fixed deposit)."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: online-partner-merchants
+        canonical_categories: [online]
+        multiplier: 10
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
+        notes: "10X Reward Points on online spends with partner merchants: Apollo 24x7, BookMyShow, Cleartrip, Dominos, IGP, Myntra, Netmeds, Swiggy, Yatra, Gyftr, Tata Cliq."
+      - category: online-other
+        canonical_categories: [online]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "5X Reward Points on all other online spends."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access: null
+    milestones:
+      - spend_inr: 100000
+        cycle: annual
+        benefit: "e-Voucher worth Rs. 2,000 (Cleartrip/Yatra) on annual online spends of Rs. 1 lakh"
+        value_inr: 2000
+      - spend_inr: 200000
+        cycle: annual
+        benefit: "Additional e-Voucher worth Rs. 2,000 (Cleartrip/Yatra) on annual online spends of Rs. 2 lakh"
+        value_inr: 2000
+    welcome:
+      - condition: "Annual fee paid"
+        benefit: "Amazon.in e-Gift Card worth Rs. 500"
+        value_inr: 500
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Secured card issued against a fixed deposit; no separate income/credit-score criteria published."
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, online-spend, points, secured]

@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hdfc-infinia
 name: HDFC Bank Infinia Credit Card (Metal Edition)
 issuer: hdfc
@@ -20,26 +29,16 @@ fees:
       cycle: annual
       conditions: "Renewal fee waived on spends of ₹10L in the preceding membership year."
     forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.6
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    late_payment_slabs:
-      - { up_to_inr: 100, fee_inr: 0 }
-      - { up_to_inr: 500, fee_inr: 100 }
-      - { up_to_inr: 5000, fee_inr: 500 }
-      - { up_to_inr: 10000, fee_inr: 600 }
-      - { up_to_inr: 25000, fee_inr: 800 }
-      - { up_to_inr: 50000, fee_inr: 1100 }
-      - { up_to_inr: "any", fee_inr: 1300 }
+    finance_charge_monthly_pct: 1.99
+    cash_advance_fee: null
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2017-01-01
-    effective_until: 2025-07-31
+    effective_until: null
     currency: points
     currency_name: Reward Points
     base:
@@ -74,56 +73,8 @@ rewards:
         program: Multiple (Airmiles hub)
         ratio: "1:1"
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
-      retrieved_on: 2026-04-15
-      notes: "Historical record; SmartBuy 10x era (cut to 5x in August 2025)."
-
-  - effective_from: 2025-08-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 5
-      per_inr: 150
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.7
-    accelerated:
-      - category: smartbuy-flights-hotels
-        canonical_categories: [travel]
-        multiplier: 5
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [smartbuy]
-        notes: "5x reward points on flight + hotel bookings via HDFC SmartBuy (reduced from 10x in August 2025). Direct/OTA bookings earn the base 5/₹150."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-    capping_rules:
-      - "From 1-Feb-2026: max 5 redemption requests per month; statement-credit redemption capped at 50,000 points/month; total redemption capped at ₹2,00,000 per statement cycle."
-      - "From 1-Feb-2026: Apple products and Tanishq voucher redemptions capped at 70% of product value."
-    redemption:
-      - type: catalog
-        program: SmartBuy
-        rate_inr_per_unit: 1.0
-        constraints: "From Feb-2026, Apple/Tanishq redemptions capped at 70% of product value."
-      - type: airmiles
-        program: Multiple (Airmiles hub)
-        ratio: "1:1"
-      - type: statement-credit
-        rate_inr_per_unit: 0.3
-        constraints: "Capped at 50,000 points per month from Feb-2026."
-    source:
-      url: https://livefromalounge.com/hdfc-bank-infinia-2026-changes/
-      retrieved_on: 2026-06-12
-      notes: "SmartBuy 5x effective Aug-2025; Feb-2026 redemption restrictions per Business Standard / Live From A Lounge. Replace with HDFC T&C PDF on next sweep."
+      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-04-01
@@ -142,7 +93,7 @@ benefits:
     golf:
       rounds_per_cycle: unlimited
       cycle: monthly
-      lessons_per_cycle: 0
+      lessons_per_cycle: unlimited
     milestones: []
     welcome:
       - condition: "Joining fee paid"
@@ -154,10 +105,14 @@ benefits:
         sum_insured_inr: 30000000
       - type: travel-medical
         sum_insured_inr: 5000000
+      - type: credit-shield
+        sum_insured_inr: 900000
+      - type: lost-card-liability
+        sum_insured_inr: 900000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
-      max_txn_inr: 5000
+      max_txn_inr: 100000
       cap_per_cycle_inr: 1000
       cycle: statement
     concierge: true
@@ -165,9 +120,14 @@ benefits:
       - name: Club Marriott membership
         description: Complimentary Club Marriott membership for the first year.
         value_inr: 5000
+      - name: Renewal benefit
+        description: "12,500 Reward Points on renewal-fee realisation and card activation (separate from the joining welcome points)."
+        value_inr: 12500
+      - name: ITC hotels buffet
+        description: "1+1 complimentary buffet at participating ITC hotels."
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/infinia-metal-edition
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -177,7 +137,7 @@ eligibility:
     self_employed: null
   credit_score_min: 800
   residency: resident-indian
-  notes: "Invite-only. Typically extended to HDFC Preferred/Imperia/Private Banking customers or high-net-worth profiles. Retention (announced 26-Feb-2026): ₹18L retail card spend between Apr-2026 and Mar-2027 OR ₹50L bank relationship value, else downgrade/removal in 2027."
+  notes: "Invite-only. Typically extended to HDFC Preferred/Imperia/Private Banking customers or high-net-worth profiles."
 
 application:
   apply_url: null
@@ -185,5 +145,5 @@ application:
   replaces_card: null
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [metal, travel, low-forex, invite-only, points]
+  last_verified_on: 2026-07-03
+  tags: [metal, travel, forex-friendly, invite-only, points]

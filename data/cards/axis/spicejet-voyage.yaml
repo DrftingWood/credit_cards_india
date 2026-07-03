@@ -1,0 +1,167 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: axis-spicejet-voyage
+name: SpiceJet Axis Bank Voyage Credit Card
+issuer: axis
+network: visa
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: SpiceJet
+  category: airline
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 750
+    annual_fee_inr: 750
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.0
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Joining/annual ₹750 (Axis MITC). Forex 3.5%, finance 3.0%/mo, cash advance 2.5% (min ₹500) per MITC."
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: points
+    currency_name: SpiceClub Points
+    base:
+      rate: 3
+      per_inr: 200
+      unit_value_inr: 0.5              # value chart: 5,400 pts ≈ ₹2,700
+      unit_value_inr_realized: 0.5
+    accelerated:
+      - category: spicejet-app-and-website
+        canonical_categories: [travel]
+        multiplier: 6
+        effective_rate: 18
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "Up to 18 SpiceClub Points per ₹200 on SpiceJet app & website bookings (6 as card benefit + 12 as SpiceClub Silver member)."
+      - category: online-food-delivery
+        canonical_categories: [dining]
+        multiplier: 2
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "6 SpiceClub Points per ₹200 on online food delivery (select MCCs)."
+      - category: online-bill-payment
+        canonical_categories: [utilities]
+        multiplier: 2
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "6 SpiceClub Points per ₹200 on online bill payments (select MCCs)."
+      - category: online-entertainment
+        canonical_categories: [entertainment]
+        multiplier: 2
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "6 SpiceClub Points per ₹200 on online entertainment (select MCCs)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - education
+      - jewellery
+      - emi
+      - cash-advance
+      - gift-cards
+    capping_rules:
+      - "SpiceJet app/website card-benefit earn (6 SC/₹200) is capped at ₹1 lakh of credit-card spend per month; beyond this only the SpiceClub membership earn continues."
+    redemption:
+      - type: airmiles
+        program: SpiceClub
+        rate_inr_per_unit: 0.5
+        constraints: "Redeem SpiceClub Points on SpiceJet bookings."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Base 3 SpiceClub Points per ₹200 on other retail spends (value chart: ₹1L → 1,500 pts). Wallet & EMI transactions excluded from accelerated earn."
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "4 complimentary domestic lounge visits per year, subject to min spend of ₹50,000 in the previous quarter."
+    milestones:
+      - spend_inr: 100000
+        cycle: annual
+        benefit: "Milestone 1: 2,000 bonus SpiceClub Points on ₹1 lakh spends"
+        value_inr: 1000
+        reward_kind: points
+        reward_units: 2000
+        reward_currency_name: SpiceClub Points
+        trigger_window: anniversary-year
+      - spend_inr: 200000
+        cycle: annual
+        benefit: "Milestone 2: 3,000 bonus SpiceClub Points on ₹2 lakh spends"
+        value_inr: 1500
+        reward_kind: points
+        reward_units: 3000
+        reward_currency_name: SpiceClub Points
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "Complete 2 transactions within 30 days of card issuance"
+        benefit: "SpiceJet flight voucher worth ₹1,500 + complimentary SpiceClub Silver membership"
+        value_inr: 1500
+        window_days: 30
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Renewal benefit: 1,000 bonus SpiceClub Points (≈₹500) on annual fee repayment."
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 600000
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [travel, miles, co-brand, airline]

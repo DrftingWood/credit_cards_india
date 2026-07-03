@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : OneCard live product page, getonecard.app
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: onecard-metal
 name: OneCard Metal Credit Card
 issuer: onecard
@@ -30,7 +39,7 @@ fees:
     notes: "Lifetime-free card marketed by OneCard; monthly finance charge starts at 2.5% (tiered by internal risk)."
     source:
       url: https://www.getonecard.app/card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-07-01
@@ -40,10 +49,11 @@ rewards:
     base:
       rate: 1
       per_inr: 50
-      unit_value_inr: 0.1
-      unit_value_inr_realized: 0.1
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.4
     accelerated:
       - category: top-2-categories-monthly
+        multiplier: 5
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -55,6 +65,7 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -65,12 +76,20 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.getonecard.app/card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2020-07-01
     effective_until: null
-    lounge_access: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "Lounge access unlocked on ₹50k quarterly spend."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -84,9 +103,8 @@ benefits:
       - name: Metal body
         description: Premium metal card body on all active OneCards.
     source:
-      url: https://cardinsider.com/fintech-cards/onecard-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: 1 RP = ₹0.10 (was wrongly ₹1); no complimentary lounge access (the 4/quarter entry was wrong)."
+      url: https://www.getonecard.app/card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -102,5 +120,5 @@ application:
   apply_url: https://www.getonecard.app/card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, metal, fintech, low-forex, points]

@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: icici-platinum-chip
 name: ICICI Bank Platinum Chip Credit Card
 issuer: icici
@@ -24,37 +33,11 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card."
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/platinum-chip-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2014-01-01
-    effective_until: 2026-01-14
-    currency: points
-    currency_name: PAYBACK Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-      - type: catalog
-        program: ICICI Rewards / PAYBACK
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/platinum-chip-credit-card
-      retrieved_on: 2026-04-15
-      notes: "Historical record; pre-15-Jan-2026 structure (currency_name kept as PAYBACK; rename history PAYBACK→Zillion→ICICI Rewards not separately modelled)."
-
-  - effective_from: 2026-01-15
     effective_until: null
     currency: points
     currency_name: ICICI Reward Points
@@ -63,27 +46,30 @@ rewards:
       per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
+    accelerated:
+      - category: utility-and-insurance
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.5
+        effective_rate: 1
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
-      - government
-      - other
-    capping_rules:
-      - "From 15-Jan-2026: government services, tax, property management, rent and wallet loads earn nothing; utilities and insurance earn a reduced 1 RP/₹100."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
       - type: catalog
-        program: ICICI Rewards / PAYBACK
+        program: ICICI Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://cardinsider.com/blog/massive-icici-credit-card-devaluation/
-      retrieved_on: 2026-06-12
-      notes: "15-Jan-2026 wave: exclusions extended; utilities/insurance 1 RP/₹100 tier; PAYBACK renamed ICICI Reward Points."
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card
+      retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2014-01-01
     effective_until: null
@@ -94,23 +80,24 @@ benefits:
       max_txn_inr: 4000
       cap_per_cycle_inr: null
       cycle: monthly
+      notes: "At HPCL pumps."
     concierge: false
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/platinum-chip-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 200000
-    self_employed: 200000
+    salaried: 240000
+    self_employed: 240000
   credit_score_min: 700
   residency: resident-indian
 
 application:
-  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/platinum-chip-credit-card
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, entry, points]

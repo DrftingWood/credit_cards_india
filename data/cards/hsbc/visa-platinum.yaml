@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HSBC live product pages, hsbc.co.in (HTML)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hsbc-visa-platinum
 name: HSBC Visa Platinum Credit Card
 issuer: hsbc
@@ -25,7 +34,7 @@ fees:
     notes: "Lifetime-free card."
     source:
       url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2010-01-01
@@ -43,18 +52,32 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: HSBC Rewards
         rate_inr_per_unit: 0.25
+      - type: airmiles
+        program: HSBC India Rewards (airline & hotel loyalty partners)
+        ratio: "1:1"
+    notes: "Accelerated reward points on hotels, flights & car rentals via HSBC Travel Edit. 15% cashback to MakeMyTrip 'My Cash' wallet on bookings."
     source:
       url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2010-01-01
     effective_until: null
     lounge_access: null
+    welcome:
+      - condition: "Download the app and log in"
+        benefit: "2,000 welcome reward points"
+        value_inr: 500
+        window_days: 90
+    dining:
+      program: District by Zomato
+      discount_pct: 10
+      notes: "10% off on dining and movies via District by Zomato."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -64,7 +87,7 @@ benefits:
     concierge: false
     source:
       url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -79,5 +102,5 @@ application:
   apply_url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, entry, points]

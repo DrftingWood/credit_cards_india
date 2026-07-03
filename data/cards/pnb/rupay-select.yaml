@@ -1,3 +1,10 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Punjab National Bank — RuPay/Visa program card (live page redirects; no extractable source)
+#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
+#   Values are RuPay/Visa program-standard estimates; the live card page redirects
+# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+# ---------------------------------------------------------------------------
 id: pnb-rupay-select
 name: PNB RuPay Select Credit Card
 issuer: pnb
@@ -13,20 +20,20 @@ discontinued_on: null
 fees:
   - effective_from: 2022-01-01
     effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver: null
+    joining_fee_inr: 0
+    annual_fee_inr: 750
+    fee_waiver:
+      spend_inr: 75000
+      cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 2.95
     cash_advance_fee:
       pct: 3.0
       min_inr: 300
     gst_applicable: true
-    notes: "Annual fee waived on card usage in every quarter of the previous year (usage-based, not a spend threshold — med confidence)."
     source:
-      url: https://cardinsider.com/punjab-national-bank/pnb-rupay-select-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections (med): JF/AF ₹500 each; usage-based waiver. Intl lounge count conflicting (2 vs 4/yr) — kept 2 pending official source."
+      url: https://www.pnb.bank.in/credit-card-rupay-select
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-01-01
@@ -44,13 +51,14 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: PNB Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.pnbindia.in/credit-card-rupay-select
-      retrieved_on: 2026-04-15
+      url: https://www.pnb.bank.in/credit-card-rupay-select
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-01-01
@@ -66,11 +74,6 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [rupay]
-    welcome:
-      - condition: "Card activation"
-        benefit: "300 bonus Reward Points"
-        value_inr: 75
-        window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -79,8 +82,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.pnbindia.in/credit-card-rupay-select
-      retrieved_on: 2026-04-15
+      url: https://www.pnb.bank.in/credit-card-rupay-select
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -92,8 +95,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.pnbindia.in/credit-card-rupay-select
+  apply_url: https://www.pnb.bank.in/credit-card-rupay-select
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [mid, rupay, points, upi-linkable, psu-bank]

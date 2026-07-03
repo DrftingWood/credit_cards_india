@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: kotak-811-dreamdifferent
 name: Kotak 811 #DreamDifferent Credit Card
 issuer: kotak
@@ -22,10 +31,10 @@ fees:
       pct: 2.5
       min_inr: 300
     gst_applicable: true
-    notes: "Lifetime-free card for Kotak 811 account holders."
+    notes: "Lifetime-free card for Kotak 811 account holders. Annual fee (if applicable on a variant) waived on ₹50,000 retail spend."
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-811-credit-card.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-06-01
@@ -35,39 +44,53 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.18
+      unit_value_inr: 0.10
+      unit_value_inr_realized: 0.10
     accelerated:
       - category: online-spend
         canonical_categories: [online]
-        effective_rate: 4
+        multiplier: 2
+        effective_rate: 2
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "2 RP per ₹100 online; 1 RP per ₹100 offline (base)."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513', '5172', '5541', '5542', '5983']
+    capping_rules:
+      - "Reward points on utility spends only up to ₹35,000 per statement cycle."
     redemption:
       - type: catalog
         program: Kotak Rewards
-        rate_inr_per_unit: 0.15
+        rate_inr_per_unit: 0.10
     source:
-      url: https://www.paisabazaar.com/kotak-mahindra-bank/811-dreamdifferent-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: base is 1 RP/₹100 offline (was 2); 1 RP ≈ ₹0.20."
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-811-credit-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2020-06-01
     effective_until: null
     lounge_access: null
+    welcome:
+      - condition: "Spend ₹3,000 within 30 days of card set-up"
+        benefit: "500 bonus reward points"
+        value_inr: 50
+        window_days: 30
     milestones:
-      - spend_inr: 72000
+      - spend_inr: 125000
         cycle: annual
-        benefit: "Amazon voucher worth ₹1,000"
+        benefit: "4 free PVR tickets or 10,000 reward points on ₹1,25,000 spend every 6 months"
         value_inr: 1000
+        reward_kind: points
+        reward_units: 10000
+        reward_currency_name: Reward Points
+        trigger_window: rolling
+        is_repeatable: true
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -76,8 +99,8 @@ benefits:
       cycle: annual
     concierge: false
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-811-credit-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -90,8 +113,8 @@ eligibility:
   notes: "Typically offered against fixed deposits via the Kotak 811 app."
 
 application:
-  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/811-dreamdifferent-credit-card.html
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-811-credit-card.html
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, entry, points]

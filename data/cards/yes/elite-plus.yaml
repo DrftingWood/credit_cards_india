@@ -1,0 +1,123 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: yes-elite-plus
+name: YES Bank ELITE+ Credit Card
+issuer: "yes"
+network: mastercard
+network_tier: world
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2019-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-06-15
+    effective_until: null
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "First-year fee ₹999 waived on ₹20,000 retail spend within 1 month of setup; renewal fee waived on ₹2,00,000 annual spend."
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/elite-plus-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-06-15
+    effective_until: null
+    currency: points
+    currency_name: YES Rewardz Points
+    base:
+      rate: 4
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
+    accelerated:
+      - category: online-shopping
+        canonical_categories: [online]
+        multiplier: 3
+        effective_rate: 12
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "12 YES Rewardz per ₹200 on online shopping (except Select categories)."
+      - category: offline-shopping
+        canonical_categories: [other]
+        multiplier: 1.5
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "6 YES Rewardz per ₹200 on offline shopping; 4 per ₹200 on Select categories (base)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - government
+      - education
+      - jewellery
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: YES Rewardz
+        rate_inr_per_unit: 0.25
+    notes: "Effective 15-Jun-2026, no points on Rent, Wallet, Fuel, Government, Marketing/Advertising, cash, EMI, Insurance, Education, Railways, Toll, Ferry, Jewellery."
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/elite-plus-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-06-15
+    effective_until: null
+    lounge_access: null
+    movies:
+      type: discount
+      partner: BookMyShow
+      max_per_cycle: null
+      cycle: monthly
+      cap_inr: null
+      notes: "25% discount on BookMyShow."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/elite-plus-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 900000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/elite-plus-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, online, shopping, points]

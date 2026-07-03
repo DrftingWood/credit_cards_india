@@ -1,0 +1,243 @@
+{
+  "emeralde-private-metal": {
+    "path": "/personal-banking/cards/credit-card/emeralde-private-metal-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card",
+    "pdfs": [
+      "_shared/Comprehensive-Insurance-Cover-and-t-and-c.pdf",
+      "_shared/New_Experience_Golf_Programe_TnC.pdf",
+      "_shared/cancellation-cfar-claim-process.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/golf-courses-17.pdf",
+      "emeralde-private-metal/metal-gifts-tc-website-51023.pdf",
+      "_shared/mitc_cc.pdf"
+    ]
+  },
+  "emeralde": {
+    "path": "/personal-banking/cards/credit-card/emeralde-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card",
+    "pdfs": [
+      "_shared/Comprehensive-Insurance-Cover-and-t-and-c.pdf",
+      "_shared/New_Experience_Golf_Programe_TnC.pdf",
+      "_shared/cancellation-cfar-claim-process.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/golf-courses-17.pdf",
+      "_shared/mitc_cc.pdf",
+      "_shared/tnc_english.pdf",
+      "_shared/international-lounge-list.pdf"
+    ]
+  },
+  "times-black": {
+    "path": "/personal-banking/cards/credit-card/times-black-icici-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card",
+    "pdfs": [
+      "_shared/Comprehensive-Insurance-Cover-and-t-and-c.pdf",
+      "_shared/cancellation-cfar-claim-process.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/mitc_cc.pdf",
+      "times-black/times-black-icici-credit-card-terms-conditions.pdf"
+    ]
+  },
+  "sapphiro": {
+    "path": "/personal-banking/cards/credit-card/sapphiro-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card",
+    "pdfs": [
+      "_shared/voucher-redemption-manual-2.pdf",
+      "sapphiro/welcome-benefit-working-flow-sapphiro-imobile-and-rib.pdf",
+      "_shared/Comprehensive-Insurance-Cover-and-t-and-c.pdf",
+      "_shared/New_Experience_Golf_Programe_TnC.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/golf-courses-17.pdf",
+      "_shared/mitc_cc.pdf",
+      "sapphiro/sapphiro-joining-gift-vouchers-terms1.pdf",
+      "_shared/tnc_english.pdf",
+      "_shared/international-lounge-list.pdf"
+    ]
+  },
+  "rubyx": {
+    "path": "/personal-banking/cards/credit-card/rubyx-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card",
+    "pdfs": [
+      "_shared/railway-lounge-programme.pdf",
+      "rubyx/rubyx-welcome-tnc.pdf",
+      "_shared/voucher-redemption-manual-2.pdf",
+      "rubyx/welcome-benefit-working-flow-rubyx-imobile-and-rib.pdf",
+      "_shared/Comprehensive-Insurance-Cover-and-t-and-c.pdf",
+      "_shared/New_Experience_Golf_Programe_TnC.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/golf-courses-17.pdf",
+      "_shared/mitc_cc.pdf",
+      "_shared/tnc_english.pdf",
+      "_shared/Comprehensive-Insurance-Cover-and-t-and-c.pdf",
+      "_shared/entertainment.pdf"
+    ]
+  },
+  "coral": {
+    "path": "/personal-banking/cards/credit-card/coral-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card",
+    "pdfs": [
+      "_shared/railway-lounge-programme.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/entertainment.pdf",
+      "_shared/mitc_cc.pdf",
+      "_shared/tnc_english.pdf"
+    ]
+  },
+  "platinum-chip": {
+    "path": "/personal-banking/cards/credit-card/platinum-chip-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/platinum-chip-credit-card",
+    "pdfs": [
+      "_shared/mitc_cc.pdf",
+      "_shared/tnc_english.pdf"
+    ]
+  },
+  "amazon-pay": {
+    "path": "/personal-banking/cards/credit-card/amazon-pay-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card",
+    "pdfs": [
+      "_shared/mitc-cc-gk-t.pdf",
+      "amazon-pay/tc-for-amazon-pay-credit-card.pdf"
+    ]
+  },
+  "hpcl-super-saver": {
+    "path": "/personal-banking/cards/credit-card/hpcl-super-saver",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-super-saver",
+    "pdfs": [
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "hpcl-super-saver/hpcl-super-saver-credit-card-tnc-updated.pdf",
+      "hpcl-super-saver/hpcl-super-saver-credit-card-tnc.pdf",
+      "_shared/mitc_cc.pdf"
+    ]
+  },
+  "adani-one-signature": {
+    "path": "/personal-banking/cards/credit-card/adani-icici-credit-card/signature-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/signature-credit-card",
+    "pdfs": [
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/mitc_cc.pdf",
+      "_shared/signature-credit-card.pdf"
+    ]
+  },
+  "mmt-signature": {
+    "path": "/personal-banking/cards/credit-card/makemytrip/signature-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card",
+    "pdfs": [
+      "_shared/railway-lounge-programme.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/international-lounge-list.pdf",
+      "_shared/mitc_cc.pdf",
+      "_shared/railway-lounge-programme.pdf",
+      "mmt-signature/tnc_mmt_signature.pdf",
+      "_shared/international-lounge-list.pdf"
+    ]
+  },
+  "adani-one-platinum": {
+    "path": "/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card",
+    "pdfs": [
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/mitc_cc.pdf",
+      "_shared/platinum-credit-card.pdf"
+    ]
+  },
+  "csk": {
+    "path": "/personal-banking/cards/credit-card/csk-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card",
+    "pdfs": [
+      "csk/csk-tnc.pdf",
+      "csk/csk-top-spenders-t-c.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/mitc_cc.pdf"
+    ]
+  },
+  "expressions": {
+    "path": "/personal-banking/cards/credit-card/expressions-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/expressions-card",
+    "pdfs": [
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/mitc_cc.pdf"
+    ]
+  },
+  "hpcl-coral": {
+    "path": "/personal-banking/cards/credit-card/hpcl-coral-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card",
+    "pdfs": [
+      "_shared/mitc_cc.pdf",
+      "hpcl-coral/updated_terms-and-conditions-for-icici-bank-hpcl-coral-credit-card.pdf"
+    ]
+  },
+  "emirates-emeralde": {
+    "path": "/personal-banking/cards/credit-card/emirates-emeralde-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-emeralde-credit-card",
+    "pdfs": [
+      "_shared/inici26-cugo-tnc.pdf",
+      "emirates-emeralde/emirates_x-icici-emeralde-tnc-latest.pdf",
+      "_shared/mitc_cc.pdf",
+      "_shared/international-lounge-list.pdf"
+    ]
+  },
+  "emirates-rubyx": {
+    "path": "/personal-banking/cards/credit-card/emirates-rubyx-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-rubyx-credit-card",
+    "pdfs": [
+      "_shared/inici26-cugo-tnc.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "emirates-rubyx/emirates-icici-bank-rubyx-tnc.pdf",
+      "_shared/mitc_cc.pdf"
+    ]
+  },
+  "emirates-sapphiro": {
+    "path": "/personal-banking/cards/credit-card/emirates-sapphiro",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-sapphiro",
+    "pdfs": [
+      "_shared/inici26-cugo-tnc.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "emirates-sapphiro/emirates-icici-bank-sapphiro-tnc.pdf",
+      "_shared/mitc_cc.pdf",
+      "_shared/international-lounge-list.pdf"
+    ]
+  },
+  "mmt": {
+    "path": "/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-credit-card",
+    "pdfs": [
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "mmt/makemytrip-icici-credit-card-terms-and-conditions.pdf",
+      "_shared/mitc_cc.pdf"
+    ]
+  },
+  "mmt-platinum": {
+    "path": "/personal-banking/cards/credit-card/makemytrip/platinum-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card",
+    "pdfs": [
+      "ERROR makemytrip-icici-credit-card-terms-and-conditions.pdf APIRequestContext.get: connect ETIMEDOUT 20.204.10",
+      "ERROR domestic_consolidated_lounge_list-1.pdf APIRequestContext.get: connect ETIMEDOUT 20.204.10",
+      "_shared/railway-lounge-programme.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/mitc_cc.pdf",
+      "mmt-platinum/mmt_platinum_tnc.pdf",
+      "_shared/railway-lounge-programme.pdf"
+    ]
+  },
+  "parakram": {
+    "path": "/personal-banking/cards/credit-card/parakram-cards/parakram",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram",
+    "pdfs": [
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/icici-bank-insurance-prakram.pdf",
+      "_shared/mitc_cc.pdf",
+      "parakram/parakram-base-tnc.pdf"
+    ]
+  },
+  "parakram-select": {
+    "path": "/personal-banking/cards/credit-card/parakram-cards/parakram-select",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select",
+    "pdfs": [
+      "_shared/New_Experience_Golf_Programe_TnC.pdf",
+      "_shared/domestic_consolidated_lounge_list-1.pdf",
+      "_shared/golf-courses-17.pdf",
+      "_shared/icici-bank-insurance-prakram.pdf",
+      "_shared/mitc_cc.pdf",
+      "parakram-select/parakram-select-tnc.pdf"
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: au-tejas
+name: AU Bank Tejas Credit Card
+issuer: au
+network: visa
+network_tier: platinum
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+    forex_markup_pct: 3.49
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "Rewards + cashback card. Flat 10% cashback at partner merchants (movies, grocery delivery & food delivery)."
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: select-categories
+        canonical_categories: [online, other]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "Up to 5 Reward Points per ₹100 on select categories; 1 RP per ₹100 base."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    capping_rules:
+      - "Flat 10% cashback on partner-merchant spends (movies, grocery delivery & food delivery)"
+    redemption:
+      - type: catalog
+        program: AU Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "Card activation"
+        benefit: "2,000 bonus Reward Points or ₹500 brand voucher"
+        value_inr: 500
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 360000
+    self_employed: 360000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, cashback, points, entertainment]

@@ -1,0 +1,112 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-shaurya
+name: SBI Card SHAURYA
+issuer: sbi
+network: visa
+network_tier: null
+tier: entry
+card_type: credit
+co_brand: null           # defence-personnel card, not a co-brand partnership
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 250
+    annual_fee_inr: 250
+    renewal_fee_inr: 250
+    fee_waiver:
+      spend_inr: 50000
+      cycle: annual
+      conditions: "Renewal fee waived on annual spends of Rs. 50,000 or more."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee: null
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: csd-dining-movies-departmental-grocery
+        canonical_categories: [dining, groceries, entertainment]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "5X Reward Points (5 per Rs. 100) on CSD (Canteen Stores Department), Dining, Movies, Departmental Stores and Grocery spends."
+    exclusions:
+      - wallet-loads
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+        constraints: "Pay card outstanding with Reward Points; 4 Reward Points = Rs. 1."
+      - type: catalog
+        program: SBI Card Rewards Catalogue
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "1st year annual fee of Rs. 250 paid"
+        benefit: "1,000 Welcome Reward Points"
+        value_inr: 250
+        window_days: 15
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 200000
+        conditions: "Complimentary Personal Accidental Insurance Cover; applicable only on RuPay network variant."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 100
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 70
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [defence, rewards, entry, points]

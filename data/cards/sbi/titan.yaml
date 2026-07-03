@@ -1,0 +1,124 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-titan
+name: Titan SBI Card
+issuer: sbi
+network: visa
+network_tier: null
+tier: premium
+card_type: credit
+co_brand:
+  partner: Titan
+  category: retail
+  partner_website: https://www.titan.co.in
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 2999
+    annual_fee_inr: 2999
+    renewal_fee_inr: 2999
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+      conditions: "Renewal fee reversed (spend-based reversal) on annual spends of ₹3,00,000 (second year onwards)."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 6
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - utilities
+    capping_rules:
+      - "6 Reward Points per ₹100 on all categories outside Titan spends. Titan-brand spends earn cashback / gift vouchers instead (see benefits)."
+    redemption:
+      - type: voucher
+        program: Titan gift vouchers
+        rate_inr_per_unit: 0.25
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+        notes: "8 complimentary domestic airport lounge visits per year (max. 2 per quarter)."
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "4 complimentary international airport lounge visits per year (max. 2 per quarter). Complimentary Priority Pass membership for first 2 years."
+    welcome:
+      - condition: "Payment of Annual Fee"
+        benefit: "12,000 Reward Points worth ₹3,000"
+        value_inr: 3000
+    milestones:
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Additional Titan gift voucher worth ₹5,000 (redeemable only at exclusive Titan Stores)"
+        value_inr: 5000
+      - spend_inr: 1000000
+        cycle: annual
+        benefit: "Additional Titan gift voucher worth ₹10,000 (redeemable only at exclusive Titan Stores)"
+        value_inr: 10000
+    fuel_surcharge_waiver:
+      pct: 1.0
+    other:
+      - name: "Tanishq value back"
+        description: "3% value back as gift vouchers on spends at Tanishq (quarterly cap applicable)."
+      - name: "Mia / CaratLane / Zoya cashback"
+        description: "5% cashback on spends at Mia, CaratLane & Zoya (quarterly cap applicable)."
+      - name: "Titan brands cashback"
+        description: "7.5% cashback on spends at World of Titan, Taneira, Titan Eye+, Helios, Fastrack, Skinn, Irth & Sonata (quarterly cap applicable)."
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, retail, titan, premium, points]

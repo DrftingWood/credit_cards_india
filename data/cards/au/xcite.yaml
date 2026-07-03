@@ -1,0 +1,110 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: au-xcite
+name: AU Bank Xcite Credit Card
+issuer: au
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 249
+    annual_fee_inr: 249
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+    forex_markup_pct: 3.49
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    notes: "Entry card in AU's SwipeUp upgrade program. Renewal fee waived from 2nd year on ₹1,00,000 retail spend."
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: select-categories
+        canonical_categories: [online, other]
+        multiplier: 7.5
+        effective_rate: 15
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "Up to 15X Reward Points on select categories; 2X Reward Points per ₹100 on other retail spends (base)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: AU Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+        notes: "8 complimentary lounge visits per annum (incl. Railway Lounge access)."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 150
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, points, swipeup]

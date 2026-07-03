@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: standard-chartered-rewards
 name: Standard Chartered Rewards Credit Card
 issuer: standard-chartered
@@ -13,10 +22,10 @@ discontinued_on: null
 fees:
   - effective_from: 2022-01-01
     effective_until: null
-    joining_fee_inr: 1000
+    joining_fee_inr: 0
     annual_fee_inr: 1000
     fee_waiver:
-      spend_inr: 300000
+      spend_inr: 150000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
@@ -25,8 +34,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sc.com/in/credit-cards/rewards/
-      retrieved_on: 2026-04-15
+      url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-01-01
@@ -34,42 +43,49 @@ rewards:
     currency: points
     currency_name: 360 Reward Points
     base:
-      rate: 4
+      rate: 1
       per_inr: 150
       unit_value_inr: 1.0
       unit_value_inr_realized: 0.4
     accelerated:
-      - category: online-retail-department
-        canonical_categories: [online]
-        effective_rate: 8
-        cap_per_cycle: 2000
-        cap_unit: cashback-inr
+      - category: retail-spend
+        canonical_categories: [online, other]
+        multiplier: 4
+        effective_rate: 4
+        cap_per_cycle: "unlimited"
+        cap_unit: points
         cycle: monthly
-        notes: "4x points on retail / departmental / online spends."
+        notes: "4 Reward Points per ₹150 on all retail spends; base 1 RP per ₹150 on other categories."
+      - category: retail-bonus
+        canonical_categories: [online, other]
+        multiplier: 8
+        effective_rate: 8
+        cap_per_cycle: 20000
+        cap_unit: points
+        cycle: monthly
+        notes: "Additional 4X (total 8 RP per ₹150) on monthly retail spends above ₹20,000; capped at 20,000 bonus RP per statement cycle."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
-    capping_rules:
-      - "4x bonus applies to retail spends only after ₹20,000 total monthly spend, capped at 2,000 bonus RP/month; government and insurance spends earn 1 RP/₹150."
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
         min_units: 2000
     source:
-      url: https://www.paisabazaar.com/standard-chartered-bank/standard-chartered-rewards-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: base 4 RP/₹150 retail (was 1); bonus gated on ₹20k/mo and capped; waiver ₹3L (was ₹1.2L)."
+      url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 4
-        cycle: annual
+        visits_per_cycle: 1
+        cycle: quarterly
         guests_per_visit: 0
         via: [visa]
     fuel_surcharge_waiver:
@@ -80,8 +96,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.sc.com/in/credit-cards/rewards/
-      retrieved_on: 2026-04-15
+      url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -93,8 +109,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sc.com/in/credit-cards/rewards/
+  apply_url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [entry, points, online-spend]

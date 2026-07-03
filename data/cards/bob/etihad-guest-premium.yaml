@@ -1,0 +1,146 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: bob-etihad-guest-premium
+name: BOBCARD Etihad Guest Premium Credit Card
+issuer: bob
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand:
+  partner: Etihad Guest
+  category: airline
+  partner_website: https://www.etihad.com
+status: active
+launched_on: 2024-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 5000
+    annual_fee_inr: 5000
+    fee_waiver:
+      spend_inr: 500000
+      cycle: annual
+      conditions: "Annual fee waived on ₹5,00,000 spend per anniversary year."
+    forex_markup_pct: 0.0
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Metal card."
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: miles
+    currency_name: Etihad Guest Miles
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.45
+      unit_value_inr_realized: 0.30
+    accelerated:
+      - category: etihad-airways
+        canonical_categories: [travel]
+        multiplier: 3
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: statement
+        merchants: [Etihad Airways]
+        notes: "6 Miles per ₹100 on Etihad Airways bookings."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: airmiles
+        program: Etihad Guest
+        rate_inr_per_unit: 0.45
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 3
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+      international:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [priority-pass]
+    welcome:
+      - condition: "Joining fee paid + ₹25,000 spend in first 60 days"
+        benefit: "10,000 Etihad Guest joining miles"
+        value_inr: 4500
+        window_days: 60
+      - condition: "Cumulative spend of ₹50,000"
+        benefit: "5,000 spend-based Etihad Guest miles + complimentary Silver Tier status (first year)"
+        value_inr: 2250
+    milestones:
+      - spend_inr: 50000
+        cycle: monthly
+        benefit: "500 bonus miles on any 4 transactions totalling ₹50,000"
+        reward_kind: miles
+        reward_units: 500
+        reward_currency_name: Etihad Guest Miles
+        trigger_window: rolling
+        is_repeatable: true
+        max_awards_per_cycle: 1
+      - spend_inr: 300000
+        cycle: quarterly
+        benefit: "4,000 bonus miles on ₹3,00,000 quarterly spend"
+        reward_kind: miles
+        reward_units: 4000
+        reward_currency_name: Etihad Guest Miles
+        trigger_window: rolling
+        is_repeatable: true
+        max_awards_per_cycle: 1
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, miles, travel, airline, metal, lounge]

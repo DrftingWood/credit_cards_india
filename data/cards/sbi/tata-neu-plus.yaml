@@ -1,0 +1,129 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-tata-neu-plus
+name: Tata Neu Plus SBI Card
+issuer: sbi
+network: rupay
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Tata Neu
+  category: conglomerate
+  partner_website: https://www.tataneu.com
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    renewal_fee_inr: 499
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual/renewal fee reversed on net retail spends of Rs. 1 lakh in the preceding 365 days."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee: null
+    gst_applicable: true
+    supplementary_card_fee_inr: 0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: cashback
+    currency_name: NeuCoins
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: tata-neu-and-partner-tata-brands
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 2
+        merchants: [tata-neu]
+        channel:
+          class: cobrand-merchant
+          merchants: [tata-neu]
+        notes: "2% value back as NeuCoins on non-EMI spends at Tata Neu App/Website and partner Tata brands."
+      - category: tata-neu-select-categories
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 7
+        merchants: [tata-neu]
+        channel:
+          class: cobrand-merchant
+          merchants: [tata-neu]
+        notes: "2% base + extra 5% (total 7%) value back as NeuCoins on select category spends via the Tata Neu App/Website."
+    exclusions:
+      - emi
+    capping_rules:
+      - "Accelerated accrual applies only to non-EMI spends. NeuCoins auto-credited to NeuPass account."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+      - type: voucher
+        program: Tata Neu App/Website and partner Tata brands
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "4 per year (1 per quarter), each quarter's visit unlocked on Rs. 50,000 spend in the previous quarter."
+    welcome:
+      - condition: "Within 15 days of joining fee realisation"
+        benefit: "499 NeuCoins (1 NeuCoin = Re. 1)"
+        value_inr: 499
+        window_days: 15
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+  notes: "Eligibility criteria not published on the product page; verify from MITC."
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, conglomerate, tata-neu, entry, cashback]

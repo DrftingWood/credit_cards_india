@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: idfc-first-classic
 name: IDFC FIRST Classic Credit Card
 issuer: idfc-first
@@ -22,14 +31,14 @@ fees:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "Lifetime-free card."
+    notes: "Lifetime-free card (low-APR). UPI activation on the RuPay rail costs ₹199 + GST (one-time)."
     source:
-      url: https://www.idfcfirstbank.com/credit-card/classic
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/classic
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-01-01
-    effective_until: 2026-01-17
+    effective_until: null
     currency: points
     currency_name: Reward Points
     base:
@@ -38,31 +47,28 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
     accelerated:
-      - category: online-spend-under-20k
-        canonical_categories: [online]
-        effective_rate: 6
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: online-spend-above-20k
-        canonical_categories: [online]
+      - category: incremental-monthly-above-20k
+        canonical_categories: [other]
+        multiplier: 3.33
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-      - category: incremental-above-25k
-        effective_rate: 10
+        notes: "10X (10 RP per ₹150) on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000."
+      - category: utility-insurance-railway-fastag
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.33
+        effective_rate: 1
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "Reduced 1X (1 RP per ₹150) on utility bill payments, insurance premiums, railway spends and FASTag recharges."
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
-      - utilities
-      - education
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: IDFC FIRST Rewards
@@ -70,47 +76,8 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirstbank.com/credit-card/classic
-      retrieved_on: 2026-04-15
-      notes: "Historical record; per-₹150 earn structure before the 18-Jan-2026 devaluation."
-
-  - effective_from: 2026-01-18
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: monthly-spend-above-20k
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10X (10 points per ₹200) on spends in months where total spend crosses ₹20,000; 3X otherwise. FASTag/railway earn 1X."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-      - education
-    capping_rules:
-      - "18-Jan-2026 devaluation: earn basis moved from per-₹150 to per-₹200 (~25% cut); structure simplified to 3X/10X."
-      - "No reward points accrue in a cycle where the minimum amount due is missed."
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://upstox.com/news/personal-finance/latest-updates/idfc-first-bank-revises-credit-card-benefits-cuts-rewards-for-mayura-ashva-and-other-cards/article-186757/
-      retrieved_on: 2026-06-12
-      notes: "18-Jan-2026 devaluation per Upstox coverage and the Card Maven master thread; replace with IDFC FIRST T&C PDF on next sweep."
+      url: https://www.idfcfirst.bank.in/credit-card/classic
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-01-01
@@ -125,7 +92,7 @@ benefits:
         spend_threshold_cycle: quarterly
     welcome:
       - condition: "Spend ₹500 within 30 days"
-        benefit: "Welcome voucher worth ₹500"
+        benefit: "₹500 welcome voucher"
         value_inr: 500
         window_days: 30
     fuel_surcharge_waiver:
@@ -135,15 +102,14 @@ benefits:
       cap_per_cycle_inr: 200
       cycle: monthly
     movies:
-      type: bogo
-      partner: Paytm Movies
-      max_per_cycle: 1
+      type: discount
       cycle: monthly
       cap_inr: 150
+      notes: "25% off on movie tickets."
     concierge: false
     source:
-      url: https://www.idfcfirstbank.com/credit-card/classic
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/classic
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -155,8 +121,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idfcfirstbank.com/credit-card/classic
+  apply_url: https://www.idfcfirst.bank.in/credit-card/classic
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, entry, points]

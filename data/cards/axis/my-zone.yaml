@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: axis-my-zone
 name: Axis Bank MY ZONE Credit Card
 issuer: axis
@@ -15,7 +24,9 @@ fees:
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 500
-    fee_waiver: null
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -23,9 +34,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card
-      retrieved_on: 2026-04-15
-      notes: "Waiver corrected 2026-06: no spend-based fee waiver on this card (medium confidence — cardinsider)."
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2018-01-01
@@ -50,44 +60,12 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.2
     source:
-      url: https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
+      retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2018-01-01
-    effective_until: 2024-04-30
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
-    dining:
-      program: EazyDiner
-      discount_pct: 15
-    movies:
-      type: bogo
-      partner: PVR / Paytm
-      max_per_cycle: 1
-      cycle: monthly
-      cap_inr: 200
-    other:
-      - name: SonyLIV subscription
-        description: Complimentary 12-month SonyLIV Premium subscription on joining.
-        value_inr: 999
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card
-      retrieved_on: 2026-04-15
-      notes: "Historical record; unconditional lounge era."
-
-  - effective_from: 2024-05-01
     effective_until: null
     lounge_access:
       domestic:
@@ -95,33 +73,36 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [mastercard, dreamfolks]
-        spend_threshold_inr: 50000
-        spend_threshold_cycle: quarterly
-        notes: "1 visit/quarter, gated on ₹50k spend in the preceding 3 months (1-May-2024)."
-    dining:
-      program: EazyDiner
-      discount_pct: 15
+    milestones:
+      - spend_inr: 150000
+        cycle: annual
+        benefit: "1,000 EDGE REWARD Points on annual spends of ₹1.5 lakhs in the card anniversary year"
+        value_inr: 200
+        reward_kind: points
+        reward_units: 1000
+        reward_currency_name: EDGE Reward Points
+        trigger_window: anniversary-year
     movies:
       type: bogo
-      partner: District app
+      partner: District
       max_per_cycle: 1
       cycle: monthly
       cap_inr: 200
     other:
-      - name: SonyLIV subscription
-        description: Complimentary 12-month SonyLIV Premium subscription on joining (worth ₹1,499). Renewal-year SonyLIV reportedly replaced by 1,000 EDGE points on ₹1.5L spend (sources conflict on Apr-2025 vs Apr-2026 — not yet modelled).
-        value_inr: 1499
+      - name: Swiggy instant discount
+        description: Flat ₹120 off on food delivery at Swiggy with My Zone Credit Card.
+      - name: Cleartrip travel benefit
+        description: Flat 7% off (up to ₹2,000) on domestic and international flight bookings and flat 18% off (up to ₹4,000) on hotel bookings via Cleartrip, once per month each.
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
+      cap_per_cycle_inr: 500
+      cycle: statement
     concierge: false
     source:
-      url: https://cardinsider.com/axis-bank/axis-bank-my-zone-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "1-May-2024 lounge gating; movie BOGO via District app (cap ₹200/mo); SonyLIV value corrected to ₹1,499."
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -130,11 +111,11 @@ eligibility:
     salaried: 300000
     self_employed: 300000
   credit_score_min: 700
-  residency: resident-indian
+  residency: either
 
 application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/my-zone-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [entertainment, entry, points]

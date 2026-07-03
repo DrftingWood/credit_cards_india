@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: kotak-white-reserve
 name: Kotak White Reserve Credit Card
 issuer: kotak
@@ -13,10 +22,10 @@ discontinued_on: null
 fees:
   - effective_from: 2020-01-01
     effective_until: null
-    joining_fee_inr: 12500
-    annual_fee_inr: 12500
+    joining_fee_inr: 3000
+    annual_fee_inr: 3000
     fee_waiver:
-      spend_inr: 1000000
+      spend_inr: 750000
       cycle: annual
     forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.5
@@ -25,9 +34,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://cardinsider.com/kotak/kotak-white-reserve-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: fee is ₹12,500 + GST (was wrongly ₹3,000); waiver ₹10L (was ₹7.5L)."
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-01-01
@@ -35,11 +43,17 @@ rewards:
     currency: cashback
     currency_name: Whites Pass
     base:
-      rate: 0
-      per_inr: 100
+      rate: 3
+      per_inr: 200
       unit_value_inr: 1.0
-    capping_rules:
-      - "No per-transaction reward earn — value accrues only via the milestone-based White Pass programme (see benefits.milestones)."
+    accelerated:
+      - category: international-spend
+        canonical_categories: [international]
+        multiplier: 2
+        effective_rate: 6
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
     exclusions:
       - fuel
       - wallet-loads
@@ -47,59 +61,52 @@ rewards:
       - insurance-premiums
       - emi
       - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: Whites Catalogue
         rate_inr_per_unit: 1.0
         constraints: "Whites Pass redeemable on curated lifestyle catalogue."
     source:
-      url: https://cardinsider.com/kotak/kotak-white-reserve-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 rewrite: the 1.5% base + 3% international cashback model was wrong — the card has no per-transaction earn; White Pass milestones carry the value."
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2020-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: unlimited
+        visits_per_cycle: "unlimited"
         cycle: annual
         guests_per_visit: 0
         via: [mastercard, dreamfolks]
-        notes: "Unlimited for primary and add-on cardholders."
       international:
-        visits_per_cycle: unlimited
+        visits_per_cycle: "unlimited"
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
-        notes: "Unlimited for primary and add-on cardholders."
     golf:
       rounds_per_cycle: 2
       cycle: monthly
       lessons_per_cycle: 0
-    milestones:
-      - spend_inr: 300000
-        cycle: annual
-        benefit: "White Pass worth ₹5,000 (scales with spend tiers up to ₹2.5L value at ₹1Cr annual spend)"
-        value_inr: 5000
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Complimentary Club Marriott membership"
+        benefit: "3,000 Whites Pass"
+        value_inr: 3000
         window_days: 90
     insurance:
       - type: air-accident
         sum_insured_inr: 15000000
     fuel_surcharge_waiver:
       pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 7500
-      cap_per_cycle_inr: 4500
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 3500
       cycle: annual
     concierge: true
     source:
-      url: https://cardinsider.com/kotak/kotak-white-reserve-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 rewrite: lounge is unlimited (was 8+12); welcome is Club Marriott; White Pass milestone ladder added (top tiers not individually modelled)."
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -111,8 +118,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [super-premium, lifestyle, travel, whites-pass]

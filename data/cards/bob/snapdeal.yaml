@@ -1,0 +1,128 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: bob-snapdeal
+name: Snapdeal BOBCARD Credit Card
+issuer: bob
+network: rupay
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand:
+  partner: Snapdeal
+  category: ecommerce
+  partner_website: https://www.snapdeal.com
+status: active
+launched_on: 2021-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-01-01
+    effective_until: null
+    joining_fee_inr: 249
+    annual_fee_inr: 249
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2021-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 4
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
+    accelerated:
+      - category: snapdeal
+        canonical_categories: [online]
+        multiplier: 5
+        effective_rate: 20
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: statement
+        channel:
+          class: cobrand-merchant
+          merchants: [snapdeal]
+        notes: "5% unlimited cashback (20 RP per ₹100) on Snapdeal website & app."
+      - category: online-departmental
+        canonical_categories: [online, groceries]
+        multiplier: 2.5
+        effective_rate: 10
+        cap_per_cycle: 2000
+        cap_unit: points
+        cycle: statement
+        notes: "10 RP per ₹100 on online shopping & departmental stores, capped 2,000 RP/statement."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: BOBCARD Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2021-01-01
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "Card usage within first 30 days of issuance"
+        benefit: "Snapdeal vouchers worth up to ₹500 (activation benefit)"
+        value_inr: 500
+        window_days: 30
+      - condition: "Spend ₹5,000 or more within 60 days of issuance"
+        benefit: "500 bonus reward points"
+        value_inr: 125
+        window_days: 60
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    other:
+      - name: Add-on cards
+        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
+    concierge: false
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+  notes: "Salaried 21–60 yrs; self-employed 24–65 yrs."
+
+application:
+  apply_url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, points, online, ecommerce, co-brand]

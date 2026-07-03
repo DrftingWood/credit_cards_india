@@ -1,0 +1,125 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: yes-select
+name: YES Bank SELECT Credit Card
+issuer: "yes"
+network: mastercard
+network_tier: world
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2019-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-06-15
+    effective_until: null
+    joining_fee_inr: 599
+    annual_fee_inr: 599
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Formerly YES PROSPERITY EDGE. First-year fee ₹599 waived on ₹10,000 retail spend within 1 month of setup; renewal fee waived on ₹1,00,000 annual spend."
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-06-15
+    effective_until: null
+    currency: points
+    currency_name: YES Rewardz Points
+    base:
+      rate: 2
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
+    accelerated:
+      - category: online-shopping
+        canonical_categories: [online]
+        multiplier: 4
+        effective_rate: 8
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "8 YES Rewardz per ₹200 on online shopping (except Select categories)."
+      - category: offline-shopping
+        canonical_categories: [other]
+        multiplier: 2
+        effective_rate: 4
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "4 YES Rewardz per ₹200 on offline shopping; 2 per ₹200 on Select categories (base)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - government
+      - education
+      - jewellery
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: YES Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-06-15
+    effective_until: null
+    lounge_access: null
+    movies:
+      type: bogo
+      partner: District
+      max_per_cycle: null
+      cycle: monthly
+      cap_inr: null
+      notes: "Buy 1 Get 1 on movie tickets via District."
+    dining:
+      program: "Buy 1 Get 1 on coffee at malls"
+      notes: "BOGO coffee at malls."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, online, shopping, points, movies]

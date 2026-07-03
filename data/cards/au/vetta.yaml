@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: au-vetta
 name: AU Bank Vetta Credit Card
 issuer: au
@@ -18,15 +27,15 @@ fees:
     fee_waiver:
       spend_inr: 150000
       cycle: annual
-    forex_markup_pct: 2.99
+    forex_markup_pct: 1.99
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/vetta
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-04-01
@@ -39,30 +48,30 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
     accelerated:
-      - category: grocery-departmental
-        canonical_categories: [groceries]
+      - category: international-spend
+        canonical_categories: [international]
+        multiplier: 1
         effective_rate: 4
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "4 RP per ₹100 on grocery/departmental (the earlier international accelerator was wrong); utility/telecom earn 1/₹100."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: AU Rewardz
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.paisabazaar.com/au-small-finance-bank/vetta-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: waiver ₹1.5L (was ₹3L); forex 2.99% (was 1.99%); earn restructured (4/₹100 grocery, 2/₹100 retail, 1/₹100 utility)."
+      url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-04-01
-    effective_until: 2026-04-09
+    effective_until: null
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -78,48 +87,29 @@ benefits:
       rounds_per_cycle: 2
       cycle: monthly
       lessons_per_cycle: 0
+    milestones:
+      - spend_inr: 0
+        cycle: annual
+        benefit: "1,000 Reward Points on any retail transaction on your birthday"
+        value_inr: 250
+        reward_kind: points
+        reward_units: 1000
+        reward_currency_name: Reward Points
+        trigger_window: anniversary-year
+        is_repeatable: true
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 5000000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
       cycle: monthly
-    concierge: false
+    concierge: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/vetta
-      retrieved_on: 2026-04-15
-      notes: "Historical record; pre-10-Apr-2026 lounge entitlement (shown 4/quarter dom + 4/yr intl was itself overstated — real was 1+1/quarter)."
-
-  - effective_from: 2026-04-10
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        spend_threshold_inr: 50000
-        spend_threshold_cycle: quarterly
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-      international:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.paisabazaar.com/au-small-finance-bank/vetta-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "10-Apr-2026: domestic visit gated on ₹50k prior-quarter spend; 1 dom + 1 intl per quarter. Milestones (500 RP @₹50k/qtr, +1,000 @₹1L/qtr, 1,000 birthday — med) not yet modelled."
+      url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -131,8 +121,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.aubank.in/personal-banking/credit-cards/vetta
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [mid, travel, points]
+  last_verified_on: 2026-07-03
+  tags: [mid, travel, low-forex, points]

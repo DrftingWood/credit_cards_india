@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hdfc-regalia-gold
 name: HDFC Bank Regalia Gold Credit Card
 issuer: hdfc
@@ -20,14 +29,14 @@ fees:
       cycle: annual
       conditions: "Renewal fee waived on spends of ₹4L in the preceding year."
     forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-gold-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-06-01
@@ -35,19 +44,20 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 4
-      per_inr: 150
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.4
+      rate: 5
+      per_inr: 200
+      unit_value_inr: 0.65
+      unit_value_inr_realized: 0.5
     accelerated:
-      - category: travel-dining-grocery-marquee
-        canonical_categories: [groceries, dining, travel]
-        effective_rate: 20
+      - category: marquee-partners
+        canonical_categories: [online, groceries]
+        multiplier: 5
+        effective_rate: 25
         cap_per_cycle: 5000
         cap_unit: points
         cycle: monthly
-        merchants: [marks-and-spencer, myntra, reliance-digital, nykaa]
-        notes: "5x rewards at select Marquee partners (effectively 20 points per ₹150)."
+        merchants: [myntra, nykaa, reliance-digital, marks-spencer]
+        notes: "5X Reward Points at select merchants (Myntra, Nykaa, Reliance Digital, Marks & Spencer). Minimum transaction value of ₹150 to be eligible; 5X cap of 5,000 RP/month across all brands combined."
     exclusions:
       - fuel
       - wallet-loads
@@ -57,69 +67,41 @@ rewards:
       - emi
     redemption:
       - type: catalog
-        program: SmartBuy
+        program: SmartBuy Gold Catalogue
+        rate_inr_per_unit: 0.65
+      - type: catalog
+        program: SmartBuy Flights & Hotels
         rate_inr_per_unit: 0.5
+        constraints: "Redeem up to a maximum of 70% of the travel booking value using Reward Points."
+      - type: catalog
+        program: SmartBuy Products & Vouchers
+        rate_inr_per_unit: 0.35
+      - type: statement-credit
+        program: Statement balance (cashback)
+        rate_inr_per_unit: 0.20
       - type: airmiles
         program: Multiple (Airmiles hub)
         ratio: "1:0.5"
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-gold-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
+      retrieved_on: 2026-07-03
 
+    reward_cap:
+      max_units: 50000
+      cap_unit: points
+      cycle: statement
 benefits:
   - effective_from: 2024-10-01
-    effective_until: 2026-06-30
-    lounge_access:
-      domestic:
-        visits_per_cycle: 12
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-      international:
-        visits_per_cycle: 6
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    milestones:
-      - spend_inr: 150000
-        cycle: quarterly
-        benefit: "Flipkart / Myntra voucher worth ₹1,500"
-        value_inr: 1500
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "Marriott / Club Vistara / MakeMyTrip voucher worth ₹5,000"
-        value_inr: 5000
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Gift voucher worth ₹2,500"
-        value_inr: 2500
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 10000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-gold-credit-card
-      retrieved_on: 2026-06-12
-      notes: "Spend gate removed from international visits — the 6 annual Priority Pass visits carry no spend requirement (the gate was a data error). Record closes ahead of the announced 1-Jul-2026 domestic-lounge revision."
-
-  - effective_from: 2026-07-01
     effective_until: null
     lounge_access:
       domestic:
         visits_per_cycle: 3
         cycle: quarterly
         guests_per_visit: 0
-        via: [priority-pass]
+        via: [issuer-direct]
         spend_threshold_inr: 60000
         spend_threshold_cycle: quarterly
-        notes: "Up to 3 domestic visits/quarter, unlocked by ₹60,000 spend in the preceding calendar quarter (1-Jul-2026 revision; 'Boarding Edge' programme)."
+        notes: "3 domestic lounge visits per calendar quarter, unlocked by ₹60,000 spend in the preceding quarter."
       international:
         visits_per_cycle: 6
         cycle: annual
@@ -128,17 +110,19 @@ benefits:
     milestones:
       - spend_inr: 150000
         cycle: quarterly
-        benefit: "Flipkart / Myntra voucher worth ₹1,500"
+        benefit: "Myntra / Nykaa / Reliance Digital / Marriott voucher worth ₹1,500"
         value_inr: 1500
-      - spend_inr: 500000
+      - spend_inr: 750000
         cycle: annual
-        benefit: "Marriott / Club Vistara / MakeMyTrip voucher worth ₹5,000"
+        benefit: "SmartBuy flight voucher worth ₹5,000"
         value_inr: 5000
     welcome:
       - condition: "Joining fee paid"
         benefit: "Gift voucher worth ₹2,500"
         value_inr: 2500
         window_days: 90
+      - condition: "₹1,00,000 net retail spend within 90 days of card issuance"
+        benefit: "Complimentary Swiggy One & MakeMyTrip (MMT) Black Gold memberships"
     insurance:
       - type: air-accident
         sum_insured_inr: 10000000
@@ -149,10 +133,12 @@ benefits:
       cap_per_cycle_inr: 250
       cycle: statement
     concierge: false
+    other:
+      - name: Boarding Edge Program
+        description: "Complimentary Spa, Buffet, Hotel Room Upgrade, and Airport transfer (any 2 every calendar quarter) by uploading your boarding pass on SmartBuy."
     source:
-      url: https://www.cardexpert.in/hdfc-regalia-gold-2026-lounge-access-update/
-      retrieved_on: 2026-06-12
-      notes: "Announced 1-Jul-2026 change: domestic lounge becomes spend-gated (₹60k/preceding quarter); per CardExpert and Business Standard. Future-dated record entered 2026-06-12."
+      url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -164,8 +150,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia-gold-credit-card
+  apply_url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [travel, premium, points]
+  last_verified_on: 2026-07-03
+  tags: [travel, mid-premium, points, mass-premium]

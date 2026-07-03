@@ -1,0 +1,124 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: axis-shoppers-stop
+name: Axis Bank Shoppers Stop Credit Card
+issuer: axis
+network: visa
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Shoppers Stop
+  category: retail
+  partner_website: https://www.shoppersstop.com
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual fee waived on ₹1,00,000 spend in the preceding anniversary year (Rent MCC 6513 and Wallet MCC 6540 excluded)."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Joining + annual fee ₹500 + GST, waived on ₹1 lakh anniversary-year spend (card member T&C). Finance charge 3.75%/mo, forex 3.5%, cash advance 2.5% (min ₹500) per Axis MITC."
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: points
+    currency_name: First Citizen Reward Points
+    base:
+      rate: 2
+      per_inr: 200
+      unit_value_inr: 0.5
+    accelerated:
+      - category: shoppers-stop-exclusive-brand-apparel
+        canonical_categories: [other]
+        multiplier: 1
+        effective_rate: 20
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: annual
+        merchants: [shoppers-stop]
+        notes: "Unlimited 20 First Citizen accelerated points per ₹200 on Shopper's Stop private-label / Exclusive Brand Apparel (≈5% value back)."
+      - category: shoppers-stop-other-brands
+        canonical_categories: [other]
+        multiplier: 1
+        effective_rate: 12
+        merchants: [shoppers-stop, homestop]
+        notes: "12 First Citizen points per ₹200 on other Shoppers Stop brands, Homestop, Arcelia, M.A.C, Clinique, Estee Lauder, Bobbi Brown, Jo Malone & Smashbox (≈3% value back)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - utilities
+      - insurance-premiums
+      - education
+    redemption:
+      - type: voucher
+        program: First Citizen
+        rate_inr_per_unit: 0.5
+        constraints: "Each First Citizen Point = ₹0.50, redeemable at Shoppers Stop."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    welcome:
+      - condition: "First transaction within 30 days of card issuance"
+        benefit: "First Citizen Reward Points worth ₹300"
+        value_inr: 300
+        window_days: 30
+      - condition: "First year only"
+        benefit: "Welcome vouchers redeemable in-store (₹1,500) and online (₹250), plus ₹500 voucher on Exclusive Brand Apparel"
+        value_inr: 2250
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, shoppers-stop, retail, shopping, entry]

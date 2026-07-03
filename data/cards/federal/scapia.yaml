@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Federal Bank HTML MITC fee table, /credit-cards-mitc
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: federal-scapia
 name: Scapia Federal Bank Credit Card
 issuer: federal
@@ -28,20 +37,21 @@ fees:
     notes: "Lifetime-free card; zero forex markup is a headline feature."
     source:
       url: https://www.scapia.cards
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2023-04-01
     effective_until: null
-    currency: points
+    currency: cashback
     currency_name: Scapia Coins
     base:
-      rate: 10
+      rate: 2
       per_inr: 100
-      unit_value_inr: 0.2
+      unit_value_inr: 1.0
     accelerated:
       - category: scapia-app-bookings
-        effective_rate: 20
+        multiplier: 1
+        effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
@@ -53,8 +63,7 @@ rewards:
       - rent
       - insurance-premiums
       - emi
-    capping_rules:
-      - "Earn is in Scapia coins (5 coins = ₹1): 10% coins on all spends ≈ 2% value; 20% coins on Scapia-app travel ≈ 4% value."
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: Scapia travel
@@ -62,18 +71,18 @@ rewards:
         constraints: "Scapia Coins redeemable only on Scapia travel bookings at 1:1."
     source:
       url: https://www.scapia.cards
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2023-04-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: unlimited
-        cycle: monthly
+        visits_per_cycle: 4
+        cycle: quarterly
         guests_per_visit: 0
         via: [visa]
-        spend_threshold_inr: 20000
+        spend_threshold_inr: 10000
         spend_threshold_cycle: monthly
         notes: "Lounge access unlocked on ₹10k monthly spend."
     fuel_surcharge_waiver:
@@ -84,9 +93,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.federal.bank.in/scapia
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: coins are ₹0.20 each (unit value was wrongly ₹1); lounge is unlimited domestic on ₹20k preceding-month spend (threshold raised from ₹10k; min-spend rule eff 2026-02-27). RuPay UPI variant (Jun-2025) not modelled."
+      url: https://www.scapia.cards
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -102,5 +110,5 @@ application:
   apply_url: https://www.scapia.cards
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, co-branded, fintech, travel, zero-forex]

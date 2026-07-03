@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hdfc-freedom
 name: HDFC Bank Freedom Credit Card
 issuer: hdfc
@@ -19,14 +28,14 @@ fees:
       spend_inr: 50000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2014-01-01
@@ -35,43 +44,48 @@ rewards:
     currency_name: CashPoints
     base:
       rate: 1
-      per_inr: 150
-      unit_value_inr: 0.25
+      per_inr: 200
+      unit_value_inr: 0.15
       unit_value_inr_realized: 0.15
     accelerated:
-      - category: partner-brands-10x
-        canonical_categories: [groceries, dining, entertainment]
+      - category: select-merchants
+        canonical_categories: [groceries, dining, entertainment, travel]
+        multiplier: 10
         effective_rate: 10
         cap_per_cycle: 2500
         cap_unit: points
         cycle: monthly
         merchants: [bigbasket, bookmyshow, oyo, swiggy, uber]
-        notes: "10X CashPoints on BigBasket, BookMyShow, OYO, Swiggy and Uber, capped 2,500 CashPoints/month."
-      - category: emi-spends
-        effective_rate: 5
-        cap_per_cycle: 2500
-        cap_unit: points
-        cycle: monthly
-        notes: "5X CashPoints on EMI spends (shared monthly cap)."
+        notes: "10X CashPoints on Big Basket, BookMyShow, OYO, Swiggy & Uber (capped 2,500 CashPoints/month)."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
-      - education
+      - emi
+    capping_rules:
+      - "Utility MCC 4900 capped at 2,000 CashPoints/month."
+      - "Telecom & Cable MCCs 4812, 4814, 4899 capped at 2,000 CashPoints/month."
     redemption:
       - type: statement-credit
-        rate_inr_per_unit: 0.25
+        rate_inr_per_unit: 0.15
         min_units: 500
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: accelerator is 10X on five partner brands (was wrongly 5X broad categories) + 5X EMI; realized CashPoint value ~₹0.15; third-party education payments excluded since Sep-2024 (EMI no longer fully excluded — it earns 5X)."
+      url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
+      retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
 benefits:
   - effective_from: 2014-01-01
     effective_until: null
     lounge_access: null
+    welcome:
+      - condition: "Joining membership fee paid"
+        benefit: "500 CashPoints"
+        value_inr: 75
+      - condition: "Renewal membership fee paid"
+        benefit: "500 CashPoints"
+        value_inr: 75
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -80,8 +94,8 @@ benefits:
       cycle: statement
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -93,8 +107,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/freedom-credit-card
+  apply_url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [entry, points]
+  last_verified_on: 2026-07-03
+  tags: [entry, points, lowest-tier]

@@ -1,5 +1,14 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: bob-easy
-name: BoBcard Easy Credit Card
+name: BOBCARD Easy Credit Card
 issuer: bob
 network: visa
 network_tier: classic
@@ -18,18 +27,17 @@ fees:
     fee_waiver:
       spend_inr: 35000
       cycle: annual
-      conditions: "Annual fee waived on ₹35k annual spends; joining fee waived on ₹6k spend within 60 days."
+      conditions: "Annual fee waived on ₹35,000 spend per anniversary year. Joining fee waived on ₹6,000 spend in first 60 days. Limited-period lifetime-free offer also running."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "Lifetime-free card."
+    notes: "Standard fee ₹500 (not permanently lifetime-free); a limited-period LTF offer is currently advertised."
     source:
       url: https://www.bobcard.co.in/credit-card-types/easy
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: card is NOT lifetime-free (₹500 fee with waivers); base 1 RP/₹100 (was wrongly 5); 5X capped 1,000 RP/mo; ₹0.20/pt; BOBCARD Ltd rebrand URLs."
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2019-01-01
@@ -39,47 +47,59 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 0.2
+      unit_value_inr: 0.20
       unit_value_inr_realized: 0.18
     accelerated:
       - category: departmental-stores-movies
         canonical_categories: [groceries, entertainment]
+        multiplier: 5
         effective_rate: 5
         cap_per_cycle: 1000
         cap_unit: points
-        cycle: monthly
+        cycle: statement
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
-        program: BoBcard Rewards
-        rate_inr_per_unit: 0.2
+        program: BOBCARD Rewards
+        rate_inr_per_unit: 0.20
+      - type: statement-credit
+        rate_inr_per_unit: 0.20
     source:
       url: https://www.bobcard.co.in/credit-card-types/easy
-      retrieved_on: 2026-06-12
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2019-01-01
     effective_until: null
     lounge_access: null
+    welcome:
+      - condition: "Spend ₹5,000 within 60 days of issuance"
+        benefit: "500 reward points"
+        value_inr: 100
+        window_days: 60
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 5000
       cap_per_cycle_inr: 250
       cycle: monthly
+    other:
+      - name: Add-on cards
+        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
     concierge: false
     source:
       url: https://www.bobcard.co.in/credit-card-types/easy
-      retrieved_on: 2026-06-12
+      retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: 25
+  max_age: 55
   income_inr_annual:
     salaried: 240000
     self_employed: 240000
@@ -90,5 +110,5 @@ application:
   apply_url: https://www.bobcard.co.in/credit-card-types/easy
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [entry, points]
+  last_verified_on: 2026-07-03
+  tags: [entry, points, shopping]

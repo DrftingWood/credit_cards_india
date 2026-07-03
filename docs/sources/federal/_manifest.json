@@ -1,0 +1,12 @@
+{
+  "_note": "Federal Bank publishes its Credit Cards MITC as an inline HTML page (not downloadable PDFs). Verification for the Visa cards was done against the central MITC fee/charges table, which lists Signet / Imperio / Celesta / Wave columns.",
+  "mitc_source": "https://www.federal.bank.in/credit-cards-mitc",
+  "verified_on": "2026-07-03",
+  "cards": {
+    "celesta":  {"slug": "visa-celesta-credit-card",  "url": "https://www.federal.bank.in/visa-celesta-credit-card",  "pdfs": [], "mitc": "html", "verified": {"annual_fee_inr": 3000, "forex_markup_pct": 2.0}},
+    "imperio":  {"slug": "visa-imperio-credit-card",  "url": "https://www.federal.bank.in/visa-imperio-credit-card",  "pdfs": [], "mitc": "html", "verified": {"annual_fee_inr": 1500, "forex_markup_pct": 3.5}},
+    "signet":   {"slug": "visa-signet-credit-card",   "url": "https://www.federal.bank.in/visa-signet-credit-card",   "pdfs": [], "mitc": "html", "verified": {"annual_fee_inr": 750,  "forex_markup_pct": 3.5}},
+    "rupay-signet": {"slug": "rupay-signet-credit-card", "url": "https://www.federal.bank.in/rupay-signet-credit-card", "pdfs": [], "mitc": "html"},
+    "scapia":   {"slug": "scapia", "url": "https://www.scapia.cards", "pdfs": [], "mitc": "partner-site (scapia.cards)"}
+  }
+}

@@ -1,0 +1,117 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-club-vistara-prime
+name: Club Vistara SBI Card PRIME
+issuer: sbi
+network: visa
+network_tier: null
+tier: premium
+card_type: credit
+co_brand:
+  partner: Vistara
+  category: airline
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2020-01-01
+    effective_until: null
+    joining_fee_inr: 2999
+    annual_fee_inr: 2999
+    renewal_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
+      retrieved_on: 2026-07-03
+      notes: "Renewal fee shown as Nil on the live page."
+
+rewards:
+  - effective_from: 2020-01-01
+    effective_until: null
+    currency: miles
+    currency_name: CV Points
+    base:
+      rate: 4
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
+    redemption:
+      - type: airmiles
+        program: Air India Maharaja Club / Partner Airlines
+        constraints: "CV Points redeemable on Air India and partner airlines after Vistara-Air India merger."
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
+      retrieved_on: 2026-07-03
+      notes: "4 Club Vistara Points per Rs.200 on all retail categories including fuel."
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2020-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [issuer-direct]
+        notes: "Max 2 per quarter."
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Max 2 visits per quarter to Priority Pass lounges outside India."
+    milestones:
+      - spend_inr: 800000
+        cycle: annual
+        benefit: "1 hotel e-Voucher from Yatra worth Rs. 10,000"
+        value_inr: 10000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+    insurance:
+      - type: lost-card-liability
+        sum_insured_inr: 100000
+      - type: baggage-loss
+        sum_insured_inr: 72000
+        conditions: "Loss of check-in baggage cover."
+      - type: baggage-loss
+        sum_insured_inr: 7500
+        conditions: "Delay of check-in baggage cover."
+    fuel_surcharge_waiver: null
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
+      retrieved_on: 2026-07-03
+      notes: "Renewal benefit (1 Premium Economy ticket) and spend-milestone flight tickets discontinued for renewals after 01 Apr 2025. Up to 6 ticket cancellations/year covered at Rs.3,500 each."
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
+  residency: resident-indian
+  notes: "Vistara merged into Air India (Nov 2024); Club Vistara SBI cards are being wound down / migrated. Renewal and milestone flight-ticket benefits discontinued for cards renewing after 01 Apr 2025; verify open-to-new-applicants status."
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, airline, vistara, travel, miles, premium]

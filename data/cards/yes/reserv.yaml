@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: yes-reserv
 name: YES Bank Reserv Credit Card
 issuer: "yes"
@@ -11,74 +20,86 @@ launched_on: 2018-01-01
 discontinued_on: null
 
 fees:
-  - effective_from: 2018-01-01
+  - effective_from: 2026-06-15
     effective_until: null
-    joining_fee_inr: 1999
-    annual_fee_inr: 1999
+    joining_fee_inr: 2499
+    annual_fee_inr: 2499
     fee_waiver:
       spend_inr: 300000
       cycle: annual
-    forex_markup_pct: 1.75
-    finance_charge_monthly_pct: 3.5
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 2.99
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
+    notes: "Formerly YES FIRST EXCLUSIVE. First-year fee ₹2,499 waived on ₹40,000 retail spend within 1 month of setup; renewal fee waived on ₹3,00,000 spend in prior 12 months. Preferential 2.00% forex markup."
     source:
-      url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/reserv-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.yes.bank.in/personal-banking/cards/credit-card/reserv-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
-  - effective_from: 2018-01-01
+  - effective_from: 2026-06-15
     effective_until: null
     currency: points
-    currency_name: YES Reward Points
+    currency_name: YES Rewardz Points
     base:
-      rate: 12
+      rate: 6
       per_inr: 200
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
     accelerated:
-      - category: online-spend
+      - category: online-shopping
         canonical_categories: [online]
+        multiplier: 4
         effective_rate: 24
-        cap_per_cycle: 75000
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "24 RP/₹200 online, 12/₹200 offline, 6/₹200 select categories; cap 75,000 points/cycle (med confidence)."
+        notes: "24 YES Rewardz per ₹200 on online shopping (except Select categories)."
+      - category: offline-shopping
+        canonical_categories: [other]
+        multiplier: 2
+        effective_rate: 12
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "12 YES Rewardz per ₹200 on offline shopping; 6 per ₹200 on Select categories (base)."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
+      - government
+      - education
+      - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: YES Rewardz
         rate_inr_per_unit: 0.25
+    notes: "Effective 15-Jun-2026, no Reward Points on Rent, Wallet, Fuel, UPI, Government, Marketing/Advertising, cash withdrawals, EMI (Post Purchase/On-Call/Instant), Insurance, Education, Railways, Toll & Ferry."
     source:
-      url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/reserv-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.yes.bank.in/personal-banking/cards/credit-card/reserv-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
-  - effective_from: 2018-01-01
-    effective_until: 2025-03-31
+  - effective_from: 2026-06-15
+    effective_until: null
     lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
       international:
         visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Amazon voucher worth ₹1,500"
-        value_inr: 1500
-        window_days: 90
+    movies:
+      type: discount
+      partner: BookMyShow
+      max_per_cycle: null
+      cycle: monthly
+      cap_inr: null
+      notes: "25% discount on BookMyShow."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -87,54 +108,21 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/reserv-credit-card
-      retrieved_on: 2026-04-15
-      notes: "Historical record; unconditional lounge era."
-
-  - effective_from: 2025-04-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 3
-        spend_threshold_inr: 100000
-        spend_threshold_cycle: quarterly
-        cycle: annual
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
-      international:
-        visits_per_cycle: 6
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Amazon voucher worth ₹1,500"
-        value_inr: 1500
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://piceapp.com/blogs/yes-bank-credit-card-lounge-access/
-      retrieved_on: 2026-06-12
-      notes: "1-Apr-2025: 3 domestic/quarter gated ₹1L prior-quarter; 6 international/yr (med confidence)."
+      url: https://www.yes.bank.in/personal-banking/cards/credit-card/reserv-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 60
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
+    salaried: 2400000
+    self_employed: 1800000
   credit_score_min: 730
   residency: resident-indian
 
 application:
-  apply_url: https://www.yesbank.in/personal-banking/yes-individual/cards/credit-card/reserv-credit-card
+  apply_url: https://www.yes.bank.in/personal-banking/cards/credit-card/reserv-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [premium, groceries, dining, points]
+  last_verified_on: 2026-07-03
+  tags: [premium, online, shopping, points]

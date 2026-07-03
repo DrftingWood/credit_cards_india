@@ -1,0 +1,149 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-apollo-select
+name: Apollo SBI Card SELECT
+issuer: sbi
+network: visa
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: Apollo
+  category: healthcare
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 1499
+    annual_fee_inr: 1499
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+      conditions: "Renewal fee reversed within 30 days if annual spend in the previous year is Rs. 3 lakhs or more."
+    forex_markup_pct: 3.5 # verified: MITC — 3.5% foreign currency txn fee (standard cards)
+    finance_charge_monthly_pct: 3.75 # verified: MITC — up to 3.75% p.m. (45% p.a.)
+    cash_advance_fee:
+      pct: 2.5 # verified: MITC — 2.5% or Rs.500 whichever higher
+      min_inr: 500
+    gst_applicable: true
+    supplementary_card_fee_inr: 0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 200
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: apollo-247-and-apollo-pharmacy
+        canonical_categories: [other]
+        multiplier: 20
+        effective_rate: 20
+        cap_per_cycle: 5000
+        cap_unit: points
+        cycle: statement
+        notes: "10 Reward Points per Rs. 100 on Apollo 24|7 and Apollo Pharmacy; expressed as 20 RP per Rs. 200 base denominator. Capped at 5,000 RP per statement cycle; thereafter 1 RP per Rs. 200."
+      - category: dining-movies-entertainment-travel
+        canonical_categories: [dining, entertainment, travel]
+        multiplier: 4
+        effective_rate: 4
+        cap_per_cycle: 5000
+        cap_unit: points
+        cycle: statement
+        notes: "2 Reward Points per Rs. 100 on Dining, Movies & Entertainment and Travel. Capped at 5,000 RP per statement cycle; thereafter 1 RP per Rs. 200."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        constraints: "1 Reward Point = 1 Health Credit = Re. 1."
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        notes: "Max 1 per quarter."
+    milestones:
+      - spend_inr: 600000
+        cycle: annual
+        benefit: "Complimentary Noise Smartwatch worth Rs. 7,999"
+        value_inr: 7999
+        reward_kind: other
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "On payment of joining fee"
+        benefit: "Apollo 24|7 e-Gift Voucher worth Rs. 1,500"
+        value_inr: 1500
+      - condition: "On payment of joining fee and a retail transaction"
+        benefit: "1-year complimentary FITPASS PRO Membership"
+        value_inr: null
+      - condition: "On spending Rs. 50,000 within 90 days of joining"
+        benefit: "Complimentary Comprehensive Health Check-up Package"
+        value_inr: null
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: null
+      max_txn_inr: null
+      cap_per_cycle_inr: 100
+      cycle: statement
+    concierge: false
+    other:
+      - name: Apollo Circle Benefits
+        description: "In-built Apollo Circle Benefits including up to 25% value back on medicine purchases at Apollo 24|7 and Apollo Pharmacy."
+        value_inr: null
+      - name: Priority Pass Membership
+        description: "2-year complimentary Priority Pass Membership worth $99 (lounge visits chargeable)."
+        value_inr: null
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, points, healthcare, co-brand, lounge]

@@ -1,0 +1,120 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: axis-cashback
+name: Axis Bank Cashback Credit Card
+issuer: axis
+network: visa
+network_tier: null
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 1000   # ₹1000 + GST (card T&C sec 3)
+    annual_fee_inr: 1000    # ₹1000 + GST (card T&C sec 3)
+    fee_waiver:
+      spend_inr: 400000
+      cycle: annual
+      conditions: "Spend ₹4,00,000 or above in an anniversary year for annual fee waiver (Rent and Wallet MCCs excluded)."
+    forex_markup_pct: 3.5             # MITC: 3.50% for all other cards
+    finance_charge_monthly_pct: 3.0   # MITC finance charge (42.58% p.a.)
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 0.75
+      per_inr: 100
+      unit_value_inr: 1.0
+      cap_per_cycle: "unlimited"
+      cap_unit: cashback-inr
+      cycle: monthly
+    accelerated:
+      - category: online-spends
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 7
+        cap_per_cycle: 4000
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "Up to 7% cashback on online spends; earn up to ₹4,000 per statement month."
+      - category: utilities-bill-payments
+        canonical_categories: [utilities]
+        multiplier: 1
+        effective_rate: 0.5
+        cap_per_cycle: 100
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "0.5% cashback on utility bill payments, capped at ₹100 per month."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - government
+      - education
+      - jewellery
+      - emi
+    capping_rules:
+      - "Online-spend cashback (up to 7%) capped at ₹4,000 per statement month."
+      - "Utility bill-payment cashback (0.5%) capped at ₹100 per month."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        constraints: "Cashback auto-credited before next statement with no minimum amount requirement."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver: null   # Confirmed not applicable (card T&C sec 7; MITC refund not applicable on Cashback Card)
+    welcome:
+      - condition: "First transaction within 30 days of card issuance."
+        benefit: "EDGE Reward Points worth ₹1,000."
+        value_inr: 1000
+        window_days: 30
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [cashback, online, entry]

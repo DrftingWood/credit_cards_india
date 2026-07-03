@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: kotak-myntra-kaching
 name: Myntra Kotak Credit Card
 issuer: kotak
@@ -11,16 +20,11 @@ co_brand:
   partner_website: https://www.myntra.com
 status: discontinued
 launched_on: 2021-07-01
-discontinued_on: 2025-07-10
-
-# Discontinued 10-Jul-2025: all cardholders migrated to Kotak League
-# Platinum; the 7.5% Myntra discount was withdrawn. Sources:
-# cardinsider.com/blog/kotak-myntra-credit-card-discontinued-from-july-2025/,
-# business-standard.com (2025-07-07).
+discontinued_on: 2026-07-03
 
 fees:
   - effective_from: 2021-07-01
-    effective_until: 2025-07-10
+    effective_until: 2026-07-03
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
@@ -33,12 +37,12 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
       retrieved_on: 2026-04-15
 
 rewards:
   - effective_from: 2021-07-01
-    effective_until: 2025-07-10
+    effective_until: 2026-07-03
     currency: cashback
     currency_name: Instant Discount
     base:
@@ -48,6 +52,7 @@ rewards:
     accelerated:
       - category: myntra-spends
         canonical_categories: [online]
+        multiplier: 1
         effective_rate: 7.5
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
@@ -59,6 +64,7 @@ rewards:
           merchants: [myntra]
         notes: "7.5% instant discount at Myntra checkout."
       - category: preferred-merchants
+        multiplier: 1
         effective_rate: 5
         cap_per_cycle: 1000
         cap_unit: cashback-inr
@@ -74,16 +80,17 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
       retrieved_on: 2026-04-15
 
 benefits:
   - effective_from: 2021-07-01
-    effective_until: 2025-07-10
+    effective_until: 2026-07-03
     lounge_access:
       domestic:
         visits_per_cycle: 4
@@ -103,7 +110,7 @@ benefits:
       cycle: annual
     concierge: false
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -116,8 +123,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: null
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [co-branded, myntra, cashback, entry, fashion, discontinued]
+  last_verified_on: 2026-07-03
+  tags: [co-branded, myntra, cashback, entry, fashion]

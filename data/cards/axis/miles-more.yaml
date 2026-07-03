@@ -1,0 +1,116 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: axis-miles-more
+name: Axis Bank Miles & More Credit Card
+issuer: axis
+network: visa
+network_tier: null
+tier: premium
+card_type: credit
+co_brand:
+  partner: Miles & More (Lufthansa)
+  category: airline
+status: active
+launched_on: null
+discontinued_on: null
+
+# NOTE: Sold in two variants — Miles & More Axis Bank "World" and "World Select".
+# This record models the line; variant-specific fees/earn TODO verify.
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 3500
+    annual_fee_inr: 3500
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Models the 'World' variant: joining/annual ₹3,500 (Axis MITC). The 'World Select' variant is ₹10,000 joining / ₹4,500 annual. Forex 3.5%, finance 3.75%/mo, cash advance 2.5% (min ₹500) per MITC."
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: miles
+    currency_name: Miles & More Award Miles
+    base:
+      rate: 2
+      per_inr: 200
+      unit_value_inr: null
+      unit_value_inr_realized: null
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - utilities
+      - government
+      - insurance-premiums
+      - jewellery
+    redemption:
+      - type: airmiles
+        program: Miles & More (India)
+        constraints: "Unlimited, never-expiring Award Miles; redeem on the Miles & More (India) website."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Earn unlimited, never-expiring Award Miles. Exact per-₹ base accrual not stated on live page (TODO verify; two variants World & World Select)."
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access:
+      domestic:
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "Complimentary domestic lounge access based on min spend ₹50,000 in the previous 3 calendar months (T&C w.e.f. 1-May-2024)."
+      international:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Priority Pass with complimentary lounge visits; exact number not stated on live page (TODO verify)."
+    welcome:
+      - condition: "First transaction on the card"
+        benefit: "Up to 15,000 Bonus Welcome Miles + Priority Pass membership"
+        value_inr: null
+    other:
+      - name: Insurance cover
+        description: "Insurance benefits including air accident and baggage loss cover; sum insured not stated on live page (TODO verify)."
+        value_inr: null
+      - name: Pay bills from any bank account
+        description: "Enroll for auto-debit to pay Axis Bank Credit Card bills from any other bank account."
+        value_inr: null
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: null
+  credit_score_min: null
+  residency: either
+  notes: "Primary cardholder 18–70 years; add-on cardholder 18+. Resident Indian or NRI."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [travel, miles, co-brand, airline, lufthansa]

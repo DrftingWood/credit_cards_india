@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : RBL central CardsScheduleCharges.pdf + per-card T&C PDFs (docs/sources/rbl/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: rbl-shoprite
 name: RBL Bank ShopRite Credit Card
 issuer: rbl
@@ -16,7 +25,7 @@ fees:
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
-      spend_inr: 150000
+      spend_inr: 75000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
@@ -25,8 +34,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.rblbank.com/category/credit-cards/shoprite-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2016-01-01
@@ -41,6 +50,7 @@ rewards:
     accelerated:
       - category: grocery-supermarket
         canonical_categories: [groceries]
+        multiplier: 10
         effective_rate: 20
         cap_per_cycle: 1000
         cap_unit: points
@@ -52,30 +62,19 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: RBL Rewards
         rate_inr_per_unit: 0.4
     source:
-      url: https://www.rblbank.com/category/credit-cards/shoprite-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2016-01-01
     effective_until: null
     lounge_access: null
-    welcome:
-      - condition: "Card issuance"
-        benefit: "2,000 bonus Reward Points"
-        value_inr: 600
-        window_days: 90
-    movies:
-      type: discount
-      partner: BookMyShow
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 100
-      notes: "10% off BMS up to ₹100, 15 times/year (approximated as 2/month here)."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -84,8 +83,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.rblbank.com/category/credit-cards/shoprite-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -97,8 +96,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.rblbank.com/category/credit-cards/shoprite-credit-card
+  apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [entry, groceries, points]
+  last_verified_on: 2026-07-03
+  tags: [entry, grocery, points]

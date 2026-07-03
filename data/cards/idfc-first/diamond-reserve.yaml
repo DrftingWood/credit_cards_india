@@ -1,0 +1,130 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: idfc-first-diamond-reserve
+name: IDFC FIRST Diamond Reserve Credit Card
+issuer: idfc-first
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2025-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-01-01
+    effective_until: null
+    joining_fee_inr: 3000
+    annual_fee_inr: 3000
+    fee_waiver:
+      spend_inr: 600000
+      cycle: annual
+      conditions: "Annual fee waived on ₹6,00,000 annual spend."
+    forex_markup_pct: 0.0
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Premium zero-forex travel card; joining fee payable upfront."
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2025-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 3
+      per_inr: 150
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: travel-app-bookings
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "Base 3X reward points (up to ~1.67% value back). Bonus 20% RP on hotels / 10% on flights via IDFC FIRST app."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: IDFC FIRST Rewards
+        rate_inr_per_unit: 0.25
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2025-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+      international:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [priority-pass, loungekey]
+    welcome:
+      - condition: "Joining fee payment (limited period)"
+        benefit: "100% cashback up to ₹200 on joining fee"
+        value_inr: 200
+        window_days: 30
+    insurance:
+      - type: trip-delay
+        sum_insured_inr: 25000
+        conditions: "Reimbursement for non-refundable flight & hotel cancellations, up to ₹25,000."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 300
+      cycle: monthly
+    other:
+      - name: Railway lounge access
+        description: "Complimentary railway lounge access."
+      - name: Golf/spa privilege
+        description: "1 complimentary service a year and 10% off on the rest."
+    concierge: true
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, points, travel, zero-forex, lounge]

@@ -1,0 +1,122 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: indusind-avios
+name: IndusInd Bank Avios Visa Infinite Credit Card
+issuer: indusind
+network: visa
+network_tier: infinite
+tier: super-premium
+card_type: credit
+co_brand:
+  partner: Avios
+  category: airline
+status: active
+launched_on: 2024-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 10000
+    annual_fee_inr: 10000
+    fee_waiver: null
+    forex_markup_pct: 1.5
+    finance_charge_monthly_pct: 3.83
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Ultra-premium metal card. Choose airline loyalty programme: Qatar Airways Privilege Club or British Airways Executive Club."
+    source:
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: miles
+    currency_name: Avios
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.80
+      unit_value_inr_realized: 0.60
+    accelerated:
+      - category: international-spend
+        canonical_categories: [international, travel]
+        multiplier: 2
+        effective_rate: 4
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        notes: "Accelerated Avios on international / travel spends"
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    transfer_partners:
+      - program: Qatar Airways Privilege Club
+        category: airline
+        ratio: "1:1"
+      - program: British Airways Executive Club
+        category: airline
+        ratio: "1:1"
+    redemption:
+      - type: airmiles
+        program: Avios (Qatar / British Airways)
+        rate_inr_per_unit: 0.80
+        constraints: "Avios collected directly into the chosen airline programme (Qatar Privilege Club or BA Executive Club)."
+    source:
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: "unlimited"
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+      international:
+        visits_per_cycle: "unlimited"
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    concierge: true
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    source:
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 2500000
+    self_employed: 2500000
+  credit_score_min: 780
+  residency: resident-indian
+
+application:
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [super-premium, metal, airline, miles, avios, travel, lounge]

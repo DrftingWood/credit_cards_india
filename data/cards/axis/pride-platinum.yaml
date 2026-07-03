@@ -1,0 +1,111 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: axis-pride-platinum
+name: Axis Bank Pride Platinum Credit Card
+issuer: axis
+network: visa
+network_tier: null
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 0 # MITC: joining Nil
+    annual_fee_inr: 250 # MITC: ₹250 annual fee
+    fee_waiver:
+      spend_inr: 20000
+      cycle: annual
+      conditions: "Annual fee waived on spends of ₹20,000 in the preceding card anniversary year (MITC)."
+    forex_markup_pct: 3.5 # MITC: 3.50% for all other cards
+    finance_charge_monthly_pct: 3.75 # MITC finance charge for Pride Platinum (55.55% p.a.)
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Exclusively for Indian Defence Forces and Government of India employees."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 4
+      per_inr: 200
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - utilities
+      - education
+    redemption:
+      - type: catalog
+        program: EDGE Rewards
+        rate_inr_per_unit: 0.2
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    dining:
+      program: Dining Delights
+      discount_pct: 15
+      notes: "15% discount at partnered restaurants."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: statement
+      notes: "1% fuel surcharge waiver on fuel transactions ₹400–₹4,000; max ₹250 per statement cycle (MITC)."
+    insurance:
+      - type: lost-card-liability
+        sum_insured_inr: 0
+        conditions: "Zero lost card liability against fraudulent use once reported."
+    concierge: false
+    other:
+      - name: Free add-on cards
+        description: "Free add-on cards for spouse, parents, children and siblings over 18 years of age."
+        value_inr: null
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: either
+  notes: "For Indian Defence personnel and Government of India employees. Resident Indian or NRI."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, points, dining, defence]

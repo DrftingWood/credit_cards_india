@@ -1,0 +1,344 @@
+{
+  "ace": {
+    "slug": "axis-bank-ace-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card",
+    "pdfs": [
+      "ace/axis-bank-ace-credit-card-tncs.pdf",
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "ace/terms-and-conditions-axis-bank-ace-credit-card.pdf"
+    ]
+  },
+  "airtel": {
+    "slug": "airtel-axis-bank-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card",
+    "pdfs": [
+      "airtel/airtel-axis-bank-credit-card-welcome-benefit-amazon-voucher.pdf",
+      "airtel/axis-bank-airtel-terms-and-conditions.pdf",
+      "airtel/terms-and-conditions-for-cashback-for-airtel-axis-bank-credit-card.pdf"
+    ]
+  },
+  "atlas": {
+    "slug": "axis-bank-atlas-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card",
+    "pdfs": [
+      "atlas/terms-and-conditions-atlas-credit-card.pdf",
+      "atlas/terms-and-conditions-of-features-of-axis-bank-atlas-credit-card.pdf"
+    ]
+  },
+  "aura": {
+    "slug": "axis-bank-aura-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card",
+    "pdfs": [
+      "aura/aura-edge-rewards-mcc-exclusions.pdf"
+    ]
+  },
+  "flipkart": {
+    "slug": "flipkart-axisbank-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card",
+    "pdfs": [
+      "flipkart/flipkart-axis-bank-credit-card-preferred-merchants.pdf",
+      "flipkart/terms-and-conditions-flipkart-axis-bank-credit-card.pdf"
+    ]
+  },
+  "horizon": {
+    "slug": "axis-horizon-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card",
+    "pdfs": [
+      "horizon/terms-and-conditions-for-horizon-credit-card.pdf",
+      "horizon/terms-and-conditions-horizon-credit-card.pdf"
+    ]
+  },
+  "indianoil-premium": {
+    "slug": "indianoil-premium-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "_shared/iocl-fuel-outlet-list.pdf",
+      "indianoil-premium/terms-and-conditions-for-indianoil-axis-bank-premium-credit-card.pdf",
+      "_shared/terms-and-conditions-iocl-premium-final.pdf"
+    ]
+  },
+  "indigo-premium": {
+    "slug": "indigo-axis-bank-premium-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "indigo-premium/terms-and-conditions-for-indigo-axis-bank-premium-credit-card.pdf"
+    ]
+  },
+  "indigo": {
+    "slug": "indigo-axis-bank-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "indigo/terms-and-conditions-for-indigo-axis-bank-credit-card.pdf"
+    ]
+  },
+  "magnus": {
+    "slug": "axis-bank-magnus-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card",
+    "pdfs": [
+      "magnus/terms-and-conditions-for-magnus-burgundy-credit-card.pdf",
+      "magnus/terms-and-conditions-for-magnus-credit-card.pdf",
+      "magnus/magnus-credit-card-terms-and-conditions.pdf",
+      "magnus/magnus-for-burgundy-terms-and-conditions.pdf",
+      "_shared/mgtc.pdf",
+      "magnus/card-member-agreement.pdf",
+      "magnus/magnus-credit-card-for-burgundy-faq.pdf",
+      "magnus/mitc-credit-cards.pdf"
+    ]
+  },
+  "my-zone": {
+    "slug": "axis-bank-my-zone-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "my-zone/terms-and-conditions-for-myzone-credit-card.pdf"
+    ]
+  },
+  "neo": {
+    "slug": "axis-bank-neo-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card",
+    "pdfs": [
+      "neo/axis-bank-neo-credit-card-activation-benefit.pdf",
+      "neo/neo-edge-rewards-mcc-exclusions.pdf",
+      "neo/terms-and-conditions-for-neo-credit-card.pdf",
+      "neo/paytm-offer-neo-credit-card.pdf",
+      "neo/zomato-offer-neo-credit-card.pdf"
+    ]
+  },
+  "privilege": {
+    "slug": "privilege-credit-card-with-unlimited-benefits",
+    "url": "https://www.axis.bank.in/cards/credit-card/privilege-credit-card-with-unlimited-benefits",
+    "pdfs": [
+      "_shared/axis-bank-mastercard-airport-lounge-access_program.pdf",
+      "privilege/axis-bank-privilege-credit-card_insurance-t-c.pdf",
+      "privilege/axis-privilege-credit-card-milestone-benefit-terms-and-conditions.pdf",
+      "privilege/terms-and-conditions-privilege-credit-card.pdf",
+      "privilege/terms-and-conditions-for-axis-bank-privilege-credit-card.pdf",
+      "privilege/terms-and-conditions-privilege-credit-card.pdf"
+    ]
+  },
+  "reserve": {
+    "slug": "reserve-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/reserve-credit-card",
+    "pdfs": [
+      "reserve/reserve-credit-card-terms-and-conditions.pdf",
+      "_shared/rstc.pdf",
+      "_shared/terms-and-conditions-for-swiggy-one-membership-credit-card.pdf",
+      "reserve/tncs-reserve-13th-may.pdf",
+      "_shared/mitc-credit-cards.pdf"
+    ]
+  },
+  "select": {
+    "slug": "axis-bank-select-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card",
+    "pdfs": [
+      "select/terms-and-conditions-select-credit-card.pdf",
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "select/terms-and-conditions-for-select-credit-card.pdf"
+    ]
+  },
+  "freecharge": {
+    "slug": "axis-bank-freecharge-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card",
+    "pdfs": [
+      "freecharge/terms-and-conditions-freecharge-final.pdf"
+    ]
+  },
+  "freecharge-plus": {
+    "slug": "axis-bank-freecharge-plus-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card",
+    "pdfs": [
+      "freecharge-plus/terms-and-conditions-axis-bank-freecharge-plus-credit-card.pdf"
+    ]
+  },
+  "kwik": {
+    "slug": "axis-bank-kwik-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card",
+    "pdfs": []
+  },
+  "shoppers-stop": {
+    "slug": "axis-bank-shoppers-stop-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card",
+    "pdfs": [
+      "_shared/dining-exlusive-program-tnc.pdf",
+      "shoppers-stop/terms-and-conditions-for-axis-bank-shoppers-stop-credit-card.pdf",
+      "shoppers-stop/terms-and-conditions-shoppers-stop.pdf"
+    ]
+  },
+  "vistara": {
+    "slug": "axis-bank-vistara-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "vistara/terms-and-conditions-axis-bank-vistara-cards.pdf",
+      "vistara/terms-and-conditions-axis-bank-vistara-platinum.pdf",
+      "vistara/vistara-insurance-benefits.pdf",
+      "vistara/terms-and-conditions-for-axis-bank-vistara-credit-cards-ticket-voucher-benefit.pdf",
+      "vistara/terms-and-conditions-for-axis-bank-vistara-credit-cards-ticket-voucher-benefit4c7837ed-fb23-4ea8-b9bb-7c7aed8a873a.pdf"
+    ]
+  },
+  "vistara-infinite": {
+    "slug": "axis-bank-vistara-infinite-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-infinite-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "vistara-infinite/revision-in-terms-and-conditions-of-axis-bank-vistara-infinite-credit-card.pdf",
+      "vistara/terms-and-conditions-axis-bank-vistara-cards.pdf",
+      "vistara-infinite/terms-and-conditions-axis-bank-vistara-infinite.pdf",
+      "vistara/vistara-insurance-benefits.pdf",
+      "vistara-infinite/terms-and-conditions-for-axis-bank-vistara-credit-cards-ticket-voucher-benefit-(1)01e62e57-abd3-4e66-b8f3-307abfb36b72.pdf",
+      "vistara/terms-and-conditions-for-axis-bank-vistara-credit-cards-ticket-voucher-benefit.pdf"
+    ]
+  },
+  "vistara-signature": {
+    "slug": "axis-bank-vistara-signature-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "vistara/terms-and-conditions-axis-bank-vistara-cards.pdf",
+      "vistara-signature/terms-and-conditions-axis-bank-vistara-signature.pdf",
+      "vistara/vistara-insurance-benefits.pdf",
+      "vistara/terms-and-conditions-for-axis-bank-vistara-credit-cards-ticket-voucher-benefit.pdf"
+    ]
+  },
+  "cashback": {
+    "slug": "cashback-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/cashback-credit-card",
+    "pdfs": [
+      "cashback/axis-bank-cashback-credit-card-tnc.pdf",
+      "cashback/cashback-av-tnc.pdf"
+    ]
+  },
+  "fibe": {
+    "slug": "fibe-axis-bank-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "fibe/terms-and-conditions-cashback-on-fibe-axis-bank-credit-card.pdf",
+      "fibe/terms-and-conditions-for-fibe-credit-card.pdf"
+    ]
+  },
+  "flipkart-super-elite": {
+    "slug": "flipkart-axis-bank-super-elite-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card",
+    "pdfs": [
+      "flipkart-super-elite/terms-and-conditions-for-flipkart-superelite-axis-bank-credit-card.pdf"
+    ]
+  },
+  "google-pay-flex": {
+    "slug": "google-pay-flex-axis-bank-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card",
+    "pdfs": [
+      "google-pay-flex/terms-and-conditions-for-google-pay-flex-axis-bank-credit-card.pdf"
+    ]
+  },
+  "indianoil": {
+    "slug": "indianoil-axis-bank-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card",
+    "pdfs": [
+      "_shared/iocl-fuel-outlet-list.pdf",
+      "_shared/terms-and-conditions-indian-oil-credit-card.pdf"
+    ]
+  },
+  "lic-platinum": {
+    "slug": "lic-axis-bank-platinum-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/lic-axis-bank-platinum-credit-card",
+    "pdfs": []
+  },
+  "lic-signature": {
+    "slug": "lic-axis-bank-signature-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "lic-signature/terms-and-conditions-lic-axis-bank-signature-credit-card.pdf",
+      "lic-signature/terms-and-conditions-lic-axis-bank-signature-credit-card.pdf"
+    ]
+  },
+  "miles-more": {
+    "slug": "miles-more-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/miles-more-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-mastercard-airport-lounge-access_program.pdf",
+      "_shared/terms-and-conditions-mmi-world-credit-card.pdf",
+      "_shared/terms-and-conditions-mmi-world-select-credit-card.pdf"
+    ]
+  },
+  "my-zone-easy": {
+    "slug": "my-zone-easy-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card",
+    "pdfs": [
+      "_shared/credit-card-member-agreement.pdf",
+      "_shared/mitc-credit-cards.pdf"
+    ]
+  },
+  "pride-platinum": {
+    "slug": "pride-platinum-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card",
+    "pdfs": [
+      "_shared/credit-card-member-agreement.pdf",
+      "pride-platinum/pride-platinum-edge-rewards-mcc-exclusions.pdf",
+      "_shared/mitc-credit-cards.pdf"
+    ]
+  },
+  "pride-signature": {
+    "slug": "pride-signature-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "_shared/credit-card-member-agreement.pdf",
+      "pride-signature/pride-signature-edge-rewards-mcc-exclusions.pdf",
+      "_shared/mitc-credit-cards.pdf"
+    ]
+  },
+  "privilege-easy": {
+    "slug": "privilege-easy-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card",
+    "pdfs": [
+      "privilege-easy/axis-bank-privilege-credit-card_insurance-t-c.pdf",
+      "privilege-easy/privilege-easy-credit-card-milestone-benefit-tncs.pdf"
+    ]
+  },
+  "rupay": {
+    "slug": "rupay-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/rupay-credit-card",
+    "pdfs": [
+      "_shared/mitc-credit-cards.pdf"
+    ]
+  },
+  "samsung-infinite": {
+    "slug": "samsung-axis-bank-infinite-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-infinite-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "_shared/eazydiner-tnc.pdf",
+      "samsung-infinite/priority-pass-membership-on-samsung.pdf",
+      "samsung-infinite/tnc-for-samsung-infinite.pdf"
+    ]
+  },
+  "samsung-signature": {
+    "slug": "samsung-axis-bank-signature-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "samsung-signature/tnc-for-samsung-signature.pdf"
+    ]
+  },
+  "spicejet-voyage-black": {
+    "slug": "spicejet-axis-bank-voyage-black-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card",
+    "pdfs": [
+      "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "spicejet-voyage-black/tnc-for-spicejet-voyage-black-credit-card.pdf"
+    ]
+  },
+  "spicejet-voyage": {
+    "slug": "spicejet-axis-bank-voyage-credit-card",
+    "url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card",
+    "pdfs": [
+      "spicejet-voyage/terms-and-conditions-for-voyage-voyage-black-credit-card-spiceclub-points-earn.pdf",
+      "spicejet-voyage-black/tnc-for-spicejet-voyage-black-credit-card.pdf"
+    ]
+  }
+}

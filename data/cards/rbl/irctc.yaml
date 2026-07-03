@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : RBL central CardsScheduleCharges.pdf + per-card T&C PDFs (docs/sources/rbl/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: rbl-irctc
 name: IRCTC RBL Bank Credit Card
 issuer: rbl
@@ -17,7 +26,7 @@ fees:
   - effective_from: 2021-03-01
     effective_until: null
     joining_fee_inr: 500
-    annual_fee_inr: 350
+    annual_fee_inr: 500
     fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
@@ -26,8 +35,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.rblbank.com/category/credit-cards/irctc-rbl-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-03-01
@@ -39,12 +48,12 @@ rewards:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.95
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
+        multiplier: 1
         effective_rate: 10
-        effective_per_inr: 100
         card_attributable_rate: 10
         card_attributable_per_inr: 100
         stacks_with_program: false
@@ -59,6 +68,7 @@ rewards:
         notes: "10 points per ₹100 spent on AC train ticket bookings via IRCTC portal/app."
       - category: groceries-department-stores-utilities
         canonical_categories: [groceries, utilities]
+        multiplier: 1
         effective_rate: 2
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -68,14 +78,15 @@ rewards:
       - wallet-loads
       - rent
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: IRCTC
         rate_inr_per_unit: 1.0
         constraints: "Redeemable against IRCTC rail ticket bookings."
     source:
-      url: https://www.rblbank.com/category/credit-cards/irctc-rbl-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-03-01
@@ -98,8 +109,8 @@ benefits:
         description: Waiver of the 1% + GST transaction charge on IRCTC ticket bookings.
     concierge: false
     source:
-      url: https://www.rblbank.com/category/credit-cards/irctc-rbl-bank-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -111,9 +122,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.rblbank.com/category/credit-cards/irctc-rbl-bank-credit-card
+  apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
-  last_swept_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [co-branded, railway, entry, niche]

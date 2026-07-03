@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: standard-chartered-ultimate
 name: Standard Chartered Ultimate Credit Card
 issuer: standard-chartered
@@ -23,8 +32,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sc.com/in/credit-cards/ultimate/
-      retrieved_on: 2026-04-15
+      url: https://www.sc.bank.in/credit-cards/ultimate-card/
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2019-03-01
@@ -36,32 +45,36 @@ rewards:
       per_inr: 150
       unit_value_inr: 1.0
     accelerated:
-      - category: forex-spend
+      - category: duty-free
         canonical_categories: [international]
+        multiplier: 1
         effective_rate: 3.33
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "Effectively 3.33% cashback on forex after the 2% markup (5 points per ₹150, unit value ₹1)."
+        notes: "Flat 5 RP per ₹150 on all spends (= 3.33% at 1 RP = ₹1). Additional cashback on duty-free spends; reduced 2% foreign-currency markup."
     exclusions:
       - fuel
       - wallet-loads
       - rent
+      - insurance-premiums
       - emi
+      - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
         min_units: 1000
     source:
-      url: https://www.sc.com/in/credit-cards/ultimate/
-      retrieved_on: 2026-04-15
+      url: https://www.sc.bank.in/credit-cards/ultimate-card/
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2019-03-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 1
+        visits_per_cycle: 4
         cycle: quarterly
         guests_per_visit: 0
         via: [mastercard]
@@ -70,19 +83,21 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
+        notes: "International (outside India) Priority Pass access subject to ₹20,000 spend in the previous month."
     golf:
       rounds_per_cycle: 1
       cycle: monthly
       lessons_per_cycle: 0
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Reward Points worth ₹6,000"
+        value_inr: 6000
+        window_days: 90
     insurance:
       - type: air-accident
         sum_insured_inr: 10000000
       - type: travel-medical
         sum_insured_inr: 4500000
-    other:
-      - name: Renewal benefit
-        description: 6,000 reward points credited on paying the ₹5,000 renewal fee (med confidence).
-        value_inr: 6000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -91,8 +106,8 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.sc.com/in/credit-cards/ultimate/
-      retrieved_on: 2026-04-15
+      url: https://www.sc.bank.in/credit-cards/ultimate-card/
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -104,8 +119,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sc.com/in/credit-cards/ultimate/
+  apply_url: https://www.sc.bank.in/credit-cards/ultimate-card/
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [super-premium, flat-cashback, points]

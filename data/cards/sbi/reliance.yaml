@@ -1,0 +1,138 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-reliance
+name: Reliance SBI Card
+issuer: sbi
+network: rupay
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Reliance
+  category: retail
+  partner_website: https://www.reliancedigital.in
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    renewal_fee_inr: 499
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Renewal fee reversed on annual spends of ₹1,00,000 in the previous year (second year onwards)."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: ajio-jiomart-online
+        canonical_categories: [online]
+        multiplier: 10
+        effective_rate: 10
+        cap_unit: points
+        merchants: [ajio, jiomart]
+        notes: "10 Reward Points per ₹100 on AJIO & JioMart online stores (except UPI payments)."
+      - category: reliance-retail
+        canonical_categories: [online]
+        multiplier: 5
+        effective_rate: 5
+        cap_unit: points
+        merchants: [reliance-digital, reliance-smart, trends, netmeds]
+        notes: "5 Reward Points per ₹100 at other participating Reliance Retail stores (except UPI payments)."
+      - category: dining-movies
+        canonical_categories: [dining, entertainment]
+        multiplier: 5
+        effective_rate: 5
+        cap_unit: points
+        notes: "5 Reward Points per ₹100 on dining & movies."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: voucher
+        program: Reliance Retail gift vouchers
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    welcome:
+      - condition: "Payment of Joining Fee"
+        benefit: "Reliance Retail e-voucher worth ₹500 (delivered within 30 days of joining fee realisation)"
+        value_inr: 500
+        window_days: 30
+      - condition: "Payment of Joining Fee"
+        benefit: "Additional discount vouchers worth ₹3,200 across participating Reliance Retail stores"
+        value_inr: 3200
+    milestones:
+      - spend_inr: 25000
+        cycle: annual
+        benefit: "Reliance Retail voucher worth ₹500"
+        value_inr: 500
+      - spend_inr: 50000
+        cycle: annual
+        benefit: "Reliance Retail voucher worth ₹750"
+        value_inr: 750
+      - spend_inr: 80000
+        cycle: annual
+        benefit: "Reliance Retail voucher worth ₹1,000"
+        value_inr: 1000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 100
+      cycle: statement
+      notes: "1% fuel surcharge waiver on transactions between ₹500 and ₹3,000 at all petrol pumps. Max ₹100 per statement cycle."
+    other:
+      - name: "MakeMyTrip (Mastercard)"
+        description: "Up to 15% cashback on hotels and flight bookings at MakeMyTrip."
+      - name: "ZoomCar (Mastercard)"
+        description: "Up to 20% off on ZoomCar."
+      - name: "Lifestyle Stores (Mastercard)"
+        description: "Up to 15% off on shopping at Lifestyle Stores."
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, retail, reliance, entry-tier, points]

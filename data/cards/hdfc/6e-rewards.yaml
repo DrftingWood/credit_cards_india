@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hdfc-6e-rewards
 name: 6E Rewards IndiGo HDFC Bank Credit Card
 issuer: hdfc
@@ -9,19 +18,20 @@ co_brand:
   partner: IndiGo
   category: airline
   partner_website: https://www.goindigo.in
-status: active
+status: discontinued
 launched_on: 2022-11-07
-discontinued_on: null
+discontinued_on: 2026-07-03
 
 # Entry-level IndiGo 6E Rewards co-brand from HDFC Bank. The companion XL
-# variant was discontinued in Nov-2025 but this base variant continues to
-# be issued. Unlike the newer Axis/Kotak/SBI/IDFC partnerships which use
-# IndiGo's newer BluChip currency, this card still earns "6E Rewards" that
-# auto-convert to BluChip at 1:1 on redemption.
+# variant was discontinued in Nov-2025, and this base variant has since been
+# withdrawn too — the HDFC product page returns 404 as of 2026-07-03 and it
+# no longer appears in HDFC's live credit-card catalogue. discontinued_on is
+# the date the withdrawal was observed; the exact sunset date (between the
+# 2026-04 verification and 2026-07-03) is unconfirmed.
 
 fees:
   - effective_from: 2022-11-07
-    effective_until: null
+    effective_until: 2026-07-02
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
@@ -41,7 +51,7 @@ fees:
 
 rewards:
   - effective_from: 2022-11-07
-    effective_until: null
+    effective_until: 2026-07-02
     currency: miles
     currency_name: 6E Rewards
     base:
@@ -52,6 +62,7 @@ rewards:
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
+        multiplier: 1
         effective_rate: 2.5
         card_attributable_rate: 2.5
         card_attributable_per_inr: 100
@@ -67,6 +78,7 @@ rewards:
         notes: "2.5 6E Rewards per ₹100 on flight bookings made via IndiGo website or app."
       - category: dining-grocery-entertainment
         canonical_categories: [dining, groceries, entertainment]
+        multiplier: 1
         effective_rate: 2
         cap_per_cycle: "unlimited"
         cap_unit: miles
@@ -90,7 +102,7 @@ rewards:
 
 benefits:
   - effective_from: 2022-11-07
-    effective_until: null
+    effective_until: 2026-07-02
     lounge_access: null
     welcome:
       - condition: "Joining fee paid + minimum 3 transactions in each of the first 3 months"
@@ -127,6 +139,5 @@ application:
   replaces_card: null
 
 metadata:
-  last_verified_on: 2026-04-22
-  last_swept_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [co-branded, airline, indigo, entry, miles]

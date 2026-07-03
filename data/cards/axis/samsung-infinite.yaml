@@ -1,0 +1,140 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: axis-samsung-infinite
+name: Samsung Axis Bank Infinite Credit Card
+issuer: axis
+network: visa
+network_tier: infinite
+tier: premium
+card_type: credit
+co_brand:
+  partner: Samsung
+  category: lifestyle
+  partner_website: https://www.samsung.com/in
+status: on-hold
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-01-01
+    effective_until: null
+    joining_fee_inr: 5000
+    annual_fee_inr: 5000
+    fee_waiver:
+      spend_inr: 700000
+      cycle: annual
+      conditions: "Annual fee waived on spends of INR 7,00,000 in the preceding card anniversary year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.0
+    cash_advance_fee: null
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-infinite-credit-card
+      retrieved_on: 2026-07-03
+      notes: "Fees, forex (3.5%) and finance charge (3.0%/mo extended credit) per Axis MITC (eff 20 Dec 2024). Bank currently not accepting applications."
+
+rewards:
+  - effective_from: 2023-01-01
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 5
+      per_inr: 100
+      unit_value_inr: 0.2
+    accelerated:
+      - category: preferred-partners
+        canonical_categories: [groceries, dining, online]
+        multiplier: 1
+        effective_rate: 15
+        merchants: [bigbasket, tata-1mg, urban-company, myntra, zomato]
+        notes: "15 EDGE Reward Points per ₹100 (≈3%) with preferred partners: BigBasket, Tata 1mg, Urban Company, Myntra, Zomato."
+      - category: international-spends
+        canonical_categories: [international]
+        multiplier: 1
+        effective_rate: 15
+        notes: "15 EDGE Reward Points per ₹100 (≈3%) on international spends."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - jewellery
+      - government
+      - education
+      - utilities
+      - rent
+      - insurance-premiums
+      - emi
+      - cash-advance
+    redemption:
+      - type: catalog
+        program: Axis EDGE Rewards
+        rate_inr_per_unit: 0.2
+        constraints: "EDGE Reward Points redeemable via the Axis EDGE Rewards catalog; ~₹0.2 per point."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-infinite-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Samsung purchase cashback (10%, incl. EMI) is captured under benefits.other as it is a separate cashback benefit, not an EDGE Reward Point earn."
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2023-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        notes: "8 complimentary domestic airport lounge visits per calendar year (Axis Bank airport lounge access program)."
+      international:
+        visits_per_cycle: 12
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Complimentary Priority Pass membership: 6 + additional 6 international lounge visits per calendar year (1200+ lounges); guests and excess visits chargeable."
+    welcome:
+      - condition: "Complete 3 transactions within 30 days of card issuance"
+        benefit: "30,000 EDGE Reward Points"
+        value_inr: 6000
+        window_days: 30
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 500
+      cycle: statement
+    dining:
+      program: EazyDiner Prime
+      notes: "Complimentary 1-year EazyDiner Prime membership on card activation."
+    concierge: false
+    other:
+      - name: "Samsung purchase cashback"
+        description: "10% cashback on Samsung purchases (full-swipe or EMI), capped at INR 5,000 per month and INR 20,000 per year. Flipkart channel excluded from 20-12-2024; Amazon channel excluded from 01-01-2026."
+      - name: "Complimentary Priority Pass membership"
+        description: "Complimentary Priority Pass membership (per-visit charges may apply on lounge use)."
+        value_inr: 7890
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-infinite-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-infinite-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, samsung, lifestyle, cashback, premium]

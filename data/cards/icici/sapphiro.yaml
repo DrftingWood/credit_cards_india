@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: icici-sapphiro
 name: ICICI Bank Sapphiro Credit Card
 issuer: icici
@@ -19,29 +28,30 @@ fees:
       spend_inr: 600000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/sapphiro-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2014-01-01
-    effective_until: 2026-01-14
+    effective_until: null
     currency: points
     currency_name: PAYBACK Points
     base:
-      rate: 4
+      rate: 2
       per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
     accelerated:
       - category: international-spend
         canonical_categories: [international]
-        effective_rate: 6
+        multiplier: 2
+        effective_rate: 4
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
@@ -49,45 +59,9 @@ rewards:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-      - type: catalog
-        program: ICICI Rewards / PAYBACK
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/sapphiro-credit-card
-      retrieved_on: 2026-04-15
-      notes: "Historical record; pre-15-Jan-2026 earn structure. (currency_name kept as PAYBACK here although ICICI exited PAYBACK in 2022 — rename pending history review.)"
-
-  - effective_from: 2026-01-15
-    effective_until: null
-    currency: points
-    currency_name: ICICI Bank Reward Points
-    base:
-      rate: 6
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        effective_rate: 6
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - government
-      - other
     capping_rules:
-      - "From 15-Jan-2026: rewards on transport MCCs capped at ₹20,000 spends/month; government services and tax payments excluded."
+      - "Utility and insurance spends earn 1 Reward Point per ₹100"
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
@@ -95,118 +69,24 @@ rewards:
         program: ICICI Rewards / PAYBACK
         rate_inr_per_unit: 0.25
     source:
-      url: https://cardinsider.com/blog/massive-icici-credit-card-devaluation/
-      retrieved_on: 2026-06-12
-      notes: "15-Jan-2026 devaluation: base 6 RP/₹200, transport caps, government/tax exclusions (CardInsider/CardMaven/TechnoFino)."
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
+      retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2014-01-01
-    effective_until: 2025-06-30
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-        spend_threshold_inr: 35000
-        spend_threshold_cycle: quarterly
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-    golf:
-      rounds_per_cycle: 4
-      cycle: monthly
-      lessons_per_cycle: 0
-    movies:
-      type: bogo
-      partner: BookMyShow
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 500
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome vouchers worth ₹8,000 (shopping + travel)"
-        value_inr: 8000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 5000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/sapphiro-credit-card
-      retrieved_on: 2026-04-15
-      notes: "Historical record; ₹35k/quarter lounge gate era."
-
-  - effective_from: 2025-07-01
-    effective_until: 2026-03-31
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-        spend_threshold_inr: 75000
-        spend_threshold_cycle: quarterly
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-    golf:
-      rounds_per_cycle: 4
-      cycle: monthly
-      lessons_per_cycle: 0
-    movies:
-      type: bogo
-      partner: BookMyShow
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 500
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome vouchers worth ₹8,000 (shopping + travel)"
-        value_inr: 8000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 5000000
-    milestones:
-      - spend_inr: 400000
-        cycle: annual
-        benefit: "4,000 bonus Reward Points (+2,000 per additional ₹1L, cap 20,000 RP/yr)"
-        value_inr: 1000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.paisabazaar.com/icici-bank/coral-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "Lounge spend gate raised to ₹75,000/quarter (~Jul-2025, bank-wide). Historical record; BOGO movies unconditional until 31-Mar-2026."
-
-  - effective_from: 2026-04-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
-        cycle: annual
+        visits_per_cycle: 4
+        cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
         spend_threshold_inr: 75000
         spend_threshold_cycle: quarterly
+        notes: "w.e.f. Jan 01, 2025 complimentary domestic lounge access requires Rs 75,000 spend in the preceding calendar quarter (MITC §8; Sapphiro not on the exemption list)."
       international:
-        visits_per_cycle: 4
+        visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
         via: [dreamfolks]
@@ -216,24 +96,28 @@ benefits:
       lessons_per_cycle: 0
     movies:
       type: bogo
-      # BOGO requires ₹25,000 spend in the preceding calendar quarter (1-Apr-2026)
       partner: BookMyShow
       max_per_cycle: 2
       cycle: monthly
       cap_inr: 500
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Welcome vouchers worth ₹8,000 (shopping + travel)"
-        value_inr: 8000
+        benefit: "Welcome vouchers: Tata CLiQ ₹3,000 + EaseMyTrip ₹4,000 (4×₹1,000) + Croma ₹1,500 (3×₹500) + EazyDiner 3-month Prime membership"
+        value_inr: 8500
         window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 5000000
     milestones:
       - spend_inr: 400000
         cycle: annual
-        benefit: "4,000 bonus Reward Points (+2,000 per additional ₹1L, cap 20,000 RP/yr)"
-        value_inr: 1000
+        benefit: "4,000 Reward Points; +2,000 RP per additional ₹1 lakh, up to 20,000 RP per anniversary year"
+        reward_kind: points
+        reward_units: 4000
+        trigger_window: anniversary-year
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 10000000
+      - type: personal-accident
+        sum_insured_inr: 200000
+        conditions: "RuPay variant"
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -242,22 +126,21 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.paisabazaar.com/icici-bank/coral-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "1-Apr-2026: BOGO movie offer gated on ₹25,000 prior-quarter spend."
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
+    salaried: 900000
+    self_employed: 900000
   credit_score_min: 750
   residency: resident-indian
 
 application:
-  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/sapphiro-credit-card
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [premium, lifestyle, golf, movies]

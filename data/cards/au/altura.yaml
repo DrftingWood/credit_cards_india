@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: au-altura
 name: AU Bank Altura Credit Card
 issuer: au
@@ -16,7 +25,7 @@ fees:
     joining_fee_inr: 199
     annual_fee_inr: 199
     fee_waiver:
-      spend_inr: 50000
+      spend_inr: 40000
       cycle: annual
     forex_markup_pct: 3.49
     finance_charge_monthly_pct: 3.49
@@ -25,8 +34,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/altura
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-01-01
@@ -34,44 +43,50 @@ rewards:
     currency: cashback
     currency_name: Cashback
     base:
-      rate: 1
+      rate: 1.0
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: grocery-departmental-utility
         canonical_categories: [groceries, utilities]
+        multiplier: 2
         effective_rate: 2
-        cap_per_cycle: 50
+        cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "2% cashback on grocery, departmental and utility spends, capped ₹50/month."
-    capping_rules:
-      - "Base 1% on other retail POS spends capped at ₹50/month."
-      - "Education, government and BBPS spends earn nothing (eff. 1-Apr-2024)."
+        notes: "2% cashback on groceries, departmental stores & utility spends; 1% on other retail."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/altura
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
-    lounge_access: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [rupay]
+        notes: "8 complimentary Railway Lounge visits per year (not airport lounges)."
     milestones:
       - spend_inr: 10000
         cycle: monthly
-        benefit: "₹50 bonus cashback"
+        benefit: "₹50 cashback on ₹10,000 retail spend every statement cycle"
         value_inr: 50
-    other:
-      - name: Railway station lounge access
-        description: 2 complimentary railway station lounge visits per quarter (no airport lounge on this card).
+        reward_kind: cashback
+        trigger_window: rolling
+        is_repeatable: true
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -80,9 +95,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://cardinsider.com/au-bank/altura-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: caps are ₹50/month each (base was wrongly 1.5% unlimited); lounge is railway-station only."
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -94,8 +108,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.aubank.in/personal-banking/credit-cards/altura
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [entry, cashback, rupay]

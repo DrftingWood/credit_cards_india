@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hdfc-regalia
 name: HDFC Bank Regalia Credit Card
 issuer: hdfc
@@ -6,13 +15,13 @@ network_tier: signature
 tier: premium
 card_type: credit
 co_brand: null
-status: on-hold  # withdrawn for new applications; Regalia Gold is the successor (existing holders continue)
+status: active
 launched_on: 2009-01-01
 discontinued_on: null
 
 # NOTE: Regalia Gold (launched 2022) is the evolved variant; the original
-# Regalia is still offered to select segments. Benefits shown reflect the
-# current (post-2024 revision) structure.
+# Regalia is still offered to select segments (live page confirmed 2026-07-03).
+# Benefits shown reflect the current (post-2024 revision) structure.
 
 fees:
   - effective_from: 2009-01-01
@@ -23,14 +32,14 @@ fees:
       spend_inr: 300000
       cycle: annual
     forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2009-01-01
@@ -39,9 +48,20 @@ rewards:
     currency_name: Reward Points
     base:
       rate: 4
-      per_inr: 150
+      per_inr: 200
       unit_value_inr: 0.5
       unit_value_inr_realized: 0.4
+    accelerated:
+      - category: smartbuy-flights-hotels-vouchers
+        canonical_categories: [travel]
+        multiplier: 5
+        effective_rate: 20
+        cap_unit: points
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [smartbuy]
+        notes: "Up to 5X Reward Points on flights, hotel stays and gift vouchers booked via SmartBuy."
     exclusions:
       - fuel
       - wallet-loads
@@ -57,8 +77,8 @@ rewards:
         program: Multiple (Airmiles hub)
         ratio: "1:0.5"
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/regalia
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-10-01
@@ -71,13 +91,13 @@ benefits:
         via: [issuer-direct]
         spend_threshold_inr: 100000
         spend_threshold_cycle: quarterly
-        notes: "2 lounge-access vouchers per quarter (max 8/yr), unlocked by ₹1L spend in the prior calendar quarter (since ~Dec-2023)."
+        notes: "Up to 2 domestic lounge access vouchers per calendar quarter for self and add-on, based on ₹1L spend per calendar quarter."
       international:
         visits_per_cycle: 6
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
-        notes: "Priority Pass issued after 4 card transactions; up to 6 complimentary visits/yr."
+        notes: "Priority Pass for self and add-on issued after using the card at least 4 times; up to 6 complimentary visits/yr, US$27 + GST per visit beyond that."
     milestones:
       - spend_inr: 500000
         cycle: annual
@@ -95,17 +115,20 @@ benefits:
     insurance:
       - type: air-accident
         sum_insured_inr: 10000000
+      - type: travel-medical
+        sum_insured_inr: 1500000
+      - type: credit-shield
+        sum_insured_inr: 900000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 5000
       cap_per_cycle_inr: 500
       cycle: statement
-    concierge: false
+    concierge: true
     source:
-      url: https://www.paisabazaar.com/hdfc-bank/hdfc-bank-regalia-credit-cards/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: card withdrawn for new applications; domestic lounge is voucher-based and spend-gated (₹1L/quarter); intl PP after 4 transactions."
+      url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -117,8 +140,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: null
+  apply_url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [premium, travel, points]

@@ -1,0 +1,129 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: icici-csk
+name: Chennai Super Kings ICICI Bank Credit Card
+issuer: icici
+network: visa
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Chennai Super Kings
+  category: other
+status: on-hold  # crawl: "no longer accepting applications"
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2020-01-01
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    gst_applicable: true
+    notes: "Late payment fee ranges ₹100–₹1,300 depending on outstanding."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2020-01-01
+    effective_until: null
+    currency: points
+    currency_name: ICICI Bank Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
+    accelerated:
+      - category: match-day-spend
+        multiplier: 5
+        effective_rate: 10
+        notes: "10 Reward Points per ₹100 on all retail spends (except fuel) on CSK match days."
+      - category: utility-insurance
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.5
+        effective_rate: 1
+        notes: "1 Reward Point per ₹100 on utility and insurance spends."
+    exclusions:
+      - fuel
+    redemption:
+      - type: voucher
+        program: ICICI Bank Rewards
+        constraints: "Redeemable for health & beauty, travel & luggage, shopping vouchers, home appliances, electronics, fashion & lifestyle."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2020-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [issuer-direct]
+    movies:
+      type: discount
+      partner: BookMyShow
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 100
+      notes: "25% off up to ₹100 on BookMyShow & INOX, twice a month."
+    welcome:
+      - condition: "Pay joining fee and spend ₹5,000 within first 45 days (renewal gift on annual fee payment)"
+        benefit: "2,000 ICICI Bank Reward Points as a joining/renewal gift"
+        value_inr: 500
+        window_days: 45
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: null
+      max_txn_inr: null
+      cap_per_cycle_inr: null
+      cycle: monthly
+      notes: "1% fuel surcharge waiver at all HPCL petrol pumps."
+    concierge: false
+    other:
+      - name: Meet and Greet
+        description: "Exclusive meet and greet session with select CSK players."
+        value_inr: null
+      - name: Autographed merchandise
+        description: "Monthly top spenders receive a marquee player's autographed memorabilia."
+        value_inr: null
+      - name: Complimentary match tickets
+        description: "Complimentary tickets to a CSK home match."
+        value_inr: null
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: null
+  income_inr_annual:
+    salaried: 240000
+    self_employed: 240000
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Salaried: monthly income ₹20,000. Self-employed: annual income ₹2,40,000. No longer accepting new applications."
+
+application:
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, co-brand, cricket, movies, points]

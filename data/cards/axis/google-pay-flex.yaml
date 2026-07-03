@@ -1,0 +1,116 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: axis-google-pay-flex
+name: Google Pay Flex Axis Bank Credit Card
+issuer: axis
+network: rupay
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Google Pay
+  category: other
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.0
+    cash_advance_fee: null
+    gst_applicable: true
+    emi_conversion:
+      interest_pct_annual: null   # portfolio-rate based per T&C; specific rate not published
+      processing_fee_pct: null
+      processing_fee_min_inr: null
+      notes: "Balance-on-EMI feature available after paying Minimum Amount Due; interest rate is the cardholder's portfolio rate."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+    notes: "UPI-first digital credit card available exclusively on the Google Pay app. Nil/Nil joining/annual fee per Axis MITC. Forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). Flexible repayment (full or EMI)."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Stars
+    base:
+      rate: 1
+      per_inr: 500
+      unit_value_inr: 1.0
+    accelerated:
+      - category: 2x-spend-active
+        multiplier: 2
+        effective_rate: 2
+        cap_unit: points
+        cycle: monthly
+        notes: "Accelerated Stars: 2 Stars per cumulative Rs 500 spent (i.e. 2X). Applied in the joining reward cycle, and in subsequent cycles if the account was Spend Active (net spends >= Rs 100) in the previous reward cycle. Applied at account level."
+    exclusions:
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - education
+      - cash-advance
+      - jewellery
+    reward_cap:
+      max_units: 1500
+      cap_unit: points
+      cycle: monthly
+    capping_rules:
+      - "Maximum 1,500 Stars per reward cycle, of which a maximum of 750 Stars are awarded by Axis Bank (remainder via Google Pay 4X/8X promotional campaigns)."
+    redemption:
+      - type: cashback-bank
+        program: Google Pay
+        rate_inr_per_unit: 1.0
+        constraints: "1 Star = Rs 1. Redeem stars instantly on the Google Pay app for cashback while paying."
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Stars-based passthrough program (T&C confirmed). Base 1 Star per Rs 500; standard 2X (2 Stars per Rs 500) for spend-active accounts. 4X/8X are Google Pay promotional campaigns (variable). Fuel is an eligible spend category (earns Stars). Reward cycle 16th-15th."
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "Earn 2 stars on eligible spends of Rs 500 in the first rewards cycle"
+        benefit: "Rs 250 gift card and 250 stars on the Google Pay app (welcome rewards worth Rs 500)"
+        value_inr: 500
+        window_days: null
+    fuel_surcharge_waiver: null   # Not listed in Axis MITC fuel-surcharge-waiver enumeration; fuel spends instead earn Stars
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Welcome reward subject to offers run by Google Pay."
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Criteria indicative. Apply via the 'Money' tab -> 'Flex by Google Pay' section on the Google Pay app."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, points, co-branded, upi]

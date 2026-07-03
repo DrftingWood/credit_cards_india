@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: indusind-platinum
 name: IndusInd Bank Platinum Credit Card
 issuer: indusind
@@ -24,8 +33,8 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card."
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/platinum-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-credit-card.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2015-01-01
@@ -33,23 +42,26 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.35
-      unit_value_inr_realized: 0.3
+      rate: 1.5
+      per_inr: 150
+      unit_value_inr: 0.60
+      unit_value_inr_realized: 0.40
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
+    capping_rules:
+      - "Redemption value (eff 1-Mar-2024): 1 RP = ₹0.60 non-cash (excl airmiles), ₹0.40 cash; cash redemption capped 2,500 RP/calendar month (eff 1-Sep-2024)."
     redemption:
       - type: catalog
         program: IndusMoments
-        rate_inr_per_unit: 0.35
+        rate_inr_per_unit: 0.40
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/platinum-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-credit-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2015-01-01
@@ -63,8 +75,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/platinum-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-credit-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -76,8 +88,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.indusind.com/in/en/personal/cards/credit-card/platinum-credit-card.html
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-credit-card.html
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, entry, points]

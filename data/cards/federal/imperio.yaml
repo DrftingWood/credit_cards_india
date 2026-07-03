@@ -1,0 +1,130 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Federal Bank HTML MITC fee table, /credit-cards-mitc
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: federal-imperio
+name: Federal Bank Imperio Credit Card
+issuer: federal
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2022-03-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-03-01
+    effective_until: null
+    joining_fee_inr: 1500
+    annual_fee_inr: 1500
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.federal.bank.in/visa-imperio-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2022-03-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 4
+      per_inr: 150
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
+    accelerated:
+      - category: healthcare-grocery
+        canonical_categories: [groceries]
+        multiplier: 3
+        effective_rate: 12
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "3x rewards on Health Care & Grocery; 4 RP/₹150 base."
+      - category: dining
+        canonical_categories: [dining]
+        multiplier: 2
+        effective_rate: 8
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "2x rewards on Dining; 1x on other categories (base)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: FedRewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.federal.bank.in/visa-imperio-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2022-03-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+        notes: "2 domestic lounge visits next quarter on ₹40,000 quarterly spend."
+    welcome:
+      - condition: "Spend ₹5,000 within first 30 days"
+        benefit: "Amazon Pay e-Voucher worth ₹400"
+        value_inr: 400
+        window_days: 30
+    milestones:
+      - spend_inr: 50000
+        cycle: quarterly
+        benefit: "Big Basket vouchers on ₹50,000 quarterly spend"
+        value_inr: 500
+        reward_kind: voucher
+        trigger_window: rolling
+        is_repeatable: true
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.federal.bank.in/visa-imperio-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 800000
+    self_employed: 800000
+  credit_score_min: 740
+  residency: resident-indian
+
+application:
+  apply_url: https://www.federal.bank.in/visa-imperio-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, groceries, dining, low-forex, points]

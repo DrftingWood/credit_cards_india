@@ -1,0 +1,123 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: hdfc-swiggy-ornge
+name: Swiggy Ornge HDFC Bank Credit Card
+issuer: hdfc
+network: mastercard
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: Swiggy
+  category: food-delivery
+  partner_website: https://www.swiggy.com
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+      conditions: "Renewal fee waived on spends of Rs 1,50,000+ before renewal date. Excludes Cash on Call, Balance Transfer and Cash Withdrawal."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: cashback
+    currency_name: CashBack
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+      cap_per_cycle: 1000
+      cap_unit: cashback-inr
+      cycle: statement
+    accelerated:
+      - category: swiggy-app
+        canonical_categories: [dining]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: 1500
+        cap_unit: cashback-inr
+        cycle: statement
+        channel:
+          class: food-delivery
+          merchants: [swiggy]
+        notes: "5% CashBack on all eligible Swiggy app spends (Food orders, Instamart, Dineout)."
+      - category: online-mcc
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: 1500
+        cap_unit: cashback-inr
+        cycle: statement
+        mcc_list: ["5137", "5139", "5611", "5621", "5631", "5641", "5651", "5655", "5661", "5691", "5697", "5699", "5948", "5122", "5912", "5975", "8042", "8043", "5192", "5733", "5735", "5941", "5942", "5945", "5995", "7829", "7941", "5977", "7230", "7297", "7298", "4111", "4121", "5511", "5521", "7512", "1731", "5045", "5046", "5065", "5099", "5722", "5732", "5734", "5946", "7372", "7622", "7623", "7629", "7631", "4112", "4131", "4722", "7011"]
+        notes: "5% CashBack on eligible online MCCs (Table 2.1: Apparels, Pharmacies, Pet Stores, Personal Care, Local Cabs (Ola/Zoom/Uber), Electronics (Reliance Retail/Vijay Sales/Croma), Travel (Paytm Travel/EaseMyTrip/Ixigo/Yatra/Ibibo)). Only select merchants mapped under these MCCs qualify."
+    exclusions:
+      - fuel
+      - rent
+      - emi
+      - wallet-loads
+      - jewellery
+      - government
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        constraints: "CashBack credited directly to the card account as statement credit, per the CashBack cycle and applicable terms."
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['5172', '5541', '5542', '5983', '6513', '6540', '5094', '5944', '9211', '9222', '9223', '9311', '9399', '9402', '9405', '9950', '5947', '5816', '8211', '8220', '8241', '8244', '8249', '8299']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "Card activation completed"
+        benefit: "Complimentary Swiggy One membership for 12 months"
+        value_inr: null
+        window_days: null
+    fuel_surcharge_waiver: null
+    concierge: false
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 240000
+    self_employed: 600000
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Salaried: net monthly income > Rs 20,000, age 21-60. Self-employed: annual ITR > Rs 6 lakh, age 21-65."
+
+application:
+  apply_url: https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, swiggy, cashback, mid, food-delivery]

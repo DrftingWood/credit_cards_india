@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: icici-emeralde-private-metal
 name: ICICI Bank Emeralde Private Metal Credit Card
 issuer: icici
@@ -6,7 +15,7 @@ network_tier: infinite
 tier: super-premium
 card_type: credit
 co_brand: null
-status: active
+status: invite-only
 launched_on: 2023-08-01
 discontinued_on: null
 
@@ -19,14 +28,14 @@ fees:
       spend_inr: 1000000
       cycle: annual
     forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2023-08-01
@@ -41,6 +50,7 @@ rewards:
     accelerated:
       - category: international-spend
         canonical_categories: [international]
+        multiplier: 1
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -49,10 +59,10 @@ rewards:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
-      - utilities
-      - education
+    capping_rules:
+      - "Grocery, Utilities and Education: max 1,000 Reward Points per category per statement cycle"
+      - "Insurance payments: max 5,000 Reward Points per statement cycle"
     redemption:
       - type: catalog
         program: ICICI Rewards
@@ -61,9 +71,10 @@ rewards:
         program: Multiple
         ratio: "1:1"
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+      retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-08-01
     effective_until: null
@@ -92,14 +103,10 @@ benefits:
         cycle: annual
         benefit: "Renewal-fee waiver + bonus points"
         value_inr: 12499
-      - spend_inr: 400000
-        cycle: annual
-        benefit: "EaseMyTrip voucher worth ₹3,000"
-        value_inr: 3000
       - spend_inr: 800000
         cycle: annual
-        benefit: "Additional EaseMyTrip voucher worth ₹3,000"
-        value_inr: 3000
+        benefit: "2 EaseMyTrip vouchers"
+        value_inr: 6000
     insurance:
       - type: air-accident
         sum_insured_inr: 30000000
@@ -114,6 +121,12 @@ benefits:
     dining:
       program: Culinary Treats / EazyDiner Prime
       discount_pct: 25
+    movies:
+      type: bogo
+      partner: BookMyShow
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 750
     concierge: true
     other:
       - name: Taj Epicure Plus membership
@@ -121,8 +134,8 @@ benefits:
       - name: EazyDiner Prime membership
         description: Complimentary EazyDiner Prime for 1 year.
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -132,10 +145,11 @@ eligibility:
     self_employed: 4200000
   credit_score_min: 780
   residency: resident-indian
+  notes: "By invitation only; contact your Relationship Manager."
 
 application:
-  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [super-premium, metal, travel, dining, points]

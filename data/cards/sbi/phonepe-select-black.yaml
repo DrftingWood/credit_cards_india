@@ -1,0 +1,126 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-phonepe-select-black
+name: "PhonePe SBI Card SELECT Black"
+issuer: sbi
+network: rupay
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: "PhonePe"
+  category: other
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 1499
+    annual_fee_inr: 1499
+    renewal_fee_inr: 1499
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+      conditions: "Annual fee reversal on spends of Rs. 3 lakh or more in the previous membership year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee: null
+    gst_applicable: true
+    supplementary_card_fee_inr: 0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html
+      retrieved_on: 2026-07-03
+    notes: "Annual Fee Rs. 1,499 + taxes; Renewal Fee Rs. 1,499 + taxes from second year onwards; Add-on card fee Nil. RuPay card usable on UPI."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: phonepe-app-spends
+        canonical_categories: [online]
+        multiplier: 10
+        effective_rate: 10
+        notes: "10 Reward Points per Rs. 100 on eligible PhonePe App spends (up to 10% value back)."
+      - category: online-spends
+        canonical_categories: [online]
+        multiplier: 5
+        effective_rate: 5
+        notes: "5 Reward Points per Rs. 100 on eligible online spends."
+    redemption:
+      - type: voucher
+        rate_inr_per_unit: 1.0
+        constraints: "1 Reward Point = Re. 1. Redeem against a wide array of vouchers."
+      - type: cashback-bank
+        rate_inr_per_unit: 1.0
+        constraints: "Reward Points redeemable for cash."
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html
+      retrieved_on: 2026-07-03
+    notes: "1 Reward Point per Rs. 100 on other spends (base). Eligible-spend exclusions not detailed on crawl."
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        via: [issuer-direct]
+        notes: "4 complimentary domestic lounge visits every year (max. 1 per quarter)."
+    milestones:
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Yatra e-Voucher worth Rs. 5,000 on annual spends of Rs. 5 lakhs."
+        value_inr: 5000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "Card issued"
+        benefit: "PhonePe e-Gift Card worth Rs. 1,500."
+        value_inr: 1500
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    concierge: false
+    other:
+      - name: "Priority Pass Program Membership"
+        description: "Complimentary Priority Pass Program membership worth $99 for the first two years (international lounge program; per-visit charges may apply)."
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 720
+  residency: resident-indian
+  notes: "Eligibility criteria not published on the product page."
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [points, co-brand, mid, lounge, upi]

@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: sbi-aurum
 name: Aurum SBI Card
 issuer: sbi
@@ -20,7 +29,7 @@ fees:
       cycle: annual
       conditions: "Annual fee reversed on ₹12L annual spend."
     forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -121,6 +130,7 @@ rewards:
       retrieved_on: 2026-06-12
       notes: "1-Dec-2024 wave: digital gaming earns nothing, government excluded, utility >₹50k 1% fee."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2021-10-01
     effective_until: null

@@ -1,0 +1,158 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: icici-mmt-platinum
+name: MakeMyTrip ICICI Bank Platinum Credit Card
+issuer: icici
+network: visa
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: MakeMyTrip
+  category: travel-agency
+  partner_website: https://www.makemytrip.com
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "One-time joining fee ₹500; annual fee Nil. Late payment fee ranges from ₹100 to ₹1300. Cash advance 2.5% (min ₹500) and finance charge 3.75%/mo per ICICI MITC."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: cashback
+    currency_name: myCash
+    base:
+      rate: 1
+      per_inr: 200
+      unit_value_inr: 1.0
+    accelerated:
+      - category: makemytrip-hotel-booking
+        canonical_categories: [travel]
+        multiplier: 3
+        effective_rate: 3
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [mmt]
+        notes: "3 myCash per ₹200 on hotel bookings via MakeMyTrip."
+      - category: makemytrip-flight-booking
+        canonical_categories: [travel]
+        multiplier: 2
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [mmt]
+        notes: "2 myCash per ₹200 on flight bookings via MakeMyTrip."
+      - category: international-spends
+        canonical_categories: [international]
+        multiplier: 1.25
+        effective_rate: 1.25
+        cap_per_cycle: "unlimited"
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "₹1.25 myCash per ₹200 on international spends outside MakeMyTrip."
+    exclusions:
+      - fuel
+      - emi
+    redemption:
+      - type: cashback-bank
+        program: MakeMyTrip myCash
+        rate_inr_per_unit: 1.0
+        constraints: "Reward points credited to MakeMyTrip account as myCash; redeemable on MakeMyTrip."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [dreamfolks]
+    milestones:
+      - spend_inr: 50000
+        cycle: annual
+        benefit: "1,000 myCash on ₹50,000 spend on flights/hotels/holidays on MakeMyTrip"
+        reward_kind: cashback
+        reward_units: 1000
+        reward_currency_name: myCash
+        trigger_window: anniversary-year
+      - spend_inr: 250000
+        cycle: annual
+        benefit: "1,000 myCash on total card spends of ₹2.5 lakh"
+        reward_kind: cashback
+        reward_units: 1000
+        reward_currency_name: myCash
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "₹500 myCash + MakeMyTrip holiday voucher worth ₹3,000"
+        value_inr: 3500
+        window_days: 10
+    movies:
+      type: discount
+      partner: BookMyShow / INOX
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 100
+      notes: "25% off up to ₹100 on min two tickets per transaction, up to twice a month."
+    dining:
+      program: Culinary Treats
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+      notes: "1% waiver on fuel transactions of ₹400–₹4,000 at HPCL pumps on ICICI Bank POS machines."
+    other:
+      - name: Railway lounge access
+        description: "4 complimentary railway lounge accesses annually."
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: null
+  income_inr_annual:
+    salaried: 240000
+    self_employed: 20000
+  credit_score_min: 700
+  residency: resident-indian
+  notes: "Salaried: monthly income of ₹20,000. Self-employed: annual income of at least ₹20,000 (per crawl)."
+
+application:
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, travel, mmt, cashback, entry]

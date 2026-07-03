@@ -1,5 +1,14 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: kotak-indigo-xl
-name: IndiGo Kotak XL Credit Card
+name: IndiGo Kotak Premium Credit Card
 issuer: kotak
 network: mastercard
 network_tier: world
@@ -29,8 +38,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.paisabazaar.com/kotak-mahindra-bank/indigo-kotak-xl-credit-card/
-      retrieved_on: 2026-04-22
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html
+      retrieved_on: 2026-07-03
       notes: "Joining + annual fee ₹3,000 per Paisabazaar (2026-04-18 article). Forex markup 2.5% (preferential vs 3.5% on base variant)."
 
 rewards:
@@ -47,6 +56,7 @@ rewards:
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
+        multiplier: 1
         effective_rate: 21
         card_attributable_rate: 5
         card_attributable_per_inr: 100
@@ -62,6 +72,7 @@ rewards:
         notes: "Up to 21 visible BluChips per ₹100 on IndiGo web/app bookings. Decomposes as ~5 card + 4 channel-bonus + 8 BluChip-member + up to 4 tier; only the 5 is card-attributable. Higher visible rate than the base XL variant comes from the elevated card-side bonus, not stacking — the rest is the same programme math."
       - category: dining-entertainment
         canonical_categories: [dining, entertainment]
+        multiplier: 1
         effective_rate: 2
         cap_per_cycle: "unlimited"
         cap_unit: miles
@@ -74,14 +85,15 @@ rewards:
       - government
       - utilities
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: IndiGo flights + 6E Prime add-ons
         rate_inr_per_unit: 1.0
         constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
     source:
-      url: https://cardinsider.com/kotak/indigo-kotak-xl-credit-card/
-      retrieved_on: 2026-04-22
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2025-06-01
@@ -95,8 +107,8 @@ benefits:
         notes: "2 complimentary domestic lounge visits per quarter (8 per year) via Dreamfolks."
     welcome:
       - condition: "Joining fee paid"
-        benefit: "4,000 IndiGo BluChips welcome voucher + 6E Eats voucher — renews annually on fee payment"
-        value_inr: 2000
+        benefit: "2,500 IndiGo BluChips welcome voucher — renews annually on fee payment"
+        value_inr: 2500
         window_days: 90
     milestones:
       - spend_inr: 150000
@@ -130,8 +142,8 @@ benefits:
         description: Baggage assistance services at select airports via IndiGo.
     concierge: false
     source:
-      url: https://www.paisabazaar.com/kotak-mahindra-bank/indigo-kotak-xl-credit-card/
-      retrieved_on: 2026-04-22
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -143,8 +155,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards/indigo-credit-card-xl.html
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card-xl.html
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex]

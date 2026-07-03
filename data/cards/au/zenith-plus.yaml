@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: au-zenith-plus
 name: AU Bank Zenith+ Credit Card
 issuer: au
@@ -25,9 +34,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://cardinsider.com/au-bank/zenith-plus-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: fee ₹4,999 (was wrongly ₹7,999), waiver ₹8L (was ₹18L)."
+      url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2023-06-01
@@ -37,16 +45,17 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
     accelerated:
-      - category: travel-dining-international
-        canonical_categories: [travel, dining, international]
+      - category: dining-travel-international
+        canonical_categories: [dining, travel, international]
+        multiplier: 2
         effective_rate: 2
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "2 RP per ₹100 on travel, dining and international spends."
+        notes: "2 Reward Points per Rs 100 on dining, travel & international; 1 RP per Rs 100 on other spends (base)"
     exclusions:
       - fuel
       - wallet-loads
@@ -54,47 +63,39 @@ rewards:
       - insurance-premiums
       - emi
       - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: AU Rewardz
-        rate_inr_per_unit: 1.0
+        rate_inr_per_unit: 0.25
+      - type: airmiles
+        program: Multiple
+        ratio: "4:1"
     source:
-      url: https://cardinsider.com/au-bank/zenith-plus-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 rewrite: earn is 1 RP/₹100 base + 2/₹100 travel-dining-intl at ~₹1/RP (the 10/20 per ₹100 at ₹0.25 model was wrong); realized 0.9 provisional."
+      url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2023-06-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
         via: [visa, dreamfolks]
       international:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: unlimited
         via: [priority-pass]
     golf:
-      rounds_per_cycle: 2
-      cycle: quarterly
-      lessons_per_cycle: 0
-    milestones:
-      - spend_inr: 75000
-        cycle: monthly
-        benefit: "1,000 bonus Reward Points"
-        value_inr: 1000
-        reward_kind: points
-        reward_units: 1000
-      - spend_inr: 1200000
-        cycle: annual
-        benefit: "Taj Epicure membership"
-        value_inr: 5000
+      rounds_per_cycle: unlimited
+      cycle: monthly
+      lessons_per_cycle: unlimited
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Vouchers worth ₹5,000 (Taj / Michael Kors) or 5,000 Reward Points"
+        benefit: "Taj Epicure Membership + brand voucher worth Rs 5,000 (or 5,000 Reward Points)"
         value_inr: 5000
         window_days: 90
     insurance:
@@ -110,9 +111,8 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://cardinsider.com/au-bank/zenith-plus-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 rewrite: lounge is 16 dom + 16 intl/yr (was wrongly unlimited); golf 2/quarter; welcome ₹5,000 (was ₹20,000); milestones added."
+      url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -124,8 +124,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.aubank.in/personal-banking/credit-cards/zenith-plus
+  apply_url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [super-premium, travel, low-forex, points]

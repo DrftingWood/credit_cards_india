@@ -1,0 +1,372 @@
+{
+  "infinia": {
+    "slug": "infinia-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/infinia-credit-card",
+    "pdfs": [
+      "infinia/Club-Marriott-Membership-T-and-C.pdf",
+      "infinia/Club_Marriott_Membership_T_C.pdf",
+      "infinia/Concierge-T-and-C.pdf",
+      "infinia/Fuel_Transaction.pdf",
+      "infinia/Golf-T-and-C-for-INFINIA-05-08-25.pdf",
+      "infinia/Insurance-Infinia.pdf",
+      "infinia/airport-lounge-access-program-30sep2025.pdf",
+      "infinia/rewards-points-program-terms-and-conditions.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "regalia-gold": {
+    "slug": "regalia-gold-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card",
+    "pdfs": [
+      "regalia-gold/Priority_Pass_Regalia.pdf",
+      "regalia-gold/general-terms-and-conditions.pdf",
+      "regalia-gold/lounge-t-and-cs-and-list-Regalia-Gold.pdf",
+      "regalia-gold/regalia-gold-credit-card-reward-points-t-and-cs.pdf",
+      "regalia-gold/regalia-gold-travel-edge-tnc.pdf",
+      "regalia-gold/redemption-of-milestone-benefits-through-smartbuy.pdf",
+      "regalia-gold/reward-points-redemption-through-smartbuy.pdf",
+      "regalia-gold/rewards-points-program-terms-and-conditions.pdf",
+      "regalia-gold/rewards-points-terms-and-conditions.pdf",
+      "regalia-gold/rg-domestic-lounge-netbanking-process.pdf",
+      "regalia-gold/terms-and-conditions.pdf"
+    ],
+    "shared": [],
+    "note": ""
+  },
+  "regalia": {
+    "slug": "regalia-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/regalia-credit-card",
+    "pdfs": [
+      "regalia/hdfc-ergo-general-insurance-company-limited.pdf",
+      "regalia/rp-regalia.pdf",
+      "regalia/t-c.pdf"
+    ],
+    "shared": [],
+    "note": ""
+  },
+  "diners-black": {
+    "slug": "diners-club-black-metal-edition-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card",
+    "pdfs": [
+      "diners-black/diners-club-golf-t-and-c.pdf",
+      "diners-black/diners-club-metal-tandc.pdf",
+      "diners-black/insurance.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "diners-privilege": {
+    "slug": "diners-privilege-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card",
+    "pdfs": [
+      "diners-privilege/diners-privilege-lounge-tnc.pdf",
+      "diners-privilege/diners-privilege-tnc-2026.pdf",
+      "diners-privilege/diners_privilege_insurance_policy.pdf",
+      "diners-privilege/diners_privilege_tnc.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "diners-rewardz": {
+    "slug": "diners-club-rewardz-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/diners-club-rewardz-credit-card",
+    "pdfs": [
+      "diners-rewardz/terms-and-conditions.pdf"
+    ],
+    "shared": [],
+    "note": ""
+  },
+  "millennia": {
+    "slug": "millennia-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/millennia-credit-card",
+    "pdfs": [
+      "millennia/Terms-and-Conditions-Millennia-Credit-Card.pdf",
+      "millennia/faq-millennia.pdf",
+      "millennia/lounge-voucher-on-millennia-credit-card.pdf",
+      "millennia/millennia-tnc-25th apr'25.pdf",
+      "millennia/quarterly-spends-milestone-program.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "moneyback-plus": {
+    "slug": "moneyback-plus-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card",
+    "pdfs": [
+      "moneyback-plus/14jan-fees-charges.pdf",
+      "moneyback-plus/MBPlus-TnCs.pdf",
+      "moneyback-plus/mbp_faqs.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "freedom": {
+    "slug": "freedom-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/freedom-credit-card",
+    "pdfs": [
+      "freedom/freedom-tncs.pdf",
+      "freedom/part-i-key-fact-statement-cum-most-important-terms-and-conditions-for-credit-cards.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "pixel-play": {
+    "slug": "pixel-play-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card",
+    "pdfs": [
+      "pixel-play/terms-and-conditions-pixel-play-credit-card-15042026.pdf",
+      "pixel-play/FD_CC_Lien_Online.pdf",
+      "pixel-play/mitc-telugu.pdf",
+      "pixel-play/pay-in-parts-terms-and-condition.pdf",
+      "pixel-play/pixel-mitc-1-1-bengali.pdf",
+      "pixel-play/pixel-mitc-1-1-gujarati.pdf",
+      "pixel-play/pixel-mitc-1-1-hindi.pdf",
+      "pixel-play/pixel-mitc-1-1-kannada.pdf",
+      "pixel-play/pixel-mitc-1-1-malayalam.pdf",
+      "pixel-play/pixel-mitc-1-1-manipuri.pdf",
+      "pixel-play/pixel-mitc-1-1-punjabi.pdf",
+      "pixel-play/pixel-mitc-assamese.pdf",
+      "pixel-play/pixel-mitc-kashmiri.pdf",
+      "pixel-play/pixel-mitc-konkani.pdf",
+      "pixel-play/pixel-mitc-marathi.pdf",
+      "pixel-play/pixel-mitc-odia.pdf",
+      "pixel-play/pixel-mitc-tamil.pdf",
+      "pixel-play/pixel-mitc-urdu.pdf",
+      "pixel-play/pixel-play-credit-card-member-agreement.pdf",
+      "pixel-play/pixel-play-credit-card-terms-and-conditions.pdf",
+      "pixel-play/pixel-rupay-credit-card-faqs.pdf",
+      "pixel-play/pixel-rupay-credit-card-faqs1.pdf",
+      "pixel-play/zapp-credit-card-mitc-version-1-05.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "pixel-go": {
+    "slug": "pixel-go-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card",
+    "pdfs": [
+      "pixel-go/pay-in-parts-terms-and-condition.pdf",
+      "pixel-go/pixel-fd-backed-cards-faqs-23-feb-2026.pdf",
+      "pixel-go/pixel-go-credit-card-member-agreement.pdf",
+      "pixel-go/pixel-rupay-credit-card-faqs.pdf",
+      "pixel-go/t-c-pixel-go.pdf",
+      "pixel-go/zapp-credit-card-mitc-version-1-05.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "upi-rupay": {
+    "slug": "hdfc-bank-upi-rupay-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card",
+    "pdfs": [
+      "upi-rupay/Terms-and-Conditions-HDFC-Bank-UPI-RuPay-Credit-Card-27032025.pdf"
+    ],
+    "shared": [],
+    "note": ""
+  },
+  "swiggy-hdfc": {
+    "slug": "swiggy-hdfc-bank-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card",
+    "pdfs": [
+      "swiggy-hdfc/frequently-asked-questions-swiggy-hdfc-bank-credit-card.pdf",
+      "swiggy-hdfc/Frequently-Asked-Questions–Swiggy-HDFC-Bank-Credit-Card.pdf",
+      "swiggy-hdfc/card-member-agreement-swiggy-hdfc-bank-credit-card-1.pdf",
+      "swiggy-hdfc/card-member-agreement-swiggy.pdf",
+      "swiggy-hdfc/faqs-swiggy.pdf",
+      "swiggy-hdfc/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "swiggy-ornge": {
+    "slug": "swiggy-ornge-hdfc-bank-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/swiggy-ornge-hdfc-bank-credit-card",
+    "pdfs": [
+      "swiggy-ornge/1-percent-cashback-details-swiggy-ornge-hdfc-bank-credit-card.pdf",
+      "swiggy-ornge/5-percent-cashback-details-swiggy-ornge-credit-card.pdf",
+      "swiggy-ornge/5-percent-cashback-details-swiggy-ornge-hdfc-bank-credit-card.pdf",
+      "swiggy-ornge/card-member-agreement-swiggy.pdf",
+      "swiggy-ornge/combined-tncs-ornge-and-blck.pdf",
+      "swiggy-ornge/fyf-offer-tncs.pdf",
+      "swiggy-ornge/tncs-swiggy-orange.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "swiggy-blck": {
+    "slug": "swiggy-blck-hdfc-bank-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card",
+    "pdfs": [
+      "swiggy-blck/1-percent-cashback-details-swiggy-blck-hdfc-bank-credit-card.pdf",
+      "swiggy-blck/10-percent-cashback-details.pdf",
+      "swiggy-blck/5-percent-cashback-details-swiggy-black-credit-card.pdf",
+      "swiggy-blck/card-member-agreement-swiggy.pdf",
+      "swiggy-blck/combined-tncs-ornge-and-blck.pdf",
+      "swiggy-blck/t-and-cs-swiggy-black-hdfc-bank-credit-card.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "marriott-bonvoy": {
+    "slug": "marriott-bonvoy-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card",
+    "pdfs": [],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "indianoil": {
+    "slug": "indianoil-hdfc-bank-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
+    "pdfs": [],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "irctc-hdfc": {
+    "slug": "irctc-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/irctc-credit-card",
+    "pdfs": [
+      "irctc-hdfc/Terms-and-Conditionss.pdf",
+      "irctc-hdfc/irctc-tnc-09-10-25.pdf",
+      "irctc-hdfc/lounge.pdf",
+      "irctc-hdfc/terms-and-conditions-irctc-hdfc-bank-credit-card.pdf",
+      "irctc-hdfc/terms-and-conditions.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "tata-neu-infinity": {
+    "slug": "tata-neu-infinity-hdfc-bank-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+    "pdfs": [],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "tata-neu-plus": {
+    "slug": "tata-neu-plus-hdfc-bank-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
+    "pdfs": [
+      "tata-neu-plus/TATA_Neu_List_Brands.pdf",
+      "tata-neu-plus/additional-upi-neucoins-plus-new.pdf",
+      "tata-neu-plus/complimentary-domestic-airport-lounge-access-tata-neu-plus.pdf",
+      "tata-neu-plus/milestone_lounge_tata-neu-cc.pdf",
+      "tata-neu-plus/tata-neu-pass-neucoins-tnc.pdf",
+      "tata-neu-plus/tata_neu_plus_card_faq.pdf",
+      "tata-neu-plus/tata_neu_plus_card_tnc.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "phonepe-uno": {
+    "slug": "phonepe-hdfc-bank-uno-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card",
+    "pdfs": [
+      "phonepe-uno/phonepe-hdfc-bank-uno-cc-faqs.pdf",
+      "phonepe-uno/phonepe-hdfc-bank-uno-cc-reward-points-tncs.pdf",
+      "phonepe-uno/phonepe-hdfc-bank-uno-credit-card-member-agreement.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "phonepe-ultimo": {
+    "slug": "phonepe-hdfc-bank-ultimo-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card",
+    "pdfs": [
+      "phonepe-ultimo/phonepe-hdfc-bank-ultimo-cc-faqs.pdf",
+      "phonepe-ultimo/phonepe-hdfc-bank-ultimo-cc-reward-points-tncs.pdf",
+      "phonepe-ultimo/phonepe-hdfc-bank-ultimo-credit-card-member-agreement.pdf",
+      "phonepe-ultimo/phonepe-ultimo-cc-lounge-access-t-and-cs.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "pine-labs-pro": {
+    "slug": "pine-labs-pro-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card",
+    "pdfs": [
+      "pine-labs-pro/hdfc-ergo-general-insurance.pdf",
+      "pine-labs-pro/key-fact-sheet.pdf",
+      "pine-labs-pro/visa-lounge-program.pdf"
+    ],
+    "shared": [],
+    "note": ""
+  },
+  "shoppers-stop": {
+    "slug": "shoppers-stop-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card",
+    "pdfs": [
+      "shoppers-stop/SS-T-and-C-latest.pdf",
+      "shoppers-stop/card-member-agreement-shoppers-stop.pdf",
+      "shoppers-stop/ss-faqs.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "shoppers-stop-black": {
+    "slug": "shoppers-stop-black-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card",
+    "pdfs": [
+      "shoppers-stop-black/SS-Black-T-and-C-latest.pdf",
+      "shoppers-stop-black/card-member-agreement-shoppers-stop-black.pdf",
+      "shoppers-stop-black/shoppers-stop-black-product-aug-24.pdf",
+      "shoppers-stop-black/ss-faqs.pdf",
+      "shoppers-stop-black/t-and-c-for-shoppers-stop-black.pdf"
+    ],
+    "shared": [
+      "_shared/mitc-in-english.pdf"
+    ],
+    "note": ""
+  },
+  "6e-rewards": {
+    "slug": "6e-rewards-indigo-hdfc-bank-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/6e-rewards-indigo-hdfc-bank-credit-card",
+    "pdfs": [],
+    "shared": [],
+    "note": "page 404 (discontinued/no live page) — no native PDFs"
+  },
+  "6e-rewards-xl": {
+    "slug": "6e-rewards-xl-indigo-hdfc-bank-credit-card",
+    "url": "https://www.hdfc.bank.in/credit-cards/6e-rewards-xl-indigo-hdfc-bank-credit-card",
+    "pdfs": [],
+    "shared": [],
+    "note": "page 404 (discontinued/no live page) — no native PDFs"
+  }
+}

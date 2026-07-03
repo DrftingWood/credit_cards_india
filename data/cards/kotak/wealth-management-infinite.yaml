@@ -1,0 +1,116 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: kotak-wealth-management-infinite
+name: Kotak Infinite Credit Card
+issuer: kotak
+network: visa
+network_tier: infinite
+tier: invite-only
+card_type: credit
+co_brand: null
+status: invite-only
+launched_on: 2018-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2018-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Invite-only card for Kotak Wealth Management / Privy League customers; typically no fee."
+    source:
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/wealth-management-infinite-credit-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2018-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 3
+      per_inr: 100
+      unit_value_inr: 0.10
+      unit_value_inr_realized: 0.10
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513', '5172', '5541', '5542', '5983']
+    capping_rules:
+      - "Reward points on utility spends only up to ₹35,000 per statement cycle."
+    redemption:
+      - type: catalog
+        program: Kotak Rewards
+        rate_inr_per_unit: 0.10
+    source:
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/wealth-management-infinite-credit-card.html
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2018-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+    golf:
+      rounds_per_cycle: 2
+      cycle: monthly
+      lessons_per_cycle: 0
+      notes: "Complimentary tee-offs at select golf courses in India and worldwide (via kotak.golftripz.com)."
+    milestones:
+      - spend_inr: 0
+        cycle: monthly
+        benefit: "800 reward points (worth ₹800) free every month (interim, in lieu of 2 free PVR tickets)"
+        value_inr: 800
+        reward_kind: points
+        reward_units: 800
+        reward_currency_name: Reward Points
+        trigger_window: rolling
+        is_repeatable: true
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 3500
+      cycle: annual
+    concierge: true
+    source:
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/wealth-management-infinite-credit-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 70
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 780
+  residency: resident-indian
+  notes: "Invite-only to Kotak Wealth Management / Privy League banking customers."
+
+application:
+  apply_url: null
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [invite-only, super-premium, points, golf, lounge]

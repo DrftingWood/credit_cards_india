@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: au-lit
 name: AU Bank LIT Credit Card
 issuer: au
@@ -20,7 +29,7 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 3.49
+    forex_markup_pct: 0.99
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
@@ -28,9 +37,8 @@ fees:
     gst_applicable: true
     notes: "LIT base card is lifetime-free; individual features carry per-activation fees billed in-app."
     source:
-      url: https://cardinsider.com/au-bank/au-bank-credit-cards-forex-markup-charges/
-      retrieved_on: 2026-06-12
-      notes: "Forex corrected from an erroneous 0.99% to AU's standard 3.49% markup; cross-checked against Paisabazaar's LIT page."
+      url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-04-01
@@ -43,12 +51,13 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
     accelerated:
-      - category: toggle-5x-merchant-bundle
-        effective_rate: 5
+      - category: toggle-reward-booster
+        multiplier: 10
+        effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "User-activated 5X feature across a curated merchant bundle; activation fee billed separately."
+        notes: "User-activated reward-booster feature: up to 10X Reward Points on online & offline spends; plus 5% and 2% cashback category features. Feature fees Rs 49-199/quarter, billed in-app."
     exclusions:
       - fuel
       - wallet-loads
@@ -56,6 +65,7 @@ rewards:
       - emi
     capping_rules:
       - "Accelerated rates only active when the corresponding LIT feature is toggled on for the cycle."
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: AU Rewardz
@@ -63,13 +73,19 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/lit
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-04-01
     effective_until: null
-    lounge_access: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+        notes: "Base feature; additional visits unlockable via toggleable LIT feature for a fee."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -79,13 +95,12 @@ benefits:
     concierge: false
     other:
       - name: Customisable feature menu
-        description: In-app menu of togglable features (accelerated rewards, lounge access, insurance add-ons, fuel-surcharge boost) activated per statement cycle for a fee.
-      - name: Paid lounge toggle
-        description: Domestic lounge access is a paid toggleable feature (~₹399 per 90 days), not a complimentary benefit.
+        description: In-app menu of togglable features (accelerated rewards, extra lounges, insurance add-ons, fuel-surcharge boost) activated per statement cycle for a fee.
+      - name: Low forex markup
+        description: Sub-1% forex markup is a standout for this tier.
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/lit
-      retrieved_on: 2026-06-12
-      notes: "Lounge moved out of lounge_access — it is a paid add-on, not complimentary (PerkPilot / Paisabazaar, June 2026)."
+      url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -97,8 +112,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.aubank.in/personal-banking/credit-cards/lit
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [lifetime-free, customisable, mid]
+  last_verified_on: 2026-07-03
+  tags: [lifetime-free, customisable, low-forex, mid-tier]

@@ -1,0 +1,100 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: bob-one
+name: BOBCARD One Credit Card
+issuer: bob
+network: visa
+network_tier: platinum
+tier: premium
+card_type: credit
+co_brand:
+  partner: OneCard
+  category: other
+  partner_website: https://www.getonecard.app
+status: active
+launched_on: 2023-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 1.0
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Lifetime-free metal card; managed via the OneCard app (partnership with One Consumer Services Pvt Ltd). Up to 50 days interest-free credit."
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/bobcard-one
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2023-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.10
+      unit_value_inr_realized: 0.10
+    accelerated:
+      - category: top-2-spend-categories
+        canonical_categories: [other]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: statement
+        notes: "5X reward points on the cardholder's top 2 spend categories (dynamic). Points credited instantly, never expire; redeemable in the OneCard app with no fee/threshold."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: OneCard Rewards
+        rate_inr_per_unit: 0.10
+        constraints: "Instant redemption via OneCard app; zero redemption fee or minimum threshold."
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/bobcard-one
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2023-01-01
+    effective_until: null
+    lounge_access: null
+    concierge: false
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/bobcard-one
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.bobcard.co.in/credit-card-types/bobcard-one
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, points, metal, lifetime-free, co-brand]

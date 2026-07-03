@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: indusind-pinnacle
 name: IndusInd Bank Pinnacle World Credit Card
 issuer: indusind
@@ -23,8 +32,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/pinnacle-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2017-01-01
@@ -34,11 +43,12 @@ rewards:
     base:
       rate: 2.5
       per_inr: 100
-      unit_value_inr: 0.35
-      unit_value_inr_realized: 0.3
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
     accelerated:
       - category: travel-dining
         canonical_categories: [dining, travel]
+        multiplier: 2
         effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -49,20 +59,21 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: IndusMoments
-        rate_inr_per_unit: 0.35
+        rate_inr_per_unit: 0.25
       - type: airmiles
         program: Multiple
         ratio: "1:1"
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/pinnacle-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2017-01-01
-    effective_until: 2025-03-12
+    effective_until: null
     lounge_access:
       domestic:
         visits_per_cycle: unlimited
@@ -75,9 +86,9 @@ benefits:
         guests_per_visit: 0
         via: [priority-pass]
     golf:
-      rounds_per_cycle: 2
+      rounds_per_cycle: 1  # reduced to 1 game/month eff. 13-Mar-2025
       cycle: monthly
-      lessons_per_cycle: 2
+      lessons_per_cycle: 1  # reduced to 1 lesson/month eff. 13-Mar-2025
     welcome:
       - condition: "Joining fee paid"
         benefit: "Montblanc pen + 2 Pinnacle moments vouchers"
@@ -96,48 +107,8 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.indusind.com/in/en/personal/cards/credit-card/pinnacle-credit-card.html
-      retrieved_on: 2026-04-15
-      notes: "Historical record; pre-13-Mar-2025 entitlements."
-
-  - effective_from: 2025-03-13
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
-      international:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 1
-      cycle: monthly
-      lessons_per_cycle: 1
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Montblanc pen + 2 Pinnacle moments vouchers"
-        value_inr: 15000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 200000000
-      - type: travel-medical
-        sum_insured_inr: 7500000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://cardinsider.com/blog/indusind-pinnacle-world-credit-card-devaluation/
-      retrieved_on: 2026-06-12
-      notes: "13-Mar-2025: international lounge cut to 1/quarter via Priority Pass; golf halved to 1 game + 1 lesson/month."
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -149,8 +120,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.indusind.com/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [super-premium, travel, points, low-forex]

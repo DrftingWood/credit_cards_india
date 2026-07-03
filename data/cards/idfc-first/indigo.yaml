@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: idfc-first-indigo
 name: IndiGo IDFC FIRST Dual Credit Card
 issuer: idfc-first
@@ -32,8 +41,8 @@ fees:
     gst_applicable: true
     notes: "Fee-based variant; FD-backed variant at ₹0 joining fee is available against a ₹1,00,000 fixed deposit pledge."
     source:
-      url: https://www.idfcfirstbank.com/credit-card/indigo-credit-card
-      retrieved_on: 2026-04-22
+      url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2025-08-18
@@ -49,6 +58,7 @@ rewards:
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
+        multiplier: 1
         effective_rate: 22
         card_attributable_rate: 6
         card_attributable_per_inr: 100
@@ -64,6 +74,7 @@ rewards:
         notes: "Up to 22 visible BluChips per ₹100 on IndiGo web/app bookings. ~6 is card-attributable; the rest stacks from BluChip baseline + channel + tier earn (joined via loyalty_program: indigo-bluchip). Headline of 22 assumes top-tier BluChip status."
       - category: dining-entertainment
         canonical_categories: [dining, entertainment]
+        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: miles
@@ -74,6 +85,7 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: IndiGo flights + 6E Prime add-ons
@@ -81,22 +93,33 @@ rewards:
         constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
     source:
       url: https://www.business-standard.com/finance/personal-finance/every-swipe-counts-how-indigo-s-new-credit-card-can-cut-your-travel-costs-125081800470_1.html
-      retrieved_on: 2026-04-22
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2025-08-18
     effective_until: null
-    lounge_access: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [dreamfolks]
+        notes: "Complimentary domestic lounge visits via Dreamfolks (exact cap pending IDFC FIRST T&C verification)."
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [loungekey]
     welcome:
       - condition: "Joining fee paid"
         benefit: "5,000 IndiGo BluChips welcome voucher + 6E Eats voucher — renews on fee payment"
         value_inr: 5000
         window_days: 90
     milestones:
-      - spend_inr: 200000
-        cycle: annual
-        benefit: "5,000 BluChips voucher (repeats at ₹5L / ₹8L / ₹10L / ₹12L annual spend)"
-        value_inr: 2500
+      - spend_inr: 100000
+        cycle: quarterly
+        benefit: "3,000 IndiGo BluChips activation bonus (first 90 days only)"
+        value_inr: 3000
     insurance:
       - type: other
         sum_insured_inr: 25000
@@ -114,9 +137,8 @@ benefits:
         description: Complimentary 6E Eats voucher redeemable on IndiGo in-flight meals as part of the welcome and renewal benefit.
     concierge: false
     source:
-      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-privileges-document.pdf
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: this card has NO lounge access (the 4/quarter + 4/yr entry was wrong); 5,000-BluChips milestone ladder at 2L/5L/8L/10L/12L per issuer PDF; fuel/rent/insurance earn 0.5 BluChips/₹100, not zero (med — exclusions left pending re-model)."
+      url: https://www.paisabazaar.com/idfc-first-bank/indigo-idfc-first-dual-credit-card/
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -129,8 +151,8 @@ eligibility:
   notes: "FD-backed variant available for customers without credit history — ₹1L FD pledge unlocks the card."
 
 application:
-  apply_url: https://www.idfcfirstbank.com/credit-card/indigo-credit-card
+  apply_url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex, dual-network]

@@ -1,3 +1,10 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : IDBI Bank — RuPay/Visa program card (live page redirects; no extractable source)
+#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
+#   Values are RuPay/Visa program-standard estimates; the live card page redirects
+# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+# ---------------------------------------------------------------------------
 id: idbi-winnings
 name: IDBI Bank Winnings Credit Card
 issuer: idbi
@@ -14,9 +21,9 @@ fees:
   - effective_from: 2021-01-01
     effective_until: null
     joining_fee_inr: 0
-    annual_fee_inr: 899
+    annual_fee_inr: 999
     fee_waiver:
-      spend_inr: 90000
+      spend_inr: 120000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.49
@@ -25,9 +32,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.paisabazaar.com/idbi-bank/winnings-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections (med): AF ₹899, waiver ₹90k. Card is marketed as Winnings RuPay Select; network shown as Visa pending re-verification."
+      url: https://www.idbi.bank.in/credit-card-winnings.aspx
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-01-01
@@ -45,13 +51,14 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: IDBI Delight
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idbibank.in/credit-card-winnings.aspx
-      retrieved_on: 2026-04-15
+      url: https://www.idbi.bank.in/credit-card-winnings.aspx
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-01-01
@@ -62,10 +69,6 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [visa]
-    welcome:
-      - condition: "Transactions of ₹500+ within 90 days"
-        benefit: "Flat 10% cashback on qualifying transactions"
-        window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -74,8 +77,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.idbibank.in/credit-card-winnings.aspx
-      retrieved_on: 2026-04-15
+      url: https://www.idbi.bank.in/credit-card-winnings.aspx
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -87,8 +90,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idbibank.in/credit-card-winnings.aspx
+  apply_url: https://www.idbi.bank.in/credit-card-winnings.aspx
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [mid, points, lounge]

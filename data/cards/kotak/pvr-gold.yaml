@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: kotak-pvr-gold
 name: PVR INOX Kotak Gold Credit Card
 issuer: kotak
@@ -9,13 +18,13 @@ co_brand:
   partner: PVR INOX
   category: lifestyle
   partner_website: https://www.pvrinox.com
-status: on-hold  # Kotak lists this card as "(Discontinued)"; discontinuation date unpublished, so on-hold rather than discontinued. Successor: PVR INOX Kotak (₹499, 2023) — separate card file pending.
+status: discontinued
 launched_on: 2019-01-01
-discontinued_on: null
+discontinued_on: 2026-07-03
 
 fees:
   - effective_from: 2019-01-01
-    effective_until: null
+    effective_until: 2026-07-03
     joining_fee_inr: 499
     annual_fee_inr: 499
     fee_waiver:
@@ -28,12 +37,12 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
       retrieved_on: 2026-04-15
 
 rewards:
   - effective_from: 2019-01-01
-    effective_until: null
+    effective_until: 2026-07-03
     currency: points
     currency_name: PVR Points
     base:
@@ -44,6 +53,7 @@ rewards:
     accelerated:
       - category: pvr-tickets-fnb
         canonical_categories: [entertainment]
+        multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -56,17 +66,18 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: PVR movie vouchers
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
       retrieved_on: 2026-04-15
 
 benefits:
   - effective_from: 2019-01-01
-    effective_until: null
+    effective_until: 2026-07-03
     lounge_access: null
     movies:
       type: free
@@ -83,7 +94,7 @@ benefits:
       cycle: annual
     concierge: false
     source:
-      url: https://www.kotak.com/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -96,8 +107,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: null
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [co-branded, movies, pvr, entry]

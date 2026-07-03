@@ -1,0 +1,135 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: bob-indian-navy-varunah
+name: Indian Navy VARUNAH Premium BOBCARD Credit Card
+issuer: bob
+network: rupay
+network_tier: select
+tier: premium
+card_type: credit
+co_brand:
+  partner: Indian Navy
+  category: other
+status: active
+launched_on: 2022-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-01-01
+    effective_until: null
+    joining_fee_inr: 2499
+    annual_fee_inr: 2499
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+      conditions: "Annual fee reversed on ₹1,50,000 spend per anniversary year. Joining fee reversed on ₹25,000 spend in first 180 days."
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "For Indian Navy personnel. VARUNAH Premium variant."
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2022-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 3
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
+    accelerated:
+      - category: travel-online-dining-international
+        canonical_categories: [travel, online, dining, international]
+        multiplier: 5
+        effective_rate: 15
+        cap_per_cycle: 5000
+        cap_unit: points
+        cycle: statement
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: BOBCARD Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2022-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: "unlimited"
+        cycle: annual
+        guests_per_visit: 0
+        via: [rupay]
+    welcome:
+      - condition: "Spend ₹5,000 or more within 60 days of issuance"
+        benefit: "500 bonus reward points"
+        value_inr: 125
+        window_days: 60
+    milestones:
+      - spend_inr: 100000
+        cycle: annual
+        benefit: "12 months Amazon Prime membership"
+        value_inr: 1499
+        reward_kind: other
+        trigger_window: first-year
+        is_repeatable: false
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 10000000
+        conditions: "Air accidental death cover."
+      - type: personal-accident
+        sum_insured_inr: 1000000
+        conditions: "Non-air (incl. sea) accidental death cover."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    other:
+      - name: Add-on cards
+        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
+    concierge: true
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
+  residency: resident-indian
+  notes: "Designated personnel of the Indian Navy."
+
+application:
+  apply_url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, points, defense, travel, lounge, co-brand]

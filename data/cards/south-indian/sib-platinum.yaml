@@ -1,3 +1,10 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : South Indian Bank — RuPay/Visa program card (live page redirects; no extractable source)
+#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
+#   Values are RuPay/Visa program-standard estimates; the live card page redirects
+# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+# ---------------------------------------------------------------------------
 id: south-indian-sib-platinum
 name: South Indian Bank Platinum Credit Card
 issuer: south-indian
@@ -6,7 +13,7 @@ network_tier: platinum
 tier: mid
 card_type: credit
 co_brand: null
-status: on-hold  # not in SIB's current lineup (only One Card / SIB-SBI co-brands listed); old product URL dead — med confidence, re-verify
+status: active
 launched_on: 2020-01-01
 discontinued_on: null
 
@@ -25,8 +32,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.southindianbank.com/content/credit-cards/platinum
-      retrieved_on: 2026-04-15
+      url: https://www.southindianbank.bank.in/content/credit-cards/platinum
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-01-01
@@ -44,13 +51,14 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: SIB Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.southindianbank.com/content/credit-cards/platinum
-      retrieved_on: 2026-04-15
+      url: https://www.southindianbank.bank.in/content/credit-cards/platinum
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2020-01-01
@@ -69,8 +77,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.southindianbank.com/content/credit-cards/platinum
-      retrieved_on: 2026-04-15
+      url: https://www.southindianbank.bank.in/content/credit-cards/platinum
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -82,8 +90,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: null
+  apply_url: https://www.southindianbank.bank.in/content/credit-cards/platinum
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [mid, points, lounge]

@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: icici-hpcl-super-saver
 name: HPCL Super Saver ICICI Bank Credit Card
 issuer: icici
@@ -28,14 +37,14 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-super-saver
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-01-01
     effective_until: null
     currency: points
-    currency_name: ICICI Bank Reward Points
+    currency_name: ICICI Reward Points
     base:
       rate: 2
       per_inr: 100
@@ -44,19 +53,21 @@ rewards:
     accelerated:
       - category: hpcl-fuel-via-hp-pay
         canonical_categories: [fuel]
+        multiplier: 2
         effective_rate: 4
         cap_per_cycle: 200
         cap_unit: cashback-inr
         cycle: monthly
-        merchants: [hp-pay, hpcl-fuel-stations]
-        notes: "4% cashback on HPCL fuel via HP Pay, capped ₹200/month (+1% surcharge waiver ≈ 5% total)."
-      - category: grocery-utility-departmental
-        canonical_categories: [groceries, utilities]
-        effective_rate: 5
+        merchants: [hpcl-fuel-stations, hp-pay]
+        notes: "4% cashback on fuel purchases at HPCL fuel pumps and the HP Pay app, capped at ₹200/month (no minimum threshold). An additional 1.5% cashback (6 Happy Coins per ₹100) is credited to the HP Pay app wallet on fuel spends made via the HP Pay app."
+      - category: utilities-and-departmental-stores
+        canonical_categories: [groceries, utilities, government]
+        multiplier: 10
+        effective_rate: 20
         cap_per_cycle: 400
         cap_unit: points
-        cycle: monthly
-        notes: "5% as Reward Points on grocery/utility/departmental, capped 400 RP/month (~₹100). Dining is NOT included (earlier data wrongly included it)."
+        cycle: statement
+        notes: "5% back as 20 Reward Points per ₹100 on utilities (groceries, telecom, government, tax) and departmental stores, capped at 400 Reward Points per statement cycle."
     exclusions:
       - wallet-loads
       - rent
@@ -66,29 +77,36 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
       - type: catalog
-        program: ICICI Rewards / PAYBACK
+        program: ICICI Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.paisabazaar.com/icici-bank/hpcl-super-saver-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: fuel is 4% capped ₹200/mo (was 5% capped ₹1,000); grocery/utility 400 RP/mo cap; dining removed."
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-super-saver
+      retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2022-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 4
-        cycle: annual
+        visits_per_cycle: 1
+        cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
         spend_threshold_inr: 75000
         spend_threshold_cycle: quarterly
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "2,000 PAYBACK bonus points"
+      - condition: "Pay joining fee and spend ₹5,000 within 45 days of issuance"
+        benefit: "2,000 ICICI Bank Reward Points"
         value_inr: 500
-        window_days: 90
+        window_days: 45
+    movies:
+      type: discount
+      partner: BookMyShow and INOX
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 100
+      notes: "25% off up to ₹100 on movie tickets, twice a month at BookMyShow and INOX."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -96,22 +114,25 @@ benefits:
       cap_per_cycle_inr: null
       cycle: monthly
     concierge: false
+    other:
+      - name: Roadside Assistance
+        description: 24/7 roadside assistance in case of vehicle breakdown.
     source:
-      url: https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-super-saver
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
+    salaried: 240000
+    self_employed: 240000
   credit_score_min: 720
   residency: resident-indian
 
 application:
-  apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver-credit-card
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-super-saver
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [co-branded, fuel, hpcl, entry, points]

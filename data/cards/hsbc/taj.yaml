@@ -1,0 +1,121 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HSBC live product pages, hsbc.co.in (HTML)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: hsbc-taj
+name: HSBC Taj Credit Card
+issuer: hsbc
+network: mastercard
+network_tier: world-elite
+tier: super-premium
+card_type: credit
+co_brand:
+  partner: Taj (IHCL)
+  category: hotel
+  partner_website: https://www.tajhotels.com
+status: active
+launched_on: 2025-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-01-01
+    effective_until: null
+    joining_fee_inr: 60000
+    annual_fee_inr: 60000
+    fee_waiver: null
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Ultra-premium IHCL co-brand ('The Rarest Key'). Taj InnerCircle Platinum Tier membership. Complimentary breakfast-inclusive nights + Taj Palaces stay on activation + 4 hotel-stay vouchers."
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/taj/
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2025-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 100
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.2
+    accelerated: []
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: HSBC Taj Credit Card Wallet
+        rate_inr_per_unit: 0.2
+    notes: "5 Reward Points per ₹100 on standard purchases; 5 RP = ₹1 in the HSBC Taj Credit Card Wallet balance."
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/taj/
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2025-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 12
+        cycle: annual
+        guests_per_visit: 1
+        via: [mastercard]
+        notes: "Taj Club Lounge access up to 12 times/year for cardholder + guest."
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 1
+        via: [loungekey]
+    welcome:
+      - condition: "Card activation"
+        benefit: "Complimentary 1-night stay at Taj Palaces + extra one-night voucher; Taj InnerCircle Platinum Tier membership"
+        value_inr: 40000
+        window_days: 90
+    dining:
+      program: EazyDiner
+      discount_pct: 25
+      notes: "Dining benefit up to ₹1,500 via EazyDiner; MakeMyTrip benefit up to ₹20,000."
+    other:
+      - name: "IHCL concierge + travel privileges"
+        description: "Dedicated IHCL concierge desk; savings on Emirates flights; complimentary limousine transfers; 4 vouchers for stays at Taj/IHCL hotels."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/taj/
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 4000000
+    self_employed: 4000000
+  credit_score_min: 780
+  residency: resident-indian
+
+application:
+  apply_url: https://www.hsbc.co.in/credit-cards/products/taj/
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [super-premium, co-brand, hotel, lounge, concierge, points]

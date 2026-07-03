@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : RBL central CardsScheduleCharges.pdf + per-card T&C PDFs (docs/sources/rbl/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: rbl-play
 name: Play RBL Bank Credit Card
 issuer: rbl
@@ -16,7 +25,7 @@ fees:
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
-      spend_inr: 150000
+      spend_inr: 100000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
@@ -25,8 +34,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.rblbank.com/category/credit-cards/play-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-07-01
@@ -41,6 +50,7 @@ rewards:
     accelerated:
       - category: ott-gaming-dining-entertainment
         canonical_categories: [dining, entertainment]
+        multiplier: 10
         effective_rate: 10
         cap_per_cycle: 1000
         cap_unit: points
@@ -53,14 +63,13 @@ rewards:
       - rent
       - insurance-premiums
       - emi
-    capping_rules:
-      - "Card is BookMyShow-centric: 2 free BMS tickets per ₹5,000 monthly spend + ₹100/month F&B; the BMS Super Star benefit was devalued in Dec-2024 (med confidence — points model pending re-verification)."
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.4
     source:
-      url: https://www.rblbank.com/category/credit-cards/play-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-07-01
@@ -77,11 +86,6 @@ benefits:
       max_per_cycle: 2
       cycle: monthly
       cap_inr: 150
-    welcome:
-      - condition: "Purchase within 30 days"
-        benefit: "₹500 BookMyShow discount"
-        value_inr: 500
-        window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -90,8 +94,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.rblbank.com/category/credit-cards/play-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -103,8 +107,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.rblbank.com/category/credit-cards/play-credit-card
+  apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [entry, entertainment, ott, gaming, points]

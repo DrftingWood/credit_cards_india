@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hdfc-pixel-play
 name: HDFC Bank Pixel Play Credit Card
 issuer: hdfc
@@ -19,16 +28,15 @@ fees:
       spend_inr: 100000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "RuPay variant supports UPI linkage."
+    notes: "RuPay variant supports UPI linkage. Joining fee of ₹500 is also waived on ₹20,000 spend within 90 days of card issuance (separate from the annual-fee waiver)."
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: renewal waiver is ₹1L/yr (was wrongly ₹2.5L); joining fee waived on ₹20k spend within 90 days."
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2024-03-01
@@ -41,37 +49,56 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: user-chosen-packs
+        multiplier: 1
         effective_rate: 5
         cap_per_cycle: 500
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "5% cashback on 2 self-selected merchant packs (e.g. Swiggy+Zomato, Amazon+Flipkart, travel), capped 500 CashPoints/month."
-      - category: chosen-ecommerce-merchant
-        canonical_categories: [online]
-        effective_rate: 3
+        mcc_list: ["4121", "7512"]
+        notes: "5% cashback on 2 self-selected merchant packs (e.g. Swiggy+Zomato, Amazon+Flipkart, travel). Uber (Travel pack) earns 5% only on travel/commute MCC 4121 & 7512."
+      - category: smartbuy
+        canonical_categories: [travel, online]
+        multiplier: 1
+        effective_rate: 5
         cap_per_cycle: 500
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "3% on ONE self-selected e-commerce merchant (Amazon / Flipkart / PayZapp), capped 500 CashPoints/month."
-      - category: upi-rupay-spend
+        channel:
+          class: issuer-portal
+          merchants: [smartbuy]
+        notes: "5% CashPoints on spends via HDFC SmartBuy."
+      - category: upi
+        multiplier: 1
         effective_rate: 1
         cap_per_cycle: 500
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "1% cashback on UPI spends (RuPay variant), capped 500 CashPoints/month."
+        channel:
+          class: online-any
+          merchants: [any]
+        notes: "1% CashPoints on UPI spends (RuPay variant)."
+      - category: online-other
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 3
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: monthly
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - emi
-      - insurance-premiums
+      - government
+      - cash-advance
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['1361', '5172', '5541', '5542', '5983', '9752', '6513', '6540', '7349', '9211', '9222', '9223', '9311', '9399', '9402', '9405', '9950']
 benefits:
   - effective_from: 2024-03-01
     effective_until: null
@@ -103,5 +130,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [digital-first, rupay, customisable, entry, cashback]

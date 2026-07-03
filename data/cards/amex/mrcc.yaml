@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : American Express live product pages, americanexpress.com/in
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: amex-mrcc
 name: American Express Membership Rewards Credit Card
 issuer: amex
@@ -12,7 +21,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2010-01-01
-    effective_until: 2025-06-30
+    effective_until: null
     joining_fee_inr: 1000
     annual_fee_inr: 4500
     fee_waiver:
@@ -26,25 +35,8 @@ fees:
       min_inr: 250
     gst_applicable: true
     source:
-      url: https://www.americanexpress.com/in/credit-cards/membership-rewards-credit-card/
-      retrieved_on: 2026-04-15
-      notes: "Historical record; spend-based renewal-fee waiver era."
-
-  - effective_from: 2025-07-01
-    effective_until: null
-    joining_fee_inr: 1000
-    annual_fee_inr: 4500
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 3.5
-      min_inr: 250
-    gst_applicable: true
-    source:
-      url: https://www.americanexpress.com/in/credit-cards/
-      retrieved_on: 2026-06-12
-      notes: "Amex India withdrew spend-based renewal-fee waivers programme-wide in mid-2025; effective_from 2025-07-01 is approximate (exact date unpinned — refine on next sweep)."
+      url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2010-01-01
@@ -65,6 +57,7 @@ rewards:
       - utilities
     capping_rules:
       - "Spends on utility bills and insurance earn 0 MR points."
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
@@ -75,22 +68,34 @@ rewards:
         program: Amex gift vouchers
         rate_inr_per_unit: 0.5
     source:
-      url: https://www.americanexpress.com/in/credit-cards/membership-rewards-credit-card/
-      retrieved_on: 2026-04-15
+      url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2010-01-01
     effective_until: null
     lounge_access: null
     milestones:
-      - spend_inr: 100000
-        cycle: annual
-        benefit: "4,000 MR bonus points"
-        value_inr: 1000
-    welcome:
-      - condition: "Spend ₹10,000 within 90 days"
-        benefit: "1,000 Membership Rewards bonus points"
+      - spend_inr: 6000
+        cycle: monthly
+        benefit: "1,000 bonus MR points for 4 transactions of ₹1,500+ in a calendar month"
         value_inr: 250
+        reward_kind: points
+        reward_units: 1000
+        reward_currency_name: Membership Rewards
+        trigger_window: rolling
+        is_repeatable: true
+      - spend_inr: 900000
+        cycle: annual
+        benefit: "Annual spend-milestone vouchers (Taj / Shoppers Stop / Tata Cliq / Tanishq / Amazon / Flipkart etc.), tiered by annual spend up to ₹14,000"
+        value_inr: 14000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: false
+    welcome:
+      - condition: "On joining (fee payment + eligible spend)"
+        benefit: "4,000 bonus Membership Rewards points"
+        value_inr: 1000
         window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
@@ -103,8 +108,8 @@ benefits:
       discount_pct: 15
     concierge: false
     source:
-      url: https://www.americanexpress.com/in/credit-cards/membership-rewards-credit-card/
-      retrieved_on: 2026-04-15
+      url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -117,8 +122,8 @@ eligibility:
   notes: "Amex acceptance in India is narrower than Visa/Mastercard."
 
 application:
-  apply_url: https://www.americanexpress.com/in/credit-cards/membership-rewards-credit-card/
+  apply_url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [entry, points, amex, mr-points]

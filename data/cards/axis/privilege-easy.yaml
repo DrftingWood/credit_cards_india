@@ -1,0 +1,127 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: axis-privilege-easy
+name: Axis Bank Privilege Easy Credit Card
+issuer: axis
+network: mastercard # value chart references lounges affiliated with Mastercard
+network_tier: null
+tier: mid
+card_type: secured
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 1500 # Privilege welcome T&C (in easy folder) references ₹1,500 + GST joining fee
+    annual_fee_inr: 1500
+    fee_waiver:
+      spend_inr: 500000
+      cycle: annual
+      conditions: "Annual fee of ₹1,500 reversed on spends of ₹5 lakh in the previous card anniversary year."
+    forex_markup_pct: 3.5 # MITC: 3.50% for all other cards
+    finance_charge_monthly_pct: 3.4 # MITC finance charge, secured cards incl. Privilege Easy (49.36% p.a.)
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card
+      retrieved_on: 2026-07-03
+    notes: "Fixed Deposit backed secured credit card with guaranteed approval. Ideal for first-time credit card users."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 10
+      per_inr: 200
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - utilities
+      - jewellery
+      - education
+    redemption:
+      - type: catalog
+        program: EDGE Rewards
+        rate_inr_per_unit: 0.2
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [mastercard, dreamfolks]
+        notes: "2 complimentary visits per calendar quarter to select domestic airport lounges."
+    welcome:
+      - condition: "On levy of joining fee and completion of 1st transaction within 30 days of card issuance"
+        benefit: "12,500 EDGE REWARD Points (worth ₹2,500, redeemable against vouchers)"
+        value_inr: 2500
+        window_days: 30
+    milestones:
+      - spend_inr: 250000
+        cycle: annual
+        benefit: "10,000 EDGE REWARD Points (worth ₹2,000)"
+        value_inr: 2000
+        reward_kind: points
+        reward_units: 10000
+        reward_currency_name: EDGE Reward Points
+        trigger_window: anniversary-year
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: statement
+      notes: "1% fuel surcharge waiver on fuel spends across India (₹400–₹4,000); max ₹400 per statement cycle (MITC). GST on surcharge non-refundable. No reward points earned on fuel transactions."
+    movies:
+      type: bogo
+      max_per_cycle: null
+      cycle: monthly
+      cap_inr: null
+      notes: "Buy one get one offer on movie tickets."
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Fixed Deposit backed (secured). Minimum FD ₹65,000, maximum ₹25,00,000. Guaranteed approval. Not issued against Tax Saver FDs, Flexi/auto-sweep FDs, or FDs of HUFs/societies/trusts/companies. Minors not eligible."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, points, secured, travel]

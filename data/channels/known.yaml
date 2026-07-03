@@ -29,6 +29,8 @@ cobrand-merchant:
   - adani-one
   - swiggy-one
   - vistara-direct
+  - snapdeal
+  - uni-store
 
 third-party-ota:
   - mmt

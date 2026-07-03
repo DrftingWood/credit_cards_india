@@ -1,11 +1,11 @@
 id: bob
 name: Bank of Baroda
 short_name: BoB
-legal_name: BOB Financial Solutions Limited
-website: https://www.bobfinancial.com
+legal_name: BOBCARD Limited
+website: https://www.bobcard.co.in
 customer_care:
   phone: "1800-103-1006"
 type: nbfc
 logo_path: "/logos/issuers/bob.svg"
 brand_color: "#F15A29"
-notes: Cards issued by BOB Financial Solutions, a wholly-owned subsidiary of Bank of Baroda.
+notes: Cards issued by BOBCARD Limited (formerly BOB Financial Solutions Limited), a wholly-owned subsidiary of Bank of Baroda. Rebranded 2024; the old bobfinancial.com domain is retired in favour of bobcard.co.in.

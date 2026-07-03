@@ -232,8 +232,17 @@ export interface RewardRecord {
      * Conservative realized INR value of one unit. Calculator math prefers this when present.
      */
     unit_value_inr_realized?: number | null;
+    /**
+     * Ceiling on units earned at the base rate per cycle (e.g. Swiggy 1% capped at 1000 cashback-inr/statement). Distinct from accelerator caps and the card-wide reward_cap.
+     */
+    cap_per_cycle?: number | "unlimited";
+    cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
+    cycle?: Cycle;
   };
   accelerated?: (
+    | {
+        [k: string]: unknown;
+      }
     | {
         [k: string]: unknown;
       }
@@ -261,7 +270,19 @@ export interface RewardRecord {
     | "other"
   )[];
   /**
-   * Freeform caps not modellable above (e.g. monthly combined cap).
+   * Specific 4-digit MCCs that earn ZERO rewards on this card (from the card's T&C). Machine-readable complement to the category-level `exclusions`; the calculator scores spend on these MCCs at 0.
+   */
+  mcc_exclusions?: string[];
+  /**
+   * Card-wide ceiling on reward units earned per cycle across ALL categories (e.g. 50,000 points per statement cycle). Distinct from per-accelerator caps and base.cap_per_cycle.
+   */
+  reward_cap?: null | {
+    max_units: number;
+    cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
+    cycle: Cycle;
+  };
+  /**
+   * Freeform caps that genuinely cannot be modelled by mcc_exclusions / reward_cap / base.cap_per_cycle / accelerated caps (e.g. per-MCC-scoped caps, minimum-transaction thresholds).
    */
   capping_rules?: string[];
   /**
@@ -429,7 +450,7 @@ export interface Eligibility {
 export interface Metadata {
   last_verified_on: string;
   /**
-   * Date of the last bulk/automated freshness sweep. Distinct from last_verified_on, which may only move when a human/agent actually compared the record's fields against the cited sources.
+   * Date of the last bulk/automated freshness sweep. Distinct from last_verified_on, which should only move when the record's fields are actually compared against cited sources.
    */
   last_swept_on?: string | null;
   tags?: string[];

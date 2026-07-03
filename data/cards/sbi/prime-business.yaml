@@ -1,0 +1,142 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-prime-business
+name: SBI Card PRIME Business
+issuer: sbi
+network: visa
+network_tier: null
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 2999
+    annual_fee_inr: 2999
+    renewal_fee_inr: 2999
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
+      retrieved_on: 2026-07-03
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: dining-grocery-departmental-movies
+        canonical_categories: [groceries, dining, entertainment]
+        multiplier: 1
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "10 Reward Points per Rs. 100 on Dining, Groceries, Departmental Stores and Movies."
+      - category: birthday-spend
+        multiplier: 1
+        effective_rate: 20
+        cap_per_cycle: 2000
+        cap_unit: points
+        cycle: annual
+        notes: "20x points on the birthday day, capped 2,000 points."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
+      retrieved_on: 2026-07-03
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa, mastercard, dreamfolks]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    milestones:
+      - spend_inr: 50000
+        cycle: quarterly
+        benefit: "Pizza Hut voucher worth Rs. 1,000"
+        value_inr: 1000
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Yatra / Pantaloons e-voucher worth Rs. 7,000"
+        value_inr: 7000
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Welcome e-Gift voucher worth Rs. 3,000"
+        value_inr: 3000
+        window_days: 90
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: true
+    other:
+      - name: Club ITC Silver tier membership
+        description: Complimentary 1-year Club ITC Silver Tier Membership.
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
+      retrieved_on: 2026-07-03
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, points, everyday-spend, business]

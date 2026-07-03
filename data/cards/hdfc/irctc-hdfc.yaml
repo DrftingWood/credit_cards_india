@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hdfc-irctc-hdfc
 name: IRCTC HDFC Bank Credit Card
 issuer: hdfc
@@ -22,14 +31,14 @@ fees:
       spend_inr: 150000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/irctc-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-08-01
@@ -41,15 +50,16 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.95
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
+        multiplier: 1
         effective_rate: 5
         card_attributable_rate: 5
         card_attributable_per_inr: 100
         stacks_with_program: false
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 1000
         cap_unit: points
         cycle: monthly
         merchants: [irctc]
@@ -57,12 +67,9 @@ rewards:
           required: true
           class: cobrand-merchant
           merchants: [irctc-direct]
-      - category: groceries-departmental
-        canonical_categories: [groceries]
-        effective_rate: 3
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
+        notes: "IRCTC rail accelerator capped at 1,000 Reward Points per month (12,000 per year)."
+    capping_rules:
+      - "Grocery/departmental spends earn base 1× only (no 3× accelerator), subject to a monthly cap."
     exclusions:
       - fuel
       - wallet-loads
@@ -75,8 +82,9 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/irctc-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['5816', '6540']
 benefits:
   - effective_from: 2022-08-01
     effective_until: null
@@ -89,7 +97,7 @@ benefits:
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
-      max_txn_inr: 4000
+      max_txn_inr: 5000
       cap_per_cycle_inr: 250
       cycle: statement
     other:
@@ -98,7 +106,7 @@ benefits:
     concierge: false
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/irctc-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -113,6 +121,5 @@ application:
   apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/irctc-hdfc-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
-  last_swept_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [co-branded, railway, irctc, rupay, entry]

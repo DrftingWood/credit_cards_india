@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Federal Bank HTML MITC fee table, /credit-cards-mitc
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: federal-signet
 name: Federal Bank Signet Credit Card
 issuer: federal
@@ -13,21 +22,20 @@ discontinued_on: null
 fees:
   - effective_from: 2022-03-01
     effective_until: null
-    joining_fee_inr: 999
-    annual_fee_inr: 999
+    joining_fee_inr: 750
+    annual_fee_inr: 750
     fee_waiver:
       spend_inr: 200000
       cycle: annual
-    forex_markup_pct: 1.5
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
       min_inr: 300
     gst_applicable: true
-    notes: "Currently issued with zero joining/annual fee (limited-period, med confidence); fees shown apply outside the offer."
     source:
-      url: https://www.federalbank.co.in/signet
-      retrieved_on: 2026-04-15
+      url: https://www.federal.bank.in/visa-signet-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-03-01
@@ -40,15 +48,9 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
     accelerated:
-      - category: electronics-apparel
-        canonical_categories: [online]
-        effective_rate: 9
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "3x (9/₹150) on electronics & apparel; 2x (6/₹150) entertainment; 1x others. The earlier international accelerator was wrong (med confidence)."
-      - category: entertainment
-        canonical_categories: [entertainment]
+      - category: international-spend
+        canonical_categories: [international]
+        multiplier: 2
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -59,23 +61,37 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: FedRewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.federalbank.co.in/signet
-      retrieved_on: 2026-04-15
+      url: https://www.federal.bank.in/visa-signet-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-03-01
-    effective_until: 2024-12-31
+    effective_until: null
     lounge_access:
       domestic:
         visits_per_cycle: 4
         cycle: annual
         guests_per_visit: 0
         via: [visa]
+    welcome:
+      - condition: "Spend ₹3,000 within first 30 days"
+        benefit: "Amazon Pay e-Voucher worth ₹200"
+        value_inr: 200
+        window_days: 30
+    milestones:
+      - spend_inr: 20000
+        cycle: quarterly
+        benefit: "Vouchers on quarterly spend of ₹20,000"
+        value_inr: 250
+        reward_kind: voucher
+        trigger_window: rolling
+        is_repeatable: true
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -84,31 +100,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.federalbank.co.in/signet
-      retrieved_on: 2026-04-15
-      notes: "Historical record; 4 unconditional visits/yr era."
-
-  - effective_from: 2025-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        spend_threshold_inr: 20000
-        spend_threshold_cycle: quarterly
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.paisabazaar.com/federal-bank/federal-bank-visa-signet-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2025 revision: 1 domestic visit/quarter gated on ₹20k prior-quarter spend (exact date unpinned; 1-Jan-2025 boundary approximate). Welcome ₹200 voucher on ₹3k/30d (med, not modelled)."
+      url: https://www.federal.bank.in/visa-signet-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -120,8 +113,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.federalbank.co.in/signet
+  apply_url: https://www.federal.bank.in/visa-signet-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [mid, low-forex, points]

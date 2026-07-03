@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: hdfc-moneyback-plus
 name: HDFC Bank MoneyBack+ Credit Card
 issuer: hdfc
@@ -19,14 +28,14 @@ fees:
       spend_inr: 50000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-07-01
@@ -35,24 +44,19 @@ rewards:
     currency_name: CashPoints
     base:
       rate: 2
-      per_inr: 150
+      per_inr: 200
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.2
     accelerated:
       - category: online-partner-merchants
         canonical_categories: [online]
-        effective_rate: 10
+        multiplier: 5
+        effective_rate: 20
         cap_per_cycle: 2500
         cap_unit: points
         cycle: monthly
-        merchants: [amazon, flipkart, swiggy, reliance-smart-superstore, bigbasket]
-        notes: "10 CashPoints per ₹150 on partner merchants."
-      - category: emi-spends
-        effective_rate: 5
-        cap_per_cycle: 2500
-        cap_unit: points
-        cycle: monthly
-        notes: "5X CashPoints on EMI spends (shared 2,500 CP/month cap with the partner-merchant accelerator)."
+        merchants: [amazon, bigbasket, flipkart, swiggy, reliance-smart-superstore]
+        notes: "10X CashPoints (20 CashPoints per ₹200) on Amazon, BigBasket, Flipkart, Reliance Smart SuperStore & Swiggy, capped at 2,500 CashPoints/month."
     exclusions:
       - fuel
       - wallet-loads
@@ -60,17 +64,15 @@ rewards:
       - government
       - utilities
       - insurance-premiums
-    capping_rules:
-      - "Grocery spends earn capped at 1,000 CashPoints per month."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
-        min_units: 500
+        min_units: 2000
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: EMI accelerator is 5X (was wrongly 10X); BigBasket added to partner merchants; grocery earn capped 1,000 CP/month."
+      url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
+      retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
 benefits:
   - effective_from: 2020-07-01
     effective_until: null
@@ -80,6 +82,13 @@ benefits:
         cycle: quarterly
         benefit: "₹500 gift voucher"
         value_inr: 500
+    welcome:
+      - condition: "Joining membership fee paid"
+        benefit: "500 CashPoints"
+        value_inr: 125
+      - condition: "Renewal membership fee paid"
+        benefit: "500 CashPoints"
+        value_inr: 125
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -88,8 +97,8 @@ benefits:
       cycle: statement
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
-      retrieved_on: 2026-04-15
+      url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -101,8 +110,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/money-back-plus
+  apply_url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [entry, points, online-spend]

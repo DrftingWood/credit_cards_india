@@ -1,0 +1,108 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : RBL central CardsScheduleCharges.pdf + per-card T&C PDFs (docs/sources/rbl/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: rbl-cookies
+name: RBL Bank Cookies Credit Card
+issuer: rbl
+network: mastercard
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
+    accelerated:
+      - category: online-spend
+        canonical_categories: [online]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "Unlimited 5X reward points on online purchases."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    capping_rules:
+      - "10% cashback on select 'favourite' brands (eat/ride/shop/watch), capped ₹300 per brand per month; vouchers up to ₹7,000/year."
+    redemption:
+      - type: catalog
+        program: RBL Rewards
+        rate_inr_per_unit: 0.25
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access: null
+    other:
+      - name: 10% brand cashback
+        description: "10% cashback on favourite brands across eat / ride / shop / watch, up to ₹300 per brand per month (vouchers up to ₹7,000/year)."
+        value_inr: 7000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 500
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, points, online, cashback, lifestyle]

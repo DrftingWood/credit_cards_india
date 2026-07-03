@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : American Express live product pages, americanexpress.com/in
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: amex-platinum-reserve
 name: American Express Platinum Reserve Credit Card
 issuer: amex
@@ -24,8 +33,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: annual fee ₹10,000 (was ₹5,000); 100% renewal waiver on ₹10L (med — not modelled as fee_waiver pending confirmation)."
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2005-01-01
@@ -44,6 +52,7 @@ rewards:
       - emi
       - cash-advance
       - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
@@ -55,19 +64,19 @@ rewards:
         rate_inr_per_unit: 0.5
     source:
       url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2005-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 3
-        cycle: quarterly
+        visits_per_cycle: 8
+        cycle: annual
         guests_per_visit: 0
         via: [dreamfolks]
       international:
-        visits_per_cycle: 2
+        visits_per_cycle: 0
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
@@ -79,12 +88,15 @@ benefits:
     milestones:
       - spend_inr: 50000
         cycle: monthly
-        benefit: "Voucher worth ₹1,000 per ₹50k calendar-month spend + Accor ALL+ Explorer membership"
-        value_inr: 10000
+        benefit: "Movie or online-shopping vouchers worth ₹12,000/year on spending ₹50,000 every month"
+        value_inr: 12000
+        reward_kind: voucher
+        trigger_window: rolling
+        is_repeatable: true
     welcome:
-      - condition: "Spend ₹75,000 within 90 days"
-        benefit: "11,000 Membership Rewards points on ₹30,000 spend within 90 days (first year, fee paid)"
-        value_inr: 11000
+      - condition: "Spend ₹30,000 within 90 days (1st year, on fee payment)"
+        benefit: "11,000 bonus Membership Rewards points"
+        value_inr: 4400
         window_days: 90
     insurance:
       - type: air-accident
@@ -102,20 +114,22 @@ benefits:
       discount_pct: 25
     concierge: true
     other:
+      - name: Accor Plus Explorer membership
+        description: Complimentary ALL Accor Plus Explorer membership.
       - name: Taj Epicure Plus membership
         description: Complimentary Taj Epicure Plus enrolment.
       - name: EazyDiner Prime membership
         description: Complimentary EazyDiner Prime membership for 1 year.
     source:
       url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 1500000
-    self_employed: 1500000
+    salaried: 600000  # Amex-stated minimum; realistic underwriting is higher
+    self_employed: 600000
   credit_score_min: 750
   residency: resident-indian
   notes: "Amex acceptance in India is narrower than Visa/Mastercard."
@@ -124,5 +138,5 @@ application:
   apply_url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [super-premium, dining, amex, points]

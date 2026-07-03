@@ -1,0 +1,131 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: axis-indianoil
+name: IndianOil Axis Bank Credit Card
+issuer: axis
+network: rupay
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: IndianOil
+  category: fuel
+  partner_website: https://www.iocl.com
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-06-20
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2025-06-20
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.2
+    accelerated:
+      - category: indianoil-fuel
+        canonical_categories: [fuel]
+        multiplier: 1
+        effective_rate: 20
+        cap_per_cycle: unlimited
+        cap_unit: points
+        cycle: monthly
+        merchants: [iocl]
+        notes: "4% value back on fuel at any IOCL outlet in India (20 EDGE Reward Points per ₹100)."
+      - category: online-shopping
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: unlimited
+        cap_unit: points
+        cycle: monthly
+        notes: "1% value back on online shopping (5 EDGE Reward Points per ₹100)."
+    exclusions:
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+      - utilities
+      - education
+      - government
+      - jewellery
+      - cash-advance
+    redemption:
+      - type: voucher
+        program: IndianOil XtraRewards
+        rate_inr_per_unit: 0.2
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2025-06-20
+    effective_until: null
+    lounge_access: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: monthly
+    movies:
+      type: discount
+      partner: BookMyShow
+      cap_inr: null
+      notes: "Up to 10% instant discount on movie tickets booked via BookMyShow app or website."
+    welcome:
+      - condition: "First fuel transaction within 30 days of card issuance."
+        benefit: "Up to 1,250 EDGE Reward Points (100% valueback on fuel)."
+        value_inr: 250
+        window_days: 30
+    other:
+      - name: Travel savings
+        description: "Instant savings of up to 15% on flights and hotels."
+    concierge: false
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: either
+  notes: "Primary cardholder 18-70 years; add-on cardholder over 15 years. Resident of India or NRI."
+
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, fuel, indianoil, rupay, upi, entry]

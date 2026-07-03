@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: idfc-first-first-private
 name: IDFC FIRST Private Credit Card
 issuer: idfc-first
@@ -13,19 +22,19 @@ discontinued_on: null
 fees:
   - effective_from: 2022-10-01
     effective_until: null
-    joining_fee_inr: 50000
-    annual_fee_inr: 50000
+    joining_fee_inr: 0
+    annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 0.0
+    forex_markup_pct: 1.5
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "₹50,000 + GST; offered lifetime-free as an invite to ~₹1Cr total-relationship-value clients (the usual route). 0% interest on international cash withdrawals."
+    notes: "Lifetime-free (invite-only)."
     source:
-      url: https://www.idfcfirstbank.com/credit-card/first-private
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/first-private
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-10-01
@@ -38,33 +47,35 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
     accelerated:
-      - category: online-spend-above-20k
-        canonical_categories: [online]
+      - category: incremental-monthly-above-20k
+        canonical_categories: [other]
+        multiplier: 3.33
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-      - category: incremental-above-30k
-        effective_rate: 10
+        notes: "10X (10 RP per ₹150) on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000."
+      - category: utility-insurance-railway-fastag
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.33
+        effective_rate: 1
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "Reduced 1X (1 RP per ₹150) on utility bill payments, insurance premiums, railway spends and FASTag recharges."
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
-      - utilities
-    capping_rules:
-      - "Revamped Jun-2025: up to 10 RP/₹100 with 1 RP = ₹1 on the Travel & Shop portal (med confidence — earn tiers pending re-verification; base shown predates the revamp)."
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: IDFC FIRST Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirstbank.com/credit-card/first-private
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/first-private
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-10-01
@@ -89,10 +100,6 @@ benefits:
         sum_insured_inr: 50000000
       - type: travel-medical
         sum_insured_inr: 10000000
-    welcome:
-      - condition: "Card issuance"
-        benefit: "1,00,000 Reward Points + Club ITC Culinaire Select + Accor Plus Explorer memberships"
-        window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 200
@@ -101,8 +108,8 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.idfcfirstbank.com/credit-card/first-private
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/first-private
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -118,5 +125,5 @@ application:
   apply_url: null
 
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [invite-only, super-premium, points]
+  last_verified_on: 2026-07-03
+  tags: [invite-only, super-premium, lifetime-free, points]

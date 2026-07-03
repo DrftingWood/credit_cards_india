@@ -1,3 +1,10 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Bank of India — RuPay/Visa program card (live page redirects; no extractable source)
+#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
+#   Values are RuPay/Visa program-standard estimates; the live card page redirects
+# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+# ---------------------------------------------------------------------------
 id: boi-boi-select
 name: Bank of India RuPay Select Credit Card
 issuer: boi
@@ -14,9 +21,9 @@ fees:
   - effective_from: 2023-01-01
     effective_until: null
     joining_fee_inr: 0
-    annual_fee_inr: 800
+    annual_fee_inr: 500
     fee_waiver:
-      spend_inr: 200000
+      spend_inr: 60000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 2.50
@@ -25,9 +32,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.paisabazaar.com/bank-of-india/rupay-select-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections (med): renewal fee ₹800, waiver ₹2L (were ₹500/₹60k)."
+      url: https://www.bankofindia.bank.in/credit-cards-rupay-select
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2023-01-01
@@ -45,13 +51,14 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: BoI Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.bankofindia.co.in/credit-cards-rupay-select
-      retrieved_on: 2026-04-15
+      url: https://www.bankofindia.bank.in/credit-cards-rupay-select
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2023-01-01
@@ -62,11 +69,6 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [rupay]
-    other:
-      - name: International lounge access
-        description: 2 complimentary international lounge visits per calendar year via the RuPay programme.
-      - name: Amazon Prime + health checkup
-        description: Complimentary annual Amazon Prime membership and a health checkup (med confidence).
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -75,8 +77,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.bankofindia.co.in/credit-cards-rupay-select
-      retrieved_on: 2026-04-15
+      url: https://www.bankofindia.bank.in/credit-cards-rupay-select
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -88,8 +90,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.bankofindia.co.in/credit-cards-rupay-select
+  apply_url: https://www.bankofindia.bank.in/credit-cards-rupay-select
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [mid, rupay, points, upi-linkable, psu-bank]

@@ -1,0 +1,144 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: icici-emirates-rubyx
+name: Emirates Skywards ICICI Bank Rubyx Credit Card
+issuer: icici
+network: visa
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: Emirates Skywards
+  category: airline
+status: active
+launched_on: null
+discontinued_on: null
+
+# NOTE: Live page states "We are currently not accepting applications for
+# Emirates Rubyx Credit card." Card page remains published; status kept active.
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 1000
+    annual_fee_inr: 1000
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    late_payment_slabs:
+      - up_to_inr: 100
+        fee_inr: 0
+      - up_to_inr: 500
+        fee_inr: 100
+      - up_to_inr: 1000
+        fee_inr: 500
+      - up_to_inr: 5000
+        fee_inr: 600
+      - up_to_inr: 10000
+        fee_inr: 750
+      - up_to_inr: 25000
+        fee_inr: 900
+      - up_to_inr: 50000
+        fee_inr: 1100
+      - up_to_inr: any
+        fee_inr: 1300
+    overlimit_fee:
+      pct: 2.5
+      min_inr: 550
+    gst_applicable: true
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-rubyx
+      retrieved_on: 2026-07-03
+    notes: "Forex markup 3.5%; cash advance 2.5% (min ₹500); over-limit 2.5% (min ₹550). Late payment fee ₹100 to ₹1,300 by slab. Revolve and cash advances charged 3.75% interest per month. Per ICICI MITC (mitc_cc.txt)."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: miles
+    currency_name: Skywards Miles
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
+    exclusions:
+      - fuel
+      - cash-advance
+      - emi
+      - wallet-loads
+      - rent
+      - government
+      - utilities
+      - insurance-premiums
+      - education
+    redemption:
+      - type: airmiles
+        program: Emirates Skywards
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-rubyx
+      retrieved_on: 2026-07-03
+    notes: "Earn 1 Skywards Mile per ₹100 on both domestic and international spend; miles credited to Emirates Skywards account at end of billing cycle."
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        spend_threshold_inr: 75000
+        spend_threshold_cycle: quarterly
+        cycle: quarterly
+        guests_per_visit: 0
+        notes: "Domestic lounge access on a minimum spend of ₹75,000 in the previous quarter."
+    movies:
+      type: discount
+      partner: BookMyShow / INOX
+      max_per_cycle: 4
+      cycle: monthly
+      cap_inr: 100
+      notes: "25% off up to ₹100 on movie tickets, twice a month each on BookMyShow and INOX."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Emirates Skywards Blue Tier Membership (retained while the card is active on payment of the annual fee)"
+        value_inr: null
+        window_days: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: null
+      cycle: monthly
+    other:
+      - name: "Emirates flight discount"
+        description: "Up to 10% discount on Emirates flight bookings via Emirates.com using promo code INICI26"
+        value_inr: null
+    source:
+      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-rubyx
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: null
+  income_inr_annual:
+    salaried: 900000
+    self_employed: 900000
+  credit_score_min: 720
+  residency: resident-indian
+  notes: "Indian citizen over 21. Salaried minimum monthly income ₹75,000; self-employed minimum annual income ₹9,00,000."
+
+application:
+  apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-rubyx
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, airline, co-brand, miles, lounge, travel]

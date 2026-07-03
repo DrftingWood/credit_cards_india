@@ -1,0 +1,145 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-pulse-sprint
+name: SBI Card PULSE Sprint
+issuer: sbi
+network: visa
+network_tier: null
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 1499
+    annual_fee_inr: 1499
+    renewal_fee_inr: 1499
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+      conditions: "Renewal fee reversed if annual spends for last year >= Rs. 2,00,000."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
+      retrieved_on: 2026-07-03
+      notes: "Crawl reflects parent SBI Card PULSE; Sprint variant values mirrored."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: chemist-pharmacy-sports-dining-movies
+        canonical_categories: [dining, entertainment]
+        multiplier: 1
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "10 Reward Points per Rs. 100 on Chemist, Pharmacy, Sports, Dining and Movies."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+        constraints: "4 Reward Points = Rs. 1."
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
+      retrieved_on: 2026-07-03
+      notes: "Crawl reflects parent SBI Card PULSE."
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+        notes: "Restricted to 1 per quarter. Complimentary Priority Pass membership (US $99, first 2 years) — international visits not complimentary."
+    welcome:
+      - condition: "Joining fee paid"
+        benefit: "Noise ColorFit Pulse 4 Pro smartwatch worth Rs. 7,999"
+        value_inr: 7999
+        window_days: 90
+    milestones:
+      - spend_inr: 400000
+        cycle: annual
+        benefit: "e-Voucher worth Rs. 1,500 on annual retail spends of Rs. 4 lakh"
+        value_inr: 1500
+    insurance:
+      - type: fraud-liability
+        sum_insured_inr: 100000
+      - type: baggage-loss
+        sum_insured_inr: 72000
+        conditions: "Loss of check-in baggage."
+      - type: trip-delay
+        sum_insured_inr: 7500
+        conditions: "Delay in flight / delay of check-in baggage."
+      - type: other
+        sum_insured_inr: 12500
+        conditions: "Loss of travel documents."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    other:
+      - name: FITPASS PRO membership
+        description: Complimentary 1-year FITPASS PRO Membership, renewed every year on card renewal.
+        value_inr: 3000
+      - name: Netmeds First membership
+        description: Complimentary 1-year Netmeds First Membership, renewed every year on card renewal.
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
+      retrieved_on: 2026-07-03
+      notes: "Crawl reflects parent SBI Card PULSE."
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 730
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [health-wellness, mid-tier, points, lifestyle]

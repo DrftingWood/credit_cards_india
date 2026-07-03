@@ -1,0 +1,129 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: kotak-white
+name: Kotak White Credit Card
+issuer: kotak
+network: mastercard
+network_tier: world
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2022-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-01-01
+    effective_until: null
+    joining_fee_inr: 3000
+    annual_fee_inr: 3000
+    fee_waiver:
+      spend_inr: 500000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Milestone-value 'White Pass' rewards card. A lifetime-free variant also exists (without joining-fee benefits)."
+    source:
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-credit-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2022-01-01
+    effective_until: null
+    currency: cashback
+    currency_name: White Pass
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    capping_rules:
+      - "Rewards are milestone-structured 'White Pass value' (no per-point calc); up to ₹27,000 value/year on ₹12L annual spend. Base rate is an approximate blended figure."
+    redemption:
+      - type: catalog
+        program: White Pass Catalogue
+        rate_inr_per_unit: 1.0
+        constraints: "White Pass balance redeemable against luxury brands."
+    source:
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-credit-card.html
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2022-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [mastercard, dreamfolks]
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    welcome:
+      - condition: "Spend ₹30,000 within 60 days of card set-up"
+        benefit: "White Pass value of ₹1,500"
+        value_inr: 1500
+        window_days: 60
+    milestones:
+      - spend_inr: 1200000
+        cycle: annual
+        benefit: "Up to ₹27,000 White Pass value on ₹12,00,000 annual spend"
+        value_inr: 27000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: true
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 7500
+      cap_per_cycle_inr: 3500
+      cycle: annual
+    surcharge_waivers:
+      - category: railway
+        pct: 2.0
+        cap_per_cycle_inr: 500
+        cycle: annual
+    other:
+      - name: Priority Pass membership
+        description: "Annual Priority Pass membership worth $99; access to 1,300+ lounges across 148 countries."
+    concierge: true
+    source:
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-credit-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-credit-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, milestone, lounge, lifestyle]

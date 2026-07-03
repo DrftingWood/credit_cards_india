@@ -1,3 +1,12 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : American Express live product pages, americanexpress.com/in
+#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
 id: amex-platinum-charge
 name: American Express Platinum Card (Charge)
 issuer: amex
@@ -31,9 +40,8 @@ fees:
     gst_applicable: true
     notes: "Charge card — no revolving credit. Full statement balance due each cycle; late/non-payment attracts flat delinquency fees."
     source:
-      url: https://livefromalounge.com/american-express-platinum-card-refresh/
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: fee ₹66,000 + GST (~2023 refresh; was ₹60,000)."
+      url: https://www.americanexpress.com/in/charge-cards/platinum-card/
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2001-01-01
@@ -45,20 +53,13 @@ rewards:
       per_inr: 40
       unit_value_inr: 0.45
       unit_value_inr_realized: 0.40
-    accelerated:
-      - category: fine-hotels-resorts
-        canonical_categories: [travel]
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "5x MR points on prepaid hotels via Fine Hotels + Resorts programme."
     exclusions:
       - fuel
       - wallet-loads
       - insurance-premiums
       - cash-advance
       - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.35
@@ -69,8 +70,8 @@ rewards:
         program: Amex gift vouchers
         rate_inr_per_unit: 0.5
     source:
-      url: https://www.americanexpress.com/in/credit-cards/platinum-card/
-      retrieved_on: 2026-04-15
+      url: https://www.americanexpress.com/in/charge-cards/platinum-card/
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-04-01
@@ -94,12 +95,15 @@ benefits:
     milestones:
       - spend_inr: 2000000
         cycle: annual
-        benefit: "Renewal benefit: vouchers worth ₹35,000"
+        benefit: "Renewal benefit: vouchers up to ₹35,000 on ₹20,00,000 annual spend + renewal-fee payment"
         value_inr: 35000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: true
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Vouchers worth ₹45,000 on ₹50,000 spend within first 2 months (no MR point bonus)"
-        value_inr: 45000
+        benefit: "Welcome gift worth up to ₹60,000 (choice of Taj Hotels / Luxe Gift Card / Postcard Hotels & Resorts)"
+        value_inr: 60000
         window_days: 90
     insurance:
       - type: air-accident
@@ -124,8 +128,8 @@ benefits:
       - name: Fine Hotels + Resorts benefits
         description: Complimentary breakfast, room upgrade, late checkout at 1,000+ luxury properties globally.
     source:
-      url: https://www.americanexpress.com/in/credit-cards/platinum-card/
-      retrieved_on: 2026-04-15
+      url: https://www.americanexpress.com/in/charge-cards/platinum-card/
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -138,8 +142,8 @@ eligibility:
   notes: "Amex acceptance in India is narrower than Visa/Mastercard. Charge card — no pre-set spending limit but balance due in full each cycle."
 
 application:
-  apply_url: https://www.americanexpress.com/in/credit-cards/platinum-card/
+  apply_url: https://www.americanexpress.com/in/charge-cards/platinum-card/
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-07-03
   tags: [super-premium, charge-card, amex, travel, invite-like]

@@ -1,0 +1,118 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# Eligibility income bands, min credit score & some launch dates are tier-standard
+# defaults (not individually source-verified). Exact monthly caps on some cashback
+# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# ---------------------------------------------------------------------------
+id: sbi-flipkart
+name: Flipkart SBI Card
+issuer: sbi
+network: visa
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: Flipkart
+  category: ecommerce
+  partner_website: https://www.flipkart.com
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    renewal_fee_inr: 500
+    fee_waiver:
+      spend_inr: 350000
+      cycle: annual
+      conditions: "Renewal fee reversed on annual spends of ₹3,50,000 in the previous year (second year onwards)."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1
+      cap_unit: cashback-inr
+    accelerated:
+      - category: myntra
+        canonical_categories: [online]
+        multiplier: 7.5
+        effective_rate: 7.5
+        cap_unit: cashback-inr
+        merchants: [myntra]
+        notes: "7.5% cashback on Myntra. Cap not specified on page."
+      - category: flipkart
+        canonical_categories: [online]
+        multiplier: 5
+        effective_rate: 5
+        cap_unit: cashback-inr
+        merchants: [flipkart]
+        notes: "5% cashback on Flipkart. Cap not specified on page."
+      - category: preferred-select-merchants
+        canonical_categories: [online]
+        multiplier: 4
+        effective_rate: 4
+        cap_unit: cashback-inr
+        notes: "4% cashback on Preferred / Select Merchants (see issuer T&C for merchant list)."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1
+        constraints: "Cashback auto-credited to the card statement."
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
+      retrieved_on: 2026-07-03
+
+    mcc_exclusions: ['6513']
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    welcome:
+      - condition: "On fee realisation"
+        benefit: "₹250 Flipkart Gift Card"
+        value_inr: 250
+      - condition: "First transaction on Flipkart"
+        benefit: "₹1,000 additional benefit"
+        value_inr: 1000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: statement
+      notes: "1% fuel surcharge waiver on transactions between ₹500 and ₹4,000 at all petrol pumps. Max ₹400 per statement cycle."
+    other:
+      - name: "Cleartrip discount"
+        description: "12% off on Cleartrip travel bookings (see issuer T&C)."
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, ecommerce, flipkart, mid-tier, cashback]

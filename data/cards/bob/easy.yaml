@@ -54,6 +54,7 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: BOBCARD Rewards

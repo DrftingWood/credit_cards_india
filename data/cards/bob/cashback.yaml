@@ -54,6 +54,7 @@ rewards:
       - emi
     capping_rules:
       - "Transactions below ₹100 and select MCCs are not eligible for cashback."
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         program: BOBCARD Cashback

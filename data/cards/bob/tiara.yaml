@@ -56,6 +56,7 @@ rewards:
       - emi
     capping_rules:
       - "Reward Points on Credit Card UPI spends capped at 500 RP per statement cycle."
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: BOBCARD Rewards

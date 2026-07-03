@@ -63,6 +63,7 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         program: Scapia Coins

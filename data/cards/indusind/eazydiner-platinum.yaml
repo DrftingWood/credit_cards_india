@@ -29,7 +29,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-08-01
@@ -73,7 +73,7 @@ rewards:
         constraints: "EazyPoints redeemable at 1:1 on EazyDiner platform."
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-08-01
@@ -102,7 +102,7 @@ benefits:
     concierge: false
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -117,5 +117,5 @@ application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, dining, eazydiner, mid]

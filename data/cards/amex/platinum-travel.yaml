@@ -13,7 +13,7 @@ discontinued_on: null
 fees:
   - effective_from: 2014-01-01
     effective_until: null
-    joining_fee_inr: 3500
+    joining_fee_inr: 5000
     annual_fee_inr: 5000
     fee_waiver: null
     forex_markup_pct: 3.5
@@ -24,7 +24,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2014-01-01
@@ -56,7 +56,7 @@ rewards:
         rate_inr_per_unit: 0.5
     source:
       url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2014-01-01
@@ -72,20 +72,36 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
-        notes: "Priority Pass available as paid add-on; no complimentary international visits."
+        notes: "Complimentary Priority Pass membership (US$99 fee waived); international lounge visits are pay-per-use."
     milestones:
       - spend_inr: 190000
         cycle: annual
-        benefit: "Travel vouchers worth ₹7,700"
-        value_inr: 7700
+        benefit: "7,500 Membership Rewards points (Platinum Travel Collection)"
+        value_inr: 2250
+        reward_kind: points
+        reward_units: 7500
+        reward_currency_name: Membership Rewards
+        trigger_window: anniversary-year
       - spend_inr: 400000
         cycle: annual
-        benefit: "Travel vouchers worth ₹11,800 + Taj Experiences Gift Card worth ₹10,000"
-        value_inr: 21800
-    welcome:
-      - condition: "Spend ₹15,000 within 90 days"
         benefit: "10,000 Membership Rewards points"
-        value_inr: 2500
+        value_inr: 3000
+        reward_kind: points
+        reward_units: 10000
+        reward_currency_name: Membership Rewards
+        trigger_window: anniversary-year
+      - spend_inr: 700000
+        cycle: annual
+        benefit: "22,500 Membership Rewards points + Taj Experiences E-Gift Card worth ₹10,000"
+        value_inr: 16750
+        reward_kind: points
+        reward_units: 22500
+        reward_currency_name: Membership Rewards
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "Spend ₹15,000 within 90 days (1st year, on fee payment)"
+        benefit: "10,000 Membership Rewards points"
+        value_inr: 3000
         window_days: 90
     insurance:
       - type: travel-medical
@@ -102,7 +118,7 @@ benefits:
         description: Complimentary enrolment in Taj Epicure Plus programme.
     source:
       url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -118,5 +134,5 @@ application:
   apply_url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [travel, points, amex, milestone-heavy]

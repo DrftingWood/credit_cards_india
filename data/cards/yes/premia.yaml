@@ -6,13 +6,13 @@ network_tier: world
 tier: premium
 card_type: credit
 co_brand: null
-status: active
+status: discontinued
 launched_on: 2017-01-01
-discontinued_on: null
+discontinued_on: 2026-07-03
 
 fees:
   - effective_from: 2017-01-01
-    effective_until: null
+    effective_until: 2026-07-03
     joining_fee_inr: 2499
     annual_fee_inr: 2499
     fee_waiver:
@@ -30,7 +30,7 @@ fees:
 
 rewards:
   - effective_from: 2017-01-01
-    effective_until: null
+    effective_until: 2026-07-03
     currency: points
     currency_name: YES Reward Points
     base:
@@ -63,7 +63,7 @@ rewards:
 
 benefits:
   - effective_from: 2017-01-01
-    effective_until: null
+    effective_until: 2026-07-03
     lounge_access:
       domestic:
         visits_per_cycle: 12
@@ -108,5 +108,5 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [premium, travel, dining, points]

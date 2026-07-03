@@ -28,7 +28,7 @@ fees:
     gst_applicable: true
     notes: "LIT base card is lifetime-free; individual features carry per-activation fees billed in-app."
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/lit
+      url: https://www.au.bank.in/personal-banking/credit-cards/lit
       retrieved_on: 2026-04-15
 
 rewards:
@@ -56,6 +56,7 @@ rewards:
       - emi
     capping_rules:
       - "Accelerated rates only active when the corresponding LIT feature is toggled on for the cycle."
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: AU Rewardz
@@ -63,7 +64,7 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/lit
+      url: https://www.au.bank.in/personal-banking/credit-cards/lit
       retrieved_on: 2026-04-15
 
 benefits:
@@ -89,7 +90,7 @@ benefits:
       - name: Low forex markup
         description: Sub-1% forex markup is a standout for this tier.
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/lit
+      url: https://www.au.bank.in/personal-banking/credit-cards/lit
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -102,7 +103,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.aubank.in/personal-banking/credit-cards/lit
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/lit
 
 metadata:
   last_verified_on: 2026-04-15

@@ -25,7 +25,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/vetta
+      url: https://www.au.bank.in/personal-banking/credit-cards/vetta
       retrieved_on: 2026-04-15
 
 rewards:
@@ -51,12 +51,13 @@ rewards:
       - wallet-loads
       - rent
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: AU Rewardz
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/vetta
+      url: https://www.au.bank.in/personal-banking/credit-cards/vetta
       retrieved_on: 2026-04-15
 
 benefits:
@@ -85,7 +86,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/vetta
+      url: https://www.au.bank.in/personal-banking/credit-cards/vetta
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -98,7 +99,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.aubank.in/personal-banking/credit-cards/vetta
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/vetta
 
 metadata:
   last_verified_on: 2026-04-15

@@ -25,7 +25,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/zenith-plus
+      url: https://www.au.bank.in/personal-banking/credit-cards/zenith-plus
       retrieved_on: 2026-04-15
 
 rewards:
@@ -53,6 +53,7 @@ rewards:
       - insurance-premiums
       - emi
       - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: AU Rewardz
@@ -61,7 +62,7 @@ rewards:
         program: Multiple
         ratio: "4:1"
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/zenith-plus
+      url: https://www.au.bank.in/personal-banking/credit-cards/zenith-plus
       retrieved_on: 2026-04-15
 
 benefits:
@@ -100,7 +101,7 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/zenith-plus
+      url: https://www.au.bank.in/personal-banking/credit-cards/zenith-plus
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -113,7 +114,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.aubank.in/personal-banking/credit-cards/zenith-plus
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/zenith-plus
 
 metadata:
   last_verified_on: 2026-04-15

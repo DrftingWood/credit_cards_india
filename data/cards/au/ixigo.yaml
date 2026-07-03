@@ -28,7 +28,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
+      url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
       retrieved_on: 2026-04-15
 
 rewards:
@@ -56,13 +56,14 @@ rewards:
       - wallet-loads
       - rent
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: ixigo Money
         rate_inr_per_unit: 0.5
         constraints: "Redeemable as ixigo Money on the app."
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
+      url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
       retrieved_on: 2026-04-15
 
 benefits:
@@ -87,7 +88,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
+      url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -100,7 +101,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.aubank.in/personal-banking/credit-cards/ixigo-au-credit-card
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
 
 metadata:
   last_verified_on: 2026-04-15

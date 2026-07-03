@@ -1,0 +1,127 @@
+id: bob-cma-one
+name: CMA One BOBCARD Credit Card
+issuer: bob
+network: visa  # TODO verify network — not stated on page
+network_tier: signature  # TODO verify
+tier: mid
+card_type: credit
+co_brand:
+  partner: ICMAI
+  category: other
+status: active
+launched_on: 2022-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-01-01
+    effective_until: null
+    joining_fee_inr: 1
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "₹1 joining fee, zero annual fee. Exclusively for ICMAI (Institute of Cost Accountants of India) members."
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/cma-one
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2022-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
+    accelerated:
+      - category: dining-online-utilities
+        canonical_categories: [dining, online, utilities]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: 1000
+        cap_unit: points
+        cycle: statement
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        program: BOBCARD Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/cma-one
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2022-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 3
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+    welcome:
+      - condition: "Spend ₹5,000 or more within 60 days of issuance"
+        benefit: "500 reward points"
+        value_inr: 125
+        window_days: 60
+    milestones:
+      - spend_inr: 100000
+        cycle: quarterly
+        benefit: "4,000 reward points on quarterly spend above ₹1,00,000 or credit limit (whichever higher)"
+        reward_kind: points
+        reward_units: 4000
+        reward_currency_name: Reward Points
+        trigger_window: rolling
+        is_repeatable: true
+        max_awards_per_cycle: 1
+    insurance:
+      - type: other
+        sum_insured_inr: 500000
+        conditions: "Professional indemnity insurance cover up to ₹5 Lakhs."
+      - type: air-accident
+        sum_insured_inr: 1500000
+        conditions: "Air accidental death cover."
+      - type: personal-accident
+        sum_insured_inr: 500000
+        conditions: "Non-air accidental death cover."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    other:
+      - name: Add-on cards
+        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
+    concierge: false
+    source:
+      url: https://www.bobcard.co.in/credit-card-types/cma-one
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21  # TODO verify
+  max_age: 65  # TODO verify
+  income_inr_annual:
+    salaried: null  # TODO verify
+    self_employed: null  # TODO verify
+  credit_score_min: null  # TODO verify
+  residency: resident-indian
+  notes: "Exclusively for ICMAI members."
+
+application:
+  apply_url: https://www.bobcard.co.in/credit-card-types/cma-one
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, points, professional, lifetime-free, lounge, co-brand]

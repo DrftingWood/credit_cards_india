@@ -77,13 +77,14 @@ rewards:
       - category: travel-edge-portal
         canonical_categories: [travel]
         multiplier: 5
-        cap_per_cycle: 40000
-        cap_unit: points
+        cap_per_cycle: 200000
+        cap_unit: spend-inr
         cycle: monthly
         channel:
           required: true
           class: issuer-portal
           merchants: [edge-travel]
+        notes: "5X (60 EDGE Reward Points per ₹200) on Travel EDGE portal spends, capped at ₹2,00,000 per calendar month; base rate thereafter."
     exclusions:
       - fuel
       - wallet-loads
@@ -92,6 +93,7 @@ rewards:
       - insurance-premiums
       - utilities
       - education
+      - jewellery
     capping_rules:
       - "Transfer to airline partners capped at 5,00,000 EDGE points per year."
     redemption:
@@ -111,6 +113,9 @@ benefits:
         visits_per_cycle: unlimited
         cycle: annual
         via: [dreamfolks]
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "W.e.f 1 May 2024, complimentary domestic lounge access requires min ₹50,000 spend in the previous 3 calendar months (waived for new cards for the issuance month + next 3 months)."
       international:
         visits_per_cycle: unlimited
         cycle: annual
@@ -140,7 +145,7 @@ benefits:
       max_txn_inr: 4000
       cap_per_cycle_inr: 400
       cycle: monthly
-    concierge: true
+    concierge: false
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
       retrieved_on: 2026-07-03

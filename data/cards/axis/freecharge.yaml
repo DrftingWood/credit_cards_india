@@ -15,17 +15,17 @@ discontinued_on: null
 fees:
   - effective_from: 2025-06-20
     effective_until: null
-    joining_fee_inr: 0       # TODO verify - fees not published on page
-    annual_fee_inr: 0        # TODO verify - fees not published on page
+    joining_fee_inr: 250
+    annual_fee_inr: 250
     fee_waiver: null
-    forex_markup_pct: null   # TODO verify
-    finance_charge_monthly_pct: null   # TODO verify
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.0
     cash_advance_fee: null
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
       retrieved_on: 2026-07-03
-    notes: "Instant virtual card available on the Freecharge app to eligible (invite-only) customers. Joining/annual fee not published on the product page. T&C updated w.e.f 20 June 2025."
+    notes: "Instant virtual card available on the Freecharge app to eligible (invite-only) customers. Joining/annual fee INR 250 each, forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). T&C updated w.e.f 20 June 2025."
 
 rewards:
   - effective_from: 2025-06-20
@@ -42,6 +42,8 @@ rewards:
       - fuel
       - wallet-loads
       - rent
+      - jewellery
+      - cash-advance
     redemption:
       - type: catalog
         program: EDGE Rewards
@@ -56,7 +58,7 @@ benefits:
   - effective_from: 2025-06-20
     effective_until: null
     lounge_access: null
-    fuel_surcharge_waiver: null   # TODO verify
+    fuel_surcharge_waiver: null   # Fuel surcharge refund NOT applicable for FreeCharge Credit Card per Axis MITC
     concierge: false
     other:
       - name: Wednesday Delight

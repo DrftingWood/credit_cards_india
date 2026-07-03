@@ -18,8 +18,8 @@ fees:
     fee_waiver:
       spend_inr: 600000
       cycle: annual
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.6
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -52,6 +52,9 @@ rewards:
       - rent
       - government
       - insurance-premiums
+      - utilities
+      - jewellery
+      - education
     redemption:
       - type: catalog
         program: EDGE Rewards
@@ -73,10 +76,11 @@ benefits:
         guests_per_visit: 0
         via: [dreamfolks]
       international:
-        visits_per_cycle: 12
+        visits_per_cycle: 6
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
+        notes: "6 complimentary Priority Pass visits/anniversary year; additional 6 visits on spends > ₹3L in the anniversary year (up to 12)."
     dining:
       program: EazyDiner Prime
       discount_pct: 25
@@ -100,7 +104,10 @@ benefits:
     movies:
       type: bogo
       partner: District
-      notes: "100% discount on second movie ticket booked via District app."
+      max_per_cycle: 2
+      cycle: monthly
+      cap_inr: 250
+      notes: "100% off (up to ₹250) on second movie ticket via District app, twice per month on min purchase of two tickets."
     other:
       - name: BigBasket offer
         description: "Flat ₹500 off per month on minimum purchase of ₹2,500 on BigBasket app/website."

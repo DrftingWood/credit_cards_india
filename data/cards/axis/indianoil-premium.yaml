@@ -16,13 +16,13 @@ discontinued_on: null
 fees:
   - effective_from: 2020-01-01
     effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
+    joining_fee_inr: 1000
+    annual_fee_inr: 1000
     fee_waiver:
       spend_inr: 30000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -46,24 +46,29 @@ rewards:
         canonical_categories: [fuel]
         multiplier: 6
         effective_rate: 6
-        cap_per_cycle: 100
+        cap_per_cycle: 600
         cap_unit: miles
         cycle: monthly
         merchants: [indianoil-fuel-stations]
-        notes: "6 EDGE Miles per ₹150 spent at IOCL fuel outlets."
+        notes: "6X EDGE Miles (5X accelerated + 1X base) per ₹150 at registered IndianOil fuel pumps, up to ₹15,000 spend/statement month; capped at 600 EDGE Miles/month. Beyond ₹15,000, only 1X base earned."
       - category: grocery-supermarket
         canonical_categories: [groceries]
         multiplier: 2
         effective_rate: 2
-        cap_per_cycle: 100
+        cap_per_cycle: 66
         cap_unit: miles
         cycle: monthly
-        notes: "2 EDGE Miles per ₹150 on grocery & supermarket spends."
+        notes: "2X EDGE Miles (1X accelerated + 1X base) per ₹150 on grocery & supermarket spends, up to ₹5,000 spend/statement month; capped at 66 EDGE Miles/month. Beyond ₹5,000, only 1X base earned."
     exclusions:
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
+      - utilities
+      - education
+      - government
+      - jewellery
+      - cash-advance
     redemption:
       - type: catalog
         program: Axis EDGE Miles

@@ -13,15 +13,17 @@ discontinued_on: null
 fees:
   - effective_from: 2025-06-20
     effective_until: null
-    joining_fee_inr: 1000   # TODO verify (fees linked out; value chart implies ~₹1000 fee waived)
-    annual_fee_inr: 1000    # TODO verify
+    joining_fee_inr: 1000   # ₹1000 + GST (card T&C sec 3)
+    annual_fee_inr: 1000    # ₹1000 + GST (card T&C sec 3)
     fee_waiver:
       spend_inr: 400000
       cycle: annual
-      conditions: "Spend ₹4,00,000 or above in an anniversary year for annual fee waiver."
-    forex_markup_pct: null       # TODO verify
-    finance_charge_monthly_pct: null   # TODO verify
-    cash_advance_fee: null       # TODO verify
+      conditions: "Spend ₹4,00,000 or above in an anniversary year for annual fee waiver (Rent and Wallet MCCs excluded)."
+    forex_markup_pct: 3.5             # MITC: 3.50% for all other cards
+    finance_charge_monthly_pct: 3.0   # MITC finance charge (42.58% p.a.)
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
@@ -61,6 +63,9 @@ rewards:
       - wallet-loads
       - rent
       - insurance-premiums
+      - government
+      - education
+      - jewellery
       - emi
     capping_rules:
       - "Online-spend cashback (up to 7%) capped at ₹4,000 per statement month."
@@ -77,7 +82,7 @@ benefits:
   - effective_from: 2025-06-20
     effective_until: null
     lounge_access: null
-    fuel_surcharge_waiver: null   # TODO verify (not stated on crawled page)
+    fuel_surcharge_waiver: null   # Confirmed not applicable (card T&C sec 7; MITC refund not applicable on Cashback Card)
     welcome:
       - condition: "First transaction within 30 days of card issuance."
         benefit: "EDGE Reward Points worth ₹1,000."

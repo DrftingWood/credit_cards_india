@@ -18,14 +18,14 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: null     # TODO verify
-    finance_charge_monthly_pct: null   # TODO verify
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.0
     cash_advance_fee: null
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
       retrieved_on: 2026-07-03
-    notes: "Lifetime free card - zero joining and annual fee. RuPay Credit Card on UPI. T&C updated w.e.f 20 June 2025."
+    notes: "Lifetime free card - zero joining and annual fee (confirmed Nil/Nil in Axis MITC). Forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). RuPay Credit Card on UPI. T&C updated w.e.f 20 June 2025."
 
 rewards:
   - effective_from: 2025-06-20
@@ -36,45 +36,58 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
-      # TODO verify base cashback rate on non-accelerated spends
     accelerated:
       - category: food-delivery-entertainment-local-commute
         canonical_categories: [dining, entertainment, travel]
         multiplier: 3
         effective_rate: 3
-        cap_per_cycle: "unlimited"   # TODO verify cap
         cap_unit: cashback-inr
-        cycle: monthly
+        cycle: statement
         merchants: [swiggy, zomato]
-        notes: "Up to 3% cashback on food delivery, entertainment and local commute spends."
+        notes: "3% cashback on online food delivery, online entertainment and online local commute spends (select MCCs 5499, 5812, 5814, 7841, 7829, 7832, 7922, 4121, 4131, 4111, 7512). Shared under the card-wide INR 1,500/statement-cycle cap."
     exclusions:
       - fuel
       - rent
       - wallet-loads
+      - jewellery
+      - gift-cards
+      - emi
+      - insurance-premiums
+      - education
+      - government
+      - cash-advance
+    reward_cap:
+      max_units: 1500
+      cap_unit: cashback-inr
+      cycle: statement
+    capping_rules:
+      - "Total cashback capped at INR 1,500 per statement cycle across all categories."
+      - "No cashback on transactions below INR 100."
+      - "No cashback on CC-on-UPI transactions below INR 2,000 or CC-on-UPI transactions at small merchants."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
       url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
       retrieved_on: 2026-07-03
-    notes: "Headline 'up to 3% cashback on every transaction'; detailed 3% applies to food delivery, entertainment and local commute."
+    notes: "Cashback T&C table: 3% on online food delivery/entertainment/local commute, 1% other spends; capped INR 1,500 per statement cycle."
 
 benefits:
   - effective_from: 2025-06-20
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 4
-        cycle: annual
+        visits_per_cycle: 1
+        cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
-        notes: "4 complimentary domestic lounge visits per calendar year (select airport lounges); may be spend-linked - # TODO verify."
+        notes: "1 complimentary domestic airport lounge visit per quarter (Axis Bank airport lounge access program)."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null    # TODO verify
-      cycle: monthly
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: statement
     concierge: false
     other:
       - name: Wednesday Delight

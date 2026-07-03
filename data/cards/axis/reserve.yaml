@@ -19,7 +19,7 @@ fees:
       spend_inr: 2500000
       cycle: annual
     forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.0
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -39,19 +39,22 @@ rewards:
       unit_value_inr: 0.4
       unit_value_inr_realized: 0.35
     accelerated:
-      - category: dining-international
-        canonical_categories: [dining, international]
-        multiplier: 3
-        effective_rate: 45
+      - category: international-spend
+        canonical_categories: [international]
+        multiplier: 2
+        effective_rate: 30
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "2X EDGE Reward Points (30 per ₹200) on international spends up to the assigned credit limit per calendar month (w.e.f 20 Jun 2025); base 15 per ₹200 thereafter."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - government
       - insurance-premiums
+      - utilities
+      - jewellery
     redemption:
       - type: catalog
         program: EDGE Rewards

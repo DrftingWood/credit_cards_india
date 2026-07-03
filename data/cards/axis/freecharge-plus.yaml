@@ -15,20 +15,20 @@ discontinued_on: null
 fees:
   - effective_from: 2025-06-20
     effective_until: null
-    joining_fee_inr: 350       # TODO verify - inferred from value chart annual fee waiver benefit of Rs 350
-    annual_fee_inr: 350        # TODO verify - inferred from value chart
+    joining_fee_inr: 350
+    annual_fee_inr: 350
     fee_waiver:
       spend_inr: 50000
       cycle: annual
-      conditions: "Annual fee waived on spends of Rs 50,000 in the preceding card anniversary year."
-    forex_markup_pct: null     # TODO verify
-    finance_charge_monthly_pct: null   # TODO verify
+      conditions: "Annual fee waived on spends of INR 50,000 in the preceding card anniversary year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.0
     cash_advance_fee: null
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
       retrieved_on: 2026-07-03
-    notes: "Invite-only card sourced via the Freecharge app. Fee amount not explicitly published; inferred from the value chart. T&C updated w.e.f 20 June 2025."
+    notes: "Invite-only card sourced via the Freecharge app. Joining/annual fee INR 350 each (waived on INR 50,000 spends), forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). T&C updated w.e.f 20 June 2025."
 
 rewards:
   - effective_from: 2025-06-20
@@ -59,6 +59,14 @@ rewards:
     exclusions:
       - fuel
       - rent
+      - wallet-loads
+      - utilities
+      - education
+      - government
+      - insurance-premiums
+      - jewellery
+      - gift-cards
+      - cash-advance
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -77,7 +85,7 @@ benefits:
         benefit: "Welcome voucher worth Rs 700"
         value_inr: 700
         window_days: null
-    fuel_surcharge_waiver: null   # TODO verify
+    fuel_surcharge_waiver: null   # Fuel surcharge refund NOT applicable for FreeCharge Plus Credit Card per Axis MITC
     dining:
       discount_pct: null
       notes: "Benefits on dining (details/partner not published - # TODO verify)."

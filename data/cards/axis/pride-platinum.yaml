@@ -13,12 +13,17 @@ discontinued_on: null
 fees:
   - effective_from: 2026-07-03
     effective_until: null
-    joining_fee_inr: 0 # TODO verify (fee not stated on live page)
-    annual_fee_inr: 0 # TODO verify (fee not stated on live page)
-    fee_waiver: null
-    forex_markup_pct: null # TODO verify
-    finance_charge_monthly_pct: null # TODO verify
-    cash_advance_fee: null # TODO verify
+    joining_fee_inr: 0 # MITC: joining Nil
+    annual_fee_inr: 250 # MITC: ₹250 annual fee
+    fee_waiver:
+      spend_inr: 20000
+      cycle: annual
+      conditions: "Annual fee waived on spends of ₹20,000 in the preceding card anniversary year (MITC)."
+    forex_markup_pct: 3.5 # MITC: 3.50% for all other cards
+    finance_charge_monthly_pct: 3.75 # MITC finance charge for Pride Platinum (55.55% p.a.)
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
@@ -41,6 +46,8 @@ rewards:
       - rent
       - government
       - insurance-premiums
+      - utilities
+      - education
     redemption:
       - type: catalog
         program: EDGE Rewards
@@ -58,11 +65,11 @@ benefits:
       notes: "15% discount at partnered restaurants."
     fuel_surcharge_waiver:
       pct: 1.0
-      min_txn_inr: null # TODO verify
-      max_txn_inr: null # TODO verify
+      min_txn_inr: 400
+      max_txn_inr: 4000
       cap_per_cycle_inr: 250
-      cycle: monthly
-      notes: "1% fuel surcharge waiver on all fuel transactions in India; waiver up to ₹250."
+      cycle: statement
+      notes: "1% fuel surcharge waiver on fuel transactions ₹400–₹4,000; max ₹250 per statement cycle (MITC)."
     insurance:
       - type: lost-card-liability
         sum_insured_inr: 0 # TODO verify (Zero Lost Card Liability protection; amount not stated)

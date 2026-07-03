@@ -16,9 +16,11 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: null # TODO verify
-    finance_charge_monthly_pct: null # TODO verify
-    cash_advance_fee: null # TODO verify
+    forex_markup_pct: 3.5 # MITC: 3.50% for all other cards
+    finance_charge_monthly_pct: 3.4 # MITC finance charge, secured cards incl. My Zone Easy (49.36% p.a.)
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card
@@ -41,6 +43,9 @@ rewards:
       - rent
       - government
       - insurance-premiums
+      - utilities
+      - jewellery
+      - cash-advance
     redemption:
       - type: catalog
         program: EDGE Rewards
@@ -58,6 +63,13 @@ benefits:
       cycle: monthly
       cap_inr: null # TODO verify
       notes: "25% cashback on online and box office movie ticket purchases, all week."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: statement
+      notes: "1% fuel surcharge waiver on fuel transactions ₹400–₹4,000; max ₹400 per statement cycle (MITC)."
     concierge: false
     other:
       - name: Contactless payments

@@ -16,17 +16,19 @@ discontinued_on: null
 fees:
   - effective_from: 2025-06-20
     effective_until: null
-    joining_fee_inr: 3500  # TODO verify (fee table not in crawl)
-    annual_fee_inr: 3500  # TODO verify (fee table not in crawl)
+    joining_fee_inr: 2000
+    annual_fee_inr: 2000
     fee_waiver: null
-    forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: null  # TODO verify
-    cash_advance_fee: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.0
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card
       retrieved_on: 2026-07-03
-      notes: "T&C updated w.e.f. 20 Jun 2025. Fees & Charges table not captured in crawl."
+      notes: "Joining/annual ₹2,000 (Axis MITC). Forex 3.5%, finance 3.0%/mo, cash advance 2.5% (min ₹500) per MITC. T&C updated w.e.f. 20 Jun 2025."
 
 rewards:
   - effective_from: 2025-06-20
@@ -53,8 +55,18 @@ rewards:
         effective_rate: 6
         notes: "6 SpiceClub Points per ₹100 on select MCCs - online food delivery, online bill payment and online entertainment."
     exclusions:
+      - fuel
       - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - education
+      - jewellery
       - emi
+      - cash-advance
+      - gift-cards
+    capping_rules:
+      - "SpiceJet app/website card-benefit earn (12 SC/₹200) is capped at ₹1 lakh of credit-card spend per month; beyond this only the SpiceClub membership earn continues."
     redemption:
       - type: airmiles
         program: SpiceClub

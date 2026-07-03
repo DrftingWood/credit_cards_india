@@ -18,16 +18,19 @@ discontinued_on: null
 fees:
   - effective_from: 2025-06-20
     effective_until: null
-    joining_fee_inr: 2500             # TODO verify — fee table not captured on live page
-    annual_fee_inr: 2500             # TODO verify (World vs World Select differ)
+    joining_fee_inr: 3500
+    annual_fee_inr: 3500
     fee_waiver: null
-    forex_markup_pct: null            # TODO verify
-    finance_charge_monthly_pct: null  # TODO verify
-    cash_advance_fee: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
       retrieved_on: 2026-07-03
+      notes: "Models the 'World' variant: joining/annual ₹3,500 (Axis MITC). The 'World Select' variant is ₹10,000 joining / ₹4,500 annual. Forex 3.5%, finance 3.75%/mo, cash advance 2.5% (min ₹500) per MITC."
 
 rewards:
   - effective_from: 2025-06-20
@@ -43,8 +46,10 @@ rewards:
       - fuel
       - wallet-loads
       - rent
+      - utilities
       - government
       - insurance-premiums
+      - jewellery
     redemption:
       - type: airmiles
         program: Miles & More (India)
@@ -58,6 +63,10 @@ benefits:
   - effective_from: 2025-06-20
     effective_until: null
     lounge_access:
+      domestic:
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "Complimentary domestic lounge access based on min spend ₹50,000 in the previous 3 calendar months (T&C w.e.f. 1-May-2024)."
       international:
         visits_per_cycle: 2           # TODO verify count
         cycle: annual

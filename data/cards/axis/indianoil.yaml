@@ -18,13 +18,12 @@ fees:
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 350000
-      cycle: annual
-      conditions: "Spend more than ₹3,50,000 in a card anniversary year for annual fee waiver."
-    forex_markup_pct: null       # TODO verify
-    finance_charge_monthly_pct: null   # TODO verify
-    cash_advance_fee: null       # TODO verify
+    fee_waiver: null   # TODO verify — MITC shows no waiver threshold for base IndianOil (the ₹3.5L figure was misattributed from the Flipkart card)
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
@@ -63,6 +62,11 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+      - utilities
+      - education
+      - government
+      - jewellery
+      - cash-advance
     redemption:
       - type: voucher
         program: IndianOil XtraRewards
@@ -77,9 +81,9 @@ benefits:
     lounge_access: null
     fuel_surcharge_waiver:
       pct: 1.0
-      min_txn_inr: null   # TODO verify
-      max_txn_inr: null   # TODO verify
-      cap_per_cycle_inr: 50   # value chart implies ~₹600/yr → ~₹50/month; TODO verify
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
       cycle: monthly
     movies:
       type: discount

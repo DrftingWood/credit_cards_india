@@ -22,7 +22,7 @@ fees:
       spend_inr: 200000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.0
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -95,8 +95,8 @@ benefits:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
+      cap_per_cycle_inr: 500
+      cycle: statement
     concierge: false
     source:
       url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card

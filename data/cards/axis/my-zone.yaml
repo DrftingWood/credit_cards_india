@@ -63,6 +63,15 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [mastercard, dreamfolks]
+    milestones:
+      - spend_inr: 150000
+        cycle: annual
+        benefit: "1,000 EDGE REWARD Points on annual spends of ₹1.5 lakhs in the card anniversary year"
+        value_inr: 200
+        reward_kind: points
+        reward_units: 1000
+        reward_currency_name: EDGE Reward Points
+        trigger_window: anniversary-year
     movies:
       type: bogo
       partner: District
@@ -70,9 +79,6 @@ benefits:
       cycle: monthly
       cap_inr: 200
     other:
-      - name: SonyLIV subscription
-        description: Complimentary SonyLIV Premium annual subscription (first year only).
-        value_inr: 1499
       - name: Swiggy instant discount
         description: Flat ₹120 off on food delivery at Swiggy with My Zone Credit Card.
       - name: Cleartrip travel benefit
@@ -81,8 +87,8 @@ benefits:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
+      cap_per_cycle_inr: 500
+      cycle: statement
     concierge: false
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card

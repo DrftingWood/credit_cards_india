@@ -20,7 +20,7 @@ fees:
       cycle: annual
       conditions: "Annual fee waived on spends of ₹5 lakh in a card anniversary year."
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.6
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -45,6 +45,9 @@ rewards:
       - rent
       - government
       - insurance-premiums
+      - utilities
+      - jewellery
+      - education
     redemption:
       - type: catalog
         program: EDGE Rewards
@@ -78,7 +81,10 @@ benefits:
     movies:
       type: bogo
       partner: District
-      notes: "100% discount on second movie ticket booked via District app."
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 250
+      notes: "100% off (up to ₹250) on second movie ticket via District app, once per month on min purchase of two tickets."
     welcome:
       - condition: "Joining fee paid"
         benefit: "Shopping or Travel voucher on welcome"

@@ -18,9 +18,11 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: null       # TODO verify
-    finance_charge_monthly_pct: null   # TODO verify
-    cash_advance_fee: null       # TODO verify
+    forex_markup_pct: 3.5             # MITC: 3.50% for all other cards
+    finance_charge_monthly_pct: 3.75  # MITC finance charge for LIC Credit Cards (55.55% p.a.)
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     notes: "Lifetime free (joining and annual fee Nil)."
     source:
@@ -46,7 +48,12 @@ rewards:
     exclusions:
       - fuel
       - wallet-loads
-      - emi
+      - rent
+      - government
+      - education
+      - jewellery
+      - utilities
+      - cash-advance
     source:
       url: https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card
       retrieved_on: 2026-07-03
@@ -62,10 +69,11 @@ benefits:
         notes: "8 complimentary lounge visits per calendar year at select domestic airports."
     fuel_surcharge_waiver:
       pct: 1.0
-      min_txn_inr: null   # TODO verify
-      max_txn_inr: null   # TODO verify
-      cap_per_cycle_inr: null   # TODO verify
-      notes: "1% fuel surcharge waiver at all fuel stations across India."
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 400
+      cycle: statement
+      notes: "1% fuel surcharge waiver on fuel transactions ₹400–₹4,000; max ₹400 per statement cycle (MITC)."
     insurance:
       - type: lost-card-liability
         sum_insured_inr: 0   # "up to credit limit"; exact amount not published — TODO verify

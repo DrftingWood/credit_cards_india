@@ -22,14 +22,18 @@ fees:
     effective_until: null
     joining_fee_inr: 1500
     annual_fee_inr: 1500
+    renewal_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: null            # TODO verify
-    finance_charge_monthly_pct: null  # TODO verify
-    cash_advance_fee: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
       retrieved_on: 2026-07-03
+      notes: "Joining/annual ₹1,500 (Axis MITC). Forex 3.5%, finance 3.75%/mo, cash advance 2.5% (min ₹500) per MITC. Post Vistara–Air India merger, annual (renewal) fee waived on next renewal cycle."
 
 rewards:
   - effective_from: 2024-11-12
@@ -42,11 +46,12 @@ rewards:
       unit_value_inr: null             # TODO verify Maharaja Point value
       unit_value_inr_realized: null
     exclusions:
-      - fuel
       - wallet-loads
       - rent
+      - utilities
       - government
       - insurance-premiums
+      - jewellery
     redemption:
       - type: airmiles
         program: Air India Maharaja Club (formerly Club Vistara)
@@ -64,18 +69,9 @@ benefits:
         visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
-        notes: "2 complimentary lounge visits at select airports within India, subject to spends criteria."
-    milestones:
-      - spend_inr: 0
-        cycle: annual
-        benefit: "Earn up to 3 complimentary economy class tickets every year on spend milestones"
-        value_inr: null
-        reward_kind: voucher
-        trigger_window: anniversary-year
-    welcome:
-      - condition: "Joining fee payment"
-        benefit: "1 complimentary economy class ticket"
-        value_inr: null
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "Complimentary domestic lounge access based on min spend ₹50,000 in the previous 3 calendar months (T&C w.e.f. 1-May-2024; waived for month of issuance + next 3 months)."
     insurance:
       - type: purchase-protection
         sum_insured_inr: 100000
@@ -87,7 +83,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
       retrieved_on: 2026-07-03
-      notes: "Also USD 300 insurance cover; specific perils/amounts not detailed on live page (TODO verify)."
+      notes: "Post Vistara–Air India merger, the welcome ticket voucher, spends-milestone ticket vouchers and complimentary Maharaja Club tier memberships are DISCONTINUED (per revised T&C). Lounge, golf and dining benefits continue."
 
 eligibility:
   min_age: 18

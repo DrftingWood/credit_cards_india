@@ -16,19 +16,22 @@ discontinued_on: null
 fees:
   - effective_from: 2025-06-20
     effective_until: null
-    joining_fee_inr: 500  # TODO verify (fee table not in crawl)
+    joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
       spend_inr: 100000
       cycle: annual
-    forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: null  # TODO verify
-    cash_advance_fee: null
+      conditions: "Annual fee waived on ₹1,00,000 spend in the preceding anniversary year (Rent MCC 6513 and Wallet MCC 6540 excluded)."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
       retrieved_on: 2026-07-03
-      notes: "Annual fee ₹500 and ₹1 lakh spend waiver inferred from value chart. T&C updated w.e.f. 20 Jun 2025. Full Fees & Charges table not captured in crawl."
+      notes: "Joining + annual fee ₹500 + GST, waived on ₹1 lakh anniversary-year spend (card member T&C). Finance charge 3.75%/mo, forex 3.5%, cash advance 2.5% (min ₹500) per Axis MITC."
 
 rewards:
   - effective_from: 2025-06-20
@@ -57,6 +60,12 @@ rewards:
         notes: "12 First Citizen points per ₹200 on other Shoppers Stop brands, Homestop, Arcelia, M.A.C, Clinique, Estee Lauder, Bobbi Brown, Jo Malone & Smashbox (≈3% value back)."
     exclusions:
       - fuel
+      - wallet-loads
+      - rent
+      - government
+      - utilities
+      - insurance-premiums
+      - education
     redemption:
       - type: voucher
         program: First Citizen
@@ -81,7 +90,7 @@ benefits:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 5000
-      cap_per_cycle_inr: null  # TODO verify
+      cap_per_cycle_inr: 400
       cycle: monthly
     concierge: false
     source:

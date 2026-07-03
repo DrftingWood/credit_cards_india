@@ -19,8 +19,8 @@ fees:
       spend_inr: 1000000
       cycle: annual
       conditions: "Annual fee waived on spends of ₹10L in the preceding year."
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.6
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.0
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -83,7 +83,7 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 6
+        visits_per_cycle: 8
         cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
@@ -134,4 +134,4 @@ application:
 
 metadata:
   last_verified_on: 2026-07-03
-  tags: [travel, miles, premium, low-forex]
+  tags: [travel, miles, premium]

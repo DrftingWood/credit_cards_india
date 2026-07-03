@@ -13,15 +13,17 @@ discontinued_on: null
 fees:
   - effective_from: 2026-07-03
     effective_until: null
-    joining_fee_inr: 1500 # TODO verify (matches Privilege family; not explicitly stated)
+    joining_fee_inr: 1500 # Privilege welcome T&C (in easy folder) references ₹1,500 + GST joining fee
     annual_fee_inr: 1500
     fee_waiver:
       spend_inr: 500000
       cycle: annual
       conditions: "Annual fee of ₹1,500 reversed on spends of ₹5 lakh in the previous card anniversary year."
-    forex_markup_pct: null # TODO verify
-    finance_charge_monthly_pct: null # TODO verify
-    cash_advance_fee: null # TODO verify
+    forex_markup_pct: 3.5 # MITC: 3.50% for all other cards
+    finance_charge_monthly_pct: 3.4 # MITC finance charge, secured cards incl. Privilege Easy (49.36% p.a.)
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card
@@ -44,6 +46,9 @@ rewards:
       - rent
       - government
       - insurance-premiums
+      - utilities
+      - jewellery
+      - education
     redemption:
       - type: catalog
         program: EDGE Rewards
@@ -81,8 +86,8 @@ benefits:
       min_txn_inr: 400
       max_txn_inr: 4000
       cap_per_cycle_inr: 400
-      cycle: monthly
-      notes: "1% fuel surcharge waiver on fuel spends across India (₹400-₹4,000). GST on surcharge non-refundable. No reward points earned on fuel transactions."
+      cycle: statement
+      notes: "1% fuel surcharge waiver on fuel spends across India (₹400–₹4,000); max ₹400 per statement cycle (MITC). GST on surcharge non-refundable. No reward points earned on fuel transactions."
     movies:
       type: bogo
       max_per_cycle: null # TODO verify

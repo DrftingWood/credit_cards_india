@@ -22,7 +22,7 @@ fees:
       spend_inr: 350000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
+    finance_charge_monthly_pct: 3.0
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -50,15 +50,24 @@ rewards:
         cycle: quarterly
         merchants: [myntra]
         notes: "7.5% cashback on Myntra spends, capped at ₹4,000 per statement quarter."
-      - category: flipkart-cleartrip
+      - category: flipkart
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: 4000
+        cap_unit: cashback-inr
+        cycle: quarterly
+        merchants: [flipkart]
+        notes: "5% cashback on Flipkart, capped at ₹4,000 per statement quarter."
+      - category: cleartrip
         canonical_categories: [online, travel]
         multiplier: 1
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 4000
         cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [flipkart, cleartrip]
-        notes: "5% cashback on Flipkart and Cleartrip."
+        cycle: quarterly
+        merchants: [cleartrip]
+        notes: "5% cashback on Cleartrip, capped at ₹4,000 per statement quarter."
       - category: preferred-merchants
         multiplier: 1
         effective_rate: 4
@@ -87,15 +96,15 @@ benefits:
     lounge_access: null
     welcome:
       - condition: "Card activation"
-        benefit: "₹350 worth of activation benefits"
-        value_inr: 350
+        benefit: "Flipkart voucher worth ₹250"
+        value_inr: 250
         window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
       cap_per_cycle_inr: 400
-      cycle: monthly
+      cycle: statement
     concierge: false
     source:
       url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card

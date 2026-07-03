@@ -25,8 +25,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.kvb.co.in/personal-banking/cards/credit-cards/honour/
-      retrieved_on: 2026-04-15
+      url: https://www.kvb.bank.in/personal-banking/cards/credit-cards/honour/
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-01-01
@@ -44,13 +44,14 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: KVB Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.kvb.co.in/personal-banking/cards/credit-cards/honour/
-      retrieved_on: 2026-04-15
+      url: https://www.kvb.bank.in/personal-banking/cards/credit-cards/honour/
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-01-01
@@ -69,8 +70,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.kvb.co.in/personal-banking/cards/credit-cards/honour/
-      retrieved_on: 2026-04-15
+      url: https://www.kvb.bank.in/personal-banking/cards/credit-cards/honour/
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -82,8 +83,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kvb.co.in/personal-banking/cards/credit-cards/honour/
+  apply_url: https://www.kvb.bank.in/personal-banking/cards/credit-cards/honour/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [premium, points, lounge]

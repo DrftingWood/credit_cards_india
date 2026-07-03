@@ -54,6 +54,7 @@ ISSUER_ALLOWED_DOMAINS = {
     "idfc-first": {"idfcfirstbank.com", "www.idfcfirstbank.com", "idfcfirst.bank.in", "www.idfcfirst.bank.in"},
     "indusind": {"indusind.com", "www.indusind.com", "indusind.bank.in", "www.indusind.bank.in"},
     "kotak": {"kotak.com", "www.kotak.com", "kotak.bank.in", "www.kotak.bank.in"},
+    "kvb": {"kvb.co.in", "www.kvb.co.in", "kvb.bank.in", "www.kvb.bank.in"},
     "onecard": {"getonecard.app", "www.getonecard.app", "onecard.io", "www.onecard.io"},
     "rbl": {"rblbank.com", "www.rblbank.com", "rbl.bank.in", "www.rbl.bank.in", "irctc.co.in", "www.irctc.co.in"},
     "sbi": {"sbicard.com", "www.sbicard.com"},

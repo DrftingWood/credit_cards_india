@@ -51,6 +51,7 @@ ISSUER_ALLOWED_DOMAINS = {
     "kotak": {"kotak.com", "www.kotak.com", "kotak.bank.in", "www.kotak.bank.in"},
     "rbl": {"rblbank.com", "www.rblbank.com", "rbl.bank.in", "www.rbl.bank.in", "irctc.co.in", "www.irctc.co.in"},
     "sbi": {"sbicard.com", "www.sbicard.com"},
+    "yes": {"yesbank.in", "www.yesbank.in", "yes.bank.in", "www.yes.bank.in"},
 }
 
 

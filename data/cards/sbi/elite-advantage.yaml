@@ -1,35 +1,39 @@
-id: sbi-elite
-name: SBI Card ELITE
+id: sbi-elite-advantage
+name: SBI Card ELITE Advantage
 issuer: sbi
-network: mastercard
-network_tier: world
+network: mastercard  # TODO verify network for the Advantage variant
+network_tier: null   # TODO verify
 tier: premium
-card_type: credit
+card_type: secured
 co_brand: null
 status: active
-launched_on: 2015-09-01
+launched_on: null  # TODO verify launch date
 discontinued_on: null
 
 fees:
-  - effective_from: 2015-09-01
+  - effective_from: 2024-01-01  # TODO verify exact effective/launch date
     effective_until: null
     joining_fee_inr: 4999
     annual_fee_inr: 4999
+    renewal_fee_inr: 4999
     fee_waiver:
       spend_inr: 1000000
       cycle: annual
+      conditions: "Spend-based reversal of annual fee on spends of ₹10 lakhs."
     forex_markup_pct: 1.99
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
+    supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
       retrieved_on: 2026-07-03
+    notes: "Secured 'Advantage' variant of SBI Card ELITE (FD-backed). Fees mirror SBI Card ELITE per crawl; TODO verify dedicated Advantage page/URL and any fee differences."
 
 rewards:
-  - effective_from: 2015-09-01
+  - effective_from: 2024-01-01  # TODO verify
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -46,6 +50,15 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "5X Reward Points on dining, departmental stores and grocery spends."
+      - category: international-spends
+        canonical_categories: [international]
+        multiplier: 1
+        effective_rate: 2
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "2 Reward Points per ₹100 on international transactions."
     exclusions:
       - fuel
       - wallet-loads
@@ -55,6 +68,7 @@ rewards:
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
+        constraints: "Pay outstanding bill with points: 4 Reward Points = Re.1."
       - type: catalog
         program: SBI Card Rewards
         rate_inr_per_unit: 0.25
@@ -63,12 +77,12 @@ rewards:
       retrieved_on: 2026-07-03
 
 benefits:
-  - effective_from: 2015-09-01
+  - effective_from: 2024-01-01  # TODO verify
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
-        cycle: annual
+        visits_per_cycle: 2
+        cycle: quarterly
         guests_per_visit: 0
         via: [dreamfolks]
       international:
@@ -76,35 +90,45 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
+        notes: "Max 2 visits per quarter. Priority Pass membership worth $99."
+    golf:
+      rounds_per_cycle: 4
+      lessons_per_cycle: 1
+      cycle: monthly
+      notes: "4 complimentary green fee rounds and up to 50% off on golf games; 1 complimentary lesson per month at selected courses."
     milestones:
       - spend_inr: 300000
         cycle: annual
-        benefit: "10,000 Bonus Reward Points on annual spends of ₹3 lakh"
+        benefit: "10,000 Bonus Reward Points on annual spends of ₹3 lakhs"
         value_inr: 2500
         reward_kind: points
         reward_units: 10000
         reward_currency_name: Reward Points
+        trigger_window: anniversary-year
       - spend_inr: 400000
         cycle: annual
-        benefit: "10,000 Bonus Reward Points on annual spends of ₹4 lakh"
+        benefit: "10,000 Bonus Reward Points on annual spends of ₹4 lakhs"
         value_inr: 2500
         reward_kind: points
         reward_units: 10000
         reward_currency_name: Reward Points
+        trigger_window: anniversary-year
       - spend_inr: 500000
         cycle: annual
-        benefit: "15,000 Bonus Reward Points on annual spends of ₹5 lakh"
+        benefit: "15,000 Bonus Reward Points on annual spends of ₹5 lakhs"
         value_inr: 3750
         reward_kind: points
         reward_units: 15000
         reward_currency_name: Reward Points
+        trigger_window: anniversary-year
       - spend_inr: 800000
         cycle: annual
-        benefit: "15,000 Bonus Reward Points on annual spends of ₹8 lakh"
+        benefit: "15,000 Bonus Reward Points on annual spends of ₹8 lakhs"
         value_inr: 3750
         reward_kind: points
         reward_units: 15000
         reward_currency_name: Reward Points
+        trigger_window: anniversary-year
     welcome:
       - condition: "Joining fee paid"
         benefit: "Welcome e-Gift voucher worth ₹5,000 (Yatra / Hush Puppies / Bata / Pantaloons / Aditya Birla Fashion / Shoppers Stop)"
@@ -113,10 +137,9 @@ benefits:
     movies:
       type: free
       partner: BookMyShow
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 500
-      notes: "Free movie tickets worth ₹6,000 per year (max discount ₹250 per ticket)."
+      cap_inr: 6000
+      cycle: annual
+      notes: "Free movie tickets worth ₹6,000 every year (primary card only)."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -125,24 +148,26 @@ benefits:
       cycle: monthly
     concierge: true
     other:
-      - name: Club ITC Silver tier membership
-        description: Complimentary 1-year Club ITC Silver Tier Membership (eligible after first transaction within 60 days of card issuance).
+      - name: Club ITC Silver Tier Membership
+        description: "Complimentary 1-year Club ITC Silver Tier Membership after first transaction within 60 days of card issuance."
+        value_inr: null
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: 18
+  max_age: 70
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
+  notes: "Secured 'Advantage' variant issued against a fixed deposit (FD-backed). TODO verify minimum FD amount and eligibility."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
 
 metadata:
   last_verified_on: 2026-07-03
-  tags: [premium, points, lifestyle, movies]
+  tags: [premium, points, secured, fd-backed]

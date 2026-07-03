@@ -1,0 +1,431 @@
+{
+  "aditya-birla-sbi-card": {
+    "slug": "aditya-birla-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/rewards/aditya-birla-sbi-card.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/rewards/aditya-birla-sbi-card.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/rewards/aditya-birla-sbi-card.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "aditya-birla-sbi-card-select": {
+    "slug": "aditya-birla-sbi-card-select",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/rewards/aditya-birla-sbi-card-select.page",
+    "pdfs": []
+  },
+  "air-india-platinum": {
+    "slug": "air-india-sbi-platinum-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html",
+    "pdfs": [
+      "_shared/Air-india-tnc.pdf",
+      "_shared/mitc-english.pdf"
+    ]
+  },
+  "air-india-sbi-signature-card": {
+    "slug": "air-india-sbi-signature-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf"
+    ]
+  },
+  "apollo-sbi-card": {
+    "slug": "apollo-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf"
+    ]
+  },
+  "apollo-sbi-card-select": {
+    "slug": "apollo-sbi-card-select",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "_shared/Apollo-SBI-Card-SELECT-tnc-Booklet.pdf",
+      "_shared/B-NOISE-ColorFit-Pulse-4-Pro-Smartwatch-tnc.pdf",
+      "_shared/B-tnc-Apollo-Vocuher.pdf"
+    ]
+  },
+  "bpcl-sbi-card": {
+    "slug": "bpcl-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card.html",
+    "pdfs": [
+      "bpcl-sbi-card/BPCL-VISA-Rupay-TnC.pdf",
+      "_shared/mitc-english.pdf"
+    ]
+  },
+  "bpcl-octane": {
+    "slug": "bpcl-sbi-card-octane",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html",
+    "pdfs": [
+      "_shared/BPCLOctanetnc.pdf",
+      "_shared/mitc-english.pdf"
+    ]
+  },
+  "cashback": {
+    "slug": "cashback-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html",
+    "pdfs": [
+      "cashback/cashback-tnc-ekit.pdf"
+    ]
+  },
+  "club-vistara-sbi-card": {
+    "slug": "club-vistara-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "club-vistara-sbi-card/club-vistara-base-tnc-combined-booklet-09DEC2019.pdf"
+    ]
+  },
+  "club-vistara-sbi-card-prime": {
+    "slug": "club-vistara-sbi-card-prime",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "_shared/club-vistara-tnc.pdf"
+    ]
+  },
+  "doctors-ima-sbi-card": {
+    "slug": "doctors-ima-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "_shared/non-ima-tnc.pdf"
+    ]
+  },
+  "doctors-sbi-card": {
+    "slug": "doctors-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/doctors-sbi-card.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "_shared/non-ima-tnc.pdf"
+    ]
+  },
+  "etihad-guest-sbi-card": {
+    "slug": "etihad-guest-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/etihad-guest-sbi-card.html",
+    "pdfs": [],
+    "note": "page 404"
+  },
+  "etihad-guest-sbi-premier-card": {
+    "slug": "etihad-guest-sbi-premier-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/etihad-guest-sbi-premier-card.html",
+    "pdfs": [],
+    "note": "page 404"
+  },
+  "fab-india-sbi-card": {
+    "slug": "fab-india-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/fab-india-sbi-card.page",
+    "pdfs": []
+  },
+  "fab-india-sbi-card-select": {
+    "slug": "fab-india-sbi-card-select",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/fab-india-sbi-card-select.page",
+    "pdfs": []
+  },
+  "fbb-styleup-card": {
+    "slug": "fbb-styleup-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/fbb-styleup-card.page",
+    "pdfs": []
+  },
+  "flipkart-sbi-card": {
+    "slug": "flipkart-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "ERROR Cleartrip-SBIC-TnCs.pdf APIRequestContext.get: socket hang up\nCa"
+    ]
+  },
+  "hc-sbi-card-prime": {
+    "slug": "hc-sbi-card-prime",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/hc-sbi-card-prime.page",
+    "pdfs": []
+  },
+  "indigo": {
+    "slug": "indigo-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "indigo-elite": {
+    "slug": "indigo-sbi-card-elite",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "irctc-premier": {
+    "slug": "irctc-premier-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html",
+    "pdfs": []
+  },
+  "irctc-rupay-sbi-card": {
+    "slug": "irctc-rupay-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/travel/irctc-rupay-sbi-card.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/travel/irctc-rupay-sbi-card.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/travel/irctc-rupay-sbi-card.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "irctc-sbi-platinum-card": {
+    "slug": "irctc-sbi-platinum-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "krisflyer-sbi-card": {
+    "slug": "krisflyer-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "krisflyer-sbi-card/krisFlyer-sbi-card-base-tnc.pdf"
+    ]
+  },
+  "krisflyer-sbi-card-apex": {
+    "slug": "krisflyer-sbi-card-apex",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card-apex.html",
+    "pdfs": []
+  },
+  "landmark-sbi-card": {
+    "slug": "landmark-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "landmark-sbi-card-prime": {
+    "slug": "landmark-sbi-card-prime",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-prime.html",
+    "pdfs": []
+  },
+  "landmark-sbi-card-select": {
+    "slug": "landmark-sbi-card-select",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "lifestyle-hc-sbi-card": {
+    "slug": "lifestyle-hc-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/lifestyle-hc-sbi-card.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/shopping/lifestyle-hc-sbi-card.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/shopping/lifestyle-hc-sbi-card.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "lifestyle-hc-sbi-card-select": {
+    "slug": "lifestyle-hc-sbi-card-select",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/lifestyle-hc-sbi-card-select.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/shopping/lifestyle-hc-sbi-card-select.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/shopping/lifestyle-hc-sbi-card-select.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "max-sbi-card": {
+    "slug": "max-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/max-sbi-card.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/shopping/max-sbi-card.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/shopping/max-sbi-card.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "max-sbi-card-prime": {
+    "slug": "max-sbi-card-prime",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/max-sbi-card-prime.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/shopping/max-sbi-card-prime.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/shopping/max-sbi-card-prime.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "max-sbi-card-select": {
+    "slug": "max-sbi-card-select",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/max-sbi-card-select.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/shopping/max-sbi-card-select.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/shopping/max-sbi-card-select.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "ola-money-sbi-card": {
+    "slug": "ola-money-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/ola-money-sbi-card.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/ola-money-sbi-card.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/ola-money-sbi-card.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "paytm-sbi-card": {
+    "slug": "paytm-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "paytm-sbi-card-select": {
+    "slug": "paytm-sbi-card-select",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "phonepe-sbi-card-purple": {
+    "slug": "phonepe-sbi-card-purple",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "phonepe-sbi-card-select-black": {
+    "slug": "phonepe-sbi-card-select-black",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "reliance-sbi-card": {
+    "slug": "reliance-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html",
+    "pdfs": []
+  },
+  "reliance-prime": {
+    "slug": "reliance-sbi-card-prime",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "elite": {
+    "slug": "sbi-card-elite",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "sbi-card-elite-advantage": {
+    "slug": "sbi-card-elite-advantage",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite-advantage.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite-advantage.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite-advantage.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "sbi-card-elite-business": {
+    "slug": "sbi-card-elite-business",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "sbi-card-miles": {
+    "slug": "sbi-card-miles",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "miles-elite": {
+    "slug": "sbi-card-miles-elite",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-elite.html",
+    "pdfs": []
+  },
+  "sbi-card-miles-prime": {
+    "slug": "sbi-card-miles-prime",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-prime.html",
+    "pdfs": []
+  },
+  "prime": {
+    "slug": "sbi-card-prime",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "sbi-card-prime-advantage": {
+    "slug": "sbi-card-prime-advantage",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-prime-advantage.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-prime-advantage.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/rewards/sbi-card-prime-advantage.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "sbi-card-prime-business": {
+    "slug": "sbi-card-prime-business",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "pulse": {
+    "slug": "sbi-card-pulse",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "sbi-card-pulse-sprint": {
+    "slug": "sbi-card-pulse-sprint",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-pulse-sprint.page",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-pulse-sprint.page\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-pulse-sprint.page\", waiting until \"domcontentloaded\"\n"
+  },
+  "sbi-card-unnati": {
+    "slug": "sbi-card-unnati",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html",
+    "pdfs": [],
+    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html\", waiting until \"domcontentloaded\"\n"
+  },
+  "shaurya-sbi-card": {
+    "slug": "shaurya-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html",
+    "pdfs": []
+  },
+  "shaurya-select-sbi-card": {
+    "slug": "shaurya-select-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shaurya-select-sbi-card.html",
+    "pdfs": []
+  },
+  "simplyclick-advantage-sbi-card": {
+    "slug": "simplyclick-advantage-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/simplyclick-advantage-sbi-card.page",
+    "pdfs": [
+      "_shared/SimplyClick-TnC.pdf",
+      "_shared/simplyclick-sbi-card-rp-tnc.pdf"
+    ]
+  },
+  "simplyclick": {
+    "slug": "simplyclick-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html",
+    "pdfs": [
+      "_shared/SimplyClick-TnC.pdf",
+      "_shared/simplyclick-sbi-card-rp-tnc.pdf"
+    ]
+  },
+  "simplysave-advantage-card": {
+    "slug": "simplysave-advantage-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/simplysave-advantage-card.page",
+    "pdfs": [
+      "_shared/SimplySAVE-TnC.pdf"
+    ]
+  },
+  "simplysave": {
+    "slug": "simplysave-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/simplysave-sbi-card.html",
+    "pdfs": [
+      "_shared/SimplySAVE-TnC.pdf"
+    ]
+  },
+  "spar-sbi-card": {
+    "slug": "spar-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/spar-sbi-card.page",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "FAILED 404 Landmark-SBI-Card-Booklet.pdf"
+    ]
+  },
+  "spar-sbi-card-prime": {
+    "slug": "spar-sbi-card-prime",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/spar-sbi-card-prime.page",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "_shared/Landmark-PRIME-Booklet.pdf"
+    ]
+  },
+  "spar-sbi-card-select": {
+    "slug": "spar-sbi-card-select",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/shopping/spar-sbi-card-select.page",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "_shared/Landmark-SBI-Card-Select-Booklet.pdf"
+    ]
+  },
+  "tata-neu-infinity-sbi-card": {
+    "slug": "tata-neu-infinity-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html",
+    "pdfs": [
+      "tata-neu-infinity-sbi-card/Tata-Neu-Infinity-Booklet.pdf",
+      "_shared/mitc-english.pdf"
+    ]
+  },
+  "tata-neu-plus-sbi-card": {
+    "slug": "tata-neu-plus-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html",
+    "pdfs": [
+      "tata-neu-plus-sbi-card/Tata-Neu-Plus-Booklet.pdf"
+    ]
+  },
+  "titan-sbi-card": {
+    "slug": "titan-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html",
+    "pdfs": [
+      "_shared/mitc-english.pdf"
+    ]
+  },
+  "yatra-sbi-card": {
+    "slug": "yatra-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/travel/yatra-sbi-card.page",
+    "pdfs": []
+  }
+}

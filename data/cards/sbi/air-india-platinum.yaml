@@ -13,9 +13,10 @@ status: active
 launched_on: 2013-01-01
 discontinued_on: null
 
-# NOTE: Post the Vistara-Air India merger (completed Nov-2024), Club Vistara
-# miles converted to Air India Flying Returns. This card continues to issue
-# under Air India Flying Returns.
+# NOTE: Post the Vistara-Air India merger (completed Nov-2024), the loyalty
+# programme is now Air India Maharaja Club (Maharaja Points). The card earns
+# SBI Reward Points that convert to Maharaja Points (min 5,000, multiples of
+# 5,000).
 
 fees:
   - effective_from: 2013-01-01
@@ -30,15 +31,15 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/air-india-sbi-platinum.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2013-01-01
     effective_until: null
-    currency: miles
-    currency_name: Flying Returns Miles
-    loyalty_program: air-india-flying-returns
+    currency: points
+    currency_name: Reward Points
+    loyalty_program: null
     base:
       rate: 2
       per_inr: 100
@@ -47,20 +48,17 @@ rewards:
     accelerated:
       - category: air-india-bookings
         canonical_categories: [travel]
-        multiplier: 1
-        effective_rate: 10
-        card_attributable_rate: 4
-        card_attributable_per_inr: 100
-        stacks_with_program: true
+        multiplier: 2.5
+        effective_rate: 5
         cap_per_cycle: "unlimited"
-        cap_unit: miles
+        cap_unit: points
         cycle: monthly
         merchants: [air-india]
         channel:
           required: true
           class: cobrand-merchant
-          merchants: [air-india-direct, vistara-direct]
-        notes: "Up to 10 miles per ₹100 visible on Air India bookings, of which ~4 is card-attributable; the remainder stacks from Flying Returns baseline + channel + tier (joined via loyalty_program at calculator time)."
+          merchants: [air-india-direct]
+        notes: "5 Reward Points per ₹100 spent on Air India tickets booked via website, app, booking offices or call centres (including Super Saver tickets for self and others)."
     exclusions:
       - fuel
       - wallet-loads
@@ -69,37 +67,48 @@ rewards:
       - emi
     redemption:
       - type: airmiles
-        program: Air India Flying Returns
-        ratio: "1:1"
-        constraints: "Directly credited to Flying Returns account; redeemable for Air India / Star Alliance award tickets."
+        program: Air India Maharaja Club
+        constraints: "Reward Points convert to Air India Maharaja Points (min 5,000, in multiples of 5,000); credited within 7 working days; redeemable for Air India / Star Alliance award tickets."
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/air-india-sbi-platinum.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2013-01-01
     effective_until: null
-    lounge_access: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+        notes: "4 complimentary domestic lounge visits per year (max. 1 per quarter)."
     welcome:
       - condition: "Joining fee paid"
-        benefit: "5,000 Flying Returns miles"
+        benefit: "5,000 Reward Points"
         value_inr: 2500
-        window_days: 90
+        window_days: 15
+      - condition: "Joining fee paid"
+        benefit: "Complimentary Air India Maharaja Club membership"
     milestones:
       - spend_inr: 200000
         cycle: annual
-        benefit: "2,000 bonus Flying Returns miles"
-        value_inr: 1000
+        benefit: "5,000 bonus Reward Points on annual spends of ₹2 lakhs"
+        value_inr: 2500
+      - spend_inr: 300000
+        cycle: annual
+        benefit: "10,000 bonus Reward Points on annual spends of ₹3 lakhs"
+        value_inr: 5000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 100
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
       cycle: monthly
     concierge: false
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/air-india-sbi-platinum.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -111,8 +120,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/air-india-sbi-platinum.page
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, airline, air-india, miles, entry]

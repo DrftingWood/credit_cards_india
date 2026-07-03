@@ -1,35 +1,39 @@
-id: sbi-simplysave
-name: SimplySAVE SBI Card
+id: sbi-simplysave-advantage
+name: SimplySAVE Advantage SBI Card
 issuer: sbi
-network: visa
-network_tier: platinum
+network: visa # TODO verify
+network_tier: null
 tier: entry
-card_type: credit
+card_type: secured
 co_brand: null
 status: active
-launched_on: 2015-08-01
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-07-03
     effective_until: null
     joining_fee_inr: 499
     annual_fee_inr: 499
+    renewal_fee_inr: 499
     fee_waiver:
       spend_inr: 100000
       cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
+      conditions: "Renewal fee reversed on annual spends >= Rs. 1,00,000."
+    forex_markup_pct: 3.5 # TODO verify
+    finance_charge_monthly_pct: 3.5 # TODO verify
     cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
+      pct: 2.5 # TODO verify
+      min_inr: 500 # TODO verify
+    supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplysave-sbi-card.html
       retrieved_on: 2026-07-03
+      notes: "Secured 'Advantage' variant of SimplySAVE SBI Card (issued against a fixed deposit)."
 
 rewards:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-07-03
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -46,7 +50,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "10x points on Dining, Movies, Groceries, Departmental Stores."
+        notes: "10X Reward Points per Rs. 150 spent on Dining, Movies, Departmental Stores and Grocery."
     exclusions:
       - fuel
       - wallet-loads
@@ -64,12 +68,12 @@ rewards:
       retrieved_on: 2026-07-03
 
 benefits:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-07-03
     effective_until: null
     lounge_access: null
     welcome:
-      - condition: "Spend ₹2,000 within 60 days"
-        benefit: "2,000 Reward Points"
+      - condition: "Spend Rs. 2,000 or more within first 60 days"
+        benefit: "2,000 Bonus Reward Points"
         value_inr: 500
         window_days: 60
     fuel_surcharge_waiver:
@@ -84,17 +88,18 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: 18 # TODO verify
+  max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 700
+  credit_score_min: null
   residency: resident-indian
+  notes: "Secured card issued against a fixed deposit; no separate income/credit-score criteria published. # TODO verify"
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/simplysave-sbi-card.html
 
 metadata:
   last_verified_on: 2026-07-03
-  tags: [entry, everyday-spend, points]
+  tags: [entry, everyday-spend, points, secured]

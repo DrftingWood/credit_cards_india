@@ -29,9 +29,9 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/indigo-sbi-card.page
-      retrieved_on: 2026-04-22
-      notes: "Joining + annual fee ₹1,499 per SBI Card product page and Paisabazaar. No fee waiver on base variant."
+      url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html
+      retrieved_on: 2026-07-03
+      notes: "Annual/renewal fee ₹1,499 + taxes per SBI Card product page. No fee waiver on base variant."
 
 rewards:
   - effective_from: 2025-09-27
@@ -74,39 +74,58 @@ rewards:
         notes: "Card-side reward denominated in BluChips but does not stack with IndiGo programme earn (hotels don't earn BluChips just from holding the card)."
     exclusions:
       - fuel
-      - wallet-loads
       - rent
+      - government
+      - utilities
       - insurance-premiums
-      - emi
     redemption:
       - type: voucher
         program: IndiGo flights + 6E Prime add-ons
         rate_inr_per_unit: 1.0
         constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
     source:
-      url: https://www.paisabazaar.com/sbi-bank/indigo-sbi-credit-card/
-      retrieved_on: 2026-04-22
+      url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2025-09-27
     effective_until: null
-    lounge_access: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "4 complimentary domestic lounge visits per year (max 1 per quarter) on Rs. 50,000 spend in the previous quarter."
     welcome:
-      - condition: "Joining fee paid"
+      - condition: "Annual fee paid and first transaction within 60 days of account opening"
         benefit: "2,500 IndiGo BluChips welcome voucher — renews annually on fee payment"
         value_inr: 2500
-        window_days: 90
+        window_days: 60
+    milestones:
+      - spend_inr: 200000
+        cycle: annual
+        benefit: "2,500 IndiGo BluChips bonus voucher"
+        value_inr: 2500
+      - spend_inr: 400000
+        cycle: annual
+        benefit: "2,500 IndiGo BluChips bonus voucher"
+        value_inr: 2500
+      - spend_inr: 600000
+        cycle: annual
+        benefit: "2,500 IndiGo BluChips bonus voucher"
+        value_inr: 2500
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 100
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 200
       cycle: monthly
     concierge: false
     source:
-      url: https://www.paisabazaar.com/sbi-bank/indigo-sbi-credit-card/
-      retrieved_on: 2026-04-22
-      notes: "Base variant — lounge access reserved for the Elite variant."
+      url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -122,5 +141,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/indigo-sbi-card.page
 
 metadata:
-  last_verified_on: 2026-04-22
+  last_verified_on: 2026-07-03
   tags: [co-branded, airline, indigo, mid, miles, bluchip]

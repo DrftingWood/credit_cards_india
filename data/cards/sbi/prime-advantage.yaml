@@ -1,35 +1,39 @@
-id: sbi-prime
-name: SBI Card PRIME
+id: sbi-prime-advantage
+name: SBI Card PRIME Advantage
 issuer: sbi
-network: visa
-network_tier: signature
+network: visa  # TODO verify network for the Advantage variant
+network_tier: null   # TODO verify
 tier: premium
-card_type: credit
+card_type: secured
 co_brand: null
 status: active
-launched_on: 2016-09-01
+launched_on: null  # TODO verify launch date
 discontinued_on: null
 
 fees:
-  - effective_from: 2016-09-01
+  - effective_from: 2024-01-01  # TODO verify exact effective/launch date
     effective_until: null
     joining_fee_inr: 2999
     annual_fee_inr: 2999
+    renewal_fee_inr: 2999
     fee_waiver:
       spend_inr: 300000
       cycle: annual
+      conditions: "Renewal fee waived on annual spends of ₹3 lakhs."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
+    supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
       retrieved_on: 2026-07-03
+    notes: "Secured 'Advantage' variant of SBI Card PRIME (FD-backed). Fees mirror SBI Card PRIME per crawl; TODO verify dedicated Advantage page/URL and any fee differences."
 
 rewards:
-  - effective_from: 2016-09-01
+  - effective_from: 2024-01-01  # TODO verify
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -46,14 +50,22 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "10 Reward Points per ₹100 on Dining, Groceries, Departmental Stores and Movies."
+        notes: "10 Reward Points per ₹100 on Dining, Departmental Stores, Movies and Grocery."
+      - category: utility-standing-instructions
+        canonical_categories: [utilities]
+        multiplier: 1
+        effective_rate: 20
+        cap_per_cycle: 3000
+        cap_unit: points
+        cycle: annual
+        notes: "20 Reward Points on utility bill payment standing instructions (up to 3,000 points)."
       - category: birthday-spend
         multiplier: 1
         effective_rate: 20
         cap_per_cycle: 2000
         cap_unit: points
         cycle: annual
-        notes: "20x points on the birthday day, capped 2,000 points."
+        notes: "20 Reward Points per ₹100 on birthday spends (day before/of/after), capped 2,000 per calendar year."
     exclusions:
       - fuel
       - wallet-loads
@@ -71,7 +83,7 @@ rewards:
       retrieved_on: 2026-07-03
 
 benefits:
-  - effective_from: 2016-09-01
+  - effective_from: 2024-01-01  # TODO verify
     effective_until: null
     lounge_access:
       domestic:
@@ -84,15 +96,26 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
+        notes: "Max 2 visits per quarter. Priority Pass membership worth $99."
+    golf:
+      rounds_per_cycle: 4
+      lessons_per_cycle: 1
+      cycle: monthly
+      notes: "4 complimentary green fee rounds and up to 50% off on golf games; 1 complimentary lesson per month at selected courses."
     milestones:
       - spend_inr: 50000
         cycle: quarterly
-        benefit: "Pizza Hut voucher worth ₹1,000"
+        benefit: "Pizza Hut e-Voucher worth ₹1,000 on quarterly spends of ₹50,000"
         value_inr: 1000
+        reward_kind: voucher
+        trigger_window: rolling
+        is_repeatable: true
       - spend_inr: 500000
         cycle: annual
-        benefit: "Yatra / Pantaloons e-voucher worth ₹7,000"
+        benefit: "Yatra.com / Pantaloons e-Gift Voucher worth ₹7,000 on annual spends of ₹5 lakhs"
         value_inr: 7000
+        reward_kind: voucher
+        trigger_window: anniversary-year
     welcome:
       - condition: "Joining fee paid"
         benefit: "Welcome e-Gift voucher worth ₹3,000 (Yatra / Hush Puppies / Bata / Pantaloons / Aditya Birla Fashion / Shoppers Stop)"
@@ -106,24 +129,26 @@ benefits:
       cycle: monthly
     concierge: true
     other:
-      - name: Club ITC Silver tier membership
-        description: Complimentary 1-year Club ITC Silver Tier Membership.
+      - name: Club ITC Silver Tier Membership
+        description: "Complimentary 1-year Club ITC Silver Tier Membership."
+        value_inr: null
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: 18
+  max_age: 70
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
+  notes: "Secured 'Advantage' variant issued against a fixed deposit (FD-backed). TODO verify minimum FD amount and eligibility."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
 
 metadata:
   last_verified_on: 2026-07-03
-  tags: [premium, points, everyday-spend]
+  tags: [premium, points, secured, fd-backed]

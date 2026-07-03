@@ -1,0 +1,119 @@
+id: sbi-landmark
+name: Landmark SBI Card
+issuer: sbi
+network: visa # TODO verify - network not stated on crawl page
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Landmark
+  category: retail
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    renewal_fee_inr: 499
+    fee_waiver: null
+    forex_markup_pct: 3.5 # TODO verify - not on crawl page (SBI standard)
+    finance_charge_monthly_pct: 3.5 # TODO verify - not on crawl page (SBI standard)
+    cash_advance_fee:
+      pct: 2.5 # TODO verify - not on crawl page (SBI standard)
+      min_inr: 500
+    gst_applicable: true
+    supplementary_card_fee_inr: 0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html
+      retrieved_on: 2026-07-03
+    notes: "Annual Fee Rs.499 + taxes; Renewal Fee Rs.499 + taxes from second year; Add-on Fee Nil."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+    accelerated:
+      - category: landmark-stores-online-and-retail
+        canonical_categories: [online, other]
+        multiplier: 10
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "10 Reward Points per Rs.100 spent at Online & Retail Landmark Stores (Lifestyle, Home Centre, Max, Spar, Baby Shop, EasyBuy)."
+      - category: dining-movies-international
+        canonical_categories: [dining, entertainment, international]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "5 Reward Points per Rs.100 spent on Dining, Movies & International spends."
+    exclusions:
+      - fuel
+      - rent
+      - government
+      - wallet-loads
+      - emi
+      - other
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html
+      retrieved_on: 2026-07-03
+    notes: "1 Reward Point per Rs.100 on other retail purchases (base). Exclusions include Fuel, Rental, Govt Spends, Gaming (mapped to 'other'), Wallet, EMI."
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access: null
+    milestones:
+      - spend_inr: 200000
+        cycle: annual
+        benefit: "8,000 Reward Points on annual retail spends of Rs.2,00,000"
+        value_inr: 2000
+        reward_kind: points
+        reward_units: 8000
+        reward_currency_name: Reward Points
+    welcome:
+      - condition: "Annual fee paid"
+        benefit: "2,000 bonus Reward Points worth Rs.500 on payment of annual fees"
+        value_inr: 500
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 100
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 70
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null # TODO verify - not stated on crawl page
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, retail, shopping, co-brand, points]

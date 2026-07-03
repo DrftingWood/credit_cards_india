@@ -1,0 +1,137 @@
+id: sbi-doctors-ima
+name: Doctor's SBI Card (IMA)
+issuer: sbi
+network: visa # TODO verify
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: IMA
+  category: healthcare
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 1499
+    annual_fee_inr: 1499
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+      conditions: "Renewal fee reversed on annual spends of Rs. 2 lakhs."
+    forex_markup_pct: 3.5 # TODO verify
+    finance_charge_monthly_pct: 3.5 # TODO verify
+    cash_advance_fee:
+      pct: 2.5 # TODO verify
+      min_inr: 500 # TODO verify
+    gst_applicable: true
+    supplementary_card_fee_inr: 0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    accelerated:
+      - category: medical-supplies-travel-international
+        canonical_categories: [travel, international, other]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        notes: "5X Reward Points on Medical Supplies, Travel Bookings & International Spends."
+      - category: doctors-day-spends
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: annual
+        notes: "5X Reward Points on all spends on Doctor's Day, i.e. 1 July."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+        constraints: "4 Reward Points = Re. 1. Pay card outstanding with Reward Points."
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        notes: "Max 1 per quarter."
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Max 2 per quarter. Complimentary Priority Pass Membership worth $99; post free visits $27 + taxes per visit."
+    milestones:
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "E-Gift Voucher from Yatra.com / Bata / Shoppers Stop worth Rs. 5,000"
+        value_inr: 5000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "On joining"
+        benefit: "Welcome e-Gift Voucher worth Rs. 1,500 from Yatra.com"
+        value_inr: 1500
+    insurance:
+      - type: other
+        sum_insured_inr: 2000000
+        conditions: "Professional Indemnity Insurance cover of Rs. 20 lakhs; reimburses legal & defence costs, out-of-court settlement expenses and court awards; 0% deductible."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    concierge: false
+    other:
+      - name: IMA Association
+        description: "Exclusive association with the Indian Medical Association (IMA)."
+        value_inr: null
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, points, professional, co-brand, lounge, insurance]

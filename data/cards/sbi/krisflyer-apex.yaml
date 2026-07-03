@@ -1,0 +1,144 @@
+id: sbi-krisflyer-apex
+name: KrisFlyer SBI Card APEX
+issuer: sbi
+network: visa # TODO verify
+network_tier: null
+tier: super-premium
+card_type: credit
+co_brand:
+  partner: Singapore Airlines KrisFlyer
+  category: airline
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-01-01 # TODO verify
+    effective_until: null
+    joining_fee_inr: 9999
+    annual_fee_inr: 9999
+    renewal_fee_inr: 9999
+    fee_waiver: null
+    forex_markup_pct: 3.5 # TODO verify
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card-apex.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2023-01-01 # TODO verify
+    effective_until: null
+    currency: miles
+    currency_name: KrisFlyer Miles
+    base:
+      rate: 6
+      per_inr: 200
+      unit_value_inr: null # TODO verify
+      unit_value_inr_realized: null # TODO verify
+    accelerated:
+      - category: singapore-airlines-group
+        canonical_categories: [travel]
+        multiplier: 1.6667
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        notes: "10 KrisFlyer Miles per Rs.200 spent on Singapore Airlines Group."
+      - category: international-spends
+        canonical_categories: [international]
+        multiplier: 1.3333
+        effective_rate: 8
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        notes: "8 KrisFlyer Miles per Rs.200 on international spends."
+    redemption:
+      - type: airmiles
+        program: Singapore Airlines KrisFlyer
+        constraints: "Miles credited directly to KrisFlyer account on statement date."
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card-apex.html
+      retrieved_on: 2026-07-03
+      notes: "6 KrisFlyer Miles per Rs.200 on other eligible spends; some spend categories excluded per T&C."
+
+benefits:
+  - effective_from: 2023-01-01 # TODO verify
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [issuer-direct]
+        notes: "2 complimentary domestic lounge visits every quarter."
+      international:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Max 2 visits per quarter; Priority Pass membership worth USD 99."
+    milestones:
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Additional 10,000 KrisFlyer Miles"
+        value_inr: null
+        reward_kind: miles
+        reward_units: 10000
+        reward_currency_name: KrisFlyer Miles
+        trigger_window: anniversary-year
+      - spend_inr: 750000
+        cycle: annual
+        benefit: "Tier upgrade to KrisFlyer Elite Gold on spends on Singapore Airlines (bookings via SIA app/website)"
+        reward_kind: other
+        trigger_window: anniversary-year
+      - spend_inr: 1000000
+        cycle: annual
+        benefit: "Additional 3,000 bonus KrisFlyer Miles on cumulative spend"
+        value_inr: null
+        reward_kind: miles
+        reward_units: 3000
+        reward_currency_name: KrisFlyer Miles
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "Payment of annual fee and first transaction within 60 days of card issuance"
+        benefit: "10,000 KrisFlyer Miles"
+        value_inr: null
+        window_days: 60
+    insurance:
+      - type: baggage-loss
+        sum_insured_inr: 100000
+        conditions: "Baggage loss / delay cover."
+      - type: fraud-liability
+        sum_insured_inr: 1000000
+        conditions: "Fraud loss cover."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card-apex.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: null # TODO verify
+  max_age: null # TODO verify
+  income_inr_annual:
+    salaried: null # TODO verify
+    self_employed: null # TODO verify
+  credit_score_min: null # TODO verify
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card-apex.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, airline, krisflyer, singapore-airlines, travel, miles, super-premium]

@@ -28,8 +28,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/irctc-sbi-card-premier.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-01-01
@@ -59,13 +59,14 @@ rewards:
           class: cobrand-merchant
           merchants: [irctc-direct]
         notes: "10% value-back (as points) on AC class bookings via IRCTC."
-      - category: dining-grocery
-        canonical_categories: [groceries, dining]
+      - category: dining-utilities
+        canonical_categories: [dining, utilities]
         multiplier: 1
         effective_rate: 3
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "3 Reward Points per ₹125 on Dining and on standing-instruction Utility spends."
     exclusions:
       - fuel
       - wallet-loads
@@ -76,8 +77,8 @@ rewards:
         program: IRCTC
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/irctc-sbi-card-premier.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-01-01
@@ -88,19 +89,34 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [issuer-direct]
+        notes: "8 complimentary railway lounge visits per year in India (max. 2 per quarter), primary cardholder only."
+    welcome:
+      - condition: "1st annual fee paid"
+        benefit: "1,500 Reward Points worth ₹1,500"
+        value_inr: 1500
+        window_days: 45
+    milestones:
+      - spend_inr: 50000
+        cycle: annual
+        benefit: "2,500 Reward Points on annual travel spends of ₹50,000"
+        value_inr: 2500
+      - spend_inr: 100000
+        cycle: annual
+        benefit: "5,000 Reward Points on annual travel spends of ₹1 lakh"
+        value_inr: 5000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 100
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
       cycle: monthly
     other:
       - name: IRCTC transaction charge waiver
         description: 1% + GST transaction charge waiver on IRCTC ticket bookings.
     concierge: false
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/irctc-sbi-card-premier.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -112,8 +128,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/irctc-sbi-card-premier.page
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, railway, irctc, rupay, entry]

@@ -1,35 +1,36 @@
-id: sbi-elite
-name: SBI Card ELITE
+id: sbi-elite-business
+name: SBI Card ELITE Business
 issuer: sbi
-network: mastercard
-network_tier: world
+network: mastercard # TODO verify
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2015-09-01
-discontinued_on: null
+launched_on: null
 
 fees:
-  - effective_from: 2015-09-01
+  - effective_from: 2026-07-03
     effective_until: null
-    joining_fee_inr: 4999
-    annual_fee_inr: 4999
+    joining_fee_inr: 4999 # TODO verify
+    annual_fee_inr: 4999 # TODO verify
+    renewal_fee_inr: 4999 # TODO verify
     fee_waiver:
       spend_inr: 1000000
       cycle: annual
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.5
+    forex_markup_pct: 1.99 # TODO verify
+    finance_charge_monthly_pct: 3.5 # TODO verify
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
+      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE. # TODO verify"
 
 rewards:
-  - effective_from: 2015-09-01
+  - effective_from: 2026-07-03
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -46,6 +47,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "# TODO verify Business-specific accelerated earn"
     exclusions:
       - fuel
       - wallet-loads
@@ -59,11 +61,12 @@ rewards:
         program: SBI Card Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
+      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE. # TODO verify"
 
 benefits:
-  - effective_from: 2015-09-01
+  - effective_from: 2026-07-03
     effective_until: null
     lounge_access:
       domestic:
@@ -79,35 +82,35 @@ benefits:
     milestones:
       - spend_inr: 300000
         cycle: annual
-        benefit: "10,000 Bonus Reward Points on annual spends of ₹3 lakh"
+        benefit: "10,000 Bonus Reward Points on annual spends of Rs. 3 lakh"
         value_inr: 2500
         reward_kind: points
         reward_units: 10000
         reward_currency_name: Reward Points
       - spend_inr: 400000
         cycle: annual
-        benefit: "10,000 Bonus Reward Points on annual spends of ₹4 lakh"
+        benefit: "10,000 Bonus Reward Points on annual spends of Rs. 4 lakh"
         value_inr: 2500
         reward_kind: points
         reward_units: 10000
         reward_currency_name: Reward Points
       - spend_inr: 500000
         cycle: annual
-        benefit: "15,000 Bonus Reward Points on annual spends of ₹5 lakh"
+        benefit: "15,000 Bonus Reward Points on annual spends of Rs. 5 lakh"
         value_inr: 3750
         reward_kind: points
         reward_units: 15000
         reward_currency_name: Reward Points
       - spend_inr: 800000
         cycle: annual
-        benefit: "15,000 Bonus Reward Points on annual spends of ₹8 lakh"
+        benefit: "15,000 Bonus Reward Points on annual spends of Rs. 8 lakh"
         value_inr: 3750
         reward_kind: points
         reward_units: 15000
         reward_currency_name: Reward Points
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Welcome e-Gift voucher worth ₹5,000 (Yatra / Hush Puppies / Bata / Pantaloons / Aditya Birla Fashion / Shoppers Stop)"
+        benefit: "Welcome e-Gift voucher worth Rs. 5,000"
         value_inr: 5000
         window_days: 90
     movies:
@@ -116,7 +119,7 @@ benefits:
       max_per_cycle: 2
       cycle: monthly
       cap_inr: 500
-      notes: "Free movie tickets worth ₹6,000 per year (max discount ₹250 per ticket)."
+      notes: "Free movie tickets worth Rs. 6,000 per year (max discount Rs. 250 per ticket). # TODO verify"
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -128,8 +131,9 @@ benefits:
       - name: Club ITC Silver tier membership
         description: Complimentary 1-year Club ITC Silver Tier Membership (eligible after first transaction within 60 days of card issuance).
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
+      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE. # TODO verify"
 
 eligibility:
   min_age: 21
@@ -141,8 +145,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
 
 metadata:
   last_verified_on: 2026-07-03
-  tags: [premium, points, lifestyle, movies]
+  tags: [premium, points, lifestyle, business]

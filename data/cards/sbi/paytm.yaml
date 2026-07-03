@@ -1,0 +1,104 @@
+id: sbi-paytm
+name: "Paytm SBI Card"
+issuer: sbi
+network: visa  # TODO verify (Paytm SBI issued on Visa/RuPay; crawl does not state network)
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: "Paytm"
+  category: other
+status: active
+launched_on: null  # TODO verify
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    renewal_fee_inr: 499
+    fee_waiver: null  # TODO verify (no renewal-fee waiver stated on crawl for base Paytm SBI Card)
+    forex_markup_pct: null  # TODO verify
+    finance_charge_monthly_pct: null  # TODO verify
+    cash_advance_fee: null  # TODO verify
+    gst_applicable: true
+    supplementary_card_fee_inr: 0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
+      retrieved_on: 2026-07-03
+    notes: "Annual Fee Rs. 499 + taxes; Renewal Fee Rs. 499 + taxes from second year onwards; Add-on card fee Nil."
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: paytm-travel
+        canonical_categories: [travel]
+        multiplier: 3
+        effective_rate: 3
+        notes: "3% Cashback on Paytm Travel bookings via the Paytm App. Cap not stated on crawl.  # TODO verify cap"
+      - category: paytm-app-spends
+        canonical_categories: [online]
+        multiplier: 2
+        effective_rate: 2
+        notes: "2% Cashback on all other purchases on the Paytm App. Cap not stated on crawl.  # TODO verify cap"
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        constraints: "1 Reward Point = Re. 1."
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
+      retrieved_on: 2026-07-03
+    notes: "1% Cashback on any other spends across offline and online stores (base). Category exclusions not published on crawl.  # TODO verify exclusions"
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access: null
+    milestones:
+      - spend_inr: 100000
+        cycle: annual
+        benefit: "E-voucher for renewal of Paytm First Membership on annual retail spends of Rs. 1 Lakh."
+        reward_kind: voucher
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "Card issued"
+        benefit: "Complimentary Paytm First Membership."
+    insurance:
+      - type: fraud-liability
+        sum_insured_inr: 100000
+        conditions: "Cyber Fraud Insurance cover of Rs. 1,00,000."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 100
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: null  # TODO verify
+  max_age: null  # TODO verify
+  income_inr_annual:
+    salaried: null  # TODO verify
+    self_employed: null  # TODO verify
+  credit_score_min: null  # TODO verify
+  residency: resident-indian
+  notes: "Eligibility criteria not published on the product page."
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [cashback, co-brand, entry]

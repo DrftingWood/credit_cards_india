@@ -1,35 +1,38 @@
-id: sbi-pulse
-name: SBI Card PULSE
+id: sbi-pulse-sprint
+name: SBI Card PULSE Sprint
 issuer: sbi
-network: visa
-network_tier: signature
+network: visa # TODO verify
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-05-01
-discontinued_on: null
+launched_on: null
 
 fees:
-  - effective_from: 2022-05-01
+  - effective_from: 2026-07-03
     effective_until: null
     joining_fee_inr: 1499
     annual_fee_inr: 1499
+    renewal_fee_inr: 1499
     fee_waiver:
       spend_inr: 200000
       cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
+      conditions: "Renewal fee reversed if annual spends for last year >= Rs. 2,00,000."
+    forex_markup_pct: 3.5 # TODO verify
+    finance_charge_monthly_pct: 3.5 # TODO verify
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
+    supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
+      notes: "Crawl reflects parent SBI Card PULSE; Sprint variant values mirrored. # TODO verify"
 
 rewards:
-  - effective_from: 2022-05-01
+  - effective_from: 2026-07-03
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -46,7 +49,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "10 Reward Points per ₹100 on Chemist, Pharmacy, Sports, Dining and Movies."
+        notes: "10 Reward Points per Rs. 100 on Chemist, Pharmacy, Sports, Dining and Movies."
     exclusions:
       - fuel
       - wallet-loads
@@ -56,12 +59,17 @@ rewards:
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
+        constraints: "4 Reward Points = Rs. 1."
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
+      notes: "Crawl reflects parent SBI Card PULSE. # TODO verify Sprint-specific rates"
 
 benefits:
-  - effective_from: 2022-05-01
+  - effective_from: 2026-07-03
     effective_until: null
     lounge_access:
       domestic:
@@ -69,15 +77,16 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [visa, dreamfolks]
+        notes: "Restricted to 1 per quarter. Complimentary Priority Pass membership (US $99, first 2 years) — international visits not complimentary. # TODO verify"
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Noise ColorFit Pulse 4 Pro smartwatch worth ₹7,999"
+        benefit: "Noise ColorFit Pulse 4 Pro smartwatch worth Rs. 7,999"
         value_inr: 7999
         window_days: 90
     milestones:
       - spend_inr: 400000
         cycle: annual
-        benefit: "e-Voucher worth ₹1,500 on annual retail spends of ₹4 lakh"
+        benefit: "e-Voucher worth Rs. 1,500 on annual retail spends of Rs. 4 lakh"
         value_inr: 1500
     insurance:
       - type: fraud-liability
@@ -107,6 +116,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
+      notes: "Crawl reflects parent SBI Card PULSE. # TODO verify Sprint-specific benefits"
 
 eligibility:
   min_age: 21

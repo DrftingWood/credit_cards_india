@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 4999
     annual_fee_inr: 4999
     fee_waiver:
-      spend_inr: 1000000
+      spend_inr: 1500000
       cycle: annual
     forex_markup_pct: 1.99
     finance_charge_monthly_pct: 3.5
@@ -25,8 +25,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-elite.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2024-03-01
@@ -39,13 +39,14 @@ rewards:
       unit_value_inr: 1.0
       unit_value_inr_realized: 0.5
     accelerated:
-      - category: travel-online-offline
-        canonical_categories: [online, travel]
+      - category: travel
+        canonical_categories: [travel]
         multiplier: 3
         effective_rate: 6
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
+        notes: "6 Travel Credits per ₹200 spent on travel."
     exclusions:
       - fuel
       - wallet-loads
@@ -63,8 +64,8 @@ rewards:
         program: Multiple
         ratio: "1:1"
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-elite.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-03-01
@@ -81,19 +82,38 @@ benefits:
         guests_per_visit: 0
         via: [priority-pass]
     milestones:
-      - spend_inr: 1000000
+      - spend_inr: 100000
         cycle: annual
-        benefit: "10,000 Travel Credits bonus"
-        value_inr: 10000
-      - spend_inr: 2500000
+        benefit: "1 additional domestic lounge visit per ₹1 lakh spend (capped at 15 visits per year)"
+      - spend_inr: 1200000
         cycle: annual
-        benefit: "25,000 Travel Credits bonus"
-        value_inr: 25000
+        benefit: "20,000 Bonus Travel Credits on annual spends of ₹12 lakh"
+        value_inr: 20000
+        reward_kind: miles
+        reward_units: 20000
+        reward_currency_name: Travel Credits
     welcome:
-      - condition: "Joining fee paid"
+      - condition: "Spends of ₹1 lakh within 60 days of card issuance (credited on payment of joining fee)"
         benefit: "5,000 bonus Travel Credits"
         value_inr: 5000
         window_days: 60
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 10000000
+      - type: lost-card-liability
+        sum_insured_inr: 100000
+      - type: baggage-loss
+        sum_insured_inr: 72000
+        conditions: "Loss of check-in baggage."
+      - type: trip-delay
+        sum_insured_inr: 7500
+        conditions: "Delay of check-in baggage."
+      - type: trip-delay
+        sum_insured_inr: 3500
+        conditions: "Up to 6 flight cancellations per year, each up to ₹3,500."
+      - type: other
+        sum_insured_inr: 12500
+        conditions: "Loss of travel documents."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -102,8 +122,8 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-elite.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -115,8 +135,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/sbi-card-miles-elite.page
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-elite.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [premium, travel, miles, low-forex]

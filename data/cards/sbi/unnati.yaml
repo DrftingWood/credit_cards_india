@@ -1,0 +1,90 @@
+id: sbi-unnati
+name: SBI Unnati Credit Card
+issuer: sbi
+network: visa  # TODO verify network (not stated in crawl)
+network_tier: null
+tier: entry
+card_type: secured
+co_brand: null
+status: active
+launched_on: null  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2018-01-01  # TODO verify exact effective/launch date
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 499
+    renewal_fee_inr: 499
+    fee_waiver: null
+    forex_markup_pct: null  # TODO verify
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
+      retrieved_on: 2026-07-03
+    notes: "Annual fee of ₹499 waived for the first 4 years; renewal fee of ₹499 applies from the 5th year onwards. Finance charge shown at SBI standard; TODO verify."
+
+rewards:
+  - effective_from: 2018-01-01  # TODO verify
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
+    exclusions:
+      - fuel
+      - emi
+      - cash-advance
+    redemption:
+      - type: catalog
+        program: SBI Card Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
+      retrieved_on: 2026-07-03
+    notes: "Cash Advance, Balance Transfer, Flexipay and Fuel transactions are excluded from the Reward Points programme."
+
+benefits:
+  - effective_from: 2018-01-01  # TODO verify
+    effective_until: null
+    milestones:
+      - spend_inr: 50000
+        cycle: annual
+        benefit: "₹500 Cashback on annual spends of ₹50,000"
+        value_inr: 500
+        reward_kind: cashback
+        trigger_window: anniversary-year
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 100
+      cycle: statement
+      notes: "1% fuel surcharge waiver on transactions between ₹500 and ₹3,000; max ₹100 per statement cycle."
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Secured card issued against a lien on the cardholder's SBI fixed deposit of ₹25,000 or more."
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, secured, points, fd-backed]

@@ -28,8 +28,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card-prime.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-06-01
@@ -42,6 +42,15 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
     accelerated:
+      - category: ajio-jiomart-online
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 20
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        merchants: [ajio, jiomart]
+        notes: "20 Reward Points per ₹100 on AJIO & JioMart online stores (except UPI payments)."
       - category: reliance-retail
         canonical_categories: [online]
         multiplier: 1
@@ -49,8 +58,8 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        merchants: [reliance-digital, ajio, reliance-smart, trends, netmeds, jiomart]
-        notes: "10 Reward Points per ₹100 at Reliance Retail brands."
+        merchants: [reliance-digital, reliance-smart, trends, netmeds]
+        notes: "10 Reward Points per ₹100 at other participating Reliance Retail stores (except UPI payments)."
     exclusions:
       - fuel
       - wallet-loads
@@ -64,8 +73,8 @@ rewards:
         program: Reliance Retail gift vouchers
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card-prime.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-06-01
@@ -86,21 +95,37 @@ benefits:
         benefit: "Reliance Retail e-voucher worth ₹3,000"
         value_inr: 3000
         window_days: 90
+      - condition: "Joining fee paid"
+        benefit: "Additional discount vouchers worth ₹11,999 across participating Reliance Retail stores"
     milestones:
-      - spend_inr: 500000
+      - spend_inr: 75000
         cycle: annual
-        benefit: "Reliance Retail vouchers worth ₹7,000"
-        value_inr: 7000
+        benefit: "Reliance Retail voucher worth ₹1,500"
+        value_inr: 1500
+      - spend_inr: 150000
+        cycle: annual
+        benefit: "Reliance Retail voucher worth ₹2,250"
+        value_inr: 2250
+      - spend_inr: 300000
+        cycle: annual
+        benefit: "Reliance Retail voucher worth ₹5,000"
+        value_inr: 5000
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
       max_txn_inr: 4000
-      cap_per_cycle_inr: 250
+      cap_per_cycle_inr: 100
       cycle: monthly
+    movies:
+      type: free
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 250
+      notes: "1 free movie ticket per month (up to ₹250), one transaction per month; convenience fee applies."
     concierge: false
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card-prime.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -115,5 +140,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/shopping/reliance-sbi-card-prime.page
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, retail, reliance, premium, points]

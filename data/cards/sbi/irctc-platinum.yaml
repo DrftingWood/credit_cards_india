@@ -1,0 +1,121 @@
+id: sbi-irctc-platinum
+name: IRCTC SBI Platinum Card
+issuer: sbi
+network: visa # TODO verify
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: IRCTC
+  category: railway
+  partner_website: https://www.irctc.co.in
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2018-01-01 # TODO verify
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    renewal_fee_inr: 500
+    fee_waiver: null
+    forex_markup_pct: 3.5 # TODO verify
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2018-01-01 # TODO verify
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    loyalty_program: irctc-loyalty
+    base:
+      rate: 1
+      per_inr: 125
+      unit_value_inr: 1.0
+      unit_value_inr_realized: null # TODO verify
+    accelerated:
+      - category: irctc-rail-bookings
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 10
+        card_attributable_rate: 10
+        card_attributable_per_inr: 100
+        stacks_with_program: false
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: monthly
+        merchants: [irctc]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [irctc-direct]
+        notes: "Up to 10% value back (as reward points) on AC1/AC2/AC3/Executive Chair Car/Chair Car bookings via IRCTC app and website."
+    exclusions:
+      - fuel
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
+      retrieved_on: 2026-07-03
+      notes: "1 Reward Point per Rs.125 on non-fuel retail purchases including railway tickets at irctc.co.in / IRCTC mobile app (Android only)."
+
+benefits:
+  - effective_from: 2018-01-01 # TODO verify
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [issuer-direct]
+        notes: "Complimentary railway lounge access (not airport lounges); max 1 per quarter, primary cardholder only."
+    milestones:
+      - spend_inr: 0
+        cycle: annual
+        benefit: "500 Reward Points on payment of renewal fee"
+        value_inr: 500
+        reward_kind: points
+        reward_units: 500
+        reward_currency_name: Reward Points
+        trigger_window: anniversary-year
+    welcome:
+      - condition: "Single transaction of Rs.500 or more within 60 days of card issuance"
+        benefit: "350 activation bonus Reward Points"
+        value_inr: 350
+        window_days: 60
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 100
+      cycle: statement
+    other:
+      - name: Travel offers from IRCTC
+        description: "Discounted airline tickets and tailor-made holiday packages via IRCTC."
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: null # TODO verify
+  max_age: null # TODO verify
+  income_inr_annual:
+    salaried: null # TODO verify
+    self_employed: null # TODO verify
+  credit_score_min: null # TODO verify
+  residency: resident-indian
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, railway, irctc, travel, points, entry]

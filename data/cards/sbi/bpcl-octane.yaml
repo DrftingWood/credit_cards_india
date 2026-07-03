@@ -28,8 +28,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/bpcl-sbi-card-octane.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-04-01
@@ -55,9 +55,10 @@ rewards:
         canonical_categories: [groceries, dining, entertainment]
         multiplier: 1
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 7500
         cap_unit: points
         cycle: monthly
+        notes: "10 Reward Points per ₹100 on Dining, Departmental stores, Grocery & Movies (up to 7,500 points/month)."
     exclusions:
       - wallet-loads
       - rent
@@ -70,28 +71,29 @@ rewards:
         program: SBI Card Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/bpcl-sbi-card-octane.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-04-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
+        visits_per_cycle: 4
         cycle: annual
         guests_per_visit: 0
-        via: [visa, dreamfolks]
+        via: [visa]
+        notes: "4 complimentary domestic VISA lounge visits per calendar year (max. 1 per quarter)."
     milestones:
-      - spend_inr: 200000
+      - spend_inr: 300000
         cycle: annual
-        benefit: "e-Gift voucher worth ₹2,000"
+        benefit: "e-Gift voucher worth ₹2,000 (Aditya Birla Fashion / Yatra / Hush Puppies)"
         value_inr: 2000
     welcome:
       - condition: "Joining fee paid"
         benefit: "6,000 bonus Reward Points"
         value_inr: 1500
-        window_days: 90
+        window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -100,8 +102,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/travel/bpcl-sbi-card-octane.page
-      retrieved_on: 2026-04-15
+      url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -113,8 +115,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/bpcl-sbi-card-octane.page
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, fuel, bpcl, mid-tier, points]

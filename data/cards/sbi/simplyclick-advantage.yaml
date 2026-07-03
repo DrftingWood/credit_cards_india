@@ -1,35 +1,39 @@
-id: sbi-simplyclick
-name: SimplyCLICK SBI Card
+id: sbi-simplyclick-advantage
+name: SimplyCLICK Advantage SBI Card
 issuer: sbi
-network: visa
-network_tier: platinum
+network: visa # TODO verify
+network_tier: null
 tier: entry
-card_type: credit
+card_type: secured
 co_brand: null
 status: active
-launched_on: 2015-08-01
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-07-03
     effective_until: null
     joining_fee_inr: 499
     annual_fee_inr: 499
+    renewal_fee_inr: 499
     fee_waiver:
       spend_inr: 100000
       cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
+      conditions: "Renewal fee reversed on annual spends >= Rs. 1,00,000."
+    forex_markup_pct: 3.5 # TODO verify
+    finance_charge_monthly_pct: 3.5 # TODO verify
     cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
+      pct: 2.5 # TODO verify
+      min_inr: 500 # TODO verify
+    supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
       retrieved_on: 2026-07-03
+      notes: "Secured 'Advantage' variant of SimplyCLICK SBI Card (issued against a fixed deposit)."
 
 rewards:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-07-03
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -46,8 +50,8 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        merchants: [apollo-24x7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
-        notes: "10X points on online spends with partner merchants (Apollo 24x7, BookMyShow, Cleartrip, Dominos, IGP, Myntra, Netmeds, Swiggy, Yatra, Gyftr, Tata Cliq)."
+        merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
+        notes: "10X Reward Points on online spends with partner merchants: Apollo 24x7, BookMyShow, Cleartrip, Dominos, IGP, Myntra, Netmeds, Swiggy, Yatra, Gyftr, Tata Cliq."
       - category: online-other
         canonical_categories: [online]
         multiplier: 5
@@ -55,6 +59,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "5X Reward Points on all other online spends."
     exclusions:
       - fuel
       - wallet-loads
@@ -72,21 +77,21 @@ rewards:
       retrieved_on: 2026-07-03
 
 benefits:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-07-03
     effective_until: null
     lounge_access: null
     milestones:
       - spend_inr: 100000
         cycle: annual
-        benefit: "Cleartrip / Yatra e-voucher worth ₹2,000"
+        benefit: "e-Voucher worth Rs. 2,000 (Cleartrip/Yatra) on annual online spends of Rs. 1 lakh"
         value_inr: 2000
       - spend_inr: 200000
         cycle: annual
-        benefit: "Additional Cleartrip / Yatra e-voucher worth ₹2,000"
+        benefit: "Additional e-Voucher worth Rs. 2,000 (Cleartrip/Yatra) on annual online spends of Rs. 2 lakh"
         value_inr: 2000
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "Amazon.in gift card worth ₹500"
+      - condition: "Annual fee paid"
+        benefit: "Amazon.in e-Gift Card worth Rs. 500"
         value_inr: 500
         window_days: 90
     fuel_surcharge_waiver:
@@ -101,17 +106,18 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: 18 # TODO verify
+  max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 720
+  credit_score_min: null
   residency: resident-indian
+  notes: "Secured card issued against a fixed deposit; no separate income/credit-score criteria published. # TODO verify"
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
 
 metadata:
   last_verified_on: 2026-07-03
-  tags: [entry, online-spend, points]
+  tags: [entry, online-spend, points, secured]

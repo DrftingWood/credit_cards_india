@@ -1,0 +1,119 @@
+id: sbi-tata-neu-plus
+name: Tata Neu Plus SBI Card
+issuer: sbi
+network: rupay              # RuPay variant (UPI value-back); also offered on Visa. # TODO verify default network
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: Tata Neu
+  category: conglomerate
+  partner_website: https://www.tataneu.com
+status: active
+launched_on: null           # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-07-03
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    renewal_fee_inr: 499
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual/renewal fee reversed on net retail spends of Rs. 1 lakh in the preceding 365 days."
+    forex_markup_pct: null             # TODO verify
+    finance_charge_monthly_pct: null   # TODO verify
+    cash_advance_fee: null             # TODO verify
+    gst_applicable: true
+    supplementary_card_fee_inr: 0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2026-07-03
+    effective_until: null
+    currency: cashback
+    currency_name: NeuCoins
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+    accelerated:
+      - category: tata-neu-and-partner-tata-brands
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 2
+        merchants: [tata-neu]
+        channel:
+          class: cobrand-merchant
+          merchants: [tata-neu]
+        notes: "2% value back as NeuCoins on non-EMI spends at Tata Neu App/Website and partner Tata brands. # TODO verify monthly caps"
+      - category: tata-neu-select-categories
+        canonical_categories: [online]
+        multiplier: 1
+        effective_rate: 7
+        merchants: [tata-neu]
+        channel:
+          class: cobrand-merchant
+          merchants: [tata-neu]
+        notes: "2% base + extra 5% (total 7%) value back as NeuCoins on select category spends via the Tata Neu App/Website. # TODO verify eligible categories and caps"
+    exclusions:
+      - emi
+    capping_rules:
+      - "Accelerated accrual applies only to non-EMI spends. NeuCoins auto-credited to NeuPass account."
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+      - type: voucher
+        program: Tata Neu App/Website and partner Tata brands
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2026-07-03
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        spend_threshold_inr: 50000
+        spend_threshold_cycle: quarterly
+        notes: "4 per year (1 per quarter), each quarter's visit unlocked on Rs. 50,000 spend in the previous quarter."
+    welcome:
+      - condition: "Within 15 days of joining fee realisation"
+        benefit: "499 NeuCoins (1 NeuCoin = Re. 1)"
+        value_inr: 499
+        window_days: 15
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: null            # TODO verify
+  max_age: null            # TODO verify
+  income_inr_annual:
+    salaried: null         # TODO verify
+    self_employed: null    # TODO verify
+  credit_score_min: null   # TODO verify
+  residency: resident-indian
+  notes: "Eligibility criteria not published on the product page; verify from MITC."
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [co-branded, conglomerate, tata-neu, entry, cashback]

@@ -1,35 +1,36 @@
-id: sbi-prime
-name: SBI Card PRIME
+id: sbi-prime-business
+name: SBI Card PRIME Business
 issuer: sbi
-network: visa
-network_tier: signature
+network: visa # TODO verify
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2016-09-01
-discontinued_on: null
+launched_on: null
 
 fees:
-  - effective_from: 2016-09-01
+  - effective_from: 2026-07-03
     effective_until: null
-    joining_fee_inr: 2999
-    annual_fee_inr: 2999
+    joining_fee_inr: 2999 # TODO verify
+    annual_fee_inr: 2999 # TODO verify
+    renewal_fee_inr: 2999 # TODO verify
     fee_waiver:
       spend_inr: 300000
       cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
+    forex_markup_pct: 3.5 # TODO verify
+    finance_charge_monthly_pct: 3.5 # TODO verify
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
+      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
       retrieved_on: 2026-07-03
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME. # TODO verify"
 
 rewards:
-  - effective_from: 2016-09-01
+  - effective_from: 2026-07-03
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -46,14 +47,14 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "10 Reward Points per ₹100 on Dining, Groceries, Departmental Stores and Movies."
+        notes: "10 Reward Points per Rs. 100 on Dining, Groceries, Departmental Stores and Movies. # TODO verify Business-specific earn"
       - category: birthday-spend
         multiplier: 1
         effective_rate: 20
         cap_per_cycle: 2000
         cap_unit: points
         cycle: annual
-        notes: "20x points on the birthday day, capped 2,000 points."
+        notes: "20x points on the birthday day, capped 2,000 points. # TODO verify"
     exclusions:
       - fuel
       - wallet-loads
@@ -67,11 +68,12 @@ rewards:
         program: SBI Card Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
+      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
       retrieved_on: 2026-07-03
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME. # TODO verify"
 
 benefits:
-  - effective_from: 2016-09-01
+  - effective_from: 2026-07-03
     effective_until: null
     lounge_access:
       domestic:
@@ -87,15 +89,15 @@ benefits:
     milestones:
       - spend_inr: 50000
         cycle: quarterly
-        benefit: "Pizza Hut voucher worth ₹1,000"
+        benefit: "Pizza Hut voucher worth Rs. 1,000"
         value_inr: 1000
       - spend_inr: 500000
         cycle: annual
-        benefit: "Yatra / Pantaloons e-voucher worth ₹7,000"
+        benefit: "Yatra / Pantaloons e-voucher worth Rs. 7,000"
         value_inr: 7000
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Welcome e-Gift voucher worth ₹3,000 (Yatra / Hush Puppies / Bata / Pantaloons / Aditya Birla Fashion / Shoppers Stop)"
+        benefit: "Welcome e-Gift voucher worth Rs. 3,000"
         value_inr: 3000
         window_days: 90
     fuel_surcharge_waiver:
@@ -109,8 +111,9 @@ benefits:
       - name: Club ITC Silver tier membership
         description: Complimentary 1-year Club ITC Silver Tier Membership.
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
+      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
       retrieved_on: 2026-07-03
+      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME. # TODO verify"
 
 eligibility:
   min_age: 21
@@ -122,8 +125,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
 
 metadata:
   last_verified_on: 2026-07-03
-  tags: [premium, points, everyday-spend]
+  tags: [premium, points, everyday-spend, business]

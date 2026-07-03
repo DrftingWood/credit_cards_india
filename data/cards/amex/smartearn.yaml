@@ -63,6 +63,7 @@ rewards:
       - emi
       - cash-advance
       - utilities
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25

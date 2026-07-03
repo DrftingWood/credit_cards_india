@@ -48,6 +48,7 @@ rewards:
       - utilities
     capping_rules:
       - "Spends on utility bills and insurance earn 0 MR points."
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25

@@ -46,6 +46,7 @@ rewards:
       - fuel
       - wallet-loads
       - cash-advance
+    mcc_exclusions: ['6513']
     redemption:
       - type: airmiles
         program: Multiple (MR transfer)

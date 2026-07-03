@@ -1,0 +1,121 @@
+id: kotak-zen-signature
+name: Kotak Zen Credit Card
+issuer: kotak
+network: visa
+network_tier: signature
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2023-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-01-01
+    effective_until: null
+    joining_fee_inr: 1500
+    annual_fee_inr: 1500
+    fee_waiver:
+      spend_inr: 150000
+      cycle: annual
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2023-01-01
+    effective_until: null
+    currency: points
+    currency_name: Zen Points
+    base:
+      rate: 5
+      per_inr: 150
+      unit_value_inr: 0.15
+      unit_value_inr_realized: 0.10
+    accelerated:
+      - category: shopping
+        canonical_categories: [online]
+        multiplier: 2
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: statement
+        notes: "10 Zen Points per ₹150 on shopping (apparel, lifestyle goods, departmental stores & jewellery); 5 per ₹150 on other spends."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513', '5172', '5541', '5542', '5983']
+    reward_cap:
+      max_units: 6500
+      cap_unit: points
+      cycle: statement
+    capping_rules:
+      - "Overall reward points capped at 6,500 per billing cycle."
+      - "Education & insurance points only up to ₹70,000/statement; utility only up to ₹50,000/statement."
+      - "No Zen points on wallet loads, fuel, rent, or online skill-based gaming."
+    redemption:
+      - type: catalog
+        program: Kotak Zen Rewards
+        rate_inr_per_unit: 0.15
+    source:
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2023-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa, dreamfolks]
+      international:
+        visits_per_cycle: 2  # TODO verify count
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    milestones:
+      - spend_inr: 300000
+        cycle: annual
+        benefit: "7,500 bonus Zen points on ₹3L spend (or 15,000 on ₹6L) per year"
+        value_inr: 1125
+        reward_kind: points
+        reward_units: 7500
+        reward_currency_name: Zen Points
+        trigger_window: anniversary-year
+        is_repeatable: true
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 3500
+      cycle: annual
+    concierge: false
+    source:
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null  # TODO verify
+    self_employed: null  # TODO verify
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [mid, points, shopping, lounge]

@@ -13,8 +13,8 @@ discontinued_on: null
 fees:
   - effective_from: 2015-01-01
     effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
+    joining_fee_inr: 0
+    annual_fee_inr: 0
     fee_waiver:
       spend_inr: 150000
       cycle: annual

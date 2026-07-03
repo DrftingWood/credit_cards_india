@@ -25,7 +25,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.rbl.bank.in/category/credit-cards/play-credit-card
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/play-credit-card
       retrieved_on: 2026-04-15
 
 rewards:
@@ -59,7 +59,7 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.4
     source:
-      url: https://www.rbl.bank.in/category/credit-cards/play-credit-card
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/play-credit-card
       retrieved_on: 2026-04-15
 
 benefits:
@@ -85,7 +85,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.rbl.bank.in/category/credit-cards/play-credit-card
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/play-credit-card
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -98,7 +98,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.rbl.bank.in/category/credit-cards/play-credit-card
+  apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/play-credit-card
 
 metadata:
   last_verified_on: 2026-04-15

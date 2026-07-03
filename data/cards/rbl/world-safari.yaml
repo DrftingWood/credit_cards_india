@@ -26,8 +26,8 @@ fees:
     gst_applicable: true
     notes: "Zero forex markup is the card's headline feature."
     source:
-      url: https://www.rbl.bank.in/category/credit-cards/world-safari-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2018-01-01
@@ -62,8 +62,8 @@ rewards:
         program: Travel partners
         rate_inr_per_unit: 0.4
     source:
-      url: https://www.rbl.bank.in/category/credit-cards/world-safari-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2018-01-01
@@ -102,8 +102,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.rbl.bank.in/category/credit-cards/world-safari-credit-card
-      retrieved_on: 2026-04-15
+      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -115,8 +115,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.rbl.bank.in/category/credit-cards/world-safari-credit-card
+  apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [premium, travel, zero-forex, points]

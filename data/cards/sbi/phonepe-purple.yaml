@@ -23,7 +23,7 @@ fees:
       cycle: annual
       conditions: "Annual fee reversal on spends of Rs. 1 lakh or more in the previous membership year."
     forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: null  # TODO verify
+    finance_charge_monthly_pct: 3.75  # TODO verify
     cash_advance_fee: null  # TODO verify
     gst_applicable: true
     supplementary_card_fee_inr: 0
@@ -64,6 +64,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "1 Reward Point per Rs. 100 on other spends (base). Eligible-spend exclusions not detailed on crawl.  # TODO verify exclusions"
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

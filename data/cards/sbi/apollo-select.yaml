@@ -1,7 +1,7 @@
 id: sbi-apollo-select
 name: Apollo SBI Card SELECT
 issuer: sbi
-network: visa # TODO verify
+network: visa  # TODO verify network — inferred (default Visa)
 network_tier: null
 tier: mid
 card_type: credit
@@ -21,11 +21,11 @@ fees:
       spend_inr: 300000
       cycle: annual
       conditions: "Renewal fee reversed within 30 days if annual spend in the previous year is Rs. 3 lakhs or more."
-    forex_markup_pct: 3.5 # TODO verify
-    finance_charge_monthly_pct: 3.5 # TODO verify
+    forex_markup_pct: 3.5 # verified: MITC — 3.5% foreign currency txn fee (standard cards)
+    finance_charge_monthly_pct: 3.75 # verified: MITC — up to 3.75% p.m. (45% p.a.)
     cash_advance_fee:
-      pct: 2.5 # TODO verify
-      min_inr: 500 # TODO verify
+      pct: 2.5 # verified: MITC — 2.5% or Rs.500 whichever higher
+      min_inr: 500
     gst_applicable: true
     supplementary_card_fee_inr: 0
     source:
@@ -47,22 +47,23 @@ rewards:
         canonical_categories: [other]
         multiplier: 20
         effective_rate: 20
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 5000
         cap_unit: points
-        cycle: monthly
-        notes: "10 Reward Points per Rs. 100 on Apollo 24|7 and Apollo Pharmacy; expressed as 20 RP per Rs. 200 base denominator."
+        cycle: statement
+        notes: "10 Reward Points per Rs. 100 on Apollo 24|7 and Apollo Pharmacy; expressed as 20 RP per Rs. 200 base denominator. Capped at 5,000 RP per statement cycle; thereafter 1 RP per Rs. 200."
       - category: dining-movies-entertainment-travel
         canonical_categories: [dining, entertainment, travel]
         multiplier: 4
         effective_rate: 4
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 5000
         cap_unit: points
-        cycle: monthly
-        notes: "2 Reward Points per Rs. 100 on Dining, Movies & Entertainment and Travel."
+        cycle: statement
+        notes: "2 Reward Points per Rs. 100 on Dining, Movies & Entertainment and Travel. Capped at 5,000 RP per statement cycle; thereafter 1 RP per Rs. 200."
     exclusions:
       - fuel
       - wallet-loads
       - rent
+      - government
       - insurance-premiums
       - emi
     redemption:
@@ -76,6 +77,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

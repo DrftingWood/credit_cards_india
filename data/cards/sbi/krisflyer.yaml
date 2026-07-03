@@ -1,7 +1,7 @@
 id: sbi-krisflyer
 name: KrisFlyer SBI Card
 issuer: sbi
-network: visa # TODO verify
+network: visa  # TODO verify network — inferred (default Visa)
 network_tier: null
 tier: premium
 card_type: credit
@@ -20,7 +20,7 @@ fees:
     renewal_fee_inr: 2999
     fee_waiver: null
     forex_markup_pct: 3.5 # TODO verify
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -66,6 +66,7 @@ rewards:
       retrieved_on: 2026-07-03
       notes: "2 KrisFlyer Miles per Rs.200 on other eligible spends; some spend categories excluded per T&C."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2022-01-01 # TODO verify
     effective_until: null

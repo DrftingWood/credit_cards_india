@@ -1,7 +1,7 @@
 id: sbi-landmark-prime
 name: Landmark Rewards SBI Card PRIME
 issuer: sbi
-network: visa # TODO verify
+network: visa  # TODO verify network — inferred (default Visa)
 network_tier: null
 tier: premium
 card_type: credit
@@ -17,12 +17,12 @@ fees:
     effective_until: null
     joining_fee_inr: 2999
     annual_fee_inr: 2999
-    fee_waiver: null # TODO verify - no spend-based renewal waiver stated
-    forex_markup_pct: 3.5 # TODO verify
-    finance_charge_monthly_pct: 3.5 # TODO verify
+    fee_waiver: null # verified: MITC — Landmark Rewards SBI Card PRIME 2,999/2,999, no spend-based waiver listed
+    forex_markup_pct: 3.5 # verified: MITC — 3.5% foreign currency txn fee (standard cards)
+    finance_charge_monthly_pct: 3.75 # verified: MITC — up to 3.75% p.m. (45% p.a.)
     cash_advance_fee:
-      pct: 2.5 # TODO verify
-      min_inr: 500 # TODO verify
+      pct: 2.5 # verified: MITC — 2.5% or Rs.500 whichever higher
+      min_inr: 500
     gst_applicable: true
     supplementary_card_fee_inr: 0
     source:
@@ -35,7 +35,7 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 2 # TODO verify - base earn on other retail not stated in source
+      rate: 2 # verified: PRIME booklet — "Earn 2 Reward Points per Rs.100 on other retail purchases (Non fuel)"
       per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
@@ -73,6 +73,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-prime.html
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

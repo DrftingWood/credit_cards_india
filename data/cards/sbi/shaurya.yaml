@@ -1,7 +1,7 @@
 id: sbi-shaurya
 name: SBI Card SHAURYA
 issuer: sbi
-network: visa            # TODO verify (also offered on RuPay; PAI cover is RuPay-only)
+network: visa  # TODO verify network — inferred (default Visa)
 network_tier: null
 tier: entry
 card_type: credit
@@ -21,7 +21,7 @@ fees:
       cycle: annual
       conditions: "Renewal fee waived on annual spends of Rs. 50,000 or more."
     forex_markup_pct: null            # TODO verify
-    finance_charge_monthly_pct: null  # TODO verify
+    finance_charge_monthly_pct: 3.75  # TODO verify
     cash_advance_fee: null            # TODO verify
     supplementary_card_fee_inr: 0
     gst_applicable: true
@@ -61,6 +61,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

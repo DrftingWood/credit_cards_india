@@ -19,7 +19,7 @@ fees:
       spend_inr: 100000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -43,10 +43,10 @@ rewards:
         canonical_categories: [groceries, dining, entertainment]
         multiplier: 10
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 5000
         cap_unit: points
         cycle: monthly
-        notes: "10x points on Dining, Movies, Groceries, Departmental Stores."
+        notes: "10 RP per Rs.150 on Dining, Movies, Groceries, Departmental Stores. Capped at 5,000 RP per month; thereafter 1 RP per Rs.150."
     exclusions:
       - fuel
       - wallet-loads
@@ -63,6 +63,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/simplysave-sbi-card.html
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2015-08-01
     effective_until: null

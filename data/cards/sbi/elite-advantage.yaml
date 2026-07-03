@@ -1,7 +1,7 @@
 id: sbi-elite-advantage
 name: SBI Card ELITE Advantage
 issuer: sbi
-network: mastercard  # TODO verify network for the Advantage variant
+network: visa        # TODO verify network — inferred (default Visa)
 network_tier: null   # TODO verify
 tier: premium
 card_type: secured
@@ -21,7 +21,7 @@ fees:
       cycle: annual
       conditions: "Spend-based reversal of annual fee on spends of ₹10 lakhs."
     forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -76,6 +76,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2024-01-01  # TODO verify
     effective_until: null

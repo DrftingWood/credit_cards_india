@@ -1,7 +1,7 @@
 id: sbi-unnati
 name: SBI Unnati Credit Card
 issuer: sbi
-network: visa  # TODO verify network (not stated in crawl)
+network: visa  # TODO verify network — inferred (default Visa)
 network_tier: null
 tier: entry
 card_type: secured
@@ -18,7 +18,7 @@ fees:
     renewal_fee_inr: 499
     fee_waiver: null
     forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -51,6 +51,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "Cash Advance, Balance Transfer, Flexipay and Fuel transactions are excluded from the Reward Points programme."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2018-01-01  # TODO verify
     effective_until: null

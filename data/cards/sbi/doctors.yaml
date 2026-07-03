@@ -1,7 +1,7 @@
 id: sbi-doctors
 name: Doctor's SBI Card
 issuer: sbi
-network: visa # TODO verify
+network: visa  # TODO verify network — inferred (default Visa)
 network_tier: null
 tier: mid
 card_type: credit
@@ -19,11 +19,11 @@ fees:
       spend_inr: 200000
       cycle: annual
       conditions: "Renewal fee reversed on annual spends of Rs. 2 lakhs."
-    forex_markup_pct: 3.5 # TODO verify
-    finance_charge_monthly_pct: 3.5 # TODO verify
+    forex_markup_pct: 3.5 # verified: MITC — 3.5% foreign currency txn fee (standard cards)
+    finance_charge_monthly_pct: 3.75 # verified: MITC — up to 3.75% p.m. (45% p.a.)
     cash_advance_fee:
-      pct: 2.5 # TODO verify
-      min_inr: 500 # TODO verify
+      pct: 2.5 # verified: MITC — 2.5% or Rs.500 whichever higher
+      min_inr: 500
     gst_applicable: true
     supplementary_card_fee_inr: 0
     source:
@@ -45,10 +45,10 @@ rewards:
         canonical_categories: [travel, international, other]
         multiplier: 5
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 7500
         cap_unit: points
         cycle: monthly
-        notes: "5X Reward Points on Medical Supplies, Travel Bookings & International Spends."
+        notes: "5 RP per Rs.100 on Medical Supplies, Travel Bookings & International Spends. Medical+Travel capped 7,500 RP/month and International capped 7,500 RP/month (separately); thereafter 1 RP per Rs.100."
       - category: doctors-day-spends
         multiplier: 5
         effective_rate: 5
@@ -73,21 +73,17 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/doctors-sbi-card.html
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null
     lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        notes: "Max 1 per quarter."
       international:
         visits_per_cycle: 4
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
-        notes: "Max 2 per quarter. Complimentary Priority Pass Membership worth $99; post free visits $27 + taxes per visit."
+        notes: "Max 2 per quarter, international lounges outside India only. Complimentary Priority Pass Membership; post free visits USD 27 + taxes per visit. No complimentary domestic lounge access (domestic PP lounges chargeable at USD 27)."
     milestones:
       - spend_inr: 500000
         cycle: annual

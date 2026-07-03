@@ -20,9 +20,11 @@ fees:
     annual_fee_inr: 4999
     renewal_fee_inr: 4999
     fee_waiver: null
-    forex_markup_pct: null            # TODO verify
-    finance_charge_monthly_pct: null  # TODO verify
-    cash_advance_fee: null            # TODO verify
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
@@ -55,8 +57,9 @@ rewards:
           merchants: [air-india-direct]
         notes: "10 Reward Points per Rs. 100 on Air India tickets booked via website, app, booking offices or call centres (including Super Saver tickets for self and others)."
     exclusions:
-      - fuel                 # TODO verify full exclusion list from MITC
+      - fuel
       - wallet-loads
+      - emi
     redemption:
       - type: airmiles
         program: Air India Maharaja Club
@@ -66,6 +69,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

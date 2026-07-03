@@ -23,7 +23,7 @@ fees:
     annual_fee_inr: 1499
     fee_waiver: null
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -87,6 +87,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-09-27
     effective_until: null

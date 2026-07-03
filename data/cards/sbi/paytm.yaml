@@ -1,7 +1,7 @@
 id: sbi-paytm
 name: "Paytm SBI Card"
 issuer: sbi
-network: visa  # TODO verify (Paytm SBI issued on Visa/RuPay; crawl does not state network)
+network: visa  # TODO verify network — inferred (default Visa)
 network_tier: null
 tier: entry
 card_type: credit
@@ -20,7 +20,7 @@ fees:
     renewal_fee_inr: 499
     fee_waiver: null  # TODO verify (no renewal-fee waiver stated on crawl for base Paytm SBI Card)
     forex_markup_pct: null  # TODO verify
-    finance_charge_monthly_pct: null  # TODO verify
+    finance_charge_monthly_pct: 3.75  # TODO verify
     cash_advance_fee: null  # TODO verify
     gst_applicable: true
     supplementary_card_fee_inr: 0
@@ -58,6 +58,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "1% Cashback on any other spends across offline and online stores (base). Category exclusions not published on crawl.  # TODO verify exclusions"
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

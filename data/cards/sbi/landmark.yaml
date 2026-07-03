@@ -1,7 +1,7 @@
 id: sbi-landmark
 name: Landmark SBI Card
 issuer: sbi
-network: visa # TODO verify - network not stated on crawl page
+network: visa  # TODO verify network — inferred (default Visa)
 network_tier: null
 tier: entry
 card_type: credit
@@ -18,11 +18,11 @@ fees:
     joining_fee_inr: 499
     annual_fee_inr: 499
     renewal_fee_inr: 499
-    fee_waiver: null
-    forex_markup_pct: 3.5 # TODO verify - not on crawl page (SBI standard)
-    finance_charge_monthly_pct: 3.5 # TODO verify - not on crawl page (SBI standard)
+    fee_waiver: null # verified: MITC — Landmark Rewards SBI Card 499/499, no spend-based waiver listed
+    forex_markup_pct: 3.5 # verified: MITC — 3.5% foreign currency txn fee (standard cards)
+    finance_charge_monthly_pct: 3.75 # verified: MITC — up to 3.75% p.m. (45% p.a.)
     cash_advance_fee:
-      pct: 2.5 # TODO verify - not on crawl page (SBI standard)
+      pct: 2.5 # verified: MITC — 2.5% or Rs.500 whichever higher
       min_inr: 500
     gst_applicable: true
     supplementary_card_fee_inr: 0
@@ -75,6 +75,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "1 Reward Point per Rs.100 on other retail purchases (base). Exclusions include Fuel, Rental, Govt Spends, Gaming (mapped to 'other'), Wallet, EMI."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

@@ -19,7 +19,7 @@ fees:
       spend_inr: 100000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
+    finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -52,13 +52,15 @@ rewards:
         canonical_categories: [online]
         multiplier: 5
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 10000
         cap_unit: points
         cycle: monthly
+        notes: "5X on non-partner online spends, capped at 10,000 RP per calendar month; thereafter 1 RP per Rs.100."
     exclusions:
       - fuel
       - wallet-loads
       - rent
+      - government
       - insurance-premiums
       - emi
     redemption:
@@ -71,6 +73,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2015-08-01
     effective_until: null

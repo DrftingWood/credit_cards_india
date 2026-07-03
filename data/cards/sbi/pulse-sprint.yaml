@@ -1,7 +1,7 @@
 id: sbi-pulse-sprint
 name: SBI Card PULSE Sprint
 issuer: sbi
-network: visa # TODO verify
+network: visa  # TODO verify network — inferred (default Visa)
 network_tier: null
 tier: mid
 card_type: credit
@@ -20,7 +20,7 @@ fees:
       cycle: annual
       conditions: "Renewal fee reversed if annual spends for last year >= Rs. 2,00,000."
     forex_markup_pct: 3.5 # TODO verify
-    finance_charge_monthly_pct: 3.5 # TODO verify
+    finance_charge_monthly_pct: 3.75 # TODO verify
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
@@ -68,6 +68,7 @@ rewards:
       retrieved_on: 2026-07-03
       notes: "Crawl reflects parent SBI Card PULSE. # TODO verify Sprint-specific rates"
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

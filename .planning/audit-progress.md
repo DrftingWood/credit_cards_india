@@ -268,6 +268,21 @@ PSU (onecard/slice/boi/canara/idbi/kvb/pnb/union/south-indian — mostly HTML MI
 NOTE: hdfc/icici/axis/sbi already have archived PDFs (docs/sources/) from pre-session.
 
 ## Current iteration log (newest last)
+- 2026-07-04 #86: Source-verification progress (packed window). **BoB — VERIFIED via REAL
+  PDF** (bobcard.co.in publishes a central "Features & Rewards Important T&C" PDF, 14pp,
+  covers ALL cards' core+accelerated rates+caps). pypdf extracts text (Read tool's poppler
+  is NOT installed — use `python -c` with pypdf). Confirmed Eterna/Tiara 3/100+15/100 cap
+  5000+2% forex, Premier 2/100 cap 2000, Select/Easy 1/100 cap 1000, Snapdeal 4/100 —
+  ALL match YAML, 0 corrections (BoB audit was accurate). **Kotak — 1 FIX**: League
+  Platinum fees page titled "No Joining & Annual Fees" → corrected ₹499→0 (LTF). Kotak =
+  HTML fees (JS tables, no PDFs). DONE so far: federal(5 fixes), indusind(confirmed),
+  bob(confirmed/PDF), kotak(1 fix). PATTERN HOLDS: full-audit issuers accurate; light-touch
+  had errors. TOOLING: pypdf works for PDF text; `document.body.textContent` for JS-tab
+  HTML; curl for PDFs. NEXT: continue — idfc-first, rbl, standard-chartered, hsbc, amex,
+  yes, au (spot-verify fees vs their fees pages/PDFs; these had full audits so expect
+  confirmations), then the 7 PSU banks (boi/canara/idbi/kvb/pnb/union/south-indian — basic
+  RuPay-Select cards; verify fee/forex vs each bank's Schedule-of-Charges; light-touch =
+  higher error risk). Pack each window; commit per issuer.
 - 2026-07-04 #85: User chose **"Full source-verify every field"** for the verification
   wave. KEY REALITY confirmed: most issuers have NO per-card PDFs (Federal + IndusInd
   = HTML-only; only hdfc/icici/axis/sbi have real PDFs, already archived). METHOD that

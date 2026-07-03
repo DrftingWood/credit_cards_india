@@ -1,0 +1,109 @@
+id: idfc-first-secured-rupay
+name: IDFC FIRST EARN Credit Card
+issuer: idfc-first
+network: rupay
+network_tier: platinum  # TODO verify
+tier: entry
+card_type: secured
+co_brand: null
+status: active
+launched_on: 2024-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual fee waived on ₹1,00,000 annual spend. Joining fee ₹0 under a limited-period offer."
+    forex_markup_pct: 3.5  # TODO verify
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "FIRST EA₹N — FD-backed virtual RuPay credit card (no physical card); UPI-enabled. Credit limit = 100% of FD value (min FD ₹5,000); no credit history required."
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 0.5
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: upi-via-idfc-app
+        canonical_categories: [online]
+        multiplier: 2
+        effective_rate: 1
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: statement
+        notes: "1% cashback on UPI spends via the IDFC FIRST Bank app; 0.5% on UPI via other apps, all online spends, and utility/insurance/wallet loads. Total cashback capped ₹500/statement."
+    exclusions:
+      - fuel
+      - emi
+      - rent
+    mcc_exclusions: ['6513']
+    reward_cap:
+      max_units: 500
+      cap_unit: cashback-inr
+      cycle: statement
+    redemption:
+      - type: statement-credit
+        program: IDFC FIRST Cashback
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "First transaction"
+        benefit: "10% cashback up to ₹250 on first transaction"
+        value_inr: 250
+        window_days: 30
+    movies:
+      type: discount
+      cycle: monthly
+      cap_inr: 100
+      notes: "25% off up to ₹100 on movie tickets, once a month."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 300
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 70  # TODO verify
+  income_inr_annual:
+    salaried: null  # secured against FD — no income requirement
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "FD-backed — issued against a fixed deposit (min ₹5,000); no income/credit-history requirement."
+
+application:
+  apply_url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [entry, secured, cashback, upi, rupay]

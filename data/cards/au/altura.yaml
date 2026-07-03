@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 199
     annual_fee_inr: 199
     fee_waiver:
-      spend_inr: 50000
+      spend_inr: 40000
       cycle: annual
     forex_markup_pct: 3.49
     finance_charge_monthly_pct: 3.49
@@ -25,8 +25,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/altura
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-01-01
@@ -34,17 +34,19 @@ rewards:
     currency: cashback
     currency_name: Cashback
     base:
-      rate: 1.5
+      rate: 1.0
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
-      - category: grocery-dining-departmental
-        canonical_categories: [groceries, dining]
-        multiplier: 1
-        effective_rate: 1.5
-        cap_per_cycle: 250
+      - category: grocery-departmental-utility
+        canonical_categories: [groceries, utilities]
+        multiplier: 2
+        effective_rate: 2
+        cap_per_cycle: "unlimited"  # TODO verify cap
         cap_unit: cashback-inr
         cycle: monthly
+        notes: "2% cashback on groceries, departmental stores & utility spends; 1% on other retail."
     exclusions:
       - fuel
       - wallet-loads
@@ -55,18 +57,27 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/altura
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
+        visits_per_cycle: 8
+        cycle: annual
         guests_per_visit: 0
         via: [rupay]
+        notes: "8 complimentary Railway Lounge visits per year (not airport lounges)."
+    milestones:
+      - spend_inr: 10000
+        cycle: monthly
+        benefit: "₹50 cashback on ₹10,000 retail spend every statement cycle"
+        value_inr: 50
+        reward_kind: cashback
+        trigger_window: rolling
+        is_repeatable: true
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -75,8 +86,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/altura
-      retrieved_on: 2026-04-15
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -88,8 +99,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.au.bank.in/personal-banking/credit-cards/altura
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [entry, cashback, rupay]

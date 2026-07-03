@@ -24,7 +24,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2017-01-01
@@ -34,8 +34,8 @@ rewards:
     base:
       rate: 2.5
       per_inr: 100
-      unit_value_inr: 0.35
-      unit_value_inr_realized: 0.3
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
     accelerated:
       - category: travel-dining
         canonical_categories: [dining, travel]
@@ -54,13 +54,13 @@ rewards:
     redemption:
       - type: catalog
         program: IndusMoments
-        rate_inr_per_unit: 0.35
+        rate_inr_per_unit: 0.25
       - type: airmiles
         program: Multiple
         ratio: "1:1"
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2017-01-01
@@ -77,9 +77,9 @@ benefits:
         guests_per_visit: 0
         via: [priority-pass]
     golf:
-      rounds_per_cycle: 2
+      rounds_per_cycle: 1  # reduced to 1 game/month eff. 13-Mar-2025
       cycle: monthly
-      lessons_per_cycle: 2
+      lessons_per_cycle: 1  # reduced to 1 lesson/month eff. 13-Mar-2025
     welcome:
       - condition: "Joining fee paid"
         benefit: "Montblanc pen + 2 Pinnacle moments vouchers"
@@ -99,7 +99,7 @@ benefits:
     concierge: true
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -114,5 +114,5 @@ application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [super-premium, travel, points, low-forex]

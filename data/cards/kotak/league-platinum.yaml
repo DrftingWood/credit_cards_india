@@ -25,8 +25,8 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2015-01-01
@@ -34,24 +34,36 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 8
+      rate: 4
       per_inr: 150
-      unit_value_inr: 0.15
-      unit_value_inr_realized: 0.12
+      unit_value_inr: 0.10
+      unit_value_inr_realized: 0.10
+    accelerated:
+      - category: high-annual-spend
+        canonical_categories: [other]
+        multiplier: 2
+        effective_rate: 8
+        cap_per_cycle: "unlimited"
+        cap_unit: points
+        cycle: annual
+        notes: "8 RP per ₹150 on all eligible spends once annual spends reach ₹2,00,000+ in a card anniversary year (else base 4 RP per ₹150)."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
-    mcc_exclusions: ['6513']
+    mcc_exclusions: ['6513', '5172', '5541', '5542', '5983']
+    capping_rules:
+      - "Reward points on utility/telecom (MCC 4812, 4814, 4899, 4900) only up to ₹35,000 per statement cycle."
+      - "Utility/telecom & fuel spends do not count toward milestone/annual-spend calculation."
     redemption:
       - type: catalog
         program: Kotak Rewards
-        rate_inr_per_unit: 0.15
+        rate_inr_per_unit: 0.10
     source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2015-01-01
@@ -64,8 +76,8 @@ benefits:
         via: [visa]
     welcome:
       - condition: "Joining fee paid"
-        benefit: "500 bonus Reward Points"
-        value_inr: 75
+        benefit: "5,000 reward points (worth ₹500)"
+        value_inr: 500
         window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
@@ -73,10 +85,15 @@ benefits:
       max_txn_inr: 3000
       cap_per_cycle_inr: 3500
       cycle: annual
+    surcharge_waivers:
+      - category: railway
+        pct: 1.0
+        cap_per_cycle_inr: 500
+        cycle: annual
     concierge: false
     source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -88,8 +105,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-credit-card.html
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [mid-tier, points, lounge]

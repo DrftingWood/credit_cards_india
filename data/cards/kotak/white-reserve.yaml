@@ -26,7 +26,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2020-01-01
@@ -60,19 +60,19 @@ rewards:
         constraints: "Whites Pass redeemable on curated lifestyle catalogue."
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2020-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
+        visits_per_cycle: "unlimited"
         cycle: annual
         guests_per_visit: 0
         via: [mastercard, dreamfolks]
       international:
-        visits_per_cycle: 12
+        visits_per_cycle: "unlimited"
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
@@ -97,7 +97,7 @@ benefits:
     concierge: true
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -112,5 +112,5 @@ application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [super-premium, lifestyle, travel, whites-pass]

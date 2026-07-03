@@ -93,6 +93,7 @@ rewards:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2018-10-16
     effective_until: null

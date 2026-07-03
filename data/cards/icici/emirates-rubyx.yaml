@@ -80,6 +80,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "Earn 1 Skywards Mile per ₹100 on both domestic and international spend; miles credited to Emirates Skywards account at end of billing cycle."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

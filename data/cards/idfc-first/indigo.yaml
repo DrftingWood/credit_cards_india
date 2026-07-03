@@ -32,8 +32,8 @@ fees:
     gst_applicable: true
     notes: "Fee-based variant; FD-backed variant at ₹0 joining fee is available against a ₹1,00,000 fixed deposit pledge."
     source:
-      url: https://www.idfcfirstbank.com/credit-card/indigo-credit-card
-      retrieved_on: 2026-04-22
+      url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2025-08-18
@@ -76,6 +76,7 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: IndiGo flights + 6E Prime add-ons
@@ -83,7 +84,7 @@ rewards:
         constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
     source:
       url: https://www.business-standard.com/finance/personal-finance/every-swipe-counts-how-indigo-s-new-credit-card-can-cut-your-travel-costs-125081800470_1.html
-      retrieved_on: 2026-04-22
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2025-08-18
@@ -128,7 +129,7 @@ benefits:
     concierge: false
     source:
       url: https://www.paisabazaar.com/idfc-first-bank/indigo-idfc-first-dual-credit-card/
-      retrieved_on: 2026-04-22
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -141,8 +142,8 @@ eligibility:
   notes: "FD-backed variant available for customers without credit history — ₹1L FD pledge unlocks the card."
 
 application:
-  apply_url: https://www.idfcfirstbank.com/credit-card/indigo-credit-card
+  apply_url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
 
 metadata:
-  last_verified_on: 2026-04-22
+  last_verified_on: 2026-07-03
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex, dual-network]

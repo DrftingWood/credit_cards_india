@@ -28,8 +28,8 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.idfcfirstbank.com/credit-card/power
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/power
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2022-09-01
@@ -62,12 +62,13 @@ rewards:
       - rent
       - insurance-premiums
       - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirstbank.com/credit-card/power
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/power
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2022-09-01
@@ -81,8 +82,8 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.idfcfirstbank.com/credit-card/power
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/power
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -94,8 +95,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idfcfirstbank.com/credit-card/power
+  apply_url: https://www.idfcfirst.bank.in/credit-card/power
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [co-branded, fuel, hpcl, rupay, entry]

@@ -26,8 +26,8 @@ fees:
     gst_applicable: true
     notes: "Card is EMI-first: every spend above ₹2,500 auto-converts to EMI at 0.99% p.m. (tiered)."
     source:
-      url: https://www.idfcfirstbank.com/credit-card/swyp
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/swyp
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2024-02-01
@@ -40,26 +40,27 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
     accelerated:
-      - category: online-spend
-        canonical_categories: [online]
-        multiplier: 2
-        effective_rate: 6
+      - category: incremental-monthly-above-20k
+        canonical_categories: [other]
+        multiplier: 3.33
+        effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "10X on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000. # TODO verify SWYP-specific thresholds from live page."
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
-      - utilities
+      - emi
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: IDFC FIRST Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirstbank.com/credit-card/swyp
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/swyp
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2024-02-01
@@ -82,8 +83,8 @@ benefits:
         description: Spends above ₹2,500 auto-convert to tenure-EMI at 0.99% monthly (interest rate may vary by risk tier).
     concierge: false
     source:
-      url: https://www.idfcfirstbank.com/credit-card/swyp
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/swyp
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -95,8 +96,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idfcfirstbank.com/credit-card/swyp
+  apply_url: https://www.idfcfirst.bank.in/credit-card/swyp
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [emi-first, entry, points]

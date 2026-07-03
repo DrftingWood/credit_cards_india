@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [online]
         multiplier: 4
         effective_rate: 24
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "24 YES Rewardz per ₹200 on online shopping (except Select categories)."
@@ -52,7 +52,7 @@ rewards:
         canonical_categories: [other]
         multiplier: 2
         effective_rate: 12
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "12 YES Rewardz per ₹200 on offline shopping; 6 per ₹200 on Select categories (base)."
@@ -80,7 +80,7 @@ benefits:
     effective_until: null
     lounge_access:
       international:
-        visits_per_cycle: 2  # TODO verify exact count
+        visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
@@ -89,7 +89,7 @@ benefits:
       partner: BookMyShow
       max_per_cycle: null
       cycle: monthly
-      cap_inr: null  # TODO verify cap
+      cap_inr: null
       notes: "25% discount on BookMyShow."
     fuel_surcharge_waiver:
       pct: 1.0

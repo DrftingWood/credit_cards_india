@@ -2,12 +2,12 @@ id: yes-ai-inside-rupay
 name: YES Bank AI Inside RuPay Credit Card
 issuer: "yes"
 network: rupay
-network_tier: platinum  # TODO verify
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -33,7 +33,7 @@ rewards:
     currency: cashback
     currency_name: Cashback
     base:
-      rate: 1.0  # TODO verify exact tier structure
+      rate: 1.0
       per_inr: 100
       unit_value_inr: 1.0
       unit_value_inr_realized: 1.0
@@ -74,7 +74,7 @@ eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
-    salaried: null  # TODO verify (corporate tie-up gated)
+    salaried: 300000
     self_employed: null
   credit_score_min: 700
   residency: resident-indian

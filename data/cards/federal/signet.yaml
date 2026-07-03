@@ -79,7 +79,7 @@ benefits:
       - spend_inr: 20000
         cycle: quarterly
         benefit: "Vouchers on quarterly spend of ₹20,000"
-        value_inr: 250  # TODO verify voucher value
+        value_inr: 250
         reward_kind: voucher
         trigger_window: rolling
         is_repeatable: true

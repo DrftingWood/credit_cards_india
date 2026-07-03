@@ -1,15 +1,15 @@
 id: yes-finbooster
 name: YES Bank FinBooster Credit Card
 issuer: "yes"
-network: mastercard  # TODO verify network
-network_tier: platinum  # TODO verify
+network: mastercard
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
   partner: FinBooster
   category: other
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -18,7 +18,7 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
     cash_advance_fee:
       pct: 2.5
@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [online, dining]
         multiplier: 5
         effective_rate: 10
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "5X reward points on online dining (10 YES Rewardz per ₹200); 2 per ₹200 base."
@@ -82,8 +82,8 @@ eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
-    salaried: 300000  # TODO verify
-    self_employed: 300000  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 700
   residency: resident-indian
 

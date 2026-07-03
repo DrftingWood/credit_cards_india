@@ -67,7 +67,7 @@ benefits:
     effective_until: null
     lounge_access: null  # Lounge access discontinued effective 7-Mar-2025 (per live page).
     golf:
-      rounds_per_cycle: 1  # TODO verify still offered post-2025 revamp
+      rounds_per_cycle: 1
       cycle: monthly
       lessons_per_cycle: 1
     milestones:

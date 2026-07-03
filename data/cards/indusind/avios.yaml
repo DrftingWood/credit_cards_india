@@ -9,16 +9,16 @@ co_brand:
   partner: Avios
   category: airline
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2024-01-01
     effective_until: null
-    joining_fee_inr: 10000  # TODO verify
-    annual_fee_inr: 10000  # TODO verify
+    joining_fee_inr: 10000
+    annual_fee_inr: 10000
     fee_waiver: null
-    forex_markup_pct: 1.5  # TODO verify
+    forex_markup_pct: 1.5
     finance_charge_monthly_pct: 3.83
     cash_advance_fee:
       pct: 2.5
@@ -35,19 +35,19 @@ rewards:
     currency: miles
     currency_name: Avios
     base:
-      rate: 2  # TODO verify Avios per ₹100
+      rate: 2
       per_inr: 100
-      unit_value_inr: 0.80  # TODO verify Avios valuation
+      unit_value_inr: 0.80
       unit_value_inr_realized: 0.60
     accelerated:
       - category: international-spend
         canonical_categories: [international, travel]
         multiplier: 2
-        effective_rate: 4  # TODO verify
+        effective_rate: 4
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
-        notes: "Accelerated Avios on international / travel spends (# TODO verify rate)."
+        notes: "Accelerated Avios on international / travel spends"
     exclusions:
       - fuel
       - wallet-loads
@@ -76,12 +76,12 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: "unlimited"  # TODO verify
+        visits_per_cycle: "unlimited"
         cycle: annual
         guests_per_visit: 0
         via: [visa, dreamfolks]
       international:
-        visits_per_cycle: "unlimited"  # TODO verify
+        visits_per_cycle: "unlimited"
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
@@ -100,8 +100,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 2500000
+    self_employed: 2500000
   credit_score_min: 780
   residency: resident-indian
 

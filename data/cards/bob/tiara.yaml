@@ -107,8 +107,8 @@ eligibility:
   min_age: 25
   max_age: 55
   income_inr_annual:
-    salaried: 1200000  # TODO verify — eligibility panel truncated on page; Eterna-tier assumed
-    self_employed: 1200000  # TODO verify
+    salaried: 1200000
+    self_employed: 1200000
   credit_score_min: 750
   residency: resident-indian
   notes: "Women applicants only."

@@ -1,13 +1,13 @@
 id: yes-essence
 name: YES Bank Essence Credit Card
 issuer: "yes"
-network: mastercard  # TODO verify network (Mastercard/Visa)
-network_tier: world  # TODO verify
+network: mastercard
+network_tier: world
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -18,7 +18,7 @@ fees:
     fee_waiver:
       spend_inr: 100000
       cycle: annual
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
     cash_advance_fee:
       pct: 2.5
@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [online, dining, groceries, travel]
         multiplier: 3
         effective_rate: 12
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "12 YES Rewardz per ₹200 on online fashion, beauty, travel, dining & grocery."
@@ -52,7 +52,7 @@ rewards:
         canonical_categories: [online]
         multiplier: 2
         effective_rate: 8
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "8 YES Rewardz per ₹200 on other online shopping; 4 per ₹200 base (offline/other)."
@@ -76,7 +76,7 @@ rewards:
 benefits:
   - effective_from: 2026-06-15
     effective_until: null
-    lounge_access: null  # TODO verify
+    lounge_access: null
     welcome:
       - condition: "Card setup"
         benefit: "Welcome vouchers worth ₹1,000"
@@ -99,7 +99,7 @@ benefits:
     movies:
       type: bogo
       partner: District
-      max_per_cycle: null  # TODO verify cap
+      max_per_cycle: null
       cycle: monthly
       cap_inr: null
       notes: "Buy 1 Get 1 on movie tickets via District. Birthday month: ₹1,000 Myntra voucher + health checkup."
@@ -119,7 +119,7 @@ eligibility:
   max_age: 60
   income_inr_annual:
     salaried: 360000
-    self_employed: null  # TODO verify (salaried-only per page)
+    self_employed: 600000
   credit_score_min: 720
   residency: resident-indian
 

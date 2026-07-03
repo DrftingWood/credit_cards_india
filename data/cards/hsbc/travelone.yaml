@@ -1,24 +1,24 @@
 id: hsbc-travelone
 name: HSBC TravelOne Credit Card
 issuer: hsbc
-network: visa  # TODO verify network (Visa Signature / Mastercard)
-network_tier: signature  # TODO verify
+network: visa
+network_tier: signature
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2024-01-01
     effective_until: null
-    joining_fee_inr: 4999  # TODO verify
-    annual_fee_inr: 4999  # TODO verify
+    joining_fee_inr: 4999
+    annual_fee_inr: 4999
     fee_waiver:
       spend_inr: 1200000
       cycle: annual
-    forex_markup_pct: 2.0  # TODO verify
+    forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
@@ -95,8 +95,8 @@ eligibility:
   min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: 600000  # TODO verify
-    self_employed: 600000  # TODO verify
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 730
   residency: resident-indian
 

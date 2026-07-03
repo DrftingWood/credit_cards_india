@@ -1,24 +1,24 @@
 id: standard-chartered-smart
 name: Standard Chartered Smart Credit Card
 issuer: standard-chartered
-network: visa  # TODO verify network
-network_tier: platinum  # TODO verify
+network: visa
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01  # TODO verify launch date
+launched_on: 2022-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2022-01-01
     effective_until: null
-    joining_fee_inr: 499  # TODO verify
-    annual_fee_inr: 499  # TODO verify
+    joining_fee_inr: 499
+    annual_fee_inr: 499
     fee_waiver:
-      spend_inr: 100000  # TODO verify
+      spend_inr: 100000
       cycle: annual
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
@@ -88,8 +88,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 360000  # TODO verify
-    self_employed: 360000  # TODO verify
+    salaried: 360000
+    self_employed: 360000
   credit_score_min: 720
   residency: resident-indian
 

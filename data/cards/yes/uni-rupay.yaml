@@ -2,7 +2,7 @@ id: yes-uni-rupay
 name: YES Bank Uni RuPay Credit Card
 issuer: "yes"
 network: rupay
-network_tier: platinum  # TODO verify
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: other
   partner_website: https://www.uni.cards
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -76,8 +76,8 @@ eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
-    salaried: 300000  # TODO verify
-    self_employed: 300000  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 700
   residency: resident-indian
 

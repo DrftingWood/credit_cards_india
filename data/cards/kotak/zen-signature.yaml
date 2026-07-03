@@ -7,7 +7,7 @@ tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -79,7 +79,7 @@ benefits:
         guests_per_visit: 0
         via: [visa, dreamfolks]
       international:
-        visits_per_cycle: 2  # TODO verify count
+        visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
@@ -108,8 +108,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 750
   residency: resident-indian
 

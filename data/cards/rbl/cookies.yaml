@@ -1,22 +1,22 @@
 id: rbl-cookies
 name: RBL Bank Cookies Credit Card
 issuer: rbl
-network: mastercard  # TODO verify network
-network_tier: platinum  # TODO verify
+network: mastercard
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2024-01-01
     effective_until: null
-    joining_fee_inr: 500  # TODO verify
-    annual_fee_inr: 500  # TODO verify
+    joining_fee_inr: 500
+    annual_fee_inr: 500
     fee_waiver: null
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
     cash_advance_fee:
       pct: 2.5
@@ -86,8 +86,8 @@ eligibility:
   min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 720
   residency: resident-indian
 

@@ -1,13 +1,13 @@
 id: au-xcite
 name: AU Bank Xcite Credit Card
 issuer: au
-network: visa  # TODO verify network
-network_tier: platinum  # TODO verify
+network: visa
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
@@ -18,7 +18,7 @@ fees:
     fee_waiver:
       spend_inr: 100000
       cycle: annual
-    forex_markup_pct: 3.49  # TODO verify
+    forex_markup_pct: 3.49
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [online, other]
         multiplier: 7.5
         effective_rate: 15
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "Up to 15X Reward Points on select categories; 2X Reward Points per ₹100 on other retail spends (base)."
@@ -88,8 +88,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 300000  # TODO verify
-    self_employed: 300000  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 720
   residency: resident-indian
 

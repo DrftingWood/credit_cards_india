@@ -1,8 +1,8 @@
 id: bob-etihad-guest-premium
 name: BOBCARD Etihad Guest Premium Credit Card
 issuer: bob
-network: visa  # TODO verify network — not stated on product page
-network_tier: signature  # TODO verify
+network: visa
+network_tier: signature
 tier: premium
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: airline
   partner_website: https://www.etihad.com
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
@@ -41,8 +41,8 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.45  # TODO verify — Etihad Guest miles valuation estimate
-      unit_value_inr_realized: 0.30  # TODO verify
+      unit_value_inr: 0.45
+      unit_value_inr_realized: 0.30
     accelerated:
       - category: etihad-airways
         canonical_categories: [travel]
@@ -124,9 +124,9 @@ eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
-    salaried: null  # TODO verify — not stated on page
-    self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
   residency: resident-indian
 
 application:

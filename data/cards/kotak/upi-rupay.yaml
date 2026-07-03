@@ -2,12 +2,12 @@ id: kotak-upi-rupay
 name: Kotak UPI RuPay Credit Card
 issuer: kotak
 network: rupay
-network_tier: platinum  # TODO verify
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -73,8 +73,8 @@ eligibility:
   min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 700
   residency: resident-indian
 

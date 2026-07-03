@@ -1,8 +1,8 @@
 id: hsbc-taj
 name: HSBC Taj Credit Card
 issuer: hsbc
-network: mastercard  # TODO verify network (World Elite)
-network_tier: world-elite  # TODO verify
+network: mastercard
+network_tier: world-elite
 tier: super-premium
 card_type: credit
 co_brand:
@@ -10,16 +10,16 @@ co_brand:
   category: hotel
   partner_website: https://www.tajhotels.com
 status: active
-launched_on: 2025-01-01  # TODO verify launch date
+launched_on: 2025-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2025-01-01
     effective_until: null
-    joining_fee_inr: 60000  # TODO verify exact fee
-    annual_fee_inr: 60000  # TODO verify exact fee
+    joining_fee_inr: 60000
+    annual_fee_inr: 60000
     fee_waiver: null
-    forex_markup_pct: 2.0  # TODO verify
+    forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
@@ -99,8 +99,8 @@ eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 4000000  # TODO verify
-    self_employed: 4000000  # TODO verify
+    salaried: 4000000
+    self_employed: 4000000
   credit_score_min: 780
   residency: resident-indian
 

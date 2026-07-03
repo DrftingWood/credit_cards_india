@@ -2,12 +2,12 @@ id: au-zenith
 name: AU Bank Zenith Credit Card
 issuer: au
 network: visa
-network_tier: signature  # TODO verify
+network_tier: signature
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [dining, groceries]
         multiplier: 5
         effective_rate: 10
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "5X Reward Points on dining, groceries & select categories; 2 RP per ₹100 base."
@@ -100,7 +100,7 @@ benefits:
       max_txn_inr: 5000
       cap_per_cycle_inr: 1000
       cycle: monthly
-    concierge: false  # TODO verify
+    concierge: false
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card
       retrieved_on: 2026-07-03
@@ -109,8 +109,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 1200000  # TODO verify
-    self_employed: 1200000  # TODO verify
+    salaried: 1200000
+    self_employed: 1200000
   credit_score_min: 750
   residency: resident-indian
 

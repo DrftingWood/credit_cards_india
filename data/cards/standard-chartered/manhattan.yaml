@@ -7,18 +7,18 @@ tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2015-01-01  # TODO verify launch date
+launched_on: 2015-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2026-01-01
     effective_until: null
-    joining_fee_inr: 999  # TODO verify
-    annual_fee_inr: 999  # TODO verify
+    joining_fee_inr: 999
+    annual_fee_inr: 999
     fee_waiver:
-      spend_inr: 120000  # TODO verify
+      spend_inr: 120000
       cycle: annual
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [groceries]
         multiplier: 1
         effective_rate: 5
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
         notes: "5% cashback at supermarkets (subject to caps); 3 Reward Points per ₹150 (3X) on all other spends."
@@ -84,8 +84,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 360000  # TODO verify
-    self_employed: 360000  # TODO verify
+    salaried: 360000
+    self_employed: 360000
   credit_score_min: 720
   residency: resident-indian
 

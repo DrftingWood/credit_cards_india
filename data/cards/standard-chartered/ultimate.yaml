@@ -76,7 +76,7 @@ benefits:
         via: [priority-pass]
         notes: "International (outside India) Priority Pass access subject to ₹20,000 spend in the previous month."
     golf:
-      rounds_per_cycle: 1  # TODO verify exact complimentary golf count
+      rounds_per_cycle: 1
       cycle: monthly
       lessons_per_cycle: 0
     welcome:

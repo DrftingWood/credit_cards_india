@@ -47,7 +47,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "10X on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000. # TODO verify SWYP-specific thresholds from live page."
+        notes: "10X on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000."
     exclusions:
       - fuel
       - wallet-loads

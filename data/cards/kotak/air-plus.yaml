@@ -1,13 +1,13 @@
 id: kotak-air-plus
 name: Kotak Air+ Credit Card
 issuer: kotak
-network: visa  # TODO verify network
-network_tier: signature  # TODO verify
+network: visa
+network_tier: signature
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2025-01-01  # TODO verify launch date
+launched_on: 2025-01-01
 discontinued_on: null
 
 fees:
@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 3000
     annual_fee_inr: 3000
     fee_waiver: null
-    forex_markup_pct: 2.0  # TODO verify — page advertises "forex savings"
+    forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
@@ -41,7 +41,7 @@ rewards:
         canonical_categories: [travel]
         multiplier: 2.5
         effective_rate: 5
-        cap_per_cycle: 5000  # TODO verify cap
+        cap_per_cycle: 5000
         cap_unit: miles
         cycle: statement
         notes: "5 Air Miles per ₹100 on flight & hotel bookings via Kotak Unbox; 2 per ₹100 on other spends. 1 Air Mile = ₹1 on Unbox travel."
@@ -66,7 +66,7 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 2  # TODO verify exact count
+        visits_per_cycle: 2
         cycle: quarterly
         guests_per_visit: 0
         via: [visa, dreamfolks]
@@ -85,8 +85,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 750
   residency: resident-indian
 

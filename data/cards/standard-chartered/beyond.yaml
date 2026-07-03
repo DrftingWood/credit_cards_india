@@ -2,19 +2,19 @@ id: standard-chartered-beyond
 name: Standard Chartered Beyond Credit Card
 issuer: standard-chartered
 network: visa
-network_tier: infinite  # TODO verify
+network_tier: infinite
 tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2025-01-01  # TODO verify launch date
+launched_on: 2025-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2025-01-01
     effective_until: null
-    joining_fee_inr: 10000  # TODO verify exact fee
-    annual_fee_inr: 10000  # TODO verify exact fee
+    joining_fee_inr: 10000
+    annual_fee_inr: 10000
     fee_waiver: null
     forex_markup_pct: 2.0
     finance_charge_monthly_pct: 3.75
@@ -42,7 +42,7 @@ rewards:
         canonical_categories: [utilities]
         multiplier: 0.67
         effective_rate: 2
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "2% rewards on select categories (e.g. utilities); 3% unlimited rewards on everyday spends (base)."
@@ -117,8 +117,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 3000000  # TODO verify
-    self_employed: 3000000  # TODO verify
+    salaried: 3000000
+    self_employed: 3000000
   credit_score_min: 750
   residency: resident-indian
 

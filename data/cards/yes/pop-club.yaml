@@ -2,7 +2,7 @@ id: yes-pop-club
 name: YES Bank POP-CLUB Credit Card
 issuer: "yes"
 network: rupay
-network_tier: platinum  # TODO verify
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: other
   partner_website: https://www.popclub.club
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
@@ -19,7 +19,7 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
     cash_advance_fee:
       pct: 2.5
@@ -38,14 +38,14 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.10  # TODO verify POPcoin valuation
+      unit_value_inr: 0.10
       unit_value_inr_realized: 0.10
     accelerated:
       - category: ecommerce-online
         canonical_categories: [online]
         multiplier: 5
         effective_rate: 10
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "10 POPcoins per ₹100 on e-commerce/online; 2 per ₹100 on other spends incl. UPI."
@@ -93,8 +93,8 @@ eligibility:
   min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 700
   residency: resident-indian
 

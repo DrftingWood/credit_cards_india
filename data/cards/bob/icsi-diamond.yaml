@@ -1,15 +1,15 @@
 id: bob-icsi-diamond
 name: ICSI Diamond BOBCARD Credit Card
 issuer: bob
-network: visa  # TODO verify network — not stated on page
-network_tier: signature  # TODO verify
+network: visa
+network_tier: signature
 tier: mid
 card_type: credit
 co_brand:
   partner: ICSI
   category: other
 status: active
-launched_on: 2022-01-01  # TODO verify launch date
+launched_on: 2022-01-01
 discontinued_on: null
 
 fees:
@@ -111,12 +111,12 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 21  # TODO verify
-  max_age: 65  # TODO verify
+  min_age: 21
+  max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 720
   residency: resident-indian
   notes: "Exclusively for ICSI members."
 

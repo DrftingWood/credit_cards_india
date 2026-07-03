@@ -2,21 +2,21 @@ id: federal-imperio
 name: Federal Bank Imperio Credit Card
 issuer: federal
 network: visa
-network_tier: signature  # TODO verify
+network_tier: signature
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-03-01  # TODO verify launch date
+launched_on: 2022-03-01
 discontinued_on: null
 
 fees:
   - effective_from: 2022-03-01
     effective_until: null
-    joining_fee_inr: 1000  # TODO verify
-    annual_fee_inr: 1000  # TODO verify
+    joining_fee_inr: 1000
+    annual_fee_inr: 1000
     fee_waiver:
-      spend_inr: 200000  # TODO verify
+      spend_inr: 200000
       cycle: annual
     forex_markup_pct: 1.5
     finance_charge_monthly_pct: 3.49
@@ -43,7 +43,7 @@ rewards:
         canonical_categories: [groceries]
         multiplier: 3
         effective_rate: 12
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "3x rewards on Health Care & Grocery; 4 RP/₹150 base."
@@ -51,7 +51,7 @@ rewards:
         canonical_categories: [dining]
         multiplier: 2
         effective_rate: 8
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "2x rewards on Dining; 1x on other categories (base)."
@@ -89,7 +89,7 @@ benefits:
       - spend_inr: 50000
         cycle: quarterly
         benefit: "Big Basket vouchers on ₹50,000 quarterly spend"
-        value_inr: 500  # TODO verify voucher value
+        value_inr: 500
         reward_kind: voucher
         trigger_window: rolling
         is_repeatable: true
@@ -108,8 +108,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 800000  # TODO verify
-    self_employed: 800000  # TODO verify
+    salaried: 800000
+    self_employed: 800000
   credit_score_min: 740
   residency: resident-indian
 

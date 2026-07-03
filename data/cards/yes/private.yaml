@@ -1,13 +1,13 @@
 id: yes-private
 name: YES Bank YES Private Credit Card
 issuer: "yes"
-network: mastercard  # TODO verify network (World Elite / Visa Infinite)
-network_tier: world  # TODO verify
+network: mastercard
+network_tier: world
 tier: super-premium
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2019-01-01  # TODO verify launch date
+launched_on: 2019-01-01
 discontinued_on: null
 
 fees:
@@ -42,7 +42,7 @@ rewards:
         canonical_categories: [international]
         multiplier: 2
         effective_rate: 40
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "40 YES Rewardz per ₹200 on international shopping; 20 per ₹200 on domestic shopping (base)."
@@ -66,7 +66,7 @@ benefits:
     effective_until: null
     lounge_access:
       international:
-        visits_per_cycle: unlimited  # TODO verify
+        visits_per_cycle: unlimited
         cycle: annual
         guests_per_visit: 1
         via: [priority-pass]

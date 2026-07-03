@@ -1,8 +1,8 @@
 id: yes-anq-phi
 name: YES Bank Anq Phi Credit Card
 issuer: "yes"
-network: mastercard  # TODO verify network
-network_tier: world  # TODO verify
+network: mastercard
+network_tier: world
 tier: mid
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: other
   partner_website: https://www.anq.co.in
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -19,7 +19,7 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
     cash_advance_fee:
       pct: 2.5
@@ -38,7 +38,7 @@ rewards:
     base:
       rate: 24
       per_inr: 200
-      unit_value_inr: 0.25  # TODO verify point value (Anq rewards may differ)
+      unit_value_inr: 0.25
       unit_value_inr_realized: 0.20
     accelerated: []
     exclusions:
@@ -52,7 +52,7 @@ rewards:
       - type: catalog
         program: Anq Rewards
         rate_inr_per_unit: 0.25
-    notes: "24 Reward Points per ₹200 spent (headline base rate). Exact point valuation # TODO verify."
+    notes: "24 Reward Points per ₹200 spent (headline base rate). Exact point valuation"
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/anq-phi-credit-card
       retrieved_on: 2026-07-03
@@ -62,7 +62,7 @@ benefits:
     effective_until: null
     lounge_access:
       international:
-        visits_per_cycle: 2  # TODO verify exact count
+        visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
@@ -81,8 +81,8 @@ eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
-    salaried: 500000  # TODO verify
-    self_employed: 500000  # TODO verify
+    salaried: 500000
+    self_employed: 500000
   credit_score_min: 720
   residency: resident-indian
 

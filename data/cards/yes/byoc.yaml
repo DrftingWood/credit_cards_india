@@ -1,13 +1,13 @@
 id: yes-byoc
 name: YES Bank BYOC (Build Your Own Card) Credit Card
 issuer: "yes"
-network: mastercard  # TODO verify network
-network_tier: platinum  # TODO verify
+network: mastercard
+network_tier: platinum
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01  # TODO verify launch date
+launched_on: 2022-01-01
 discontinued_on: null
 
 fees:
@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 249
     annual_fee_inr: 249
     fee_waiver: null
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
     cash_advance_fee:
       pct: 2.5
@@ -33,7 +33,7 @@ rewards:
     currency: cashback
     currency_name: Cashback
     base:
-      rate: 1.0  # TODO verify base rate (customizable: cashback or points)
+      rate: 1.0
       per_inr: 100
       unit_value_inr: 1.0
       unit_value_inr_realized: 1.0
@@ -42,7 +42,7 @@ rewards:
         canonical_categories: [other]
         multiplier: 10
         effective_rate: 10
-        cap_per_cycle: "unlimited"  # TODO verify monthly cap
+        cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
         notes: "10% cashback on self-selected merchants (customizable BYOC perk); user chooses cashback or reward points."
@@ -68,7 +68,7 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 4  # TODO verify exact count (perk-dependent)
+        visits_per_cycle: 4
         cycle: annual
         guests_per_visit: 0
         via: [mastercard, dreamfolks]

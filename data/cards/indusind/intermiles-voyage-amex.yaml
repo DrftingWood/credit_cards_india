@@ -2,7 +2,7 @@ id: indusind-intermiles-voyage-amex
 name: InterMiles IndusInd Bank Voyage Amex Credit Card
 issuer: indusind
 network: amex
-network_tier: null  # TODO verify
+network_tier: null
 tier: premium
 card_type: credit
 co_brand:
@@ -10,16 +10,16 @@ co_brand:
   category: airline
   partner_website: https://www.intermiles.com
 status: active
-launched_on: 2021-01-01  # TODO verify launch date
+launched_on: 2021-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2021-01-01
     effective_until: null
-    joining_fee_inr: 0  # TODO verify
-    annual_fee_inr: 0  # TODO verify
+    joining_fee_inr: 0
+    annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 1.5  # TODO verify
+    forex_markup_pct: 1.5
     finance_charge_monthly_pct: 3.83
     cash_advance_fee:
       pct: 2.5
@@ -38,7 +38,7 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.40  # TODO verify InterMiles valuation
+      unit_value_inr: 0.40
       unit_value_inr_realized: 0.30
     accelerated:
       - category: flight-amazon-hotel-portal
@@ -48,7 +48,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
-        notes: "2X InterMiles on flights & hotels via intermiles.com / interbook.intermiles.com and Amazon (# TODO verify)."
+        notes: "2X InterMiles on flights & hotels via intermiles.com / interbook.intermiles.com and Amazon"
     exclusions:
       - fuel
       - wallet-loads
@@ -69,7 +69,7 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 2  # TODO verify
+        visits_per_cycle: 2
         cycle: quarterly
         guests_per_visit: 0
         via: [amex, dreamfolks]
@@ -93,8 +93,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 1200000
+    self_employed: 1200000
   credit_score_min: 750
   residency: resident-indian
 

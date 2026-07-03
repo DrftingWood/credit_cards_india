@@ -46,7 +46,7 @@ rewards:
         canonical_categories: [travel]
         multiplier: 10
         effective_rate: 10
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "10 Reward Points per ₹100 on standalone hotel & airline bookings; 1 RP per ₹100 on all other retail (1 RP = ₹0.50). Instant booking discounts (20% hotels / 10% flights via EaseMyTrip app, promo EMTSCB) are separate — see benefits."
@@ -69,7 +69,7 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8  # TODO verify exact count
+        visits_per_cycle: 8
         cycle: annual
         guests_per_visit: 0
         via: [visa]

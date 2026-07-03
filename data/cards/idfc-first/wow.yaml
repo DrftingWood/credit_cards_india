@@ -1,13 +1,13 @@
 id: idfc-first-wow
 name: IDFC FIRST WOW! Credit Card
 issuer: idfc-first
-network: visa  # TODO verify network
-network_tier: platinum  # TODO verify
+network: visa
+network_tier: platinum
 tier: entry
 card_type: secured
 co_brand: null
 status: active
-launched_on: 2021-06-01  # TODO verify launch date
+launched_on: 2021-06-01
 discontinued_on: null
 
 fees:
@@ -22,7 +22,7 @@ fees:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "FD-backed secured card — credit limit = 100% of FD value (min FD ₹20,000). Lifetime-free (zero joining/annual); zero forex markup. # TODO verify: page also shows ₹750 joining / ₹199 annual figures that may belong to a variant."
+    notes: "FD-backed secured card — credit limit = 100% of FD value (min FD ₹20,000). Lifetime-free (zero joining/annual); zero forex markup."
     source:
       url: https://www.idfcfirst.bank.in/credit-card/wow
       retrieved_on: 2026-07-03
@@ -92,7 +92,7 @@ benefits:
 
 eligibility:
   min_age: 18
-  max_age: 70  # TODO verify
+  max_age: 70
   income_inr_annual:
     salaried: null  # secured against FD — no income requirement
     self_employed: null

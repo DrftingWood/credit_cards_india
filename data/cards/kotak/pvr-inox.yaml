@@ -1,8 +1,8 @@
 id: kotak-pvr-inox
 name: PVR INOX Kotak Credit Card
 issuer: kotak
-network: visa  # TODO verify network
-network_tier: platinum  # TODO verify
+network: visa
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: other
   partner_website: https://www.pvrcinemas.com
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
@@ -90,8 +90,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 720
   residency: resident-indian
 

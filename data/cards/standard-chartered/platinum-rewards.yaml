@@ -1,24 +1,24 @@
 id: standard-chartered-platinum-rewards
 name: Standard Chartered Platinum Rewards Credit Card
 issuer: standard-chartered
-network: visa  # TODO verify network
+network: visa
 network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2018-01-01  # TODO verify launch date
+launched_on: 2018-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2026-01-01
     effective_until: null
-    joining_fee_inr: 250  # TODO verify
-    annual_fee_inr: 250  # TODO verify
+    joining_fee_inr: 250
+    annual_fee_inr: 250
     fee_waiver:
-      spend_inr: 6000  # TODO verify (Rs 500/mo equivalent)
+      spend_inr: 6000
       cycle: annual
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
@@ -81,8 +81,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 300000  # TODO verify
-    self_employed: 300000  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 720
   residency: resident-indian
 

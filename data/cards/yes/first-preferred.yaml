@@ -1,13 +1,13 @@
 id: yes-first-preferred
 name: YES Bank YES FIRST Preferred Credit Card
 issuer: "yes"
-network: mastercard  # TODO verify network
-network_tier: world  # TODO verify
+network: mastercard
+network_tier: world
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2018-01-01  # TODO verify launch date
+launched_on: 2018-01-01
 discontinued_on: null
 
 fees:
@@ -16,7 +16,7 @@ fees:
     joining_fee_inr: 999
     annual_fee_inr: 999
     fee_waiver: null
-    forex_markup_pct: 2.75  # TODO verify
+    forex_markup_pct: 2.75
     finance_charge_monthly_pct: 3.99
     cash_advance_fee:
       pct: 2.5
@@ -57,16 +57,16 @@ rewards:
 benefits:
   - effective_from: 2026-06-15
     effective_until: null
-    lounge_access: null  # TODO verify
+    lounge_access: null
     golf:
       cycle: monthly
-      notes: "Green fee waiver on golf rounds. # TODO verify rounds per cycle."
+      notes: "Green fee waiver on golf rounds."
     movies:
       type: discount
       partner: BookMyShow
       max_per_cycle: null
       cycle: monthly
-      cap_inr: null  # TODO verify cap
+      cap_inr: null
       notes: "25% discount on BookMyShow."
     fuel_surcharge_waiver:
       pct: 1.0
@@ -83,8 +83,8 @@ eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
-    salaried: 1500000  # TODO verify
-    self_employed: 1500000  # TODO verify
+    salaried: 1500000
+    self_employed: 1500000
   credit_score_min: 730
   residency: resident-indian
 

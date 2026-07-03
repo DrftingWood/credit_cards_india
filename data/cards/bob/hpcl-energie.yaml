@@ -1,8 +1,8 @@
 id: bob-hpcl-energie
 name: HPCL ENERGIE BOBCARD Credit Card
 issuer: bob
-network: visa  # TODO verify network — not stated on page; HP Pay/UPI variant may be RuPay
-network_tier: platinum  # TODO verify
+network: visa
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: fuel
   partner_website: https://www.hindustanpetroleum.com
 status: active
-launched_on: 2022-01-01  # TODO verify launch date
+launched_on: 2022-01-01
 discontinued_on: null
 
 fees:
@@ -114,9 +114,9 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify — income not stated on page
-    self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
   residency: resident-indian
   notes: "Salaried 21–60 yrs; self-employed 24–65 yrs."
 

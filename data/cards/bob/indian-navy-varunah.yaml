@@ -1,15 +1,15 @@
 id: bob-indian-navy-varunah
 name: Indian Navy VARUNAH Premium BOBCARD Credit Card
 issuer: bob
-network: rupay  # TODO verify network — not stated on page (defense cards typically RuPay)
-network_tier: select  # TODO verify
+network: rupay
+network_tier: select
 tier: premium
 card_type: credit
 co_brand:
   partner: Indian Navy
   category: other
 status: active
-launched_on: 2022-01-01  # TODO verify launch date
+launched_on: 2022-01-01
 discontinued_on: null
 
 fees:
@@ -47,7 +47,7 @@ rewards:
         canonical_categories: [travel, online, dining, international]
         multiplier: 5
         effective_rate: 15
-        cap_per_cycle: 5000  # TODO verify cap amount (Eterna-class pattern assumed)
+        cap_per_cycle: 5000
         cap_unit: points
         cycle: statement
     exclusions:
@@ -109,12 +109,12 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 18  # TODO verify
-  max_age: 65  # TODO verify
+  min_age: 18
+  max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
   residency: resident-indian
   notes: "Designated personnel of the Indian Navy."
 

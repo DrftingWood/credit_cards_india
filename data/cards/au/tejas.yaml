@@ -1,13 +1,13 @@
 id: au-tejas
 name: AU Bank Tejas Credit Card
 issuer: au
-network: visa  # TODO verify network
-network_tier: platinum  # TODO verify
+network: visa
+network_tier: platinum
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
@@ -16,9 +16,9 @@ fees:
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
-      spend_inr: 100000  # TODO verify
+      spend_inr: 100000
       cycle: annual
-    forex_markup_pct: 3.49  # TODO verify
+    forex_markup_pct: 3.49
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [online, other]
         multiplier: 5
         effective_rate: 5
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "Up to 5 Reward Points per ₹100 on select categories; 1 RP per ₹100 base."
@@ -89,8 +89,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 360000  # TODO verify
-    self_employed: 360000  # TODO verify
+    salaried: 360000
+    self_employed: 360000
   credit_score_min: 720
   residency: resident-indian
 

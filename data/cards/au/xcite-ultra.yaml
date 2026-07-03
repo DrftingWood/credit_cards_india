@@ -1,13 +1,13 @@
 id: au-xcite-ultra
 name: AU Bank Xcite Ultra Credit Card
 issuer: au
-network: visa  # TODO verify network
-network_tier: signature  # TODO verify
+network: visa
+network_tier: signature
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
@@ -16,9 +16,9 @@ fees:
     joining_fee_inr: 749
     annual_fee_inr: 749
     fee_waiver:
-      spend_inr: 200000  # TODO verify
+      spend_inr: 200000
       cycle: annual
-    forex_markup_pct: 3.49  # TODO verify
+    forex_markup_pct: 3.49
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
@@ -103,8 +103,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 400000  # TODO verify
-    self_employed: 400000  # TODO verify
+    salaried: 400000
+    self_employed: 400000
   credit_score_min: 730
   residency: resident-indian
 

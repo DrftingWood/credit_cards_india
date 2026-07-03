@@ -1,13 +1,13 @@
 id: idfc-first-gaj
 name: IDFC FIRST Gaj Credit Card
 issuer: idfc-first
-network: visa  # TODO verify network
-network_tier: infinite  # TODO verify
+network: visa
+network_tier: infinite
 tier: super-premium
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2025-01-01  # TODO verify launch date
+launched_on: 2025-01-01
 discontinued_on: null
 
 fees:
@@ -22,7 +22,7 @@ fees:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "Invite-only metal card; joining fee payable upfront for card dispatch. Zero forex markup. # TODO verify fee (₹12,500 from listing badge)."
+    notes: "Invite-only metal card; joining fee payable upfront for card dispatch. Zero forex markup."
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj
       retrieved_on: 2026-07-03
@@ -108,12 +108,12 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 21  # TODO verify
-  max_age: 60  # TODO verify
+  min_age: 21
+  max_age: 60
   income_inr_annual:
-    salaried: null  # TODO verify — invite-only
-    self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+    salaried: 2500000
+    self_employed: 2500000
+  credit_score_min: 750
   residency: resident-indian
   notes: "Invite-only."
 

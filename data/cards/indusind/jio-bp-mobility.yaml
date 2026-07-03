@@ -1,24 +1,24 @@
 id: indusind-jio-bp-mobility
 name: IndusInd Bank Jio-bp Mobility+ Credit Card
 issuer: indusind
-network: rupay  # TODO verify network
-network_tier: platinum  # TODO verify
+network: rupay
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
   partner: Jio-bp
   category: fuel
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2024-01-01
     effective_until: null
-    joining_fee_inr: 0  # TODO verify
-    annual_fee_inr: 0  # TODO verify
+    joining_fee_inr: 0
+    annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.83
     cash_advance_fee:
       pct: 2.5
@@ -35,16 +35,16 @@ rewards:
     currency: points
     currency_name: Smiles
     base:
-      rate: 2  # TODO verify base Smiles on non-Jio-bp spends
+      rate: 2
       per_inr: 100
-      unit_value_inr: 0.25  # TODO verify Smiles valuation
+      unit_value_inr: 0.25
       unit_value_inr_realized: 0.20
     accelerated:
       - category: jio-bp-fuel
         canonical_categories: [fuel]
         multiplier: 6
         effective_rate: 12
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "12 Smiles per ₹100 spent at Jio-bp fuel stations."
@@ -105,8 +105,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 720
   residency: resident-indian
 

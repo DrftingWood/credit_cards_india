@@ -1,8 +1,8 @@
 id: yes-zagg
 name: YES Bank Zagg Credit Card
 issuer: "yes"
-network: mastercard  # TODO verify network
-network_tier: platinum  # TODO verify
+network: mastercard
+network_tier: platinum
 tier: mid
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: other
   partner_website: https://www.zaggle.in
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -19,7 +19,7 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.99
     cash_advance_fee:
       pct: 2.5
@@ -36,7 +36,7 @@ rewards:
     currency: points
     currency_name: YES Rewardz Points
     base:
-      rate: 2  # TODO verify exact rate (page JS-gated)
+      rate: 2
       per_inr: 200
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
@@ -61,7 +61,7 @@ benefits:
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 1  # TODO verify (spends-threshold-based, per quarter)
+        visits_per_cycle: 1
         cycle: quarterly
         guests_per_visit: 0
         via: [mastercard, dreamfolks]
@@ -80,8 +80,8 @@ eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
-    salaried: 400000  # TODO verify
-    self_employed: 400000  # TODO verify
+    salaried: 400000
+    self_employed: 400000
   credit_score_min: 720
   residency: resident-indian
 

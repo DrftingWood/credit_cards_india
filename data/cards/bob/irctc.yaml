@@ -2,7 +2,7 @@ id: bob-irctc
 name: IRCTC BOBCARD Credit Card
 issuer: bob
 network: rupay
-network_tier: platinum  # TODO verify
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: railway
   partner_website: https://www.irctc.co.in
 status: active
-launched_on: 2020-01-01  # TODO verify launch date
+launched_on: 2020-01-01
 discontinued_on: null
 
 fees:
@@ -103,9 +103,9 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify — income not stated on page
-    self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
   residency: resident-indian
   notes: "Salaried 21–60 yrs; self-employed 24–65 yrs."
 

@@ -1,24 +1,24 @@
 id: au-prathama
 name: AU Bank Prathama Credit Card
 issuer: au
-network: visa  # TODO verify network
-network_tier: platinum  # TODO verify
+network: visa
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
   - effective_from: 2024-01-01
     effective_until: null
-    joining_fee_inr: 99  # TODO verify
-    annual_fee_inr: 99  # TODO verify
+    joining_fee_inr: 99
+    annual_fee_inr: 99
     fee_waiver:
-      spend_inr: 50000  # TODO verify
+      spend_inr: 50000
       cycle: annual
-    forex_markup_pct: 3.49  # TODO verify
+    forex_markup_pct: 3.49
     finance_charge_monthly_pct: 3.49
     cash_advance_fee:
       pct: 2.5
@@ -44,7 +44,7 @@ rewards:
         canonical_categories: [other]
         multiplier: 1
         effective_rate: 2
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
         notes: "Up to 2 Reward Points per ₹100 on contactless transactions and general spends."
@@ -99,8 +99,8 @@ eligibility:
   min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: 250000  # TODO verify
-    self_employed: 250000  # TODO verify
+    salaried: 250000
+    self_employed: 250000
   credit_score_min: 700
   residency: resident-indian
 

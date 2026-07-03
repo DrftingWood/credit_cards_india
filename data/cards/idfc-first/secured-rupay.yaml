@@ -2,12 +2,12 @@ id: idfc-first-secured-rupay
 name: IDFC FIRST EARN Credit Card
 issuer: idfc-first
 network: rupay
-network_tier: platinum  # TODO verify
+network_tier: platinum
 tier: entry
 card_type: secured
 co_brand: null
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
@@ -19,7 +19,7 @@ fees:
       spend_inr: 100000
       cycle: annual
       conditions: "Annual fee waived on ₹1,00,000 annual spend. Joining fee ₹0 under a limited-period offer."
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
@@ -93,7 +93,7 @@ benefits:
 
 eligibility:
   min_age: 18
-  max_age: 70  # TODO verify
+  max_age: 70
   income_inr_annual:
     salaried: null  # secured against FD — no income requirement
     self_employed: null

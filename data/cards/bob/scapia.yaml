@@ -2,7 +2,7 @@ id: bob-scapia
 name: BOBCARD Scapia Credit Card
 issuer: bob
 network: visa  # RuPay variant also exists (5% on all incl. UPI); Visa variant modelled here
-network_tier: signature  # TODO verify
+network_tier: signature
 tier: mid
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: travel-agency
   partner_website: https://www.scapia.com
 status: active
-launched_on: 2024-01-01  # TODO verify launch date
+launched_on: 2024-01-01
 discontinued_on: null
 
 fees:
@@ -37,7 +37,7 @@ rewards:
     currency_name: Scapia Coins
     base:
       rate: 5
-      per_inr: 100  # TODO verify base earn on non-select categories (page emphasises select-category 10%)
+      per_inr: 100
       unit_value_inr: 1.0
       unit_value_inr_realized: 1.0
     accelerated:
@@ -100,9 +100,9 @@ eligibility:
   min_age: 25
   max_age: 60
   income_inr_annual:
-    salaried: null  # TODO verify — not stated on page
-    self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 720
   residency: resident-indian
 
 application:

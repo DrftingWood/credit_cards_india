@@ -43,7 +43,7 @@ rewards:
         canonical_categories: [groceries, utilities]
         multiplier: 2
         effective_rate: 2
-        cap_per_cycle: "unlimited"  # TODO verify cap
+        cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
         notes: "2% cashback on groceries, departmental stores & utility spends; 1% on other retail."

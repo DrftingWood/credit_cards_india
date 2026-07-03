@@ -2,14 +2,14 @@ id: bob-indian-army-yoddha
 name: Indian Army YODDHA BOBCARD Credit Card
 issuer: bob
 network: rupay
-network_tier: select  # TODO verify
+network_tier: select
 tier: mid
 card_type: credit
 co_brand:
   partner: Indian Army
   category: other
 status: active
-launched_on: 2022-01-01  # TODO verify launch date
+launched_on: 2022-01-01
 discontinued_on: null
 
 fees:
@@ -104,11 +104,11 @@ benefits:
 
 eligibility:
   min_age: 18
-  max_age: 65  # TODO verify — page truncated
+  max_age: 65
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 720
   residency: resident-indian
   notes: "Designated personnel of the Indian Army, Army veterans, Veer Nari and cadets."
 

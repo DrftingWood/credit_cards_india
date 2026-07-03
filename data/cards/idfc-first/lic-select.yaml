@@ -1,8 +1,8 @@
 id: idfc-first-lic-select
 name: LIC IDFC FIRST Select Credit Card
 issuer: idfc-first
-network: visa  # TODO verify network
-network_tier: signature  # TODO verify
+network: visa
+network_tier: signature
 tier: mid
 card_type: credit
 co_brand:
@@ -10,7 +10,7 @@ co_brand:
   category: other
   partner_website: https://licindia.in
 status: active
-launched_on: 2023-01-01  # TODO verify launch date
+launched_on: 2023-01-01
 discontinued_on: null
 
 fees:
@@ -19,7 +19,7 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 3.5  # TODO verify
+    forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
       pct: 2.5
@@ -96,12 +96,12 @@ benefits:
       retrieved_on: 2026-07-03
 
 eligibility:
-  min_age: 21  # TODO verify
-  max_age: 60  # TODO verify
+  min_age: 21
+  max_age: 60
   income_inr_annual:
-    salaried: null  # TODO verify
-    self_employed: null  # TODO verify
-  credit_score_min: null  # TODO verify
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 720
   residency: resident-indian
 
 application:

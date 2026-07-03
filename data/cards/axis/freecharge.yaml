@@ -54,6 +54,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "Regular EDGE REWARDS earn plus milestone-based EDGE REWARDS on achieving spend milestones (milestone slabs not published - # TODO verify)."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
     effective_until: null

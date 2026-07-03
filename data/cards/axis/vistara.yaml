@@ -61,6 +61,7 @@ rewards:
       retrieved_on: 2026-07-03
       notes: "Earn 2 Maharaja Points per ₹200 of eligible spends."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2024-11-12
     effective_until: null

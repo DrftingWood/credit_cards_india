@@ -76,6 +76,7 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2022-08-01
     effective_until: null

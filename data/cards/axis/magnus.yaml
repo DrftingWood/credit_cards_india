@@ -57,6 +57,7 @@ rewards:
       retrieved_on: 2026-04-15
       notes: "Historical record; values prior to the Sept-2023 revision."
 
+    mcc_exclusions: ['6513']
   - effective_from: 2023-09-01
     effective_until: null
     currency: points
@@ -105,6 +106,7 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-09-01
     effective_until: null

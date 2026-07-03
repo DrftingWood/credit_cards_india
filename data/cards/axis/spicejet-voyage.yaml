@@ -95,6 +95,7 @@ rewards:
       retrieved_on: 2026-07-03
       notes: "Base 3 SpiceClub Points per ₹200 on other retail spends (value chart: ₹1L → 1,500 pts). Wallet & EMI transactions excluded from accelerated earn."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
     effective_until: null

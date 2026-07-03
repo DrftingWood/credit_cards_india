@@ -49,6 +49,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "Earn 2 EDGE REWARD Points on every Rs 200 spent on domestic and international transactions."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03    # TODO verify effective date - not published
     effective_until: null

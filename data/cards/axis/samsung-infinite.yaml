@@ -73,6 +73,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "Samsung purchase cashback (10%, incl. EMI) is captured under benefits.other as it is a separate cashback benefit, not an EDGE Reward Point earn."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-01-01  # TODO verify
     effective_until: null

@@ -72,6 +72,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "Cashback T&C table: 3% on online food delivery/entertainment/local commute, 1% other spends; capped INR 1,500 per statement cycle."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
     effective_until: null

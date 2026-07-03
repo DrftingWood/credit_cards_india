@@ -82,6 +82,7 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
       retrieved_on: 2026-07-03
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2021-01-01
     effective_until: null

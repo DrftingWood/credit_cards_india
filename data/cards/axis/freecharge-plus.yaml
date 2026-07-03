@@ -76,6 +76,7 @@ rewards:
       retrieved_on: 2026-07-03
     notes: "Value chart: Freecharge 5%, local commute 2%, other spends 1% (Rs 85,000 -> Rs 850). Total illustrative annual benefit 2.59%."
 
+    mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
     effective_until: null

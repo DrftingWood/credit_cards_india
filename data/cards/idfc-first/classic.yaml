@@ -22,10 +22,10 @@ fees:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "Lifetime-free card."
+    notes: "Lifetime-free card (low-APR). UPI activation on the RuPay rail costs ₹199 + GST (one-time)."
     source:
-      url: https://www.idfcfirstbank.com/credit-card/classic
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/classic
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-01-01
@@ -38,33 +38,28 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.22
     accelerated:
-      - category: online-spend-under-20k
-        canonical_categories: [online]
-        multiplier: 2
-        effective_rate: 6
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: online-spend-above-20k
-        multiplier: 3
+      - category: incremental-monthly-above-20k
+        canonical_categories: [other]
+        multiplier: 3.33
         effective_rate: 10
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-      - category: incremental-above-25k
-        multiplier: 3
-        effective_rate: 10
+        notes: "10X (10 RP per ₹150) on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000."
+      - category: utility-insurance-railway-fastag
+        canonical_categories: [utilities, insurance]
+        multiplier: 0.33
+        effective_rate: 1
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        notes: "Reduced 1X (1 RP per ₹150) on utility bill payments, insurance premiums, railway spends and FASTag recharges."
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
-      - utilities
-      - education
+    mcc_exclusions: ['6513']
     redemption:
       - type: catalog
         program: IDFC FIRST Rewards
@@ -72,8 +67,8 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirstbank.com/credit-card/classic
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/classic
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-01-01
@@ -88,7 +83,7 @@ benefits:
         spend_threshold_cycle: quarterly
     welcome:
       - condition: "Spend ₹500 within 30 days"
-        benefit: "Welcome voucher worth ₹500"
+        benefit: "₹500 welcome voucher"
         value_inr: 500
         window_days: 30
     fuel_surcharge_waiver:
@@ -98,15 +93,14 @@ benefits:
       cap_per_cycle_inr: 200
       cycle: monthly
     movies:
-      type: bogo
-      partner: Paytm Movies
-      max_per_cycle: 1
+      type: discount
       cycle: monthly
       cap_inr: 150
+      notes: "25% off on movie tickets."
     concierge: false
     source:
-      url: https://www.idfcfirstbank.com/credit-card/classic
-      retrieved_on: 2026-04-15
+      url: https://www.idfcfirst.bank.in/credit-card/classic
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -118,8 +112,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idfcfirstbank.com/credit-card/classic
+  apply_url: https://www.idfcfirst.bank.in/credit-card/classic
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [lifetime-free, entry, points]

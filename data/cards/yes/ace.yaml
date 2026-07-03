@@ -1,6 +1,6 @@
 id: yes-ace
 name: YES Bank ACE Credit Card
-issuer: yes
+issuer: "yes"
 network: visa  # TODO verify network
 network_tier: platinum  # TODO verify
 tier: entry

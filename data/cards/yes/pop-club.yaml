@@ -1,6 +1,6 @@
 id: yes-pop-club
 name: YES Bank POP-CLUB Credit Card
-issuer: yes
+issuer: "yes"
 network: rupay
 network_tier: platinum  # TODO verify
 tier: entry

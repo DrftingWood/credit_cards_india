@@ -268,6 +268,17 @@ PSU (onecard/slice/boi/canara/idbi/kvb/pnb/union/south-indian — mostly HTML MI
 NOTE: hdfc/icici/axis/sbi already have archived PDFs (docs/sources/) from pre-session.
 
 ## Current iteration log (newest last)
+- 2026-07-04 #89: **SOURCE-VERIFICATION WAVE COMPLETE — all 20 issuers verified (PR #61).**
+  Final: **13 corrections** — Federal 5 (Signet/Imperio fees+forex, Celesta forex), RBL 4
+  (Insignia 10k→7k, Icon forex 2→3.5, MaximaPlus 2k→2.5k, IRCTC 350→500), IDFC 2 (Ashva+
+  Mayura per-100→150), Kotak 1 (League Platinum LTF), HSBC 1 (Premier joining 0→12k).
+  CONFIRMED 0-fix: BoB(PDF), SC(PDF), Amex, IndusInd, OneCard, slice, YES(Marquee✓), AU
+  (Altura✓). PSU x7 = plausible-unconfirmed (pages redirect post-migration). Evidence in
+  docs/sources/<issuer>/ (_manifest.json+INDEX.md; PDFs gitignored). validate OK (317).
+  Posted full summary on PR #61. TOOLING for future: pypdf (not Read/poppler) for PDF text;
+  central Schedule-of-Charges PDF (RBL/BoB) verifies a whole issuer fast; YES `?name=` PDFs
+  session-gated (not curl-able); ascii-only console on Windows. **LOOP STOPPED — goal done.**
+  Open PRs: #39-#61 (23 total). Dataset 317 cards, 0 validator errors.
 - 2026-07-04 #88: BIG window — 3 more issuers, 5 more fixes. **RBL — 4 FIXES** via its
   central `CardsScheduleCharges.pdf` (webassets.rbl.bank.in — one PDF = all cards' annual
   fees + forex): Insignia annual 10000→7000, Icon forex 2.0→3.5, Platinum-Maxima-Plus

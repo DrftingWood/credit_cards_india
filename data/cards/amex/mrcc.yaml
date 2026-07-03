@@ -27,7 +27,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2010-01-01
@@ -60,21 +60,33 @@ rewards:
         rate_inr_per_unit: 0.5
     source:
       url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2010-01-01
     effective_until: null
     lounge_access: null
     milestones:
-      - spend_inr: 100000
-        cycle: annual
-        benefit: "4,000 MR bonus points"
-        value_inr: 1000
-    welcome:
-      - condition: "Spend ₹10,000 within 90 days"
-        benefit: "1,000 Membership Rewards bonus points"
+      - spend_inr: 6000
+        cycle: monthly
+        benefit: "1,000 bonus MR points for 4 transactions of ₹1,500+ in a calendar month"
         value_inr: 250
+        reward_kind: points
+        reward_units: 1000
+        reward_currency_name: Membership Rewards
+        trigger_window: rolling
+        is_repeatable: true
+      - spend_inr: 900000
+        cycle: annual
+        benefit: "Annual spend-milestone vouchers (Taj / Shoppers Stop / Tata Cliq / Tanishq / Amazon / Flipkart etc.), tiered by annual spend up to ₹14,000"
+        value_inr: 14000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: false
+    welcome:
+      - condition: "On joining (fee payment + eligible spend)"
+        benefit: "4,000 bonus Membership Rewards points"
+        value_inr: 1000
         window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
@@ -88,7 +100,7 @@ benefits:
     concierge: false
     source:
       url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
-      retrieved_on: 2026-04-15
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 18
@@ -104,5 +116,5 @@ application:
   apply_url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
 
 metadata:
-  last_verified_on: 2026-04-15
+  last_verified_on: 2026-07-03
   tags: [entry, points, amex, mr-points]

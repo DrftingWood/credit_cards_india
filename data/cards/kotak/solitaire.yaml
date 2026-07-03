@@ -16,26 +16,36 @@ fees:
     joining_fee_inr: 0
     annual_fee_inr: 0
     fee_waiver: null
-    forex_markup_pct: 2.0
+    forex_markup_pct: 0.0
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
+      pct: 1.0
+      min_inr: 0
     gst_applicable: true
-    notes: "Invite-only; no fee."
+    notes: "Invite-only. Zero forex markup; 1% cash-withdrawal fee with zero interest till payment due date."
     source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/solitaire-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
+      retrieved_on: 2026-07-03
 
 rewards:
   - effective_from: 2021-01-01
     effective_until: null
-    currency: cashback
-    currency_name: Whites Pass
+    currency: miles
+    currency_name: Air Miles
     base:
-      rate: 4
-      per_inr: 150
+      rate: 3
+      per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.70
+    accelerated:
+      - category: travel-via-unbox
+        canonical_categories: [travel]
+        multiplier: 3.33
+        effective_rate: 10
+        cap_per_cycle: "unlimited"
+        cap_unit: miles
+        cycle: monthly
+        notes: "10 Air Miles per ₹100 on travel bookings via Kotak Unbox; 3 per ₹100 on other purchases."
     exclusions:
       - fuel
       - wallet-loads
@@ -43,27 +53,33 @@ rewards:
       - insurance-premiums
       - emi
     mcc_exclusions: ['6513']
+    transfer_partners:
+      - program: Airline & hotel partners
+        category: airline
+        ratio: "1:1"
+        notes: "Air Miles transferable to preferred airline/hotel programmes; 1 Air Mile = ₹1 on travel redemptions."
     redemption:
-      - type: catalog
-        program: Whites Catalogue
+      - type: airmiles
+        program: Kotak Air Miles
         rate_inr_per_unit: 1.0
+        constraints: "1 Air Mile = ₹1 on travel bookings; transferable to airline/hotel partners."
     source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/solitaire-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
+      retrieved_on: 2026-07-03
 
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: unlimited
+        visits_per_cycle: "unlimited"
         cycle: annual
-        guests_per_visit: 0
+        guests_per_visit: "unlimited"
         via: [visa, dreamfolks]
       international:
-        visits_per_cycle: unlimited
+        visits_per_cycle: "unlimited"
         cycle: annual
-        guests_per_visit: 0
+        guests_per_visit: "unlimited"
         via: [priority-pass]
     golf:
       rounds_per_cycle: 2
@@ -76,9 +92,14 @@ benefits:
       max_txn_inr: 4000
       cap_per_cycle_inr: 3500
       cycle: annual
+    other:
+      - name: Hotel benefit
+        description: "50% off on the 2nd night at partner hotels."
+      - name: Unlimited lounge for add-on members
+        description: "Unlimited global lounge access for primary and add-on cardholders."
     source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/solitaire-credit-card.html
-      retrieved_on: 2026-04-15
+      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
+      retrieved_on: 2026-07-03
 
 eligibility:
   min_age: 21
@@ -94,5 +115,5 @@ application:
   apply_url: null
 
 metadata:
-  last_verified_on: 2026-04-15
-  tags: [invite-only, super-premium, private-banking]
+  last_verified_on: 2026-07-03
+  tags: [invite-only, super-premium, miles, travel, zero-forex, private-banking]

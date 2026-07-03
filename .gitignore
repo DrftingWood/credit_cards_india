@@ -9,3 +9,6 @@ site/next-env.d.ts
 site/.vercel/
 site/.env*.local
 site/tsconfig.tsbuildinfo
+
+# Archived source PDFs — kept LOCAL-ONLY (large binaries), never committed.
+docs/sources/**/*.pdf

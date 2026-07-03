@@ -1,7 +1,7 @@
 id: axis-spicejet-voyage
 name: SpiceJet Axis Bank Voyage Credit Card
 issuer: axis
-network: mastercard      # TODO verify (network not stated on live page)
+network: visa            # TODO verify network — inferred default (Visa)
 network_tier: null       # TODO verify
 tier: mid
 card_type: credit

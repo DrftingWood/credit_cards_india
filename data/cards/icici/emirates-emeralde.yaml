@@ -1,7 +1,7 @@
 id: icici-emirates-emeralde
 name: Emirates Skywards ICICI Bank Emeralde Credit Card
 issuer: icici
-network: mastercard  # TODO verify - network not stated on live page (ICICI Emirates variants commonly Mastercard World)
+network: visa  # TODO verify network — inferred default (Visa)
 network_tier: null
 tier: super-premium
 card_type: credit

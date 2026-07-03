@@ -1,7 +1,7 @@
 id: hdfc-phonepe-ultimo
 name: PhonePe HDFC Bank Ultimo Credit Card
 issuer: hdfc
-network: rupay  # TODO verify network
+network: rupay  # TODO verify network — inferred (UPI card = RuPay)
 network_tier: null
 tier: mid
 card_type: credit

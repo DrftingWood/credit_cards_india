@@ -1,7 +1,7 @@
 id: hdfc-phonepe-uno
 name: PhonePe HDFC Bank Uno Credit Card
 issuer: hdfc
-network: rupay  # TODO verify network (PhonePe HDFC Uno is a RuPay UPI card; page does not name network explicitly)
+network: rupay  # TODO verify network — inferred (UPI card = RuPay)
 network_tier: null
 tier: entry
 card_type: credit

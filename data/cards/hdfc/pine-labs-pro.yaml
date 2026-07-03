@@ -1,7 +1,7 @@
 id: hdfc-pine-labs-pro
 name: Pine Labs HDFC Bank Pro Credit Card
 issuer: hdfc
-network: visa  # TODO verify network (live page is silent on network)
+network: visa  # TODO verify network — inferred default (Visa)
 network_tier: null
 tier: mid
 card_type: credit

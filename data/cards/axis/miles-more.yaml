@@ -1,8 +1,8 @@
 id: axis-miles-more
 name: Axis Bank Miles & More Credit Card
 issuer: axis
-network: mastercard      # TODO verify (Miles & More World / World Select are Mastercard World)
-network_tier: world      # TODO verify
+network: visa            # TODO verify network — inferred default (Visa)
+network_tier: null       # TODO verify
 tier: premium
 card_type: credit
 co_brand:

@@ -1,7 +1,7 @@
 id: icici-csk
 name: Chennai Super Kings ICICI Bank Credit Card
 issuer: icici
-network: visa  # TODO verify network
+network: visa  # TODO verify network — inferred default (Visa)
 network_tier: null
 tier: entry
 card_type: credit

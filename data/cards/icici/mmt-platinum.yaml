@@ -1,7 +1,7 @@
 id: icici-mmt-platinum
 name: MakeMyTrip ICICI Bank Platinum Credit Card
 issuer: icici
-network: visa # TODO verify
+network: visa  # TODO verify network — inferred default (Visa)
 network_tier: null
 tier: entry
 card_type: credit

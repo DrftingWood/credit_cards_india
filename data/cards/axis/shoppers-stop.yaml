@@ -1,7 +1,7 @@
 id: axis-shoppers-stop
 name: Axis Bank Shoppers Stop Credit Card
 issuer: axis
-network: visa  # TODO verify (network not stated on crawl page)
+network: visa  # TODO verify network — inferred default (Visa)
 network_tier: null
 tier: entry
 card_type: credit

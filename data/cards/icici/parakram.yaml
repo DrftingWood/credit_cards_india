@@ -1,7 +1,7 @@
 id: icici-parakram
 name: ICICI Bank Parakram Credit Card
 issuer: icici
-network: rupay # TODO verify
+network: visa  # TODO verify network — inferred default (Visa)
 network_tier: null
 tier: entry
 card_type: credit

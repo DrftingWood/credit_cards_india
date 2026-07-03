@@ -1,7 +1,7 @@
 id: axis-cashback
 name: Axis Bank Cashback Credit Card
 issuer: axis
-network: visa   # TODO verify (network not stated on crawled page)
+network: visa  # TODO verify network — inferred default (Visa)
 network_tier: null
 tier: entry
 card_type: credit

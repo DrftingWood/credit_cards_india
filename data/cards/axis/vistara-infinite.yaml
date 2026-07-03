@@ -1,7 +1,7 @@
 id: axis-vistara-infinite
 name: Axis Bank Vistara Infinite Credit Card
 issuer: axis
-network: visa            # TODO verify (name implies Visa Infinite)
+network: visa            # TODO verify network — inferred default (Visa)
 network_tier: infinite   # TODO verify
 tier: super-premium
 card_type: credit

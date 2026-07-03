@@ -13,7 +13,7 @@ discontinued_on: null
 fees:
   - effective_from: 2021-11-01
     effective_until: null
-    joining_fee_inr: 0
+    joining_fee_inr: 12000
     annual_fee_inr: 20000
     fee_waiver:
       spend_inr: 1600000

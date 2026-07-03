@@ -1,0 +1,108 @@
+id: hsbc-travelone
+name: HSBC TravelOne Credit Card
+issuer: hsbc
+network: visa  # TODO verify network (Visa Signature / Mastercard)
+network_tier: signature  # TODO verify
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-01-01  # TODO verify launch date
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 4999  # TODO verify
+    annual_fee_inr: 4999  # TODO verify
+    fee_waiver:
+      spend_inr: 1200000
+      cycle: annual
+    forex_markup_pct: 2.0  # TODO verify
+    finance_charge_monthly_pct: 3.5
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    notes: "Travel rewards card. Renewal fee waived on ₹12,00,000 annual spend."
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/travelone/
+      retrieved_on: 2026-07-03
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.25
+    accelerated:
+      - category: travel
+        canonical_categories: [travel]
+        multiplier: 2
+        effective_rate: 4
+        cap_per_cycle: 50000
+        cap_unit: points
+        cycle: annual
+        notes: "4 Reward Points per ₹100 on flights, hotels & travel aggregators (capped 50,000 RP/year, then 2 RP/₹100); 2 RP per ₹100 on everything else (no cap)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: HSBC Rewards
+        rate_inr_per_unit: 0.25
+      - type: airmiles
+        program: HSBC India Rewards (20+ airline & hotel loyalty partners)
+        ratio: "1:1"
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/travelone/
+      retrieved_on: 2026-07-03
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    lounge_access:
+      international:
+        visits_per_cycle: 4
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+    welcome:
+      - condition: "Spend ₹25,000 within first 30 days"
+        benefit: "₹1,000 cashback + ₹3,000 PostCard voucher (promo HSBCTRAVEL)"
+        value_inr: 4000
+        window_days: 30
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.hsbc.co.in/credit-cards/products/travelone/
+      retrieved_on: 2026-07-03
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 600000  # TODO verify
+    self_employed: 600000  # TODO verify
+  credit_score_min: 730
+  residency: resident-indian
+
+application:
+  apply_url: https://www.hsbc.co.in/credit-cards/products/travelone/
+
+metadata:
+  last_verified_on: 2026-07-03
+  tags: [premium, points, travel, airmiles, lounge]

@@ -54,14 +54,14 @@ rewards:
         canonical_categories: [utilities]
         multiplier: 1
         effective_rate: 25
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 250
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [airtel-thanks-app]
         channel:
           class: cobrand-merchant
           merchants: [airtel-thanks-app]
-        notes: "25% cashback on Airtel bill payments (mobile, DTH, broadband) via Airtel Thanks app."
+        notes: "25% cashback on Airtel bill payments (mobile, DTH, broadband) via Airtel Thanks app, capped at ₹250/month (official Airtel value chart; from Apr-2026 also limited to 2× base cashback that month)."
       - category: preferred-partners-zomato-blinkit-district
         canonical_categories: [dining, groceries, entertainment]
         multiplier: 1

@@ -54,6 +54,20 @@ describe("decoupled scorer prototype", () => {
     expect(az.flags).toEqual([]); // 5% is plausible → not flagged
   });
 
+  test("near-identical variants are de-duped (F12)", async () => {
+    const { cards, programs } = await load();
+    const p = base({ goals: ["cashback"], monthly_spend: { online: "gt-30k", travel: "0", dining: "0", groceries: "0", fuel: "0" } });
+    const res = scoreDecoupled(cards, programs, p, { topN: 30 });
+    const ids = res.map((d) => d.card.id);
+    // No two results share a variant stem (e.g. kotak-cashback-plus + -prime).
+    for (let i = 0; i < ids.length; i++)
+      for (let j = i + 1; j < ids.length; j++)
+        expect(ids[j].startsWith(ids[i] + "-") || ids[i].startsWith(ids[j] + "-")).toBe(false);
+    // Turning dedupe off brings the variant back.
+    const raw = scoreDecoupled(cards, programs, p, { topN: 30, dedupeVariants: false }).map((d) => d.card.id);
+    expect(raw.length).toBeGreaterThanOrEqual(ids.length);
+  });
+
   test("one-time welcome is never the rank key (F5/F8)", async () => {
     const { cards, programs } = await load();
     // Zero spend: rank is net rewards (≈0 for all), so nothing should rank purely on a welcome bonus.

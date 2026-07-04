@@ -134,6 +134,13 @@ export interface ScoreOpts {
   topN?: number;
   /** Exact monthly spend per bucket, overriding the coarse band mapping (fixes F9). */
   exactSpend?: Partial<SpendProfile>;
+  /** Collapse near-identical variants that share an id stem (keeps the higher-ranked). Default true (F12). */
+  dedupeVariants?: boolean;
+}
+
+/** Two cards are variants if one id is a `-`-delimited extension of the other (e.g. sbi-pulse / sbi-pulse-sprint, yes-paisabazaar / -rupay). */
+function isVariantOf(a: string, b: string): boolean {
+  return b.startsWith(a + "-") || a.startsWith(b + "-");
 }
 
 export function scoreDecoupled(
@@ -181,7 +188,17 @@ export function scoreDecoupled(
   });
 
   scored.sort((a, b) => b.net_rewards_inr - a.net_rewards_inr || a.card.id.localeCompare(b.card.id));
-  return scored.slice(0, opts.topN ?? 5);
+
+  // De-dup near-identical variants (F12): keep the higher-ranked of each variant family.
+  const deduped: DecoupledScore[] = [];
+  if (opts.dedupeVariants === false) {
+    deduped.push(...scored);
+  } else {
+    for (const s of scored) {
+      if (!deduped.some((k) => isVariantOf(k.card.id, s.card.id))) deduped.push(s);
+    }
+  }
+  return deduped.slice(0, opts.topN ?? 5);
 }
 
 function passesIncome(card: EnrichedCard, band: RecommendPayload["income_band"]): boolean {

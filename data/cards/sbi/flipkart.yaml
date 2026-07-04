@@ -57,6 +57,9 @@ rewards:
         effective_rate: 7.5
         cap_unit: cashback-inr
         merchants: [myntra]
+        channel:
+          class: cobrand-merchant
+          merchants: [myntra]
         notes: "7.5% cashback on Myntra. Cap not specified on page."
       - category: flipkart
         canonical_categories: [online]
@@ -64,6 +67,9 @@ rewards:
         effective_rate: 5
         cap_unit: cashback-inr
         merchants: [flipkart]
+        channel:
+          class: cobrand-merchant
+          merchants: [flipkart]
         notes: "5% cashback on Flipkart. Cap not specified on page."
       - category: preferred-select-merchants
         canonical_categories: [online]

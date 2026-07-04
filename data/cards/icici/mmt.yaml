@@ -60,6 +60,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [mmt]
+        channel:
+          class: third-party-ota
+          merchants: [mmt]
         notes: "6% myCash (6 points per ₹100) on hotel bookings via MakeMyTrip."
       - category: makemytrip-flight-bus-cab
         canonical_categories: [travel]

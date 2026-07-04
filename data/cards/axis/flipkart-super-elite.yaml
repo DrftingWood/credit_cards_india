@@ -54,6 +54,9 @@ rewards:
         multiplier: 1
         effective_rate: 14
         merchants: [flipkart]
+        channel:
+          class: cobrand-merchant
+          merchants: [flipkart]
         notes: "Flipkart spends earn base 2 + additional 12 SuperCoins per ₹100 for Flipkart Plus members (14 total); non-Plus earn 2 + 6 = 8 total."
     capping_rules:
       - "Accelerated Flipkart SuperCoins capped at 300 per transaction for Plus members and 150 per transaction for non-Plus members."

@@ -57,6 +57,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [iocl]
+        channel:
+          class: fuel-network
+          merchants: [iocl]
         notes: "4% value back on fuel at any IOCL outlet in India (20 EDGE Reward Points per ₹100)."
       - category: online-shopping
         canonical_categories: [online]

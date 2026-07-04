@@ -123,8 +123,15 @@ function ratesFlags(card: EnrichedCard, topBucket: CanonicalCategory | null, rew
   for (const a of card.current_rewards?.accelerated ?? []) {
     const uncapped = a.cap_per_cycle == null || a.cap_per_cycle === "unlimited";
     if (!uncapped) continue;
-    const per = a.effective_per_inr ?? base?.per_inr ?? 100;
-    const ratePct = typeof a.effective_rate === "number" ? (a.effective_rate * uv) / per * 100 : null;
+    // Only flag BROAD uncapped rates. A channel-gated co-brand rate (IndiGo
+    // direct, Amazon, …) is narrow by scope, so a high rate there is expected,
+    // not a data error. Use card_attributable_rate when present — the receipt-
+    // visible effective_rate double-counts the loyalty programme's own earn
+    // (e.g. IndiGo BluChips), which the calculator adds separately.
+    if (a.channel) continue;
+    const rate = a.card_attributable_rate ?? a.effective_rate;
+    const per = a.card_attributable_rate != null ? (a.card_attributable_per_inr ?? 100) : (a.effective_per_inr ?? base?.per_inr ?? 100);
+    const ratePct = typeof rate === "number" ? (rate * uv) / per * 100 : null;
     if (ratePct != null && ratePct >= IMPLAUSIBLE_UNCAPPED_RATE_PCT) {
       flags.push(`Unusually high uncapped rate (~${ratePct.toFixed(0)}%) — verify against issuer T&C`);
       break;

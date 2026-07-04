@@ -104,9 +104,16 @@ The engine sums proxies without checking the card is good at the user's actual
 spend categories. Result: a **movie card tops a fuel query** (F3), a **charge card
 tops a foodie query** (F3). Recommendations are not category-matched.
 
-### F11. Point-value inconsistency corrupts cross-card comparison (see D13)
-`effective_rate` is card-side for some cards but the receipt-visible total for
-others (IndiGo co-brands), inflating those cards' rewards 3–4×.
+### F11. Point-value handling — CLEARED (was a red-team artifact)
+Original claim: `effective_rate` is card-side for some cards but the receipt-
+visible total for others, inflating IndiGo co-brands 3–4×. **On inspection this
+was false** — all the IndiGo co-brand cards already carry `card_attributable_rate`
+(3–7) + `stacks_with_program`, so the calculator scores the card-side earn, not
+the 19–22 receipt-total. The inflation only appeared in a red-team script that
+read `effective_rate` directly. The real fix was in the *scorer's flag* (skip
+channel-gated rates; prefer `card_attributable_rate`) so these correctly-modelled
+cards no longer mis-flag. Lesson: **verify the flag against the calculator's
+actual rate, not the raw documentary field.**
 
 ### F12. Weak income filter + near-duplicate variants
 Income filter (measured over 287 active cards):

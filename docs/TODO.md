@@ -382,6 +382,17 @@ Validation:
 - `npm.cmd --prefix site run build`
 - Browser/manual checks for desktop and mobile navigation
 
+## Competitor review (cardexpert.in best-cards-2026, 2026-07-04)
+
+Cross-checked CardExpert's recommended cards against our DB. We hold most; gaps
+and learnings:
+
+| ID | Priority | Area | Task |
+| --- | --- | --- | --- |
+| D23 | P1 | Portfolio | **Missing issuer: Equitas Bank** — CardExpert recommends Equitas Selfe (up to 10% in 5X categories) and Equitas Powermiles (9% on international). Add the issuer + source both cards from issuer T&C. |
+| D24 | P2 | Portfolio | **Missing HSBC Travel One** — a mainstream travel card (airline transfer partners) CardExpert recommends; source and add. (HDFC Diners BizBlack is a business card → intentionally out of scope.) |
+| D25 | P2 | Site UX | **Learn from CardExpert's presentation:** recommend by spending-capacity tier (income + annual spend) AND spending pattern (dining/online/forex/utilities) with a one-line reason per card — not one universal pick. This matches the decoupled-scorer direction (category-aware, transparent line items). Consider tiered/pattern-based result grouping on the site. |
+
 ## Follow-up backlog (opened 2026-07-04, from the A0–C3 audit)
 
 These emerged while completing the A/B/C board. Promote into the Pick-Up Board

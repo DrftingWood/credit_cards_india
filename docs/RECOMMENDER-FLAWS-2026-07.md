@@ -138,6 +138,52 @@ recommender that is **neither personalized nor robust**.
 7. Fix the feeding data errors (D13/D14/F7 missing caps) — but note that even with
    perfect data, F1/F3/F4/F5/F8/F10 are *engine* flaws that data fixes won't cure.
 
+## Prototype: decoupled scorer (`site/lib/scorer-decoupled.ts`)
+
+A side-by-side prototype (does not touch `recommender.ts`; 4 tests in
+`scorer-decoupled.test.ts`) demonstrates the fix direction **without inventing
+any weighting constants**:
+
+- **RANK = brand-aware spend rewards − annual fee**, using only card-data rates ×
+  user-reported spend. A co-brand rate is credited **only when the user selects
+  that brand** — so `icici-amazon-pay` earns base with no brand (`n/a` in
+  results) and its **real uncapped 5%** with `+amazon` (₹24,000/yr on ₹40k/mo,
+  scaling linearly — at ₹4L/mo it dominates). No applicability fraction (F1 fixed
+  the honest way).
+- **Welcome / milestones / lounge are decoupled** into separate informational
+  line items — lounge as *factual visit counts* (not monetised), welcome/
+  milestone at their data-stated ₹. They never enter the rank, so the ₹1.44L
+  milestone and ₹96k lounge phantoms can no longer corrupt it (F3/F4/F5/F8).
+- **Factual `flags[]`** mark implausible uncapped rates (via unit value, so it
+  catches points cards too) and category mismatch — **warnings only, they never
+  alter a number**. The top *unflagged* card is the trustworthy pick.
+
+### Fix status vs the flaws
+| Flaw | Prototype | Notes |
+|---|---|---|
+| F1 brand inert | **fixed** | brand selection now credits the real co-brand rate |
+| F3 milestone phantom | **fixed** | decoupled out of the rank + implausibility flag |
+| F4 lounge phantom | **fixed** | reported as visit counts, not a ₹ proxy |
+| F5 welcome-as-recurring | **fixed** | one-time, separate line, never ranked |
+| F8 conflation | **fixed** | rank is a single clean quantity (net rewards) |
+| F7 uncapped rates | **flagged** | surfaced as warnings; real fix is the data |
+| F10 category mismatch | **flagged** | warning when rewards miss the top bucket |
+| F2/F6/F9/F11/F12/F13 | open | need data fixes (D13/D14), a spend-input redesign (F9), de-dup (F12) |
+
+### Not yet addressed by the prototype
+- **F9** (coarse bands): still uses the 5-band mapping; a merchant/amount-level
+  spend input is the real fix.
+- **Lounge for lounge-goal users**: ranked by rewards with visit counts shown;
+  monetising lounge honestly needs a "visits you take per year" user input.
+- **F6/F7 data outliers still rank high** (flagged, not demoted) — correct
+  behaviour: the scorer reflects the data honestly; the cure is fixing the data.
+
+### Data errors surfaced by the flag pass (filed as D-items)
+The implausible-rate flag immediately exposed feeding data errors: `axis-airtel`
+(~25% uncapped), `sbi-phonepe-select-black` / `hsbc-rupay-cashback` (uncapped
+~10% — likely missing caps), and `sbi-flipkart` earning on *any* online spend
+(accelerator not gated to Flipkart). See D20–D21 in `TODO.md`.
+
 ## Scenarios used (for reproduction)
 S1 cashback/moderate-online · S2a/b Amazon shopper ±brand · S3 foodie(swiggy) ·
 S4a/b IndiGo traveler ±airline · S5 premium high-spender · S6 low-spend lounge

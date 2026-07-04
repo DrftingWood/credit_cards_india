@@ -1,9 +1,12 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Punjab National Bank — RuPay/Visa program card (live page redirects; no extractable source)
-#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
-#   Values are RuPay/Visa program-standard estimates; the live card page redirects
-# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+#   Source     : PNB issuer MITC (docs/sources/pnb/rupay-select/MITC.pdf) +
+#                creditcard.pnb.bank.in card portal.
+#   Verified   : 2026-07-04   Confidence: HIGH (fees, pdf) / MEDIUM (rewards)
+#   Fees (joining Rs 500, annual Rs 750, usage-based waiver, 3.5% forex) are
+#   confirmed against the PNB MITC "Schedule of Charges". The base earn rate is
+#   the RuPay Select program standard (portal states "2X reward points on retail")
+#   and is not individually rate-stated in the MITC — kept at medium confidence.
 # ---------------------------------------------------------------------------
 id: pnb-rupay-select
 name: PNB RuPay Select Credit Card
@@ -20,11 +23,12 @@ discontinued_on: null
 fees:
   - effective_from: 2022-01-01
     effective_until: null
-    joining_fee_inr: 0
+    joining_fee_inr: 500
     annual_fee_inr: 750
     fee_waiver:
-      spend_inr: 75000
+      spend_inr: 0
       cycle: annual
+      conditions: "Annual fee waived if the card is used for at least one retail transaction in each quarter of the preceding year (PNB MITC Schedule of Charges)."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 2.95
     cash_advance_fee:
@@ -32,8 +36,18 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.pnb.bank.in/credit-card-rupay-select
-      retrieved_on: 2026-07-03
+      url: https://creditcard.pnb.bank.in/
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/pnb/rupay-select/MITC.pdf
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.fee_waiver
+        - fees.forex_markup_pct
+      notes: "PNB MITC: RuPay Select joining Rs 500 (add-on Rs 500), annual Rs 750, waived on one retail transaction each quarter of the preceding year; foreign-currency mark-up 3.50%."
 
 rewards:
   - effective_from: 2022-01-01
@@ -57,8 +71,11 @@ rewards:
         program: PNB Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.pnb.bank.in/credit-card-rupay-select
-      retrieved_on: 2026-07-03
+      url: https://creditcard.pnb.bank.in/
+      retrieved_on: 2026-07-04
+      type: issuer-page
+      confidence: medium
+      notes: "Portal states '2X reward points on retail merchandise'; exact base earn rate not rate-stated in the MITC — modelled at the RuPay Select program standard (2 RP per Rs 150)."
 
 benefits:
   - effective_from: 2022-01-01
@@ -82,8 +99,13 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.pnb.bank.in/credit-card-rupay-select
-      retrieved_on: 2026-07-03
+      url: https://creditcard.pnb.bank.in/
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: medium
+      local_refs:
+        - docs/sources/pnb/rupay-select/MITC.pdf
+      notes: "MITC confirms 1% fuel surcharge waiver above Rs 400; lounge access is the NPCI RuPay Select program benefit."
 
 eligibility:
   min_age: 21
@@ -95,8 +117,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.pnb.bank.in/credit-card-rupay-select
+  apply_url: https://creditcard.pnb.bank.in/
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-04
   tags: [mid, rupay, points, upi-linkable, psu-bank]

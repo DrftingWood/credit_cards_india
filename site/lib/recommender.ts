@@ -242,22 +242,64 @@ function loungeValue(
   return { inr, thresholdUnmet };
 }
 
-function milestonesValue(b: BenefitRecord | null, annualSpendInr: number): number {
+const MILESTONE_CYCLES_PER_YEAR: Record<string, number> = {
+  monthly: 12,
+  statement: 12,
+  quarterly: 4,
+  annual: 1,
+  "per-txn": 1,
+};
+
+/**
+ * Annualised INR value of a card's spend milestones for a given yearly spend.
+ *
+ * Honours the rich milestone metadata (A4):
+ *  - `trigger_window`: "first-year"/"one-time" awards fire once, so they're
+ *    amortised over WELCOME_AMORTIZATION_YEARS (like welcome bonuses) instead of
+ *    being credited in full every year. "anniversary-year"/"rolling"/legacy
+ *    milestones recur and are credited per year.
+ *  - `is_repeatable === false`: fires at most once per year even if its spend
+ *    cycle is sub-annual (don't multiply a one-shot bonus by 12).
+ *  - `max_awards_per_cycle`: a milestone earned every ₹N of spend can be earned
+ *    multiple times within a cycle, up to this cap (e.g. Amex SmartEarn: 3×).
+ *
+ * Exported for unit tests; not part of the recommender's public contract.
+ */
+export function milestonesValue(b: BenefitRecord | null, annualSpendInr: number): number {
   if (!b?.milestones?.length) return 0;
   let total = 0;
   for (const m of b.milestones) {
     if (m.value_inr == null) continue;
-    const cycleSpend =
-      m.cycle === "annual" ? annualSpendInr :
-      m.cycle === "quarterly" ? annualSpendInr / 4 :
-      m.cycle === "monthly" ? annualSpendInr / 12 :
-      annualSpendInr;
-    if (cycleSpend >= m.spend_inr) {
-      const occurrences =
-        m.cycle === "quarterly" ? 4 :
-        m.cycle === "monthly" ? 12 : 1;
-      total += m.value_inr * occurrences;
+    const cyclesPerYear = MILESTONE_CYCLES_PER_YEAR[m.cycle] ?? 1;
+    const perCycleSpend = cyclesPerYear > 0 ? annualSpendInr / cyclesPerYear : annualSpendInr;
+    const threshold = m.spend_inr ?? 0;
+
+    // How many times the award is earned within a single spend cycle.
+    let awardsThisCycle: number;
+    if (threshold <= 0) {
+      awardsThisCycle = 1; // flat anniversary bonus with no spend gate
+    } else if (perCycleSpend < threshold) {
+      awardsThisCycle = 0;
+    } else if (m.max_awards_per_cycle != null) {
+      // "Earn X every ₹threshold, up to max times per cycle."
+      awardsThisCycle = Math.min(Math.floor(perCycleSpend / threshold), m.max_awards_per_cycle);
+    } else {
+      awardsThisCycle = 1; // crossing the bar once earns one award per cycle
     }
+    if (awardsThisCycle <= 0) continue;
+
+    // One-shot awards: fire once, amortised over the ownership horizon.
+    if (m.trigger_window === "first-year" || m.trigger_window === "one-time") {
+      total += m.value_inr / WELCOME_AMORTIZATION_YEARS;
+      continue;
+    }
+
+    let annualAwards = awardsThisCycle * cyclesPerYear;
+    // A non-repeatable milestone is earned at most once per year regardless of a
+    // sub-annual measurement cycle.
+    if (m.is_repeatable === false) annualAwards = 1;
+
+    total += m.value_inr * annualAwards;
   }
   return total;
 }

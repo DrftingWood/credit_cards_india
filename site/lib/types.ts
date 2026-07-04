@@ -257,6 +257,17 @@ export interface BenefitRecord {
     cycle: Cycle;
     benefit: string;
     value_inr?: number | null;
+    // Rich milestone metadata — present in schema/card.schema.json and
+    // generated-types.ts; surfaced here so the recommender can value awards
+    // correctly (A4). trigger_window governs how often the award recurs;
+    // is_repeatable / max_awards_per_cycle govern multiplicity.
+    reward_kind?: "points" | "miles" | "cashback" | "voucher" | "fee-waiver" | "other";
+    reward_units?: number | null;
+    reward_currency_name?: string | null;
+    trigger_window?: "first-year" | "anniversary-year" | "rolling" | "one-time";
+    is_repeatable?: boolean | null;
+    max_awards_per_cycle?: number | null;
+    redemption_constraint_ref?: string | null;
   }>;
   welcome?: Array<{
     condition?: string;

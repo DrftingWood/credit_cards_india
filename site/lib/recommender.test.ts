@@ -2,10 +2,21 @@ import { describe, test, expect, vi, beforeEach, afterEach } from "vitest";
 import {
   recommend,
   parseWelcomeCondition,
+  milestonesValue,
   type RecommendPayload,
   type IncomeBand,
 } from "./recommender";
-import type { EnrichedCard, LoyaltyProgram } from "./types";
+import type { EnrichedCard, LoyaltyProgram, BenefitRecord } from "./types";
+
+type Milestone = NonNullable<BenefitRecord["milestones"]>[number];
+function benefitWith(milestones: Milestone[]): BenefitRecord {
+  return {
+    effective_from: "2024-01-01",
+    effective_until: null,
+    milestones,
+    source: { url: "https://example.test", retrieved_on: "2024-01-01" },
+  } as BenefitRecord;
+}
 
 async function loadDataset() {
   const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
@@ -136,6 +147,76 @@ describe("recommend — deterministic tie-breaking (B4-SF9)", () => {
     const a = recommend(cards, programsById, payload, 20);
     const b = recommend(cards, programsById, payload, 20);
     expect(a.map((r) => r.card.id)).toEqual(b.map((r) => r.card.id));
+  });
+});
+
+describe("milestonesValue — rich metadata (A4)", () => {
+  test("repeatable monthly (rolling) milestone credits every qualifying month", () => {
+    const b = benefitWith([
+      { spend_inr: 6000, cycle: "monthly", benefit: "₹250 voucher", value_inr: 250, trigger_window: "rolling", is_repeatable: true },
+    ]);
+    // ₹10k/mo (₹120k/yr) clears ₹6k every month → 12 × ₹250.
+    expect(milestonesValue(b, 120000)).toBe(3000);
+    // ₹5k/mo (₹60k/yr) never clears ₹6k in a month → nothing.
+    expect(milestonesValue(b, 60000)).toBe(0);
+  });
+
+  test("max_awards_per_cycle caps a per-₹N repeatable annual milestone (Amex SmartEarn 3×)", () => {
+    const b = benefitWith([
+      { spend_inr: 120000, cycle: "annual", benefit: "500 pts", value_inr: 500, trigger_window: "anniversary-year", is_repeatable: true, max_awards_per_cycle: 3 },
+    ]);
+    expect(milestonesValue(b, 120000)).toBe(500); // 1×
+    expect(milestonesValue(b, 360000)).toBe(1500); // 3×
+    expect(milestonesValue(b, 600000)).toBe(1500); // still capped at 3×
+  });
+
+  test("first-year milestone is amortised, not credited in full every year", () => {
+    const b = benefitWith([
+      { spend_inr: 100000, cycle: "annual", benefit: "₹1499 voucher", value_inr: 1499, trigger_window: "first-year", is_repeatable: false },
+    ]);
+    expect(milestonesValue(b, 150000)).toBeCloseTo(1499 / 2, 5); // amortised over 2 yrs
+    expect(milestonesValue(b, 50000)).toBe(0); // spend bar not met
+  });
+
+  test("tiered anniversary ladder sums each crossed tier (once each)", () => {
+    const b = benefitWith([
+      { spend_inr: 0, cycle: "annual", benefit: "base", value_inr: 1200, trigger_window: "anniversary-year" },
+      { spend_inr: 150000, cycle: "annual", benefit: "tier1", value_inr: 1200, trigger_window: "anniversary-year" },
+      { spend_inr: 300000, cycle: "annual", benefit: "tier2", value_inr: 1200, trigger_window: "anniversary-year" },
+    ]);
+    expect(milestonesValue(b, 100000)).toBe(1200); // only the ₹0 tier
+    expect(milestonesValue(b, 150000)).toBe(2400); // ₹0 + ₹150k tiers
+    expect(milestonesValue(b, 300000)).toBe(3600); // all three
+  });
+
+  test("non-repeatable sub-annual milestone fires at most once per year", () => {
+    const b = benefitWith([
+      { spend_inr: 5000, cycle: "monthly", benefit: "one-shot", value_inr: 1000, is_repeatable: false },
+    ]);
+    // ₹10k/mo clears ₹5k every month, but is_repeatable:false → once/yr, not 12×.
+    expect(milestonesValue(b, 120000)).toBe(1000);
+  });
+
+  test("legacy annual milestone (no trigger_window) behaves as before", () => {
+    const b = benefitWith([
+      { spend_inr: 400000, cycle: "annual", benefit: "₹5000 voucher", value_inr: 5000 },
+    ]);
+    expect(milestonesValue(b, 480000)).toBe(5000);
+    expect(milestonesValue(b, 300000)).toBe(0);
+  });
+
+  test("end-to-end: Amex MRCC monthly milestone flows through recommend", async () => {
+    const { cards, programsById } = await loadDataset();
+    const res = recommend(
+      cards,
+      programsById,
+      basePayload({ monthly_spend: { online: "5k-15k", travel: "0", dining: "0", groceries: "0", fuel: "0" } }),
+      200,
+    );
+    const mrcc = res.find((r) => r.card.id === "amex-mrcc");
+    expect(mrcc).toBeDefined();
+    // ₹10k/mo → monthly ₹6k milestone fires 12× (₹3000); annual ₹9L milestone does not.
+    expect(mrcc!.breakdown.milestones_inr).toBe(3000);
   });
 });
 

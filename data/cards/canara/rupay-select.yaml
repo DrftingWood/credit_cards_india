@@ -1,9 +1,12 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Canara Bank — RuPay/Visa program card (live page redirects; no extractable source)
-#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
-#   Values are RuPay/Visa program-standard estimates; the live card page redirects
-# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+#   Source     : Canara Bank "Credit Card Variants & Features" schedule
+#                (docs/sources/canara/rupay-select/variants-and-features.pdf).
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Issuer schedule: RuPay Select annual/joining fee NIL (one-time enrolment
+#   Rs 250 for primary card; add-on annual Rs 400), 2 RP per Rs 100 on POS/ECOM,
+#   forex mark-up 3%, 2 domestic lounge visits/quarter. Prior record modelled a
+#   Rs 1,000 annual fee with Rs 2L waiver and 3.5% forex — all corrected.
 # ---------------------------------------------------------------------------
 id: canara-rupay-select
 name: Canara Bank RuPay Select Credit Card
@@ -20,20 +23,27 @@ discontinued_on: null
 fees:
   - effective_from: 2022-06-01
     effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 1000
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 2.65
+    joining_fee_inr: 250
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.0
+    finance_charge_monthly_pct: 2.50
     cash_advance_fee:
       pct: 3.0
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.canarabank.bank.in/credit-card-select
-      retrieved_on: 2026-07-03
+      url: https://www.canarabank.bank.in/pages/rupay-select-credit-card
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/canara/rupay-select/variants-and-features.pdf
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.forex_markup_pct
+      notes: "Canara Variants & Features schedule: annual/joining fee NIL (one-time enrolment Rs 250 primary; add-on annual Rs 400); Markup Fee 3% on forex; interest-free up to 50 days."
 
 rewards:
   - effective_from: 2022-06-01
@@ -54,11 +64,19 @@ rewards:
     mcc_exclusions: ['6513']
     redemption:
       - type: catalog
-        program: Canara Rewards
+        program: Canara Rewardz
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.canarabank.bank.in/credit-card-select
-      retrieved_on: 2026-07-03
+      url: https://www.canarabank.bank.in/pages/rupay-select-credit-card
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/canara/rupay-select/variants-and-features.pdf
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+      notes: "Issuer schedule: 2 Reward Points per Rs 100 on POS/E-Commerce (fractions of Rs 100 excluded); redeem via canararewardz.com."
 
 benefits:
   - effective_from: 2022-06-01
@@ -69,11 +87,7 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [rupay]
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [rupay]
+        notes: "RuPay Select: 2 domestic lounge visits per quarter for self (issuer schedule)."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -82,8 +96,15 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.canarabank.bank.in/credit-card-select
-      retrieved_on: 2026-07-03
+      url: https://www.canarabank.bank.in/pages/rupay-select-credit-card
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/canara/rupay-select/variants-and-features.pdf
+      fields_verified:
+        - lounge_access.domestic.visits_per_cycle
+      notes: "Issuer schedule lists RuPay Select domestic lounge (2/quarter, self); international lounge not listed for this variant."
 
 eligibility:
   min_age: 21
@@ -95,8 +116,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.canarabank.bank.in/credit-card-select
+  apply_url: https://www.canarabank.bank.in/credit-cards
 
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, rupay, points, upi-linkable]
+  last_verified_on: 2026-07-04
+  tags: [mid, rupay, points, lifetime-free, upi-linkable]

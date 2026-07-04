@@ -1,9 +1,12 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Bank of India — RuPay/Visa program card (live page redirects; no extractable source)
-#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
-#   Values are RuPay/Visa program-standard estimates; the live card page redirects
-# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+#   Source     : Bank of India RuPay Select brochure
+#                (docs/sources/boi/rupay-select/Rupay_Select.pdf) + issuer page.
+#   Verified   : 2026-07-04   Confidence: HIGH (rewards/benefits) / MEDIUM (fees)
+#   Reward rate (2 RP/Rs 100), lounge (8 domestic + 2 international/yr) and the
+#   co-brand perks are confirmed in the issuer brochure. Prior record understated
+#   the earn rate (1 RP/Rs 100) and omitted the international lounge + perks. Fees
+#   (annual Rs 800, waiver Rs 2L) are aggregator-corroborated, not in the brochure.
 # ---------------------------------------------------------------------------
 id: boi-boi-select
 name: Bank of India RuPay Select Credit Card
@@ -21,9 +24,9 @@ fees:
   - effective_from: 2023-01-01
     effective_until: null
     joining_fee_inr: 0
-    annual_fee_inr: 500
+    annual_fee_inr: 800
     fee_waiver:
-      spend_inr: 60000
+      spend_inr: 200000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 2.50
@@ -32,8 +35,11 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.bankofindia.bank.in/credit-cards-rupay-select
-      retrieved_on: 2026-07-03
+      url: https://bankofindia.bank.in/credit-card/rupay-select
+      retrieved_on: 2026-07-04
+      type: issuer-page
+      confidence: medium
+      notes: "Annual fee Rs 800 (renewal waived on Rs 2L annual spend) per aggregator listings updated 2026; not stated in the issuer brochure — pending BOI Schedule of Charges."
 
 rewards:
   - effective_from: 2023-01-01
@@ -41,7 +47,7 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 1
+      rate: 2
       per_inr: 100
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
@@ -57,8 +63,16 @@ rewards:
         program: BoI Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.bankofindia.bank.in/credit-cards-rupay-select
-      retrieved_on: 2026-07-03
+      url: https://bankofindia.bank.in/credit-card/rupay-select
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/boi/rupay-select/Rupay_Select.pdf
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+      notes: "BOI RuPay Select brochure: earn 2 Reward Points per Rs 100 spent on POS/e-commerce."
 
 benefits:
   - effective_from: 2023-01-01
@@ -69,16 +83,45 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [rupay]
+      international:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [rupay]
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
       cap_per_cycle_inr: 150
       cycle: monthly
-    concierge: false
+    movies:
+      type: discount
+      partner: BookMyShow
+      cap_inr: 250
+      cycle: monthly
+      notes: "Rs 250 off on min 2 tickets/month via BookMyShow (issuer brochure)."
+    concierge: true
+    other:
+      - name: Amazon Prime membership
+        description: "Complimentary annual Amazon Prime membership."
+      - name: BigBasket voucher
+        description: "Rs 200 discount voucher per month on BigBasket."
+        value_inr: 2400
+      - name: Swiggy One
+        description: "3-month Swiggy One membership per annum (free deliveries + discounts)."
+      - name: Health check-up
+        description: "Annual customised health check-up package (once per annum)."
     source:
-      url: https://www.bankofindia.bank.in/credit-cards-rupay-select
-      retrieved_on: 2026-07-03
+      url: https://bankofindia.bank.in/credit-card/rupay-select
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/boi/rupay-select/Rupay_Select.pdf
+      fields_verified:
+        - lounge_access.domestic.visits_per_cycle
+        - lounge_access.international.visits_per_cycle
+      notes: "Brochure: 8 domestic + 2 international lounge visits per annum; BigBasket Rs 200/mo, BookMyShow Rs 250/mo, Amazon Prime, 3-month Swiggy One, 24x7 concierge, Rs 10L RuPay accident cover."
 
 eligibility:
   min_age: 21
@@ -90,8 +133,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.bankofindia.bank.in/credit-cards-rupay-select
+  apply_url: https://bankofindia.bank.in/credit-card/rupay-select
 
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, rupay, points, upi-linkable, psu-bank]
+  last_verified_on: 2026-07-04
+  tags: [mid, rupay, points, lounge, upi-linkable, psu-bank]

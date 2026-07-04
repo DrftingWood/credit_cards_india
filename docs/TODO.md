@@ -42,11 +42,11 @@ before starting work.
 | A2 | P0 | Calculator | backend/product | Done | Applicability model (authored, never fabricated) + mcc_exclusions reduce score. See DECISIONS D-18/D-19. |
 | A3 | P1 | Recommender | backend/product | Done | Lounge value gated by `spend_threshold_inr`/`_cycle` with caveats. |
 | A4 | P1 | Recommender | backend/product | Done | Milestone valuation uses `trigger_window`/`is_repeatable`/`max_awards_per_cycle`; types synced. |
-| B1 | P1 | Evidence | data/schema | Open | Add machine-readable local evidence references. |
+| B1 | P1 | Evidence | data/schema | Done | Source.type/confidence/local_refs/fields_verified added; validate.py checks refs; sbi-cashback + hdfc-swiggy migrated. |
 | B2 | P1 | Sources | data/docs | Done | Every source dir now has both INDEX.md and _manifest.json (axis/icici/sbi + indusind/kotak). |
-| B3 | P1 | Sources | data/docs | Open | Mark low-text PDFs for OCR/manual review. |
-| B4 | P1 | Data quality | data | Open | Replace stale or migrated issuer source URLs. |
-| B5 | P2 | Data quality | data | Open | Improve low-confidence small-bank cards. |
+| B3 | P1 | Sources | data/docs | Done | Two low-text PDFs (axis flipkart, icici voucher-manual) marked in INDEX.md + _manifest.json for OCR. |
+| B4 | P1 | Data quality | data | Blocked (needs web) | Replace stale source URLs (HDFC hdfcbank.com→hdfc.bank.in). Requires live verification that migrated URLs resolve; must not blind-swap 293 sources. |
+| B5 | P2 | Data quality | data | Blocked (needs web) | Improve 7 low-confidence small-bank cards (BOI/Canara/IDBI/KVB/PNB/South Indian/Union). Requires fresh issuer-sourced evidence; do not fabricate. |
 | C1 | P2 | Portfolio | data/product | Done | PORTFOLIO-GAPS.md refreshed to 317 cards; prior high-value gaps reconciled/closed. |
 | C2 | P2 | Schema | data/schema | Done | Recorded DECISIONS D-20: split network variant to its own file only on material term difference. |
 | C3 | P2 | Site UX | frontend | Open | Fix page/navigation issues from the site review. |

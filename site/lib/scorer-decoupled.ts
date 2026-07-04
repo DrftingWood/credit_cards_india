@@ -50,6 +50,7 @@ export interface DecoupledScore {
   first_year_bonus_inr: number; // welcome, one-time (data value)
   milestone_value_inr: number; // recurring milestone value (data value)
   lounge_visits: { domestic: number | "unlimited"; international: number | "unlimited" }; // factual, not monetised
+  reason: string; // one-line factual "why" (CardExpert-style), derived from the score — never invented
   flags: string[];
 }
 
@@ -143,6 +144,30 @@ function ratesFlags(card: EnrichedCard, topBucket: CanonicalCategory | null, rew
   return flags;
 }
 
+const CATEGORY_LABEL: Record<string, string> = {
+  online: "online shopping", groceries: "groceries", dining: "dining", fuel: "fuel",
+  travel: "travel", utilities: "utility bills", rent: "rent", international: "international",
+};
+
+/** One-line factual "why" (CardExpert-style), derived entirely from the score — invents nothing. */
+function buildReason(
+  buckets: { category: string; monthly_value_inr: number; effective_rate_pct: number }[],
+  fee: number,
+  lounge: DecoupledScore["lounge_visits"],
+  welcome: number,
+): string {
+  const top = [...buckets].filter((b) => b.monthly_value_inr > 0).sort((a, b) => b.monthly_value_inr - a.monthly_value_inr)[0];
+  if (top) {
+    const yr = Math.round(top.monthly_value_inr * 12);
+    return `Best on your ${CATEGORY_LABEL[top.category] ?? top.category} spend — ~${top.effective_rate_pct.toFixed(1)}% (₹${yr.toLocaleString("en-IN")}/yr)`;
+  }
+  const hasLounge = lounge.domestic !== 0 || lounge.international !== 0;
+  if (hasLounge) return `Airport lounge access${fee === 0 ? " on a fee-free card" : ""}`;
+  if (welcome > 0) return `First-year sign-up benefit worth ₹${welcome.toLocaleString("en-IN")}`;
+  if (fee === 0) return "Low-cost everyday card (no effective annual fee)";
+  return "Everyday rewards card";
+}
+
 export interface ScoreOpts {
   topN?: number;
   /** Exact monthly spend per bucket, overriding the coarse band mapping (fixes F9). */
@@ -188,14 +213,17 @@ export function scoreDecoupled(
     const ms = milestoneRecurring(card.current_benefits, annualSpend);
     const flags = ratesFlags(card, topBucket, rewardedBuckets, uv);
     if (ms.implausible) flags.push("Milestone value implausibly large vs its spend trigger — likely a data error");
+    const lounge = loungeVisits(card.current_benefits);
+    const welcome = Math.round(welcomeOneTime(card.current_benefits));
     return {
       card,
       net_rewards_inr: Math.round(s.annual_gross_inr - s.annual_fee_effective_inr),
       annual_rewards_inr: Math.round(s.annual_gross_inr),
       annual_fee_inr: s.annual_fee_effective_inr,
-      first_year_bonus_inr: Math.round(welcomeOneTime(card.current_benefits)),
+      first_year_bonus_inr: welcome,
       milestone_value_inr: Math.round(ms.inr),
-      lounge_visits: loungeVisits(card.current_benefits),
+      lounge_visits: lounge,
+      reason: buildReason(s.buckets, s.annual_fee_effective_inr, lounge, welcome),
       flags,
     };
   });

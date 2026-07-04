@@ -756,6 +756,8 @@ function ResultCard({ rank, score }: { rank: number; score: DecoupledScore }) {
         </div>
       </div>
 
+      <p className="mt-2 text-sm font-medium text-slate-700">{r.reason}</p>
+
       <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-700">
         <dt>Annual rewards</dt><dd className="text-right">{inr(r.annual_rewards_inr)}</dd>
         <dt>Annual fee</dt><dd className="text-right">{r.annual_fee_inr > 0 ? `−${inr(r.annual_fee_inr)}` : "₹0"}</dd>

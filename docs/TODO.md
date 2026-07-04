@@ -43,12 +43,12 @@ before starting work.
 | A3 | P1 | Recommender | backend/product | Done | Lounge value gated by `spend_threshold_inr`/`_cycle` with caveats. |
 | A4 | P1 | Recommender | backend/product | Done | Milestone valuation uses `trigger_window`/`is_repeatable`/`max_awards_per_cycle`; types synced. |
 | B1 | P1 | Evidence | data/schema | Open | Add machine-readable local evidence references. |
-| B2 | P1 | Sources | data/docs | Open | Normalize source manifests and missing source indexes. |
+| B2 | P1 | Sources | data/docs | Done | Every source dir now has both INDEX.md and _manifest.json (axis/icici/sbi + indusind/kotak). |
 | B3 | P1 | Sources | data/docs | Open | Mark low-text PDFs for OCR/manual review. |
 | B4 | P1 | Data quality | data | Open | Replace stale or migrated issuer source URLs. |
 | B5 | P2 | Data quality | data | Open | Improve low-confidence small-bank cards. |
-| C1 | P2 | Portfolio | data/product | Open | Refresh portfolio gap analysis for 317 cards. |
-| C2 | P2 | Schema | data/schema | Open | Decide network-variant modelling. |
+| C1 | P2 | Portfolio | data/product | Done | PORTFOLIO-GAPS.md refreshed to 317 cards; prior high-value gaps reconciled/closed. |
+| C2 | P2 | Schema | data/schema | Done | Recorded DECISIONS D-20: split network variant to its own file only on material term difference. |
 | C3 | P2 | Site UX | frontend | Open | Fix page/navigation issues from the site review. |
 
 ## Task Cards

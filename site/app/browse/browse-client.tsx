@@ -26,6 +26,18 @@ export function BrowseClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
+  // Sync the other direction too: when the URL changes after mount (back/forward,
+  // or arriving at /browse?tag=… while this client is already mounted), adopt it.
+  // Guard against the state→URL effect above by comparing serialised forms — an
+  // equal round-trip returns the current state, so the two effects don't loop (C3).
+  const paramString = params.toString();
+  useEffect(() => {
+    const fromUrl = paramsToState(new URLSearchParams(paramString));
+    setState((cur) =>
+      stateToParams(cur).toString() === stateToParams(fromUrl).toString() ? cur : fromUrl,
+    );
+  }, [paramString]);
+
   const fuse = useMemo(
     () =>
       new Fuse(cards, {
@@ -45,9 +57,14 @@ export function BrowseClient({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8">
-      <FilterBar state={state} onChange={setState} cards={cards} issuers={issuers} />
+      {/* On mobile the filter list is long; show results first and let filters
+          follow, so users aren't scrolling past every filter to reach cards.
+          On md+ the sidebar returns to the left column (C3). */}
+      <div className="order-2 md:order-none">
+        <FilterBar state={state} onChange={setState} cards={cards} issuers={issuers} />
+      </div>
 
-      <div>
+      <div className="order-1 md:order-none">
         <div className="flex items-center justify-between mb-3">
           <div className="text-sm text-slate-600">
             Showing <strong>{filtered.length}</strong> of {cards.length}

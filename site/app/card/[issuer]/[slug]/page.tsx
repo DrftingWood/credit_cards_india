@@ -199,18 +199,26 @@ export default async function CardPage({
         </div>
 
         <div className="flex items-center gap-2">
-          <Link
-            href={`/calculator?card=${card.id}`}
-            className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
-          >
-            Calculate rewards
-          </Link>
-          <Link
-            href={`/compare?cards=${card.id}`}
-            className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
-          >
-            + Compare
-          </Link>
+          {/* The calculator and compare tools only carry active + invite-only
+              cards (getActiveCards). Linking a discontinued/on-hold card there
+              lands the user on a tool where their card silently isn't present,
+              so only offer these CTAs when the card actually appears (C3). */}
+          {card.computed.is_active ? (
+            <>
+              <Link
+                href={`/calculator?card=${card.id}`}
+                className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
+              >
+                Calculate rewards
+              </Link>
+              <Link
+                href={`/compare?cards=${card.id}`}
+                className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
+              >
+                + Compare
+              </Link>
+            </>
+          ) : null}
           {card.application?.apply_url ? (
             <a
               href={card.application.apply_url}

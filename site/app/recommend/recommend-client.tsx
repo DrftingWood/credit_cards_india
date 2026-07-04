@@ -309,9 +309,18 @@ export function RecommendClient({
     );
   }
 
+  // Steps 3 (brand drill-down) and 4 (loyalty tiers) are conditional. A step
+  // that won't be shown for the current answers is "skipped", not "completed" —
+  // the stepper must not tick it just because the cursor has moved past it (C3).
+  const stepApplies = (n: number): boolean => {
+    if (n === 3) return hasAnyDrillDown(state);
+    if (n === 4) return tierPrograms.length > 0;
+    return true;
+  };
+
   return (
     <div className="space-y-5">
-      <ProgressStepper current={step} total={TOTAL_STEPS} labels={STEP_LABELS} />
+      <ProgressStepper current={step} total={TOTAL_STEPS} labels={STEP_LABELS} applies={stepApplies} />
 
       <section
         key={step}
@@ -685,14 +694,16 @@ function ResultsView({
         </ol>
       )}
 
-      <details className="rounded-xl border border-slate-200 bg-white p-4">
-        <summary className="cursor-pointer text-xs font-semibold text-slate-700">
-          Debug: payload
-        </summary>
-        <pre className="mt-2 overflow-x-auto rounded-md bg-slate-900 p-3 text-xs text-slate-100">
-          {JSON.stringify(payload, null, 2)}
-        </pre>
-      </details>
+      {process.env.NODE_ENV !== "production" ? (
+        <details className="rounded-xl border border-slate-200 bg-white p-4">
+          <summary className="cursor-pointer text-xs font-semibold text-slate-700">
+            Debug: payload
+          </summary>
+          <pre className="mt-2 overflow-x-auto rounded-md bg-slate-900 p-3 text-xs text-slate-100">
+            {JSON.stringify(payload, null, 2)}
+          </pre>
+        </details>
+      ) : null}
 
       <div className="flex flex-wrap items-center gap-2">
         <Link
@@ -958,36 +969,45 @@ function ProgressStepper({
   current,
   total,
   labels,
+  applies,
 }: {
   current: number;
   total: number;
   labels: string[];
+  /** Whether a step is applicable to the current answers. A non-applicable step past the cursor is "skipped", not "done". */
+  applies: (n: number) => boolean;
 }) {
   const steps = Array.from({ length: total }, (_, i) => i + 1);
   return (
     <ol className="flex items-center gap-2 sm:gap-3" aria-label="Form progress">
       {steps.map((n, i) => {
-        const done = n < current;
         const active = n === current;
+        const past = n < current;
+        const applicable = applies(n);
+        const done = past && applicable;
+        const skipped = past && !applicable;
         return (
           <li key={n} className="flex flex-1 items-center gap-2">
             <span
               aria-current={active ? "step" : undefined}
+              title={skipped ? `${labels[i]} — not applicable to your answers` : undefined}
               className={
                 "flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold border " +
                 (done
                   ? "bg-brand-600 text-white border-brand-600"
+                  : skipped
+                  ? "bg-slate-50 text-slate-300 border-dashed border-slate-300"
                   : active
                   ? "bg-white text-brand-700 border-brand-500 ring-2 ring-brand-100"
                   : "bg-white text-slate-400 border-slate-300")
               }
             >
-              {done ? "✓" : n}
+              {done ? "✓" : skipped ? "–" : n}
             </span>
             <span
               className={
                 "hidden sm:inline text-xs " +
-                (active ? "text-slate-900 font-medium" : "text-slate-500")
+                (active ? "text-slate-900 font-medium" : skipped ? "text-slate-400 line-through" : "text-slate-500")
               }
             >
               {labels[i]}
@@ -996,7 +1016,7 @@ function ProgressStepper({
               <span
                 aria-hidden
                 className={
-                  "flex-1 h-px " + (n < current ? "bg-brand-500" : "bg-slate-200")
+                  "flex-1 h-px " + (done ? "bg-brand-500" : "bg-slate-200")
                 }
               />
             ) : null}

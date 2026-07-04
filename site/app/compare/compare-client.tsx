@@ -25,6 +25,15 @@ export function CompareClient({ cards }: { cards: EnrichedCard[] }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedIds]);
 
+  // Adopt external URL changes after mount (back/forward, or arriving at
+  // /compare?cards=… while already mounted). The join-equality guard means an
+  // equal round-trip from the state→URL effect above is a no-op, so no loop (C3).
+  const cardsParam = params.get("cards") ?? "";
+  useEffect(() => {
+    const fromUrl = parseIds(cardsParam);
+    setSelectedIds((cur) => (cur.join(",") === fromUrl.join(",") ? cur : fromUrl));
+  }, [cardsParam]);
+
   const fuse = useMemo(
     () =>
       new Fuse(cards, {

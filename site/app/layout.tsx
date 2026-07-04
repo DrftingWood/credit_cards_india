@@ -35,11 +35,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <BetaBanner />
         <header className="border-b border-slate-200 bg-white">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3">
             <Link href="/" className="text-slate-900 hover:text-slate-900 font-semibold tracking-tight">
               Credit Cards <span className="text-brand-600">·</span> India
             </Link>
-            <nav className="flex gap-5 text-sm">
+            {/* Wrap + responsive gaps so five links never overflow a narrow
+                viewport; they flow to a second line instead of clipping (C3). */}
+            <nav className="flex flex-wrap gap-x-4 gap-y-1 text-sm sm:gap-x-5">
               <Link href="/browse">Browse</Link>
               <Link href="/compare">Compare</Link>
               <Link href="/calculator">Calculator</Link>

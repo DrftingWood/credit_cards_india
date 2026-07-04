@@ -27,12 +27,15 @@ Reward-point value is modelled with **full visibility, no blending**:
 
 ## KNOWN FLAWS TO FIX (priority order)
 
-1. **Valuation-convention split (highest priority — introduced mid-fix).** ~27 transferable cards now
-   use `realized = floor`; the other ~290 cards still use the schema's old "midpoint" convention.
-   Decide and enforce ONE repo-wide rule (recommended: `realized = guaranteed floor` everywhere,
-   `face = best redemption`), then audit ALL 319 cards. In particular, **flag/fix every card whose
-   `realized` sits below its own guaranteed floor** (the exact bug found on Atlas ₹0.5-vs-₹1 and
-   Infinia ₹0.7-vs-₹1). Update `docs/SCHEMA.md` to document the chosen convention.
+1. **Realized-value outliers & gaps (see `docs/FLOOR_AUDIT.md`).** The 2026-07-05 audit showed the
+   repo is NOT broadly broken: `realized` follows a consistent "realistic value net of friction"
+   convention, so small haircuts below a nominal rate are correct — do NOT mass-change them. The
+   real defects are narrow: (a) ~5 **large-gap outliers** where `realized` is ≥40% below a claimed
+   friction-free ₹1 floor (icici/times-black, onecard/metal, standard-chartered/rewards +
+   /easemytrip, indusind/eazydiner-platinum) — verify the true per-point value and fix `realized`
+   OR the wrong floor rate; and (b) ~22 cards with **missing `realized`** to populate per-card.
+   Flag a card only when `realized` is materially (≥~25%) below a *friction-free* guaranteed floor
+   (portals at ₹1, direct cashback) — not below a soft catalogue rate. Document this in `docs/SCHEMA.md`.
 2. **EDGE Reward Points inconsistency:** `axis/magnus` values them ₹0.18 but `axis/reserve` ₹0.35 —
    same currency. Reconcile (catalogue rate differs by card? or an error?).
 3. **EDGE Miles stragglers:** `axis/olympus` (discontinued) and `axis/indianoil-premium` (catalogue-only)

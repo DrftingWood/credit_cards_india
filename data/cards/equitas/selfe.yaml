@@ -1,0 +1,122 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Equitas issuer page (equitas.bank.in Selfe) captured via
+#                Playwright + paisabazaar/cardinsider cross-check.
+#   Verified   : 2026-07-05   Confidence: HIGH (issuer page) for fee/waiver/
+#                lounge/base rate/5X categories; MEDIUM for RP value + eligibility.
+#   Modelled as the Visa variant (also issued on RuPay). The 5X applies to 2
+#   self-selected categories, modelled across all five (only two qualify per
+#   cardholder choice — see capping_rules).
+# ---------------------------------------------------------------------------
+id: equitas-selfe
+name: Equitas Selfe Credit Card
+issuer: equitas
+network: visa
+network_tier: platinum
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2025-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 1000
+    fee_waiver:
+      spend_inr: 240000
+      cycle: annual
+      conditions: "First year free; renewal fee waived on spends of Rs 2,40,000 in the previous anniversary year."
+    gst_applicable: true
+    source:
+      url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
+      retrieved_on: 2026-07-05
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - fees.annual_fee_inr
+        - fees.fee_waiver
+      notes: "Issuer page: annual fee Rs 1,000 (first year free), waived on Rs 2.4L annual spend."
+
+rewards:
+  - effective_from: 2025-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.5
+    accelerated:
+      - category: choose-2-of-5-categories
+        canonical_categories: [online, dining, groceries, utilities, travel]
+        multiplier: 5
+        effective_rate: 10
+        effective_per_inr: 100
+        cycle: monthly
+        notes: "5X reward points (10 RP per Rs 100) on 2 self-selected categories from Apparel (online), Dining, Grocery, Utility and Taxi (travel). Only the two chosen categories qualify."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    capping_rules:
+      - "5X applies to only 2 of the 5 eligible categories, chosen by the cardholder; the other three earn the base 2 RP/Rs 100."
+    redemption:
+      - type: catalog
+        program: Equitas Xchange Rewards
+        rate_inr_per_unit: 0.5
+        constraints: "1 RP = Rs 0.50; redeemable on the Equitas rewards catalogue."
+    source:
+      url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
+      retrieved_on: 2026-07-05
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - rewards.base.rate
+        - rewards.accelerated.effective_rate
+      notes: "Issuer page: 2 RP/Rs 100 base; 5X on 2 self-selected categories. RP value Rs 0.50 is the Equitas program standard (per PowerMiles page)."
+
+benefits:
+  - effective_from: 2025-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+    concierge: false
+    other:
+      - name: OTT / Prime memberships
+        description: "2 complimentary memberships from Amazon Prime, JioHotstar, SonyLIV, Zee5 or Discovery+ (cardholder's choice)."
+    source:
+      url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
+      retrieved_on: 2026-07-05
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - lounge_access.domestic.visits_per_cycle
+      notes: "Issuer page: one complimentary domestic lounge visit per calendar quarter; 2 complimentary OTT/Prime memberships of choice."
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 400000
+    self_employed: 500000
+  credit_score_min: 720
+  residency: resident-indian
+  notes: "Eligibility income/age are tier-standard defaults, not published on the product page."
+
+application:
+  apply_url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
+
+metadata:
+  last_verified_on: 2026-07-05
+  tags: [mid, points, lifestyle, ott, lounge, choose-categories]

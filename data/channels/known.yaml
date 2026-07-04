@@ -34,6 +34,8 @@ cobrand-merchant:
   - scapia-app
   - spicejet
   - airtel-thanks-app
+  - ajio
+  - jiomart
 
 third-party-ota:
   - mmt

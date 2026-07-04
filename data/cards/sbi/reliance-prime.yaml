@@ -59,6 +59,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [ajio, jiomart]
+        channel:
+          class: cobrand-merchant
+          merchants: [ajio, jiomart]
         notes: "20 Reward Points per ₹100 on AJIO & JioMart online stores (except UPI payments)."
       - category: reliance-retail
         canonical_categories: [online]

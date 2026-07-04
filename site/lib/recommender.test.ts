@@ -139,6 +139,50 @@ describe("recommend — deterministic tie-breaking (B4-SF9)", () => {
   });
 });
 
+describe("recommend — no channel selected blocks channel-locked accelerators (A1)", () => {
+  test("no brand/portal/airline/food/fuel signal → no result ranks on a channel-locked rate", async () => {
+    const { cards, programsById } = await loadDataset();
+    // Heavy spend across every scored bucket, but the user picked NO channel.
+    const payload = basePayload({
+      monthly_spend: { online: "gt-30k", travel: "15k-30k", dining: "5k-15k", groceries: "5k-15k", fuel: "5k-15k" },
+    });
+    const results = recommend(cards, programsById, payload, 50);
+    expect(results.length).toBeGreaterThan(0);
+    for (const r of results) {
+      for (const pc of r.per_category) {
+        expect(pc.basis).not.toBe("channel-locked");
+      }
+      // The channel-reliance caveat must not appear when nothing is channel-locked.
+      expect(r.caveats.join(" ")).not.toMatch(/selected partner channel/);
+    }
+  });
+
+  test("selecting a shopping channel unlocks its channel-locked online rate", async () => {
+    const { cards, programsById } = await loadDataset();
+    const spend = { online: "gt-30k", travel: "0", dining: "0", groceries: "0", fuel: "0" } as const;
+    const noChannel = recommend(cards, programsById, basePayload({ monthly_spend: spend }), 200);
+    const withAmazon = recommend(
+      cards,
+      programsById,
+      basePayload({
+        monthly_spend: spend,
+        brand_preferences: { shopping: ["amazon"], airline: null, food_ecosystem: null, fuel_station: null },
+      }),
+      200,
+    );
+
+    const online = (r: (typeof withAmazon)[number] | undefined) =>
+      r?.per_category.find((pc) => pc.category === "online");
+
+    // icici-amazon-pay carries a channel-locked online accelerator on the amazon-pay token.
+    const lockedOff = online(noChannel.find((r) => r.card.id === "icici-amazon-pay"));
+    const lockedOn = online(withAmazon.find((r) => r.card.id === "icici-amazon-pay"));
+    expect(lockedOff?.basis).toBe("general"); // no channel → falls back to base/general
+    expect(lockedOn?.basis).toBe("channel-locked"); // amazon selected → accelerator fires
+    expect(lockedOn!.inr_used_for_rank).toBeGreaterThan(lockedOff!.inr_used_for_rank);
+  });
+});
+
 describe("parseWelcomeCondition (B4-SF1)", () => {
   test("parses '₹50,000 in 90 days'", () => {
     expect(parseWelcomeCondition("₹50,000 in 90 days")).toEqual({ spendInr: 50000, days: 90 });

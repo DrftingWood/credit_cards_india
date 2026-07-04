@@ -301,7 +301,13 @@ export function recommend(
   const tierMap = payload.loyalty_tiers ?? {};
 
   const ctx: ScoringContext = {
-    channelMix: channelMix.size > 0 ? channelMix : undefined,
+    // Always pass the concrete set — even when empty. An empty set means the
+    // user opted into no partner/portal/airline/food/fuel channel, so channel-
+    // locked accelerators (SmartBuy, Travel EDGE, co-brand direct, …) must NOT
+    // fire for ranking. Passing `undefined` here would flip the calculator into
+    // its optimistic mode and unlock those rates without any user signal (A1).
+    // `/calculator` stays optimistic by omitting channelMix entirely (see rankByValue).
+    channelMix,
     tierMap,
     programs,
   };

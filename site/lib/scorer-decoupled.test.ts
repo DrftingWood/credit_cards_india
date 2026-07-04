@@ -42,6 +42,18 @@ describe("decoupled scorer prototype", () => {
     expect(res.some((d) => d.flags.some((f) => f.includes("uncapped")))).toBe(true);
   });
 
+  test("exact spend: selecting Amazon credits Amazon ICICI's real uncapped 5% on ₹4L/mo (F9 + user principle)", async () => {
+    const { cards, programs } = await load();
+    const p = base({
+      goals: ["cashback"],
+      brand_preferences: { shopping: ["amazon"], airline: null, food_ecosystem: null, fuel_station: null },
+    });
+    const az = scoreDecoupled(cards, programs, p, { topN: 400, exactSpend: { online: 400000 } }).find((d) => d.card.id === "icici-amazon-pay")!;
+    // 5% uncapped on ₹4L/mo × 12 = ₹2.4L, no annual fee — credited via the REAL rate, no fudge.
+    expect(az.net_rewards_inr).toBe(240000);
+    expect(az.flags).toEqual([]); // 5% is plausible → not flagged
+  });
+
   test("one-time welcome is never the rank key (F5/F8)", async () => {
     const { cards, programs } = await load();
     // Zero spend: rank is net rewards (≈0 for all), so nothing should rank purely on a welcome bonus.

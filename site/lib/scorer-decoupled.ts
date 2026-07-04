@@ -130,7 +130,11 @@ function ratesFlags(card: EnrichedCard, topBucket: CanonicalCategory | null, rew
   return flags;
 }
 
-export interface ScoreOpts { topN?: number }
+export interface ScoreOpts {
+  topN?: number;
+  /** Exact monthly spend per bucket, overriding the coarse band mapping (fixes F9). */
+  exactSpend?: Partial<SpendProfile>;
+}
 
 export function scoreDecoupled(
   cards: EnrichedCard[],
@@ -138,7 +142,7 @@ export function scoreDecoupled(
   payload: RecommendPayload,
   opts: ScoreOpts = {},
 ): DecoupledScore[] {
-  const spend = spendFromPayload(payload);
+  const spend = opts.exactSpend ? { ...emptySpend(), ...opts.exactSpend } : spendFromPayload(payload);
   const annualSpend = Object.values(spend).reduce((a, b) => a + b, 0) * 12;
   const channelMix = channelMixFromPayload(payload);
   const topBucket = (Object.keys(spend) as CanonicalCategory[]).filter((k) => spend[k] > 0).sort((a, b) => spend[b] - spend[a])[0] ?? null;

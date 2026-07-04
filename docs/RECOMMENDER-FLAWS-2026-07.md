@@ -73,11 +73,19 @@ win on a one-time bonus it pays once.
 and top-5 in S1/S2/S3. One outlier corrupts many unrelated rankings; the engine
 has no outlier bounds or plausibility flags.
 
-### F7. Uncapped / "unlimited" high accelerators are credited in full
+### F7. Uncapped / "unlimited" high accelerators are credited in full — SYSTEMIC
 `sbi-phonepe` 10% `cap: None`; `hsbc-rupay-cashback` 10% `cap: unlimited` → fake
 ₹48k–60k/yr. A ≥10% *uncapped* everyday rate is implausible and should be flagged;
 the engine has no cap-sanity defence and no way to distinguish "genuinely uncapped"
 from "cap forgotten in the data".
+
+**Scale (measured):** 66 of 304 active cards (22%) carry an uncapped accelerator
+≥3% effective — 10 at ≥10% (axis-airtel ~25%, bob-scapia ~20%, …). This is partly
+missing caps and partly the D13 BluChip decomposition inflation. It corrupts
+rankings across most spend profiles, so no ranking that trusts these rates is
+reliable until the data is capped/decomposed (D20). The decoupled scorer flags
+the worst (≥8%) but mid-rate offenders (5–8%, e.g. `au-cheq` ~6%) still slip
+through — a lower flag threshold trades false positives for coverage.
 
 ### F8. `rank_total_inr` conflates incompatible quantities and time horizons
 It sums: recurring rewards + annual lounge/milestone proxies + a one-time welcome

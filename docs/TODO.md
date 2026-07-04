@@ -45,8 +45,8 @@ before starting work.
 | B1 | P1 | Evidence | data/schema | Done | Source.type/confidence/local_refs/fields_verified added; validate.py checks refs; sbi-cashback + hdfc-swiggy migrated. |
 | B2 | P1 | Sources | data/docs | Done | Every source dir now has both INDEX.md and _manifest.json (axis/icici/sbi + indusind/kotak). |
 | B3 | P1 | Sources | data/docs | Done | Two low-text PDFs (axis flipkart, icici voucher-manual) marked in INDEX.md + _manifest.json for OCR. |
-| B4 | P1 | Data quality | data | Blocked (needs web) | Replace stale source URLs (HDFC hdfcbank.com→hdfc.bank.in). Requires live verification that migrated URLs resolve; must not blind-swap 293 sources. |
-| B5 | P2 | Data quality | data | Blocked (needs web) | Improve 7 low-confidence small-bank cards (BOI/Canara/IDBI/KVB/PNB/South Indian/Union). Requires fresh issuer-sourced evidence; do not fabricate. |
+| B4 | P1 | Data quality | data | Done | 11 HDFC card URLs migrated to hdfc.bank.in (each Playwright-verified; 2 stale manifest 404s fixed); marriott-bonvoy aggregator source replaced. |
+| B5 | P2 | Data quality | data | Done | All 7 small-bank cards verified vs issuer PDFs/pages (major corrections found); full catalogues surveyed in docs/PSU-BANK-PORTFOLIOS-2026-07.md. |
 | C1 | P2 | Portfolio | data/product | Done | PORTFOLIO-GAPS.md refreshed to 317 cards; prior high-value gaps reconciled/closed. |
 | C2 | P2 | Schema | data/schema | Done | Recorded DECISIONS D-20: split network variant to its own file only on material term difference. |
 | C3 | P2 | Site UX | frontend | Open | Fix page/navigation issues from the site review. |

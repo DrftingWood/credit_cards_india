@@ -46,8 +46,8 @@ rewards:
     base:
       rate: 5
       per_inr: 150
-      unit_value_inr: 0.50
-      unit_value_inr_realized: 0.30
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: international-spend
         canonical_categories: [international]
@@ -73,15 +73,13 @@ rewards:
     redemption:
       - type: catalog
         program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
+        rate_inr_per_unit: 0.5
         constraints: "Up to ₹0.50 per reward point when redeemed for hotel & flight bookings via FIRST Rewards Gallery."
-      - type: airmiles
-        program: Multiple
-        ratio: "2:1"
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: '2026-07-05: closed-loop, no transfer partners. IDFC app Travel&Shop Rs 0.50/pt travel, Rs 0.25 other.'
 benefits:
   - effective_from: 2024-05-01
     effective_until: null
@@ -143,5 +141,5 @@ application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, metal, travel, zero-forex, lounge]

@@ -46,8 +46,8 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.4
-      unit_value_inr_realized: 0.3
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.25
     accelerated:
       - category: international-spend
         canonical_categories: [international]
@@ -64,16 +64,17 @@ rewards:
       - emi
     mcc_exclusions: ['6513']
     redemption:
-      - type: airmiles
-        program: Multiple airline / hotel partners
-        ratio: "2:1"
+      - type: catalog
+        program: Issuer rewards portal
+        rate_inr_per_unit: 0.25
       - type: voucher
         program: Travel partners
         rate_inr_per_unit: 0.4
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: '2026-07-05: Travel Points redeem only via RBL portal; no external transfers.'
 benefits:
   - effective_from: 2018-01-01
     effective_until: null
@@ -127,5 +128,5 @@ application:
   apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [premium, travel, zero-forex, points]

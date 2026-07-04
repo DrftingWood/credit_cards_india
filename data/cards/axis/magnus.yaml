@@ -74,8 +74,8 @@ rewards:
     base:
       rate: 12
       per_inr: 200
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.18
+      unit_value_inr: 0.44
+      unit_value_inr_realized: 0.2
     accelerated:
       - category: monthly-spend-above-threshold
         multiplier: 1
@@ -110,11 +110,63 @@ rewards:
       - type: airmiles
         program: Multiple (EDGE transfer)
         ratio: "5:2"
-        constraints: "Post-revision transfer ratio across most partners (2 partner miles per 5 EDGE points, 20 travel partners)."
+        constraints: "10 transfer partners; ratios are card-point : partner-unit. realized Rs 0.20 = guaranteed non-transfer floor; best documented transfer Rs 0.44. 9 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.44/pt
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.22/pt
+          - partner_name: Air France-KLM Flying Blue
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.36/pt
+          - partner_name: Turkish Miles&Smiles
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.44/pt
+          - partner_name: ITC Hotels (Club ITC)
+            partner_type: hotel
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.40/pt
+          - partner_name: Air Canada Aeroplan
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.40/pt
+          - partner_name: IHG One Rewards
+            partner_type: hotel
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.20/pt
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "5:1"
+            last_verified_on: '2026-07-05'
+            notes: 5:1 -> ~Rs 0.20/pt
+          - partner_name: Finnair Plus (Avios)
+            partner_type: airline
+            transfer_ratio: "5:1"
+            last_verified_on: '2026-07-05'
+            notes: 5:1 -> ~Rs 0.21/pt
+          - partner_name: Vietnam LotusMiles
+            partner_type: airline
+            transfer_ratio: "5:1"
+            last_verified_on: '2026-07-05'
+            notes: 5:1 -> ~Rs 0.16/pt [below floor — avoid]
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-09-01
@@ -174,5 +226,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [travel, points, super-premium, forex-friendly]

@@ -36,6 +36,7 @@ cobrand-merchant:
   - airtel-thanks-app
   - ajio
   - jiomart
+  - phonepe-app
 
 third-party-ota:
   - mmt

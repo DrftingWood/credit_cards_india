@@ -52,15 +52,25 @@ rewards:
       unit_value_inr: 1.0
     accelerated:
       - category: phonepe-app-spends
-        canonical_categories: [online]
+        canonical_categories: [utilities]
         multiplier: 10
         effective_rate: 10
-        notes: "10 Reward Points per Rs. 100 on eligible PhonePe App spends (up to 10% value back)."
+        cap_per_cycle: 1500
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [phonepe-app]
+        channel:
+          class: cobrand-merchant
+          merchants: [phonepe-app]
+        notes: "10 RP per Rs 100 (10X) on eligible PhonePe-app spends — utilities/recharges/bill payments/travel/insurance booked via PhonePe. Capped at 1,500 RP/month (+500 RP for insurance) w.e.f. 1-Jul-2026. 1 RP = Rs 1."
       - category: online-spends
         canonical_categories: [online]
         multiplier: 5
         effective_rate: 5
-        notes: "5 Reward Points per Rs. 100 on eligible online spends."
+        cap_per_cycle: 1000
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "5 RP per Rs 100 (5X) on other eligible online spends, capped at 1,000 RP/month (w.e.f. 1-Jul-2026)."
     redemption:
       - type: voucher
         rate_inr_per_unit: 1.0
@@ -70,8 +80,14 @@ rewards:
         constraints: "Reward Points redeemable for cash."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html
-      retrieved_on: 2026-07-03
-    notes: "1 Reward Point per Rs. 100 on other spends (base). Eligible-spend exclusions not detailed on crawl."
+      retrieved_on: 2026-07-05
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - rewards.accelerated.cap_per_cycle
+        - rewards.accelerated.channel
+      notes: "SBI Card issuer page + LiveMint/paisabazaar (2026): post-1-Jul-2026 structure — 10X on PhonePe-app spends (cap 1,500 RP/mo) gated to the PhonePe app, 5X on other online (cap 1,000 RP/mo), 1X offline (cap 2,000 RP/mo). Prior record modelled both 10X and 5X as UNCAPPED on generic online — corrected."
+    notes: "1 Reward Point per Rs. 100 on other spends (base)."
 
     mcc_exclusions: ['6513']
 benefits:
@@ -122,5 +138,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-select-black.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [points, co-brand, mid, lounge, upi]

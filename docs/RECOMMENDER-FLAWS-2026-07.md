@@ -154,6 +154,17 @@ recommender that is **neither personalized nor robust**.
 7. Fix the feeding data errors (D13/D14/F7 missing caps) — but note that even with
    perfect data, F1/F3/F4/F5/F8/F10 are *engine* flaws that data fixes won't cure.
 
+## Red-team: the calculator core is sound (the flaws are in the proxy layer)
+
+A pass over `calculator.ts` cap handling found **no silent-ignore cases**: 0
+`reward_cap`s with an unconvertible `cap_unit`, 0 `spend-inr` base caps that
+vanish, and the 61 milestones carrying both `reward_units` and `value_inr` are
+complementary (points awarded + their ₹ value), not double-counts. Only 1 card
+(`hdfc-phonepe-ultimo`) exercises base-cap × reward-cap together. Conclusion: the
+spend-grounded `scoreCard()` core (hardened by the A-series work) is reliable —
+**every flaw above lives in the recommender's proxy-summing layer**, which is
+exactly what the decoupled scorer replaces while reusing `scoreCard()` unchanged.
+
 ## Prototype: decoupled scorer (`site/lib/scorer-decoupled.ts`)
 
 A side-by-side prototype (does not touch `recommender.ts`; 4 tests in

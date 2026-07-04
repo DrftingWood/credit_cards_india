@@ -389,9 +389,10 @@ and learnings:
 
 | ID | Priority | Area | Task |
 | --- | --- | --- | --- |
-| D23 | P1 | Portfolio | **Missing issuer: Equitas Bank** — CardExpert recommends Equitas Selfe (up to 10% in 5X categories) and Equitas Powermiles (9% on international). Add the issuer + source both cards from issuer T&C. |
-| D24 | P2 | Portfolio | **Missing HSBC Travel One** — a mainstream travel card (airline transfer partners) CardExpert recommends; source and add. (HDFC Diners BizBlack is a business card → intentionally out of scope.) |
+| D23 | Done | Portfolio | **Added Equitas Bank** (25th issuer) + `equitas-powermiles` and `equitas-selfe`, both issuer-sourced (equitas.bank.in via Playwright). Tiga + HDFC-Equitas co-brands not added (CardExpert didn't recommend). |
+| D24 | Done | Portfolio | **HSBC TravelOne was NOT missing** (id `hsbc-travelone`; my cross-check used the wrong id). Competitor-verify instead found + fixed errors: Mastercard/World (was Visa), forex 3.5% (was 2%), waiver ₹8L (was ₹12L), added 6 domestic lounge visits. (HDFC Diners BizBlack = business card, out of scope.) |
 | D25 | P2 | Site UX | **Learn from CardExpert's presentation:** recommend by spending-capacity tier (income + annual spend) AND spending pattern (dining/online/forex/utilities) with a one-line reason per card — not one universal pick. This matches the decoupled-scorer direction (category-aware, transparent line items). Consider tiered/pattern-based result grouping on the site. |
+| D26 | P2 | Data quality | **Competitor-verify more high-traffic cards** (the HSBC TravelOne pass found 4 errors). Systematically cross-check our top cards vs cardexpert/cardmaven/issuer for network, forex, caps, lounge — the id-mismatch shows our data can silently drift. |
 
 ## Follow-up backlog (opened 2026-07-04, from the A0–C3 audit)
 

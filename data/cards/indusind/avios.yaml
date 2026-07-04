@@ -74,12 +74,39 @@ rewards:
     redemption:
       - type: airmiles
         program: Avios (Qatar / British Airways)
-        rate_inr_per_unit: 0.80
-        constraints: "Avios collected directly into the chosen airline programme (Qatar Privilege Club or BA Executive Club)."
+        constraints: "Earns Avios DIRECTLY (no bank-point -> partner conversion). Avios pool 1:1 across British Airways, Qatar Privilege Club, Iberia Plus, Aer Lingus AerClub and Finnair Plus — move freely between them. Realistic ~Rs 1.0-1.5 per Avios on short Qatar/Finnair hops and Mumbai-London."
+        ratio: null
+        transfer_partners:
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: Avios pooling (same currency), free/anytime
+          - partner_name: Qatar Privilege Club (Avios)
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: Avios pooling (same currency), free/anytime
+          - partner_name: Iberia Plus (Avios)
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: Avios pooling (same currency), free/anytime
+          - partner_name: Aer Lingus AerClub (Avios)
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: Avios pooling (same currency), free/anytime
+          - partner_name: Finnair Plus (Avios)
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: Avios pooling (same currency), free/anytime
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "2026-07-05: card credits Avios directly; the only 'conversion' is free 1:1 pooling across the 5 Avios schemes."
 benefits:
   - effective_from: 2024-01-01
     effective_until: null
@@ -118,5 +145,5 @@ application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, metal, airline, miles, avios, travel, lounge]

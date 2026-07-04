@@ -35,8 +35,8 @@ fees:
       pct: 3.5
       min_inr: 500
     late_payment_slabs:
-      - { up_to_inr: 100, fee_inr: 0 }
-      - { up_to_inr: "any", fee_inr: 1500 }
+      - {up_to_inr: 100, fee_inr: 0}
+      - {up_to_inr: "any", fee_inr: 1500}
     gst_applicable: true
     notes: "Charge card — no revolving credit. Full statement balance due each cycle; late/non-payment attracts flat delinquency fees."
     source:
@@ -51,8 +51,8 @@ rewards:
     base:
       rate: 1
       per_inr: 40
-      unit_value_inr: 0.45
-      unit_value_inr_realized: 0.40
+      unit_value_inr: 0.55
+      unit_value_inr_realized: 0.45
     exclusions:
       - fuel
       - wallet-loads
@@ -65,14 +65,57 @@ rewards:
         rate_inr_per_unit: 0.35
       - type: airmiles
         program: Multiple (MR transfer)
-        ratio: "1:1"
+        ratio: "2:1"
+        constraints: "8 transfer partners; ratios are card-point : partner-unit. realized Rs 0.45 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Marriott Bonvoy
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.55/pt
+          - partner_name: Hilton Honors
+            partner_type: hotel
+            transfer_ratio: "1:0.9"
+            last_verified_on: '2026-07-05'
+            notes: 1:0.9 -> ~Rs 0.32/pt [below floor — avoid]
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.55/pt
+          - partner_name: Emirates Skywards
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt
+          - partner_name: Qatar Privilege Club (Avios)
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt
+          - partner_name: Virgin Atlantic Flying Club
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt
+          - partner_name: Cathay Asia Miles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.47/pt
       - type: voucher
         program: Amex gift vouchers
         rate_inr_per_unit: 0.5
     source:
       url: https://www.americanexpress.com/in/charge-cards/platinum-card/
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
 benefits:
   - effective_from: 2024-04-01
     effective_until: null
@@ -145,5 +188,5 @@ application:
   apply_url: https://www.americanexpress.com/in/charge-cards/platinum-card/
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, charge-card, amex, travel, invite-like]

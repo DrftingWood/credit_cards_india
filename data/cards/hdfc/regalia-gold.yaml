@@ -46,7 +46,7 @@ rewards:
     base:
       rate: 5
       per_inr: 200
-      unit_value_inr: 0.65
+      unit_value_inr: 0.55
       unit_value_inr_realized: 0.5
     accelerated:
       - category: marquee-partners
@@ -81,11 +81,125 @@ rewards:
         rate_inr_per_unit: 0.20
       - type: airmiles
         program: Multiple (Airmiles hub)
-        ratio: "1:0.5"
+        ratio: "100:50"
+        constraints: "22 transfer partners; ratios are card-point : partner-unit. realized Rs 0.50 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.55/pt
+          - partner_name: Finnair Plus (Avios)
+            partner_type: airline
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.53/pt
+          - partner_name: Air France-KLM Flying Blue
+            partner_type: airline
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.45/pt
+          - partner_name: Vietnam LotusMiles
+            partner_type: airline
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.40/pt [below floor — avoid]
+          - partner_name: SpiceJet SpiceClub
+            partner_type: airline
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.15/pt [below floor — avoid]
+          - partner_name: AirAsia Rewards
+            partner_type: airline
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.11/pt [below floor — avoid]
+          - partner_name: Turkish Miles&Smiles
+            partner_type: airline
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.55/pt
+          - partner_name: Avianca LifeMiles
+            partner_type: airline
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.45/pt
+          - partner_name: Accor ALL
+            partner_type: hotel
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.47/pt
+          - partner_name: ITC Hotels (Club ITC)
+            partner_type: hotel
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.50/pt
+          - partner_name: IHG One Rewards
+            partner_type: hotel
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
+          - partner_name: Radisson Rewards
+            partner_type: hotel
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.08/pt [below floor — avoid]
+          - partner_name: Wyndham Rewards
+            partner_type: hotel
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
+          - partner_name: Air Canada Aeroplan
+            partner_type: airline
+            transfer_ratio: "100:33"
+            last_verified_on: '2026-07-05'
+            notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "100:33"
+            last_verified_on: '2026-07-05'
+            notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "100:33"
+            last_verified_on: '2026-07-05'
+            notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
+          - partner_name: Cathay Asia Miles
+            partner_type: airline
+            transfer_ratio: "100:33"
+            last_verified_on: '2026-07-05'
+            notes: 100:33 -> ~Rs 0.31/pt [below floor — avoid]
+          - partner_name: Etihad Guest
+            partner_type: airline
+            transfer_ratio: "100:33"
+            last_verified_on: '2026-07-05'
+            notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
+          - partner_name: Qatar Privilege Club (Avios)
+            partner_type: airline
+            transfer_ratio: "100:33"
+            last_verified_on: '2026-07-05'
+            notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
+          - partner_name: Thai Royal Orchid Plus
+            partner_type: airline
+            transfer_ratio: "100:33"
+            last_verified_on: '2026-07-05'
+            notes: 100:33 -> ~Rs 0.20/pt [below floor — avoid]
+          - partner_name: United MileagePlus
+            partner_type: airline
+            transfer_ratio: "100:33"
+            last_verified_on: '2026-07-05'
+            notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
+          - partner_name: Marriott Bonvoy
+            partner_type: hotel
+            transfer_ratio: "100:33"
+            last_verified_on: '2026-07-05'
+            notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
+        min_units: 100
     source:
       url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
     reward_cap:
       max_units: 50000
       cap_unit: points
@@ -153,5 +267,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [travel, mid-premium, points, mass-premium]

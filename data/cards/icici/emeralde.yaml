@@ -48,8 +48,8 @@ rewards:
     base:
       rate: 4
       per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
+      unit_value_inr: 0.6
+      unit_value_inr_realized: 0.6
     accelerated:
       - category: international-spend
         canonical_categories: [international]
@@ -71,11 +71,21 @@ rewards:
         rate_inr_per_unit: 0.25
       - type: airmiles
         program: Multiple
-        ratio: "1:1"
+        ratio: "6:1"
+        constraints: 1 transfer partner(s); ratios card-point:partner-unit. realized Rs 0.60 = non-transfer floor; best transfer Rs 0.09; 0 beat the floor. Legacy card, largely discontinued; standard ICICI 6:1 to Air India (low confidence).
+        transfer_partners:
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "6:1"
+            last_verified_on: '2026-07-05'
+            notes: 6:1 -> ~Rs 0.09/pt [below floor — avoid]
+        min_units: 2000
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
+      confidence: low
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2017-01-01
@@ -142,5 +152,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, world-elite, golf, lounge, points]

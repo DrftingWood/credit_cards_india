@@ -46,7 +46,7 @@ rewards:
       rate: 12
       per_inr: 200
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
+      unit_value_inr_realized: 0.25
     accelerated:
       - category: international-spend
         canonical_categories: [international]
@@ -69,11 +69,25 @@ rewards:
         rate_inr_per_unit: 0.25
       - type: airmiles
         program: Multiple
-        ratio: "4:1"
+        ratio: "15:1"
+        constraints: 2 transfer partner(s); ratios card-point:partner-unit. realized Rs 0.25 = non-transfer floor; best transfer Rs 0.04; 0 beat the floor. Both transfers far below floor (InterMiles ~Rs 0.02, Air India ~Rs 0.04). Vistara removed (defunct 2024).
+        transfer_partners:
+          - partner_name: InterMiles
+            partner_type: airline
+            transfer_ratio: "10:1"
+            last_verified_on: '2026-07-05'
+            notes: 10:1 -> ~Rs 0.02/pt [below floor — avoid]
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "15:1"
+            last_verified_on: '2026-07-05'
+            notes: 15:1 -> ~Rs 0.04/pt [below floor — avoid]
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
+      confidence: high
 benefits:
   - effective_from: 2021-05-01
     effective_until: null
@@ -126,5 +140,5 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, low-forex, points, travel]

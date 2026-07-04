@@ -157,6 +157,26 @@
       "properties": {
         "url": { "type": "string", "format": "uri" },
         "retrieved_on": { "type": "string", "format": "date" },
+        "type": {
+          "type": "string",
+          "enum": ["issuer-page", "issuer-pdf", "archive", "aggregator", "press", "other"],
+          "description": "Kind of evidence the URL/local_refs point to. issuer-pdf is the strongest; aggregator is discouraged for active cards."
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "How firmly this source backs the record's fields. high = directly stated in issuer evidence."
+        },
+        "local_refs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^docs/sources/[^\\s]+\\.pdf$" },
+          "description": "Repo-relative paths to archived local PDF evidence under docs/sources/ (gitignored, preserved locally)."
+        },
+        "fields_verified": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Dotted record paths (e.g. rewards.accelerated.cap_per_cycle) that the local evidence directly supports, so coverage can be checked mechanically."
+        },
         "notes": { "type": "string" }
       }
     },

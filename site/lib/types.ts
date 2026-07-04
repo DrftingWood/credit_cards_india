@@ -17,6 +17,11 @@ export type Cycle = "monthly" | "quarterly" | "annual" | "statement" | "per-txn"
 export interface Source {
   url: string;
   retrieved_on: string;
+  // Machine-readable evidence references (B1) — mirror schema/card.schema.json.
+  type?: "issuer-page" | "issuer-pdf" | "archive" | "aggregator" | "press" | "other";
+  confidence?: "high" | "medium" | "low";
+  local_refs?: string[];
+  fields_verified?: string[];
   notes?: string;
 }
 

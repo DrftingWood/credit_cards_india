@@ -86,6 +86,16 @@ rewards:
     source:
       url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/hdfc/swiggy-hdfc/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf
+      fields_verified:
+        - rewards.base.cap_per_cycle
+        - rewards.accelerated.effective_rate
+        - rewards.accelerated.cap_per_cycle
+        - rewards.accelerated.cycle
+      notes: "Archived Swiggy HDFC T&C supports 10% Swiggy (cap ₹1,500), 5% online-MCC (cap ₹1,500) and 1% other (cap ₹500) per billing cycle (per docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md)."
 
 benefits:
   - effective_from: 2023-09-01

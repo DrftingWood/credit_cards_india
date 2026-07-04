@@ -52,10 +52,10 @@ rewards:
         canonical_categories: [online]
         multiplier: 5
         effective_rate: 5
-        cap_per_cycle: 5000
+        cap_per_cycle: 4000
         cap_unit: cashback-inr
-        cycle: monthly
-        notes: "5% cashback on all online spends (no merchant whitelist), capped at ₹5,000/month."
+        cycle: statement
+        notes: "5% cashback on eligible online spends; total online + offline cashback is capped at ₹4,000 per statement cycle."
     exclusions:
       - fuel
       - wallet-loads
@@ -90,6 +90,15 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
       retrieved_on: 2026-07-03
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/cashback/cashback-tnc-ekit.pdf
+      fields_verified:
+        - rewards.accelerated.cap_per_cycle
+        - rewards.accelerated.cap_unit
+        - rewards.accelerated.cycle
+      notes: "Archived SBI T&C e-kit states aggregate online + offline cashback is capped at ₹4,000 per statement cycle (per docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md)."
 
 eligibility:
   min_age: 21

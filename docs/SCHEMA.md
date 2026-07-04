@@ -26,6 +26,22 @@ Constraints enforced by `scripts/validate.py`:
 - `effective_until` (required, ISO date or `null`)
 - `source.url` + `source.retrieved_on` (required)
 
+The `source` object also carries optional **machine-readable evidence** fields (B1),
+so source coverage can be checked mechanically rather than from prose notes:
+
+- `source.type` — `issuer-page | issuer-pdf | archive | aggregator | press | other`.
+- `source.confidence` — `high | medium | low` (how firmly the source backs the record).
+- `source.local_refs[]` — repo-relative paths to archived local PDF evidence under
+  `docs/sources/**.pdf` (gitignored, preserved locally).
+- `source.fields_verified[]` — dotted record paths (e.g. `rewards.accelerated.cap_per_cycle`)
+  the local evidence directly supports.
+
+`scripts/validate.py` cross-checks these: a `local_refs` entry must live under
+`docs/sources/`, should be paired with `fields_verified`, and is flagged if it
+resolves to no file on disk (warn-only — PDFs are legitimately absent in CI).
+See `data/cards/sbi/cashback.yaml` and `data/cards/hdfc/swiggy-hdfc.yaml` for
+worked examples.
+
 For an `active` or `invite-only` card, exactly **one** record in each array must be open-ended (`effective_until: null`). Records must not overlap.
 
 **Updating a value** (e.g. annual fee changed on 2025-03-01):

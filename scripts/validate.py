@@ -173,6 +173,40 @@ def collect_sources(node):
             yield from collect_sources(item)
 
 
+def check_local_evidence(errors, warnings, path: Path, instance: dict):
+    """
+    Validate machine-readable local evidence references (B1). The schema already
+    enforces the shape/enum of source.type/confidence/local_refs/fields_verified;
+    here we cross-check the semantics:
+      - a source with local_refs but no fields_verified is incomplete (warn),
+      - each local_ref must live under docs/sources/ (error — malformed ref),
+      - a local_ref that resolves to no file on disk is flagged (warn only:
+        PDFs are gitignored, so CI legitimately won't have them, but a locally
+        missing/renamed ref is worth surfacing).
+    """
+    for src in collect_sources(instance):
+        refs = src.get("local_refs")
+        if not refs:
+            continue
+        if not src.get("fields_verified"):
+            warnings.append(
+                f"[warn] {path.relative_to(ROOT)} :: source has local_refs but no fields_verified "
+                "— state which record fields the evidence supports"
+            )
+        for ref in refs:
+            if not isinstance(ref, str) or not ref.startswith("docs/sources/"):
+                errors.append(
+                    f"[lint] {path.relative_to(ROOT)} :: source.local_refs entry '{ref}' must be a "
+                    "repo-relative path under docs/sources/"
+                )
+                continue
+            if not (ROOT / ref).exists():
+                warnings.append(
+                    f"[warn] {path.relative_to(ROOT)} :: source.local_refs '{ref}' not found on disk "
+                    "(gitignored PDFs are expected absent in CI; check the path if reviewing locally)"
+                )
+
+
 def check_source_urls(warnings, path: Path, instance: dict):
     """Best-effort source URL availability check via GET request."""
     sources = [src for src in collect_sources(instance) if src.get("url")]
@@ -492,6 +526,7 @@ def main() -> int:
                 )
 
         check_application_urls(errors, warnings, path, instance, check_urls)
+        check_local_evidence(errors, warnings, path, instance)
 
     # deferred: replaces_card references
     for path, instance in cards:

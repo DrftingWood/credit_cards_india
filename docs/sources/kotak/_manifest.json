@@ -1,0 +1,6 @@
+{
+  "_source": "Kotak Mahindra Bank per-card Fees & Charges pages, central MITC (/credit-cards/mitc-and-ca.html) and GSFC (HTML, JS-rendered; no downloadable PDFs)",
+  "verified_on": "2026-07-04",
+  "result": "HTML-sourced. Kotak serves fees/MITC as HTML, not PDF. Reward structures verified against live pages during the 2026-07-03 audit (PR #42). Correction: League Platinum is lifetime-free (Fees & Charges page titled 'No Joining & Annual Fees') — YAML corrected from Rs 499/499 to Rs 0/0. Remaining JS-rendered fee tables could not be fully machine-extracted; values are HTML-sourced. See docs/kotak-audit.md and INDEX.md.",
+  "pdfs_downloaded": 0
+}

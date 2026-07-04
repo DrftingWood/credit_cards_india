@@ -1,0 +1,6 @@
+{
+  "_source": "IndusInd Bank card pages + central Schedule of Charges and Terms & Conditions hubs (HTML, JS-rendered; no downloadable credit-card PDFs)",
+  "verified_on": "2026-07-04",
+  "result": "HTML-sourced. IndusInd publishes no per-card MITC/T&C PDFs — fees/rewards/MITC are JS-rendered HTML tables. Reward structures, forex (1.8% discounted) and 2025 lounge/redemption changes verified against the live card-page tabs during the 2026-07-03 audit; Legend spot-checked 2026-07-04. See docs/indusind-audit.md and INDEX.md.",
+  "pdfs_downloaded": 0
+}

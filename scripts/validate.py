@@ -56,7 +56,7 @@ ISSUER_ALLOWED_DOMAINS = {
     "kotak": {"kotak.com", "www.kotak.com", "kotak.bank.in", "www.kotak.bank.in"},
     "kvb": {"kvb.co.in", "www.kvb.co.in", "kvb.bank.in", "www.kvb.bank.in"},
     "onecard": {"getonecard.app", "www.getonecard.app", "onecard.io", "www.onecard.io"},
-    "pnb": {"pnbindia.in", "www.pnbindia.in", "pnb.bank.in", "www.pnb.bank.in"},
+    "pnb": {"pnbindia.in", "www.pnbindia.in", "pnb.bank.in", "www.pnb.bank.in", "creditcard.pnb.bank.in", "pnbcard.in", "www.pnbcard.in"},
     "rbl": {"rblbank.com", "www.rblbank.com", "rbl.bank.in", "www.rbl.bank.in", "irctc.co.in", "www.irctc.co.in"},
     "sbi": {"sbicard.com", "www.sbicard.com"},
     "slice": {"sliceit.com", "www.sliceit.com", "slice.bank.in", "www.slice.bank.in"},

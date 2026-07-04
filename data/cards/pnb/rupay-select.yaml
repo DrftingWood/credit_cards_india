@@ -105,6 +105,8 @@ benefits:
       confidence: medium
       local_refs:
         - docs/sources/pnb/rupay-select/MITC.pdf
+      fields_verified:
+        - fuel_surcharge_waiver.pct
       notes: "MITC confirms 1% fuel surcharge waiver above Rs 400; lounge access is the NPCI RuPay Select program benefit."
 
 eligibility:

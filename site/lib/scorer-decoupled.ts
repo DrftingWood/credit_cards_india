@@ -24,13 +24,18 @@ import type { EnrichedCard, LoyaltyProgram, BenefitRecord } from "./types";
 import { scoreCard, type ScoringContext, type SpendProfile } from "./calculator";
 import { CanonicalCategory } from "./category-mapping";
 import type { RecommendPayload } from "./recommender";
-import { PROXY_INTL_SPEND_INR_PER_MONTH, INCOME_BAND_ANNUAL_INR, BRAND_PREF_TO_CHANNELS } from "./recommender-constants";
+import { INCOME_BAND_ANNUAL_INR, BRAND_PREF_TO_CHANNELS } from "./recommender-constants";
 
-/** Only heuristic in the scorer, and only a WARNING threshold — never changes a number. */
+// The scorer invents NO value or spend numbers. The only constants below are
+// (a) WARNING thresholds that never change a ₹ figure, and (b) the coarse
+// band→₹ mapping, which is a UI-input approximation superseded by `exactSpend`.
+
+/** Warning threshold only — never alters an amount. */
 const IMPLAUSIBLE_UNCAPPED_RATE_PCT = 8;
 /** A milestone award worth more than this share of its own trigger spend is flagged (warning only). */
 const IMPLAUSIBLE_MILESTONE_SHARE = 0.15;
 
+/** Coarse band midpoints for the legacy band input. Prefer `exactSpend` for real amounts. */
 const BAND_TO_INR: Record<string, number> = { "0": 0, "lt-5k": 2500, "5k-15k": 10000, "15k-30k": 22500, "gt-30k": 40000 };
 const MACRO_TO_BUCKET: Record<string, CanonicalCategory> = { online: "online", travel: "travel", dining: "dining", groceries: "groceries", fuel: "fuel" };
 const CYCLE_MONTHS: Record<string, number> = { annual: 12, quarterly: 3, monthly: 1, statement: 1, "per-txn": 1 };
@@ -57,8 +62,9 @@ function spendFromPayload(p: RecommendPayload): SpendProfile {
     const b = MACRO_TO_BUCKET[macro];
     if (b) sp[b] = BAND_TO_INR[band] ?? 0;
   }
-  if (p.lifestyle.recurring.includes("utilities-rent")) { sp.utilities = 5000; sp.rent = 5000; }
-  if (p.lifestyle.recurring.includes("high-forex")) sp.international = PROXY_INTL_SPEND_INR_PER_MONTH;
+  // Deliberately do NOT fabricate utilities/rent/international amounts from the
+  // recurring toggles (the old engine injected ₹5,000/₹5,000/₹15,000 out of thin
+  // air). Those buckets stay 0 unless a real amount is supplied via `exactSpend`.
   return sp;
 }
 function channelMixFromPayload(p: RecommendPayload): Set<string> {

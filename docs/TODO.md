@@ -382,8 +382,36 @@ Validation:
 - `npm.cmd --prefix site run build`
 - Browser/manual checks for desktop and mobile navigation
 
+## Follow-up backlog (opened 2026-07-04, from the A0–C3 audit)
+
+These emerged while completing the A/B/C board. Promote into the Pick-Up Board
+when picked up.
+
+| ID | Priority | Area | Task |
+| --- | --- | --- | --- |
+| D1 | P1 | Data quality | Confirm the aggregator-sourced fees left at `confidence: medium` against issuer Schedule-of-Charges PDFs: BOI Select (₹800/₹2L waiver), South Indian SBI Platinum (₹2,999), KVB Honour (whole card). Upgrade to high or correct. |
+| D2 | P1 | Data quality | Verify `kvb-honour` status — the KVB `.bank.in` site no longer exposes an "Honour" page (only a generic card + KVB-SBI co-brands). Confirm rename/withdrawal; mark discontinued or re-model if needed. |
+| D3 | P1 | Evidence | Scale the B1 machine-readable evidence fields (`source.type/confidence/local_refs/fields_verified`) across the archive, issuer by issuer. Only ~9 cards carry them today (2 exemplars + 7 PSU). |
+| D4 | P1 | Data quality | Extend the B4 stale-URL / aggregator-primary sweep beyond HDFC: audit every issuer's `source.url` for redirects/404s and aggregator-primary sources (Playwright-verify replacements). |
+| D5 | P2 | Portfolio | Expand the PSU catalogues into sourced YAML (see `docs/PSU-BANK-PORTFOLIOS-2026-07.md`). Start with PNB RuPay Platinum / Rakshak / LUXURA and Union premium tier (NEXTERIA / Unicorn / DIVAA). Source terms before adding. |
+| D6 | P2 | Data | Resolve the 6 standing validator warnings — `co_brand.partner` ↔ `loyalty_program` alias links (bob-irctc, sbi air-india ×2, sbi tata-neu ×2) and the sbi-aurum apply_url microsite. |
+| D7 | P2 | Sources | Normalize the audit-note manifests (bob / idfc-first / rbl / standard-chartered) into per-card PDF maps, matching axis/hdfc/icici/sbi (LOCAL_DATA_PDF_REVIEW cleanup #1). |
+| D8 | P2 | Data | Reconcile the 31 `metadata.last_verified_on` vs nested `source.retrieved_on` mismatches (LOCAL_DATA_PDF_REVIEW issue #4); explain via `last_swept_on` or notes. |
+| D9 | P2 | Site UX | Browser-QA the C3 responsive fixes (mobile results-before-filters, header wrap) on real viewports via Playwright/webapp-testing — they compile but weren't visually confirmed. |
+| D10 | P2 | Schema/data | Execute the C2 (D-20) network-variant migrations: HDFC Tata Neu Infinity/Plus RuPay-UPI variants; verify whether ICICI Coral/Rubyx/Sapphiro Amex differ materially before splitting. |
+| D11 | P2 | Portfolio | Verify open status of the 3 still-absent big-bank cards (Axis Burgundy Private, ICICI Mine, Kotak Mojo Platinum) and add if open + sourced (`docs/PORTFOLIO-GAPS.md`). |
+| D12 | P3 | Recommender | Author `accelerated[].applicability_pct` from evidence for high-traffic co-brand cards (Amazon ICICI, Swiggy HDFC, Tata Neu, …) so /recommend credits their real bucket slice instead of falling back to base (A2 / D-18). |
+
 ## Completed Recently
 
+- **2026-07-04 audit board (A0–C3 + B1–B5):** all 12 tasks done on branch
+  `todo-board-2026-07`. Recommender/calculator correctness (A1–A4), applicability
+  model without fabricated numbers (A2, DECISIONS D-18/D-19), reproducible
+  validation (A0), machine-readable evidence schema (B1), source manifest/index
+  normalization + low-text PDF marking (B2/B3), HDFC stale-URL migration
+  (B4, Playwright-verified), 7 PSU cards verified vs issuer PDFs with real
+  corrections (B5), portfolio refresh + network-variant decision + 6 site UX
+  fixes (C1–C3). 87 site tests pass; validate.py clean.
 - Merged the latest audit branch into `main`.
 - Preserved the local-only PDF archive.
 - Added the local data/PDF review.

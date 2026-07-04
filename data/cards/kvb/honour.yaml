@@ -1,9 +1,13 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Karur Vysya Bank — RuPay/Visa program card (live page redirects; no extractable source)
-#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
-#   Values are RuPay/Visa program-standard estimates; the live card page redirects
-# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+#   Source     : Aggregator consensus (BankBazaar + Card Insider, 2026) — the KVB
+#                issuer catalogue (kvb.bank.in/personal/cards/kvb-credit-cards/)
+#                currently lists only a generic "KVB Credit Card" plus KVB-SBI
+#                co-brands and does not expose an "Honour" product page/PDF.
+#   Verified   : 2026-07-04   Confidence: MEDIUM (aggregator, issuer page absent)
+#   Fee/earn corrected from two independent aggregators; NOT issuer-PDF confirmed.
+#   The Honour card may have been renamed/withdrawn on the .bank.in site — needs
+#   direct issuer re-confirmation.
 # ---------------------------------------------------------------------------
 id: kvb-honour
 name: KVB Honour Credit Card
@@ -21,9 +25,9 @@ fees:
   - effective_from: 2022-01-01
     effective_until: null
     joining_fee_inr: 0
-    annual_fee_inr: 1000
+    annual_fee_inr: 1299
     fee_waiver:
-      spend_inr: 200000
+      spend_inr: 500000
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.25
@@ -32,8 +36,11 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.kvb.bank.in/personal-banking/cards/credit-cards/honour/
-      retrieved_on: 2026-07-03
+      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
+      retrieved_on: 2026-07-04
+      type: aggregator
+      confidence: medium
+      notes: "BankBazaar + Card Insider (2026): no joining fee, annual fee Rs 1,299 waived on Rs 5,00,000 preceding-year spend. Not confirmed on the KVB issuer site (Honour page absent post-.bank.in)."
 
 rewards:
   - effective_from: 2022-01-01
@@ -41,10 +48,17 @@ rewards:
     currency: points
     currency_name: Reward Points
     base:
-      rate: 2
-      per_inr: 100
+      rate: 3
+      per_inr: 150
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
+    accelerated:
+      - category: travel-hotel-air
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 4
+        effective_per_inr: 150
+        notes: "4x reward points on hotel bookings and air tickets (domestic + international) per aggregator listings."
     exclusions:
       - fuel
       - wallet-loads
@@ -57,8 +71,11 @@ rewards:
         program: KVB Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.kvb.bank.in/personal-banking/cards/credit-cards/honour/
-      retrieved_on: 2026-07-03
+      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
+      retrieved_on: 2026-07-04
+      type: aggregator
+      confidence: medium
+      notes: "BankBazaar + Card Insider (2026): 3x reward points per Rs 150 base; 4x on hotel/air bookings; 700 bonus points on activation. Base earn was previously modelled as 2/Rs 100 — corrected."
 
 benefits:
   - effective_from: 2022-01-01
@@ -69,6 +86,10 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [visa]
+    welcome:
+      - condition: "Card activation"
+        benefit: "700 bonus reward points on activation"
+        value_inr: 175
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
@@ -77,8 +98,11 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.kvb.bank.in/personal-banking/cards/credit-cards/honour/
-      retrieved_on: 2026-07-03
+      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
+      retrieved_on: 2026-07-04
+      type: aggregator
+      confidence: medium
+      notes: "Aggregator listings; lounge/fuel are Visa Signature program-standard, not issuer-PDF confirmed."
 
 eligibility:
   min_age: 21
@@ -90,8 +114,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.kvb.bank.in/personal-banking/cards/credit-cards/honour/
+  apply_url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
 
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, lounge]
+  last_verified_on: 2026-07-04
+  tags: [premium, points, lounge, travel]

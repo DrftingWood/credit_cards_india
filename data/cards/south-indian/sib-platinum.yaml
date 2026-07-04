@@ -1,18 +1,26 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : South Indian Bank — RuPay/Visa program card (live page redirects; no extractable source)
-#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
-#   Values are RuPay/Visa program-standard estimates; the live card page redirects
-# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+#   Source     : South Indian Bank SBI Platinum brochure
+#                (docs/sources/south-indian/sib-platinum/sib-platinum-brochure.pdf).
+#   Verified   : 2026-07-04   Confidence: HIGH (rewards/benefits) / MEDIUM (fees)
+#   IMPORTANT: this product is the *South Indian Bank SBI Platinum Credit Card*,
+#   issued in co-brand partnership with SBI Card — NOT a simple SIB proprietary
+#   Platinum. Prior record mis-modelled it as a Rs 750 card with 2 RP/Rs 150 and no
+#   accelerators. Corrected to the SBI Platinum profile: 5X on dining/departmental/
+#   international, Priority Pass, golf, welcome + milestone vouchers. Annual fee
+#   Rs 2,999 is aggregator-corroborated (SBI Platinum co-brand standard).
 # ---------------------------------------------------------------------------
 id: south-indian-sib-platinum
-name: South Indian Bank Platinum Credit Card
+name: South Indian Bank SBI Platinum Credit Card
 issuer: south-indian
 network: visa
 network_tier: platinum
 tier: mid
 card_type: credit
-co_brand: null
+co_brand:
+  partner: SBI Card
+  category: other
+  partner_website: https://www.sbicard.com
 status: active
 launched_on: 2020-01-01
 discontinued_on: null
@@ -20,20 +28,21 @@ discontinued_on: null
 fees:
   - effective_from: 2020-01-01
     effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 750
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
+    joining_fee_inr: 2999
+    annual_fee_inr: 2999
+    fee_waiver: null
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.25
+    finance_charge_monthly_pct: 3.50
     cash_advance_fee:
       pct: 2.5
-      min_inr: 300
+      min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.southindianbank.bank.in/content/credit-cards/platinum
-      retrieved_on: 2026-07-03
+      url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
+      retrieved_on: 2026-07-04
+      type: aggregator
+      confidence: medium
+      notes: "Annual/renewal fee Rs 2,999 + taxes (SBI Platinum co-brand standard, aggregator-corroborated 2026); the brochure covers features, not the fee schedule."
 
 rewards:
   - effective_from: 2020-01-01
@@ -42,9 +51,19 @@ rewards:
     currency_name: Reward Points
     base:
       rate: 2
-      per_inr: 150
+      per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
+      unit_value_inr_realized: 0.25
+    accelerated:
+      - category: dining-departmental-international
+        canonical_categories: [dining, groceries, international]
+        multiplier: 5
+        effective_rate: 10
+        effective_per_inr: 100
+        cap_per_cycle: 40000
+        cap_unit: points
+        cycle: annual
+        notes: "5X Reward Points on Dining, Departmental Store and International spends; max 40,000 points in the 5X category per year (brochure)."
     exclusions:
       - fuel
       - wallet-loads
@@ -54,11 +73,20 @@ rewards:
     mcc_exclusions: ['6513']
     redemption:
       - type: catalog
-        program: SIB Rewards
+        program: SBI Card Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.southindianbank.bank.in/content/credit-cards/platinum
-      retrieved_on: 2026-07-03
+      url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/south-indian/sib-platinum/sib-platinum-brochure.pdf
+      fields_verified:
+        - rewards.base.rate
+        - rewards.accelerated.effective_rate
+        - rewards.accelerated.cap_per_cycle
+      notes: "Brochure: 2 RP/Rs 100 base; 5X on Dining/Departmental/International (cap 40,000 points/yr); no rewards on fuel."
 
 benefits:
   - effective_from: 2020-01-01
@@ -69,16 +97,52 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [visa]
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Complimentary Priority Pass membership (600+ lounges worldwide)."
+    golf:
+      rounds_per_cycle: unlimited
+      cycle: annual
+      notes: "Access to 300+ golf courses worldwide (brochure)."
+    welcome:
+      - condition: "Annual fee paid"
+        benefit: "Welcome e-Gift Voucher worth Rs 3,000 (Bata/Hush Puppies, Aditya Birla Fashion, Westside, Shoppers Stop, Yatra)"
+        value_inr: 3000
+        window_days: 21
+    milestones:
+      - spend_inr: 400000
+        cycle: annual
+        benefit: "e-Gift Voucher worth Rs 3,000 on Rs 4L annual spend"
+        value_inr: 3000
+        trigger_window: anniversary-year
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "e-Gift Voucher worth Rs 3,000 on Rs 5L annual spend"
+        value_inr: 3000
+        trigger_window: anniversary-year
     fuel_surcharge_waiver:
       pct: 1.0
-      min_txn_inr: 400
+      min_txn_inr: 500
       max_txn_inr: 4000
       cap_per_cycle_inr: 250
       cycle: monthly
     concierge: false
     source:
-      url: https://www.southindianbank.bank.in/content/credit-cards/platinum
-      retrieved_on: 2026-07-03
+      url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/south-indian/sib-platinum/sib-platinum-brochure.pdf
+      fields_verified:
+        - lounge_access.domestic.visits_per_cycle
+        - welcome.value_inr
+        - fuel_surcharge_waiver.pct
+        - fuel_surcharge_waiver.cap_per_cycle_inr
+      notes: "Brochure: 2 domestic lounge visits/quarter, Priority Pass (600+ lounges), 300+ golf courses, Rs 3,000 welcome voucher, Rs 3,000 vouchers at Rs 4L & Rs 5L spend, 1% fuel waiver Rs 500-4000 (max Rs 250/mo)."
 
 eligibility:
   min_age: 21
@@ -90,8 +154,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.southindianbank.bank.in/content/credit-cards/platinum
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
 
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, lounge]
+  last_verified_on: 2026-07-04
+  tags: [mid, points, lounge, golf, co-branded, sbi-card]

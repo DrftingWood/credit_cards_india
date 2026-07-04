@@ -27,6 +27,8 @@ export interface CardScore {
   buckets: BucketBreakdown[];
   base_value_inr_monthly: number;
   disclaimer?: string;
+  /** True when a merchant/co-brand-specific accelerator was left uncredited because its bucket share isn't authored (A2). */
+  merchant_rates_uncounted?: boolean;
 }
 
 export interface ScoringContext {
@@ -36,7 +38,67 @@ export interface ScoringContext {
   tierMap?: Record<string, string | null>;
   /** id → loyalty program record. */
   programs?: Record<string, LoyaltyProgram>;
+  /**
+   * When true (realistic /recommend mode), a merchant/MCC/co-brand-specific
+   * accelerator is applied to only a fraction of a broad spend bucket — the
+   * rest earns the base rate. When false/omitted (optimistic /calculator), the
+   * accelerator covers the whole bucket as if all category spend qualifies (A2).
+   */
+  applyApplicability?: boolean;
 }
+
+/**
+ * Channel classes that span a whole calculator bucket rather than a specific
+ * merchant: "any online merchant" / "any physical store". An accelerator gated
+ * only by one of these is category-wide, not narrow.
+ */
+const BROAD_CHANNEL_CLASSES = new Set(["online-any", "physical"]);
+
+/**
+ * A narrow accelerator is tied to a specific merchant, MCC, or co-brand channel,
+ * so it can't be assumed to cover a user's whole broad-bucket spend.
+ */
+function isNarrowAccelerator(a: AcceleratedReward): boolean {
+  const cls = a.channel?.class;
+  if (cls) return !BROAD_CHANNEL_CLASSES.has(cls);
+  if (a.merchants && a.merchants.length > 0) return true;
+  if (a.mcc_list && a.mcc_list.length > 0) return true;
+  return false; // no merchant/MCC/channel narrowing → the accelerator IS the category
+}
+
+/**
+ * Share of a broad bucket the accelerator's elevated rate applies to.
+ *
+ * We do NOT invent a fraction for a narrow accelerator — there is no per-merchant
+ * spend distribution anywhere in the dataset to derive one from. So (A2):
+ *  - optimistic /calculator (applyApplicability off) → 1 (whole bucket, as before).
+ *  - authored `applicability_pct` → that evidence-based fraction.
+ *  - category-wide accelerator, no authoring → 1 (this is the accelerator's own
+ *    definition, not a guess).
+ *  - narrow accelerator, no authoring → null: the caller refuses to credit the
+ *    elevated rate and falls back to the base rate for the bucket, with a caveat.
+ */
+function applicabilityFraction(a: AcceleratedReward, ctx: ScoringContext | undefined): number | null {
+  if (!ctx?.applyApplicability) return 1; // optimistic /calculator: whole bucket
+  if (a.applicability_pct != null) {
+    return Math.max(0, Math.min(1, a.applicability_pct / 100));
+  }
+  return isNarrowAccelerator(a) ? null : 1;
+}
+
+/**
+ * MCCs that, when a card excludes them, effectively zero a whole calculator
+ * bucket (these buckets are defined by a single MCC family). Used so
+ * `mcc_exclusions` affect scoring, not just disclaimers (A2).
+ */
+const MCC_EXCLUSION_TO_BUCKET: Record<string, CanonicalCategory> = {
+  "5541": "fuel",
+  "5542": "fuel",
+  "5983": "fuel",
+  "5172": "fuel",
+  "6513": "rent",
+  "4900": "utilities",
+};
 
 const MONTHS_PER_YEAR = 12;
 
@@ -169,9 +231,20 @@ function acceleratedRateForBucket(
   amount: number,
   rewards: RewardRecord,
   ctx: ScoringContext | undefined,
-): { rate_pct: number; cap_monthly_inr: number | null; basis: "general" | "channel-locked" } | null {
-  type Candidate = { rate_pct: number; cap_monthly_inr: number | null; basis: "general" | "channel-locked"; value: number };
+  baseRate: number,
+): {
+  hit: { rate_pct: number; cap_monthly_inr: number | null; basis: "general" | "channel-locked"; applicability: number } | null;
+  narrowUncounted: boolean;
+} {
+  type Candidate = {
+    rate_pct: number;
+    cap_monthly_inr: number | null;
+    basis: "general" | "channel-locked";
+    applicability: number;
+    value: number;
+  };
   let best: Candidate | null = null;
+  let narrowUncounted = false;
   const unitValue = unitValueFor(rewards, ctx?.programs);
 
   for (const a of accelerated) {
@@ -182,6 +255,16 @@ function acceleratedRateForBucket(
 
     const ratePct = acceleratorRatePct(a, rewards, ctx);
     if (ratePct == null) continue;
+
+    // Applicability: a merchant/MCC/co-brand-specific accelerator only covers a
+    // slice of a broad bucket. When that slice isn't authored, refuse to invent
+    // one — fall back to base for the bucket and flag it, rather than crediting a
+    // narrow rate across the whole bucket.
+    const f = applicabilityFraction(a, ctx);
+    if (f == null) {
+      narrowUncounted = true;
+      continue;
+    }
 
     let capMonthlyInr: number | null = null;
     if (typeof a.cap_per_cycle === "number") {
@@ -198,18 +281,22 @@ function acceleratedRateForBucket(
       if (a.cycle === "annual" && capMonthlyInr != null) capMonthlyInr = capMonthlyInr / 12;
     }
 
-    // Rank by realised monthly value for THIS user's spend on this bucket, not
-    // by headline rate — otherwise a 10% accelerator capped at ₹500/mo always
-    // beats a 5% uncapped one on ₹50k spend (where uncapped 5% = ₹2,500 wins).
-    const grossValue = (amount * ratePct) / 100;
-    const value = capMonthlyInr != null ? Math.min(grossValue, capMonthlyInr) : grossValue;
+    const accelSpend = amount * f;
+    const grossAccel = (accelSpend * ratePct) / 100;
+    const accelValue = capMonthlyInr != null ? Math.min(grossAccel, capMonthlyInr) : grossAccel;
+    const baseRemainderValue = (amount * (1 - f) * baseRate) / 100;
+
+    // Rank by realised blended monthly value for THIS user's spend on this
+    // bucket, not by headline rate — otherwise a 10% accelerator capped at
+    // ₹500/mo always beats a 5% uncapped one on ₹50k spend (where uncapped
+    // 5% = ₹2,500 wins), and a narrow co-brand rate beats a broad category one.
+    const value = accelValue + baseRemainderValue;
 
     const basis: "general" | "channel-locked" = a.channel ? "channel-locked" : "general";
-    const candidate: Candidate = { rate_pct: ratePct, cap_monthly_inr: capMonthlyInr, basis, value };
+    const candidate: Candidate = { rate_pct: ratePct, cap_monthly_inr: capMonthlyInr, basis, applicability: f, value };
     if (!best || candidate.value > best.value) best = candidate;
   }
-  if (!best) return null;
-  return { rate_pct: best.rate_pct, cap_monthly_inr: best.cap_monthly_inr, basis: best.basis };
+  return { hit: best, narrowUncounted };
 }
 
 /** Converts a cap spec (units + unit-type + cycle) to a monthly INR ceiling. */
@@ -258,11 +345,18 @@ export function scoreCard(
     const b = EXCLUSION_TO_BUCKET[ex];
     if (b) excluded.add(b);
   }
+  // MCC exclusions that cover a whole single-MCC-family bucket (fuel/rent/
+  // utilities) zero that bucket's earn — not just a disclaimer (A2).
+  for (const mcc of rewards?.mcc_exclusions ?? []) {
+    const b = MCC_EXCLUSION_TO_BUCKET[mcc];
+    if (b) excluded.add(b);
+  }
 
   const buckets: BucketBreakdown[] = [];
   let monthlyValue = 0;
   let baseMonthly = 0; // portion earned at the base rate (subject to base.cap_per_cycle)
   let totalSpend = 0;
+  let narrowRatesUncounted = false; // a merchant/co-brand rate we declined to credit (A2)
 
   for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
     const amount = spend[bucket] || 0;
@@ -281,34 +375,45 @@ export function scoreCard(
       continue;
     }
 
-    let rate = baseRate;
-    let cap: number | null = null;
     let basis: "general" | "channel-locked" = "general";
     let note: string | undefined;
-    let usedBase = true;
+    let effectiveRate = baseRate; // blended rate shown to the user
+    let monthlyValueForBucket: number;
+    let baseEarned: number; // portion earned at base rate (subject to base.cap_per_cycle)
 
-    if (rewards?.accelerated?.length) {
-      const hit = acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx);
-      if (hit) {
-        rate = hit.rate_pct;
-        cap = hit.cap_monthly_inr;
-        basis = hit.basis;
-        usedBase = false;
+    const accel = rewards?.accelerated?.length
+      ? acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx, baseRate)
+      : { hit: null, narrowUncounted: false };
+    const hit = accel.hit;
+    if (accel.narrowUncounted) narrowRatesUncounted = true;
+
+    if (hit) {
+      // Accelerator covers `applicability` of the bucket; the rest earns base.
+      const f = hit.applicability;
+      let accelValue = (amount * f * hit.rate_pct) / 100;
+      if (hit.cap_monthly_inr != null && accelValue > hit.cap_monthly_inr) {
+        note = `Capped at ${inr0(hit.cap_monthly_inr)}/mo`;
+        accelValue = hit.cap_monthly_inr;
       }
+      baseEarned = (amount * (1 - f) * baseRate) / 100;
+      monthlyValueForBucket = accelValue + baseEarned;
+      basis = hit.basis;
+      effectiveRate = amount > 0 ? (monthlyValueForBucket / amount) * 100 : hit.rate_pct;
+      if (f < 1 && !note) {
+        note = `${Math.round(f * 100)}% of this bucket earns the accelerated rate; the rest earns base`;
+      }
+    } else {
+      monthlyValueForBucket = (amount * baseRate) / 100;
+      baseEarned = monthlyValueForBucket;
+      effectiveRate = baseRate;
     }
 
-    let monthlyValueForBucket = (amount * rate) / 100;
-    if (cap != null && monthlyValueForBucket > cap) {
-      note = `Capped at ${inr0(cap)}/mo`;
-      monthlyValueForBucket = cap;
-    }
-
-    if (usedBase) baseMonthly += monthlyValueForBucket;
+    baseMonthly += baseEarned;
     monthlyValue += monthlyValueForBucket;
     buckets.push({
       category: bucket,
       monthly_spend: amount,
-      effective_rate_pct: rate,
+      effective_rate_pct: effectiveRate,
       monthly_value_inr: monthlyValueForBucket,
       basis,
       note,
@@ -358,6 +463,11 @@ export function scoreCard(
   const mccEx = rewards?.mcc_exclusions;
   if (mccEx?.length) disclaimerParts.push(`Zero rewards on ${mccEx.length} excluded MCC${mccEx.length > 1 ? "s" : ""}`);
   if (rewards?.exclusions?.length) disclaimerParts.push(`Excludes: ${rewards.exclusions.join(", ")}`);
+  if (narrowRatesUncounted) {
+    disclaimerParts.push(
+      "Merchant/co-brand-specific rates shown at base only — enter per-merchant spend to value them",
+    );
+  }
 
   return {
     card,
@@ -368,6 +478,7 @@ export function scoreCard(
     buckets,
     base_value_inr_monthly: monthlyValue,
     disclaimer: disclaimerParts.length ? disclaimerParts.join("; ") : undefined,
+    merchant_rates_uncounted: narrowRatesUncounted || undefined,
   };
 }
 

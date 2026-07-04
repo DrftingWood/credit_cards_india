@@ -395,11 +395,13 @@ export function recommend(
     channelMix,
     tierMap,
     programs,
+    applyApplicability: true, // realistic: narrow rates cover only a slice of a broad bucket (A2)
   };
   const ctxGeneral: ScoringContext = {
     channelMix: new Set<string>(), // empty = nothing satisfies channel-locked accelerators
     tierMap,
     programs,
+    applyApplicability: true,
   };
 
   const eligible = cards.filter(
@@ -461,6 +463,11 @@ export function recommend(
     if (loungeRes.thresholdUnmet) {
       caveats.push(
         "Complimentary lounge access here requires prior-cycle spend you're not projected to reach, so its value is excluded from ranking.",
+      );
+    }
+    if (primary.merchant_rates_uncounted) {
+      caveats.push(
+        "This card's boosted rate is tied to specific merchants/portals; without your per-merchant spend it's ranked at the base rate only.",
       );
     }
 

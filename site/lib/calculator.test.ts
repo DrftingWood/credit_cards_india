@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { scoreCard, type SpendProfile } from "./calculator";
+import { scoreCard, type SpendProfile, type ScoringContext } from "./calculator";
 import { pickTopAccelerated } from "./detail-derivations";
 import type {
   EnrichedCard,
@@ -378,6 +378,145 @@ describe("pickTopAccelerated — normalises effective_rate (units/₹N) vs multi
     });
     const top = pickTopAccelerated(card);
     expect(top?.category).toBe("dining");
+  });
+});
+
+describe("scoreCard — merchant/MCC applicability (A2)", () => {
+  const realistic = (channels: string[]): ScoringContext => ({
+    applyApplicability: true,
+    channelMix: new Set(channels),
+  });
+
+  test("narrow co-brand rate is NOT applied to the whole bucket; unauthored → base only", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "amazon",
+          canonical_categories: ["online"],
+          multiplier: 0,
+          effective_rate: 5,
+          channel: { class: "cobrand-merchant", merchants: ["amazon-pay"] },
+        },
+      ],
+    });
+    // Optimistic /calculator: whole ₹20k online at 5% → ₹12,000/yr.
+    expect(scoreCard(card, spend({ online: 20000 })).annual_gross_inr).toBe(12000);
+    // Realistic + opted into amazon, but no authored share → refuse to invent a
+    // fraction; rank on base only (₹200/mo → ₹2,400/yr) and flag it.
+    const optedIn = scoreCard(card, spend({ online: 20000 }), realistic(["amazon-pay"]));
+    expect(optedIn.annual_gross_inr).toBe(2400);
+    expect(optedIn.merchant_rates_uncounted).toBe(true);
+    // Realistic, NOT opted in: channel unsatisfied → base only, no flag (the rate
+    // simply doesn't apply).
+    const notOptedIn = scoreCard(card, spend({ online: 20000 }), realistic([]));
+    expect(notOptedIn.annual_gross_inr).toBe(2400);
+    expect(notOptedIn.merchant_rates_uncounted).toBeUndefined();
+  });
+
+  test("merchant-list accelerator with no channel gate is also uncounted without an authored share", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        { category: "co-brand store", canonical_categories: ["online"], multiplier: 0, effective_rate: 5, merchants: ["some-store"] },
+      ],
+    });
+    expect(scoreCard(card, spend({ online: 20000 })).annual_gross_inr).toBe(12000); // optimistic whole bucket
+    const real = scoreCard(card, spend({ online: 20000 }), realistic([]));
+    expect(real.annual_gross_inr).toBe(2400); // base only
+    expect(real.merchant_rates_uncounted).toBe(true);
+  });
+
+  test("authored applicability_pct blends accelerator-on-slice with base-on-remainder", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "amazon",
+          canonical_categories: ["online"],
+          multiplier: 0,
+          effective_rate: 5,
+          applicability_pct: 40, // evidence-based: 40% of the user's online spend
+          channel: { class: "cobrand-merchant", merchants: ["amazon-pay"] },
+        },
+      ],
+    });
+    // 40% at 5% + 60% at 1% base on ₹20k = ₹520/mo → ₹6,240/yr; nothing uncounted.
+    const real = scoreCard(card, spend({ online: 20000 }), realistic(["amazon-pay"]));
+    expect(real.annual_gross_inr).toBe(6240);
+    expect(real.merchant_rates_uncounted).toBeUndefined();
+  });
+
+  test("applicability_pct: 100 pins the whole bucket", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "amazon",
+          canonical_categories: ["online"],
+          multiplier: 0,
+          effective_rate: 5,
+          applicability_pct: 100,
+          channel: { class: "cobrand-merchant", merchants: ["amazon-pay"] },
+        },
+      ],
+    });
+    expect(scoreCard(card, spend({ online: 20000 }), realistic(["amazon-pay"])).annual_gross_inr).toBe(12000);
+  });
+
+  test("category-wide accelerator (no merchant/MCC/channel) still covers the whole bucket", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [{ category: "dining", canonical_categories: ["dining"], multiplier: 0, effective_rate: 5 }],
+    });
+    // Not narrow → f = 1 even in realistic mode → same as optimistic.
+    const real = scoreCard(card, spend({ dining: 20000 }), realistic([]));
+    expect(real.annual_gross_inr).toBe(12000);
+    expect(real.merchant_rates_uncounted).toBeUndefined();
+  });
+
+  test("online-any channel class is treated as category-wide, not narrow", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "any online",
+          canonical_categories: ["online"],
+          multiplier: 0,
+          effective_rate: 5,
+          channel: { class: "online-any", merchants: ["online-any"] },
+        },
+      ],
+    });
+    expect(scoreCard(card, spend({ online: 20000 }), realistic(["online-any"])).annual_gross_inr).toBe(12000);
+  });
+
+  test("mcc_exclusions zero a single-MCC-family bucket (fuel) in scoring, not just disclaimer", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      mcc_exclusions: ["5541", "5542"],
+    });
+    const score = scoreCard(card, spend({ fuel: 20000, dining: 10000 }));
+    expect(score.buckets.find((b) => b.category === "fuel")!.monthly_value_inr).toBe(0);
+    expect(score.annual_gross_inr).toBe(1200); // only dining 1% earns
+  });
+
+  test("mcc_exclusions 6513 zeroes the rent bucket", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      mcc_exclusions: ["6513"],
+    });
+    const score = scoreCard(card, spend({ rent: 30000, online: 10000 }));
+    expect(score.buckets.find((b) => b.category === "rent")!.monthly_value_inr).toBe(0);
+    expect(score.annual_gross_inr).toBe(1200); // only online 1%
   });
 });
 

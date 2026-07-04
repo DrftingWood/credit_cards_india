@@ -295,7 +295,7 @@ describe("recommend — no channel selected blocks channel-locked accelerators (
     }
   });
 
-  test("selecting a shopping channel unlocks its channel-locked online rate", async () => {
+  test("selecting a shopping channel makes a narrow co-brand rate eligible (then A2 handles its share)", async () => {
     const { cards, programsById } = await loadDataset();
     const spend = { online: "gt-30k", travel: "0", dining: "0", groceries: "0", fuel: "0" } as const;
     const noChannel = recommend(cards, programsById, basePayload({ monthly_spend: spend }), 200);
@@ -309,15 +309,15 @@ describe("recommend — no channel selected blocks channel-locked accelerators (
       200,
     );
 
-    const online = (r: (typeof withAmazon)[number] | undefined) =>
-      r?.per_category.find((pc) => pc.category === "online");
-
-    // icici-amazon-pay carries a channel-locked online accelerator on the amazon-pay token.
-    const lockedOff = online(noChannel.find((r) => r.card.id === "icici-amazon-pay"));
-    const lockedOn = online(withAmazon.find((r) => r.card.id === "icici-amazon-pay"));
-    expect(lockedOff?.basis).toBe("general"); // no channel → falls back to base/general
-    expect(lockedOn?.basis).toBe("channel-locked"); // amazon selected → accelerator fires
-    expect(lockedOn!.inr_used_for_rank).toBeGreaterThan(lockedOff!.inr_used_for_rank);
+    // icici-amazon-pay carries a channel-locked online accelerator on the amazon-pay
+    // token. Not opting in → the channel is unsatisfied and the rate simply doesn't
+    // apply. Opting in → the channel is satisfied, so A2's applicability logic kicks
+    // in; with no authored share the rate is recognised-but-uncounted and flagged.
+    const off = noChannel.find((r) => r.card.id === "icici-amazon-pay");
+    const on = withAmazon.find((r) => r.card.id === "icici-amazon-pay");
+    expect(off?.base_score.merchant_rates_uncounted).toBeUndefined();
+    expect(on?.base_score.merchant_rates_uncounted).toBe(true);
+    expect(on!.caveats.join(" ")).toMatch(/specific merchants\/portals/);
   });
 });
 

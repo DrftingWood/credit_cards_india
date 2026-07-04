@@ -127,6 +127,8 @@ export interface AcceleratedReward {
   cycle?: Cycle;
   merchants?: string[];
   mcc_list?: string[];
+  /** 0-100: share of a broad bucket that routes through this accelerator for an opted-in user (A2). Optional override; the recommender derives a conservative default when absent. */
+  applicability_pct?: number | null;
   card_attributable_rate?: number | null;
   card_attributable_per_inr?: number | null;
   stacks_with_program?: boolean;

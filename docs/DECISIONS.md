@@ -256,6 +256,47 @@ definition). Cashback rates on a ₹100 basis coincide with percent — which
 is why the regression survived a cashback-only test suite; the suite now
 carries points-card fixtures that fail under a percent reading.
 
+### D-18. Merchant/MCC/co-brand applicability is authored, never invented (A2)
+
+Broad wizard buckets (online, dining, travel, …) must not earn a narrow
+merchant/MCC/co-brand accelerator's rate across the *whole* bucket — a user's
+"online shopping" is not all Amazon. But the dataset holds no per-merchant spend
+distribution, so there is no honest way to *derive* what fraction of a bucket
+routes through a given accelerator.
+
+Decision: applicability is **author-supplied or absent — we never fabricate a
+fraction.**
+
+- The schema carries an optional `accelerated[].applicability_pct` (0–100). When
+  authored from evidence, the recommender applies the elevated rate to that
+  share of the bucket and the base rate to the remainder.
+- A **category-wide** accelerator (no `merchants`/`mcc_list`, or a channel of
+  class `online-any`/`physical`) covers the whole bucket — that is the
+  accelerator's own definition, not a guess.
+- A **narrow** accelerator (specific `merchants`, `mcc_list`, or a merchant-class
+  channel) with no authored `applicability_pct` is **ranked at the base rate
+  only** and flagged (`CardScore.merchant_rates_uncounted`, plus a user-facing
+  caveat). We do not credit a narrow rate across a broad bucket on a made-up
+  share.
+- The optimistic `/calculator` (no `applyApplicability` in context) still treats
+  the whole bucket as eligible — it answers "best case if all this spend
+  qualifies"; `/recommend` sets `applyApplicability: true` for realism.
+
+Rejected alternative: a per-channel-class table of default fractions (cobrand
+0.4, portal 0.5, fuel 0.85, …). Those numbers had no evidentiary basis; a table
+of six fabricated constants is worse than one honest "unknown → base only".
+`applicability_pct` is the migration path to replace "unknown" with sourced
+values per card.
+
+### D-19. `mcc_exclusions` reduce score, not just disclaimers (A2)
+
+When a card excludes an MCC family that *defines* a whole calculator bucket, the
+bucket earns zero — not merely a footnote. The mapping uses standard ISO 18245
+codes already present in the data's `mcc_exclusions`: `5541`/`5542`/`5983`/`5172`
+→ fuel, `6513` → rent, `4900` → utilities. Multi-MCC buckets (online, dining,
+travel) are *not* zeroed by a single excluded code, since one excluded MCC does
+not cover the bucket.
+
 ### D-17. Build pipeline is pure Node
 
 `site/scripts/prebuild.mjs` runs `gen-types.mjs` then `build.mjs`. No

@@ -414,6 +414,12 @@
                 "type": "array",
                 "items": { "type": "string", "pattern": "^[0-9]{4}$" }
               },
+              "applicability_pct": {
+                "type": ["number", "null"],
+                "minimum": 0,
+                "maximum": 100,
+                "description": "Share (0-100) of a broad spend bucket that plausibly routes through this accelerator's merchant/MCC/channel, for a user who has opted into it. Used by the realistic recommender so a merchant- or co-brand-specific rate is not applied to the entire online/dining/travel bucket. When omitted, the recommender derives a conservative default from merchants/mcc_list/channel class; the optimistic /calculator ignores it (treats the whole bucket as eligible)."
+              },
               "card_attributable_rate": {
                 "type": ["number", "null"],
                 "minimum": 0,

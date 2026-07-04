@@ -48,8 +48,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.5
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.25
     accelerated:
       - category: travel-bookings
         canonical_categories: [travel]
@@ -66,13 +66,16 @@ rewards:
       - emi
     mcc_exclusions: ['6513']
     redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-        constraints: "Instant discount at EMT checkout; general cashback as statement credit."
+      - type: voucher
+        rate_inr_per_unit: 0.25
+        constraints: "Redeem on the 360 Rewards portal for vouchers/products; cannot redeem against outstanding balance."
+        program: Standard Chartered 360 Rewards (vouchers)
     source:
       url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: "Corrected 2026-07-05: 1 RP = Rs 0.25 (voucher only), not Rs 1.0. Card's main value is its direct EaseMyTrip discounts, not point value."
 benefits:
   - effective_from: 2022-09-01
     effective_until: null
@@ -110,5 +113,5 @@ application:
   apply_url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, travel, easemytrip, entry, cashback]

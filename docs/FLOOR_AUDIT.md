@@ -13,16 +13,20 @@ realized 0.22 vs 0.25). This is the intended "midpoint after friction" conventio
 `statement-credit` rates in the data equal the catalogue rate and may themselves be optimistic, so
 the "floor" is soft. **Do not mass-change these** — it would remove realistic friction.
 
-### B. Large-gap outliers — VERIFY & FIX (~5 cards)
-`realized` ≥40% below a claimed **₹1.0** statement-credit/cashback floor. Either `realized` is too
-low OR the ₹1.0 floor rate is wrong. Needs the true per-point value:
-- `icici/times-black` — realized 0.5 vs statement-credit 1.0
-- `onecard/metal` — realized 0.4 vs statement-credit 1.0
-- `standard-chartered/rewards` — realized 0.4 vs statement-credit 1.0
-- `standard-chartered/easemytrip` — realized 0.5, face 0.5, cash floor 1.0 (face also below floor)
-- `indusind/eazydiner-platinum` — realized 0.5 vs statement-credit 1.0
+### B. Large-gap outliers — VERIFIED & FIXED (2026-07-05)
+Verification showed that for most, **the ₹1.0 floor rate was the bug** (the point is structurally
+worth far less), not `realized`:
+- `onecard/metal` — **FIXED**: 1 pt = ₹0.10 fixed (was face 1.0 / realized 0.4, 10x overstated).
+- `indusind/eazydiner-platinum` — **FIXED**: ₹0.20, dining-locked voucher (was 1.0 / 0.5; type also
+  corrected cashback-bank → voucher).
+- `standard-chartered/easemytrip` — **FIXED**: 1 RP = ₹0.25 voucher-only (was 1.0 statement-credit /
+  0.5; card's real value is its direct discounts, not points).
+- `icici/times-black` — **FIXED**: statement-credit rate 1.0 → ₹0.40 (₹1.0 only holds for
+  travel/vouchers); face 1.0 / realized 0.5 kept as the travel-best / blend.
+- `standard-chartered/rewards` — **DEFERRED**: ambiguous whether this row is the Ultimate card
+  (₹1.0 voucher) or the generic SC Rewards point (₹0.25). Left unchanged pending card-identity check.
 
-Borderline (small gap, likely fine): `hdfc/tata-neu-plus` (0.9 vs 1.0), `tata-neu-infinity` (0.95 vs 1.0).
+Borderline (small gap, left as-is): `hdfc/tata-neu-plus` (0.9 vs 1.0), `tata-neu-infinity` (0.95 vs 1.0).
 
 ### C. Missing `realized` — POPULATE (~22 cards)
 `realized` absent (heterogeneous — needs per-card judgement, not a batch default):

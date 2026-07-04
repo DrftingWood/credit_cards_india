@@ -49,8 +49,8 @@ rewards:
     base:
       rate: 1
       per_inr: 50
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.4
+      unit_value_inr: 0.1
+      unit_value_inr_realized: 0.1
     accelerated:
       - category: top-2-categories-monthly
         multiplier: 5
@@ -68,16 +68,18 @@ rewards:
     mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
-        rate_inr_per_unit: 1.0
+        rate_inr_per_unit: 0.1
         min_units: 100
         constraints: "In-app redemption at 1 point = ₹1."
       - type: catalog
         program: OneCard catalogue
-        rate_inr_per_unit: 1.0
+        rate_inr_per_unit: 0.1
     source:
       url: https://www.getonecard.app/card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Corrected 2026-07-05: 1 OneCard point = Rs 0.10 fixed (statement credit vs spends), not Rs 1.0. Face/realized were both overstated 10x.'
 benefits:
   - effective_from: 2020-07-01
     effective_until: null
@@ -120,5 +122,5 @@ application:
   apply_url: https://www.getonecard.app/card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [lifetime-free, metal, fintech, low-forex, points]

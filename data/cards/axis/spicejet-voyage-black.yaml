@@ -57,6 +57,9 @@ rewards:
         cap_unit: points
         cycle: annual
         merchants: [spicejet]
+        channel:
+          class: cobrand-merchant
+          merchants: [spicejet]
         notes: "14 SpiceClub Points per ₹100 on SpiceJet mobile app & website bookings (Axis card earn + SpiceClub membership earn combined)."
       - category: online-food-bills-entertainment
         canonical_categories: [dining, utilities, entertainment]

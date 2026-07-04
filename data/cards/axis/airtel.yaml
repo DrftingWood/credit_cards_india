@@ -58,6 +58,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [airtel-thanks-app]
+        channel:
+          class: cobrand-merchant
+          merchants: [airtel-thanks-app]
         notes: "25% cashback on Airtel bill payments (mobile, DTH, broadband) via Airtel Thanks app."
       - category: preferred-partners-zomato-blinkit-district
         canonical_categories: [dining, groceries, entertainment]

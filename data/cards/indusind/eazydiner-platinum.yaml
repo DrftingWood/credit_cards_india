@@ -59,6 +59,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [eazydiner]
+        channel:
+          class: food-delivery
+          merchants: [eazydiner]
         notes: "15% value-back as EazyPoints on dining via EazyDiner."
       - category: dining-other
         canonical_categories: [dining]

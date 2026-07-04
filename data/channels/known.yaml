@@ -32,6 +32,8 @@ cobrand-merchant:
   - snapdeal
   - uni-store
   - scapia-app
+  - spicejet
+  - airtel-thanks-app
 
 third-party-ota:
   - mmt

@@ -308,3 +308,39 @@ Python required at deploy time. `scripts/validate.py` only runs in CI.
 - `loyalty_programs.json`
 - `index.json` — aggregate counts
 - `category_rules.json` — surfaced from `scripts/category_rules.yaml`
+
+## Schema
+
+### D-20. Network variants: one file per *materially different* variant
+
+A card issued on more than one network (Visa/Mastercard/RuPay/Amex/Diners) is
+common in India. The schema is one-product-per-file with a single `network` +
+optional `network_tier`. Decision on when a second network becomes a second file:
+
+- **Default — one file.** If the alternate network does not change any *scored*
+  term (earn rate, caps, fees, forex, lounge/benefit mechanics), keep a single
+  file keyed by the primary network and note the alternate in `notes`. Most
+  Visa↔Mastercard pairs fall here.
+- **Split into a separate file** when the alternate network materially changes a
+  scored term. The archetype is a **RuPay-UPI variant** — extra earn on UPI
+  spend, different caps — which is effectively a different product. The variant
+  gets its own `id`/slug with a network suffix (`<base>-rupay`, `<base>-amex`)
+  and reuses every existing mechanism (dated records, applicability, caps); the
+  base file's `notes` point at it. This matches what the data already does (e.g.
+  `data/cards/hdfc/tata-neu-infinity.yaml` notes "the RuPay variant is tracked as
+  a separate card if added").
+- **No `variants[]` schema array.** A nested variant array would complicate the
+  effective-dated model, the calculator, and the site for a handful of cards. The
+  split-on-material-difference rule is strictly simpler and needs no schema churn.
+
+Rejected: (a) always-separate — explodes the catalogue with near-duplicate
+Visa/Mastercard files; (b) a `variants[]` field — schema/calculator/site churn
+for little gain.
+
+Follow-up migrations (tracked in `docs/PORTFOLIO-GAPS.md`):
+- **Open** — HDFC Tata Neu Infinity/Plus RuPay-UPI variants: materially different
+  earn → candidates for `-rupay` files (currently noted in the Visa files).
+- **Open** — ICICI Coral/Rubyx/Sapphiro Amex variants: verify whether lounge/MCC
+  terms differ materially; split only if they do.
+- **Closed** — cards that merely note an alternate network with identical scored
+  terms stay single-file (the default above).

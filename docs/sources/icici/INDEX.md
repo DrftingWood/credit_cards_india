@@ -29,3 +29,11 @@ Index of the local `_manifest.json` for `docs/sources/icici/`. Generated from th
 | rubyx | [page](https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card) | 12 |
 | sapphiro | [page](https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card) | 10 |
 | times-black | [page](https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card) | 5 |
+
+## Low-text PDFs (OCR / manual review required)
+
+Flagged by `docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md` and recorded under
+`_low_text_pdfs` in `_manifest.json` — do **not** treat as text-extractable evidence:
+
+- `_shared/voucher-redemption-manual-2.pdf` — extraction produced only ~7 text
+  characters from the first 8 pages (image-heavy). Needs OCR or manual reading.

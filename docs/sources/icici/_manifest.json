@@ -1,4 +1,12 @@
 {
+  "_low_text_pdfs": [
+    {
+      "path": "_shared/voucher-redemption-manual-2.pdf",
+      "reason": "extraction produced only ~7 text characters from the first 8 pages (image-heavy / extraction-hostile)",
+      "action": "OCR or manual review before using as text evidence",
+      "flagged_in": "docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md"
+    }
+  ],
   "emeralde-private-metal": {
     "path": "/personal-banking/cards/credit-card/emeralde-private-metal-credit-card",
     "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card",

@@ -46,3 +46,11 @@ Index of the local `_manifest.json` for `docs/sources/axis/`. Generated from the
 | vistara | [page](https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card) | 6 |
 | vistara-infinite | [page](https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-infinite-credit-card) | 7 |
 | vistara-signature | [page](https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card) | 5 |
+
+## Low-text PDFs (OCR / manual review required)
+
+Flagged by `docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md` and recorded under
+`_low_text_pdfs` in `_manifest.json` — do **not** treat as text-extractable evidence:
+
+- `flipkart/flipkart-axis-bank-credit-card-preferred-merchants.pdf` — extraction
+  produced only ~5 text characters (image-heavy). Needs OCR or manual reading.

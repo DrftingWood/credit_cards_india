@@ -1,4 +1,12 @@
 {
+  "_low_text_pdfs": [
+    {
+      "path": "flipkart/flipkart-axis-bank-credit-card-preferred-merchants.pdf",
+      "reason": "extraction produced only ~5 text characters (image-heavy / extraction-hostile)",
+      "action": "OCR or manual review before using as text evidence",
+      "flagged_in": "docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md"
+    }
+  ],
   "ace": {
     "slug": "axis-bank-ace-credit-card",
     "url": "https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card",

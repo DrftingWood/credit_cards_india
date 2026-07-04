@@ -45,7 +45,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/6e-rewards-xl-indigo-hdfc-bank-credit-card/fees-and-charges
+      url: https://www.hdfc.bank.in/credit-cards/6e-rewards-xl-indigo-credit-card
       retrieved_on: 2026-04-22
       notes: "Joining + annual fee ₹1,500 effective 2022-11-07 per HDFC's own fee page and Paisabazaar; forex markup 2.5% (lower than the base 6E Rewards variant at 3.5%)."
 

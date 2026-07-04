@@ -37,7 +37,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/indianoil-hdfc-bank-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
       retrieved_on: 2026-04-15
 
 rewards:
@@ -77,7 +77,7 @@ rewards:
         rate_inr_per_unit: 0.96
         constraints: "Redeemable as fuel at IOC outlets via XtraRewards programme (1 FP ≈ ₹0.96 of fuel)."
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/indianoil-hdfc-bank-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
       retrieved_on: 2026-06-12
       notes: "2026-06 corrections: fuel cap is 150 FP/mo steady-state (250 only first 6 months); non-fuel accelerators capped 100 FP/mo each (were wrongly unlimited)."
 
@@ -93,7 +93,7 @@ benefits:
       cycle: statement
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/indianoil-hdfc-bank-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -106,7 +106,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/indianoil-hdfc-bank-credit-card
+  apply_url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
 
 metadata:
   last_verified_on: 2026-06-12

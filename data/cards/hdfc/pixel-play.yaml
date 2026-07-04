@@ -35,7 +35,7 @@ fees:
     gst_applicable: true
     notes: "RuPay variant supports UPI linkage. Joining fee of ₹500 is also waived on ₹20,000 spend within 90 days of card issuance (separate from the annual-fee waiver)."
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
       retrieved_on: 2026-07-03
 
 rewards:
@@ -95,7 +95,7 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
       retrieved_on: 2026-07-03
 
     mcc_exclusions: ['1361', '5172', '5541', '5542', '5983', '9752', '6513', '6540', '7349', '9211', '9222', '9223', '9311', '9399', '9402', '9405', '9950']
@@ -114,7 +114,7 @@ benefits:
       - name: Digital-first card
         description: Fully digital onboarding, no physical card by default; spend categories configurable in PayZapp.
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
       retrieved_on: 2026-04-15
 
 eligibility:
@@ -127,7 +127,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/pixel-credit-card
+  apply_url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
 
 metadata:
   last_verified_on: 2026-07-03

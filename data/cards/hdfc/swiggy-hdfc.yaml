@@ -37,7 +37,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
       retrieved_on: 2026-07-03
 
 rewards:
@@ -84,7 +84,7 @@ rewards:
         rate_inr_per_unit: 1.0
         constraints: "Auto-credited against the card statement balance (w.e.f. 21 Jun 2024). Prior to that, Swiggy Money was redeemable only on the Swiggy app."
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
       retrieved_on: 2026-07-03
       type: issuer-pdf
       confidence: high
@@ -109,7 +109,7 @@ benefits:
     fuel_surcharge_waiver: null
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -122,7 +122,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/swiggy-hdfc-bank-credit-card
+  apply_url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
 
 metadata:
   last_verified_on: 2026-07-03

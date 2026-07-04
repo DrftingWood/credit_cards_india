@@ -35,7 +35,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
       retrieved_on: 2026-07-03
 
 rewards:
@@ -74,7 +74,7 @@ rewards:
         program: HDFC SmartBuy / NetBanking
         rate_inr_per_unit: 0.3
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
       retrieved_on: 2026-07-03
 
     mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
@@ -100,7 +100,7 @@ benefits:
       cycle: statement
     concierge: false
     source:
-      url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
+      url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -113,7 +113,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hdfcbank.com/personal/pay/cards/credit-cards/millennia-credit-card
+  apply_url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
 
 metadata:
   last_verified_on: 2026-07-03

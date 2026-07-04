@@ -1,15 +1,20 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDBI Bank — RuPay/Visa program card (live page redirects; no extractable source)
-#   Verified   : 2026-07-04   Confidence: LOW (unconfirmed)
-#   Values are RuPay/Visa program-standard estimates; the live card page redirects
-# to the bank homepage post-.bank.in migration, so figures are NOT source-confirmed.
+#   Source     : IDBI Bank issuer PDFs — Key Fact Statement, MITC & Winnings
+#                Card Usage Guide (archived under docs/sources/idbi/winnings/).
+#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Network/tier, annual fee, spend waiver, finance charge, forex markup, base
+#   reward rate and fuel-surcharge terms are confirmed against the issuer KFS/MITC.
+#   Prior record modelled this as Visa Platinum with a Rs 999 fee — the issuer
+#   catalogue lists it as "Winnings Select (RuPay)" and the KFS states Rs 899.
+#   Lounge access is the NPCI RuPay Select program benefit (issuer PDF defers
+#   count details to npci.org.in).
 # ---------------------------------------------------------------------------
 id: idbi-winnings
 name: IDBI Bank Winnings Credit Card
 issuer: idbi
-network: visa
-network_tier: platinum
+network: rupay
+network_tier: select
 tier: mid
 card_type: credit
 co_brand: null
@@ -21,19 +26,30 @@ fees:
   - effective_from: 2021-01-01
     effective_until: null
     joining_fee_inr: 0
-    annual_fee_inr: 999
+    annual_fee_inr: 899
     fee_waiver:
-      spend_inr: 120000
+      spend_inr: 90000
       cycle: annual
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.49
+    finance_charge_monthly_pct: 3.40
     cash_advance_fee:
       pct: 2.5
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.idbi.bank.in/credit-card-winnings.aspx
-      retrieved_on: 2026-07-03
+      url: https://www.idbi.bank.in/credit-card.aspx
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/idbi/winnings/key-fact-statement.pdf
+        - docs/sources/idbi/winnings/MITC-CC.pdf
+      fields_verified:
+        - fees.annual_fee_inr
+        - fees.fee_waiver
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+      notes: "IDBI KFS: Winnings annual fee ₹899 (waived on ₹90,000 preceding-year spend); finance charge 3.40% p.m.; cross-currency mark-up 3.5%."
 
 rewards:
   - effective_from: 2021-01-01
@@ -57,28 +73,45 @@ rewards:
         program: IDBI Delight
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idbi.bank.in/credit-card-winnings.aspx
-      retrieved_on: 2026-07-03
+      url: https://www.idbi.bank.in/credit-card.aspx
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/idbi/winnings/Winnings-Card-Usage-Guide.pdf
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+      notes: "Winnings Card Usage Guide: 2 Delight Points per ₹100 spent."
 
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 4
-        cycle: annual
+        visits_per_cycle: 2
+        cycle: quarterly
         guests_per_visit: 0
-        via: [visa]
+        via: [rupay]
+        notes: "NPCI RuPay Select program lounge access; issuer PDF defers visit details to npci.org.in."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
-      cap_per_cycle_inr: null
+      cap_per_cycle_inr: 400
       cycle: monthly
     concierge: false
     source:
-      url: https://www.idbi.bank.in/credit-card-winnings.aspx
-      retrieved_on: 2026-07-03
+      url: https://www.idbi.bank.in/credit-card.aspx
+      retrieved_on: 2026-07-04
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/idbi/winnings/Winnings-Card-Usage-Guide.pdf
+      fields_verified:
+        - fuel_surcharge_waiver.pct
+        - fuel_surcharge_waiver.cap_per_cycle_inr
+      notes: "Usage Guide: 1% fuel-surcharge waiver on ₹400–₹4,000 transactions, max ₹400/month. Lounge via NPCI RuPay Select."
 
 eligibility:
   min_age: 21
@@ -90,8 +123,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idbi.bank.in/credit-card-winnings.aspx
+  apply_url: https://www.idbi.bank.in/credit-card.aspx
 
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, lounge]
+  last_verified_on: 2026-07-04
+  tags: [mid, points, lounge, rupay-select]

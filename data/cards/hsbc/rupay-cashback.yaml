@@ -53,10 +53,10 @@ rewards:
         canonical_categories: [dining, groceries]
         multiplier: 10
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 400
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "10% cashback on dining, food delivery & grocery; 1% on all other eligible spends."
+        notes: "10% cashback on dining, food delivery & grocery; 1% on all other eligible spends. Total monthly cashback (10% + 1% combined) is capped at ₹400."
     exclusions:
       - fuel
       - wallet-loads
@@ -64,15 +64,25 @@ rewards:
       - insurance-premiums
       - emi
     mcc_exclusions: ['6513']
+    reward_cap:
+      max_units: 400
+      cap_unit: cashback-inr
+      cycle: monthly
     capping_rules:
-      - "10% accelerated cashback (dining/food/grocery) subject to monthly caps"
+      - "Total cashback (10% accelerated + 1% base) capped at ₹400 per statement cycle."
     redemption:
       - type: statement-credit
         program: Cashback
         rate_inr_per_unit: 1.0
     source:
       url: https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-04
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - rewards.accelerated.cap_per_cycle
+        - rewards.reward_cap
+      notes: "HSBC issuer page + paisabazaar/cardinsider (2026): 10% on dining/grocery/food + 1% other, total capped at ₹400/month. Prior record left the cap 'unlimited'."
 
 benefits:
   - effective_from: 2024-01-01
@@ -112,5 +122,5 @@ application:
   apply_url: https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-04
   tags: [entry, cashback, dining, groceries, upi, rupay, zero-forex]

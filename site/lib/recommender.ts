@@ -1,4 +1,4 @@
-import type { EnrichedCard, LoyaltyProgram, BenefitRecord } from "./types";
+import type { EnrichedCard, LoyaltyProgram, BenefitRecord, LoungeDetails } from "./types";
 import {
   rankCards as rankByValue,
   scoreCard,
@@ -166,11 +166,42 @@ function passesIncomeFilter(card: EnrichedCard, band: IncomeBand | null): boolea
 
 // ─── benefits valuation ──────────────────────────────────────────────────
 
-function loungeValue(b: BenefitRecord | null, pref: LoungePref | null): number {
-  if (!b?.lounge_access || !pref || pref === "none") return 0;
+const LOUNGE_CYCLE_MONTHS: Record<string, number> = {
+  annual: 12,
+  quarterly: 3,
+  monthly: 1,
+  statement: 1,
+  "per-txn": 1,
+};
+
+/**
+ * Prior-cycle spend gate. Many post-2024 Axis/HDFC/ICICI/SBI lounge programs
+ * only hand out complimentary visits if the cardholder spent `spend_threshold_inr`
+ * in the previous `spend_threshold_cycle` (usually ₹50k–₹1L/quarter).
+ *
+ * We don't know the user's real prior-cycle spend, so we model steady state:
+ * if their projected spend over the threshold's cycle clears the bar, they'll
+ * sustain the unlock; otherwise they won't. First-cycle grace visits (some cards
+ * give the first quarter free) are one-off and immaterial to an annualised
+ * ranking, so we don't credit them separately — the conservative default the
+ * rest of the recommender uses (see A1/A2).
+ */
+function loungeThresholdMet(det: LoungeDetails | undefined, monthlyTotalSpend: number): boolean {
+  if (!det || det.spend_threshold_inr == null) return true;
+  const months = LOUNGE_CYCLE_MONTHS[det.spend_threshold_cycle ?? "quarterly"] ?? 3;
+  return monthlyTotalSpend * months >= det.spend_threshold_inr;
+}
+
+function loungeValue(
+  b: BenefitRecord | null,
+  pref: LoungePref | null,
+  monthlyTotalSpend: number,
+): { inr: number; thresholdUnmet: boolean } {
+  if (!b?.lounge_access || !pref || pref === "none") return { inr: 0, thresholdUnmet: false };
   const dom = b.lounge_access.domestic;
   const intl = b.lounge_access.international;
   let inr = 0;
+  let thresholdUnmet = false;
 
   function visitsAnnual(v: number | "unlimited" | undefined, cycle: string | undefined): number {
     if (v === undefined) return 0;
@@ -182,21 +213,33 @@ function loungeValue(b: BenefitRecord | null, pref: LoungePref | null): number {
     return v;
   }
 
+  // Value one lounge scope's visits, gated by its prior-cycle spend threshold.
+  // Only flags `thresholdUnmet` when the gate actually removed real visits, so a
+  // scope that offers 0 visits anyway doesn't produce a spurious caveat.
+  function scopeValue(det: LoungeDetails | undefined, valuePerVisit: number, capAt24 = false): number {
+    if (!det) return 0;
+    let visits = visitsAnnual(det.visits_per_cycle, det.cycle);
+    if (capAt24) visits = Math.min(visits, 24);
+    if (visits <= 0) return 0;
+    if (!loungeThresholdMet(det, monthlyTotalSpend)) {
+      thresholdUnmet = true;
+      return 0;
+    }
+    return visits * valuePerVisit;
+  }
+
   if (pref === "domestic-only") {
-    if (dom) inr += visitsAnnual(dom.visits_per_cycle, dom.cycle) * LOUNGE_VALUE_DOMESTIC_INR;
+    inr += scopeValue(dom, LOUNGE_VALUE_DOMESTIC_INR);
   } else if (pref === "domestic-unlimited") {
     // Stronger preference, but a card offering 16 visits/yr is still ~16 visits
     // of real value — don't zero it out. Cap at the unlimited proxy (24/yr) so
     // a card with a nominal "unlimited" doesn't get rewarded beyond the cap.
-    if (dom) {
-      const visits = Math.min(visitsAnnual(dom.visits_per_cycle, dom.cycle), 24);
-      inr += visits * LOUNGE_VALUE_DOMESTIC_INR;
-    }
+    inr += scopeValue(dom, LOUNGE_VALUE_DOMESTIC_INR, true);
   } else if (pref === "international") {
-    if (dom) inr += visitsAnnual(dom.visits_per_cycle, dom.cycle) * LOUNGE_VALUE_DOMESTIC_INR;
-    if (intl) inr += visitsAnnual(intl.visits_per_cycle, intl.cycle) * LOUNGE_VALUE_INTERNATIONAL_INR;
+    inr += scopeValue(dom, LOUNGE_VALUE_DOMESTIC_INR);
+    inr += scopeValue(intl, LOUNGE_VALUE_INTERNATIONAL_INR);
   }
-  return inr;
+  return { inr, thresholdUnmet };
 }
 
 function milestonesValue(b: BenefitRecord | null, annualSpendInr: number): number {
@@ -345,7 +388,8 @@ export function recommend(
     const general = scoreCard(card, spend, ctxGeneral);
 
     const benefits = card.current_benefits;
-    const lounge = loungeValue(benefits, payload.lifestyle.lounge_pref);
+    const loungeRes = loungeValue(benefits, payload.lifestyle.lounge_pref, monthlyTotal);
+    const lounge = loungeRes.inr;
     const milestones = milestonesValue(benefits, annualSpend);
     const welcome = welcomeValue(benefits, monthlyTotal);
     const premiumExtras = premiumExtrasValue(benefits, payload.goals, payload.lifestyle.recurring);
@@ -372,6 +416,11 @@ export function recommend(
 
     const explanations = buildExplanations(card, payload, perCategory, primary, programs);
     const caveats = buildCaveats(card, payload, primary, monthlyTotal);
+    if (loungeRes.thresholdUnmet) {
+      caveats.push(
+        "Complimentary lounge access here requires prior-cycle spend you're not projected to reach, so its value is excluded from ranking.",
+      );
+    }
 
     return {
       card,

@@ -139,6 +139,63 @@ describe("recommend — deterministic tie-breaking (B4-SF9)", () => {
   });
 });
 
+describe("recommend — lounge value gated by prior-cycle spend threshold (A3)", () => {
+  test("Axis IndiGo domestic lounge (₹50k/quarter gate) is NOT credited at low spend", async () => {
+    const { cards, programsById } = await loadDataset();
+    const low = recommend(
+      cards,
+      programsById,
+      basePayload({
+        goals: ["lounge"],
+        lifestyle: { lounge_pref: "domestic-only", recurring: [] },
+        // ₹2.5k/mo → ₹7.5k/quarter, well under the ₹50k/quarter unlock.
+        monthly_spend: { online: "lt-5k", travel: "0", dining: "0", groceries: "0", fuel: "0" },
+      }),
+      200,
+    );
+    const axis = low.find((r) => r.card.id === "axis-indigo");
+    expect(axis).toBeDefined();
+    expect(axis!.breakdown.lounge_inr).toBe(0);
+    expect(axis!.caveats.join(" ")).toMatch(/prior-cycle spend/i);
+  });
+
+  test("Axis IndiGo domestic lounge IS credited once projected spend clears the gate", async () => {
+    const { cards, programsById } = await loadDataset();
+    const high = recommend(
+      cards,
+      programsById,
+      basePayload({
+        goals: ["lounge"],
+        lifestyle: { lounge_pref: "domestic-only", recurring: [] },
+        // ₹80k/mo → ₹240k/quarter, comfortably over the ₹50k/quarter unlock.
+        monthly_spend: { online: "gt-30k", travel: "gt-30k", dining: "0", groceries: "0", fuel: "0" },
+      }),
+      200,
+    );
+    const axis = high.find((r) => r.card.id === "axis-indigo");
+    expect(axis).toBeDefined();
+    expect(axis!.breakdown.lounge_inr).toBeGreaterThan(0);
+    expect(axis!.caveats.join(" ")).not.toMatch(/prior-cycle spend/i);
+  });
+
+  test("threshold-free lounge cards (Amex Platinum Travel) are unaffected by the gate", async () => {
+    const { cards, programsById } = await loadDataset();
+    const results = recommend(
+      cards,
+      programsById,
+      basePayload({
+        goals: ["lounge"],
+        lifestyle: { lounge_pref: "domestic-unlimited", recurring: [] },
+        monthly_spend: { online: "lt-5k", travel: "0", dining: "0", groceries: "0", fuel: "0" },
+      }),
+      200,
+    );
+    const plat = results.find((r) => r.card.id === "amex-platinum-travel");
+    expect(plat).toBeDefined();
+    expect(plat!.breakdown.lounge_inr).toBeGreaterThan(0); // 8 visits/yr, no spend gate
+  });
+});
+
 describe("recommend — no channel selected blocks channel-locked accelerators (A1)", () => {
   test("no brand/portal/airline/food/fuel signal → no result ranks on a channel-locked rate", async () => {
     const { cards, programsById } = await loadDataset();

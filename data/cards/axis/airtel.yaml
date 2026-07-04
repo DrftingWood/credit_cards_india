@@ -75,10 +75,14 @@ rewards:
         canonical_categories: [utilities]
         multiplier: 1
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 250
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "10% cashback on utility bill payments made via the Airtel Thanks app."
+        merchants: [airtel-thanks-app]
+        channel:
+          class: cobrand-merchant
+          merchants: [airtel-thanks-app]
+        notes: "10% cashback on utility/other bill payments made via the Airtel Thanks app (capped ₹250/mo per Airtel value chart) — not on utility spends outside the Airtel Thanks app."
     capping_rules:
       - "25% Airtel bill/recharge cashback capped at twice the base cashback earned in the same statement month."
     exclusions:

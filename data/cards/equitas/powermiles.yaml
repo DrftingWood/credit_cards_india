@@ -1,0 +1,128 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Equitas issuer page (equitas.bank.in PowerMiles) captured via
+#                Playwright + paisabazaar/cardinsider/cardmaven cross-check.
+#   Verified   : 2026-07-05   Confidence: HIGH (issuer page) for forex/lounge/
+#                international/waiver/transfer; MEDIUM for base rate + eligibility.
+#   Eligibility income/age are premium-tier defaults (not individually sourced).
+#   Modelled as the Visa variant (also issued on RuPay); metal card, Blue base tier.
+# ---------------------------------------------------------------------------
+id: equitas-powermiles
+name: Equitas PowerMiles Credit Card
+issuer: equitas
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2025-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 5000
+    fee_waiver:
+      spend_inr: 480000
+      cycle: annual
+      conditions: "First year free; renewal fee waived on spends of Rs 4,80,000 in the previous anniversary year."
+    forex_markup_pct: 2.0
+    gst_applicable: true
+    source:
+      url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
+      retrieved_on: 2026-07-05
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - fees.annual_fee_inr
+        - fees.fee_waiver
+        - fees.forex_markup_pct
+      notes: "Issuer page: annual fee first-year-free, Rs 5,000 + GST renewal waived on Rs 4.8L annual spend; 2% forex markup."
+
+rewards:
+  - effective_from: 2025-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 3
+      per_inr: 100
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.5
+    accelerated:
+      - category: international-spend
+        canonical_categories: [international]
+        multiplier: 3
+        effective_rate: 9
+        effective_per_inr: 100
+        cycle: monthly
+        notes: "3x reward points (9 RP per Rs 100) on all international POS & online transactions — ~4.5% value at 1 RP = Rs 0.50 (Blue base tier)."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: airmiles
+        rate_inr_per_unit: 0.5
+        ratio: "1:1"
+        constraints: "1 RP = 1 Mile/Point, transferable to select airlines/hotels at 1:1 (feature live from Sep-2026); also 1:1 on the Xchange luxury catalogue (Apple, Tanishq, Taj, M&S, The Body Shop)."
+    source:
+      url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
+      retrieved_on: 2026-07-05
+      type: issuer-page
+      confidence: medium
+      fields_verified:
+        - rewards.accelerated.effective_rate
+      notes: "Issuer page confirms 3x on international, 1 RP = Rs 0.50, and 1:1 miles transfer. Base 3 RP/Rs 100 is aggregator-corroborated (paisabazaar/cardinsider)."
+
+benefits:
+  - effective_from: 2025-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+      international:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+    concierge: false
+    other:
+      - name: Club Marriott membership
+        description: "Complimentary Club Marriott membership — discounts on hotel stays, dining and spa."
+      - name: EazyDiner membership
+        description: "Complimentary EazyDiner Prime membership — up to 50% savings + welcome 2,000 EazyPoints, 2X EazyPoints per meal."
+    source:
+      url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
+      retrieved_on: 2026-07-05
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - lounge_access.domestic.visits_per_cycle
+        - lounge_access.international.visits_per_cycle
+      notes: "Issuer page: 2 domestic + 1 international lounge visits per calendar quarter; Club Marriott + EazyDiner memberships; travel insurance (sum not published — omitted rather than estimated)."
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1500000
+  credit_score_min: 750
+  residency: resident-indian
+  notes: "Eligibility income/age are premium-tier defaults, not published on the product page."
+
+application:
+  apply_url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
+
+metadata:
+  last_verified_on: 2026-07-05
+  tags: [premium, points, travel, miles, lounge, metal, forex]

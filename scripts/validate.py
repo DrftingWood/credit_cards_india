@@ -44,6 +44,7 @@ ISSUER_ALLOWED_DOMAINS = {
     "amex": {"americanexpress.com", "www.americanexpress.com"},
     "boi": {"bankofindia.co.in", "www.bankofindia.co.in", "bankofindia.bank.in", "www.bankofindia.bank.in"},
     "canara": {"canarabank.com", "www.canarabank.com", "canarabank.bank.in", "www.canarabank.bank.in"},
+    "equitas": {"equitas.bank.in", "www.equitas.bank.in", "equitasbank.com", "www.equitasbank.com"},
     "au": {"aubank.in", "www.aubank.in", "au.bank.in", "www.au.bank.in"},
     "axis": {"axisbank.com", "www.axisbank.com", "axis.bank.in", "www.axis.bank.in"},
     "hdfc": {"hdfcbank.com", "www.hdfcbank.com", "hdfc.bank.in", "www.hdfc.bank.in"},

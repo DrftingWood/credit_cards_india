@@ -165,6 +165,24 @@ spend-grounded `scoreCard()` core (hardened by the A-series work) is reliable �
 **every flaw above lives in the recommender's proxy-summing layer**, which is
 exactly what the decoupled scorer replaces while reusing `scoreCard()` unchanged.
 
+## Shipped: decoupled scorer is now the live engine (made-up numbers purged)
+
+The prototype is now **in production**. `site/app/recommend` uses
+`scoreDecoupled`; the old `recommend()` engine and its fabricated-value machinery
+were deleted (912 lines):
+- Removed constants: `LOUNGE_VALUE_DOMESTIC/INTERNATIONAL_INR` (₹1,500/₹2,500),
+  `WELCOME_AMORTIZATION_YEARS`, `WELCOME_SPEND_FLOOR_INR_PER_MONTH` (₹17,000),
+  `PROXY_INTL_SPEND_INR_PER_MONTH` (₹15,000); removed helpers `loungeValue`
+  (₹/visit, unlimited→24), `premiumExtrasValue` (₹2,000 concierge / ₹3,000 golf),
+  `welcomeValue` (÷2 amortisation), `forexCost` (₹3.5 default), `milestonesValue`,
+  `recommend()`, `buildExplanations`/`buildCaveats`.
+- `recommender.ts` is now a 33-line payload-types module.
+- The scorer invents **no value or spend number**: it ranks on card rate × user
+  spend − fee; lounge is shown as visit counts, welcome/milestone at data ₹.
+  The only remaining constants are warning-only flag thresholds and the coarse
+  band→₹ mapping (superseded by `exactSpend`; the wizard should collect exact
+  amounts to retire it — F9).
+
 ## Prototype: decoupled scorer (`site/lib/scorer-decoupled.ts`)
 
 A side-by-side prototype (does not touch `recommender.ts`; 4 tests in

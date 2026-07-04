@@ -31,6 +31,7 @@ cobrand-merchant:
   - vistara-direct
   - snapdeal
   - uni-store
+  - scapia-app
 
 third-party-ota:
   - mmt

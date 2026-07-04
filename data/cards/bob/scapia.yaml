@@ -65,7 +65,11 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: statement
-        notes: "20% Scapia Coins on travel bookings (flights, stays, visas, trains, buses) via the Scapia app."
+        merchants: [scapia-app]
+        channel:
+          class: cobrand-merchant
+          merchants: [scapia-app]
+        notes: "20% Scapia Coins on travel bookings (flights, stays, visas, trains, buses) via the Scapia app — only on in-app bookings."
     exclusions:
       - fuel
       - wallet-loads

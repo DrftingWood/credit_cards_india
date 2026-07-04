@@ -56,7 +56,10 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [scapia-app]
-        notes: "10% back on flight and hotel bookings via the Scapia app."
+        channel:
+          class: cobrand-merchant
+          merchants: [scapia-app]
+        notes: "10% back on flight and hotel bookings via the Scapia app — only on in-app bookings."
     exclusions:
       - fuel
       - wallet-loads

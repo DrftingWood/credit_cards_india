@@ -79,13 +79,17 @@ has no outlier bounds or plausibility flags.
 the engine has no cap-sanity defence and no way to distinguish "genuinely uncapped"
 from "cap forgotten in the data".
 
-**Scale (measured):** 66 of 304 active cards (22%) carry an uncapped accelerator
-≥3% effective — 10 at ≥10% (axis-airtel ~25%, bob-scapia ~20%, …). This is partly
-missing caps and partly the D13 BluChip decomposition inflation. It corrupts
-rankings across most spend profiles, so no ranking that trusts these rates is
-reliable until the data is capped/decomposed (D20). The decoupled scorer flags
-the worst (≥8%) but mid-rate offenders (5–8%, e.g. `au-cheq` ~6%) still slip
-through — a lower flag threshold trades false positives for coverage.
+**Scale (measured at audit start):** 66 of 304 active cards (22%) carried an
+uncapped accelerator ≥3% effective. **RESOLVED for recommendable cards (2026-07-05):
+broad-uncapped ≥8% errors on active, non-invite-only cards = 0** (was 66), via:
+(a) channel-gating ~13 co-brand accelerators (Flipkart/Scapia/IndianOil/MMT/
+EazyDiner/SpiceJet/Airtel/AJIO-JioMart/…) so a high rate is narrow-scoped not
+broad; (b) verified caps from issuer T&C + competitor cross-check — `hsbc-rupay-
+cashback` ₹400/mo, `sbi-phonepe-select-black` ₹1,500/₹1,000, `axis-airtel`
+₹250/₹200/₹250; (c) D13 was a false alarm (IndiGo cards already carry
+`card_attributable_rate`). Remaining: sub-8% uncapped rates and a couple of
+invite-only cards (not shown in recommendations) — lower priority. The scorer's
+flag now skips channel-gated rates and reads `card_attributable_rate`.
 
 ### F8. `rank_total_inr` conflates incompatible quantities and time horizons
 It sums: recurring rewards + annual lounge/milestone proxies + a one-time welcome

@@ -101,8 +101,16 @@ tops a foodie query** (F3). Recommendations are not category-matched.
 others (IndiGo co-brands), inflating those cards' rewards 3–4×.
 
 ### F12. Weak income filter + near-duplicate variants
-The income filter keys on tier-default stated incomes (often not real). Near-
-identical variants occupy separate slots (`kotak-cashback-plus` + `-prime`,
+Income filter (measured over 287 active cards):
+- **45 cards (16%) have no stated `income_inr_annual`** → they pass *every* band,
+  including `lt-30k`; income never filters them.
+- The filter tests `band_ceiling >= card_min_income`, i.e. against the **top** of
+  the user's band. A user earning ₹20k/mo (in `lt-30k`, ceiling ₹3.6L) is shown
+  cards requiring up to ₹3.6L income — **over-admission** for anyone below their
+  band's top. (Upside: premium ≥₹5,000-fee cards do *not* leak into `lt-30k` — 0
+  of them pass — so that part of the original concern was overstated.)
+
+Near-identical variants occupy separate slots (`kotak-cashback-plus` + `-prime`,
 `yes-paisabazaar` + `-rupay`, `sbi-pulse` + `-sprint`), halving effective diversity
 in the top 5.
 

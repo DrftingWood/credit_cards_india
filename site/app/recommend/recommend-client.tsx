@@ -4,11 +4,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { EnrichedCard, LoyaltyProgram } from "../../lib/types";
 import {
-  recommend,
-  type RecommendResult,
   type RecommendPayload,
   type IncomeBand,
 } from "../../lib/recommender";
+import { scoreDecoupled, type DecoupledScore } from "../../lib/scorer-decoupled";
 import { BRAND_PREF_TO_CHANNELS } from "../../lib/recommender-constants";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -666,7 +665,7 @@ function ResultsView({
   onReset: () => void;
 }) {
   const results = useMemo(
-    () => recommend(cards, programsById, payload, 5),
+    () => scoreDecoupled(cards, programsById, payload, { topN: 5 }),
     [cards, programsById, payload],
   );
 
@@ -675,9 +674,10 @@ function ResultsView({
       <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
         <h2 className="text-lg font-semibold text-emerald-900">Top picks for you</h2>
         <p className="mt-1 text-sm text-emerald-800">
-          Ranked by net annual value (rewards + lounge + milestones + amortised welcome
-          bonus, less fees and forex). Channel-locked rates assume you book through
-          your selected partners; we also show the &quot;general&quot; value when relevant.
+          Ranked by <strong>net annual rewards</strong> on your spend (card rate × your
+          spend, less the annual fee). Co-brand rates count only for brands you selected.
+          Sign-up bonuses, milestones and lounge access are shown <em>separately</em> —
+          they&apos;re one-off or usage-dependent, so they don&apos;t inflate the ranking.
         </p>
       </div>
 
@@ -689,7 +689,7 @@ function ResultsView({
       ) : (
         <ol className="space-y-3">
           {results.map((r, i) => (
-            <ResultCard key={r.card.id} rank={i + 1} result={r} />
+            <ResultCard key={r.card.id} rank={i + 1} score={r} />
           ))}
         </ol>
       )}
@@ -730,9 +730,11 @@ function ResultsView({
   );
 }
 
-function ResultCard({ rank, result }: { rank: number; result: RecommendResult }) {
-  const r = result;
+function ResultCard({ rank, score }: { rank: number; score: DecoupledScore }) {
+  const r = score;
   const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
+  const visits = (v: number | "unlimited") => (v === "unlimited" ? "unlimited" : Math.round(v));
+  const hasLounge = r.lounge_visits.domestic !== 0 || r.lounge_visits.international !== 0;
   return (
     <li className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
       <div className="flex items-baseline justify-between gap-3">
@@ -749,57 +751,33 @@ function ResultCard({ rank, result }: { rank: number; result: RecommendResult })
           <p className="text-xs text-slate-500">{r.card.issuer_detail?.name ?? r.card.issuer}</p>
         </div>
         <div className="text-right">
-          <div className="text-xl font-semibold text-emerald-700">{inr(r.rank_total_inr)}</div>
-          <div className="text-xs text-slate-500">net /yr</div>
+          <div className="text-xl font-semibold text-emerald-700">{inr(r.net_rewards_inr)}</div>
+          <div className="text-xs text-slate-500">net rewards /yr</div>
         </div>
       </div>
 
-      {r.explanations.length > 0 ? (
-        <ul className="mt-3 space-y-1 text-sm text-slate-700 list-disc list-inside">
-          {r.explanations.map((e, i) => <li key={i}>{e}</li>)}
-        </ul>
-      ) : null}
+      <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-700">
+        <dt>Annual rewards</dt><dd className="text-right">{inr(r.annual_rewards_inr)}</dd>
+        <dt>Annual fee</dt><dd className="text-right">{r.annual_fee_inr > 0 ? `−${inr(r.annual_fee_inr)}` : "₹0"}</dd>
+      </dl>
 
-      {r.per_category.some((p) => p.also_show) ? (
-        <div className="mt-3 rounded-md bg-slate-50 p-3 text-xs text-slate-700">
-          <div className="font-semibold mb-1">If you don&apos;t book on the picked channel:</div>
-          <ul className="space-y-0.5">
-            {r.per_category
-              .filter((p) => p.also_show)
-              .map((p) => (
-                <li key={p.category}>
-                  <span className="capitalize">{p.category}</span>: ranked {inr(p.inr_used_for_rank)}/yr,
-                  but {inr(p.also_show!.general_value_inr)}/yr on general spend.
-                </li>
-              ))}
-          </ul>
+      {/* Separate, honest line items — one-off or usage-dependent, NOT in the rank. */}
+      {(r.first_year_bonus_inr > 0 || r.milestone_value_inr > 0 || hasLounge) ? (
+        <div className="mt-3 rounded-md bg-slate-50 p-3 text-xs text-slate-700 space-y-0.5">
+          <div className="font-semibold mb-1">On top of rewards (shown separately):</div>
+          {r.first_year_bonus_inr > 0 ? <div>• First-year sign-up benefit: <strong>{inr(r.first_year_bonus_inr)}</strong> (one-time)</div> : null}
+          {r.milestone_value_inr > 0 ? <div>• Milestone benefits at your spend: <strong>{inr(r.milestone_value_inr)}</strong>/yr</div> : null}
+          {hasLounge ? (
+            <div>• Lounge access: <strong>{visits(r.lounge_visits.domestic)}</strong> domestic{r.lounge_visits.international !== 0 ? <> + <strong>{visits(r.lounge_visits.international)}</strong> international</> : null} visits/yr</div>
+          ) : null}
         </div>
       ) : null}
 
-      {r.caveats.length > 0 ? (
+      {r.flags.length > 0 ? (
         <ul className="mt-2 space-y-0.5 text-xs text-amber-800 list-disc list-inside">
-          {r.caveats.map((c, i) => <li key={i}>{c}</li>)}
+          {r.flags.map((f, i) => <li key={i}>{f}</li>)}
         </ul>
       ) : null}
-
-      <details className="mt-3">
-        <summary className="cursor-pointer text-xs font-semibold text-slate-600">
-          Score breakdown
-        </summary>
-        <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-700">
-          <dt>Rewards</dt><dd className="text-right">{inr(r.breakdown.rewards_inr)}</dd>
-          <dt>Lounge</dt><dd className="text-right">{inr(r.breakdown.lounge_inr)}</dd>
-          <dt>Milestones</dt><dd className="text-right">{inr(r.breakdown.milestones_inr)}</dd>
-          <dt>Welcome (amortised)</dt><dd className="text-right">{inr(r.breakdown.welcome_inr)}</dd>
-          {r.breakdown.premium_extras_inr > 0 ? (
-            <><dt>Premium extras</dt><dd className="text-right">{inr(r.breakdown.premium_extras_inr)}</dd></>
-          ) : null}
-          <dt>Annual fee</dt><dd className="text-right">−{inr(r.breakdown.annual_fee_inr)}</dd>
-          {r.breakdown.forex_cost_inr > 0 ? (
-            <><dt>Forex cost</dt><dd className="text-right">−{inr(r.breakdown.forex_cost_inr)}</dd></>
-          ) : null}
-        </dl>
-      </details>
     </li>
   );
 }

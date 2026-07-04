@@ -1,3 +1,10 @@
+# Local + CI validation dependencies for scripts/validate.py.
+# Pin the full set so a fresh environment reproduces CI exactly.
 jsonschema[format]>=4.21
+# attrs is a runtime dependency of jsonschema. It is normally installed
+# transitively, but some environments end up with jsonschema present and attrs
+# missing (the blocker recorded against A0). Pinning it explicitly guarantees a
+# reproducible `pip install -r scripts/requirements.txt`.
+attrs>=22.2.0
 PyYAML>=6.0
 rfc3339-validator>=0.1.4

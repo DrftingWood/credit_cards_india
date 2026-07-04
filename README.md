@@ -1,123 +1,131 @@
 # credit_cards_india
 
-An open, versioned dataset of credit cards issued in India — issuer, network, fees, rewards, benefits, and eligibility — with full history of how each card has changed over time.
+An open, versioned dataset of credit cards issued in India: issuer, network,
+fees, rewards, benefits, eligibility, source evidence, and dated history of how
+each card has changed over time.
 
-The dataset is authored as YAML, one file per card, validated by JSON Schema. A consumer-facing site will sit on top of this repo (planned separately).
+The dataset is authored as YAML, one file per card, validated by JSON Schema,
+compiled into `dist/*.json`, and rendered by the Next.js site under `site/`.
 
 ## Layout
 
-```
-schema/                             # JSON Schemas (card, issuer, network, loyalty_program)
+```text
+schema/                             # JSON Schemas
 data/
   networks/                         # visa, mastercard, rupay, amex, diners
   issuers/                          # hdfc, icici, sbi, axis, ...
   cards/<issuer>/<slug>.yaml        # one file per card
-  loyalty_programs/<type>/<id>.yaml # third-party programs (BluChip, Bonvoy, ...)
-  channels/known.yaml               # authoritative merchant token index
+  loyalty_programs/<type>/<id>.yaml # third-party programs
+  channels/known.yaml               # merchant/channel token index
 scripts/
   validate.py                       # JSON Schema + cross-file lints
   new_card.py                       # scaffold a new card file
-  category_rules.yaml               # heuristic regex → canonical bucket map
-  tag_canonical_categories.py       # one-shot tagger using the rules above
+  category_rules.yaml               # regex -> canonical bucket map
+  tag_canonical_categories.py       # one-shot category tagger
 docs/
-  SCHEMA.md                         # field-by-field reference
-  DECISIONS.md                      # architectural decisions (recommender, schema, build)
-  ROADMAP.md                        # open work and migration backlog
-  CONTRIBUTING.md                   # how to add/update a card
-.github/workflows/validate.yml      # CI runs validate.py on every PR
+  README.md                         # documentation map
+  TODO.md                           # canonical agent task board
+  SCHEMA.md                         # schema reference
+  DECISIONS.md                      # architecture decisions
+  ROADMAP.md                        # high-level roadmap themes
+  CONTRIBUTING.md                   # how to add/update cards
+site/                               # Next.js app
+.github/workflows/validate.yml      # CI validation
 ```
 
 ## Status
 
-v1.0 ships the schema + a 10-card pilot deliberately chosen to exercise every schema branch:
+- 317 card YAML files across 24 issuers.
+- Source confidence is tracked in [docs/PROVENANCE.md](docs/PROVENANCE.md).
+- Local PDF evidence lives under `docs/sources/**/*.pdf`; PDFs are intentionally
+  gitignored and must be preserved locally.
+- Current agent task board: [docs/TODO.md](docs/TODO.md).
+- Documentation map: [docs/README.md](docs/README.md).
+- Roadmap themes: [docs/ROADMAP.md](docs/ROADMAP.md).
 
-| Card | Why it's in the pilot |
-| --- | --- |
-| HDFC Infinia | Invite-only, metal, points, super-premium |
-| HDFC Diners Black | Diners network, unlimited lounge/golf |
-| HDFC Regalia Gold | Mainstream premium with spend-threshold benefits |
-| Axis Magnus | Demonstrates effective-dated revision (pre/post 2023 nerf) |
-| Axis Atlas | Miles currency, milestone tiers |
-| Amex Platinum Travel | Amex network, milestone-heavy |
-| SBI Cashback | Cashback currency, online-spend accelerator |
-| ICICI Amazon Pay | Co-branded (ecommerce), lifetime-free |
-| RBL IRCTC | Co-branded (railway), niche |
-| IDFC FIRST Select | Lifetime-free mid-tier, incremental rewards |
-| AU LIT | Customisable-features card (edge case) |
-
-Roadmap:
-
-- **v1.1**: Fill out HDFC, Axis, Amex catalogues end-to-end (~30–40 cards).
-- **v1.2+**: Issuer-by-issuer expansion (SBI, ICICI, IDFC FIRST, Kotak, RBL, AU, IndusInd, Yes, Standard Chartered, HSBC, BoB, Federal, OneCard, smaller issuers).
+Historical pilot and expansion notes have been superseded by the 317-card July
+2026 audit merge. Older audit files remain in `docs/` as evidence, not as the
+current work queue.
 
 ## Contributing
 
-See [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). TL;DR:
+See [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md). Short version:
 
-```
-pip install -r scripts/requirements.txt
+```powershell
+pip install -r scripts/requirements.txt   # pins jsonschema + attrs (reproducible)
 python scripts/new_card.py hdfc millennia "HDFC Bank Millennia Credit Card"
-# fill in the TODOs
-python scripts/validate.py
+python scripts/validate.py                # authoritative cross-file validation
+npm.cmd --prefix site run prebuild         # regenerates dist/*.json
 ```
 
-## Schema and design
+`python scripts/validate.py` is the cross-file gate (issuer/network joins,
+dated-record overlap, channel tokens, `replaces_card` references, source-date
+ordering, category tagging). Run it before `prebuild` so mistakes are caught
+before `dist/*.json` is regenerated. It is the same command CI runs, so a clean
+local run matches CI.
 
-- [`docs/SCHEMA.md`](docs/SCHEMA.md) — field-by-field reference. Source of truth is `schema/*.schema.json`.
-- [`docs/DECISIONS.md`](docs/DECISIONS.md) — architectural decisions for the recommender, loyalty/channel schema, and build pipeline.
-- [`docs/ROADMAP.md`](docs/ROADMAP.md) — open work, migration waves, and validator promotions.
+For site-facing changes, also run:
 
-Fees, rewards, and benefits are modelled as **arrays of effective-dated records** — when an issuer revises an annual fee or reward rate, the old record is closed with `effective_until` and a new record is appended. Site queries like "what was this card's annual fee on 2024-06-01" become a one-line lookup without going through git history.
-
-## Build artifact
-
-The site compiles `data/**/*.yaml` into a flat JSON bundle under `dist/` before rendering. The build step lives inside the Node toolchain:
-
-```
-cd site
-node scripts/build.mjs        # writes ../dist/cards.json, issuers.json, networks.json, index.json
+```powershell
+npm.cmd --prefix site test -- --run
+npm.cmd --prefix site run typecheck
 ```
 
-`site/scripts/prebuild.mjs` auto-runs this before `next dev` / `next build` so you never call it directly in normal use.
+## Schema And Design
 
-`dist/cards.json` is the consumer-friendly form: each card has the full historical arrays **plus** `issuer_detail`, `network_detail`, `current_fees` / `current_rewards` / `current_benefits` (the currently-open records), and a `computed` block with derived fields the site can filter/sort on (`is_active`, `is_lifetime_free`, `headline_rate_pct`, `has_domestic_lounge`, etc.).
+- [docs/README.md](docs/README.md) - documentation map.
+- [docs/TODO.md](docs/TODO.md) - canonical agent task board.
+- [docs/SCHEMA.md](docs/SCHEMA.md) - field-by-field reference.
+- [docs/DECISIONS.md](docs/DECISIONS.md) - architecture decisions.
+- [docs/ROADMAP.md](docs/ROADMAP.md) - roadmap themes.
 
-`dist/index.json` summarises counts by issuer / network / tier / reward currency + tag vocabulary — useful for landing-page badges, filter sidebars, and tag clouds without scanning every card.
+Fees, rewards, and benefits are modeled as arrays of effective-dated records.
+When an issuer revises a fee or reward rate, the old record is closed with
+`effective_until` and a new open record is appended.
 
-`dist/` is git-ignored; the artifact is meant to be regenerated at site-build time. Publish to a GitHub Release if a versioned consumer-facing dump is needed.
+## Build Artifact
+
+The site compiles `data/**/*.yaml` into JSON under `dist/` before rendering:
+
+```powershell
+npm.cmd --prefix site run prebuild
+```
+
+`site/scripts/prebuild.mjs` runs schema type generation, schema validation, and
+the Node data builder. It also runs automatically before `next dev` and
+`next build`.
+
+`dist/cards.json` is the consumer-friendly form. Each card keeps its historical
+arrays plus `issuer_detail`, `network_detail`, `current_fees`,
+`current_rewards`, `current_benefits`, and computed fields used by the site.
+
+`dist/` is gitignored and regenerated at site-build time.
 
 ## Site
 
-The consumer-facing site lives under [`site/`](site/README.md) — Next.js 15 + Tailwind. It reads the build artefact at build time and pre-renders every page.
+The consumer-facing site lives under [site/](site/README.md). It reads the build
+artifact at build time and pre-renders pages.
 
-```
+```powershell
 cd site
 npm install
-npm run dev          # auto-runs site/scripts/prebuild.mjs first
+npm run dev
 ```
 
-`prebuild.mjs` runs `gen-types.mjs` (regenerates `site/lib/generated-types.ts`
-from every JSON Schema), then `validate-schema.mjs` (ajv-checks every YAML
-against its schema — fails the build on missing required fields, invalid
-enums, malformed records), then `build.mjs` (regenerates the `dist/*.json`
-artefacts). Cross-file lints (no-overlap dated arrays, channel-token
-vocabulary, source staleness, etc.) live in `scripts/validate.py` and only
-run in CI on PR — keeping the deploy pipeline Node-only.
+## Deploying To Vercel
 
-### Deploying to Vercel
+The Next.js app lives in `site/`, not the repo root.
 
-The Next.js app lives in `site/`, not at the repo root, so Vercel's framework auto-detection needs to be pointed at it explicitly:
+1. Import the repo in Vercel.
+2. Set Project Settings -> General -> Root Directory to `site`.
+3. Use the Next.js framework preset.
+4. Leave install/build/output defaults.
+5. Optionally set `NEXT_PUBLIC_SITE_URL`.
 
-1. Import the repo in the Vercel dashboard.
-2. **Project Settings → General → Root Directory → `site`**. This is the key step — Vercel will cd into `site/` (with the rest of the repo still checked out, so `../schema/*.json` and `../data/**` resolve from `site/scripts/prebuild.mjs`).
-3. Framework preset: **Next.js** (auto-detected once the root directory is correct).
-4. Install command: leave default (`npm install`).
-5. Build command: leave default (`next build`) — `site/package.json` wires `prebuild` to regenerate `../dist/*.json` via Node.
-6. Output directory: leave default (`.next`).
-7. (Optional) Set `NEXT_PUBLIC_SITE_URL` in project env vars to the production URL so the sitemap has the right host.
-
-The build pipeline is pure Node — no Python required at deploy time. `scripts/validate.py` only runs in CI.
+The deploy path is pure Node. Python validation still runs in CI and local data
+tooling.
 
 ## License
 
-Data and code are released under the [MIT License](LICENSE). Attribution appreciated when reusing the dataset.
+Data and code are released under the [MIT License](LICENSE). Attribution is
+appreciated when reusing the dataset.

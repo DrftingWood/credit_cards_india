@@ -48,6 +48,7 @@ rewards:
       rate: 2
       per_inr: 100
       unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
     accelerated:
       - category: flipkart-plus-members
         canonical_categories: [online]
@@ -74,8 +75,10 @@ rewards:
         constraints: "SuperCoins credited to the Flipkart app; redeemable for purchases and offers on Flipkart."
     source:
       url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: Flipkart SuperCoins ~Rs 0.25 on Flipkart, realistic Rs 0.22.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-01-01
@@ -108,5 +111,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, flipkart, ecommerce, supercoins, entry]

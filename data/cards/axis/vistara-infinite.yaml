@@ -17,9 +17,9 @@ card_type: credit
 co_brand:
   partner: Vistara
   category: airline
-status: active
+status: discontinued
 launched_on: null
-discontinued_on: null
+discontinued_on: '2024-11-12'
 
 # NOTE: Vistara merged into Air India (12-Nov-2024); Club Vistara points migrated to
 # the Air India "Maharaja Club" (Maharaja Points). Sourcing of new Axis Vistara cards
@@ -51,8 +51,8 @@ rewards:
     base:
       rate: 6
       per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: null
+      unit_value_inr: 0.55
+      unit_value_inr_realized: 0.5
     exclusions:
       - wallet-loads
       - rent
@@ -66,9 +66,10 @@ rewards:
         constraints: "Redeem Maharaja Points for upgrades & award flights."
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-infinite-credit-card
-      retrieved_on: 2026-07-03
-      notes: "Earn 6 Maharaja Points per ₹200 of eligible spends."
+      retrieved_on: '2026-07-05'
+      notes: "Vistara merged into Air India (2024-11-12); CV points -> Maharaja. Card discontinued."
 
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2024-11-12
@@ -104,5 +105,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-infinite-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [travel, miles, co-brand, airline, super-premium]

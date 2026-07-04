@@ -46,6 +46,8 @@ rewards:
       cap_per_cycle: 1000
       cap_unit: points
       cycle: monthly
+      unit_value_inr_realized: 0.4
+      unit_value_inr: 1.0
     accelerated:
       - category: shoppers-stop-purchases
         canonical_categories: [other]
@@ -78,8 +80,10 @@ rewards:
         rate_inr_per_unit: 0.20
     source:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: Rs 1 voucher at Shoppers Stop (co-brand-locked) / ~Rs 0.20 cash; blended realistic Rs 0.40.
 benefits:
   - effective_from: 2026-07-03
     effective_until: null
@@ -124,5 +128,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, shoppers-stop, retail, points, entry]

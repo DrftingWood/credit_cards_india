@@ -41,11 +41,15 @@ rewards:
     base:
       rate: 0
       per_inr: 100
+      unit_value_inr_realized: 0.18
+      unit_value_inr: 0.2
     notes: "Generic RuPay landing page; earn rates depend on the specific Axis RuPay card selected. Verify per underlying product."
     source:
       url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: EDGE Reward Points Rs 0.20 nominal / Rs 0.18 realistic (base earn is 0).
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
@@ -72,5 +76,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [rupay, upi, entry]

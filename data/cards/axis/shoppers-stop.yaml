@@ -51,6 +51,7 @@ rewards:
       rate: 2
       per_inr: 200
       unit_value_inr: 0.5
+      unit_value_inr_realized: 0.4
     accelerated:
       - category: shoppers-stop-exclusive-brand-apparel
         canonical_categories: [other]
@@ -82,8 +83,10 @@ rewards:
         constraints: "Each First Citizen Point = ₹0.50, redeemable at Shoppers Stop."
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: First Citizen points ~Rs 0.50 voucher at Shoppers Stop, realistic ~Rs 0.40.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
@@ -120,5 +123,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, shoppers-stop, retail, shopping, entry]

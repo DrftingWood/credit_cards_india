@@ -48,6 +48,7 @@ rewards:
       rate: 0
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.95
     accelerated:
       - category: phonepe-select-categories
         canonical_categories: [utilities, travel]
@@ -89,9 +90,10 @@ rewards:
       - cash-advance
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
-      retrieved_on: 2026-07-03
-      notes: "Reward points posted monthly for eligible transactions settled in the previous calendar month."
+      retrieved_on: '2026-07-05'
+      notes: "PhonePe cashback points ~Rs 1, small friction."
 
+      confidence: medium
     reward_cap:
       max_units: 1500
       cap_unit: points
@@ -131,5 +133,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, phonepe, rupay, upi, points, entry, fuel-surcharge-waiver]

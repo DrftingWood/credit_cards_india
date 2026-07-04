@@ -45,6 +45,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
+      unit_value_inr_realized: 0.2
+      unit_value_inr: 0.25
     accelerated:
       - category: adani-one-ecosystem
         multiplier: 3
@@ -66,8 +68,10 @@ rewards:
     notes: "Reward points credited to the Adani OneApp as Adani OneApp Rewards at the end of the billing cycle."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: Adani One rewards ~Rs 0.25 in the Adani ecosystem, realistic Rs 0.20.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2020-01-01
@@ -133,5 +137,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [mid, co-brand, travel, lounge, fuel, points]

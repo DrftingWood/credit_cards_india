@@ -50,6 +50,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.95
     accelerated:
       - category: phonepe-app-spends
         canonical_categories: [online]
@@ -70,7 +71,9 @@ rewards:
         constraints: "Reward Points redeemable for cash."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
+      confidence: high
+      notes: PhonePe points = Rs 1 via voucher/cashback, minor friction.
     notes: "1 Reward Point per Rs. 100 on other spends (base). Eligible-spend exclusions not detailed on crawl."
 
     mcc_exclusions: ['6513']
@@ -114,5 +117,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [points, co-brand, entry, upi]

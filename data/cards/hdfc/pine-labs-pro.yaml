@@ -50,6 +50,7 @@ rewards:
       rate: 4
       per_inr: 150
       unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
     accelerated:
       - category: business-essentials-cashback
         canonical_categories: [utilities, government]
@@ -65,7 +66,9 @@ rewards:
       - wallet-loads
     source:
       url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
+      confidence: high
+      notes: HDFC RP ~Rs 0.25 catalogue, realistic Rs 0.22.
     notes: "Base 4 Reward Points per ₹150 on all e-com and POS spends (except EMI, fuel and wallet-load transactions). Up to 50 days free credit period. A launch promo offered 3% CashBack on all non-EMI spends (capped ₹1,500/month, excl. wallet load/fuel/Pine Labs Vendor Payment) until 30-Sep-2022 — now expired, not modelled."
 
 benefits:
@@ -100,5 +103,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, pine-labs, business, points, cashback, mid, on-hold]

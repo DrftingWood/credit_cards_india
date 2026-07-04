@@ -50,6 +50,7 @@ rewards:
       rate: 1
       per_inr: 500
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: 2x-spend-active
         multiplier: 2
@@ -78,7 +79,9 @@ rewards:
         constraints: "1 Star = Rs 1. Redeem stars instantly on the Google Pay app for cashback while paying."
     source:
       url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
+      confidence: medium
+      notes: Stars redeem ~1:1 as cash with minor friction.
     notes: "Stars-based passthrough program (T&C confirmed). Base 1 Star per Rs 500; standard 2X (2 Stars per Rs 500) for spend-active accounts. 4X/8X are Google Pay promotional campaigns (variable). Fuel is an eligible spend category (earns Stars). Reward cycle 16th-15th."
 
     mcc_exclusions: ['6513']
@@ -112,5 +115,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, points, co-branded, upi]

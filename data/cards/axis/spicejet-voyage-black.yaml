@@ -48,6 +48,7 @@ rewards:
       rate: 3
       per_inr: 100
       unit_value_inr: 0.5
+      unit_value_inr_realized: 0.4
     accelerated:
       - category: spicejet-app-website
         canonical_categories: [travel]
@@ -86,8 +87,10 @@ rewards:
         constraints: "SpiceClub Points redeemable towards SpiceJet flight bookings; ~₹0.5 per point."
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: SpiceClub points ~Rs 0.50 face on SpiceJet, realistic Rs 0.40 (LCC).
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
@@ -153,5 +156,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, spicejet, airline, travel, premium]

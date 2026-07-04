@@ -28,13 +28,13 @@ worth far less), not `realized`:
 
 Borderline (small gap, left as-is): `hdfc/tata-neu-plus` (0.9 vs 1.0), `tata-neu-infinity` (0.95 vs 1.0).
 
-### C. Missing `realized` — POPULATE (~22 cards)
-`realized` absent (heterogeneous — needs per-card judgement, not a batch default):
-axis/flipkart-super-elite, axis/google-pay-flex, axis/miles-more, axis/rupay, axis/samsung-infinite,
-axis/samsung-signature, axis/shoppers-stop, axis/spicejet-voyage-black, axis/vistara(+infinite,
-+signature — note Vistara is defunct/merged, may be stale cards), hdfc/phonepe-uno, hdfc/pine-labs-pro,
-hdfc/shoppers-stop(+-black), hdfc/upi-rupay, icici/adani-one-platinum, icici/parakram(+-select),
-sbi/landmark, sbi/phonepe-purple, sbi/phonepe-select-black.
+### C. Missing `realized` — POPULATED (2026-07-05, all 22)
+`realized` filled per currency type: cashback/PhonePe ~0.90–0.95; standard points 0.22; Axis EDGE
+Reward Points 0.18; retail co-brand (Flipkart SuperCoins, Shoppers Stop First Citizen) 0.22–0.40;
+co-brand airline (SpiceClub 0.40, Lufthansa Miles & More 0.50) per programme value; Adani One 0.20.
+**`axis/vistara`, `vistara-infinite`, `vistara-signature` marked `status: discontinued`**
+(discontinued_on 2024-11-12 — Vistara merged into Air India; Club Vistara points became Maharaja).
+Re-audit confirms NO_REALIZED count is now 0.
 
 ## Corrected convention (supersedes REMEDIATION_GOAL flaw #1)
 

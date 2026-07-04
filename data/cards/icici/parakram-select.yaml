@@ -46,6 +46,7 @@ rewards:
       rate: 2
       per_inr: 100
       unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
     accelerated:
       - category: grocery-department-stores
         canonical_categories: [groceries]
@@ -69,8 +70,10 @@ rewards:
     notes: "Base 2 RP/₹100 on all categories; 10 RP/₹100 on grocery & department stores (cap 1,000 RP/month). Insurance, utility and international spends earn 0 RP (w.e.f Apr 15, 2024)."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: Standard ICICI RP ~Rs 0.25, realistic Rs 0.22.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
@@ -122,5 +125,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [defence, lifetime-free, points, golf, mid]

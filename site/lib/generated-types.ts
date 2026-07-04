@@ -207,6 +207,22 @@ export interface FeeRecord {
 export interface Source {
   url: string;
   retrieved_on: string;
+  /**
+   * Kind of evidence the URL/local_refs point to. issuer-pdf is the strongest; aggregator is discouraged for active cards.
+   */
+  type?: "issuer-page" | "issuer-pdf" | "archive" | "aggregator" | "press" | "other";
+  /**
+   * How firmly this source backs the record's fields. high = directly stated in issuer evidence.
+   */
+  confidence?: "high" | "medium" | "low";
+  /**
+   * Repo-relative paths to archived local PDF evidence under docs/sources/ (gitignored, preserved locally).
+   */
+  local_refs?: string[];
+  /**
+   * Dotted record paths (e.g. rewards.accelerated.cap_per_cycle) that the local evidence directly supports, so coverage can be checked mechanically.
+   */
+  fields_verified?: string[];
   notes?: string;
 }
 export interface RewardRecord {

@@ -83,6 +83,8 @@ rewards:
 
       confidence: high
       notes: "Rebuilt 2026-07-05: 1 Scapia Coin = Rs 0.20 (was wrongly Rs 1.0 -> 5x value overstatement). '10%/20% coins' are coin COUNTS = ~2%/4% real value. Min Rs20/txn (Visa). Post-Feb-2026 devaluation: utilities/insurance rewards removed."
+    capping_rules:
+      - "Accelerated Scapia-app travel earning is uncapped per Scapia's own blog + 2026 reviews (retrieved 2026-07-05): 5 Scapia Coins = Rs1 (Rs0.20/coin), up to 100% of an app booking payable via coins, coins valid 36 months. Realized approximately equals face at the coin level; the real value-erosion vector is Scapia-app fare variance vs open-market prices, not a coin markup or earn cap. (Utility/telecom/cable earning is separately capped at Rs20,000 combined spend/month.)"
 benefits:
   - effective_from: 2023-04-01
     effective_until: null

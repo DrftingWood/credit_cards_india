@@ -68,8 +68,10 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.yes.bank.in/personal-banking/nri/credit-cards/yes-private-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
 
+    capping_rules:
+      - No cap on the 40 RP/₹200 international accelerated points on the YES Private product page (Key Features, retrieved 2026-07-05); the MITC is served via a non-extractable JS viewer so a buried cap cannot be fully ruled out. Confidence medium.
 benefits:
   - effective_from: 2026-06-15
     effective_until: null
@@ -112,5 +114,5 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/nri/credit-cards/yes-private-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [super-premium, invite-only, points, international, forex, concierge]

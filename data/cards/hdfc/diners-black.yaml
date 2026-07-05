@@ -40,7 +40,7 @@ fees:
 
 rewards:
   - effective_from: 2014-01-01
-    effective_until: null
+    effective_until: 2026-06-30
     currency: points
     currency_name: Reward Points
     base:
@@ -200,6 +200,179 @@ rewards:
       retrieved_on: '2026-07-05'
 
       notes: "Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05."
+  - effective_from: 2026-07-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 150
+      unit_value_inr: 1.1
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: smartbuy-hotels
+        canonical_categories: [travel]
+        multiplier: 10
+        cap_per_cycle: 7500
+        cap_unit: points
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [smartbuy]
+        notes: 10X reward points on HOTEL bookings via HDFC SmartBuy (booked via SmartBuy only). Shares the overall 7,500 RP/calendar-month SmartBuy cap with flights; a 3,000 RP/month brand-voucher (Gyftr/Woohoo) sub-cap sits inside it (effective 2026-07-01).
+      - category: smartbuy-flights
+        canonical_categories: [travel]
+        multiplier: 5
+        cap_per_cycle: 7500
+        cap_unit: points
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants: [smartbuy]
+        notes: 5X reward points on FLIGHT bookings via HDFC SmartBuy — reduced from 10X effective 2026-07-01 (hotels remain 10X). Booked via SmartBuy only; shares the overall 7,500 RP/calendar-month cap with hotels.
+      - category: weekend-dining
+        canonical_categories: [dining]
+        multiplier: 2
+        effective_rate: 10
+        cap_unit: points
+        mcc_list: ["5812", "5813", "5814"]
+        notes: "2X weekend dining capped 2,000 pts/month (1,000/day)."
+        cap_per_cycle: 2000
+        cycle: monthly
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - government
+      - insurance-premiums
+      - emi
+    redemption:
+      - type: catalog
+        program: SmartBuy
+        rate_inr_per_unit: 1.0
+      - type: airmiles
+        program: Multiple (Airmiles hub)
+        ratio: "1:1"
+        constraints: "22 transfer partners; ratios are card-point : partner-unit. realized Rs 1.00 = guaranteed non-transfer floor; best documented transfer Rs 1.10. 3 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 1.10/pt
+          - partner_name: Finnair Plus (Avios)
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 1.05/pt
+          - partner_name: Air France-KLM Flying Blue
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.90/pt
+          - partner_name: Vietnam LotusMiles
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.80/pt [below floor — avoid]
+          - partner_name: SpiceJet SpiceClub
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.30/pt [below floor — avoid]
+          - partner_name: AirAsia Rewards
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.22/pt [below floor — avoid]
+          - partner_name: IHG One Rewards
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Radisson Rewards
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.16/pt [below floor — avoid]
+          - partner_name: Wyndham Rewards
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Air Canada Aeroplan
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Cathay Asia Miles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
+          - partner_name: Etihad Guest
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+          - partner_name: Qatar Privilege Club (Avios)
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Thai Royal Orchid Plus
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.30/pt [below floor — avoid]
+          - partner_name: United MileagePlus
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+          - partner_name: Avianca LifeMiles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+          - partner_name: Turkish Miles&Smiles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.55/pt [below floor — avoid]
+          - partner_name: Accor ALL
+            partner_type: hotel
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
+          - partner_name: ITC Hotels (Club ITC)
+            partner_type: hotel
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Marriott Bonvoy
+            partner_type: hotel
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
+        min_units: 100
+    source:
+      url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
+      retrieved_on: 2026-07-05
+
+      notes: "SmartBuy flights 10X->5X + 3,000 RP brand-voucher sub-cap confirmed vs HDFC's live SmartBuy T&C (offers.smartbuy.hdfcbank.com offer 15282, effective 2026-07-01); hotels 10X and the 7,500 RP/month overall cap unchanged."
 benefits:
   - effective_from: 2024-04-01
     effective_until: null
@@ -261,5 +434,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [metal, diners, travel, super-premium, points]

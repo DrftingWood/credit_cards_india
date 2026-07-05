@@ -4,6 +4,10 @@ See `docs/REMEDIATION_2026-07.md` for the consolidated remediation record + red-
 P0. **The data is now sound (~73 cards fixed, all audits clean); the engine is the weak link.**
 
 ## P0 — Engine correctness (the ₹5L answers are optimistic ceilings, not real returns)
+- [ ] **R4 (CRITICAL — the "₹3-crore reward" bug): the engine does not ENFORCE caps.** Even after the
+  data now carries `cap_per_cycle`, the calculator applies accelerator rates to the full (and clearly
+  unrealistic — crore-scale) spend with no monthly ceiling. It MUST cap accelerated earn per cycle
+  AND use a realistic spend. Data caps are necessary but not sufficient — this is why the site shows crores.
 - [ ] **Engine v2** — stop discarding fields the repo already stores:
   - [ ] R1 **Net portal markup** against reward (Diners "17.5%" → real ~7–12%). Reconcile with `holistic.py`.
   - [ ] R2 **Forex term (FX-charged spend only)**: forex applies ONLY to foreign-currency transactions (POS/ATM abroad, foreign OTA/hotel/airline sites) — NOT to international trips booked in INR via Indian aggregators/portals. Model 3 contexts: domestic-INR, international-booked-in-INR (no forex), foreign-currency (subtract `forex_markup_pct × 1.18` on the FX fraction; 0%-forex cards win here only).
@@ -38,3 +42,8 @@ P0. **The data is now sound (~73 cards fixed, all audits clean); the engine is t
 - Defunct cards discontinued (Vistara ×5, InterMiles ×4). IRCTC family verified (BOB genuinely ₹0.25).
 - Red-team: 4 streams; 7/8 values held, **KrisFlyer ₹0.85→₹1.0** corrected.
 - Scenarios A–I all clean (floor, nominal, internal, cross-card, sibling, transfer-ratio, provenance, earn-rate).
+
+## P1b — Data (surfaced by the uncapped-accelerator audit, 2026-07-05)
+- [x] **Uncapped-accelerator sweep** — added verified monthly caps to 23 cards (SBI/YES/BOB/Amex/HDFC/Axis/RBL/Kotak); removed fabricated RBL World Safari "10x international"; left genuinely-uncapped cards (SC Ultimate, ICICI Amazon Pay/MMT, Kotak IndiGo, co-brand airline miles) correct.
+- [ ] **Accelerator RATE overstatements** (found during the cap audit — separate from caps): IndusInd Pinnacle (~2.5 pts, dataset 5), IndusInd EazyDiner (2X EazyPoints, dataset "15 pts"), IDFC Mayura international (5X, dataset 10X), Axis Flipkart Super Elite (per-txn 300 SuperCoins + discontinued). Verify & correct rates.
+- [ ] Verify remaining low-confidence "uncapped" flags against issuer T&C PDFs: SBI IRCTC/Landmark/Reliance, YES Wellness, BOB Snapdeal/Etihad, AU Xcite, Axis Horizon/ShopperStop/SpiceJet.

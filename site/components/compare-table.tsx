@@ -98,7 +98,7 @@ const ROWS: Row[] = [
   {
     label: "Annual fee",
     render: (c) => formatFeeInr(c.current_fees?.annual_fee_inr ?? null),
-    compare: { value: (c) => c.current_fees?.annual_fee_inr ?? null, higherWins: false },
+    compare: { value: (c) => (c.computed.is_lifetime_free ? 0 : (c.current_fees?.annual_fee_inr ?? null)), higherWins: false },
   },
   {
     label: "Joining fee",

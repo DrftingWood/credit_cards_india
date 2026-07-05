@@ -20,6 +20,22 @@ const highlight: Highlight = {
            reason: "Best on your dining + travel", flags: [] } as never,
 };
 
+const nullFeeCard = {
+  id: "some-issuer-card", issuer: "some-issuer", name: "Some Card",
+  network_detail: { name: "Visa" }, tier: "entry-level",
+  current_fees: null,
+  current_rewards: { currency: "points" },
+  computed: { is_lifetime_free: false, headline_rate_pct: 1.5, fee_waiver_spend_inr: null, has_domestic_lounge: false, has_international_lounge: false },
+  metadata: { last_verified_on: "2026-07-06" },
+} as never;
+const nullFeeHighlight: Highlight = {
+  key: "best-overall", label: "Best overall for your spend",
+  score: { card: nullFeeCard, net_rewards_inr: 1000, annual_rewards_inr: 1000, annual_fee_inr: 0,
+           first_year_bonus_inr: 0, milestone_value_inr: 0,
+           lounge_visits: { domestic: "none", international: "none" },
+           reason: "Best on your dining + travel", flags: [] } as never,
+};
+
 describe("BestPickCard — facts + tagged estimate", () => {
   const html = renderToStaticMarkup(<BestPickCard highlight={highlight} />);
   test("shows the highlight label and card name", () => {
@@ -36,5 +52,10 @@ describe("BestPickCard — facts + tagged estimate", () => {
   test("shows the verified date (trust), not a star rating", () => {
     expect(html).toContain("2026-07-06");
     expect(html).not.toContain("★");
+  });
+  test("shows '—' (not 'Lifetime free') for a card with a null/missing fee record", () => {
+    const nullFeeHtml = renderToStaticMarkup(<BestPickCard highlight={nullFeeHighlight} />);
+    expect(nullFeeHtml).toContain("—");
+    expect(nullFeeHtml).not.toContain("Lifetime free");
   });
 });

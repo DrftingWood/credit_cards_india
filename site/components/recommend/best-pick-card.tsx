@@ -19,7 +19,7 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
         <Link href={href} className="hover:underline">{c.name}</Link>
       </h3>
       <p className="text-xs text-slate-500 capitalize">
-        {c.tier.replace("-", " ")} · {c.network_detail?.name ?? c.network}
+        {c.tier.replaceAll("-", " ")} · {c.network_detail?.name ?? c.network}
       </p>
 
       {/* FACTS (from T&C) */}
@@ -27,7 +27,11 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
         <div className="rounded-md bg-slate-50 px-2 py-1.5">
           <dt className="text-slate-500">Annual fee</dt>
           <dd className="font-semibold text-slate-900 tabular-nums">
-            {c.current_fees?.annual_fee_inr ? inr(c.current_fees.annual_fee_inr) : "Lifetime free"}
+            {c.computed.is_lifetime_free
+              ? "Lifetime free"
+              : c.current_fees?.annual_fee_inr != null
+                ? inr(c.current_fees.annual_fee_inr)
+                : "—"}
             {waiver ? <span className="ml-1 font-normal text-slate-500">· waived above {inr(waiver)}</span> : null}
           </dd>
         </div>

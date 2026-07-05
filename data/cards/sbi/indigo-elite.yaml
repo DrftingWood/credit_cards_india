@@ -93,11 +93,13 @@ rewards:
         constraints: "IndiGo BluChip floats ~Rs0.40-0.60 toward IndiGo fares (min 500); no fixed value."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       confidence: high
       notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No earning cap on the accelerated 7 BluChips/₹100 IndiGo App/Web earning per the IndiGo SBI Card ELITE T&C booklet clause 11 (retrieved 2026-07-05); the only per-statement limit is the ₹400 fuel-surcharge waiver, unrelated to rewards. High confidence.
 benefits:
   - effective_from: 2025-09-27
     effective_until: null
@@ -174,5 +176,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/indigo-sbi-card-elite.page
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex, lounge]

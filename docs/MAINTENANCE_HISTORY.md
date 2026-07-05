@@ -3,6 +3,45 @@
 Durable record of repository maintenance actions that affect local/GitHub
 state beyond ordinary feature commits.
 
+## 2026-07-04 - Documentation cleanup
+
+- Reworked `docs/TODO.md` into the canonical agent pick-up board with task IDs,
+  suggested agent types, scope, done criteria, and validation commands.
+- Reworked `docs/README.md` into a status-aware documentation index separating
+  current operating docs from historical audit evidence.
+- Reworked `docs/ROADMAP.md` into a short thematic roadmap that points all
+  active work back to `docs/TODO.md`.
+- Refreshed root and site README instructions so they describe the current Node
+  prebuild pipeline rather than the old planned/Python build path.
+- Recorded source-document cleanup targets without deleting or moving PDFs.
+- Deleted completed historical implementation artifacts under `docs/superpowers/`
+  after their rate-math primitive work had already landed and current follow-up
+  work had been moved to `docs/TODO.md`.
+
+Earlier cleanup in the same wave:
+
+- Added `docs/README.md` as the local documentation index.
+- Added `docs/TODO.md` as the canonical agent work queue for remaining data,
+  source, schema, calculator, and recommender work.
+- Replaced the stale 127-card-era `docs/ROADMAP.md` with a short roadmap that
+  points to `docs/TODO.md`.
+- Refreshed the root `README.md` status section to describe the current
+  317-card dataset and local-only PDF archive.
+- Preserved all files under `docs/sources/`; no PDFs were deleted or moved.
+
+## 2026-07-04 - Local data/PDF review
+
+- Added `docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md`, a holistic local review of
+  the 317-card dataset, PDF archive, source manifests, validation status, and
+  schema suitability.
+- Parsed the local PDF archive without deleting or moving PDFs: 261 PDFs,
+  2,888 pages, 0 parse failures, and 0 encrypted PDFs.
+- Corrected `data/cards/sbi/cashback.yaml` after comparing against the archived
+  SBI Cashback PDF: aggregate online plus offline cashback cap is Rs. 4,000 per
+  statement cycle, not Rs. 5,000/month.
+- Re-ran `npm.cmd --prefix site run prebuild` and
+  `npm.cmd --prefix site test -- --run`; both passed after the correction.
+
 ## 2026-07-04 - Merge latest audit branch and cleanup
 
 ### Merge to `main`

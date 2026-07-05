@@ -1,139 +1,46 @@
-# Roadmap and open work
+# Roadmap
 
-## 2026-06 audit follow-ups (see docs/AUDIT-2026-06.md)
+Last refreshed: 2026-07-04
 
-Phases 0, 1, 2 and 4 are done. Phase 3 (full-catalogue re-verification) is
-in progress — HDFC (18), Axis (14), SBI (13) and the flagship wave are
-encoded; per-card detail in docs/verification-notes-2026-06.md. Open:
+The canonical work queue is `docs/TODO.md`. This file is only the thematic
+roadmap so old phase plans do not compete with current agent tasks.
 
-1. **Phase 3 remaining batches** (~32 cards): RBL (6), IndusInd (4), IDFC
-   remainder (ashva/mayura/swyp/first-private/indigo — mayura/ashva blocked
-   on issuer T&C), Amex remainder (centurion, platinum-charge/reserve),
-   Yes (3), StanC (3), HSBC (2), BoB (3), Federal (3), OneCard, slice,
-   small PSUs (boi/canara/idbi/kvb/pnb/union/south-indian).
-2. **Portfolio gaps** (docs/PORTFOLIO-GAPS.md): big-bank cards missing
-   from the catalogue — most material is the SBI Miles base/Prime sub-family;
-   plus the PVR INOX Kotak successor file (₹499, 2023) — successor to the
-   discontinued pvr-gold.
-3. **Deferred encodings** (verified, ambiguous or unmodellable): see the
-   "deferred" markers in verification-notes — air-india decomposition +
-   Maharaja Club programme rename, aurum Club Marriott, miles-elite
-   per-₹1L lounge accrual, irctc-premier milestone, Amex exact waiver
-   withdrawal date, my-zone SonyLIV renewal date conflict.
-4. **Aggregator source replacement**: ~30 records now cite cardinsider/
-   paisabazaar/cardmaven (flagged by the validator) — replace with issuer
-   T&C PDFs issuer-by-issuer during Phase 3.
+## Now
 
+1. Make validation trustworthy locally and in CI.
+2. Fix recommender/calculator overclaims:
+   - no-channel channel-locked rewards,
+   - merchant/MCC-specific rates applied to broad buckets,
+   - lounge access valued without spend-threshold gating,
+   - milestone valuation ignoring repeatability and trigger windows.
+3. Normalize docs/source evidence enough that agents can pick up work without
+   rereading every historical audit.
 
-## ⚠ Provisional realized unit values — must be sourced
+## Next
 
-**Status as of 2026-04-30** (continuously revised as audit progresses):
+1. Add machine-readable evidence refs from YAML fields to local source files.
+2. Normalize `docs/sources/*` manifests and indexes.
+3. Refresh portfolio gaps against the 317-card dataset.
+4. Decide network-variant modelling.
+5. Replace stale or aggregator URLs with issuer-owned evidence where available.
 
-Still PROVISIONAL (realized number is an unsourced midpoint):
-- `air-india-flying-returns` realized 0.5 — Red baseline 6/100 and
-  Silver 8/100 sourced. Gold/Platinum slabs and the blend of optimal
-  vs typical redemption value remain best-effort estimates within a
-  documented band.
-- ~50 cards on second-tier issuers (IDFC FIRST, IndusInd, Kotak, RBL,
-  BoB, Yes, AU, HSBC, KVB, Federal, BoI, IDBI, PNB, Union, South
-  Indian, Canara, Standard Chartered) carry per-issuer-haircut realized
-  values that haven't been individually verified against issuer
-  redemption T&Cs. Haircuts sit within community-cited bands but no
-  per-card number is sourced.
+## Later
 
-Confirmed (sourced or near-primary):
-- `tata-neu-points`, `irctc-loyalty`, `indigo-bluchip` — full earn
-  structure and realized value sourced.
-- `marriott-bonvoy` — earn structure (10/$, tier bonuses) and realized
-  0.55 sourced (TPG values at 0.7 ¢/pt USD ≈ ₹0.59 at 85 INR/USD).
-- HDFC Reward Points realized values for Infinia / Diners Black (0.7),
-  Diners Privilege / Regalia Gold (0.4) — sourced.
-- Amex MR per-card realized values (MRCC 0.25, Plat Travel 0.30, Plat
-  Reserve / Plat Charge / Centurion 0.40) — sourced.
-- Axis EDGE Miles realized 0.50 across Atlas / Horizon / Olympus —
-  post-Marriott-removal benchmark, April 2026.
-- ICICI / SBI Reward Points face confirmed at ₹0.25 across Coral,
-  Rubyx, Sapphiro, Emeralde, Elite, Prime, Aurum, SimplyClick,
-  SimplySave, Pulse, BPCL Octane, Reliance Prime, etc.
+1. Publish stable versioned data artifacts once validation and evidence mapping
+   are strong enough for external consumers.
+2. Keep `/calculator` as an optimistic upper-bound tool and `/recommend` as the
+   realistic profile-based tool.
+3. Move repeated prose knowledge from audit docs into structured schema fields
+   or generated reports.
 
-The card-level `card_attributable_rate` numbers on co-brand cards are
-estimates from product-page narratives, not issuer-confirmed slabs.
-Verified to reconcile with the new programme model:
-- IndiGo cards: visible 19/21/22 = programme max 16 + card 3/5/6 ✓.
+## Historical Plans
 
-**To unblock production trust on remaining unsourced realized numbers**:
-1. For each second-tier-issuer card, pull the issuer's reward
-   redemption T&Cs PDF and replace the haircut with a sourced number.
-2. Refine `air-india-flying-returns` realized once a basket of
-   representative redemptions is benchmarked.
+Preserved context:
 
-Until then, treat ranked output as "directionally correct, magnitudes
-approximate."
+- `AUDIT-2026-06.md`
+- `verification-notes-2026-06.md`
+- issuer `*-audit.md` files
+- issuer `*-mcc-map.md` files
 
----
-
-## Card data migration
-
-The schema/calculator/recommender redesign (D-8 through D-12) ships
-back-compat: cards that haven't been migrated keep working via the legacy
-`effective_rate` path. Each row below is a plain data PR — no code change.
-
-| Wave | Programme / pattern | Status |
-|------|---------------------|--------|
-| 1 | indigo-bluchip co-brands (axis ×2, hdfc/6e-rewards, idfc-first, kotak ×2, sbi ×2) | Done. hdfc/6e-rewards-xl skipped (discontinued). |
-| 2 | tata-neu-points (hdfc/tata-neu-plus, hdfc/tata-neu-infinity) | Done |
-| 3 | marriott-bonvoy (hdfc/marriott-bonvoy) | Done |
-| 4 | irctc-loyalty (hdfc/irctc-hdfc, rbl/irctc, sbi/irctc-premier) | Done |
-| 5 | air-india-flying-returns (sbi/air-india-platinum) | Done. Future Air India Vistara cards will reference the same programme. |
-| 6 | Channel-only on flagship cards (atlas, magnus, infinia, diners-black, diners-privilege, amazon-pay, horizon, olympus, adani-one-signature, myntra-kaching) | Done |
-| 7 | `unit_value_inr_realized` on every points/miles card | Done across all 86 points/miles cards. Per-issuer haircut numbers are sourced for HDFC, Axis, Amex, ICICI, SBI; haircut-derived for second-tier issuers (see "Provisional" section above). |
-
-## Per-card audit on `card_attributable_rate`
-
-The IndiGo wave-1 numbers (`card_attributable_rate: 3` on sbi/indigo,
-`5` on kotak/indigo, `6` on idfc-first/indigo, etc.) are conservative
-estimates from product-page notes, not issuer-confirmed slabs. A research
-pass should:
-
-1. Pull the official rate-card PDF or product-page T&Cs for each card.
-2. Identify the card-side, channel-bonus, programme-baseline, and tier
-   components separately.
-3. Update `card_attributable_rate`, `stacks_with_program`, and
-   `earn_components[]` if a richer decomposition is warranted.
-4. Add `realized_source.references[]` entries to the parent loyalty
-   programme YAML for traceability.
-
-## Validator promotions
-
-Currently warnings — promote to errors once offender count is zero per rule:
-
-| Rule | Status |
-|------|--------|
-| Accelerator `category` matches a known regex but lacks `canonical_categories` | **Promoted to error** (zero offenders across 127 cards as of 2026-05). |
-| Card has `co_brand.partner` matching a known programme partner but no `loyalty_program` ref | **Implemented as warning.** Driven by `co_brand_partner_aliases[]` on each loyalty programme. One legitimate offender (`hdfc/6e-rewards`, separate "6E Rewards" currency that auto-converts to BluChip). Promote to error once that card is reviewed. |
-| Accelerator `effective_rate > 5` and `card_attributable_rate` is unset (likely a stacking rate that wasn't decomposed) | **Promoted to error** (zero offenders at landing time; only fires for accelerators that also set `loyalty_program`). |
-
-## Recommender follow-ups
-
-- **Issuer-portal opt-in toggle.** Adding "I'm willing to book travel via
-  my bank's portal (SmartBuy / Travel EDGE / iShop)" to step 5 (lifestyle)
-  would let power users unlock issuer-portal accelerators that today are
-  filtered out for casual users. Currently those tokens are intentionally
-  not in `BRAND_PREF_TO_CHANNELS`.
-- **Backwards-look results pagination.** Top 5 today; consider top 10 with
-  expand-to-show controls if the breakdown UI proves cramped.
-- **Calculator parity disclaimer.** Add a one-line tooltip on `/calculator`
-  explaining that its numbers are upper-bounds and `/recommend` may show
-  lower realised values for the same card.
-
-## Tooling follow-ups
-
-- **`channel.required: false` semantics.** Today the flag is supported in
-  the schema but no calculator code path treats it differently from
-  "absent channel". If we ever need informational-only channels, wire
-  this in.
-- **Co-brand inference.** When a new card is created with `co_brand.partner`
-  matching a known programme, suggest `rewards[].loyalty_program` in
-  `scripts/new_card.py`.
-- **Effective-dating for loyalty programmes** (D-11). Reconsider when /
-  if historical valuations become a customer-facing concern.
+Before starting work from any historical file, promote the task into
+`docs/TODO.md`.

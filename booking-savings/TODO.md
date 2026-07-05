@@ -1,7 +1,7 @@
 # TODO — prioritized (post red-team, 2026-07-05)
 
-See `docs/ENGINE_REVIEW.md` for the full red-team analysis behind P0. **The data is now sound
-(~73 cards fixed, all audits clean); the engine is the weak link.**
+See `docs/REMEDIATION_2026-07.md` for the consolidated remediation record + red-team analysis behind
+P0. **The data is now sound (~73 cards fixed, all audits clean); the engine is the weak link.**
 
 ## P0 — Engine correctness (the ₹5L answers are optimistic ceilings, not real returns)
 - [ ] **Engine v2** — stop discarding fields the repo already stores:

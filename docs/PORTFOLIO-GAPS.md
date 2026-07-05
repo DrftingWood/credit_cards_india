@@ -66,3 +66,35 @@ remaining work is small and status-first: **confirm whether Axis Burgundy Privat
 ICICI Mine, and Kotak Mojo Platinum are still open**, and only then source and add
 them. Defer network-variant additions until the one-card-per-network convention is
 recorded in `docs/DECISIONS.md` (task C2).
+
+## D5 candidates — sourced 2026-07-05, blocked on ONE missing value each
+
+Researched from issuer evidence (2026-07-05). Both are active and mostly sourced,
+but each is missing exactly one value that the no-fabrication rule forbids
+guessing — so they stay documented candidates, not YAMLs, until that value is found.
+
+### PNB RuPay Platinum Card (active) — blocked on the base earn rate
+- Network RuPay Platinum. Joining ₹0; **annual ₹500**, waived if used ≥once/quarter
+  in the preceding year (SOFC). Forex **3.50%** (Luxura metal is 0%). RP value
+  **₹0.25/point** (creditcard.pnb.bank.in, w.e.f. 01/09/2024). Fuel: txn range
+  ₹500–₹4,000 (rate/cap not issuer-stated). Lounge: "domestic + international"
+  present, counts not issuer-stated.
+- **BLOCKER:** PNB does not publish a per-₹ base earn rate on its issuer pages
+  (only "300+ points on 1st usage"); the "1 RP/₹100" figure is aggregator-only.
+  Author once an issuer source states the base rate.
+- Sources: creditcard.pnb.bank.in/Documents/pnb_sofc.pdf, /index.html, /types5.html,
+  /privileges6.html, /Documents/KeyFactStatement.pdf
+
+### Union Bank NEXTERIA Credit Card (active) — blocked on the RP redemption value
+- RuPay Ekaa metal, super-premium. Joining/annual **₹12,499** each; joining waived
+  on ₹3L/90d, annual waived on ₹8L/12mo (MITC). Forex **3%**. Base **5 RP/₹125**
+  (MITC "Rewards structure"). Accelerators: birthday-month 10X on online/electronics
+  (max 10,000 RP), monthly-milestone 5X on ≥₹2L spend; **base cap 10,000 RP/month**,
+  milestone cap 15,000 RP/yr; excluded MCCs jewellery/fuel/cash/wallet/insurance/
+  alcohol. Lounge: unlimited domestic+international (individual), family 1+3 twice/
+  quarter. Fuel waiver 1% up to ₹100/month.
+- **BLOCKER:** Union Rewardz ₹/point redemption value is not published on issuer
+  sources — `base.unit_value_inr` cannot be set without guessing. Author once the
+  Union Rewardz point value is issuer-sourced (everything else is ready).
+- Sources: unionbankofindia.bank.in/en/details/nexteria-credit-card; UBI cards MITC
+  v1.4 PDF.

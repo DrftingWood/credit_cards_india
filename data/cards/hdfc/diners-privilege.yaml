@@ -86,11 +86,13 @@ rewards:
         rate_inr_per_unit: 0.5
       - type: airmiles
         program: Multiple (Airmiles hub)
-        ratio: "1:0.5"
+        ratio: null
+        constraints: Airmiles/partner transfer is DISCONTINUED on newly issued Diners Club Privilege cards (SmartBuy rejects them as ineligible). Legacy DCP cards retain 100:50 to HDFC partners. SmartBuy redemption still works at ~Rs 0.50/RP — use that.
     source:
       url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: '2026-07-05: partner transfers discontinued on new DCP cards (cardmaven, 2026-06-25). SmartBuy floor ~Rs 0.50/RP retained.'
 benefits:
   - effective_from: 2026-07-01
     effective_until: null
@@ -154,5 +156,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [premium, diners, travel, points]

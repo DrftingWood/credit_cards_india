@@ -50,8 +50,8 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.45
-      unit_value_inr_realized: 0.30
+      unit_value_inr: 0.8
+      unit_value_inr_realized: 0.6
     accelerated:
       - category: etihad-airways
         canonical_categories: [travel]
@@ -75,8 +75,10 @@ rewards:
         rate_inr_per_unit: 0.45
     source:
       url: https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: 'Verified 2026-07-05: Etihad Guest miles ~Rs0.55-0.70 India economy (floors: prepaid ~Rs0.60, voucher ~Rs0.52); was ~Rs0.3.'
 benefits:
   - effective_from: 2024-01-01
     effective_until: null
@@ -142,5 +144,5 @@ application:
   apply_url: https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [premium, miles, travel, airline, metal, lounge]

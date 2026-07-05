@@ -45,8 +45,8 @@ rewards:
     base:
       rate: 5
       per_inr: 100
-      unit_value_inr: 0.4
-      unit_value_inr_realized: 0.3
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.25
     accelerated:
       - category: international-spend
         canonical_categories: [international]
@@ -65,14 +65,12 @@ rewards:
     redemption:
       - type: catalog
         program: RBL Rewards
-        rate_inr_per_unit: 0.4
-      - type: airmiles
-        program: Multiple
-        ratio: "2:1"
+        rate_inr_per_unit: 0.25
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/insignia-preferred-banking-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "2026-07-05: catalogue-only, no airline/hotel transfers. Hotel 'partners' are elite-status perks, not point transfers."
 benefits:
   - effective_from: 2018-01-01
     effective_until: null
@@ -126,5 +124,5 @@ application:
   apply_url: null
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [invite-only, super-premium, preferred-banking, low-forex]

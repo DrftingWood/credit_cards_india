@@ -67,14 +67,17 @@ rewards:
       - utilities
     redemption:
       - type: statement-credit
-        rate_inr_per_unit: 1.0
+        rate_inr_per_unit: 0.4
       - type: catalog
         program: ICICI Rewards
         rate_inr_per_unit: 1.0
+        constraints: Rs 1.0/pt applies to iShop flights/hotels & select premium-brand vouchers; general catalogue ~Rs 0.60.
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Corrected 2026-07-05: statement-credit is Rs 0.40/pt (was Rs 1.0). Rs 1.0 only for travel/voucher redemptions; realized 0.5 kept as blend.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2024-03-01
@@ -160,5 +163,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, invite-only, co-branded, times-prime, lifestyle]

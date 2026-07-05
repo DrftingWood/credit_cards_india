@@ -46,8 +46,8 @@ rewards:
     base:
       rate: 2.5
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.4
     accelerated:
       - category: ixigo-bookings
         canonical_categories: [travel]
@@ -66,13 +66,18 @@ rewards:
     mcc_exclusions: ['6513']
     redemption:
       - type: voucher
-        program: ixigo Money
+        program: ixigo Money (travel wallet)
         rate_inr_per_unit: 0.5
         constraints: "Redeemable as ixigo Money on the app."
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
+        constraints: Rs 0.25/pt as statement credit; min 200 pts; Rs 99+GST fee.
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Corrected 2026-07-05: no 1:1 path. Ceiling Rs0.50 (ixigo Money travel wallet), Rs0.25 cash, Rs0.20 voucher; Rs99+GST fee. face 1.0->0.50, realized 1.0->0.40.'
 benefits:
   - effective_from: 2024-01-01
     effective_until: null
@@ -124,5 +129,5 @@ application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, travel, ixigo, rupay, entry]

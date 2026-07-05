@@ -49,8 +49,8 @@ rewards:
     base:
       rate: 4
       per_inr: 200
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.4
+      unit_value_inr: 0.55
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: smartbuy-flights-hotels-vouchers
         canonical_categories: [travel]
@@ -75,11 +75,20 @@ rewards:
         rate_inr_per_unit: 0.5
       - type: airmiles
         program: Multiple (Airmiles hub)
-        ratio: "1:0.5"
+        ratio: "100:50"
+        constraints: Classic Regalia is limited to Singapore Airlines (legacy netbanking airmiles) at 100:50; the full multi-partner transfer program is Infinia/Diners Black/Regalia Gold only. SmartBuy floor Rs 0.50/Rp.
+        transfer_partners:
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "100:50"
+            last_verified_on: '2026-07-05'
+            notes: 100:50 -> ~Rs 0.55/pt (only transfer partner on classic Regalia)
     source:
       url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: "Corrected 2026-07-05: classic Regalia does NOT share Regalia Gold's 22-partner set (that was an over-copy) — only KrisFlyer at 100:50. Closed to new applicants; existing holders active. SmartBuy Rs0.50/RP (face 0.55 / realized 0.50 kept)."
 benefits:
   - effective_from: 2024-10-01
     effective_until: null
@@ -143,5 +152,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [premium, travel, points]

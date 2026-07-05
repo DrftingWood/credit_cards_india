@@ -47,8 +47,8 @@ rewards:
     base:
       rate: 1.0
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
     accelerated: []
     exclusions:
       - fuel
@@ -60,12 +60,15 @@ rewards:
     redemption:
       - type: statement-credit
         program: Kiwi Rewards
-        rate_inr_per_unit: 1.0
+        rate_inr_per_unit: 0.25
+        constraints: 4 Kiwis = Rs 1; statement credit only, 500-Kiwi (Rs125) minimum in multiples of 500.
     notes: "Kiwi rewards on UPI Scan & Pay (via Kiwi app) and on e-commerce, POS & contactless transactions. Exact rates"
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Corrected 2026-07-05: Kiwi = Rs0.25 (4 Kiwis=Rs1), not Rs1.0. face/realized 1.0->0.25/0.22.'
 benefits:
   - effective_from: 2024-01-01
     effective_until: null
@@ -94,5 +97,5 @@ application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, points, co-brand, upi, rupay, lifetime-free]

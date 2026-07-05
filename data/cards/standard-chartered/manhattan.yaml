@@ -46,8 +46,8 @@ rewards:
     base:
       rate: 3
       per_inr: 150
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.5
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
     accelerated:
       - category: supermarket
         canonical_categories: [groceries]
@@ -69,11 +69,13 @@ rewards:
     redemption:
       - type: catalog
         program: 360 Rewards
-        rate_inr_per_unit: 0.5
+        rate_inr_per_unit: 0.25
     source:
       url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Verified 2026-07-05: generic SC 360 Reward Point = Rs0.25 catalogue (was placeholder Rs0.5).'
 benefits:
   - effective_from: 2026-01-01
     effective_until: null
@@ -102,5 +104,5 @@ application:
   apply_url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, points, groceries, cashback]

@@ -49,6 +49,7 @@ rewards:
       cap_per_cycle: 500   # 1% on other spends capped at 500 CashPoints/calendar month
       cap_unit: points
       cycle: monthly
+      unit_value_inr_realized: 0.22
     accelerated:
       - category: groceries-supermarket-dining-payzapp
         canonical_categories: [groceries, dining]
@@ -83,8 +84,10 @@ rewards:
     notes: "1% CashPoints on all other spends (excluding rent, wallet loads, EMI, fuel, insurance and government categories). CashPoints computed on calendar-month cycle for settled transactions."
     source:
       url: https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: HDFC CashPoints Rs 0.25 statement credit, realistic Rs 0.22.
     mcc_exclusions: ['6540']
 benefits:
   - effective_from: 2026-07-03
@@ -121,5 +124,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [rupay, upi, entry, cashpoints, virtual-card, companion-card]

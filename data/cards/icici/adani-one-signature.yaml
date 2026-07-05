@@ -49,6 +49,7 @@ rewards:
       rate: 1.5
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: adani-one-ecosystem
         canonical_categories: [online, travel]
@@ -87,8 +88,10 @@ rewards:
         constraints: "Credited to Adani OneApp as Adani OneApp Rewards; redeemable across Adani Airports services and Adani One app."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/signature-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Verified 2026-07-05: Adani Reward Points = Rs1.0 nominal (1:1 in Adani One app, closed-loop, not cash) -> realized ~0.90.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-03-01
@@ -162,5 +165,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/signature-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, travel, adani, airports, premium, cashback]

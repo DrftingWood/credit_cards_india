@@ -50,7 +50,7 @@ rewards:
       rate: 10
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: travel-edge-portal
         canonical_categories: [travel]
@@ -79,8 +79,10 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/olympus-credit-card
-      retrieved_on: 2026-04-15
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: DISCONTINUED (2026-07-03). EDGE Miles Rs1.0 Travel EDGE floor; realized Rs0.5->Rs1.0. Historical transfer ratio not re-verified for this dead card.
 benefits:
   - effective_from: 2023-12-01
     effective_until: 2026-07-02
@@ -134,5 +136,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/olympus-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, travel, miles, low-forex, invite-like]

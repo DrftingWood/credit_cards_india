@@ -49,7 +49,7 @@ rewards:
       rate: 4
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
+      unit_value_inr_realized: 0.22
     accelerated:
       - category: international-spend
         canonical_categories: [international]
@@ -69,13 +69,13 @@ rewards:
       - type: catalog
         program: ICICI Rewards
         rate_inr_per_unit: 0.25
-      - type: airmiles
-        program: Multiple
-        ratio: "1:1"
+        constraints: 1 ICICI RP = Rs 0.25 (catalogue/cashback). The 1:1 Air India Maharaja transfer belongs to Emeralde Private Metal only; classic Emeralde's transfer eligibility is doubtful and is NOT 6:1.
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: 'Corrected 2026-07-05: RP = Rs 0.25 (was 0.6). Removed unsupported 6:1 Air India transfer (1:1 is Private Metal only; classic eligibility doubtful). Card phased out in favour of Emeralde Private Metal.'
+      confidence: medium
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2017-01-01
@@ -142,5 +142,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, world-elite, golf, lounge, points]

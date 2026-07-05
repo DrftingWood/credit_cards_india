@@ -43,7 +43,7 @@ rewards:
     base:
       rate: 1
       per_inr: 50
-      unit_value_inr: 0.25
+      unit_value_inr: 0.5
       unit_value_inr_realized: 0.22
     accelerated:
       - category: 10x-partners
@@ -86,8 +86,9 @@ rewards:
         rate_inr_per_unit: 0.5
     source:
       url: https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: face raised 0.25->0.5 (best redemption is MR voucher Rs0.5); realized stays statement-rate.
 benefits:
   - effective_from: 2019-01-01
     effective_until: null
@@ -130,5 +131,5 @@ application:
   apply_url: https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, online-spend, amex, points]

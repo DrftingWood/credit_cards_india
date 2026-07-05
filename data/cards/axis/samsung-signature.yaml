@@ -49,6 +49,7 @@ rewards:
       rate: 5
       per_inr: 100
       unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
     accelerated:
       - category: preferred-partners
         canonical_categories: [groceries, dining, online]
@@ -74,7 +75,9 @@ rewards:
         constraints: "EDGE Reward Points redeemable via the Axis EDGE Rewards catalog; ~₹0.2 per point."
     source:
       url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
+      confidence: high
+      notes: EDGE Reward Points Rs 0.20 catalogue, realistic Rs 0.18.
     notes: "Samsung purchase cashback (10%, incl. EMI) is captured under benefits.other as it is a separate cashback benefit, not an EDGE Reward Point earn."
 
     mcc_exclusions: ['6513']
@@ -119,5 +122,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, samsung, lifestyle, cashback, mid]

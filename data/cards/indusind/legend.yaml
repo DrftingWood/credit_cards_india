@@ -44,8 +44,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
+      unit_value_inr: 0.75
+      unit_value_inr_realized: 0.75
     accelerated:
       - category: weekend-spend
         multiplier: 2
@@ -62,6 +62,21 @@ rewards:
       - emi
     mcc_exclusions: ['6513']
     redemption:
+      - type: airmiles
+        program: Multiple (transfer partners)
+        ratio: "4:1"
+        constraints: "2 transfer partners; ratios are card-point : partner-unit. realized Rs 0.75 = guaranteed non-transfer floor; best documented transfer Rs 0.28. 0 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "4:1"
+            last_verified_on: '2026-07-05'
+            notes: 4:1 -> ~Rs 0.28/pt [below floor — avoid]
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "4:1"
+            last_verified_on: '2026-07-05'
+            notes: 4:1 -> ~Rs 0.14/pt [below floor — avoid]
       - type: catalog
         program: IndusMoments
         rate_inr_per_unit: 0.25
@@ -69,8 +84,9 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
 benefits:
   - effective_from: 2015-01-01
     effective_until: null
@@ -118,5 +134,5 @@ application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [lifetime-free, premium, points, low-forex]

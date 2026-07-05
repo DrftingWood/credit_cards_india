@@ -45,10 +45,10 @@ rewards:
     currency: points
     currency_name: Uni Coins
     base:
-      rate: 1.0
+      rate: 100.0
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
+      unit_value_inr: 0.01
+      unit_value_inr_realized: 0.01
     accelerated: []
     exclusions:
       - fuel
@@ -60,12 +60,15 @@ rewards:
     redemption:
       - type: statement-credit
         program: Uni Coins
-        rate_inr_per_unit: 1.0
+        rate_inr_per_unit: 0.01
+        constraints: 100 Uni Coins = Rs 1 (Rs 0.01/coin); auto-convert to 24K digital gold in the Uni app.
     notes: "1% reward points issued as Uni coins (1 Uni coin = ₹1)."
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/uni-rupay-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: "Corrected 2026-07-05: 1 Uni Coin = Rs 0.01 (100 coins = Rs 1), NOT Rs 1.0 (100x error; old 'coin=Rs1' was legacy Uni Pay-Later marketing). Earn rate scaled x100 so net %-back is unchanged. Coins convert to digital gold."
 benefits:
   - effective_from: 2026-06-15
     effective_until: null
@@ -94,5 +97,5 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/uni-rupay-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, points, co-brand, lifetime-free, zero-forex, upi, rupay]

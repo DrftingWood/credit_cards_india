@@ -53,8 +53,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr: 0.6
+      unit_value_inr_realized: 0.45
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
@@ -89,12 +89,14 @@ rewards:
     redemption:
       - type: voucher
         program: IndiGo flights + 6E Prime add-ons
-        rate_inr_per_unit: 1.0
-        constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
+        rate_inr_per_unit: 0.6
+        constraints: "IndiGo BluChip floats ~Rs0.40-0.60 toward IndiGo fares (min 500); no fixed value."
     source:
       url: https://www.business-standard.com/finance/personal-finance/every-swipe-counts-how-indigo-s-new-credit-card-can-cut-your-travel-costs-125081800470_1.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'
 benefits:
   - effective_from: 2025-08-18
     effective_until: null
@@ -154,5 +156,5 @@ application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex, dual-network]

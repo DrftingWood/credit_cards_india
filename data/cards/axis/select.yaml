@@ -45,7 +45,7 @@ rewards:
     base:
       rate: 10
       per_inr: 200
-      unit_value_inr: 0.2
+      unit_value_inr: 0.44
       unit_value_inr_realized: 0.18
     accelerated:
       - category: dining-international
@@ -71,10 +71,64 @@ rewards:
       - type: airmiles
         program: Multiple (EDGE transfer)
         ratio: "5:2"
+        constraints: "10 transfer partners; ratios are card-point : partner-unit. realized Rs 0.20 = guaranteed non-transfer floor; best documented transfer Rs 0.44. 9 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.44/pt
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.22/pt
+          - partner_name: Air France-KLM Flying Blue
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.36/pt
+          - partner_name: Turkish Miles&Smiles
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.44/pt
+          - partner_name: ITC Hotels (Club ITC)
+            partner_type: hotel
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.40/pt
+          - partner_name: Air Canada Aeroplan
+            partner_type: airline
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.40/pt
+          - partner_name: IHG One Rewards
+            partner_type: hotel
+            transfer_ratio: "5:2"
+            last_verified_on: '2026-07-05'
+            notes: 5:2 -> ~Rs 0.20/pt
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "5:1"
+            last_verified_on: '2026-07-05'
+            notes: 5:1 -> ~Rs 0.20/pt
+          - partner_name: Finnair Plus (Avios)
+            partner_type: airline
+            transfer_ratio: "5:1"
+            last_verified_on: '2026-07-05'
+            notes: 5:1 -> ~Rs 0.21/pt
+          - partner_name: Vietnam LotusMiles
+            partner_type: airline
+            transfer_ratio: "5:1"
+            last_verified_on: '2026-07-05'
+            notes: 5:1 -> ~Rs 0.16/pt [below floor — avoid]
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "EDGE Reward Points: Rs 0.18 catalogue floor (uniform); face Rs 0.44 = best 5:2 transfer to airline/hotel partners."
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2015-01-01
@@ -142,5 +196,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [premium, dining, lounge, points]

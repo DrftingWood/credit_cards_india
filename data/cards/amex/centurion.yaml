@@ -49,8 +49,8 @@ rewards:
     base:
       rate: 1
       per_inr: 30
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.4
+      unit_value_inr: 0.55
+      unit_value_inr_realized: 0.5
     exclusions:
       - fuel
       - wallet-loads
@@ -59,7 +59,49 @@ rewards:
     redemption:
       - type: airmiles
         program: Multiple (MR transfer)
-        ratio: "1:1"
+        ratio: "2:1"
+        constraints: "8 transfer partners; ratios are card-point : partner-unit. realized Rs 0.50 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Marriott Bonvoy
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.55/pt
+          - partner_name: Hilton Honors
+            partner_type: hotel
+            transfer_ratio: "1:0.9"
+            last_verified_on: '2026-07-05'
+            notes: 1:0.9 -> ~Rs 0.32/pt [below floor — avoid]
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.55/pt
+          - partner_name: Emirates Skywards
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt
+          - partner_name: Qatar Privilege Club (Avios)
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt
+          - partner_name: Virgin Atlantic Flying Club
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt
+          - partner_name: Cathay Asia Miles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.47/pt
       - type: statement-credit
         rate_inr_per_unit: 0.5
       - type: voucher
@@ -67,8 +109,9 @@ rewards:
         rate_inr_per_unit: 0.5
     source:
       url: https://www.americanexpress.com/in/credit-cards/centurion/
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
 benefits:
   - effective_from: 1999-01-01
     effective_until: null
@@ -126,5 +169,5 @@ application:
   apply_url: null
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [invite-only, charge-card, amex, super-premium, black-card]

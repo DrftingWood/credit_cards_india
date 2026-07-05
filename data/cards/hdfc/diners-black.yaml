@@ -46,8 +46,8 @@ rewards:
     base:
       rate: 5
       per_inr: 150
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.7
+      unit_value_inr: 1.1
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: smartbuy-flights-hotels
         canonical_categories: [travel]
@@ -80,10 +80,124 @@ rewards:
       - type: airmiles
         program: Multiple (Airmiles hub)
         ratio: "1:1"
+        constraints: "22 transfer partners; ratios are card-point : partner-unit. realized Rs 1.00 = guaranteed non-transfer floor; best documented transfer Rs 1.10. 3 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 1.10/pt
+          - partner_name: Finnair Plus (Avios)
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 1.05/pt
+          - partner_name: Air France-KLM Flying Blue
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.90/pt
+          - partner_name: Vietnam LotusMiles
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.80/pt [below floor — avoid]
+          - partner_name: SpiceJet SpiceClub
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.30/pt [below floor — avoid]
+          - partner_name: AirAsia Rewards
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.22/pt [below floor — avoid]
+          - partner_name: IHG One Rewards
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Radisson Rewards
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.16/pt [below floor — avoid]
+          - partner_name: Wyndham Rewards
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Air Canada Aeroplan
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Cathay Asia Miles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
+          - partner_name: Etihad Guest
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+          - partner_name: Qatar Privilege Club (Avios)
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Thai Royal Orchid Plus
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.30/pt [below floor — avoid]
+          - partner_name: United MileagePlus
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+          - partner_name: Avianca LifeMiles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+          - partner_name: Turkish Miles&Smiles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.55/pt [below floor — avoid]
+          - partner_name: Accor ALL
+            partner_type: hotel
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
+          - partner_name: ITC Hotels (Club ITC)
+            partner_type: hotel
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: Marriott Bonvoy
+            partner_type: hotel
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
+        min_units: 100
     source:
       url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
 benefits:
   - effective_from: 2024-04-01
     effective_until: null
@@ -145,5 +259,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [metal, diners, travel, super-premium, points]

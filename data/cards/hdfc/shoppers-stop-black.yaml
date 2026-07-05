@@ -42,10 +42,11 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.25
+      unit_value_inr: 1.0
       cap_per_cycle: 2000
       cap_unit: points
       cycle: monthly
+      unit_value_inr_realized: 0.4
     accelerated:
       - category: shoppers-stop-purchases
         canonical_categories: [other]
@@ -77,8 +78,10 @@ rewards:
         rate_inr_per_unit: 0.5
     source:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: Rs 1 voucher at Shoppers Stop (co-brand-locked); blended realistic Rs 0.40.
     mcc_exclusions: ['6513', '1361', '5172', '5541', '5542', '5983', '9752']
 benefits:
   - effective_from: 2026-07-03
@@ -140,5 +143,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, shoppers-stop, retail, points, premium, lounge, shopping]

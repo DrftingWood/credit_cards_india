@@ -49,8 +49,8 @@ rewards:
     base:
       rate: 2
       per_inr: 200
-      unit_value_inr: null
-      unit_value_inr_realized: null
+      unit_value_inr: 0.8
+      unit_value_inr_realized: 0.5
     exclusions:
       - fuel
       - wallet-loads
@@ -65,9 +65,10 @@ rewards:
         constraints: "Unlimited, never-expiring Award Miles; redeem on the Miles & More (India) website."
     source:
       url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
-      retrieved_on: 2026-07-03
-      notes: "Earn unlimited, never-expiring Award Miles. Exact per-₹ base accrual not stated on live page (TODO verify; two variants World & World Select)."
+      retrieved_on: '2026-07-05'
+      notes: "Lufthansa Miles & More award miles: ~Rs 0.80 best / ~Rs 0.50 realistic economy from India."
 
+      confidence: medium
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
@@ -112,5 +113,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [travel, miles, co-brand, airline, lufthansa]

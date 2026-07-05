@@ -50,7 +50,7 @@ rewards:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.20
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
@@ -72,10 +72,16 @@ rewards:
       - fuel
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
-      retrieved_on: 2026-07-03
-      notes: "1 Reward Point per Rs.125 on non-fuel retail purchases including railway tickets at irctc.co.in / IRCTC mobile app (Android only)."
+      retrieved_on: '2026-07-05'
+      notes: "Aligned with sbi/irctc-premier 2026-07-05: IRCTC AC-rail points ~Rs1 nominal, realized ~0.9 for a rail user (was 0.5)."
 
+      confidence: medium
     mcc_exclusions: ['6513']
+    redemption:
+      - type: voucher
+        program: IRCTC AC-class fare
+        rate_inr_per_unit: 1.0
+        constraints: Rs1/pt against AC-class IRCTC rail fare only (link to IRCTC ID); closed-loop, no cash.
 benefits:
   - effective_from: 2018-01-01
     effective_until: null
@@ -127,5 +133,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, railway, irctc, travel, points, entry]

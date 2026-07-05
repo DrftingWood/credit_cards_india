@@ -52,8 +52,8 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr: 0.7
+      unit_value_inr_realized: 0.55
     accelerated:
       - category: air-india-bookings
         canonical_categories: [travel]
@@ -80,8 +80,10 @@ rewards:
         constraints: "Reward Points convert to Air India Maharaja Points (min 5,000, in multiples of 5,000); credited within 7 working days; redeemable for Air India / Star Alliance award tickets."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: 'Verified 2026-07-05: Reward Points convert 1:1 to Air India Maharaja (~Rs0.5-0.7 economy post Apr-2026 chart; 20-50% conversion bonuses lift value). Was face Rs1.0.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2013-01-01
@@ -133,5 +135,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, airline, air-india, miles, entry]

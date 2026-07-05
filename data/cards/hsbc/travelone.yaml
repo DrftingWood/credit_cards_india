@@ -52,7 +52,12 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.25
+      # Primary redemption is 1:1 transfer to airline/hotel partners, not the
+      # HSBC catalogue (₹0.25/RP). Valued on the transfer path: ₹0.75 achievable
+      # via good 1:1 partner redemptions; ₹0.50 realized (conservative, mirrors
+      # Axis EDGE Miles realized value — TravelOne draws on an overlapping
+      # partner pool). Catalogue redemption remains ₹0.25 (see redemption[]).
+      unit_value_inr: 1.1
       unit_value_inr_realized: 0.25
     accelerated:
       - category: flights-travel-agg-forex
@@ -77,9 +82,116 @@ rewards:
       - type: airmiles
         program: HSBC India Rewards (20+ airline & hotel loyalty partners)
         ratio: "1:1"
+        constraints: "20 transfer partners; ratios are card-point : partner-unit. realized Rs 0.25 = guaranteed non-transfer floor; best documented transfer Rs 1.10. 19 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 1.10/pt
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.55/pt
+          - partner_name: Air France-KLM Flying Blue
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.90/pt
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 1.00/pt
+          - partner_name: Etihad Guest
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.90/pt
+          - partner_name: EVA Air Infinity
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.90/pt
+          - partner_name: JAL Mileage Bank
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.95/pt
+          - partner_name: Qantas Frequent Flyer
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.80/pt
+          - partner_name: Qatar Privilege Club (Avios)
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 1.00/pt
+          - partner_name: Thai Royal Orchid Plus
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.60/pt
+          - partner_name: Vietnam LotusMiles
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.80/pt
+          - partner_name: Accor ALL
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.95/pt
+          - partner_name: IHG One Rewards
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.50/pt
+          - partner_name: Marriott Bonvoy
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.55/pt
+          - partner_name: Wyndham Rewards
+            partner_type: hotel
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.50/pt
+          - partner_name: AirAsia Rewards
+            partner_type: airline
+            transfer_ratio: "1:3"
+            last_verified_on: '2026-07-05'
+            notes: 1:3 -> ~Rs 0.66/pt
+          - partner_name: Hainan Fortune Wings
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.25/pt
+          - partner_name: Turkish Miles&Smiles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.55/pt
+          - partner_name: United MileagePlus
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt
+          - partner_name: Shangri-La Circle
+            partner_type: hotel
+            transfer_ratio: "5:1"
+            last_verified_on: '2026-07-05'
+            notes: 5:1 -> ~Rs 0.10/pt [below floor — avoid]
     source:
       url: https://www.hsbc.co.in/credit-cards/products/travelone/
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
+      type: issuer-page
+      confidence: medium
+      fields_verified:
+        - rewards.base.unit_value_inr
+      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
 
 benefits:
   - effective_from: 2024-01-01
@@ -124,5 +236,5 @@ application:
   apply_url: https://www.hsbc.co.in/credit-cards/products/travelone/
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: '2026-07-05'
   tags: [premium, points, travel, airmiles, lounge]

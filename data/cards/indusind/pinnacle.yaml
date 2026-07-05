@@ -43,8 +43,8 @@ rewards:
     base:
       rate: 2.5
       per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
+      unit_value_inr: 0.75
+      unit_value_inr_realized: 0.75
     accelerated:
       - category: travel-dining
         canonical_categories: [dining, travel]
@@ -66,11 +66,24 @@ rewards:
         rate_inr_per_unit: 0.25
       - type: airmiles
         program: Multiple
-        ratio: "1:1"
+        ratio: "2:1"
+        constraints: "2 transfer partners; ratios are card-point : partner-unit. realized Rs 0.75 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 0 partners beat the floor. Full per-partner values below."
+        transfer_partners:
+          - partner_name: Singapore KrisFlyer
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.55/pt [below floor — avoid]
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
 benefits:
   - effective_from: 2017-01-01
     effective_until: null
@@ -123,5 +136,5 @@ application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, travel, points, low-forex]

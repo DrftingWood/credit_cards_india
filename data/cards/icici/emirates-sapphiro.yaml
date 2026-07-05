@@ -66,8 +66,8 @@ rewards:
     base:
       rate: 1.5
       per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
+      unit_value_inr: 0.9
+      unit_value_inr_realized: 0.65
     exclusions:
       - fuel
       - cash-advance
@@ -83,7 +83,9 @@ rewards:
         program: Emirates Skywards
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-sapphiro
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
+      confidence: medium
+      notes: 'Verified 2026-07-05: Emirates Skywards miles; heavy YQ fuel surcharges drag India economy to ~Rs0.6-0.7 (was wrongly ~Rs0.2).'
     notes: "Earn 1.5 Skywards Miles per ₹100 on both domestic and international spend; miles credited to Emirates Skywards account at end of billing cycle."
 
     mcc_exclusions: ['6513']
@@ -151,5 +153,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-sapphiro
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [premium, airline, co-brand, miles, lounge, travel]

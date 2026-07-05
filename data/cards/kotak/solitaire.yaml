@@ -45,7 +45,7 @@ rewards:
       rate: 3
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.70
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: travel-via-unbox
         canonical_categories: [travel]
@@ -70,12 +70,61 @@ rewards:
     redemption:
       - type: airmiles
         program: Kotak Air Miles
-        rate_inr_per_unit: 1.0
-        constraints: "1 Air Mile = ₹1 on travel bookings; transferable to airline/hotel partners."
+        constraints: "9 transfer partner(s); ratios card-point:partner-unit. realized Rs 1.00 = non-transfer floor; best transfer Rs 0.55; 0 beat the floor. Every transfer is BELOW the Rs 1.0 Kotak Unbox floor — Unbox travel redemption beats all transfers."
+        ratio: "2:1"
+        transfer_partners:
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.55/pt [below floor — avoid]
+          - partner_name: Etihad Guest
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+          - partner_name: Qatar Privilege Club (Avios)
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: British Airways Avios
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+          - partner_name: United MileagePlus
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+          - partner_name: Cathay Asia Miles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
+          - partner_name: Air France-KLM Flying Blue
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+          - partner_name: Accor ALL
+            partner_type: hotel
+            transfer_ratio: "2:1"
+            last_verified_on: '2026-07-05'
+            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
+          - partner_name: Marriott Bonvoy
+            partner_type: hotel
+            transfer_ratio: "3:1"
+            last_verified_on: '2026-07-05'
+            notes: 3:1 -> ~Rs 0.18/pt [below floor — avoid]
+        min_units: 2000
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
+      confidence: high
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
@@ -124,5 +173,5 @@ application:
   apply_url: null
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [invite-only, super-premium, miles, travel, zero-forex, private-banking]

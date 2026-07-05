@@ -46,7 +46,7 @@ rewards:
       rate: 6
       per_inr: 200
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.4
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: international-spend
         canonical_categories: [international]
@@ -70,10 +70,19 @@ rewards:
       - type: airmiles
         program: Multiple
         ratio: "1:1"
+        constraints: 1 transfer partner(s); ratios card-point:partner-unit. realized Rs 1.00 = non-transfer floor; best transfer Rs 0.55; 0 beat the floor. Only transfer partner is Air India (1:1); at ~Rs 0.55 it is BELOW the Rs 1.0 iShop floor — iShop is better.
+        transfer_partners:
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "1:1"
+            last_verified_on: '2026-07-05'
+            notes: 1:1 -> ~Rs 0.55/pt [below floor — avoid]
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-08-01
@@ -151,5 +160,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, metal, travel, dining, points]

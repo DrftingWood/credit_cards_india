@@ -43,8 +43,13 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      # Full-visibility model (no blend): realized = the guaranteed Rs 1.0 Travel EDGE
+      # portal floor any user gets with no transfer; face = the single best documented
+      # transfer (KrisFlyer/Turkish at 1:2 -> ~Rs 2.20/EDGE Mile). Every partner's own
+      # ratio and Rs/point is itemised in redemption[airmiles].transfer_partners — the
+      # value is NOT collapsed to one number.
+      unit_value_inr: 2.20
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: travel-airline-hotel-portal
         canonical_categories: [travel]
@@ -76,14 +81,77 @@ rewards:
     redemption:
       - type: airmiles
         program: Multiple (EDGE Miles transfer)
-        ratio: "2:1"
-        constraints: "Across 20+ airline/hotel partners."
+        ratio: "1:2"   # STANDARD: 1 EDGE Mile -> 2 partner miles. Penalty partners are 2:1 (see below).
+        constraints: "Standard partners transfer 1 EDGE Mile -> 2 partner units (1:2). Three partners added Apr-2026 (British Airways, Finnair, Vietnam LotusMiles) transfer at 2:1 (2 EDGE Miles -> 1 partner unit) — value-destroying vs the Rs 1.0 portal floor, avoid. Marriott Bonvoy, Accor ALL and Qatar Privilege Club were REMOVED on 2026-04-02. Group A partners share a ~30,000 EDGE Mile/yr transfer cap; Group B ~1,20,000."
+        transfer_partners:
+          - partner_name: Singapore Airlines KrisFlyer
+            partner_type: airline
+            transfer_ratio: "1:2"
+            last_verified_on: 2026-07-05
+            notes: "~Rs 2.0/EDGE Mile economy, up to ~Rs 4-5 on long-haul Saver business. Best all-round outlet."
+          - partner_name: ITC Hotels (Club ITC)
+            partner_type: hotel
+            transfer_ratio: "1:2"
+            last_verified_on: 2026-07-05
+            notes: "Club ITC Green Point fixed at Rs 1 -> ~Rs 2.0/EDGE Mile, reliable and non-aspirational."
+          - partner_name: Turkish Airlines Miles&Smiles
+            partner_type: airline
+            transfer_ratio: "1:2"
+            last_verified_on: 2026-07-05
+            notes: "~Rs 2.0-2.6/EDGE Mile economy; strong Star Alliance business sweet spots."
+          - partner_name: Air Canada Aeroplan
+            partner_type: airline
+            transfer_ratio: "1:2"
+            last_verified_on: 2026-07-05
+            notes: "~Rs 1.8-2.2/EDGE Mile; no fuel surcharges, good India->Europe business."
+          - partner_name: Air France-KLM Flying Blue
+            partner_type: airline
+            transfer_ratio: "1:2"
+            last_verified_on: 2026-07-05
+            notes: "~Rs 1.6-2.0/EDGE Mile; 25% Promo Rewards ex-India lift business value."
+          - partner_name: Japan Airlines Mileage Bank
+            partner_type: airline
+            transfer_ratio: "1:2"
+            last_verified_on: 2026-07-05
+            notes: "High business value (~Rs 5-7/EDGE Mile) but hard to transfer into from India; niche."
+          - partner_name: Air India Maharaja Club
+            partner_type: airline
+            transfer_ratio: "1:2"
+            last_verified_on: 2026-07-05
+            notes: "~Rs 1.0-1.3/EDGE Mile post Apr-2026 revaluation; usable 12k-pt Gulf/SE-Asia economy floors."
+          - partner_name: IHG One Rewards
+            partner_type: hotel
+            transfer_ratio: "1:2"
+            last_verified_on: 2026-07-05
+            notes: "~Rs 1.0/EDGE Mile (IHG point ~Rs 0.5). Barely beats the portal floor."
+          - partner_name: British Airways Executive Club (Avios)
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: 2026-07-05
+            notes: "PENALTY partner (added Apr-2026). ~Rs 0.45-0.55/EDGE Mile — below portal floor, avoid. Route to Qatar Avios for free after transfer."
+          - partner_name: Finnair Plus (Avios)
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: 2026-07-05
+            notes: "PENALTY partner (added Apr-2026). ~Rs 0.5-0.6/EDGE Mile — below portal floor, avoid."
+          - partner_name: Vietnam Airlines LotusMiles
+            partner_type: airline
+            transfer_ratio: "2:1"
+            last_verified_on: 2026-07-05
+            notes: "PENALTY partner (added Apr-2026). ~Rs 0.35-0.45/EDGE Mile — worst outlet, avoid."
       - type: catalog
         program: Axis Travel EDGE
         rate_inr_per_unit: 1.0
+        constraints: "Direct flight/hotel bookings on the Axis Travel EDGE portal at 1 EDGE Mile = Rs 1.0. Guaranteed floor requiring an actual booking; still Rs 1.0 in 2026."
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - rewards.redemption.airmiles.transfer_partners
+        - rewards.base.unit_value_inr
+      notes: "Rewritten 2026-07-05 from cross-verified research (6+ sources): airmiles ratio corrected 2:1 -> 1:2 standard with per-partner transfer_partners; BA/Finnair/LotusMiles flagged as 2:1 penalty; Marriott/Accor/Qatar removed 2026-04-02; unit_value 1.0/0.5 -> 2.0/1.2 to sit at/above the Rs 1.0 portal floor. Earn rates, caps and milestones unchanged."
 
     mcc_exclusions: ['6513']
 benefits:
@@ -151,5 +219,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [travel, miles, premium]

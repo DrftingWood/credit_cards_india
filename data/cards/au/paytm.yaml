@@ -47,8 +47,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
     accelerated:
       - category: paytm-travel-gold
         canonical_categories: [travel]
@@ -76,11 +76,13 @@ rewards:
     redemption:
       - type: statement-credit
         program: Paytm Rewards
-        rate_inr_per_unit: 1.0
+        rate_inr_per_unit: 0.25
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/paytm-au-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: low
+      notes: 'Corrected 2026-07-05: AU Rewardz point ~Rs0.25 (4-5 pts=Rs1), not Rs1.0. face/realized 1.0->0.25/0.22.'
 benefits:
   - effective_from: 2024-01-01
     effective_until: null
@@ -115,5 +117,5 @@ application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/paytm-au-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, co-brand, upi, travel, points]

@@ -45,8 +45,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: dining-travel-international
         canonical_categories: [dining, travel, international]
@@ -67,14 +67,12 @@ rewards:
     redemption:
       - type: catalog
         program: AU Rewardz
-        rate_inr_per_unit: 0.25
-      - type: airmiles
-        program: Multiple
-        ratio: "4:1"
+        rate_inr_per_unit: 1.0
     source:
       url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: '2026-07-05: AU Rewardz portal only, Rs 1/pt; no airline/hotel transfer partners.'
 benefits:
   - effective_from: 2023-06-01
     effective_until: null
@@ -127,5 +125,5 @@ application:
   apply_url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, travel, low-forex, points]

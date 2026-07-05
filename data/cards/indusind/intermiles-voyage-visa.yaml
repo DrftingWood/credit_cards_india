@@ -18,9 +18,9 @@ co_brand:
   partner: InterMiles
   category: airline
   partner_website: https://www.intermiles.com
-status: active
+status: discontinued
 launched_on: 2021-01-01
-discontinued_on: null
+discontinued_on: '2025-01-21'
 
 fees:
   - effective_from: 2021-01-01
@@ -71,8 +71,9 @@ rewards:
         rate_inr_per_unit: 0.40
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-visa-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: IndusInd-InterMiles co-brand discontinued; cards migrated (Voyage Visa->Legend, Voyage Amex/Odyssey->Celesta) and no longer earn InterMiles. Residual InterMile ~Rs 0.17-0.25.
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
@@ -111,5 +112,5 @@ application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-visa-credit-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [premium, miles, airline, intermiles, travel, co-brand]

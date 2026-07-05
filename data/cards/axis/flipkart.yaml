@@ -109,9 +109,11 @@ rewards:
         constraints: "Credited to next statement."
     source:
       url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
 
     mcc_exclusions: ['6513']
+    capping_rules:
+      - The 4% preferred-merchants cashback (Swiggy/Uber/PVR/cult.fit bucket) is explicitly 'Unlimited' in the Flipkart Axis cashback T&C capping table (retrieved 2026-07-05); the ₹4,000/statement-quarter caps apply only to Flipkart/Myntra/Cleartrip. High confidence.
 benefits:
   - effective_from: 2019-07-30
     effective_until: null
@@ -145,5 +147,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [co-branded, flipkart, cashback, entry]

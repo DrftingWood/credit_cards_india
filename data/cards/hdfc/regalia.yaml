@@ -61,7 +61,9 @@ rewards:
           required: true
           class: issuer-portal
           merchants: [smartbuy]
-        notes: "Up to 5X Reward Points on flights, hotel stays and gift vouchers booked via SmartBuy."
+        notes: "SmartBuy 5X capped 4,000 RP/month (max 3,000 from brand vouchers)."
+        cap_per_cycle: 4000
+        cycle: monthly
     exclusions:
       - fuel
       - wallet-loads
@@ -88,7 +90,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: high
-      notes: "Corrected 2026-07-05: classic Regalia does NOT share Regalia Gold's 22-partner set (that was an over-copy) — only KrisFlyer at 100:50. Closed to new applicants; existing holders active. SmartBuy Rs0.50/RP (face 0.55 / realized 0.50 kept)."
+      notes: "Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05."
 benefits:
   - effective_from: 2024-10-01
     effective_until: null

@@ -114,24 +114,25 @@ rewards:
         card_attributable_rate: 5
         card_attributable_per_inr: 100
         stacks_with_program: false
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
+        cap_per_cycle: 1500
+        cap_unit: points
         cycle: monthly
         merchants: [tata-neu-app, bigbasket, 1mg, air-india, croma, westside, tata-cliq, ihcl]
         channel:
           required: true
           class: cobrand-merchant
           merchants: [tata-neu]
-        notes: "5% NeuCoins on Tata brands purchased via Tata Neu app (subject to NeuPass). Card credits the full 5% directly in NeuCoins; programme baseline is not additive (NeuCoins are the card's reward currency, not a separate stack)."
+        notes: "5% NeuCoins on Tata Neu app/partners capped 1,500 NeuCoins/month."
       - category: tata-neu-app-non-partner
         canonical_categories: [online]
         effective_rate: 1.5
         card_attributable_rate: 1.5
         card_attributable_per_inr: 100
         stacks_with_program: false
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
+        cap_per_cycle: 1500
+        cap_unit: points
         cycle: monthly
+        notes: 5% NeuCoins on Tata Neu app/partners capped 1,500 NeuCoins/month.
     exclusions:
       - fuel
       - wallet-loads
@@ -150,8 +151,8 @@ rewards:
         constraints: "NeuCoins redeemable across Tata Neu app ecosystem at 1 NeuCoin = ₹1."
     source:
       url: https://cardmaven.in/tata-neu-infinity-hdfc-bank-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "1-Jul-2025 revision: gaming excluded, insurance NeuCoins capped 2,000/month. Cross-checked against TechnoFino devaluation thread."
+      retrieved_on: '2026-07-05'
+      notes: "Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05."
 
 benefits:
   - effective_from: 2022-08-01
@@ -230,5 +231,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: '2026-07-05'
   tags: [co-branded, tata-neu, cashback, premium]

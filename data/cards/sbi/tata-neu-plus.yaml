@@ -68,7 +68,10 @@ rewards:
         channel:
           class: cobrand-merchant
           merchants: [tata-neu]
-        notes: "2% base + extra 5% (total 7%) value back as NeuCoins on select category spends via the Tata Neu App/Website."
+        notes: "+5% select-category NeuCoins capped per category/month (grocery 1,000; utility/telecom/insurance 2,000; UPI 500). Base 2% Tata Neu uncapped."
+        cap_per_cycle: 2000
+        cap_unit: points
+        cycle: monthly
     exclusions:
       - emi
     capping_rules:
@@ -81,8 +84,9 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
@@ -125,5 +129,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, conglomerate, tata-neu, entry, cashback]

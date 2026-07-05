@@ -53,14 +53,14 @@ rewards:
         canonical_categories: [fuel]
         multiplier: 1
         effective_rate: 20
-        cap_per_cycle: unlimited
+        cap_per_cycle: 1000
         cap_unit: points
         cycle: monthly
         merchants: [iocl]
         channel:
           class: fuel-network
           merchants: [iocl]
-        notes: "4% value back on fuel at any IOCL outlet in India (20 EDGE Reward Points per ₹100)."
+        notes: "Fuel 20 pts/Rs100 capped ~1,000 pts/mo (Rs5,000 fuel spend; only Rs400-4,000 txns)."
       - category: online-shopping
         canonical_categories: [online]
         multiplier: 1
@@ -88,7 +88,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: high
-      notes: EDGE Reward Points redeem at a uniform Rs 0.20/pt (EDGE portal), ~Rs 0.18 realistic. No card-tier premium (verified 2026). Corrected face Rs1.0->Rs0.20 (EDGE RP is not Rs1).
+      notes: Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20

@@ -56,13 +56,13 @@ rewards:
         canonical_categories: [fuel]
         multiplier: 12
         effective_rate: 24
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 1000
         cap_unit: points
-        cycle: statement
+        cycle: monthly
         channel:
           class: fuel-network
           merchants: [hpcl]
-        notes: "Up to 5% savings on HPCL fuel/LPG & HP Pay App (24 RP per ₹150 = 4% + 1% fuel-surcharge waiver). Up to 80 litres free fuel/year. HP Pay wallet loads excluded."
+        notes: "HPCL fuel 24 pts/Rs150 capped 1,000 RP/month (~Rs6,250 fuel)."
       - category: utility-departmental
         canonical_categories: [utilities, groceries]
         multiplier: 5
@@ -83,8 +83,9 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.bobcard.co.in/credit-card-types/hpcl-energie
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:
   - effective_from: 2022-01-01
     effective_until: null
@@ -133,5 +134,5 @@ application:
   apply_url: https://www.bobcard.co.in/credit-card-types/hpcl-energie
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, points, fuel, co-brand]

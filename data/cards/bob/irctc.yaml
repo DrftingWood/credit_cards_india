@@ -53,13 +53,13 @@ rewards:
         canonical_categories: [travel]
         multiplier: 20
         effective_rate: 40
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 1000
         cap_unit: points
         cycle: statement
         channel:
           class: utility-rail
           merchants: [irctc-rail]
-        notes: "Up to 40 RP per ₹100 on train tickets via IRCTC website/app (varies by travel class); requires IRCTC BOBCARD loyalty number linked to IRCTC login."
+        notes: "IRCTC AC-rail earning capped 1,000 BoB RP/statement cycle."
       - category: departmental-stores
         canonical_categories: [groceries]
         multiplier: 2
@@ -81,8 +81,9 @@ rewards:
         constraints: "Reward points redeemable only as statement cashback @ 1 RP = ₹0.25."
     source:
       url: https://www.bobcard.co.in/credit-card-types/irctc-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:
   - effective_from: 2020-01-01
     effective_until: null
@@ -122,5 +123,5 @@ application:
   apply_url: https://www.bobcard.co.in/credit-card-types/irctc-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, points, railway, travel, co-brand]

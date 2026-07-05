@@ -54,10 +54,10 @@ rewards:
         canonical_categories: [dining, travel]
         multiplier: 6
         effective_rate: 12
-        cap_per_cycle: "unlimited"
-        cap_unit: points
+        cap_per_cycle: 3000
+        cap_unit: cashback-inr
         cycle: monthly
-        notes: "6% cashback (12 Reward Points per ₹200) on Dining & Travel; 1% (2 RP per ₹200) on other spends. 1 RP = ₹1."
+        notes: "6% dining/travel capped Rs3,000/month, then flat 1%."
     exclusions:
       - fuel
       - wallet-loads
@@ -73,8 +73,9 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-rupay-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:
   - effective_from: 2026-06-15
     effective_until: null
@@ -103,5 +104,5 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-rupay-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, cashback, dining, travel, co-brand, upi, rupay, lifetime-free]

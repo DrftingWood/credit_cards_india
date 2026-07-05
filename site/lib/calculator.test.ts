@@ -319,6 +319,42 @@ describe("scoreCard — cap semantics across engines (E2 divergence fixes)", () 
     expect(score.annual_gross_inr).toBe(60000); // 5% × ₹100k × 12, no cap
   });
 
+  test("per-txn cap cycle is approximated as monthly (documented, locked)", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 0, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "groceries",
+          canonical_categories: ["groceries"],
+          multiplier: 0,
+          effective_rate: 5,
+          cap_per_cycle: 500,
+          cap_unit: "cashback-inr",
+          cycle: "per-txn" as never,
+        },
+      ],
+    });
+    // per-txn caps can't be modelled without a transaction-size distribution;
+    // the documented approximation treats the cap as monthly. 5% of ₹20k =
+    // ₹1,000 gross, capped at ₹500/mo → ₹6,000/yr.
+    const score = scoreCard(card, spend({ groceries: 20000 }));
+    expect(score.annual_gross_inr).toBe(6000);
+  });
+
+  test("base cap authored in points units converts through unit value", () => {
+    const card = makeCard({
+      currency: "points",
+      base: {
+        rate: 2, per_inr: 100, unit_value_inr: 0.25, // 0.5% base
+        cap_per_cycle: 1000, cap_unit: "points", cycle: "monthly", // ₹250/mo
+      },
+    });
+    // 0.5% on ₹100k = ₹500 base, clamped to 1000 pts × ₹0.25 = ₹250/mo.
+    const score = scoreCard(card, spend({ online: 100000 }));
+    expect(score.annual_gross_inr).toBe(3000);
+  });
+
   test("points-unit cap on a cashback card without explicit unit_value_inr still binds (₹1/unit)", () => {
     // The rate path already treats cashback units as ₹1 when unit_value_inr is
     // absent; the cap conversion must use the same fallback — otherwise the

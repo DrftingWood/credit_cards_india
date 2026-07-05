@@ -491,6 +491,25 @@ def main() -> int:
                         f"likely a stacked rate that should be decomposed"
                     )
 
+            # spend-inr caps on base / reward_cap are silently unenforced by
+            # every consumer (calculator, scorer, engine_v2 all convert value
+            # units only) — warn so an author doesn't believe the cap applies.
+            # Warning-tier per the promotion pattern; zero offenders today.
+            base_rec = rec.get("base") or {}
+            if base_rec.get("cap_per_cycle") is not None and base_rec.get("cap_unit") == "spend-inr":
+                warnings.append(
+                    f"[warn] {path.relative_to(ROOT)} :: rewards[{r_idx}].base cap authored in "
+                    f"'spend-inr' is not enforced by any consumer — author it in "
+                    f"points/miles/cashback-inr, or extend the engines first"
+                )
+            reward_cap = rec.get("reward_cap") or {}
+            if reward_cap and reward_cap.get("cap_unit") == "spend-inr":
+                warnings.append(
+                    f"[warn] {path.relative_to(ROOT)} :: rewards[{r_idx}].reward_cap authored in "
+                    f"'spend-inr' is not enforced by any consumer — author it in "
+                    f"points/miles/cashback-inr, or extend the engines first"
+                )
+
         # discontinued cards should have discontinued_on
         if status == "discontinued" and not instance.get("discontinued_on"):
             errors.append(f"[lint] {path.relative_to(ROOT)} :: status is 'discontinued' but discontinued_on is null")

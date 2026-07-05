@@ -44,8 +44,8 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.5
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: overseas-fashion
         canonical_categories: [international]
@@ -65,11 +65,13 @@ rewards:
     redemption:
       - type: catalog
         program: 360 Rewards
-        rate_inr_per_unit: 0.5
+        rate_inr_per_unit: 1.0
     source:
       url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: 'Verified 2026-07-05: premium tier, 1 RP = Rs1.0 on brand vouchers (like Beyond/Ultimate), not the Rs0.5 placeholder.'
 benefits:
   - effective_from: 2026-01-01
     effective_until: null
@@ -114,5 +116,5 @@ application:
   apply_url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, points, international, lounge, priority-banking, concierge]

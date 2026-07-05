@@ -267,6 +267,22 @@ function acceleratorRatePct(
   return null;
 }
 
+interface AcceleratorHit {
+  rate_pct: number;
+  cap_monthly_inr: number | null;
+  basis: "general" | "channel-locked";
+  applicability: number;
+  /** The accelerator record itself — key for cross-bucket cap accounting. */
+  accel: AcceleratedReward;
+  /** Accelerated earn credited this bucket (cap-clamped, INR/mo). */
+  accel_value_inr: number;
+  /** Base earned on accelerated spend beyond the cap (INR/mo). */
+  over_cap_base_inr: number;
+  /** Base earned on the (1 - applicability) slice (INR/mo). */
+  base_remainder_inr: number;
+  cap_bound: boolean;
+}
+
 function acceleratedRateForBucket(
   accelerated: AcceleratedReward[],
   bucket: CanonicalCategory,
@@ -274,17 +290,12 @@ function acceleratedRateForBucket(
   rewards: RewardRecord,
   ctx: ScoringContext | undefined,
   baseRate: number,
+  capUsage: Map<AcceleratedReward, number>,
 ): {
-  hit: { rate_pct: number; cap_monthly_inr: number | null; basis: "general" | "channel-locked"; applicability: number } | null;
+  hit: AcceleratorHit | null;
   narrowUncounted: boolean;
 } {
-  type Candidate = {
-    rate_pct: number;
-    cap_monthly_inr: number | null;
-    basis: "general" | "channel-locked";
-    applicability: number;
-    value: number;
-  };
+  type Candidate = AcceleratorHit & { value: number };
   let best: Candidate | null = null;
   let narrowUncounted = false;
   const unitValue = unitValueFor(rewards, ctx?.programs);
@@ -323,19 +334,41 @@ function acceleratedRateForBucket(
       if (a.cycle === "annual" && capMonthlyInr != null) capMonthlyInr = capMonthlyInr / 12;
     }
 
+    // The cap is ONE monthly pool shared by every bucket this accelerator
+    // covers — subtract what earlier buckets already consumed, otherwise a
+    // [dining, online] accelerator gets its cap credited once per bucket.
+    const used = capUsage.get(a) ?? 0;
+    const remainingCap = capMonthlyInr != null ? Math.max(0, capMonthlyInr - used) : null;
+
     const accelSpend = amount * f;
     const grossAccel = (accelSpend * ratePct) / 100;
-    const accelValue = capMonthlyInr != null ? Math.min(grossAccel, capMonthlyInr) : grossAccel;
+    const capBound = remainingCap != null && grossAccel > remainingCap;
+    const accelValue = capBound ? remainingCap : grossAccel;
+    // Spend beyond the cap still earns the base rate on real cards (the same
+    // over-cap fallback engine_v2.py models) — not zero.
+    const overCapSpend = capBound && ratePct > 0 ? accelSpend - (remainingCap * 100) / ratePct : 0;
+    const overCapBase = (overCapSpend * baseRate) / 100;
     const baseRemainderValue = (amount * (1 - f) * baseRate) / 100;
 
     // Rank by realised blended monthly value for THIS user's spend on this
     // bucket, not by headline rate — otherwise a 10% accelerator capped at
     // ₹500/mo always beats a 5% uncapped one on ₹50k spend (where uncapped
     // 5% = ₹2,500 wins), and a narrow co-brand rate beats a broad category one.
-    const value = accelValue + baseRemainderValue;
+    const value = accelValue + overCapBase + baseRemainderValue;
 
     const basis: "general" | "channel-locked" = a.channel ? "channel-locked" : "general";
-    const candidate: Candidate = { rate_pct: ratePct, cap_monthly_inr: capMonthlyInr, basis, applicability: f, value };
+    const candidate: Candidate = {
+      rate_pct: ratePct,
+      cap_monthly_inr: capMonthlyInr,
+      basis,
+      applicability: f,
+      accel: a,
+      accel_value_inr: accelValue,
+      over_cap_base_inr: overCapBase,
+      base_remainder_inr: baseRemainderValue,
+      cap_bound: capBound,
+      value,
+    };
     if (!best || candidate.value > best.value) best = candidate;
   }
   return { hit: best, narrowUncounted };
@@ -403,6 +436,8 @@ export function scoreCard(
   let baseMonthly = 0; // portion earned at the base rate (subject to base.cap_per_cycle)
   let totalSpend = 0;
   let narrowRatesUncounted = false; // a merchant/co-brand rate we declined to credit (A2)
+  // Cap consumption per accelerator, shared across buckets (one pool per cap).
+  const capUsage = new Map<AcceleratedReward, number>();
 
   for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
     const amount = spend[bucket] || 0;
@@ -428,21 +463,24 @@ export function scoreCard(
     let baseEarned: number; // portion earned at base rate (subject to base.cap_per_cycle)
 
     const accel = ecoCredited && rewards?.accelerated?.length
-      ? acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx, baseRate)
+      ? acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx, baseRate, capUsage)
       : { hit: null, narrowUncounted: false };
     const hit = accel.hit;
     if (accel.narrowUncounted) narrowRatesUncounted = true;
 
     if (hit) {
       // Accelerator covers `applicability` of the bucket; the rest earns base.
+      // The hit already carries cap-clamped values so the credited rupees equal
+      // the value the candidate was ranked by (and the shared cap pool holds).
       const f = hit.applicability;
-      let accelValue = (amount * f * hit.rate_pct) / 100;
-      if (hit.cap_monthly_inr != null && accelValue > hit.cap_monthly_inr) {
+      if (hit.cap_bound && hit.cap_monthly_inr != null) {
         note = `Capped at ${inr0(hit.cap_monthly_inr)}/mo`;
-        accelValue = hit.cap_monthly_inr;
       }
-      baseEarned = (amount * (1 - f) * baseRate) / 100;
-      monthlyValueForBucket = accelValue + baseEarned;
+      capUsage.set(hit.accel, (capUsage.get(hit.accel) ?? 0) + hit.accel_value_inr);
+      // Over-cap spend and the non-applicable slice both earn base rate,
+      // so both are subject to base.cap_per_cycle below.
+      baseEarned = hit.base_remainder_inr + hit.over_cap_base_inr;
+      monthlyValueForBucket = hit.accel_value_inr + baseEarned;
       basis = hit.basis;
       effectiveRate = amount > 0 ? (monthlyValueForBucket / amount) * 100 : hit.rate_pct;
       if (f < 1 && !note) {

@@ -178,10 +178,12 @@ describe("scoreCard — cap_unit branching (blocker #1)", () => {
       ],
     });
     // 5x of base (1 point per ₹100 worth ₹0.25 → 0.25% base; 5x = 1.25%).
-    // Spending ₹50k/mo → uncapped ₹625, but cap is 1000 points * 0.25 = ₹250/mo.
-    // Annual: 250 * 12 = 3000.
+    // Spending ₹50k/mo → uncapped ₹625, but cap is 1000 points * 0.25 = ₹250/mo,
+    // which covers the first ₹20k of spend. The remaining ₹30k earns base
+    // 0.25% = ₹75/mo (over-cap spend falls back to base, not zero — E2 fix).
+    // Annual: (250 + 75) * 12 = 3900.
     const score = scoreCard(card, spend({ groceries: 50000 }));
-    expect(score.annual_gross_inr).toBe(3000);
+    expect(score.annual_gross_inr).toBe(3900);
     expect(score.buckets[0].note).toMatch(/Capped at ₹250/);
   });
 
@@ -205,6 +207,55 @@ describe("scoreCard — cap_unit branching (blocker #1)", () => {
     const score = scoreCard(card, spend({ fuel: 15000 }));
     expect(score.annual_gross_inr).toBe(6000);
     expect(score.buckets[0].note).toMatch(/Capped at ₹500/);
+  });
+});
+
+describe("scoreCard — cap semantics across engines (E2 divergence fixes)", () => {
+  test("spend above an accelerator's cap earns the base rate, not zero", () => {
+    // Real cards keep earning base on spend beyond the accelerator cap —
+    // engine_v2.py already models this; the calculator credited zero.
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 }, // 1% base
+      accelerated: [
+        {
+          category: "dining",
+          canonical_categories: ["dining"],
+          multiplier: 0,
+          effective_rate: 10,
+          cap_per_cycle: 500,
+          cap_unit: "cashback-inr",
+          cycle: "monthly",
+        },
+      ],
+    });
+    // ₹50k dining at 10%: cap ₹500 covers the first ₹5k of spend; the
+    // remaining ₹45k earns base 1% = ₹450. Monthly = 950, annual = 11,400.
+    const score = scoreCard(card, spend({ dining: 50000 }));
+    expect(score.annual_gross_inr).toBe(11400);
+    expect(score.buckets[0].note).toMatch(/Capped at ₹500/);
+  });
+
+  test("an accelerator's cap is one shared pool across buckets, not granted per bucket", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 0, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "dining-and-online",
+          canonical_categories: ["dining", "online"],
+          multiplier: 0,
+          effective_rate: 10,
+          cap_per_cycle: 500,
+          cap_unit: "cashback-inr",
+          cycle: "monthly",
+        },
+      ],
+    });
+    // ₹10k dining + ₹10k online at 10% is ₹2,000 gross, but the ₹500/mo cap
+    // is a single pool shared by every bucket the accelerator covers.
+    const score = scoreCard(card, spend({ dining: 10000, online: 10000 }));
+    expect(score.annual_gross_inr).toBe(6000); // 500 × 12, not 1000 × 12
   });
 });
 

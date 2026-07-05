@@ -60,6 +60,21 @@ describe("decoupled scorer prototype", () => {
     expect(ratesFlags(mk(12, { channel: { required: true, merchants: ["amazon"] } }), "online", new Set(["online"] as never), 1).some((f) => f.includes("uncapped"))).toBe(false);
   });
 
+  test("ratesFlags never emits an Infinity flag when per_inr is 0 (rate-math guard)", () => {
+    // A `per_inr: 0` typo must not surface "~Infinity%" to the user; the rate
+    // conversion must go through pointsToPct (which guards per_inr <= 0).
+    const card = {
+      current_rewards: {
+        base: { rate: 1, per_inr: 0, unit_value_inr: 1 },
+        accelerated: [
+          { category: "online", canonical_categories: ["online"], effective_rate: 5, cap_per_cycle: "unlimited" },
+        ],
+      },
+    } as unknown as EnrichedCard;
+    const flags = ratesFlags(card, "online", new Set(["online"] as never), 1);
+    expect(flags.some((f) => f.includes("Infinity") || f.includes("NaN"))).toBe(false);
+  });
+
   test("clean data: no live card trips the uncapped flag in the dining recommend flow (F7 regression)", async () => {
     const { cards, programs } = await load();
     const res = scoreDecoupled(cards, programs, base({ goals: ["cashback"], monthly_spend: { online: "0", travel: "0", dining: "gt-30k", groceries: "0", fuel: "0" } }), { topN: 10 });

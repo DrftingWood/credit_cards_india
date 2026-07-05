@@ -42,7 +42,9 @@ export function formatAcceleratedRate(a: AcceleratedReward, rewards: RewardRecor
   if (a.effective_rate == null) return `${a.multiplier}×`;
   const perInr = a.effective_per_inr ?? rewards?.base.per_inr ?? 100;
   if (!rewards || rewards.currency === "cashback") {
-    const pct = (a.effective_rate / perInr) * 100;
+    // Cashback units are worth ₹1; route through pointsToPct so the
+    // per_inr <= 0 guard applies (a YAML typo must not render "Infinity%").
+    const pct = pointsToPct(a.effective_rate, perInr, 1);
     return `${Number(pct.toFixed(2))}%`;
   }
   const unit = rewards.currency === "miles" ? "miles" : "pts";

@@ -17,9 +17,9 @@ card_type: credit
 co_brand:
   partner: Vistara
   category: airline
-status: active
+status: discontinued
 launched_on: null
-discontinued_on: null
+discontinued_on: '2024-11-12'
 
 fees:
   - effective_from: 2020-01-01
@@ -48,17 +48,18 @@ rewards:
     base:
       rate: 4
       per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
+      unit_value_inr: 0.55
+      unit_value_inr_realized: 0.5
     redemption:
       - type: airmiles
         program: Air India Maharaja Club / Partner Airlines
         constraints: "CV Points redeemable on Air India and partner airlines after Vistara-Air India merger."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
-      retrieved_on: 2026-07-03
-      notes: "4 Club Vistara Points per Rs.200 on all retail categories including fuel."
+      retrieved_on: '2026-07-05'
+      notes: "DISCONTINUED: Vistara merged into Air India (2024-11-12); Club Vistara points migrated to Air India Maharaja (~Rs0.55). Card no longer issued."
 
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2020-01-01
@@ -113,5 +114,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, airline, vistara, travel, miles, premium]

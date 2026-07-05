@@ -81,9 +81,15 @@ def compute(card, profile, basis="realized"):
       basis="realized" -> unit_value_inr_realized (the researched floor, e.g. Adani's 0.90).
       basis="face"     -> unit_value_inr          (the best documented redemption, the ceiling).
     Caps, exclusions and forex are real product terms and apply in BOTH. There are NO made-up
-    friction coefficients (portal markup / routability) — those were removed 2026-07-05."""
+    friction coefficients (portal markup / routability) — those were removed 2026-07-05.
+    Channel-gated accelerators (channel.required, e.g. SmartBuy 10X) count only in the
+    ABSOLUTE ceiling: the realistic floor must not assume the whole bucket routes through
+    a portal (R3). The layers stay separate — routing optimism lives with value optimism."""
     from collections import defaultdict
     per=card["per_inr"]; val=(card["face"] if basis=="face" else card["val"]); brate=card["base_rate"]
+    def channel_locked(a):
+        ch=a.get("channel")
+        return bool(ch) and ch.get("required",True)
     # 1) assign each spending category to its BEST accelerator (else base). Group by accelerator
     #    so a shared per-cycle cap is enforced across all the categories it covers.
     mccx_cats={EXCL_MCC[m] for m in card.get("mccx") or set() if m in EXCL_MCC}
@@ -95,6 +101,7 @@ def compute(card, profile, basis="realized"):
         best=None
         for idx,a in enumerate(card["accel"]):
             if cat in (a.get("canonical_categories") or []):
+                if basis!="face" and channel_locked(a): continue  # floor: no portal assumption
                 arate=accel_rate(a,brate,per)
                 # Cap-aware selection: rank by realised value on THIS category's
                 # spend, not headline rate — a 10% capped at Rs100/mo must not

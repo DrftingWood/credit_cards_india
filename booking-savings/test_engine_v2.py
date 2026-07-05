@@ -113,4 +113,26 @@ c = card(base_rate=0.0, per_inr=100, val=1.0, accel=[
 r = compute(c, profile(dining=20000))
 approx(r["gross"], 20000 * 0.03 * 12)  # 7,200/yr via the uncapped 3%, not Rs1,200
 
-print("OK: engine_v2 tests passed (9)")
+
+# 10. Channel-gated accelerators (SmartBuy-class, channel.required) belong to
+#     the ABSOLUTE ceiling, not the realistic floor: the floor must not assume
+#     the whole bucket routes through a portal (R3). Layers stay separate.
+c = card(base_rate=0.01, per_inr=100, val=1.0, accel=[
+    {"canonical_categories": ["travel"], "effective_rate": 10,
+     "channel": {"class": "issuer-portal", "merchants": ["smartbuy"], "required": True}},
+])
+r_floor = compute(c, profile(travel=10000), basis="realized")
+r_ceil = compute(c, profile(travel=10000), basis="face")
+approx(r_floor["gross"], 10000 * 0.01 * 12)  # floor: base only, 1,200/yr
+approx(r_ceil["gross"], 10000 * 0.10 * 12)   # ceiling: portal-routed, 12,000/yr
+
+
+# 11. channel.required: false is decorative — the rate counts in both layers.
+c = card(base_rate=0.01, per_inr=100, val=1.0, accel=[
+    {"canonical_categories": ["travel"], "effective_rate": 5,
+     "channel": {"class": "issuer-portal", "merchants": ["smartbuy"], "required": False}},
+])
+r_floor = compute(c, profile(travel=10000), basis="realized")
+approx(r_floor["gross"], 10000 * 0.05 * 12)
+
+print("OK: engine_v2 tests passed (11)")

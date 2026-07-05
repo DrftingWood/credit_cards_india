@@ -1,1 +1,171 @@
-{"_source":"BOBCARD Product Features & Important Terms & Conditions PDF (01-Apr-2026)","verified_on":"2026-07-04","shared_tnc":"_shared/features-and-rewards-important-terms-conditions-01042026.pdf","result":"all sampled cards (Eterna/Tiara/Premier/Prime/Select/Easy/Snapdeal/HPCL) match YAML core+accelerated+caps+forex; 0 corrections","pdfs_downloaded":2}
+{
+  "_audit": {
+    "_source": "BOBCARD Product Features & Important Terms & Conditions PDF (01-Apr-2026), 14pp",
+    "verified_on": "2026-07-04",
+    "shared_tnc": "_shared/features-and-rewards-important-terms-conditions-01042026.pdf",
+    "result": "all sampled cards (Eterna/Tiara/Premier/Prime/Select/Easy/Snapdeal/HPCL) match YAML core+accelerated+caps+forex; 0 corrections",
+    "index": "docs/sources/bob/INDEX.md"
+  },
+  "assam-rifles-the-sentinel": {
+    "slug": "assam-rifles-the-sentinel",
+    "url": "https://www.bobcard.co.in/credit-card-types/assam-rifles-the-sentinel",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "cashback": {
+    "slug": "bobcard-cashback",
+    "url": "https://www.bobcard.co.in/credit-card-types/bobcard-cashback",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "cma-one": {
+    "slug": "cma-one",
+    "url": "https://www.bobcard.co.in/credit-card-types/cma-one",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "easy": {
+    "slug": "easy",
+    "url": "https://www.bobcard.co.in/credit-card-types/easy",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "eterna": {
+    "slug": "eterna",
+    "url": "https://www.bobcard.co.in/credit-card-types/eterna",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf",
+      "eterna/eterna-milestone-rewards-know-more.pdf"
+    ]
+  },
+  "etihad-guest-premium": {
+    "slug": "bobcard-etihad-guest-premium",
+    "url": "https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "etihad-guest": {
+    "slug": "bobcard-etihad-guest",
+    "url": "https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "hpcl-energie": {
+    "slug": "hpcl-energie",
+    "url": "https://www.bobcard.co.in/credit-card-types/hpcl-energie",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "icai-exclusive": {
+    "slug": "icai-exclusive-bobcard",
+    "url": "https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "icsi-diamond": {
+    "slug": "icsi-diamond",
+    "url": "https://www.bobcard.co.in/credit-card-types/icsi-diamond",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "indian-army-yoddha": {
+    "slug": "indian-army-yoddha",
+    "url": "https://www.bobcard.co.in/credit-card-types/indian-army-yoddha",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "indian-coast-guard-rakshamah": {
+    "slug": "indian-coast-guard-rakshamah",
+    "url": "https://www.bobcard.co.in/credit-card-types/indian-coast-guard-rakshamah",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "indian-navy-varunah": {
+    "slug": "indian-navy-varunah",
+    "url": "https://www.bobcard.co.in/credit-card-types/indian-navy-varunah",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "irctc": {
+    "slug": "irctc-credit-card",
+    "url": "https://www.bobcard.co.in/credit-card-types/irctc-credit-card",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "one": {
+    "slug": "bobcard-one",
+    "url": "https://www.bobcard.co.in/credit-card-types/bobcard-one",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "premier": {
+    "slug": "premier",
+    "url": "https://www.bobcard.co.in/credit-card-types/premier",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "prime": {
+    "slug": "prime",
+    "url": "https://www.bobcard.co.in/credit-card-types/prime",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "scapia": {
+    "slug": "bobcard-scapia-credit-card",
+    "url": "https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "select": {
+    "slug": "select",
+    "url": "https://www.bobcard.co.in/credit-card-types/select",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "snapdeal": {
+    "slug": "snapdeal-bobcard",
+    "url": "https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "tiara": {
+    "slug": "tiara",
+    "url": "https://www.bobcard.co.in/credit-card-types/tiara",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "uni-goldx": {
+    "slug": "bobcard-uni-goldx",
+    "url": "https://www.bobcard.co.in/credit-card-types/bobcard-uni-goldx",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  },
+  "vikram": {
+    "slug": "vikram",
+    "url": "https://www.bobcard.co.in/credit-card-types/vikram",
+    "pdfs": [
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+    ]
+  }
+}

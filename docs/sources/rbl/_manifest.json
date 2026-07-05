@@ -1,1 +1,73 @@
-{"_source":"RBL CardsScheduleCharges.pdf + RBL-MITC-final.pdf + per-card terms PDFs","verified_on":"2026-07-04","corrections":{"insignia":"annual 10000->7000","icon":"forex 2.0->3.5","platinum-maxima-plus":"annual 2000->2500","irctc":"annual 350->500"},"pdfs_downloaded":2}
+{
+  "_audit": {
+    "_source": "RBL CardsScheduleCharges.pdf (annual fees + forex for ALL cards) + per-card T&C (read via pypdf)",
+    "verified_on": "2026-07-04",
+    "shared_soc": "_shared/CardsScheduleCharges.pdf",
+    "result": "Insignia fee, Icon forex, Platinum Maxima Plus fee, IRCTC fee corrected from Schedule of Charges (see INDEX.md)",
+    "index": "docs/sources/rbl/INDEX.md"
+  },
+  "cookies": {
+    "slug": "cookies-credit-card",
+    "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card",
+    "pdfs": [
+      "_shared/CardsScheduleCharges.pdf"
+    ]
+  },
+  "icon": {
+    "slug": "icon-credit-card",
+    "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/icon-credit-card",
+    "pdfs": [
+      "_shared/CardsScheduleCharges.pdf"
+    ]
+  },
+  "insignia": {
+    "slug": "insignia-preferred-banking-credit-card",
+    "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/insignia-preferred-banking-credit-card",
+    "pdfs": [
+      "_shared/CardsScheduleCharges.pdf"
+    ]
+  },
+  "irctc": {
+    "slug": "irctc-rbl-bank-credit-card",
+    "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card",
+    "pdfs": [
+      "_shared/CardsScheduleCharges.pdf"
+    ]
+  },
+  "platinum-maxima-plus": {
+    "slug": "platinum-maxima-plus-credit-card",
+    "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+    "pdfs": [
+      "_shared/CardsScheduleCharges.pdf"
+    ]
+  },
+  "play": {
+    "slug": "rbl-bank-play-credit-card",
+    "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card",
+    "pdfs": [
+      "_shared/CardsScheduleCharges.pdf"
+    ]
+  },
+  "shoprite": {
+    "slug": "shoprite-credit-card",
+    "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card",
+    "pdfs": [
+      "_shared/CardsScheduleCharges.pdf"
+    ]
+  },
+  "world-safari": {
+    "slug": "world-safari-credit-card",
+    "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card",
+    "pdfs": [
+      "_shared/CardsScheduleCharges.pdf",
+      "world-safari/terms-world-safari-card.pdf"
+    ]
+  },
+  "zomato-edition": {
+    "slug": "zomato-rbl-edition-credit-card",
+    "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card",
+    "pdfs": [
+      "_shared/CardsScheduleCharges.pdf"
+    ]
+  }
+}

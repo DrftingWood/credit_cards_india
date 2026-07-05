@@ -51,10 +51,10 @@ rewards:
         canonical_categories: [other]
         multiplier: 10
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 1000
         cap_unit: cashback-inr
-        cycle: monthly
-        notes: "10% cashback on self-selected merchants (customizable BYOC perk); user chooses cashback or reward points."
+        cycle: statement
+        notes: "10% chosen merchants: Rs100/merchant AND Rs1,000/cycle overall cap."
     exclusions:
       - fuel
       - wallet-loads
@@ -70,8 +70,9 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/byoc-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:
   - effective_from: 2026-06-15
     effective_until: null
@@ -108,5 +109,5 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/byoc-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [mid, cashback, customizable, lounge]

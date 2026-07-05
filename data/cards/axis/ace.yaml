@@ -51,20 +51,20 @@ rewards:
         canonical_categories: [utilities]
         multiplier: 1
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 500
         cap_unit: cashback-inr
-        cycle: monthly
+        cycle: statement
         merchants: [google-pay-bills, google-pay-recharges]
-        notes: "5% cashback on bill payments, DTH recharges and mobile recharges via Google Pay."
+        notes: "5% bill-pay + 4% Swiggy/Zomato/Ola SHARE a single Rs500/month cashback cap."
       - category: swiggy-zomato-ola-partners
         canonical_categories: [dining]
         multiplier: 1
         effective_rate: 4
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 500
         cap_unit: cashback-inr
-        cycle: monthly
+        cycle: statement
         merchants: [swiggy, zomato, ola]
-        notes: "4% cashback on Swiggy, Zomato, Ola."
+        notes: "Shares the Rs500/month cashback cap with the 5% bill-pay category."
     exclusions:
       - fuel
       - wallet-loads
@@ -79,8 +79,9 @@ rewards:
         constraints: "Auto-credited to next statement."
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2020-07-15
@@ -119,5 +120,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/axis-bank-ace-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [cashback, bill-payments, entry]

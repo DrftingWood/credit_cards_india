@@ -53,25 +53,25 @@ rewards:
         canonical_categories: [online, groceries, dining, entertainment]
         multiplier: 10
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 750
         cap_unit: cashback-inr
-        cycle: monthly
+        cycle: statement
         notes: "5% cashback on online food deliveries, groceries, movie tickets & OTT subscriptions."
       - category: auto-dealer
         canonical_categories: [other]
         multiplier: 10
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 750
         cap_unit: cashback-inr
-        cycle: monthly
+        cycle: statement
         notes: "5% cashback on auto-dealer merchant spends."
       - category: fuel
         canonical_categories: [fuel]
         multiplier: 6
         effective_rate: 3
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 750
         cap_unit: cashback-inr
-        cycle: monthly
+        cycle: statement
         notes: "3% cashback on all fuel spends (+ 1% fuel-surcharge waiver)."
     exclusions:
       - wallet-loads
@@ -87,8 +87,10 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-prime-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Corrected 2026-07-05: accelerated 5%/3% cashback is NOT unlimited - combined cap Rs750/billing cycle (0% after). Base 0.5% uncapped. 1 point = Rs1.'
 benefits:
   - effective_from: 2025-01-01
     effective_until: null
@@ -117,5 +119,5 @@ application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-prime-credit-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, cashback, online, fuel]

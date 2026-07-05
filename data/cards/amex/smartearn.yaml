@@ -50,11 +50,11 @@ rewards:
         canonical_categories: [online, dining, entertainment, travel]
         multiplier: 10
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 500
         cap_unit: points
         cycle: monthly
         merchants: [zomato, ajio, nykaa, bookmyshow, uber, flipkart, easemytrip]
-        notes: "10X MR per ₹50 on Zomato, Ajio, Nykaa, BookMyShow, Uber, Flipkart, EaseMyTrip & other partners."
+        notes: "10X on Amazon+Flipkart capped 500 MR pts/month COMBINED (~Rs2,500 spend)."
       - category: amazon
         canonical_categories: [online]
         multiplier: 5
@@ -88,7 +88,7 @@ rewards:
       url: https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/
       retrieved_on: '2026-07-05'
 
-      notes: face raised 0.25->0.5 (best redemption is MR voucher Rs0.5); realized stays statement-rate.
+      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:
   - effective_from: 2019-01-01
     effective_until: null

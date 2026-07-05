@@ -48,15 +48,7 @@ rewards:
       per_inr: 100
       unit_value_inr: 0.4
       unit_value_inr_realized: 0.25
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 5
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "5x Travel Points on international spends."
+    accelerated: []
     exclusions:
       - fuel
       - wallet-loads
@@ -74,7 +66,7 @@ rewards:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card
       retrieved_on: '2026-07-05'
 
-      notes: 'face raised 0.25->0.4 (voucher best); realized 0.25 kept.'
+      notes: 'Removed fabricated ''10x international'' accelerator: World Safari earns ZERO reward points on international spend (0% forex but no TP). Travel 5 TP/Rs100 is uncapped. 2026-07-05.'
 benefits:
   - effective_from: 2018-01-01
     effective_until: null

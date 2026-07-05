@@ -53,7 +53,8 @@ rewards:
         cap_unit: cashback-inr
         cycle: statement
         merchants: [swiggy, zomato]
-        notes: "3% cashback on online food delivery, online entertainment and online local commute spends (select MCCs 5499, 5812, 5814, 7841, 7829, 7832, 7922, 4121, 4131, 4111, 7512). Shared under the card-wide INR 1,500/statement-cycle cap."
+        notes: "3% capped Rs1,500/billing cycle; no cashback on txns < Rs100."
+        cap_per_cycle: 1500
     exclusions:
       - fuel
       - rent
@@ -78,7 +79,8 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
+      notes: Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05.
     notes: "Cashback T&C table: 3% on online food delivery/entertainment/local commute, 1% other spends; capped INR 1,500 per statement cycle."
 
     mcc_exclusions: ['6513']
@@ -121,5 +123,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, cashback, co-branded, upi, lifetime-free]

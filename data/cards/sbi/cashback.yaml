@@ -52,10 +52,10 @@ rewards:
         canonical_categories: [online]
         multiplier: 5
         effective_rate: 5
-        cap_per_cycle: 4000
+        cap_per_cycle: 2000
         cap_unit: cashback-inr
         cycle: statement
-        notes: "5% cashback on eligible online spends; total online + offline cashback is capped at ₹4,000 per statement cycle."
+        notes: "5% online capped Rs2,000/cycle (devalued from Rs5,000 on 1 Apr 2026); Rs40k spend ceiling."
     exclusions:
       - fuel
       - wallet-loads
@@ -73,8 +73,9 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-03-01
@@ -114,5 +115,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [cashback, online-spend, mid-tier]

@@ -50,10 +50,10 @@ rewards:
         canonical_categories: [dining, international]
         multiplier: 12
         effective_rate: 24
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 2000
         cap_unit: points
         cycle: monthly
-        notes: "6% value back on weekend dining & international purchases (rate approximate;"
+        notes: "Capped 2,000 RP/month for THIS category (weekend-dining and international counted separately)."
     exclusions:
       - fuel
       - wallet-loads
@@ -66,8 +66,9 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/icon-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added 2,000 RP/mo per-category cap (was uncapped) - 2026-07-05.
 benefits:
   - effective_from: 2023-01-01
     effective_until: null
@@ -123,5 +124,5 @@ application:
   apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/icon-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [premium, travel, dining, lounge, points]

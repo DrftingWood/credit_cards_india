@@ -51,10 +51,10 @@ rewards:
         canonical_categories: [entertainment, groceries, utilities]
         multiplier: 6.67
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 100
         cap_unit: cashback-inr
-        cycle: monthly
-        notes: "5% cashback on Movies, Grocery & Utility Bill Payments (Auto Pay only); utility cashback is capped monthly."
+        cycle: statement
+        notes: "5% movies/grocery/utilities capped Rs100/cycle COMBINED."
     exclusions:
       - fuel
       - wallet-loads
@@ -70,8 +70,9 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/yes-prosperity-cashback-plus-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:
   - effective_from: 2026-06-15
     effective_until: null
@@ -105,5 +106,5 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/yes-prosperity-cashback-plus-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [mid, cashback, movies, groceries, utilities]

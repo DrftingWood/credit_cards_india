@@ -60,7 +60,9 @@ rewards:
         channel:
           class: cobrand-merchant
           merchants: [myntra]
-        notes: "7.5% cashback on Myntra. Cap not specified on page."
+        notes: "7.5% Myntra capped Rs4,000/quarter (separate bucket)."
+        cap_per_cycle: 4000
+        cycle: quarterly
       - category: flipkart
         canonical_categories: [online]
         multiplier: 5
@@ -70,21 +72,26 @@ rewards:
         channel:
           class: cobrand-merchant
           merchants: [flipkart]
-        notes: "5% cashback on Flipkart. Cap not specified on page."
+        notes: "5% Flipkart capped Rs4,000/quarter."
+        cap_per_cycle: 4000
+        cycle: quarterly
       - category: preferred-select-merchants
         canonical_categories: [online]
         multiplier: 4
         effective_rate: 4
         cap_unit: cashback-inr
-        notes: "4% cashback on Preferred / Select Merchants (see issuer T&C for merchant list)."
+        notes: "4% preferred merchants capped Rs4,000/quarter (separate bucket)."
+        cap_per_cycle: 4000
+        cycle: quarterly
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1
         constraints: "Cashback auto-credited to the card statement."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
@@ -120,5 +127,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, ecommerce, flipkart, mid-tier, cashback]

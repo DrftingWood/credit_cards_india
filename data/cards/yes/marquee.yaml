@@ -52,9 +52,10 @@ rewards:
         canonical_categories: [international]
         multiplier: 2
         effective_rate: 24
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 100000
         cap_unit: points
-        cycle: monthly
+        cycle: statement
+        notes: Online (incl. intl online) capped 1,00,000 YES Rewardz pts/cycle, then offline rate.
     exclusions:
       - fuel
       - wallet-loads
@@ -86,7 +87,7 @@ rewards:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
       retrieved_on: '2026-07-05'
 
-      notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
+      notes: 'Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.'
       confidence: high
 benefits:
   - effective_from: 2021-05-01

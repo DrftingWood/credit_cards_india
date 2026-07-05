@@ -16,3 +16,4 @@ Format: `date | item/scenario | what changed | commit | notes`
 2026-07-05 | flaw#5 co-brand | SBI Club Vistara x2 discontinued (Vistara defunct) | 9e0e770 |
 2026-07-05 | scenario D (cross-card consistency) | found SC 360 RP spread (0.25/0.5/1.0) + ICICI RP (0.25/1.0=expected) | - | 2 verify agents launched (airline co-brand values + SC lineup)
 2026-07-05 | flaw#5 co-brand airline | 18 cards: KrisFlyer/Emirates/Etihad/AirIndia UP from ~0.2, IndiGo BluChip DOWN from 1.0, SpiceClub 0.4 | 34f071d | reopens Rs5L verdict
+2026-07-05 | scenario D SC 360 lineup | 4 cards ->Rs0.25, priority-visa-infinite ->Rs1.0 | 4aa6ac2 |

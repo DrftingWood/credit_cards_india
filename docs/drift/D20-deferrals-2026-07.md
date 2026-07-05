@@ -18,6 +18,17 @@ Items surfaced during the D20 top-10 cap pass that need dedicated follow-up
   research both indicate the regulated rail earn is 1 RP = ₹1 with a ₹200 minimum
   (agent found "5 RP per ₹200"). The 1,000-RP/month cap is applied and sourced;
   the underlying earn-rate model should be reconciled against the IRCTC FAQ/T&C.
+- **indusind-pinnacle** — modelled `travel-dining` accelerator at effective_rate=5
+  (~3.8%) is NOT supported by issuer evidence (2026-07-05 research). The Pinnacle
+  Benefit Guide gives 2.5 RP/₹100 online, a **reduced** 1.5 RP/₹100 on travel &
+  airlines, and 1 RP/₹100 POS — there is no 5-RP travel/dining accelerator. Likely
+  a data error; no cap applied (can't cap a rate the issuer doesn't document).
+  Needs a rewards remodel to the real 2.5/1.5/1 structure.
+- **kotak-white-reserve** — modelled `international-spend` accelerator at
+  effective_rate=6 (~3%) could not be confirmed: the KFS + product pages show
+  rewards are milestone-based "White Pass" value (annual ₹2.5L program cap), not a
+  per-transaction international accelerator. No per-txn international earn table
+  exists in issuer docs. No cap applied; needs a rewards-model review.
 
 ## Handled in the top-10 pass (for reference)
 Numeric caps applied: idfc-first-gaj (15k RP/mo shared), kotak-solitaire (100k

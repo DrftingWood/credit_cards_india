@@ -47,7 +47,7 @@ rewards:
       rate: 3
       per_inr: 150
       unit_value_inr: 0.40
-      unit_value_inr_realized: 0.25
+      unit_value_inr_realized: 0.3
     accelerated:
       - category: weekend-dining
         canonical_categories: [dining]
@@ -77,8 +77,10 @@ rewards:
         constraints: "Up to ₹0.40 per reward point when redeemed for hotel & flight bookings via FIRST Rewards Gallery."
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: "Verified 2026-07-05: Ashva ceiling Rs0.40 (app travel; Rs0.5 was Mayura's rate); realized ~0.30."
 benefits:
   - effective_from: 2024-05-01
     effective_until: null
@@ -136,5 +138,5 @@ application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [premium, metal, dining, travel, low-forex]

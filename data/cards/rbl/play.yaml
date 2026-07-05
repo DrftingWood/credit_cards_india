@@ -45,8 +45,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 0.4
-      unit_value_inr_realized: 0.3
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.15
     accelerated:
       - category: ott-gaming-dining-entertainment
         canonical_categories: [dining, entertainment]
@@ -69,8 +69,10 @@ rewards:
         rate_inr_per_unit: 0.4
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: "Verified 2026-07-05: RBL points ~Rs0.25 nominal / ~Rs0.15 realistic; Play's real value is movie vouchers, not points (was 0.4/0.3)."
 benefits:
   - effective_from: 2021-07-01
     effective_until: null
@@ -110,5 +112,5 @@ application:
   apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, entertainment, ott, gaming, points]

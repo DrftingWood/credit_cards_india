@@ -45,8 +45,8 @@ rewards:
     base:
       rate: 4
       per_inr: 150
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.4
+      unit_value_inr: 0.3
+      unit_value_inr_realized: 0.25
     accelerated:
       - category: weekend-dining
         canonical_categories: [dining]
@@ -68,8 +68,10 @@ rewards:
         rate_inr_per_unit: 0.5
     source:
       url: https://www.hdfc.bank.in/credit-cards/diners-club-rewardz-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Verified 2026-07-05: HDFC Diners Rewardz caps ~Rs0.30 (SmartBuy travel), Rs0.25 catalogue (was 0.5/0.4).'
 benefits:
   - effective_from: 2017-01-01
     effective_until: null
@@ -103,5 +105,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/diners-club-rewardz-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, diners, points]

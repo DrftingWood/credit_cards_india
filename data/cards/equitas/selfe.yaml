@@ -48,8 +48,8 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.5
+      unit_value_inr: 0.35
+      unit_value_inr_realized: 0.25
     accelerated:
       - category: choose-2-of-5-categories
         canonical_categories: [online, dining, groceries, utilities, travel]
@@ -74,13 +74,13 @@ rewards:
         constraints: "1 RP = Rs 0.50; redeemable on the Equitas rewards catalogue."
     source:
       url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
-      retrieved_on: 2026-07-05
+      retrieved_on: '2026-07-05'
       type: issuer-page
-      confidence: high
+      confidence: medium
       fields_verified:
         - rewards.base.rate
         - rewards.accelerated.effective_rate
-      notes: "Issuer page: 2 RP/Rs 100 base; 5X on 2 self-selected categories. RP value Rs 0.50 is the Equitas program standard (per PowerMiles page)."
+      notes: "Verified 2026-07-05: Equitas Selfe ~Rs0.35 Xchange travel/vouchers, ~Rs0.25 realistic (was 0.5); Rs1 only at Diamond tier."
 
 benefits:
   - effective_from: 2025-01-01
@@ -118,5 +118,5 @@ application:
   apply_url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: '2026-07-05'
   tags: [mid, points, lifestyle, ott, lounge, choose-categories]

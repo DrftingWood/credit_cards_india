@@ -44,7 +44,7 @@ rewards:
     base:
       rate: 4
       per_inr: 150
-      unit_value_inr: 0.50
+      unit_value_inr: 0.25
       unit_value_inr_realized: 0.25
     accelerated:
       - category: travel-spend
@@ -70,8 +70,10 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.idfcfirst.bank.in/credit-card/wow
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Verified 2026-07-05: IDFC WOW (secured) 1 RP = Rs0.25 flat (was 0.5).'
 benefits:
   - effective_from: 2021-06-01
     effective_until: null
@@ -113,5 +115,5 @@ application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/wow
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, secured, points, zero-forex, travel]

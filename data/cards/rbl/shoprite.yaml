@@ -45,8 +45,8 @@ rewards:
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.4
-      unit_value_inr_realized: 0.3
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
     accelerated:
       - category: grocery-supermarket
         canonical_categories: [groceries]
@@ -69,8 +69,10 @@ rewards:
         rate_inr_per_unit: 0.4
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Verified 2026-07-05: RBL ShopRite RP cap Rs0.25 (was 0.4).'
 benefits:
   - effective_from: 2016-01-01
     effective_until: null
@@ -99,5 +101,5 @@ application:
   apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, grocery, points]

@@ -84,8 +84,8 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
       retrieved_on: '2026-07-05'
 
-      confidence: medium
-      notes: 'Closed-loop: Shoppers Stop rewards redeem only within the Shoppers Stop ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.4). | prior: Rs 1 voucher at Shoppers Stop (co-brand-locked) / ~Rs 0.20 cash; blended realistic Rs 0.40.'
+      confidence: high
+      notes: 'Research-verified: HDFC Reward Point = Rs1 as Shoppers Stop voucher, store-only. Layer-3: same goods ~20-40% cheaper online during sales.'
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

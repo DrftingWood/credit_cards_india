@@ -90,7 +90,8 @@ rewards:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
       retrieved_on: '2026-07-05'
 
-      notes: 'Closed-loop: IRCTC rewards redeem only within the IRCTC ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.9).'
+      notes: 'Research-verified: dedicated IRCTC Reward Point = Rs1 on rail fare (regulated -> no premium). Min Rs200.'
+      confidence: high
 benefits:
   - effective_from: 2021-03-01
     effective_until: null

@@ -104,9 +104,9 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
       retrieved_on: '2026-07-05'
-      notes: "Closed-loop: SpiceJet rewards redeem only within the SpiceJet ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs0.5; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.4). | prior: Verified 2026-07-05: SpiceClub fixed Rs0.50 nominal, discounted to ~Rs0.40 for SpiceJet distress/availability risk."
+      notes: "Research-verified: 1 SpiceClub Point = Rs0.5, SpiceJet-only. Redemption-availability risk (network cuts). Layer-3: direct booking forgoes ~2-8% aggregator coupons."
 
-      confidence: medium
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20

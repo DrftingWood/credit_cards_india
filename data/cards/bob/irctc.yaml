@@ -43,13 +43,11 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
-    redemption_scope: closed-loop
-    ecosystem_label: IRCTC
     base:
       rate: 2
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.25
+      unit_value_inr_realized: 0.18
     accelerated:
       - category: irctc-train-booking
         canonical_categories: [travel]
@@ -85,7 +83,8 @@ rewards:
       url: https://www.bobcard.co.in/credit-card-types/irctc-credit-card
       retrieved_on: '2026-07-05'
 
-      notes: 'Closed-loop: IRCTC rewards redeem only within the IRCTC ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs0.25; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.18). | prior: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.'
+      notes: 'Research-verified: earns GENERIC BOB Reward Points (Rs0.25), also redeemable on statement/catalogue -> NOT closed-loop. 4 BOB RP = 1 IRCTC travel point. Closed-loop tag removed.'
+      confidence: high
 benefits:
   - effective_from: 2020-01-01
     effective_until: null

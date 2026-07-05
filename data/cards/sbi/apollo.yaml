@@ -94,8 +94,8 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card.html
       retrieved_on: '2026-07-05'
 
-      confidence: medium
-      notes: 'Closed-loop: Apollo rewards redeem only within the Apollo ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.5). | prior: Aligned with sbi/apollo-select 2026-07-05: Apollo Health Credits = Rs1.0 nominal at Apollo (closed-loop) -> realized ~0.5. Was inconsistently Rs0.25.'
+      confidence: high
+      notes: 'Research-verified: SBI RP -> Apollo Health Credit 1:1, 1 HC = Rs1, Apollo-only (one-way). Layer-3: Apollo medicines ~0-10% above discount pharmacies (medicines only).'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03

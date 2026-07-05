@@ -86,7 +86,8 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card
       retrieved_on: '2026-07-05'
 
-      notes: 'Closed-loop: Tata Neu rewards redeem only within the Tata Neu ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.9).'
+      notes: 'Research-verified: 1 NeuCoin = Rs1 across Tata Neu, no cash conversion. 12-mo expiry from 01-Aug-2025. Layer-3: Croma ~5% premium.'
+      confidence: high
     mcc_exclusions: ['5816']
 benefits:
   - effective_from: 2022-08-01

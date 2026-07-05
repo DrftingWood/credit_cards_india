@@ -42,13 +42,11 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Zen Points
-    redemption_scope: closed-loop
-    ecosystem_label: Kotak Zen
     base:
       rate: 5
       per_inr: 150
-      unit_value_inr: 0.15
-      unit_value_inr_realized: 0.15
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
     accelerated:
       - category: shopping
         canonical_categories: [online]
@@ -80,7 +78,8 @@ rewards:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
       retrieved_on: '2026-07-05'
 
-      notes: 'Closed-loop: Kotak Zen rewards redeem only within the Kotak Zen ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs0.15; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.1).'
+      notes: 'Research-verified: Zen Points cash value Rs0.20 (w.e.f. 01-Jun-2025, was Rs0.25), voucher up to Rs0.25. NOT closed-loop (open Kotak catalogue, cash-convertible) — closed-loop tag removed.'
+      confidence: high
 benefits:
   - effective_from: 2023-01-01
     effective_until: null

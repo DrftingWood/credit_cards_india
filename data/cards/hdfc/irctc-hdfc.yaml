@@ -86,7 +86,8 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
       retrieved_on: '2026-07-05'
 
-      notes: 'Closed-loop: IRCTC rewards redeem only within the IRCTC ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.9).'
+      notes: 'Research-verified: dedicated IRCTC Reward Point = Rs1 on rail fare (regulated/fixed -> NO price premium). HDFC caps redemption at 70% of fare.'
+      confidence: high
     mcc_exclusions: ['5816', '6540']
 benefits:
   - effective_from: 2022-08-01

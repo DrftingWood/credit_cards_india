@@ -89,7 +89,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: high
-      notes: 'Closed-loop: Apollo rewards redeem only within the Apollo ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.5). | prior: Verified 2026-07-05: Apollo Health Credits = Rs1.0 at Apollo only (closed-loop, no cash) -> realized ~0.50 blended.'
+      notes: 'Research-verified: SBI RP -> Apollo Health Credit 1:1 = Rs1, Apollo-only. Layer-3: medicines ~0-10% premium.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03

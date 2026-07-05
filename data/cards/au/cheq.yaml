@@ -86,8 +86,8 @@ rewards:
       url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
       retrieved_on: '2026-07-05'
 
-      confidence: high
-      notes: 'Closed-loop: CheQ rewards redeem only within the CheQ ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs0.5; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.3). | prior: Corrected 2026-07-05: CheQ Points = Rs0.50 max (travel/giftcard), Rs0.25 bill-pay; closed-loop. face 1.0->0.50, realized 1.0->0.30.'
+      confidence: medium
+      notes: 'Research-verified: CheQ Points ~Rs0.5 (travel/gift-card best), Rs0.25 bill-offset; CheQ-app only. Redemption value secondary-sourced (CardInsider).'
 benefits:
   - effective_from: 2024-01-01
     effective_until: null

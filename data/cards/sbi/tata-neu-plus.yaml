@@ -89,7 +89,8 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
       retrieved_on: '2026-07-05'
 
-      notes: 'Closed-loop: Tata Neu rewards redeem only within the Tata Neu ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized None). | prior: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.'
+      notes: 'Research-verified: 1 NeuCoin = Rs1 across Tata Neu, no cash conversion.'
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03

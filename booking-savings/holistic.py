@@ -15,13 +15,20 @@ from typing import Optional, Callable
 PT = {"cashback":1.00, "atlas_floor":1.00, "atlas_xfer":2.00, "infinia_sb":1.00, "mmt_mycash":1.00}
 
 # ---- grounded route profiles: markups vs cheapest channel + bank instant-discount caps ----
+# Values calibrated to the 2026-07 channel-pricing research (see MARKUPS.md for the sourced
+# table + confidence per cell). KEY CAVEATS the numbers can't fully capture:
+#  - Bank instant discounts are mostly SALE-ONLY (live a few days/month); the always-on
+#    exception is ICICI x ixigo domestic flights (12%/Rs1,500, Wednesdays). This model assumes
+#    an active sale — net savings without one are lower.
+#  - SmartBuy/EDGE BLOCK stackable bank coupons, so their smaller disc caps below are deliberate.
+#  - OTA convenience fee is fare-size dependent (bigger % gap on cheap fares) — `ota` is a central estimate.
 PROFILES = {
  # P=typical price; sb/edge=portal markup; ota=priciest-OTA(MMT) sticker premium;
  # inst_pct/inst_cap = bank instant discount on OTAs; mmt_earn = MMT-ICICI myCash %
- "Domestic flight": dict(P=8000,  sb=0.03, edge=0.06, ota=0.04, inst=0.10, cap=1500, mmt_earn=0.03, direct=True),
- "Intl flight":     dict(P=45000, sb=0.08, edge=0.12, ota=0.04, inst=0.10, cap=10000, mmt_earn=0.03, direct=True),
- "Domestic hotel":  dict(P=12000, sb=0.12, edge=0.25, ota=0.12, inst=0.10, cap=3000, mmt_earn=0.06, direct=False),
- "Intl hotel":      dict(P=60000, sb=0.20, edge=0.32, ota=0.15, inst=0.10, cap=5000, mmt_earn=0.06, direct=False),
+ "Domestic flight": dict(P=8000,  sb=0.03, edge=0.055, ota=0.04, inst=0.10, cap=1750, mmt_earn=0.03, direct=True),
+ "Intl flight":     dict(P=45000, sb=0.08, edge=0.12, ota=0.04, inst=0.10, cap=5000, mmt_earn=0.03, direct=True),
+ "Domestic hotel":  dict(P=12000, sb=0.10, edge=0.30, ota=0.12, inst=0.10, cap=3000, mmt_earn=0.06, direct=False),
+ "Intl hotel":      dict(P=60000, sb=0.20, edge=0.32, ota=0.15, inst=0.10, cap=10000, mmt_earn=0.06, direct=False),
 }
 
 @dataclass

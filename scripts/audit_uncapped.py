@@ -34,9 +34,13 @@ for fp in glob.glob(r"data\cards\**\*.yaml", recursive=True):
             pct = rate / per * uv * 100
             if pct >= THRESHOLD_PCT:
                 ch = (a.get("channel") or {}).get("class") if isinstance(a.get("channel"), dict) else None
-                rows.append((d["id"], a.get("category"), rate, round(pct, 1), cap, ch))
+                documented = bool(rec.get("capping_rules"))
+                rows.append((d["id"], a.get("category"), rate, round(pct, 1), cap, ch, documented))
 
-rows.sort(key=lambda r: -r[3])
-print(f"{len(rows)} uncapped accelerators >= {THRESHOLD_PCT}% on active cards")
+rows.sort(key=lambda r: (r[6], -r[3]))  # undocumented first, then worst-first
+undoc = sum(1 for r in rows if not r[6])
+print(f"{len(rows)} uncapped accelerators >= {THRESHOLD_PCT}% on active cards "
+      f"({undoc} undocumented, {len(rows) - undoc} carry a capping_rules no-cap note)")
 for r in rows:
-    print(f"  {r[0]:35} {str(r[1])[:35]:37} rate={r[2]:>6} ~{r[3]:>5}% cap={r[4]} channel={r[5]}")
+    tag = "        " if r[6] else "[NO-NOTE]"
+    print(f"  {tag} {r[0]:35} {str(r[1])[:35]:37} rate={r[2]:>6} ~{r[3]:>5}% cap={r[4]} channel={r[5]}")

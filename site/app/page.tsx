@@ -1,88 +1,83 @@
 import Link from "next/link";
-import { getActiveCards, getIndex } from "@/lib/data";
-import { CardGrid } from "@/components/card-grid";
-
-/** Featured selection for the home grid. Handpicked to span tiers / issuers /
- *  currencies so the reader sees variety on first load. */
-const FEATURED_IDS = [
-  "hdfc-infinia",
-  "axis-magnus",
-  "amex-platinum-travel",
-  "sbi-cashback",
-  "icici-amazon-pay",
-  "idfc-first-wealth",
-  "hdfc-marriott-bonvoy",
-  "axis-ace",
-];
+import { getIndex } from "@/lib/data";
+import { CategoryTiles } from "@/components/home/category-tiles";
+import { SpendStarter } from "@/components/home/spend-starter";
 
 export default function HomePage() {
-  const cards = getActiveCards();
   const index = getIndex();
-
-  const featured = FEATURED_IDS
-    .map((id) => cards.find((c) => c.id === id))
-    .filter((c): c is NonNullable<typeof c> => !!c);
-
+  const n = index.counts.cards_total;
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
+      {/* hero */}
       <section className="rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-brand-50 p-8 md:p-10">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
-          Every credit card in India, open and source-linked.
+        <div className="text-[11px] font-semibold uppercase tracking-wide text-brand-700">
+          {n} cards · sourced from issuer T&amp;C · no affiliate links
+        </div>
+        <h1 className="mt-3 max-w-2xl text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
+          Every card, ranked by what it actually pays you.
         </h1>
         <p className="mt-3 max-w-2xl text-slate-700">
-          A community-maintained dataset of fees, rewards and benefits for{" "}
-          <strong>{index.counts.cards_total}</strong> cards across{" "}
-          <strong>{index.counts.issuers}</strong> issuers. Every number links back to the issuer page.
+          Tell us where your money goes. We rank India&apos;s cards by <strong>real ₹/year</strong> —
+          rewards minus fees and the caps aggregators skip — and link every number back to the issuer.
         </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link
-            href="/browse"
-            className="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white no-underline hover:bg-brand-700 hover:text-white"
-          >
-            Browse {index.counts.cards_total} cards
-          </Link>
-          <Link
-            href="/calculator"
-            className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
-          >
-            Find the best card for my spend
-          </Link>
+        <SpendStarter />
+      </section>
+
+      {/* category tiles */}
+      <section>
+        <div className="mb-3 flex items-baseline justify-between">
+          <h2 className="text-xl font-semibold text-slate-900">Best cards, by what you need</h2>
+          <Link href="/browse" className="text-sm">All {n} cards →</Link>
+        </div>
+        <CategoryTiles />
+      </section>
+
+      {/* credibility band */}
+      <section className="rounded-2xl bg-slate-900 p-8 text-slate-100">
+        <div className="text-[11px] font-semibold uppercase tracking-wide text-brand-300">Why you can trust the numbers</div>
+        <div className="mt-4 grid grid-cols-2 gap-6 md:grid-cols-4">
+          <Trust k={String(n)} v="cards — every fee & reward links to the issuer's own page" />
+          <Trust k="Net ₹/yr" v="ranked on what you keep; fees & caps in, 'up to' rates out" />
+          <Trust k="₹0" v="affiliate income — we don't earn on applications, so nothing's pushed" />
+          <Trust k="Dated" v="every card carries its own verification date" />
         </div>
       </section>
 
-      <section>
-        <div className="flex items-baseline justify-between mb-3">
-          <h2 className="text-xl font-semibold text-slate-900">At a glance</h2>
-          <Link href="/about" className="text-sm">
-            How we source this →
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <Stat label="Cards tracked" value={index.counts.cards_total} />
-          <Stat label="Issuers covered" value={index.counts.issuers} />
-          <Stat label="Lifetime-free" value={index.counts.cards_lifetime_free} />
-          <Stat label="Invite-only" value={index.counts.cards_invite_only} />
-        </div>
+      {/* methodology */}
+      <section className="rounded-2xl border border-amber-200 bg-amber-50 p-8">
+        <div className="text-[11px] font-semibold uppercase tracking-wide text-amber-800">How we rank — in one line</div>
+        <p className="mt-2 text-lg font-semibold text-slate-900">
+          What you keep = rewards − annual fee − the caps you&apos;ll actually hit → <span className="text-emerald-700">net ₹/yr</span>
+        </p>
+        <p className="mt-3 max-w-2xl text-sm text-slate-700">
+          A 5% card capped at ₹1,000/month is not a 5% card — and we say so. Every ranking is the honest
+          ₹/year for a stated spend, with the assumptions shown on each card&apos;s own breakdown.
+        </p>
+        <Link href="/about" className="mt-4 inline-block text-sm font-semibold text-slate-900 underline">Read the full method →</Link>
       </section>
 
+      {/* tools */}
       <section>
-        <div className="flex items-baseline justify-between mb-3">
-          <h2 className="text-xl font-semibold text-slate-900">Featured</h2>
-          <Link href="/browse" className="text-sm">
-            See all →
-          </Link>
+        <h2 className="mb-3 text-xl font-semibold text-slate-900">Tools</h2>
+        <div className="grid gap-3 md:grid-cols-3">
+          <Tool href="/recommend" t="Rank my cards" d="Enter your monthly spend by category → a net-₹/yr ranked shortlist." />
+          <Tool href="/compare" t="Compare side by side" d="Up to 4 cards head-to-head — fees, rates, caps, lounges." />
+          <Tool href="/calculator" t="Reward calculator" d="One card, your spend, the exact ₹/yr with caps applied." />
         </div>
-        <CardGrid cards={featured} />
       </section>
     </div>
   );
 }
 
-function Stat({ label, value }: { label: string; value: number }) {
+function Trust({ k, v }: { k: string; v: string }) {
+  return (<div><div className="text-2xl font-semibold text-white tabular-nums">{k}</div><div className="mt-1.5 text-xs text-slate-300">{v}</div></div>);
+}
+function Tool({ href, t, d }: { href: string; t: string; d: string }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4">
-      <div className="text-2xl font-semibold tabular-nums text-slate-900">{value}</div>
-      <div className="text-xs uppercase tracking-wide text-slate-500 mt-1">{label}</div>
-    </div>
+    <Link href={href as never} className="block rounded-xl border border-slate-200 bg-white p-5 no-underline transition-colors hover:border-brand-500/50">
+      <div className="text-sm font-semibold text-slate-900">{t}</div>
+      <div className="mt-1 text-xs text-slate-500">{d}</div>
+      <div className="mt-3 text-xs font-semibold text-brand-700">Open →</div>
+    </Link>
   );
 }

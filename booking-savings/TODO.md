@@ -11,9 +11,11 @@ Snapshot of open work across both projects (as of 2026-07-05).
 Done: 25 cards encoded with full-visibility `transfer_partners`; catalogue-only marks (IDFC/RBL/AU);
 InterMiles ×4 discontinued; HSBC Platinum, ICICI, Kotak, YES; `docs/TRANSFER_PARTNERS.md`; validates OK.
 
+Done (remediation, 2026-07-05): floor audit of all 319 cards (`docs/FLOOR_AUDIT.md`); fixed 4
+Category-B outliers + deferred SC Rewards; populated 22 missing `realized`; discontinued 3 defunct
+Vistara cards; reconciled all EDGE Reward Points to uniform ₹0.18 floor; swept EDGE Miles stragglers.
+
 Pending:
-- [ ] Reconcile EDGE Reward Points value: Magnus ₹0.18 vs Reserve ₹0.35 (same currency).
-- [ ] Sweep last EDGE Miles stragglers: `axis/olympus` (discontinued), `axis/indianoil-premium` (catalog-only) — still on old 2:1 / 0.5.
 - [ ] Build `loyalty_programs/*.yaml` partner files — promote ~28 partner values out of card notes into reusable entities.
 - [ ] Co-brand single-airline cards (bob/etihad, icici/emirates-*, sbi/*, axis/vistara*, kotak/air*) — set proper co-brand partner values.
 - [ ] Verify low-confidence encodings: HDFC `regalia` (modeled on Regalia Gold), ICICI `emeralde` legacy 6:1.

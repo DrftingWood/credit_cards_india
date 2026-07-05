@@ -25,9 +25,7 @@ fees:
     effective_until: null
     joining_fee_inr: 0
     annual_fee_inr: 800
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
+    fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 2.50
     cash_advance_fee:
@@ -36,10 +34,10 @@ fees:
     gst_applicable: true
     source:
       url: https://bankofindia.bank.in/credit-card/rupay-select
-      retrieved_on: 2026-07-04
+      retrieved_on: 2026-07-05
       type: issuer-page
-      confidence: medium
-      notes: "Annual fee Rs 800 (renewal waived on Rs 2L annual spend) per aggregator listings updated 2026; not stated in the issuer brochure — pending BOI Schedule of Charges."
+      confidence: high
+      notes: "Fees (AMC Rs800, joining Nil) verified verbatim vs BOI issuer brochure bankofindia.bank.in/.../Rupay_Select.pdf 2026-07-05. The previously-modelled Rs2L annual-fee waiver is NOT documented by the issuer (brochure states a flat AMC with no spend-based waiver; aggregators disagree Rs1L vs Rs2L) -> removed per no-fabrication rule."
 
 rewards:
   - effective_from: 2023-01-01
@@ -136,5 +134,5 @@ application:
   apply_url: https://bankofindia.bank.in/credit-card/rupay-select
 
 metadata:
-  last_verified_on: 2026-07-04
+  last_verified_on: 2026-07-05
   tags: [mid, rupay, points, lounge, upi-linkable, psu-bank]

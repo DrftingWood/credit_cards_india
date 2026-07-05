@@ -22,7 +22,7 @@ theoretical ceilings, not realistic net returns.** Ranked by severity:
 | # | Flaw | Effect (quantified) | Fix |
 |---|---|---|---|
 | R1 | **Portal-markup blindness** — values points at ₹1 but never subtracts the SmartBuy/Travel-EDGE price premium the booking model proved exists | HDFC Diners "17.5%" → **real ~7–12%**; premium ~0–5% flights, **5–34% hotels**. Contradicts our own holistic model. | Net portal markup against reward; reconcile the two models |
-| R2 | **Forex blindness** — no forex term at all | Atlas on ₹5L **international**: 5% earn − 4.13% (3.5%+GST) = **~0.87% net, or negative**. Ranks a 3.5% card above a 0% card → **full inversion vs Scapia** | Subtract `forex_markup_pct × 1.18 × intl_spend` |
+| R2 | **Forex blindness — but only on FX-charged spend** | Forex hits ONLY transactions settled in foreign currency (POS/ATM abroad, foreign OTA/hotel/airline sites). International flights & hotels **booked in INR via Indian aggregators/portals incur ZERO forex** — they're INR transactions. So the Atlas−4.13%→~0.87%/negative case and the Scapia inversion hold **only for the FX-charged portion**, not for an international trip booked in INR. The engine has no forex term *and* must not over-apply it. | Model 3 spend types: domestic-INR, **international-booked-in-INR (no forex)**, and **foreign-currency spend (forex applies)**. Subtract `forex_markup_pct × 1.18` only on the FX fraction. |
 | R3 | **Accelerator not MCC/channel-scoped** — applies the best travel rate to *all* ₹5L | Atlas 5x is gated to Travel EDGE portal/direct **and does NOT apply abroad** (base 2x). MMT 6% is MMT-only; Scapia 4% is app-only | Apply accelerator only to eligible channel/MCC fraction |
 | R4 | **Channel-routing fantasy** — assumes 100% of spend routes through the best accelerator; the `locked` flag is computed but **never used** | Overstates every portal/co-brand card; lumpy travel + **monthly cap** means most spend earns base (Diners: only ~₹2.7L of ₹5L gets 10X even spread; less if lumpy) | Discount locked cards; model caps against monthly profile |
 | R5 | **realized-vs-face asymmetry** — ranks a points card at face ₹2.2 against a cashback rupee at ₹1 | Systematically under-ranks cashback, over-ranks transfer-optimized points | Rank on ONE basis (realized); show floor→ceiling as a range |
@@ -57,7 +57,10 @@ Accor hotel floor is **gone** (removed 2026-04-02). Atlas is effectively an airl
 
 - The **realized** column ≈ a floor; the **theoretical** column ≈ a ceiling that assumes perfect
   optimization. Truth is between, minus the R1–R4 costs the engine omits.
-- **Domestic vs international matters enormously** (forex) — the current verdict is implicitly domestic.
+- **Three spend contexts, not two:** domestic-INR, international-booked-in-INR (Indian aggregator/portal —
+  no forex, behaves like domestic for fees), and foreign-currency spend (forex applies — where 0%-forex
+  cards like Scapia win). The current verdict is implicitly "domestic/INR" and only the *last* context
+  triggers the forex inversion.
 - Portal-locked leaders (Diners/SmartBuy, MMT, Ixigo) are the most overstated; flexible/low-forex
   cards (Atlas transfer, Scapia international) are understated.
 

@@ -6,7 +6,7 @@ See `docs/ENGINE_REVIEW.md` for the full red-team analysis behind P0. **The data
 ## P0 — Engine correctness (the ₹5L answers are optimistic ceilings, not real returns)
 - [ ] **Engine v2** — stop discarding fields the repo already stores:
   - [ ] R1 **Net portal markup** against reward (Diners "17.5%" → real ~7–12%). Reconcile with `holistic.py`.
-  - [ ] R2 **Forex term**: subtract `forex_markup_pct × 1.18 × intl_spend`; split the verdict into **domestic vs international** (they invert — Atlas loses to Scapia on ₹5L international).
+  - [ ] R2 **Forex term (FX-charged spend only)**: forex applies ONLY to foreign-currency transactions (POS/ATM abroad, foreign OTA/hotel/airline sites) — NOT to international trips booked in INR via Indian aggregators/portals. Model 3 contexts: domestic-INR, international-booked-in-INR (no forex), foreign-currency (subtract `forex_markup_pct × 1.18` on the FX fraction; 0%-forex cards win here only).
   - [ ] R3 **Accelerator MCC/channel scoping** — apply the boosted rate only to the eligible channel/MCC fraction, not all ₹5L (Atlas 5x is portal/direct-only and *not abroad*; MMT 6% is MMT-only).
   - [ ] R4 **Use the `locked` flag** (currently computed, never used); model `cap_per_cycle`+`cycle` against a **monthly** spend profile, not the annual total (lumpy travel → most spend earns base).
   - [ ] R5 **Rank on one basis** (realized); present floor→ceiling as an explicit range, not face-vs-realized mixed.

@@ -52,9 +52,9 @@ function CardTileImpl({ card }: { card: EnrichedCard }) {
           <span className="ml-1 text-xs font-normal text-slate-500">rewards</span>
         </div>
         <div className="mt-0.5 text-sm text-slate-700 tabular-nums">
-          {fee ? formatFeeInr(fee) : "Lifetime free"}
+          {card.computed.is_lifetime_free ? "Lifetime free" : formatFeeInr(fee)}
           {waiverAt ? <span className="text-xs text-slate-500"> · waived at {formatInr(waiverAt)}</span> : null}
-          <span className="text-xs text-slate-500"> · annual fee</span>
+          {!card.computed.is_lifetime_free ? <span className="text-xs text-slate-500"> · annual fee</span> : null}
         </div>
       </div>
 

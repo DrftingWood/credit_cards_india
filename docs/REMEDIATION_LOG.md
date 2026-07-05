@@ -12,3 +12,4 @@ Format: `date | item/scenario | what changed | commit | notes`
 2026-07-05 | scenario B (nominal inflation) | Scapia cards ₹1.0→₹0.20 coin (5x error) | 12d970c | user-flagged
 2026-07-05 | scenario B/D | audited face≥0.5; found Scapia-class suspects (adani-signature, ixigo, apollo-select, phonepe-ultimo, irctc-platinum, SC-beyond, Uni, AU cheq/kosmo/paytm) | (verifying) | in TODO
 2026-07-05 | scenario B (nominal inflation) | 13 cards value-fixed (Uni 100x, ixigo/cheq/kosmo/paytm, Adani, Apollo, phonepe-ultimo, SC-beyond) | 1f1d3f4 | Uni earn scaled x100
+2026-07-05 | TODO: SC Rewards earn-rate | base 1/150 -> 4/150 retail | 7686ae4 |

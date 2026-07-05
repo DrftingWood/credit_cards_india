@@ -49,8 +49,8 @@ rewards:
     base:
       rate: 4
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr: 0.7
+      unit_value_inr_realized: 0.55
     accelerated:
       - category: air-india-bookings
         canonical_categories: [travel]
@@ -76,8 +76,10 @@ rewards:
         constraints: "Convert Reward Points into Air India Maharaja Points; 1 Reward Point = 1 Air India Maharaja Point."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: 'Verified 2026-07-05: Reward Points convert 1:1 to Air India Maharaja (~Rs0.5-0.7 economy post Apr-2026 chart; 20-50% conversion bonuses lift value). Was face Rs1.0.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
@@ -149,5 +151,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, airline, air-india, miles, premium, lounge]

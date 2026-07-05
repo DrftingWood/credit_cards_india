@@ -52,8 +52,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr: 0.6
+      unit_value_inr_realized: 0.45
     accelerated:
       - category: indigo-flights-direct
         canonical_categories: [travel]
@@ -99,8 +99,10 @@ rewards:
         constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only."
     source:
       url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Verified 2026-07-05: IndiGo BluChip has NO fixed value, floats ~Rs0.40-0.60 toward IndiGo fares (was wrongly Rs1.0; the Rs1 belonged to the retiring 6E Rewards program).'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-02-18
@@ -168,5 +170,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, airline, indigo, entry, miles, bluchip, rupay, upi-linkable]

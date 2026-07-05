@@ -47,7 +47,7 @@ rewards:
       rate: 3
       per_inr: 200
       unit_value_inr: 0.5              # value chart: 5,400 pts ≈ ₹2,700
-      unit_value_inr_realized: 0.5
+      unit_value_inr_realized: 0.4
     accelerated:
       - category: spicejet-app-and-website
         canonical_categories: [travel]
@@ -101,9 +101,10 @@ rewards:
         constraints: "Redeem SpiceClub Points on SpiceJet bookings."
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
-      retrieved_on: 2026-07-03
-      notes: "Base 3 SpiceClub Points per ₹200 on other retail spends (value chart: ₹1L → 1,500 pts). Wallet & EMI transactions excluded from accelerated earn."
+      retrieved_on: '2026-07-05'
+      notes: "Verified 2026-07-05: SpiceClub fixed Rs0.50 nominal, discounted to ~Rs0.40 for SpiceJet distress/availability risk."
 
+      confidence: medium
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
@@ -163,5 +164,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [travel, miles, co-brand, airline]

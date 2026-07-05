@@ -90,7 +90,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: medium
-      notes: SpiceClub points ~Rs 0.50 face on SpiceJet, realistic Rs 0.40 (LCC).
+      notes: 'Verified 2026-07-05: SpiceClub fixed Rs0.50 nominal, discounted to ~Rs0.40 for SpiceJet distress/availability risk.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20

@@ -47,8 +47,8 @@ rewards:
     base:
       rate: 6
       per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 0.85
     accelerated:
       - category: singapore-airlines-group
         canonical_categories: [travel]
@@ -72,9 +72,10 @@ rewards:
         constraints: "Miles credited directly to KrisFlyer account on statement date."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card-apex.html
-      retrieved_on: 2026-07-03
-      notes: "6 KrisFlyer Miles per Rs.200 on other eligible spends; some spend categories excluded per T&C."
+      retrieved_on: '2026-07-05'
+      notes: "Verified 2026-07-05: earns Singapore KrisFlyer miles directly; SQ low fuel surcharge -> ~Rs0.85-1.0 economy (was wrongly ~Rs0.2)."
 
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-01-01
@@ -150,5 +151,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card-apex.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, airline, krisflyer, singapore-airlines, travel, miles, super-premium]

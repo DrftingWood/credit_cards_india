@@ -49,7 +49,7 @@ rewards:
       rate: 1
       per_inr: 150
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: indianoil-fuel
         canonical_categories: [fuel]
@@ -84,8 +84,10 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: EDGE Miles redeem at Rs 1.0 via Axis Travel EDGE (portal-only, no transfer). realized Rs0.5->Rs1.0 (was below the guaranteed Rs1 floor).
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2020-01-01
@@ -129,5 +131,5 @@ application:
   apply_url: https://www.axisbank.com/retail/cards/credit-card/indian-oil-axis-bank-premium-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, fuel, indianoil, rupay, entry]

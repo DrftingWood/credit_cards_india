@@ -59,7 +59,7 @@ rewards:
         card_attributable_rate: 10
         card_attributable_per_inr: 100
         stacks_with_program: false
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 1000
         cap_unit: points
         cycle: monthly
         merchants: [irctc]
@@ -67,7 +67,7 @@ rewards:
           required: true
           class: cobrand-merchant
           merchants: [irctc-direct]
-        notes: "10 points per ₹100 spent on AC train ticket bookings via IRCTC portal/app."
+        notes: "10 points per ₹100 spent on AC train ticket bookings via IRCTC portal/app. Accelerated Reward Points capped at 1,000/monthly cycle; no RP beyond the cap (RBL IRCTC FAQ)."
       - category: groceries-department-stores-utilities
         canonical_categories: [groceries, utilities]
         multiplier: 1
@@ -88,7 +88,7 @@ rewards:
         constraints: "Redeemable against IRCTC rail ticket bookings."
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       notes: 'Research-verified: dedicated IRCTC Reward Point = Rs1 on rail fare (regulated -> no premium). Min Rs200.'
       confidence: high

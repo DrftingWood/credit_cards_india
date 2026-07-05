@@ -8,7 +8,7 @@ import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
-import { rankCards, type CardScore, type SpendProfile } from "@/lib/calculator";
+import { rankCards, listEcosystems, type CardScore, type SpendProfile } from "@/lib/calculator";
 import { formatInr, formatPct } from "@/lib/utils";
 
 const DEFAULT_SPEND: SpendProfile = {
@@ -37,15 +37,28 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
   const [spend, setSpend] = useState<SpendProfile>(DEFAULT_SPEND);
   const selectedId = useSearchParams().get("card");
 
+  // Layer 2 — ecosystem preferences. Closed-loop points (Adani One, Tata Neu, …) are
+  // real ₹1 money only if you use that ecosystem. Default: all ON (optimistic); untick
+  // the ones you don't use and those cards drop to their base rate.
+  const ecosystems = useMemo(() => listEcosystems(cards), [cards]);
+  const [enabledEco, setEnabledEco] = useState<Set<string>>(() => new Set(ecosystems));
+  const toggleEco = (eco: string) =>
+    setEnabledEco((prev) => {
+      const next = new Set(prev);
+      if (next.has(eco)) next.delete(eco);
+      else next.add(eco);
+      return next;
+    });
+
   const { ranked, pinnedSelected } = useMemo(() => {
-    const all = rankCards(cards, spend);
+    const all = rankCards(cards, spend, { enabledEcosystems: enabledEco });
     const top = all.slice(0, 10);
     if (!selectedId) return { ranked: top, pinnedSelected: null as CardScore | null };
     const inTop = top.some((r) => r.card.id === selectedId);
     if (inTop) return { ranked: top, pinnedSelected: null };
     const pinned = all.find((r) => r.card.id === selectedId) ?? null;
     return { ranked: top, pinnedSelected: pinned };
-  }, [cards, spend, selectedId]);
+  }, [cards, spend, selectedId, enabledEco]);
 
   const monthlyTotal = Object.values(spend).reduce((a, b) => a + (b || 0), 0);
 
@@ -89,6 +102,36 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
             <span className="tabular-nums">{formatInr(monthlyTotal * 12)}</span>
           </div>
         </div>
+
+        {ecosystems.length > 0 ? (
+          <div className="border-t border-slate-200 pt-4">
+            <h2 className="text-sm font-semibold text-slate-900">Ecosystems you use 🔒</h2>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Some cards earn points redeemable only inside one ecosystem — real money only if you
+              use it. All on by default; untick any you don&apos;t, and those cards drop to their base rate.
+            </p>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {ecosystems.map((eco) => {
+                const on = enabledEco.has(eco);
+                return (
+                  <button
+                    key={eco}
+                    type="button"
+                    onClick={() => toggleEco(eco)}
+                    aria-pressed={on}
+                    className={
+                      on
+                        ? "rounded-full border border-brand-500 bg-brand-50 text-brand-800 px-2.5 py-1 text-xs font-medium"
+                        : "rounded-full border border-slate-300 bg-white text-slate-400 px-2.5 py-1 text-xs line-through"
+                    }
+                  >
+                    {eco}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
       </form>
 
       <div>
@@ -151,6 +194,23 @@ function ResultRow({
             <Link href={href} className="font-semibold text-slate-900 hover:text-slate-900">
               {c.name}
             </Link>
+            {score.closed_loop_ecosystem ? (
+              <span
+                title={
+                  score.ecosystem_credited
+                    ? `Rewards redeem only within ${score.closed_loop_ecosystem} — valued at full in-ecosystem worth`
+                    : `Rewards redeem only within ${score.closed_loop_ecosystem}, which you don't use — shown at base rate`
+                }
+                className={
+                  score.ecosystem_credited
+                    ? "ml-2 rounded-full bg-amber-50 text-amber-700 px-1.5 py-0.5 text-[10px] font-medium align-middle"
+                    : "ml-2 rounded-full bg-slate-100 text-slate-400 px-1.5 py-0.5 text-[10px] font-medium align-middle"
+                }
+              >
+                🔒 {score.closed_loop_ecosystem}
+                {score.ecosystem_credited ? "" : " (unused)"}
+              </span>
+            ) : null}
             <div className="mt-1 flex items-center gap-2 text-xs text-slate-500">
               <IssuerLogo issuer={c.issuer_detail} height={14} />
               <span>· {c.tier.replace("-", " ")}</span>

@@ -40,13 +40,15 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: Shoppers Stop
     base:
       rate: 1
       per_inr: 100
       cap_per_cycle: 1000
       cap_unit: points
       cycle: monthly
-      unit_value_inr_realized: 0.4
+      unit_value_inr_realized: 1.0
       unit_value_inr: 1.0
     accelerated:
       - category: shoppers-stop-purchases
@@ -83,7 +85,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: medium
-      notes: Rs 1 voucher at Shoppers Stop (co-brand-locked) / ~Rs 0.20 cash; blended realistic Rs 0.40.
+      notes: 'Closed-loop: Shoppers Stop rewards redeem only within the Shoppers Stop ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.4). | prior: Rs 1 voucher at Shoppers Stop (co-brand-locked) / ~Rs 0.20 cash; blended realistic Rs 0.40.'
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

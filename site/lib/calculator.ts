@@ -29,6 +29,11 @@ export interface CardScore {
   disclaimer?: string;
   /** True when a merchant/co-brand-specific accelerator was left uncredited because its bucket share isn't authored (A2). */
   merchant_rates_uncounted?: boolean;
+  /** Ecosystem this card's rewards are locked to (e.g. "Adani One"), when closed-loop. */
+  closed_loop_ecosystem?: string | null;
+  /** For a closed-loop card: whether the user's ecosystem preferences credited it in full
+   *  (true) or dropped it to base because they don't use that ecosystem (false). */
+  ecosystem_credited?: boolean;
 }
 
 export interface ScoringContext {
@@ -45,6 +50,24 @@ export interface ScoringContext {
    * accelerator covers the whole bucket as if all category spend qualifies (A2).
    */
   applyApplicability?: boolean;
+  /**
+   * Ecosystems the individual actually uses (by ecosystem_label, e.g. "Adani One").
+   * A closed-loop card's points are real ₹1 money ONLY if the user redeems in that
+   * ecosystem — so when a card's ecosystem is NOT in this set, its accelerators are
+   * dropped and it earns base rate only. `undefined` = optimistic (all ecosystems
+   * assumed used), preserving the default calculator behaviour.
+   */
+  enabledEcosystems?: Set<string>;
+}
+
+/** Whether a card's (closed-loop) rewards should be credited in full for this user.
+ *  Open cards: always. Closed-loop: only if the user uses that ecosystem (or the
+ *  calculator is in optimistic mode with enabledEcosystems undefined). */
+function ecosystemCredited(rewards: RewardRecord | null, ctx: ScoringContext | undefined): boolean {
+  if (!rewards || rewards.redemption_scope !== "closed-loop") return true;
+  if (!ctx?.enabledEcosystems) return true; // optimistic: assume used
+  const eco = rewards.ecosystem_label;
+  return eco != null && ctx.enabledEcosystems.has(eco);
 }
 
 /**
@@ -102,18 +125,37 @@ const MCC_EXCLUSION_TO_BUCKET: Record<string, CanonicalCategory> = {
 
 const MONTHS_PER_YEAR = 12;
 
-/** Best-available unit value: program.realized > base.realized > base.face. */
-function unitValueFor(rewards: RewardRecord, programs?: Record<string, LoyaltyProgram>): number | null {
+/** Which sourced unit value to score with. Both are researched per card, not invented:
+ *  "realized" = unit_value_inr_realized (the floor, e.g. Adani's ₹0.90 closed-loop);
+ *  "face"     = unit_value_inr          (the best documented redemption, the ceiling). */
+export type ValueBasis = "realized" | "face";
+
+/** Sourced unit value for the chosen basis. Realized: program.realized > base.realized > base.face.
+ *  Face: program.face > base.face > base.realized. No made-up friction — just the two data points. */
+function unitValueFor(
+  rewards: RewardRecord,
+  programs?: Record<string, LoyaltyProgram>,
+  basis: ValueBasis = "realized",
+): number | null {
   const program = rewards.loyalty_program ? programs?.[rewards.loyalty_program] : null;
-  if (program) return program.unit_value_inr.realized;
-  if (rewards.base.unit_value_inr_realized != null) return rewards.base.unit_value_inr_realized;
-  if (rewards.base.unit_value_inr != null) return rewards.base.unit_value_inr;
-  return null;
+  if (program) {
+    return basis === "face"
+      ? program.unit_value_inr.face ?? program.unit_value_inr.realized
+      : program.unit_value_inr.realized ?? program.unit_value_inr.face;
+  }
+  const face = rewards.base.unit_value_inr;
+  const realized = rewards.base.unit_value_inr_realized;
+  if (basis === "face") return face ?? realized ?? null;
+  return realized ?? face ?? null;
 }
 
-function baseRatePct(rewards: RewardRecord | null, programs?: Record<string, LoyaltyProgram>): number {
+function baseRatePct(
+  rewards: RewardRecord | null,
+  programs?: Record<string, LoyaltyProgram>,
+  basis: ValueBasis = "realized",
+): number {
   if (!rewards) return 0;
-  const uv = unitValueFor(rewards, programs);
+  const uv = unitValueFor(rewards, programs, basis);
   if (uv == null) return 0;
   return pointsToPct(rewards.base.rate, rewards.base.per_inr, uv);
 }
@@ -339,6 +381,10 @@ export function scoreCard(
   const rewards = card.current_rewards;
   const baseRate = baseRatePct(rewards, ctx?.programs);
   const unitValue = rewards ? unitValueFor(rewards, ctx?.programs) : null;
+  // Layer 2: a closed-loop card's points are only real money if the individual uses
+  // that ecosystem. When they don't, drop the accelerators — the card earns base only.
+  const closedLoopEco = rewards?.redemption_scope === "closed-loop" ? rewards.ecosystem_label ?? null : null;
+  const ecoCredited = ecosystemCredited(rewards, ctx);
 
   const excluded = new Set<CanonicalCategory>();
   for (const ex of rewards?.exclusions ?? []) {
@@ -381,7 +427,7 @@ export function scoreCard(
     let monthlyValueForBucket: number;
     let baseEarned: number; // portion earned at base rate (subject to base.cap_per_cycle)
 
-    const accel = rewards?.accelerated?.length
+    const accel = ecoCredited && rewards?.accelerated?.length
       ? acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx, baseRate)
       : { hit: null, narrowUncounted: false };
     const hit = accel.hit;
@@ -468,6 +514,11 @@ export function scoreCard(
       "Merchant/co-brand-specific rates shown at base only — enter per-merchant spend to value them",
     );
   }
+  if (closedLoopEco && !ecoCredited) {
+    disclaimerParts.push(
+      `Rewards redeem only in ${closedLoopEco} — shown at base rate because you don't use it; enable ${closedLoopEco} to value them in full`,
+    );
+  }
 
   return {
     card,
@@ -479,6 +530,8 @@ export function scoreCard(
     base_value_inr_monthly: monthlyValue,
     disclaimer: disclaimerParts.length ? disclaimerParts.join("; ") : undefined,
     merchant_rates_uncounted: narrowRatesUncounted || undefined,
+    closed_loop_ecosystem: closedLoopEco,
+    ecosystem_credited: closedLoopEco ? ecoCredited : undefined,
   };
 }
 
@@ -494,4 +547,14 @@ export function rankCards(
     .filter((c) => c.current_rewards && c.computed.is_active)
     .map((c) => scoreCard(c, spend, ctx))
     .sort((a, b) => b.annual_net_inr - a.annual_net_inr);
+}
+
+/** Distinct closed-loop ecosystems across the given cards, for the preference toggles. */
+export function listEcosystems(cards: EnrichedCard[]): string[] {
+  const s = new Set<string>();
+  for (const c of cards) {
+    const r = c.current_rewards;
+    if (r?.redemption_scope === "closed-loop" && r.ecosystem_label) s.add(r.ecosystem_label);
+  }
+  return [...s].sort((a, b) => a.localeCompare(b));
 }

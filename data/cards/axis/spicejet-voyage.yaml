@@ -43,11 +43,13 @@ rewards:
     effective_until: null
     currency: points
     currency_name: SpiceClub Points
+    redemption_scope: closed-loop
+    ecosystem_label: SpiceJet
     base:
       rate: 3
       per_inr: 200
       unit_value_inr: 0.5              # value chart: 5,400 pts ≈ ₹2,700
-      unit_value_inr_realized: 0.4
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: spicejet-app-and-website
         canonical_categories: [travel]
@@ -102,7 +104,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
       retrieved_on: '2026-07-05'
-      notes: "Verified 2026-07-05: SpiceClub fixed Rs0.50 nominal, discounted to ~Rs0.40 for SpiceJet distress/availability risk."
+      notes: "Closed-loop: SpiceJet rewards redeem only within the SpiceJet ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs0.5; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.4). | prior: Verified 2026-07-05: SpiceClub fixed Rs0.50 nominal, discounted to ~Rs0.40 for SpiceJet distress/availability risk."
 
       confidence: medium
     mcc_exclusions: ['6513']

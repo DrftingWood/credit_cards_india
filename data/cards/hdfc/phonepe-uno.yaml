@@ -44,11 +44,13 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: PhonePe
     base:
       rate: 0
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.95
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: phonepe-select-categories
         canonical_categories: [utilities, travel]
@@ -91,7 +93,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
       retrieved_on: '2026-07-05'
-      notes: "PhonePe cashback points ~Rs 1, small friction."
+      notes: "Closed-loop: PhonePe rewards redeem only within the PhonePe ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.95). | prior: PhonePe cashback points ~Rs 1, small friction."
 
       confidence: medium
     reward_cap:

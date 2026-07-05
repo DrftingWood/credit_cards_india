@@ -45,11 +45,13 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Fuel Points
+    redemption_scope: closed-loop
+    ecosystem_label: IndianOil
     base:
       rate: 1
       per_inr: 150
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: indianoil-fuel
         canonical_categories: [fuel]
@@ -78,8 +80,8 @@ rewards:
         constraints: "Redeemable as fuel at IOC outlets via XtraRewards programme (1 FP ≈ ₹0.96 of fuel)."
     source:
       url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: fuel cap is 150 FP/mo steady-state (250 only first 6 months); non-fuel accelerators capped 100 FP/mo each (were wrongly unlimited)."
+      retrieved_on: '2026-07-05'
+      notes: "Closed-loop: IndianOil rewards redeem only within the IndianOil ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.5). | prior: 2026-06 corrections: fuel cap is 150 FP/mo steady-state (250 only first 6 months); non-fuel accelerators capped 100 FP/mo each (were wrongly unlimited)."
 
 benefits:
   - effective_from: 2017-01-01
@@ -109,5 +111,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: '2026-07-05'
   tags: [co-branded, fuel, indianoil, rupay, entry]

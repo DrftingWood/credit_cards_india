@@ -46,11 +46,13 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: Apollo
     base:
       rate: 1
       per_inr: 200
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: apollo-services
         canonical_categories: [other]
@@ -93,7 +95,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: medium
-      notes: 'Aligned with sbi/apollo-select 2026-07-05: Apollo Health Credits = Rs1.0 nominal at Apollo (closed-loop) -> realized ~0.5. Was inconsistently Rs0.25.'
+      notes: 'Closed-loop: Apollo rewards redeem only within the Apollo ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.5). | prior: Aligned with sbi/apollo-select 2026-07-05: Apollo Health Credits = Rs1.0 nominal at Apollo (closed-loop) -> realized ~0.5. Was inconsistently Rs0.25.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03

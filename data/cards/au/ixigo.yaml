@@ -43,11 +43,13 @@ rewards:
     effective_until: null
     currency: points
     currency_name: ixigo Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: ixigo
     base:
       rate: 2.5
       per_inr: 100
       unit_value_inr: 0.5
-      unit_value_inr_realized: 0.4
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: ixigo-bookings
         canonical_categories: [travel]
@@ -77,7 +79,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: high
-      notes: 'Corrected 2026-07-05: no 1:1 path. Ceiling Rs0.50 (ixigo Money travel wallet), Rs0.25 cash, Rs0.20 voucher; Rs99+GST fee. face 1.0->0.50, realized 1.0->0.40.'
+      notes: 'Closed-loop: ixigo rewards redeem only within the ixigo ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs0.5; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.4). | prior: Corrected 2026-07-05: no 1:1 path. Ceiling Rs0.50 (ixigo Money travel wallet), Rs0.25 cash, Rs0.20 voucher; Rs99+GST fee. face 1.0->0.50, realized 1.0->0.40.'
 benefits:
   - effective_from: 2024-01-01
     effective_until: null

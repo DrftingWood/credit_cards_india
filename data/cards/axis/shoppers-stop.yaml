@@ -47,11 +47,13 @@ rewards:
     effective_until: null
     currency: points
     currency_name: First Citizen Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: Shoppers Stop
     base:
       rate: 2
       per_inr: 200
       unit_value_inr: 0.5
-      unit_value_inr_realized: 0.4
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: shoppers-stop-exclusive-brand-apparel
         canonical_categories: [other]
@@ -86,7 +88,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: medium
-      notes: First Citizen points ~Rs 0.50 voucher at Shoppers Stop, realistic ~Rs 0.40.
+      notes: 'Closed-loop: Shoppers Stop rewards redeem only within the Shoppers Stop ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs0.5; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.4). | prior: First Citizen points ~Rs 0.50 voucher at Shoppers Stop, realistic ~Rs 0.40.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20

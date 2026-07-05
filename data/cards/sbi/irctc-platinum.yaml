@@ -45,12 +45,14 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: IRCTC
     loyalty_program: irctc-loyalty
     base:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
@@ -73,7 +75,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
       retrieved_on: '2026-07-05'
-      notes: "Aligned with sbi/irctc-premier 2026-07-05: IRCTC AC-rail points ~Rs1 nominal, realized ~0.9 for a rail user (was 0.5)."
+      notes: "Closed-loop: IRCTC rewards redeem only within the IRCTC ecosystem (not cash/transfer). Valued at full in-ecosystem face Rs1.0; realized set = face and redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut (was realized 0.9). | prior: Aligned with sbi/irctc-premier 2026-07-05: IRCTC AC-rail points ~Rs1 nominal, realized ~0.9 for a rail user (was 0.5)."
 
       confidence: medium
     mcc_exclusions: ['6513']

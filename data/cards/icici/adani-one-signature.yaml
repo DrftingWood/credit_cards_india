@@ -45,11 +45,13 @@ rewards:
     effective_until: null
     currency: cashback
     currency_name: Adani OneApp Rewards
+    redemption_scope: closed-loop
+    ecosystem_label: Adani One
     base:
       rate: 1.5
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: adani-one-ecosystem
         canonical_categories: [online, travel]
@@ -91,7 +93,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: high
-      notes: 'Verified 2026-07-05: Adani Reward Points = Rs1.0 nominal (1:1 in Adani One app, closed-loop, not cash) -> realized ~0.90.'
+      notes: 'Verified 2026-07-05: Adani Reward Points = Rs1.0, 1:1 in Adani One app. Closed-loop (redeemable only across Adani Airports / Adani One app, not cash/transfer): valued at full in-ecosystem Rs1.0 and marked redemption_scope=closed-loop so the UI shows an ecosystem-only badge instead of an arbitrary haircut.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2023-03-01

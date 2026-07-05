@@ -27,6 +27,21 @@ describe("decoupled scorer prototype", () => {
     expect(az(withAmz).net_rewards_inr).toBe(24000); // 5% of ₹40k/mo × 12
   });
 
+  test("merchant-only co-brand rates are gated by brand picks — different brands, different rankings (D17 residual)", async () => {
+    // axis-flipkart's accelerators carry merchants: [flipkart|myntra] with NO
+    // channel block. Before the fix they fired at full rate for EVERY user's
+    // whole online bucket, so an amazon-only shopper saw Axis Flipkart credited
+    // 5–7.5% and brand picks couldn't change relative rankings.
+    const { cards, programs } = await load();
+    const spend = { online: "gt-30k", travel: "0", dining: "0", groceries: "0", fuel: "0" } as const;
+    const pick = (shopping: string[]) =>
+      scoreDecoupled(cards, programs, base({ goals: ["cashback"], monthly_spend: spend, brand_preferences: { shopping, airline: null, food_ecosystem: null, fuel_station: null } }), { topN: 300 });
+    const withFlipkart = pick(["flipkart"]);
+    const withAmazonOnly = pick(["amazon"]);
+    const fk = (rs: typeof withFlipkart) => rs.find((d) => d.card.id === "axis-flipkart")!;
+    expect(fk(withFlipkart).net_rewards_inr).toBeGreaterThan(fk(withAmazonOnly).net_rewards_inr);
+  });
+
   test("milestones are decoupled — a milestone phantom does NOT top the ranking (F3)", async () => {
     const { cards, programs } = await load();
     const foodie = scoreDecoupled(cards, programs, base({ goals: ["cashback"], monthly_spend: { online: "0", travel: "0", dining: "gt-30k", groceries: "5k-15k", fuel: "0" } }), { topN: 5 });

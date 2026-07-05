@@ -175,6 +175,27 @@ function channelSatisfied(a: AcceleratedReward, ctx: ScoringContext | undefined)
   return false;
 }
 
+/**
+ * Merchant-only accelerators (merchants[] with no channel block) are still
+ * brand-scoped products: when the caller supplies a channelMix (the /recommend
+ * flow), the elevated rate fires only if one of the accelerator's merchants
+ * matches a brand the user picked — otherwise every user's whole bucket earned
+ * a co-brand rate they never shop at (the D17 residual, inverted inertness).
+ * No channelMix (optimistic /calculator) keeps today's behaviour. Same
+ * optimistic-on-selected-brand principle as channelSatisfied: full real rate
+ * when the user says they shop there, base otherwise, no invented fraction.
+ * Exact token match only — display-name merchants ("Home Centre") that no
+ * wizard brand can emit fail closed to base, which is the honest treatment
+ * until those accelerators get real channel blocks (D34).
+ */
+function merchantSatisfied(a: AcceleratedReward, ctx: ScoringContext | undefined): boolean {
+  if (a.channel) return true; // channelSatisfied already decided this one
+  if (!a.merchants || a.merchants.length === 0) return true;
+  if (!ctx || !ctx.channelMix) return true; // optimistic /calculator
+  if (ctx.channelMix.size === 0) return false;
+  return a.merchants.some((m) => ctx.channelMix!.has(m));
+}
+
 /** Sum of program baseline + matching channel bonuses + matching tier bonus, expressed as percent of spend. */
 function programStackPct(
   rewards: RewardRecord,
@@ -305,6 +326,12 @@ function acceleratedRateForBucket(
     if (!buckets.includes(bucket)) continue;
 
     if (!channelSatisfied(a, ctx)) continue;
+    if (!merchantSatisfied(a, ctx)) {
+      // A merchant rate exists but the user didn't pick that brand — earn is
+      // base for this accelerator, and the caveat still tells them it's there.
+      narrowUncounted = true;
+      continue;
+    }
 
     const ratePct = acceleratorRatePct(a, rewards, ctx);
     if (ratePct == null) continue;

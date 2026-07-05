@@ -35,11 +35,13 @@ export const BRAND_PREF_TO_CHANNELS: {
     ota: ["mmt", "easemytrip", "cleartrip", "yatra", "ixigo", "ota-any"],
   },
   shopping: {
-    amazon: ["amazon-pay"],
+    // Include both the channel token (amazon-pay) and the plain merchant token
+    // (amazon) — merchant-only accelerators gate on accelerated[].merchants.
+    amazon: ["amazon-pay", "amazon"],
     flipkart: ["flipkart"],
     "tata-neu": ["tata-neu"],
     myntra: ["myntra"],
-    nykaa: [],
+    nykaa: ["nykaa"],
     others: [],
   },
   food: {

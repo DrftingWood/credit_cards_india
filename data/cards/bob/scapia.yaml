@@ -42,25 +42,26 @@ fees:
 rewards:
   - effective_from: 2024-01-01
     effective_until: null
-    currency: points
+    currency: cashback
     currency_name: Scapia Coins
     base:
-      rate: 5
+      rate: 10
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.2
     accelerated:
-      - category: select-categories
-        canonical_categories: [other]
-        multiplier: 2
-        effective_rate: 10
+      - category: upi-spends
+        canonical_categories:
+          - other
+        multiplier: 1
+        effective_rate: 5
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: statement
-        notes: "10% Scapia Coins on select categories (Visa variant, min ₹20 per txn)."
+        notes: "5 Scapia Coins per Rs100 (~1% value) on RuPay UPI spends (min Rs500/txn on RuPay variant)."
       - category: scapia-app-travel
         canonical_categories: [travel]
-        multiplier: 4
+        multiplier: 2
         effective_rate: 20
         cap_per_cycle: "unlimited"
         cap_unit: points
@@ -69,23 +70,29 @@ rewards:
         channel:
           class: cobrand-merchant
           merchants: [scapia-app]
-        notes: "20% Scapia Coins on travel bookings (flights, stays, visas, trains, buses) via the Scapia app — only on in-app bookings."
+        notes: "20 Scapia Coins per Rs100 (~4% value) on travel (flights/stays/visas/trains/buses) via the Scapia app. Base 10 coins/Rs100 (~2%) on other eligible spends."
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
+      - utilities
+      - education
+      - government
+      - gift-cards
     mcc_exclusions: ['6513']
     redemption:
       - type: statement-credit
         program: Scapia Coins
-        rate_inr_per_unit: 1.0
-        constraints: "1 Scapia Coin = ₹1; redeemable for travel on the Scapia app, up to 100% of a booking."
+        rate_inr_per_unit: 0.2
+        constraints: "1 Scapia Coin = Rs 0.20 (5 coins = Rs 1); redeemable ONLY on Scapia-app travel, up to 100% of a booking. Closed-loop."
     source:
       url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: "Rebuilt 2026-07-05: 1 Scapia Coin = Rs 0.20 (was wrongly Rs 1.0). '10%/20%/5% coins' are coin COUNTS = ~2%/4%/1% real value. Aligned with Federal Scapia."
 benefits:
   - effective_from: 2024-01-01
     effective_until: null
@@ -122,5 +129,5 @@ application:
   apply_url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [mid, points, travel, lifetime-free, lounge, co-brand]

@@ -16,6 +16,13 @@ Category-B outliers + deferred SC Rewards; populated 22 missing `realized`; disc
 Vistara cards; reconciled all EDGE Reward Points to uniform ₹0.18 floor; swept EDGE Miles stragglers.
 
 Pending:
+- [ ] **Sanity-check `unit_value` against real programme values** (Scapia-class: internally-consistent
+  but wrong — the floor audit can't catch these). Suspects found 2026-07-05 (face ₹1.0 but likely worth less):
+  `icici/adani-one-signature` (vs adani-one-platinum @0.25), `au/ixigo` (voucher rate is 0.5, not 1.0),
+  `sbi/apollo-select` (SBI RP are ₹0.25), `hdfc/phonepe-ultimo` (realized 0.2), `sbi/irctc-platinum`
+  (realized 0.2), `standard-chartered/beyond` (SC 360 RP are ₹0.25), Uni Coins (`bob/uni-goldx`,
+  `yes/uni`, `yes/uni-rupay`), AU `cheq`/`kosmo`/`paytm`. Verify each vs the real programme, fix the wrong ones.
+- [ ] Fix `standard-chartered/rewards` earn rate (flat 4 RP/₹150 retail, dataset has 1/150).
 - [ ] Build `loyalty_programs/*.yaml` partner files — promote ~28 partner values out of card notes into reusable entities.
 - [ ] Co-brand single-airline cards (bob/etihad, icici/emirates-*, sbi/*, axis/vistara*, kotak/air*) — set proper co-brand partner values.
 - [ ] Verify low-confidence encodings: HDFC `regalia` (modeled on Regalia Gold), ICICI `emeralde` legacy 6:1.

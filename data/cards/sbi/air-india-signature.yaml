@@ -76,11 +76,13 @@ rewards:
         constraints: "Convert Reward Points into Air India Maharaja Points; 1 Reward Point = 1 Air India Maharaja Point."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       confidence: medium
       notes: 'Verified 2026-07-05: Reward Points convert 1:1 to Air India Maharaja (~Rs0.5-0.7 economy post Apr-2026 chart; 20-50% conversion bonuses lift value). Was face Rs1.0.'
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No per-month/statement/annual cap on Air India accelerated Reward Points per the card's own Combined T&C (Air-India-Signature-Combined-TC-16JUL2025, sec 11.4); earn is 10 RP/₹100 (cut from 30 RP w.e.f. 31-Mar-25).
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

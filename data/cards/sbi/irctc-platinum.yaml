@@ -74,7 +74,7 @@ rewards:
       - fuel
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
       notes: "Research-verified: dedicated IRCTC RP = Rs1 on rail fare (regulated -> no premium)."
 
       confidence: high
@@ -84,6 +84,8 @@ rewards:
         program: IRCTC AC-class fare
         rate_inr_per_unit: 1.0
         constraints: Rs1/pt against AC-class IRCTC rail fare only (link to IRCTC ID); closed-loop, no cash.
+    capping_rules:
+      - No monthly/annual cap on IRCTC value-back documented in the SBI Card IRCTC Platinum FAQ (retrieved 2026-07-05); earn structure stated with no capping clause.
 benefits:
   - effective_from: 2018-01-01
     effective_until: null

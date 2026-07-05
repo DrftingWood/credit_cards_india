@@ -46,7 +46,7 @@ rewards:
     base:
       rate: 5
       per_inr: 200
-      unit_value_inr: 0.55
+      unit_value_inr: 0.65
       unit_value_inr_realized: 0.5
     accelerated:
       - category: marquee-partners
@@ -199,7 +199,7 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
       retrieved_on: '2026-07-05'
 
-      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
+      notes: "face raised 0.55->0.65 (SmartBuy Gold Catalogue best rate); realized 0.5 kept."
     reward_cap:
       max_units: 50000
       cap_unit: points

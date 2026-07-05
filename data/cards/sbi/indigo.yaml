@@ -90,14 +90,14 @@ rewards:
     redemption:
       - type: voucher
         program: IndiGo flights + 6E Prime add-ons
-        rate_inr_per_unit: 1.0
-        constraints: "Redeemable 1:1 on IndiGo bookings and 6E Prime add-ons only. No airline / hotel transfer partners."
+        rate_inr_per_unit: 0.6
+        constraints: "IndiGo BluChip floats ~Rs0.40-0.60 toward IndiGo fares (min 500); no fixed value."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html
       retrieved_on: '2026-07-05'
 
       confidence: high
-      notes: 'Verified 2026-07-05: IndiGo BluChip has NO fixed value, floats ~Rs0.40-0.60 toward IndiGo fares (was wrongly Rs1.0; the Rs1 belonged to the retiring 6E Rewards program).'
+      notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-09-27

@@ -51,10 +51,10 @@ rewards:
         canonical_categories: [travel]
         multiplier: 3.33
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 100000
         cap_unit: miles
-        cycle: monthly
-        notes: "10 Air Miles per ₹100 on travel bookings via Kotak Unbox; 3 per ₹100 on other purchases."
+        cycle: statement
+        notes: "10 Air Miles per ₹100 on travel bookings via Kotak Unbox; 3 per ₹100 on other purchases. Accelerated Air Miles capped at 1,00,000 per statement cycle; base 3/₹100 continues after cap (Solitaire detailed T&C)."
     exclusions:
       - fuel
       - wallet-loads
@@ -121,7 +121,7 @@ rewards:
         min_units: 2000
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
       confidence: high

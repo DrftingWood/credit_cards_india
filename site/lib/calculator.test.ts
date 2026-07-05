@@ -36,6 +36,7 @@ interface CardOpts {
     rate: number;
     per_inr: number;
     unit_value_inr?: number;
+    unit_value_inr_realized?: number;
     cap_per_cycle?: number;
     cap_unit?: CapUnit;
     cycle?: Cycle;
@@ -59,6 +60,9 @@ function makeCard(opts: CardOpts): EnrichedCard {
       per_inr: opts.base.per_inr,
       ...(opts.base.unit_value_inr != null
         ? { unit_value_inr: opts.base.unit_value_inr }
+        : {}),
+      ...(opts.base.unit_value_inr_realized != null
+        ? { unit_value_inr_realized: opts.base.unit_value_inr_realized }
         : {}),
       ...(opts.base.cap_per_cycle != null ? { cap_per_cycle: opts.base.cap_per_cycle } : {}),
       ...(opts.base.cap_unit != null ? { cap_unit: opts.base.cap_unit } : {}),
@@ -844,5 +848,21 @@ describe("scoreCard — effective_rate is receipt-visible units, not percent (au
     });
     const score = scoreCard(card, spend({ online: 10000 }));
     expect(score.buckets[0].effective_rate_pct).toBe(5);
+  });
+});
+
+describe("valueBasis threads face vs realized", () => {
+  test("face basis yields >= realized basis for a points card whose realized < face", () => {
+    // hdfc-infinia-shaped: face ₹1.1/pt, realized ₹1.0/pt (realized is the honest
+    // floor; face is the optimistic ceiling for the best documented redemption).
+    const CARD = makeCard({
+      currency: "points",
+      base: { rate: 5, per_inr: 150, unit_value_inr: 1.1, unit_value_inr_realized: 1.0 },
+    });
+    const spendProfile = spend({ dining: 10000 });
+    const realized = scoreCard(CARD, spendProfile, { valueBasis: "realized" } as ScoringContext);
+    const face = scoreCard(CARD, spendProfile, { valueBasis: "face" } as ScoringContext);
+    expect(face.annual_gross_inr).toBeGreaterThanOrEqual(realized.annual_gross_inr);
+    expect(face.annual_gross_inr).toBeGreaterThan(realized.annual_gross_inr);
   });
 });

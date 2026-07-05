@@ -58,6 +58,9 @@ export interface ScoringContext {
    * assumed used), preserving the default calculator behaviour.
    */
   enabledEcosystems?: Set<string>;
+  /** "realized" (default, honest floor) or "face" (optimistic ceiling) unit value
+   *  for points/miles. Passed to unitValueFor so the Absolute layer can value at face. */
+  valueBasis?: ValueBasis;
 }
 
 /** Whether a card's (closed-loop) rewards should be credited in full for this user.
@@ -302,6 +305,8 @@ interface AcceleratorHit {
   /** Base earned on the (1 - applicability) slice (INR/mo). */
   base_remainder_inr: number;
   cap_bound: boolean;
+  /** Pre-cap gross accelerated earn this bucket (INR/mo), before the cap clamp. */
+  uncapped_accel_inr: number;
 }
 
 function acceleratedRateForBucket(
@@ -319,7 +324,7 @@ function acceleratedRateForBucket(
   type Candidate = AcceleratorHit & { value: number };
   let best: Candidate | null = null;
   let narrowUncounted = false;
-  const unitValue = unitValueFor(rewards, ctx?.programs);
+  const unitValue = unitValueFor(rewards, ctx?.programs, ctx?.valueBasis ?? "realized");
 
   for (const a of accelerated) {
     const buckets = resolveBuckets(a.category, a.canonical_categories);
@@ -398,6 +403,7 @@ function acceleratedRateForBucket(
       over_cap_base_inr: overCapBase,
       base_remainder_inr: baseRemainderValue,
       cap_bound: capBound,
+      uncapped_accel_inr: grossAccel,
       value,
     };
     if (!best || candidate.value > best.value) best = candidate;
@@ -443,8 +449,8 @@ export function scoreCard(
   ctx?: ScoringContext,
 ): CardScore {
   const rewards = card.current_rewards;
-  const baseRate = baseRatePct(rewards, ctx?.programs);
-  const unitValue = rewards ? unitValueFor(rewards, ctx?.programs) : null;
+  const baseRate = baseRatePct(rewards, ctx?.programs, ctx?.valueBasis ?? "realized");
+  const unitValue = rewards ? unitValueFor(rewards, ctx?.programs, ctx?.valueBasis ?? "realized") : null;
   // Layer 2: a closed-loop card's points are only real money if the individual uses
   // that ecosystem. When they don't, drop the accelerators — the card earns base only.
   const closedLoopEco = rewards?.redemption_scope === "closed-loop" ? rewards.ecosystem_label ?? null : null;

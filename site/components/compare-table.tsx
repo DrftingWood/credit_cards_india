@@ -2,14 +2,37 @@ import Link from "next/link";
 import type { BenefitRecord, EnrichedCard } from "@/lib/types";
 import { cardHref } from "@/lib/data";
 import { formatFeeInr, formatInr, formatPct } from "@/lib/utils";
-import { pickTopAccelerated, formatAcceleratedRate } from "@/lib/detail-derivations";
+import {
+  pickTopAccelerated,
+  formatAcceleratedRate,
+  bestAcceleratedPct,
+} from "@/lib/detail-derivations";
 import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
 import { CardImage } from "./card-image";
 
+// The emphasis class applied to the winning cell(s) of a comparable row.
+// Reuses the accent already used for positive/"pro" text elsewhere (pros-cons.tsx).
+const WINNER_CLASS = "font-semibold text-emerald-700";
+
+// lower-is-better for fees; higher-is-better for value-% and lounge counts.
+export function winners(values: (number | null)[], higherWins: boolean): boolean[] {
+  const nums = values.filter((v): v is number => v != null);
+  if (nums.length < 2) return values.map(() => false);
+  const best = higherWins ? Math.max(...nums) : Math.min(...nums);
+  const count = nums.filter((v) => v === best).length;
+  if (count === values.filter((v) => v != null).length) return values.map(() => false); // all tie
+  return values.map((v) => v != null && v === best);
+}
+
 interface Row {
   label: string;
   render: (card: EnrichedCard) => React.ReactNode;
+  /** Optional numeric accessor enabling per-row winner emphasis (see `winners`). */
+  compare?: {
+    value: (card: EnrichedCard) => number | null;
+    higherWins: boolean;
+  };
 }
 
 type LoungeAccess = NonNullable<BenefitRecord["lounge_access"]>;
@@ -75,6 +98,7 @@ const ROWS: Row[] = [
   {
     label: "Annual fee",
     render: (c) => formatFeeInr(c.current_fees?.annual_fee_inr ?? null),
+    compare: { value: (c) => c.current_fees?.annual_fee_inr ?? null, higherWins: false },
   },
   {
     label: "Joining fee",
@@ -122,8 +146,13 @@ const ROWS: Row[] = [
   {
     label: "Base reward rate",
     render: (c) => formatPct(c.computed.headline_rate_pct, 2),
+    compare: { value: (c) => c.computed.headline_rate_pct, higherWins: true },
   },
-  { label: "Best accelerated", render: topAcceleratedRow },
+  {
+    label: "Best accelerated",
+    render: topAcceleratedRow,
+    compare: { value: (c) => bestAcceleratedPct(c), higherWins: true },
+  },
   {
     label: "Welcome benefit",
     render: (c) => {
@@ -290,18 +319,26 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
           </tr>
         </thead>
         <tbody>
-          {ROWS.map((row, i) => (
-            <tr key={i} className="border-b border-slate-100 last:border-0">
-              <td className="p-3 text-xs uppercase tracking-wide text-slate-500 align-top sticky left-0 bg-white z-10">
-                {row.label}
-              </td>
-              {cards.map((c) => (
-                <td key={c.id} className="p-3 align-top text-slate-800">
-                  {row.render(c)}
+          {ROWS.map((row, i) => {
+            const win = row.compare
+              ? winners(cards.map(row.compare.value), row.compare.higherWins)
+              : null;
+            return (
+              <tr key={i} className="border-b border-slate-100 last:border-0">
+                <td className="p-3 text-xs uppercase tracking-wide text-slate-500 align-top sticky left-0 bg-white z-10">
+                  {row.label}
                 </td>
-              ))}
-            </tr>
-          ))}
+                {cards.map((c, ci) => (
+                  <td
+                    key={c.id}
+                    className={`p-3 align-top text-slate-800${win?.[ci] ? ` ${WINNER_CLASS}` : ""}`}
+                  >
+                    {row.render(c)}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

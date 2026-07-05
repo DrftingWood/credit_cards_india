@@ -45,7 +45,26 @@ def load_cards():
             forex=act(d["fees"]).get("forex_markup_pct",0) or 0))
     return out
 
-def compute(card, profile, basis="realized"):
+# --- Friction layer (SEPARATE track — NOT blended into the reward) -----------------------------
+# The reward engine computes the card's structural value. This layer models the real-world haircut
+# (portal price premium, routability, channel scoping, forex). It is applied ONLY to the realistic
+# lens; the absolute lens leaves the card's on-paper value untouched. The two are shown side by side.
+PORTAL_MARKUP={"smartbuy":0.10,"edge-travel":0.12,"ishop":0.10}  # hotel-weighted blended premium
+PORTALS=set(PORTAL_MARKUP)
+
+def eligibility_fraction(a, mer):
+    """Fraction of a category's spend that realistically routes to this accelerator (realistic lens).
+    Portal (SmartBuy/EDGE) ~65% routable (inventory/price); merchant co-brand ~50% (you don't put a
+    whole broad category at one merchant); broad category accelerator 100%. Absolute lens uses 1.0."""
+    if any(m in PORTALS for m in mer): return 0.65
+    if bool((a.get("channel") or {}).get("required")) or bool(mer): return 0.50
+    return 1.0
+
+def compute(card, profile, basis="realized", realistic=True):
+    """Two independent lenses on the same card:
+      realistic=False  -> ABSOLUTE: on-paper value, full eligibility, no friction (ceiling).
+      realistic=True   -> REALISTIC: friction applied (routability, portal markup, forex) (floor).
+    Caps are enforced in BOTH (a per-cycle cap is a hard product limit, not friction)."""
     from collections import defaultdict
     per=card["per_inr"]; val=(card["face"] if basis=="face" else card["val"]); brate=card["base_rate"]
     # 1) assign each spending category to its BEST accelerator (else base). Group by accelerator
@@ -65,22 +84,23 @@ def compute(card, profile, basis="realized"):
         else: base_spend+=sp
     # 2) base earn on unaccelerated spend
     monthly=base_spend*brate*val
-    # 3) each accelerator: shared cap; R1 subtracts the bank-portal price premium on routed spend
-    PORTAL_MARKUP={"smartbuy":0.05,"edge-travel":0.08,"ishop":0.05}
+    # 3) each accelerator: shared cap (always) + friction (realistic lens only)
     portal_pen=0.0
     for idx,spend in groups.items():
         arate,a=accel_of[idx]
-        cs=cap_accel_spend(a.get("cap_per_cycle"),a.get("cap_unit"),a.get("cycle","monthly"),arate,val)
-        acc=min(spend,cs)
-        monthly += acc*arate*val + (spend-acc)*brate*val
         mer=(a.get("channel") or {}).get("merchants") or a.get("merchants") or []
-        mk=max([PORTAL_MARKUP[m] for m in mer if m in PORTAL_MARKUP], default=0)
+        frac = eligibility_fraction(a, mer) if realistic else 1.0
+        mk   = max([PORTAL_MARKUP[m] for m in mer if m in PORTAL_MARKUP], default=0) if realistic else 0.0
+        elig = spend*frac
+        cs=cap_accel_spend(a.get("cap_per_cycle"),a.get("cap_unit"),a.get("cycle","monthly"),arate,val)
+        acc=min(elig,cs)
+        monthly += acc*arate*val + (spend-acc)*brate*val   # non-eligible + over-cap earns base
         portal_pen += mk*acc
     monthly-=portal_pen
     annual=monthly*12
-    # forex cost on the international (FX-charged) category
+    # forex cost on the international (FX-charged) category — friction, realistic lens only
     fx=0
-    if profile.get("international",0)>0 and card["forex"]>0:
+    if realistic and profile.get("international",0)>0 and card["forex"]>0:
         fx=profile["international"]*12*card["forex"]/100*1.18
         annual-=fx
     fw=card["fee_waiver"]; annual_spend=sum(profile.values())*12
@@ -91,18 +111,22 @@ def compute(card, profile, basis="realized"):
 
 def run(profile, title, topn=12):
     cards=load_cards()
-    rows=[(compute(c,profile,"realized"), compute(c,profile,"face"), c) for c in cards]
-    rows.sort(key=lambda x:-x[0]["net"])          # rank by realized (honest floor)
+    # TWO SEPARATE LAYERS shown side by side (never blended):
+    #   realistic = realized value + friction (routability/markup/forex)  -> the floor you actually net
+    #   absolute  = face value, full eligibility, no friction             -> the on-paper ceiling
+    rows=[(compute(c,profile,"realized",realistic=True),
+           compute(c,profile,"face",realistic=False), c) for c in cards]
+    rows.sort(key=lambda x:-x[0]["net"])          # rank by realistic (honest floor)
     tot=sum(profile.values()); ann=tot*12
     print("\n"+"="*100)
     print(f"{title}   monthly Rs{tot:,} / annual Rs{ann:,}")
     print("  "+"  ".join(f"{k}:{v//1000}k" for k,v in profile.items() if v>0))
     print("="*100)
-    print(f"{'#':>2} {'card':32} {'tier':12} {'realized/yr':>15} {'transfer/yr':>15} {'fee':>7}")
+    print(f"{'#':>2} {'card':32} {'tier':12} {'realistic/yr':>16} {'absolute/yr':>16} {'fee':>7}")
     for i,(rr,rf,c) in enumerate(rows[:topn],1):
         print(f"{i:>2} {c['slug'][:31]:32} {str(c['tier'])[:11]:12} Rs{rr['net']:>8,.0f}({rr['net']/ann*100:4.1f}%) Rs{rf['net']:>8,.0f}({rf['net']/ann*100:4.1f}%) Rs{rr['fee']:>5,}")
     tx=sorted(rows,key=lambda x:-x[1]["net"])[:5]
-    print("  transfer-optimized top5: "+", ".join(f"{c['slug'].split('/')[-1]}=Rs{rf['net']:,.0f}" for rr,rf,c in tx))
+    print("  absolute-value top5 (ceiling): "+", ".join(f"{c['slug'].split('/')[-1]}=Rs{rf['net']:,.0f}" for rr,rf,c in tx))
     return rows
 
 def P(**kw):

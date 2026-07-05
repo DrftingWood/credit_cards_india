@@ -3,7 +3,24 @@
 See `docs/REMEDIATION_2026-07.md` for the consolidated remediation record + red-team analysis behind
 P0. **The data is now sound (~73 cards fixed, all audits clean); the engine is the weak link.**
 
-## P0 — Engine correctness (the ₹5L answers are optimistic ceilings, not real returns)
+## Architecture decision (2026-07-05) — TWO SEPARATE LAYERS, never blended
+The engine shows **both** an **absolute** value (on-paper: face unit value, full accelerator eligibility,
+caps enforced, no friction — the ceiling) **and** a **realistic** value (realized unit value + friction:
+routability, portal markup, forex, channel-scoping — the floor), side by side. The friction model is a
+distinct track (`eligibility_fraction()` + `PORTAL_MARKUP` + forex, gated behind `realistic=True`), NOT
+folded into one number — combining them hides which cards are big-ceiling/thin-floor (e.g. IDFC Gaj:
+25.2% absolute vs 6.1% realistic). Same "full visibility, no blending" rule as the value layer.
+
+## P0 — Engine v2 (DONE — category-aware, cap-enforced, two-layer) ✅
+- [x] **R4 cap enforcement** — per-cycle caps enforced against a monthly profile (kills the "crore" bug).
+- [x] **R1 portal markup** — hotel-weighted 10–12% premium, realistic lens only (separate friction track).
+- [x] **R2 forex** — FX-charged intl spend only, realistic lens only.
+- [x] **R3/R4 routability + channel scoping** — `eligibility_fraction()` (portal 65% / co-brand 50% / broad 100%).
+- [x] **R5** — ranked on the realistic floor; absolute ceiling shown as a distinct column (no basis-mixing).
+- [x] Invite-only cards included (Infinia/Solitaire/Centurion were being dropped) — Infinia now #1 all-rounder.
+- Remaining engine follow-ups (lower priority) kept below.
+
+## P0-legacy — Engine correctness notes (superseded by the above; kept for provenance)
 - [ ] **R4 (CRITICAL — the "₹3-crore reward" bug): the engine does not ENFORCE caps.** Even after the
   data now carries `cap_per_cycle`, the calculator applies accelerator rates to the full (and clearly
   unrealistic — crore-scale) spend with no monthly ceiling. It MUST cap accelerated earn per cycle

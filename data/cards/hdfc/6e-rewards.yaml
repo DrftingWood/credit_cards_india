@@ -139,5 +139,6 @@ application:
   replaces_card: null
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-04-22
+  last_swept_on: 2026-07-03
   tags: [co-branded, airline, indigo, entry, miles]

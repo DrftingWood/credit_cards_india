@@ -39,6 +39,13 @@ fees:
       retrieved_on: 2026-07-03
       notes: "Fees not published on the product page; TODO verify from MITC / Fees & Charges."
 
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/hdfc/phonepe-uno/phonepe-hdfc-bank-uno-cc-faqs.pdf
+      fields_verified:
+        - fees.annual_fee_inr
+        - fees.fee_waiver
 rewards:
   - effective_from: 2026-07-03
     effective_until: null

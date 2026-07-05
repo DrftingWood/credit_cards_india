@@ -36,6 +36,13 @@ fees:
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/hdfc/phonepe-ultimo/phonepe-hdfc-bank-ultimo-cc-faqs.pdf
+      fields_verified:
+        - fees.annual_fee_inr
+        - fees.fee_waiver
     notes: "Fee amounts not shown on product page crawl; welcome benefits apply only to cardholders for whom joining fee is applicable."
 
 rewards:

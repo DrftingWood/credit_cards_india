@@ -91,6 +91,12 @@ rewards:
 
       confidence: high
       notes: HDFC CashPoints Rs 0.25 statement credit, realistic Rs 0.22.
+      type: issuer-pdf
+      local_refs:
+        - docs/sources/hdfc/upi-rupay/Terms-and-Conditions-HDFC-Bank-UPI-RuPay-Credit-Card-27032025.pdf
+      fields_verified:
+        - rewards.base.unit_value_inr
+        - rewards.accelerated.cap_per_cycle
     mcc_exclusions: ['6540']
 benefits:
   - effective_from: 2026-07-03

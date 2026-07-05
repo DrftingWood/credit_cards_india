@@ -77,6 +77,15 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
       retrieved_on: 2026-07-03
 
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/hdfc/freedom/freedom-tncs.pdf
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.base.unit_value_inr
+        - rewards.accelerated.effective_rate
     mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
 benefits:
   - effective_from: 2014-01-01

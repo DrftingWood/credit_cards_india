@@ -46,7 +46,7 @@ rewards:
       rate: 15
       per_inr: 200
       unit_value_inr: 0.44
-      unit_value_inr_realized: 0.4
+      unit_value_inr_realized: 0.18
     accelerated:
       - category: international-spend
         canonical_categories: [international]
@@ -67,7 +67,7 @@ rewards:
     redemption:
       - type: catalog
         program: EDGE Rewards
-        rate_inr_per_unit: 0.4
+        rate_inr_per_unit: 0.2
       - type: airmiles
         program: Multiple (EDGE transfer)
         ratio: "5:2"
@@ -127,7 +127,8 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
       retrieved_on: '2026-07-05'
 
-      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
+      notes: "EDGE Reward Points: Rs 0.18 catalogue floor (uniform); face Rs 0.44 = best 5:2 transfer to airline/hotel partners. Corrected catalogue Rs0.40->Rs0.20 (was an error) and realized Rs0.40->Rs0.18."
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2015-09-01

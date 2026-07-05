@@ -46,8 +46,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.2
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.18
     accelerated:
       - category: lic-premium-and-forex
         canonical_categories: [insurance, international]
@@ -65,8 +65,10 @@ rewards:
       - cash-advance
     source:
       url: https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: EDGE Reward Points redeem at a uniform Rs 0.20/pt (EDGE portal), ~Rs 0.18 realistic. No card-tier premium (verified 2026). Corrected face Rs1.0->Rs0.20.
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20
@@ -107,5 +109,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, lic, insurance, lounge, mid]

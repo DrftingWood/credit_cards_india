@@ -29,6 +29,13 @@ Items surfaced during the D20 top-10 cap pass that need dedicated follow-up
   rewards are milestone-based "White Pass" value (annual ₹2.5L program cap), not a
   per-transaction international accelerator. No per-txn international earn table
   exists in issuer docs. No cap applied; needs a rewards-model review.
+- **indusind-eazydiner-platinum** — modelled `eazydiner-dining` accelerator at
+  effective_rate=15 (~3%) is unsupported (2026-07-05 research): IndusInd's press
+  release, product page and benefits leaflet describe "up to 2 reward points per
+  ₹100" plus a separate 25%+20% dining DISCOUNT (not a points accelerator). No
+  cap applied. Second IndusInd card (with `indusind-pinnacle`) whose modelled
+  dining/travel accelerator overstates the issuer's real earn — worth a dedicated
+  IndusInd rewards-model audit.
 
 ## Handled in the top-10 pass (for reference)
 Numeric caps applied: idfc-first-gaj (15k RP/mo shared), kotak-solitaire (100k

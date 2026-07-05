@@ -865,4 +865,29 @@ describe("valueBasis threads face vs realized", () => {
     expect(face.annual_gross_inr).toBeGreaterThanOrEqual(realized.annual_gross_inr);
     expect(face.annual_gross_inr).toBeGreaterThan(realized.annual_gross_inr);
   });
+
+  test("face basis raises the ACCELERATED value, not just base (via acceleratorRatePct)", () => {
+    // Points card with an accelerated dining rate. realized ₹1.0/pt < face ₹1.1/pt.
+    // The accelerator's own effective_rate is valued through acceleratorRatePct's
+    // unitValueFor call, so face basis must lift the accelerated earn, not only base.
+    const CARD = makeCard({
+      currency: "points",
+      base: { rate: 5, per_inr: 150, unit_value_inr: 1.1, unit_value_inr_realized: 1.0 },
+      accelerated: [
+        {
+          category: "dining",
+          canonical_categories: ["dining"],
+          multiplier: 0,
+          effective_rate: 20, // 20 pts/₹150 — the elevated rate this test exercises
+        },
+      ],
+    });
+    const spendProfile = spend({ dining: 10000 });
+    const realized = scoreCard(CARD, spendProfile, { valueBasis: "realized" } as ScoringContext);
+    const face = scoreCard(CARD, spendProfile, { valueBasis: "face" } as ScoringContext);
+    // The dining bucket earns the accelerated rate; face (₹1.1) values those points
+    // higher than realized (₹1.0), so annual gross must rise.
+    expect(face.buckets[0].effective_rate_pct).toBeGreaterThan(realized.buckets[0].effective_rate_pct);
+    expect(face.annual_gross_inr).toBeGreaterThan(realized.annual_gross_inr);
+  });
 });

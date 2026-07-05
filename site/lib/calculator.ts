@@ -234,7 +234,7 @@ function acceleratorRatePct(
   rewards: RewardRecord,
   ctx: ScoringContext | undefined,
 ): number | null {
-  const unitValue = unitValueFor(rewards, ctx?.programs);
+  const unitValue = unitValueFor(rewards, ctx?.programs, ctx?.valueBasis ?? "realized");
 
   // earn_components form takes precedence — sum components whose gates are satisfied.
   if (a.earn_components && a.earn_components.length > 0) {

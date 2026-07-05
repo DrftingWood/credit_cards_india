@@ -72,11 +72,13 @@ rewards:
         constraints: "Miles credited directly to KrisFlyer account on statement date."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card-apex.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
       notes: "Red-team corrected 2026-07-05: KrisFlyer economy India = Rs1.03-1.26/mile (was Rs0.85, too low). realized Rs1.0, face Rs1.1. Resolves inconsistency with Atlas Rs2.2 face (2 x KrisFlyer)."
 
       confidence: high
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No per-cycle cap on accelerated KrisFlyer Miles (10/₹200 Singapore Airlines group, 8/₹200 international) per the Apex T&C booklet + product page (retrieved 2026-07-05); only fuel-surcharge/lounge caps exist, unrelated to miles. Confidence medium (absence).
 benefits:
   - effective_from: 2023-01-01
     effective_until: null

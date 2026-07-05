@@ -67,10 +67,12 @@ rewards:
         constraints: "1 Reward Point = Re. 1."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
     notes: "1% Cashback on any other spends across offline and online stores (base). Category exclusions not published on crawl."
 
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No monthly/statement cap on the 5% Paytm travel/movies/mall Valueback per the Paytm SBI Card SELECT T&C booklet (retrieved 2026-07-05); confidence medium (absence).
 benefits:
   - effective_from: 2026-07-03
     effective_until: null
@@ -131,5 +133,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [cashback, co-brand, mid, lounge]

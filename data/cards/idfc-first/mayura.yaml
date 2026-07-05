@@ -77,9 +77,11 @@ rewards:
         constraints: "Up to ₹0.50 per reward point when redeemed for hotel & flight bookings via FIRST Rewards Gallery."
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       notes: '2026-07-05: closed-loop, no transfer partners. IDFC app Travel&Shop Rs 0.50/pt travel, Rs 0.25 other.'
+    capping_rules:
+      - No monthly RP cap on the general accelerated 10 RP/₹150 international and dining/online/travel earning per the Mayura Rewards Structure T&C (28-05-25, retrieved 2026-07-05); only limit is spends up to credit limit/cycle. The 25,000 bonus-RP/calendar-month cap is scoped ONLY to app hotel/flight bookings (Travel & Shop section), which these general accelerators are not.
 benefits:
   - effective_from: 2024-05-01
     effective_until: null
@@ -141,5 +143,5 @@ application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [super-premium, metal, travel, zero-forex, lounge]

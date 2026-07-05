@@ -4,10 +4,9 @@
 #   - scripts/tag_canonical_categories.py    (one-shot tagger; reads this file)
 #   - scripts/validate.py                    (warns when a category matches a
 #                                             rule but lacks canonical_categories)
-#   - site/lib/category-mapping.ts           (mirrors these rules in code today;
-#                                             a follow-up will surface this YAML
-#                                             into the site bundle so the JS
-#                                             fallback reads it directly)
+#   - site/lib/category-mapping.ts           (reads these rules via
+#                                             dist/category_rules.json, emitted
+#                                             by site/scripts/build.mjs)
 #
 # Order matters: first match wins for buckets that could overlap.
 

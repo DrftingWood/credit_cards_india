@@ -41,3 +41,4 @@ Pending:
 ## 🤔 Open decisions
 - [ ] `loyalty_programs/*.yaml` (reusable) vs partner values inline in card notes?
 - [ ] HTML calculator for the side project — yes/no?
+- [ ] Verify IRCTC co-brand family (bob/irctc @0.25 vs hdfc/rbl/sbi @1.0 — is bob undervalued or a different currency?) and the 8 obscure bank-RP cards at face 0.3-0.55 (equitas/selfe, hdfc/diners-rewardz, idfc ashva/lic-select/wow/wow-black, rbl/play/shoprite) — low priority, values look reasonable but unverified.

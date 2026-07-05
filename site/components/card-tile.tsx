@@ -46,26 +46,15 @@ function CardTileImpl({ card }: { card: EnrichedCard }) {
         <NetworkLogo network={card.network_detail} height={16} className="shrink-0" />
       </div>
 
-      <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
-        <div className="rounded-md bg-slate-50 px-2 py-1.5">
-          <div className="text-slate-500">Annual fee</div>
-          <div className="prose-card-value">{formatFeeInr(fee)}</div>
-          {waiverAt ? (
-            <div className="text-slate-500 mt-0.5">
-              Waived at {formatInr(waiverAt)} spend
-            </div>
-          ) : null}
+      <div className="mt-3">
+        <div className="text-lg font-semibold text-slate-900 tabular-nums">
+          {bestRate != null ? `up to ${formatPct(bestRate, 1)}` : formatPct(rate, 2)}
+          <span className="ml-1 text-xs font-normal text-slate-500">rewards</span>
         </div>
-        <div className="rounded-md bg-slate-50 px-2 py-1.5">
-          <div className="text-slate-500">{bestRate != null ? "Rewards" : "Base reward"}</div>
-          <div className="prose-card-value">
-            {bestRate != null ? `up to ${formatPct(bestRate, 1)}` : formatPct(rate, 2)}
-          </div>
-          <div className="text-slate-500 capitalize mt-0.5">
-            {rate !== null && bestRate != null
-              ? `${formatPct(rate, 1)} base · ${card.current_rewards?.currency ?? ""}`.trim()
-              : (card.current_rewards?.currency ?? "—")}
-          </div>
+        <div className="mt-0.5 text-sm text-slate-700 tabular-nums">
+          {fee ? formatFeeInr(fee) : "Lifetime free"}
+          {waiverAt ? <span className="text-xs text-slate-500"> · waived at {formatInr(waiverAt)}</span> : null}
+          <span className="text-xs text-slate-500"> · annual fee</span>
         </div>
       </div>
 

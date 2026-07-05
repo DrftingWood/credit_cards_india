@@ -47,8 +47,8 @@ rewards:
     base:
       rate: 1
       per_inr: 200
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
+      unit_value_inr: 0.5
+      unit_value_inr_realized: 0.3
     accelerated:
       - category: favourite-brands
         canonical_categories: [online]
@@ -76,13 +76,16 @@ rewards:
     capping_rules:
       - "Accelerated 12% / 5% / 2.5% reward rates subject to monthly caps"
     redemption:
-      - type: statement-credit
-        program: CheQ Points
-        rate_inr_per_unit: 1.0
+      - type: voucher
+        program: CheQ app (travel/gift cards/bill-pay)
+        rate_inr_per_unit: 0.5
+        constraints: Rs 0.50/pt travel & gift cards, Rs 0.25 bill-pay; closed-loop in the CheQ app, no cash-out.
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Corrected 2026-07-05: CheQ Points = Rs0.50 max (travel/giftcard), Rs0.25 bill-pay; closed-loop. face 1.0->0.50, realized 1.0->0.30.'
 benefits:
   - effective_from: 2024-01-01
     effective_until: null
@@ -115,5 +118,5 @@ application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [mid, co-brand, online, upi, points]

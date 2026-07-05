@@ -47,7 +47,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.20
+      unit_value_inr_realized: 0.95
       cap_per_cycle: 500   # 1% Scan & Pay capped at 500 RP/calendar month
       cap_unit: points
       cycle: monthly
@@ -84,13 +84,19 @@ rewards:
       - cash-advance
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
+      confidence: high
+      notes: 'Corrected 2026-07-05: CashPoints = genuine Rs1 statement credit (min 500, Rs7,500/mo cap) -> realized 0.2->0.95.'
     notes: "Base rate models the 1% Reward Points on UPI Scan & Pay spends. Reward points posted monthly for eligible transactions settled in the previous calendar month."
 
     reward_cap:
       max_units: 2000
       cap_unit: points
       cycle: monthly
+    redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 1.0
+        constraints: 1 CashPoint = Rs1 statement credit via HDFC NetBanking; min 500 pts, capped Rs7,500/mo.
 benefits:
   - effective_from: 2026-07-03
     effective_until: null
@@ -133,5 +139,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, phonepe, rupay, upi, reward-points, mid-tier]

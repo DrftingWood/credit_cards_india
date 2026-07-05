@@ -45,8 +45,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr_realized: 0.2
-      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.9
+      unit_value_inr: 1.0
     accelerated:
       - category: adani-one-ecosystem
         multiplier: 3
@@ -70,8 +70,8 @@ rewards:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card
       retrieved_on: '2026-07-05'
 
-      confidence: medium
-      notes: Adani One rewards ~Rs 0.25 in the Adani ecosystem, realistic Rs 0.20.
+      confidence: high
+      notes: 'Corrected 2026-07-05: same Adani Reward Points as Signature = Rs1.0 nominal / ~0.90 (closed-loop). Fixes an earlier wrong Rs0.25 estimate.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2020-01-01

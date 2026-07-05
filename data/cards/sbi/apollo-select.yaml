@@ -50,7 +50,7 @@ rewards:
       rate: 1
       per_inr: 200
       unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: apollo-247-and-apollo-pharmacy
         canonical_categories: [other]
@@ -84,8 +84,10 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Verified 2026-07-05: Apollo Health Credits = Rs1.0 at Apollo only (closed-loop, no cash) -> realized ~0.50 blended.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
@@ -145,5 +147,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [mid, points, healthcare, co-brand, lounge]

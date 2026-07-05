@@ -45,7 +45,7 @@ rewards:
       rate: 3
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: select-utilities
         canonical_categories: [utilities]
@@ -68,8 +68,10 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: medium
+      notes: 'Verified 2026-07-05: SC Beyond 360 RP = Rs1.0 (premium 1:1, exception vs generic SC ~Rs0.25) -> realized 1.0->0.90 after Rs99+GST fee.'
 benefits:
   - effective_from: 2025-01-01
     effective_until: null
@@ -135,5 +137,5 @@ application:
   apply_url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [super-premium, points, lounge, golf, dining, concierge]

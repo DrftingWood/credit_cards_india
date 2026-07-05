@@ -90,11 +90,13 @@ rewards:
         constraints: "Credited to Adani OneApp as Adani OneApp Rewards; redeemable across Adani Airports services and Adani One app."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/signature-credit-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       confidence: high
       notes: 'Research-verified: 1 Adani Reward Point = Rs1, closed-loop (Adani One app + Adani Airports), no cash/transfer. Layer-3: airport-captive retail ~10-25% pricier.'
     mcc_exclusions: ['6513']
+    capping_rules:
+      - 'No monthly/annual cap on Adani One ecosystem reward points documented on the ICICI issuer product page (retrieved 2026-07-05); co-brand T&C PDF not machine-readable, so a hidden cap cannot be fully excluded (confidence: medium).'
 benefits:
   - effective_from: 2023-03-01
     effective_until: null

@@ -23,8 +23,9 @@ worth far less), not `realized`:
   0.5; card's real value is its direct discounts, not points).
 - `icici/times-black` — **FIXED**: statement-credit rate 1.0 → ₹0.40 (₹1.0 only holds for
   travel/vouchers); face 1.0 / realized 0.5 kept as the travel-best / blend.
-- `standard-chartered/rewards` — **DEFERRED**: ambiguous whether this row is the Ultimate card
-  (₹1.0 voucher) or the generic SC Rewards point (₹0.25). Left unchanged pending card-identity check.
+- `standard-chartered/rewards` — **RESOLVED (2026-07-05, flaw #6)**: verified it's the generic SC
+  Rewards card — 1 RP = ₹0.25 voucher / ₹0.20 statement credit (the ₹1.0 floor was the bug, same
+  pattern as the others). Fixed to face 0.25 / realized 0.22.
 
 Borderline (small gap, left as-is): `hdfc/tata-neu-plus` (0.9 vs 1.0), `tata-neu-infinity` (0.95 vs 1.0).
 

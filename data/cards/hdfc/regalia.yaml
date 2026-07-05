@@ -76,124 +76,19 @@ rewards:
       - type: airmiles
         program: Multiple (Airmiles hub)
         ratio: "100:50"
-        constraints: 22 transfer partners; ratios card-point:partner-unit. realized Rs 0.50 = SmartBuy floor; best transfer Rs 0.55. 7 beat the floor. Modelled on Regalia Gold tiers (regalia-specific ratios not independently re-verified — medium confidence).
+        constraints: Classic Regalia is limited to Singapore Airlines (legacy netbanking airmiles) at 100:50; the full multi-partner transfer program is Infinia/Diners Black/Regalia Gold only. SmartBuy floor Rs 0.50/Rp.
         transfer_partners:
           - partner_name: Singapore KrisFlyer
             partner_type: airline
             transfer_ratio: "100:50"
             last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.55/pt
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.53/pt
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.45/pt
-          - partner_name: Vietnam LotusMiles
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.40/pt [below floor — avoid]
-          - partner_name: SpiceJet SpiceClub
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.15/pt [below floor — avoid]
-          - partner_name: AirAsia Rewards
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.11/pt [below floor — avoid]
-          - partner_name: Turkish Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.55/pt
-          - partner_name: Avianca LifeMiles
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.45/pt
-          - partner_name: Accor ALL
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.47/pt
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.50/pt
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
-          - partner_name: Radisson Rewards
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.08/pt [below floor — avoid]
-          - partner_name: Wyndham Rewards
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.31/pt [below floor — avoid]
-          - partner_name: Etihad Guest
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
-          - partner_name: Thai Royal Orchid Plus
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.20/pt [below floor — avoid]
-          - partner_name: United MileagePlus
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
+            notes: 100:50 -> ~Rs 0.55/pt (only transfer partner on classic Regalia)
     source:
       url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
       retrieved_on: '2026-07-05'
 
-      confidence: medium
-      notes: Transfer partners modelled on HDFC Regalia Gold tiers (medium confidence). Full-visibility endpoints; per-partner values below.
+      confidence: high
+      notes: "Corrected 2026-07-05: classic Regalia does NOT share Regalia Gold's 22-partner set (that was an over-copy) — only KrisFlyer at 100:50. Closed to new applicants; existing holders active. SmartBuy Rs0.50/RP (face 0.55 / realized 0.50 kept)."
 benefits:
   - effective_from: 2024-10-01
     effective_until: null

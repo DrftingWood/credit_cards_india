@@ -45,8 +45,8 @@ rewards:
     base:
       rate: 1
       per_inr: 150
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.4
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.22
     accelerated:
       - category: retail-spend
         canonical_categories: [online, other]
@@ -72,13 +72,19 @@ rewards:
       - emi
     mcc_exclusions: ['6513']
     redemption:
+      - type: voucher
+        program: Standard Chartered 360 Rewards portal
+        rate_inr_per_unit: 0.25
       - type: statement-credit
-        rate_inr_per_unit: 1.0
+        rate_inr_per_unit: 0.2
         min_units: 2000
+        constraints: Rs 0.20/pt against statement balance; min 1,000 RP; Rs 99 fee.
     source:
       url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Corrected 2026-07-05: 1 RP = Rs 0.25 voucher / Rs 0.20 statement credit (was wrongly Rs 1.0). NOTE: base earn also appears wrong (card is a flat 4 RP/Rs150 retail, not 1/150) — flagged for a separate earn-rate fix.'
 benefits:
   - effective_from: 2022-01-01
     effective_until: null
@@ -112,5 +118,5 @@ application:
   apply_url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [entry, points, online-spend]

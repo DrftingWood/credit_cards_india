@@ -82,10 +82,12 @@ rewards:
         constraints: "Cashback adjusted against statement."
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
     notes: "Value chart: Freecharge 5%, local commute 2%, other spends 1% (Rs 85,000 -> Rs 850). Total illustrative annual benefit 2.59%."
 
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No per-cycle cashback cap on FreeCharge on-deck spends per the Axis cashback T&C (retrieved 2026-07-05); only floor is a ₹100 minimum transaction.
 benefits:
   - effective_from: 2025-06-20
     effective_until: null
@@ -123,5 +125,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [entry, cashback, co-branded, invite-only]

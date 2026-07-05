@@ -55,13 +55,13 @@ rewards:
         canonical_categories: [travel]
         multiplier: 6
         effective_rate: 18
-        cap_per_cycle: "unlimited"
-        cap_unit: points
+        cap_per_cycle: 100000
+        cap_unit: spend-inr
         cycle: monthly
         channel:
           class: cobrand-merchant
           merchants: [spicejet]
-        notes: "Up to 18 SpiceClub Points per ₹200 on SpiceJet app & website bookings (6 as card benefit + 12 as SpiceClub Silver member)."
+        notes: "Up to 18 SpiceClub Points per ₹200 on SpiceJet app & website bookings (6 as card benefit + 12 as SpiceClub Silver member). Card-benefit SC points stop beyond ₹1 lakh/month SpiceJet app+website spend (Voyage/Voyage Black SpiceClub earn T&C); membership-tier points continue."
       - category: online-food-delivery
         canonical_categories: [dining]
         multiplier: 2
@@ -106,7 +106,7 @@ rewards:
         constraints: "Redeem SpiceClub Points on SpiceJet bookings."
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
       notes: "Research-verified: 1 SpiceClub Point = Rs0.5, SpiceJet-only. Redemption-availability risk (network cuts). Layer-3: direct booking forgoes ~2-8% aggregator coupons."
 
       confidence: high

@@ -156,6 +156,8 @@ rewards:
       notes: "Rewritten 2026-07-05 from cross-verified research: airmiles ratio corrected 2:1 -> 1:1 standard (Horizon is 1:1, half of Atlas's 1:2) with per-partner transfer_partners; BA/Finnair/LotusMiles are 2:1 penalty; Marriott/Accor/Qatar removed 2026-04-02; unit_value 1.0/0.5 -> 1.3/1.0 to sit at/above the Rs 1.0 portal floor. Earn rates, caps and milestones unchanged."
 
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No per-cycle cap on accelerated EDGE Miles earning on Travel EDGE / airline spend per the Horizon T&C (retrieved 2026-07-05); the 1.5L/yr EDGE Miles limit is a transfer/redemption cap, not an earn cap.
 benefits:
   - effective_from: 2024-08-01
     effective_until: null

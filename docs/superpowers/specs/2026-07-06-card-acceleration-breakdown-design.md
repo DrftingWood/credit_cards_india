@@ -26,6 +26,9 @@ functional on existing Tailwind.
    spend input (pre-filled), a **Realistic ⇄ Absolute toggle**, per-accelerator
    full-cap-story rows, base-rate categories, and a net-₹/yr total.
 3. Wiring the component onto `app/card/[issuer]/[slug]/page.tsx`.
+4. A shared, `localStorage`-persisted `useSpendProfile()` hook consumed by the
+   card `AccelerationBreakdown` AND the existing `/calculator` page, so the spend
+   profile is one shared, persisted value across the site (D7).
 
 **Out of scope:**
 - Final visual styling / dark mode (Figma pass).
@@ -86,12 +89,27 @@ Rendered on `app/card/[issuer]/[slug]/page.tsx`, in the rewards region (near
 `RewardsBenefitsGrid`). It is the "See the math" destination for the recommend
 best-pick cards.
 
+### D7 — Shared, persisted spend profile across all calculators
+The spend a user enters in ANY exact-₹ calculator persists and is shared with
+every other calculator on the site. A single `useSpendProfile()` hook backs a
+module-level store that is **persisted to `localStorage`** (SSR-safe: server
+render + first paint use the default profile, then hydrate from storage) and
+**shared live** across mounted components via `useSyncExternalStore`. Both the
+card `AccelerationBreakdown` and the existing `/calculator` page read/write this
+one profile — so entering spend on a card page carries over to `/calculator` and
+to every other card's breakdown, and survives reloads. The `/recommend` wizard
+uses coarse spend *bands* (a different input), so it is out of scope for this
+sharing for now (a band↔₹ bridge is a possible later enhancement). The default
+profile (`DEFAULT_SPEND`) is the single seed for an empty store.
+
 ## Components (units)
 
 | Unit | Responsibility | Interface |
 | --- | --- | --- |
 | `explainCard(card, spend, ctx)` in `site/lib/calculator.ts` | Pure: return one layer's detailed per-accelerator + base breakdown, reusing internal cap accounting | Returns `CardExplanation` (see below). No new math. |
-| `AccelerationBreakdown` (`site/components/detail/acceleration-breakdown.tsx`) | Client: spend input + Realistic/Absolute toggle → calls `explainCard` → renders rows + total | `{ card: EnrichedCard }`; holds spend + layer state |
+| `useSpendProfile()` (`site/lib/use-spend-profile.ts`) | Shared, localStorage-persisted spend store via `useSyncExternalStore`; SSR-safe (default until hydrated) | `(): [SpendProfile, (updater) => void]` — one store, shared live + across reloads |
+| `AccelerationBreakdown` (`site/components/detail/acceleration-breakdown.tsx`) | Client: reads spend from `useSpendProfile()` + Realistic/Absolute toggle → calls `explainCard` → renders rows + total | `{ card: EnrichedCard }`; layer state local, spend shared |
+| `/calculator` page (`site/app/calculator/calculator-client.tsx`) | Refactor its local `useState(DEFAULT_SPEND)` to `useSpendProfile()` so it shares the same profile | existing page, minimal change |
 | `AcceleratorRow` (same file or colocated) | Presentational: one accelerator's cap story + factors list | `{ item: AcceleratorExplain, layer }` |
 | card page wiring | Render `<AccelerationBreakdown card={card} />` | `app/card/[issuer]/[slug]/page.tsx` |
 

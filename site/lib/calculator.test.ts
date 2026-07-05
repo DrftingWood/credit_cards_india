@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { scoreCard, type SpendProfile, type ScoringContext } from "./calculator";
+import { scoreCard, explainCard, type SpendProfile, type ScoringContext } from "./calculator";
 import { pickTopAccelerated } from "./detail-derivations";
 import type {
   EnrichedCard,
@@ -889,5 +889,74 @@ describe("valueBasis threads face vs realized", () => {
     // higher than realized (₹1.0), so annual gross must rise.
     expect(face.buckets[0].effective_rate_pct).toBeGreaterThan(realized.buckets[0].effective_rate_pct);
     expect(face.annual_gross_inr).toBeGreaterThan(realized.annual_gross_inr);
+  });
+});
+
+describe("explainCard — per-accelerator cap story", () => {
+  const spendHeavy = { online: 0, groceries: 0, dining: 0, fuel: 0, travel: 200000, utilities: 0, rent: 0, international: 0 };
+
+  // Cashback card with a travel accelerator capped low enough that ₹200k/mo
+  // travel spend blows through it: 5% gross would be ₹10,000/mo but the cap
+  // clamps accelerated earn to ₹2,000/mo, with the remainder spilling to base.
+  const CAPPED_TRAVEL_CARD = makeCard({
+    currency: "cashback",
+    base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+    accelerated: [
+      {
+        category: "travel",
+        canonical_categories: ["travel"],
+        multiplier: 0,
+        effective_rate: 5,
+        cap_per_cycle: 2000,
+        cap_unit: "cashback-inr",
+        cycle: "monthly",
+      },
+    ],
+    annualFee: 1000,
+  });
+
+  // Mirrors the real hdfc-infinia SmartBuy accelerator: a points card whose
+  // travel accelerator only fires when booked through the issuer portal.
+  const CHANNEL_CARD = makeCard({
+    currency: "points",
+    base: { rate: 5, per_inr: 150, unit_value_inr: 1.1, unit_value_inr_realized: 1.0 },
+    accelerated: [
+      {
+        category: "smartbuy-flights-hotels",
+        canonical_categories: ["travel"],
+        multiplier: 10,
+        cap_per_cycle: 15000,
+        cap_unit: "points",
+        cycle: "monthly",
+        channel: { required: true, class: "issuer-portal", merchants: ["smartbuy"] },
+      },
+    ],
+  });
+
+  test("a cap-bound accelerator reports the clamp, ₹ lost, and base spillover", () => {
+    // Use a card with a capped travel accelerator on a spend high enough to hit
+    // the cap (load the card the way other tests do). Absolute layer fires it.
+    const ex = explainCard(CAPPED_TRAVEL_CARD, spendHeavy, { valueBasis: "face" });
+    const row = ex.accelerators.find((a) => a.category === "travel");
+    expect(row).toBeTruthy();
+    expect(row!.cap_bound).toBe(true);
+    expect(row!.lost_to_cap_inr).toBeGreaterThan(0);
+    expect(row!.uncapped_value_inr).toBeGreaterThan(row!.net_value_inr - row!.base_spillover_inr);
+    expect(row!.factors.join(" ").toLowerCase()).toContain("cap");
+  });
+
+  test("realistic drops a channel-locked accelerator to base; absolute fires it", () => {
+    // A card whose top accelerator is channel-locked (e.g. hdfc-infinia SmartBuy).
+    const realistic = explainCard(CHANNEL_CARD, spendHeavy, { applyApplicability: true, channelMix: new Set(), enabledEcosystems: new Set(), valueBasis: "realized" });
+    const absolute = explainCard(CHANNEL_CARD, spendHeavy, { valueBasis: "face" });
+    expect(absolute.annual_gross_inr).toBeGreaterThan(realistic.annual_gross_inr);
+    // realistic factor list should mention the channel/base fallback for the affected bucket
+    const absRow = absolute.accelerators.find((a) => a.category === "travel");
+    expect(absRow!.factors.join(" ").toLowerCase()).toMatch(/channel|smartbuy|portal/);
+  });
+
+  test("annual_net nets the fee off the gross", () => {
+    const ex = explainCard(CAPPED_TRAVEL_CARD, spendHeavy, { valueBasis: "realized" });
+    expect(ex.annual_net_inr).toBe(ex.annual_gross_inr - ex.annual_fee_inr);
   });
 });

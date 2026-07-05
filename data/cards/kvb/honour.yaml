@@ -37,10 +37,10 @@ fees:
     gst_applicable: true
     source:
       url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
-      retrieved_on: 2026-07-04
+      retrieved_on: 2026-07-05
       type: aggregator
       confidence: medium
-      notes: "BankBazaar + Card Insider (2026): no joining fee, annual fee Rs 1,299 waived on Rs 5,00,000 preceding-year spend. Not confirmed on the KVB issuer site (Honour page absent post-.bank.in)."
+      notes: "Card confirmed still actively offered 2026-07-05 (live KVB product page kvb.bank.in/.../kvb-honour-credit-card/, Visa network) -- withdrawal concern (D2) refuted, status kept active. The Rs1,299 annual fee + 'Signature' sub-tier are not shown on the product page (fee lives on the separate charges schedule); retained at medium confidence pending that schedule."
 
 rewards:
   - effective_from: 2022-01-01
@@ -117,5 +117,5 @@ application:
   apply_url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
 
 metadata:
-  last_verified_on: 2026-07-04
+  last_verified_on: 2026-07-05
   tags: [premium, points, lounge, travel]

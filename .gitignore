@@ -19,3 +19,4 @@ graphify-out/
 
 # Python bytecode
 __pycache__/
+.superpowers/

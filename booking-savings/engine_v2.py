@@ -31,23 +31,23 @@ def load_cards():
     out=[]
     for fp in glob.glob("data/cards/**/*.yaml", recursive=True):
         d=yaml.safe_load(open(fp,encoding="utf-8"))
-        if not d or "rewards" not in d or d.get("status")!="active": continue
+        if not d or "rewards" not in d or d.get("status")=="discontinued": continue
         rec=act(d["rewards"]); b=rec.get("base",{})
         val=b.get("unit_value_inr_realized") or b.get("unit_value_inr")
         if not isinstance(val,(int,float)) or not b.get("per_inr"): continue
         out.append(dict(
             slug=fp.replace("\\","/").split("data/cards/")[1][:-5],
             name=d.get("name"), tier=d.get("tier"),
-            base_rate=b["rate"]/b["per_inr"], per_inr=b["per_inr"], val=val,
+            base_rate=b["rate"]/b["per_inr"], per_inr=b["per_inr"], val=val, face=b.get("unit_value_inr") or val,
             accel=rec.get("accelerated") or [], excl=set(rec.get("exclusions") or []),
             fee=act(d["fees"]).get("annual_fee_inr",0),
             fee_waiver=act(d["fees"]).get("fee_waiver"),
             forex=act(d["fees"]).get("forex_markup_pct",0) or 0))
     return out
 
-def compute(card, profile):
+def compute(card, profile, basis="realized"):
     from collections import defaultdict
-    per=card["per_inr"]; val=card["val"]; brate=card["base_rate"]
+    per=card["per_inr"]; val=(card["face"] if basis=="face" else card["val"]); brate=card["base_rate"]
     # 1) assign each spending category to its BEST accelerator (else base). Group by accelerator
     #    so a shared per-cycle cap is enforced across all the categories it covers.
     groups=defaultdict(float); accel_of={}; base_spend=0.0
@@ -65,12 +65,18 @@ def compute(card, profile):
         else: base_spend+=sp
     # 2) base earn on unaccelerated spend
     monthly=base_spend*brate*val
-    # 3) each accelerator: shared cap across its grouped spend, overflow earns base
+    # 3) each accelerator: shared cap; R1 subtracts the bank-portal price premium on routed spend
+    PORTAL_MARKUP={"smartbuy":0.05,"edge-travel":0.08,"ishop":0.05}
+    portal_pen=0.0
     for idx,spend in groups.items():
         arate,a=accel_of[idx]
         cs=cap_accel_spend(a.get("cap_per_cycle"),a.get("cap_unit"),a.get("cycle","monthly"),arate,val)
         acc=min(spend,cs)
         monthly += acc*arate*val + (spend-acc)*brate*val
+        mer=(a.get("channel") or {}).get("merchants") or a.get("merchants") or []
+        mk=max([PORTAL_MARKUP[m] for m in mer if m in PORTAL_MARKUP], default=0)
+        portal_pen += mk*acc
+    monthly-=portal_pen
     annual=monthly*12
     # forex cost on the international (FX-charged) category
     fx=0
@@ -85,17 +91,18 @@ def compute(card, profile):
 
 def run(profile, title, topn=12):
     cards=load_cards()
-    rows=[(compute(c,profile),c) for c in cards]
-    rows.sort(key=lambda x:-x[0]["net"])
+    rows=[(compute(c,profile,"realized"), compute(c,profile,"face"), c) for c in cards]
+    rows.sort(key=lambda x:-x[0]["net"])          # rank by realized (honest floor)
     tot=sum(profile.values()); ann=tot*12
-    print("\n"+"="*92)
+    print("\n"+"="*100)
     print(f"{title}   monthly Rs{tot:,} / annual Rs{ann:,}")
     print("  "+"  ".join(f"{k}:{v//1000}k" for k,v in profile.items() if v>0))
-    print("="*92)
-    print(f"{'#':>2} {'card':34} {'tier':13} {'net/yr':>10} {'%':>6} {'fee':>7} {'fx':>7}")
-    for i,(r,c) in enumerate(rows[:topn],1):
-        pct=r["net"]/ann*100
-        print(f"{i:>2} {c['slug'][:33]:34} {str(c['tier'])[:12]:13} Rs{r['net']:>8,.0f} {pct:5.1f}% Rs{r['fee']:>5,} Rs{r['fx']:>5,.0f}")
+    print("="*100)
+    print(f"{'#':>2} {'card':32} {'tier':12} {'realized/yr':>15} {'transfer/yr':>15} {'fee':>7}")
+    for i,(rr,rf,c) in enumerate(rows[:topn],1):
+        print(f"{i:>2} {c['slug'][:31]:32} {str(c['tier'])[:11]:12} Rs{rr['net']:>8,.0f}({rr['net']/ann*100:4.1f}%) Rs{rf['net']:>8,.0f}({rf['net']/ann*100:4.1f}%) Rs{rr['fee']:>5,}")
+    tx=sorted(rows,key=lambda x:-x[1]["net"])[:5]
+    print("  transfer-optimized top5: "+", ".join(f"{c['slug'].split('/')[-1]}=Rs{rf['net']:,.0f}" for rr,rf,c in tx))
     return rows
 
 def P(**kw):
@@ -117,8 +124,8 @@ if __name__=="__main__":
         if which and which.lower() not in title.lower(): continue
         rows=run(prof, title, topn=6)
         # sanity flags
-        top=rows[0]; ann=sum(prof.values())*12
+        rr,rf,c=rows[0]; ann=sum(prof.values())*12
         if ann>0:
-            toppct=top[0]["net"]/ann*100
-            if toppct>12: print(f"  !! SANITY: top return {toppct:.0f}% > 12% — likely uncapped/overstated: {top[1]['slug']}")
-            if top[0]["net"]>ann: print(f"  !! SANITY: net > annual spend (absurd) — {top[1]['slug']}")
+            toppct=rr["net"]/ann*100
+            if toppct>12: print(f"  !! SANITY: top realized return {toppct:.0f}% > 12% — recheck: {c['slug']}")
+            if rr["net"]>ann: print(f"  !! SANITY: net > annual spend (absurd) — {c['slug']}")

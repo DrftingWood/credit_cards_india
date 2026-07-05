@@ -22,3 +22,5 @@ Format: `date | item/scenario | what changed | commit | notes`
 2026-07-05 | scenario G (5L replay) | verdict shifted: KrisFlyer -0.6%->+3.95%, Etihad ->3.6% (were undervalued); Ixigo 7%->2.8%, EaseMyTrip 5%->2.5% (were overvalued). Diners Black still #1. | - | analysis capstone
 2026-07-05 | scenarios F+H | CLEAN: 0 base-60 ratio bugs, 0 malformed transfer_ratios, 0 missing provenance (319/319). Value scenarios A-H effectively dry. | - | 1 dry pass; IRCTC/obscure-RP verify agent launched
 2026-07-05 | scenario E follow-up | 6 obscure RP cards fixed (WOW/Play/ShopRite/Selfe/Diners-Rewardz/Ashva); IRCTC family confirmed OK | 7fe17a5 |
+2026-07-05 | scenario I (earn-rate outliers) | CLEAN: no base return >5%, only axis/airtel 25% accel (genuine Airtel-cashback feature). | - | 2nd dry pass
+2026-07-05 | === SESSION COMPLETE === | ~71 cards corrected, 34 commits. All value-discovery scenarios (A-I) clean/dry. Remaining: loyalty_programs/*.yaml (structural, needs decision); low-priority confidence-tagging. Loop stopped at natural dry-pass condition. | - | value remediation done

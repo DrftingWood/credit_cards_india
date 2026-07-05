@@ -14,3 +14,4 @@ Format: `date | item/scenario | what changed | commit | notes`
 2026-07-05 | scenario B (nominal inflation) | 13 cards value-fixed (Uni 100x, ixigo/cheq/kosmo/paytm, Adani, Apollo, phonepe-ultimo, SC-beyond) | 1f1d3f4 | Uni earn scaled x100
 2026-07-05 | TODO: SC Rewards earn-rate | base 1/150 -> 4/150 retail | 7686ae4 |
 2026-07-05 | flaw#5 co-brand | SBI Club Vistara x2 discontinued (Vistara defunct) | 9e0e770 |
+2026-07-05 | scenario D (cross-card consistency) | found SC 360 RP spread (0.25/0.5/1.0) + ICICI RP (0.25/1.0=expected) | - | 2 verify agents launched (airline co-brand values + SC lineup)

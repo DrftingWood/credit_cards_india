@@ -959,4 +959,40 @@ describe("explainCard — per-accelerator cap story", () => {
     const ex = explainCard(CAPPED_TRAVEL_CARD, spendHeavy, { valueBasis: "realized" });
     expect(ex.annual_net_inr).toBe(ex.annual_gross_inr - ex.annual_fee_inr);
   });
+
+  test("card-wide reward_cap: explainCard total reconciles with scoreCard total", () => {
+    // A card-wide reward_cap that a heavy spend blows through. Without clamping the
+    // total, explainCard's gross (sum of uncapped per-accelerator rows) would diverge
+    // from scoreCard's clamped rank total — the /calculator two-total bug. They must reconcile.
+    const CAPPED_CARD = makeCard({
+      currency: "points",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      rewardCap: { max_units: 1000, cap_unit: "points", cycle: "monthly" }, // ₹1,000/mo total
+    });
+    const heavy = spend({ online: 100000, dining: 100000 });
+    for (const ctx of [{ valueBasis: "realized" } as ScoringContext, { valueBasis: "face" } as ScoringContext]) {
+      const ex = explainCard(CAPPED_CARD, heavy, ctx);
+      const sc = scoreCard(CAPPED_CARD, heavy, ctx);
+      expect(ex.annual_gross_inr).toBe(sc.annual_gross_inr);
+    }
+    // Sanity: the cap actually bit (1% on ₹200k = ₹2,000/mo gross, clamped to ₹1,000/mo → ₹12,000/yr).
+    expect(explainCard(CAPPED_CARD, heavy, { valueBasis: "realized" }).annual_gross_inr).toBe(12000);
+  });
+
+  test("base.cap_per_cycle: explainCard total reconciles with scoreCard total", () => {
+    // base.cap_per_cycle clamps only the base-earned portion; explainCard must apply
+    // the same clamp to its total so the two engines reconcile.
+    const BASE_CAPPED = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1, cap_per_cycle: 500, cap_unit: "cashback-inr", cycle: "statement" },
+      accelerated: [
+        { category: "dining", canonical_categories: ["dining"], multiplier: 0, effective_rate: 10, cycle: "monthly" },
+      ],
+    });
+    const heavy = spend({ online: 50000, groceries: 50000, dining: 20000 });
+    const ex = explainCard(BASE_CAPPED, heavy, { valueBasis: "realized" });
+    const sc = scoreCard(BASE_CAPPED, heavy, { valueBasis: "realized" });
+    expect(ex.annual_gross_inr).toBe(sc.annual_gross_inr);
+    expect(ex.annual_gross_inr).toBe(30000); // base capped 500 + dining 2000 = 2500/mo
+  });
 });

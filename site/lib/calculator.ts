@@ -665,6 +665,7 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
   // Layer is inferred from the context the caller built (see Global Constraints).
   const layer: "realistic" | "absolute" = ctx?.applyApplicability ? "realistic" : "absolute";
   const baseRate = baseRatePct(rewards, ctx?.programs, basis);
+  const unitValue = rewards ? unitValueFor(rewards, ctx?.programs, basis) : null;
   const ecoCredited = ecosystemCredited(rewards, ctx);
 
   const excluded = new Set<CanonicalCategory>();
@@ -675,6 +676,7 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
   const accelerators: AcceleratorExplain[] = [];
   const base_spend: BaseSpendExplain[] = [];
   let monthlyGross = 0;
+  let baseMonthly = 0; // portion earned at base rate (subject to base.cap_per_cycle), mirrors scoreCard
 
   for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
     const amount = spend[bucket] || 0;
@@ -694,6 +696,9 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
       capUsage.set(hit.accel, (capUsage.get(hit.accel) ?? 0) + hit.accel_value_inr);
       const lost = Math.max(0, hit.uncapped_accel_inr - hit.accel_value_inr);
       const net = hit.accel_value_inr + hit.base_remainder_inr + hit.over_cap_base_inr;
+      // Over-cap spend and the non-applicable slice both earn base rate, so both
+      // count toward base.cap_per_cycle below — same as scoreCard's baseEarned.
+      baseMonthly += hit.base_remainder_inr + hit.over_cap_base_inr;
       monthlyGross += net;
       accelerators.push({
         category: bucket, label, monthly_spend: amount, rate_pct: hit.rate_pct,
@@ -703,8 +708,36 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
       });
     } else {
       const value = (amount * baseRate) / 100;
+      baseMonthly += value;
       monthlyGross += value;
       base_spend.push({ category: bucket, label, monthly_spend: amount, rate_pct: baseRate, value_inr: value });
+    }
+  }
+
+  // Card-wide clamps applied to the TOTAL, mirroring scoreCard exactly so the two
+  // reconcile by construction (the per-accelerator rows above stay uncapped —
+  // same asymmetry scoreCard's per-bucket breakdown carries).
+  const capUnitValue = unitValue ?? (rewards?.currency === "cashback" ? 1 : null);
+  if (rewards && typeof rewards.base.cap_per_cycle === "number") {
+    const baseCapMonthly = capToMonthlyInr(
+      rewards.base.cap_per_cycle,
+      rewards.base.cap_unit,
+      rewards.base.cycle,
+      capUnitValue,
+    );
+    if (baseCapMonthly != null && baseMonthly > baseCapMonthly) {
+      monthlyGross -= baseMonthly - baseCapMonthly;
+    }
+  }
+  if (rewards?.reward_cap) {
+    const rewardCapMonthly = capToMonthlyInr(
+      rewards.reward_cap.max_units,
+      rewards.reward_cap.cap_unit,
+      rewards.reward_cap.cycle,
+      capUnitValue,
+    );
+    if (rewardCapMonthly != null && monthlyGross > rewardCapMonthly) {
+      monthlyGross = rewardCapMonthly;
     }
   }
 

@@ -995,4 +995,25 @@ describe("explainCard — per-accelerator cap story", () => {
     expect(ex.annual_gross_inr).toBe(sc.annual_gross_inr);
     expect(ex.annual_gross_inr).toBe(30000); // base capped 500 + dining 2000 = 2500/mo
   });
+
+  test("annual_fee_inr is waiver-aware, mirroring scoreCard (FIX 2)", () => {
+    // Same shape as the "fee waiver crossing at threshold" scoreCard test: ₹1500 fee,
+    // waived once annualized spend reaches ₹300,000. ₹25,000/mo dining clears it.
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      annualFee: 1500,
+      feeWaiverSpend: 300000,
+    });
+    const clearsWaiver = spend({ dining: 25000 });
+    const ex = explainCard(card, clearsWaiver, { valueBasis: "realized" });
+    const sc = scoreCard(card, clearsWaiver, { valueBasis: "realized" });
+    expect(ex.annual_fee_inr).toBe(0);
+    expect(ex.annual_fee_inr).toBe(sc.annual_fee_effective_inr);
+    expect(ex.annual_net_inr).toBe(ex.annual_gross_inr);
+
+    const missesWaiver = spend({ dining: 24999 });
+    const exNot = explainCard(card, missesWaiver, { valueBasis: "realized" });
+    expect(exNot.annual_fee_inr).toBe(1500);
+  });
 });

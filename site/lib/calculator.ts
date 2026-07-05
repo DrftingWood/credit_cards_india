@@ -443,6 +443,19 @@ const EXCLUSION_TO_BUCKET: Partial<Record<string, CanonicalCategory>> = {
   utilities: "utilities",
 };
 
+/** Waiver-aware effective annual fee: 0 (or reduced, once modeled) once the user's
+ *  annualized spend clears the card's fee-waiver threshold. Shared by scoreCard and
+ *  explainCard so the /calculator rank and the per-card breakdown always agree (FIX 2). */
+function effectiveAnnualFee(
+  card: EnrichedCard,
+  annualSpend: number,
+): { annualFeeEffective: number; feeWaived: boolean } {
+  const annualFee = card.current_fees?.annual_fee_inr ?? 0;
+  const waiverSpend = card.computed.fee_waiver_spend_inr;
+  const feeWaived = waiverSpend != null && annualSpend >= waiverSpend;
+  return { annualFeeEffective: feeWaived ? 0 : annualFee, feeWaived };
+}
+
 export function scoreCard(
   card: EnrichedCard,
   spend: SpendProfile,
@@ -578,10 +591,7 @@ export function scoreCard(
   const annualGross = monthlyValue * MONTHS_PER_YEAR;
   const annualSpend = totalSpend * MONTHS_PER_YEAR;
 
-  const annualFee = card.current_fees?.annual_fee_inr ?? 0;
-  const waiverSpend = card.computed.fee_waiver_spend_inr;
-  const feeWaived = waiverSpend != null && annualSpend >= waiverSpend;
-  const annualFeeEffective = feeWaived ? 0 : annualFee;
+  const { annualFeeEffective, feeWaived } = effectiveAnnualFee(card, annualSpend);
 
   const disclaimerParts: string[] = [...capNotes];
   if (rewards?.capping_rules?.length) disclaimerParts.push(...rewards.capping_rules);
@@ -677,9 +687,11 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
   const base_spend: BaseSpendExplain[] = [];
   let monthlyGross = 0;
   let baseMonthly = 0; // portion earned at base rate (subject to base.cap_per_cycle), mirrors scoreCard
+  let totalSpend = 0; // mirrors scoreCard's totalSpend, for the waiver-aware fee below (FIX 2)
 
   for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
     const amount = spend[bucket] || 0;
+    totalSpend += amount;
     if (amount <= 0) continue;
     const label = CATEGORY_LABELS[bucket] ?? bucket;
 
@@ -742,10 +754,11 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
   }
 
   const annualGross = monthlyGross * 12;
-  const annualFee = card.current_fees?.annual_fee_inr ?? 0;
+  const annualSpend = totalSpend * 12;
+  const { annualFeeEffective } = effectiveAnnualFee(card, annualSpend);
   return {
     layer, value_basis: basis, accelerators, base_spend,
-    annual_gross_inr: annualGross, annual_fee_inr: annualFee, annual_net_inr: annualGross - annualFee,
+    annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective, annual_net_inr: annualGross - annualFeeEffective,
   };
 }
 

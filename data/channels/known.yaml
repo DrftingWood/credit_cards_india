@@ -64,6 +64,11 @@ cobrand-merchant:
   - trends
   - uber
   - zomato
+  - bigbasket
+  - marks-spencer
+  - reliance-smart-superstore
+  - tata-1mg
+  - urban-company
 third-party-ota:
   - mmt
   - easemytrip
@@ -93,6 +98,7 @@ fuel-network:
   - reliance-bp
   - fuel-network-any
 
+  - hp-pay
 utility-rail:
   - bbps
   - irctc-rail

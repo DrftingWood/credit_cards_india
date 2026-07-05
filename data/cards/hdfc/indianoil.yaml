@@ -60,6 +60,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [indianoil-fuel-stations]
+        channel:
+          class: fuel-network
+          merchants: [iocl]
         notes: "5% back (as Fuel Points) on fuel at IOC outlets — capped at 250 Fuel Points/month for the first 6 months, 150/month thereafter (cap field shows the steady-state 150)."
       - category: groceries-bill-payments
         canonical_categories: [groceries, utilities]

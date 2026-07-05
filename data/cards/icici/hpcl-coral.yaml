@@ -56,6 +56,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [hpcl-fuel-stations]
+        channel:
+          class: fuel-network
+          merchants: [hpcl]
         notes: "2.5% cashback on fuel purchases at HPCL fuel pumps (minimum ₹500 per transaction), capped at ₹100 per month."
       - category: utilities-and-departmental-stores
         canonical_categories: [utilities, groceries, government]

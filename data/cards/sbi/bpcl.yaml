@@ -62,6 +62,9 @@ rewards:
         cap_unit: points
         cycle: statement
         merchants: [bpcl-fuel-stations]
+        channel:
+          class: fuel-network
+          merchants: [bpcl]
         notes: "4.25% value back (13X Reward Points, i.e. 3.25% + 1% fuel surcharge waiver) on fuel at BPCL petrol pumps, on transactions up to ₹4,000. Max 1,300 Reward Points per billing cycle."
       - category: dining-departmental-grocery-movies
         canonical_categories: [dining, groceries, entertainment]

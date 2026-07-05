@@ -56,6 +56,9 @@ rewards:
         multiplier: 1
         effective_rate: 10
         merchants: [bigbasket, tata-1mg, urban-company, myntra, zomato]
+        channel:
+          class: cobrand-merchant
+          merchants: [bigbasket, tata-1mg, urban-company, myntra, zomato]
         notes: "10 EDGE Reward Points per ₹100 (≈2%) with preferred partners: BigBasket, Tata 1mg, Urban Company, Myntra, Zomato."
     exclusions:
       - fuel

@@ -56,6 +56,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [amazon, bigbasket, flipkart, swiggy, reliance-smart-superstore]
+        channel:
+          class: cobrand-merchant
+          merchants: [amazon, bigbasket, flipkart, swiggy, reliance-smart-superstore]
         notes: "10X CashPoints (20 CashPoints per ₹200) on Amazon, BigBasket, Flipkart, Reliance Smart SuperStore & Swiggy, capped at 2,500 CashPoints/month."
     exclusions:
       - fuel

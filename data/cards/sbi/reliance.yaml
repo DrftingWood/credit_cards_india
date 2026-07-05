@@ -57,6 +57,9 @@ rewards:
         effective_rate: 10
         cap_unit: points
         merchants: [ajio, jiomart]
+        channel:
+          class: cobrand-merchant
+          merchants: [ajio, jiomart]
         notes: "10 Reward Points per ₹100 on AJIO & JioMart online stores (except UPI payments)."
       - category: reliance-retail
         canonical_categories: [online]
@@ -64,6 +67,9 @@ rewards:
         effective_rate: 5
         cap_unit: points
         merchants: [reliance-digital, reliance-smart, trends, netmeds]
+        channel:
+          class: cobrand-merchant
+          merchants: [reliance-digital, reliance-smart, trends, netmeds]
         notes: "5 Reward Points per ₹100 at other participating Reliance Retail stores (except UPI payments)."
       - category: dining-movies
         canonical_categories: [dining, entertainment]

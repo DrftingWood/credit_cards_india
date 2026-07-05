@@ -45,7 +45,7 @@ rewards:
     effective_until: null
     currency: miles
     currency_name: Reward Points
-    loyalty_program: null
+    loyalty_program: air-india-flying-returns
     base:
       rate: 4
       per_inr: 100
@@ -56,6 +56,8 @@ rewards:
         canonical_categories: [travel]
         multiplier: 2.5
         effective_rate: 10
+        card_attributable_rate: 10
+        card_attributable_per_inr: 100
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
@@ -65,6 +67,7 @@ rewards:
           class: cobrand-merchant
           merchants: [air-india-direct]
         notes: "10 Reward Points per Rs. 100 on Air India tickets booked via website, app, booking offices or call centres (including Super Saver tickets for self and others)."
+        stacks_with_program: false
     exclusions:
       - fuel
       - wallet-loads

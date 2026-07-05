@@ -59,7 +59,9 @@ ISSUER_ALLOWED_DOMAINS = {
     "onecard": {"getonecard.app", "www.getonecard.app", "onecard.io", "www.onecard.io"},
     "pnb": {"pnbindia.in", "www.pnbindia.in", "pnb.bank.in", "www.pnb.bank.in", "creditcard.pnb.bank.in", "pnbcard.in", "www.pnbcard.in"},
     "rbl": {"rblbank.com", "www.rblbank.com", "rbl.bank.in", "www.rbl.bank.in", "irctc.co.in", "www.irctc.co.in"},
-    "sbi": {"sbicard.com", "www.sbicard.com"},
+    # aurumcreditcard.com is SBI Card's official microsite for the Aurum card
+    # (documented exception, not a third-party host) — see docs/DECISIONS.md D-16b.
+    "sbi": {"sbicard.com", "www.sbicard.com", "aurumcreditcard.com", "www.aurumcreditcard.com"},
     "slice": {"sliceit.com", "www.sliceit.com", "slice.bank.in", "www.slice.bank.in"},
     "union": {"unionbankofindia.co.in", "www.unionbankofindia.co.in", "unionbankofindia.bank.in", "www.unionbankofindia.bank.in"},
     "south-indian": {"southindianbank.com", "www.southindianbank.com", "southindianbank.bank.in", "www.southindianbank.bank.in", "sbicard.com", "www.sbicard.com"},
@@ -405,8 +407,9 @@ def main() -> int:
         check_dated_array(errors, path, "benefits", instance.get("benefits", []), card_is_active)
 
         # co-brand partner ↔ loyalty programme alias lint
-        # Warning-tier per the validator-promotion pattern: promote to error
-        # once offender count is zero (see docs/ROADMAP.md).
+        # Error-tier: offender count reached zero on 2026-07-05 (D6/D31), so this
+        # was promoted from warning to error per the validator-promotion pattern
+        # (see docs/ROADMAP.md, docs/DECISIONS.md D-16b).
         co_brand = instance.get("co_brand")
         if isinstance(co_brand, dict) and status != "discontinued":
             partner_str = (co_brand.get("partner") or "").lower()
@@ -421,8 +424,8 @@ def main() -> int:
                     continue
                 if any(alias.lower() in partner_str for alias in aliases):
                     if prog_id not in referenced_programs:
-                        warnings.append(
-                            f"[warn] {path.relative_to(ROOT)} :: co_brand.partner "
+                        errors.append(
+                            f"[lint] {path.relative_to(ROOT)} :: co_brand.partner "
                             f"'{co_brand.get('partner')}' matches loyalty programme "
                             f"'{prog_id}' aliases but no rewards[].loyalty_program "
                             f"references '{prog_id}'"

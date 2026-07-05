@@ -53,6 +53,7 @@ rewards:
       per_inr: 100
       unit_value_inr: 1.0
       unit_value_inr_realized: 1.0
+    loyalty_program: tata-neu-points
     accelerated:
       - category: tata-neu-and-partner-tata-brands
         canonical_categories: [online]
@@ -70,6 +71,8 @@ rewards:
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 10
+        card_attributable_rate: 10
+        card_attributable_per_inr: 100
         merchants: [tata-neu]
         channel:
           class: cobrand-merchant
@@ -78,6 +81,7 @@ rewards:
         cap_per_cycle: 1500
         cap_unit: points
         cycle: monthly
+        stacks_with_program: false
     exclusions:
       - emi
     capping_rules:

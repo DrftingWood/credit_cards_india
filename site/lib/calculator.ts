@@ -487,8 +487,11 @@ export function rankCards(
   spend: SpendProfile,
   ctx?: ScoringContext,
 ): CardScore[] {
+  // Include invite-only cards (Infinia, Kotak Solitaire, Amex Centurion): the calculator
+  // is a value comparison, and hiding them makes the top of the market invisible. They carry
+  // an "Invite only" chip in the UI so availability is clear.
   return cards
-    .filter((c) => c.current_rewards && c.computed.is_active && !c.computed.is_invite_only)
+    .filter((c) => c.current_rewards && c.computed.is_active)
     .map((c) => scoreCard(c, spend, ctx))
     .sort((a, b) => b.annual_net_inr - a.annual_net_inr);
 }

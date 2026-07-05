@@ -22,6 +22,17 @@ const DEFAULT_SPEND: SpendProfile = {
   international: 0,
 };
 
+/** Sanity ceiling per category (₹1 crore/month) — beyond any real cardholder, and
+ *  stops a stray value like `1e21` from producing meaningless sextillion-rupee output. */
+const MAX_MONTHLY = 1_00_00_000;
+
+/** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY]. */
+function clampSpend(raw: string): number {
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0) return 0;
+  return Math.min(MAX_MONTHLY, n);
+}
+
 export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
   const [spend, setSpend] = useState<SpendProfile>(DEFAULT_SPEND);
   const selectedId = useSearchParams().get("card");
@@ -56,10 +67,11 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
               <input
                 type="number"
                 min={0}
+                max={MAX_MONTHLY}
                 step={500}
                 value={spend[cat]}
                 onChange={(e) =>
-                  setSpend((s) => ({ ...s, [cat]: Math.max(0, Number(e.target.value) || 0) }))
+                  setSpend((s) => ({ ...s, [cat]: clampSpend(e.target.value) }))
                 }
                 className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
               />

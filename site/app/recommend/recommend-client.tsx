@@ -7,8 +7,11 @@ import {
   type RecommendPayload,
   type IncomeBand,
 } from "../../lib/recommender";
-import { scoreDecoupled, type DecoupledScore } from "../../lib/scorer-decoupled";
+import { scoreDecoupled } from "../../lib/scorer-decoupled";
 import { BRAND_PREF_TO_CHANNELS } from "../../lib/recommender-constants";
+import { pickHighlights } from "../../lib/present";
+import { BestPickCard } from "../../components/recommend/best-pick-card";
+import { RankedRow } from "../../components/recommend/ranked-row";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types — kept narrow so TypeScript catches every option mismatch.
@@ -668,6 +671,7 @@ function ResultsView({
     () => scoreDecoupled(cards, programsById, payload, { topN: 5 }),
     [cards, programsById, payload],
   );
+  const highlights = useMemo(() => pickHighlights(results, payload), [results, payload]);
 
   return (
     <section className="space-y-4 animate-step-in">
@@ -681,17 +685,28 @@ function ResultsView({
         </p>
       </div>
 
+      {highlights.length > 0 ? (
+        <div className="grid gap-3 sm:grid-cols-2">
+          {highlights.map((h) => (
+            <BestPickCard key={`${h.key}-${h.score.card.id}`} highlight={h} />
+          ))}
+        </div>
+      ) : null}
+
       {results.length === 0 ? (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
           No cards passed the eligibility filters. Try widening your income band
           or removing the lounge requirement.
         </div>
       ) : (
-        <ol className="space-y-3">
-          {results.map((r, i) => (
-            <ResultCard key={r.card.id} rank={i + 1} score={r} />
-          ))}
-        </ol>
+        <div>
+          <h3 className="mb-2 mt-2 text-sm font-semibold text-slate-700">All ranked results</h3>
+          <ol className="space-y-2">
+            {results.map((r, i) => (
+              <RankedRow key={r.card.id} rank={i + 1} score={r} />
+            ))}
+          </ol>
+        </div>
       )}
 
       {process.env.NODE_ENV !== "production" ? (
@@ -727,60 +742,6 @@ function ResultsView({
         </button>
       </div>
     </section>
-  );
-}
-
-function ResultCard({ rank, score }: { rank: number; score: DecoupledScore }) {
-  const r = score;
-  const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
-  const visits = (v: number | "unlimited") => (v === "unlimited" ? "unlimited" : Math.round(v));
-  const hasLounge = r.lounge_visits.domestic !== 0 || r.lounge_visits.international !== 0;
-  return (
-    <li className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
-      <div className="flex items-baseline justify-between gap-3">
-        <div>
-          <span className="text-xs font-semibold text-slate-500">#{rank}</span>
-          <h3 className="text-base font-semibold text-slate-900">
-            <Link
-              href={`/card/${r.card.issuer}/${r.card.id.replace(`${r.card.issuer}-`, "")}`}
-              className="hover:underline"
-            >
-              {r.card.name}
-            </Link>
-          </h3>
-          <p className="text-xs text-slate-500">{r.card.issuer_detail?.name ?? r.card.issuer}</p>
-        </div>
-        <div className="text-right">
-          <div className="text-xl font-semibold text-emerald-700">{inr(r.net_rewards_inr)}</div>
-          <div className="text-xs text-slate-500">net rewards /yr</div>
-        </div>
-      </div>
-
-      <p className="mt-2 text-sm font-medium text-slate-700">{r.reason}</p>
-
-      <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-700">
-        <dt>Annual rewards</dt><dd className="text-right">{inr(r.annual_rewards_inr)}</dd>
-        <dt>Annual fee</dt><dd className="text-right">{r.annual_fee_inr > 0 ? `−${inr(r.annual_fee_inr)}` : "₹0"}</dd>
-      </dl>
-
-      {/* Separate, honest line items — one-off or usage-dependent, NOT in the rank. */}
-      {(r.first_year_bonus_inr > 0 || r.milestone_value_inr > 0 || hasLounge) ? (
-        <div className="mt-3 rounded-md bg-slate-50 p-3 text-xs text-slate-700 space-y-0.5">
-          <div className="font-semibold mb-1">On top of rewards (shown separately):</div>
-          {r.first_year_bonus_inr > 0 ? <div>• First-year sign-up benefit: <strong>{inr(r.first_year_bonus_inr)}</strong> (one-time)</div> : null}
-          {r.milestone_value_inr > 0 ? <div>• Milestone benefits at your spend: <strong>{inr(r.milestone_value_inr)}</strong>/yr</div> : null}
-          {hasLounge ? (
-            <div>• Lounge access: <strong>{visits(r.lounge_visits.domestic)}</strong> domestic{r.lounge_visits.international !== 0 ? <> + <strong>{visits(r.lounge_visits.international)}</strong> international</> : null} visits/yr</div>
-          ) : null}
-        </div>
-      ) : null}
-
-      {r.flags.length > 0 ? (
-        <ul className="mt-2 space-y-0.5 text-xs text-amber-800 list-disc list-inside">
-          {r.flags.map((f, i) => <li key={i}>{f}</li>)}
-        </ul>
-      ) : null}
-    </li>
   );
 }
 

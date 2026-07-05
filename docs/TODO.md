@@ -1,6 +1,6 @@
 ﻿# Agent TODO
 
-Last refreshed: 2026-07-04
+Last refreshed: 2026-07-06
 
 This is the canonical work queue for agents. Historical audit docs are evidence,
 not task lists. If an item from an old audit still matters, promote it here
@@ -64,7 +64,7 @@ Fresh sessions: read the plan header, create the branch it names, and execute ta
 | B5 | P2 | Data quality | data | Done | All 7 small-bank cards verified vs issuer PDFs/pages (major corrections found); full catalogues surveyed in docs/PSU-BANK-PORTFOLIOS-2026-07.md. |
 | C1 | P2 | Portfolio | data/product | Done | PORTFOLIO-GAPS.md refreshed to 317 cards; prior high-value gaps reconciled/closed. |
 | C2 | P2 | Schema | data/schema | Done | Recorded DECISIONS D-20: split network variant to its own file only on material term difference. |
-| C3 | P2 | Site UX | frontend | Open | Fix page/navigation issues from the site review. |
+| C3 | P2 | Site UX | frontend | Done | **Resolved 2026-07-06.** All 6 site-review issues fixed on `site-functional-2026-07` (detail-page tool-linking guard, bidirectional browse/compare URL sync, mobile results-before-filters, header flex-wrap, wizard skipped-step "not applicable" state, dev-only debug panel) and browser-QA'd at 3 viewports â€” see `docs/ui-benchmark/2026-07/QA.md`. Fix page/navigation issues from the site review. |
 
 ## Task Cards
 
@@ -406,7 +406,7 @@ and learnings:
 | --- | --- | --- | --- |
 | D23 | Done | Portfolio | **Added Equitas Bank** (25th issuer) + `equitas-powermiles` and `equitas-selfe`, both issuer-sourced (equitas.bank.in via Playwright). Tiga + HDFC-Equitas co-brands not added (CardExpert didn't recommend). |
 | D24 | Done | Portfolio | **HSBC TravelOne was NOT missing** (id `hsbc-travelone`; my cross-check used the wrong id). Competitor-verify instead found + fixed errors: Mastercard/World (was Visa), forex 3.5% (was 2%), waiver â‚¹8L (was â‚¹12L), added 6 domestic lounge visits. (HDFC Diners BizBlack = business card, out of scope.) |
-| D25 | P2 | Site UX | **Learn from CardExpert's presentation:** recommend by spending-capacity tier (income + annual spend) AND spending pattern (dining/online/forex/utilities) with a one-line reason per card â€” not one universal pick. This matches the decoupled-scorer direction (category-aware, transparent line items). Consider tiered/pattern-based result grouping on the site. |
+| D25 | Done | Site UX | **Resolved 2026-07-06.** Answer-first grouped presentation shipped on `site-functional-2026-07`: `/recommend` results lead with a highlights band ("Best overall for your spend" / "Best lifetime-free pick") above the full ranked list, each with a one-line reason, before the ranked `<ol>`. Browser-QA'd live at 390px (mobile) — see `docs/ui-benchmark/2026-07/QA.md` and `recommend-results-390.png`. **Learn from CardExpert's presentation:** recommend by spending-capacity tier (income + annual spend) AND spending pattern (dining/online/forex/utilities) with a one-line reason per card â€” not one universal pick. This matches the decoupled-scorer direction (category-aware, transparent line items). Consider tiered/pattern-based result grouping on the site. |
 | D26 | P2 | Data quality | **Competitor-verify more high-traffic cards** (the HSBC TravelOne pass found 4 errors). Progress: Axis Atlas spot-checked = correct (2+5 EDGE Miles, tiered â‚¹3L/7.5L/15L milestones, 8+4 lounge). **Forex markups systematically verified SOUND** â€” of 65 sub-2% cards, all are genuinely low/zero-forex (Scapia 0%, IDFC WOW/Mayura 0%, IndusInd 1.5%, SBI Elite/Amazon-ICICI 1.99%); no stale cluster. Continue spot-checking reward rates/caps on remaining top cards. |
 
 ## Follow-up backlog (opened 2026-07-04, from the A0â€“C3 audit)
@@ -424,7 +424,7 @@ when picked up.
 | D6 | Done | Data | **Resolved 2026-07-05.** All 6 warnings cleared: loyalty_program (+ value-neutral `card_attributable_rate`/`stacks_with_program:false` decomposition) on bob-irctc, sbi air-india signature/platinum, sbi tata-neu infinity/plus; aurumcreditcard.com added to the sbi apply_url allowlist (documented microsite). validate.py reports zero warnings. Resolve the 6 standing validator warnings â€” `co_brand.partner` â†” `loyalty_program` alias links (bob-irctc, sbi air-india Ã—2, sbi tata-neu Ã—2) and the sbi-aurum apply_url microsite. |
 | D7 | P2 | Sources | Normalize the audit-note manifests (bob / idfc-first / rbl / standard-chartered) into per-card PDF maps, matching axis/hdfc/icici/sbi (LOCAL_DATA_PDF_REVIEW cleanup #1). |
 | D8 | Done | Data | **Resolved 2026-07-05.** Added `scripts/audit_stamps.py` (read-only scanner). Only 6 of the original 31 remained (prior work reconciled the rest); all 6 carried a 2026-07-03 bulk-sweep `last_verified_on` with no source touched that day, so moved it to `last_swept_on` and restored `last_verified_on` to the newest `source.retrieved_on` (icici-manchester-united-signature, kotak-myntra-kaching, kotak-pvr-gold, rbl-zomato-edition, yes-premia → 2026-04-15; hdfc-6e-rewards → 2026-04-22). Scanner now reports 0. Reconcile the 31 `metadata.last_verified_on` vs nested `source.retrieved_on` mismatches (LOCAL_DATA_PDF_REVIEW issue #4); explain via `last_swept_on` or notes. |
-| D9 | P2 | Site UX | Browser-QA the C3 responsive fixes (mobile results-before-filters, header wrap) on real viewports via Playwright/webapp-testing â€” they compile but weren't visually confirmed. |
+| D9 | Done | Site UX | **Resolved 2026-07-06.** Browser-QA'd via Playwright MCP at 390×844 / 768×1024 / 1440×900 across `/`, `/browse`, `/card/hdfc/infinia`, `/compare`, `/recommend` (+ results) â€” no horizontal body scroll on any page/viewport (15/15 pass), mobile results-before-filters and header wrap both visually confirmed. See `docs/ui-benchmark/2026-07/QA.md`. Browser-QA the C3 responsive fixes (mobile results-before-filters, header wrap) on real viewports via Playwright/webapp-testing â€” they compile but weren't visually confirmed. |
 | D10 | P2 | Schema/data | Execute the C2 (D-20) network-variant migrations: HDFC Tata Neu Infinity/Plus RuPay-UPI variants; verify whether ICICI Coral/Rubyx/Sapphiro Amex differ materially before splitting. |
 | D11 | P2 | Portfolio | Verify open status of the 3 still-absent big-bank cards (Axis Burgundy Private, ICICI Mine, Kotak Mojo Platinum) and add if open + sourced (`docs/PORTFOLIO-GAPS.md`). |
 | D12 | P3 | Recommender | Author `accelerated[].applicability_pct` from evidence for high-traffic co-brand cards (Amazon ICICI, Swiggy HDFC, Tata Neu, â€¦) so /recommend credits their real bucket slice instead of falling back to base (A2 / D-18). |

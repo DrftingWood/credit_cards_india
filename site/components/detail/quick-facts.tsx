@@ -1,5 +1,6 @@
+import Link from "next/link";
 import type { EnrichedCard } from "@/lib/types";
-import { formatFeeInr, formatPct } from "@/lib/utils";
+import { formatDate, formatFeeInr, formatPct } from "@/lib/utils";
 import { bestSuitedFor, rewardTypeLabel, formatAccelerated } from "@/lib/detail-derivations";
 import { CardImage } from "@/components/card-image";
 
@@ -53,6 +54,13 @@ export function QuickFacts({ card }: { card: EnrichedCard }) {
             )}
           </Group>
         </div>
+      </div>
+
+      <div className="border-t border-slate-100 px-5 py-2.5 text-xs text-slate-500">
+        Data verified {formatDate(card.metadata.last_verified_on)} —{" "}
+        <Link href="/about" className="underline hover:text-slate-700">
+          see our methodology
+        </Link>
       </div>
     </section>
   );

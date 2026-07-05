@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import type { EnrichedCard, IssuerRecord } from "@/lib/types";
 import type { FilterState, ForexBand } from "@/lib/filters";
 import { IssuerLogo } from "./logos/issuer-logo";
@@ -34,7 +34,37 @@ const FOREX_BANDS: Array<{ value: ForexBand; label: string }> = [
   { value: "high", label: "≥ 3%" },
 ];
 
+// Number of independently-active filter dimensions, used for the mobile
+// toggle label ("Filters (N active)"). Mirrors browse-client's hasAny check
+// but counts rather than just detecting presence.
+function activeFilterCount(s: FilterState): number {
+  let n = 0;
+  if (s.q) n += 1;
+  if (s.issuers.length > 0) n += 1;
+  if (s.networks.length > 0) n += 1;
+  if (s.tiers.length > 0) n += 1;
+  if (s.currencies.length > 0) n += 1;
+  if (s.coBrandCategories.length > 0) n += 1;
+  if (s.tags.length > 0) n += 1;
+  if (s.forexBand !== null) n += 1;
+  if (s.lifetimeFree) n += 1;
+  if (s.feeWaiver) n += 1;
+  if (s.domesticLounge) n += 1;
+  if (s.intlLounge) n += 1;
+  if (s.hasMilestones) n += 1;
+  if (s.hasWelcomeBonus) n += 1;
+  if (s.inviteOnly !== null) n += 1;
+  if (s.coBrandOnly) n += 1;
+  return n;
+}
+
 export function FilterBar({ state, onChange, cards, issuers }: Props) {
+  // Collapsed by default on mobile (<md); md+ always shows the sidebar via
+  // the md:block override below, regardless of this state.
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const activeCount = useMemo(() => activeFilterCount(state), [state]);
+
   // Show issuer counts so users see which options are populated.
   const counts = useMemo(() => {
     const byIssuer = new Map<string, number>();
@@ -57,7 +87,17 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
   }
 
   return (
-    <aside className="space-y-5 text-sm">
+    <aside className="text-sm">
+      <button
+        type="button"
+        onClick={() => setMobileOpen((open) => !open)}
+        aria-expanded={mobileOpen}
+        className="md:hidden sticky top-0 z-10 mb-3 flex w-full items-center justify-between rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm"
+      >
+        <span>Filters{activeCount > 0 ? ` (${activeCount} active)` : ""}</span>
+        <span aria-hidden="true">{mobileOpen ? "▲" : "▼"}</span>
+      </button>
+      <div className={`space-y-5 ${mobileOpen ? "block" : "hidden"} md:block`}>
       <div>
         <label className="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">
           Search
@@ -222,6 +262,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
           </div>
         </Group>
       ) : null}
+      </div>
     </aside>
   );
 }

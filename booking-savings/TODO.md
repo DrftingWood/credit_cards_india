@@ -1,44 +1,40 @@
-# Pending items & TODO
+# TODO — prioritized (post red-team, 2026-07-05)
 
-Snapshot of open work across both projects (as of 2026-07-05).
+See `docs/ENGINE_REVIEW.md` for the full red-team analysis behind P0. **The data is now sound
+(~73 cards fixed, all audits clean); the engine is the weak link.**
 
-## 🔴 Immediate / blocking
-- [ ] Commit `credit_cards_india` changes and this `travel-booking-savings` project (in progress).
-- [x] Run the 4 grounded route scenarios in `holistic.py` (domestic/intl × flight/hotel).
-- [ ] `MARKUPS.md` provenance file — per-cell markup, confidence, sources (domestic-flight cell is low-confidence).
+## P0 — Engine correctness (the ₹5L answers are optimistic ceilings, not real returns)
+- [ ] **Engine v2** — stop discarding fields the repo already stores:
+  - [ ] R1 **Net portal markup** against reward (Diners "17.5%" → real ~7–12%). Reconcile with `holistic.py`.
+  - [ ] R2 **Forex term**: subtract `forex_markup_pct × 1.18 × intl_spend`; split the verdict into **domestic vs international** (they invert — Atlas loses to Scapia on ₹5L international).
+  - [ ] R3 **Accelerator MCC/channel scoping** — apply the boosted rate only to the eligible channel/MCC fraction, not all ₹5L (Atlas 5x is portal/direct-only and *not abroad*; MMT 6% is MMT-only).
+  - [ ] R4 **Use the `locked` flag** (currently computed, never used); model `cap_per_cycle`+`cycle` against a **monthly** spend profile, not the annual total (lumpy travel → most spend earns base).
+  - [ ] R5 **Rank on one basis** (realized); present floor→ceiling as an explicit range, not face-vs-realized mixed.
+  - [ ] R6 **Realistic spend mix** (fuel/rent/utilities/insurance are excluded from accelerators) instead of 100% pure travel.
+- [ ] R7 **DATA fix:** split HDFC Diners Black accelerator — **flights 5X (16.5%), hotels 10X (33%)** (currently lumped as "10X flights+hotels"). Re-check Infinia/DCB SmartBuy the same way.
+- [ ] Persist the engine into the repo (`scripts/` or `analysis/`) with unit tests, once v2 is built.
+- [ ] **Re-run & rewrite the ₹5L verdict** (separate domestic + international) with corrected engine + values.
 
-## 📦 Project 1 — credit_cards_india (dataset)
-Done: 25 cards encoded with full-visibility `transfer_partners`; catalogue-only marks (IDFC/RBL/AU);
-InterMiles ×4 discontinued; HSBC Platinum, ICICI, Kotak, YES; `docs/TRANSFER_PARTNERS.md`; validates OK.
+## P1 — Dataset structural
+- [ ] Build `loyalty_programs/*.yaml` partner files — **OPEN DECISION:** reusable entity files vs inline notes.
+- [ ] Regenerate `dist/` (`prebuild`); confirm the site renders the new realized/face values correctly.
 
-Done (remediation, 2026-07-05): floor audit of all 319 cards (`docs/FLOOR_AUDIT.md`); fixed 4
-Category-B outliers + deferred SC Rewards; populated 22 missing `realized`; discontinued 3 defunct
-Vistara cards; reconciled all EDGE Reward Points to uniform ₹0.18 floor; swept EDGE Miles stragglers.
-
-Pending:
-- [x] **Sanity-check `unit_value` against real programme values** (Scapia-class) — DONE 2026-07-05
-  (`1f1d3f4`): 13 cards fixed (Uni Coins 100× error, ixigo/cheq/kosmo/paytm overstated, Adani/Apollo/
-  IRCTC closed-loop haircuts, phonepe-ultimo raised, SC Beyond). Face≥0.5 suspects cleared. A future
-  pass could widen to face 0.3–0.5 currencies and non-INR co-brand miles.
-- [ ] Fix `standard-chartered/rewards` earn rate (flat 4 RP/₹150 retail, dataset has 1/150).
-- [ ] Build `loyalty_programs/*.yaml` partner files — promote ~28 partner values out of card notes into reusable entities.
-- [ ] Co-brand single-airline cards (bob/etihad, icici/emirates-*, sbi/*, axis/vistara*, kotak/air*) — set proper co-brand partner values.
-- [ ] Verify low-confidence encodings: HDFC `regalia` (modeled on Regalia Gold), ICICI `emeralde` legacy 6:1.
-- [ ] Decide whether to persist the ₹5L engine (`engine15.py`, currently scratchpad-only) into the repo.
-- [ ] Regenerate `dist/` (prebuild) and confirm the site handles `realized=floor` values.
-- [ ] Revisit Equitas PowerMiles ~Sept 2026 when 1:1 transfers go live.
-
-## 🧮 Project 2 — travel-booking-savings (side project)
-Done: `holistic.py` (route-profile model, grounded markups), `README.md`, `TODO.md`.
-
-Pending:
-- [ ] `MARKUPS.md` provenance (per-cell confidence + sources).
+## P2 — Booking model (side project, `booking-savings/`)
+- [ ] `MARKUPS.md` provenance — write up the now-researched portal/OTA markups per cell + confidence (domestic-flight cell stays low-confidence, ~0–3%).
 - [ ] Interactive HTML calculator (enter real quotes → live ranked net cost).
 - [ ] Model the award-booking path (transfer miles → book a partner award).
-- [ ] Add cancellation/refund friction + convenience fees as explicit cost terms.
-- [ ] Better-ground the domestic-flight markup cell (treat as 0–3% low-confidence for now).
+- [ ] Add explicit **forex + cancellation/refund + convenience-fee** cost terms (shares R2 with the engine).
+- [ ] Reconcile `holistic.py` and engine v2 on shared markup/forex assumptions (single source of truth).
 
-## 🤔 Open decisions
-- [ ] `loyalty_programs/*.yaml` (reusable) vs partner values inline in card notes?
-- [ ] HTML calculator for the side project — yes/no?
-- [ ] Verify IRCTC co-brand family (bob/irctc @0.25 vs hdfc/rbl/sbi @1.0 — is bob undervalued or a different currency?) and the 8 obscure bank-RP cards at face 0.3-0.55 (equitas/selfe, hdfc/diners-rewardz, idfc ashva/lic-select/wow/wow-black, rbl/play/shoprite) — low priority, values look reasonable but unverified.
+## Deferred / watch
+- [ ] Equitas PowerMiles — revisit ~Sept 2026 when its 1:1 transfers go live.
+
+## Done this session (2026-07-05 — 36 commits, all validate OK, unpushed on `todo-board-2026-07`)
+- Floor audit of all 319 cards; 4 Category-B outliers fixed; 22 missing `realized` populated.
+- EDGE Miles + Reward Points reconciled (uniform ₹0.18 floor); stragglers swept.
+- Nominal-inflation class fixed: **Uni Coins 100×**, Scapia 5×, ixigo/cheq/kosmo/paytm, Adani, Apollo, SC Beyond.
+- **Systematic co-brand-airline undervaluation fixed** (KrisFlyer/Emirates/Etihad ~₹0.2 → ₹0.6–1.1); IndiGo BluChip 1.0→0.45.
+- SC 360 lineup reconciled; SC Rewards earn-rate fixed; obscure bank-RP overvaluations fixed.
+- Defunct cards discontinued (Vistara ×5, InterMiles ×4). IRCTC family verified (BOB genuinely ₹0.25).
+- Red-team: 4 streams; 7/8 values held, **KrisFlyer ₹0.85→₹1.0** corrected.
+- Scenarios A–I all clean (floor, nominal, internal, cross-card, sibling, transfer-ratio, provenance, earn-rate).

@@ -424,6 +424,20 @@ when picked up.
 | D19 | P1 | Recommender | **No sanity/robustness guards** (F2/F6/F7/F10). Engine credits uncapped ≥10% rates, lets one mis-modelled card (bob-scapia) win many scenarios, and recommends category-irrelevant cards (movie card for fuel). Add rate/ milestone plausibility clips, outlier bounds, and a category-match down-weight. See `docs/RECOMMENDER-FLAWS-2026-07.md` for the full F1–F13 list + evidence. |
 | D16 | P2 | Data quality | **Verify HDFC SmartBuy multiplier/cap freshness.** Infinia/Diners Black SmartBuy is modelled at 10X (caps 15,000 / 7,500 RP per month). HDFC has revised SmartBuy multipliers, caps and category exclusions repeatedly — confirm the modelled 10X + monthly point caps against current live SmartBuy T&C for flights/hotels, and note the effective category rules. |
 
+## Engine deep-dive backlog (opened 2026-07-05, from the graphify architecture dive)
+
+These emerged from the knowledge-graph deep dive of database/logic/engines.
+Worked by `/loop /cc-engine-dive` (code/logic lane) unless noted.
+
+| ID | Priority | Area | Task |
+| --- | --- | --- | --- |
+| D27 | P2 | Code quality | **Category rules duplicated in two languages** (Q12c). `scripts/category_rules.yaml` (validator/tagger) and `site/lib/category-mapping.ts` hand-mirror the same regex rules and must be kept in sync manually. Single-source: emit the YAML as JSON during `site/scripts/prebuild.mjs` and have the TS heuristic read it; delete the mirrored rules. |
+| D28 | P1 | Booking engine | **engine_v2.py red-team flaws R1–R7 unfixed** (`docs/REMEDIATION_2026-07.md`): portal-markup blind, forex netted on the wrong spend fraction, accelerators not channel/MCC-scoped, `locked` flag computed but unused, realized-vs-face ranking asymmetry, pure-travel best-case spend mix. Outputs are theoretical ceilings, not net returns — fix before trusting ₹5L rankings; port applicable fixes to `site/lib/booking.ts`. |
+| D29 | P2 | Automation | **Crawl-diff drift detection** (proposed in `docs/hdfc-audit.md` §5). The audits proved `retrieved_on` stamps alone can't be trusted (provenance drift). Build a repeatable Playwright script that diffs each live card page against YAML key fields (fees, base rate, caps, lounge) per issuer and reports drift as TODO rows, so `last_verified_on` stays meaningful at scale. |
+| D30 | P3 | Data quality | **axis google-pay-flex network unresolved** (flagged AMBIGUOUS in the Axis audit follow-ups: "likely RuPay/UPI", network field unconfirmed). Confirm network + UPI capability from an issuer source and set it. |
+| D31 | P3 | Validation | **Promote warn-tier lints to error at zero offenders** (promotion pattern, `docs/ROADMAP.md`). After D6 clears the 6 co-brand alias warnings, flip that lint to error so regressions fail CI; sweep for other warn-tier lints already at zero. |
+| D32 | P2 | Tests | **Regression locks for the three historical rate-pipeline bugs.** Verify a test exists (add if missing) for each: A1 units-as-percent mis-scoring (127/158 accelerators), the PR-2 100x base-rate drift (three rate-math copies), and the HDFC `per_inr` 150-vs-200 denominator class (a data-shape lint or build-time plausibility check). The pipeline's integrity = one primitive + one contract + sourced data; each leg needs a lock. |
+
 ## Completed Recently
 
 - **2026-07-04 audit board (A0–C3 + B1–B5):** all 12 tasks done on branch

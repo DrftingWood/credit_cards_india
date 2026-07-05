@@ -29,6 +29,11 @@ Items surfaced during the D20 top-10 cap pass that need dedicated follow-up
   rewards are milestone-based "White Pass" value (annual ₹2.5L program cap), not a
   per-transaction international accelerator. No per-txn international earn table
   exists in issuer docs. No cap applied; needs a rewards-model review.
+- **au-ixigo** — the overall 10,000 RP/statement cap is applied and sourced, but
+  the modelled `ixigo-bookings` earn rate of 6 RP/₹100 could not be corroborated
+  from AU's issuer evidence (the Card Member Agreement defers per-category earn to
+  the product page, which surfaced only welcome/quarterly-bonus figures). Rate to
+  reconcile against the issuer "Reward Points Construct" page.
 - **indusind-eazydiner-platinum** — modelled `eazydiner-dining` accelerator at
   effective_rate=15 (~3%) is unsupported (2026-07-05 research): IndusInd's press
   release, product page and benefits leaflet describe "up to 2 reward points per

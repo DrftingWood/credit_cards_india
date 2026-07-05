@@ -1,0 +1,40 @@
+39 uncapped accelerators >= 3.0% on active cards (6 undocumented, 33 carry a capping_rules no-cap note)
+  [NO-NOTE] sbi-landmark-prime                  landmark-stores-online-and-retail     rate=    25 ~  5.5% cap=unlimited channel=cobrand-merchant
+  [NO-NOTE] bob-scapia                          scapia-app-travel                     rate=    20 ~  4.0% cap=unlimited channel=cobrand-merchant
+  [NO-NOTE] federal-scapia                      scapia-app-bookings                   rate=    20 ~  4.0% cap=unlimited channel=cobrand-merchant
+  [NO-NOTE] indusind-pinnacle                   travel-dining                         rate=     5 ~  3.8% cap=unlimited channel=None
+  [NO-NOTE] indusind-eazydiner-platinum         eazydiner-dining                      rate=    15 ~  3.0% cap=unlimited channel=food-delivery
+  [NO-NOTE] kotak-white-reserve                 international-spend                   rate=     6 ~  3.0% cap=unlimited channel=None
+           sbi-irctc-platinum                  irctc-rail-bookings                   rate=    10 ~ 10.0% cap=unlimited channel=cobrand-merchant
+           sbi-irctc-premier                   irctc-rail-bookings                   rate=    10 ~ 10.0% cap=unlimited channel=cobrand-merchant
+           icici-adani-one-signature           adani-one-ecosystem                   rate=     7 ~  7.0% cap=unlimited channel=cobrand-merchant
+           icici-mmt                           makemytrip-hotel-booking              rate=     6 ~  6.0% cap=unlimited channel=third-party-ota
+           sbi-air-india-signature             air-india-bookings                    rate=    10 ~  5.5% cap=unlimited channel=cobrand-merchant
+           axis-freecharge-plus                freecharge-spends                     rate=     5 ~  5.0% cap=unlimited channel=None
+           axis-horizon                        travel-edge-portal                    rate=     5 ~  5.0% cap=unlimited channel=issuer-portal
+           axis-shoppers-stop                  shoppers-stop-exclusive-brand-appar   rate=    20 ~  5.0% cap=unlimited channel=cobrand-merchant
+           icici-amazon-pay                    amazon-in-prime                       rate=     5 ~  5.0% cap=unlimited channel=cobrand-merchant
+           sbi-krisflyer-apex                  singapore-airlines-group              rate=    10 ~  5.0% cap=unlimited channel=None
+           sbi-paytm-select                    paytm-travel                          rate=     5 ~  5.0% cap=None channel=None
+           equitas-powermiles                  international-spend                   rate=     9 ~  4.5% cap=None channel=None
+           standard-chartered-priority-visa-infinite overseas-fashion                      rate=     5 ~  4.5% cap=unlimited channel=None
+           sbi-reliance-prime                  ajio-jiomart-online                   rate=    20 ~  4.4% cap=unlimited channel=cobrand-merchant
+           axis-flipkart                       preferred-merchants                   rate=     4 ~  4.0% cap=unlimited channel=cobrand-merchant
+           sbi-krisflyer-apex                  international-spends                  rate=     8 ~  4.0% cap=unlimited channel=None
+           yes-private                         international-shopping                rate=    40 ~  4.0% cap=unlimited channel=None
+           bob-etihad-guest-premium            etihad-airways                        rate=     6 ~  3.6% cap=unlimited channel=cobrand-merchant
+           idfc-first-mayura                   international-spend                   rate=    10 ~  3.3% cap=unlimited channel=None
+           idfc-first-mayura                   dining-online-travel                  rate=    10 ~  3.3% cap=unlimited channel=None
+           sbi-landmark-select                 landmark-stores-online-and-retail     rate=    15 ~  3.3% cap=unlimited channel=cobrand-merchant
+           axis-indigo-premium                 indigo-flights-direct                 rate=     7 ~  3.2% cap=unlimited channel=cobrand-merchant
+           sbi-indigo-elite                    indigo-flights-direct                 rate=     7 ~  3.2% cap=unlimited channel=cobrand-merchant
+           axis-flipkart-super-elite           flipkart-plus-members                 rate=    14 ~  3.1% cap=None channel=cobrand-merchant
+           au-cheq                             favourite-brands                      rate=    12 ~  3.0% cap=unlimited channel=None
+           axis-shoppers-stop                  shoppers-stop-other-brands            rate=    12 ~  3.0% cap=None channel=cobrand-merchant
+           axis-spicejet-voyage-black          online-food-bills-entertainment       rate=     6 ~  3.0% cap=None channel=None
+           icici-adani-one-platinum            adani-one-ecosystem                   rate=     3 ~  3.0% cap=None channel=cobrand-merchant
+           icici-amazon-pay                    amazon-in-non-prime                   rate=     3 ~  3.0% cap=unlimited channel=cobrand-merchant
+           icici-emeralde-private-metal        international-spend                   rate=     6 ~  3.0% cap=unlimited channel=None
+           icici-mmt                           makemytrip-flight-bus-cab             rate=     3 ~  3.0% cap=unlimited channel=third-party-ota
+           sbi-apollo                          apollo-services                       rate=     6 ~  3.0% cap=unlimited channel=None
+           sbi-paytm                           paytm-travel                          rate=     3 ~  3.0% cap=None channel=None

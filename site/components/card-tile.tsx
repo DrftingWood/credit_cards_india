@@ -28,6 +28,7 @@ function CardTileImpl({ card }: { card: EnrichedCard }) {
   return (
     <Link
       href={href}
+      title={`Data verified ${card.metadata.last_verified_on}`}
       className={cn(
         "group block rounded-xl border border-slate-200 bg-white p-4 transition-colors",
         "hover:border-brand-500/50 hover:bg-brand-50/30",

@@ -25,11 +25,21 @@ Execution of `docs/superpowers/plans/2026-07-05-data-remediation.md` on branch
 - **D3** — machine-readable evidence refs (`type/confidence/local_refs/fields_verified`)
   added for 4 HDFC PDF-backed cards (freedom, upi-rupay, phonepe-uno/ultimo) from
   the 2026-07-03 PDF-verification pass. Remaining HDFC cards + axis/icici/sbi to follow.
+- **D4** — `validate.py --check-urls` sweep of all 319 cards; 6 stale Axis
+  apply_urls repointed to axis.bank.in (verified 200); the other 54 flags triaged
+  (transient / discontinued / needs per-card research) in `docs/drift/url-sweep-2026-07.md`.
+- **D15** — ICICI iShop DONE (5 cards, channel-gated 12X/6X + per-tier caps);
+  Amex Travel Online researched but deferred (403-blocked source, small +1/₹100 delta).
+- **D5** — PNB RuPay Platinum + Union NEXTERIA researched and teed up in
+  PORTFOLIO-GAPS; each blocked on one issuer-unpublished value (no fabrication).
 
-## Still open (not started this session)
+## Still open
 
-- **D4** (stale-URL sweep beyond HDFC), **D5/D11** (PSU/coverage expansion),
-  **D12** (authored applicability), **D15** (iShop/Amex Travel portals).
+- **D3** remainder (axis/icici/sbi evidence fields), **D4** per-card 404s,
+  **D11** (Burgundy Private / ICICI Mine / Kotak Mojo status), **D12** (authored
+  applicability — needs published spend-share data; D-18 forbids invented
+  fractions, so likely stays at the optimistic-on-selected-brand default),
+  **D15** Amex Travel leg.
 
 ## Rate-model flags for a dedicated audit (`docs/drift/D20-deferrals-2026-07.md`)
 

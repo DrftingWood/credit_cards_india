@@ -11,6 +11,8 @@ import glob, yaml, sys
 CATS = ["online","groceries","dining","fuel","travel","utilities","rent","international"]
 # spend category -> exclusion token that zeroes it out on a card
 EXCL = {"fuel":"fuel","rent":"rent","utilities":"utilities"}
+# MCCs that zero a whole single-MCC-family category (mirrors site/lib/calculator.ts)
+EXCL_MCC = {"5541":"fuel","5542":"fuel","5983":"fuel","5172":"fuel","6513":"rent","4900":"utilities"}
 CYCLE_DIV = {"monthly":1,"statement":1,"quarterly":3,"annual":12}
 
 def act(recs):
@@ -27,6 +29,17 @@ def cap_accel_spend(cap, unit, cycle, arate, value):
     if unit == "cashback-inr": return cap_m/(arate*value) if arate*value>0 else float("inf")
     if unit in ("points","miles"): return cap_m/arate if arate>0 else float("inf")  # cap_m = units; spend = units/rate
     return float("inf")
+
+def cap_value_monthly(cap, unit, cycle, val, brate):
+    """Cap (units per cycle) as a monthly INR value ceiling; None = uncapped.
+    Used for base cap_per_cycle and card-wide reward_cap (site parity)."""
+    if cap in (None,"unlimited") or not isinstance(cap,(int,float)): return None
+    cap_m = cap / CYCLE_DIV.get(cycle,1)
+    unit = unit or "points"
+    if unit == "cashback-inr": return cap_m
+    if unit == "spend-inr": return cap_m*brate*val
+    if unit in ("points","miles"): return cap_m*val
+    return None
 
 def accel_rate(a, brate, per):
     """Card-side accelerated earn in units/Rs. Prefers card_attributable_rate —
@@ -54,6 +67,10 @@ def load_cards():
             name=d.get("name"), tier=d.get("tier"),
             base_rate=b["rate"]/b["per_inr"], per_inr=b["per_inr"], val=val, face=b.get("unit_value_inr") or val,
             accel=rec.get("accelerated") or [], excl=set(rec.get("exclusions") or []),
+            mccx=set(rec.get("mcc_exclusions") or []),
+            base_cap=(dict(cap=b["cap_per_cycle"], unit=b.get("cap_unit"), cycle=b.get("cycle"))
+                      if isinstance(b.get("cap_per_cycle"),(int,float)) else None),
+            reward_cap=rec.get("reward_cap"),
             fee=act(d["fees"]).get("annual_fee_inr",0),
             fee_waiver=act(d["fees"]).get("fee_waiver"),
             forex=act(d["fees"]).get("forex_markup_pct",0) or 0))
@@ -69,27 +86,46 @@ def compute(card, profile, basis="realized"):
     per=card["per_inr"]; val=(card["face"] if basis=="face" else card["val"]); brate=card["base_rate"]
     # 1) assign each spending category to its BEST accelerator (else base). Group by accelerator
     #    so a shared per-cycle cap is enforced across all the categories it covers.
+    mccx_cats={EXCL_MCC[m] for m in card.get("mccx") or set() if m in EXCL_MCC}
     groups=defaultdict(float); accel_of={}; base_spend=0.0
     for cat in CATS:
         sp=profile.get(cat,0)
         if sp<=0: continue
-        if EXCL.get(cat) in card["excl"]: continue   # excluded -> zero reward
+        if EXCL.get(cat) in card["excl"] or cat in mccx_cats: continue   # excluded -> zero reward
         best=None
         for idx,a in enumerate(card["accel"]):
             if cat in (a.get("canonical_categories") or []):
                 arate=accel_rate(a,brate,per)
-                if best is None or arate>best[0]: best=(arate,idx,a)
-        # An accelerator worse than base must not drag the category below base.
-        if best and best[0]>brate: groups[best[1]]+=sp; accel_of[best[1]]=(best[0],best[2])
+                # Cap-aware selection: rank by realised value on THIS category's
+                # spend, not headline rate — a 10% capped at Rs100/mo must not
+                # beat an uncapped 3% on Rs20k spend.
+                cs=cap_accel_spend(a.get("cap_per_cycle"),a.get("cap_unit"),a.get("cycle","monthly"),arate,val)
+                acc=min(sp,cs)
+                v=acc*arate*val+max(0.0,sp-acc)*brate*val
+                if best is None or v>best[0]: best=(v,arate,idx,a)
+        # An accelerator whose realised value beats plain base wins the category.
+        if best and best[0]>sp*brate*val: groups[best[2]]+=sp; accel_of[best[2]]=(best[1],best[3])
         else: base_spend+=sp
     # 2) base earn on unaccelerated spend
-    monthly=base_spend*brate*val
+    base_value=base_spend*brate*val; accel_value=0.0
     # 3) each accelerator: enforce its shared per-cycle cap (a real product limit)
     for idx,spend in groups.items():
         arate,a=accel_of[idx]
         cs=cap_accel_spend(a.get("cap_per_cycle"),a.get("cap_unit"),a.get("cycle","monthly"),arate,val)
         acc=min(spend,cs)
-        monthly += acc*arate*val + (spend-acc)*brate*val   # over-cap spend earns base
+        accel_value += acc*arate*val
+        base_value  += (spend-acc)*brate*val   # over-cap spend earns base
+    # 4) base cap_per_cycle clamps everything earned at the base rate;
+    #    reward_cap clamps the whole monthly total (site-engine parity).
+    bc=card.get("base_cap")
+    if bc:
+        ci=cap_value_monthly(bc.get("cap"),bc.get("unit"),bc.get("cycle"),val,brate)
+        if ci is not None: base_value=min(base_value,ci)
+    monthly=base_value+accel_value
+    rc=card.get("reward_cap")
+    if rc:
+        ci=cap_value_monthly(rc.get("max_units"),rc.get("cap_unit"),rc.get("cycle"),val,brate)
+        if ci is not None: monthly=min(monthly,ci)
     annual=monthly*12
     # forex is a real, per-card charged fee (forex_markup_pct + 18% GST) on FX-charged spend only
     fx=0

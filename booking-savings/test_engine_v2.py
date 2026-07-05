@@ -12,12 +12,13 @@ from engine_v2 import compute  # noqa: E402
 
 
 def card(base_rate=0.01, per_inr=100, val=1.0, accel=None, excl=None,
-         fee=0, forex=0):
+         fee=0, forex=0, mccx=None, base_cap=None, reward_cap=None):
     """Synthetic card matching load_cards() output shape."""
     return dict(
         slug="test/test-card", name="Test Card", tier="mid",
         base_rate=base_rate, per_inr=per_inr, val=val, face=val,
-        accel=accel or [], excl=set(excl or []),
+        accel=accel or [], excl=set(excl or []), mccx=set(mccx or []),
+        base_cap=base_cap, reward_cap=reward_cap,
         fee=fee, fee_waiver=None, forex=forex,
     )
 
@@ -81,4 +82,35 @@ c = card(base_rate=0.01, per_inr=100, val=1.0, accel=[
 r = compute(c, profile(dining=50000))
 approx(r["gross"], (500 + 45000 * 0.01) * 12)  # cap Rs500 + base on the Rs45k over-cap
 
-print("OK: engine_v2 tests passed (5)")
+
+# 6. Base cap_per_cycle must clamp base-earned value (site parity, E2 D5).
+c = card(base_rate=0.01, per_inr=100, val=1.0,
+         base_cap={"cap": 300, "unit": "cashback-inr", "cycle": "monthly"})
+r = compute(c, profile(online=50000))
+approx(r["gross"], 300 * 12)  # 1% of Rs50k = Rs500, clamped to Rs300/mo
+
+
+# 7. Card-wide reward_cap must clamp the monthly total (site parity, E2 D5).
+c = card(base_rate=0.01, per_inr=100, val=1.0,
+         reward_cap={"max_units": 400, "cap_unit": "cashback-inr", "cycle": "monthly"})
+r = compute(c, profile(online=50000))
+approx(r["gross"], 400 * 12)
+
+
+# 8. mcc_exclusions zero the mapped category (6513 = rent), like the site.
+c = card(base_rate=0.01, per_inr=100, val=1.0, mccx=["6513"])
+r = compute(c, profile(rent=10000, online=10000))
+approx(r["gross"], 10000 * 0.01 * 12)  # online earns, rent earns nothing
+
+
+# 9. Accelerator selection must be cap-aware: a 10% capped at Rs100/mo must
+#    not beat an uncapped 3% on Rs20k spend (E2 D4 — was a 5x understatement).
+c = card(base_rate=0.0, per_inr=100, val=1.0, accel=[
+    {"canonical_categories": ["dining"], "effective_rate": 10,
+     "cap_per_cycle": 100, "cap_unit": "cashback-inr", "cycle": "monthly"},
+    {"canonical_categories": ["dining"], "effective_rate": 3},
+])
+r = compute(c, profile(dining=20000))
+approx(r["gross"], 20000 * 0.03 * 12)  # 7,200/yr via the uncapped 3%, not Rs1,200
+
+print("OK: engine_v2 tests passed (9)")

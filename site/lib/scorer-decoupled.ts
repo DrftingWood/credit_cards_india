@@ -118,7 +118,7 @@ function realizedUnitValue(card: EnrichedCard, programs: Record<string, LoyaltyP
   return r.base.unit_value_inr_realized ?? r.base.unit_value_inr ?? (r.currency === "cashback" ? 1 : 0);
 }
 
-function ratesFlags(card: EnrichedCard, topBucket: CanonicalCategory | null, rewardedBuckets: Set<CanonicalCategory>, uv: number): string[] {
+export function ratesFlags(card: EnrichedCard, topBucket: CanonicalCategory | null, rewardedBuckets: Set<CanonicalCategory>, uv: number): string[] {
   const flags: string[] = [];
   const base = card.current_rewards?.base;
   for (const a of card.current_rewards?.accelerated ?? []) {

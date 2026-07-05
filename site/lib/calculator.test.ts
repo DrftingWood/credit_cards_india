@@ -344,12 +344,12 @@ describe("scoreCard — base rate unit correctness (bonus blocker)", () => {
     expect(score.annual_gross_inr).toBe(0);
   });
 
-  test("real card: HDFC Infinia @ ₹50k/mo dining (5pt/₹150 * ₹0.70 realized = 2.33% base) ≈ ₹14k/yr", async () => {
+  test("real card: HDFC Infinia @ ₹50k/mo dining (5pt/₹150 * ₹1.0 realized = 3.33% base) ≈ ₹20k/yr", async () => {
     const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
     const infinia = (cards as unknown as EnrichedCard[]).find((c) => c.id === "hdfc-infinia")!;
     const score = scoreCard(infinia, spend({ dining: 50000 }));
-    // 5 points per ₹150 * ₹0.70/point * 50000 * 12 = 14000
-    expect(score.annual_gross_inr).toBeCloseTo(14000, 0);
+    // 5 points per ₹150 * ₹1.0/point realized (SmartBuy ₹1 floor, source-backed) * 50000 * 12 = 20000
+    expect(score.annual_gross_inr).toBeCloseTo(20000, 0);
   });
 });
 

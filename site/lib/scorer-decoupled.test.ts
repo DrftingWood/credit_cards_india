@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { scoreDecoupled } from "./scorer-decoupled";
+import { scoreDecoupled, ratesFlags } from "./scorer-decoupled";
 import type { RecommendPayload } from "./recommender";
 import type { EnrichedCard, LoyaltyProgram } from "./types";
 
@@ -36,10 +36,36 @@ describe("decoupled scorer prototype", () => {
     for (const d of foodie) expect(d).toHaveProperty("milestone_value_inr");
   });
 
-  test("implausible uncapped rates are flagged, not hidden (F7)", async () => {
+  test("implausible uncapped rates are flagged, not hidden (F7)", () => {
+    // Guards the FLAGGING MECHANISM directly. The 2026-07 remediation capped/
+    // corrected every real card that used to carry a broad uncapped implausible
+    // rate, so no live card trips this anymore via the recommend flow — but the
+    // guard must still fire if bad data reappears. A broad (no channel), uncapped
+    // ~12% accelerator must be flagged; a plausible uncapped 5% must not.
+    const mk = (rate: number, opts: Partial<{ cap: unknown; channel: unknown }> = {}) =>
+      ({
+        current_rewards: {
+          base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+          accelerated: [
+            { category: "online", canonical_categories: ["online"], effective_rate: rate, effective_per_inr: 100, cap_per_cycle: opts.cap ?? "unlimited", channel: opts.channel },
+          ],
+        },
+      }) as unknown as EnrichedCard;
+
+    // broad, uncapped, ~12% → flagged
+    expect(ratesFlags(mk(12), "online", new Set(["online"] as never), 1).some((f) => f.includes("uncapped"))).toBe(true);
+    // plausible uncapped 5% (Amazon-Pay-like) → NOT flagged
+    expect(ratesFlags(mk(5), "online", new Set(["online"] as never), 1).some((f) => f.includes("uncapped"))).toBe(false);
+    // channel-gated (narrow) high rate → NOT flagged (expected for co-brand/portal)
+    expect(ratesFlags(mk(12, { channel: { required: true, merchants: ["amazon"] } }), "online", new Set(["online"] as never), 1).some((f) => f.includes("uncapped"))).toBe(false);
+  });
+
+  test("clean data: no live card trips the uncapped flag in the dining recommend flow (F7 regression)", async () => {
     const { cards, programs } = await load();
     const res = scoreDecoupled(cards, programs, base({ goals: ["cashback"], monthly_spend: { online: "0", travel: "0", dining: "gt-30k", groceries: "0", fuel: "0" } }), { topN: 10 });
-    expect(res.some((d) => d.flags.some((f) => f.includes("uncapped")))).toBe(true);
+    // Documents the remediation outcome — a broad uncapped implausible dining rate
+    // resurfacing here would be a data regression to investigate.
+    expect(res.some((d) => d.flags.some((f) => f.includes("uncapped")))).toBe(false);
   });
 
   test("exact spend: selecting Amazon credits Amazon ICICI's real uncapped 5% on ₹4L/mo (F9 + user principle)", async () => {

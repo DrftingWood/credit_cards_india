@@ -47,8 +47,8 @@ rewards:
     base:
       rate: 2
       per_inr: 200
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.85
+      unit_value_inr: 1.1
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: singapore-airlines-group
         canonical_categories: [travel]
@@ -73,7 +73,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/krisflyer-sbi-card.html
       retrieved_on: '2026-07-05'
-      notes: "Verified 2026-07-05: earns Singapore KrisFlyer miles directly; SQ low fuel surcharge -> ~Rs0.85-1.0 economy (was wrongly ~Rs0.2)."
+      notes: "Red-team corrected 2026-07-05: KrisFlyer economy India = Rs1.03-1.26/mile (was Rs0.85, too low). realized Rs1.0, face Rs1.1. Resolves inconsistency with Atlas Rs2.2 face (2 x KrisFlyer)."
 
       confidence: high
     mcc_exclusions: ['6513']

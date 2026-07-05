@@ -22,10 +22,24 @@ def cap_accel_spend(cap, unit, cycle, arate, value):
     """Monthly spend that still earns the accelerated rate, given the cap."""
     if cap in (None,"unlimited") or not isinstance(cap,(int,float)): return float("inf")
     cap_m = cap / CYCLE_DIV.get(cycle,1)
+    unit = unit or "points"   # schema default — a missing cap_unit is NOT uncapped
     if unit == "spend-inr": return cap_m
     if unit == "cashback-inr": return cap_m/(arate*value) if arate*value>0 else float("inf")
     if unit in ("points","miles"): return cap_m/arate if arate>0 else float("inf")  # cap_m = units; spend = units/rate
     return float("inf")
+
+def accel_rate(a, brate, per):
+    """Card-side accelerated earn in units/Rs. Prefers card_attributable_rate —
+    effective_rate is the receipt-visible stacked total and double-counts the
+    loyalty programme's own earn, which this engine has no programme table to
+    add back (DECISIONS D-8). Honours effective_per_inr (a "35 per Rs200"
+    record must not be divided by the base per_inr). `is not None` so an
+    authored 0 means zero, not a fall-through to the multiplier path."""
+    if a.get("card_attributable_rate") is not None:
+        return a["card_attributable_rate"]/(a.get("card_attributable_per_inr") or 100)
+    if a.get("effective_rate") is not None:
+        return a["effective_rate"]/(a.get("effective_per_inr") or per)
+    return (a.get("multiplier") or 1)*brate
 
 def load_cards():
     out=[]
@@ -63,10 +77,10 @@ def compute(card, profile, basis="realized"):
         best=None
         for idx,a in enumerate(card["accel"]):
             if cat in (a.get("canonical_categories") or []):
-                er=a.get("effective_rate") or (a.get("multiplier") or 1)*brate*per
-                arate=er/per
+                arate=accel_rate(a,brate,per)
                 if best is None or arate>best[0]: best=(arate,idx,a)
-        if best: groups[best[1]]+=sp; accel_of[best[1]]=(best[0],best[2])
+        # An accelerator worse than base must not drag the category below base.
+        if best and best[0]>brate: groups[best[1]]+=sp; accel_of[best[1]]=(best[0],best[2])
         else: base_spend+=sp
     # 2) base earn on unaccelerated spend
     monthly=base_spend*brate*val

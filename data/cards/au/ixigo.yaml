@@ -55,14 +55,14 @@ rewards:
         canonical_categories: [travel]
         multiplier: 1
         effective_rate: 6
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 10000
         cap_unit: points
-        cycle: monthly
+        cycle: statement
         merchants: [ixigo, confirmtkt, abhibus]
         channel:
           class: third-party-ota
           merchants: [ixigo, confirmtkt, abhibus]
-        notes: "6% value-back on ixigo flight, train, bus and hotel bookings."
+        notes: "6% value-back on ixigo flight, train, bus and hotel bookings. AU applies an overall 10,000 RP/statement-cycle cap to ixigo AU (Card Member Agreement §22.5); modelled as the accelerated ceiling. NOTE: the 6 RP/₹100 ixigo-booking earn rate itself is unconfirmed in issuer evidence (see docs/drift/D20-deferrals)."
     exclusions:
       - fuel
       - wallet-loads
@@ -79,7 +79,7 @@ rewards:
         constraints: Rs 0.25/pt as statement credit; min 200 pts; Rs 99+GST fee.
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       confidence: high
       notes: 'Research-verified: ixigo Money = Rs0.5 (100% vs bookings); also Rs0.25 statement credit (partial-open). Apr-2026 earn devaluation, rate held.'
@@ -134,5 +134,5 @@ application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [co-branded, travel, ixigo, rupay, entry]

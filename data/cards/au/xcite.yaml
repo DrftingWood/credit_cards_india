@@ -53,10 +53,10 @@ rewards:
         canonical_categories: [online, other]
         multiplier: 7.5
         effective_rate: 15
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 25000
         cap_unit: points
-        cycle: monthly
-        notes: "Up to 15X Reward Points on select categories; 2X Reward Points per ₹100 on other retail spends (base)."
+        cycle: statement
+        notes: "Up to 15X Reward Points on select categories; 2X Reward Points per ₹100 on other retail spends (base). AU applies an overall 25,000 RP/statement-cycle cap to Xcite (Card Member Agreement §22.5, 16-May-2026); modelled here as the accelerated-tier ceiling since it bounds all RP earning in a cycle."
     exclusions:
       - fuel
       - wallet-loads
@@ -70,7 +70,7 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
 
 benefits:
   - effective_from: 2024-01-01
@@ -106,5 +106,5 @@ application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [entry, points, swipeup]

@@ -59,6 +59,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [payzapp]
+        channel:
+          class: cobrand-merchant
+          merchants: [payzapp]
         mcc_list: ["5411", "5812", "5814"]
         notes: "3% CashPoints on supermarket, groceries and dining spends and on PayZapp transactions. Applies to both UPI and regular credit card spends. Capped at 500 CashPoints per calendar month."
       - category: utilities
@@ -88,6 +91,12 @@ rewards:
 
       confidence: high
       notes: HDFC CashPoints Rs 0.25 statement credit, realistic Rs 0.22.
+      type: issuer-pdf
+      local_refs:
+        - docs/sources/hdfc/upi-rupay/Terms-and-Conditions-HDFC-Bank-UPI-RuPay-Credit-Card-27032025.pdf
+      fields_verified:
+        - rewards.base.unit_value_inr
+        - rewards.accelerated.cap_per_cycle
     mcc_exclusions: ['6540']
 benefits:
   - effective_from: 2026-07-03

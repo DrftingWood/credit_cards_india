@@ -52,6 +52,9 @@ rewards:
       - category: landmark-stores-online-and-retail
         canonical_categories: [online, other]
         merchants: [Lifestyle, Home Centre, Max, Spar, Baby Shop, EasyBuy]
+        channel:
+          class: cobrand-merchant
+          merchants: [lifestyle, home-centre, max, spar, baby-shop, easybuy]
         multiplier: 12.5
         effective_rate: 25
         cap_per_cycle: "unlimited"

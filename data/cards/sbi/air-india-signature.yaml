@@ -45,7 +45,7 @@ rewards:
     effective_until: null
     currency: miles
     currency_name: Reward Points
-    loyalty_program: null
+    loyalty_program: air-india-flying-returns
     base:
       rate: 4
       per_inr: 100
@@ -56,6 +56,8 @@ rewards:
         canonical_categories: [travel]
         multiplier: 2.5
         effective_rate: 10
+        card_attributable_rate: 10
+        card_attributable_per_inr: 100
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
@@ -65,6 +67,7 @@ rewards:
           class: cobrand-merchant
           merchants: [air-india-direct]
         notes: "10 Reward Points per Rs. 100 on Air India tickets booked via website, app, booking offices or call centres (including Super Saver tickets for self and others)."
+        stacks_with_program: false
     exclusions:
       - fuel
       - wallet-loads
@@ -76,11 +79,13 @@ rewards:
         constraints: "Convert Reward Points into Air India Maharaja Points; 1 Reward Point = 1 Air India Maharaja Point."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       confidence: medium
       notes: 'Verified 2026-07-05: Reward Points convert 1:1 to Air India Maharaja (~Rs0.5-0.7 economy post Apr-2026 chart; 20-50% conversion bonuses lift value). Was face Rs1.0.'
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No per-month/statement/annual cap on Air India accelerated Reward Points per the card's own Combined T&C (Air-India-Signature-Combined-TC-16JUL2025, sec 11.4); earn is 10 RP/₹100 (cut from 30 RP w.e.f. 31-Mar-25).
 benefits:
   - effective_from: 2026-07-03
     effective_until: null

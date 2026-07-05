@@ -46,7 +46,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.15
+      unit_value_inr_realized: 0.18
     accelerated:
       - category: ott-gaming-dining-entertainment
         canonical_categories: [dining, entertainment]
@@ -56,6 +56,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [netflix, hotstar, amazon-prime, sony-liv, zee5, bookmyshow]
+        channel:
+          class: cobrand-merchant
+          merchants: [netflix, hotstar, amazon-prime, sony-liv, zee5, bookmyshow]
         notes: "10X points on OTT, gaming, dining and entertainment merchants."
     exclusions:
       - fuel
@@ -71,8 +74,8 @@ rewards:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card
       retrieved_on: '2026-07-05'
 
-      confidence: medium
-      notes: "Verified 2026-07-05: RBL points ~Rs0.25 nominal / ~Rs0.15 realistic; Play's real value is movie vouchers, not points (was 0.4/0.3)."
+      confidence: low
+      notes: "Research-verified (LOW confidence): general RBL Reward Points, NOT a Play ecosystem -> closed-loop tag removed. Per-point value unsourced; RBL cut points to ~Rs0.16-0.25. NEEDS manual T&C check (card may be BookMyShow-milestone-only)."
 benefits:
   - effective_from: 2021-07-01
     effective_until: null

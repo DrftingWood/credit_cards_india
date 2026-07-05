@@ -100,9 +100,11 @@ rewards:
         constraints: "Credited as Amazon Pay balance, usable across Amazon.in and Amazon Pay merchants."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
 
     mcc_exclusions: ['6513']
+    capping_rules:
+      - "No earning cap on Amazon.in cashback per ICICI's own FAQ + product page (retrieved 2026-07-05): 'There is no limit on how much you can earn'; 'Unlimited reward points upto 5% on Amazon purchases'. Covers 5% Prime + 3% non-Prime."
 benefits:
   - effective_from: 2018-10-16
     effective_until: null
@@ -132,5 +134,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [co-branded, amazon, cashback, lifetime-free, entry]

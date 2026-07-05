@@ -8,7 +8,7 @@ import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
-import { rankCards, type CardScore, type SpendProfile } from "@/lib/calculator";
+import { rankCards, listEcosystems, type CardScore, type SpendProfile } from "@/lib/calculator";
 import { formatInr, formatPct } from "@/lib/utils";
 
 const DEFAULT_SPEND: SpendProfile = {
@@ -33,19 +33,45 @@ function clampSpend(raw: string): number {
   return Math.min(MAX_MONTHLY, n);
 }
 
+/** Group the closed-loop ecosystems by the activity a user can actually answer for. */
+const ECO_GROUPS: { label: string; icon: string; ecos: string[] }[] = [
+  { label: "Shopping & retail", icon: "🛍", ecos: ["Tata Neu", "Adani One", "Shoppers Stop"] },
+  { label: "Travel", icon: "✈️", ecos: ["SpiceJet", "IRCTC", "ixigo"] },
+  { label: "Fuel", icon: "⛽", ecos: ["IndianOil"] },
+  { label: "Health", icon: "❤️", ecos: ["Apollo"] },
+  { label: "Bills & apps", icon: "💳", ecos: ["CheQ"] },
+];
+
 export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
   const [spend, setSpend] = useState<SpendProfile>(DEFAULT_SPEND);
   const selectedId = useSearchParams().get("card");
 
+  // Layer 2 — ecosystem preferences. Closed-loop points (Adani One, Tata Neu, …) are real ₹1
+  // money only if you use that ecosystem. Default is REALISTIC: nothing ticked, so closed-loop
+  // cards show at base rate until you opt into the ecosystems you actually use. A one-click
+  // Best-case mode assumes you use every ecosystem (optimistic — the old behaviour).
+  const ecosystems = useMemo(() => listEcosystems(cards), [cards]);
+  const [mode, setMode] = useState<"realistic" | "best">("realistic");
+  const [enabledEco, setEnabledEco] = useState<Set<string>>(() => new Set());
+  const toggleEco = (eco: string) =>
+    setEnabledEco((prev) => {
+      const next = new Set(prev);
+      if (next.has(eco)) next.delete(eco);
+      else next.add(eco);
+      return next;
+    });
+
   const { ranked, pinnedSelected } = useMemo(() => {
-    const all = rankCards(cards, spend);
+    // Best-case → enabledEcosystems undefined (optimistic path credits every ecosystem in full).
+    const ctx = mode === "best" ? {} : { enabledEcosystems: enabledEco };
+    const all = rankCards(cards, spend, ctx);
     const top = all.slice(0, 10);
     if (!selectedId) return { ranked: top, pinnedSelected: null as CardScore | null };
     const inTop = top.some((r) => r.card.id === selectedId);
     if (inTop) return { ranked: top, pinnedSelected: null };
     const pinned = all.find((r) => r.card.id === selectedId) ?? null;
     return { ranked: top, pinnedSelected: pinned };
-  }, [cards, spend, selectedId]);
+  }, [cards, spend, selectedId, enabledEco, mode]);
 
   const monthlyTotal = Object.values(spend).reduce((a, b) => a + (b || 0), 0);
 
@@ -89,6 +115,79 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
             <span className="tabular-nums">{formatInr(monthlyTotal * 12)}</span>
           </div>
         </div>
+
+        {ecosystems.length > 0 ? (
+          <div className="border-t border-slate-200 pt-4">
+            <h2 className="text-sm font-semibold text-slate-900">Ecosystem-locked points 🔒</h2>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Some cards earn points redeemable only inside one ecosystem — real ₹1 money only if you use it.
+            </p>
+            {/* master mode */}
+            <div className="mt-2 space-y-1 text-xs">
+              {(["realistic", "best"] as const).map((m) => (
+                <label key={m} className="flex items-start gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="eco-mode"
+                    checked={mode === m}
+                    onChange={() => setMode(m)}
+                    className="mt-0.5"
+                  />
+                  <span className="text-slate-700">
+                    {m === "realistic" ? (
+                      <><strong>Realistic</strong> — only count ecosystems I use (tick below)</>
+                    ) : (
+                      <><strong>Best-case</strong> — assume I use every ecosystem</>
+                    )}
+                  </span>
+                </label>
+              ))}
+            </div>
+
+            {mode === "realistic" ? (
+              <div className="mt-3 space-y-2">
+                {ECO_GROUPS.map((g) => {
+                  const present = g.ecos.filter((e) => ecosystems.includes(e));
+                  if (present.length === 0) return null;
+                  return (
+                    <div key={g.label}>
+                      <div className="text-[11px] font-medium text-slate-500">{g.icon} {g.label}</div>
+                      <div className="mt-1 flex flex-wrap gap-1.5">
+                        {present.map((eco) => {
+                          const on = enabledEco.has(eco);
+                          return (
+                            <button
+                              key={eco}
+                              type="button"
+                              onClick={() => toggleEco(eco)}
+                              aria-pressed={on}
+                              className={
+                                on
+                                  ? "rounded-full border border-emerald-500 bg-emerald-50 text-emerald-800 px-2.5 py-1 text-xs font-medium"
+                                  : "rounded-full border border-slate-300 bg-white text-slate-600 px-2.5 py-1 text-xs"
+                              }
+                            >
+                              {on ? "✓ " : "+ "}{eco}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+                <p className="text-[11px] text-slate-400 pt-1">
+                  Tick the ones you genuinely use — we only count rewards you can actually spend. Everything else
+                  shows at base rate.
+                </p>
+              </div>
+            ) : (
+              <p className="mt-3 rounded-md bg-amber-50 border border-amber-200 p-2 text-[11px] text-amber-800">
+                Best-case: every ecosystem-locked card is valued at full worth, as if you use them all. Switch to
+                Realistic for your actual numbers.
+              </p>
+            )}
+          </div>
+        ) : null}
       </form>
 
       <div>
@@ -151,6 +250,23 @@ function ResultRow({
             <Link href={href} className="font-semibold text-slate-900 hover:text-slate-900">
               {c.name}
             </Link>
+            {score.closed_loop_ecosystem ? (
+              <span
+                title={
+                  score.ecosystem_credited
+                    ? `Rewards redeem only within ${score.closed_loop_ecosystem} — counted at full value because you use it`
+                    : `Rewards redeem only within ${score.closed_loop_ecosystem}, which you haven't ticked — shown at base rate. Tick it on the left to value them in full.`
+                }
+                className={
+                  score.ecosystem_credited
+                    ? "ml-2 rounded-full bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200 px-1.5 py-0.5 text-[10px] font-medium align-middle"
+                    : "ml-2 rounded-full bg-slate-100 text-slate-500 ring-1 ring-slate-200 px-1.5 py-0.5 text-[10px] font-medium align-middle"
+                }
+              >
+                {score.ecosystem_credited ? "🔓" : "🔒"} {score.closed_loop_ecosystem}
+                {score.ecosystem_credited ? "" : " · base rate"}
+              </span>
+            ) : null}
             <div className="mt-1 flex items-center gap-2 text-xs text-slate-500">
               <IssuerLogo issuer={c.issuer_detail} height={14} />
               <span>· {c.tier.replace("-", " ")}</span>

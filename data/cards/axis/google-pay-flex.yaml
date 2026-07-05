@@ -38,7 +38,9 @@ fees:
       notes: "Balance-on-EMI feature available after paying Minimum Amount Due; interest rate is the cardholder's portfolio rate."
     source:
       url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
+      confidence: high
+      notes: Network=RuPay confirmed 2026-07-05 (Axis press release 'Built on the RuPay network'); a UPI-first 'CC on UPI' card exclusive to the Google Pay app (already tagged 'upi'). Resolves D30. No standard network_tier for a RuPay-CC-on-UPI product.
     notes: "UPI-first digital credit card available exclusively on the Google Pay app. Nil/Nil joining/annual fee per Axis MITC. Forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). Flexible repayment (full or EMI)."
 
 rewards:
@@ -115,5 +117,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [entry, points, co-branded, upi]

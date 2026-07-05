@@ -53,6 +53,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: statement
         merchants: [swiggy, zomato]
+        channel:
+          class: food-delivery
+          merchants: [swiggy, zomato]
         notes: "3% capped Rs1,500/billing cycle; no cashback on txns < Rs100."
         cap_per_cycle: 1500
     exclusions:

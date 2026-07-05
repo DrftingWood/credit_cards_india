@@ -39,10 +39,10 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
-      retrieved_on: 2026-07-04
+      retrieved_on: 2026-07-05
       type: aggregator
-      confidence: medium
-      notes: "Annual/renewal fee Rs 2,999 + taxes (SBI Platinum co-brand standard, aggregator-corroborated 2026); the brochure covers features, not the fee schedule."
+      confidence: high
+      notes: "Annual Rs2,999 + joining Rs2,999 confirmed verbatim vs SBI Card product page (sbicard.com) 2026-07-05; no spend-based fee waiver documented (the Rs2L figure in aggregators is the Anniversary Gift trigger, not a fee waiver) -> fee_waiver: null is correct."
 
 rewards:
   - effective_from: 2020-01-01
@@ -157,5 +157,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
 
 metadata:
-  last_verified_on: 2026-07-04
+  last_verified_on: 2026-07-05
   tags: [mid, points, lounge, golf, co-branded, sbi-card]

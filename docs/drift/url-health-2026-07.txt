@@ -1,0 +1,64 @@
+Checked 319 cards, 25 issuers, 5 networks, 5 loyalty programs.
+
+60 warning(s):
+  [warn] data\cards\amex\centurion.yaml :: source url 'https://www.americanexpress.com/in/credit-cards/centurion/' returned HTTP 404
+  [warn] data\cards\axis\aura.yaml :: application.apply_url 'https://www.axisbank.com/retail/cards/credit-card/aura-credit-card' returned HTTP 404
+  [warn] data\cards\axis\flipkart.yaml :: application.apply_url 'https://www.axisbank.com/retail/cards/credit-card/flipkart-axis-bank-credit-card' returned HTTP 404
+  [warn] data\cards\axis\horizon.yaml :: application.apply_url 'https://www.axisbank.com/retail/cards/credit-card/horizon-credit-card' returned HTTP 404
+  [warn] data\cards\axis\indianoil-premium.yaml :: application.apply_url 'https://www.axisbank.com/retail/cards/credit-card/indian-oil-axis-bank-premium-credit-card' returned HTTP 404
+  [warn] data\cards\axis\indigo-premium.yaml :: application.apply_url 'https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-premium-credit-card' returned HTTP 404
+  [warn] data\cards\axis\indigo.yaml :: application.apply_url 'https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-credit-card' returned HTTP 404
+  [warn] data\cards\axis\magnus.yaml :: source url 'https://web.archive.org/web/2023/https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card' returned HTTP 404
+  [warn] data\cards\axis\olympus.yaml :: source url 'https://www.axisbank.com/retail/cards/credit-card/olympus-credit-card' returned HTTP 404
+  [warn] data\cards\axis\olympus.yaml :: application.apply_url 'https://www.axisbank.com/retail/cards/credit-card/olympus-credit-card' returned HTTP 404
+  [warn] data\cards\equitas\powermiles.yaml :: source url 'https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/' returned HTTP 503
+  [warn] data\cards\equitas\powermiles.yaml :: application.apply_url 'https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/' returned HTTP 503
+  [warn] data\cards\equitas\selfe.yaml :: source url 'https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/' returned HTTP 503
+  [warn] data\cards\equitas\selfe.yaml :: application.apply_url 'https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/' returned HTTP 503
+  [warn] data\cards\icici\manchester-united-signature.yaml :: source url 'https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card' returned HTTP 404
+  [warn] data\cards\icici\manchester-united-signature.yaml :: application.apply_url 'https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card' returned HTTP 404
+  [warn] data\cards\idfc-first\first-private.yaml :: source url 'https://www.idfcfirst.bank.in/credit-card/first-private' returned HTTP 404
+  [warn] data\cards\idfc-first\indigo.yaml :: source url 'https://www.business-standard.com/finance/personal-finance/every-swipe-counts-how-indigo-s-new-credit-card-can-cut-your-travel-costs-125081800470_1.html' returned HTTP 403
+  [warn] data\cards\idfc-first\power-plus.yaml :: source url 'https://www.idfcfirst.bank.in/credit-card/power-plus' returned HTTP 404
+  [warn] data\cards\idfc-first\power-plus.yaml :: application.apply_url 'https://www.idfcfirst.bank.in/credit-card/power-plus' returned HTTP 404
+  [warn] data\cards\idfc-first\power.yaml :: source url 'https://www.idfcfirst.bank.in/credit-card/power' returned HTTP 404
+  [warn] data\cards\idfc-first\power.yaml :: application.apply_url 'https://www.idfcfirst.bank.in/credit-card/power' returned HTTP 404
+  [warn] data\cards\idfc-first\swyp.yaml :: source url 'https://www.idfcfirst.bank.in/credit-card/swyp' returned HTTP 404
+  [warn] data\cards\idfc-first\swyp.yaml :: application.apply_url 'https://www.idfcfirst.bank.in/credit-card/swyp' returned HTTP 404
+  [warn] data\cards\indusind\intermiles-odyssey-visa.yaml :: application.apply_url 'https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-odyssey-visa-credit-card.html' returned HTTP 503
+  [warn] data\cards\kotak\indigo-xl.yaml :: application.apply_url 'https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card-xl.html' returned HTTP 404
+  [warn] data\cards\kotak\myntra-kaching.yaml :: source url 'https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html' returned HTTP 404
+  [warn] data\cards\kotak\myntra-kaching.yaml :: application.apply_url 'https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html' returned HTTP 404
+  [warn] data\cards\kotak\pvr-gold.yaml :: source url 'https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html' returned HTTP 404
+  [warn] data\cards\kotak\pvr-gold.yaml :: application.apply_url 'https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html' returned HTTP 404
+  [warn] data\cards\onecard\metal.yaml :: source url 'https://www.getonecard.app/card' returned HTTP 403
+  [warn] data\cards\onecard\metal.yaml :: application.apply_url 'https://www.getonecard.app/card' could not be reached (URLError)
+  [warn] data\cards\rbl\zomato-edition.yaml :: source url 'https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card' returned HTTP 404
+  [warn] data\cards\rbl\zomato-edition.yaml :: application.apply_url 'https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card' returned HTTP 404
+  [warn] data\cards\sbi\aurum.yaml :: source url 'https://www.business-standard.com/finance/personal-finance/sbi-card-update-no-reward-points-for-spending-on-digital-gaming-platforms-124120500479_1.html' returned HTTP 403
+  [warn] data\cards\sbi\aurum.yaml :: source url 'https://www.sbicard.com/en/personal/credit-cards/luxury/aurum.page' returned HTTP 404
+  [warn] data\cards\standard-chartered\beyond.yaml :: source url 'https://www.sc.bank.in/credit-cards/beyond-credit-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\beyond.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/beyond-credit-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\digismart.yaml :: source url 'https://www.sc.bank.in/credit-cards/digismart-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\digismart.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/digismart-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\easemytrip.yaml :: source url 'https://www.sc.bank.in/credit-cards/easemytrip-credit-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\easemytrip.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/easemytrip-credit-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\manhattan.yaml :: source url 'https://www.sc.bank.in/credit-cards/manhattan-platinum/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\manhattan.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/manhattan-platinum/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\platinum-rewards.yaml :: source url 'https://www.sc.bank.in/credit-cards/platinum-rewards/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\platinum-rewards.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/platinum-rewards/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\priority-visa-infinite.yaml :: source url 'https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\priority-visa-infinite.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\rewards.yaml :: source url 'https://www.sc.bank.in/credit-cards/rewards-credit-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\rewards.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/rewards-credit-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\smart.yaml :: source url 'https://www.sc.bank.in/credit-cards/smart-credit-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\smart.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/smart-credit-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\super-value-titanium.yaml :: source url 'https://www.sc.bank.in/credit-cards/super-value-titanium/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\super-value-titanium.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/super-value-titanium/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\ultimate.yaml :: source url 'https://www.sc.bank.in/credit-cards/ultimate-card/' could not be reached (URLError)
+  [warn] data\cards\standard-chartered\ultimate.yaml :: application.apply_url 'https://www.sc.bank.in/credit-cards/ultimate-card/' could not be reached (URLError)
+  [warn] data\cards\yes\marquee.yaml :: source url 'https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card' returned HTTP 404
+  [warn] data\cards\yes\marquee.yaml :: application.apply_url 'https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card' returned HTTP 404
+  [warn] data\cards\yes\premia.yaml :: source url 'https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card' returned HTTP 404
+  [warn] data\cards\yes\premia.yaml :: application.apply_url 'https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card' returned HTTP 404
+OK

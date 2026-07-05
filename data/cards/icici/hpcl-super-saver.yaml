@@ -59,6 +59,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [hpcl-fuel-stations, hp-pay]
+        channel:
+          class: fuel-network
+          merchants: [hpcl, hp-pay]
         notes: "4% cashback on fuel purchases at HPCL fuel pumps and the HP Pay app, capped at ₹200/month (no minimum threshold). An additional 1.5% cashback (6 Happy Coins per ₹100) is credited to the HP Pay app wallet on fuel spends made via the HP Pay app."
       - category: utilities-and-departmental-stores
         canonical_categories: [groceries, utilities, government]

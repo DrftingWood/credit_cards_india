@@ -22,6 +22,7 @@
 
 import type { EnrichedCard, LoyaltyProgram, BenefitRecord } from "./types";
 import { scoreCard, type ScoringContext, type SpendProfile } from "./calculator";
+import { pointsToPct } from "./rate-math.mjs";
 import { CanonicalCategory } from "./category-mapping";
 import type { RecommendPayload } from "./recommender";
 import { INCOME_BAND_ANNUAL_INR, BRAND_PREF_TO_CHANNELS } from "./recommender-constants";
@@ -132,7 +133,8 @@ export function ratesFlags(card: EnrichedCard, topBucket: CanonicalCategory | nu
     if (a.channel) continue;
     const rate = a.card_attributable_rate ?? a.effective_rate;
     const per = a.card_attributable_rate != null ? (a.card_attributable_per_inr ?? 100) : (a.effective_per_inr ?? base?.per_inr ?? 100);
-    const ratePct = typeof rate === "number" ? (rate * uv) / per * 100 : null;
+    // Through the shared primitive so per_inr <= 0 can't surface "~Infinity%".
+    const ratePct = typeof rate === "number" ? pointsToPct(rate, per, uv) : null;
     if (ratePct != null && ratePct >= IMPLAUSIBLE_UNCAPPED_RATE_PCT) {
       flags.push(`Unusually high uncapped rate (~${ratePct.toFixed(0)}%) — verify against issuer T&C`);
       break;

@@ -57,6 +57,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [mmt]
+        channel:
+          class: third-party-ota
+          merchants: [mmt]
         notes: "3 myCash per ₹200 on hotel bookings via MakeMyTrip."
       - category: makemytrip-flight-booking
         canonical_categories: [travel]
@@ -66,6 +69,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [mmt]
+        channel:
+          class: third-party-ota
+          merchants: [mmt]
         notes: "2 myCash per ₹200 on flight bookings via MakeMyTrip."
       - category: international-spends
         canonical_categories: [international]

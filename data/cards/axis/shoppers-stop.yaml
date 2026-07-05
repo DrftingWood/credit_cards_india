@@ -47,11 +47,13 @@ rewards:
     effective_until: null
     currency: points
     currency_name: First Citizen Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: Shoppers Stop
     base:
       rate: 2
       per_inr: 200
       unit_value_inr: 0.5
-      unit_value_inr_realized: 0.4
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: shoppers-stop-exclusive-brand-apparel
         canonical_categories: [other]
@@ -61,12 +63,18 @@ rewards:
         cap_unit: points
         cycle: annual
         merchants: [shoppers-stop]
+        channel:
+          class: cobrand-merchant
+          merchants: [shoppers-stop]
         notes: "Unlimited 20 First Citizen accelerated points per ₹200 on Shopper's Stop private-label / Exclusive Brand Apparel (≈5% value back)."
       - category: shoppers-stop-other-brands
         canonical_categories: [other]
         multiplier: 1
         effective_rate: 12
         merchants: [shoppers-stop, homestop]
+        channel:
+          class: cobrand-merchant
+          merchants: [shoppers-stop, homestop]
         notes: "12 First Citizen points per ₹200 on other Shoppers Stop brands, Homestop, Arcelia, M.A.C, Clinique, Estee Lauder, Bobbi Brown, Jo Malone & Smashbox (≈3% value back)."
     exclusions:
       - fuel
@@ -83,11 +91,13 @@ rewards:
         constraints: "Each First Citizen Point = ₹0.50, redeemable at Shoppers Stop."
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
-      confidence: medium
-      notes: First Citizen points ~Rs 0.50 voucher at Shoppers Stop, realistic ~Rs 0.40.
+      confidence: high
+      notes: 'Research-verified: Axis First Citizen Point = Rs0.5 (DIFFERENT currency from HDFC Shoppers Stop RP), Shoppers Stop-only voucher.'
     mcc_exclusions: ['6513']
+    capping_rules:
+      - 'No per-cycle cap on Shoppers Stop FC points documented in the card T&C (retrieved 2026-07-05): exclusive-brand 20/₹200 (12 SS + 8 Axis) and other-brand 12/₹200 (4 SS + 8 Axis) are merchant-gated, uncapped.'
 benefits:
   - effective_from: 2025-06-20
     effective_until: null

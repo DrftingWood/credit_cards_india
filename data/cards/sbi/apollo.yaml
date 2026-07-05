@@ -46,11 +46,13 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: Apollo
     base:
       rate: 1
       per_inr: 200
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: apollo-services
         canonical_categories: [other]
@@ -90,11 +92,13 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
-      confidence: medium
-      notes: 'Aligned with sbi/apollo-select 2026-07-05: Apollo Health Credits = Rs1.0 nominal at Apollo (closed-loop) -> realized ~0.5. Was inconsistently Rs0.25.'
+      confidence: high
+      notes: 'Research-verified: SBI RP -> Apollo Health Credit 1:1, 1 HC = Rs1, Apollo-only (one-way). Layer-3: Apollo medicines ~0-10% above discount pharmacies (medicines only).'
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No monthly/cycle earning cap on the 3X (3 RP/₹100) One Apollo accelerated points per the Apollo SBI Card T&C ekit (retrieved 2026-07-05); only redemption is 'no limit'. The 5,000-RP/month cap on aggregators belongs to the Apollo SELECT variant, not this base card. High confidence.
 benefits:
   - effective_from: 2026-07-03
     effective_until: null
@@ -134,5 +138,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card.html
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [entry, points, healthcare, co-brand]

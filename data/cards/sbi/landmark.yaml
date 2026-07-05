@@ -58,6 +58,9 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        channel:
+          class: cobrand-merchant
+          merchants: [lifestyle, home-centre, max, spar, baby-shop, easybuy]
         notes: "10 Reward Points per Rs.100 spent at Online & Retail Landmark Stores (Lifestyle, Home Centre, Max, Spar, Baby Shop, EasyBuy)."
       - category: dining-movies-international
         canonical_categories: [dining, entertainment, international]

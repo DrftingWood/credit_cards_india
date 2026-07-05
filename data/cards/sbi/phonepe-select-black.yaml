@@ -50,7 +50,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.95
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: phonepe-app-spends
         canonical_categories: [utilities]
@@ -87,7 +87,7 @@ rewards:
       fields_verified:
         - rewards.accelerated.cap_per_cycle
         - rewards.accelerated.channel
-      notes: "PhonePe points = Rs 1 via voucher/cashback, minor friction."
+      notes: "Research-verified: co-brand RP = Rs1 SBI statement credit (liquid) -> NOT closed-loop. Tag removed."
     notes: "1 Reward Point per Rs. 100 on other spends (base)."
 
     mcc_exclusions: ['6513']

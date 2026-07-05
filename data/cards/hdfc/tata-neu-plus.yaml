@@ -45,12 +45,14 @@ rewards:
     effective_until: null
     currency: cashback
     currency_name: NeuCoins
+    redemption_scope: closed-loop
+    ecosystem_label: Tata Neu
     loyalty_program: tata-neu-points
     base:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: tata-neu-app-partners
         canonical_categories: [online]
@@ -82,8 +84,10 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: 'Research-verified: 1 NeuCoin = Rs1 across Tata Neu, no cash conversion. 12-mo expiry from 01-Aug-2025. Layer-3: Croma ~5% premium.'
+      confidence: high
     mcc_exclusions: ['5816']
 benefits:
   - effective_from: 2022-08-01
@@ -118,5 +122,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, tata-neu, cashback, entry]

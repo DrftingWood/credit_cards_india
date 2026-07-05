@@ -55,6 +55,32 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+      - category: ishop-hotels
+        canonical_categories:
+          - travel
+        multiplier: 12
+        cap_per_cycle: 15000
+        cap_unit: points
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants:
+            - ishop
+        notes: Up to 12X reward points on HOTEL bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap (ICICI capping PDF, WEF 1-Oct-2025) with iShop flights; iShop also gives 6X on bus + shopping vouchers (not modelled).
+      - category: ishop-flights
+        canonical_categories:
+          - travel
+        multiplier: 6
+        cap_per_cycle: 15000
+        cap_unit: points
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants:
+            - ishop
+        notes: Up to 6X reward points on FLIGHT bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap with iShop hotels.
     exclusions:
       - fuel
       - wallet-loads
@@ -68,7 +94,7 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
 
     mcc_exclusions: ['6513']
 benefits:
@@ -138,5 +164,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [entry, points, movies, everyday]

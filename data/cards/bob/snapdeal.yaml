@@ -53,13 +53,13 @@ rewards:
         canonical_categories: [online]
         multiplier: 5
         effective_rate: 20
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 2000
         cap_unit: points
         cycle: statement
         channel:
           class: cobrand-merchant
           merchants: [snapdeal]
-        notes: "5% unlimited cashback (20 RP per ₹100) on Snapdeal website & app."
+        notes: "5% unlimited cashback (20 RP per ₹100) on Snapdeal website & app. Accelerated RP on Snapdeal ecom/dept-store capped at 2,000 RP/statement cycle (shared with online-departmental) per BOBCARD central Features & T&C 01-Apr-2026; core 4 RP/₹100 continues after."
       - category: online-departmental
         canonical_categories: [online, groceries]
         multiplier: 2.5
@@ -81,7 +81,7 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
 
 benefits:
   - effective_from: 2021-01-01
@@ -124,5 +124,5 @@ application:
   apply_url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [entry, points, online, ecommerce, co-brand]

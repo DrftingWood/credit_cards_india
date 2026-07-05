@@ -50,13 +50,16 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.95
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: phonepe-app-spends
         canonical_categories: [online]
         multiplier: 3
         effective_rate: 3
-        notes: "3 Reward Points per Rs. 100 on eligible PhonePe App spends."
+        cap_per_cycle: 750
+        cap_unit: points
+        cycle: monthly
+        notes: "3 Reward Points per Rs. 100 on eligible PhonePe App spends. Accelerated PhonePe points (3 RP/₹100) hard-capped at 750 RP/calendar month (non-insurance) per the PhonePe SBI Card PURPLE Reward Program T&C; a tighter 250 RP/calendar-month sub-cap applies to insurance paid via PhonePe."
       - category: online-spends
         canonical_categories: [online]
         multiplier: 2
@@ -71,9 +74,9 @@ rewards:
         constraints: "Reward Points redeemable for cash."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
       confidence: high
-      notes: PhonePe points = Rs 1 via voucher/cashback, minor friction.
+      notes: 'Research-verified: co-brand Reward Points redeem as SBI statement credit at Rs1 = liquid cash -> NOT closed-loop (only in-app PhonePe cashback vouchers are). Tag removed.'
     notes: "1 Reward Point per Rs. 100 on other spends (base). Eligible-spend exclusions not detailed on crawl."
 
     mcc_exclusions: ['6513']
@@ -117,5 +120,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [points, co-brand, entry, upi]

@@ -58,6 +58,32 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+      - category: ishop-hotels
+        canonical_categories:
+          - travel
+        multiplier: 12
+        cap_per_cycle: 15000
+        cap_unit: points
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants:
+            - ishop
+        notes: Up to 12X reward points on HOTEL bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap (ICICI capping PDF, WEF 1-Oct-2025) with iShop flights; iShop also gives 6X on bus + shopping vouchers (not modelled).
+      - category: ishop-flights
+        canonical_categories:
+          - travel
+        multiplier: 6
+        cap_per_cycle: 15000
+        cap_unit: points
+        cycle: monthly
+        channel:
+          required: true
+          class: issuer-portal
+          merchants:
+            - ishop
+        notes: Up to 6X reward points on FLIGHT bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap with iShop hotels.
     exclusions:
       - fuel
       - wallet-loads
@@ -72,7 +98,7 @@ rewards:
         constraints: 1 ICICI RP = Rs 0.25 (catalogue/cashback). The 1:1 Air India Maharaja transfer belongs to Emeralde Private Metal only; classic Emeralde's transfer eligibility is doubtful and is NOT 6:1.
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       notes: 'Corrected 2026-07-05: RP = Rs 0.25 (was 0.6). Removed unsupported 6:1 Air India transfer (1:1 is Private Metal only; classic eligibility doubtful). Card phased out in favour of Emeralde Private Metal.'
       confidence: medium
@@ -142,5 +168,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [super-premium, world-elite, golf, lounge, points]

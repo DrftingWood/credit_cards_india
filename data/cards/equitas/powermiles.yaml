@@ -69,13 +69,15 @@ rewards:
     redemption: []
     source:
       url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
       type: issuer-page
       confidence: medium
       fields_verified:
         - rewards.accelerated.effective_rate
       notes: "2026-07-05: 1:1 transfer program ANNOUNCED (BA/United/Finnair/Aeroplan/Etihad/Thai/AirAsia/Air India/JAL/IHG/Wyndham) but NOT LIVE (expected ~Sep 2026). Current value Rs 0.50/pt via portal."
 
+    capping_rules:
+      - No reward-points cap of any kind on the 3X international accelerated points per the official PowerMiles T&C (dated 23-Jun-2026, read end-to-end; retrieved 2026-07-05). Aggregator 2000-RP grocery/utility caps are not in the issuer document.
 benefits:
   - effective_from: 2025-01-01
     effective_until: null
@@ -120,5 +122,5 @@ application:
   apply_url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [premium, points, travel, miles, lounge, metal, forex]

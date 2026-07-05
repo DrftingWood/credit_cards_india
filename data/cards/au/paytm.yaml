@@ -57,6 +57,9 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
+        channel:
+          class: cobrand-merchant
+          merchants: [paytm-app]
         notes: "5% rewards on Paytm Travel & Paytm Gold purchases (and Paytm app spends)."
       - category: paytm-upi
         canonical_categories: [other]
@@ -65,6 +68,9 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: cashback-inr
         cycle: monthly
+        channel:
+          class: cobrand-merchant
+          merchants: [paytm-app]
         notes: "Up to 2% rewards on Paytm Scan & Pay / UPI transactions; 1% base on other spends."
     exclusions:
       - fuel

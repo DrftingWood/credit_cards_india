@@ -1,1 +1,102 @@
-{"_source":"IDFC FIRST per-card Communication PDFs","verified_on":"2026-07-04","corrections":{"ashva":"per_inr 100->150, accel 9->10","mayura":"per_inr 100->150"},"pdfs_downloaded":2}
+{
+  "_audit": {
+    "_source": "IDFC FIRST per-card 'Communication' PDFs (read via pypdf)",
+    "verified_on": "2026-07-04",
+    "result": "Ashva/Mayura corrected to per-Rs150 earn (see INDEX.md); other IDFC cards already per-Rs150",
+    "index": "docs/sources/idfc-first/INDEX.md"
+  },
+  "ashva": {
+    "slug": "ashva",
+    "url": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva",
+    "pdfs": [
+      "ashva/Ashva-Credit-Card-Communication-May-26.pdf"
+    ]
+  },
+  "classic": {
+    "slug": "classic",
+    "url": "https://www.idfcfirst.bank.in/credit-card/classic",
+    "pdfs": []
+  },
+  "diamond-reserve": {
+    "slug": "diamond-reserve-credit-card",
+    "url": "https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card",
+    "pdfs": []
+  },
+  "first-private": {
+    "slug": "first-private",
+    "url": "https://www.idfcfirst.bank.in/credit-card/first-private",
+    "pdfs": []
+  },
+  "gaj": {
+    "slug": "gaj",
+    "url": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj",
+    "pdfs": []
+  },
+  "hello-cashback": {
+    "slug": "hello-cashback-credit-card",
+    "url": "https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card",
+    "pdfs": []
+  },
+  "indigo": {
+    "slug": "indigo-credit-card",
+    "url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
+    "pdfs": []
+  },
+  "lic-select": {
+    "slug": "lic-credit-card",
+    "url": "https://www.idfcfirst.bank.in/credit-card/lic-credit-card",
+    "pdfs": []
+  },
+  "mayura": {
+    "slug": "mayura",
+    "url": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura",
+    "pdfs": [
+      "mayura/Mayura-Credit-Card-Communication-May-26.pdf"
+    ]
+  },
+  "millennia": {
+    "slug": "millennia",
+    "url": "https://www.idfcfirst.bank.in/credit-card/millennia",
+    "pdfs": []
+  },
+  "power-plus": {
+    "slug": "power-plus",
+    "url": "https://www.idfcfirst.bank.in/credit-card/power-plus",
+    "pdfs": []
+  },
+  "power": {
+    "slug": "power",
+    "url": "https://www.idfcfirst.bank.in/credit-card/power",
+    "pdfs": []
+  },
+  "secured-rupay": {
+    "slug": "secured-rupay-credit-card",
+    "url": "https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card",
+    "pdfs": []
+  },
+  "select": {
+    "slug": "select",
+    "url": "https://www.idfcfirst.bank.in/credit-card/select",
+    "pdfs": []
+  },
+  "swyp": {
+    "slug": "swyp",
+    "url": "https://www.idfcfirst.bank.in/credit-card/swyp",
+    "pdfs": []
+  },
+  "wealth": {
+    "slug": "wealth",
+    "url": "https://www.idfcfirst.bank.in/credit-card/wealth",
+    "pdfs": []
+  },
+  "wow-black": {
+    "slug": "wow-black-credit-card",
+    "url": "https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card",
+    "pdfs": []
+  },
+  "wow": {
+    "slug": "wow",
+    "url": "https://www.idfcfirst.bank.in/credit-card/wow",
+    "pdfs": []
+  }
+}

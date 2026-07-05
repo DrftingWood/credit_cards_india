@@ -54,6 +54,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [zomato, ajio, nykaa, bookmyshow, uber, flipkart, easemytrip]
+        channel:
+          class: cobrand-merchant
+          merchants: [zomato, ajio, nykaa, bookmyshow, uber, flipkart, easemytrip]
         notes: "10X on Amazon+Flipkart capped 500 MR pts/month COMBINED (~Rs2,500 spend)."
       - category: amazon
         canonical_categories: [online]
@@ -63,6 +66,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [amazon]
+        channel:
+          class: cobrand-merchant
+          merchants: [amazon]
         notes: "5X MR per ₹50 on Amazon."
     exclusions:
       - fuel

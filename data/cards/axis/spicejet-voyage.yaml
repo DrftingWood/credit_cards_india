@@ -43,20 +43,25 @@ rewards:
     effective_until: null
     currency: points
     currency_name: SpiceClub Points
+    redemption_scope: closed-loop
+    ecosystem_label: SpiceJet
     base:
       rate: 3
       per_inr: 200
       unit_value_inr: 0.5              # value chart: 5,400 pts ≈ ₹2,700
-      unit_value_inr_realized: 0.4
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: spicejet-app-and-website
         canonical_categories: [travel]
         multiplier: 6
         effective_rate: 18
-        cap_per_cycle: "unlimited"
-        cap_unit: points
+        cap_per_cycle: 100000
+        cap_unit: spend-inr
         cycle: monthly
-        notes: "Up to 18 SpiceClub Points per ₹200 on SpiceJet app & website bookings (6 as card benefit + 12 as SpiceClub Silver member)."
+        channel:
+          class: cobrand-merchant
+          merchants: [spicejet]
+        notes: "Up to 18 SpiceClub Points per ₹200 on SpiceJet app & website bookings (6 as card benefit + 12 as SpiceClub Silver member). Card-benefit SC points stop beyond ₹1 lakh/month SpiceJet app+website spend (Voyage/Voyage Black SpiceClub earn T&C); membership-tier points continue."
       - category: online-food-delivery
         canonical_categories: [dining]
         multiplier: 2
@@ -101,10 +106,10 @@ rewards:
         constraints: "Redeem SpiceClub Points on SpiceJet bookings."
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
-      retrieved_on: '2026-07-05'
-      notes: "Verified 2026-07-05: SpiceClub fixed Rs0.50 nominal, discounted to ~Rs0.40 for SpiceJet distress/availability risk."
+      retrieved_on: 2026-07-05
+      notes: "Research-verified: 1 SpiceClub Point = Rs0.5, SpiceJet-only. Redemption-availability risk (network cuts). Layer-3: direct booking forgoes ~2-8% aggregator coupons."
 
-      confidence: medium
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2025-06-20

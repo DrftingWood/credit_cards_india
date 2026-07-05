@@ -59,6 +59,9 @@ rewards:
         cap_unit: miles
         cycle: monthly
         merchants: [indianoil-fuel-stations]
+        channel:
+          class: fuel-network
+          merchants: [iocl]
         notes: "6X EDGE Miles (5X accelerated + 1X base) per ₹150 at registered IndianOil fuel pumps, up to ₹15,000 spend/statement month; capped at 600 EDGE Miles/month. Beyond ₹15,000, only 1X base earned."
       - category: grocery-supermarket
         canonical_categories: [groceries]
@@ -128,7 +131,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.axisbank.com/retail/cards/credit-card/indian-oil-axis-bank-premium-credit-card
+  apply_url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
 
 metadata:
   last_verified_on: '2026-07-05'

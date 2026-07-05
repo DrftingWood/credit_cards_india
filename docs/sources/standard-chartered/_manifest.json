@@ -1,1 +1,60 @@
-{"_source":"SC per-card T&C PDFs (av.sc.com)","verified_on":"2026-07-04","result":"Ultimate confirmed via 11pp T&C PDF (5% duty-free cashback, joining-fee reward, lounge); audit corrections stand","pdfs_downloaded":1}
+{
+  "_audit": {
+    "_source": "Standard Chartered per-card T&C PDFs on av.sc.com (read via pypdf)",
+    "verified_on": "2026-07-04",
+    "result": "Ultimate T&C confirms 5% duty-free, 6k welcome RP, lounge program; no corrections",
+    "index": "docs/sources/standard-chartered/INDEX.md"
+  },
+  "beyond": {
+    "slug": "beyond-credit-card",
+    "url": "https://www.sc.bank.in/credit-cards/beyond-credit-card/",
+    "pdfs": []
+  },
+  "digismart": {
+    "slug": "digismart-card",
+    "url": "https://www.sc.bank.in/credit-cards/digismart-card/",
+    "pdfs": []
+  },
+  "easemytrip": {
+    "slug": "easemytrip-credit-card",
+    "url": "https://www.sc.bank.in/credit-cards/easemytrip-credit-card/",
+    "pdfs": []
+  },
+  "manhattan": {
+    "slug": "manhattan-platinum",
+    "url": "https://www.sc.bank.in/credit-cards/manhattan-platinum/",
+    "pdfs": []
+  },
+  "platinum-rewards": {
+    "slug": "platinum-rewards",
+    "url": "https://www.sc.bank.in/credit-cards/platinum-rewards/",
+    "pdfs": []
+  },
+  "priority-visa-infinite": {
+    "slug": "priority-banking-visa-infinite",
+    "url": "https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/",
+    "pdfs": []
+  },
+  "rewards": {
+    "slug": "rewards-credit-card",
+    "url": "https://www.sc.bank.in/credit-cards/rewards-credit-card/",
+    "pdfs": []
+  },
+  "smart": {
+    "slug": "smart-credit-card",
+    "url": "https://www.sc.bank.in/credit-cards/smart-credit-card/",
+    "pdfs": []
+  },
+  "super-value-titanium": {
+    "slug": "super-value-titanium",
+    "url": "https://www.sc.bank.in/credit-cards/super-value-titanium/",
+    "pdfs": []
+  },
+  "ultimate": {
+    "slug": "ultimate-card",
+    "url": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+    "pdfs": [
+      "ultimate/in-ultimate-credit-card-tnc.pdf"
+    ]
+  }
+}

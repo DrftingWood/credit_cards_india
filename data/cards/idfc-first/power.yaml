@@ -58,6 +58,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [hpcl-fuel-stations, hp-pay]
+        channel:
+          class: fuel-network
+          merchants: [hpcl, hp-pay]
         notes: "4% cashback on fuel at HPCL via HP Pay app."
       - category: grocery-utility
         canonical_categories: [groceries, utilities]

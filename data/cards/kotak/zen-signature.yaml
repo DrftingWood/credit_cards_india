@@ -45,8 +45,8 @@ rewards:
     base:
       rate: 5
       per_inr: 150
-      unit_value_inr: 0.15
-      unit_value_inr_realized: 0.10
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.2
     accelerated:
       - category: shopping
         canonical_categories: [online]
@@ -76,8 +76,10 @@ rewards:
         rate_inr_per_unit: 0.15
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: 'Research-verified: Zen Points cash value Rs0.20 (w.e.f. 01-Jun-2025, was Rs0.25), voucher up to Rs0.25. NOT closed-loop (open Kotak catalogue, cash-convertible) — closed-loop tag removed.'
+      confidence: high
 benefits:
   - effective_from: 2023-01-01
     effective_until: null
@@ -126,5 +128,5 @@ application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [mid, points, shopping, lounge]

@@ -59,6 +59,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [bpcl-fuel-stations]
+        channel:
+          class: fuel-network
+          merchants: [bpcl]
         notes: "25 Reward Points per ₹100 on fuel purchases at BPCL petrol pumps (capped at 2,500 points/month)."
       - category: dining-movies-department-grocery
         canonical_categories: [groceries, dining, entertainment]

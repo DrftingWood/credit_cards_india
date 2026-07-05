@@ -1,68 +1,79 @@
-# site/ — Credit Cards of India
+# site/ - Credit Cards of India
 
-Next.js 15 (App Router) + TypeScript + Tailwind. Reads the build artefact produced by the Python dataset in the parent directory.
+Next.js 15 App Router, TypeScript, and Tailwind. The app reads the compiled JSON
+artifact generated from the YAML dataset in the parent directory.
 
 ## Develop
 
-```bash
+```powershell
 cd site
 npm install
-npm run dev          # auto-runs ../scripts/build.py via scripts/prebuild.mjs
+npm run dev
 ```
+
+`npm run dev` automatically runs `scripts/prebuild.mjs`, which regenerates
+`../dist/*.json` first.
 
 Open http://localhost:3000.
 
 ## Build
 
-```bash
-npm run build        # also runs the Python build step first
+```powershell
+npm run build
 npm run start
 ```
 
-## Data flow
+`npm run build` also regenerates `../dist/*.json` before the Next build.
 
+## Data Flow
+
+```text
+data/**/*.yaml
+   -> site/scripts/prebuild.mjs
+   -> dist/cards.json, issuers.json, networks.json, index.json
+   -> site/lib/data.ts
+   -> SSG pages under app/
 ```
-data/**/*.yaml                     (source of truth)
-   ↓ site/scripts/build.mjs        (invoked via prebuild; Node + js-yaml)
-dist/cards.json, issuers.json, networks.json, index.json
-   ↓ site/lib/data.ts              (static JSON imports, bundled at build time)
-SSG pages under app/
-```
 
-Every page on the site is pre-rendered (`generateStaticParams` for the per-card routes). The calculator and compare UIs are client components but run over the same compiled JSON.
-
-No Python on the deploy path — the old `scripts/build.py` was ported to Node. Python is still used for dataset tooling outside the deploy: `scripts/validate.py` (CI), `scripts/new_card.py` (scaffolder), `scripts/tag_canonical_categories.py` (one-shot migration).
+No Python is required on the deploy path. Python is still used for dataset
+tooling outside deploy: `scripts/validate.py` in CI, `scripts/new_card.py`, and
+`scripts/tag_canonical_categories.py`.
 
 ## Deployment
 
-Deployed to Vercel. Because the Next.js app lives under `site/` (not at repo root), the deploy requires one explicit setting:
+The app is deployed from the `site/` directory. In Vercel, set Project Settings
+-> General -> Root Directory to `site`.
 
-- In Vercel **Project Settings → General → Root Directory**, set to **`site`**.
+With that set, Vercel auto-detects Next.js, runs `npm install`, then
+`npm run build`, which triggers `scripts/prebuild.mjs`.
 
-With that set, Vercel auto-detects Next.js, runs `npm install`, then `npm run build` which triggers `scripts/prebuild.mjs` to regenerate `../dist/*.json` via Node. No Python is required on the deploy path.
+Set `NEXT_PUBLIC_SITE_URL` in project environment variables so the sitemap uses
+the production host.
 
-Set `NEXT_PUBLIC_SITE_URL` in project env vars to the production URL so the sitemap has the correct host.
+## Folder Layout
 
-## Folder layout
+- `app/` - routes for home, browse, compare, calculator, recommender, card
+  detail, about, sitemap, and 404.
+- `components/` - presentational pieces.
+- `lib/` - data loading, filters, calculator, recommender, types, and utilities.
+- `scripts/` - prebuild, schema validation, JSON generation, and generated
+  schema types.
+- `styles/` - Tailwind entry.
 
-- `app/` — routes (home, browse, calculator, card detail, about, sitemap, 404).
-- `components/` — presentational pieces (grid, tile, sections, banner, filter bar).
-- `lib/` — data loading, filters, calculator, types, utilities.
-- `scripts/` — prebuild (runs Python) and generator for typed schema types.
-- `styles/` — Tailwind entry.
+## Current Features
 
-## What's in v0
+- Home with headline stats and featured cards.
+- Browse with filters, Fuse.js search, and shareable URL state.
+- Card detail pages with fees, rewards, benefits, eligibility, source links, and
+  history timeline.
+- Reward calculator over eight canonical spend categories.
+- Guided recommender.
+- Side-by-side comparison for up to four cards.
+- Beta banner, SEO metadata, sitemap, and robots.
 
-- Home with headline stats + featured cards.
-- Browse with filters (issuer / network / tier / reward currency / features) + Fuse.js search; filter state reflected in URL.
-- Per-card detail with fees, rewards, benefits, eligibility, apply link, history timeline, source links on every section.
-- Reward-rate calculator (8 canonical categories) ranking all active cards by net annual value; prefers schema-tagged `canonical_categories` over the heuristic fallback.
-- Side-by-side comparison at `/compare` — pin up to 4 cards; selection reflected in URL for shareable links.
-- Beta banner, SEO metadata + sitemap + robots.
+## Not Yet
 
-## Not yet
-
-- Card art / issuer logos.
+- Full source-evidence mapping from each rendered field to a local archived PDF
+  or issuer page.
 - Dark mode.
 - Analytics.
-- Auto-regenerated types from `../schema/card.schema.json` (scaffold under `scripts/gen-types.mjs`, run manually).

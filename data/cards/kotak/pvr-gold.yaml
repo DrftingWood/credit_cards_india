@@ -110,5 +110,6 @@ application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-04-15
+  last_swept_on: 2026-07-03
   tags: [co-branded, movies, pvr, entry]

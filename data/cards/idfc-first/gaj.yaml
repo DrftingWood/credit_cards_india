@@ -51,18 +51,18 @@ rewards:
         canonical_categories: [travel]
         multiplier: 10
         effective_rate: 50
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 15000
         cap_unit: points
         cycle: monthly
-        notes: "50 RP per ₹150 (33.33% value back) on hotels booked via the IDFC FIRST app."
+        notes: "50 RP per ₹150 (33.33% value back) on hotels booked via the IDFC FIRST app. Bonus RP capped at 15,000/calendar month, shared across app hotel+flight bookings (GAJ Rewards Structure T&C 22-12-25)."
       - category: flights-app
         canonical_categories: [travel]
         multiplier: 5
         effective_rate: 25
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 15000
         cap_unit: points
         cycle: monthly
-        notes: "25 RP per ₹150 (16.67% value back) on flights booked via the IDFC FIRST app."
+        notes: "25 RP per ₹150 (16.67% value back) on flights booked via the IDFC FIRST app. Bonus RP capped at 15,000/calendar month, shared across app hotel+flight bookings (GAJ Rewards Structure T&C 22-12-25)."
       - category: international-spend
         canonical_categories: [international]
         multiplier: 0.6
@@ -84,7 +84,7 @@ rewards:
         constraints: "1 RP = ₹1 on travel bookings via the IDFC FIRST app (₹0.25 elsewhere)."
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
 
 benefits:
   - effective_from: 2025-01-01
@@ -130,5 +130,5 @@ application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [super-premium, metal, invite-only, travel, zero-forex, lounge]

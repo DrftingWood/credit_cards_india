@@ -70,6 +70,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [zomato, blinkit, district]
+        channel:
+          class: cobrand-merchant
+          merchants: [zomato, blinkit, district]
         notes: "10% value back at preferred partners Zomato, Blinkit & District Movies — capped at ₹200 per partner per month (Apr-2026 revision; credited as partner-wallet value-back, min order ₹499 for Zomato/Blinkit). Only these merchants qualify, not general dining/grocery spend."
       - category: utility-bills-airtel-thanks
         canonical_categories: [utilities]

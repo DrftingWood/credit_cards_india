@@ -234,6 +234,14 @@ export interface RewardRecord {
    */
   currency_name?: string | null;
   /**
+   * 'closed-loop' when the currency is redeemable ONLY inside a single merchant ecosystem (e.g. Adani One, SpiceClub, Shoppers Stop First Citizen) — not cash, not statement credit, not transferable. Drives a 'ecosystem-only' badge in the UI. When closed-loop, the earn rate is shown at full in-ecosystem value (realized = face) rather than an arbitrary haircut; the restriction is conveyed by the badge. Default/absent = open.
+   */
+  redemption_scope?: "open" | "closed-loop" | null;
+  /**
+   * Human-readable name of the ecosystem the reward is locked to (e.g. 'Adani One'), shown in the closed-loop badge tooltip.
+   */
+  ecosystem_label?: string | null;
+  /**
    * Slug of an entry under data/loyalty_programs/. When set, the card's reward currency is the program's currency, and stacking accelerators may credit program baseline/tier/channel earn on top of the card's slice.
    */
   loyalty_program?: string | null;

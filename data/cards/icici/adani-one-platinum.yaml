@@ -42,10 +42,12 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Adani OneApp Rewards
+    redemption_scope: closed-loop
+    ecosystem_label: Adani One
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 1.0
       unit_value_inr: 1.0
     accelerated:
       - category: adani-one-ecosystem
@@ -68,11 +70,13 @@ rewards:
     notes: "Reward points credited to the Adani OneApp as Adani OneApp Rewards at the end of the billing cycle."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       confidence: high
-      notes: 'Corrected 2026-07-05: same Adani Reward Points as Signature = Rs1.0 nominal / ~0.90 (closed-loop). Fixes an earlier wrong Rs0.25 estimate.'
+      notes: 'Research-verified: 1 Adani Reward Point = Rs1, closed-loop (Adani One app + Adani Airports), no cash/transfer. Layer-3: airport retail ~10-25% premium.'
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No per-cycle cap on the 3 pts/₹100 Adani One ecosystem points on the ICICI Adani One Platinum product page (retrieved 2026-07-05), consistent with the Signature sibling; co-brand T&C PDF not machine-readable. Confidence medium.
 benefits:
   - effective_from: 2020-01-01
     effective_until: null
@@ -137,5 +141,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [mid, co-brand, travel, lounge, fuel, points]

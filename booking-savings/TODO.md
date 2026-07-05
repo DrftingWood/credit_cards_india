@@ -3,19 +3,36 @@
 See `docs/REMEDIATION_2026-07.md` for the consolidated remediation record + red-team analysis behind
 P0. **The data is now sound (~73 cards fixed, all audits clean); the engine is the weak link.**
 
-## Architecture decision (2026-07-05) — TWO SEPARATE LAYERS, never blended
-The engine shows **both** an **absolute** value (on-paper: face unit value, full accelerator eligibility,
-caps enforced, no friction — the ceiling) **and** a **realistic** value (realized unit value + friction:
-routability, portal markup, forex, channel-scoping — the floor), side by side. The friction model is a
-distinct track (`eligibility_fraction()` + `PORTAL_MARKUP` + forex, gated behind `realistic=True`), NOT
-folded into one number — combining them hides which cards are big-ceiling/thin-floor (e.g. IDFC Gaj:
-25.2% absolute vs 6.1% realistic). Same "full visibility, no blending" rule as the value layer.
+## P0 — Ecosystem model: value & price research (NOT estimates)
+The closed-loop ecosystem model (2026-07-05, `redemption_scope`/`ecosystem_label`, 27 cards) currently
+inherits in-ecosystem face values from earlier remediation. **These must be rigorously researched per
+ecosystem — no random/placeholder numbers.**
+- [ ] **Layer-1 in-ecosystem face value — verify each of the 12 ecosystems** with ≥2 primary sources
+  (issuer/ecosystem T&C + observed redemption). Confidence-flag each. Current values to confirm/correct:
+  Adani One ₹1.0, Tata NeuCoins ₹1.0, Shoppers Stop First Citizen (₹1.0 hdfc / ₹0.5 axis — reconcile),
+  SpiceClub ₹0.5, Apollo ₹1.0, IRCTC (₹1.0 vs BOB ₹0.25 — different currencies, confirm), PhonePe ₹1.0,
+  IndianOil Fuel Points ₹1.0, CheQ ₹0.5, ixigo ₹0.5, Kotak Zen ₹0.15, RBL Play ₹0.25. **Zen/Play/CheQ/
+  ixigo are the least-sourced — prioritise.**
+- [ ] **Confirm each currency is genuinely closed-loop** (not cash/transfer-outable). If any can be
+  liquidated (e.g. PhonePe → UPI/bank), reconsider `redemption_scope` — it may be partly open.
+- [ ] **Layer-3 price-parity overlay (per-ecosystem premium %)** — only for fungible goods (IndiGo/
+  SpiceJet flights, Tata Neu Croma/BigBasket, Shoppers Stop). Source from `booking-savings/` markup
+  research; NOT applicable to IRCTC/fuel (fixed price), PhonePe (no goods), Apollo/app-points (services).
+  Research the % from real quotes (same SKU across platforms); confidence-flag; do NOT invent a number.
+- [ ] Extend the same per-user + research treatment to airline/hotel miles (Class B) once layer-1/3 land.
 
-## P0 — Engine v2 (DONE — category-aware, cap-enforced, two-layer) ✅
+## Architecture decision (2026-07-05, revised) — NO invented friction; value from sourced data only
+Superseded the earlier "friction layer" (portal markup 10–12%, routability 65/50%) — those coefficients
+were **made up** and were removed. The two layers are now purely the two **sourced** per-card unit values:
+**absolute = `unit_value_inr`** (face ceiling), **realistic = `unit_value_inr_realized`** (researched floor).
+Caps, exclusions and forex (a real charged fee) apply in both. Real-world erosion is modelled only where it
+can be **sourced**: (a) closed-loop ecosystems via `redemption_scope` + a per-user preference (not a haircut),
+(b) the planned layer-3 price-parity overlay from real quotes — see the P0 ecosystem-research block above.
+
+## P0 — Engine v2 (DONE — category-aware, cap-enforced) ✅
 - [x] **R4 cap enforcement** — per-cycle caps enforced against a monthly profile (kills the "crore" bug).
-- [x] **R1 portal markup** — hotel-weighted 10–12% premium, realistic lens only (separate friction track).
-- [x] **R2 forex** — FX-charged intl spend only, realistic lens only.
-- [x] **R3/R4 routability + channel scoping** — `eligibility_fraction()` (portal 65% / co-brand 50% / broad 100%).
+- [x] **R1/R3 friction** — REMOVED (invented coefficients). Value comes from sourced unit values only.
+- [x] **R2 forex** — FX-charged intl spend only (real per-card fee, applies in both layers).
 - [x] **R5** — ranked on the realistic floor; absolute ceiling shown as a distinct column (no basis-mixing).
 - [x] Invite-only cards included (Infinia/Solitaire/Centurion were being dropped) — Infinia now #1 all-rounder.
 - Remaining engine follow-ups (lower priority) kept below.

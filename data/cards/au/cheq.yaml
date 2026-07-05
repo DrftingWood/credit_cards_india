@@ -44,11 +44,13 @@ rewards:
     effective_until: null
     currency: points
     currency_name: CheQ Points
+    redemption_scope: closed-loop
+    ecosystem_label: CheQ
     base:
       rate: 1
       per_inr: 200
       unit_value_inr: 0.5
-      unit_value_inr_realized: 0.3
+      unit_value_inr_realized: 0.5
     accelerated:
       - category: favourite-brands
         canonical_categories: [online]
@@ -84,8 +86,8 @@ rewards:
       url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
       retrieved_on: '2026-07-05'
 
-      confidence: high
-      notes: 'Corrected 2026-07-05: CheQ Points = Rs0.50 max (travel/giftcard), Rs0.25 bill-pay; closed-loop. face 1.0->0.50, realized 1.0->0.30.'
+      confidence: medium
+      notes: 'Research-verified: CheQ Points ~Rs0.5 (travel/gift-card best), Rs0.25 bill-offset; CheQ-app only. Redemption value secondary-sourced (CardInsider).'
 benefits:
   - effective_from: 2024-01-01
     effective_until: null

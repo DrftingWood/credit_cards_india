@@ -56,6 +56,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [amazon, bookmyshow, cult.fit, flipkart, myntra, sony-liv, swiggy, tata-cliq, uber, zomato]
+        channel:
+          class: cobrand-merchant
+          merchants: [amazon, bookmyshow, cult-fit, flipkart, myntra, sony-liv, swiggy, tata-cliq, uber, zomato]
         mcc_list: ["4121"]
         notes: "5% cashback (as CashPoints) at 10 partner merchants. Uber earns 5% only on travel/commute MCC 4121."
     exclusions:

@@ -45,12 +45,14 @@ rewards:
     effective_until: null
     currency: points
     currency_name: IRCTC Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: IRCTC
     loyalty_program: irctc-loyalty
     base:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
@@ -82,8 +84,10 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      notes: 'Research-verified: dedicated IRCTC Reward Point = Rs1 on rail fare (regulated/fixed -> NO price premium). HDFC caps redemption at 70% of fare.'
+      confidence: high
     mcc_exclusions: ['5816', '6540']
 benefits:
   - effective_from: 2022-08-01
@@ -121,5 +125,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, railway, irctc, rupay, entry]

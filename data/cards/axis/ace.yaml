@@ -55,6 +55,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: statement
         merchants: [google-pay-bills, google-pay-recharges]
+        channel:
+          class: cobrand-merchant
+          merchants: [google-pay-bills, google-pay-recharges]
         notes: "5% bill-pay + 4% Swiggy/Zomato/Ola SHARE a single Rs500/month cashback cap."
       - category: swiggy-zomato-ola-partners
         canonical_categories: [dining]
@@ -64,6 +67,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: statement
         merchants: [swiggy, zomato, ola]
+        channel:
+          class: cobrand-merchant
+          merchants: [swiggy, zomato, ola]
         notes: "Shares the Rs500/month cashback cap with the 5% bill-pay category."
     exclusions:
       - fuel

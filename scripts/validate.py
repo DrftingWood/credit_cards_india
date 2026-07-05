@@ -59,7 +59,9 @@ ISSUER_ALLOWED_DOMAINS = {
     "onecard": {"getonecard.app", "www.getonecard.app", "onecard.io", "www.onecard.io"},
     "pnb": {"pnbindia.in", "www.pnbindia.in", "pnb.bank.in", "www.pnb.bank.in", "creditcard.pnb.bank.in", "pnbcard.in", "www.pnbcard.in"},
     "rbl": {"rblbank.com", "www.rblbank.com", "rbl.bank.in", "www.rbl.bank.in", "irctc.co.in", "www.irctc.co.in"},
-    "sbi": {"sbicard.com", "www.sbicard.com"},
+    # aurumcreditcard.com is SBI Card's official microsite for the Aurum card
+    # (documented exception, not a third-party host) — see docs/DECISIONS.md D-16b.
+    "sbi": {"sbicard.com", "www.sbicard.com", "aurumcreditcard.com", "www.aurumcreditcard.com"},
     "slice": {"sliceit.com", "www.sliceit.com", "slice.bank.in", "www.slice.bank.in"},
     "union": {"unionbankofindia.co.in", "www.unionbankofindia.co.in", "unionbankofindia.bank.in", "www.unionbankofindia.bank.in"},
     "south-indian": {"southindianbank.com", "www.southindianbank.com", "southindianbank.bank.in", "www.southindianbank.bank.in", "sbicard.com", "www.sbicard.com"},
@@ -405,8 +407,9 @@ def main() -> int:
         check_dated_array(errors, path, "benefits", instance.get("benefits", []), card_is_active)
 
         # co-brand partner ↔ loyalty programme alias lint
-        # Warning-tier per the validator-promotion pattern: promote to error
-        # once offender count is zero (see docs/ROADMAP.md).
+        # Error-tier: offender count reached zero on 2026-07-05 (D6/D31), so this
+        # was promoted from warning to error per the validator-promotion pattern
+        # (see docs/ROADMAP.md, docs/DECISIONS.md D-16b).
         co_brand = instance.get("co_brand")
         if isinstance(co_brand, dict) and status != "discontinued":
             partner_str = (co_brand.get("partner") or "").lower()
@@ -421,8 +424,8 @@ def main() -> int:
                     continue
                 if any(alias.lower() in partner_str for alias in aliases):
                     if prog_id not in referenced_programs:
-                        warnings.append(
-                            f"[warn] {path.relative_to(ROOT)} :: co_brand.partner "
+                        errors.append(
+                            f"[lint] {path.relative_to(ROOT)} :: co_brand.partner "
                             f"'{co_brand.get('partner')}' matches loyalty programme "
                             f"'{prog_id}' aliases but no rewards[].loyalty_program "
                             f"references '{prog_id}'"
@@ -490,6 +493,25 @@ def main() -> int:
                         f"'{program_ref}' but no card_attributable_rate set; "
                         f"likely a stacked rate that should be decomposed"
                     )
+
+            # spend-inr caps on base / reward_cap are silently unenforced by
+            # every consumer (calculator, scorer, engine_v2 all convert value
+            # units only) — warn so an author doesn't believe the cap applies.
+            # Warning-tier per the promotion pattern; zero offenders today.
+            base_rec = rec.get("base") or {}
+            if base_rec.get("cap_per_cycle") is not None and base_rec.get("cap_unit") == "spend-inr":
+                warnings.append(
+                    f"[warn] {path.relative_to(ROOT)} :: rewards[{r_idx}].base cap authored in "
+                    f"'spend-inr' is not enforced by any consumer — author it in "
+                    f"points/miles/cashback-inr, or extend the engines first"
+                )
+            reward_cap = rec.get("reward_cap") or {}
+            if reward_cap and reward_cap.get("cap_unit") == "spend-inr":
+                warnings.append(
+                    f"[warn] {path.relative_to(ROOT)} :: rewards[{r_idx}].reward_cap authored in "
+                    f"'spend-inr' is not enforced by any consumer — author it in "
+                    f"points/miles/cashback-inr, or extend the engines first"
+                )
 
         # discontinued cards should have discontinued_on
         if status == "discontinued" and not instance.get("discontinued_on"):

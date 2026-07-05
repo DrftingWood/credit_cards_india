@@ -46,10 +46,14 @@ rewards:
     effective_until: null
     currency: cashback
     currency_name: NeuCoins
+    redemption_scope: closed-loop
+    ecosystem_label: Tata Neu
     base:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    loyalty_program: tata-neu-points
     accelerated:
       - category: tata-neu-and-partner-tata-brands
         canonical_categories: [online]
@@ -64,6 +68,8 @@ rewards:
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 7
+        card_attributable_rate: 7
+        card_attributable_per_inr: 100
         merchants: [tata-neu]
         channel:
           class: cobrand-merchant
@@ -72,6 +78,7 @@ rewards:
         cap_per_cycle: 2000
         cap_unit: points
         cycle: monthly
+        stacks_with_program: false
     exclusions:
       - emi
     capping_rules:
@@ -86,7 +93,8 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
       retrieved_on: '2026-07-05'
 
-      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
+      notes: 'Research-verified: 1 NeuCoin = Rs1 across Tata Neu, no cash conversion.'
+      confidence: high
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03

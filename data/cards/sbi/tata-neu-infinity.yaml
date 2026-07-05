@@ -46,11 +46,14 @@ rewards:
     effective_until: null
     currency: cashback
     currency_name: NeuCoins
+    redemption_scope: closed-loop
+    ecosystem_label: Tata Neu
     base:
       rate: 1.5
       per_inr: 100
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.95
+      unit_value_inr_realized: 1.0
+    loyalty_program: tata-neu-points
     accelerated:
       - category: tata-neu-and-partner-tata-brands
         canonical_categories: [online]
@@ -68,6 +71,8 @@ rewards:
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 10
+        card_attributable_rate: 10
+        card_attributable_per_inr: 100
         merchants: [tata-neu]
         channel:
           class: cobrand-merchant
@@ -76,6 +81,7 @@ rewards:
         cap_per_cycle: 1500
         cap_unit: points
         cycle: monthly
+        stacks_with_program: false
     exclusions:
       - emi
     capping_rules:
@@ -91,7 +97,7 @@ rewards:
       retrieved_on: '2026-07-05'
 
       confidence: high
-      notes: 'Corrected 2026-07-05: NeuCoin = Rs1 (Tata Neu closed-loop) -> realized 0.95. Added the missing monthly NeuCoin caps (were modelled as uncapped).'
+      notes: 'Research-verified: 1 NeuCoin = Rs1 across Tata Neu, no cash conversion. Layer-3: Croma electronics ~5% premium.'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03

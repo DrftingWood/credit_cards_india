@@ -123,5 +123,6 @@ application:
   apply_url: https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-04-15
+  last_swept_on: 2026-07-03
   tags: [co-branded, manchester-united, sports, premium, niche]

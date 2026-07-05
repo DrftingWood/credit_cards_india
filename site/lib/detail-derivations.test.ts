@@ -31,4 +31,19 @@ describe("accelerator presentation helpers — units-correct, not raw effective_
     const top = cb.current_rewards!.accelerated![0];
     expect(formatAcceleratedRate(top, cb.current_rewards)).toBe("5%");
   });
+
+  test("formatAcceleratedRate never renders Infinity when per_inr is 0 (rate-math guard)", () => {
+    // A `per_inr: 0` YAML typo must not produce "Infinity%" on tiles/compare/SEO.
+    // pointsToPct guards per_inr <= 0 by returning 0; the cashback branch must
+    // go through the same primitive instead of ad-hoc division.
+    const rewards = {
+      currency: "cashback",
+      base: { rate: 1, per_inr: 0 },
+    } as unknown as EnrichedCard["current_rewards"];
+    const label = formatAcceleratedRate(
+      { category: "online", effective_rate: 5 } as never,
+      rewards,
+    );
+    expect(label).not.toMatch(/Infinity|NaN/);
+  });
 });

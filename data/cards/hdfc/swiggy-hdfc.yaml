@@ -61,6 +61,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: statement
         merchants: [swiggy-food, swiggy-instamart, swiggy-dineout, swiggy-genie]
+        channel:
+          class: cobrand-merchant
+          merchants: [swiggy, instamart]
         notes: "10% cashback on Swiggy app (Food, Instamart, Dineout, Genie)."
       - category: online-mcc
         canonical_categories: [online]

@@ -91,11 +91,13 @@ rewards:
         constraints: "IndiGo BluChip floats ~Rs0.40-0.60 toward IndiGo fares (min 500); no fixed value."
     source:
       url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       confidence: high
       notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'
     mcc_exclusions: ['6513']
+    capping_rules:
+      - No per-cycle cap on the accelerated 7 BluChips/₹100 IndiGo-channel earning per the IndiGo Axis Premium T&C (retrieved 2026-07-05); only category exclusions + milestone resets, no BluChip ceiling. High confidence.
 benefits:
   - effective_from: 2026-02-18
     effective_until: null
@@ -182,8 +184,8 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.axisbank.com/retail/cards/credit-card/indigo-axis-bank-premium-credit-card
+  apply_url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex]

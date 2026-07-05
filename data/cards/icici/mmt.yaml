@@ -72,6 +72,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [mmt]
+        channel:
+          class: third-party-ota
+          merchants: [mmt]
         notes: "3% myCash (3 points per ₹100) on flight, bus and cab spends via MakeMyTrip."
     exclusions:
       - rent
@@ -84,9 +87,11 @@ rewards:
     notes: "Base 1% on other retail (excl rent & EMI). Insurance spends earn 1% capped at 1,000 myCash/anniversary year. Train bookings earn 25 myCash each."
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-07-05
 
     mcc_exclusions: ['6513']
+    capping_rules:
+      - 'No per-cycle cap on MakeMyTrip My Cash documented in the ICICI-hosted Signature card T&C (retrieved 2026-07-05); only exclusions + rounding stated (confidence: medium).'
 benefits:
   - effective_from: 2026-07-03
     effective_until: null
@@ -143,5 +148,5 @@ application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-05
   tags: [co-branded, travel, mmt, cashback, forex-friendly]

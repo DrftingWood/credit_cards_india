@@ -39,6 +39,8 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: Shoppers Stop
     base:
       rate: 2
       per_inr: 100
@@ -46,13 +48,16 @@ rewards:
       cap_per_cycle: 2000
       cap_unit: points
       cycle: monthly
-      unit_value_inr_realized: 0.4
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: shoppers-stop-purchases
         canonical_categories: [other]
         multiplier: 3.5
         effective_rate: 7
         merchants: [shoppers-stop]
+        channel:
+          class: cobrand-merchant
+          merchants: [shoppers-stop]
         notes: "7% Reward Points on every Shoppers Stop purchase (vs 2% base on non-Shoppers Stop spends)."
         cap_per_cycle: 2000
         cap_unit: points
@@ -80,8 +85,8 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
       retrieved_on: '2026-07-05'
 
-      confidence: medium
-      notes: Rs 1 voucher at Shoppers Stop (co-brand-locked); blended realistic Rs 0.40.
+      confidence: high
+      notes: 'Research-verified: HDFC Reward Point = Rs1 Shoppers Stop voucher, store-only. Layer-3: ~20-40% cheaper online in sales.'
     mcc_exclusions: ['6513', '1361', '5172', '5541', '5542', '5983', '9752']
 benefits:
   - effective_from: 2026-07-03

@@ -219,6 +219,12 @@ export interface RewardRecord {
   effective_until: string | null;
   currency: RewardCurrency;
   currency_name?: string | null;
+  /** "closed-loop" when the currency redeems ONLY inside one merchant ecosystem
+   *  (Adani One, Shoppers Stop, SpiceClub, …). Drives the "ecosystem-only" badge;
+   *  such cards are valued at full in-ecosystem face (realized = face), not haircut. */
+  redemption_scope?: "open" | "closed-loop" | null;
+  /** Ecosystem name shown in the closed-loop badge tooltip (e.g. "Adani One"). */
+  ecosystem_label?: string | null;
   loyalty_program?: string | null;
   base: RewardBase;
   accelerated?: AcceleratedReward[];

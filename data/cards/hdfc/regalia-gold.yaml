@@ -57,6 +57,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [myntra, nykaa, reliance-digital, marks-spencer]
+        channel:
+          class: cobrand-merchant
+          merchants: [myntra, nykaa, reliance-digital, marks-spencer]
         notes: "5X Reward Points at select merchants (Myntra, Nykaa, Reliance Digital, Marks & Spencer). Minimum transaction value of ₹150 to be eligible; 5X cap of 5,000 RP/month across all brands combined."
     exclusions:
       - fuel

@@ -117,5 +117,6 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-04-15
+  last_swept_on: 2026-07-03
   tags: [premium, travel, dining, points]

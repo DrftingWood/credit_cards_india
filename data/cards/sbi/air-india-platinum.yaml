@@ -48,7 +48,7 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
-    loyalty_program: null
+    loyalty_program: air-india-flying-returns
     base:
       rate: 2
       per_inr: 100

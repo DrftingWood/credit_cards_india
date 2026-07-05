@@ -45,12 +45,14 @@ rewards:
     effective_until: null
     currency: points
     currency_name: Reward Points
+    redemption_scope: closed-loop
+    ecosystem_label: IRCTC
     loyalty_program: irctc-loyalty
     base:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
@@ -72,16 +74,18 @@ rewards:
       - fuel
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
-      retrieved_on: '2026-07-05'
-      notes: "Aligned with sbi/irctc-premier 2026-07-05: IRCTC AC-rail points ~Rs1 nominal, realized ~0.9 for a rail user (was 0.5)."
+      retrieved_on: 2026-07-05
+      notes: "Research-verified: dedicated IRCTC RP = Rs1 on rail fare (regulated -> no premium)."
 
-      confidence: medium
+      confidence: high
     mcc_exclusions: ['6513']
     redemption:
       - type: voucher
         program: IRCTC AC-class fare
         rate_inr_per_unit: 1.0
         constraints: Rs1/pt against AC-class IRCTC rail fare only (link to IRCTC ID); closed-loop, no cash.
+    capping_rules:
+      - No monthly/annual cap on IRCTC value-back documented in the SBI Card IRCTC Platinum FAQ (retrieved 2026-07-05); earn structure stated with no capping clause.
 benefits:
   - effective_from: 2018-01-01
     effective_until: null

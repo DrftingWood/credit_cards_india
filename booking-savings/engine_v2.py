@@ -11,6 +11,8 @@ import glob, yaml, sys
 CATS = ["online","groceries","dining","fuel","travel","utilities","rent","international"]
 # spend category -> exclusion token that zeroes it out on a card
 EXCL = {"fuel":"fuel","rent":"rent","utilities":"utilities"}
+# MCCs that zero a whole single-MCC-family category (mirrors site/lib/calculator.ts)
+EXCL_MCC = {"5541":"fuel","5542":"fuel","5983":"fuel","5172":"fuel","6513":"rent","4900":"utilities"}
 CYCLE_DIV = {"monthly":1,"statement":1,"quarterly":3,"annual":12}
 
 def act(recs):
@@ -22,10 +24,35 @@ def cap_accel_spend(cap, unit, cycle, arate, value):
     """Monthly spend that still earns the accelerated rate, given the cap."""
     if cap in (None,"unlimited") or not isinstance(cap,(int,float)): return float("inf")
     cap_m = cap / CYCLE_DIV.get(cycle,1)
+    unit = unit or "points"   # schema default — a missing cap_unit is NOT uncapped
     if unit == "spend-inr": return cap_m
     if unit == "cashback-inr": return cap_m/(arate*value) if arate*value>0 else float("inf")
     if unit in ("points","miles"): return cap_m/arate if arate>0 else float("inf")  # cap_m = units; spend = units/rate
     return float("inf")
+
+def cap_value_monthly(cap, unit, cycle, val, brate):
+    """Cap (units per cycle) as a monthly INR value ceiling; None = uncapped.
+    Used for base cap_per_cycle and card-wide reward_cap (site parity)."""
+    if cap in (None,"unlimited") or not isinstance(cap,(int,float)): return None
+    cap_m = cap / CYCLE_DIV.get(cycle,1)
+    unit = unit or "points"
+    if unit == "cashback-inr": return cap_m
+    if unit == "spend-inr": return cap_m*brate*val
+    if unit in ("points","miles"): return cap_m*val
+    return None
+
+def accel_rate(a, brate, per):
+    """Card-side accelerated earn in units/Rs. Prefers card_attributable_rate —
+    effective_rate is the receipt-visible stacked total and double-counts the
+    loyalty programme's own earn, which this engine has no programme table to
+    add back (DECISIONS D-8). Honours effective_per_inr (a "35 per Rs200"
+    record must not be divided by the base per_inr). `is not None` so an
+    authored 0 means zero, not a fall-through to the multiplier path."""
+    if a.get("card_attributable_rate") is not None:
+        return a["card_attributable_rate"]/(a.get("card_attributable_per_inr") or 100)
+    if a.get("effective_rate") is not None:
+        return a["effective_rate"]/(a.get("effective_per_inr") or per)
+    return (a.get("multiplier") or 1)*brate
 
 def load_cards():
     out=[]
@@ -40,67 +67,76 @@ def load_cards():
             name=d.get("name"), tier=d.get("tier"),
             base_rate=b["rate"]/b["per_inr"], per_inr=b["per_inr"], val=val, face=b.get("unit_value_inr") or val,
             accel=rec.get("accelerated") or [], excl=set(rec.get("exclusions") or []),
+            mccx=set(rec.get("mcc_exclusions") or []),
+            base_cap=(dict(cap=b["cap_per_cycle"], unit=b.get("cap_unit"), cycle=b.get("cycle"))
+                      if isinstance(b.get("cap_per_cycle"),(int,float)) else None),
+            reward_cap=rec.get("reward_cap"),
             fee=act(d["fees"]).get("annual_fee_inr",0),
             fee_waiver=act(d["fees"]).get("fee_waiver"),
             forex=act(d["fees"]).get("forex_markup_pct",0) or 0))
     return out
 
-# --- Friction layer (SEPARATE track — NOT blended into the reward) -----------------------------
-# The reward engine computes the card's structural value. This layer models the real-world haircut
-# (portal price premium, routability, channel scoping, forex). It is applied ONLY to the realistic
-# lens; the absolute lens leaves the card's on-paper value untouched. The two are shown side by side.
-PORTAL_MARKUP={"smartbuy":0.10,"edge-travel":0.12,"ishop":0.10}  # hotel-weighted blended premium
-PORTALS=set(PORTAL_MARKUP)
-
-def eligibility_fraction(a, mer):
-    """Fraction of a category's spend that realistically routes to this accelerator (realistic lens).
-    Portal (SmartBuy/EDGE) ~65% routable (inventory/price); merchant co-brand ~50% (you don't put a
-    whole broad category at one merchant); broad category accelerator 100%. Absolute lens uses 1.0."""
-    if any(m in PORTALS for m in mer): return 0.65
-    if bool((a.get("channel") or {}).get("required")) or bool(mer): return 0.50
-    return 1.0
-
-def compute(card, profile, basis="realized", realistic=True):
-    """Two independent lenses on the same card:
-      realistic=False  -> ABSOLUTE: on-paper value, full eligibility, no friction (ceiling).
-      realistic=True   -> REALISTIC: friction applied (routability, portal markup, forex) (floor).
-    Caps are enforced in BOTH (a per-cycle cap is a hard product limit, not friction)."""
+def compute(card, profile, basis="realized"):
+    """Two layers = two SOURCED unit values, nothing invented:
+      basis="realized" -> unit_value_inr_realized (the researched floor, e.g. Adani's 0.90).
+      basis="face"     -> unit_value_inr          (the best documented redemption, the ceiling).
+    Caps, exclusions and forex are real product terms and apply in BOTH. There are NO made-up
+    friction coefficients (portal markup / routability) — those were removed 2026-07-05.
+    Channel-gated accelerators (channel.required, e.g. SmartBuy 10X) count only in the
+    ABSOLUTE ceiling: the realistic floor must not assume the whole bucket routes through
+    a portal (R3). The layers stay separate — routing optimism lives with value optimism."""
     from collections import defaultdict
     per=card["per_inr"]; val=(card["face"] if basis=="face" else card["val"]); brate=card["base_rate"]
+    def channel_locked(a):
+        ch=a.get("channel")
+        return bool(ch) and ch.get("required",True)
     # 1) assign each spending category to its BEST accelerator (else base). Group by accelerator
     #    so a shared per-cycle cap is enforced across all the categories it covers.
+    mccx_cats={EXCL_MCC[m] for m in card.get("mccx") or set() if m in EXCL_MCC}
     groups=defaultdict(float); accel_of={}; base_spend=0.0
     for cat in CATS:
         sp=profile.get(cat,0)
         if sp<=0: continue
-        if EXCL.get(cat) in card["excl"]: continue   # excluded -> zero reward
+        if EXCL.get(cat) in card["excl"] or cat in mccx_cats: continue   # excluded -> zero reward
         best=None
         for idx,a in enumerate(card["accel"]):
             if cat in (a.get("canonical_categories") or []):
-                er=a.get("effective_rate") or (a.get("multiplier") or 1)*brate*per
-                arate=er/per
-                if best is None or arate>best[0]: best=(arate,idx,a)
-        if best: groups[best[1]]+=sp; accel_of[best[1]]=(best[0],best[2])
+                if basis!="face" and channel_locked(a): continue  # floor: no portal assumption
+                arate=accel_rate(a,brate,per)
+                # Cap-aware selection: rank by realised value on THIS category's
+                # spend, not headline rate — a 10% capped at Rs100/mo must not
+                # beat an uncapped 3% on Rs20k spend.
+                cs=cap_accel_spend(a.get("cap_per_cycle"),a.get("cap_unit"),a.get("cycle","monthly"),arate,val)
+                acc=min(sp,cs)
+                v=acc*arate*val+max(0.0,sp-acc)*brate*val
+                if best is None or v>best[0]: best=(v,arate,idx,a)
+        # An accelerator whose realised value beats plain base wins the category.
+        if best and best[0]>sp*brate*val: groups[best[2]]+=sp; accel_of[best[2]]=(best[1],best[3])
         else: base_spend+=sp
     # 2) base earn on unaccelerated spend
-    monthly=base_spend*brate*val
-    # 3) each accelerator: shared cap (always) + friction (realistic lens only)
-    portal_pen=0.0
+    base_value=base_spend*brate*val; accel_value=0.0
+    # 3) each accelerator: enforce its shared per-cycle cap (a real product limit)
     for idx,spend in groups.items():
         arate,a=accel_of[idx]
-        mer=(a.get("channel") or {}).get("merchants") or a.get("merchants") or []
-        frac = eligibility_fraction(a, mer) if realistic else 1.0
-        mk   = max([PORTAL_MARKUP[m] for m in mer if m in PORTAL_MARKUP], default=0) if realistic else 0.0
-        elig = spend*frac
         cs=cap_accel_spend(a.get("cap_per_cycle"),a.get("cap_unit"),a.get("cycle","monthly"),arate,val)
-        acc=min(elig,cs)
-        monthly += acc*arate*val + (spend-acc)*brate*val   # non-eligible + over-cap earns base
-        portal_pen += mk*acc
-    monthly-=portal_pen
+        acc=min(spend,cs)
+        accel_value += acc*arate*val
+        base_value  += (spend-acc)*brate*val   # over-cap spend earns base
+    # 4) base cap_per_cycle clamps everything earned at the base rate;
+    #    reward_cap clamps the whole monthly total (site-engine parity).
+    bc=card.get("base_cap")
+    if bc:
+        ci=cap_value_monthly(bc.get("cap"),bc.get("unit"),bc.get("cycle"),val,brate)
+        if ci is not None: base_value=min(base_value,ci)
+    monthly=base_value+accel_value
+    rc=card.get("reward_cap")
+    if rc:
+        ci=cap_value_monthly(rc.get("max_units"),rc.get("cap_unit"),rc.get("cycle"),val,brate)
+        if ci is not None: monthly=min(monthly,ci)
     annual=monthly*12
-    # forex cost on the international (FX-charged) category — friction, realistic lens only
+    # forex is a real, per-card charged fee (forex_markup_pct + 18% GST) on FX-charged spend only
     fx=0
-    if realistic and profile.get("international",0)>0 and card["forex"]>0:
+    if profile.get("international",0)>0 and card["forex"]>0:
         fx=profile["international"]*12*card["forex"]/100*1.18
         annual-=fx
     fw=card["fee_waiver"]; annual_spend=sum(profile.values())*12
@@ -111,12 +147,12 @@ def compute(card, profile, basis="realized", realistic=True):
 
 def run(profile, title, topn=12):
     cards=load_cards()
-    # TWO SEPARATE LAYERS shown side by side (never blended):
-    #   realistic = realized value + friction (routability/markup/forex)  -> the floor you actually net
-    #   absolute  = face value, full eligibility, no friction             -> the on-paper ceiling
-    rows=[(compute(c,profile,"realized",realistic=True),
-           compute(c,profile,"face",realistic=False), c) for c in cards]
-    rows.sort(key=lambda x:-x[0]["net"])          # rank by realistic (honest floor)
+    # TWO LAYERS from the two SOURCED unit values (no invented friction):
+    #   realistic = unit_value_inr_realized (researched floor)  -> ranked on this
+    #   absolute  = unit_value_inr          (documented ceiling)
+    rows=[(compute(c,profile,"realized"),
+           compute(c,profile,"face"), c) for c in cards]
+    rows.sort(key=lambda x:-x[0]["net"])          # rank by realized (honest floor)
     tot=sum(profile.values()); ann=tot*12
     print("\n"+"="*100)
     print(f"{title}   monthly Rs{tot:,} / annual Rs{ann:,}")
@@ -147,9 +183,8 @@ if __name__=="__main__":
     for title,prof in STRESS.items():
         if which and which.lower() not in title.lower(): continue
         rows=run(prof, title, topn=6)
-        # sanity flags
+        # sanity flag: only the genuinely absurd. A high category % can be real (SmartBuy 10X is
+        # ~33% on the capped slice) — the earlier >12% flag was an artifact of the removed friction.
         rr,rf,c=rows[0]; ann=sum(prof.values())*12
-        if ann>0:
-            toppct=rr["net"]/ann*100
-            if toppct>12: print(f"  !! SANITY: top realized return {toppct:.0f}% > 12% — recheck: {c['slug']}")
-            if rr["net"]>ann: print(f"  !! SANITY: net > annual spend (absurd) — {c['slug']}")
+        if ann>0 and rr["net"]>ann:
+            print(f"  !! SANITY: net > annual spend (absurd, likely a missing cap) — {c['slug']}")

@@ -50,6 +50,7 @@ rewards:
       rate: 1.5
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 0.95
     accelerated:
       - category: tata-neu-and-partner-tata-brands
         canonical_categories: [online]
@@ -59,7 +60,10 @@ rewards:
         channel:
           class: cobrand-merchant
           merchants: [tata-neu]
-        notes: "5% value back as NeuCoins on non-EMI spends at Tata Neu App/Website and partner Tata brands."
+        notes: "5% NeuCoins on Tata Neu app & partner Tata brands (BigBasket/Croma/CLiQ/Air India), capped 1,500 NeuCoins/month."
+        cap_per_cycle: 1500
+        cap_unit: points
+        cycle: monthly
       - category: tata-neu-select-categories
         canonical_categories: [online]
         multiplier: 1
@@ -68,7 +72,10 @@ rewards:
         channel:
           class: cobrand-merchant
           merchants: [tata-neu]
-        notes: "5% base + extra 5% (total 10%) value back as NeuCoins on select category spends via the Tata Neu App/Website."
+        notes: "10% total (5% NeuCoins capped 1,500/mo + 5% instant discount capped 500/mo) on select Tata categories. Base 1.5% (grocery/utility/telecom capped 2,000 NeuCoins/mo each; UPI 500/mo on RuPay)."
+        cap_per_cycle: 1500
+        cap_unit: points
+        cycle: monthly
     exclusions:
       - emi
     capping_rules:
@@ -81,8 +88,10 @@ rewards:
         rate_inr_per_unit: 1.0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-07-05'
 
+      confidence: high
+      notes: 'Corrected 2026-07-05: NeuCoin = Rs1 (Tata Neu closed-loop) -> realized 0.95. Added the missing monthly NeuCoin caps (were modelled as uncapped).'
     mcc_exclusions: ['6513']
 benefits:
   - effective_from: 2026-07-03
@@ -131,5 +140,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-07-05'
   tags: [co-branded, conglomerate, tata-neu, premium, cashback, low-forex]

@@ -85,6 +85,7 @@ cobrand-merchant:
   - tata-cliq
   - yatra
   - zee5
+  - payzapp
 third-party-ota:
   - mmt
   - easemytrip

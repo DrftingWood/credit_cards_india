@@ -59,6 +59,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [payzapp]
+        channel:
+          class: cobrand-merchant
+          merchants: [payzapp]
         mcc_list: ["5411", "5812", "5814"]
         notes: "3% CashPoints on supermarket, groceries and dining spends and on PayZapp transactions. Applies to both UPI and regular credit card spends. Capped at 500 CashPoints per calendar month."
       - category: utilities

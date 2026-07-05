@@ -55,6 +55,9 @@ rewards:
         multiplier: 3.5
         effective_rate: 7
         merchants: [shoppers-stop]
+        channel:
+          class: cobrand-merchant
+          merchants: [shoppers-stop]
         notes: "7% Reward Points on every Shoppers Stop purchase (vs 2% base on non-Shoppers Stop spends)."
         cap_per_cycle: 2000
         cap_unit: points

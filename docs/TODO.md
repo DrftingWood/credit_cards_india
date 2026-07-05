@@ -27,6 +27,12 @@ before starting work.
   `attrs` explicitly, so `pip install -r scripts/requirements.txt` followed by
   `python scripts/validate.py` runs cleanly in a fresh environment (317 cards,
   0 errors). Local command sequence matches CI; documented in README + CONTRIBUTING.
+- Dataset: 319 card YAMLs. `validate.py` now reports **0 errors, 0 warnings**
+  (the 6 standing co-brand/aurum warnings were cleared 2026-07-05, D6).
+- 2026-07-05 remediation session (`docs/REMEDIATION_LOG.md`): closed D1, D2, D6,
+  D7, D8, D14, D16, D20, D29, D30, D31; D3 partially advanced; D4/D5/D11/D12/D15
+  still open. New scanners: `scripts/audit_uncapped.py`, `audit_stamps.py`,
+  `crawl_diff.py`. Rate-model flags in `docs/drift/D20-deferrals-2026-07.md`.
 - Last known passing checks:
   - `npm.cmd --prefix site run prebuild`
   - `npm.cmd --prefix site test -- --run`

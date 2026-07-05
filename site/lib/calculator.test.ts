@@ -257,6 +257,91 @@ describe("scoreCard — cap semantics across engines (E2 divergence fixes)", () 
     const score = scoreCard(card, spend({ dining: 10000, online: 10000 }));
     expect(score.annual_gross_inr).toBe(6000); // 500 × 12, not 1000 × 12
   });
+
+  test("cap_unit: 'miles' converts via unit value like points", () => {
+    const card = makeCard({
+      currency: "miles",
+      base: { rate: 0, per_inr: 100, unit_value_inr: 0.5 },
+      accelerated: [
+        {
+          category: "travel",
+          canonical_categories: ["travel"],
+          multiplier: 0,
+          effective_rate: 4, // 4 miles/₹100 at ₹0.5 = 2%
+          cap_per_cycle: 1000, // 1000 miles = ₹500/mo
+          cap_unit: "miles",
+          cycle: "monthly",
+        },
+      ],
+    });
+    // ₹50k travel at 2% = ₹1,000 gross, capped at ₹500. Base 0 over cap.
+    const score = scoreCard(card, spend({ travel: 50000 }));
+    expect(score.annual_gross_inr).toBe(6000);
+  });
+
+  test("annual cap cycle windows down to a twelfth", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 0, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "utilities",
+          canonical_categories: ["utilities"],
+          multiplier: 0,
+          effective_rate: 5,
+          cap_per_cycle: 6000, // ₹6,000/year = ₹500/mo
+          cap_unit: "cashback-inr",
+          cycle: "annual",
+        },
+      ],
+    });
+    // 5% on ₹15k/mo = ₹750 gross, capped at ₹500/mo. Annual = 6,000.
+    const score = scoreCard(card, spend({ utilities: 15000 }));
+    expect(score.annual_gross_inr).toBe(6000);
+  });
+
+  test("cap_per_cycle: 'unlimited' string means uncapped", () => {
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 0, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "online",
+          canonical_categories: ["online"],
+          multiplier: 0,
+          effective_rate: 5,
+          cap_per_cycle: "unlimited" as never,
+          cycle: "monthly",
+        },
+      ],
+    });
+    const score = scoreCard(card, spend({ online: 100000 }));
+    expect(score.annual_gross_inr).toBe(60000); // 5% × ₹100k × 12, no cap
+  });
+
+  test("points-unit cap on a cashback card without explicit unit_value_inr still binds (₹1/unit)", () => {
+    // The rate path already treats cashback units as ₹1 when unit_value_inr is
+    // absent; the cap conversion must use the same fallback — otherwise the
+    // accelerated earn is credited but its cap silently vanishes.
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 0, per_inr: 100 }, // no unit_value_inr on purpose
+      accelerated: [
+        {
+          category: "dining",
+          canonical_categories: ["dining"],
+          multiplier: 0,
+          effective_rate: 10,
+          cap_per_cycle: 500, // 500 cashback units = ₹500/mo
+          // cap_unit omitted → schema default "points" (units of the currency)
+          cycle: "monthly",
+        },
+      ],
+    });
+    // 10% on ₹20k = ₹2,000 gross, capped at ₹500. Annual = 6,000.
+    const score = scoreCard(card, spend({ dining: 20000 }));
+    expect(score.annual_gross_inr).toBe(6000);
+  });
 });
 
 describe("scoreCard — per_inr=0 guards (blocker #3)", () => {

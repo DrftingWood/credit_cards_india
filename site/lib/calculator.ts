@@ -349,13 +349,17 @@ function acceleratedRateForBucket(
     let capMonthlyInr: number | null = null;
     if (typeof a.cap_per_cycle === "number") {
       // Match cap_unit explicitly; the unitValue branch is the points/miles fallback (schema default is "points").
+      // Cashback units are worth ₹1 — same fallback the rate path uses, so a
+      // cashback card without explicit unit_value_inr can't earn a rate whose
+      // cap silently vanishes.
+      const capUv = unitValue ?? (rewards.currency === "cashback" ? 1 : null);
       const unit = a.cap_unit ?? "points";
       if (unit === "cashback-inr") {
         capMonthlyInr = a.cap_per_cycle;
       } else if (unit === "spend-inr") {
         capMonthlyInr = (a.cap_per_cycle * ratePct) / 100;
-      } else if (unitValue != null) {
-        capMonthlyInr = a.cap_per_cycle * unitValue;
+      } else if (capUv != null) {
+        capMonthlyInr = a.cap_per_cycle * capUv;
       }
       if (a.cycle === "quarterly" && capMonthlyInr != null) capMonthlyInr = capMonthlyInr / 3;
       if (a.cycle === "annual" && capMonthlyInr != null) capMonthlyInr = capMonthlyInr / 12;
@@ -533,13 +537,17 @@ export function scoreCard(
 
   const capNotes: string[] = [];
 
+  // Cashback units are worth ₹1 when no explicit unit value is authored —
+  // keep cap conversion consistent with the earn-rate fallback.
+  const capUnitValue = unitValue ?? (rewards?.currency === "cashback" ? 1 : null);
+
   // Base-rate cap: clamp the base-earned portion (accelerated earn is unaffected).
   if (rewards && typeof rewards.base.cap_per_cycle === "number") {
     const baseCapMonthly = capToMonthlyInr(
       rewards.base.cap_per_cycle,
       rewards.base.cap_unit,
       rewards.base.cycle,
-      unitValue,
+      capUnitValue,
     );
     if (baseCapMonthly != null && baseMonthly > baseCapMonthly) {
       monthlyValue -= baseMonthly - baseCapMonthly;
@@ -553,7 +561,7 @@ export function scoreCard(
       rewards.reward_cap.max_units,
       rewards.reward_cap.cap_unit,
       rewards.reward_cap.cycle,
-      unitValue,
+      capUnitValue,
     );
     if (rewardCapMonthly != null && monthlyValue > rewardCapMonthly) {
       monthlyValue = rewardCapMonthly;

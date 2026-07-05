@@ -33,6 +33,15 @@ before starting work.
   - `npm.cmd --prefix site run typecheck`
   - `npm.cmd --prefix site run build`
 
+## Execution Plans (2026-07-05)
+
+Every open item below is decomposed into ready-to-execute plans:
+
+- **Data & evidence remediation** (D1–D16, D20, D29–D31): `docs/superpowers/plans/2026-07-05-data-remediation.md`
+- **Site visual redesign after competitor benchmarking** (D25, D9, C3 residuals): `docs/superpowers/plans/2026-07-05-site-visual-redesign.md`
+
+Fresh sessions: read the plan header, create the branch it names, and execute task-by-task.
+
 ## Pick-Up Board
 
 | ID | Priority | Area | Suggested Agent | Status | Task |

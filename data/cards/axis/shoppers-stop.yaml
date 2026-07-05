@@ -63,12 +63,18 @@ rewards:
         cap_unit: points
         cycle: annual
         merchants: [shoppers-stop]
+        channel:
+          class: cobrand-merchant
+          merchants: [shoppers-stop]
         notes: "Unlimited 20 First Citizen accelerated points per ₹200 on Shopper's Stop private-label / Exclusive Brand Apparel (≈5% value back)."
       - category: shoppers-stop-other-brands
         canonical_categories: [other]
         multiplier: 1
         effective_rate: 12
         merchants: [shoppers-stop, homestop]
+        channel:
+          class: cobrand-merchant
+          merchants: [shoppers-stop, homestop]
         notes: "12 First Citizen points per ₹200 on other Shoppers Stop brands, Homestop, Arcelia, M.A.C, Clinique, Estee Lauder, Bobbi Brown, Jo Malone & Smashbox (≈3% value back)."
     exclusions:
       - fuel

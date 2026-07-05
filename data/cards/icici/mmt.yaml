@@ -72,6 +72,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [mmt]
+        channel:
+          class: third-party-ota
+          merchants: [mmt]
         notes: "3% myCash (3 points per ₹100) on flight, bus and cab spends via MakeMyTrip."
     exclusions:
       - rent

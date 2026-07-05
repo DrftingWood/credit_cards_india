@@ -38,6 +38,32 @@ cobrand-merchant:
   - jiomart
   - phonepe-app
 
+  - amazon
+  - baby-shop
+  - blinkit
+  - bookmyshow
+  - cult-fit
+  - district
+  - easemytrip
+  - easybuy
+  - google-pay-bills
+  - google-pay-recharges
+  - home-centre
+  - homestop
+  - lifestyle
+  - max
+  - netmeds
+  - nykaa
+  - ola
+  - pvr
+  - reliance-digital
+  - reliance-smart
+  - shoppers-stop
+  - spar
+  - swiggy
+  - trends
+  - uber
+  - zomato
 third-party-ota:
   - mmt
   - easemytrip
@@ -46,6 +72,8 @@ third-party-ota:
   - ixigo
   - ota-any              # generic OTA bucket when user signals "no preference"
 
+  - abhibus
+  - confirmtkt
 food-delivery:
   - swiggy
   - zomato

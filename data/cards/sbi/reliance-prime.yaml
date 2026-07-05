@@ -71,6 +71,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [reliance-digital, reliance-smart, trends, netmeds]
+        channel:
+          class: cobrand-merchant
+          merchants: [reliance-digital, reliance-smart, trends, netmeds]
         notes: "10 Reward Points per ₹100 at other participating Reliance Retail stores (except UPI payments)."
     exclusions:
       - fuel

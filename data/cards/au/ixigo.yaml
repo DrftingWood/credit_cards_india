@@ -59,6 +59,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [ixigo, confirmtkt, abhibus]
+        channel:
+          class: third-party-ota
+          merchants: [ixigo, confirmtkt, abhibus]
         notes: "6% value-back on ixigo flight, train, bus and hotel bookings."
     exclusions:
       - fuel

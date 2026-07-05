@@ -58,6 +58,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: quarterly
         merchants: [myntra]
+        channel:
+          class: cobrand-merchant
+          merchants: [myntra]
         notes: "7.5% cashback on Myntra spends, capped at ₹4,000 per statement quarter."
       - category: flipkart
         canonical_categories: [online]
@@ -67,6 +70,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: quarterly
         merchants: [flipkart]
+        channel:
+          class: cobrand-merchant
+          merchants: [flipkart]
         notes: "5% cashback on Flipkart, capped at ₹4,000 per statement quarter."
       - category: cleartrip
         canonical_categories: [online, travel]
@@ -76,6 +82,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: quarterly
         merchants: [cleartrip]
+        channel:
+          class: third-party-ota
+          merchants: [cleartrip]
         notes: "5% cashback on Cleartrip, capped at ₹4,000 per statement quarter."
       - category: preferred-merchants
         multiplier: 1
@@ -84,6 +93,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [swiggy, pvr, uber, cult.fit]
+        channel:
+          class: cobrand-merchant
+          merchants: [swiggy, pvr, uber, cult-fit]
         notes: "4% cashback on preferred merchants."
     exclusions:
       - fuel

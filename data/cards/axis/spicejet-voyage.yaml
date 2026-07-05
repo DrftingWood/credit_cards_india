@@ -58,6 +58,9 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
+        channel:
+          class: cobrand-merchant
+          merchants: [spicejet]
         notes: "Up to 18 SpiceClub Points per ₹200 on SpiceJet app & website bookings (6 as card benefit + 12 as SpiceClub Silver member)."
       - category: online-food-delivery
         canonical_categories: [dining]

@@ -60,6 +60,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
+        channel:
+          class: cobrand-merchant
+          merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
         notes: "10X Reward Points on online spends with partner merchants: Apollo 24x7, BookMyShow, Cleartrip, Dominos, IGP, Myntra, Netmeds, Swiggy, Yatra, Gyftr, Tata Cliq."
       - category: online-other
         canonical_categories: [online]

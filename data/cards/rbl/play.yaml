@@ -56,6 +56,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [netflix, hotstar, amazon-prime, sony-liv, zee5, bookmyshow]
+        channel:
+          class: cobrand-merchant
+          merchants: [netflix, hotstar, amazon-prime, sony-liv, zee5, bookmyshow]
         notes: "10X points on OTT, gaming, dining and entertainment merchants."
     exclusions:
       - fuel

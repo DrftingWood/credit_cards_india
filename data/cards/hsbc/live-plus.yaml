@@ -56,6 +56,9 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [swiggy, zomato]
+        channel:
+          class: food-delivery
+          merchants: [swiggy, zomato]
         notes: "10% cashback on dining, food delivery & groceries (cap Rs1,000/month). 1.5% unlimited on other eligible spends."
     exclusions:
       - fuel

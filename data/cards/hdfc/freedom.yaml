@@ -56,6 +56,9 @@ rewards:
         cap_unit: points
         cycle: monthly
         merchants: [bigbasket, bookmyshow, oyo, swiggy, uber]
+        channel:
+          class: cobrand-merchant
+          merchants: [bigbasket, bookmyshow, oyo, swiggy, uber]
         notes: "10X CashPoints on Big Basket, BookMyShow, OYO, Swiggy & Uber (capped 2,500 CashPoints/month)."
     exclusions:
       - fuel

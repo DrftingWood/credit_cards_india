@@ -69,6 +69,22 @@ cobrand-merchant:
   - reliance-smart-superstore
   - tata-1mg
   - urban-company
+  - amazon-prime
+  - apollo-24-7
+  - cleartrip
+  - dominos
+  - etihad-direct
+  - gyftr
+  - hotstar
+  - igp
+  - instamart
+  - netflix
+  - oyo
+  - paytm-app
+  - sony-liv
+  - tata-cliq
+  - yatra
+  - zee5
 third-party-ota:
   - mmt
   - easemytrip

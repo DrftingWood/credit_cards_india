@@ -60,6 +60,9 @@ rewards:
         cap_unit: miles
         cycle: statement
         merchants: [Etihad Airways]
+        channel:
+          class: cobrand-merchant
+          merchants: [etihad-direct]
         notes: "3 Miles per ₹100 on Etihad Airways bookings."
     exclusions:
       - fuel

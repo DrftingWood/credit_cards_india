@@ -50,7 +50,7 @@ rewards:
       rate: 1
       per_inr: 125
       unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr_realized: 0.9
     accelerated:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
@@ -73,9 +73,9 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
       retrieved_on: '2026-07-05'
-      notes: "Verified 2026-07-05: Rs1.0/pt but AC-rail-only (closed-loop) -> realized 0.2->0.50 for a rail user."
+      notes: "Aligned with sbi/irctc-premier 2026-07-05: IRCTC AC-rail points ~Rs1 nominal, realized ~0.9 for a rail user (was 0.5)."
 
-      confidence: high
+      confidence: medium
     mcc_exclusions: ['6513']
     redemption:
       - type: voucher

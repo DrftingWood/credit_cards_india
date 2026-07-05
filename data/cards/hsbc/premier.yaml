@@ -53,10 +53,10 @@ rewards:
         canonical_categories: [travel]
         multiplier: 4
         effective_rate: 12
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 18000
         cap_unit: points
         cycle: monthly
-        notes: "12X reward points on hotels, flights & car rentals booked via HSBC Travel Edit; 3 RP per ₹100 base."
+        notes: "12X reward points on hotels, flights & car rentals booked via HSBC Travel Edit; 3 RP per ₹100 base. Accelerated travel reward points capped at 18,000/calendar month per HSBC's travel-rewards page (retrieved 2026-07-05); base points remain uncapped."
     exclusions:
       - fuel
       - wallet-loads
@@ -175,7 +175,7 @@ rewards:
             notes: 5:1 -> ~Rs 0.10/pt [below floor — avoid]
     source:
       url: https://www.hsbc.co.in/credit-cards/products/premier/
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-07-05
 
       notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
 benefits:
@@ -231,5 +231,5 @@ application:
   apply_url: https://www.hsbc.co.in/credit-cards/products/premier/
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-05
   tags: [super-premium, premier-banking, low-forex, travel]

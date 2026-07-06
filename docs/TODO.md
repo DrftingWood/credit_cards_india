@@ -20,33 +20,55 @@ before starting work.
 
 ## Current State
 
-- Dataset: 317 card YAML files across 24 issuers.
+- Dataset: 319 card YAMLs across 25 issuers. `validate.py` reports **0 errors,
+  0 warnings** (the 6 standing co-brand/aurum warnings were cleared 2026-07-05, D6).
 - Generated site data: `dist/*.json`, rebuilt by `site/scripts/prebuild.mjs`.
-- Local PDF archive: 261 PDFs under `docs/sources/**/*.pdf`.
-- Validation reproducibility (A0): resolved. `scripts/requirements.txt` now pins
-  `attrs` explicitly, so `pip install -r scripts/requirements.txt` followed by
-  `python scripts/validate.py` runs cleanly in a fresh environment (317 cards,
-  0 errors). Local command sequence matches CI; documented in README + CONTRIBUTING.
-- Dataset: 319 card YAMLs. `validate.py` now reports **0 errors, 0 warnings**
-  (the 6 standing co-brand/aurum warnings were cleared 2026-07-05, D6).
-- 2026-07-05 remediation session (`docs/REMEDIATION_LOG.md`): closed D1, D2, D6,
-  D7, D8, D14, D16, D20, D29, D30, D31; D3 partially advanced; D4/D5/D11/D12/D15
-  still open. New scanners: `scripts/audit_uncapped.py`, `audit_stamps.py`,
-  `crawl_diff.py`. Rate-model flags in `docs/drift/D20-deferrals-2026-07.md`.
-- Last known passing checks:
-  - `npm.cmd --prefix site run prebuild`
-  - `npm.cmd --prefix site test -- --run`
-  - `npm.cmd --prefix site run typecheck`
-  - `npm.cmd --prefix site run build`
+- Local PDF archive under `docs/sources/**/*.pdf`.
+- Validation reproducibility (A0): resolved — `pip install -r scripts/requirements.txt`
+  then `python scripts/validate.py` runs cleanly in a fresh env; matches CI.
+- Site test suite: **122 passing**; `typecheck` + `prebuild` clean. (`npm run build`
+  currently hits a pre-existing Windows `spawn UNKNOWN` worker error — env-only,
+  builds fine with `experimental.cpus:1`; CI/Linux unaffected.)
 
-## Execution Plans (2026-07-05)
+**2026-07-05 — data & evidence remediation** (`docs/REMEDIATION_LOG.md`, merged PR #65):
+closed D1, D2, D6, D7, D8, D14, D16, D20, D29, D30, D31; D3 partially advanced;
+D4/D5/D11/D12/D15 still open. New scanners `scripts/audit_uncapped.py`,
+`audit_stamps.py`, `crawl_diff.py`; rate-model flags in `docs/drift/D20-deferrals-2026-07.md`.
 
-Every open item below is decomposed into ready-to-execute plans:
+**2026-07-06 — site functional redesign** (merged): answer-first grouped `/recommend`
+(pickHighlights, rank key sacred), facts-only best-pick card with an `Est.`-tagged
+net-₹/yr, intent-routing home page (no card grid, no lead-gen), SVG icon set (no
+emoji), tile hierarchy, compare winner-per-row, mobile filter collapse, verified-on
+trust cues. Closed **D9, D25, C3**. Visual skin (palette/type/depth/dark mode)
+deliberately deferred to a later Figma pass.
 
-- **Data & evidence remediation** (D1–D16, D20, D29–D31): `docs/superpowers/plans/2026-07-05-data-remediation.md`
-- **Site visual redesign after competitor benchmarking** (D25, D9, C3 residuals): `docs/superpowers/plans/2026-07-05-site-visual-redesign.md`
+**2026-07-06 — per-card acceleration + cap breakdown** (merged): `explainCard()`
+surfaces the engine's per-accelerator cap accounting (Realistic ⇄ Absolute, never
+blended, reconciles with `scoreCard`); a shared localStorage-persisted spend profile
+(`useSpendProfile`); the `AccelerationBreakdown` component (spend input + toggle +
+full cap-story rows + base-rate spend with channel-cut notes) on the card page AND
+`/calculator`. First phase of the value-capture roadmap.
+
+## Execution Plans
+
+- **Data & evidence remediation** (2026-07-05, mostly merged): `docs/superpowers/plans/2026-07-05-data-remediation.md`
+- **Site functional redesign** (2026-07-06, merged): `docs/superpowers/plans/2026-07-06-site-functional-components.md` (spec: `…/specs/2026-07-06-site-functional-components-design.md`)
+- **Card acceleration breakdown — Phase 1** (2026-07-06, merged): `docs/superpowers/plans/2026-07-06-card-acceleration-breakdown.md`
+- **Calculators "truly capture value" — roadmap** (Phases 2–4, open): `docs/superpowers/specs/2026-07-06-calculators-value-capture-roadmap.md`
+- **Site visual redesign — competitor-benchmarked (superseded)**: the original `…/plans/2026-07-05-site-visual-redesign.md` was reworked into the functional redesign above; final *visual* polish now lives in the Figma pass (see UI-1 below).
 
 Fresh sessions: read the plan header, create the branch it names, and execute task-by-task.
+
+## Open — site & calculators (as of 2026-07-06)
+
+| ID | Priority | Area | Status | Task |
+| --- | --- | --- | --- | --- |
+| CALC-2 | P2 | Calculators | Open | **Value components** (roadmap Phase 2) — surface welcome + milestone + lounge as separate honest line items in the breakdown; the decoupled scorer already computes `first_year_bonus_inr`/`milestone_value_inr`/`lounge_visits`. Resolves `/calculator`'s "ignores welcome bonuses" disclaimer. Extend `CardExplanation` + `AccelerationBreakdown`; keep the decoupling (never blend into steady-state). |
+| CALC-3 | P2 | Calculators | Open | **Usage inputs** (roadmap Phase 3) — channel/brand/ecosystem selectors feeding the Realistic layer; `ScoringContext` already carries `channelMix`/`tierMap`/`enabledEcosystems`. Mostly UI that populates the ctx (persist alongside the spend profile). |
+| CALC-4 | P3 | Calculators | Open | **Redemption realism** (roadmap Phase 4) — transfer-partner routes, forex, per-redemption fees so points value the best real redemption (`transfer_partners` + `unit_value_inr_realized` are the starting point). |
+| UI-1 | P2 | Site UX | Open | **Figma visual pass** — apply the premium "Ink & Warm" skin (palette/type/depth/dark mode) across the functionally-redesigned surfaces. Includes finalizing the best-pick card visuals (variant B), and merging `/calculator`'s two spend-input grids (it + `AccelerationBreakdown` each render one, both bound to the shared store). The functional layer was built as a clean restyle target. |
+| UI-2 | P3 | Site UX | Open | `/calculator` (`calculator-client.tsx`) carries **pre-existing emoji** (🛍/✈️/⛽/🔒…) — replace with the SVG icon set (`@/components/icons`) during the Figma pass; no emoji in product UI. |
+| CALC-5 | P3 | Calculators | Open | Optional cleanup: extract the card-wide cap tail into one `applyCardWideCaps()` helper shared by `scoreCard` + `explainCard`, so reconciliation is structural rather than test-enforced (tests currently guard it). |
 
 ## Pick-Up Board
 

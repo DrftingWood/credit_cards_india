@@ -8,19 +8,10 @@ import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
-import { rankCards, listEcosystems, type CardScore, type SpendProfile } from "@/lib/calculator";
+import { rankCards, listEcosystems, type CardScore } from "@/lib/calculator";
+import { useSpendProfile } from "@/lib/use-spend-profile";
+import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
 import { formatInr, formatPct } from "@/lib/utils";
-
-const DEFAULT_SPEND: SpendProfile = {
-  online: 20000,
-  groceries: 10000,
-  dining: 8000,
-  fuel: 4000,
-  travel: 5000,
-  utilities: 3000,
-  rent: 0,
-  international: 0,
-};
 
 /** Sanity ceiling per category (₹1 crore/month) — beyond any real cardholder, and
  *  stops a stray value like `1e21` from producing meaningless sextillion-rupee output. */
@@ -43,8 +34,12 @@ const ECO_GROUPS: { label: string; icon: string; ecos: string[] }[] = [
 ];
 
 export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
-  const [spend, setSpend] = useState<SpendProfile>(DEFAULT_SPEND);
+  const [spend, setSpend] = useSpendProfile();
   const selectedId = useSearchParams().get("card");
+  const selectedCard = useMemo(
+    () => (selectedId ? cards.find((c) => c.id === selectedId) ?? null : null),
+    [cards, selectedId],
+  );
 
   // Layer 2 — ecosystem preferences. Closed-loop points (Adani One, Tata Neu, …) are real ₹1
   // money only if you use that ecosystem. Default is REALISTIC: nothing ticked, so closed-loop
@@ -214,6 +209,12 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
         {ranked.length === 0 ? (
           <div className="mt-4 rounded-md border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-600">
             Enter some spend on the left to see rankings.
+          </div>
+        ) : null}
+
+        {selectedCard ? (
+          <div className="mt-6">
+            <AccelerationBreakdown card={selectedCard} />
           </div>
         ) : null}
       </div>

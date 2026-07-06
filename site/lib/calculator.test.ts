@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { scoreCard, type SpendProfile, type ScoringContext } from "./calculator";
+import { scoreCard, explainCard, type SpendProfile, type ScoringContext } from "./calculator";
 import { pickTopAccelerated } from "./detail-derivations";
 import type {
   EnrichedCard,
@@ -36,6 +36,7 @@ interface CardOpts {
     rate: number;
     per_inr: number;
     unit_value_inr?: number;
+    unit_value_inr_realized?: number;
     cap_per_cycle?: number;
     cap_unit?: CapUnit;
     cycle?: Cycle;
@@ -59,6 +60,9 @@ function makeCard(opts: CardOpts): EnrichedCard {
       per_inr: opts.base.per_inr,
       ...(opts.base.unit_value_inr != null
         ? { unit_value_inr: opts.base.unit_value_inr }
+        : {}),
+      ...(opts.base.unit_value_inr_realized != null
+        ? { unit_value_inr_realized: opts.base.unit_value_inr_realized }
         : {}),
       ...(opts.base.cap_per_cycle != null ? { cap_per_cycle: opts.base.cap_per_cycle } : {}),
       ...(opts.base.cap_unit != null ? { cap_unit: opts.base.cap_unit } : {}),
@@ -844,5 +848,172 @@ describe("scoreCard — effective_rate is receipt-visible units, not percent (au
     });
     const score = scoreCard(card, spend({ online: 10000 }));
     expect(score.buckets[0].effective_rate_pct).toBe(5);
+  });
+});
+
+describe("valueBasis threads face vs realized", () => {
+  test("face basis yields >= realized basis for a points card whose realized < face", () => {
+    // hdfc-infinia-shaped: face ₹1.1/pt, realized ₹1.0/pt (realized is the honest
+    // floor; face is the optimistic ceiling for the best documented redemption).
+    const CARD = makeCard({
+      currency: "points",
+      base: { rate: 5, per_inr: 150, unit_value_inr: 1.1, unit_value_inr_realized: 1.0 },
+    });
+    const spendProfile = spend({ dining: 10000 });
+    const realized = scoreCard(CARD, spendProfile, { valueBasis: "realized" } as ScoringContext);
+    const face = scoreCard(CARD, spendProfile, { valueBasis: "face" } as ScoringContext);
+    expect(face.annual_gross_inr).toBeGreaterThanOrEqual(realized.annual_gross_inr);
+    expect(face.annual_gross_inr).toBeGreaterThan(realized.annual_gross_inr);
+  });
+
+  test("face basis raises the ACCELERATED value, not just base (via acceleratorRatePct)", () => {
+    // Points card with an accelerated dining rate. realized ₹1.0/pt < face ₹1.1/pt.
+    // The accelerator's own effective_rate is valued through acceleratorRatePct's
+    // unitValueFor call, so face basis must lift the accelerated earn, not only base.
+    const CARD = makeCard({
+      currency: "points",
+      base: { rate: 5, per_inr: 150, unit_value_inr: 1.1, unit_value_inr_realized: 1.0 },
+      accelerated: [
+        {
+          category: "dining",
+          canonical_categories: ["dining"],
+          multiplier: 0,
+          effective_rate: 20, // 20 pts/₹150 — the elevated rate this test exercises
+        },
+      ],
+    });
+    const spendProfile = spend({ dining: 10000 });
+    const realized = scoreCard(CARD, spendProfile, { valueBasis: "realized" } as ScoringContext);
+    const face = scoreCard(CARD, spendProfile, { valueBasis: "face" } as ScoringContext);
+    // The dining bucket earns the accelerated rate; face (₹1.1) values those points
+    // higher than realized (₹1.0), so annual gross must rise.
+    expect(face.buckets[0].effective_rate_pct).toBeGreaterThan(realized.buckets[0].effective_rate_pct);
+    expect(face.annual_gross_inr).toBeGreaterThan(realized.annual_gross_inr);
+  });
+});
+
+describe("explainCard — per-accelerator cap story", () => {
+  const spendHeavy = { online: 0, groceries: 0, dining: 0, fuel: 0, travel: 200000, utilities: 0, rent: 0, international: 0 };
+
+  // Cashback card with a travel accelerator capped low enough that ₹200k/mo
+  // travel spend blows through it: 5% gross would be ₹10,000/mo but the cap
+  // clamps accelerated earn to ₹2,000/mo, with the remainder spilling to base.
+  const CAPPED_TRAVEL_CARD = makeCard({
+    currency: "cashback",
+    base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+    accelerated: [
+      {
+        category: "travel",
+        canonical_categories: ["travel"],
+        multiplier: 0,
+        effective_rate: 5,
+        cap_per_cycle: 2000,
+        cap_unit: "cashback-inr",
+        cycle: "monthly",
+      },
+    ],
+    annualFee: 1000,
+  });
+
+  // Mirrors the real hdfc-infinia SmartBuy accelerator: a points card whose
+  // travel accelerator only fires when booked through the issuer portal.
+  const CHANNEL_CARD = makeCard({
+    currency: "points",
+    base: { rate: 5, per_inr: 150, unit_value_inr: 1.1, unit_value_inr_realized: 1.0 },
+    accelerated: [
+      {
+        category: "smartbuy-flights-hotels",
+        canonical_categories: ["travel"],
+        multiplier: 10,
+        cap_per_cycle: 15000,
+        cap_unit: "points",
+        cycle: "monthly",
+        channel: { required: true, class: "issuer-portal", merchants: ["smartbuy"] },
+      },
+    ],
+  });
+
+  test("a cap-bound accelerator reports the clamp, ₹ lost, and base spillover", () => {
+    // Use a card with a capped travel accelerator on a spend high enough to hit
+    // the cap (load the card the way other tests do). Absolute layer fires it.
+    const ex = explainCard(CAPPED_TRAVEL_CARD, spendHeavy, { valueBasis: "face" });
+    const row = ex.accelerators.find((a) => a.category === "travel");
+    expect(row).toBeTruthy();
+    expect(row!.cap_bound).toBe(true);
+    expect(row!.lost_to_cap_inr).toBeGreaterThan(0);
+    expect(row!.uncapped_value_inr).toBeGreaterThan(row!.net_value_inr - row!.base_spillover_inr);
+    expect(row!.factors.join(" ").toLowerCase()).toContain("cap");
+  });
+
+  test("realistic drops a channel-locked accelerator to base; absolute fires it", () => {
+    // A card whose top accelerator is channel-locked (e.g. hdfc-infinia SmartBuy).
+    const realistic = explainCard(CHANNEL_CARD, spendHeavy, { applyApplicability: true, channelMix: new Set(), enabledEcosystems: new Set(), valueBasis: "realized" });
+    const absolute = explainCard(CHANNEL_CARD, spendHeavy, { valueBasis: "face" });
+    expect(absolute.annual_gross_inr).toBeGreaterThan(realistic.annual_gross_inr);
+    // realistic factor list should mention the channel/base fallback for the affected bucket
+    const absRow = absolute.accelerators.find((a) => a.category === "travel");
+    expect(absRow!.factors.join(" ").toLowerCase()).toMatch(/channel|smartbuy|portal/);
+  });
+
+  test("annual_net nets the fee off the gross", () => {
+    const ex = explainCard(CAPPED_TRAVEL_CARD, spendHeavy, { valueBasis: "realized" });
+    expect(ex.annual_net_inr).toBe(ex.annual_gross_inr - ex.annual_fee_inr);
+  });
+
+  test("card-wide reward_cap: explainCard total reconciles with scoreCard total", () => {
+    // A card-wide reward_cap that a heavy spend blows through. Without clamping the
+    // total, explainCard's gross (sum of uncapped per-accelerator rows) would diverge
+    // from scoreCard's clamped rank total — the /calculator two-total bug. They must reconcile.
+    const CAPPED_CARD = makeCard({
+      currency: "points",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      rewardCap: { max_units: 1000, cap_unit: "points", cycle: "monthly" }, // ₹1,000/mo total
+    });
+    const heavy = spend({ online: 100000, dining: 100000 });
+    for (const ctx of [{ valueBasis: "realized" } as ScoringContext, { valueBasis: "face" } as ScoringContext]) {
+      const ex = explainCard(CAPPED_CARD, heavy, ctx);
+      const sc = scoreCard(CAPPED_CARD, heavy, ctx);
+      expect(ex.annual_gross_inr).toBe(sc.annual_gross_inr);
+    }
+    // Sanity: the cap actually bit (1% on ₹200k = ₹2,000/mo gross, clamped to ₹1,000/mo → ₹12,000/yr).
+    expect(explainCard(CAPPED_CARD, heavy, { valueBasis: "realized" }).annual_gross_inr).toBe(12000);
+  });
+
+  test("base.cap_per_cycle: explainCard total reconciles with scoreCard total", () => {
+    // base.cap_per_cycle clamps only the base-earned portion; explainCard must apply
+    // the same clamp to its total so the two engines reconcile.
+    const BASE_CAPPED = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1, cap_per_cycle: 500, cap_unit: "cashback-inr", cycle: "statement" },
+      accelerated: [
+        { category: "dining", canonical_categories: ["dining"], multiplier: 0, effective_rate: 10, cycle: "monthly" },
+      ],
+    });
+    const heavy = spend({ online: 50000, groceries: 50000, dining: 20000 });
+    const ex = explainCard(BASE_CAPPED, heavy, { valueBasis: "realized" });
+    const sc = scoreCard(BASE_CAPPED, heavy, { valueBasis: "realized" });
+    expect(ex.annual_gross_inr).toBe(sc.annual_gross_inr);
+    expect(ex.annual_gross_inr).toBe(30000); // base capped 500 + dining 2000 = 2500/mo
+  });
+
+  test("annual_fee_inr is waiver-aware, mirroring scoreCard (FIX 2)", () => {
+    // Same shape as the "fee waiver crossing at threshold" scoreCard test: ₹1500 fee,
+    // waived once annualized spend reaches ₹300,000. ₹25,000/mo dining clears it.
+    const card = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      annualFee: 1500,
+      feeWaiverSpend: 300000,
+    });
+    const clearsWaiver = spend({ dining: 25000 });
+    const ex = explainCard(card, clearsWaiver, { valueBasis: "realized" });
+    const sc = scoreCard(card, clearsWaiver, { valueBasis: "realized" });
+    expect(ex.annual_fee_inr).toBe(0);
+    expect(ex.annual_fee_inr).toBe(sc.annual_fee_effective_inr);
+    expect(ex.annual_net_inr).toBe(ex.annual_gross_inr);
+
+    const missesWaiver = spend({ dining: 24999 });
+    const exNot = explainCard(card, missesWaiver, { valueBasis: "realized" });
+    expect(exNot.annual_fee_inr).toBe(1500);
   });
 });

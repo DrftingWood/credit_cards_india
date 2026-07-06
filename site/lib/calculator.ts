@@ -4,7 +4,7 @@ import type {
   RewardRecord,
   LoyaltyProgram,
 } from "./types";
-import { CanonicalCategory, resolveBuckets } from "./category-mapping";
+import { CanonicalCategory, resolveBuckets, CATEGORY_LABELS } from "./category-mapping";
 import { pointsToPct } from "./rate-math.mjs";
 
 export type SpendProfile = Record<CanonicalCategory, number>;
@@ -58,6 +58,9 @@ export interface ScoringContext {
    * assumed used), preserving the default calculator behaviour.
    */
   enabledEcosystems?: Set<string>;
+  /** "realized" (default, honest floor) or "face" (optimistic ceiling) unit value
+   *  for points/miles. Passed to unitValueFor so the Absolute layer can value at face. */
+  valueBasis?: ValueBasis;
 }
 
 /** Whether a card's (closed-loop) rewards should be credited in full for this user.
@@ -231,7 +234,7 @@ function acceleratorRatePct(
   rewards: RewardRecord,
   ctx: ScoringContext | undefined,
 ): number | null {
-  const unitValue = unitValueFor(rewards, ctx?.programs);
+  const unitValue = unitValueFor(rewards, ctx?.programs, ctx?.valueBasis ?? "realized");
 
   // earn_components form takes precedence — sum components whose gates are satisfied.
   if (a.earn_components && a.earn_components.length > 0) {
@@ -302,6 +305,8 @@ interface AcceleratorHit {
   /** Base earned on the (1 - applicability) slice (INR/mo). */
   base_remainder_inr: number;
   cap_bound: boolean;
+  /** Pre-cap gross accelerated earn this bucket (INR/mo), before the cap clamp. */
+  uncapped_accel_inr: number;
 }
 
 function acceleratedRateForBucket(
@@ -319,7 +324,7 @@ function acceleratedRateForBucket(
   type Candidate = AcceleratorHit & { value: number };
   let best: Candidate | null = null;
   let narrowUncounted = false;
-  const unitValue = unitValueFor(rewards, ctx?.programs);
+  const unitValue = unitValueFor(rewards, ctx?.programs, ctx?.valueBasis ?? "realized");
 
   for (const a of accelerated) {
     const buckets = resolveBuckets(a.category, a.canonical_categories);
@@ -398,6 +403,7 @@ function acceleratedRateForBucket(
       over_cap_base_inr: overCapBase,
       base_remainder_inr: baseRemainderValue,
       cap_bound: capBound,
+      uncapped_accel_inr: grossAccel,
       value,
     };
     if (!best || candidate.value > best.value) best = candidate;
@@ -437,14 +443,27 @@ const EXCLUSION_TO_BUCKET: Partial<Record<string, CanonicalCategory>> = {
   utilities: "utilities",
 };
 
+/** Waiver-aware effective annual fee: 0 (or reduced, once modeled) once the user's
+ *  annualized spend clears the card's fee-waiver threshold. Shared by scoreCard and
+ *  explainCard so the /calculator rank and the per-card breakdown always agree (FIX 2). */
+function effectiveAnnualFee(
+  card: EnrichedCard,
+  annualSpend: number,
+): { annualFeeEffective: number; feeWaived: boolean } {
+  const annualFee = card.current_fees?.annual_fee_inr ?? 0;
+  const waiverSpend = card.computed.fee_waiver_spend_inr;
+  const feeWaived = waiverSpend != null && annualSpend >= waiverSpend;
+  return { annualFeeEffective: feeWaived ? 0 : annualFee, feeWaived };
+}
+
 export function scoreCard(
   card: EnrichedCard,
   spend: SpendProfile,
   ctx?: ScoringContext,
 ): CardScore {
   const rewards = card.current_rewards;
-  const baseRate = baseRatePct(rewards, ctx?.programs);
-  const unitValue = rewards ? unitValueFor(rewards, ctx?.programs) : null;
+  const baseRate = baseRatePct(rewards, ctx?.programs, ctx?.valueBasis ?? "realized");
+  const unitValue = rewards ? unitValueFor(rewards, ctx?.programs, ctx?.valueBasis ?? "realized") : null;
   // Layer 2: a closed-loop card's points are only real money if the individual uses
   // that ecosystem. When they don't, drop the accelerators — the card earns base only.
   const closedLoopEco = rewards?.redemption_scope === "closed-loop" ? rewards.ecosystem_label ?? null : null;
@@ -572,10 +591,7 @@ export function scoreCard(
   const annualGross = monthlyValue * MONTHS_PER_YEAR;
   const annualSpend = totalSpend * MONTHS_PER_YEAR;
 
-  const annualFee = card.current_fees?.annual_fee_inr ?? 0;
-  const waiverSpend = card.computed.fee_waiver_spend_inr;
-  const feeWaived = waiverSpend != null && annualSpend >= waiverSpend;
-  const annualFeeEffective = feeWaived ? 0 : annualFee;
+  const { annualFeeEffective, feeWaived } = effectiveAnnualFee(card, annualSpend);
 
   const disclaimerParts: string[] = [...capNotes];
   if (rewards?.capping_rules?.length) disclaimerParts.push(...rewards.capping_rules);
@@ -630,4 +646,142 @@ export function listEcosystems(cards: EnrichedCard[]): string[] {
     if (r?.redemption_scope === "closed-loop" && r.ecosystem_label) s.add(r.ecosystem_label);
   }
   return [...s].sort((a, b) => a.localeCompare(b));
+}
+
+export interface AcceleratorExplain {
+  category: CanonicalCategory; label: string;
+  monthly_spend: number;
+  rate_pct: number;
+  uncapped_value_inr: number;
+  cap_monthly_inr: number | null;
+  cap_bound: boolean;
+  lost_to_cap_inr: number;      // uncapped − capped (0 if unbound/no cap)
+  base_spillover_inr: number;   // base earned on over-cap spend
+  net_value_inr: number;        // monthly net for this accelerator's bucket
+  factors: string[];            // realistic: cuts applied; absolute: constraints stated
+}
+export interface BaseSpendExplain { category: CanonicalCategory; label: string; monthly_spend: number; rate_pct: number; value_inr: number; }
+export interface CardExplanation {
+  layer: "realistic" | "absolute";
+  value_basis: ValueBasis;
+  accelerators: AcceleratorExplain[];
+  base_spend: BaseSpendExplain[];
+  annual_gross_inr: number; annual_fee_inr: number; annual_net_inr: number;
+}
+
+export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: ScoringContext): CardExplanation {
+  const rewards = card.current_rewards;
+  const basis: ValueBasis = ctx?.valueBasis ?? "realized";
+  // Layer is inferred from the context the caller built (see Global Constraints).
+  const layer: "realistic" | "absolute" = ctx?.applyApplicability ? "realistic" : "absolute";
+  const baseRate = baseRatePct(rewards, ctx?.programs, basis);
+  const unitValue = rewards ? unitValueFor(rewards, ctx?.programs, basis) : null;
+  const ecoCredited = ecosystemCredited(rewards, ctx);
+
+  const excluded = new Set<CanonicalCategory>();
+  for (const ex of rewards?.exclusions ?? []) { const b = EXCLUSION_TO_BUCKET[ex]; if (b) excluded.add(b); }
+  for (const mcc of rewards?.mcc_exclusions ?? []) { const b = MCC_EXCLUSION_TO_BUCKET[mcc]; if (b) excluded.add(b); }
+
+  const capUsage = new Map<AcceleratedReward, number>();
+  const accelerators: AcceleratorExplain[] = [];
+  const base_spend: BaseSpendExplain[] = [];
+  let monthlyGross = 0;
+  let baseMonthly = 0; // portion earned at base rate (subject to base.cap_per_cycle), mirrors scoreCard
+  let totalSpend = 0; // mirrors scoreCard's totalSpend, for the waiver-aware fee below (FIX 2)
+
+  for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
+    const amount = spend[bucket] || 0;
+    totalSpend += amount;
+    if (amount <= 0) continue;
+    const label = CATEGORY_LABELS[bucket] ?? bucket;
+
+    if (excluded.has(bucket)) {
+      base_spend.push({ category: bucket, label, monthly_spend: amount, rate_pct: 0, value_inr: 0 });
+      continue;
+    }
+    const accel = ecoCredited && rewards?.accelerated?.length
+      ? acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx, baseRate, capUsage)
+      : { hit: null, narrowUncounted: false };
+    const hit = accel.hit;
+
+    if (hit) {
+      capUsage.set(hit.accel, (capUsage.get(hit.accel) ?? 0) + hit.accel_value_inr);
+      const lost = Math.max(0, hit.uncapped_accel_inr - hit.accel_value_inr);
+      const net = hit.accel_value_inr + hit.base_remainder_inr + hit.over_cap_base_inr;
+      // Over-cap spend and the non-applicable slice both earn base rate, so both
+      // count toward base.cap_per_cycle below — same as scoreCard's baseEarned.
+      baseMonthly += hit.base_remainder_inr + hit.over_cap_base_inr;
+      monthlyGross += net;
+      accelerators.push({
+        category: bucket, label, monthly_spend: amount, rate_pct: hit.rate_pct,
+        uncapped_value_inr: hit.uncapped_accel_inr, cap_monthly_inr: hit.cap_monthly_inr,
+        cap_bound: hit.cap_bound, lost_to_cap_inr: lost, base_spillover_inr: hit.over_cap_base_inr,
+        net_value_inr: net, factors: buildFactors(layer, hit, basis, rewards),
+      });
+    } else {
+      const value = (amount * baseRate) / 100;
+      baseMonthly += value;
+      monthlyGross += value;
+      base_spend.push({ category: bucket, label, monthly_spend: amount, rate_pct: baseRate, value_inr: value });
+    }
+  }
+
+  // Card-wide clamps applied to the TOTAL, mirroring scoreCard exactly so the two
+  // reconcile by construction (the per-accelerator rows above stay uncapped —
+  // same asymmetry scoreCard's per-bucket breakdown carries).
+  const capUnitValue = unitValue ?? (rewards?.currency === "cashback" ? 1 : null);
+  if (rewards && typeof rewards.base.cap_per_cycle === "number") {
+    const baseCapMonthly = capToMonthlyInr(
+      rewards.base.cap_per_cycle,
+      rewards.base.cap_unit,
+      rewards.base.cycle,
+      capUnitValue,
+    );
+    if (baseCapMonthly != null && baseMonthly > baseCapMonthly) {
+      monthlyGross -= baseMonthly - baseCapMonthly;
+    }
+  }
+  if (rewards?.reward_cap) {
+    const rewardCapMonthly = capToMonthlyInr(
+      rewards.reward_cap.max_units,
+      rewards.reward_cap.cap_unit,
+      rewards.reward_cap.cycle,
+      capUnitValue,
+    );
+    if (rewardCapMonthly != null && monthlyGross > rewardCapMonthly) {
+      monthlyGross = rewardCapMonthly;
+    }
+  }
+
+  const annualGross = monthlyGross * 12;
+  const annualSpend = totalSpend * 12;
+  const { annualFeeEffective } = effectiveAnnualFee(card, annualSpend);
+  return {
+    layer, value_basis: basis, accelerators, base_spend,
+    annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective, annual_net_inr: annualGross - annualFeeEffective,
+  };
+}
+
+/** The constraint/cut list shown per accelerator row. Realistic: what was cut.
+ *  Absolute: what the number assumes/requires. Facts only — from the hit + card. */
+function buildFactors(layer: "realistic" | "absolute", hit: AcceleratorHit, basis: ValueBasis, rewards: RewardRecord | null): string[] {
+  const f: string[] = [];
+  if (hit.cap_bound && hit.cap_monthly_inr != null) {
+    f.push(`Cap ${inr0(hit.cap_monthly_inr)}/mo reached — extra spend earns base`);
+  } else if (hit.cap_monthly_inr != null) {
+    f.push(`Capped at ${inr0(hit.cap_monthly_inr)}/mo`);
+  }
+  if (hit.basis === "channel-locked") {
+    const ch = hit.accel.channel?.merchants?.join(", ") ?? hit.accel.channel?.class ?? "a specific channel";
+    f.push(layer === "absolute" ? `Requires booking via ${ch}` : `Credited only when you book via ${ch}`);
+  }
+  if (hit.applicability < 1) {
+    f.push(`${Math.round(hit.applicability * 100)}% of this bucket earns the accelerated rate; the rest earns base`);
+  } else if (layer === "absolute" && isNarrowAccelerator(hit.accel)) {
+    f.push(`Assumes 100% of this bucket qualifies`);
+  }
+  if (rewards && rewards.currency !== "cashback") {
+    f.push(layer === "absolute" ? `Valued at face` : `Valued at realized redemption value`);
+  }
+  return f;
 }

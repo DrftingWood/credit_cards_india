@@ -435,29 +435,34 @@ export function allocatePortfolio(
     return { result, pool };
   };
 
-  let { result, pool } = allocateSolvent(candidates);
+  const dropped = new Set<string>();
+  let result = allocateSolvent(candidates).result;
 
   // Clearing its own fee is not the same as being worth holding. A card can pay
   // for itself and still shrink the stack, because the spend it takes would have
   // earned more on a card already in it — greedy fills by rate and never looks
-  // back. Drop-one-and-rebuild (through the same solvency filter, or the rebuild
-  // just re-admits a different fee-negative card) until no removal improves net.
+  // back. Drop-one-and-rebuild until no removal improves the net.
+  //
+  // Each trial rebuilds from the FULL candidate list minus the dropped set, not
+  // from a pool the solvency filter already narrowed: removing one card can make
+  // a previously-unaffordable card viable again, and trialling from the narrowed
+  // pool hides those recoveries and leaves the stack short of optimal.
   for (let pass = 0; pass < MARGINAL_DROP_PASSES; pass++) {
     let best = result;
-    let bestPool = pool;
     let bestDropped: string | null = null;
     for (const slot of result.slots) {
       if (opts.heldCardIds?.includes(slot.card.id)) continue; // a held card costs nothing to keep
-      const trial = allocateSolvent(pool.filter((c) => c.id !== slot.card.id));
-      if (trial.result.annual_net_inr > best.annual_net_inr) {
-        best = trial.result;
-        bestPool = trial.pool;
+      const trial = allocateSolvent(
+        candidates.filter((c) => !dropped.has(c.id) && c.id !== slot.card.id),
+      ).result;
+      if (trial.annual_net_inr > best.annual_net_inr) {
+        best = trial;
         bestDropped = slot.card.id;
       }
     }
     if (!bestDropped) break;
+    dropped.add(bestDropped);
     result = best;
-    pool = bestPool;
   }
   return result;
 }

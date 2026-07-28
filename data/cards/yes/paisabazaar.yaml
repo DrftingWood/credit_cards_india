@@ -53,7 +53,17 @@ rewards:
       unit_value_inr_realized: 1.0
     accelerated:
       - category: dining-travel
-        canonical_categories: [dining, travel]
+        # FOOD DELIVERY DOES NOT EARN THE 6% — field-reported 2026-07-28 and acted on.
+        # Paisabazaar's own product page claims the dining side covers "Dining,
+        # including Swiggy, Zomato, Dineout"; cardholders report aggregator spend
+        # posting at the 1% base instead. That page is lead-gen marketing, not the
+        # issuer's MITC (which is session-gated and unread), so the claim never had
+        # issuer backing. `dining` is REMOVED from the scored categories: the
+        # canonical buckets cannot separate a restaurant swipe from an aggregator
+        # order, and over-crediting sends people to a card that will not pay them.
+        # This deliberately under-credits genuine in-restaurant dining on MCC
+        # 5812/5813/5814 — restore only against the MITC. See docs/TODO.md E16.
+        canonical_categories: [travel]
         multiplier: 6
         effective_rate: 12
         cap_per_cycle: 3000
@@ -68,10 +78,12 @@ rewards:
                    '3657', '3659', '3690', '3812']
         notes: >-
           6% cashback on an explicit allowlist of 24 dining & travel MCCs, capped Rs 3,000/month,
-          then flat 1%. The issuer states the dining side covers "Dining, including Swiggy, Zomato,
-          Dineout, restaurants, fast food joints, etc." CRITICAL: "UPI spends on dining & travel do
-          NOT qualify for 6% cashback" - a Swiggy order paid by UPI earns 1%, not 6%, which matters
-          most on the RuPay variant whose whole point is UPI. Pay by card number to earn the 6%.
+          then flat 1%. FOOD DELIVERY DOES NOT EARN THE 6%: Paisabazaar's page claims the dining
+          side covers "Dining, including Swiggy, Zomato, Dineout", but cardholders report aggregator
+          spend posting at the 1% base. That page is lead-gen marketing, not the issuer MITC, so the
+          claim never had issuer backing — `dining` is excluded from the scored categories until the
+          MITC settles it. In practice this card earns the 6% on TRAVEL (airlines, hotels, agents).
+          Also excluded: "UPI spends on dining & travel do not qualify for 6% cashback."
     exclusions:
       - fuel
       - wallet-loads
@@ -85,6 +97,7 @@ rewards:
     mcc_exclusions: ['6513']
     capping_rules:
       - "6% cashback applies ONLY to the 24 allowlisted dining/travel MCCs; everything else earns the 1% base."
+      - "FOOD DELIVERY (Swiggy/Zomato/aggregators) is field-reported to earn the 1% base, NOT the 6%, despite marketing copy to the contrary. Unverified against the MITC."
       - "6% dining/travel cashback capped at Rs 3,000 per month, then flat 1%."
       - "UPI-routed dining & travel spends are excluded from the 6% rate and earn the 1% base instead."
       - "No cashback on rent, utilities, education, insurance, EMI, wallet loads, cash advance, toll, government, fuel, hospitals or pharmacies"
@@ -126,4 +139,4 @@ application:
 
 metadata:
   last_verified_on: 2026-07-28
-  tags: [entry, cashback, dining, travel, co-brand]
+  tags: [entry, cashback, travel, co-brand]

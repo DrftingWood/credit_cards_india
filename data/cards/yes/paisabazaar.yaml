@@ -59,23 +59,42 @@ rewards:
         cap_per_cycle: 3000
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "6% dining/travel capped Rs3,000/month, then flat 1% (post 15-Dec-2025 upgrade)."
+        # The 6% is an explicit 24-MCC ALLOWLIST, not a broad dining/travel
+        # category. Verified 2026-07-28 against the Paisabazaar product page.
+        # 5812/5813/5814 are the restaurant codes food-delivery aggregators bill
+        # under, and the issuer names Swiggy, Zomato and Dineout outright.
+        mcc_list: ['4511', '4582', '4722', '7011', '5812', '5813', '5814', '3020', '3501', '3509',
+                   '3513', '3520', '3530', '3543', '3553', '3583', '3637', '3640', '3642', '3649',
+                   '3657', '3659', '3690', '3812']
+        notes: >-
+          6% cashback on an explicit allowlist of 24 dining & travel MCCs, capped Rs 3,000/month,
+          then flat 1%. The issuer states the dining side covers "Dining, including Swiggy, Zomato,
+          Dineout, restaurants, fast food joints, etc." CRITICAL: "UPI spends on dining & travel do
+          NOT qualify for 6% cashback" - a Swiggy order paid by UPI earns 1%, not 6%, which matters
+          most on the RuPay variant whose whole point is UPI. Pay by card number to earn the 6%.
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
+      - utilities
+      - education
+      - government
+      - jewellery
     mcc_exclusions: ['6513']
     capping_rules:
-      - "6% accelerated cashback on dining/travel subject to monthly caps"
+      - "6% cashback applies ONLY to the 24 allowlisted dining/travel MCCs; everything else earns the 1% base."
+      - "6% dining/travel cashback capped at Rs 3,000 per month, then flat 1%."
+      - "UPI-routed dining & travel spends are excluded from the 6% rate and earn the 1% base instead."
+      - "No cashback on rent, utilities, education, insurance, EMI, wallet loads, cash advance, toll, government, fuel, hospitals or pharmacies"
     redemption:
       - type: statement-credit
         program: PaisaSave
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-credit-card
-      retrieved_on: '2026-07-05'
+      url: https://www.paisabazaar.com/yes-bank/paisabazaar-paisasave-credit-card/
+      retrieved_on: '2026-07-28'
 
       notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:
@@ -106,5 +125,5 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-credit-card
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-28
   tags: [entry, cashback, dining, travel, co-brand]

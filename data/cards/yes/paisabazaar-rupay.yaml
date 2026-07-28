@@ -57,16 +57,34 @@ rewards:
         cap_per_cycle: 3000
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "6% dining/travel capped Rs3,000/month, then flat 1%."
+        # Explicit 24-MCC ALLOWLIST, not a broad dining/travel category.
+        # Verified 2026-07-28 against the Paisabazaar product page.
+        mcc_list: ['4511', '4582', '4722', '7011', '5812', '5813', '5814', '3020', '3501', '3509',
+                   '3513', '3520', '3530', '3543', '3553', '3583', '3637', '3640', '3642', '3649',
+                   '3657', '3659', '3690', '3812']
+        notes: >-
+          6% cashback on an explicit allowlist of 24 dining & travel MCCs, capped Rs 3,000/month,
+          then flat 1%. Issuer wording: "Dining, including Swiggy, Zomato, Dineout, restaurants,
+          fast food joints, etc." CRITICAL FOR THIS VARIANT: "UPI spends on dining & travel do NOT
+          qualify for 6% cashback." This is the UPI-linked RuPay variant, so paying Swiggy through
+          UPI — the reason to hold it — drops the rate to the 1% base (2 RP per Rs 200 on UPI spends
+          above Rs 2,000). To earn 6% the transaction must go through the card number, not UPI.
     exclusions:
       - fuel
       - wallet-loads
       - rent
       - insurance-premiums
       - emi
+      - utilities
+      - education
+      - government
+      - jewellery
     mcc_exclusions: ['6513']
     capping_rules:
-      - "6% accelerated cashback on dining/travel subject to monthly caps"
+      - "6% cashback applies ONLY to the 24 allowlisted dining/travel MCCs; everything else earns the 1% base."
+      - "6% dining/travel cashback capped at Rs 3,000 per month, then flat 1%."
+      - "UPI-routed dining & travel spends are excluded from the 6% rate and earn the 1% base instead."
+      - "No cashback on rent, utilities, education, insurance, EMI, wallet loads, cash advance, toll, government, fuel, hospitals or pharmacies"
     redemption:
       - type: statement-credit
         program: PaisaSave
@@ -104,5 +122,5 @@ application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-rupay-credit-card
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-07-28
   tags: [entry, cashback, dining, travel, co-brand, upi, rupay, lifetime-free]

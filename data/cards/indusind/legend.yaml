@@ -44,8 +44,13 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 0.75
-      unit_value_inr_realized: 0.75
+      # Corrected 2026-07-28. The record claimed Rs 0.75 face AND realized, but no
+      # redemption on this card pays anything close: catalog and statement credit are
+      # Rs 0.25, and the best documented airmiles transfer is Rs 0.28 (KrisFlyer 4:1).
+      # The Rs 0.75 'floor' was backed by no redemption option and inflated every rate
+      # on the card by 3x. See docs/TODO.md E18.
+      unit_value_inr: 0.28
+      unit_value_inr_realized: 0.25
     accelerated:
       - category: weekend-spend
         multiplier: 2
@@ -65,7 +70,7 @@ rewards:
       - type: airmiles
         program: Multiple (transfer partners)
         ratio: "4:1"
-        constraints: "2 transfer partners; ratios are card-point : partner-unit. realized Rs 0.75 = guaranteed non-transfer floor; best documented transfer Rs 0.28. 0 partners beat the floor. Full per-partner values below."
+        constraints: "2 transfer partners; ratios are card-point : partner-unit. realized Rs 0.25 = guaranteed non-transfer floor (catalog / statement credit); best documented transfer Rs 0.28. 0 partners beat the floor. Full per-partner values below."
         transfer_partners:
           - partner_name: Singapore KrisFlyer
             partner_type: airline

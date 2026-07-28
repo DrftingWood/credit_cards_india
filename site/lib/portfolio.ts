@@ -25,19 +25,13 @@
 // channel gating, applicability, ecosystem locks, unit values and base-rate caps
 // keep exactly one implementation. This file only decides allocation.
 //
-// KNOWN LIMITATION — rising slab schedules.
-// The tranche model assumes a card's value curve is CONCAVE: marginal rates only
-// ever fall as caps bind. That holds for every card whose accelerator is capped
-// and whose base continues underneath, which the dataset census says is the
-// common shape. It does NOT hold for a card whose rate RISES with cumulative
-// monthly spend — axis-cashback pays 2% on the first ₹5,000, 5% to ₹40,000 and
-// 7% above that. Greedy allocation is not optimal for those: you cannot reach the
-// top slab without first pushing spend through the low ones, which makes the
-// card's worth depend on committing a minimum volume to it. The schema has no
-// spend-slab primitive to express this (see docs/TODO.md), so such cards are
-// currently encoded at their top marginal rate and flagged by scorer-decoupled's
-// "up to N%" ceiling check rather than modelled. Treat their allocation as
-// indicative; the cap-bound TOTAL stays correct because the cap is what binds.
+// RISING schedules are handled, not assumed away. A card whose marginal rate
+// climbs with monthly volume (axis-cashback: 2% on the first ₹5,000, 5% to
+// ₹40,000, 7% above) cannot be cherry-picked — its top slab is only reachable by
+// first pushing spend through the cheap ones. Those schedules collapse to the
+// blended rate they actually deliver over their full width, which is the honest
+// number to rank against a flat-rate competitor. Falling (concave) schedules keep
+// their per-tranche detail, where greedy allocation is optimal.
 // ─────────────────────────────────────────────────────────────────────────
 
 import type { EnrichedCard } from "./types";
@@ -50,10 +44,16 @@ const PROBE_SPEND_INR = 100;
 const SATURATION_SPEND_INR = 1e9;
 /** A card earning ≥ this share of the unconstrained amount at saturation is treated as uncapped. */
 const UNCAPPED_RATIO = 0.99;
-/** Bisection steps used to locate the spend at which a card's top rate stops holding. */
-const BREAKPOINT_ITERATIONS = 24;
-/** Below this marginal rate a residual tranche is not worth routing spend to. */
+/** Geometric step between curve samples. Smaller = finer breakpoints, more scoreCard calls. */
+const CURVE_SAMPLE_RATIO = 1.6;
+/** Below this marginal rate a tranche is not worth routing spend to. */
 const RESIDUAL_RATE_EPSILON = 0.0001;
+/** Value share that counts as "already at the ceiling" when locating saturation. */
+const SATURATION_PRECISION = 0.9999;
+/** Bisection steps used to sharpen the sampled saturation boundary. */
+const SATURATION_REFINE_ITERATIONS = 20;
+/** Relative slack when comparing two sampled marginal rates for equality/ordering. */
+const RISING_TOLERANCE = 0.02;
 
 export interface PortfolioSlot {
   card: EnrichedCard;
@@ -122,28 +122,80 @@ interface Tranche {
  */
 function tranches(card: EnrichedCard, bucket: CanonicalCategory, ctx: ScoringContext): Tranche[] {
   const v = (x: number) => valueAt(card, bucket, x, ctx);
-  const top = (v(PROBE_SPEND_INR) / PROBE_SPEND_INR) * 100;
-  if (top <= 0) return [];
+  const first = (v(PROBE_SPEND_INR) / PROBE_SPEND_INR) * 100;
+  if (first <= 0) return [];
 
   const saturated = v(SATURATION_SPEND_INR);
-  const linear = (x: number) => (x * top) / 100;
-  if (saturated >= linear(SATURATION_SPEND_INR) * UNCAPPED_RATIO) {
-    return [{ ratePct: top, widthInr: Number.POSITIVE_INFINITY }];
+  if (saturated >= ((SATURATION_SPEND_INR * first) / 100) * UNCAPPED_RATIO) {
+    return [{ ratePct: first, widthInr: Number.POSITIVE_INFINITY }];
   }
 
-  // Binary-search the spend at which the top rate stops holding. The curve is
-  // concave (caps only ever reduce the marginal rate), so this is well defined.
-  let lo = PROBE_SPEND_INR;
-  let hi = SATURATION_SPEND_INR;
-  for (let i = 0; i < BREAKPOINT_ITERATIONS; i++) {
-    const mid = (lo + hi) / 2;
-    if (v(mid) >= linear(mid) * UNCAPPED_RATIO) lo = mid;
-    else hi = mid;
+  // Sample the curve geometrically and read marginal rates off consecutive
+  // samples. Sampling rather than bisecting is what lets this see a schedule
+  // whose rate RISES with spend (axis-cashback's 2% → 5% → 7% slabs); a
+  // bisection for "where the first rate stops holding" silently assumes the
+  // rate can only fall.
+  const xs: number[] = [];
+  for (let x = PROBE_SPEND_INR; x < SATURATION_SPEND_INR; x *= CURVE_SAMPLE_RATIO) xs.push(x);
+  xs.push(SATURATION_SPEND_INR);
+  const marginals: { from: number; to: number; ratePct: number }[] = [];
+  let prevX = 0;
+  let prevV = 0;
+  for (const x of xs) {
+    const value = v(x);
+    const rate = ((value - prevV) / (x - prevX)) * 100;
+    marginals.push({ from: prevX, to: x, ratePct: Math.max(0, rate) });
+    prevX = x;
+    prevV = value;
   }
 
-  const out: Tranche[] = [{ ratePct: top, widthInr: lo }];
-  const residual = ((saturated - v(lo)) / (SATURATION_SPEND_INR - lo)) * 100;
-  if (residual > RESIDUAL_RATE_EPSILON) out.push({ ratePct: residual, widthInr: Number.POSITIVE_INFINITY });
+  // Saturation spend: past here the card earns nothing more, so no allocation
+  // should be routed to it. Geometric sampling only brackets the boundary, so
+  // bisect inside the bracket — routing even a few thousand rupees too many at a
+  // dead card is spend that should have spilled to the next one in the stack.
+  const satIdx = marginals.findIndex((m) => m.ratePct <= RESIDUAL_RATE_EPSILON);
+  let saturationSpend = Number.POSITIVE_INFINITY;
+  if (satIdx >= 0) {
+    // The true boundary is the SMALLEST spend already earning the ceiling, which
+    // lies in the last still-earning interval — not inside the flat one.
+    const ceilingValue = v(marginals[satIdx].to);
+    let lo = satIdx > 0 ? marginals[satIdx - 1].from : 0;
+    let hi = marginals[satIdx].from;
+    for (let i = 0; i < SATURATION_REFINE_ITERATIONS; i++) {
+      const mid = (lo + hi) / 2;
+      if (v(mid) >= ceilingValue * SATURATION_PRECISION) hi = mid;
+      else lo = mid;
+    }
+    saturationSpend = hi;
+  }
+  const live = satIdx >= 0 ? marginals.slice(0, satIdx) : marginals;
+  if (live.length === 0) return [];
+
+  // A RISING schedule cannot be cherry-picked: the top slab is only reachable by
+  // first pushing spend through the cheap ones, so its marginal rate is not an
+  // offer the allocator can accept on its own. Collapse the whole schedule to the
+  // blended rate it actually delivers over its full width — which is the honest
+  // number to rank it against a flat-rate competitor.
+  const rising = live.some((m, i) => i > 0 && m.ratePct > live[i - 1].ratePct * (1 + RISING_TOLERANCE));
+  if (rising && Number.isFinite(saturationSpend)) {
+    const blended = (v(saturationSpend) / saturationSpend) * 100;
+    return [{ ratePct: blended, widthInr: saturationSpend }];
+  }
+
+  // Falling (concave) schedule: merge adjacent samples that share a rate, then
+  // emit them in order. Greedy allocation is optimal over these.
+  const out: Tranche[] = [];
+  for (const m of live) {
+    const last = out[out.length - 1];
+    if (last && Math.abs(last.ratePct - m.ratePct) < RISING_TOLERANCE * Math.max(1, m.ratePct)) {
+      last.widthInr += m.to - m.from;
+    } else {
+      out.push({ ratePct: m.ratePct, widthInr: m.to - m.from });
+    }
+  }
+  if (!Number.isFinite(saturationSpend) && out.length > 0) {
+    out[out.length - 1].widthInr = Number.POSITIVE_INFINITY;
+  }
   return out;
 }
 

@@ -93,6 +93,14 @@ export interface RewardBase {
   cap_per_cycle?: number | "unlimited";
   cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
   cycle?: Cycle;
+  /**
+   * Buckets where the base rate is paid at all. Omit when base is earned on every
+   * eligible rupee (the default). Set only when the issuer scopes base earn more
+   * narrowly than the exclusions already do — e.g. Axis Cashback pays base ONLY on
+   * card-present spend and travel, so online spend past the accelerator cap earns
+   * nothing instead of falling back to base.
+   */
+  applies_to_categories?: string[] | null;
 }
 
 export type ChannelClass =
@@ -121,12 +129,28 @@ export interface EarnComponent {
   notes?: string;
 }
 
+export interface RateSlab {
+  /** Cumulative qualifying spend at which this slab ends; null = unbounded (last slab only). */
+  upto_spend_inr: number | null;
+  /** Value percentage earned on spend inside this slab. */
+  rate_pct: number;
+  /** Optional ceiling on the value from this slab alone, in rupees. */
+  max_value_inr?: number | null;
+}
+
 export interface AcceleratedReward {
   category: string;
   canonical_categories?: string[] | null;
   multiplier?: number | null;
   effective_rate?: number | null;
   effective_per_inr?: number | null;
+  /**
+   * Marginal rate slabs over cumulative qualifying spend within one `cycle`,
+   * ordered by ascending `upto_spend_inr` with null only on the last (unbounded)
+   * entry. Each `rate_pct` applies only to spend inside its own slab, like tax
+   * brackets; rates may rise or fall. Supersedes `effective_rate` for value math.
+   */
+  slabs?: RateSlab[] | null;
   cap_per_cycle?: number | "unlimited";
   cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
   cycle?: Cycle;

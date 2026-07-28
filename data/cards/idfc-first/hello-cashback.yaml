@@ -51,10 +51,20 @@ rewards:
         canonical_categories: [online]
         multiplier: 5
         effective_rate: 5
+        # The 5% is INCREMENTAL — it applies only to online spend above the
+        # ₹10,000/month threshold, not to the whole bucket. Encoded as marginal
+        # slabs (E3): the first ₹10,000 earns the 1% base, the excess earns 5%.
+        # A flat 5% overstated the card ~2x for a mid-volume online spender
+        # (₹15,000/month: ₹750 claimed vs ₹350 real).
+        slabs:
+          - upto_spend_inr: 10000
+            rate_pct: 1
+          - upto_spend_inr: null
+            rate_pct: 5
         cap_per_cycle: 1000
         cap_unit: cashback-inr
         cycle: statement
-        notes: "Up to 5% cashback on incremental online spends above ₹10,000/month (online cashback capped ₹1,000/statement). Essentials & fuel do not count toward the ₹10,000 milestone."
+        notes: "5% cashback on INCREMENTAL online spends above ₹10,000/month — the first ₹10,000 earns the 1% base, only the excess earns 5% (online cashback capped ₹1,000/statement, so the 5% slab saturates at ₹20,000 of incremental spend). Essentials & fuel do not count toward the ₹10,000 milestone."
       - category: hotel-flight-app
         canonical_categories: [travel]
         multiplier: 1

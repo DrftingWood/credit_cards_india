@@ -50,6 +50,12 @@ rewards:
       cap_per_cycle: "unlimited"
       cap_unit: cashback-inr
       cycle: monthly
+      # T&C sec 5 "Base Cashback": paid only "if the customer makes offline spends
+      # (POS/card present transactions) or spends on travel". The canonical buckets
+      # have no card-present axis, so only `travel` can be asserted — which is the
+      # conservative reading, and the one that matters here: online spend past the
+      # ₹4,000 accelerated cap earns NOTHING rather than falling back to 0.75%.
+      applies_to_categories: [travel]
     accelerated:
       - category: online-spends
         # Scope is the transaction CHANNEL, not the merchant category. The member
@@ -61,11 +67,20 @@ rewards:
         # qualify; only travel MCCs and the excluded-MCC list are carved out.
         canonical_categories: [online, dining, groceries, utilities]
         multiplier: 1
-        # 7 is the TOP MARGINAL slab, not a flat rate — the schema has no
-        # spend-slab primitive, so the highest tier is encoded and the tier table
-        # is recorded verbatim below. scorer-decoupled flags this as an
-        # "up to N%" ceiling so it is never read as a verified flat rate.
+        # `slabs` below is authoritative for value math. effective_rate stays at the
+        # TOP slab so consumers predating the slab primitive still see a number;
+        # ratesFlags surfaces it as a ceiling rather than a verified flat rate.
         effective_rate: 7
+        slabs:
+          - upto_spend_inr: 5000
+            rate_pct: 2
+            max_value_inr: 100
+          - upto_spend_inr: 40000
+            rate_pct: 5
+            max_value_inr: 1750
+          - upto_spend_inr: null
+            rate_pct: 7
+            max_value_inr: 2150
         cap_per_cycle: 4000
         cap_unit: cashback-inr
         cycle: monthly

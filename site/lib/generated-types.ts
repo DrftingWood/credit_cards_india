@@ -262,6 +262,47 @@ export interface RewardRecord {
     cap_per_cycle?: number | "unlimited";
     cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
     cycle?: Cycle;
+    /**
+     * Restricts where the base rate is paid at all. Omit (the default) when base is earned on every eligible rupee. Set it only when the issuer scopes base earn more narrowly than the card's exclusions already do — e.g. Axis Cashback pays its 0.75% base ONLY on card-present spend and travel, so online spend past the accelerator cap earns nothing rather than falling back to base. The canonical buckets carry no card-present/card-not-present axis, so a card whose base is channel-scoped must enumerate the buckets where that channel realistically dominates; prefer the conservative (smaller) list.
+     *
+     * @minItems 1
+     */
+    applies_to_categories?: [
+      (
+        | "online"
+        | "groceries"
+        | "dining"
+        | "fuel"
+        | "travel"
+        | "utilities"
+        | "rent"
+        | "international"
+        | "entertainment"
+        | "government"
+        | "insurance"
+        | "education"
+        | "wallet-loads"
+        | "emi"
+        | "other"
+      ),
+      ...(
+        | "online"
+        | "groceries"
+        | "dining"
+        | "fuel"
+        | "travel"
+        | "utilities"
+        | "rent"
+        | "international"
+        | "entertainment"
+        | "government"
+        | "insurance"
+        | "education"
+        | "wallet-loads"
+        | "emi"
+        | "other"
+      )[]
+    ];
   };
   accelerated?: (
     | {

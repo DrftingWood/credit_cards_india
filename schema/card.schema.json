@@ -369,7 +369,33 @@
               "enum": ["points", "cashback-inr", "miles", "spend-inr"],
               "default": "points"
             },
-            "cycle": { "$ref": "#/$defs/Cycle" }
+            "cycle": { "$ref": "#/$defs/Cycle" },
+            "applies_to_categories": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "online",
+                  "groceries",
+                  "dining",
+                  "fuel",
+                  "travel",
+                  "utilities",
+                  "rent",
+                  "international",
+                  "entertainment",
+                  "government",
+                  "insurance",
+                  "education",
+                  "wallet-loads",
+                  "emi",
+                  "other"
+                ]
+              },
+              "description": "Restricts where the base rate is paid at all. Omit (the default) when base is earned on every eligible rupee. Set it only when the issuer scopes base earn more narrowly than the card's exclusions already do — e.g. Axis Cashback pays its 0.75% base ONLY on card-present spend and travel, so online spend past the accelerator cap earns nothing rather than falling back to base. The canonical buckets carry no card-present/card-not-present axis, so a card whose base is channel-scoped must enumerate the buckets where that channel realistically dominates; prefer the conservative (smaller) list."
+            }
           }
         },
         "accelerated": {
@@ -397,6 +423,33 @@
                 "type": ["integer", "null"],
                 "minimum": 1,
                 "description": "Rupee basis for effective_rate when it differs from base.per_inr."
+              },
+              "slabs": {
+                "type": "array",
+                "minItems": 2,
+                "description": "MARGINAL rate slabs over cumulative qualifying spend within one `cycle`. Use when an issuer's rate changes with monthly volume instead of being flat — e.g. Axis Cashback pays 2% on the first ₹5,000 of monthly online spend, 5% from ₹5,001-₹40,000 and 7% above that. Each slab's `rate_pct` applies ONLY to the spend between the previous slab's `upto_spend_inr` and its own, exactly like income-tax brackets; rates may rise or fall. Slabs must be ordered by ascending `upto_spend_inr`, and exactly the LAST entry may set it to null for an unbounded top slab. When present, `slabs` supersedes `effective_rate` for value math — keep `effective_rate` set to the top slab so consumers that predate this field still see a sane (if optimistic) number, which `ratesFlags` then flags as a ceiling.",
+                "items": {
+                  "type": "object",
+                  "required": ["upto_spend_inr", "rate_pct"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "upto_spend_inr": {
+                      "type": ["integer", "null"],
+                      "minimum": 1,
+                      "description": "Cumulative qualifying spend at which this slab ends. null = unbounded (last slab only)."
+                    },
+                    "rate_pct": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Value percentage earned on spend falling inside this slab. A percentage of spend, NOT reward units."
+                    },
+                    "max_value_inr": {
+                      "type": ["number", "null"],
+                      "minimum": 0,
+                      "description": "Optional ceiling on the value earned from this slab alone, in rupees. The accelerator's own cap_per_cycle still applies on top."
+                    }
+                  }
+                }
               },
               "cap_per_cycle": {
                 "oneOf": [

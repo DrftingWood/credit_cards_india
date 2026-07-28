@@ -32,24 +32,22 @@ describe("cap-aware portfolio allocation", () => {
     expect(p.annual_value_inr).toBeGreaterThan(best);
   });
 
-  test("a cap-bound card's payout does not depend on its headline rate — only on how much spend it absorbs", async () => {
+  test("a rising slab schedule is ranked by the blended rate it actually delivers", async () => {
     const cards = await load();
-    // axis-cashback caps at ₹4,000/month of cashback on ONLINE spend. Whether the
-    // encoded rate is 7% or 5%, ₹1.5L/month is far past the cap, so the payout is
-    // identical either way; what the rate changes is how much spend the card soaks
-    // up, and therefore how much spills to the next card in the stack.
+    // axis-cashback climbs 2% -> 5% -> 7% over cumulative monthly spend and caps at
+    // Rs 4,000, reached at Rs 70,714. Its 7% top slab is NOT an offer the allocator
+    // can take on its own, so the card must be ranked at its blended ~5.66%, and no
+    // spend should be routed past the point where it stops earning.
     const solo = allocatePortfolio(byId(cards, ["axis-cashback"]), spend({ online: 150_000 }), {}, { dropFeeNegative: false });
     expect(solo.slots.length).toBe(1);
     const slot = solo.slots[0];
+    expect(slot.monthly_value_inr).toBeCloseTo(4000, 0);
+    // Base is scoped to travel only (E4), so online overflow earns nothing and must
+    // spill to another card rather than sitting on this one.
+    expect(slot.monthly_spend_inr).toBeCloseTo(70_714, -2);
+    expect(slot.effective_rate_pct).toBeCloseTo(5.66, 1);
     expect(slot.cap_bound).toBe(true);
-    // ₹4,000 from the capped 7% tranche, then 0.75% base on the ₹92,857 overflow.
-    // Getting this right is the whole reason tranches replaced a single (rate, cap)
-    // pair: the naive model reads uncapped base earnings as accelerator headroom
-    // and reports ₹10,500.
-    expect(slot.monthly_value_inr).toBeCloseTo(4000 + (150_000 - 4000 / 0.07) * 0.0075, 0);
-    // Base is uncapped, so the card still absorbs the overflow — at a far worse rate.
-    expect(slot.monthly_spend_inr).toBeCloseTo(150_000, 0);
-    expect(slot.effective_rate_pct).toBeLessThan(7);
+    expect(solo.unallocated_monthly_spend_inr).toBeGreaterThan(0);
   });
 
   test("a channel-scoped accelerator covers food delivery, not just the online bucket", async () => {
@@ -66,8 +64,8 @@ describe("cap-aware portfolio allocation", () => {
     const onDining = scoreCard(axis, HEAVY_DINING).annual_gross_inr;
     const onOnline = scoreCard(axis, spend({ online: 150_000 })).annual_gross_inr;
     expect(onDining).toBeCloseTo(onOnline, 0);
-    // Cap binds either way, so the card is worth its ₹4,000/month ceiling.
-    expect(onDining / 12).toBeGreaterThan(4000);
+    // Cap binds either way, so the card is worth exactly its ₹4,000/month ceiling.
+    expect(onDining / 12).toBeCloseTo(4000, 0);
   });
 
   test("reports which categories ran out of capacity rather than silently dropping spend", async () => {

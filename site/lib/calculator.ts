@@ -1,6 +1,7 @@
 import type {
   EnrichedCard,
   AcceleratedReward,
+  RateSlab,
   RewardRecord,
   LoyaltyProgram,
 } from "./types";
@@ -309,6 +310,98 @@ interface AcceleratorHit {
   uncapped_accel_inr: number;
 }
 
+/**
+ * Value earned on the spend segment [`consumed`, `consumed + amount`] under a
+ * marginal slab schedule, plus the spend that segment actually consumed.
+ *
+ * Slabs behave like tax brackets over CUMULATIVE qualifying spend in the cycle,
+ * so a bucket scored after another bucket already pushed ₹40k through the same
+ * accelerator must start where that left off — hence `consumed`. Rates may rise
+ * (Axis Cashback: 2% → 5% → 7%) or fall; nothing here assumes a direction.
+ */
+export function slabEarn(
+  slabs: RateSlab[],
+  amount: number,
+  consumed = 0,
+): { value: number; spend: number } {
+  let value = 0;
+  let spend = 0;
+  let cursor = consumed;
+  let left = amount;
+  for (const s of slabs) {
+    if (left <= 0) break;
+    const ceiling = s.upto_spend_inr ?? Number.POSITIVE_INFINITY;
+    if (cursor >= ceiling) continue;
+    const width = Math.min(left, ceiling - cursor);
+    let earned = (width * s.rate_pct) / 100;
+    if (s.max_value_inr != null) {
+      // This slab's own ceiling may already be partly spent by earlier buckets.
+      const priorInSlab = Math.max(0, Math.min(cursor, ceiling) - slabFloor(slabs, s));
+      const alreadyEarned = (priorInSlab * s.rate_pct) / 100;
+      earned = Math.max(0, Math.min(earned, s.max_value_inr - alreadyEarned));
+    }
+    value += earned;
+    spend += width;
+    cursor += width;
+    left -= width;
+  }
+  return { value, spend };
+}
+
+/** Spend needed to earn `target` value under a slab schedule, starting from `consumed`. */
+function slabSpendForValue(slabs: RateSlab[], target: number, consumed = 0): number {
+  let spend = 0;
+  let remaining = target;
+  let cursor = consumed;
+  for (const s of slabs) {
+    if (remaining <= 0) break;
+    const ceiling = s.upto_spend_inr ?? Number.POSITIVE_INFINITY;
+    if (cursor >= ceiling) continue;
+    const width = ceiling - cursor;
+    if (s.rate_pct <= 0) {
+      // A 0% slab buys no value; it still consumes spend before the next slab.
+      if (!Number.isFinite(width)) break;
+      spend += width;
+      cursor += width;
+      continue;
+    }
+    const valueHere = Math.min(remaining, (width * s.rate_pct) / 100);
+    const spendHere = (valueHere * 100) / s.rate_pct;
+    spend += spendHere;
+    cursor += spendHere;
+    remaining -= valueHere;
+  }
+  return spend;
+}
+
+/** Cumulative spend at which a slab begins (the previous slab's ceiling, or 0). */
+function slabFloor(slabs: RateSlab[], target: RateSlab): number {
+  let floor = 0;
+  for (const s of slabs) {
+    if (s === target) return floor;
+    floor = s.upto_spend_inr ?? floor;
+  }
+  return floor;
+}
+
+/** Blended percentage a slab schedule yields over `amount` of spend starting from `consumed`. */
+function slabRatePct(slabs: RateSlab[], amount: number, consumed = 0): number | null {
+  if (amount <= 0) return null;
+  const { value } = slabEarn(slabs, amount, consumed);
+  return (value / amount) * 100;
+}
+
+/**
+ * Base rate for one bucket. `base.applies_to_categories`, when authored, means the
+ * issuer pays base ONLY on those buckets — elsewhere overflow past an accelerator
+ * cap earns nothing rather than dropping to base.
+ */
+function baseRateForBucket(rewards: RewardRecord | null, bucket: CanonicalCategory, baseRate: number): number {
+  const scope = rewards?.base?.applies_to_categories;
+  if (!scope || scope.length === 0) return baseRate;
+  return scope.includes(bucket) ? baseRate : 0;
+}
+
 function acceleratedRateForBucket(
   accelerated: AcceleratedReward[],
   bucket: CanonicalCategory,
@@ -317,6 +410,7 @@ function acceleratedRateForBucket(
   ctx: ScoringContext | undefined,
   baseRate: number,
   capUsage: Map<AcceleratedReward, number>,
+  spendUsage: Map<AcceleratedReward, number> = new Map(),
 ): {
   hit: AcceleratorHit | null;
   narrowUncounted: boolean;
@@ -338,8 +432,14 @@ function acceleratedRateForBucket(
       continue;
     }
 
-    const ratePct = acceleratorRatePct(a, rewards, ctx);
-    if (ratePct == null) continue;
+    // A slab schedule sets its own blended rate for this bucket's spend; fall back
+    // to the flat rate otherwise. acceleratorRatePct is still consulted first so a
+    // record with slabs AND an unusable flat rate (channel/units) is still skipped.
+    const flatRatePct = acceleratorRatePct(a, rewards, ctx);
+    if (flatRatePct == null) continue;
+    const ratePct = a.slabs?.length
+      ? slabRatePct(a.slabs, amount * (applicabilityFraction(a, ctx) ?? 1), spendUsage.get(a) ?? 0) ?? flatRatePct
+      : flatRatePct;
 
     // Applicability: a merchant/MCC/co-brand-specific accelerator only covers a
     // slice of a broad bucket. When that slice isn't authored, refuse to invent
@@ -377,14 +477,30 @@ function acceleratedRateForBucket(
     const remainingCap = capMonthlyInr != null ? Math.max(0, capMonthlyInr - used) : null;
 
     const accelSpend = amount * f;
-    const grossAccel = (accelSpend * ratePct) / 100;
+    // A slab schedule earns marginally over cumulative spend, so the rate that
+    // applies depends on how much this accelerator has already absorbed in
+    // earlier buckets. Flat accelerators keep the simple rate × spend form.
+    const spentSoFar = spendUsage.get(a) ?? 0;
+    const grossAccel = a.slabs?.length
+      ? slabEarn(a.slabs, accelSpend, spentSoFar).value
+      : (accelSpend * ratePct) / 100;
     const capBound = remainingCap != null && grossAccel > remainingCap;
     const accelValue = capBound ? remainingCap : grossAccel;
     // Spend beyond the cap still earns the base rate on real cards (the same
-    // over-cap fallback engine_v2.py models) — not zero.
-    const overCapSpend = capBound && ratePct > 0 ? accelSpend - (remainingCap * 100) / ratePct : 0;
-    const overCapBase = (overCapSpend * baseRate) / 100;
-    const baseRemainderValue = (amount * (1 - f) * baseRate) / 100;
+    // over-cap fallback engine_v2.py models) — not zero, unless the issuer scopes
+    // base away from this bucket (base.applies_to_categories).
+    const bucketBaseRate = baseRateForBucket(rewards, bucket, baseRate);
+    let overCapSpend = 0;
+    if (capBound) {
+      if (a.slabs?.length) {
+        // Walk the schedule to find how much spend the cap actually paid for.
+        overCapSpend = Math.max(0, accelSpend - slabSpendForValue(a.slabs, remainingCap!, spentSoFar));
+      } else if (ratePct > 0) {
+        overCapSpend = accelSpend - (remainingCap! * 100) / ratePct;
+      }
+    }
+    const overCapBase = (overCapSpend * bucketBaseRate) / 100;
+    const baseRemainderValue = (amount * (1 - f) * bucketBaseRate) / 100;
 
     // Rank by realised blended monthly value for THIS user's spend on this
     // bucket, not by headline rate — otherwise a 10% accelerator capped at
@@ -488,6 +604,10 @@ export function scoreCard(
   let narrowRatesUncounted = false; // a merchant/co-brand rate we declined to credit (A2)
   // Cap consumption per accelerator, shared across buckets (one pool per cap).
   const capUsage = new Map<AcceleratedReward, number>();
+  // Qualifying SPEND per accelerator, also shared across buckets — a marginal slab
+  // schedule is cumulative over the cycle, so a later bucket must resume where the
+  // earlier one left off rather than restarting at the bottom slab.
+  const spendUsage = new Map<AcceleratedReward, number>();
 
   for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
     const amount = spend[bucket] || 0;
@@ -506,14 +626,15 @@ export function scoreCard(
       continue;
     }
 
+    const bucketBaseRate = baseRateForBucket(rewards, bucket, baseRate);
     let basis: "general" | "channel-locked" = "general";
     let note: string | undefined;
-    let effectiveRate = baseRate; // blended rate shown to the user
+    let effectiveRate = bucketBaseRate; // blended rate shown to the user
     let monthlyValueForBucket: number;
     let baseEarned: number; // portion earned at base rate (subject to base.cap_per_cycle)
 
     const accel = ecoCredited && rewards?.accelerated?.length
-      ? acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx, baseRate, capUsage)
+      ? acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx, baseRate, capUsage, spendUsage)
       : { hit: null, narrowUncounted: false };
     const hit = accel.hit;
     if (accel.narrowUncounted) narrowRatesUncounted = true;
@@ -527,6 +648,7 @@ export function scoreCard(
         note = `Capped at ${inr0(hit.cap_monthly_inr)}/mo`;
       }
       capUsage.set(hit.accel, (capUsage.get(hit.accel) ?? 0) + hit.accel_value_inr);
+      spendUsage.set(hit.accel, (spendUsage.get(hit.accel) ?? 0) + amount * f);
       // Over-cap spend and the non-applicable slice both earn base rate,
       // so both are subject to base.cap_per_cycle below.
       baseEarned = hit.base_remainder_inr + hit.over_cap_base_inr;
@@ -537,9 +659,10 @@ export function scoreCard(
         note = `${Math.round(f * 100)}% of this bucket earns the accelerated rate; the rest earns base`;
       }
     } else {
-      monthlyValueForBucket = (amount * baseRate) / 100;
+      monthlyValueForBucket = (amount * bucketBaseRate) / 100;
       baseEarned = monthlyValueForBucket;
-      effectiveRate = baseRate;
+      effectiveRate = bucketBaseRate;
+      if (bucketBaseRate === 0 && baseRate > 0) note = "Base rate not paid on this category";
     }
 
     baseMonthly += baseEarned;

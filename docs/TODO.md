@@ -493,3 +493,36 @@ down to two records needing issuer T&C, and E6 came out of building E5.
 | E4 | Done | Schema | **`base.applies_to_categories` — scoped base earn.** Added 2026-07-28. When set, base is paid only on the listed buckets, so overflow past an accelerator cap earns nothing instead of silently dropping to base. `axis-cashback` scoped to `[travel]`: its T&C pays base only on "offline spends (POS/card present transactions) or spends on travel", and the canonical buckets carry no card-present axis, so `travel` is the only assertible member — the conservative reading, and the one that matters (₹1.5L/month of online spend now scores exactly the ₹4,000 cap, not ₹4,696). The bucket model still has no channel dimension; a fuller fix would add one and let base be channel-scoped directly. Only `axis-cashback` carries the field, locked by a test. |
 | E5 | Mostly done | Data quality | **Hedged "up to N%" rate sweep.** The detector fires only when a note's "up to N%" EQUALS the encoded `effective_rate` (an unmodelled ceiling), which correctly cleared the four earlier suspects whose notes merely restate a rate in another unit — `idfc-first-wow-black`, `idfc-first-diamond-reserve`, `idfc-first-wow`, `idfc-first-lic-select` are NOT defects. Fixed: `axis-cashback` (slabs, 2026-07-28); `idfc-first-hello-cashback` (its 5% is INCREMENTAL above ₹10,000/month, now slabs `[1% to 10k, 5% above]` — a flat 5% overstated a ₹15,000/month online spender ₹750 vs ₹350 real). REMAINING, both needing an issuer T&C: (a) `sbi-irctc-platinum` — note says "up to 10% value back" but the encoding is 10 points per ₹125 at ₹1.00 = 8% value; either the note or the rate is wrong, and "up to" hints the rate varies by travel class (AC1/AC2/AC3/Chair Car). (b) `au-paytm` — note says "Up to 2% rewards" on Paytm UPI but the encoding is 2 points per ₹100 at ₹0.22 = 0.44% value; smells like the units-as-percent class of bug the A1 regression lock covers, so confirm whether 2% is the VALUE or the point count. |
 | E6 | Open | Engine | **Accelerator caps do not cover over-cap base earn.** `idfc-first-hello-cashback`'s T&C caps TOTAL online cashback at ₹1,000/statement, but the engine pays the ₹1,000 accelerator cap and then base on the over-cap spend (~₹20 extra at ₹30,000/month). Generic over-cap-base fallback is right for most cards, so this needs a per-record opt-in (e.g. `cap_includes_base: true`) rather than a global behaviour change. Bounded and test-documented, not silent. |
+
+## Recommender realism backlog (opened 2026-07-28, from running a real spend profile)
+
+These came out of driving an actual profile (₹1.5L/mo in one category, reimbursed) through
+`allocatePortfolio` and then checking every recommended card against its issuer T&C. The engine
+was right; the DEFAULTS and the DATA were not. Each item below produced a materially wrong
+recommendation before it was caught.
+
+| ID | Priority | Area | Task |
+| --- | --- | --- | --- |
+| E7 | Open | Engine | **`allocatePortfolio` is silently optimistic without a `channelMix`.** `channelSatisfied` treats an absent `ctx.channelMix` as "the user always transacts on the right channel" (`calculator.ts:174`) — defensible for the `/calculator` sandbox, dangerous for a portfolio recommendation. With `ctx = {}` the allocator produced a 9-card stack worth ₹1,46,756 in which FOUR cards' rates did not apply to the user's spend at all: `axis-airtel` (Zomato/Blinkit/District, not Swiggy), `sbi-tata-neu-infinity` (closed-loop Tata brands), `axis-flipkart` (Myntra/Flipkart), `hdfc-phonepe-ultimo` (10% tier needs the PhonePe app). With a realistic mix the same profile yields 5 cards and ₹1,17,803. Fix: make the channel mix an explicit parameter, refuse to credit `channel.required` accelerators without one, or return an `assumed_channels[]` the caller must acknowledge. A recommender must not default to optimism. |
+| E8 | Open | Data quality | **Remaining ungated app-ecosystem accelerators.** `sbi-paytm-select` FIXED 2026-07-28 — both rates are Paytm-app-only per the card's own copy ("via the Paytm App") yet were authored with no `merchants`/`channel`, so every user's entire travel bucket earned 5%. D34 named two more still ungated: `sbi-paytm` and `sbi-phonepe-purple`. Sweep for any accelerator whose `notes` name an app or portal ("via the X app", "booked on X") while `channel` is null. |
+| E9 | Open | Data quality | **`yes-paisabazaar` 6% dining is MEDIUM-confidence and load-bearing.** No `merchants`, no `channel`, MCC-based `dining`, ₹3,000/month cap — it ranked #2 in the profile at ₹37,001/yr entirely on the assumption that food-delivery aggregators sit inside its dining definition. YES Bank's MITC is session-gated, so nobody has read the terms. Source the MITC or downgrade the record. The same question applies to `kotak-cashback-plus`, whose "5% on online food deliveries" is likewise ungated and web-sourced. |
+| E10 | Open | Engine | **Nothing surfaces WHY a card is in a stack.** `PortfolioSlot` reports the rate and the rupees but not which accelerator fired or what gated it, so auditing a recommendation means hand-reading YAML — which is exactly how the E7 defects survived. Carry the winning `AcceleratedReward` (at minimum its `category`, `merchants`, `channel`) through to the slot so a stack can be checked from its own output. |
+| E11 | Open | Engine | **Reward FORM is invisible in ranking.** Every card in the final stack happened to pay ₹1.00/unit as statement credit, but nothing in the scorer distinguishes that from closed-loop currency (Tata Neu's NeuCoins) or a partner-wallet credit (`axis-airtel`'s value-back is credited to a partner wallet, not cash). `redemption_scope: closed-loop` exists and the calculator honours it for VALUE, yet a ranked list still shows cash and non-cash side by side. Surface `redemption[0].type` and any `min_units` floor in recommender output. |
+
+## Completed Recently
+
+- **2026-07-04 audit board (A0â€“C3 + B1â€“B5):** all 12 tasks done on branch
+  `todo-board-2026-07`. Recommender/calculator correctness (A1â€“A4), applicability
+  model without fabricated numbers (A2, DECISIONS D-18/D-19), reproducible
+  validation (A0), machine-readable evidence schema (B1), source manifest/index
+  normalization + low-text PDF marking (B2/B3), HDFC stale-URL migration
+  (B4, Playwright-verified), 7 PSU cards verified vs issuer PDFs with real
+  corrections (B5), portfolio refresh + network-variant decision + 6 site UX
+  fixes (C1â€“C3). 87 site tests pass; validate.py clean.
+- Merged the latest audit branch into `main`.
+- Preserved the local-only PDF archive.
+- Added the local data/PDF review.
+- Corrected SBI Cashback cap to Rs. 4,000 per statement cycle based on the
+  archived SBI PDF.
+- Cleaned documentation entry points and converted this file into the canonical
+  agent task board.

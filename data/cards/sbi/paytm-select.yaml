@@ -51,16 +51,28 @@ rewards:
       per_inr: 100
       unit_value_inr: 1.0
     accelerated:
+      # Both rates are Paytm-app-only per the card's own product copy, but were
+      # authored ungated — so every user's whole travel/online bucket earned them
+      # regardless of whether they use Paytm at all. Gated 2026-07-28 (the
+      # sbi-paytm-select half of the D34 "not covered" list).
       - category: paytm-travel
         canonical_categories: [travel]
         multiplier: 5
         effective_rate: 5
-        notes: "5% Cashback on Paytm Travel bookings via the Paytm App. Cap not stated on crawl."
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [paytm-app]
+        notes: "5% Cashback on Paytm Travel bookings via the Paytm App. Requires booking through the Paytm app — does not apply to travel booked anywhere else. Cap not stated on crawl."
       - category: paytm-app-spends
         canonical_categories: [online]
         multiplier: 2
         effective_rate: 2
-        notes: "2% Cashback on all other purchases on the Paytm App. Cap not stated on crawl."
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [paytm-app]
+        notes: "2% Cashback on all other purchases on the Paytm App. Requires transacting inside the Paytm app. Cap not stated on crawl."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0

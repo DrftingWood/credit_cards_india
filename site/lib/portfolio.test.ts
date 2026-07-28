@@ -135,4 +135,23 @@ describe("cap-aware portfolio allocation", () => {
     expect(p.slots).toEqual([]);
     expect(p.annual_net_inr).toBe(0);
   });
+
+  test("a cap shared across buckets is not re-offered in each bucket", async () => {
+    const cards = await load();
+    // axis-cashback's ₹4,000 cap and slab schedule are shared by dining and online.
+    // Measuring tranche widths PER BUCKET made it look like it had fresh capacity in
+    // each, so it absorbed ₹70,709 of dining AND ₹20,000 of online while saturating
+    // at ₹70,714 total — the extra ₹20,000 earned nothing and never spilled to a card
+    // that would have paid for it.
+    const p = allocatePortfolio(byId(cards, ["axis-cashback"]), spend({ dining: 150_000, online: 20_000 }), {}, { dropFeeNegative: false });
+    const axis = p.slots.find((s) => s.card.id === "axis-cashback")!;
+    // Before the fix this was ₹90,709 — the full dining tranche PLUS the whole
+    // online bucket. The marginal-value clamp brings it back to roughly the
+    // ₹70,714 saturation point (bisection leaves a few thousand of slack, which
+    // costs nothing because the value is already capped).
+    expect(axis.monthly_spend_inr).toBeLessThan(80_000);
+    expect(axis.monthly_value_inr).toBeCloseTo(4000, 0);
+    // The spend it cannot pay for must be reported as unallocated, not absorbed.
+    expect(p.unallocated_monthly_spend_inr).toBeGreaterThan(90_000);
+  });
 });

@@ -300,8 +300,39 @@ function allocateOnce(
       const slotSoFar = slots.get(seg.card.id);
       const consumedHere = slotSoFar?.allocation.filter((a) => a.category === bucket).reduce((t, a) => t + a.monthly_spend_inr, 0) ?? 0;
       const width = Math.max(0, seg.widthInr - consumedHere);
-      const take = Math.min(remaining, width);
+      let take = Math.min(remaining, width);
       if (take <= 0) continue;
+
+      // Tranche widths are measured PER BUCKET, but a cap and a slab schedule are
+      // shared across every bucket the accelerator covers. Without a cross-bucket
+      // check a card looks like it has fresh capacity in each one — axis-cashback
+      // absorbed ₹70,709 of dining AND ₹20,000 of online while saturating at
+      // ₹70,714 total, so the extra ₹20,000 earned nothing and never spilled to a
+      // card that would have paid for it. Clamp to what the card can still earn.
+      if (slotSoFar && slotSoFar.monthly_spend_inr > 0) {
+        const routedSoFar = emptySpend();
+        for (const a of slotSoFar.allocation) routedSoFar[a.category] += a.monthly_spend_inr;
+        const before = scoreCard(seg.card, routedSoFar, ctx).annual_gross_inr / 12;
+        const gain = (t: number) => {
+          const probe = { ...routedSoFar };
+          probe[bucket] += t;
+          return scoreCard(seg.card, probe, ctx).annual_gross_inr / 12 - before;
+        };
+        // Shrink `take` to the largest amount that still earns close to its
+        // tranche rate. If the card is already saturated this collapses to zero
+        // and the spend correctly spills to the next card.
+        if (gain(take) < ((take * seg.ratePct) / 100) * SATURATION_PRECISION) {
+          let lo = 0;
+          let hi = take;
+          for (let k = 0; k < SATURATION_REFINE_ITERATIONS; k++) {
+            const mid = (lo + hi) / 2;
+            if (gain(mid) >= ((mid * seg.ratePct) / 100) * SATURATION_PRECISION) lo = mid;
+            else hi = mid;
+          }
+          take = lo;
+        }
+        if (take <= RESIDUAL_RATE_EPSILON) continue;
+      }
 
       if (!alreadyIn) {
         if (group) claimedGroups.add(group);

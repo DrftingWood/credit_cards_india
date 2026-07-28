@@ -478,6 +478,10 @@ export interface Metadata {
    */
   last_swept_on?: string | null;
   tags?: string[];
+  /**
+   * Issuer will not co-issue two cards sharing this group (e.g. HDFC issues only one card from the Swiggy family). The recommender keeps the highest-ranked member of a group, so a multi-card stack is never built from cards the applicant cannot actually hold together.
+   */
+  exclusive_group?: string;
 }
 
 // ─── issuer (from issuer.schema.json) ─────────────────────────────────

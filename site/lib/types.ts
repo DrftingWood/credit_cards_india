@@ -344,6 +344,8 @@ export interface Eligibility {
 export interface CardMetadata {
   last_verified_on: string;
   tags?: string[];
+  /** Issuer will not co-issue two cards sharing this group (e.g. the HDFC Swiggy family). */
+  exclusive_group?: string;
 }
 
 export interface CardRecord {

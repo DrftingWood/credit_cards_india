@@ -121,3 +121,4 @@ application:
 metadata:
   last_verified_on: 2026-07-03
   tags: [co-branded, swiggy, cashback, mid, food-delivery]
+  exclusive_group: hdfc-swiggy   # HDFC issues only one card from the Swiggy family

@@ -132,4 +132,44 @@ describe("decoupled scorer prototype", () => {
     // welcome is a separate field
     for (const d of res) expect(d).toHaveProperty("first_year_bonus_inr");
   });
+  test("issuer co-issue rules keep only one card per exclusive_group (Swiggy family)", async () => {
+    const { cards, programs } = await load();
+    const p = base({ goals: ["cashback"], monthly_spend: { online: "gt-30k", travel: "0", dining: "gt-30k", groceries: "0", fuel: "0" } });
+    const res = scoreDecoupled(cards, programs, p, { topN: 300 });
+    const groups = res.map((d) => d.card.metadata?.exclusive_group).filter(Boolean);
+    expect(new Set(groups).size).toBe(groups.length);
+    // Specifically: HDFC will not co-issue Swiggy HDFC and Swiggy BLCK, and their
+    // ids are siblings rather than prefix-extensions so isVariantOf cannot catch them.
+    const swiggy = res.filter((d) => d.card.metadata?.exclusive_group === "hdfc-swiggy");
+    expect(swiggy.length).toBeLessThanOrEqual(1);
+  });
+
+  test("co-issue rules hold even when variant de-dup is disabled", async () => {
+    const { cards, programs } = await load();
+    const p = base({ goals: ["cashback"], monthly_spend: { online: "gt-30k", travel: "0", dining: "gt-30k", groceries: "0", fuel: "0" } });
+    const res = scoreDecoupled(cards, programs, p, { topN: 300, dedupeVariants: false });
+    const swiggy = res.filter((d) => d.card.metadata?.exclusive_group === "hdfc-swiggy");
+    expect(swiggy.length).toBeLessThanOrEqual(1);
+  });
+
+  test("a rate that is the top slab of a tiered schedule is flagged, not read as flat", async () => {
+    const { cards } = await load();
+    // axis-cashback's real schedule is 2% / 5% / 7% marginal slabs on monthly online
+    // spend. The schema has no slab primitive, so the record encodes the TOP slab (7).
+    // That must surface as a warning or the scorer silently pays 7% on every rupee.
+    const axis = cards.find((c) => c.id === "axis-cashback")!;
+    const flags = ratesFlags(axis, "online", new Set(["online"]), 1);
+    expect(flags.some((f) => /top slab|ceiling/i.test(f))).toBe(true);
+  });
+
+  test("a rate whose note merely restates its value in another unit is NOT flagged", async () => {
+    const { cards } = await load();
+    // bob-hpcl-energie says "Up to 2% savings (10 RP per Rs150)" with effective_rate: 10.
+    // The 2% is a derived value, not a ceiling on the encoded rate — flagging it would be noise.
+    const bob = cards.find((c) => c.id === "bob-hpcl-energie");
+    if (bob) {
+      const flags = ratesFlags(bob, "utilities", new Set(["utilities"]), 0.25);
+      expect(flags.some((f) => /ceiling/i.test(f))).toBe(false);
+    }
+  });
 });

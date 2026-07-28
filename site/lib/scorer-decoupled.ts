@@ -33,6 +33,22 @@ import { INCOME_BAND_ANNUAL_INR, BRAND_PREF_TO_CHANNELS } from "./recommender-co
 
 /** Warning threshold only — never alters an amount. */
 const IMPLAUSIBLE_UNCAPPED_RATE_PCT = 8;
+/**
+ * Matches a "up to N%" ceiling in issuer copy. When the encoded `effective_rate`
+ * IS that ceiling, the record has flattened a tier table into its best tier —
+ * the rate is an optimistic bound, not the rate most spend actually earns.
+ * axis-cashback is the worked example: "Up to 7% cashback on online spends" is
+ * stored as a flat 7, so every rupee scores at the top tier.
+ */
+const HEDGED_RATE_CEILING = /\bup\s+to\b[^.;]*?(\d+(?:\.\d+)?)\s*%/gi;
+/**
+ * Matches an explicitly documented tier/slab table. Once a record's notes spell
+ * the schedule out, the encoded single rate is knowably the TOP slab rather than
+ * a flat rate — same defect as the "up to" hedge, just already diagnosed.
+ */
+const SLAB_SCHEDULE = /\b(tiered|tier|slab|marginal)\b/i;
+/** Finds every "N%" in a note so the encoded rate can be checked against the schedule. */
+const ANY_RATE_PCT = /(\d+(?:\.\d+)?)\s*%/g;
 /** A milestone award worth more than this share of its own trigger spend is flagged (warning only). */
 const IMPLAUSIBLE_MILESTONE_SHARE = 0.15;
 
@@ -140,6 +156,22 @@ export function ratesFlags(card: EnrichedCard, topBucket: CanonicalCategory | nu
       break;
     }
   }
+  // A rate encoded straight from "up to N%" marketing copy is a CEILING that the
+  // scorer would otherwise apply to every qualifying rupee. Flag it so an
+  // optimistic tier-top rate is never mistaken for a verified flat rate. Warning
+  // only — like every other flag here, it does not alter the rank.
+  for (const a of card.current_rewards?.accelerated ?? []) {
+    if (typeof a.effective_rate !== "number" || !a.notes) continue;
+    const isTopOfRange = (re: RegExp) => {
+      re.lastIndex = 0;
+      return [...a.notes!.matchAll(re)].some((m) => Math.abs(Number(m[1]) - a.effective_rate!) < 0.001);
+    };
+    if (isTopOfRange(HEDGED_RATE_CEILING)) {
+      flags.push(`Rate is an "up to ${a.effective_rate}%" ceiling, not a verified flat rate — lower tiers may apply`);
+    } else if (SLAB_SCHEDULE.test(a.notes) && isTopOfRange(ANY_RATE_PCT)) {
+      flags.push(`Rate is the top slab of a tiered schedule (${a.effective_rate}%) — most spend earns less`);
+    }
+  }
   if (topBucket && rewardedBuckets.size > 0 && !rewardedBuckets.has(topBucket)) {
     flags.push(`Rewards don't cover your main category (${topBucket})`);
   }
@@ -241,7 +273,21 @@ export function scoreDecoupled(
       if (!deduped.some((k) => isVariantOf(k.card.id, s.card.id))) deduped.push(s);
     }
   }
-  return deduped.slice(0, opts.topN ?? 5);
+  // Issuer co-issue rules are a HARD constraint, not a similarity heuristic, so
+  // they apply even when variant de-dup is off: HDFC will not issue Swiggy BLCK
+  // to someone already holding Swiggy HDFC, and their ids are siblings rather
+  // than prefix-extensions, so isVariantOf never catches them. Keep the
+  // highest-ranked member of each group.
+  const claimed = new Set<string>();
+  return deduped
+    .filter((s) => {
+      const g = s.card.metadata?.exclusive_group;
+      if (!g) return true;
+      if (claimed.has(g)) return false;
+      claimed.add(g);
+      return true;
+    })
+    .slice(0, opts.topN ?? 5);
 }
 
 function passesIncome(card: EnrichedCard, band: RecommendPayload["income_band"]): boolean {

@@ -52,13 +52,33 @@ rewards:
       cycle: monthly
     accelerated:
       - category: online-spends
-        canonical_categories: [online]
+        # Scope is the transaction CHANNEL, not the merchant category. The member
+        # T&C defines "Online Qualifying Spends" as "all online spends (card not
+        # present) except travel MCCs and other MCC exclusions", and its own
+        # worked example routes an ONLINE grocery/supermarket purchase into the
+        # accelerated tier while an OFFLINE dining purchase falls to base. Food
+        # delivery, groceries and utilities bought card-not-present therefore
+        # qualify; only travel MCCs and the excluded-MCC list are carved out.
+        canonical_categories: [online, dining, groceries, utilities]
         multiplier: 1
+        # 7 is the TOP MARGINAL slab, not a flat rate — the schema has no
+        # spend-slab primitive, so the highest tier is encoded and the tier table
+        # is recorded verbatim below. scorer-decoupled flags this as an
+        # "up to N%" ceiling so it is never read as a verified flat rate.
         effective_rate: 7
         cap_per_cycle: 4000
         cap_unit: cashback-inr
         cycle: monthly
-        notes: "Up to 7% cashback on online spends; earn up to ₹4,000 per statement month."
+        notes: >-
+          Tiered on NET MONTHLY online (card-not-present) spend, marginal slabs, rates RISING with spend:
+          2% on the first ₹5,000 (max ₹100); 5% on ₹5,001–₹40,000 (max ₹1,750); 7% above ₹40,000 (max ₹2,150).
+          Total accelerated cap ₹4,000 per statement month, reached at ₹70,714 of qualifying monthly spend
+          (blended 5.66% at full utilisation). Verified against the Axis Bank Cashback Credit Card Member
+          Terms and Conditions PDF (created 2026-06-08), section 5 "Earn Cashback" and the worked examples
+          on pages 6-7. NOTE: the 0.75% base does NOT backstop online overflow — per the same section base
+          cashback is paid only on "offline spends (POS/card present transactions) or spends on travel", so
+          qualifying online spend beyond the ₹4,000 cap earns NOTHING. The schema cannot express either the
+          rising slabs or the channel-scoped base; see docs/TODO.md.
       - category: utilities-bill-payments
         canonical_categories: [utilities]
         multiplier: 1
@@ -77,15 +97,19 @@ rewards:
       - jewellery
       - emi
     capping_rules:
-      - "Online-spend cashback (up to 7%) capped at ₹4,000 per statement month."
-      - "Utility bill-payment cashback (0.5%) capped at ₹100 per month."
+      - "Accelerated online cashback is tiered on net monthly spend: 2% to ₹5,000 (max ₹100), 5% on ₹5,001-₹40,000 (max ₹1,750), 7% above ₹40,000 (max ₹2,150)."
+      - "Total accelerated cap ₹4,000 per statement month, reached at ₹70,714 of qualifying spend."
+      - "Base 0.75% is paid ONLY on card-present (POS) spend and on travel; it does not apply to online spend, so online spend past the ₹4,000 cap earns nothing."
+      - "Utility bill-payment cashback (0.5%) capped at ₹100 per month (MCCs 4816, 4899, 4900)."
+      - "Excluded MCCs earn no cashback under any category: transportation & tolls, insurance, educational institutions, jewellery/precious metals/watches, government institutions, wallet, rent, fuel."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
         constraints: "Cashback auto-credited before next statement with no minimum amount requirement."
     source:
-      url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
-      retrieved_on: 2026-07-03
+      url: https://www.axis.bank.in/docs/default-source/default-document-library/axis-bank-cashback-credit-card-tnc.pdf
+      retrieved_on: 2026-07-28
+      notes: "Re-verified 2026-07-28 against the Member T&C PDF (created 2026-06-08). Corrections: accelerator scope is channel-based (card-not-present), not the `online` merchant bucket — the T&C worked example on page 6 routes an ONLINE grocery purchase into the accelerated tier and an OFFLINE dining purchase to base, so food delivery and online groceries qualify. Rate is a rising 3-slab schedule (2/5/7%), not a flat 7%. Base 0.75% is card-present + travel only."
 
     mcc_exclusions: ['6513']
 benefits:
@@ -116,5 +140,5 @@ application:
   apply_url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-07-28
   tags: [cashback, online, entry]

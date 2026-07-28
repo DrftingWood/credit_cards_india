@@ -154,4 +154,29 @@ describe("cap-aware portfolio allocation", () => {
     // The spend it cannot pay for must be reported as unallocated, not absorbed.
     expect(p.unallocated_monthly_spend_inr).toBeGreaterThan(90_000);
   });
+
+  test("prunes a card that clears its own fee but still shrinks the stack", async () => {
+    const cards = await load();
+    // Greedy fills by rate and never looks back, so it can admit a card whose fee
+    // is covered by its own earnings yet whose spend would have paid more sitting
+    // on a card already in the stack. At ₹50k dining the unconstrained greedy
+    // returned ₹63,120 where a smaller stack was worth ₹66,420.
+    const pool = byId(cards, ["hdfc-swiggy-hdfc","hsbc-live-plus","hsbc-rupay-cashback",
+                              "yes-paisabazaar","axis-cashback","hdfc-millennia","kotak-cashback-plus"]);
+    const p = allocatePortfolio(pool, spend({ dining: 50_000, online: 20_000 }), {}, {
+      heldCardIds: ["hdfc-swiggy-hdfc"],
+    });
+    // No slot may lose money, and the reported net must equal the sum of the parts.
+    for (const s of p.slots) expect(s.monthly_value_inr * 12).toBeGreaterThan(s.annual_fee_inr);
+    const summed = p.slots.reduce((t, s) => t + s.monthly_value_inr * 12 - s.annual_fee_inr, 0);
+    expect(p.annual_net_inr).toBeCloseTo(summed, 0);
+    // Dropping any single non-held card must not improve the net — the stack is
+    // locally optimal, which is what the prune pass exists to guarantee.
+    for (const s of p.slots) {
+      if (s.card.id === "hdfc-swiggy-hdfc") continue;
+      const without = allocatePortfolio(pool.filter((c) => c.id !== s.card.id),
+        spend({ dining: 50_000, online: 20_000 }), {}, { heldCardIds: ["hdfc-swiggy-hdfc"] });
+      expect(without.annual_net_inr).toBeLessThanOrEqual(p.annual_net_inr + 1);
+    }
+  });
 });

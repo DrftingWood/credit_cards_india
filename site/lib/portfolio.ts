@@ -54,6 +54,8 @@ const SATURATION_PRECISION = 0.9999;
 const SATURATION_REFINE_ITERATIONS = 20;
 /** Drop-and-rebuild passes when a fee outweighs a card’s contribution. */
 const FEE_REALLOCATION_PASSES = 4;
+/** Drop-one-and-rebuild passes that prune cards which shrink the stack despite clearing their own fee. */
+const MARGINAL_DROP_PASSES = 3;
 /** Relative slack when comparing two sampled marginal rates for equality/ordering. */
 const RISING_TOLERANCE = 0.02;
 
@@ -407,23 +409,55 @@ export function allocatePortfolio(
   ctx: ScoringContext = {},
   opts: PortfolioOpts = {},
 ): Portfolio {
-  let pool = candidates;
-  let result = allocateOnce(pool, spend, ctx, opts);
-  if (opts.dropFeeNegative === false) return result;
+  if (opts.dropFeeNegative === false) return allocateOnce(candidates, spend, ctx, opts);
 
-  for (let i = 0; i < FEE_REALLOCATION_PASSES; i++) {
-    const losers = new Set(
-      result.slots.filter((s) => s.monthly_value_inr * 12 <= s.annual_fee_inr).map((s) => s.card.id),
-    );
-    if (losers.size === 0) break;
-    pool = pool.filter((c) => !losers.has(c.id));
-    result = allocateOnce(pool, spend, ctx, opts);
+  /** Allocate, then repeatedly drop cards that do not clear their own fee and rebuild. */
+  const allocateSolvent = (from: EnrichedCard[]): { result: Portfolio; pool: EnrichedCard[] } => {
+    let pool = from;
+    let result = allocateOnce(pool, spend, ctx, opts);
+    for (let i = 0; i < FEE_REALLOCATION_PASSES; i++) {
+      const losers = new Set(
+        result.slots.filter((s) => s.monthly_value_inr * 12 <= s.annual_fee_inr).map((s) => s.card.id),
+      );
+      if (losers.size === 0) break;
+      pool = pool.filter((c) => !losers.has(c.id));
+      result = allocateOnce(pool, spend, ctx, opts);
+    }
+    // A survivor of the final pass may still be fee-negative if the loop ran out
+    // of passes; drop those rather than report a stack that loses money.
+    const kept = result.slots.filter((s) => s.monthly_value_inr * 12 > s.annual_fee_inr);
+    if (kept.length !== result.slots.length) {
+      const monthly = kept.reduce((t, s) => t + s.monthly_value_inr, 0);
+      const fees = kept.reduce((t, s) => t + s.annual_fee_inr, 0);
+      pool = pool.filter((c) => kept.some((k) => k.card.id === c.id) || !result.slots.some((s) => s.card.id === c.id));
+      result = { ...result, slots: kept, monthly_value_inr: monthly, annual_value_inr: monthly * 12, annual_fee_inr: fees, annual_net_inr: monthly * 12 - fees };
+    }
+    return { result, pool };
+  };
+
+  let { result, pool } = allocateSolvent(candidates);
+
+  // Clearing its own fee is not the same as being worth holding. A card can pay
+  // for itself and still shrink the stack, because the spend it takes would have
+  // earned more on a card already in it — greedy fills by rate and never looks
+  // back. Drop-one-and-rebuild (through the same solvency filter, or the rebuild
+  // just re-admits a different fee-negative card) until no removal improves net.
+  for (let pass = 0; pass < MARGINAL_DROP_PASSES; pass++) {
+    let best = result;
+    let bestPool = pool;
+    let bestDropped: string | null = null;
+    for (const slot of result.slots) {
+      if (opts.heldCardIds?.includes(slot.card.id)) continue; // a held card costs nothing to keep
+      const trial = allocateSolvent(pool.filter((c) => c.id !== slot.card.id));
+      if (trial.result.annual_net_inr > best.annual_net_inr) {
+        best = trial.result;
+        bestPool = trial.pool;
+        bestDropped = slot.card.id;
+      }
+    }
+    if (!bestDropped) break;
+    result = best;
+    pool = bestPool;
   }
-  // A survivor of the final pass may still be fee-negative if the loop ran out of
-  // passes; drop those rather than report a stack that loses money.
-  const kept = result.slots.filter((s) => s.monthly_value_inr * 12 > s.annual_fee_inr);
-  if (kept.length === result.slots.length) return result;
-  const monthly = kept.reduce((t, s) => t + s.monthly_value_inr, 0);
-  const fees = kept.reduce((t, s) => t + s.annual_fee_inr, 0);
-  return { ...result, slots: kept, monthly_value_inr: monthly, annual_value_inr: monthly * 12, annual_fee_inr: fees, annual_net_inr: monthly * 12 - fees };
+  return result;
 }

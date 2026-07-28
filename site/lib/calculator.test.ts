@@ -497,11 +497,23 @@ describe("scoreCard — cap-aware accelerator selection (B3-SF2)", () => {
 });
 
 describe("scoreCard — base rate unit correctness (bonus blocker)", () => {
-  test("real card: SBI Cashback @ ₹20k/mo dining (1% base, no accelerator on dining) ≈ ₹2.4k/yr", async () => {
+  test("real card: SBI Cashback @ ₹20k/mo dining earns the 5% ONLINE rate, not 1% base", async () => {
     const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
     const sbi = (cards as unknown as EnrichedCard[]).find((c) => c.id === "sbi-cashback")!;
     const score = scoreCard(sbi, spend({ dining: 20000 }));
-    expect(score.annual_gross_inr).toBe(2400); // 1% * 20000 * 12
+    // This test previously asserted ₹2,400 ("no accelerator on dining"), which locked in a
+    // mis-tag: the 5% is scoped by CHANNEL (card-not-present), not by merchant category, and
+    // food delivery qualifies. Retagged 2026-07-28 to [online, dining, groceries].
+    expect(score.annual_gross_inr).toBe(12000); // 5% * 20000 * 12, under the ₹2,000/cycle cap
+  });
+
+  test("real card: SBI Cashback caps at ₹4,000/cycle across online + offline", async () => {
+    const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
+    const sbi = (cards as unknown as EnrichedCard[]).find((c) => c.id === "sbi-cashback")!;
+    // 5% online caps at ₹2,000 (₹40k spend); 1% base caps at ₹2,000. The archived SBI T&C
+    // e-kit puts the aggregate ceiling at ₹4,000/statement — so no spend level beats that.
+    const score = scoreCard(sbi, spend({ dining: 500_000, online: 500_000 }));
+    expect(score.annual_gross_inr / 12).toBeLessThanOrEqual(4000);
   });
 
   test("real card: Swiggy HDFC optimal spend hits all caps at ₹42k/yr", async () => {

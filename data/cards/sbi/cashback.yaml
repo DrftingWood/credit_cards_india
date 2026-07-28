@@ -47,15 +47,33 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      # 1% offline earn is ALSO capped at Rs 2,000/cycle; with the 5% online cap
+      # that puts a hard Rs 4,000/cycle ceiling on the whole card (1 Apr 2026).
+      cap_per_cycle: 2000
+      cap_unit: cashback-inr
+      cycle: statement
     accelerated:
       - category: online-spend
-        canonical_categories: [online]
+        # Channel-scoped (card-not-present), so it covers anything bought online —
+        # food delivery and online groceries included, not just the `online`
+        # shopping bucket. Same defect class as axis-cashback (fixed 2026-07-28).
+        canonical_categories: [online, dining, groceries]
         multiplier: 5
         effective_rate: 5
         cap_per_cycle: 2000
         cap_unit: cashback-inr
         cycle: statement
-        notes: "5% online capped Rs2,000/cycle (devalued from Rs5,000 on 1 Apr 2026); Rs40k spend ceiling."
+        notes: >-
+          5% on online (card-not-present) spend, capped Rs 2,000/cycle — devalued from Rs 5,000 on
+          1 Apr 2026, so the 5% now saturates at Rs 40,000 of online spend per cycle. Scope is the
+          CHANNEL, not a merchant category: there is no merchant list and no MCC allowlist, and
+          e-commerce, food-delivery apps and streaming all qualify (Amazon, Flipkart, Myntra, Ajio,
+          Swiggy, Zomato, Blinkit, BigBasket are the merchants named in issuer-adjacent listings).
+          Retagged 2026-07-28 from canonical_categories [online] — the old tag meant food delivery
+          and online groceries scored ZERO here despite qualifying. Provenance caveat: the channel
+          definition and merchant examples come from the product/review tier, not SBI's MITC PDF
+          (docs/sources/sbi/cashback/cashback-tnc-ekit.pdf is gitignored and absent), so this is
+          web-tier confidence — see docs/TODO.md E13.
     exclusions:
       - fuel
       - wallet-loads
@@ -65,9 +83,13 @@ rewards:
       - education
       - jewellery
       - emi
+      - government
       - other
     capping_rules:
       - "Cashback credited automatically to statement within 2 days of next statement."
+      - "5% online cashback capped at Rs 2,000 per statement cycle (saturates at Rs 40,000 of online spend)."
+      - "1% offline cashback capped at Rs 2,000 per statement cycle."
+      - "Aggregate online + offline cashback capped at Rs 4,000 per statement cycle (archived SBI T&C e-kit)."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
@@ -76,7 +98,9 @@ rewards:
       retrieved_on: '2026-07-05'
 
       notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
-    mcc_exclusions: ['6513']
+    # 1 Apr 2026 additions: digital gaming (7993/7994/5816), tolls (4784),
+    # government (9222/9311/9402). 6513 = real estate (pre-existing).
+    mcc_exclusions: ['6513', '7993', '7994', '5816', '4784', '9222', '9311', '9402']
 benefits:
   - effective_from: 2023-03-01
     effective_until: null
@@ -115,5 +139,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-07-28'
   tags: [cashback, online-spend, mid-tier]

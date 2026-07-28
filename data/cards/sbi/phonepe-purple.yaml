@@ -53,6 +53,10 @@ rewards:
       unit_value_inr_realized: 1.0
     accelerated:
       - category: phonepe-app-spends
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [phonepe-app]
         canonical_categories: [online]
         multiplier: 3
         effective_rate: 3

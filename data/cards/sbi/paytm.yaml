@@ -54,6 +54,10 @@ rewards:
         effective_rate: 3
         notes: "3% Cashback on Paytm Travel bookings via the Paytm App. Cap not stated on crawl."
       - category: paytm-app-spends
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [paytm-app]
         canonical_categories: [online]
         multiplier: 2
         effective_rate: 2

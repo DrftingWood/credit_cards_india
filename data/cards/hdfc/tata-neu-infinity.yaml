@@ -71,6 +71,10 @@ rewards:
           merchants: [tata-neu]
         notes: "5% NeuCoins on Tata brands purchased via Tata Neu app (subject to NeuPass). Card credits the full 5% directly in NeuCoins; programme baseline is not additive (NeuCoins are the card's reward currency, not a separate stack)."
       - category: tata-neu-app-non-partner
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [tata-neu]
         canonical_categories: [online]
         effective_rate: 1.5
         card_attributable_rate: 1.5

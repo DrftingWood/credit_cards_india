@@ -88,7 +88,7 @@ rewards:
     capping_rules:
       - "Cashback credited automatically to statement within 2 days of next statement."
       - "5% online cashback capped at Rs 2,000 per statement cycle (saturates at Rs 40,000 of online spend)."
-      - "1% offline cashback capped at Rs 2,000 per statement cycle."
+      - "1% base is paid on OFFLINE (card-present) spend and is capped at Rs 2,000 per statement cycle. It does NOT backstop online spend, so qualifying online spend past the Rs 2,000 accelerated cap earns nothing. The canonical buckets have no card-present axis, so `base.applies_to_categories` cannot express this and the calculator still credits 1% on online overflow — overstating the card above Rs 40,000/month of online spend. See docs/TODO.md E17."
       - "Aggregate online + offline cashback capped at Rs 4,000 per statement cycle (archived SBI T&C e-kit)."
     redemption:
       - type: statement-credit

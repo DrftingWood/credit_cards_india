@@ -98,6 +98,9 @@ describe("cap-aware portfolio allocation", () => {
     });
     expect(p.slots.some((s) => s.card.id === "hdfc-swiggy-blck")).toBe(false);
     expect(p.slots.some((s) => s.card.id === "hdfc-swiggy-ornge")).toBe(false);
+    // ...but the held card itself must still be USED. Pre-claiming its group has
+    // to exempt the holder, or holding the best card silently removes it.
+    expect(p.slots.some((s) => s.card.id === "hdfc-swiggy-hdfc")).toBe(true);
   });
 
   test("honours maxCards", async () => {

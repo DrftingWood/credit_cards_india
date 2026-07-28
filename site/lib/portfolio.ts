@@ -52,6 +52,8 @@ const RESIDUAL_RATE_EPSILON = 0.0001;
 const SATURATION_PRECISION = 0.9999;
 /** Bisection steps used to sharpen the sampled saturation boundary. */
 const SATURATION_REFINE_ITERATIONS = 20;
+/** Drop-and-rebuild passes when a fee outweighs a card’s contribution. */
+const FEE_REALLOCATION_PASSES = 4;
 /** Relative slack when comparing two sampled marginal rates for equality/ordering. */
 const RISING_TOLERANCE = 0.02;
 
@@ -184,25 +186,58 @@ function tranches(card: EnrichedCard, bucket: CanonicalCategory, ctx: ScoringCon
 
   // Falling (concave) schedule: merge adjacent samples that share a rate, then
   // emit them in order. Greedy allocation is optimal over these.
-  const out: Tranche[] = [];
+  const groups: { from: number; to: number; ratePct: number }[] = [];
   for (const m of live) {
-    const last = out[out.length - 1];
+    const last = groups[groups.length - 1];
     if (last && Math.abs(last.ratePct - m.ratePct) < RISING_TOLERANCE * Math.max(1, m.ratePct)) {
-      last.widthInr += m.to - m.from;
+      last.to = m.to;
     } else {
-      out.push({ ratePct: m.ratePct, widthInr: m.to - m.from });
+      groups.push({ ...m });
     }
   }
+
+  // Geometric sampling only BRACKETS each rate change; the boundary itself can sit
+  // anywhere inside the last interval. Left unrefined, a 10%-capped-at-₹1,000 card
+  // reports a width of ₹6,872 instead of ₹10,000 and the allocator under-fills the
+  // best rate while over-spilling to worse ones. Bisect each junction so widths are
+  // the real cap boundaries.
+  for (let i = 0; i < groups.length - 1; i++) {
+    const g = groups[i];
+    const startV = v(g.from);
+    let lo = g.from;
+    let hi = groups[i + 1].to;
+    for (let k = 0; k < SATURATION_REFINE_ITERATIONS; k++) {
+      const mid = (lo + hi) / 2;
+      const linearHere = startV + ((mid - g.from) * g.ratePct) / 100;
+      if (v(mid) >= linearHere * SATURATION_PRECISION) lo = mid;
+      else hi = mid;
+    }
+    g.to = lo;
+    groups[i + 1].from = lo;
+  }
+
+  const out: Tranche[] = groups
+    .filter((g) => g.to > g.from)
+    .map((g) => ({ ratePct: g.ratePct, widthInr: g.to - g.from }));
   if (!Number.isFinite(saturationSpend) && out.length > 0) {
     out[out.length - 1].widthInr = Number.POSITIVE_INFINITY;
   }
   return out;
 }
 
-function annualFee(card: EnrichedCard, ctx: ScoringContext, annualSpendInr: number): number {
-  const sp = emptySpend();
-  sp.online = annualSpendInr / 12;
-  return scoreCard(card, sp, ctx).annual_fee_effective_inr;
+/**
+ * Annual fee net of a spend waiver, judged on the spend actually ROUTED to this
+ * card. Judging it on the user's whole spend is what let ICICI Emeralde into a
+ * stack at "₹0" — its ₹12,000 fee waives at ₹10L, which the profile total clears
+ * but the card's own ₹1L share does not.
+ */
+function annualFeeForRouted(card: EnrichedCard, routedMonthly: SpendProfile, ctx: ScoringContext): number {
+  return scoreCard(card, routedMonthly, ctx).annual_fee_effective_inr;
+}
+
+/** Two cards are variants when one id extends the other (yes-paisabazaar / -rupay). */
+function isVariantOf(a: string, b: string): boolean {
+  return b.startsWith(a + "-") || a.startsWith(b + "-");
 }
 
 /**
@@ -213,15 +248,14 @@ function annualFee(card: EnrichedCard, ctx: ScoringContext, annualSpendInr: numb
  * independent (each card's cap is its own pool), so filling the highest rate
  * first and spilling the remainder down the list maximises total reward.
  */
-export function allocatePortfolio(
+function allocateOnce(
   candidates: EnrichedCard[],
   spend: SpendProfile,
-  ctx: ScoringContext = {},
-  opts: PortfolioOpts = {},
+  ctx: ScoringContext,
+  opts: PortfolioOpts,
 ): Portfolio {
   const buckets = (Object.keys(spend) as CanonicalCategory[]).filter((b) => spend[b] > 0);
   const held = new Set(opts.heldCardIds ?? []);
-  const annualSpend = Object.values(spend).reduce((a, b) => a + b, 0) * 12;
 
   // Pre-claim the groups of cards the user already holds: a held Swiggy HDFC
   // makes Swiggy BLCK unobtainable, so it must not enter the stack at all.
@@ -251,7 +285,13 @@ export function allocatePortfolio(
       const group = seg.card.metadata?.exclusive_group;
       const alreadyIn = slots.has(seg.card.id);
       if (!alreadyIn) {
-        if (group && claimedGroups.has(group)) continue;
+        // A held card pre-claims its own group, so exempt it here — otherwise
+        // holding Swiggy HDFC blocks Swiggy HDFC, and the stack silently loses
+        // the best rate the user already has.
+        if (group && claimedGroups.has(group) && !held.has(seg.card.id)) continue;
+        // Near-identical variants of one product (yes-paisabazaar / -rupay) are
+        // one choice, not two independent caps.
+        if ([...slots.keys()].some((id) => isVariantOf(id, seg.card.id))) continue;
         if (opts.maxCards != null && slots.size >= opts.maxCards) continue;
       }
 
@@ -272,7 +312,7 @@ export function allocatePortfolio(
           monthly_value_inr: 0,
           effective_rate_pct: 0,
           cap_bound: false,
-          annual_fee_inr: annualFee(seg.card, ctx, annualSpend),
+          annual_fee_inr: 0,
         });
       }
       const slot = slots.get(seg.card.id)!;
@@ -291,17 +331,16 @@ export function allocatePortfolio(
 
   // Re-score each card against the spend actually routed to it. The tranche model
   // decides ALLOCATION; scoreCard is the authority on VALUE, so a cap shared
-  // across buckets is never credited twice and the reported totals reconcile
-  // exactly with the per-card calculator.
-  let out = [...slots.values()];
+  // across buckets is never credited twice, the totals reconcile exactly with the
+  // per-card calculator, and any spend-based fee waiver is judged on this card's
+  // own share rather than on the user's whole profile.
+  const out = [...slots.values()];
   for (const s of out) {
     const routed = emptySpend();
     for (const a of s.allocation) routed[a.category] += a.monthly_spend_inr;
     s.monthly_value_inr = scoreCard(s.card, routed, ctx).annual_gross_inr / 12;
     s.effective_rate_pct = s.monthly_spend_inr > 0 ? (s.monthly_value_inr / s.monthly_spend_inr) * 100 : 0;
-  }
-  if (opts.dropFeeNegative !== false) {
-    out = out.filter((s) => s.monthly_value_inr * 12 > s.annual_fee_inr);
+    s.annual_fee_inr = annualFeeForRouted(s.card, routed, ctx);
   }
   out.sort((a, b) => b.monthly_value_inr - a.monthly_value_inr || a.card.id.localeCompare(b.card.id));
 
@@ -316,4 +355,44 @@ export function allocatePortfolio(
     unallocated_monthly_spend_inr: unallocated,
     cap_constrained_categories: capConstrained,
   };
+}
+
+/**
+ * Build the best STACK of cards for a spend profile, respecting each card's
+ * monthly caps and the issuer co-issue rules in `metadata.exclusive_group`.
+ *
+ * Greedy by marginal rate, which is optimal here: within a bucket the options are
+ * independent (each card's cap is its own pool), so filling the highest rate
+ * first and spilling the remainder down the list maximises total reward.
+ *
+ * A card whose fee outweighs what it contributes is dropped and the stack REBUILT,
+ * because dropping one frees its spend for the others — and a card's fee waiver
+ * depends on the spend it ends up with, so the two decisions are circular and have
+ * to be iterated rather than settled in one pass.
+ */
+export function allocatePortfolio(
+  candidates: EnrichedCard[],
+  spend: SpendProfile,
+  ctx: ScoringContext = {},
+  opts: PortfolioOpts = {},
+): Portfolio {
+  let pool = candidates;
+  let result = allocateOnce(pool, spend, ctx, opts);
+  if (opts.dropFeeNegative === false) return result;
+
+  for (let i = 0; i < FEE_REALLOCATION_PASSES; i++) {
+    const losers = new Set(
+      result.slots.filter((s) => s.monthly_value_inr * 12 <= s.annual_fee_inr).map((s) => s.card.id),
+    );
+    if (losers.size === 0) break;
+    pool = pool.filter((c) => !losers.has(c.id));
+    result = allocateOnce(pool, spend, ctx, opts);
+  }
+  // A survivor of the final pass may still be fee-negative if the loop ran out of
+  // passes; drop those rather than report a stack that loses money.
+  const kept = result.slots.filter((s) => s.monthly_value_inr * 12 > s.annual_fee_inr);
+  if (kept.length === result.slots.length) return result;
+  const monthly = kept.reduce((t, s) => t + s.monthly_value_inr, 0);
+  const fees = kept.reduce((t, s) => t + s.annual_fee_inr, 0);
+  return { ...result, slots: kept, monthly_value_inr: monthly, annual_value_inr: monthly * 12, annual_fee_inr: fees, annual_net_inr: monthly * 12 - fees };
 }

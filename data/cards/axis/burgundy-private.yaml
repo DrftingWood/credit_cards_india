@@ -1,0 +1,157 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Axis "Burgundy Private - The One Card" Rewards Program T&C PDF
+#                (axis.bank.in/docs/.../bp-rewards-program-tnc.pdf), retrieved
+#                2026-07-28 and parsed in full — earn rate, exclusions and the
+#                rent/insurance caps below are verbatim from it.
+#   Verified   : 2026-07-28   Confidence: MIXED
+#                HIGH (pdf)  : base earn, exclusions, rent + insurance caps.
+#                MEDIUM (web): fees, forex, lounge, memberships, eligibility —
+#                              product/aggregator pages, not an issuer MITC.
+# NOTE ON THE "UP TO 6%" CLAIM: marketing quotes up to 6% back via miles
+# transfer. The rewards T&C declines to publish any ratio ("Enjoy dynamic
+# conversion ratios"), so no transfer value is encoded here and unit value is
+# held at the guaranteed Rs 0.20 redemption floor. See docs/TODO.md E19.
+# ---------------------------------------------------------------------------
+id: axis-burgundy-private
+name: Axis Bank Burgundy Private Credit Card
+issuer: axis
+network: visa
+network_tier: infinite
+tier: super-premium
+card_type: credit
+co_brand: null
+# Not applyable. Issued only against a Burgundy Private banking relationship,
+# so it must never surface in an open recommendation.
+status: invite-only
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-04-20
+    effective_until: null
+    joining_fee_inr: 50000
+    annual_fee_inr: 50000
+    # The published fee is Rs 50,000 + GST, but it is NIL for Burgundy Private
+    # account holders — who are the only people eligible for the card. The
+    # waiver is a RELATIONSHIP condition, not a spend threshold, and the schema
+    # has no field for that (same gap as hsbc-premier). Encoded as the published
+    # fee with the real condition in notes; consumers will overstate the cost.
+    fee_waiver: null
+    forex_markup_pct: 0.0
+    finance_charge_monthly_pct: null
+    cash_advance_fee:
+      pct: 0
+      min_inr: 0
+    gst_applicable: true
+    notes: >-
+      Rs 50,000 + GST joining and annual, waived entirely for Burgundy Private account holders —
+      effectively free for every holder, since the card is issued only against that relationship.
+      Zero forex markup and zero cash-withdrawal charges. Fee, forex and cash-advance terms are
+      web-tier: they come from product/aggregator pages, not an Axis MITC.
+    source:
+      url: https://www.axisbank.com/burgundyprivate/creditcard
+      retrieved_on: 2026-07-28
+
+rewards:
+  - effective_from: 2024-04-20
+    effective_until: null
+    currency: points
+    currency_name: EDGE Reward Points
+    base:
+      rate: 15
+      per_inr: 200
+      # 1 EDGE Reward Point = Rs 0.20 on redemption. Marketing claims "up to 6%
+      # back" via miles transfer, which would need ~Rs 0.80/point, but the
+      # rewards T&C explicitly publishes NO ratio ("dynamic conversion ratios").
+      # Face is held at the floor rather than inferred from the 6% claim.
+      unit_value_inr: 0.2
+      unit_value_inr_realized: 0.2
+    exclusions:
+      - emi
+      - government
+      - jewellery
+      - fuel
+      - utilities
+    mcc_exclusions: []
+    capping_rules:
+      - "Base earn is 15 EDGE Reward Points per Rs 200 spent (7.5 per Rs 100 = 1.5% at the Rs 0.20 floor)."
+      - "Rent: only spends up to Rs 1,00,000 per month earn EDGE Reward Points."
+      - "Insurance: earn capped at 6,000 EDGE Reward Points per month (w.e.f. 20 Apr 2024; was per transaction before)."
+      - "Telecom spends earn no EDGE Reward Points (w.e.f. 20 Apr 2024), alongside government, gold/jewellery, fuel and utilities."
+      - "Points are DEBITED when a transaction is converted to EMI, and are not credited back if the EMI is later cancelled."
+      - "From 20 Jun 2025 excluded spends are identified by spend category rather than by 4-digit MCC."
+      - "Miles transfer caps: 3 lakh EDGE Reward Points cumulatively to Group A partners, 12 lakh to Group B."
+    redemption:
+      - type: catalog
+        program: Axis EDGE Rewards
+        rate_inr_per_unit: 0.2
+      - type: airmiles
+        program: Axis Miles Transfer (15+ airline & hotel partners)
+        ratio: null
+        constraints: >-
+          The rewards T&C states only "Enjoy dynamic conversion ratios" and refers to a separate
+          Miles Transfer document for rates — no ratio is published here, so no transfer value is
+          encoded. The Rs 0.20 catalog rate is the guaranteed floor. Cumulative transfer caps of
+          3 lakh points (Group A) and 12 lakh points (Group B) apply.
+    source:
+      url: https://www.axis.bank.in/docs/default-source/default-document-library/bp-rewards-program-tnc.pdf
+      retrieved_on: 2026-07-28
+      notes: >-
+        Base earn, the exclusion list, the rent and insurance caps, the EMI point-debit rule and the
+        transfer caps are verbatim from the Burgundy Private "The One Card" Rewards Program T&C PDF
+        (1 page, parsed in full on 2026-07-28).
+
+benefits:
+  - effective_from: 2024-04-20
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass, issuer-direct]
+        notes: "Unlimited for primary and add-on members; 12 complimentary guest visits per year."
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Unlimited via complimentary Priority Pass; 12 complimentary guest visits per year."
+    concierge: true
+    other:
+      - name: Club Marriott membership
+        description: Complimentary Club Marriott membership.
+      - name: Taj Epicure membership
+        description: Complimentary Taj Epicure membership.
+      - name: ALL Accor Plus Explorer membership
+        description: Complimentary ALL Accor Plus Explorer membership.
+      - name: EazyDiner membership
+        description: Complimentary EazyDiner membership.
+      - name: Airport concierge
+        description: Complimentary airport concierge / meet-and-greet service.
+    source:
+      url: https://www.axisbank.com/burgundyprivate/creditcard
+      retrieved_on: 2026-07-28
+      notes: "Lounge counts and memberships are web-tier (product/aggregator pages), not confirmed against an Axis MITC."
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: 780
+  residency: resident-indian
+  notes: >-
+    Not open to application. Issued only to Axis Burgundy Private account holders, reported as
+    requiring a Total Relationship Value of Rs 5 crore or more within the first 12 months of account
+    opening. This is a RELATIONSHIP gate, not an income gate — the schema has no field for it, so
+    income is left null rather than guessed at. See docs/TODO.md E19.
+
+application:
+  apply_url: https://www.axisbank.com/burgundyprivate/creditcard
+
+metadata:
+  last_verified_on: 2026-07-28
+  tags: [super-premium, invite-only, relationship-gated, zero-forex, lounge, travel, points]

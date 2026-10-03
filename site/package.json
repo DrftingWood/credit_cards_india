@@ -9,8 +9,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "pretypecheck": "node scripts/prebuild.mjs",
     "typecheck": "tsc --noEmit",
     "gen-types": "node scripts/gen-types.mjs",
+    "pretest": "node scripts/prebuild.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },

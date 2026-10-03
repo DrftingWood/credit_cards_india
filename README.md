@@ -35,7 +35,7 @@ site/                               # Next.js app
 
 ## Status
 
-- 317 card YAML files across 24 issuers.
+- 320 card YAML files across 25 issuers.
 - Source confidence is tracked in [docs/PROVENANCE.md](docs/PROVENANCE.md).
 - Local PDF evidence lives under `docs/sources/**/*.pdf`; PDFs are intentionally
   gitignored and must be preserved locally.
@@ -64,10 +64,11 @@ ordering, category tagging). Run it before `prebuild` so mistakes are caught
 before `dist/*.json` is regenerated. It is the same command CI runs, so a clean
 local run matches CI.
 
-For site-facing changes, also run:
+For site-facing changes, also run (both regenerate `dist/` first; CI runs
+them plus `next build` in the `site` job):
 
 ```powershell
-npm.cmd --prefix site test -- --run
+npm.cmd --prefix site test
 npm.cmd --prefix site run typecheck
 ```
 

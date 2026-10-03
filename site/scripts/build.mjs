@@ -12,6 +12,7 @@
  */
 
 import {
+  existsSync,
   readdirSync,
   readFileSync,
   writeFileSync,
@@ -49,11 +50,17 @@ function loadYaml(p) {
   return normalize(yaml.load(readFileSync(p, "utf8")));
 }
 
+/** Problems that make the artefact wrong; reported together, then the build fails. */
+const problems = [];
+
 function loadMany(dir) {
   const out = {};
   const files = readdirSync(dir).filter((f) => f.endsWith(".yaml")).sort();
   for (const f of files) {
     const doc = loadYaml(path.join(dir, f));
+    const expected = f.replace(/\.yaml$/, "");
+    if (doc.id !== expected) problems.push(`${path.relative(REPO_ROOT, dir)}/${f}: id "${doc.id}" does not match its filename`);
+    if (out[doc.id]) problems.push(`${path.relative(REPO_ROOT, dir)}: duplicate id "${doc.id}"`);
     out[doc.id] = doc;
   }
   return out;
@@ -77,7 +84,12 @@ function existsDir(dir) {
 }
 
 function loadLoyaltyPrograms(rootDir) {
-  if (!existsDir(rootDir)) return [];
+  // Missing programmes would silently value every programme-linked card's
+  // points at the base record's figure, so a missing directory is an error.
+  if (!existsDir(rootDir)) {
+    problems.push(`${path.relative(REPO_ROOT, rootDir)}/ is missing`);
+    return [];
+  }
   const out = [];
   const entries = readdirSync(rootDir, { recursive: true });
   for (const f of entries) {
@@ -89,15 +101,27 @@ function loadLoyaltyPrograms(rootDir) {
 
 // --- Enrichment ----------------------------------------------------------
 
+/** Build date (UTC calendar day) — the day "current" records are chosen for. */
+const TODAY = new Date().toISOString().slice(0, 10);
+
 /**
- * Returns the "current" dated record. For active cards that's the open-ended
- * record (effective_until: null). For discontinued cards — which have no
- * open-ended record — it falls back to the record with the latest
+ * Returns the "current" dated record: the one in force on the build date
+ * (effective_from <= today, effective_until open or >= today), so a revision
+ * entered ahead of its start date doesn't show early. Failing that, the
+ * open-ended record (effective_until: null). For discontinued cards — which
+ * have no open-ended record — it falls back to the record with the latest
  * effective_until, so downstream consumers can still render "the state of
  * the card when it was last issued" rather than a blank shell.
  */
 function openRecord(records) {
   const list = records ?? [];
+  const inForce = list.filter(
+    (r) => (r.effective_from ?? "") <= TODAY && (r.effective_until == null || r.effective_until >= TODAY),
+  );
+  if (inForce.length) {
+    // Latest start wins if records overlap on the boundary day.
+    return inForce.reduce((a, b) => ((b.effective_from ?? "") > (a.effective_from ?? "") ? b : a));
+  }
   for (const r of list) {
     if (r.effective_until === null || r.effective_until === undefined) {
       return r;
@@ -235,15 +259,38 @@ function main() {
     .map((p) => enrichCard(loadYaml(p), issuers, networks, programsById))
     .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 
+  // Joins and assets the site dereferences without null checks. validate.py
+  // checks the joins too, but only in CI; Vercel builds run this script alone.
+  const PUBLIC_DIR = path.join(HERE, "..", "public");
+  const seen = new Set();
+  const assetMissing = (p) => p && !existsSync(path.join(PUBLIC_DIR, p.replace(/^\//, "")));
+  for (const c of cards) {
+    if (seen.has(c.id)) problems.push(`duplicate card id "${c.id}"`);
+    seen.add(c.id);
+    if (!c.issuer_detail) problems.push(`${c.id}: issuer "${c.issuer}" has no data/issuers file`);
+    if (!c.network_detail) problems.push(`${c.id}: network "${c.network}" has no data/networks file`);
+    if (assetMissing(c.image_path)) problems.push(`${c.id}: image_path ${c.image_path} not found under site/public`);
+    const loyalty = c.current_rewards?.loyalty_program;
+    if (loyalty && !programsById[loyalty]) problems.push(`${c.id}: loyalty_program "${loyalty}" not found`);
+  }
+  for (const rec of [...Object.values(issuers), ...Object.values(networks)]) {
+    if (assetMissing(rec.logo_path)) problems.push(`${rec.id}: logo_path ${rec.logo_path} not found under site/public`);
+  }
+
   // Surface scripts/category_rules.yaml into the site bundle so the JS-side
   // heuristic in site/lib/category-mapping.ts reads from the same source of
   // truth as scripts/validate.py and scripts/tag_canonical_categories.py.
+  // lib/category-mapping.ts imports the JSON statically, so it is required.
   const categoryRulesPath = path.join(REPO_ROOT, "scripts", "category_rules.yaml");
-  try {
-    const rules = loadYaml(categoryRulesPath);
-    writeJson(path.join(OUT_DIR, "category_rules.json"), rules);
-  } catch (err) {
-    if (!err || err.code !== "ENOENT") throw err;
+  if (existsSync(categoryRulesPath)) {
+    writeJson(path.join(OUT_DIR, "category_rules.json"), loadYaml(categoryRulesPath));
+  } else {
+    problems.push(`${path.relative(REPO_ROOT, categoryRulesPath)} is missing`);
+  }
+
+  if (problems.length) {
+    console.error(`build.mjs: ${problems.length} problem(s) in the dataset:\n  - ${problems.join("\n  - ")}`);
+    process.exit(1);
   }
 
   writeJson(path.join(OUT_DIR, "cards.json"), cards);

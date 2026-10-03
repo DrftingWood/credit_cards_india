@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { EnrichedCard } from "@/lib/types";
-import { formatDate, formatFeeInr, formatPct } from "@/lib/utils";
+import { formatDate, formatFeeWithGst, formatPct } from "@/lib/utils";
 import { bestSuitedFor, rewardTypeLabel, formatAccelerated } from "@/lib/detail-derivations";
 import { CardImage } from "@/components/card-image";
 
@@ -26,8 +26,8 @@ export function QuickFacts({ card }: { card: EnrichedCard }) {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-sm">
           <Group>
-            <Row label="Joining Fee" value={formatFeeInr(joining)} />
-            <Row label="Annual Fee" value={formatFeeInr(fee)} />
+            <Row label="Joining Fee" value={formatFeeWithGst(joining, card.current_fees?.gst_applicable)} />
+            <Row label="Annual Fee" value={formatFeeWithGst(fee, card.current_fees?.gst_applicable)} />
             <Row label="Best Suited For" value={bestSuitedFor(card)} />
             <Row label="Reward Type" value={rewardTypeLabel(card)} />
           </Group>

@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import type { ClientCard } from "@/lib/types";
 import { explainCard, type AcceleratorExplain, type BaseSpendExplain, type ScoringContext } from "@/lib/calculator";
 import { MAX_MONTHLY_SPEND, useSpendProfile } from "@/lib/use-spend-profile";
+import { formatInrSigned } from "@/lib/utils";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
 
 const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
@@ -139,10 +140,12 @@ export function AccelerationBreakdown({ card }: { card: ClientCard }) {
           <span className="mr-1 rounded border border-amber-300 bg-amber-50 px-1 text-[10px] font-bold uppercase text-amber-800">Est.</span>
           <span className="text-sm text-slate-600">net rewards for this spend, {layer}</span>
         </div>
-        <span className="text-lg font-semibold text-slate-900 tabular-nums">{inr(ex.annual_net_inr)}/yr</span>
+        <span className="text-lg font-semibold text-slate-900 tabular-nums">{formatInrSigned(ex.annual_net_inr)}/yr</span>
       </div>
       <p className="mt-1 text-[11px] text-slate-400 tabular-nums">
-        {inr(ex.annual_gross_inr)} rewards − {inr(ex.annual_fee_inr)} annual fee. Estimate for the spend you entered.
+        {inr(ex.annual_gross_inr)} rewards − {ex.annual_fee_inr === 0 && (card.current_fees?.annual_fee_inr ?? 0) > 0
+          ? "annual fee (waived at this spend)"
+          : `${inr(ex.annual_fee_inr)} annual fee incl. GST`}. Estimate for the spend you entered.
       </p>
     </section>
   );

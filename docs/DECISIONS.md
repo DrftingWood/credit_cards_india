@@ -297,6 +297,28 @@ codes already present in the data's `mcc_exclusions`: `5541`/`5542`/`5983`/`5172
 travel) are *not* zeroed by a single excluded code, since one excluded MCC does
 not cover the bucket.
 
+### D-21. Net value uses the fee as billed: GST in, waiver on qualifying spend
+
+The annual fee subtracted from rewards (`scoreCard`, `explainCard`, and so
+`/calculator`, `/recommend` and the card breakdown) is the fee the cardholder
+actually pays (2026-10 site review):
+
+- **GST.** Dataset fees are pre-GST list prices; the net subtracts
+  `annual_fee_inr × 1.18` unless the fee record sets `gst_applicable: false`.
+  List prices on the site keep reading "₹X + GST"; computed nets say "incl. GST".
+- **Waiver spend.** Only spend in buckets the card rewards counts toward
+  `fee_waiver.spend_inr`. Issuers exclude the same categories (rent, fuel,
+  wallet loads) from waiver spend that they exclude from rewards; before this,
+  ₹30k/month rent waived a ₹4L-threshold fee on a card that excludes rent.
+- **Waiver cycle.** The threshold is checked over `fee_waiver.cycle` (a
+  quarterly ₹75k waiver needs ₹25k/month), not always annualised.
+- **₹0 threshold** is an activity-based waiver (e.g. "one transaction a
+  quarter"): waived when there is any qualifying spend, not unconditionally.
+
+Reward exclusions stand in for waiver exclusions because the schema has no
+separate waiver exclusion list; `fee_waiver.excluded_categories` is the
+follow-up if a card's waiver and reward exclusions ever differ.
+
 ### D-17. Build pipeline is pure Node
 
 `site/scripts/prebuild.mjs` runs `gen-types.mjs` then `build.mjs`. No

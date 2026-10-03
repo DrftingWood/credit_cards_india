@@ -11,7 +11,7 @@ import { NetworkLogo } from "@/components/logos/network-logo";
 import { rankCards, listEcosystems, type CardScore } from "@/lib/calculator";
 import { MAX_MONTHLY_SPEND, useSpendProfile } from "@/lib/use-spend-profile";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
-import { formatInr, formatPct } from "@/lib/utils";
+import { formatInr, formatInrSigned, formatPct } from "@/lib/utils";
 
 /** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY_SPEND]. The
  *  ceiling stops a stray value like `1e21` producing sextillion-rupee output. */
@@ -275,14 +275,14 @@ function ResultRow({
         </div>
         <div className="text-right">
           <div className="text-lg font-semibold tabular-nums text-emerald-700">
-            {formatInr(Math.round(score.annual_net_inr))} / yr
+            {formatInrSigned(score.annual_net_inr)} / yr
           </div>
           <div className="text-xs text-slate-500 tabular-nums">
             gross {formatInr(Math.round(score.annual_gross_inr))} − fee{" "}
             {score.fee_waived ? (
               <span className="text-emerald-700">waived</span>
             ) : (
-              formatInr(score.annual_fee_effective_inr)
+              <>{formatInr(Math.round(score.annual_fee_effective_inr))} incl. GST</>
             )}
           </div>
         </div>

@@ -559,17 +559,71 @@ const EXCLUSION_TO_BUCKET: Partial<Record<string, CanonicalCategory>> = {
   utilities: "utilities",
 };
 
-/** Waiver-aware effective annual fee: 0 (or reduced, once modeled) once the user's
- *  annualized spend clears the card's fee-waiver threshold. Shared by scoreCard and
- *  explainCard so the /calculator rank and the per-card breakdown always agree (FIX 2). */
+/** GST on card fees in India. Fee figures in the dataset are pre-GST list prices. */
+export const GST_PCT = 18;
+
+/** Months in one fee-waiver cycle, for scaling monthly spend to the waiver window. */
+const WAIVER_CYCLE_MONTHS: Record<string, number> = {
+  monthly: 1,
+  statement: 1,
+  quarterly: 3,
+  annual: 12,
+  "per-txn": 12,
+};
+
+/** Annual fee as actually billed: list fee + GST unless the record says GST doesn't apply. */
+export function annualFeeWithGst(fees: ClientCard["current_fees"]): number {
+  const fee = fees?.annual_fee_inr ?? 0;
+  if (fees?.gst_applicable === false) return fee;
+  // Integer arithmetic keeps paise exact (499 → 588.82, not 588.8199999999999).
+  return (fee * (100 + GST_PCT)) / 100;
+}
+
+/** Buckets this card's rewards exclude outright (fuel/rent/utilities via category or MCC exclusions). */
+function excludedBuckets(rewards: ClientRewards | null): Set<CanonicalCategory> {
+  const excluded = new Set<CanonicalCategory>();
+  for (const ex of rewards?.exclusions ?? []) {
+    const b = EXCLUSION_TO_BUCKET[ex];
+    if (b) excluded.add(b);
+  }
+  // MCC exclusions that cover a whole single-MCC-family bucket (fuel/rent/
+  // utilities) zero that bucket's earn — not just a disclaimer (A2).
+  for (const mcc of rewards?.mcc_exclusions ?? []) {
+    const b = MCC_EXCLUSION_TO_BUCKET[mcc];
+    if (b) excluded.add(b);
+  }
+  return excluded;
+}
+
+/**
+ * Effective annual fee (GST-inclusive), 0 once the user's spend clears the
+ * card's fee-waiver condition. Shared by scoreCard and explainCard so the
+ * /calculator rank and the per-card breakdown always agree (FIX 2).
+ *
+ * Only spend the card itself rewards counts toward the waiver: issuers
+ * exclude the same categories (rent, fuel, wallet loads…) from waiver spend
+ * that they exclude from rewards. The threshold is checked over the waiver's
+ * own cycle (a quarterly ₹75k waiver needs ₹25k/month, not ₹75k/year). A
+ * ₹0 threshold is an activity-based waiver (e.g. one transaction a quarter):
+ * waived when there is any qualifying spend at all.
+ */
 function effectiveAnnualFee(
   card: ClientCard,
-  annualSpend: number,
+  spend: SpendProfile,
+  excluded: Set<CanonicalCategory>,
 ): { annualFeeEffective: number; feeWaived: boolean } {
-  const annualFee = card.current_fees?.annual_fee_inr ?? 0;
-  const waiverSpend = card.computed.fee_waiver_spend_inr;
-  const feeWaived = waiverSpend != null && annualSpend >= waiverSpend;
-  return { annualFeeEffective: feeWaived ? 0 : annualFee, feeWaived };
+  const fees = card.current_fees;
+  const waiver = fees?.fee_waiver ?? null;
+  let qualifyingMonthly = 0;
+  for (const b of Object.keys(spend) as CanonicalCategory[]) {
+    if (!excluded.has(b)) qualifyingMonthly += Math.max(0, spend[b] || 0);
+  }
+  const feeWaived =
+    waiver != null &&
+    (waiver.spend_inr > 0
+      ? qualifyingMonthly * (WAIVER_CYCLE_MONTHS[waiver.cycle] ?? 12) >= waiver.spend_inr
+      : qualifyingMonthly > 0);
+  return { annualFeeEffective: feeWaived ? 0 : annualFeeWithGst(fees), feeWaived };
 }
 
 export function scoreCard(
@@ -585,22 +639,11 @@ export function scoreCard(
   const closedLoopEco = rewards?.redemption_scope === "closed-loop" ? rewards.ecosystem_label ?? null : null;
   const ecoCredited = ecosystemCredited(rewards, ctx);
 
-  const excluded = new Set<CanonicalCategory>();
-  for (const ex of rewards?.exclusions ?? []) {
-    const b = EXCLUSION_TO_BUCKET[ex];
-    if (b) excluded.add(b);
-  }
-  // MCC exclusions that cover a whole single-MCC-family bucket (fuel/rent/
-  // utilities) zero that bucket's earn — not just a disclaimer (A2).
-  for (const mcc of rewards?.mcc_exclusions ?? []) {
-    const b = MCC_EXCLUSION_TO_BUCKET[mcc];
-    if (b) excluded.add(b);
-  }
+  const excluded = excludedBuckets(rewards);
 
   const buckets: BucketBreakdown[] = [];
   let monthlyValue = 0;
   let baseMonthly = 0; // portion earned at the base rate (subject to base.cap_per_cycle)
-  let totalSpend = 0;
   let narrowRatesUncounted = false; // a merchant/co-brand rate we declined to credit (A2)
   // Cap consumption per accelerator, shared across buckets (one pool per cap).
   const capUsage = new Map<AcceleratedReward, number>();
@@ -611,7 +654,6 @@ export function scoreCard(
 
   for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
     const amount = spend[bucket] || 0;
-    totalSpend += amount;
     if (amount <= 0) continue;
 
     if (excluded.has(bucket)) {
@@ -712,9 +754,7 @@ export function scoreCard(
   }
 
   const annualGross = monthlyValue * MONTHS_PER_YEAR;
-  const annualSpend = totalSpend * MONTHS_PER_YEAR;
-
-  const { annualFeeEffective, feeWaived } = effectiveAnnualFee(card, annualSpend);
+  const { annualFeeEffective, feeWaived } = effectiveAnnualFee(card, spend, excluded);
 
   const disclaimerParts: string[] = [...capNotes];
   if (rewards?.capping_rules?.length) disclaimerParts.push(...rewards.capping_rules);
@@ -801,9 +841,7 @@ export function explainCard(card: ClientCard, spend: SpendProfile, ctx?: Scoring
   const unitValue = rewards ? unitValueFor(rewards, ctx?.programs, basis) : null;
   const ecoCredited = ecosystemCredited(rewards, ctx);
 
-  const excluded = new Set<CanonicalCategory>();
-  for (const ex of rewards?.exclusions ?? []) { const b = EXCLUSION_TO_BUCKET[ex]; if (b) excluded.add(b); }
-  for (const mcc of rewards?.mcc_exclusions ?? []) { const b = MCC_EXCLUSION_TO_BUCKET[mcc]; if (b) excluded.add(b); }
+  const excluded = excludedBuckets(rewards);
 
   const capUsage = new Map<AcceleratedReward, number>();
   // Shared qualifying-spend pool per accelerator, exactly as scoreCard keeps it:
@@ -813,11 +851,9 @@ export function explainCard(card: ClientCard, spend: SpendProfile, ctx?: Scoring
   const base_spend: BaseSpendExplain[] = [];
   let monthlyGross = 0;
   let baseMonthly = 0; // portion earned at base rate (subject to base.cap_per_cycle), mirrors scoreCard
-  let totalSpend = 0; // mirrors scoreCard's totalSpend, for the waiver-aware fee below (FIX 2)
 
   for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
     const amount = spend[bucket] || 0;
-    totalSpend += amount;
     if (amount <= 0) continue;
     const label = CATEGORY_LABELS[bucket] ?? bucket;
 
@@ -884,8 +920,7 @@ export function explainCard(card: ClientCard, spend: SpendProfile, ctx?: Scoring
   }
 
   const annualGross = monthlyGross * 12;
-  const annualSpend = totalSpend * 12;
-  const { annualFeeEffective } = effectiveAnnualFee(card, annualSpend);
+  const { annualFeeEffective } = effectiveAnnualFee(card, spend, excluded);
   return {
     layer, value_basis: basis, accelerators, base_spend,
     annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective, annual_net_inr: annualGross - annualFeeEffective,

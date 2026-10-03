@@ -47,6 +47,8 @@ interface CardOpts {
   rewardCap?: { max_units: number; cap_unit?: CapUnit; cycle: Cycle };
   annualFee?: number;
   feeWaiverSpend?: number | null;
+  feeWaiverCycle?: "monthly" | "quarterly" | "annual";
+  gstApplicable?: boolean;
   isInviteOnly?: boolean;
 }
 
@@ -94,6 +96,10 @@ function makeCard(opts: CardOpts): EnrichedCard {
       effective_until: null,
       joining_fee_inr: 0,
       annual_fee_inr: opts.annualFee ?? 0,
+      ...(opts.feeWaiverSpend != null
+        ? { fee_waiver: { spend_inr: opts.feeWaiverSpend, cycle: opts.feeWaiverCycle ?? "annual" } }
+        : {}),
+      ...(opts.gstApplicable != null ? { gst_applicable: opts.gstApplicable } : {}),
       source: SOURCE,
     },
     current_rewards: rewards,
@@ -782,7 +788,40 @@ describe("scoreCard — canonical reward math regressions", () => {
 
     const justNot = scoreCard(card, spend({ dining: 24999 }));
     expect(justNot.fee_waived).toBe(false);
-    expect(justNot.annual_fee_effective_inr).toBe(1500);
+    expect(justNot.annual_fee_effective_inr).toBe(1770); // ₹1,500 + 18% GST
+  });
+});
+
+describe("annual fee — GST and what counts toward the waiver", () => {
+  const card = (o: Partial<Parameters<typeof makeCard>[0]> = {}) =>
+    makeCard({ currency: "cashback", base: { rate: 1, per_inr: 100, unit_value_inr: 1 }, annualFee: 1500, ...o });
+
+  test("the fee carries 18% GST unless the record says GST doesn't apply", () => {
+    expect(scoreCard(card(), spend({ dining: 1000 })).annual_fee_effective_inr).toBe(1770);
+    expect(scoreCard(card({ gstApplicable: false }), spend({ dining: 1000 })).annual_fee_effective_inr).toBe(1500);
+    expect(scoreCard(card({ annualFee: 499 }), spend({ dining: 1000 })).annual_fee_effective_inr).toBe(588.82);
+  });
+
+  test("spend in categories the card excludes doesn't count toward the waiver", () => {
+    // ₹20k dining + ₹5k fuel = ₹3L/yr in total, but only ₹2.4L of it is rewardable.
+    const c = card({ feeWaiverSpend: 300000, exclusions: ["fuel"] });
+    const s = scoreCard(c, spend({ dining: 20000, fuel: 5000 }));
+    expect(s.fee_waived).toBe(false);
+    expect(s.annual_fee_effective_inr).toBe(1770);
+    expect(scoreCard(c, spend({ dining: 25000, fuel: 5000 })).fee_waived).toBe(true);
+  });
+
+  test("a quarterly waiver is checked against spend per quarter", () => {
+    const c = card({ feeWaiverSpend: 60000, feeWaiverCycle: "quarterly" });
+    expect(scoreCard(c, spend({ dining: 20000 })).fee_waived).toBe(true);
+    expect(scoreCard(c, spend({ dining: 19999 })).fee_waived).toBe(false);
+  });
+
+  test("a ₹0 waiver threshold needs some qualifying spend, not none", () => {
+    const c = card({ feeWaiverSpend: 0, exclusions: ["rent"] });
+    expect(scoreCard(c, spend({})).fee_waived).toBe(false);
+    expect(scoreCard(c, spend({ rent: 30000 })).fee_waived).toBe(false);
+    expect(scoreCard(c, spend({ dining: 100 })).fee_waived).toBe(true);
   });
 });
 
@@ -1026,6 +1065,6 @@ describe("explainCard — per-accelerator cap story", () => {
 
     const missesWaiver = spend({ dining: 24999 });
     const exNot = explainCard(card, missesWaiver, { valueBasis: "realized" });
-    expect(exNot.annual_fee_inr).toBe(1500);
+    expect(exNot.annual_fee_inr).toBe(1770); // ₹1,500 + 18% GST
   });
 });

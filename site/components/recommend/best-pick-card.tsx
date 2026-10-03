@@ -3,14 +3,13 @@ import Link from "next/link";
 import type { Highlight } from "@/lib/present";
 import { IconArrowRight, IconLink } from "@/components/icons";
 import { cardDetailHref } from "./ranked-row";
-
-const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
+import { formatDate, formatFeeWithGst, formatInrSigned, formatPct, waiverLabel } from "@/lib/utils";
 
 export function BestPickCard({ highlight }: { highlight: Highlight }) {
   const s = highlight.score;
   const c = s.card;
   const href = cardDetailHref(s);
-  const waiver = c.computed.fee_waiver_spend_inr;
+  const waiver = c.current_fees?.annual_fee_inr ? waiverLabel(c.current_fees.fee_waiver) : null;
   const verified = c.metadata?.last_verified_on;
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-5">
@@ -29,16 +28,14 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
           <dd className="font-semibold text-slate-900 tabular-nums">
             {c.computed.is_lifetime_free
               ? "Lifetime free"
-              : c.current_fees?.annual_fee_inr != null
-                ? inr(c.current_fees.annual_fee_inr)
-                : "—"}
-            {waiver ? <span className="ml-1 font-normal text-slate-500">· waived above {inr(waiver)}</span> : null}
+              : formatFeeWithGst(c.current_fees?.annual_fee_inr ?? null, c.current_fees?.gst_applicable)}
+            {waiver ? <span className="ml-1 font-normal text-slate-500">· {waiver}</span> : null}
           </dd>
         </div>
         <div className="rounded-md bg-slate-50 px-2 py-1.5">
           <dt className="text-slate-500">Headline reward</dt>
           <dd className="font-semibold text-slate-900 tabular-nums">
-            {c.computed.headline_rate_pct != null ? `${c.computed.headline_rate_pct}%` : "—"}
+            {formatPct(c.computed.headline_rate_pct, 2)}
             <span className="ml-1 font-normal text-slate-500">base</span>
           </dd>
         </div>
@@ -48,8 +45,8 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
       <div className="mt-3 flex items-center justify-between rounded-md border border-amber-200 bg-amber-50 px-3 py-2">
         <div>
           <span className="mr-1 rounded border border-amber-300 bg-amber-100 px-1 text-[9px] font-bold uppercase tracking-wide text-amber-800">Est.</span>
-          <span className="text-lg font-semibold text-slate-900 tabular-nums">{inr(s.net_rewards_inr)}</span>
-          <span className="ml-1 text-xs text-slate-500">/yr net for your spend</span>
+          <span className="text-lg font-semibold text-slate-900 tabular-nums">{formatInrSigned(s.net_rewards_inr)}</span>
+          <span className="ml-1 text-xs text-slate-500">/yr net for your spend, after fee incl. GST</span>
         </div>
         <Link href={href} className="inline-flex items-center gap-1 text-xs font-semibold text-brand-700 hover:underline">
           See the math <IconArrowRight className="text-[13px]" />
@@ -58,7 +55,7 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
 
       {verified ? (
         <p className="mt-3 flex items-center gap-1 text-[11px] text-slate-500">
-          <IconLink className="text-[12px] text-brand-600" /> Facts from issuer T&amp;C · verified {verified}
+          <IconLink className="text-[12px] text-brand-600" /> Facts from issuer T&amp;C · verified {formatDate(verified)}
         </p>
       ) : null}
     </article>

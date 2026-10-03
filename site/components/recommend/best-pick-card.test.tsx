@@ -50,7 +50,7 @@ describe("BestPickCard — facts + tagged estimate", () => {
     expect(html).toContain("/card/hdfc/infinia");
   });
   test("shows the verified date (trust), not a star rating", () => {
-    expect(html).toContain("2026-07-06");
+    expect(html).toContain("6 Jul 2026"); // formatted, not the raw ISO string
     expect(html).not.toContain("★");
   });
   test("shows '—' (not 'Lifetime free') for a card with a null/missing fee record", () => {

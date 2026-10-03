@@ -2,8 +2,8 @@
 import Link from "next/link";
 import type { DecoupledScore } from "@/lib/scorer-decoupled";
 import { cardHref } from "@/lib/card-href";
+import { formatInrSigned } from "@/lib/utils";
 
-const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
 export function cardDetailHref(score: DecoupledScore): string {
   return cardHref(score.card);
 }
@@ -19,7 +19,7 @@ export function RankedRow({ rank, score }: { rank: number; score: DecoupledScore
         <p className="truncate text-xs text-slate-500">{score.reason}</p>
       </div>
       <div className="text-right shrink-0">
-        <div className="text-sm font-semibold text-slate-900 tabular-nums">{inr(score.net_rewards_inr)}</div>
+        <div className="text-sm font-semibold text-slate-900 tabular-nums">{formatInrSigned(score.net_rewards_inr)}</div>
         <div className="text-[10px] uppercase tracking-wide text-slate-400">est. net /yr</div>
       </div>
     </li>

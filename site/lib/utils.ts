@@ -18,6 +18,20 @@ export function formatFeeInr(value: number | null | undefined): string {
   return `₹${value.toLocaleString("en-IN")}`;
 }
 
+/** List-price fee: "Free", "—", or "₹1,500 + GST" (no suffix when GST doesn't apply). */
+export function formatFeeWithGst(value: number | null | undefined, gstApplicable?: boolean): string {
+  const base = formatFeeInr(value);
+  if (value === null || value === undefined || value === 0) return base;
+  return gstApplicable === false ? base : `${base} + GST`;
+}
+
+/** Short fee-waiver condition: "waived on ₹3,00,000 spend/year", "waived with card usage". */
+export function waiverLabel(waiver: { spend_inr: number; cycle: string } | null | undefined): string | null {
+  if (!waiver) return null;
+  if (waiver.spend_inr <= 0) return "waived with card usage";
+  return `waived on ${formatInr(waiver.spend_inr)} spend/${cycleNoun(waiver.cycle)}`;
+}
+
 /**
  * Whole-rupee amount with the sign before the ₹: "₹1,234", "−₹1,234".
  * (Template-literal `₹${n}` renders a loss as "₹-1,234".)

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { ClientBenefits, ClientCard } from "@/lib/types";
 import { cardHref } from "@/lib/card-href";
-import { formatFeeInr, formatInr, formatPct } from "@/lib/utils";
+import { formatFeeWithGst, formatInr, formatPct, waiverLabel } from "@/lib/utils";
+import { annualFeeWithGst } from "@/lib/calculator";
 import {
   pickTopAccelerated,
   formatAcceleratedRate,
@@ -97,19 +98,22 @@ const ROWS: Row[] = [
   },
   {
     label: "Annual fee",
-    render: (c) => formatFeeInr(c.current_fees?.annual_fee_inr ?? null),
-    compare: { value: (c) => (c.computed.is_lifetime_free ? 0 : (c.current_fees?.annual_fee_inr ?? null)), higherWins: false },
+    render: (c) => formatFeeWithGst(c.current_fees?.annual_fee_inr ?? null, c.current_fees?.gst_applicable),
+    compare: {
+      value: (c) => (c.computed.is_lifetime_free ? 0 : c.current_fees ? annualFeeWithGst(c.current_fees) : null),
+      higherWins: false,
+    },
   },
   {
     label: "Joining fee",
-    render: (c) => formatFeeInr(c.current_fees?.joining_fee_inr ?? null),
+    render: (c) => formatFeeWithGst(c.current_fees?.joining_fee_inr ?? null, c.current_fees?.gst_applicable),
   },
   {
     label: "Fee waiver",
-    render: (c) =>
-      c.computed.fee_waiver_spend_inr
-        ? `${formatInr(c.computed.fee_waiver_spend_inr)} spend`
-        : "—",
+    render: (c) => {
+      const w = c.current_fees?.annual_fee_inr ? waiverLabel(c.current_fees.fee_waiver) : null;
+      return w ? w.charAt(0).toUpperCase() + w.slice(1) : "—";
+    },
   },
   {
     label: "Forex markup",

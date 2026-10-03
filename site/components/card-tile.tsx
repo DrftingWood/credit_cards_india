@@ -2,7 +2,7 @@ import { memo } from "react";
 import Link from "next/link";
 import type { ClientCard } from "@/lib/types";
 import { cardHref } from "@/lib/card-href";
-import { cn, formatFeeInr, formatInr, formatPct } from "@/lib/utils";
+import { cn, formatFeeWithGst, formatPct, waiverLabel } from "@/lib/utils";
 import { bestAcceleratedPct } from "@/lib/detail-derivations";
 import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
@@ -18,7 +18,7 @@ function CardTileImpl({ card }: { card: ClientCard }) {
   const href = cardHref(card);
 
   const fee = card.current_fees?.annual_fee_inr ?? null;
-  const waiverAt = card.computed.fee_waiver_spend_inr;
+  const waiver = waiverLabel(card.current_fees?.fee_waiver);
   const rate = card.computed.headline_rate_pct;
   // The base rate alone misrepresents points/co-brand cards (Magnus's 0.18%
   // base hides its accelerators). Surface the best accelerated value-% too.
@@ -53,9 +53,9 @@ function CardTileImpl({ card }: { card: ClientCard }) {
           <span className="ml-1 text-xs font-normal text-slate-500">rewards</span>
         </div>
         <div className="mt-0.5 text-sm text-slate-700 tabular-nums">
-          {card.computed.is_lifetime_free ? "Lifetime free" : formatFeeInr(fee)}
-          {waiverAt ? <span className="text-xs text-slate-500"> · waived at {formatInr(waiverAt)}</span> : null}
+          {card.computed.is_lifetime_free ? "Lifetime free" : formatFeeWithGst(fee, card.current_fees?.gst_applicable)}
           {!card.computed.is_lifetime_free ? <span className="text-xs text-slate-500"> · annual fee</span> : null}
+          {waiver && fee ? <span className="text-xs text-slate-500"> · {waiver}</span> : null}
         </div>
       </div>
 

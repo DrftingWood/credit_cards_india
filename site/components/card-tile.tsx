@@ -83,7 +83,8 @@ function CardTileImpl({ card }: { card: ClientCard }) {
         {card.co_brand?.partner ? (
           <span className="chip">Co-brand · {card.co_brand.partner}</span>
         ) : null}
-        <span className="chip capitalize">{card.tier.replace("-", " ")}</span>
+        {/* The status chip above already says "Invite only" for that tier. */}
+        {card.tier !== "invite-only" ? <span className="chip capitalize">{card.tier.replace("-", " ")}</span> : null}
       </div>
     </Link>
   );

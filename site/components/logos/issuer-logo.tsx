@@ -37,7 +37,9 @@ export function IssuerLogo({
           alt={`${issuer.name} logo`}
           height={height}
           width={Math.round(height * 2.5)}
-          style={{ height, width: "auto", objectFit: "contain" }}
+          // Cap very wide wordmarks (IndusInd is ~9:1) so they can't overrun
+          // adjacent text in narrow columns; contain keeps the aspect ratio.
+          style={{ height, width: "auto", maxWidth: Math.round(height * 5), flexShrink: 0, objectFit: "contain" }}
           unoptimized
         />
         {variant === "with-name" ? (

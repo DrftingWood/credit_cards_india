@@ -69,7 +69,7 @@ export function CalculatorClient({ cards }: { cards: ClientCard[] }) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
         <div>
           <h2 className="text-sm font-semibold text-slate-900">Your monthly spend</h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -79,10 +79,11 @@ export function CalculatorClient({ cards }: { cards: ClientCard[] }) {
 
         {CANONICAL_CATEGORIES.map((cat) => (
           <div key={cat}>
-            <label className="block text-sm text-slate-700 mb-1">{CATEGORY_LABELS[cat]}</label>
+            <label htmlFor={`spend-${cat}`} className="block text-sm text-slate-700 mb-1">{CATEGORY_LABELS[cat]}</label>
             <div className="flex items-center gap-2">
               <span className="text-slate-500">₹</span>
               <input
+                id={`spend-${cat}`}
                 type="number"
                 min={0}
                 max={MAX_MONTHLY_SPEND}
@@ -185,29 +186,34 @@ export function CalculatorClient({ cards }: { cards: ClientCard[] }) {
       <div>
         <h2 className="text-lg font-semibold text-slate-900">Ranked by net annual value</h2>
         <p className="text-xs text-slate-500 mt-0.5">
-          Approximate. Ignores welcome bonuses, milestone vouchers and some complex caps; for the full picture open the detail page.
+          Approximate. Annual fees include 18% GST. Ignores welcome bonuses, milestone vouchers and some complex caps; for the full picture open the detail page.
         </p>
-        {pinnedSelected ? (
-          <div className="mt-4">
-            <div className="text-xs uppercase tracking-wide text-brand-700 mb-1">Selected card</div>
-            <ResultRow rank={null} score={pinnedSelected} highlighted />
-          </div>
-        ) : null}
-        <ol className="mt-4 space-y-3">
-          {ranked.map((r, i) => (
-            <ResultRow
-              key={r.card.id}
-              rank={i + 1}
-              score={r}
-              highlighted={r.card.id === selectedId}
-            />
-          ))}
-        </ol>
-        {ranked.length === 0 ? (
+        {monthlyTotal === 0 ? (
           <div className="mt-4 rounded-md border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-600">
             Enter some spend on the left to see rankings.
           </div>
-        ) : null}
+        ) : (
+          <>
+            {pinnedSelected ? (
+              <div className="mt-4">
+                <div className="text-xs uppercase tracking-wide text-brand-700 mb-1">Selected card</div>
+                <ul>
+                  <ResultRow rank={null} score={pinnedSelected} highlighted />
+                </ul>
+              </div>
+            ) : null}
+            <ol className="mt-4 space-y-3">
+              {ranked.map((r, i) => (
+                <ResultRow
+                  key={r.card.id}
+                  rank={i + 1}
+                  score={r}
+                  highlighted={r.card.id === selectedId}
+                />
+              ))}
+            </ol>
+          </>
+        )}
 
         {selectedCard ? (
           <div className="mt-6">

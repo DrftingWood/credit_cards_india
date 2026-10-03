@@ -24,29 +24,41 @@ function clampPrice(raw: string): number {
 export function BookingClient() {
   const [routeKey, setRouteKey] = useState<RouteKey>("dom-flight");
   const route = ROUTES[routeKey];
-  const [price, setPrice] = useState<number>(route.P);
+  // Raw input text, so clearing the field shows an empty box (and the route's
+  // typical price as placeholder) instead of a "0" the results don't use.
+  const [priceText, setPriceText] = useState<string>(String(route.P));
   const [pt, setPt] = useState<PointValues>(DEFAULT_PT);
   const [showPts, setShowPts] = useState(false);
-  const [overrides, setOverrides] = useState<Record<string, number>>({});
+  // Pasted quotes are absolute rupee prices per channel; the markup is derived
+  // from the current base price, so a quote stays the quoted price when the
+  // base price changes afterwards.
+  const [quotes, setQuotes] = useState<Record<string, number>>({});
   const [editing, setEditing] = useState<string | null>(null);
 
-  // When the route changes, reset the price to that route's typical baseline and clear overrides.
+  // When the route changes, reset the price to that route's typical baseline and clear quotes.
   const onRoute = (k: RouteKey) => {
     setRouteKey(k);
-    setPrice(ROUTES[k].P);
-    setOverrides({});
+    setPriceText(String(ROUTES[k].P));
+    setQuotes({});
+    setEditing(null);
   };
 
+  const entered = clampPrice(priceText);
+  const basePrice = entered > 0 ? entered : route.P;
+  const overrides = useMemo(
+    () => Object.fromEntries(Object.entries(quotes).map(([name, q]) => [name, q / basePrice - 1])),
+    [quotes, basePrice],
+  );
   const rows = useMemo(
-    () => rankChannels(route, price > 0 ? price : route.P, pt, overrides),
-    [route, price, pt, overrides],
+    () => rankChannels(route, basePrice, pt, overrides),
+    [route, basePrice, pt, overrides],
   );
   const best = rows[0];
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8 items-start">
       {/* ---- input rail ---- */}
-      <form className="space-y-4 lg:sticky lg:top-6">
+      <form className="space-y-4 lg:sticky lg:top-6" onSubmit={(e) => e.preventDefault()}>
         <div>
           <h2 className="text-sm font-semibold text-slate-900">What are you booking?</h2>
           <div className="mt-2 flex flex-wrap gap-1.5">
@@ -72,14 +84,16 @@ export function BookingClient() {
         </div>
 
         <div>
-          <label className="block text-sm text-slate-700 mb-1">Cheapest price you can find</label>
+          <label htmlFor="booking-price" className="block text-sm text-slate-700 mb-1">Cheapest price you can find</label>
           <div className="flex items-center gap-2">
             <span className="text-slate-500">₹</span>
             <input
+              id="booking-price"
               type="number"
               min={0}
-              value={price}
-              onChange={(e) => setPrice(clampPrice(e.target.value))}
+              value={priceText}
+              placeholder={String(route.P)}
+              onChange={(e) => setPriceText(e.target.value)}
               className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
             />
           </div>
@@ -93,6 +107,7 @@ export function BookingClient() {
           <button
             type="button"
             onClick={() => setShowPts((s) => !s)}
+            aria-expanded={showPts}
             className="text-xs font-medium text-slate-700 hover:text-slate-900"
           >
             {showPts ? "▾" : "▸"} What are your points worth elsewhere?
@@ -128,20 +143,19 @@ export function BookingClient() {
               best={best}
               editing={editing === r.channel.name}
               onEdit={() => setEditing(editing === r.channel.name ? null : r.channel.name)}
-              onOverride={(markup) => {
-                setOverrides((o) => ({ ...o, [r.channel.name]: markup }));
+              onOverride={(quote) => {
+                setQuotes((o) => ({ ...o, [r.channel.name]: quote }));
                 setEditing(null);
               }}
               onReset={() => {
-                setOverrides((o) => {
+                setQuotes((o) => {
                   const n = { ...o };
                   delete n[r.channel.name];
                   return n;
                 });
                 setEditing(null);
               }}
-              basePrice={price > 0 ? price : route.P}
-              hasOverride={overrides[r.channel.name] != null}
+              hasOverride={quotes[r.channel.name] != null}
             />
           ))}
         </ol>
@@ -189,7 +203,6 @@ function ChannelRow({
   onEdit,
   onOverride,
   onReset,
-  basePrice,
   hasOverride,
 }: {
   row: ChannelResult;
@@ -197,9 +210,8 @@ function ChannelRow({
   best: ChannelResult;
   editing: boolean;
   onEdit: () => void;
-  onOverride: (markup: number) => void;
+  onOverride: (quote: number) => void;
   onReset: () => void;
-  basePrice: number;
   hasOverride: boolean;
 }) {
   const { channel: ch } = row;
@@ -258,13 +270,13 @@ function ChannelRow({
               <span className="text-slate-500">Real price for this channel:</span>
               <span className="flex items-center gap-1">
                 <span className="text-slate-400">₹</span>
-                <input type="number" value={quote} onChange={(e) => setQuote(e.target.value)} className="w-24 rounded border border-slate-300 px-1.5 py-0.5 tabular-nums focus:border-brand-500 focus:outline-none" />
+                <input type="number" min={0} aria-label={`Real price on ${ch.name}`} value={quote} onChange={(e) => setQuote(e.target.value)} className="w-24 rounded border border-slate-300 px-1.5 py-0.5 tabular-nums focus:border-brand-500 focus:outline-none" />
               </span>
               <button
                 type="button"
                 onClick={() => {
                   const q = Number(quote);
-                  if (Number.isFinite(q) && q > 0 && basePrice > 0) onOverride(q / basePrice - 1);
+                  if (Number.isFinite(q) && q > 0) onOverride(Math.min(1_00_00_000, q));
                 }}
                 className="rounded bg-brand-600 text-white px-2 py-0.5 hover:bg-brand-700"
               >

@@ -16,18 +16,6 @@ interface Props {
 const NETWORKS = ["visa", "mastercard", "rupay", "amex", "diners"] as const;
 const TIERS = ["entry", "mid", "premium", "super-premium", "invite-only"] as const;
 const CURRENCIES = ["points", "cashback", "miles"] as const;
-const CO_BRAND_CATEGORIES = [
-  "airline",
-  "hotel",
-  "ecommerce",
-  "fuel",
-  "retail",
-  "travel-agency",
-  "telecom",
-  "lifestyle",
-  "railway",
-  "other",
-] as const;
 const FOREX_BANDS: Array<{ value: ForexBand; label: string }> = [
   { value: "low", label: "< 2%" },
   { value: "mid", label: "2 – 3%" },
@@ -72,6 +60,22 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
     return byIssuer;
   }, [cards]);
 
+  // Co-brand categories present in the data, most common first ("other" last),
+  // so a category added to the dataset is filterable without a code change.
+  const coBrandCategories = useMemo(() => {
+    const byCat = new Map<string, number>();
+    for (const c of cards) {
+      const cat = c.co_brand?.category;
+      if (cat) byCat.set(cat, (byCat.get(cat) ?? 0) + 1);
+    }
+    return [...byCat.keys()].sort(
+      (a, b) =>
+        Number(a === "other") - Number(b === "other") ||
+        (byCat.get(b) ?? 0) - (byCat.get(a) ?? 0) ||
+        a.localeCompare(b),
+    );
+  }, [cards]);
+
   const issuersSorted = useMemo(
     () =>
       [...issuers].sort(
@@ -99,10 +103,11 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
       </button>
       <div className={`space-y-5 ${mobileOpen ? "block" : "hidden"} md:block`}>
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">
+        <label htmlFor="browse-search" className="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">
           Search
         </label>
         <input
+          id="browse-search"
           type="search"
           placeholder="Card or issuer name"
           value={state.q}
@@ -163,12 +168,12 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
       </Group>
 
       <Group title="Co-brand category">
-        {CO_BRAND_CATEGORIES.map((cat) => (
+        {coBrandCategories.map((cat) => (
           <Check
             key={cat}
             checked={state.coBrandCategories.includes(cat)}
             onChange={() => toggle("coBrandCategories", cat)}
-            label={<span className="capitalize">{cat.replace("-", " ")}</span>}
+            label={<span className="capitalize">{cat.replaceAll("-", " ")}</span>}
           />
         ))}
       </Group>

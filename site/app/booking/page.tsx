@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { BookingClient } from "./booking-client";
@@ -19,9 +20,9 @@ export default function BookingPage() {
           portal&apos;s markup and blocked coupons can outweigh a fat accelerator. Markups are research-based
           estimates (dynamic pricing varies daily) — paste a real quote to firm any of them up. This is separate
           from the{" "}
-          <a className="text-brand-700 hover:underline" href="/calculator">
+          <Link className="text-brand-700 hover:underline" href="/calculator">
             reward calculator
-          </a>
+          </Link>
           ; it reads card reward rates, it doesn&apos;t change them.
         </p>
       </header>

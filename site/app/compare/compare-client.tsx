@@ -16,7 +16,8 @@ export function CompareClient({ cards }: { cards: ClientCard[] }) {
   const router = useRouter();
   const params = useSearchParams();
 
-  const [selectedIds, setSelectedIds] = useState<string[]>(() => parseIds(params.get("cards")));
+  const known = useMemo(() => new Set(cards.map((c) => c.id)), [cards]);
+  const [selectedIds, setSelectedIds] = useState<string[]>(() => parseIds(params.get("cards"), known));
   const [query, setQuery] = useState("");
 
   // URL <-> state sync (replace, not push)
@@ -31,9 +32,9 @@ export function CompareClient({ cards }: { cards: ClientCard[] }) {
   // equal round-trip from the state→URL effect above is a no-op, so no loop (C3).
   const cardsParam = params.get("cards") ?? "";
   useEffect(() => {
-    const fromUrl = parseIds(cardsParam);
+    const fromUrl = parseIds(cardsParam, known);
     setSelectedIds((cur) => (cur.join(",") === fromUrl.join(",") ? cur : fromUrl));
-  }, [cardsParam]);
+  }, [cardsParam, known]);
 
   const fuse = useMemo(
     () =>
@@ -88,7 +89,7 @@ export function CompareClient({ cards }: { cards: ClientCard[] }) {
             ) : (
               <>
                 <strong>{selected.length}</strong> of {MAX_CARDS} selected.{" "}
-                {selectedIds.length > 0 ? (
+                {selected.length > 0 ? (
                   <button
                     type="button"
                     className="text-brand-600 hover:text-brand-700 ml-1"
@@ -105,6 +106,7 @@ export function CompareClient({ cards }: { cards: ClientCard[] }) {
         <div className="mt-3 relative">
           <input
             type="search"
+            aria-label="Search cards to compare"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={
@@ -182,7 +184,13 @@ export function CompareClient({ cards }: { cards: ClientCard[] }) {
   );
 }
 
-function parseIds(raw: string | null): string[] {
+/**
+ * Card ids from the ?cards= param: de-duplicated, unknown or no-longer-active
+ * ids dropped (an old shared link must not fill slots with cards that don't
+ * render — that disabled search with nothing on screen), capped at MAX_CARDS.
+ */
+function parseIds(raw: string | null, known: Set<string>): string[] {
   if (!raw) return [];
-  return raw.split(",").map((s) => s.trim()).filter(Boolean).slice(0, MAX_CARDS);
+  const ids = raw.split(",").map((s) => s.trim()).filter((id) => known.has(id));
+  return [...new Set(ids)].slice(0, MAX_CARDS);
 }

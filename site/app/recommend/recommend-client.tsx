@@ -163,6 +163,21 @@ function drillDowns(state: FormState) {
   };
 }
 
+/**
+ * Brand picks for the questions currently shown. Lowering a spend band below
+ * ₹5k hides its step-3 question but leaves the old answer in state; only the
+ * visible answers may feed tiers or scoring.
+ */
+function activePicks(state: FormState) {
+  const d = drillDowns(state);
+  return {
+    shopping: d.shopping ? state.shoppingPlatforms : [],
+    airline: d.airline ? state.airline : null,
+    food: d.food ? state.foodEcosystem : null,
+    fuel: d.fuel ? state.fuelStation : null,
+  };
+}
+
 function hasAnyDrillDown(state: FormState): boolean {
   const d = drillDowns(state);
   return d.shopping || d.airline || d.food || d.fuel;
@@ -172,17 +187,18 @@ function hasAnyDrillDown(state: FormState): boolean {
 function impliedProgramIds(state: FormState, programs: LoyaltyProgram[]): string[] {
   // Collect channel tokens implied by current brand picks; match against program.earn.channels[].merchants
   const tokens = new Set<string>();
-  if (state.airline) {
-    for (const m of BRAND_PREF_TO_CHANNELS.airline[state.airline] ?? []) tokens.add(m);
+  const picks = activePicks(state);
+  if (picks.airline) {
+    for (const m of BRAND_PREF_TO_CHANNELS.airline[picks.airline] ?? []) tokens.add(m);
   }
-  for (const s of state.shoppingPlatforms) {
+  for (const s of picks.shopping) {
     for (const m of BRAND_PREF_TO_CHANNELS.shopping[s] ?? []) tokens.add(m);
   }
-  if (state.foodEcosystem) {
-    for (const m of BRAND_PREF_TO_CHANNELS.food[state.foodEcosystem] ?? []) tokens.add(m);
+  if (picks.food) {
+    for (const m of BRAND_PREF_TO_CHANNELS.food[picks.food] ?? []) tokens.add(m);
   }
-  if (state.fuelStation) {
-    for (const m of BRAND_PREF_TO_CHANNELS.fuel[state.fuelStation] ?? []) tokens.add(m);
+  if (picks.fuel) {
+    for (const m of BRAND_PREF_TO_CHANNELS.fuel[picks.fuel] ?? []) tokens.add(m);
   }
   const out: string[] = [];
   for (const p of programs) {
@@ -214,25 +230,55 @@ function isStepValid(step: number, state: FormState): boolean {
  * Final JSON payload constructed on submit. Shape is intentionally flat and
  * uses literal string ids — drop this directly into a recommendation
  * algorithm's `score(profile, card)` function. Null fields are preserved so
- * the consumer can distinguish "user skipped" from "user said no".
+ * the consumer can distinguish "user skipped" from "user said no". Only
+ * answers to questions currently shown are sent: hidden brand picks and tiers
+ * for programmes no longer implied are dropped.
  */
-function buildPayload(state: FormState): RecommendPayload {
+function buildPayload(state: FormState, tierProgramIds: string[]): RecommendPayload {
+  const picks = activePicks(state);
+  const tiers = Object.fromEntries(
+    Object.entries(state.loyaltyTiers).filter(([id]) => tierProgramIds.includes(id)),
+  );
   return {
     income_band: state.income,
     goals: state.goals,
     monthly_spend: state.spend,
     brand_preferences: {
-      shopping: state.shoppingPlatforms,
-      airline: state.airline,
-      food_ecosystem: state.foodEcosystem,
-      fuel_station: state.fuelStation,
+      shopping: picks.shopping,
+      airline: picks.airline,
+      food_ecosystem: picks.food,
+      fuel_station: picks.fuel,
     },
     lifestyle: {
       lounge_pref: state.loungePref,
       recurring: state.recurring,
     },
-    loyalty_tiers: state.loyaltyTiers,
+    loyalty_tiers: tiers,
   };
+}
+
+/** Answers + results survive a trip to a card page and back (per tab). */
+const SESSION_KEY = "cc-recommend-v1";
+interface SavedSession {
+  state: FormState;
+  step: number;
+  submitted: RecommendPayload | null;
+}
+
+function loadSession(): SavedSession | null {
+  try {
+    const raw = window.sessionStorage.getItem(SESSION_KEY);
+    if (!raw) return null;
+    const saved = JSON.parse(raw) as Partial<SavedSession>;
+    if (!saved.state || typeof saved.step !== "number") return null;
+    return {
+      state: { ...INITIAL_STATE, ...saved.state },
+      step: Math.min(TOTAL_STEPS, Math.max(1, Math.round(saved.step))),
+      submitted: saved.submitted ?? null,
+    };
+  } catch {
+    return null;
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -250,6 +296,26 @@ export function RecommendClient({
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState<RecommendPayload | null>(null);
   const stepHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  // Restore after mount (the page is static, so the first render must match
+  // the server's), then persist every change.
+  const restored = useRef(false);
+  useEffect(() => {
+    const saved = loadSession();
+    if (saved) {
+      setState(saved.state);
+      setStep(saved.step);
+      setSubmitted(saved.submitted);
+    }
+    restored.current = true;
+  }, []);
+  useEffect(() => {
+    if (!restored.current) return;
+    try {
+      window.sessionStorage.setItem(SESSION_KEY, JSON.stringify({ state, step, submitted }));
+    } catch {
+      /* storage blocked — the flow still works, it just won't survive navigation */
+    }
+  }, [state, step, submitted]);
 
   const programsById = useMemo(
     () => Object.fromEntries(programs.map((p) => [p.id, p])),
@@ -261,9 +327,14 @@ export function RecommendClient({
     [state, programs, programsById],
   );
 
+  // Move focus to the new step's heading when the step changes, but not on
+  // first load: the user hasn't done anything yet.
+  const lastStep = useRef(step);
   useEffect(() => {
+    if (lastStep.current === step) return;
+    lastStep.current = step;
     stepHeadingRef.current?.focus();
-  }, [step, submitted]);
+  }, [step]);
 
   function nextStep() {
     // Skip step 3 if no brand-drilldown applies; skip step 4 if no tier-bearing programs implied.
@@ -290,12 +361,13 @@ export function RecommendClient({
   }
 
   function handleSubmit() {
-    const payload = buildPayload(state);
+    const payload = buildPayload(state, tierPrograms.map((p) => p.id));
     setSubmitted(payload);
   }
 
   function reset() {
     setState(INITIAL_STATE);
+    lastStep.current = 1;
     setStep(1);
     setSubmitted(null);
   }
@@ -428,11 +500,11 @@ function Step2({ state, setState }: { state: FormState; setState: SetState }) {
         {MACRO_CATEGORIES.map((cat) => (
           <div key={cat.id}>
             <div className="mb-1.5 flex items-baseline justify-between gap-2">
-              <label className="text-sm font-medium text-slate-800">{cat.label}</label>
+              <span id={`spend-${cat.id}-label`} className="text-sm font-medium text-slate-800">{cat.label}</span>
               <span className="text-xs text-slate-500">{cat.sub}</span>
             </div>
             <PillGroup
-              name={`spend-${cat.id}`}
+              labelledBy={`spend-${cat.id}-label`}
               options={SPEND_BAND_OPTIONS}
               value={state.spend[cat.id]}
               onChange={(v) => setBand(cat.id, v)}
@@ -578,6 +650,7 @@ function Step4Tiers({
               <button
                 type="button"
                 onClick={() => setTier(p.id, null)}
+                aria-pressed={current === null}
                 className={
                   "rounded-lg border px-2 py-2 text-xs sm:text-sm font-medium transition-colors text-center " +
                   (current === null
@@ -592,6 +665,7 @@ function Step4Tiers({
                   key={t.id}
                   type="button"
                   onClick={() => setTier(p.id, t.id)}
+                  aria-pressed={current === t.id}
                   className={
                     "rounded-lg border px-2 py-2 text-xs sm:text-sm font-medium transition-colors text-center " +
                     (current === t.id
@@ -672,14 +746,21 @@ function ResultsView({
     [cards, programsById, payload],
   );
   const highlights = useMemo(() => pickHighlights(results, payload), [results, payload]);
+  // The submit button that had focus is gone; land screen readers on the results.
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  useEffect(() => {
+    headingRef.current?.focus();
+  }, []);
 
   return (
     <section className="space-y-4 animate-step-in">
       <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
-        <h2 className="text-lg font-semibold text-emerald-900">Top picks for you</h2>
+        <h2 ref={headingRef} tabIndex={-1} className="text-lg font-semibold text-emerald-900 outline-none">
+          Top picks for you
+        </h2>
         <p className="mt-1 text-sm text-emerald-800">
           Ranked by <strong>net annual rewards</strong> on your spend (card rate × your
-          spend, less the annual fee). Co-brand rates count only for brands you selected.
+          spend, less the annual fee incl. GST). Co-brand rates count only for brands you selected.
           Sign-up bonuses, milestones and lounge access are shown <em>separately</em> —
           they&apos;re one-off or usage-dependent, so they don&apos;t inflate the ranking.
         </p>
@@ -822,18 +903,18 @@ function RadioGroup<T extends string>({
 }
 
 function PillGroup<T extends string>({
-  name,
+  labelledBy,
   options,
   value,
   onChange,
 }: {
-  name: string;
+  labelledBy: string;
   options: ReadonlyArray<{ id: T; label: string }>;
   value: T;
   onChange: (v: T) => void;
 }) {
   return (
-    <div role="radiogroup" aria-label={name} className="grid grid-cols-5 gap-1.5">
+    <div role="radiogroup" aria-labelledby={labelledBy} className="grid grid-cols-5 gap-1.5">
       {options.map((opt) => {
         const checked = value === opt.id;
         return (

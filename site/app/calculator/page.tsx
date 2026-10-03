@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { getActiveClientCards } from "@/lib/data";
@@ -21,9 +22,9 @@ export default function CalculatorPage() {
           before applying. Channel-locked accelerators (e.g. SmartBuy, Travel EDGE, IndiGo direct) are credited
           at their headline rate — i.e. assuming you book through that channel. For a more realistic estimate
           that accounts for your actual booking habits, use{" "}
-          <a className="text-brand-700 hover:underline" href="/recommend">
+          <Link className="text-brand-700 hover:underline" href="/recommend">
             /recommend
-          </a>
+          </Link>
           .
         </p>
       </header>

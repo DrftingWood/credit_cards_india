@@ -15,6 +15,31 @@ function base(o: Partial<RecommendPayload> = {}): RecommendPayload {
   return { income_band: "75k-1.5L", goals: [], monthly_spend: { online: "0", travel: "0", dining: "0", groceries: "0", fuel: "0" }, brand_preferences: { shopping: [], airline: null, food_ecosystem: null, fuel_station: null }, lifestyle: { lounge_pref: null, recurring: [] }, ...o };
 }
 
+describe("recommend inputs that gate cards", () => {
+  test("an international lounge preference admits only cards with international lounge access", async () => {
+    const { cards, programs } = await load();
+    const p = base({ goals: ["lounge"], lifestyle: { lounge_pref: "international", recurring: [] } });
+    const rs = scoreDecoupled(cards, programs, p, { topN: 400, dedupeVariants: false });
+    expect(rs.length).toBeGreaterThan(0);
+    for (const r of rs) expect(r.card.computed.has_international_lounge).toBe(true);
+  });
+
+  test("the bank-portal toggle credits issuer-portal accelerators", async () => {
+    const { cards, programs } = await load();
+    const spend = { online: "0", travel: "gt-30k", dining: "0", groceries: "0", fuel: "0" } as const;
+    const score = (recurring: RecommendPayload["lifestyle"]["recurring"]) =>
+      scoreDecoupled(cards, programs, base({ goals: ["travel"], monthly_spend: spend, lifestyle: { lounge_pref: null, recurring } }), { topN: 400, dedupeVariants: false });
+    const portalCards = cards
+      .filter((c) => c.current_rewards?.accelerated?.some((a) => a.channel?.class === "issuer-portal" && a.canonical_categories?.includes("travel")))
+      .map((c) => c.id);
+    expect(portalCards.length).toBeGreaterThan(0);
+    const without = score([]);
+    const withPortal = score(["bank-portal-bookings"]);
+    const total = (rs: typeof without) => rs.filter((r) => portalCards.includes(r.card.id)).reduce((a, r) => a + r.annual_rewards_inr, 0);
+    expect(total(withPortal)).toBeGreaterThan(total(without));
+  });
+});
+
 describe("decoupled scorer prototype", () => {
   test("brand selection lifts the matching co-brand card via its REAL rate (F1)", async () => {
     const { cards, programs } = await load();

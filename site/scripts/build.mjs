@@ -147,6 +147,13 @@ function enrichCard(card, issuers, networks, programsById) {
       fee_waiver_spend_inr: feeWaiver?.spend_inr ?? null,
       primary_reward_currency: currentRewards?.currency ?? null,
       headline_rate_pct: computeHeadlineRatePct(currentRewards, programsById),
+      // Realized ₹/unit of the card's loyalty programme, when it has one. The
+      // calculator reads programmes directly; client/detail helpers that only
+      // see the card use this so every surface values points the same way.
+      program_unit_value_inr:
+        (currentRewards?.loyalty_program
+          ? programsById?.[currentRewards.loyalty_program]?.unit_value_inr?.realized
+          : null) ?? null,
       has_domestic_lounge: hasMeaningfulLounge(currentBenefits?.lounge_access?.domestic),
       has_international_lounge: hasMeaningfulLounge(currentBenefits?.lounge_access?.international),
       co_brand_partner: card.co_brand?.partner ?? null,

@@ -18,6 +18,30 @@ export function formatFeeInr(value: number | null | undefined): string {
   return `₹${value.toLocaleString("en-IN")}`;
 }
 
+/**
+ * Whole-rupee amount with the sign before the ₹: "₹1,234", "−₹1,234".
+ * (Template-literal `₹${n}` renders a loss as "₹-1,234".)
+ */
+export function formatInrSigned(value: number): string {
+  const n = Math.round(value);
+  const abs = `₹${Math.abs(n).toLocaleString("en-IN")}`;
+  return n < 0 ? `−${abs}` : abs;
+}
+
+const CYCLE_NOUNS: Record<string, string> = {
+  monthly: "month",
+  quarterly: "quarter",
+  annual: "year",
+  statement: "statement cycle",
+  "per-txn": "transaction",
+};
+
+/** Data cycles are adjectives ("quarterly"); prose needs the noun ("per quarter"). */
+export function cycleNoun(cycle: string | null | undefined, fallback = "year"): string {
+  if (!cycle) return fallback;
+  return CYCLE_NOUNS[cycle] ?? cycle;
+}
+
 export function formatPct(value: number | null | undefined, digits = 2): string {
   if (value === null || value === undefined) return "—";
   return `${value.toFixed(digits)}%`;
@@ -26,7 +50,10 @@ export function formatPct(value: number | null | undefined, digits = 2): string 
 export function formatDate(iso: string | null | undefined): string {
   if (!iso) return "—";
   const d = new Date(iso);
-  return d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+  if (Number.isNaN(d.getTime())) return iso;
+  // Dataset dates are calendar dates (parsed as UTC midnight); format in UTC
+  // so a viewer west of UTC doesn't see the previous day.
+  return d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }
 
 /** Host (e.g. "www.hdfcbank.com") from a URL. */

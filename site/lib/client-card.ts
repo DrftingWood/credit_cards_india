@@ -46,7 +46,7 @@ function clientRewards(r: EnrichedCard["current_rewards"]): ClientRewards | null
     mcc_exclusions: r.mcc_exclusions,
     reward_cap: r.reward_cap,
     capping_rules: r.capping_rules,
-    redemption: r.redemption,
+    redemption: r.redemption?.length ? [{ fee_inr: r.redemption[0].fee_inr }] : undefined,
   });
 }
 

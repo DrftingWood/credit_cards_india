@@ -9,19 +9,16 @@ import { cardHref } from "@/lib/card-href";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
 import { rankCards, listEcosystems, type CardScore } from "@/lib/calculator";
-import { useSpendProfile } from "@/lib/use-spend-profile";
+import { MAX_MONTHLY_SPEND, useSpendProfile } from "@/lib/use-spend-profile";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
 import { formatInr, formatPct } from "@/lib/utils";
 
-/** Sanity ceiling per category (₹1 crore/month) — beyond any real cardholder, and
- *  stops a stray value like `1e21` from producing meaningless sextillion-rupee output. */
-const MAX_MONTHLY = 1_00_00_000;
-
-/** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY]. */
+/** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY_SPEND]. The
+ *  ceiling stops a stray value like `1e21` producing sextillion-rupee output. */
 function clampSpend(raw: string): number {
   const n = Number(raw);
   if (!Number.isFinite(n) || n <= 0) return 0;
-  return Math.min(MAX_MONTHLY, n);
+  return Math.min(MAX_MONTHLY_SPEND, n);
 }
 
 /** Group the closed-loop ecosystems by the activity a user can actually answer for. */
@@ -88,7 +85,7 @@ export function CalculatorClient({ cards }: { cards: ClientCard[] }) {
               <input
                 type="number"
                 min={0}
-                max={MAX_MONTHLY}
+                max={MAX_MONTHLY_SPEND}
                 step={500}
                 value={spend[cat]}
                 onChange={(e) =>

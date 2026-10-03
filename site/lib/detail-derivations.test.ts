@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { bestAcceleratedPct, formatAcceleratedRate } from "./detail-derivations";
+import { bestAcceleratedPct, feeClause, formatAcceleratedRate, productDetails, summaryProse } from "./detail-derivations";
 import type { EnrichedCard } from "./types";
 
 // These functions feed the listing tile, the compare table and the SEO meta
@@ -45,5 +45,34 @@ describe("accelerator presentation helpers — units-correct, not raw effective_
       rewards,
     );
     expect(label).not.toMatch(/Infinity|NaN/);
+  });
+});
+
+describe("detail-page fee prose and point valuation", () => {
+  async function card(id: string) {
+    const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
+    return (cards as unknown as EnrichedCard[]).find((c) => c.id === id)!;
+  }
+
+  test("a card with a joining fee and no annual fee is not called lifetime free", async () => {
+    const mmt = await card("icici-mmt-platinum"); // joining ₹500, annual ₹0
+    expect(feeClause(mmt)).toBe("a joining fee of ₹500 + GST and no annual fee");
+    expect(productDetails(mmt).join(" ")).not.toMatch(/lifetime free/i);
+    expect(summaryProse(mmt)[0]).toContain("a joining fee of ₹500 + GST and no annual fee");
+  });
+
+  test("the annual fee is no longer labelled the joining fee", async () => {
+    const irctc = await card("bob-irctc"); // joining ₹500, annual ₹350
+    expect(feeClause(irctc)).toBe("a joining fee of ₹500 and an annual fee of ₹350 + GST");
+  });
+
+  test("accelerators on a loyalty-programme card are valued at the programme's realized value", async () => {
+    // bob-irctc's base record says ₹0.18/pt, but its IRCTC programme (which the
+    // calculator and the listing badge use) realizes ₹0.95/pt.
+    const irctc = await card("bob-irctc");
+    expect(irctc.computed.program_unit_value_inr).toBe(0.95);
+    const withProgramme = bestAcceleratedPct(irctc)!;
+    const baseOnly = bestAcceleratedPct({ ...irctc, computed: { ...irctc.computed, program_unit_value_inr: null } })!;
+    expect(withProgramme / baseOnly).toBeCloseTo(0.95 / 0.18, 5);
   });
 });

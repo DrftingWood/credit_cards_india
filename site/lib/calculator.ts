@@ -783,7 +783,7 @@ export interface AcceleratorExplain {
   net_value_inr: number;        // monthly net for this accelerator's bucket
   factors: string[];            // realistic: cuts applied; absolute: constraints stated
 }
-export interface BaseSpendExplain { category: CanonicalCategory; label: string; monthly_spend: number; rate_pct: number; value_inr: number; }
+export interface BaseSpendExplain { category: CanonicalCategory; label: string; monthly_spend: number; rate_pct: number; value_inr: number; note?: string; }
 export interface CardExplanation {
   layer: "realistic" | "absolute";
   value_basis: ValueBasis;
@@ -806,6 +806,9 @@ export function explainCard(card: ClientCard, spend: SpendProfile, ctx?: Scoring
   for (const mcc of rewards?.mcc_exclusions ?? []) { const b = MCC_EXCLUSION_TO_BUCKET[mcc]; if (b) excluded.add(b); }
 
   const capUsage = new Map<AcceleratedReward, number>();
+  // Shared qualifying-spend pool per accelerator, exactly as scoreCard keeps it:
+  // a slab schedule is cumulative across buckets, not restarted per bucket.
+  const spendUsage = new Map<AcceleratedReward, number>();
   const accelerators: AcceleratorExplain[] = [];
   const base_spend: BaseSpendExplain[] = [];
   let monthlyGross = 0;
@@ -819,16 +822,17 @@ export function explainCard(card: ClientCard, spend: SpendProfile, ctx?: Scoring
     const label = CATEGORY_LABELS[bucket] ?? bucket;
 
     if (excluded.has(bucket)) {
-      base_spend.push({ category: bucket, label, monthly_spend: amount, rate_pct: 0, value_inr: 0 });
+      base_spend.push({ category: bucket, label, monthly_spend: amount, rate_pct: 0, value_inr: 0, note: "Excluded category — earns no rewards" });
       continue;
     }
     const accel = ecoCredited && rewards?.accelerated?.length
-      ? acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx, baseRate, capUsage)
+      ? acceleratedRateForBucket(rewards.accelerated, bucket, amount, rewards, ctx, baseRate, capUsage, spendUsage)
       : { hit: null, narrowUncounted: false };
     const hit = accel.hit;
 
     if (hit) {
       capUsage.set(hit.accel, (capUsage.get(hit.accel) ?? 0) + hit.accel_value_inr);
+      spendUsage.set(hit.accel, (spendUsage.get(hit.accel) ?? 0) + amount * hit.applicability);
       const lost = Math.max(0, hit.uncapped_accel_inr - hit.accel_value_inr);
       const net = hit.accel_value_inr + hit.base_remainder_inr + hit.over_cap_base_inr;
       // Over-cap spend and the non-applicable slice both earn base rate, so both
@@ -842,10 +846,13 @@ export function explainCard(card: ClientCard, spend: SpendProfile, ctx?: Scoring
         net_value_inr: net, factors: buildFactors(layer, hit, basis, rewards),
       });
     } else {
-      const value = (amount * baseRate) / 100;
+      // Base earn can be scoped to some buckets only (base.applies_to_categories).
+      const rate = baseRateForBucket(rewards, bucket, baseRate);
+      const value = (amount * rate) / 100;
       baseMonthly += value;
       monthlyGross += value;
-      base_spend.push({ category: bucket, label, monthly_spend: amount, rate_pct: baseRate, value_inr: value });
+      const note = rate === 0 && baseRate > 0 ? "Base rate not paid on this category" : undefined;
+      base_spend.push({ category: bucket, label, monthly_spend: amount, rate_pct: rate, value_inr: value, note });
     }
   }
 

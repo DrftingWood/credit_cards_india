@@ -29,6 +29,15 @@ describe("pickHighlights — labels the ranked list, never re-ranks", () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
+  test("a slot skips a card already shown and takes the next match", () => {
+    // #1 is lifetime-free, so best-no-fee must fall through to the next lifetime-free card;
+    // #2 is the only premium card, and premium-pick must not vanish because #1 was taken.
+    const s = [mk("free-1", 9000, 0), mk("paid", 8000, 2000), mk("free-2", 7000, 0)];
+    const h = pickHighlights(s, payload);
+    expect(h.find((x) => x.key === "best-no-fee")?.score.card.id).toBe("free-2");
+    expect(h.find((x) => x.key === "premium-pick")?.score.card.id).toBe("paid");
+  });
+
   test("empty scores → empty highlights", () => {
     expect(pickHighlights([], payload)).toEqual([]);
   });

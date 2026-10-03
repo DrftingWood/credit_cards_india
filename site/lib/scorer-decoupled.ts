@@ -25,7 +25,7 @@ import { scoreCard, type ScoringContext, type SpendProfile } from "./calculator"
 import { pointsToPct } from "./rate-math.mjs";
 import { CanonicalCategory } from "./category-mapping";
 import type { RecommendPayload } from "./recommender";
-import { INCOME_BAND_ANNUAL_INR, BRAND_PREF_TO_CHANNELS } from "./recommender-constants";
+import { INCOME_BAND_ANNUAL_INR, BRAND_PREF_TO_CHANNELS, RECURRING_TO_CHANNELS } from "./recommender-constants";
 
 // The scorer invents NO value or spend numbers. The only constants below are
 // (a) WARNING thresholds that never change a ₹ figure, and (b) the coarse
@@ -91,6 +91,7 @@ function channelMixFromPayload(p: RecommendPayload): Set<string> {
   for (const s of p.brand_preferences.shopping) for (const m of BRAND_PREF_TO_CHANNELS.shopping[s] ?? []) out.add(m);
   if (p.brand_preferences.food_ecosystem) for (const m of BRAND_PREF_TO_CHANNELS.food[p.brand_preferences.food_ecosystem] ?? []) out.add(m);
   if (p.brand_preferences.fuel_station) for (const m of BRAND_PREF_TO_CHANNELS.fuel[p.brand_preferences.fuel_station] ?? []) out.add(m);
+  for (const r of p.lifestyle.recurring) for (const m of RECURRING_TO_CHANNELS[r] ?? []) out.add(m);
   return out;
 }
 
@@ -237,6 +238,7 @@ export function scoreDecoupled(
     if (!payload.goals.includes("lounge")) return true;
     const pref = payload.lifestyle.lounge_pref;
     if (pref === "domestic-only" || pref === "domestic-unlimited") return c.computed.has_domestic_lounge;
+    if (pref === "international") return c.computed.has_international_lounge;
     return c.computed.has_domestic_lounge || c.computed.has_international_lounge;
   });
 

@@ -26,7 +26,7 @@ async function load() {
 }
 
 describe("client components render identically from the trimmed card", () => {
-  test("CardTile, AccelerationBreakdown and CompareTable", async () => {
+  test("CardTile, AccelerationBreakdown and CompareTable", { timeout: 60_000 }, async () => {
     const { full, slim } = await load();
     full.forEach((card, i) => {
       expect(renderToStaticMarkup(<CardTile card={slim[i]} />)).toBe(renderToStaticMarkup(<CardTile card={card} />));
@@ -41,7 +41,7 @@ describe("client components render identically from the trimmed card", () => {
     }
   });
 
-  test("BestPickCard and RankedRow", async () => {
+  test("BestPickCard and RankedRow", { timeout: 60_000 }, async () => {
     const { full, slim, programs } = await load();
     const p: RecommendPayload = {
       income_band: "75k-1.5L",

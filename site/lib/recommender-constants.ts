@@ -21,7 +21,7 @@ export const INCOME_BAND_ANNUAL_INR: Record<IncomeBand, number> = {
  * Maps a user's brand-preference pick to the merchant tokens they're willing
  * to transact through. Issuer-portal tokens (smartbuy/edge-travel/ishop)
  * are intentionally NOT included by default — those go through the
- * "willing to use bank portals" toggle (lifestyle.recurring or future).
+ * "I book travel via bank portals" toggle (RECURRING_TO_CHANNELS below).
  */
 export const BRAND_PREF_TO_CHANNELS: {
   airline: Record<string, string[]>;
@@ -56,4 +56,13 @@ export const BRAND_PREF_TO_CHANNELS: {
     hpcl: ["hpcl"],
     none: [],
   },
+};
+
+/**
+ * Maps a /recommend "recurring spend" toggle to the merchant tokens it implies
+ * the user transacts through. Only toggles that name a channel appear here;
+ * the others describe spend amounts, which the scorer never fabricates.
+ */
+export const RECURRING_TO_CHANNELS: Record<string, string[]> = {
+  "bank-portal-bookings": ["smartbuy", "ishop", "edge-travel"],
 };

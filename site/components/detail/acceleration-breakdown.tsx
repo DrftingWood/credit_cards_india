@@ -2,14 +2,10 @@
 import { useMemo, useState } from "react";
 import type { ClientCard } from "@/lib/types";
 import { explainCard, type AcceleratorExplain, type BaseSpendExplain, type ScoringContext } from "@/lib/calculator";
-import { useSpendProfile } from "@/lib/use-spend-profile";
+import { MAX_MONTHLY_SPEND, useSpendProfile } from "@/lib/use-spend-profile";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
 
 const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
-
-/** Sanity ceiling per category (₹1 crore/month) — matches /calculator's MAX_MONTHLY so
- *  the shared spend-profile store never gets a value one view accepts and another rejects. */
-const MAX_MONTHLY_SPEND = 100_000_000;
 
 /**
  * For a base-rate row in the currently-selected layer, find the reason (if any) an
@@ -82,7 +78,7 @@ export function AccelerationBreakdown({ card }: { card: ClientCard }) {
         <h2 className="text-lg font-semibold text-slate-900">See the math — accelerations &amp; caps</h2>
         <div className="inline-flex rounded-lg border border-slate-300 p-0.5 text-xs">
           {(["realistic", "absolute"] as const).map((l) => (
-            <button key={l} type="button" onClick={() => setLayer(l)}
+            <button key={l} type="button" onClick={() => setLayer(l)} aria-pressed={l === layer}
               className={l === layer ? "rounded-md bg-slate-900 px-3 py-1 font-medium text-white" : "rounded-md px-3 py-1 text-slate-600"}>
               {l === "realistic" ? "Realistic" : "Absolute"}
             </button>
@@ -129,6 +125,7 @@ export function AccelerationBreakdown({ card }: { card: ClientCard }) {
                       {inr(b.monthly_spend)} · {b.rate_pct.toFixed(1)}% = {inr(b.value_inr)}/mo
                     </span>
                   </div>
+                  {b.note ? <p className="mt-1 text-[11px] text-slate-500">{b.note}</p> : null}
                   {cutNote ? <p className="mt-1 text-[11px] text-slate-500">{cutNote}</p> : null}
                 </li>
               );

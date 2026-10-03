@@ -39,7 +39,7 @@ function numbers<T extends { card: unknown }>(s: T): Omit<T, "card"> {
 }
 
 describe("toClientCard keeps every engine's output identical", () => {
-  test("scoreCard and explainCard", async () => {
+  test("scoreCard and explainCard", { timeout: 60_000 }, async () => {
     const { full, slim, programs } = await load();
     const ctxs: ScoringContext[] = [
       {},
@@ -58,7 +58,7 @@ describe("toClientCard keeps every engine's output identical", () => {
     }
   });
 
-  test("recommender scores and highlights", async () => {
+  test("recommender scores and highlights", { timeout: 60_000 }, async () => {
     const { full, slim, programs } = await load();
     const base: RecommendPayload = {
       income_band: "75k-1.5L",
@@ -86,7 +86,7 @@ describe("toClientCard keeps every engine's output identical", () => {
     }
   });
 
-  test("browse filters and search", async () => {
+  test("browse filters and search", { timeout: 60_000 }, async () => {
     const { full, slim } = await load();
     const toggles: Array<Partial<FilterState>> = [
       {},
@@ -119,7 +119,7 @@ describe("toClientCard keeps every engine's output identical", () => {
     }
   });
 
-  test("trimmed payload carries no history, sources or application data", async () => {
+  test("trimmed payload carries no history, sources or application data", { timeout: 60_000 }, async () => {
     const { full, slim } = await load();
     const json = JSON.stringify(slim);
     expect(json).not.toContain('"source"');

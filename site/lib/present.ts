@@ -33,8 +33,11 @@ export function pickHighlights(scores: DecoupledScore[], payload: RecommendPaylo
 
   // best-overall ALWAYS surfaces ranked #1; its displayed value tells the truth even if low.
   take("best-overall", "Best overall for your spend", scores[0], true);
+  // Each predicate skips cards already shown, so a later qualifying card still
+  // gets the slot instead of the highlight silently disappearing.
+  const unused = (s: DecoupledScore) => !used.has(s.card.id);
   take("best-no-fee", "Best lifetime-free pick",
-    scores.find((s) => s.card.computed.is_lifetime_free));
+    scores.find((s) => unused(s) && s.card.computed.is_lifetime_free));
 
   const spend = (payload.monthly_spend ?? {}) as Record<string, string>;
   const top = (Object.entries(spend) as [CanonicalCategory, string][])
@@ -42,9 +45,9 @@ export function pickHighlights(scores: DecoupledScore[], payload: RecommendPaylo
     .sort((a, b) => (BAND_ORDER[b[1]] ?? 0) - (BAND_ORDER[a[1]] ?? 0))[0]?.[0];
   if (top) {
     take("best-for-top-category", `Best for ${CATEGORY_LABELS[top] ?? top}`,
-      scores.find((s) => s.reason.toLowerCase().includes(String(top))));
+      scores.find((s) => unused(s) && s.reason.toLowerCase().includes(String(top))));
   }
   take("premium-pick", "Premium pick (fee justified by rewards)",
-    scores.find((s) => s.annual_fee_inr > 0 && s.net_rewards_inr > 0));
+    scores.find((s) => unused(s) && s.annual_fee_inr > 0 && s.net_rewards_inr > 0));
   return out;
 }

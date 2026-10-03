@@ -7,7 +7,7 @@
  */
 
 import type { AcceleratedReward, ClientCard, ClientRewards, EnrichedCard } from "./types";
-import { formatInr, formatPct } from "./utils";
+import { cycleNoun, formatInr, formatPct } from "./utils";
 import { pointsToPct } from "./rate-math.mjs";
 
 /**
@@ -17,9 +17,16 @@ import { pointsToPct } from "./rate-math.mjs";
  * one scale so pickTopAccelerated doesn't compare "45 pts/₹200" against
  * "10×" naively and pick the wrong headline.
  */
-function effectivePctOf(a: AcceleratedReward, rewards: ClientRewards | null): number {
+function effectivePctOf(
+  a: AcceleratedReward,
+  rewards: ClientRewards | null,
+  programUnitValue?: number | null,
+): number {
   if (!rewards?.base) return 0;
+  // Same preference as calculator.ts unitValueFor and the build's headline
+  // rate: programme realized > base realized > base face.
   const unitValue =
+    programUnitValue ??
     rewards.base.unit_value_inr_realized ??
     rewards.base.unit_value_inr ??
     (rewards.currency === "cashback" ? 1 : null);
@@ -94,10 +101,28 @@ export function rewardTypeLabel(card: EnrichedCard): string {
   return cur;
 }
 
+/**
+ * Fee clause for prose: "lifetime free", "a joining fee of ₹500 + GST and no
+ * annual fee", "a joining and annual fee of ₹1,000 + GST", or separate
+ * figures when they differ. Null when the card has no fee record.
+ */
+export function feeClause(card: EnrichedCard): string | null {
+  const f = card.current_fees;
+  if (!f) return null;
+  const join = f.joining_fee_inr ?? 0;
+  const annual = f.annual_fee_inr ?? 0;
+  const gst = f.gst_applicable === false ? "" : " + GST";
+  if (join === 0 && annual === 0) return "no joining or annual fee";
+  if (annual === 0) return `a joining fee of ${formatInr(join)}${gst} and no annual fee`;
+  if (join === 0) return `no joining fee and an annual fee of ${formatInr(annual)}${gst}`;
+  if (join === annual) return `a joining and annual fee of ${formatInr(annual)}${gst}`;
+  return `a joining fee of ${formatInr(join)} and an annual fee of ${formatInr(annual)}${gst}`;
+}
+
 /** 2–3 sentence prose summary derived from card attributes. */
 export function summaryProse(card: EnrichedCard): string[] {
   const sentences: string[] = [];
-  const fee = card.current_fees?.annual_fee_inr ?? null;
+  const fees = feeClause(card);
   const partner = card.co_brand?.partner;
   const topAccel = pickTopAccelerated(card);
   const issuer = card.issuer_detail.name;
@@ -107,12 +132,12 @@ export function summaryProse(card: EnrichedCard): string[] {
   if (partner) {
     sentences.push(
       `The ${card.name} is a ${tierLabel} co-branded credit card from ${issuer} and ${partner}` +
-        (fee !== null ? `, with a joining fee of ${formatInr(fee)} + GST.` : "."),
+        (fees ? `, with ${fees}.` : "."),
     );
   } else {
     sentences.push(
       `The ${card.name} is a ${tierLabel} credit card from ${issuer}` +
-        (fee !== null ? `, with a joining fee of ${formatInr(fee)} + GST.` : "."),
+        (fees ? `, with ${fees}.` : "."),
     );
   }
 
@@ -120,7 +145,7 @@ export function summaryProse(card: EnrichedCard): string[] {
   if (topAccel) {
     const rewards = card.current_rewards ?? null;
     const rate = formatAcceleratedRate(topAccel, rewards);
-    const valuePct = effectivePctOf(topAccel, rewards);
+    const valuePct = effectivePctOf(topAccel, rewards, card.computed.program_unit_value_inr);
     const value =
       rewards && rewards.currency !== "cashback" && valuePct > 0
         ? ` (≈${formatPct(valuePct, 1)} value)`
@@ -166,8 +191,8 @@ export function summaryProse(card: EnrichedCard): string[] {
 /** 3–6 key bullets for the Product Details section. */
 export function productDetails(card: EnrichedCard): string[] {
   const bullets: string[] = [];
-  const fee = card.current_fees?.annual_fee_inr ?? null;
-  const waiver = card.computed.fee_waiver_spend_inr;
+  const fees = feeClause(card);
+  const waiver = card.current_fees?.fee_waiver ?? null;
   const partner = card.co_brand?.partner;
   const networkName = card.network_detail?.name ?? card.network;
 
@@ -178,14 +203,16 @@ export function productDetails(card: EnrichedCard): string[] {
   } else {
     bullets.push(`${card.tier.replace("-", " ")} card issued by ${card.issuer_detail.name}.`);
   }
-  if (fee === 0) {
+  if (card.computed.is_lifetime_free) {
     bullets.push(`Lifetime free — no joining or annual fee.`);
-  } else if (fee !== null) {
-    bullets.push(
-      `Joining / annual fee of ${formatInr(fee)} + GST${
-        waiver ? `, waived on annual spends of ${formatInr(waiver)}` : ""
-      }.`,
-    );
+  } else if (fees) {
+    const waived = !waiver || (card.current_fees?.annual_fee_inr ?? 0) === 0
+      ? ""
+      : waiver.spend_inr > 0
+        ? `; annual fee waived on ${formatInr(waiver.spend_inr)} spend per ${cycleNoun(waiver.cycle)}`
+        : "; annual fee waived with card usage";
+    const text = `${fees}${waived}.`;
+    bullets.push(text.charAt(0).toUpperCase() + text.slice(1));
   }
   bullets.push(`Available on the ${networkName} network.`);
   const lounge = card.current_benefits?.lounge_access;
@@ -273,7 +300,8 @@ export function pickTopAccelerated(card: ClientCard) {
   const acc = card.current_rewards?.accelerated ?? [];
   if (!acc.length) return null;
   const rewards = card.current_rewards;
-  return [...acc].sort((a, b) => effectivePctOf(b, rewards) - effectivePctOf(a, rewards))[0];
+  const pv = card.computed.program_unit_value_inr;
+  return [...acc].sort((a, b) => effectivePctOf(b, rewards, pv) - effectivePctOf(a, rewards, pv))[0];
 }
 
 /**
@@ -285,7 +313,7 @@ export function pickTopAccelerated(card: ClientCard) {
 export function bestAcceleratedPct(card: ClientCard): number | null {
   const top = pickTopAccelerated(card);
   if (!top) return null;
-  const pct = effectivePctOf(top, card.current_rewards);
+  const pct = effectivePctOf(top, card.current_rewards, card.computed.program_unit_value_inr);
   return pct > 0 ? pct : null;
 }
 

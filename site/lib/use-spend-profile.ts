@@ -7,6 +7,10 @@ export const DEFAULT_SPEND: SpendProfile = {
   utilities: 5000, rent: 0, international: 0,
 };
 
+/** Sanity ceiling per category (₹1 crore/month), shared by every spend input so a
+ *  value one view accepts is never rejected by another. */
+export const MAX_MONTHLY_SPEND = 1_00_00_000;
+
 const KEY = "cc-spend-profile-v1";
 const listeners = new Set<() => void>();
 let current: SpendProfile = load();
@@ -28,7 +32,7 @@ function sanitize(p: Partial<SpendProfile>): SpendProfile {
   const out = { ...DEFAULT_SPEND };
   (Object.keys(out) as CanonicalCategory[]).forEach((k) => {
     const v = Number(p[k]);
-    out[k] = Number.isFinite(v) && v >= 0 ? v : DEFAULT_SPEND[k];
+    out[k] = Number.isFinite(v) && v >= 0 ? Math.min(v, MAX_MONTHLY_SPEND) : DEFAULT_SPEND[k];
   });
   return out;
 }

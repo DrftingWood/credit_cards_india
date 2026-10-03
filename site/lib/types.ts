@@ -416,6 +416,8 @@ export interface EnrichedCard extends CardRecord {
     fee_waiver_spend_inr: number | null;
     primary_reward_currency: RewardCurrency | null;
     headline_rate_pct: number | null;
+    /** Realized ₹ per unit from the card's loyalty programme (null when none). */
+    program_unit_value_inr?: number | null;
     has_domestic_lounge: boolean;
     has_international_lounge: boolean;
     co_brand_partner: string | null;
@@ -445,7 +447,13 @@ export type ClientFees = Pick<
   | "finance_charge_monthly_pct"
   | "cash_advance_fee"
 >;
-export type ClientRewards = Omit<RewardRecord, "effective_from" | "effective_until" | "source" | "notes" | "transfer_partners">;
+export type ClientRewards = Omit<
+  RewardRecord,
+  "effective_from" | "effective_until" | "source" | "notes" | "transfer_partners" | "redemption"
+> & {
+  /** Only the primary option's per-claim fee is read client-side (compare table). */
+  redemption?: Array<Pick<RedemptionOption, "fee_inr">>;
+};
 export type ClientBenefits = Pick<
   BenefitRecord,
   "lounge_access" | "golf" | "milestones" | "welcome" | "insurance" | "fuel_surcharge_waiver" | "concierge"

@@ -1,6 +1,6 @@
 # Agent TODO
 
-Last refreshed: 2026-07-06
+Last refreshed: 2026-10-03
 
 This is the canonical work queue for agents. Historical audit docs are evidence,
 not task lists. If an item from an old audit still matters, promote it here
@@ -20,13 +20,14 @@ before starting work.
 
 ## Current State
 
-- Dataset: 319 card YAMLs across 25 issuers. `validate.py` reports **0 errors,
+- Dataset: 320 card YAMLs across 25 issuers. `validate.py` reports **0 errors,
   0 warnings** (the 6 standing co-brand/aurum warnings were cleared 2026-07-05, D6).
 - Generated site data: `dist/*.json`, rebuilt by `site/scripts/prebuild.mjs`.
 - Local PDF archive under `docs/sources/**/*.pdf`.
 - Validation reproducibility (A0): resolved — `pip install -r scripts/requirements.txt`
   then `python scripts/validate.py` runs cleanly in a fresh env; matches CI.
-- Site test suite: **122 passing**; `typecheck` + `prebuild` clean. (`npm run build`
+- Site test suite: **173 passing**; `typecheck` + `prebuild` clean; CI now runs
+  typecheck, tests and `next build` in the `site` job (2026-10-03). (`npm run build`
   currently hits a pre-existing Windows `spawn UNKNOWN` worker error — env-only,
   builds fine with `experimental.cpus:1`; CI/Linux unaffected.)
 
@@ -49,6 +50,18 @@ blended, reconciles with `scoreCard`); a shared localStorage-persisted spend pro
 full cap-story rows + base-rate spend with channel-cut notes) on the card page AND
 `/calculator`. First phase of the value-capture roadmap.
 
+**2026-10-03 — whole-site review** (branch `claude/bold-dijkstra-dyglo9`): static
+review of routes, lib and build plus browser QA (375/1280px) of a production
+build. Fixed: client pages shipped every card's full history and sources
+(~2.3 MB HTML → 0.86 MB, `ClientCard` + equivalence tests); `explainCard`
+disagreed with `scoreCard` (slabs, base scope; reconcile test over every card);
+fee methodology (GST + qualifying waiver spend, DECISIONS D-21); recommend
+hidden-answer leakage, highlights, lounge pref, bank-portal toggle, Back
+restore; compare lock-up on bad ids; booking Enter reload / quote drift;
+detail-page fee and cycle copy; SEO (robots, sitemap, per-page OG, favicon);
+undefined brand shades; build.mjs fail-loud checks; lockfile out of sync with
+package.json (`npm ci` failed). Deferred items are SR-1..SR-8 below.
+
 ## Execution Plans
 
 - **Data & evidence remediation** (2026-07-05, mostly merged): `docs/superpowers/plans/2026-07-05-data-remediation.md`
@@ -68,6 +81,14 @@ Fresh sessions: read the plan header, create the branch it names, and execute ta
 | CALC-4 | P3 | Calculators | Open | **Redemption realism** (roadmap Phase 4) — transfer-partner routes, forex, per-redemption fees so points value the best real redemption (`transfer_partners` + `unit_value_inr_realized` are the starting point). |
 | UI-1 | P2 | Site UX | Open | **Figma visual pass** — apply the premium "Ink & Warm" skin (palette/type/depth/dark mode) across the functionally-redesigned surfaces. Includes finalizing the best-pick card visuals (variant B), and merging `/calculator`'s two spend-input grids (it + `AccelerationBreakdown` each render one, both bound to the shared store). The functional layer was built as a clean restyle target. |
 | UI-2 | P3 | Site UX | Open | `/calculator` (`calculator-client.tsx`) carries **pre-existing emoji** (🛍/✈️/⛽/🔒…) — replace with the SVG icon set (`@/components/icons`) during the Figma pass; no emoji in product UI. |
+| SR-1 | P2 | Recommender | Open | **Variant de-dup by id prefix** (`scorer-decoupled.ts` `isVariantOf`, same in `portfolio.ts`) hides distinct products: kotak-white vs -white-reserve, hdfc-regalia vs -regalia-gold, sbi-elite vs -elite-business, axis-indigo vs -indigo-premium (~55 id pairs match). Needs an explicit `metadata.variant_of` field; then de-dup only within a declared family. |
+| SR-2 | P3 | Portfolio | Open | `lib/portfolio.ts` (test-only today) — middle rate tiers under-filled (`width = seg.widthInr - consumedHere` subtracts earlier tiers' spend), held cards can be dropped by `allocateSolvent`, a late drop leaves its spend unreallocated, ~10⁵ `scoreCard` calls per run. Fix before wiring it into a page. |
+| SR-3 | P3 | Schema | Open | `fee_waiver.excluded_categories` — D-21 uses reward exclusions as the waiver's; add the field if a card's waiver exclusions differ. Also `renewal_fee_inr` (≈10 cards) is ignored by net value. |
+| SR-4 | P3 | Recommender | Open | /recommend never sets `enabledEcosystems`, so closed-loop cards are valued as if the user uses the ecosystem (the calculator's default Realistic mode doesn't). Map brand picks → ecosystems before gating. The card-page breakdown's Realistic layer also ignores the /recommend picks (empty channel mix). |
+| SR-5 | P3 | Tooling | Open | ESLint: `.eslintrc.json` + `next lint` are deprecated (removed in Next 16 / ESLint 10). Migrate to `eslint.config.mjs` via FlatCompat and `"lint": "eslint ."`. |
+| SR-6 | P3 | CI | Open | Weekly `url-health` job can never fail: `validate.py --check-urls` reports dead URLs as warnings and exits 0. Add a strict flag. |
+| SR-7 | P3 | Site UX | Open | /browse search ↔ URL sync may drop keystrokes on a slow network (two effects; `router.replace` per key). Not reproduced in QA — debounce the URL write or skip self-written params if seen. |
+| SR-8 | P3 | Data | Open | 10 issuers have no logo or brand colour (boi, canara, idbi, kvb, onecard, pnb, slice, south-indian, union; equitas has a colour only); tiles fall back to a text chip on slate. |
 | CALC-5 | P3 | Calculators | Open | Optional cleanup: extract the card-wide cap tail into one `applyCardWideCaps()` helper shared by `scoreCard` + `explainCard`, so reconciliation is structural rather than test-enforced (tests currently guard it). |
 
 ## Pick-Up Board

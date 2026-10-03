@@ -1,7 +1,7 @@
-import type { EnrichedCard } from "@/lib/types";
+import type { ClientCard } from "@/lib/types";
 import { CardTile } from "./card-tile";
 
-export function CardGrid({ cards }: { cards: EnrichedCard[] }) {
+export function CardGrid({ cards }: { cards: ClientCard[] }) {
   if (cards.length === 0) {
     return (
       <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-600">

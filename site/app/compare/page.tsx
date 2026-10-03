@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getActiveCards } from "@/lib/data";
+import { getActiveClientCards } from "@/lib/data";
 import { CompareClient } from "./compare-client";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function ComparePage() {
-  const cards = getActiveCards();
+  const cards = getActiveClientCards();
 
   return (
     <div className="space-y-4">

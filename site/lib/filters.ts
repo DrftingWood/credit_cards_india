@@ -1,4 +1,4 @@
-import type { EnrichedCard } from "./types";
+import type { ClientCard } from "./types";
 
 export type ForexBand = "low" | "mid" | "high";
 
@@ -47,7 +47,7 @@ function bandOf(forex: number | null | undefined): ForexBand | null {
   return "high";
 }
 
-export function filterCards(cards: EnrichedCard[], f: FilterState): EnrichedCard[] {
+export function filterCards<C extends ClientCard>(cards: C[], f: FilterState): C[] {
   return cards.filter((c) => {
     if (f.issuers.length && !f.issuers.includes(c.issuer)) return false;
     if (f.networks.length && !f.networks.includes(c.network)) return false;

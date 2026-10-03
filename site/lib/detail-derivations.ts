@@ -6,7 +6,7 @@
  * narrowly focused on layout.
  */
 
-import type { AcceleratedReward, EnrichedCard, RewardRecord } from "./types";
+import type { AcceleratedReward, ClientCard, ClientRewards, EnrichedCard } from "./types";
 import { formatInr, formatPct } from "./utils";
 import { pointsToPct } from "./rate-math.mjs";
 
@@ -17,7 +17,7 @@ import { pointsToPct } from "./rate-math.mjs";
  * one scale so pickTopAccelerated doesn't compare "45 pts/₹200" against
  * "10×" naively and pick the wrong headline.
  */
-function effectivePctOf(a: AcceleratedReward, rewards: RewardRecord | null): number {
+function effectivePctOf(a: AcceleratedReward, rewards: ClientRewards | null): number {
   if (!rewards?.base) return 0;
   const unitValue =
     rewards.base.unit_value_inr_realized ??
@@ -38,7 +38,7 @@ function effectivePctOf(a: AcceleratedReward, rewards: RewardRecord | null): num
  * Receipt-visible rate string for an accelerator: "5%" for cashback,
  * "45 pts per ₹200" for points/miles, "10×" when only a multiplier is set.
  */
-export function formatAcceleratedRate(a: AcceleratedReward, rewards: RewardRecord | null): string {
+export function formatAcceleratedRate(a: AcceleratedReward, rewards: ClientRewards | null): string {
   if (a.effective_rate == null) return `${a.multiplier}×`;
   const perInr = a.effective_per_inr ?? rewards?.base.per_inr ?? 100;
   if (!rewards || rewards.currency === "cashback") {
@@ -269,7 +269,7 @@ export function deriveCons(card: EnrichedCard): string[] {
 }
 
 /** Returns the highest-value accelerated reward entry, normalising effective_rate (units per ₹N) and multiplier (×) to a comparable value-% scale. */
-export function pickTopAccelerated(card: EnrichedCard) {
+export function pickTopAccelerated(card: ClientCard) {
   const acc = card.current_rewards?.accelerated ?? [];
   if (!acc.length) return null;
   const rewards = card.current_rewards;
@@ -282,7 +282,7 @@ export function pickTopAccelerated(card: EnrichedCard) {
  * value to convert through. Use this, never the raw `effective_rate`, for any
  * headline percent (effective_rate is units-per-₹N, not a percent).
  */
-export function bestAcceleratedPct(card: EnrichedCard): number | null {
+export function bestAcceleratedPct(card: ClientCard): number | null {
   const top = pickTopAccelerated(card);
   if (!top) return null;
   const pct = effectivePctOf(top, card.current_rewards);
@@ -290,7 +290,7 @@ export function bestAcceleratedPct(card: EnrichedCard): number | null {
 }
 
 /** Format an accelerated reward as a one-line summary. */
-export function formatAccelerated(a: AcceleratedReward, rewards: RewardRecord | null): string {
+export function formatAccelerated(a: AcceleratedReward, rewards: ClientRewards | null): string {
   const rate = formatAcceleratedRate(a, rewards);
   const where = a.category.replace(/-/g, " ");
   const cap =

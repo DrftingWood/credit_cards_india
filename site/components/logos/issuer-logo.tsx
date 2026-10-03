@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { IssuerRecord } from "@/lib/types";
+import type { ClientIssuer } from "@/lib/types";
 
 /**
  * Renders an issuer brand-mark (HDFC / ICICI / SBI / …).
@@ -13,7 +13,7 @@ import type { IssuerRecord } from "@/lib/types";
  */
 
 interface IssuerLogoProps {
-  issuer: IssuerRecord;
+  issuer: ClientIssuer;
   variant?: "mark-only" | "with-name";
   /** Height of the logo in pixels; width is auto. */
   height?: number;

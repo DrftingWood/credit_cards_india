@@ -4,14 +4,15 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
-import type { EnrichedCard } from "@/lib/types";
+import type { ClientCard } from "@/lib/types";
 import { CompareTable } from "@/components/compare-table";
+import { cardHref } from "@/lib/card-href";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
 
 const MAX_CARDS = 4;
 
-export function CompareClient({ cards }: { cards: EnrichedCard[] }) {
+export function CompareClient({ cards }: { cards: ClientCard[] }) {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -48,12 +49,12 @@ export function CompareClient({ cards }: { cards: EnrichedCard[] }) {
     () =>
       selectedIds
         .map((id) => cards.find((c) => c.id === id))
-        .filter((c): c is EnrichedCard => !!c),
+        .filter((c): c is ClientCard => !!c),
     [selectedIds, cards],
   );
 
   const suggestions = useMemo(() => {
-    if (!query.trim()) return [] as EnrichedCard[];
+    if (!query.trim()) return [] as ClientCard[];
     return fuse
       .search(query)
       .map((r) => r.item)
@@ -167,7 +168,7 @@ export function CompareClient({ cards }: { cards: EnrichedCard[] }) {
             <>
               Add one more card to compare with{" "}
               <Link
-                href={`/card/${selected[0].issuer}/${selected[0].id.slice(selected[0].issuer.length + 1)}`}
+                href={cardHref(selected[0])}
                 className="underline"
               >
                 {selected[0].name}

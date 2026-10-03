@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
-import type { EnrichedCard, IssuerRecord } from "@/lib/types";
+import type { ClientCard, ClientIssuer } from "@/lib/types";
 import { EMPTY_FILTERS, filterCards, paramsToState, stateToParams } from "@/lib/filters";
 import { CardGrid } from "@/components/card-grid";
 import { FilterBar } from "@/components/filter-bar";
@@ -12,8 +12,8 @@ export function BrowseClient({
   cards,
   issuers,
 }: {
-  cards: EnrichedCard[];
-  issuers: IssuerRecord[];
+  cards: ClientCard[];
+  issuers: ClientIssuer[];
 }) {
   const router = useRouter();
   const params = useSearchParams();

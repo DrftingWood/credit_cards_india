@@ -1,4 +1,6 @@
 import type {
+  ClientCard,
+  ClientIssuer,
   EnrichedCard,
   IssuerRecord,
   NetworkRecord,
@@ -23,6 +25,11 @@ import issuersData from "../../dist/issuers.json";
 import networksData from "../../dist/networks.json";
 import indexData from "../../dist/index.json";
 import loyaltyData from "../../dist/loyalty_programs.json";
+
+import { cardSlug } from "./card-href";
+import { toClientCard } from "./client-card";
+
+export { cardHref, cardSlug } from "./card-href";
 
 const cards = cardsData as unknown as EnrichedCard[];
 const issuers = issuersData as unknown as IssuerRecord[];
@@ -57,16 +64,6 @@ export function getCardByIssuerAndSlug(
   return getCardById(`${issuer}-${slug}`);
 }
 
-/** Slug portion of a card's URL — the part after /card/<issuer>/. Strips the redundant "{issuer}-" prefix from the id when present so /card/hdfc/infinia matches what generateStaticParams produces. */
-export function cardSlug(card: { id: string; issuer: string }): string {
-  return card.id.startsWith(`${card.issuer}-`) ? card.id.slice(card.issuer.length + 1) : card.id;
-}
-
-/** Canonical detail-page href for a card. Single source of truth — use everywhere instead of inlining the slug math, which is duplicated easily and breaks when the slug convention shifts. */
-export function cardHref(card: { id: string; issuer: string }): string {
-  return `/card/${card.issuer}/${cardSlug(card)}`;
-}
-
 /** Route params for SSG of /card/[issuer]/[slug] */
 export function allCardRouteParams(): Array<{ issuer: string; slug: string }> {
   return cards.map((c) => ({ issuer: c.issuer, slug: cardSlug(c) }));
@@ -75,6 +72,25 @@ export function allCardRouteParams(): Array<{ issuer: string; slug: string }> {
 /** Active (including invite-only) cards only. */
 export function getActiveCards(): EnrichedCard[] {
   return cards.filter((c) => c.computed.is_active);
+}
+
+let activeClientCards: ClientCard[] | null = null;
+
+/** Active cards in the trimmed shape the interactive (client) pages receive. */
+export function getActiveClientCards(): ClientCard[] {
+  activeClientCards ??= getActiveCards().map(toClientCard);
+  return activeClientCards;
+}
+
+/** Issuers in the trimmed shape client components need (logo + names). */
+export function getAllClientIssuers(): ClientIssuer[] {
+  return issuers.map(({ id, name, short_name, logo_path, brand_color }) => ({
+    id,
+    name,
+    short_name,
+    logo_path,
+    brand_color,
+  }));
 }
 
 export function getAllLoyaltyPrograms(): LoyaltyProgram[] {

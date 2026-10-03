@@ -1,7 +1,7 @@
 import { memo } from "react";
 import Link from "next/link";
-import type { EnrichedCard } from "@/lib/types";
-import { cardHref } from "@/lib/data";
+import type { ClientCard } from "@/lib/types";
+import { cardHref } from "@/lib/card-href";
 import { cn, formatFeeInr, formatInr, formatPct } from "@/lib/utils";
 import { bestAcceleratedPct } from "@/lib/detail-derivations";
 import { IssuerLogo } from "./logos/issuer-logo";
@@ -14,7 +14,7 @@ import { CardImage } from "./card-image";
  * (referentially stable across renders), so default React.memo === comparison
  * is enough — no custom comparator needed.
  */
-function CardTileImpl({ card }: { card: EnrichedCard }) {
+function CardTileImpl({ card }: { card: ClientCard }) {
   const href = cardHref(card);
 
   const fee = card.current_fees?.annual_fee_inr ?? null;

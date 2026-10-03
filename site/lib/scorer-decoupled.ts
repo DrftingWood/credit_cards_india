@@ -20,7 +20,7 @@
 // Side-by-side with recommender.ts (does not replace it). Reuses scoreCard.
 // ─────────────────────────────────────────────────────────────────────────
 
-import type { EnrichedCard, LoyaltyProgram, BenefitRecord } from "./types";
+import type { ClientCard, LoyaltyProgram, ClientBenefits } from "./types";
 import { scoreCard, type ScoringContext, type SpendProfile } from "./calculator";
 import { pointsToPct } from "./rate-math.mjs";
 import { CanonicalCategory } from "./category-mapping";
@@ -58,7 +58,7 @@ const MACRO_TO_BUCKET: Record<string, CanonicalCategory> = { online: "online", t
 const CYCLE_MONTHS: Record<string, number> = { annual: 12, quarterly: 3, monthly: 1, statement: 1, "per-txn": 1 };
 
 export interface DecoupledScore {
-  card: EnrichedCard;
+  card: ClientCard;
   // THE RANK KEY — spend-grounded, brand-aware, no invented weights.
   net_rewards_inr: number; // annual rewards (given the user's brand selection) − annual fee
   annual_rewards_inr: number;
@@ -95,7 +95,7 @@ function channelMixFromPayload(p: RecommendPayload): Set<string> {
 }
 
 /** Recurring milestone ₹ value at the card's data-stated values (A4 logic: one-times excluded); also reports whether any award is implausibly large vs its trigger. */
-function milestoneRecurring(b: BenefitRecord | null, annualSpendInr: number): { inr: number; implausible: boolean } {
+function milestoneRecurring(b: ClientBenefits | null, annualSpendInr: number): { inr: number; implausible: boolean } {
   if (!b?.milestones?.length) return { inr: 0, implausible: false };
   let total = 0;
   let implausible = false;
@@ -112,12 +112,12 @@ function milestoneRecurring(b: BenefitRecord | null, annualSpendInr: number): { 
   return { inr: total, implausible };
 }
 
-function welcomeOneTime(b: BenefitRecord | null): number {
+function welcomeOneTime(b: ClientBenefits | null): number {
   if (!b?.welcome?.length) return 0;
   return b.welcome.reduce((s, w) => s + (w.value_inr ?? 0), 0);
 }
 
-function loungeVisits(b: BenefitRecord | null): DecoupledScore["lounge_visits"] {
+function loungeVisits(b: ClientBenefits | null): DecoupledScore["lounge_visits"] {
   const la = b?.lounge_access ?? {};
   const annual = (v: number | "unlimited" | undefined, cycle: string | undefined): number | "unlimited" => {
     if (v === undefined) return 0;
@@ -127,7 +127,7 @@ function loungeVisits(b: BenefitRecord | null): DecoupledScore["lounge_visits"] 
   return { domestic: annual(la.domestic?.visits_per_cycle, la.domestic?.cycle), international: annual(la.international?.visits_per_cycle, la.international?.cycle) };
 }
 
-function realizedUnitValue(card: EnrichedCard, programs: Record<string, LoyaltyProgram>): number {
+function realizedUnitValue(card: ClientCard, programs: Record<string, LoyaltyProgram>): number {
   const r = card.current_rewards;
   if (!r) return 0;
   const lp = r.loyalty_program ? programs[r.loyalty_program] : null;
@@ -135,7 +135,7 @@ function realizedUnitValue(card: EnrichedCard, programs: Record<string, LoyaltyP
   return r.base.unit_value_inr_realized ?? r.base.unit_value_inr ?? (r.currency === "cashback" ? 1 : 0);
 }
 
-export function ratesFlags(card: EnrichedCard, topBucket: CanonicalCategory | null, rewardedBuckets: Set<CanonicalCategory>, uv: number): string[] {
+export function ratesFlags(card: ClientCard, topBucket: CanonicalCategory | null, rewardedBuckets: Set<CanonicalCategory>, uv: number): string[] {
   const flags: string[] = [];
   const base = card.current_rewards?.base;
   for (const a of card.current_rewards?.accelerated ?? []) {
@@ -216,7 +216,7 @@ function isVariantOf(a: string, b: string): boolean {
 }
 
 export function scoreDecoupled(
-  cards: EnrichedCard[],
+  cards: ClientCard[],
   programs: Record<string, LoyaltyProgram>,
   payload: RecommendPayload,
   opts: ScoreOpts = {},
@@ -290,7 +290,7 @@ export function scoreDecoupled(
     .slice(0, opts.topN ?? 5);
 }
 
-function passesIncome(card: EnrichedCard, band: RecommendPayload["income_band"]): boolean {
+function passesIncome(card: ClientCard, band: RecommendPayload["income_band"]): boolean {
   if (!band) return true;
   const ceiling = INCOME_BAND_ANNUAL_INR[band];
   if (ceiling == null) return true;

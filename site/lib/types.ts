@@ -401,7 +401,7 @@ export interface CardRecord {
   metadata: CardMetadata;
 }
 
-/** Enriched shape produced by scripts/build.py under dist/cards.json. */
+/** Enriched shape produced by scripts/build.mjs under dist/cards.json. */
 export interface EnrichedCard extends CardRecord {
   issuer_detail: IssuerRecord;
   network_detail: NetworkRecord;
@@ -421,6 +421,46 @@ export interface EnrichedCard extends CardRecord {
     co_brand_partner: string | null;
     co_brand_category: string | null;
   };
+}
+
+/*
+ * Client-facing card shape. The interactive pages (/browse, /compare,
+ * /calculator, /recommend, and the card page's breakdown) serialise their
+ * card list into the HTML as RSC props, so every byte here ships to the
+ * browser for ~300 cards. These are allowlists: history arrays, source
+ * blocks, application links and issuer contact details stay server-side.
+ * EnrichedCard is structurally assignable to ClientCard, so server code can
+ * keep passing full cards to anything typed against ClientCard.
+ * lib/client-card.ts builds values of this type; extend both together.
+ */
+export type ClientIssuer = Pick<IssuerRecord, "id" | "name" | "short_name" | "logo_path" | "brand_color">;
+export type ClientNetwork = Pick<NetworkRecord, "id" | "name" | "logo_path">;
+export type ClientFees = Pick<
+  FeeRecord,
+  | "annual_fee_inr"
+  | "joining_fee_inr"
+  | "fee_waiver"
+  | "gst_applicable"
+  | "forex_markup_pct"
+  | "finance_charge_monthly_pct"
+  | "cash_advance_fee"
+>;
+export type ClientRewards = Omit<RewardRecord, "effective_from" | "effective_until" | "source" | "notes" | "transfer_partners">;
+export type ClientBenefits = Pick<
+  BenefitRecord,
+  "lounge_access" | "golf" | "milestones" | "welcome" | "insurance" | "fuel_surcharge_waiver" | "concierge"
+>;
+
+export interface ClientCard
+  extends Pick<CardRecord, "id" | "name" | "issuer" | "network" | "tier" | "status" | "co_brand" | "image_path"> {
+  metadata: Pick<CardMetadata, "last_verified_on" | "tags" | "exclusive_group">;
+  eligibility: Pick<Eligibility, "credit_score_min" | "income_inr_annual">;
+  issuer_detail: ClientIssuer;
+  network_detail: ClientNetwork;
+  current_fees: ClientFees | null;
+  current_rewards: ClientRewards | null;
+  current_benefits: ClientBenefits | null;
+  computed: EnrichedCard["computed"];
 }
 
 export interface DatasetIndex {

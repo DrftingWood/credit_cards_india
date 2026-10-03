@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import type { EnrichedCard } from "@/lib/types";
+import type { ClientCard } from "@/lib/types";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
-import { cardHref } from "@/lib/data";
+import { cardHref } from "@/lib/card-href";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
 import { rankCards, listEcosystems, type CardScore } from "@/lib/calculator";
@@ -33,7 +33,7 @@ const ECO_GROUPS: { label: string; icon: string; ecos: string[] }[] = [
   { label: "Bills & apps", icon: "💳", ecos: ["CheQ"] },
 ];
 
-export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
+export function CalculatorClient({ cards }: { cards: ClientCard[] }) {
   const [spend, setSpend] = useSpendProfile();
   const selectedId = useSearchParams().get("card");
   const selectedCard = useMemo(

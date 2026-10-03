@@ -1,6 +1,6 @@
 import { describe, test, expect } from "vitest";
 import { formatInr, formatFeeInr } from "./utils";
-import { cardHref, cardSlug } from "./data";
+import { cardHref, cardSlug } from "./card-href";
 
 describe("formatInr — strict numeric formatter", () => {
   test("0 renders as '₹0', not 'Free'", () => {

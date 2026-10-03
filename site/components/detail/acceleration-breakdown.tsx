@@ -1,6 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
-import type { EnrichedCard } from "@/lib/types";
+import type { ClientCard } from "@/lib/types";
 import { explainCard, type AcceleratorExplain, type BaseSpendExplain, type ScoringContext } from "@/lib/calculator";
 import { useSpendProfile } from "@/lib/use-spend-profile";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
@@ -61,7 +61,7 @@ export function AcceleratorRow({ item }: { item: AcceleratorExplain }) {
   );
 }
 
-export function AccelerationBreakdown({ card }: { card: EnrichedCard }) {
+export function AccelerationBreakdown({ card }: { card: ClientCard }) {
   const [spend, setSpend] = useSpendProfile(); // shared + persisted across all calculators
   const [layer, setLayer] = useState<"realistic" | "absolute">("realistic");
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import type { BenefitRecord, EnrichedCard } from "@/lib/types";
-import { cardHref } from "@/lib/data";
+import type { ClientBenefits, ClientCard } from "@/lib/types";
+import { cardHref } from "@/lib/card-href";
 import { formatFeeInr, formatInr, formatPct } from "@/lib/utils";
 import {
   pickTopAccelerated,
@@ -27,15 +27,15 @@ export function winners(values: (number | null)[], higherWins: boolean): boolean
 
 interface Row {
   label: string;
-  render: (card: EnrichedCard) => React.ReactNode;
+  render: (card: ClientCard) => React.ReactNode;
   /** Optional numeric accessor enabling per-row winner emphasis (see `winners`). */
   compare?: {
-    value: (card: EnrichedCard) => number | null;
+    value: (card: ClientCard) => number | null;
     higherWins: boolean;
   };
 }
 
-type LoungeAccess = NonNullable<BenefitRecord["lounge_access"]>;
+type LoungeAccess = NonNullable<ClientBenefits["lounge_access"]>;
 
 function loungeSummary(
   details: LoungeAccess | null | undefined,
@@ -61,7 +61,7 @@ function loungeSummary(
   return visits;
 }
 
-function topAcceleratedRow(card: EnrichedCard): React.ReactNode {
+function topAcceleratedRow(card: ClientCard): React.ReactNode {
   // Rank by realised value-%, not raw effective_rate — otherwise a "45 pts/₹200"
   // points entry outranks a true 5% cashback one, and renders "45%". Both the
   // ranking and the rendered rate route through the shared, units-correct helpers.
@@ -270,7 +270,7 @@ const ROWS: Row[] = [
   },
 ];
 
-export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
+export function CompareTable({ cards }: { cards: ClientCard[] }) {
   // Defensive early-return — every caller already gates on cards.length >= 2,
   // but the component shouldn't divide by 0 (used to produce "Infinity%" widths)
   // if a future caller passes an empty array.

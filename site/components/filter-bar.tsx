@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { EnrichedCard, IssuerRecord } from "@/lib/types";
+import type { ClientCard, ClientIssuer } from "@/lib/types";
 import type { FilterState, ForexBand } from "@/lib/filters";
 import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
@@ -9,8 +9,8 @@ import { NetworkLogo } from "./logos/network-logo";
 interface Props {
   state: FilterState;
   onChange: (next: FilterState) => void;
-  cards: EnrichedCard[];
-  issuers: IssuerRecord[];
+  cards: ClientCard[];
+  issuers: ClientIssuer[];
 }
 
 const NETWORKS = ["visa", "mastercard", "rupay", "amex", "diners"] as const;

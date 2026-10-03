@@ -1,11 +1,11 @@
 // site/components/recommend/ranked-row.tsx
 import Link from "next/link";
 import type { DecoupledScore } from "@/lib/scorer-decoupled";
+import { cardHref } from "@/lib/card-href";
 
 const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
 export function cardDetailHref(score: DecoupledScore): string {
-  const slug = score.card.id.replace(`${score.card.issuer}-`, "");
-  return `/card/${score.card.issuer}/${slug}`;
+  return cardHref(score.card);
 }
 
 export function RankedRow({ rank, score }: { rank: number; score: DecoupledScore }) {

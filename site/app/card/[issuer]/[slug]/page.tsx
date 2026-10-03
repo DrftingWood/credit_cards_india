@@ -16,6 +16,7 @@ import { ProductDetails } from "@/components/detail/product-details";
 import { ProsCons } from "@/components/detail/pros-cons";
 import { DeepDive } from "@/components/detail/deep-dive";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
+import { toClientCard } from "@/lib/client-card";
 import type { EnrichedCard } from "@/lib/types";
 
 interface Params {
@@ -235,7 +236,7 @@ export default async function CardPage({
 
       {/* Scannable grids */}
       <RewardsBenefitsGrid card={card} />
-      <AccelerationBreakdown card={card} />
+      <AccelerationBreakdown card={toClientCard(card)} />
       <FeesChargesGrid card={card} />
 
       {/* Product details + pros/cons */}

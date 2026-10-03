@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getActiveCards, getAllIssuers } from "@/lib/data";
+import { getActiveClientCards, getAllClientIssuers } from "@/lib/data";
 import { BrowseClient } from "./browse-client";
 
 export const metadata: Metadata = {
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function BrowsePage() {
-  const cards = getActiveCards();
-  const issuers = getAllIssuers();
+  const cards = getActiveClientCards();
+  const issuers = getAllClientIssuers();
 
   return (
     <div className="space-y-4">

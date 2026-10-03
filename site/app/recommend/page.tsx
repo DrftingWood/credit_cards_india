@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { RecommendClient } from "./recommend-client";
-import { getActiveCards, getAllLoyaltyPrograms } from "../../lib/data";
+import { getActiveClientCards, getAllLoyaltyPrograms } from "../../lib/data";
 
 export const metadata: Metadata = {
   title: "Find your card — guided questionnaire",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function RecommendPage() {
-  const cards = getActiveCards();
+  const cards = getActiveClientCards();
   const programs = getAllLoyaltyPrograms();
   return (
     <div className="space-y-4">

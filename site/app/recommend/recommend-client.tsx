@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import type { EnrichedCard, LoyaltyProgram } from "../../lib/types";
+import type { ClientCard, LoyaltyProgram } from "../../lib/types";
 import {
   type RecommendPayload,
   type IncomeBand,
@@ -243,7 +243,7 @@ export function RecommendClient({
   cards,
   programs,
 }: {
-  cards: EnrichedCard[];
+  cards: ClientCard[];
   programs: LoyaltyProgram[];
 }) {
   const [state, setState] = useState<FormState>(INITIAL_STATE);
@@ -663,7 +663,7 @@ function ResultsView({
   onReset,
 }: {
   payload: RecommendPayload;
-  cards: EnrichedCard[];
+  cards: ClientCard[];
   programsById: Record<string, LoyaltyProgram>;
   onReset: () => void;
 }) {

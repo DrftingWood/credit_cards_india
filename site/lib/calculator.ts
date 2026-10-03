@@ -1,8 +1,8 @@
 import type {
-  EnrichedCard,
+  ClientCard,
   AcceleratedReward,
   RateSlab,
-  RewardRecord,
+  ClientRewards,
   LoyaltyProgram,
 } from "./types";
 import { CanonicalCategory, resolveBuckets, CATEGORY_LABELS } from "./category-mapping";
@@ -20,7 +20,7 @@ export interface BucketBreakdown {
 }
 
 export interface CardScore {
-  card: EnrichedCard;
+  card: ClientCard;
   annual_gross_inr: number;
   annual_fee_effective_inr: number;
   annual_net_inr: number;
@@ -67,7 +67,7 @@ export interface ScoringContext {
 /** Whether a card's (closed-loop) rewards should be credited in full for this user.
  *  Open cards: always. Closed-loop: only if the user uses that ecosystem (or the
  *  calculator is in optimistic mode with enabledEcosystems undefined). */
-function ecosystemCredited(rewards: RewardRecord | null, ctx: ScoringContext | undefined): boolean {
+function ecosystemCredited(rewards: ClientRewards | null, ctx: ScoringContext | undefined): boolean {
   if (!rewards || rewards.redemption_scope !== "closed-loop") return true;
   if (!ctx?.enabledEcosystems) return true; // optimistic: assume used
   const eco = rewards.ecosystem_label;
@@ -137,7 +137,7 @@ export type ValueBasis = "realized" | "face";
 /** Sourced unit value for the chosen basis. Realized: program.realized > base.realized > base.face.
  *  Face: program.face > base.face > base.realized. No made-up friction — just the two data points. */
 function unitValueFor(
-  rewards: RewardRecord,
+  rewards: ClientRewards,
   programs?: Record<string, LoyaltyProgram>,
   basis: ValueBasis = "realized",
 ): number | null {
@@ -154,7 +154,7 @@ function unitValueFor(
 }
 
 function baseRatePct(
-  rewards: RewardRecord | null,
+  rewards: ClientRewards | null,
   programs?: Record<string, LoyaltyProgram>,
   basis: ValueBasis = "realized",
 ): number {
@@ -202,7 +202,7 @@ function merchantSatisfied(a: AcceleratedReward, ctx: ScoringContext | undefined
 
 /** Sum of program baseline + matching channel bonuses + matching tier bonus, expressed as percent of spend. */
 function programStackPct(
-  rewards: RewardRecord,
+  rewards: ClientRewards,
   ctx: ScoringContext | undefined,
   unitValue: number,
 ): number {
@@ -232,7 +232,7 @@ function programStackPct(
 
 function acceleratorRatePct(
   a: AcceleratedReward,
-  rewards: RewardRecord,
+  rewards: ClientRewards,
   ctx: ScoringContext | undefined,
 ): number | null {
   const unitValue = unitValueFor(rewards, ctx?.programs, ctx?.valueBasis ?? "realized");
@@ -396,7 +396,7 @@ function slabRatePct(slabs: RateSlab[], amount: number, consumed = 0): number | 
  * issuer pays base ONLY on those buckets — elsewhere overflow past an accelerator
  * cap earns nothing rather than dropping to base.
  */
-function baseRateForBucket(rewards: RewardRecord | null, bucket: CanonicalCategory, baseRate: number): number {
+function baseRateForBucket(rewards: ClientRewards | null, bucket: CanonicalCategory, baseRate: number): number {
   const scope = rewards?.base?.applies_to_categories;
   if (!scope || scope.length === 0) return baseRate;
   return scope.includes(bucket) ? baseRate : 0;
@@ -406,7 +406,7 @@ function acceleratedRateForBucket(
   accelerated: AcceleratedReward[],
   bucket: CanonicalCategory,
   amount: number,
-  rewards: RewardRecord,
+  rewards: ClientRewards,
   ctx: ScoringContext | undefined,
   baseRate: number,
   capUsage: Map<AcceleratedReward, number>,
@@ -563,7 +563,7 @@ const EXCLUSION_TO_BUCKET: Partial<Record<string, CanonicalCategory>> = {
  *  annualized spend clears the card's fee-waiver threshold. Shared by scoreCard and
  *  explainCard so the /calculator rank and the per-card breakdown always agree (FIX 2). */
 function effectiveAnnualFee(
-  card: EnrichedCard,
+  card: ClientCard,
   annualSpend: number,
 ): { annualFeeEffective: number; feeWaived: boolean } {
   const annualFee = card.current_fees?.annual_fee_inr ?? 0;
@@ -573,7 +573,7 @@ function effectiveAnnualFee(
 }
 
 export function scoreCard(
-  card: EnrichedCard,
+  card: ClientCard,
   spend: SpendProfile,
   ctx?: ScoringContext,
 ): CardScore {
@@ -748,7 +748,7 @@ export function scoreCard(
 }
 
 export function rankCards(
-  cards: EnrichedCard[],
+  cards: ClientCard[],
   spend: SpendProfile,
   ctx?: ScoringContext,
 ): CardScore[] {
@@ -762,7 +762,7 @@ export function rankCards(
 }
 
 /** Distinct closed-loop ecosystems across the given cards, for the preference toggles. */
-export function listEcosystems(cards: EnrichedCard[]): string[] {
+export function listEcosystems(cards: ClientCard[]): string[] {
   const s = new Set<string>();
   for (const c of cards) {
     const r = c.current_rewards;
@@ -792,7 +792,7 @@ export interface CardExplanation {
   annual_gross_inr: number; annual_fee_inr: number; annual_net_inr: number;
 }
 
-export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: ScoringContext): CardExplanation {
+export function explainCard(card: ClientCard, spend: SpendProfile, ctx?: ScoringContext): CardExplanation {
   const rewards = card.current_rewards;
   const basis: ValueBasis = ctx?.valueBasis ?? "realized";
   // Layer is inferred from the context the caller built (see Global Constraints).
@@ -887,7 +887,7 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
 
 /** The constraint/cut list shown per accelerator row. Realistic: what was cut.
  *  Absolute: what the number assumes/requires. Facts only — from the hit + card. */
-function buildFactors(layer: "realistic" | "absolute", hit: AcceleratorHit, basis: ValueBasis, rewards: RewardRecord | null): string[] {
+function buildFactors(layer: "realistic" | "absolute", hit: AcceleratorHit, basis: ValueBasis, rewards: ClientRewards | null): string[] {
   const f: string[] = [];
   if (hit.cap_bound && hit.cap_monthly_inr != null) {
     f.push(`Cap ${inr0(hit.cap_monthly_inr)}/mo reached — extra spend earns base`);

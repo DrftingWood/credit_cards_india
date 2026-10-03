@@ -1,10 +1,10 @@
 import Image from "next/image";
-import type { NetworkRecord, Network } from "@/lib/types";
+import type { ClientNetwork, Network } from "@/lib/types";
 
 /**
  * Renders a network brand-mark (Visa / Mastercard / RuPay / Amex / Diners).
  *
- * Accepts either a full NetworkRecord (preferred, used wherever the enriched
+ * Accepts either a full ClientNetwork (preferred, used wherever the enriched
  * card is available) or a bare network slug (used where we only have the slug,
  * e.g. the filter sidebar). Gracefully degrades to a text chip when the
  * network record has no logo_path set, so pages stay meaningful even before
@@ -12,7 +12,7 @@ import type { NetworkRecord, Network } from "@/lib/types";
  */
 
 interface NetworkLogoProps {
-  network: NetworkRecord | Network;
+  network: ClientNetwork | Network;
   /** Height in pixels. The width scales to preserve the logo's aspect ratio. */
   height?: number;
   /** Optional className on the wrapper. */

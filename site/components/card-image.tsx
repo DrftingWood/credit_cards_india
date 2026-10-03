@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { EnrichedCard } from "@/lib/types";
+import type { ClientCard } from "@/lib/types";
 import { IssuerLogo } from "./logos/issuer-logo";
 import { NetworkLogo } from "./logos/network-logo";
 
@@ -16,7 +16,7 @@ import { NetworkLogo } from "./logos/network-logo";
  */
 
 interface CardImageProps {
-  card: EnrichedCard;
+  card: ClientCard;
   size?: "tile" | "hero";
   className?: string;
 }

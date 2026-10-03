@@ -40,17 +40,28 @@ function CardTileImpl({ card }: { card: ClientCard }) {
       <div className="mt-3 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <IssuerLogo issuer={card.issuer_detail} height={16} />
-          <h3 className="mt-1 text-sm font-semibold text-slate-900 leading-snug line-clamp-2">
+          <h2 className="mt-1 text-sm font-semibold text-slate-900 leading-snug line-clamp-2">
             {card.name}
-          </h3>
+          </h2>
         </div>
         <NetworkLogo network={card.network_detail} height={16} className="shrink-0" />
       </div>
 
       <div className="mt-3">
         <div className="text-lg font-semibold text-slate-900 tabular-nums">
-          {bestRate != null ? `up to ${formatPct(bestRate, 1)}` : formatPct(rate, 2)}
-          <span className="ml-1 text-xs font-normal text-slate-500">rewards</span>
+          {bestRate != null ? (
+            <>
+              {formatPct(bestRate, 1)}
+              <span className="ml-1 text-xs font-normal text-slate-500">
+                top rate{rate != null ? ` · ${formatPct(rate, 2)} base` : ""}
+              </span>
+            </>
+          ) : (
+            <>
+              {formatPct(rate, 2)}
+              <span className="ml-1 text-xs font-normal text-slate-500">base rewards</span>
+            </>
+          )}
         </div>
         <div className="mt-0.5 text-sm text-slate-700 tabular-nums">
           {card.computed.is_lifetime_free ? "Lifetime free" : formatFeeWithGst(fee, card.current_fees?.gst_applicable)}

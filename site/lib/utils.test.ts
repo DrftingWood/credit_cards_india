@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { formatInr, formatFeeInr } from "./utils";
+import { cycleNoun, formatDate, formatFeeInr, formatFeeWithGst, formatInr, formatInrSigned, waiverLabel } from "./utils";
 import { cardHref, cardSlug } from "./card-href";
 
 describe("formatInr — strict numeric formatter", () => {
@@ -36,5 +36,35 @@ describe("cardSlug / cardHref — URL helpers (B6-SF7)", () => {
   });
   test("cardHref returns /card/<issuer>/<slug>", () => {
     expect(cardHref({ id: "hdfc-infinia", issuer: "hdfc" })).toBe("/card/hdfc/infinia");
+  });
+});
+
+describe("display helpers", () => {
+  test("cycleNoun turns data adjectives into prose nouns", () => {
+    expect(cycleNoun("quarterly")).toBe("quarter");
+    expect(cycleNoun("annual")).toBe("year");
+    expect(cycleNoun("statement")).toBe("statement cycle");
+    expect(cycleNoun(undefined)).toBe("year");
+    expect(cycleNoun(null, "month")).toBe("month");
+  });
+
+  test("formatInrSigned puts the sign before the rupee symbol", () => {
+    expect(formatInrSigned(1234.4)).toBe("₹1,234");
+    expect(formatInrSigned(-1234.4)).toBe("−₹1,234");
+    expect(formatInrSigned(0)).toBe("₹0");
+  });
+
+  test("formatFeeWithGst and waiverLabel", () => {
+    expect(formatFeeWithGst(1500)).toBe("₹1,500 + GST");
+    expect(formatFeeWithGst(1500, false)).toBe("₹1,500");
+    expect(formatFeeWithGst(0)).toBe("Free");
+    expect(formatFeeWithGst(null)).toBe("—");
+    expect(waiverLabel({ spend_inr: 300000, cycle: "annual" })).toBe("waived on ₹3,00,000 spend/year");
+    expect(waiverLabel({ spend_inr: 0, cycle: "quarterly" })).toBe("waived with card usage");
+    expect(waiverLabel(null)).toBeNull();
+  });
+
+  test("formatDate is timezone-independent for calendar dates", () => {
+    expect(formatDate("2026-07-06")).toBe("6 Jul 2026");
   });
 });

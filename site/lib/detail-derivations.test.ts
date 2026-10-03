@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { bestAcceleratedPct, feeClause, formatAcceleratedRate, productDetails, summaryProse } from "./detail-derivations";
+import { bestAcceleratedPct, feeClause, formatAcceleratedRate, fuelWaiverText, productDetails, summaryProse } from "./detail-derivations";
 import type { EnrichedCard } from "./types";
 
 // These functions feed the listing tile, the compare table and the SEO meta
@@ -74,5 +74,18 @@ describe("detail-page fee prose and point valuation", () => {
     const withProgramme = bestAcceleratedPct(irctc)!;
     const baseOnly = bestAcceleratedPct({ ...irctc, computed: { ...irctc.computed, program_unit_value_inr: null } })!;
     expect(withProgramme / baseOnly).toBeCloseTo(0.95 / 0.18, 5);
+  });
+});
+
+describe("fuelWaiverText", () => {
+  test("reads cleanly for every shape of transaction band", () => {
+    expect(fuelWaiverText({ pct: 1, min_txn_inr: 400, max_txn_inr: 4000, cap_per_cycle_inr: 250, cycle: "monthly" })).toBe(
+      "1.0% waiver on fuel transactions between ₹400 and ₹4,000, capped at ₹250 per month.",
+    );
+    expect(fuelWaiverText({ pct: 1, max_txn_inr: 4000 })).toBe("1.0% waiver on fuel transactions up to ₹4,000.");
+    expect(fuelWaiverText({ pct: 1, min_txn_inr: 500 })).toBe("1.0% waiver on fuel transactions of ₹500 or more.");
+    expect(fuelWaiverText({ pct: 1, cap_per_cycle_inr: 100, cycle: "statement" })).toBe(
+      "1.0% waiver on fuel transactions, capped at ₹100 per statement cycle.",
+    );
   });
 });

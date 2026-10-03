@@ -1,5 +1,6 @@
 import type { EnrichedCard } from "@/lib/types";
-import { formatInr, formatPct } from "@/lib/utils";
+import { cycleNoun, formatInr, formatPct } from "@/lib/utils";
+import { fuelWaiverText } from "@/lib/detail-derivations";
 import { InfoGrid, type InfoCell } from "./info-grid";
 
 export function FeesChargesGrid({ card }: { card: EnrichedCard }) {
@@ -7,9 +8,13 @@ export function FeesChargesGrid({ card }: { card: EnrichedCard }) {
   const fuel = card.current_benefits?.fuel_surcharge_waiver;
   const redemption = card.current_rewards?.redemption?.[0];
 
-  const spendWaiver = fees?.fee_waiver
-    ? `${formatInr(fees.fee_waiver.spend_inr)} in the preceding year`
-    : "Not waivable";
+  const spendWaiver = !fees?.annual_fee_inr
+    ? "No annual fee"
+    : fees.fee_waiver
+      ? fees.fee_waiver.spend_inr > 0
+        ? `${formatInr(fees.fee_waiver.spend_inr)} spend per ${cycleNoun(fees.fee_waiver.cycle)}`
+        : "With card usage"
+      : "Not waivable";
 
   const redemptionFee =
     redemption?.fee_inr != null
@@ -22,15 +27,7 @@ export function FeesChargesGrid({ card }: { card: EnrichedCard }) {
     ? `${formatPct(fees.finance_charge_monthly_pct, 2)} per month (${formatPct(fees.finance_charge_monthly_pct * 12, 1)} annualised)`
     : "N/A";
 
-  const fuelWaiver = fuel
-    ? `${formatPct(fuel.pct, 1)} waiver on transactions ${
-        fuel.min_txn_inr ? `between ${formatInr(fuel.min_txn_inr)}` : ""
-      }${fuel.max_txn_inr ? ` and ${formatInr(fuel.max_txn_inr)}` : ""}${
-        fuel.cap_per_cycle_inr
-          ? `, capped at ${formatInr(fuel.cap_per_cycle_inr)} per ${fuel.cycle ?? "cycle"}`
-          : ""
-      }.`
-    : "N/A";
+  const fuelWaiver = fuel ? fuelWaiverText(fuel) : "N/A";
 
   const cashAdvance = fees?.cash_advance_fee
     ? `${formatPct(fees.cash_advance_fee.pct ?? null, 1)} or ${formatInr(fees.cash_advance_fee.min_inr ?? null)} (whichever is higher)`

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allCardRouteParams, cardHref, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
-import { formatDate, formatInr } from "@/lib/utils";
+import { cycleNoun, formatDate, formatInr } from "@/lib/utils";
 import { pickTopAccelerated, formatAcceleratedRate } from "@/lib/detail-derivations";
 import { HistoryTimeline } from "@/components/history-timeline";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
@@ -23,6 +23,10 @@ interface Params {
   issuer: string;
   slug: string;
 }
+
+// Every card page is pre-rendered; an unknown slug is a static 404 rather
+// than an on-demand render.
+export const dynamicParams = false;
 
 export function generateStaticParams(): Params[] {
   return allCardRouteParams();
@@ -48,6 +52,7 @@ export async function generateMetadata({
       title: card.name,
       description,
       type: "article",
+      siteName: "Credit Cards of India",
       url: cardHref(card),
       ...(images ? { images } : {}),
     },
@@ -90,13 +95,14 @@ function composeMetaDescription(card: EnrichedCard): string {
   const intlReal = intlVisits === "unlimited" || (typeof intlVisits === "number" && intlVisits > 0);
   const domReal = domVisits === "unlimited" || (typeof domVisits === "number" && domVisits > 0);
   if (intlReal || domReal) {
+    // Visit counts are per the lounge record's own cycle (often quarterly).
     const bits: string[] = [];
-    if (intlReal) bits.push(`${intlVisits} international`);
-    if (domReal) bits.push(`${domVisits} domestic`);
-    parts.push(`${bits.join(" + ")} lounge visits/yr`);
+    if (intlReal) bits.push(`${intlVisits} international/${cycleNoun(lounge?.international?.cycle)}`);
+    if (domReal) bits.push(`${domVisits} domestic/${cycleNoun(lounge?.domestic?.cycle)}`);
+    parts.push(`${bits.join(" + ")} lounge visits`);
   }
   if (fee !== null) {
-    parts.push(fee === 0 ? "lifetime free" : `${formatInr(fee)} annual fee`);
+    parts.push(card.computed.is_lifetime_free ? "lifetime free" : fee === 0 ? "no annual fee" : `${formatInr(fee)} + GST annual fee`);
   }
   return parts.join("; ") + ".";
 }
@@ -127,10 +133,10 @@ function jsonLdForCard(card: EnrichedCard): Record<string, unknown> {
               priceCurrency: "INR",
               unitText: "ANNUM",
             },
-            availability:
-              card.status === "discontinued"
-                ? "https://schema.org/Discontinued"
-                : "https://schema.org/InStock",
+            // Discontinued and on-hold cards both take no new applications.
+            availability: card.computed.is_active
+              ? "https://schema.org/InStock"
+              : "https://schema.org/Discontinued",
           },
         }
       : {}),
@@ -200,7 +206,7 @@ export default async function CardPage({
           ) : null}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {/* The calculator and compare tools only carry active + invite-only
               cards (getActiveCards). Linking a discontinued/on-hold card there
               lands the user on a tool where their card silently isn't present,
@@ -221,7 +227,9 @@ export default async function CardPage({
               </Link>
             </>
           ) : null}
-          {card.application?.apply_url ? (
+          {/* A closed card's apply link leads nowhere useful; the status notice
+              above already says it takes no new applications. */}
+          {card.computed.is_active && card.application?.apply_url ? (
             <a
               href={card.application.apply_url}
               target="_blank"
@@ -323,7 +331,18 @@ function EligibilitySection({ card }: { card: ReturnType<typeof getCardByIssuerA
         <h2 className="text-sm font-semibold text-slate-900">Eligibility</h2>
       </header>
       <dl className="p-5 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-3 text-sm">
-        <Fact label="Age" value={e.min_age && e.max_age ? `${e.min_age}–${e.max_age}` : "—"} />
+        <Fact
+          label="Age"
+          value={
+            e.min_age && e.max_age
+              ? `${e.min_age}–${e.max_age}`
+              : e.min_age
+                ? `${e.min_age}+`
+                : e.max_age
+                  ? `Up to ${e.max_age}`
+                  : "—"
+          }
+        />
         <Fact label="Credit score" value={e.credit_score_min ? `${e.credit_score_min}+` : "—"} />
         <Fact
           label="Income (salaried)"

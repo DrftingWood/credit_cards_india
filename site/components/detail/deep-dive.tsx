@@ -1,6 +1,6 @@
 import type { EnrichedCard } from "@/lib/types";
-import { formatInr, formatPct, formatDate } from "@/lib/utils";
-import { formatAccelerated } from "@/lib/detail-derivations";
+import { cycleNoun, formatInr, formatDate } from "@/lib/utils";
+import { formatAccelerated, fuelWaiverText } from "@/lib/detail-derivations";
 import { SourceLink } from "@/components/source-link";
 
 /**
@@ -83,7 +83,7 @@ export function DeepDive({ card }: { card: EnrichedCard }) {
           <ul className="space-y-1">
             {milestones.map((m, i) => (
               <li key={i}>
-                <strong>{formatInr(m.spend_inr)} / {m.cycle}</strong>: {m.benefit}
+                <strong>{formatInr(m.spend_inr)} per {cycleNoun(m.cycle)}</strong>: {m.benefit}
                 {m.value_inr != null ? (
                   <span className="text-slate-500"> (≈ {formatInr(m.value_inr)} value)</span>
                 ) : null}
@@ -127,18 +127,7 @@ export function DeepDive({ card }: { card: EnrichedCard }) {
 
       {card.current_benefits?.fuel_surcharge_waiver ? (
         <Section title="Fuel surcharge waiver">
-          <p>
-            {formatPct(card.current_benefits.fuel_surcharge_waiver.pct, 1)} waiver on fuel transactions{" "}
-            {card.current_benefits.fuel_surcharge_waiver.min_txn_inr
-              ? `between ${formatInr(card.current_benefits.fuel_surcharge_waiver.min_txn_inr)}`
-              : ""}
-            {card.current_benefits.fuel_surcharge_waiver.max_txn_inr
-              ? ` and ${formatInr(card.current_benefits.fuel_surcharge_waiver.max_txn_inr)}`
-              : ""}
-            {card.current_benefits.fuel_surcharge_waiver.cap_per_cycle_inr
-              ? `, capped at ${formatInr(card.current_benefits.fuel_surcharge_waiver.cap_per_cycle_inr)} per ${card.current_benefits.fuel_surcharge_waiver.cycle ?? "cycle"}`
-              : ""}.
-          </p>
+          <p>{fuelWaiverText(card.current_benefits.fuel_surcharge_waiver)}</p>
         </Section>
       ) : null}
 
@@ -192,7 +181,7 @@ function LoungeDetails({ d }: { d: NonNullable<NonNullable<EnrichedCard["current
   if (d.visits_per_cycle === 0 || d.visits_per_cycle == null) return null;
   return (
     <div className="text-sm text-slate-700 mt-1">
-      {d.visits_per_cycle === "unlimited" ? "Unlimited" : d.visits_per_cycle} visit(s) / {d.cycle ?? "year"}.
+      {d.visits_per_cycle === "unlimited" ? "Unlimited visits" : `${d.visits_per_cycle} visit${d.visits_per_cycle === 1 ? "" : "s"}`} per {cycleNoun(d.cycle)}.
       {d.via?.length ? (
         <span className="text-slate-500"> Via {d.via.join(", ")}.</span>
       ) : null}
@@ -201,7 +190,7 @@ function LoungeDetails({ d }: { d: NonNullable<NonNullable<EnrichedCard["current
       ) : null}
       {d.spend_threshold_inr ? (
         <div className="text-xs text-amber-700 mt-0.5">
-          Unlocks after {formatInr(d.spend_threshold_inr)} / {d.spend_threshold_cycle ?? "quarter"} spend.
+          Unlocks after {formatInr(d.spend_threshold_inr)} spend per {cycleNoun(d.spend_threshold_cycle, "quarter")}.
         </div>
       ) : null}
       {d.notes ? <div className="text-xs text-slate-500 mt-0.5">{d.notes}</div> : null}

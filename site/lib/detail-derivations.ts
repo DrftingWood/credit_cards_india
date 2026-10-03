@@ -166,13 +166,13 @@ export function summaryProse(card: EnrichedCard): string[] {
     const parts: string[] = [];
     if (lounge.domestic) {
       const v = lounge.domestic.visits_per_cycle;
-      parts.push(`${v} ${lounge.domestic.cycle ?? "yr"} domestic`);
+      parts.push(`${v} domestic visits per ${cycleNoun(lounge.domestic.cycle)}`);
     }
     if (lounge.international) {
       const v = lounge.international.visits_per_cycle;
-      parts.push(`${v} ${lounge.international.cycle ?? "yr"} international`);
+      parts.push(`${v} international visits per ${cycleNoun(lounge.international.cycle)}`);
     }
-    sentences.push(`Cardholders get ${parts.join(" + ")} airport lounge access${welcome ? `, plus ${welcome.benefit.toLowerCase()} as a welcome benefit.` : "."}`);
+    sentences.push(`Cardholders get airport lounge access (${parts.join(" + ")})${welcome ? `, plus ${welcome.benefit.toLowerCase()} as a welcome benefit.` : "."}`);
   } else if (welcome) {
     sentences.push(`Welcome benefit: ${welcome.benefit}.`);
   }
@@ -218,8 +218,8 @@ export function productDetails(card: EnrichedCard): string[] {
   const lounge = card.current_benefits?.lounge_access;
   if (lounge?.domestic || lounge?.international) {
     const parts: string[] = [];
-    if (lounge.domestic) parts.push(`domestic (${lounge.domestic.visits_per_cycle}/${lounge.domestic.cycle ?? "yr"})`);
-    if (lounge.international) parts.push(`international (${lounge.international.visits_per_cycle}/${lounge.international.cycle ?? "yr"})`);
+    if (lounge.domestic) parts.push(`domestic (${lounge.domestic.visits_per_cycle} per ${cycleNoun(lounge.domestic.cycle)})`);
+    if (lounge.international) parts.push(`international (${lounge.international.visits_per_cycle} per ${cycleNoun(lounge.international.cycle)})`);
     bullets.push(`Complimentary airport lounge access: ${parts.join(" + ")}.`);
   }
   const ins = card.current_benefits?.insurance ?? [];
@@ -250,7 +250,7 @@ export function derivePros(card: EnrichedCard): string[] {
   } else if (card.current_benefits?.lounge_access?.domestic) {
     const d = card.current_benefits.lounge_access.domestic;
     pros.push(
-      `Complimentary domestic airport lounge access (${d.visits_per_cycle}/${d.cycle ?? "year"}).`,
+      `Complimentary domestic airport lounge access (${d.visits_per_cycle} per ${cycleNoun(d.cycle)}).`,
     );
   }
   if (card.current_benefits?.concierge) pros.push("24/7 concierge service.");
@@ -324,6 +324,26 @@ export function formatAccelerated(a: AcceleratedReward, rewards: ClientRewards |
   const cap =
     a.cap_per_cycle === "unlimited" || a.cap_per_cycle == null
       ? null
-      : `cap ${a.cap_per_cycle}${a.cap_unit ? ` ${a.cap_unit.replace("-", " ")}` : ""} / ${a.cycle ?? "cycle"}`;
+      : `cap ${a.cap_per_cycle}${a.cap_unit ? ` ${a.cap_unit.replace("-", " ")}` : ""} per ${cycleNoun(a.cycle, "cycle")}`;
   return cap ? `${rate} on ${where} (${cap})` : `${rate} on ${where}`;
+}
+
+/**
+ * Fuel-surcharge waiver as one sentence. Built piece by piece because the
+ * transaction band is often half-specified (only a max, or neither), which
+ * the old inline template rendered as "on transactions , capped at …".
+ */
+export function fuelWaiverText(f: {
+  pct: number;
+  min_txn_inr?: number | null;
+  max_txn_inr?: number | null;
+  cap_per_cycle_inr?: number | null;
+  cycle?: string;
+}): string {
+  let band = "";
+  if (f.min_txn_inr && f.max_txn_inr) band = ` between ${formatInr(f.min_txn_inr)} and ${formatInr(f.max_txn_inr)}`;
+  else if (f.min_txn_inr) band = ` of ${formatInr(f.min_txn_inr)} or more`;
+  else if (f.max_txn_inr) band = ` up to ${formatInr(f.max_txn_inr)}`;
+  const cap = f.cap_per_cycle_inr ? `, capped at ${formatInr(f.cap_per_cycle_inr)} per ${cycleNoun(f.cycle, "cycle")}` : "";
+  return `${formatPct(f.pct, 1)} waiver on fuel transactions${band}${cap}.`;
 }

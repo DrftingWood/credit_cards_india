@@ -1,5 +1,5 @@
 import type { EnrichedCard, BenefitRecord } from "@/lib/types";
-import { formatInr, formatPct } from "@/lib/utils";
+import { cycleNoun, formatInr, formatPct } from "@/lib/utils";
 import { formatAccelerated, pickTopAccelerated } from "@/lib/detail-derivations";
 import { InfoGrid, type InfoCell } from "./info-grid";
 
@@ -17,16 +17,37 @@ function loungeText(
     lounge.visits_per_cycle === "unlimited"
       ? "Unlimited"
       : `${lounge.visits_per_cycle}`;
-  const cycle = lounge.cycle ?? "year";
+  const cycle = cycleNoun(lounge.cycle);
   const threshold = lounge.spend_threshold_inr
-    ? ` on making spends of ${formatInr(lounge.spend_threshold_inr)} in the previous ${lounge.spend_threshold_cycle ?? "quarter"}`
+    ? ` on making spends of ${formatInr(lounge.spend_threshold_inr)} in the previous ${cycleNoun(lounge.spend_threshold_cycle, "quarter")}`
     : "";
   if (lounge.visits_per_cycle == null) {
     // Threshold-only path
     return `Lounge access${threshold}.`;
   }
   const noun = Number(visits) === 1 ? "visit" : "visits";
-  return `${visits} ${noun} each ${cycle}${threshold}.`;
+  return `${visits} ${noun} per ${cycle}${threshold}.`;
+}
+
+const MOVIE_OFFER: Record<string, string> = {
+  bogo: "Buy-one-get-one",
+  discount: "Discount",
+  free: "Free tickets",
+};
+
+function golfText(g: NonNullable<BenefitRecord["golf"]>): string {
+  const rounds = g.rounds_per_cycle;
+  const lessons = g.lessons_per_cycle;
+  const per = cycleNoun(g.cycle, "month");
+  // A golf record without a round count means access exists but the count
+  // isn't published; "0 round(s)" would misstate it.
+  const parts: string[] = [];
+  if (rounds === "unlimited") parts.push(`Unlimited rounds per ${per}`);
+  else if (typeof rounds === "number" && rounds > 0) parts.push(`${rounds} round${rounds === 1 ? "" : "s"} per ${per}`);
+  if (lessons === "unlimited") parts.push(`unlimited lessons`);
+  else if (typeof lessons === "number" && lessons > 0) parts.push(`${lessons} lesson${lessons === 1 ? "" : "s"}`);
+  if (parts.length === 0) return g.notes ?? "Golf access (count not published).";
+  return `${parts.join(" · ")}.`;
 }
 
 /** The scannable Rewards & Benefits summary grid on the detail page. */
@@ -60,20 +81,10 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
   const domLounge = loungeText(benefits?.lounge_access?.domestic ?? null);
   const intlLounge = loungeText(benefits?.lounge_access?.international ?? null);
 
-  const golf = benefits?.golf
-    ? `${
-        benefits.golf.rounds_per_cycle === "unlimited"
-          ? "Unlimited"
-          : benefits.golf.rounds_per_cycle ?? 0
-      } round(s) / ${benefits.golf.cycle ?? "month"}${
-        benefits.golf.lessons_per_cycle
-          ? ` · ${benefits.golf.lessons_per_cycle} lesson(s)`
-          : ""
-      }.`
-    : "N/A";
+  const golf = benefits?.golf ? golfText(benefits.golf) : "N/A";
 
   const movieDining = benefits?.movies
-    ? `${benefits.movies.type.toUpperCase()} on ${benefits.movies.partner ?? "partner cinemas"}`
+    ? `${MOVIE_OFFER[benefits.movies.type] ?? benefits.movies.type} on ${benefits.movies.partner ?? "partner cinemas"}`
     : benefits?.dining
     ? `Up to ${formatPct(benefits.dining.discount_pct ?? null, 0)} off via ${benefits.dining.program ?? "dining partners"}`
     : "N/A";
@@ -105,7 +116,7 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
     <ul className="space-y-0.5 list-none">
       {milestones.slice(0, 4).map((m, i) => (
         <li key={i}>
-          <strong>{formatInr(m.spend_inr)}</strong> / {m.cycle}: {m.benefit}
+          <strong>{formatInr(m.spend_inr)}</strong> per {cycleNoun(m.cycle)}: {m.benefit}
         </li>
       ))}
       {milestones.length > 4 ? (

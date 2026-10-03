@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ClientBenefits, ClientCard } from "@/lib/types";
 import { cardHref } from "@/lib/card-href";
-import { formatFeeWithGst, formatInr, formatPct, waiverLabel } from "@/lib/utils";
+import { cycleNoun, formatFeeWithGst, formatInr, formatPct, waiverLabel } from "@/lib/utils";
 import { annualFeeWithGst } from "@/lib/calculator";
 import {
   pickTopAccelerated,
@@ -48,7 +48,7 @@ function loungeSummary(
   const visits =
     d.visits_per_cycle === "unlimited"
       ? "Unlimited"
-      : `${d.visits_per_cycle ?? "—"}/${d.cycle ?? "cycle"}`;
+      : `${d.visits_per_cycle ?? "—"}/${cycleNoun(d.cycle, "cycle")}`;
   if (d.spend_threshold_inr) {
     return (
       <>
@@ -206,7 +206,7 @@ const ROWS: Row[] = [
       const f = c.current_benefits?.fuel_surcharge_waiver;
       if (!f) return "—";
       return `${formatPct(f.pct, 1)}${
-        f.cap_per_cycle_inr ? ` (cap ${formatInr(f.cap_per_cycle_inr)}/${f.cycle ?? "cycle"})` : ""
+        f.cap_per_cycle_inr ? ` (cap ${formatInr(f.cap_per_cycle_inr)}/${cycleNoun(f.cycle, "cycle")})` : ""
       }`;
     },
   },
@@ -226,7 +226,9 @@ const ROWS: Row[] = [
       const rounds =
         g.rounds_per_cycle === "unlimited"
           ? "Unlimited"
-          : `${g.rounds_per_cycle ?? 0}/${g.cycle ?? "cycle"}`;
+          : typeof g.rounds_per_cycle === "number" && g.rounds_per_cycle > 0
+            ? `${g.rounds_per_cycle}/${cycleNoun(g.cycle, "cycle")}`
+            : "Yes (count not published)";
       return rounds;
     },
   },

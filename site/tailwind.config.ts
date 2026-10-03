@@ -13,9 +13,13 @@ const config: Config = {
         brand: {
           50: "#eef7ff",
           100: "#d9ecff",
+          200: "#bfdbfe",
+          300: "#93c5fd",
           500: "#2563eb",
           600: "#1d4ed8",
           700: "#1e40af",
+          800: "#1e3a8a",
+          900: "#172554",
         },
       },
       fontFamily: {

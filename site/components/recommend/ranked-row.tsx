@@ -2,7 +2,7 @@
 import Link from "next/link";
 import type { DecoupledScore } from "@/lib/scorer-decoupled";
 import { cardHref } from "@/lib/card-href";
-import { formatInrSigned } from "@/lib/utils";
+import { formatInrSigned } from "@/lib/format";
 
 export function cardDetailHref(score: DecoupledScore): string {
   return cardHref(score.card);

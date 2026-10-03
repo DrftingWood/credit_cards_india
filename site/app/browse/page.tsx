@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-url";
 import { Suspense } from "react";
 import { getActiveClientCards, getAllClientIssuers } from "@/lib/data";
 import { BrowseClient } from "./browse-client";
 
-export const metadata: Metadata = {
-  title: "Browse every Indian credit card",
-  description:
-    "Filter Indian credit cards by issuer, network, tier, reward currency, lifetime-free, lounge access, and co-brand.",
-};
+export const metadata: Metadata = pageMetadata(
+  "Browse every Indian credit card",
+  "Filter Indian credit cards by issuer, network, tier, reward currency, lifetime-free, lounge access, and co-brand.",
+);
 
 export default function BrowsePage() {
   const cards = getActiveClientCards();

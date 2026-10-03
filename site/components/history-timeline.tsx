@@ -1,5 +1,5 @@
 import type { EnrichedCard } from "@/lib/types";
-import { formatDate, formatInr } from "@/lib/utils";
+import { formatDate, formatInr } from "@/lib/format";
 
 /** Shows closed (historical) effective-dated records, newest first.
  *  If the card has no closed records, renders nothing. */

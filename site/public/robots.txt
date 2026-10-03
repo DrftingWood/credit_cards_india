@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://credit-cards-india.vercel.app/sitemap.xml

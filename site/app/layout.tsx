@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "../styles/globals.css";
 import { BetaBanner } from "@/components/beta-banner";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://credit-cards-india.vercel.app";
+import { SITE_NAME, SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: "Credit Cards of India — open, versioned, source-linked",
-    template: "%s · Credit Cards of India",
+    template: `%s · ${SITE_NAME}`,
   },
   description:
     "Open dataset and comparison site for every major credit card in India. Fees, rewards, benefits, history — all source-linked.",
@@ -18,10 +17,11 @@ export const metadata: Metadata = {
     description:
       "Open dataset and comparison site for Indian credit cards. Fees, rewards, benefits, history — all source-linked.",
     type: "website",
-    siteName: "Credit Cards of India",
+    siteName: SITE_NAME,
   },
   twitter: {
-    card: "summary_large_image",
+    // No share image exists yet; "summary_large_image" without one renders a blank card.
+    card: "summary",
     title: "Credit Cards of India",
     description:
       "Open dataset and comparison site for Indian credit cards. Fees, rewards, benefits, history — all source-linked.",

@@ -7,7 +7,7 @@
  */
 
 import type { AcceleratedReward, ClientCard, ClientRewards, EnrichedCard } from "./types";
-import { cycleNoun, formatInr, formatPct } from "./utils";
+import { cycleNoun, formatInr, formatPct } from "./format";
 import { pointsToPct } from "./rate-math.mjs";
 
 /**

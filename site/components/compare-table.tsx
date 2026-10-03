@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { ClientBenefits, ClientCard } from "@/lib/types";
 import { cardHref } from "@/lib/card-href";
-import { cycleNoun, formatFeeWithGst, formatInr, formatPct, waiverLabel } from "@/lib/utils";
-import { annualFeeWithGst } from "@/lib/calculator";
+import { cycleNoun, formatFeeWithGst, formatInr, formatPct, waiverLabel } from "@/lib/format";
+import { annualFeeWithGst } from "@/lib/fees";
 import {
   pickTopAccelerated,
   formatAcceleratedRate,

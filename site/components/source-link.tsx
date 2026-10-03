@@ -1,5 +1,5 @@
 import type { Source } from "@/lib/types";
-import { formatDate, hostOf } from "@/lib/utils";
+import { formatDate, hostOf } from "@/lib/format";
 
 export function SourceLink({ source, prefix = "Source" }: { source?: Source | null; prefix?: string }) {
   if (!source?.url) return null;

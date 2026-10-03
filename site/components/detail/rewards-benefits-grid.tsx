@@ -1,5 +1,5 @@
 import type { EnrichedCard, BenefitRecord } from "@/lib/types";
-import { cycleNoun, formatInr, formatPct } from "@/lib/utils";
+import { cycleNoun, formatInr, formatPct } from "@/lib/format";
 import { formatAccelerated, pickTopAccelerated } from "@/lib/detail-derivations";
 import { InfoGrid, type InfoCell } from "./info-grid";
 

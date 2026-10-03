@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { IconCashback, IconTravel, IconDining, IconFuel, IconShopping, IconFree, IconPremium, IconForex } from "@/components/icons";
 
+// Tags are inconsistent across issuers (online vs online-spend), so tiles OR
+// the synonyms; forex and premium use the structured filters, not tags.
 const TILES = [
   { href: "/browse?tag=cashback", Icon: IconCashback, t: "Cashback", d: "Flat, uncapped returns" },
   { href: "/browse?tag=travel", Icon: IconTravel, t: "Travel & miles", d: "Lounges, transfers, forex" },
   { href: "/browse?tag=dining", Icon: IconDining, t: "Dining", d: "Weekends & delivery" },
   { href: "/browse?tag=fuel", Icon: IconFuel, t: "Fuel", d: "Surcharge waivers" },
-  { href: "/browse?tag=online", Icon: IconShopping, t: "Online shopping", d: "Amazon, Flipkart, co-brands" },
+  { href: "/browse?tag=online,online-spend,ecommerce", Icon: IconShopping, t: "Online shopping", d: "Amazon, Flipkart, co-brands" },
   { href: "/browse?ltf=1", Icon: IconFree, t: "Lifetime free", d: "No annual fee, ever" },
-  { href: "/browse?tag=premium", Icon: IconPremium, t: "Premium", d: "Super-premium & invite-only" },
-  { href: "/browse?tag=forex", Icon: IconForex, t: "Low forex", d: "For spends abroad" },
+  { href: "/browse?tier=super-premium,invite-only", Icon: IconPremium, t: "Premium", d: "Super-premium & invite-only" },
+  { href: "/browse?forex=l", Icon: IconForex, t: "Low forex", d: "Under 2% markup abroad" },
 ];
 
 export function CategoryTiles() {

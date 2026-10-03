@@ -6,6 +6,8 @@ import { SpendStarter } from "@/components/home/spend-starter";
 export default function HomePage() {
   const index = getIndex();
   const n = index.counts.cards_total;
+  // /browse lists active and invite-only cards only; link with that count.
+  const nActive = index.counts.cards_active;
   return (
     <div className="space-y-12">
       {/* hero */}
@@ -27,7 +29,7 @@ export default function HomePage() {
       <section>
         <div className="mb-3 flex items-baseline justify-between">
           <h2 className="text-xl font-semibold text-slate-900">Best cards, by what you need</h2>
-          <Link href="/browse" className="text-sm">All {n} cards →</Link>
+          <Link href="/browse" className="text-sm">All {nActive} open cards →</Link>
         </div>
         <CategoryTiles />
       </section>
@@ -36,7 +38,7 @@ export default function HomePage() {
       <section className="rounded-2xl bg-slate-900 p-8 text-slate-100">
         <div className="text-[11px] font-semibold uppercase tracking-wide text-brand-300">Why you can trust the numbers</div>
         <div className="mt-4 grid grid-cols-2 gap-6 md:grid-cols-4">
-          <Trust k={String(n)} v="cards — every fee & reward links to the issuer's own page" />
+          <Trust k={String(n)} v="cards tracked, incl. discontinued — every fee & reward links to the issuer's own page" />
           <Trust k="Net ₹/yr" v="ranked on what you keep; fees & caps in, 'up to' rates out" />
           <Trust k="₹0" v="affiliate income — we don't earn on applications, so nothing's pushed" />
           <Trust k="Dated" v="every card carries its own verification date" />
@@ -47,13 +49,13 @@ export default function HomePage() {
       <section className="rounded-2xl border border-amber-200 bg-amber-50 p-8">
         <div className="text-[11px] font-semibold uppercase tracking-wide text-amber-800">How we rank — in one line</div>
         <p className="mt-2 text-lg font-semibold text-slate-900">
-          What you keep = rewards − annual fee − the caps you&apos;ll actually hit → <span className="text-emerald-700">net ₹/yr</span>
+          What you keep = rewards − annual fee (incl. GST) − the caps you&apos;ll actually hit → <span className="text-emerald-700">net ₹/yr</span>
         </p>
         <p className="mt-3 max-w-2xl text-sm text-slate-700">
           A 5% card capped at ₹1,000/month is not a 5% card — and we say so. Every ranking is the honest
           ₹/year for a stated spend, with the assumptions shown on each card&apos;s own breakdown.
         </p>
-        <Link href="/about" className="mt-4 inline-block text-sm font-semibold text-slate-900 underline">Read the full method →</Link>
+        <Link href="/about#method" className="mt-4 inline-block text-sm font-semibold text-slate-900 underline">Read the full method →</Link>
       </section>
 
       {/* tools */}

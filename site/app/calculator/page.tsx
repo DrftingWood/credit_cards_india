@@ -1,14 +1,14 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-url";
 import { Suspense } from "react";
 import { getActiveClientCards } from "@/lib/data";
 import { CalculatorClient } from "./calculator-client";
 
-export const metadata: Metadata = {
-  title: "Reward calculator — find the best card for your spend",
-  description:
-    "Enter your monthly spend across online, groceries, dining, fuel, travel, utilities, rent and international — see Indian credit cards ranked by net annual value.",
-};
+export const metadata: Metadata = pageMetadata(
+  "Reward calculator — find the best card for your spend",
+  "Enter your monthly spend across online, groceries, dining, fuel, travel, utilities, rent and international — see Indian credit cards ranked by net annual value.",
+);
 
 export default function CalculatorPage() {
   const cards = getActiveClientCards();

@@ -10,7 +10,7 @@ import {
   type PointValues,
   type ChannelResult,
 } from "@/lib/booking";
-import { formatInr } from "@/lib/utils";
+import { formatInr } from "@/lib/format";
 
 const ROUTE_KEYS: RouteKey[] = ["dom-flight", "intl-flight", "dom-hotel", "intl-hotel"];
 

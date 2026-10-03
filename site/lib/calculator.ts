@@ -5,6 +5,7 @@ import type {
   ClientRewards,
   LoyaltyProgram,
 } from "./types";
+import { annualFeeWithGst } from "./fees";
 import { CanonicalCategory, resolveBuckets, CATEGORY_LABELS } from "./category-mapping";
 import { pointsToPct } from "./rate-math.mjs";
 
@@ -559,9 +560,6 @@ const EXCLUSION_TO_BUCKET: Partial<Record<string, CanonicalCategory>> = {
   utilities: "utilities",
 };
 
-/** GST on card fees in India. Fee figures in the dataset are pre-GST list prices. */
-export const GST_PCT = 18;
-
 /** Months in one fee-waiver cycle, for scaling monthly spend to the waiver window. */
 const WAIVER_CYCLE_MONTHS: Record<string, number> = {
   monthly: 1,
@@ -570,14 +568,6 @@ const WAIVER_CYCLE_MONTHS: Record<string, number> = {
   annual: 12,
   "per-txn": 12,
 };
-
-/** Annual fee as actually billed: list fee + GST unless the record says GST doesn't apply. */
-export function annualFeeWithGst(fees: ClientCard["current_fees"]): number {
-  const fee = fees?.annual_fee_inr ?? 0;
-  if (fees?.gst_applicable === false) return fee;
-  // Integer arithmetic keeps paise exact (499 → 588.82, not 588.8199999999999).
-  return (fee * (100 + GST_PCT)) / 100;
-}
 
 /** Buckets this card's rewards exclude outright (fuel/rent/utilities via category or MCC exclusions). */
 function excludedBuckets(rewards: ClientRewards | null): Set<CanonicalCategory> {

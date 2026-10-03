@@ -1,5 +1,5 @@
 import type { EnrichedCard } from "@/lib/types";
-import { cycleNoun, formatInr, formatDate } from "@/lib/utils";
+import { cycleNoun, formatInr, formatDate } from "@/lib/format";
 import { formatAccelerated, fuelWaiverText } from "@/lib/detail-derivations";
 import { SourceLink } from "@/components/source-link";
 

@@ -11,7 +11,7 @@ import { NetworkLogo } from "@/components/logos/network-logo";
 import { rankCards, listEcosystems, type CardScore } from "@/lib/calculator";
 import { MAX_MONTHLY_SPEND, useSpendProfile } from "@/lib/use-spend-profile";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
-import { formatInr, formatInrSigned, formatPct } from "@/lib/utils";
+import { formatInr, formatInrSigned, formatPct } from "@/lib/format";
 
 /** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY_SPEND]. The
  *  ceiling stops a stray value like `1e21` producing sextillion-rupee output. */

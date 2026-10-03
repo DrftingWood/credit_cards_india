@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-url";
 import { RecommendClient } from "./recommend-client";
 import { getActiveClientCards, getAllLoyaltyPrograms } from "../../lib/data";
 
-export const metadata: Metadata = {
-  title: "Find your card — guided questionnaire",
-  description:
-    "Answer a few short steps about income, spend, brand preferences and lifestyle — get a personalised credit-card shortlist.",
-};
+export const metadata: Metadata = pageMetadata(
+  "Find your card — guided questionnaire",
+  "Answer a few short steps about income, spend, brand preferences and lifestyle — get a personalised credit-card shortlist.",
+);
 
 export default function RecommendPage() {
   const cards = getActiveClientCards();

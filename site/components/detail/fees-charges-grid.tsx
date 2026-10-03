@@ -1,5 +1,5 @@
 import type { EnrichedCard } from "@/lib/types";
-import { cycleNoun, formatInr, formatPct } from "@/lib/utils";
+import { cycleNoun, formatInr, formatPct } from "@/lib/format";
 import { fuelWaiverText } from "@/lib/detail-derivations";
 import { InfoGrid, type InfoCell } from "./info-grid";
 

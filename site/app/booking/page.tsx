@@ -1,13 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-url";
 import { Suspense } from "react";
 import { BookingClient } from "./booking-client";
 
-export const metadata: Metadata = {
-  title: "How should I actually book this? — cheapest net cost by channel",
-  description:
-    "For a single flight or hotel, compare booking channels (bank portals, aggregators, direct) by net cost after the channel's price markup AND the reward your card earns there. The highest reward doesn't always win.",
-};
+export const metadata: Metadata = pageMetadata(
+  "How should I actually book this? — cheapest net cost by channel",
+  "For a single flight or hotel, compare booking channels (bank portals, aggregators, direct) by net cost after the channel's price markup AND the reward your card earns there. The highest reward doesn't always win.",
+);
 
 export default function BookingPage() {
   return (

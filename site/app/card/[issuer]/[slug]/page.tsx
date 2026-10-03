@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allCardRouteParams, cardHref, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
-import { cycleNoun, formatDate, formatInr } from "@/lib/utils";
+import { cycleNoun, formatDate, formatInr } from "@/lib/format";
 import { pickTopAccelerated, formatAcceleratedRate } from "@/lib/detail-derivations";
 import { HistoryTimeline } from "@/components/history-timeline";
 import { IssuerLogo } from "@/components/logos/issuer-logo";

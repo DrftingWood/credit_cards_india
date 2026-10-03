@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Highlight } from "@/lib/present";
 import { IconArrowRight, IconLink } from "@/components/icons";
 import { cardDetailHref } from "./ranked-row";
-import { formatDate, formatFeeWithGst, formatInrSigned, formatPct, waiverLabel } from "@/lib/utils";
+import { formatDate, formatFeeWithGst, formatInrSigned, formatPct, waiverLabel } from "@/lib/format";
 
 export function BestPickCard({ highlight }: { highlight: Highlight }) {
   const s = highlight.score;

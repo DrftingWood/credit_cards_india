@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import type { ClientCard } from "@/lib/types";
 import { explainCard, type AcceleratorExplain, type BaseSpendExplain, type ScoringContext } from "@/lib/calculator";
 import { MAX_MONTHLY_SPEND, useSpendProfile } from "@/lib/use-spend-profile";
-import { formatInrSigned } from "@/lib/utils";
+import { formatInrSigned } from "@/lib/format";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
 
 const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;

@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { cardHref, getActiveCards } from "@/lib/data";
-
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://credit-cards-india.vercel.app";
+import { SITE_URL as BASE } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -13,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/compare`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/calculator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/recommend`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/booking`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
   ];
 

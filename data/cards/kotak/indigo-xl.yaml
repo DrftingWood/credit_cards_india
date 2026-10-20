@@ -40,6 +40,8 @@ fees:
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: medium
       notes: "Joining + annual fee ₹3,000 per Paisabazaar (2026-04-18 article). Forex markup 2.5% (preferential vs 3.5% on base variant)."
 
 rewards:
@@ -147,6 +149,7 @@ benefits:
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "../styles/globals.css";
 import { BetaBanner } from "@/components/beta-banner";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://credit-cards-india.vercel.app";
 
@@ -31,16 +33,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    // suppressHydrationWarning: the init script may set data-theme before React hydrates.
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body>
         <BetaBanner />
-        <header className="border-b border-slate-200 bg-white">
+        <header className="border-b border-line bg-surface">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3">
-            <Link href="/" className="text-slate-900 hover:text-slate-900 font-semibold tracking-tight">
-              Credit Cards <span className="text-brand-600">·</span> India
+            <Link href="/" className="text-fg hover:text-fg font-semibold tracking-tight">
+              Credit Cards <span className="text-accent-fg">·</span> India
             </Link>
             {/* Wrap + responsive gaps so five links never overflow a narrow
                 viewport; they flow to a second line instead of clipping (C3). */}
+            <div className="flex items-center gap-x-4 sm:gap-x-5">
             <nav className="flex flex-wrap gap-x-4 gap-y-1 text-sm sm:gap-x-5">
               <Link href="/browse">Browse</Link>
               <Link href="/compare">Compare</Link>
@@ -49,11 +56,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/recommend">Recommend</Link>
               <Link href="/about">About</Link>
             </nav>
+            <ThemeToggle />
+            </div>
           </div>
         </header>
         <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
-        <footer className="border-t border-slate-200 bg-slate-50">
-          <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-slate-600 flex flex-wrap justify-between gap-3">
+        <footer className="border-t border-line bg-surface-subtle">
+          <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-fg-muted flex flex-wrap justify-between gap-3">
             <div>
               Open dataset — MIT licensed.{" "}
               <a href="https://github.com/DrftingWood/credit_cards_india" target="_blank" rel="noopener noreferrer">

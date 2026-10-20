@@ -24,7 +24,7 @@ export function BetaBanner() {
   if (dismissed) return null;
 
   return (
-    <div className="bg-amber-50 border-b border-amber-200 text-amber-900 text-sm">
+    <div className="bg-warn-subtle border-b border-warn-line text-warn text-sm">
       <div className="mx-auto max-w-6xl px-4 py-2 flex items-start justify-between gap-3">
         <p>
           <strong>Beta data.</strong> Numbers are community-sourced and may be out of date.
@@ -33,7 +33,7 @@ export function BetaBanner() {
         <button
           type="button"
           aria-label="Dismiss beta notice"
-          className="shrink-0 text-amber-900/70 hover:text-amber-900"
+          className="shrink-0 text-warn hover:text-fg"
           onClick={() => {
             try {
               localStorage.setItem(STORAGE_KEY, "1");

@@ -222,6 +222,7 @@ benefits:
     source:
       url: https://www.hsbc.bank.in/credit-cards/products/travelone/
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

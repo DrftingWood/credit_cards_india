@@ -112,6 +112,10 @@
   --elevation-2: 0 1px 3px 0 rgb(var(--shadow-color) / 0.08), 0 1px 2px -1px rgb(var(--shadow-color) / 0.08);
   --elevation-3: 0 4px 8px -2px rgb(var(--shadow-color) / 0.10), 0 2px 4px -2px rgb(var(--shadow-color) / 0.06);
   --elevation-4: 0 12px 24px -6px rgb(var(--shadow-color) / 0.14), 0 4px 8px -4px rgb(var(--shadow-color) / 0.08);
+
+  /* Issuer/network logos are drawn for light backgrounds; in dark mode they
+     sit on a light plate (see .logo-plate in globals.css). */
+  --logo-plate: transparent;
 }
 
 /* Dark palette — declared twice (media query + manual override) on purpose;
@@ -168,6 +172,8 @@
     --elevation-2: 0 1px 3px 0 rgb(var(--shadow-color) / 0.40), 0 1px 2px -1px rgb(var(--shadow-color) / 0.30);
     --elevation-3: 0 4px 10px -2px rgb(var(--shadow-color) / 0.45), 0 2px 4px -2px rgb(var(--shadow-color) / 0.30);
     --elevation-4: 0 14px 28px -6px rgb(var(--shadow-color) / 0.55), 0 4px 8px -4px rgb(var(--shadow-color) / 0.35);
+
+  --logo-plate: rgb(226 232 240);
   }
 }
 
@@ -222,4 +228,6 @@
   --elevation-2: 0 1px 3px 0 rgb(var(--shadow-color) / 0.40), 0 1px 2px -1px rgb(var(--shadow-color) / 0.30);
   --elevation-3: 0 4px 10px -2px rgb(var(--shadow-color) / 0.45), 0 2px 4px -2px rgb(var(--shadow-color) / 0.30);
   --elevation-4: 0 14px 28px -6px rgb(var(--shadow-color) / 0.55), 0 4px 8px -4px rgb(var(--shadow-color) / 0.35);
+
+  --logo-plate: rgb(226 232 240);
 }

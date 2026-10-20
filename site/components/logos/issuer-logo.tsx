@@ -38,6 +38,7 @@ export function IssuerLogo({
           height={height}
           width={Math.round(height * 2.5)}
           style={{ height, width: "auto", objectFit: "contain" }}
+          className="logo-plate"
           unoptimized
         />
         {variant === "with-name" ? (

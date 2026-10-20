@@ -46,6 +46,7 @@ export function NetworkLogo({ network, height = 18, className }: NetworkLogoProp
           height={height}
           width={Math.round(height * 2.2)}
           style={{ height, width: "auto", objectFit: "contain" }}
+          className="logo-plate"
           unoptimized
         />
       </span>

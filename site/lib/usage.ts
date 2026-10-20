@@ -10,7 +10,7 @@
 // undeclared merchant stays at base, exactly as D-18 requires.
 // ─────────────────────────────────────────────────────────────────────────
 
-import type { AcceleratedReward, EnrichedCard } from "./types";
+import type { AcceleratedReward, EnrichedCard, LoyaltyProgram } from "./types";
 import { acceleratorTokens, type CardExplanation, type ScoringContext } from "./calculator";
 import { resolveBuckets, type CanonicalCategory } from "./category-mapping";
 
@@ -21,9 +21,11 @@ export interface UsageProfile {
   ecosystems: string[];
   /** /calculator opt-in: rank co-brand & portal rates only on the shares declared here. */
   gate_calculator: boolean;
+  /** Loyalty programme id → the tier the user holds (e.g. {"indigo-bluchip": "blu-1"}). None = no tier bonus. */
+  loyalty_tiers: Record<string, string>;
 }
 
-export const DEFAULT_USAGE: UsageProfile = { merchant_share_pct: {}, ecosystems: [], gate_calculator: false };
+export const DEFAULT_USAGE: UsageProfile = { merchant_share_pct: {}, ecosystems: [], gate_calculator: false, loyalty_tiers: {} };
 
 const TOKEN_RE = /^[a-z0-9][a-z0-9-]{0,39}$/;
 const MAX_ECOSYSTEMS = 50;
@@ -41,23 +43,67 @@ export function sanitizeUsage(raw: unknown): UsageProfile {
   const ecos = Array.isArray(p.ecosystems)
     ? [...new Set(p.ecosystems.filter((e): e is string => typeof e === "string" && e.length > 0 && e.length <= 60))].slice(0, MAX_ECOSYSTEMS)
     : [];
-  return { merchant_share_pct: shares, ecosystems: ecos, gate_calculator: p.gate_calculator === true };
+  const tiers: Record<string, string> = {};
+  if (p.loyalty_tiers && typeof p.loyalty_tiers === "object") {
+    for (const [k, v] of Object.entries(p.loyalty_tiers as Record<string, unknown>)) {
+      if (TOKEN_RE.test(k) && typeof v === "string" && TOKEN_RE.test(v)) tiers[k] = v;
+    }
+  }
+  return { merchant_share_pct: shares, ecosystems: ecos, gate_calculator: p.gate_calculator === true, loyalty_tiers: tiers };
+}
+
+/** Sets (or, with null, clears) the tier held in one programme. */
+export function setLoyaltyTier(u: UsageProfile, programId: string, tierId: string | null): UsageProfile {
+  const next = { ...u.loyalty_tiers };
+  if (tierId) next[programId] = tierId;
+  else delete next[programId];
+  return { ...u, loyalty_tiers: next };
+}
+
+/**
+ * The narrow tier fields of a ScoringContext: the user's choices, kept only where the
+ * programme and tier exist in the data, plus those programmes' records. They value the
+ * tier bonus as its own line and never change rates, unit values or the rank.
+ */
+export function tierContext(
+  choices: Record<string, string>,
+  programs: LoyaltyProgram[],
+): Required<Pick<ScoringContext, "tierMap" | "tierPrograms">> {
+  const tierMap: Record<string, string> = {};
+  const tierPrograms: Record<string, LoyaltyProgram> = {};
+  for (const p of programs) {
+    const t = choices[p.id];
+    if (t && p.earn?.tiers?.some((x) => x.id === t)) {
+      tierMap[p.id] = t;
+      tierPrograms[p.id] = p;
+    }
+  }
+  return { tierMap, tierPrograms };
+}
+
+/** True when a declared tier can change this card's value: it has an accelerator that stacks with a tiered programme. */
+export function cardTierProgram(card: EnrichedCard, programs: LoyaltyProgram[]): LoyaltyProgram | null {
+  const r = card.current_rewards;
+  if (!r?.loyalty_program || !r.accelerated?.some((a) => a.stacks_with_program)) return null;
+  const p = programs.find((x) => x.id === r.loyalty_program);
+  return p?.earn?.tiers?.length ? p : null;
 }
 
 /** The ScoringContext fields this profile contributes. */
-export function usageContext(u: UsageProfile): Required<Pick<ScoringContext, "channelMix" | "merchantShares" | "enabledEcosystems">> {
+export function usageContext(u: UsageProfile): Required<Pick<ScoringContext, "channelMix" | "merchantShares" | "enabledEcosystems" | "tierMap">> {
   const merchantShares: Record<string, number> = {};
   for (const [k, v] of Object.entries(u.merchant_share_pct)) if (v > 0) merchantShares[k] = v / 100;
   return {
     channelMix: new Set(Object.keys(merchantShares)),
     merchantShares,
     enabledEcosystems: new Set(u.ecosystems),
+    tierMap: { ...u.loyalty_tiers },
   };
 }
 
 /** Same context with every usage field emptied — the "you declared nothing" baseline. */
 export function withoutUsage(ctx: ScoringContext): ScoringContext {
-  return { ...ctx, channelMix: new Set(), merchantShares: undefined, enabledEcosystems: new Set() };
+  return { ...ctx, channelMix: new Set(), merchantShares: undefined, enabledEcosystems: new Set(), tierMap: {}, tierPrograms: undefined };
 }
 
 /** Tokens that name the SAME merchant through different channels. One share covers all of them. */

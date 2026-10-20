@@ -10,6 +10,7 @@ import {
   toggleEcosystem,
   usageDelta,
   tokenLabel,
+  setLoyaltyTier,
   type UsageProfile,
 } from "./usage";
 import { readUsage, writeUsage } from "./use-usage-profile";
@@ -136,10 +137,37 @@ describe("usageDelta — what the user's usage unlocked or dropped", () => {
   });
 });
 
+describe("loyalty tiers in the usage profile", () => {
+  test("default is no tier; sanitizer keeps only well-formed ids and drops garbage", () => {
+    expect(sanitizeUsage(undefined).loyalty_tiers).toEqual({});
+    const u = sanitizeUsage({ loyalty_tiers: { "indigo-bluchip": "blu-1", "Bad Key": "x", marriott: 5, air: "" } });
+    expect(u.loyalty_tiers).toEqual({ "indigo-bluchip": "blu-1" });
+  });
+  test("a stored profile from before tiers existed still loads", () => {
+    const u = sanitizeUsage({ merchant_share_pct: { amazon: 40 }, ecosystems: [], gate_calculator: false });
+    expect(u.loyalty_tiers).toEqual({});
+    expect(u.merchant_share_pct.amazon).toBe(40);
+  });
+  test("setLoyaltyTier sets and clears", () => {
+    const a = setLoyaltyTier(DEFAULT_USAGE, "indigo-bluchip", "blu-2");
+    expect(a.loyalty_tiers["indigo-bluchip"]).toBe("blu-2");
+    expect(setLoyaltyTier(a, "indigo-bluchip", null).loyalty_tiers).toEqual({});
+  });
+  test("usageContext carries the tier map; withoutUsage clears it", () => {
+    const ctx = usageContext(setLoyaltyTier(DEFAULT_USAGE, "indigo-bluchip", "blu-1"));
+    expect(ctx.tierMap).toEqual({ "indigo-bluchip": "blu-1" });
+    expect(withoutUsage(ctx).tierMap).toEqual({});
+  });
+});
+
 describe("usage store", () => {
   beforeEach(() => { writeUsage(() => DEFAULT_USAGE); });
   test("persists through the shared sanitizer", () => {
     writeUsage((u) => setFamilyShare(u, "swiggy", 250));
     expect(readUsage().merchant_share_pct.swiggy).toBe(100);
+  });
+  test("persists the tier choice alongside shares", () => {
+    writeUsage((u) => setLoyaltyTier(u, "marriott-bonvoy", "gold"));
+    expect(readUsage().loyalty_tiers).toEqual({ "marriott-bonvoy": "gold" });
   });
 });

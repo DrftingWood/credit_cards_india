@@ -7,7 +7,7 @@ import type {
 } from "./types";
 import { CanonicalCategory, resolveBuckets, CATEGORY_LABELS } from "./category-mapping";
 import { pointsToPct } from "./rate-math.mjs";
-import { explainValueComponents, type ValueComponents, type ValuePrefs } from "./value-components";
+import { explainValueComponents, type LoyaltyTierItem, type ValueComponents, type ValuePrefs } from "./value-components";
 
 export type SpendProfile = Record<CanonicalCategory, number>;
 
@@ -43,6 +43,13 @@ export interface ScoringContext {
   channelMix?: Set<string>;
   /** program-id → tier-id (e.g. {"indigo-bluchip": "silver"}). */
   tierMap?: Record<string, string | null>;
+  /**
+   * Programme records used ONLY to value the user's declared tier bonus as a separate
+   * value-components line (explainCard). Unlike `programs`, they never change unit values,
+   * rates or the rank. Ignored when `programs` is set, because then the tier is already
+   * stacked into the accelerator rate (programStackPct) and a second line would double count.
+   */
+  tierPrograms?: Record<string, LoyaltyProgram>;
   /** id → loyalty program record. */
   programs?: Record<string, LoyaltyProgram>;
   /**
@@ -829,6 +836,31 @@ export interface CardExplanation {
   value_components?: ValueComponents;
 }
 
+/**
+ * The user's declared programme tier bonus (D-9: programme earn, not card earn), on the
+ * spend that flows through this card's stacks_with_program accelerators, valued at the
+ * layer's own unit value. Null when no tier is declared, the tier is unknown, nothing
+ * qualifies, or ctx.programs already stacks the tier into the rate.
+ */
+function loyaltyTierBonus(
+  rewards: RewardRecord | null,
+  ctx: ScoringContext | undefined,
+  qualifyingAnnualSpend: number,
+  unitValue: number | null,
+): LoyaltyTierItem | null {
+  const id = rewards?.loyalty_program;
+  if (!id || !ctx || ctx.programs || !ctx.tierPrograms || unitValue == null || qualifyingAnnualSpend <= 0) return null;
+  const program = ctx.tierPrograms[id];
+  const tierId = ctx.tierMap?.[id];
+  const tier = tierId ? program?.earn?.tiers?.find((t) => t.id === tierId) : undefined;
+  if (!program || !tier || !(tier.bonus_per_inr > 0) || !(tier.bonus_rate > 0)) return null;
+  return {
+    program_id: id, program_name: program.name, tier_id: tier.id, tier_name: tier.name ?? tier.id,
+    qualifying_spend_annual_inr: Math.round(qualifyingAnnualSpend),
+    annual_inr: (qualifyingAnnualSpend * tier.bonus_rate / tier.bonus_per_inr) * unitValue,
+  };
+}
+
 export function explainCard(
   card: EnrichedCard,
   spend: SpendProfile,
@@ -853,6 +885,7 @@ export function explainCard(
   let monthlyGross = 0;
   let baseMonthly = 0; // portion earned at base rate (subject to base.cap_per_cycle), mirrors scoreCard
   let totalSpend = 0; // mirrors scoreCard's totalSpend, for the waiver-aware fee below (FIX 2)
+  let stackingSpendMonthly = 0; // spend through stacks_with_program accelerators — where a programme tier bonus is earned
 
   for (const bucket of Object.keys(spend) as CanonicalCategory[]) {
     const amount = spend[bucket] || 0;
@@ -877,6 +910,7 @@ export function explainCard(
       // count toward base.cap_per_cycle below — same as scoreCard's baseEarned.
       baseMonthly += hit.base_remainder_inr + hit.over_cap_base_inr;
       monthlyGross += net;
+      if (hit.accel.stacks_with_program) stackingSpendMonthly += amount * hit.applicability;
       accelerators.push({
         category: bucket, label, monthly_spend: amount, rate_pct: hit.rate_pct, applicability: hit.applicability,
         uncapped_value_inr: hit.uncapped_accel_inr, cap_monthly_inr: hit.cap_monthly_inr,
@@ -927,7 +961,12 @@ export function explainCard(
   };
   if (valuePrefs) {
     out.value_components = explainValueComponents(
-      card, spend, { annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective }, valuePrefs,
+      card, spend,
+      {
+        annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective,
+        loyalty_tier: loyaltyTierBonus(rewards, ctx, stackingSpendMonthly * 12, unitValue),
+      },
+      valuePrefs,
     );
   }
   return out;

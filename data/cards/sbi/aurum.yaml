@@ -61,9 +61,11 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://cardinsider.com/blog/important-update-on-sbi-credit-cards-finance-charges-and-utility-bill-payments/
-      retrieved_on: 2026-06-12
-      notes: "Finance charge 3.75%/month on all unsecured SBI cards from 1-Nov-2024."
+      url: https://www.sbicard.com/en/most-important-terms-and-conditions.page
+      retrieved_on: 2026-10-20
+      type: issuer-page
+      confidence: high
+      notes: "SBI Card MITC (read 2026-10-20): 'The current rate of finance charges is upto 3.75% per month [45% per annum]' and 'W.e.f. 1st Dec 2024, 1% of total amount of Utility Payments, if the total amount exceeds Rs.50,000 in a billing cycle'. Replaces a CardInsider blog citation. The AURUM product page still shows an older 3.35% figure, which the MITC supersedes. The 1-Nov-2024 start date of this record comes from the earlier secondary citation."
 
 rewards:
   - effective_from: 2021-10-01
@@ -134,9 +136,10 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.business-standard.com/finance/personal-finance/sbi-card-update-no-reward-points-for-spending-on-digital-gaming-platforms-124120500479_1.html
-      retrieved_on: 2026-06-12
-      notes: "1-Dec-2024 wave: digital gaming earns nothing, government excluded, utility >₹50k 1% fee."
+      url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tandc-aurum-reward-portal.pdf
+      retrieved_on: 2026-10-20
+      type: issuer-pdf
+      notes: "AURUM rewards T&C (read 2026-10-20): 'W.e.f. 1 Dec 2024, accrual of Reward Points on spends done on Digital Gaming Platforms/Merchants with AURUM will be discontinued' (MCC 5816/7993/7994); base 4 RP per Rs 100, 1 RP = Rs 0.25. Replaces a Business Standard citation. The government exclusion and utility fee lines were in that article; the utility fee is confirmed by the SBI Card MITC."
 
     mcc_exclusions: ['6513']
 benefits:
@@ -202,5 +205,5 @@ application:
   apply_url: https://www.aurumcreditcard.com/
 
 metadata:
-  last_verified_on: 2026-06-12
+  last_verified_on: 2026-10-20
   tags: [invite-only, super-premium, lifestyle, points]

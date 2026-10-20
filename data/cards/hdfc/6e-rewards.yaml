@@ -20,18 +20,19 @@ co_brand:
   partner_website: https://www.goindigo.in
 status: discontinued
 launched_on: 2022-11-07
-discontinued_on: 2026-07-03
+discontinued_on: 2025-11-01
 
-# Entry-level IndiGo 6E Rewards co-brand from HDFC Bank. The companion XL
-# variant was discontinued in Nov-2025, and this base variant has since been
-# withdrawn too — the HDFC product page returns 404 as of 2026-07-03 and it
-# no longer appears in HDFC's live credit-card catalogue. discontinued_on is
-# the date the withdrawal was observed; the exact sunset date (between the
-# 2026-04 verification and 2026-07-03) is unconfirmed.
+# Entry-level IndiGo 6E Rewards co-brand from HDFC Bank. HDFC's product page
+# (hdfc.bank.in/credit-cards/6e-rewards-indigo-credit-card, read 2026-10-20)
+# says both 6E Rewards cards are discontinued and not accepting applications,
+# and "effective 1st Nov'25, all the product features and associated benefits
+# will be discontinued ... benefits maximum till 31st Oct'25". discontinued_on
+# was previously the date a 404 was observed (2026-07-03); it is now the
+# issuer-stated end date, matching the XL variant.
 
 fees:
   - effective_from: 2022-11-07
-    effective_until: 2026-07-02
+    effective_until: 2025-10-31
     joining_fee_inr: 500
     annual_fee_inr: 500
     fee_waiver:
@@ -51,7 +52,7 @@ fees:
 
 rewards:
   - effective_from: 2022-11-07
-    effective_until: 2026-07-02
+    effective_until: 2025-10-31
     currency: miles
     currency_name: 6E Rewards
     base:
@@ -80,7 +81,9 @@ rewards:
         canonical_categories: [dining, groceries, entertainment]
         multiplier: 1
         effective_rate: 2
-        cap_per_cycle: "unlimited"
+        # Issuer page: "2 6E Rewards per ₹100 Spends on Grocery, Dining &
+        # Entertainment capped at 100 RP monthly".
+        cap_per_cycle: 100
         cap_unit: miles
         cycle: monthly
     exclusions:
@@ -97,13 +100,15 @@ rewards:
         fee_inr: 99
         constraints: "Redeemable only for IndiGo bookings and 6E Prime add-ons at 6E Reward = ₹1. Unused balance auto-converts to BluChip at 1:1 if IndiGo migrates the balance. Redemption fee ₹99 + GST per claim."
     source:
-      url: https://www.paisabazaar.com/hdfc-bank/6e-rewards-indigo-hdfc-bank-credit-card/
-      retrieved_on: 2026-04-22
-      type: aggregator
+      url: https://www.hdfc.bank.in/credit-cards/6e-rewards-indigo-credit-card
+      retrieved_on: 2026-10-20
+      type: issuer-page
+      confidence: high
+      notes: "Earn rates re-read on the issuer page (kept up for existing holders after the card was discontinued): 2.5 per ₹100 on IndiGo app/website flights, 2 per ₹100 on grocery/dining/entertainment capped at 100 RP monthly, 1 per ₹100 on other spends. Replaces the earlier Paisabazaar citation; the dining cap was missing before. Redemption terms are carried forward from that earlier read."
 
 benefits:
   - effective_from: 2022-11-07
-    effective_until: 2026-07-02
+    effective_until: 2025-10-31
     lounge_access: null
     welcome:
       - condition: "Joining fee paid + minimum 3 transactions in each of the first 3 months"
@@ -140,6 +145,6 @@ application:
   replaces_card: null
 
 metadata:
-  last_verified_on: 2026-04-22
+  last_verified_on: 2026-10-20
   last_swept_on: 2026-07-03
   tags: [co-branded, airline, indigo, entry, miles]

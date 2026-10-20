@@ -38,7 +38,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
+      url: https://www.sbicard.com/en/personal/credit-cards/south-india-bank-sbi-platinum-card.html
       retrieved_on: 2026-07-05
       type: aggregator
       confidence: high
@@ -76,7 +76,7 @@ rewards:
         program: SBI Card Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
+      url: https://www.sbicard.com/en/personal/credit-cards/south-india-bank-sbi-platinum-card.html
       retrieved_on: 2026-07-04
       type: issuer-pdf
       confidence: high
@@ -131,7 +131,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
+      url: https://www.sbicard.com/en/personal/credit-cards/south-india-bank-sbi-platinum-card.html
       retrieved_on: 2026-07-04
       type: issuer-pdf
       confidence: high
@@ -154,7 +154,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/banking-partnership/south-india-bank-sbi-platinum-card.page
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/south-india-bank-sbi-platinum-card.html
 
 metadata:
   last_verified_on: 2026-07-05

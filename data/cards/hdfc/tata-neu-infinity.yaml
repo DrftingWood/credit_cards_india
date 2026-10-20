@@ -201,7 +201,9 @@ benefits:
         visits_per_cycle: 2
         cycle: quarterly
         guests_per_visit: 0
-        via: [priority-pass]
+        # Issuer: "can be availed as a Lounge Voucher on spends of Rs 50,000 or
+        # more in a calendar quarter" -- a bank voucher, not Priority Pass.
+        via: [issuer-direct]
         spend_threshold_inr: 50000
         spend_threshold_cycle: quarterly
         notes: "Domestic visits unlocked by ₹50,000 spend in the preceding calendar quarter (milestone-based since 10-Jun-2025)."
@@ -219,13 +221,14 @@ benefits:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 5000
-      cap_per_cycle_inr: 250
+      cap_per_cycle_inr: 500
       cycle: statement
     concierge: false
     source:
-      url: https://cardmaven.in/tata-neu-infinity-hdfc-bank-credit-card/
-      retrieved_on: 2026-06-12
-      notes: "Lounge spend-gate per Card Maven review and TechnoFino thread; replace with HDFC notice PDF on next sweep."
+      url: https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
+      retrieved_on: 2026-10-20
+      type: issuer-page
+      notes: "Issuer page (read 2026-10-20): 'W.e.f 10-Jun-2025, Domestic Lounge Access benefit will be Milestone based and can be availed as a Lounge Voucher on spends of Rs 50,000 or more in a calendar quarter ... 2 Complimentary Domestic Lounge Vouchers per calendar quarter (up to 8 per calendar year)'; international '4 Complimentary Lounge Access per calendar year (1 per Quarter)' via Priority Pass; fuel waiver 1% on Rs 400-5,000, 'Maximum waiver of Rs 500 per statement cycle' (was recorded as Rs 250). Replaces a Card Maven citation. Welcome NeuCoins carried forward from that earlier read."
 
 eligibility:
   min_age: 21
@@ -240,5 +243,5 @@ application:
   apply_url: https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-10-20
   tags: [co-branded, tata-neu, cashback, premium]

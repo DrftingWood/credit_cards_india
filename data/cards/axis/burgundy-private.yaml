@@ -52,7 +52,7 @@ fees:
       Zero forex markup and zero cash-withdrawal charges. Fee, forex and cash-advance terms are
       web-tier: they come from product/aggregator pages, not an Axis MITC.
     source:
-      url: https://www.axisbank.com/burgundyprivate/creditcard
+      url: https://www.axis.bank.in/burgundy-private/the-one-card
       retrieved_on: 2026-07-28
   # Axis "Revision of Burgundy Private - The One Card Terms and Conditions"
   # (PDF dated 2026-07-27): from 01-09-2026 the annual fee is revised from
@@ -166,7 +166,7 @@ benefits:
       - name: Airport concierge
         description: Complimentary airport concierge / meet-and-greet service.
     source:
-      url: https://www.axisbank.com/burgundyprivate/creditcard
+      url: https://www.axis.bank.in/burgundy-private/the-one-card
       retrieved_on: 2026-07-28
       notes: "Lounge counts and memberships are web-tier (product/aggregator pages), not confirmed against an Axis MITC."
   # Revision notice: from 28-08-2026 Priority Pass no longer works at Indian
@@ -222,7 +222,7 @@ eligibility:
     income is left null rather than guessed at. See docs/TODO.md E19.
 
 application:
-  apply_url: https://www.axisbank.com/burgundyprivate/creditcard
+  apply_url: https://www.axis.bank.in/burgundy-private/the-one-card
 
 metadata:
   last_verified_on: 2026-10-20

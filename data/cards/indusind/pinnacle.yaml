@@ -32,7 +32,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-world-credit-card.html
       retrieved_on: 2026-07-03
 
 rewards:
@@ -85,7 +85,7 @@ rewards:
             last_verified_on: '2026-07-05'
             notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
     source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-world-credit-card.html
       retrieved_on: '2026-07-05'
       type: issuer-page
 
@@ -126,7 +126,7 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-world-credit-card.html
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -139,7 +139,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-credit-card.html
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-world-credit-card.html
 
 metadata:
   last_verified_on: '2026-07-05'

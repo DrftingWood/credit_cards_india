@@ -321,6 +321,14 @@ steady-state rewards, never summed into a rank (`site/lib/value-components.ts`).
   proxies stay removed.
 - All milestone/threshold checks assume all of the user's entered spend counts
   toward the trigger; issuer-specific trigger exclusions are not modelled.
+- **Every rupee is itemised (added 2026-10-20, `calc/phase-2`).** Each total
+  carries a `ledger`: labelled, signed, whole-rupee lines (spend rewards, fee,
+  welcome, milestones, lounge) that sum exactly to the displayed total. Lines are
+  rounded by largest remainder, so a ledger total equals the rounded engine total
+  and no line moves by ₹1 or more. Rewards and fee lines always show; zero-valued
+  optional lines are omitted. A renewal fee cleared by spend reads "waived at your
+  spend", not a bare ₹0. Later phases (forex, redemption fees) add ledger lines
+  rather than adjusting a total silently.
 
 ### D-24. A user's own merchant share is authored applicability (CALC-3)
 

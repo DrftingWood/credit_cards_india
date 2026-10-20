@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-config";
 import { Suspense } from "react";
 import { getActiveCards, getAllIssuers } from "@/lib/data";
 import { BrowseClient } from "./browse-client";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Browse every Indian credit card",
   description:
     "Filter Indian credit cards by issuer, network, tier, reward currency, lifetime-free, lounge access, and co-brand.",
-  alternates: { canonical: "/browse" },
-};
+  path: "/browse",
+});
 
 export default function BrowsePage() {
   const cards = getActiveCards();

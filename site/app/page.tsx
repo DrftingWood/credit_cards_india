@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getIndex } from "@/lib/data";
+import { SITE_DESCRIPTION, pageMetadata } from "@/lib/site-config";
 import { CategoryTiles } from "@/components/home/category-tiles";
 import { SpendStarter } from "@/components/home/spend-starter";
 
-// Title and description come from the layout default; only the canonical is
-// page-specific. It can't live on the layout, where every page lacking its
+// Title comes from the layout default; the canonical and share-preview URL are
+// page-specific. They can't live on the layout, where every page lacking its
 // own would inherit "/" as its canonical.
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = pageMetadata({ description: SITE_DESCRIPTION, path: "/" });
 
 export default function HomePage() {
   const index = getIndex();

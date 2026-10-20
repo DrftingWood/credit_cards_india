@@ -807,6 +807,8 @@ export interface AcceleratorExplain {
   category: CanonicalCategory; label: string;
   monthly_spend: number;
   rate_pct: number;
+  /** Share (0–1) of this bucket the accelerated rate applies to; the rest earns base. Omitted = whole bucket. */
+  applicability?: number;
   uncapped_value_inr: number;
   cap_monthly_inr: number | null;
   cap_bound: boolean;
@@ -876,7 +878,7 @@ export function explainCard(
       baseMonthly += hit.base_remainder_inr + hit.over_cap_base_inr;
       monthlyGross += net;
       accelerators.push({
-        category: bucket, label, monthly_spend: amount, rate_pct: hit.rate_pct,
+        category: bucket, label, monthly_spend: amount, rate_pct: hit.rate_pct, applicability: hit.applicability,
         uncapped_value_inr: hit.uncapped_accel_inr, cap_monthly_inr: hit.cap_monthly_inr,
         cap_bound: hit.cap_bound, lost_to_cap_inr: lost, base_spillover_inr: hit.over_cap_base_inr,
         net_value_inr: net, factors: buildFactors(layer, hit, basis, rewards, ctx),

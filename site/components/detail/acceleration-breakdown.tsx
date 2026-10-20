@@ -6,6 +6,9 @@ import { useSpendProfile, MAX_MONTHLY_SPEND } from "@/lib/use-spend-profile";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
 import { useValuePrefs } from "@/lib/use-value-prefs";
 import { ValueComponentsPanel } from "./value-components-panel";
+import { useUsageProfile } from "@/lib/use-usage-profile";
+import { DEFAULT_USAGE, cardUsageGroups, usageContext, usageDelta, withoutUsage, type UsageProfile } from "@/lib/usage";
+import { UsagePanel } from "./usage-panel";
 
 const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
 
@@ -57,7 +60,7 @@ const ABSOLUTE_LAYER: BreakdownLayer = {
  *
  * Pure and exported so it's unit-testable without rendering the (hook-driven) component.
  */
-export function breakdownLayers(hostCtx?: ScoringContext, hostLabel?: string): BreakdownLayer[] {
+export function breakdownLayers(hostCtx?: ScoringContext, hostLabel?: string, usage: UsageProfile = DEFAULT_USAGE): BreakdownLayer[] {
   if (hostCtx) {
     return [
       {
@@ -74,12 +77,13 @@ export function breakdownLayers(hostCtx?: ScoringContext, hostLabel?: string): B
       id: "realistic",
       label: "Realistic",
       blurb:
-        "What you'd realistically keep — caps applied, channel premiums cut when you don't route through them, realized redemption value.",
+        "What you'd realistically keep — caps applied, co-brand and portal rates only on the share you say goes through them, realized redemption value.",
       ctx: {
         applyApplicability: true,
-        channelMix: new Set<string>(),
-        enabledEcosystems: new Set<string>(),
         valueBasis: "realized",
+        // Phase 3: the user's declared merchant shares + ecosystems. Nothing declared →
+        // empty mix / no shares / no ecosystems — the strict Phase 1 layer.
+        ...usageContext(usage),
       },
     },
     ABSOLUTE_LAYER,
@@ -94,7 +98,9 @@ export function AcceleratorRow({ item }: { item: AcceleratorExplain }) {
         <span className="text-sm font-semibold text-slate-900 tabular-nums">{inr(item.net_value_inr)}/mo</span>
       </div>
       <p className="mt-1 text-xs text-slate-600 tabular-nums">
-        You spend {inr(item.monthly_spend)} · earns {item.rate_pct.toFixed(1)}% ={" "}
+        You spend {inr(item.monthly_spend)} ·{" "}
+        {item.applicability != null && item.applicability < 1 ? `${Math.round(item.applicability * 100)}% at ` : "earns "}
+        {item.rate_pct.toFixed(1)}% ={" "}
         <span className="text-slate-900">{inr(item.uncapped_value_inr)}</span> uncapped
         {item.cap_bound && item.cap_monthly_inr != null ? (
           <>
@@ -127,7 +133,8 @@ export function AccelerationBreakdown({
 }) {
   const [spend, setSpend] = useSpendProfile(); // shared + persisted across all calculators
   const [valuePrefs, setValuePrefs] = useValuePrefs(); // tenure + lounge usage, shared the same way
-  const layers = useMemo(() => breakdownLayers(hostCtx, hostLabel), [hostCtx, hostLabel]);
+  const [usage, setUsage] = useUsageProfile(); // merchant shares + ecosystems, shared the same way
+  const layers = useMemo(() => breakdownLayers(hostCtx, hostLabel, usage), [hostCtx, hostLabel, usage]);
   const [layerId, setLayerId] = useState(() => layers[0].id);
   // Fall back to the primary layer if the host swapped the layer set out from under us.
   const layer = layers.find((l) => l.id === layerId) ?? layers[0];
@@ -136,6 +143,15 @@ export function AccelerationBreakdown({
   // Absolute layer, computed unconditionally (explainCard is pure/cheap): the source of
   // truth for "what got cut" notes on base-rate rows in the selected layer (FIX 1).
   const exAbs = useMemo(() => explainCard(card, spend, { valueBasis: "face" }), [card, spend]);
+  // Usage questions apply only to a realistic layer (one that gates narrow rates). What the
+  // user's answers changed = this layer vs the same layer with nothing declared.
+  const usageGroups = useMemo(() => cardUsageGroups(card), [card]);
+  const ecosystem = card.current_rewards?.redemption_scope === "closed-loop" ? card.current_rewards.ecosystem_label ?? null : null;
+  const isRealistic = layer.ctx.applyApplicability === true;
+  const deltas = useMemo(
+    () => (isRealistic ? usageDelta(ex, explainCard(card, spend, withoutUsage(layer.ctx))) : []),
+    [isRealistic, ex, card, spend, layer],
+  );
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-5">
@@ -162,6 +178,10 @@ export function AccelerationBreakdown({
           </label>
         ))}
       </div>
+
+      {isRealistic ? (
+        <UsagePanel groups={usageGroups} usage={usage} ecosystem={ecosystem} deltas={deltas} onChange={(u) => setUsage(() => u)} />
+      ) : null}
 
       {ex.accelerators.length > 0 ? (
         <ul className="mt-4 space-y-2">

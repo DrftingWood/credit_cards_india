@@ -13,7 +13,7 @@ scoped stubs here so they aren't lost.
   (`useSpendProfile`), the `AccelerationBreakdown` component on the card page AND
   `/calculator`. The reusable spine every later phase plugs into.
 
-## Phase 2 — Full value components (DONE 2026-10-20 — see DECISIONS D-23, TODO CALC-2)
+## Phase 2 — Full value components (DONE 2026-10-20 — see DECISIONS D-23, TODO CALC-2; per-total ledger added on `calc/phase-2`)
 Surface welcome bonus + milestones + lounge as separate honest line items so the
 calculator shows first-year total vs steady-state, resolving `/calculator`'s
 "ignores welcome bonuses, milestone vouchers" disclaimer.
@@ -36,7 +36,7 @@ Realistic layer is truly personal (not just base-vs-ceiling).
   accelerators unlocked/dropped as a result.
 - **Depends on:** Phase 1 shared store + Realistic ctx.
 
-## Phase 4 — Redemption realism
+## Phase 4 — Redemption realism (plan: `docs/superpowers/plans/2026-10-20-calculators-phase-3-4.md`)
 Value points at the best real redemption route, not a flat rate.
 - **Leverage:** `transfer_partners` in the data + `unit_value_inr_realized` +
   `realized_source`; the transfer-partner analysis already done in the dataset.

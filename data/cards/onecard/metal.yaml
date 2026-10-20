@@ -40,6 +40,8 @@ fees:
     source:
       url: https://www.getonecard.app/card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: medium
 
 rewards:
   - effective_from: 2020-07-01
@@ -108,6 +110,7 @@ benefits:
     source:
       url: https://www.getonecard.app/card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

@@ -25,7 +25,13 @@ UI sets them. Phase 4 (redemption realism, CALC-4) has not started.
   `npm.cmd --prefix site test -- --run`, `npm.cmd --prefix site run typecheck`,
   and `npm.cmd --prefix site run build` before the branch is called done.
 
-## Part A — Phase 3 remainder: loyalty tier input (small)
+## Part A — Phase 3 remainder: loyalty tier input (small) — DONE on `calc/phase-3-tiers`
+
+> Built 2026-10-20. Differences from the sketch below: the tier bonus is a separate
+> `tier` ledger line, not a rate change. D-9 makes it programme earn, so it never
+> moves the rank. It reaches the engine through a narrow `ScoringContext.tierPrograms`
+> rather than the full `programs` map. No card uses `earn_components.requires_tier`,
+> so the stacking path (`stacks_with_program`) is what applies. See D-24.
 
 The engine already applies tier bonuses: `programEarnPct` reads
 `ctx.tierMap[program]` and `acceleratorRatePct` gates `earn_components.requires_tier`

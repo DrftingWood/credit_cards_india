@@ -348,6 +348,19 @@ state it, and that is evidence, not invention.
 - `/calculator` stays channel-optimistic by default (D-3). Gating on declared
   shares is an explicit opt-in (`UsageProfile.gate_calculator`). Ecosystem ticks
   are shared with the card pages' Realistic layer.
+- **Loyalty tiers (added 2026-10-20, `calc/phase-3-tiers`).** The tier a user
+  holds is stored as `UsageProfile.loyalty_tiers` in the same usage store. Per
+  D-9 a tier bonus is programme earn, not card earn, so it is never added to
+  spend rewards or the rank (`annual_net_inr`). It is a separate value-components
+  line (`loyalty_tier`, ledger key `tier`) in Year 1, Year 2+ and the average.
+  It is earned only on spend through the card's `stacks_with_program`
+  accelerators and valued at the layer's own unit value. It is shown in every
+  layer except Absolute. Programme records reach it through the narrow
+  `ScoringContext.tierPrograms`, which never changes rates or unit values. The
+  full `programs` map is still not passed on the card page or `/calculator`,
+  because that would switch 19 co-brand cards to programme unit values, which
+  needs its own decision. When `programs` is set (as on /recommend), the tier is
+  already stacked into the rate, so no separate line is added.
 
 ### D-17. Build pipeline is pure Node
 

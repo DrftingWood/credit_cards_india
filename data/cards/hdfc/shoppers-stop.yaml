@@ -33,6 +33,8 @@ fees:
     source:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
     notes: "₹299 joining and annual fee for customers joining from Mar-2024; earlier customers are lifetime-free."
 
 rewards:
@@ -119,6 +121,7 @@ benefits:
     source:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

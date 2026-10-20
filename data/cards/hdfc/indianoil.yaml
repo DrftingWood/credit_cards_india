@@ -39,6 +39,8 @@ fees:
     source:
       url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2017-01-01
@@ -102,6 +104,7 @@ benefits:
     source:
       url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
 
 eligibility:
   min_age: 21

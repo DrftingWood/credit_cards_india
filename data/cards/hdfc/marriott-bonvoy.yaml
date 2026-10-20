@@ -38,6 +38,7 @@ fees:
     source:
       url: https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card
       retrieved_on: 2026-06-12
+      type: issuer-page
       notes: "Waiver corrected 2026-06: the earlier ₹6L spend waiver was wrong."
 
 rewards:
@@ -141,6 +142,7 @@ benefits:
     source:
       url: https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card
       retrieved_on: 2026-06-12
+      type: issuer-page
       notes: "2026-06 corrections: lounge is 12 dom + 12 intl/yr; FNA-based milestones/welcome (Marriott dropped category awards; FNAs valued at 15,000 pts × realized ₹0.55). FNA top-up with up to 25,000 extra points allowed since 2025-26."
 
 eligibility:

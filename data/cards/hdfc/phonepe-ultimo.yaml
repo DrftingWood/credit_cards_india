@@ -139,6 +139,7 @@ benefits:
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

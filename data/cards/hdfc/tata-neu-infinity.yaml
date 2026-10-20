@@ -42,6 +42,8 @@ fees:
     source:
       url: https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2022-08-01
@@ -192,6 +194,7 @@ benefits:
     source:
       url: https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
       notes: "Historical record; unconditional lounge visits ended 10-Jun-2025."
 
   - effective_from: 2025-06-10
@@ -225,6 +228,7 @@ benefits:
     source:
       url: https://cardmaven.in/tata-neu-infinity-hdfc-bank-credit-card/
       retrieved_on: 2026-06-12
+      type: aggregator
       notes: "Lounge spend-gate per Card Maven review and TechnoFino thread; replace with HDFC notice PDF on next sweep."
 
 eligibility:

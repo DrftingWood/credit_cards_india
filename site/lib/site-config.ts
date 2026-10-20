@@ -7,6 +7,9 @@ import type { Metadata } from "next";
  * attached; until then the vercel.app URL is the fallback. Everything that needs
  * an absolute URL — metadataBase, canonical links, Open Graph URLs, robots.txt,
  * sitemap.xml — reads SITE_URL from here, so a domain move is a one-value change.
+ *
+ * Owner decision (2026-10-21): no custom domain until the site is finished, so the
+ * vercel.app fallback stays and NEXT_PUBLIC_SITE_URL is left unset (TODO SEO-1).
  */
 export const SITE_URL = normaliseBaseUrl(
   process.env.NEXT_PUBLIC_SITE_URL || "https://credit-cards-india.vercel.app",

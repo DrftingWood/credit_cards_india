@@ -59,7 +59,7 @@ New semantic spacing aliases: `p-card`, `gap-stack`, `gap-inline`,
 
 Values deliberately match the previous Tailwind defaults, so this pass changes
 no layout. Changing the scale is now a one-file edit in `tokens.css`. The
-system font stack is kept; see "Open decisions" for a webfont.
+system font stack is kept (accepted 2026-10-21; see "Decisions").
 
 ### Elevation
 
@@ -216,20 +216,28 @@ ratio.
 The `brand` scale was removed from the Tailwind config. A leftover raw class
 now produces no CSS instead of a silently mismatched colour.
 
-## Open decisions
+## Decisions
 
-- **Dark-mode warn tint:** the "How we rank" band uses `warn-subtle` and reads
-  quite brown in dark mode. This is a matter of taste; it passes contrast, so
-  it was left alone. To warm it, change `--color-warn-subtle` and
-  `--color-warn-line` in the dark blocks.
+### Accepted (owner, 2026-10-21)
 
-- **Webfont:** the system stack is kept, which means no network fetch at build
-  and no layout shift. Inter or IBM Plex Sans through `next/font` would give
-  consistent tabular figures across operating systems. To adopt one, change
-  `--font-sans`.
-- **Light canvas:** the page background moved from pure white to
-  `rgb(250 251 252)` so white cards read as raised. Revert by setting
-  `--color-canvas` to `255 255 255`.
-- **Muted text:** `slate-500` and `slate-600` were merged into one
-  `fg-muted`, giving a three-step text hierarchy. Split it again if a page
-  needs four steps.
+These four defaults are accepted and stay as built. Make no further design
+changes until the owner's longer UI/UX conversation (TODO UI-3).
+
+- **Light canvas:** the page background is off-white, `rgb(250 251 252)`,
+  rather than pure white, so white cards read as raised (`--color-canvas`).
+- **System font:** the system stack is kept, with no webfont. That means no
+  network fetch at build and no layout shift (`--font-sans`). Inter or IBM Plex
+  Sans through `next/font` remains an option for the UI/UX conversation, but it
+  is not planned.
+- **Merged muted greys:** `slate-500` and `slate-600` are merged into one
+  `fg-muted`, giving a three-step text hierarchy.
+- **Dark-mode primary:** in dark mode the primary button is light blue
+  (`--color-accent: 122 167 255`) with dark text (`--color-on-accent: 10 15 26`),
+  at 8.03:1. Light mode keeps the deep blue with white text.
+
+### Still open
+
+- **Dark-mode warn tint (taste question):** the "How we rank" band uses
+  `warn-subtle` and reads quite brown in dark mode. It passes contrast, so it
+  is left alone until the owner's UI/UX conversation. To warm it, change
+  `--color-warn-subtle` and `--color-warn-line` in the dark blocks.

@@ -10,6 +10,7 @@ It was cut from `main` at `663b5b1`. Each branch was merged with `--no-ff`, in t
 | 3 | `9478cd2` | `seo/basics` (`8d4ee0f`) | none |
 | 4 | `12773c7` | `affiliate/disclosure` (`be6ae70`) | none |
 | 5 | `db8dbbe` | `calc/phase-3-tiers` (`26f8d54`, which contains `calc/phase-2` at `d159f84`) | none |
+| 6 | `49896d7` | `design/tokens-dark-mode` (`33370d2`), merged later the same night | 5 files, resolved below (see "Design tokens and dark mode") |
 
 Nothing was pushed or deployed. `main` and the six source branches are unchanged.
 
@@ -90,6 +91,48 @@ Notes from the run:
 - The D3 log rows and TODO D3/P4 rows quote coverage figures measured on the D3 branch alone (strict-ready 425 of 666). With D4/D5 merged, the figure is 433 of 674. The 6 new D5 cards and the new Burgundy records carry only the evidence fields D4 wrote; they did not go through the D3 backfill.
 - `scripts/backfill_local_evidence.py` and `backfill_source_type.py` need `ruamel.yaml`. It is not in `scripts/requirements.txt` or the repo `.venv`. The tests still pass without it because the round-trip case skips, but re-running the backfills needs a Python that has ruamel.
 
+## Design tokens and dark mode (`design/tokens-dark-mode`, merged at `49896d7`)
+
+This branch is the Todoist "Visual redesign pass", done in code because Figma wasn't available. It adds:
+- Semantic design tokens as CSS variables in `site/styles/tokens.css`, mapped into Tailwind.
+- Light and dark themes. Dark follows `prefers-color-scheme`, and a header toggle overrides it; the choice is saved in `localStorage["cci-theme"]` with try/catch.
+- A WCAG 2.2 contrast test, `site/lib/design-tokens.test.ts`.
+- Every component moved onto the tokens.
+- Docs in `docs/design/`: `REFERENCES.md`, `TOKENS.md` and `screenshots/`.
+
+**Conflicts.** For each conflict I kept the integration side's content and applied the token mapping to it:
+- `app/layout.tsx`: the `site-config` import (seo/basics) plus the theme-toggle imports.
+- `app/about/page.tsx`: the affiliate disclosure section.
+- `app/calculator/page.tsx` and `calculator-client.tsx`: `tieredPrograms` and `tierCtx` (phase 3).
+- `components/detail/value-components-panel.tsx`: the Year 1 / Year 2+ / average ledger cells (phase 2).
+
+Some auto-merged phase-2/phase-3 UI still had raw palette classes: the tier picker in `usage-panel.tsx`, `LedgerLines`, the about disclosure and the footer note. These were tokenised in the merge commit too. No `slate-`, `brand-`, `amber-`, `emerald-` or `rose-` classes remain. The only hex colours left are intentional:
+- `app/og.png/route.tsx` is a server-rendered OG image, where CSS variables can't apply. It stays light and uses the light-token hex values.
+- The white text and chips on card art in `card-image.tsx`.
+
+**New contrast pairs** (commit `7fd61dd`). The phase-2 ledger and phase-3 tier select render inside the pinned `/calculator` row, which is `bg-accent-subtle`. Three pairs on that background are now checked:
+- `success` (the net ₹/yr): light 4.97:1, dark 9.07:1, minimum 4.5.
+- `line-strong` (tier select border): light 3.06:1, dark 3.31:1, minimum 3.
+- `accent` (row border): light 6.07:1, dark 6.31:1.
+
+The total is now 73 pairs × 2 themes = 146 checks, and all pass. The tightest are `line-strong` on `accent-subtle` (3.06:1) and `fg-placeholder` on `surface-subtle` (4.58:1). Both are light theme.
+
+**Checks on `7fd61dd`:**
+
+| Check | Result |
+|---|---|
+| `scripts/validate.py` | OK. Same warnings as before: stale `last_verified_on`, unvouched rules, and the absent PDF archive. |
+| `npm run prebuild` | OK. Schema validation passes on 361 files, and 326 cards were written. |
+| `vitest run` | 26 files, 421 of 421 tests pass. That includes 146 contrast checks and the theme tests. |
+| `tsc --noEmit` | 0 errors. |
+| `next build` | 339 static pages generated. |
+| Playwright, 1440px, light and dark | `/calculator?card=hdfc-marriott-bonvoy` (pinned row, 11 ledger lines, tier picker), `/card/hdfc/infinia` and `/card/hdfc/marriott-bonvoy` (tier picker and ledger). No console errors and no horizontal overflow. All were reviewed visually and saved to `docs/design/screenshots/` (`calculator-*`, `card-hdfc-infinia-*`, `card-hdfc-marriott-bonvoy-*`). |
+
+**Left for a person:**
+- The dark-mode amber "How we rank" band reads brownish. That's a matter of taste; it passes contrast and was left alone on purpose. The knob is `--color-warn-subtle` in the dark blocks.
+- The Diners Club network mark in the pinned calculator row is tiny in both themes. That's the logo asset, not the theme.
+- The defaults to confirm are listed in `docs/design/TOKENS.md` under "Open decisions": off-white light canvas, no webfont, one muted text level, and a light-blue primary button with dark text in dark mode.
+
 ## Open decisions that affect this repo
 
 These come from `C:\Users\achar\reports\Decisions to make 2026-10-20.md` and the branches' own notes. None of them blocks merging, but each should be answered before the related work ships.
@@ -112,7 +155,8 @@ Other review points from the overnight defaults (decisions file, credit_cards_in
 - [ ] Skim the data diff by issuer: `git diff main...integration/2026-10-20 --stat -- data/`. Most of the 373 changed files are D3's `type`, `confidence` and evidence lines.
 - [ ] Check that the footer and `/about` read correctly together (SEO metadata plus the affiliate disclosure): `npm --prefix site run dev`.
 - [ ] Optionally re-run the gates locally: `python scripts/validate.py`, the 7 Python tests, and `npm --prefix site test`, `run typecheck` and `run build`.
+- [ ] Look at the design screenshots in `docs/design/screenshots/` (light and dark), and toggle the theme once with `npm --prefix site run dev`.
 - [ ] Merge into main: `git checkout main && git merge --no-ff integration/2026-10-20`. A fast-forward also works, because the branch is main plus merges.
 - [ ] Push and deploy when ready. Set `NEXT_PUBLIC_SITE_URL` in Vercel if a custom domain is attached.
 - [ ] Record D-26 (forex rank) before starting Phase 4. Start any other new decision at D-27.
-- [ ] Clean up: `git worktree remove` the seven worktrees under `scratchpad\cc-worktrees\` (`remediate`, `d3`, `seo`, `affiliate`, `phase2`, `phase3`, `integration`), then delete the merged branches if you no longer need them.
+- [ ] Clean up: `git worktree remove` the eight worktrees under `scratchpad\cc-worktrees\` (`remediate`, `d3`, `seo`, `affiliate`, `phase2`, `phase3`, `design`, `integration`), then delete the merged branches if you no longer need them.

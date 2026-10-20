@@ -56,6 +56,45 @@ assert decide(moved, "fees", "high", wave(r)) == (None, "changed-since-wave")
 h = fee(notes="Fee amounts not published on the product page; verify against the schedule.")
 assert decide(h, "fees", "high", wave(h)) == (None, "notes-hedged")
 
+# 3b. Rewards: prose, valuation and channel modelling added after the wave do not
+#     take a record out of cover; a changed rate, cap or category does.
+def reward(**base_extra):
+    base = {"rate": 2, "per_inr": 100, "unit_value_inr": 0.25}
+    base.update(base_extra)
+    return {"effective_from": "2024-01-01", "effective_until": None, "currency": "points", "base": base,
+            "accelerated": [{"category": "dining", "multiplier": 5, "effective_rate": 10, "cap_per_cycle": 1000}],
+            "source": dict(SRC)}
+
+
+rw = reward()
+remodelled = reward(unit_value_inr=0.5, unit_value_inr_realized=0.3)
+remodelled["accelerated"][0]["channel"] = {"required": False, "class": "cobrand-merchant", "merchants": ["x"]}
+remodelled["accelerated"][0]["notes"] = "gated to the co-brand merchant"
+remodelled["capping_rules"] = ["no cap documented"]
+remodelled["redemption"] = [{"type": "statement-credit"}]
+assert decide(remodelled, "rewards", "high", wave(rw, section="rewards")) == ("high", "ok")
+# ...unless the source was re-stamped for that later modelling work
+restamped = copy.deepcopy(remodelled)
+restamped["source"]["retrieved_on"] = "2026-07-05"
+assert decide(restamped, "rewards", "high", wave(rw, section="rewards")) == (None, "resourced-since-wave")
+renoted = copy.deepcopy(remodelled)
+renoted["source"]["notes"] = "2026-07-05: valuation rewritten from secondary sources"
+assert decide(renoted, "rewards", "high", wave(rw, section="rewards")) == (None, "resourced-since-wave")
+# a fully unchanged record may still have a re-stamped source (link repoint)
+assert decide(dict(rw, source=dict(SRC, retrieved_on="2026-10-20")), "rewards", "high", wave(rw, section="rewards")) == ("high", "ok")
+for key, val in (("cap_per_cycle", 2000), ("effective_rate", 8), ("canonical_categories", ["dining"])):
+    bumped = reward()
+    bumped["accelerated"][0][key] = val
+    assert decide(bumped, "rewards", "high", wave(rw, section="rewards")) == (None, "changed-since-wave"), key
+rate = reward(rate=3)
+assert decide(rate, "rewards", "high", wave(rw, section="rewards")) == (None, "changed-since-wave")
+excl = reward()
+excl["exclusions"] = ["fuel"]
+assert decide(excl, "rewards", "high", wave(rw, section="rewards")) == (None, "changed-since-wave")
+# fees have no uncovered keys: a changed note still counts as an edit
+noted = fee(notes="Renewal fee waived on Rs 2L spend.")
+assert decide(noted, "fees", "high", wave(r)) == (None, "changed-since-wave")
+
 # 4. Hedge detection reads both the record notes and the source notes.
 assert hedged({"notes": "fees widely reported as ~Rs 1.5L"})
 assert hedged({"source": {"notes": "values are program-standard estimates"}})

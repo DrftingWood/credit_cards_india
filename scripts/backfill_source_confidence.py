@@ -18,9 +18,16 @@ ALL of these hold:
     `benefits`) and is open-ended (`effective_until: null`);
   * `source.type` is issuer-page or issuer-pdf (an aggregator/archive/partner
     URL is not what the wave checked; run backfill_source_type.py first);
-  * the record's values (everything except `source`) are identical to the same
-    record (same section + effective_from) at WAVE_REV, the commit that wrote the
-    headers. A record edited after the wave is no longer covered by its header;
+  * the record's covered values are identical to the same record (same section
+    + effective_from) at WAVE_REV, the commit that wrote the headers. "Covered"
+    is what the header vouches for: every fee field, and every reward field
+    except prose and modelling added on top of the verified terms (`notes`,
+    `capping_rules`, `redemption`, `base.unit_value_inr[_realized]`,
+    `accelerated[].channel`). A rate, cap, cycle, slab, category, merchant or
+    exclusion edited after the wave takes the record out of the header's cover.
+    When only uncovered keys changed, the source must also be the one the wave
+    saw (same `retrieved_on` and `notes`): a re-stamped source now speaks for
+    the later modelling research, not for the header;
   * neither the source notes nor the record's notes hedge the values
     (unverified / estimate / aggregator / not stated / not published /
     widely reported / verify against ...).
@@ -72,8 +79,30 @@ def header_tier(text: str) -> str | None:
     return TIER_MAP.get((m.group(2), m.group(3)))
 
 
+# Reward keys the header never vouched for: prose, valuation and channel
+# modelling layered on the verified earn terms after (or during) the wave.
+UNCOVERED_RECORD_KEYS = {"source", "notes", "capping_rules", "redemption"}
+UNCOVERED_BASE_KEYS = {"unit_value_inr", "unit_value_inr_realized", "notes"}
+UNCOVERED_ACCEL_KEYS = {"channel", "notes", "source"}
+
+
 def strip_source(rec: dict) -> dict:
     return {k: v for k, v in rec.items() if k != "source"}
+
+
+def covered_view(rec: dict, section: str) -> dict:
+    """The part of a record its PROVENANCE header vouches for."""
+    if section != "rewards":
+        return strip_source(rec)
+    view = {k: v for k, v in rec.items() if k not in UNCOVERED_RECORD_KEYS}
+    if isinstance(view.get("base"), dict):
+        view["base"] = {k: v for k, v in view["base"].items() if k not in UNCOVERED_BASE_KEYS}
+    if isinstance(view.get("accelerated"), list):
+        view["accelerated"] = [
+            {k: v for k, v in a.items() if k not in UNCOVERED_ACCEL_KEYS} if isinstance(a, dict) else a
+            for a in view["accelerated"]
+        ]
+    return view
 
 
 def hedged(rec: dict) -> bool:
@@ -107,8 +136,12 @@ def decide(rec: dict, section: str, tier: str | None, wave_doc: dict | None) -> 
     if wave_doc is None:
         return None, "new-since-wave"
     old = wave_record(wave_doc, section, rec)
-    if old is None or strip_source(old) != strip_source(rec):
+    if old is None or covered_view(old, section) != covered_view(rec, section):
         return None, "changed-since-wave"
+    if strip_source(old) != strip_source(rec):
+        old_src = old.get("source") or {}
+        if any(str(old_src.get(k)) != str(src.get(k)) for k in ("retrieved_on", "notes")):
+            return None, "resourced-since-wave"
     if hedged(rec):
         return None, "notes-hedged"
     return tier, "ok"

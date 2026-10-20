@@ -55,8 +55,9 @@ states, never by re-reading sources: `scripts/backfill_source_type.py` derives
 `type` from the cited URL host, and `scripts/backfill_source_confidence.py` copies
 a card's `# PROVENANCE & CONFIDENCE` header tier (`HIGH (pdf)` / `MEDIUM (web)` /
 `LOW (unconfirmed)`, see `docs/PROVENANCE.md`) into `confidence` on the open `fees`
-and `rewards` records it covers: issuer-owned source, values unchanged since the
-commit that wrote the headers, no hedging in the notes. `benefits`, closed records
+and `rewards` records it covers: issuer-owned source, the header-vouched values
+(fees, earn rates, caps, categories, exclusions) unchanged since the commit that
+wrote the headers, no hedging in the notes. `benefits`, closed records
 and records edited after the wave are left for a person. `local_refs` and
 `fields_verified` are not backfilled by script: they claim a specific document supports
 specific fields, which only a fresh read can establish.

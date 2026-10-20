@@ -40,6 +40,8 @@ fees:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2014-01-01
@@ -173,6 +175,7 @@ benefits:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

@@ -56,6 +56,8 @@ fees:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
     notes: "Late payment fee ranges ₹100 to ₹1,300. ATM withdrawal and revolve (minimum due paid) charged 3.75% interest per month."
 
 rewards:
@@ -142,6 +144,7 @@ benefits:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

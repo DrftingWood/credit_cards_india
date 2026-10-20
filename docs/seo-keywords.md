@@ -67,7 +67,9 @@ tails of queries 12–18 without a separate page per tail.
 ## Technical SEO already in place (for reference)
 
 - `sitemap.xml` (`site/app/sitemap.ts`): home, the six tool pages and every
-  active card page.
+  active card page, as absolute URLs. `lastmod` is the card's
+  `last_verified_on` (or the newest one, for data-driven tool pages) and is
+  omitted for prose pages; no `priority`/`changefreq`, which Google ignores.
 - `robots.txt` (`site/app/robots.ts`): allow all, points at the sitemap.
 - Base URL: `SITE_URL` in `site/lib/site-config.ts`, from
   `NEXT_PUBLIC_SITE_URL` with the vercel.app URL as fallback. It is the only
@@ -76,3 +78,14 @@ tails of queries 12–18 without a separate page per tail.
   `/og.png` (rendered at build time by `site/app/og.png/route.tsx`). Card pages
   use their own card art when the dataset has licensed art, and the default
   image otherwise.
+
+## Standards relied on (checked 2026-10-20)
+
+- Google Search Central, "Build and submit a sitemap": use fully-qualified
+  absolute URLs; `lastmod` is used only if "consistently and verifiably"
+  accurate; `priority` and `changefreq` are ignored.
+  https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
+- The Open Graph protocol: `og:title`, `og:type`, `og:image` and `og:url` are
+  required on every page; a page with `og:image` should also set
+  `og:image:alt`; `og:locale` defaults to `en_US` (set here to `en_IN`).
+  https://ogp.me/

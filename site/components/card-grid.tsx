@@ -4,7 +4,7 @@ import { CardTile } from "./card-tile";
 export function CardGrid({ cards }: { cards: EnrichedCard[] }) {
   if (cards.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-600">
+      <div className="rounded-xl border border-dashed border-line-strong bg-surface-subtle p-8 text-center text-fg-muted">
         No cards match these filters.
       </div>
     );

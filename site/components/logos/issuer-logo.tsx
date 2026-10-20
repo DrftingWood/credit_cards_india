@@ -41,7 +41,7 @@ export function IssuerLogo({
           unoptimized
         />
         {variant === "with-name" ? (
-          <span className="text-sm text-slate-700">{displayName}</span>
+          <span className="text-sm text-fg-secondary">{displayName}</span>
         ) : null}
       </span>
     );
@@ -50,7 +50,7 @@ export function IssuerLogo({
   // Text fallback
   return (
     <span
-      className={`${wrapperClass} text-xs uppercase tracking-wide text-slate-500`}
+      className={`${wrapperClass} text-xs uppercase tracking-wide text-fg-muted`}
       aria-label={issuer.name}
     >
       {variant === "with-name" ? issuer.name : displayName}

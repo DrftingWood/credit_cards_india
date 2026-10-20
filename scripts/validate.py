@@ -187,7 +187,7 @@ def collect_sources(node):
             yield from collect_sources(item)
 
 
-def check_local_evidence(errors, warnings, path: Path, instance: dict):
+def check_local_evidence(errors, warnings, path: Path, instance: dict, ref_state: dict | None = None):
     """
     Validate machine-readable local evidence references (B1). The schema already
     enforces the shape/enum of source.type/confidence/local_refs/fields_verified;
@@ -197,6 +197,9 @@ def check_local_evidence(errors, warnings, path: Path, instance: dict):
       - a local_ref that resolves to no file on disk is flagged (warn only:
         PDFs are gitignored, so CI legitimately won't have them, but a locally
         missing/renamed ref is worth surfacing).
+    When `ref_state` is given, disk lookups are recorded there instead of
+    warned about one by one; `local_ref_warnings` turns them into warnings once
+    every card has been seen (D3: one summary line when the archive is absent).
     """
     for src in collect_sources(instance):
         refs = src.get("local_refs")
@@ -214,11 +217,38 @@ def check_local_evidence(errors, warnings, path: Path, instance: dict):
                     "repo-relative path under docs/sources/"
                 )
                 continue
-            if not (ROOT / ref).exists():
+            found = (ROOT / ref).exists()
+            if ref_state is not None:
+                ref_state.setdefault("found" if found else "missing", set()).add((path.relative_to(ROOT), ref))
+            elif not found:
                 warnings.append(
                     f"[warn] {path.relative_to(ROOT)} :: source.local_refs '{ref}' not found on disk "
                     "(gitignored PDFs are expected absent in CI; check the path if reviewing locally)"
                 )
+
+
+def local_ref_warnings(ref_state: dict) -> list[str]:
+    """Warnings for local_refs missing on disk, given every card's lookups.
+
+    If none resolve, the gitignored PDF archive simply is not present (CI, a
+    fresh clone, a worktree): one summary line. If some resolve, the archive is
+    here and each missing ref is probably a typo or a renamed file: one line per
+    distinct (card, ref).
+    """
+    missing = sorted(ref_state.get("missing", set()), key=lambda t: (str(t[0]), t[1]))
+    if not missing:
+        return []
+    if not ref_state.get("found"):
+        cards = len({p for p, _ in missing})
+        return [
+            f"[warn] {len(missing)} source.local_refs across {cards} cards not found on disk: the gitignored "
+            "docs/sources PDF archive is absent (expected in CI; run locally with the archive to check paths)"
+        ]
+    return [
+        f"[warn] {p} :: source.local_refs '{ref}' not found on disk "
+        "(the archive is present, so check the path)"
+        for p, ref in missing
+    ]
 
 
 def check_source_urls(warnings, path: Path, instance: dict):
@@ -332,6 +362,7 @@ def main() -> int:
     strict_provenance = "--strict-provenance" in sys.argv[1:] or os.environ.get("STRICT_PROVENANCE") == "1"
     provenance_report = _arg_value("--provenance-report")
     coverage = provenance.Coverage()
+    ref_state: dict = {}
     errors: list[str] = []
     warnings: list[str] = []
     category_rules, untaggable_re = _load_category_rules()
@@ -600,8 +631,10 @@ def main() -> int:
                 )
 
         check_application_urls(errors, warnings, path, instance, check_urls)
-        check_local_evidence(errors, warnings, path, instance)
+        check_local_evidence(errors, warnings, path, instance, ref_state)
         check_rule_provenance(errors, warnings, coverage, path, instance, strict_provenance)
+
+    warnings.extend(local_ref_warnings(ref_state))
 
     # deferred: replaces_card references
     for path, instance in cards:

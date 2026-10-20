@@ -46,7 +46,9 @@ validator section below for what warns and what `--strict-provenance` fails.
 
 `scripts/validate.py` cross-checks these: a `local_refs` entry must live under
 `docs/sources/`, should be paired with `fields_verified`, and is flagged if it
-resolves to no file on disk (warn-only — PDFs are legitimately absent in CI).
+resolves to no file on disk (warn-only — PDFs are legitimately absent in CI;
+when none of them resolve the archive is absent and the validator prints one
+summary line instead of one warning per ref).
 See `data/cards/sbi/cashback.yaml` and `data/cards/hdfc/swiggy-hdfc.yaml` for
 worked examples.
 

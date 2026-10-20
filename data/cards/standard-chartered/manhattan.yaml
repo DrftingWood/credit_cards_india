@@ -37,6 +37,8 @@ fees:
     source:
       url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2026-01-01
@@ -91,6 +93,7 @@ benefits:
     source:
       url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

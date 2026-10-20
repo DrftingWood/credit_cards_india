@@ -79,6 +79,14 @@ rewards:
       retrieved_on: 2026-07-03
       type: issuer-page
       confidence: high
+      local_refs:
+        - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.accelerated.multiplier
+        - rewards.accelerated.effective_rate
+        - rewards.accelerated.cap_per_cycle
 
 benefits:
   - effective_from: 2022-01-01

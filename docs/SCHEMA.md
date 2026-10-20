@@ -50,6 +50,17 @@ resolves to no file on disk (warn-only — PDFs are legitimately absent in CI).
 See `data/cards/sbi/cashback.yaml` and `data/cards/hdfc/swiggy-hdfc.yaml` for
 worked examples.
 
+**Backfilling (D3).** Two scripts fill these fields only from what the repo already
+states, never by re-reading sources: `scripts/backfill_source_type.py` derives
+`type` from the cited URL host, and `scripts/backfill_source_confidence.py` copies
+a card's `# PROVENANCE & CONFIDENCE` header tier (`HIGH (pdf)` / `MEDIUM (web)` /
+`LOW (unconfirmed)`, see `docs/PROVENANCE.md`) into `confidence` on the open `fees`
+and `rewards` records it covers: issuer-owned source, values unchanged since the
+commit that wrote the headers, no hedging in the notes. `benefits`, closed records
+and records edited after the wave are left for a person. `local_refs` and
+`fields_verified` are not backfilled by script: they claim a specific document supports
+specific fields, which only a fresh read can establish.
+
 For an `active` or `invite-only` card, exactly **one** record in each array must be open-ended (`effective_until: null`). Records must not overlap.
 
 **Updating a value** (e.g. annual fee changed on 2025-03-01):

@@ -20,6 +20,7 @@ Usage:
     python scripts/backfill_source_type.py                 # dry run, prints a summary
     python scripts/backfill_source_type.py --apply         # writes the files
     python scripts/backfill_source_type.py --sections rewards,fees,benefits
+    python scripts/backfill_source_type.py --sections fees,benefits --issuers axis --apply
 """
 from __future__ import annotations
 
@@ -94,8 +95,10 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--sections", default="rewards")
+    ap.add_argument("--issuers", default="", help="comma-separated issuer dirs (default: all)")
     args = ap.parse_args(argv)
     sections = [s.strip() for s in args.sections.split(",") if s.strip()]
+    only = {s.strip() for s in args.issuers.split(",") if s.strip()}
 
     owned = issuer_hosts()
     y = make_yaml()
@@ -103,6 +106,8 @@ def main(argv=None) -> int:
     skipped_hosts: Counter = Counter()
     refused: list[str] = []
     for path in sorted((ROOT / "data" / "cards").rglob("*.yaml")):
+        if only and path.parent.name not in only:
+            continue
         raw = path.read_bytes().decode("utf-8")
         newline = "\r\n" if "\r\n" in raw else "\n"
         text = raw.replace("\r\n", "\n")

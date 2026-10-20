@@ -82,6 +82,7 @@ rewards:
       url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
     mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
 benefits:

@@ -34,6 +34,11 @@ fees:
       retrieved_on: 2026-07-03
       type: issuer-page
       confidence: high
+      local_refs:
+        - docs/sources/axis/_shared/mitc-credit-cards.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
     notes: "Lifetime free card - zero joining and annual fees (confirmed Nil/Nil in Axis MITC). Forex 3.5%; finance charge 3.75%/mo (extended credit) per Axis MITC (eff 20 Dec 2024, KWIK listed at 55.55% p.a.). Instant virtual RuPay Credit Card on UPI."
 
 rewards:

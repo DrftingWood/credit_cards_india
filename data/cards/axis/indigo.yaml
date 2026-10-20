@@ -43,6 +43,11 @@ fees:
       retrieved_on: 2026-07-03
       type: issuer-page
       confidence: high
+      local_refs:
+        - docs/sources/axis/_shared/mitc-credit-cards.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
       notes: "Joining + annual fee ₹799 per Axis Bank press release (Feb-2026) and Paisabazaar."
 
 rewards:

@@ -41,6 +41,11 @@ fees:
       retrieved_on: 2026-07-05
       type: issuer-page
       confidence: high
+      local_refs:
+        - docs/sources/axis/_shared/mitc-credit-cards.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
       notes: Network=RuPay confirmed 2026-07-05 (Axis press release 'Built on the RuPay network'); a UPI-first 'CC on UPI' card exclusive to the Google Pay app (already tagged 'upi'). Resolves D30. No standard network_tier for a RuPay-CC-on-UPI product.
     notes: "UPI-first digital credit card available exclusively on the Google Pay app. Nil/Nil joining/annual fee per Axis MITC. Forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). Flexible repayment (full or EMI)."
 

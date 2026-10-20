@@ -256,6 +256,8 @@ export interface RewardRecord {
   /** Ecosystem name shown in the closed-loop badge tooltip (e.g. "Adani One"). */
   ecosystem_label?: string | null;
   loyalty_program?: string | null;
+  /** D-27: false = the card's own currency converts into the programme's at a non-1:1 ratio, so the card's base unit values are used. */
+  unit_value_from_program?: boolean;
   base: RewardBase;
   accelerated?: AcceleratedReward[];
   exclusions?: string[];

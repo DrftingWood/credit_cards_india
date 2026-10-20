@@ -253,6 +253,10 @@ export interface RewardRecord {
    * Slug of an entry under data/loyalty_programs/. When set, the card's reward currency is the program's currency, and stacking accelerators may credit program baseline/tier/channel earn on top of the card's slice.
    */
   loyalty_program?: string | null;
+  /**
+   * Set false when the card earns its own currency that converts into the loyalty_program's currency at a ratio other than 1:1 (e.g. 4 BOBCARD Reward Points = 1 IRCTC point). The calculator then values each unit with this record's base.unit_value_inr / unit_value_inr_realized, not the programme's unit_value_inr. Stacking (stacks_with_program) is unaffected. See DECISIONS D-27.
+   */
+  unit_value_from_program?: boolean;
   base: {
     rate: number;
     per_inr: number;

@@ -51,6 +51,12 @@ rewards:
       unit_value_inr: 0.25
       unit_value_inr_realized: 0.18
     loyalty_program: irctc-loyalty
+    # D-27: this card earns generic BOBCARD Reward Points (statement credit at
+    # Rs 0.25), and 4 BOB RP convert to 1 IRCTC point (source note below,
+    # bobcard.co.in IRCTC card page, retrieved 2026-07-05). The IRCTC
+    # programme's Rs 0.95-1.00 per IRCTC point would overvalue each BOB RP ~4x,
+    # so keep the card's own unit values.
+    unit_value_from_program: false
     accelerated:
       - category: irctc-train-booking
         canonical_categories: [travel]

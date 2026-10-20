@@ -35,6 +35,8 @@ fees:
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/wellness-cards
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: medium
 
 rewards:
   - effective_from: 2026-06-15
@@ -70,6 +72,7 @@ rewards:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/wellness-cards
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
 
 benefits:
   - effective_from: 2026-06-15
@@ -93,6 +96,7 @@ benefits:
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/wellness-cards
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

@@ -151,7 +151,7 @@ eligibility:
   notes: "Eligibility requires active IndiGo BluChip membership."
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/travel/indigo-sbi-card.page
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html
 
 metadata:
   last_verified_on: '2026-07-05'

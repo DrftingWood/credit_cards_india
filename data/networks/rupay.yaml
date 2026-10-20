@@ -4,6 +4,9 @@ tiers:
   - classic
   - platinum
   - select
+  # Ekaa: RuPay's super-premium (metal) variant, e.g. Union NEXTERIA and PNB
+  # LUXURA ("built on the "Ekaa" variant of the RuPay network").
+  - ekaa
 logo_path: "/logos/networks/rupay.svg"
 website: https://www.npci.org.in/what-we-do/rupay/product-overview
 notes: Domestic network operated by NPCI. Supports UPI linkage for credit cards.

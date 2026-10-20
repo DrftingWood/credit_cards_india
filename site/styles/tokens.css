@@ -34,6 +34,7 @@
   --color-fg-secondary: 51 65 85;       /* body copy on dense panels */
   --color-fg-muted: 82 96 114;          /* captions, labels, meta */
   --color-fg-disabled: 148 163 184;     /* inactive controls only (WCAG-exempt) */
+  --color-fg-placeholder: 100 113 131;  /* input placeholder — held to 4.5:1 (it is text) */
   --color-on-accent: 255 255 255;
   --color-on-inverse: 241 245 249;
   --color-on-inverse-muted: 203 213 225;
@@ -51,6 +52,8 @@
   --color-accent-subtle: 238 244 255;   /* selected chip / highlight bg */
   --color-accent-line: 191 211 254;
   --color-focus: 37 99 235;
+  --color-accent-disabled: 209 220 246; /* disabled primary button fill */
+  --color-on-accent-disabled: 66 87 134;
 
   /* ── Status ───────────────────────────────────────────────── */
   --color-success: 4 120 87;
@@ -134,6 +137,8 @@
     --color-fg-secondary: 200 207 218;
     --color-fg-muted: 156 169 188;
     --color-fg-disabled: 92 104 122;
+  --color-fg-placeholder: 128 142 163;
+    --color-fg-placeholder: 128 142 163;
     --color-on-accent: 10 15 26;
     --color-on-inverse: 241 245 249;
     --color-on-inverse-muted: 196 205 219;
@@ -149,6 +154,10 @@
     --color-accent-subtle: 23 37 72;
     --color-accent-line: 46 72 128;
     --color-focus: 122 167 255;
+  --color-accent-disabled: 48 66 104;
+  --color-on-accent-disabled: 170 186 214;
+    --color-accent-disabled: 48 66 104;
+    --color-on-accent-disabled: 170 186 214;
 
     --color-success: 94 224 160;
     --color-success-subtle: 14 40 32;
@@ -190,6 +199,7 @@
   --color-fg-secondary: 200 207 218;
   --color-fg-muted: 156 169 188;
   --color-fg-disabled: 92 104 122;
+  --color-fg-placeholder: 128 142 163;
   --color-on-accent: 10 15 26;
   --color-on-inverse: 241 245 249;
   --color-on-inverse-muted: 196 205 219;
@@ -205,6 +215,8 @@
   --color-accent-subtle: 23 37 72;
   --color-accent-line: 46 72 128;
   --color-focus: 122 167 255;
+  --color-accent-disabled: 48 66 104;
+  --color-on-accent-disabled: 170 186 214;
 
   --color-success: 94 224 160;
   --color-success-subtle: 14 40 32;

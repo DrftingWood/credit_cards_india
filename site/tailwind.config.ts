@@ -32,12 +32,14 @@ const config: Config = {
           secondary: c("fg-secondary"),
           muted: c("fg-muted"),
           disabled: c("fg-disabled"),
+          placeholder: c("fg-placeholder"),
         },
         on: {
           accent: c("on-accent"),
           inverse: c("on-inverse"),
           "inverse-muted": c("on-inverse-muted"),
           "inverse-accent": c("on-inverse-accent"),
+          "accent-disabled": c("on-accent-disabled"),
         },
         line: {
           DEFAULT: c("line"),
@@ -50,6 +52,7 @@ const config: Config = {
           strong: c("accent-strong"),
           subtle: c("accent-subtle"),
           line: c("accent-line"),
+          disabled: c("accent-disabled"),
         },
         focus: c("focus"),
         success: { DEFAULT: c("success"), subtle: c("success-subtle"), line: c("success-line") },

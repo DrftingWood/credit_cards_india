@@ -101,6 +101,12 @@ export const PAIRS: Pair[] = [
   { fg: "fg", bg: "accent-subtle", kind: "body" },
   { fg: "fg-secondary", bg: "accent-subtle", kind: "body" },
   { fg: "fg-muted", bg: "accent-subtle", kind: "body" },
+  // Placeholder text is text (SC 1.4.3): inputs sit on surface, disabled ones on surface-subtle.
+  { fg: "fg-placeholder", bg: "surface", kind: "body", note: "input placeholder" },
+  { fg: "fg-placeholder", bg: "surface-subtle", kind: "body", note: "disabled input placeholder" },
+  // Disabled primary button: WCAG-exempt (inactive), but we hold the label
+  // to body contrast so it stays legible while reading as disabled.
+  { fg: "on-accent-disabled", bg: "accent-disabled", kind: "body", note: "disabled primary button label" },
   // Inverse feature band (home "why trust the numbers").
   { fg: "on-inverse", bg: "inverse", kind: "body" },
   { fg: "on-inverse-muted", bg: "inverse", kind: "body" },

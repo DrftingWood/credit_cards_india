@@ -26,6 +26,12 @@
   textarea {
     background-color: rgb(var(--color-surface));
   }
+  /* Placeholder is text, so SC 1.4.3 applies (4.5:1). Firefox also lowers
+     placeholder opacity by default; pin it to 1 so the token is what renders. */
+  ::placeholder {
+    color: rgb(var(--color-fg-placeholder));
+    opacity: 1;
+  }
   :focus-visible {
     outline-color: rgb(var(--color-focus));
   }

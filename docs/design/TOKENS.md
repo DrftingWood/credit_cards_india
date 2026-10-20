@@ -22,9 +22,11 @@ Use semantic classes, never raw palette colours (`slate-500`, `blue-600`):
 | Body copy in dense panels | `text-fg-secondary` |
 | Captions, labels, meta | `text-fg-muted` |
 | Disabled control text (WCAG-exempt) | `text-fg-disabled` |
+| Input placeholder (set globally on `::placeholder`) | `text-fg-placeholder` / `placeholder:text-fg-placeholder` |
 | Divider, card edge (decorative) | `border-line` |
 | Input / control boundary (≥3:1) | `border-line-strong` |
 | Primary button | `bg-accent hover:bg-accent-hover text-on-accent` |
+| Disabled primary button | `disabled:bg-accent-disabled disabled:text-on-accent-disabled` (instead of `opacity-50`) |
 | Link / accent text | `text-accent-fg` (hover `text-accent-strong`) |
 | Selected chip / highlight | `bg-accent-subtle border-accent-line text-accent-strong` |
 | Focus ring | `ring-focus` (or plain `ring`, which defaults to focus) |
@@ -101,16 +103,24 @@ Thresholds, checked against the W3C Understanding documents on 2026-10-20:
 below 4.5:1 and a large-text/UI pair below 3:1. The test is meant to be
 extended: when a token goes on a new background, add the pair there.
 
+**Placeholder text** is text, so SC 1.4.3 applies and `fg-placeholder` is held
+to 4.5:1 on `surface` and `surface-subtle`. The W3C Understanding page for
+1.4.3 says it "applies to text in the page, including placeholder text"
+(checked 2026-10-20). The the global `::placeholder` rule pins
+opacity to 1 because Firefox fades placeholders by default. **Disabled primary
+buttons** are WCAG-exempt, but their label is still held to 4.5:1 on the
+disabled fill, so they stay legible while reading as disabled.
+
 **Exempt by design, so not in the test:** `fg-disabled` (inactive controls),
 `line` (decorative dividers and card edges; controls use `line-strong`), and
 the logos and white text on card art (`card-image.tsx`, issuer brand colours).
 
-Result at commit time: **64 pairs × 2 themes = 128 checks, all pass.**
+Result at commit time: **67 pairs × 2 themes = 134 checks, all pass.**
 Tightest margins:
 
-- Body text: light `success` on `surface-subtle` 5.07:1; dark `fg-muted` on
-  `surface-muted` 5.95:1.
-- UI: `line-strong` on `surface-subtle` is 3.12:1 in light and 3.62:1 in dark.
+- Body text: light `fg-placeholder` on `surface-subtle` 4.58:1; dark `fg-placeholder` on
+  `surface-subtle` 4.96:1.
+- UI: light `line-strong` on `surface-subtle` 3.12:1; dark `line-strong` on `surface-subtle` 3.62:1.
 
 Run `npx vitest run lib/design-tokens.test.ts --reporter=verbose` to see every
 ratio.
@@ -144,6 +154,9 @@ ratio.
 | `fg` | `accent-subtle` | body text | 4.5:1 | 16.17 | 12.70 |
 | `fg-secondary` | `accent-subtle` | body text | 4.5:1 | 9.38 | 9.60 |
 | `fg-muted` | `accent-subtle` | body text | 4.5:1 | 5.81 | 6.32 |
+| `fg-placeholder` | `surface` | body text | 4.5:1 | 4.96 | 5.34 |
+| `fg-placeholder` | `surface-subtle` | body text | 4.5:1 | 4.58 | 4.96 |
+| `on-accent-disabled` | `accent-disabled` | body text | 4.5:1 | 5.20 | 5.09 |
 | `on-inverse` | `inverse` | body text | 4.5:1 | 16.30 | 13.54 |
 | `on-inverse-muted` | `inverse` | body text | 4.5:1 | 12.02 | 9.26 |
 | `on-inverse-accent` | `inverse` | body text | 4.5:1 | 9.92 | 8.25 |
@@ -204,6 +217,11 @@ The `brand` scale was removed from the Tailwind config. A leftover raw class
 now produces no CSS instead of a silently mismatched colour.
 
 ## Open decisions
+
+- **Dark-mode warn tint:** the "How we rank" band uses `warn-subtle` and reads
+  quite brown in dark mode. This is a matter of taste; it passes contrast, so
+  it was left alone. To warm it, change `--color-warn-subtle` and
+  `--color-warn-line` in the dark blocks.
 
 - **Webfont:** the system stack is kept, which means no network fetch at build
   and no layout shift. Inter or IBM Plex Sans through `next/font` would give

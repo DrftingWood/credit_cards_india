@@ -1062,3 +1062,74 @@ describe("explainCard — per-accelerator cap story", () => {
     expect(exNot.annual_fee_inr).toBe(1500);
   });
 });
+
+describe("user-declared merchant shares (value-capture Phase 3)", () => {
+  // The user's own statement of how much of a bucket goes through a merchant is the
+  // evidence D-18 asks for — it is authored by the person whose spend it is. Without it,
+  // a narrow rate still earns base only (see the A2 block above).
+  const AMAZON_CARD = makeCard({
+    currency: "cashback",
+    base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+    accelerated: [
+      {
+        category: "amazon",
+        canonical_categories: ["online"],
+        multiplier: 0,
+        effective_rate: 5,
+        channel: { class: "cobrand-merchant", merchants: ["amazon-pay", "amazon"] },
+      },
+    ],
+  });
+  const ctx = (shares: Record<string, number>): ScoringContext => ({
+    applyApplicability: true,
+    channelMix: new Set(Object.keys(shares).filter((k) => shares[k] > 0)),
+    merchantShares: shares,
+  });
+
+  test("a declared 40% share blends 5% on the slice with base on the rest", () => {
+    // 40% × ₹20k × 5% + 60% × ₹20k × 1% = ₹400 + ₹120 = ₹520/mo → ₹6,240/yr
+    const s = scoreCard(AMAZON_CARD, spend({ online: 20000 }), ctx({ amazon: 0.4 }));
+    expect(s.annual_gross_inr).toBe(6240);
+    expect(s.merchant_rates_uncounted).toBeUndefined();
+  });
+
+  test("alias tokens of one merchant take the max share, never the sum (no double count)", () => {
+    const s = scoreCard(AMAZON_CARD, spend({ online: 20000 }), ctx({ amazon: 0.4, "amazon-pay": 0.4 }));
+    expect(s.annual_gross_inr).toBe(6240);
+  });
+
+  test("a share for a merchant the accelerator doesn't list changes nothing", () => {
+    const s = scoreCard(AMAZON_CARD, spend({ online: 20000 }), ctx({ flipkart: 0.9 }));
+    expect(s.annual_gross_inr).toBe(2400);
+  });
+
+  test("shares are clamped to [0, 1]", () => {
+    expect(scoreCard(AMAZON_CARD, spend({ online: 20000 }), ctx({ amazon: 7 })).annual_gross_inr).toBe(12000);
+  });
+
+  test("the user's share beats a card-level authored applicability_pct (it is about THIS user)", () => {
+    const authored = makeCard({
+      currency: "cashback",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        {
+          category: "amazon", canonical_categories: ["online"], multiplier: 0, effective_rate: 5, applicability_pct: 40,
+          channel: { class: "cobrand-merchant", merchants: ["amazon-pay"] },
+        },
+      ],
+    });
+    // 100% declared → whole bucket at 5% = ₹12,000/yr (authored 40% would give ₹6,240).
+    expect(scoreCard(authored, spend({ online: 20000 }), ctx({ "amazon-pay": 1 })).annual_gross_inr).toBe(12000);
+  });
+
+  test("optimistic /calculator (no applyApplicability) ignores shares — whole bucket as before", () => {
+    const s = scoreCard(AMAZON_CARD, spend({ online: 20000 }), { merchantShares: { amazon: 0.1 } });
+    expect(s.annual_gross_inr).toBe(12000);
+  });
+
+  test("explainCard names the share as the user's own input", () => {
+    const ex = explainCard(AMAZON_CARD, spend({ online: 20000 }), { ...ctx({ amazon: 0.4 }), valueBasis: "realized" });
+    const row = ex.accelerators.find((a) => a.category === "online")!;
+    expect(row.factors.join(" ")).toMatch(/40% of this bucket via amazon \(your estimate\)/i);
+  });
+});

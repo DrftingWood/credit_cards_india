@@ -48,6 +48,7 @@ fees:
     source:
       url: https://www.hdfc.bank.in/credit-cards/6e-rewards-indigo-credit-card
       retrieved_on: 2026-04-22
+      type: issuer-page
       notes: "Joining + annual fee ₹500 per HDFC fees page. Rewards redemption fee of ₹99 per claim applies separately on top."
 
 rewards:
@@ -129,6 +130,7 @@ benefits:
     source:
       url: https://www.paisabazaar.com/hdfc-bank/6e-rewards-indigo-hdfc-bank-credit-card/
       retrieved_on: 2026-04-22
+      type: aggregator
       notes: "Entry-level variant — no complimentary lounge access."
 
 eligibility:

@@ -38,6 +38,13 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/axis/_shared/mitc-credit-cards.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
       notes: "Fees, forex (3.5%) and finance charge (3.0%/mo extended credit) per Axis MITC (eff 20 Dec 2024)."
 
 rewards:
@@ -112,6 +119,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

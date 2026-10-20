@@ -39,6 +39,7 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 rewards:
   - effective_from: 2026-07-03
@@ -131,6 +132,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

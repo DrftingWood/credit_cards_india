@@ -40,6 +40,13 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/axis/_shared/mitc-credit-cards.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
       notes: "Joining + annual fee ₹500 + GST, waived on ₹1 lakh anniversary-year spend (card member T&C). Finance charge 3.75%/mo, forex 3.5%, cash advance 2.5% (min ₹500) per Axis MITC."
 
 rewards:
@@ -120,6 +127,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

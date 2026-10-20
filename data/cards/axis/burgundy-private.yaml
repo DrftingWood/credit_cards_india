@@ -54,6 +54,7 @@ fees:
     source:
       url: https://www.axis.bank.in/burgundy-private/the-one-card
       retrieved_on: 2026-07-28
+      type: issuer-page
   # Axis "Revision of Burgundy Private - The One Card Terms and Conditions"
   # (PDF dated 2026-07-27): from 01-09-2026 the annual fee is revised from
   # INR 50,000 to INR 1 lakh + GST, charged only when TRV falls below INR 5 Cr.
@@ -168,6 +169,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/burgundy-private/the-one-card
       retrieved_on: 2026-07-28
+      type: issuer-page
       notes: "Lounge counts and memberships are web-tier (product/aggregator pages), not confirmed against an Axis MITC."
   # Revision notice: from 28-08-2026 Priority Pass no longer works at Indian
   # domestic lounges; the Burgundy Private card itself is presented instead.

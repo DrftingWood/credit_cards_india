@@ -37,6 +37,13 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/axis/_shared/mitc-credit-cards.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
       notes: "Joining/annual ₹2,000 (Axis MITC). Forex 3.5%, finance 3.0%/mo, cash advance 2.5% (min ₹500) per MITC. T&C updated w.e.f. 20 Jun 2025."
 
 rewards:
@@ -145,6 +152,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

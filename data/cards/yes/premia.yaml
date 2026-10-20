@@ -41,6 +41,7 @@ fees:
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
 
 rewards:
   - effective_from: 2017-01-01
@@ -109,6 +110,7 @@ benefits:
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/premia-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
 
 eligibility:
   min_age: 21

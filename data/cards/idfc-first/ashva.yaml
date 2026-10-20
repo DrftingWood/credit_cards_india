@@ -37,6 +37,8 @@ fees:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2024-05-01
@@ -125,6 +127,7 @@ benefits:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

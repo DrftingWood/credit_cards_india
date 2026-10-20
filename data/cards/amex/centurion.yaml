@@ -44,6 +44,7 @@ fees:
     source:
       url: https://www.americanexpress.com/in/credit-cards/centurion/
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 rewards:
   - effective_from: 1999-01-01
@@ -159,6 +160,7 @@ benefits:
     source:
       url: https://www.americanexpress.com/in/credit-cards/centurion/
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

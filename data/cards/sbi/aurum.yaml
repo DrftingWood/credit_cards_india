@@ -44,6 +44,7 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/luxury/aurum.page
       retrieved_on: 2026-04-15
+      type: issuer-page
       notes: "Historical record; finance charge before the 1-Nov-2024 hike."
 
   - effective_from: 2024-11-01
@@ -65,6 +66,11 @@ fees:
       retrieved_on: 2026-10-20
       type: issuer-page
       confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
       notes: "SBI Card MITC (read 2026-10-20): 'The current rate of finance charges is upto 3.75% per month [45% per annum]' and 'W.e.f. 1st Dec 2024, 1% of total amount of Utility Payments, if the total amount exceeds Rs.50,000 in a billing cycle'. Replaces a CardInsider blog citation. The AURUM product page still shows an older 3.35% figure, which the MITC supersedes. The 1-Nov-2024 start date of this record comes from the earlier secondary citation."
 
 rewards:
@@ -189,6 +195,7 @@ benefits:
     source:
       url: https://cardmaven.in/sbi-aurum-credit-card/
       retrieved_on: 2026-06-12
+      type: aggregator
       notes: "2026-06 corrections: domestic lounge is 4/quarter not unlimited; welcome is 40,000 points (med confidence); milestones and ₹12L fee-reversal added; Club Marriott membership also bundled (not modelled)."
 
 eligibility:

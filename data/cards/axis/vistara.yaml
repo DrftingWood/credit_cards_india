@@ -42,6 +42,13 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/axis/_shared/mitc-credit-cards.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
       notes: "Joining/annual ₹1,500 (Axis MITC). Forex 3.5%, finance 3.75%/mo, cash advance 2.5% (min ₹500) per MITC. Post Vistara–Air India merger, annual (renewal) fee waived on next renewal cycle."
 
 rewards:
@@ -95,6 +102,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
       notes: "Post Vistara–Air India merger, the welcome ticket voucher, spends-milestone ticket vouchers and complimentary Maharaja Club tier memberships are DISCONTINUED (per revised T&C). Lounge, golf and dining benefits continue."
 
 eligibility:

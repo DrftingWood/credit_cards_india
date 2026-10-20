@@ -38,6 +38,11 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
+      type: issuer-page
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.cash_advance_fee
       notes: "Crawl reflects parent SBI Card PULSE; Sprint variant values mirrored."
 
 rewards:
@@ -127,6 +132,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
+      type: issuer-page
       notes: "Crawl reflects parent SBI Card PULSE."
 
 eligibility:

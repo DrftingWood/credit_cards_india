@@ -37,6 +37,12 @@ fees:
     source:
       url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/hdfc/_shared/mitc-in-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
 
 rewards:
   - effective_from: 2014-01-01
@@ -421,6 +427,7 @@ benefits:
     source:
       url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

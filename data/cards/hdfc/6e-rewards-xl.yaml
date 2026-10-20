@@ -47,6 +47,7 @@ fees:
     source:
       url: https://www.hdfc.bank.in/credit-cards/6e-rewards-xl-indigo-credit-card
       retrieved_on: 2026-04-22
+      type: issuer-page
       notes: "Joining + annual fee ₹1,500 effective 2022-11-07 per HDFC's own fee page and Paisabazaar; forex markup 2.5% (lower than the base 6E Rewards variant at 3.5%)."
 
 rewards:
@@ -127,6 +128,7 @@ benefits:
     source:
       url: https://www.paisabazaar.com/hdfc-bank/6e-rewards-xl-indigo-hdfc-credit-card/
       retrieved_on: 2026-04-22
+      type: aggregator
       notes: "International lounge access removed from previous YAML draft pending verification — some sources claim 4/yr via Priority Pass but HDFC's own T&C did not clearly include it for the XL variant."
 
 eligibility:

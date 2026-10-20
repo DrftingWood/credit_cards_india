@@ -36,6 +36,8 @@ fees:
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: medium
 
 rewards:
   - effective_from: 2015-01-01
@@ -74,6 +76,7 @@ rewards:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
 
 benefits:
   - effective_from: 2015-01-01
@@ -104,6 +107,7 @@ benefits:
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

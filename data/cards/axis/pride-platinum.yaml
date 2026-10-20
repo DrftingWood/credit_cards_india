@@ -37,6 +37,13 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/axis/_shared/mitc-credit-cards.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
     notes: "Exclusively for Indian Defence Forces and Government of India employees."
 
 rewards:
@@ -93,6 +100,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

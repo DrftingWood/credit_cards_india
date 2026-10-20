@@ -39,6 +39,12 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
       retrieved_on: 2026-07-03
+      type: issuer-page
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
     notes: "Secured 'Advantage' variant of SBI Card PRIME (FD-backed). Fees mirror SBI Card PRIME per crawl; TODO verify dedicated Advantage page/URL and any fee differences."
 
 rewards:
@@ -91,6 +97,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
     mcc_exclusions: ['6513']
 benefits:
@@ -146,6 +153,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

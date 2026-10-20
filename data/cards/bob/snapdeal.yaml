@@ -37,6 +37,8 @@ fees:
     source:
       url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2021-01-01
@@ -110,6 +112,7 @@ benefits:
     source:
       url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

@@ -42,6 +42,13 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
       notes: "Annual/renewal fee ₹4,999 + taxes per SBI Card page. No option to waive. Low forex markup 1.99%."
 
 rewards:
@@ -162,6 +169,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

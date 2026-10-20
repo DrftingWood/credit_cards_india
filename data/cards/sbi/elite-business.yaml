@@ -43,6 +43,11 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
+      type: issuer-page
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.cash_advance_fee
       notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE."
 
 rewards:
@@ -151,6 +156,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
+      type: issuer-page
       notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE."
 
 eligibility:

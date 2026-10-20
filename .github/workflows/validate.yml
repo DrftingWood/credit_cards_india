@@ -28,6 +28,14 @@ jobs:
       - name: Provenance unit tests
         run: python scripts/test_provenance.py
 
+      - name: Evidence backfill rule tests (D3)
+        run: |
+          python scripts/test_backfill_source_confidence.py
+          python scripts/test_backfill_local_evidence.py
+
+      - name: Local evidence check tests (D3)
+        run: python scripts/test_local_evidence.py
+
       # Strict reward-rule provenance (D-21). Non-blocking until coverage is
       # high enough to promote; drop continue-on-error then.
       - name: Provenance coverage (strict, non-blocking)

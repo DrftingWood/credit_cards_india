@@ -39,6 +39,7 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
       retrieved_on: 2026-07-03
+      type: issuer-page
     notes: "Annual Fee Rs. 499 + taxes; Renewal Fee Rs. 499 + taxes from second year onwards; Add-on card fee Nil. RuPay card usable on UPI."
 
 rewards:
@@ -110,6 +111,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

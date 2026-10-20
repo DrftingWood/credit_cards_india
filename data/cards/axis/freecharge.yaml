@@ -34,6 +34,13 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/axis/_shared/mitc-credit-cards.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
     notes: "Instant virtual card available on the Freecharge app to eligible (invite-only) customers. Joining/annual fee INR 250 each, forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). T&C updated w.e.f 20 June 2025."
 
 rewards:
@@ -78,6 +85,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
     notes: "Milestone reward earn on the card as you spend (exact milestone slabs not published -"
 
 eligibility:

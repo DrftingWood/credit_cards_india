@@ -70,7 +70,7 @@ Encoding: every blob in the repo is LF in the index (`core.autocrlf=true` gives 
 
 After all merges, every `### D-n` heading in `docs/DECISIONS.md` is unique: D-1 to D-21, D-23, D-24, D-25, plus the D-16a to D-16d sub-entries. No renumbering was needed:
 - **D-25** is used only by `remediate/d4-d5-d11-d12` (D12 applicability method).
-- **D-26** is not used anywhere. The calc plan reserves it for the forex rank decision (see open decisions below), so the next new decision should be **D-27**.
+- **D-26** is not used anywhere. The calc plan reserves it for the forex rank decision (see open decisions below), so the next new decision should be **D-27**. (Update 2026-10-21: D-26 and D-27 are now used, so the next is **D-28**.)
 - `calc/phase-2` and `calc/phase-3-tiers` add paragraphs inside D-23 and D-24 and do not create new IDs.
 - **D-22** has been missing since before this run; it is already absent on `main`. It is probably a leftover from the earlier D-21 renumbering between the provenance and value-capture branches. I left it alone. Don't reuse it unless you mean to.
 
@@ -131,32 +131,108 @@ The total is now 73 pairs × 2 themes = 146 checks, and all pass. The tightest a
 **Left for a person:**
 - The dark-mode amber "How we rank" band reads brownish. That's a matter of taste; it passes contrast and was left alone on purpose. The knob is `--color-warn-subtle` in the dark blocks.
 - The Diners Club network mark in the pinned calculator row is tiny in both themes. That's the logo asset, not the theme.
-- The defaults to confirm are listed in `docs/design/TOKENS.md` under "Open decisions": off-white light canvas, no webfont, one muted text level, and a light-blue primary button with dark text in dark mode.
+- The four design defaults (off-white light canvas, no webfont, one muted text level, light-blue dark-mode primary with dark text) were **accepted on 2026-10-21**. `docs/design/TOKENS.md` now lists them under "Decisions". The amber band stays an open taste question, and no further design changes are made until the owner's longer UI/UX conversation (TODO UI-3).
 
-## Open decisions that affect this repo
+## Decisions taken 2026-10-21 (were open)
 
-These come from `C:\Users\achar\reports\Decisions to make 2026-10-20.md` and the branches' own notes. None of them blocks merging, but each should be answered before the related work ships.
+The owner accepted all four open decisions and two further defaults on
+2026-10-21. They are applied on this branch; see "Owner decisions applied
+(2026-10-21)" below.
 
-1. **Forex in the rank (D-26).** The calc plan recommends that forex markup on international spend also reduce `annual_net_inr`, not just appear as a ledger line. This needs to be recorded as D-26 before Phase 4 B1 is built. The GST rate on the markup still needs outside verification.
-2. **Programme data on card pages.** `calc/phase-3-tiers` deliberately does *not* pass the full `programs` map to card pages or `/calculator`. Passing it would switch 19 co-brand cards to programme unit values; for example, bob-irctc would go from Rs 0.18 to Rs 0.95 per point. Decide whether that is wanted, and record it as a DECISIONS entry if so.
-3. **The confidence backfill rule (D3).** The decisions file recommended filling `confidence` only "as cards are re-verified, not from the per-issuer tiers" (decision 2 for this repo), and TODO P4 (`4de05b8`) said it was not mechanically derivable. D3 went ahead with a much narrower per-card-header rule, described above. If you reject the rule, remove the `confidence:` lines that D3 added *by line*: the per-issuer commits `0dcc3a4..a72a104` mix them with `type` lines, so reverting by commit would also remove `type`. The `type` and `local_refs` fields stand on their own.
-4. **Affiliate labelling before links go live.** The `/about` text promises to label every link that can earn money, and the footer says there are no affiliate links today. The homepage claims of "no affiliate links" and "Rs 0 affiliate income" are true now. Before the first affiliate link ships, in that same release, you need to: label each such link next to the link itself (ASCI considers an about-page-only disclosure likely to be missed), update the footer wording and the homepage claims, and follow the CCPA/ASCI notes in `docs/affiliate-programmes.md`. Delete the labelling promise now if you don't want that commitment.
+1. **Forex in the rank: accepted, recorded as D-26 and built.** Forex markup
+   plus GST on international spend is a ledger line and lowers
+   `annual_net_inr`. The 18% GST is an unverified assumption, flagged in code,
+   in D-26 and in TODO CALC-4.
+2. **Programme data on card pages: accepted, recorded as D-27, after a
+   per-card review.** See `docs/PROGRAMME-VALUES-REVIEW-2026-10-21.md`. Four
+   programme files were corrected and bob-irctc opts out, so no card's realized
+   value changes. Programme earn (D-9 stacking) stays out of the rank on these
+   pages.
+3. **The D3 confidence rule: kept.** TODO P4 says it is accepted. No revert is
+   needed, so the line-level revert instructions are moot.
+4. **Affiliate links: held.** None ship until per-link labels, the footer
+   wording and the homepage claims ("no affiliate links", "₹0 affiliate
+   income") change together in one release, following the CCPA/ASCI notes in
+   `docs/affiliate-programmes.md` (TODO AFF-1). The current footer and /about
+   wording stays, because it is true while there are no links.
 
 Other review points from the overnight defaults (decisions file, credit_cards_india table):
 - Burgundy Private's new fee record keeps the old Rs 50,000 joining fee.
 - `site/public/robots.txt` was deleted.
-- The site base URL falls back to the vercel.app domain until `NEXT_PUBLIC_SITE_URL` is set.
+- The site base URL falls back to the vercel.app domain until `NEXT_PUBLIC_SITE_URL` is set. **Owner, 2026-10-21: no domain is bought until the site is finished, so keep the fallback and leave `NEXT_PUBLIC_SITE_URL` unset** (TODO SEO-1, comment in `site/lib/site-config.ts`).
 - Card page title format (decision 6, recommendation: keyword-led) is not done on any branch.
+
+## Owner decisions applied (2026-10-21)
+
+Six commits on top of `467977d`, plus the commit that updates these notes. Nothing was pushed, deployed or merged.
+
+| Commit | What |
+|---|---|
+| `4bcada0` | DECISIONS D-26: forex markup lowers the rank. |
+| `4ef0a13` | Forex (Phase 4 B1), test first: `forexCost()`, `annual_forex_inr` on `scoreCard` / `explainCard`, netted from `annual_net_inr` (the /calculator rank) and from `scorer-decoupled`'s `net_rewards_inr` (the /recommend rank). Adds a negative `forex` ledger line to Year 1, Year 2+ and the average, labelled "Forex markup on international spend (3.5% + 18% GST, assumed)". A card with no stated markup is charged ₹0 with a disclaimer. Ledger totals that round to −0 now read 0. |
+| `c2ec62b` | DECISIONS D-27 and `docs/PROGRAMME-VALUES-REVIEW-2026-10-21.md`, the review of the 19 co-brand cards. D-9 and D-24 updated; SCHEMA.md documents the new field. |
+| `7822f15` | Data: IndiGo BluChip 0.45 / 0.60, Air India 0.55 / 0.70, IRCTC and Tata NeuCoins realized 1.0 (sources are cited in comments beside each value). New schema field `rewards[].unit_value_from_program`; bob-irctc sets it to `false`. |
+| `dc7989d` | Engine and UI: `/calculator` gets all five programmes and card pages get their own. `stackProgramEarn: false` keeps programme earn out of the rank there. Declared tiers move to `ScoringContext.tierLine`, so they stay a separate line (D-24). `lib/program-values.test.ts` pins the 19 cards on live data. |
+| `f845f76` | TODO and TOKENS: P4 (D3 rule accepted), CALC-4 (B1 done, GST to verify), CALC-6 (D-27 question), AFF-1 (affiliates held), SEO-1 (no domain yet), UI-3 and TOKENS "Decisions" (defaults accepted, amber band open). `site-config.ts` gets a comment about the domain. |
+
+**The 19 co-brand cards.** Full table in `docs/PROGRAMME-VALUES-REVIEW-2026-10-21.md`:
+- **bob-irctc: excluded.** It earns BOBCARD points, and 4 of them = 1 IRCTC point, so ₹0.95 was about 4x too high. This was already live on /recommend, where its net on ₹20k online + ₹20k travel falls from ₹19,600 to ₹3,430.
+- **7 IndiGo and 2 SBI Air India cards: programme files were stale.** They predated the cards' 2026-07-05 verification and were corrected to the card values.
+- **4 IRCTC and 4 Tata Neu cards: the programme's 0.95 haircut was removed.** It broke the schema's closed-loop rule (realized = face), and the cards are verified at ₹1.
+- **hdfc-marriott-bonvoy: accepted.** Face goes from 0.80 to 0.85, which affects the Absolute layer only.
+
+Net effect on the card pages and `/calculator`: no realized value or rank
+changes. /recommend moves for these cards because its programme values were
+corrected (table in the review doc).
+
+**Stacking was kept out on purpose.** Passing `programs` alone would have
+switched on D-9 stacking on /calculator. `kotak-indigo` would have gone from
+₹3,900 to ₹16,860 (rank 169 to 36) and `hdfc-marriott-bonvoy` from ₹7,560 to
+₹23,089, which is the member-earn overcredit D-8 removed. D-27 keeps it out of
+these pages and leaves /recommend's stacking as an open question (CALC-6).
+
+**Forex rank, before and after** (top 3 on /calculator, default context):
+
+| Profile | Before | After |
+|---|---|---|
+| ₹20k online + ₹50k international | SC Priority Visa Infinite ₹31,320 · Equitas PowerMiles ₹30,600 · ICICI Adani One Signature ₹28,800 | Kotak Solitaire ₹25,200 · IDFC Mayura ₹22,001 · SC Priority ₹17,160 |
+| ₹30k online, ₹10k dining, ₹20k travel, ₹10k international | HDFC Diners Black ₹1,04,000 · ICICI Emeralde PM ₹91,901 · HDFC Infinia ₹87,500 | same order, each −₹2,832 (2% markup + GST) |
+| ₹25k international only | SC Priority ₹13,500 · Kotak Solitaire ₹9,000 · Equitas PowerMiles ₹8,500 | Kotak Solitaire ₹9,000 · SC Priority ₹6,420 · BoB / Federal Scapia ₹6,000 |
+
+The red-team profiles in `lib/red-team.test.ts` enter no international spend,
+so their ranks don't change. `equitas-selfe`, the one active card with no
+stated markup, now benefits on international-heavy /recommend profiles (₹0
+charged and a disclaimer shown). Sourcing its markup is listed in CALC-4.
+
+**Checks on `f845f76`:**
+
+| Check | Result |
+|---|---|
+| `scripts/validate.py` | OK. 326 cards, 16 warnings (stale `last_verified_on`, unvouched/homepage rules, absent PDF archive). Strict-ready 433 of 674 (64%), confidence 66%. |
+| Python tests, all 7 scripts | All pass (exit 0): engine_v2 (11), backfill_local_evidence, backfill_source_confidence, check_links, crawl_diff, local_evidence, provenance. |
+| `npm run prebuild` | OK. Schema validation passes on 361 files, and 326 cards were written. |
+| `vitest run` | 28 files, 440 of 440 pass (new: `forex.test.ts` with 11 tests, `program-values.test.ts` with 7). |
+| `tsc --noEmit` | 0 errors. |
+| `next build` | Compiled successfully, 339 static pages. |
+
+`node_modules` was a junction to the main checkout's `site/node_modules` and was
+removed afterwards. No UI screenshots were taken. The UI changes are one
+"− forex ₹X" fragment in the /calculator row, one clause in the breakdown's
+total line, and the new ledger line, which renders through the existing
+`LedgerLines`.
 
 ## Merge checklist
 
 - [ ] Read the merge message of `94eeaf9` and look at the three resolved YAMLs: `git show 94eeaf9 -- data/cards/axis/burgundy-private.yaml data/cards/hdfc/tata-neu-infinity.yaml data/cards/sbi/aurum.yaml`.
-- [ ] Decide on the D3 confidence rule (open decision 3) before merging. Reverting it after the merge is a line-level job.
+- [x] Decide on the D3 confidence rule: kept (2026-10-21).
 - [ ] Skim the data diff by issuer: `git diff main...integration/2026-10-20 --stat -- data/`. Most of the 373 changed files are D3's `type`, `confidence` and evidence lines.
 - [ ] Check that the footer and `/about` read correctly together (SEO metadata plus the affiliate disclosure): `npm --prefix site run dev`.
 - [ ] Optionally re-run the gates locally: `python scripts/validate.py`, the 7 Python tests, and `npm --prefix site test`, `run typecheck` and `run build`.
 - [ ] Look at the design screenshots in `docs/design/screenshots/` (light and dark), and toggle the theme once with `npm --prefix site run dev`.
 - [ ] Merge into main: `git checkout main && git merge --no-ff integration/2026-10-20`. A fast-forward also works, because the branch is main plus merges.
-- [ ] Push and deploy when ready. Set `NEXT_PUBLIC_SITE_URL` in Vercel if a custom domain is attached.
-- [ ] Record D-26 (forex rank) before starting Phase 4. Start any other new decision at D-27.
+- [ ] Push and deploy when ready. Leave `NEXT_PUBLIC_SITE_URL` unset: no custom domain until the site is finished (SEO-1).
+- [x] D-26 (forex rank) and D-27 (programme unit values) recorded. **The next free decision number is D-28.**
+- [ ] Verify the GST-on-markup assumption (`GST_ON_FOREX_MARKUP = 0.18`) before shipping D-26 (TODO CALC-4).
+- [ ] Answer D-27's open question: should `/recommend` stop stacking programme earn (TODO CALC-6)?
+- [ ] Read `docs/PROGRAMME-VALUES-REVIEW-2026-10-21.md` and the four programme-file diffs in `7822f15`.
 - [ ] Clean up: `git worktree remove` the eight worktrees under `scratchpad\cc-worktrees\` (`remediate`, `d3`, `seo`, `affiliate`, `phase2`, `phase3`, `design`, `integration`), then delete the merged branches if you no longer need them.

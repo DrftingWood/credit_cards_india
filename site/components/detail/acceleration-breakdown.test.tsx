@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
-import { AcceleratorRow, baseRowCutNote } from "./acceleration-breakdown";
-import type { AcceleratorExplain } from "@/lib/calculator";
+import { AcceleratorRow, baseRowCutNote, breakdownLayers } from "./acceleration-breakdown";
+import type { AcceleratorExplain, ScoringContext } from "@/lib/calculator";
 
 const capped: AcceleratorExplain = {
   category: "travel", label: "Travel & hotels", monthly_spend: 200000, rate_pct: 33.3,
@@ -60,5 +60,33 @@ describe("baseRowCutNote — sources the Realistic cut reason from the Absolute 
   test("returns null when the Absolute row exists but carries no requires/assumes factor", () => {
     const noConstraint: AcceleratorExplain = { ...channelLockedAbsolute, factors: ["Capped at ₹15,000/mo"] };
     expect(baseRowCutNote("travel", [noConstraint])).toBeNull();
+  });
+});
+
+// The panel embedded under a /calculator row must reconcile with that row. It can only do
+// that if it scores with the SAME ScoringContext the host ranked with, rather than inventing
+// its own. breakdownLayers is the pure seam: a host hands in its ctx, that becomes the
+// primary (default-selected) layer; standalone keeps the self-contained Realistic/Absolute pair.
+describe("breakdownLayers — host context wins when one is supplied", () => {
+  test("standalone offers Realistic then Absolute", () => {
+    const layers = breakdownLayers();
+    expect(layers.map((l) => l.id)).toEqual(["realistic", "absolute"]);
+    expect(layers[0].ctx.applyApplicability).toBe(true);
+    expect(layers[0].ctx.valueBasis).toBe("realized");
+    expect(layers[1].ctx.valueBasis).toBe("face");
+  });
+
+  test("a host ctx becomes the primary layer, passed through by identity", () => {
+    const hostCtx: ScoringContext = { enabledEcosystems: new Set(["Tata Neu"]) };
+    const layers = breakdownLayers(hostCtx, "Realistic");
+    expect(layers[0].id).toBe("host");
+    expect(layers[0].ctx).toBe(hostCtx); // identity — not a reconstruction that can drift
+    expect(layers[0].label).toBe("Realistic");
+  });
+
+  test("the Absolute comparison layer is still offered alongside a host ctx", () => {
+    const layers = breakdownLayers({}, "Best-case");
+    expect(layers.map((l) => l.id)).toEqual(["host", "absolute"]);
+    expect(layers[1].ctx.valueBasis).toBe("face");
   });
 });

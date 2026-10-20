@@ -48,6 +48,8 @@ interface CardOpts {
   annualFee?: number;
   feeWaiverSpend?: number | null;
   isInviteOnly?: boolean;
+  redemptionScope?: "open" | "closed-loop";
+  ecosystemLabel?: string;
 }
 
 function makeCard(opts: CardOpts): EnrichedCard {
@@ -72,6 +74,8 @@ function makeCard(opts: CardOpts): EnrichedCard {
     ...(opts.exclusions ? { exclusions: opts.exclusions } : {}),
     ...(opts.mcc_exclusions ? { mcc_exclusions: opts.mcc_exclusions } : {}),
     ...(opts.rewardCap ? { reward_cap: opts.rewardCap } : {}),
+    ...(opts.redemptionScope ? { redemption_scope: opts.redemptionScope } : {}),
+    ...(opts.ecosystemLabel ? { ecosystem_label: opts.ecosystemLabel } : {}),
     source: SOURCE,
   } as RewardRecord;
 
@@ -989,6 +993,35 @@ describe("explainCard — per-accelerator cap story", () => {
     }
     // Sanity: the cap actually bit (1% on ₹200k = ₹2,000/mo gross, clamped to ₹1,000/mo → ₹12,000/yr).
     expect(explainCard(CAPPED_CARD, heavy, { valueBasis: "realized" }).annual_gross_inr).toBe(12000);
+  });
+
+  test("explainCard reconciles with scoreCard under /calculator's own contexts", () => {
+    // /calculator ranks with ctx = mode === "best" ? {} : { enabledEcosystems }. The
+    // AccelerationBreakdown embedded beneath a ranked row is now handed that same object,
+    // so the two totals on one screen must agree for every context the UI can produce.
+    const ECO_CARD = makeCard({
+      currency: "points",
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        { category: "dining", canonical_categories: ["dining"], multiplier: 0, effective_rate: 10, cycle: "monthly" },
+      ],
+      redemptionScope: "closed-loop",
+      ecosystemLabel: "Tata Neu",
+    });
+    const heavy = spend({ online: 20000, dining: 20000 });
+    const ctxs: ScoringContext[] = [
+      {},                                            // best-case
+      { enabledEcosystems: new Set<string>() },      // realistic, nothing ticked
+      { enabledEcosystems: new Set(["Tata Neu"]) },  // realistic, this ecosystem ticked
+    ];
+    for (const ctx of ctxs) {
+      expect(explainCard(ECO_CARD, heavy, ctx).annual_net_inr)
+        .toBe(scoreCard(ECO_CARD, heavy, ctx).annual_net_inr);
+    }
+    // Sanity: the ecosystem toggle actually moves the number, so the check isn't vacuous.
+    const off = explainCard(ECO_CARD, heavy, { enabledEcosystems: new Set<string>() }).annual_net_inr;
+    const on = explainCard(ECO_CARD, heavy, { enabledEcosystems: new Set(["Tata Neu"]) }).annual_net_inr;
+    expect(off).toBeLessThan(on);
   });
 
   test("base.cap_per_cycle: explainCard total reconciles with scoreCard total", () => {

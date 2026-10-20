@@ -8,20 +8,17 @@ import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
-import { rankCards, listEcosystems, type CardScore } from "@/lib/calculator";
-import { useSpendProfile } from "@/lib/use-spend-profile";
+import { rankCards, listEcosystems, type CardScore, type ScoringContext } from "@/lib/calculator";
+import { useSpendProfile, MAX_MONTHLY_SPEND } from "@/lib/use-spend-profile";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
 import { formatInr, formatPct } from "@/lib/utils";
 
-/** Sanity ceiling per category (₹1 crore/month) — beyond any real cardholder, and
- *  stops a stray value like `1e21` from producing meaningless sextillion-rupee output. */
-const MAX_MONTHLY = 1_00_00_000;
-
-/** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY]. */
+/** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY_SPEND]. The ceiling
+ *  lives in the shared spend store, which enforces it on every write. */
 function clampSpend(raw: string): number {
   const n = Number(raw);
   if (!Number.isFinite(n) || n <= 0) return 0;
-  return Math.min(MAX_MONTHLY, n);
+  return Math.min(MAX_MONTHLY_SPEND, n);
 }
 
 /** Group the closed-loop ecosystems by the activity a user can actually answer for. */
@@ -56,17 +53,24 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
       return next;
     });
 
-  const { ranked, pinnedSelected } = useMemo(() => {
+  // The single context this view scores with. Memoised on its own so the exact object can
+  // also be handed to the embedded AccelerationBreakdown — the panel must reconcile with the
+  // row it sits under, which it can't do if it builds a context of its own.
+  const rankCtx: ScoringContext = useMemo(
     // Best-case → enabledEcosystems undefined (optimistic path credits every ecosystem in full).
-    const ctx = mode === "best" ? {} : { enabledEcosystems: enabledEco };
-    const all = rankCards(cards, spend, ctx);
+    () => (mode === "best" ? {} : { enabledEcosystems: enabledEco }),
+    [mode, enabledEco],
+  );
+
+  const { ranked, pinnedSelected } = useMemo(() => {
+    const all = rankCards(cards, spend, rankCtx);
     const top = all.slice(0, 10);
     if (!selectedId) return { ranked: top, pinnedSelected: null as CardScore | null };
     const inTop = top.some((r) => r.card.id === selectedId);
     if (inTop) return { ranked: top, pinnedSelected: null };
     const pinned = all.find((r) => r.card.id === selectedId) ?? null;
     return { ranked: top, pinnedSelected: pinned };
-  }, [cards, spend, selectedId, enabledEco, mode]);
+  }, [cards, spend, selectedId, rankCtx]);
 
   const monthlyTotal = Object.values(spend).reduce((a, b) => a + (b || 0), 0);
 
@@ -88,7 +92,7 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
               <input
                 type="number"
                 min={0}
-                max={MAX_MONTHLY}
+                max={MAX_MONTHLY_SPEND}
                 step={500}
                 value={spend[cat]}
                 onChange={(e) =>
@@ -214,7 +218,11 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
 
         {selectedCard ? (
           <div className="mt-6">
-            <AccelerationBreakdown card={selectedCard} />
+            <AccelerationBreakdown
+              card={selectedCard}
+              hostCtx={rankCtx}
+              hostLabel={mode === "best" ? "Best-case" : "Realistic"}
+            />
           </div>
         ) : null}
       </div>

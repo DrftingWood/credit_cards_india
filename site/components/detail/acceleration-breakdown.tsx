@@ -2,14 +2,10 @@
 import { useMemo, useState } from "react";
 import type { EnrichedCard } from "@/lib/types";
 import { explainCard, type AcceleratorExplain, type BaseSpendExplain, type ScoringContext } from "@/lib/calculator";
-import { useSpendProfile } from "@/lib/use-spend-profile";
+import { useSpendProfile, MAX_MONTHLY_SPEND } from "@/lib/use-spend-profile";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
 
 const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
-
-/** Sanity ceiling per category (₹1 crore/month) — matches /calculator's MAX_MONTHLY so
- *  the shared spend-profile store never gets a value one view accepts and another rejects. */
-const MAX_MONTHLY_SPEND = 100_000_000;
 
 /**
  * For a base-rate row in the currently-selected layer, find the reason (if any) an
@@ -31,6 +27,61 @@ export function baseRowCutNote(
   if (!chosen) return null;
   const reason = chosen.replace(/^(requires|assumes)\s+/i, "");
   return `${absRow.label} — earns base; accelerated rate needs ${reason}`;
+}
+
+export interface BreakdownLayer {
+  id: string;
+  label: string;
+  blurb: string;
+  ctx: ScoringContext;
+}
+
+const ABSOLUTE_LAYER: BreakdownLayer = {
+  id: "absolute",
+  label: "Absolute",
+  blurb:
+    "Best case — every accelerator fires at full rate on the whole bucket at face value. Caps still apply; each row states what you must satisfy.",
+  ctx: { valueBasis: "face" },
+};
+
+/**
+ * The layers this panel offers, and the ScoringContext behind each.
+ *
+ * When a host view (i.e. /calculator) supplies the exact context it ranked with, that
+ * context becomes the primary, default-selected layer — passed through by identity, never
+ * reconstructed — so the panel's total reconciles with the ranked row it sits under and the
+ * host's own ecosystem/mode controls drive it. Standalone (the card detail page, which has
+ * no ranking above it) keeps the self-contained Realistic/Absolute pair.
+ *
+ * Pure and exported so it's unit-testable without rendering the (hook-driven) component.
+ */
+export function breakdownLayers(hostCtx?: ScoringContext, hostLabel?: string): BreakdownLayer[] {
+  if (hostCtx) {
+    return [
+      {
+        id: "host",
+        label: hostLabel ?? "This calculator",
+        blurb: "Scored exactly as the ranking above — your spend, ecosystem and mode settings.",
+        ctx: hostCtx,
+      },
+      ABSOLUTE_LAYER,
+    ];
+  }
+  return [
+    {
+      id: "realistic",
+      label: "Realistic",
+      blurb:
+        "What you'd realistically keep — caps applied, channel premiums cut when you don't route through them, realized redemption value.",
+      ctx: {
+        applyApplicability: true,
+        channelMix: new Set<string>(),
+        enabledEcosystems: new Set<string>(),
+        valueBasis: "realized",
+      },
+    },
+    ABSOLUTE_LAYER,
+  ];
 }
 
 export function AcceleratorRow({ item }: { item: AcceleratorExplain }) {
@@ -61,17 +112,24 @@ export function AcceleratorRow({ item }: { item: AcceleratorExplain }) {
   );
 }
 
-export function AccelerationBreakdown({ card }: { card: EnrichedCard }) {
+export function AccelerationBreakdown({
+  card,
+  hostCtx,
+  hostLabel,
+}: {
+  card: EnrichedCard;
+  /** The exact ScoringContext the embedding view ranked with, if any. Supplying it makes
+   *  this panel's total reconcile with the row above it instead of scoring its own way. */
+  hostCtx?: ScoringContext;
+  hostLabel?: string;
+}) {
   const [spend, setSpend] = useSpendProfile(); // shared + persisted across all calculators
-  const [layer, setLayer] = useState<"realistic" | "absolute">("realistic");
+  const layers = useMemo(() => breakdownLayers(hostCtx, hostLabel), [hostCtx, hostLabel]);
+  const [layerId, setLayerId] = useState(() => layers[0].id);
+  // Fall back to the primary layer if the host swapped the layer set out from under us.
+  const layer = layers.find((l) => l.id === layerId) ?? layers[0];
 
-  const ctx: ScoringContext = useMemo(
-    () => layer === "realistic"
-      ? { applyApplicability: true, channelMix: new Set<string>(), enabledEcosystems: new Set<string>(), valueBasis: "realized" }
-      : { valueBasis: "face" },
-    [layer],
-  );
-  const ex = useMemo(() => explainCard(card, spend, ctx), [card, spend, ctx]);
+  const ex = useMemo(() => explainCard(card, spend, layer.ctx), [card, spend, layer]);
   // Absolute layer, computed unconditionally (explainCard is pure/cheap): the source of
   // truth for "what got cut" notes on base-rate rows in the selected layer (FIX 1).
   const exAbs = useMemo(() => explainCard(card, spend, { valueBasis: "face" }), [card, spend]);
@@ -81,19 +139,15 @@ export function AccelerationBreakdown({ card }: { card: EnrichedCard }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-lg font-semibold text-slate-900">See the math — accelerations &amp; caps</h2>
         <div className="inline-flex rounded-lg border border-slate-300 p-0.5 text-xs">
-          {(["realistic", "absolute"] as const).map((l) => (
-            <button key={l} type="button" onClick={() => setLayer(l)}
-              className={l === layer ? "rounded-md bg-slate-900 px-3 py-1 font-medium text-white" : "rounded-md px-3 py-1 text-slate-600"}>
-              {l === "realistic" ? "Realistic" : "Absolute"}
+          {layers.map((l) => (
+            <button key={l.id} type="button" onClick={() => setLayerId(l.id)}
+              className={l.id === layer.id ? "rounded-md bg-slate-900 px-3 py-1 font-medium text-white" : "rounded-md px-3 py-1 text-slate-600"}>
+              {l.label}
             </button>
           ))}
         </div>
       </div>
-      <p className="mt-1 text-xs text-slate-500">
-        {layer === "realistic"
-          ? "What you'd realistically keep — caps applied, channel premiums cut when you don't route through them, realized redemption value."
-          : "Best case — every accelerator fires at full rate on the whole bucket at face value. Caps still apply; each row states what you must satisfy."}
-      </p>
+      <p className="mt-1 text-xs text-slate-500">{layer.blurb}</p>
 
       <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
         {CANONICAL_CATEGORIES.map((cat) => (
@@ -140,7 +194,7 @@ export function AccelerationBreakdown({ card }: { card: EnrichedCard }) {
       <div className="mt-4 flex items-baseline justify-between border-t border-slate-200 pt-3">
         <div>
           <span className="mr-1 rounded border border-amber-300 bg-amber-50 px-1 text-[10px] font-bold uppercase text-amber-800">Est.</span>
-          <span className="text-sm text-slate-600">net rewards for this spend, {layer}</span>
+          <span className="text-sm text-slate-600">net rewards for this spend, {layer.label.toLowerCase()}</span>
         </div>
         <span className="text-lg font-semibold text-slate-900 tabular-nums">{inr(ex.annual_net_inr)}/yr</span>
       </div>

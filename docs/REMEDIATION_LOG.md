@@ -64,3 +64,16 @@ variant), `au-ixigo` (rate), `rbl-irctc` (rail earn model).
 2026-10-20 | link check: sbi/aurum historical sources | SKIPPED: aurum.page was never archived; the current page (aurum-sbi-card.html) cannot back pre-Nov-2024 records | user decision
 2026-10-20 | link check: sbi/elite-business, sbi/prime-business | SKIPPED: no issuer page and no discontinuation notice found; status left active | user decision
 2026-10-20 | rbl/zomato-edition discontinued_on | SKIPPED: evidence puts sunset ~2023-05-14 but launched_on is 2023-03-01 (inconsistent); date fix left for a dedicated pass | user decision
+
+## 2026-10-20 D3 evidence fields (remediate/d3-evidence)
+
+Backfilled from repo information only (headers, audit docs, PDF-verify commits, git history); no source was re-read and no value changed.
+
+2026-10-20 | D3 tooling | backfill_source_confidence.py + backfill_local_evidence.py with rule tests in CI; backfill_source_type.py gains --issuers | f5d177c, 9aa2d79, 1a67156, fcb2c6a
+2026-10-20 | D3 validator | missing local_refs fold into one summary warning when the PDF archive is absent (35 -> 17 warnings on a fresh checkout) | e08958b
+2026-10-20 | D3 type | source.type on fees/benefits sources of every issuer (URL-host rule); 2 Business Standard sources typed press; scapia.cards left untyped | 0dcc3a4..a72a104, d630af2
+2026-10-20 | D3 confidence | header tier copied onto open fees/rewards records that are issuer-sourced, unchanged since 4091c6d and unhedged; 156 TODO-flagged and 3 audit-doubted records withdrawn again | 0dcc3a4..dc2017d, bd1c004, 055fc1b
+2026-10-20 | D3 local evidence | local_refs + fields_verified from HDFC/Axis/SBI/ICICI MITC, RBL schedule of charges, BoB features T&C claims (131 sources); 13 SBI blocks dropped where the audit left the field TODO-flagged | d93ae81..649f35a, 4b7ee6e
+2026-10-20 | D3 IDFC Ashva/Mayura local evidence | SKIPPED: the archived Communication PDFs do not show the fees commit bedb1ad says were confirmed; reward claim would leave accelerators unvouched | needs a re-read
+2026-10-20 | D3 benefits confidence | SKIPPED: no PROVENANCE header or audit claim covers benefits per record | needs a re-read
+2026-10-20 | D3 coverage | strict-scope reward rules with confidence 37% -> 66%, strict-ready 236 -> 425 of 666; cards with every open fees/rewards record confident 13 -> 152 of 320 | -

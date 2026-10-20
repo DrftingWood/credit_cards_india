@@ -2,6 +2,7 @@ import { describe, test, expect } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { AcceleratorRow, baseRowCutNote, breakdownLayers } from "./acceleration-breakdown";
 import type { AcceleratorExplain, ScoringContext } from "@/lib/calculator";
+import { DEFAULT_USAGE, setFamilyShare, toggleEcosystem } from "@/lib/usage";
 
 const capped: AcceleratorExplain = {
   category: "travel", label: "Travel & hotels", monthly_spend: 200000, rate_pct: 33.3,
@@ -88,5 +89,34 @@ describe("breakdownLayers — host context wins when one is supplied", () => {
     const layers = breakdownLayers({}, "Best-case");
     expect(layers.map((l) => l.id)).toEqual(["host", "absolute"]);
     expect(layers[1].ctx.valueBasis).toBe("face");
+  });
+});
+
+describe("breakdownLayers — the standalone Realistic layer is personal (Phase 3)", () => {
+  test("declared usage flows into the Realistic ctx; Absolute is untouched", () => {
+    const usage = toggleEcosystem(setFamilyShare(DEFAULT_USAGE, "amazon", 40), "Tata Neu");
+    const [realistic, absolute] = breakdownLayers(undefined, undefined, usage);
+    expect(realistic.ctx.applyApplicability).toBe(true);
+    expect(realistic.ctx.merchantShares).toEqual({ amazon: 0.4, "amazon-pay": 0.4 });
+    expect(realistic.ctx.channelMix!.has("amazon-pay")).toBe(true);
+    expect(realistic.ctx.enabledEcosystems!.has("Tata Neu")).toBe(true);
+    expect(absolute.ctx.merchantShares).toBeUndefined();
+  });
+  test("no usage → the strict Phase 1 Realistic layer (nothing declared, nothing credited)", () => {
+    const [realistic] = breakdownLayers();
+    expect(realistic.ctx.channelMix!.size).toBe(0);
+    expect(realistic.ctx.enabledEcosystems!.size).toBe(0);
+  });
+});
+
+describe("AcceleratorRow states the share when only part of the bucket earns the rate", () => {
+  test("40% share: the math line reads '40% at 5.0%', not a bare 5.0% of the whole spend", () => {
+    const row: AcceleratorExplain = {
+      category: "online", label: "Online shopping", monthly_spend: 15000, rate_pct: 5, applicability: 0.4,
+      uncapped_value_inr: 300, cap_monthly_inr: null, cap_bound: false, lost_to_cap_inr: 0, base_spillover_inr: 0,
+      net_value_inr: 390, factors: [],
+    };
+    const html = renderToStaticMarkup(<AcceleratorRow item={row} />);
+    expect(html).toMatch(/40% at 5\.0%/);
   });
 });

@@ -8,8 +8,14 @@ import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
-import { rankCards, listEcosystems, type CardScore, type ScoringContext } from "@/lib/calculator";
+import { rankCards, listEcosystems, type CardScore, type ScoringContext, type SpendProfile } from "@/lib/calculator";
 import { useSpendProfile, MAX_MONTHLY_SPEND } from "@/lib/use-spend-profile";
+import { useValuePrefs } from "@/lib/use-value-prefs";
+import { explainValueComponents, type ValuePrefs } from "@/lib/value-components";
+import { valueSummaryLine } from "@/components/detail/value-components-panel";
+import { useUsageProfile } from "@/lib/use-usage-profile";
+import { toggleEcosystem, usageContext } from "@/lib/usage";
+import { DeclaredUsageSummary } from "@/components/detail/usage-panel";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
 import { formatInr, formatPct } from "@/lib/utils";
 
@@ -32,6 +38,7 @@ const ECO_GROUPS: { label: string; icon: string; ecos: string[] }[] = [
 
 export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
   const [spend, setSpend] = useSpendProfile();
+  const [valuePrefs] = useValuePrefs();
   const selectedId = useSearchParams().get("card");
   const selectedCard = useMemo(
     () => (selectedId ? cards.find((c) => c.id === selectedId) ?? null : null),
@@ -44,23 +51,23 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
   // Best-case mode assumes you use every ecosystem (optimistic — the old behaviour).
   const ecosystems = useMemo(() => listEcosystems(cards), [cards]);
   const [mode, setMode] = useState<"realistic" | "best">("realistic");
-  const [enabledEco, setEnabledEco] = useState<Set<string>>(() => new Set());
-  const toggleEco = (eco: string) =>
-    setEnabledEco((prev) => {
-      const next = new Set(prev);
-      if (next.has(eco)) next.delete(eco);
-      else next.add(eco);
-      return next;
-    });
+  // Ecosystems and merchant shares live in the shared usage store (Phase 3), so what you
+  // tick here is what the card pages' Realistic layer uses too, and it survives a reload.
+  const [usage, setUsage] = useUsageProfile();
+  const enabledEco = useMemo(() => new Set(usage.ecosystems), [usage.ecosystems]);
+  const toggleEco = (eco: string) => setUsage((u) => toggleEcosystem(u, eco));
 
   // The single context this view scores with. Memoised on its own so the exact object can
   // also be handed to the embedded AccelerationBreakdown — the panel must reconcile with the
   // row it sits under, which it can't do if it builds a context of its own.
-  const rankCtx: ScoringContext = useMemo(
+  const rankCtx: ScoringContext = useMemo(() => {
     // Best-case → enabledEcosystems undefined (optimistic path credits every ecosystem in full).
-    () => (mode === "best" ? {} : { enabledEcosystems: enabledEco }),
-    [mode, enabledEco],
-  );
+    if (mode === "best") return {};
+    // Opt-in (D-3 keeps /calculator channel-optimistic by default): co-brand and portal rates
+    // count only on the merchant shares the user declared; undeclared ones earn base.
+    if (usage.gate_calculator) return { ...usageContext(usage), applyApplicability: true };
+    return { enabledEcosystems: enabledEco };
+  }, [mode, enabledEco, usage]);
 
   const { ranked, pinnedSelected } = useMemo(() => {
     const all = rankCards(cards, spend, rankCtx);
@@ -187,17 +194,39 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
             )}
           </div>
         ) : null}
+
+        {mode === "realistic" ? (
+          <div className="border-t border-slate-200 pt-4">
+            <h2 className="text-sm font-semibold text-slate-900">Co-brand &amp; portal rates</h2>
+            <label className="mt-2 flex items-start gap-2 text-xs text-slate-700 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={usage.gate_calculator}
+                onChange={(e) => setUsage((u) => ({ ...u, gate_calculator: e.target.checked }))}
+                className="mt-0.5"
+              />
+              <span>
+                <strong>Count them only on the share I declare</strong> — otherwise each is assumed to cover its
+                whole category, as if you always book or shop through it.
+              </span>
+            </label>
+            <div className="mt-2">
+              <DeclaredUsageSummary usage={usage} onChange={(u) => setUsage(() => u)} />
+            </div>
+          </div>
+        ) : null}
       </form>
 
       <div>
         <h2 className="text-lg font-semibold text-slate-900">Ranked by net annual value</h2>
         <p className="text-xs text-slate-500 mt-0.5">
-          Approximate. Ignores welcome bonuses, milestone vouchers and some complex caps; for the full picture open the detail page.
+          Approximate, and ranked on steady-state spend rewards only. Welcome, milestone and lounge value are shown
+          separately on each row and in the breakdown, never mixed into the rank. Some complex caps are simplified.
         </p>
         {pinnedSelected ? (
           <div className="mt-4">
             <div className="text-xs uppercase tracking-wide text-brand-700 mb-1">Selected card</div>
-            <ResultRow rank={null} score={pinnedSelected} highlighted />
+            <ResultRow rank={null} score={pinnedSelected} spend={spend} valuePrefs={valuePrefs} highlighted />
           </div>
         ) : null}
         <ol className="mt-4 space-y-3">
@@ -206,6 +235,8 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
               key={r.card.id}
               rank={i + 1}
               score={r}
+              spend={spend}
+              valuePrefs={valuePrefs}
               highlighted={r.card.id === selectedId}
             />
           ))}
@@ -233,14 +264,22 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
 function ResultRow({
   rank,
   score,
+  spend,
+  valuePrefs,
   highlighted = false,
 }: {
   rank: number | null;
   score: CardScore;
+  spend: SpendProfile;
+  valuePrefs: ValuePrefs;
   highlighted?: boolean;
 }) {
   const c = score.card;
   const href = cardHref(c);
+  // Decoupled one-offs: computed from this row's own steady-state result, shown beside it, never ranked on.
+  const extra = valueSummaryLine(
+    explainValueComponents(c, spend, { annual_gross_inr: score.annual_gross_inr, annual_fee_inr: score.annual_fee_effective_inr }, valuePrefs),
+  );
 
   return (
     <li
@@ -296,6 +335,7 @@ function ResultRow({
               formatInr(score.annual_fee_effective_inr)
             )}
           </div>
+          {extra ? <div className="mt-0.5 text-[11px] text-slate-500 tabular-nums">{extra}</div> : null}
         </div>
       </div>
 

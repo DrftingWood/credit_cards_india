@@ -7,6 +7,7 @@ import type {
 } from "./types";
 import { CanonicalCategory, resolveBuckets, CATEGORY_LABELS } from "./category-mapping";
 import { pointsToPct } from "./rate-math.mjs";
+import { explainValueComponents, type ValueComponents, type ValuePrefs } from "./value-components";
 
 export type SpendProfile = Record<CanonicalCategory, number>;
 
@@ -62,6 +63,14 @@ export interface ScoringContext {
   /** "realized" (default, honest floor) or "face" (optimistic ceiling) unit value
    *  for points/miles. Passed to unitValueFor so the Absolute layer can value at face. */
   valueBasis?: ValueBasis;
+  /**
+   * The user's OWN statement of what share (0–1) of a bucket goes through a merchant
+   * token (e.g. {"amazon": 0.4}). Realistic layer only (needs applyApplicability). This is
+   * the authored evidence D-18 asks for — supplied by the person whose spend it is — so a
+   * narrow accelerator listing that token earns its rate on that share, base on the rest.
+   * Alias tokens of one merchant (amazon / amazon-pay) take the MAX, never the sum.
+   */
+  merchantShares?: Record<string, number>;
 }
 
 /** Whether a card's (closed-loop) rewards should be credited in full for this user.
@@ -107,10 +116,33 @@ function isNarrowAccelerator(a: AcceleratedReward): boolean {
  */
 function applicabilityFraction(a: AcceleratedReward, ctx: ScoringContext | undefined): number | null {
   if (!ctx?.applyApplicability) return 1; // optimistic /calculator: whole bucket
+  // The user's own share for one of this accelerator's merchants is the most specific
+  // evidence there is — it is about THIS user — so it wins over a card-level average.
+  const userShare = userShareFor(a, ctx);
+  if (userShare != null) return userShare;
   if (a.applicability_pct != null) {
     return Math.max(0, Math.min(1, a.applicability_pct / 100));
   }
   return isNarrowAccelerator(a) ? null : 1;
+}
+
+/** Merchant tokens an accelerator is scoped to (its channel's, else its own merchants[]). */
+export function acceleratorTokens(a: AcceleratedReward): string[] {
+  return a.channel?.merchants ?? a.merchants ?? [];
+}
+
+/** Largest user-declared share among this accelerator's tokens, clamped to [0, 1]; null when none declared. */
+function userShareFor(a: AcceleratedReward, ctx: ScoringContext | undefined): number | null {
+  const shares = ctx?.merchantShares;
+  if (!shares) return null;
+  let best: number | null = null;
+  for (const t of acceleratorTokens(a)) {
+    const v = shares[t];
+    if (typeof v !== "number" || !Number.isFinite(v)) continue;
+    const c = Math.max(0, Math.min(1, v));
+    if (best == null || c > best) best = c;
+  }
+  return best;
 }
 
 /**
@@ -775,6 +807,8 @@ export interface AcceleratorExplain {
   category: CanonicalCategory; label: string;
   monthly_spend: number;
   rate_pct: number;
+  /** Share (0–1) of this bucket the accelerated rate applies to; the rest earns base. Omitted = whole bucket. */
+  applicability?: number;
   uncapped_value_inr: number;
   cap_monthly_inr: number | null;
   cap_bound: boolean;
@@ -790,9 +824,17 @@ export interface CardExplanation {
   accelerators: AcceleratorExplain[];
   base_spend: BaseSpendExplain[];
   annual_gross_inr: number; annual_fee_inr: number; annual_net_inr: number;
+  /** Phase 2: welcome / milestone / lounge line items + year-1 vs steady-state totals.
+   *  Present only when the caller passes ValuePrefs; never part of annual_net_inr (the rank). */
+  value_components?: ValueComponents;
 }
 
-export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: ScoringContext): CardExplanation {
+export function explainCard(
+  card: EnrichedCard,
+  spend: SpendProfile,
+  ctx?: ScoringContext,
+  valuePrefs?: ValuePrefs,
+): CardExplanation {
   const rewards = card.current_rewards;
   const basis: ValueBasis = ctx?.valueBasis ?? "realized";
   // Layer is inferred from the context the caller built (see Global Constraints).
@@ -836,10 +878,10 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
       baseMonthly += hit.base_remainder_inr + hit.over_cap_base_inr;
       monthlyGross += net;
       accelerators.push({
-        category: bucket, label, monthly_spend: amount, rate_pct: hit.rate_pct,
+        category: bucket, label, monthly_spend: amount, rate_pct: hit.rate_pct, applicability: hit.applicability,
         uncapped_value_inr: hit.uncapped_accel_inr, cap_monthly_inr: hit.cap_monthly_inr,
         cap_bound: hit.cap_bound, lost_to_cap_inr: lost, base_spillover_inr: hit.over_cap_base_inr,
-        net_value_inr: net, factors: buildFactors(layer, hit, basis, rewards),
+        net_value_inr: net, factors: buildFactors(layer, hit, basis, rewards, ctx),
       });
     } else {
       const value = (amount * baseRate) / 100;
@@ -879,15 +921,27 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
   const annualGross = monthlyGross * 12;
   const annualSpend = totalSpend * 12;
   const { annualFeeEffective } = effectiveAnnualFee(card, annualSpend);
-  return {
+  const out: CardExplanation = {
     layer, value_basis: basis, accelerators, base_spend,
     annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective, annual_net_inr: annualGross - annualFeeEffective,
   };
+  if (valuePrefs) {
+    out.value_components = explainValueComponents(
+      card, spend, { annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective }, valuePrefs,
+    );
+  }
+  return out;
 }
 
 /** The constraint/cut list shown per accelerator row. Realistic: what was cut.
  *  Absolute: what the number assumes/requires. Facts only — from the hit + card. */
-function buildFactors(layer: "realistic" | "absolute", hit: AcceleratorHit, basis: ValueBasis, rewards: RewardRecord | null): string[] {
+function buildFactors(
+  layer: "realistic" | "absolute",
+  hit: AcceleratorHit,
+  basis: ValueBasis,
+  rewards: RewardRecord | null,
+  ctx?: ScoringContext,
+): string[] {
   const f: string[] = [];
   if (hit.cap_bound && hit.cap_monthly_inr != null) {
     f.push(`Cap ${inr0(hit.cap_monthly_inr)}/mo reached — extra spend earns base`);
@@ -898,7 +952,11 @@ function buildFactors(layer: "realistic" | "absolute", hit: AcceleratorHit, basi
     const ch = hit.accel.channel?.merchants?.join(", ") ?? hit.accel.channel?.class ?? "a specific channel";
     f.push(layer === "absolute" ? `Requires booking via ${ch}` : `Credited only when you book via ${ch}`);
   }
-  if (hit.applicability < 1) {
+  const userShare = layer === "realistic" ? userShareFor(hit.accel, ctx) : null;
+  if (userShare != null) {
+    const via = acceleratorTokens(hit.accel).filter((t) => ctx?.merchantShares?.[t] != null).join(", ");
+    f.push(`${Math.round(userShare * 100)}% of this bucket via ${via} (your estimate)${userShare < 1 ? "; the rest earns base" : ""}`);
+  } else if (hit.applicability < 1) {
     f.push(`${Math.round(hit.applicability * 100)}% of this bucket earns the accelerated rate; the rest earns base`);
   } else if (layer === "absolute" && isNarrowAccelerator(hit.accel)) {
     f.push(`Assumes 100% of this bucket qualifies`);

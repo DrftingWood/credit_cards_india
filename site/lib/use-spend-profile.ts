@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { createPersistedStore } from "./persisted-store";
 import type { SpendProfile } from "./calculator";
 import type { CanonicalCategory } from "./category-mapping";
 
@@ -15,51 +15,24 @@ export const DEFAULT_SPEND: SpendProfile = {
  */
 export const MAX_MONTHLY_SPEND = 1_00_00_000;
 
-const KEY = "cc-spend-profile-v1";
-const listeners = new Set<() => void>();
-let current: SpendProfile = load();
-
-function load(): SpendProfile {
-  if (typeof window === "undefined") return { ...DEFAULT_SPEND };
-  try {
-    const raw = window.localStorage.getItem(KEY);
-    if (!raw) return { ...DEFAULT_SPEND };
-    const parsed = JSON.parse(raw) as Partial<SpendProfile>;
-    // merge over defaults so a new category key is never undefined
-    return { ...DEFAULT_SPEND, ...sanitize(parsed) };
-  } catch {
-    return { ...DEFAULT_SPEND };
-  }
-}
-
-function sanitize(p: Partial<SpendProfile>): SpendProfile {
+function sanitize(raw: unknown): SpendProfile {
+  const p = (raw && typeof raw === "object" ? raw : {}) as Partial<SpendProfile>;
   const out = { ...DEFAULT_SPEND };
   (Object.keys(out) as CanonicalCategory[]).forEach((k) => {
     const v = Number(p[k]);
-    out[k] = Number.isFinite(v) && v >= 0 ? Math.min(MAX_MONTHLY_SPEND, v) : DEFAULT_SPEND[k];
+    // merge over defaults so a new category key is never undefined
+    out[k] = p[k] !== undefined && Number.isFinite(v) && v >= 0 ? Math.min(MAX_MONTHLY_SPEND, v) : DEFAULT_SPEND[k];
   });
   return out;
 }
 
-export function readSpend(): SpendProfile { return current; }
+const store = createPersistedStore<SpendProfile>("cc-spend-profile-v1", DEFAULT_SPEND, sanitize);
 
-export function writeSpend(updater: (s: SpendProfile) => SpendProfile): void {
-  current = sanitize(updater(current));
-  if (typeof window !== "undefined") {
-    try { window.localStorage.setItem(KEY, JSON.stringify(current)); } catch { /* storage full/blocked — keep in-memory */ }
-  }
-  listeners.forEach((l) => l());
-}
-
-export function subscribe(cb: () => void): () => void {
-  listeners.add(cb);
-  return () => listeners.delete(cb);
-}
+export const readSpend = store.read;
+export const writeSpend = store.write;
+export const subscribe = store.subscribe;
 
 /** React hook: shared, persisted spend profile. `getServerSnapshot` returns the
  *  default so SSR + first paint are stable; the store hydrates from localStorage
- *  on the client (load() ran at module init in the browser). */
-export function useSpendProfile(): [SpendProfile, (updater: (s: SpendProfile) => SpendProfile) => void] {
-  const spend = useSyncExternalStore(subscribe, readSpend, () => DEFAULT_SPEND);
-  return [spend, writeSpend];
-}
+ *  on the client (load ran at module init in the browser). */
+export const useSpendProfile = store.use;

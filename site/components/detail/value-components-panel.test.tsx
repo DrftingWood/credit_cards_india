@@ -63,6 +63,21 @@ describe("ValueComponentsPanel renders every component as its own honest line", 
     expect(html).toMatch(/Year 2 onward/);
   });
 
+  test("each total itemises the lines it is the sum of", () => {
+    const ledger = html.slice(html.indexOf("Year 1"));
+    expect(ledger).toContain("Spend rewards");
+    expect(ledger).toContain("Joining fee");
+    expect(ledger).toContain("−₹1,000");
+    expect(ledger).toContain("Welcome benefit");
+    expect(ledger).toContain("Spend milestones reached");
+    expect(ledger).toContain("Annual fee (after any spend waiver)");
+    expect(ledger).toContain("Recurring milestones reached");
+    expect(ledger).toMatch(/Fees, averaged over 3 years/);
+    // Every ledger line is rendered: count rows against the engine's ledger.
+    const rows = (html.match(/data-ledger-line/g) ?? []).length;
+    expect(rows).toBe(vc.ledger.first_year.lines.length + vc.ledger.steady_state.lines.length + vc.ledger.tenure_avg.lines.length);
+  });
+
   test("states it is not in the ranking, and carries no emoji", () => {
     expect(html).toMatch(/not part of the ranking/i);
     expect(EMOJI.test(html)).toBe(false);
@@ -84,6 +99,13 @@ describe("valueSummaryLine — the one-liner under a ranked /calculator row", ()
     expect(line).toMatch(/Year 1/);
     expect(line).toContain("₹250 welcome");
     expect(line).toContain("₹3,000 milestones");
+  });
+
+  test("quotes the same totals the panel's ledger shows", () => {
+    const vc = explainValueComponents(RICH, SPEND, { annual_gross_inr: 9000.6, annual_fee_inr: 1000 }, DEFAULT_VALUE_PREFS);
+    const line = valueSummaryLine(vc)!;
+    expect(line).toContain(`Year 1 ₹${vc.ledger.first_year.total_inr.toLocaleString("en-IN")}`);
+    expect(line).toContain(`Year 2+ ₹${vc.ledger.steady_state.total_inr.toLocaleString("en-IN")}`);
   });
 
   test("null when there is nothing beyond spend rewards and year 1 equals steady state", () => {

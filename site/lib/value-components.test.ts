@@ -398,6 +398,7 @@ describe("ledger on live data — reconciles for every active card", () => {
     ];
     const prefs: ValuePrefs = { tenure_years: 4, lounge_visits: { domestic: 8, international: 3 }, lounge_value_inr: { domestic: 1200, international: 2500 } };
     let checked = 0;
+    let withForex = 0;
     for (const c of (cards as unknown as EnrichedCard[]).filter((x) => x.computed.is_active && x.current_rewards)) {
       for (const sp of profiles) {
         const ex = explainCard(c, sp, { valueBasis: "realized" }, prefs);
@@ -408,8 +409,8 @@ describe("ledger on live data — reconciles for every active card", () => {
           for (const x of l.lines) expect(Number.isInteger(x.inr), `${c.id} ${x.key}`).toBe(true);
         }
         // Whole-rupee lines are reconciled (largest remainder), so each total is the rounded engine total.
-        expect(fy.total_inr, c.id).toBe(Math.round(vc.first_year.total_inr));
-        expect(ss.total_inr, c.id).toBe(Math.round(vc.steady_state.total_inr));
+        expect(fy.total_inr, c.id).toBe(Math.round(vc.first_year.total_inr) + 0); // + 0: a total that rounds to −0 is shown as 0
+        expect(ss.total_inr, c.id).toBe(Math.round(vc.steady_state.total_inr) + 0);
         expect(ta.total_inr, c.id).toBe(vc.tenure_avg_annual_inr);
         // Every counted component appears as its own line with its own figure.
         const get = (k: string) => fy.lines.find((x) => x.key === k)?.inr ?? 0;
@@ -418,9 +419,16 @@ describe("ledger on live data — reconciles for every active card", () => {
         expect(get("lounge"), c.id).toBe(vc.lounge.annual_inr);
         expect(Math.abs(get("rewards") - ex.annual_gross_inr), c.id).toBeLessThan(1);
         expect(Math.abs(get("fee") + vc.first_year.fee_inr), c.id).toBeLessThan(1);
+        // D-26: the forex cost is its own line in every total and the rank nets it.
+        for (const l of [fy, ss, ta]) {
+          expect(Math.abs((l.lines.find((x) => x.key === "forex")?.inr ?? 0) + ex.annual_forex_inr), c.id).toBeLessThan(1);
+        }
+        expect(ex.annual_net_inr, c.id).toBeCloseTo(ex.annual_gross_inr - ex.annual_fee_inr - ex.annual_forex_inr, 6);
+        if (ex.annual_forex_inr > 0) withForex++;
         checked++;
       }
     }
     expect(checked).toBeGreaterThan(300);
+    expect(withForex).toBeGreaterThan(200); // the international profile charges most cards a markup
   });
 });

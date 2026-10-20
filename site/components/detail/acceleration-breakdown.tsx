@@ -247,7 +247,8 @@ export function AccelerationBreakdown({
         <span className="text-lg font-semibold text-fg tabular-nums">{inr(ex.annual_net_inr)}/yr</span>
       </div>
       <p className="mt-1 text-[11px] text-fg-muted tabular-nums">
-        {inr(ex.annual_gross_inr)} rewards − {inr(ex.annual_fee_inr)} annual fee. Estimate for the spend you entered.
+        {inr(ex.annual_gross_inr)} rewards − {inr(ex.annual_fee_inr)} annual fee
+        {ex.annual_forex_inr > 0 ? <> − {inr(ex.annual_forex_inr)} forex markup on international spend</> : null}. Estimate for the spend you entered.
       </p>
 
       {ex.value_components ? (

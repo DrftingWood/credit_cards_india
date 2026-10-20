@@ -24,6 +24,9 @@ export interface CardScore {
   card: EnrichedCard;
   annual_gross_inr: number;
   annual_fee_effective_inr: number;
+  /** D-26: forex markup (+ GST) on the user's international spend, ₹/yr. Already netted out of annual_net_inr. */
+  annual_forex_inr: number;
+  /** Rank total: annual_gross_inr − annual_fee_effective_inr − annual_forex_inr. */
   annual_net_inr: number;
   fee_waived: boolean;
   buckets: BucketBreakdown[];
@@ -611,6 +614,32 @@ function effectiveAnnualFee(
   return { annualFeeEffective: feeWaived ? 0 : annualFee, feeWaived };
 }
 
+/**
+ * GST on the forex markup, as a fraction. ASSUMPTION, NOT YET VERIFIED (D-26): the usual
+ * 18% GST on card fees and charges, applied to the markup amount. Check against an issuer
+ * MITC or a CBIC source before this ships. Applied only when the fee record's
+ * `gst_applicable` is not false.
+ */
+export const GST_ON_FOREX_MARKUP = 0.18;
+
+export interface ForexCost {
+  /** ₹/yr: international monthly spend × 12 × markup% × (1 + GST when applicable). */
+  annual_inr: number;
+  /** The card's stated markup, or null when the data doesn't state one (then annual_inr is 0). */
+  markup_pct: number | null;
+  /** GST rate added on top of the markup (GST_ON_FOREX_MARKUP, an unverified assumption), or 0 when the fees are GST-exempt. */
+  gst_rate: number;
+}
+
+/** D-26: what the card's forex markup costs this user a year. Never guesses a missing markup. */
+export function forexCost(card: EnrichedCard, spend: SpendProfile): ForexCost {
+  const markup = card.current_fees?.forex_markup_pct ?? null;
+  const gstRate = card.current_fees?.gst_applicable === false ? 0 : GST_ON_FOREX_MARKUP;
+  const intl = Math.max(0, spend.international || 0);
+  if (markup == null || markup <= 0 || intl <= 0) return { annual_inr: 0, markup_pct: markup, gst_rate: gstRate };
+  return { annual_inr: intl * MONTHS_PER_YEAR * (markup / 100) * (1 + gstRate), markup_pct: markup, gst_rate: gstRate };
+}
+
 export function scoreCard(
   card: EnrichedCard,
   spend: SpendProfile,
@@ -754,6 +783,7 @@ export function scoreCard(
   const annualSpend = totalSpend * MONTHS_PER_YEAR;
 
   const { annualFeeEffective, feeWaived } = effectiveAnnualFee(card, annualSpend);
+  const forex = forexCost(card, spend);
 
   const disclaimerParts: string[] = [...capNotes];
   if (rewards?.capping_rules?.length) disclaimerParts.push(...rewards.capping_rules);
@@ -765,6 +795,9 @@ export function scoreCard(
       "Merchant/co-brand-specific rates shown at base only — enter per-merchant spend to value them",
     );
   }
+  if (forex.markup_pct == null && (spend.international || 0) > 0) {
+    disclaimerParts.push("Forex markup not stated, counted as ₹0");
+  }
   if (closedLoopEco && !ecoCredited) {
     disclaimerParts.push(
       `Rewards redeem only in ${closedLoopEco} — shown at base rate because you don't use it; enable ${closedLoopEco} to value them in full`,
@@ -775,7 +808,8 @@ export function scoreCard(
     card,
     annual_gross_inr: annualGross,
     annual_fee_effective_inr: annualFeeEffective,
-    annual_net_inr: annualGross - annualFeeEffective,
+    annual_forex_inr: forex.annual_inr,
+    annual_net_inr: annualGross - annualFeeEffective - forex.annual_inr,
     fee_waived: feeWaived,
     buckets,
     base_value_inr_monthly: monthlyValue,
@@ -830,7 +864,10 @@ export interface CardExplanation {
   value_basis: ValueBasis;
   accelerators: AcceleratorExplain[];
   base_spend: BaseSpendExplain[];
-  annual_gross_inr: number; annual_fee_inr: number; annual_net_inr: number;
+  annual_gross_inr: number; annual_fee_inr: number;
+  /** D-26: forex markup (+ GST) on international spend, ₹/yr; netted out of annual_net_inr. */
+  annual_forex_inr: number;
+  annual_net_inr: number;
   /** Phase 2: welcome / milestone / lounge line items + year-1 vs steady-state totals.
    *  Present only when the caller passes ValuePrefs; never part of annual_net_inr (the rank). */
   value_components?: ValueComponents;
@@ -955,15 +992,17 @@ export function explainCard(
   const annualGross = monthlyGross * 12;
   const annualSpend = totalSpend * 12;
   const { annualFeeEffective } = effectiveAnnualFee(card, annualSpend);
+  const forex = forexCost(card, spend);
   const out: CardExplanation = {
     layer, value_basis: basis, accelerators, base_spend,
-    annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective, annual_net_inr: annualGross - annualFeeEffective,
+    annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective, annual_forex_inr: forex.annual_inr,
+    annual_net_inr: annualGross - annualFeeEffective - forex.annual_inr,
   };
   if (valuePrefs) {
     out.value_components = explainValueComponents(
       card, spend,
       {
-        annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective,
+        annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective, forex,
         loyalty_tier: loyaltyTierBonus(rewards, ctx, stackingSpendMonthly * 12, unitValue),
       },
       valuePrefs,

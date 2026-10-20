@@ -8,7 +8,7 @@ import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
-import { explainCard, rankCards, listEcosystems, type CardScore, type ScoringContext, type SpendProfile } from "@/lib/calculator";
+import { explainCard, forexCost, rankCards, listEcosystems, type CardScore, type ScoringContext, type SpendProfile } from "@/lib/calculator";
 import { useSpendProfile, MAX_MONTHLY_SPEND } from "@/lib/use-spend-profile";
 import { useValuePrefs } from "@/lib/use-value-prefs";
 import { explainValueComponents, type ValuePrefs } from "@/lib/value-components";
@@ -297,7 +297,7 @@ function ResultRow({
   const extra = valueSummaryLine(
     explainValueComponents(
       c, spend,
-      { annual_gross_inr: score.annual_gross_inr, annual_fee_inr: score.annual_fee_effective_inr, loyalty_tier: loyaltyTier },
+      { annual_gross_inr: score.annual_gross_inr, annual_fee_inr: score.annual_fee_effective_inr, forex: forexCost(c, spend), loyalty_tier: loyaltyTier },
       valuePrefs,
     ),
   );
@@ -355,6 +355,7 @@ function ResultRow({
             ) : (
               formatInr(score.annual_fee_effective_inr)
             )}
+            {score.annual_forex_inr > 0 ? <> − forex {formatInr(Math.round(score.annual_forex_inr))}</> : null}
           </div>
           {extra ? <div className="mt-0.5 text-[11px] text-fg-muted tabular-nums">{extra}</div> : null}
         </div>

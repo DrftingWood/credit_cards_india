@@ -6,8 +6,9 @@
 // worth — welcome benefit, spend milestones, lounge access — as separate,
 // labelled line items, and composes them into three honest totals:
 //
-//   steady_state  = rewards net of the annual fee + recurring milestones + lounge + tier
-//   first_year    = rewards − JOINING fee + welcome + every milestone + lounge + tier
+//   steady_state  = rewards net of the annual fee − forex + recurring milestones + lounge + tier
+//   first_year    = rewards − JOINING fee − forex + welcome + every milestone + lounge + tier
+//   (forex = markup + GST on international spend, D-26; it also lowers the rank)
 //   (tier = the user's declared loyalty-programme tier bonus, programme earn per D-9)
 //   tenure avg    = (first_year + (n − 1) × steady_state) / n   (n = user input)
 //
@@ -25,7 +26,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 import type { BenefitRecord, Cycle, EnrichedCard, LoungeDetails } from "./types";
-import type { SpendProfile } from "./calculator";
+import type { ForexCost, SpendProfile } from "./calculator";
 
 type Milestone = NonNullable<BenefitRecord["milestones"]>[number];
 
@@ -109,7 +110,7 @@ export interface LoyaltyTierItem {
 }
 
 export interface LedgerLine {
-  key: "rewards" | "fee" | "welcome" | "milestones" | "lounge" | "tier";
+  key: "rewards" | "fee" | "forex" | "welcome" | "milestones" | "lounge" | "tier";
   label: string;
   inr: number;
 }
@@ -126,9 +127,10 @@ export interface ValueComponents {
   lounge: { items: LoungeItem[]; annual_inr: number };
   /** Declared programme tier bonus; null when none applies. Recurring, so in every total. */
   loyalty_tier: LoyaltyTierItem | null;
-  steady_state: { rewards_net_inr: number; milestones_inr: number; lounge_inr: number; tier_inr: number; total_inr: number };
+  /** rewards_net_inr is rewards − annual fee; forex_inr (D-26, a cost, positive here) is subtracted separately. */
+  steady_state: { rewards_net_inr: number; forex_inr: number; milestones_inr: number; lounge_inr: number; tier_inr: number; total_inr: number };
   first_year: {
-    rewards_gross_inr: number; fee_inr: number; welcome_inr: number;
+    rewards_gross_inr: number; fee_inr: number; forex_inr: number; welcome_inr: number;
     milestones_inr: number; lounge_inr: number; tier_inr: number; total_inr: number;
   };
   tenure_years: number;
@@ -268,7 +270,7 @@ export function reconcileLedger(raw: { key: LedgerLine["key"]; label: string; in
     spare -= 1;
   }
   // `+ 0` normalises −0 so a ₹0 fee renders and compares as 0.
-  return { lines: raw.map((r, i) => ({ key: r.key, label: r.label, inr: out[i] + 0 })), total_inr: total };
+  return { lines: raw.map((r, i) => ({ key: r.key, label: r.label, inr: out[i] + 0 })), total_inr: total + 0 };
 }
 
 /** Rewards and fee lines always; welcome / milestones / lounge only when they add something. */
@@ -284,7 +286,7 @@ function ledgerOf(parts: { key: LedgerLine["key"]; label: string; inr: number }[
 export function explainValueComponents(
   card: EnrichedCard,
   spend: SpendProfile,
-  rewards: { annual_gross_inr: number; annual_fee_inr: number; loyalty_tier?: LoyaltyTierItem | null },
+  rewards: { annual_gross_inr: number; annual_fee_inr: number; forex?: ForexCost | null; loyalty_tier?: LoyaltyTierItem | null },
   prefs: ValuePrefs = DEFAULT_VALUE_PREFS,
 ): ValueComponents {
   const monthly = Object.values(spend).reduce((a, b) => a + (b || 0), 0);
@@ -304,11 +306,13 @@ export function explainValueComponents(
 
   const tierItem = rewards.loyalty_tier ?? null;
   const tierTotal = tierItem?.annual_inr ?? 0;
+  const forex = rewards.forex ?? null;
+  const forexTotal = forex?.annual_inr ?? 0;
   const rewardsNet = rewards.annual_gross_inr - rewards.annual_fee_inr;
-  const steadyTotal = rewardsNet + recurring + loungeTotal + tierTotal;
+  const steadyTotal = rewardsNet - forexTotal + recurring + loungeTotal + tierTotal;
   const joiningFee = card.current_fees?.joining_fee_inr ?? card.current_fees?.annual_fee_inr ?? 0;
   const fyMilestones = recurring + firstYearOnly;
-  const firstYearTotal = rewards.annual_gross_inr - joiningFee + welcomeTotal + fyMilestones + loungeTotal + tierTotal;
+  const firstYearTotal = rewards.annual_gross_inr - joiningFee - forexTotal + welcomeTotal + fyMilestones + loungeTotal + tierTotal;
 
   const n = Math.min(MAX_TENURE_YEARS, Math.max(1, Math.round(prefs.tenure_years || 1)));
   const statedAnnualFee = card.current_fees?.annual_fee_inr ?? 0;
@@ -316,11 +320,15 @@ export function explainValueComponents(
     ? "Annual fee (waived at your spend)"
     : "Annual fee (after any spend waiver)";
   const LOUNGE = "Lounge visits you'd use";
+  const FOREX = forex?.markup_pct != null
+    ? `Forex markup on international spend (${forex.markup_pct}%${forex.gst_rate > 0 ? ` + ${Math.round(forex.gst_rate * 100)}% GST, assumed` : ""})`
+    : "Forex markup on international spend";
   const TIER = tierItem ? `${tierItem.tier_name} tier bonus, paid by ${tierItem.program_name}` : "Tier bonus";
   const ledger = {
     first_year: ledgerOf([
       { key: "rewards", label: "Spend rewards", inr: rewards.annual_gross_inr },
       { key: "fee", label: "Joining fee", inr: -joiningFee },
+      { key: "forex", label: FOREX, inr: -forexTotal },
       { key: "welcome", label: "Welcome benefit", inr: welcomeTotal },
       { key: "milestones", label: "Spend milestones reached", inr: fyMilestones },
       { key: "lounge", label: LOUNGE, inr: loungeTotal },
@@ -329,6 +337,7 @@ export function explainValueComponents(
     steady_state: ledgerOf([
       { key: "rewards", label: "Spend rewards", inr: rewards.annual_gross_inr },
       { key: "fee", label: renewalLabel, inr: -rewards.annual_fee_inr },
+      { key: "forex", label: FOREX, inr: -forexTotal },
       { key: "milestones", label: "Recurring milestones reached", inr: recurring },
       { key: "lounge", label: LOUNGE, inr: loungeTotal },
       { key: "tier", label: TIER, inr: tierTotal },
@@ -336,6 +345,7 @@ export function explainValueComponents(
     tenure_avg: ledgerOf([
       { key: "rewards", label: "Spend rewards", inr: rewards.annual_gross_inr },
       { key: "fee", label: `Fees, averaged over ${n} ${n === 1 ? "year" : "years"}`, inr: -(joiningFee + (n - 1) * rewards.annual_fee_inr) / n },
+      { key: "forex", label: FOREX, inr: -forexTotal },
       { key: "welcome", label: `Welcome benefit ÷ ${n}`, inr: welcomeTotal / n },
       { key: "milestones", label: "Milestones, averaged", inr: (fyMilestones + (n - 1) * recurring) / n },
       { key: "lounge", label: LOUNGE, inr: loungeTotal },
@@ -350,9 +360,9 @@ export function explainValueComponents(
     milestones: { items: milestones, recurring_annual_inr: recurring, first_year_only_inr: firstYearOnly },
     lounge: { items: lounge, annual_inr: loungeTotal },
     loyalty_tier: tierItem,
-    steady_state: { rewards_net_inr: rewardsNet, milestones_inr: recurring, lounge_inr: loungeTotal, tier_inr: tierTotal, total_inr: steadyTotal },
+    steady_state: { rewards_net_inr: rewardsNet, forex_inr: forexTotal, milestones_inr: recurring, lounge_inr: loungeTotal, tier_inr: tierTotal, total_inr: steadyTotal },
     first_year: {
-      rewards_gross_inr: rewards.annual_gross_inr, fee_inr: joiningFee, welcome_inr: welcomeTotal,
+      rewards_gross_inr: rewards.annual_gross_inr, fee_inr: joiningFee, forex_inr: forexTotal, welcome_inr: welcomeTotal,
       milestones_inr: fyMilestones, lounge_inr: loungeTotal, tier_inr: tierTotal, total_inr: firstYearTotal,
     },
     tenure_years: n,

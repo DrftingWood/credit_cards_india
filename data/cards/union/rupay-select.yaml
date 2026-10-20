@@ -2,7 +2,9 @@
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
 #   Source     : Union Bank issuer card page
 #                (unionbankofindia.bank.in/en/details/rupay-select-credit-card).
-#   Verified   : 2026-07-04   Confidence: HIGH (rewards/benefits) / LOW (fees)
+#   Verified   : 2026-07-04   Confidence: HIGH (rewards/benefits)
+#   2026-10-20 : fees corrected from the Union Bank MITC v1.4 (D5); they were
+#                unconfirmed estimates (annual Rs 750 / waiver Rs 75k / forex 3.5%).
 #   Reward rate (4 pts/Rs 100), lounge (2 domestic/quarter + 2 international/yr)
 #   and the 1% fuel surcharge waiver (cap Rs 100/cycle) are confirmed on the
 #   issuer page. Prior record understated the earn rate (2 pts/Rs 150). Fees are
@@ -24,22 +26,28 @@ fees:
   - effective_from: 2022-04-01
     effective_until: null
     joining_fee_inr: 0
-    annual_fee_inr: 750
+    annual_fee_inr: 550
     fee_waiver:
-      spend_inr: 75000
+      spend_inr: 50000
       cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 2.50
+    forex_markup_pct: 3.0
+    finance_charge_monthly_pct: 3.0
     cash_advance_fee:
       pct: 3.0
-      min_inr: 300
+      min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.unionbankofindia.bank.in/en/details/rupay-select-credit-card
-      retrieved_on: 2026-07-04
-      type: issuer-page
-      confidence: low
-      notes: "Fees not stated on the issuer card page; joining/annual/waiver/forex are RuPay Select program estimates pending the Union Bank Key Fact Statement."
+      url: https://www.unionbankofindia.bank.in/pdf/mitc-credit-cards.pdf
+      retrieved_on: 2026-10-20
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.fee_waiver
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+      notes: "Union Bank MITC v1.4 (effective 25-Sep-2025): RuPay Select joining NIL, annual Rs 550 (add-on Rs 450), waived on Rs 50,000 card usage in the last 12 months; foreign currency markup 3%; finance charge 3.00% p.m. if MPD is paid or not; cash withdrawal 3% (min Rs 500). Corrects earlier unconfirmed estimates (Rs 750 / Rs 75,000 / 3.5% / 2.5% / Rs 300). effective_from left at the card's record start; the MITC does not say when these fees began."
 
 rewards:
   - effective_from: 2022-04-01
@@ -118,5 +126,5 @@ application:
   apply_url: https://www.unionbankofindia.bank.in/en/details/rupay-select-credit-card
 
 metadata:
-  last_verified_on: 2026-07-04
+  last_verified_on: 2026-10-20
   tags: [mid, rupay, points, upi-linkable, psu-bank]

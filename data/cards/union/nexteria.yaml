@@ -1,0 +1,184 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : Union Bank MITC v1.4 (effective 25-Sep-2025,
+#                unionbankofindia.bank.in/pdf/mitc-credit-cards.pdf) + the
+#                NEXTERIA card page (unionbankofindia.bank.in/en/details/
+#                nexteria-credit-card).
+#   Verified   : 2026-10-20   Confidence: HIGH (fees, earn) / MEDIUM (point value)
+#   D5 blocker: NEXTERIA's own pages give no Rs/point value. Every other Union
+#   card page that states one says "1 Reward point = Rs. 0.25" (UNICORN,
+#   DIVAA ICON, RuPay Select), all redeemed on the same Union Rewardz portal
+#   the MITC names, and the portal's homepage states Rs 0.25 per Union Point
+#   (read in a browser 2026-10-20; JS-rendered, not machine-checkable). The
+#   value is therefore programme-level, held at medium confidence.
+#   Not used: ubicards ADB_NEXTERIA_FEE_CHARGES.html shows a stale template
+#   (joining Rs 499 / annual Rs 550) that contradicts the MITC.
+# ---------------------------------------------------------------------------
+id: union-nexteria
+name: Union Bank NEXTERIA Credit Card
+issuer: union
+network: rupay
+network_tier: ekaa
+tier: super-premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+
+fees:
+  - effective_from: 2025-09-25
+    effective_until: null
+    joining_fee_inr: 12499
+    annual_fee_inr: 12499
+    fee_waiver:
+      spend_inr: 800000
+      cycle: annual
+      conditions: "Annual fee waived on Rs 8 lakh+ spend in the previous year. Joining fee waived on Rs 3 lakh spend within 90 days of activation. Fees are the same for add-on cards."
+    forex_markup_pct: 3.0
+    finance_charge_monthly_pct: 3.0
+    cash_advance_fee:
+      pct: 3.0
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.unionbankofindia.bank.in/pdf/mitc-credit-cards.pdf
+      retrieved_on: 2026-10-20
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.fee_waiver
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+      notes: "MITC v1.4 (effective 25-Sep-2025): NEXTERIA joining and annual Rs 12,499 (primary and add-on); joining waived on Rs 3 lakh within 90 days of activation; annual waived on Rs 8 lakh card usage in the last 12 months; foreign currency markup 3%; finance charge 3.00% p.m.; cash withdrawal 3% (min Rs 500). effective_from is the MITC version date, not the launch date."
+
+rewards:
+  - effective_from: 2025-09-25
+    effective_until: null
+    currency: points
+    currency_name: Union Reward Points
+    base:
+      rate: 5
+      per_inr: 125
+      cap_per_cycle: 10000
+      cap_unit: points
+      cycle: monthly
+      unit_value_inr: 0.25
+      # Same realised haircut as union-rupay-select (catalogue / bill-payment
+      # redemption on Union Rewardz).
+      unit_value_inr_realized: 0.18
+    exclusions:
+      - jewellery
+      - fuel
+      - cash-advance
+      - crypto
+      - wallet-loads
+      - insurance-premiums
+      - other
+    capping_rules:
+      - "Reward points per Credit Card Customer ID capped at 10,000 per month, excluding milestone points."
+      - "Excluded MCCs: jewellery, fuel, cash withdrawal, Bitcoin, wallet loading, alcohol / wine shops ('other' above), insurance payments."
+      - "Birthday month: 10X on online shopping / electronics spends, max 10,000 points. Not modelled as an accelerator (one month a year)."
+      - "Monthly milestone: 5X on spend of Rs 2,00,000 and above in the month, max 10,000 points. Not modelled as an accelerator (spend-gated)."
+    redemption:
+      - type: catalog
+        program: Union Rewardz
+        rate_inr_per_unit: 0.25
+        constraints: "Redeem for card bill payment, gift vouchers etc. on the Union Rewardz app or unionrewardz.com (MITC)."
+    source:
+      url: https://www.unionbankofindia.bank.in/pdf/mitc-credit-cards.pdf
+      retrieved_on: 2026-10-20
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.base.cap_per_cycle
+      notes: "MITC 'Rewards structure for NEXTERIA': 'On spend of each of Rs.125/-, customer earns 5 reward points'; 10,000/month cap; exclusions and birthday / monthly-milestone multipliers as in capping_rules. The Rs 0.25 point value is programme-level (see header) — medium confidence."
+
+benefits:
+  - effective_from: 2025-09-25
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [rupay]
+        notes: "Unlimited for the individual cardholder; plus two family visits (1+3) per quarter."
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [rupay]
+    milestones:
+      - spend_inr: 1000000
+        cycle: annual
+        benefit: "10,000 bonus reward points on Rs 10 lakh annual spend"
+        value_inr: 2500
+        reward_kind: points
+        reward_units: 10000
+        reward_currency_name: Union Reward Points
+        trigger_window: anniversary-year
+        is_repeatable: true
+      - spend_inr: 1200000
+        cycle: annual
+        benefit: "15,000 bonus reward points on Rs 12 lakh+ annual spend (total milestone points capped at 15,000)"
+        value_inr: 3750
+        reward_kind: points
+        reward_units: 15000
+        reward_currency_name: Union Reward Points
+        trigger_window: anniversary-year
+        is_repeatable: true
+    movies:
+      type: bogo
+      cycle: monthly
+      cap_inr: 500
+      notes: "Buy 1 get 1 ticket up to Rs 500, once a month."
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 5000000
+      - type: air-accident
+        sum_insured_inr: 10000000
+      - type: purchase-protection
+        sum_insured_inr: 200000
+      - type: baggage-loss
+        sum_insured_inr: 20000
+      - type: fraud-liability
+        sum_insured_inr: 200000
+        conditions: "Cyber security insurance (Bajaj Allianz, subject to annual review)."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    concierge: true
+    other:
+      - name: ITC hospitality (RuPay Ekaa)
+        description: "2+1 complimentary night at ITC premium hotels (other than Fortune), outside blackout dates."
+      - name: Golf
+        description: "4 complimentary domestic golf lessons or rounds a year (list on the RuPay portal)."
+    source:
+      url: https://www.unionbankofindia.bank.in/en/details/nexteria-credit-card
+      retrieved_on: 2026-10-20
+      type: issuer-page
+      confidence: high
+      notes: "Card page: 'Two Family Visit allow per Quarter 1+3 & Unlimited visit for individuals (Domestic & International)'; ITC 2+1 night; 24x7 concierge; 4 golf rounds a year; BOGO movies up to Rs 500 a month; insurance as listed (PA Rs 50 lakh, air accident Rs 1 crore, purchase protection Rs 2 lakh, baggage Rs 20,000, cyber Rs 2 lakh). Annual milestones (Rs 10 lakh: +10,000; Rs 12 lakh+: +15,000; milestone total capped at 15,000) from the MITC. Fuel: the card page says fuel waiver is 'same as that for RuPay select variant', and the MITC row is 1% up to Rs 100 per month."
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 2500000
+    self_employed: 2500000
+  credit_score_min: 700
+  residency: resident-indian
+  notes: "Card page: gross income Rs 25 lakh+ a year, or against a deposit of at least Rs 10 lakh (age 18+, no upper limit, no CIBIL criterion for the deposit-backed card). Base limit Rs 2 lakh."
+
+application:
+  apply_url: https://www.unionbankofindia.bank.in/en/details/nexteria-credit-card
+
+metadata:
+  last_verified_on: 2026-10-20
+  tags: [super-premium, metal, rupay, points, lounge, psu-bank, upi-linkable]

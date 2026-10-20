@@ -8,8 +8,11 @@ import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
-import { rankCards, listEcosystems, type CardScore, type ScoringContext } from "@/lib/calculator";
+import { rankCards, listEcosystems, type CardScore, type ScoringContext, type SpendProfile } from "@/lib/calculator";
 import { useSpendProfile, MAX_MONTHLY_SPEND } from "@/lib/use-spend-profile";
+import { useValuePrefs } from "@/lib/use-value-prefs";
+import { explainValueComponents, type ValuePrefs } from "@/lib/value-components";
+import { valueSummaryLine } from "@/components/detail/value-components-panel";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
 import { formatInr, formatPct } from "@/lib/utils";
 
@@ -32,6 +35,7 @@ const ECO_GROUPS: { label: string; icon: string; ecos: string[] }[] = [
 
 export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
   const [spend, setSpend] = useSpendProfile();
+  const [valuePrefs] = useValuePrefs();
   const selectedId = useSearchParams().get("card");
   const selectedCard = useMemo(
     () => (selectedId ? cards.find((c) => c.id === selectedId) ?? null : null),
@@ -192,12 +196,13 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
       <div>
         <h2 className="text-lg font-semibold text-slate-900">Ranked by net annual value</h2>
         <p className="text-xs text-slate-500 mt-0.5">
-          Approximate. Ignores welcome bonuses, milestone vouchers and some complex caps; for the full picture open the detail page.
+          Approximate, and ranked on steady-state spend rewards only. Welcome, milestone and lounge value are shown
+          separately on each row and in the breakdown, never mixed into the rank. Some complex caps are simplified.
         </p>
         {pinnedSelected ? (
           <div className="mt-4">
             <div className="text-xs uppercase tracking-wide text-brand-700 mb-1">Selected card</div>
-            <ResultRow rank={null} score={pinnedSelected} highlighted />
+            <ResultRow rank={null} score={pinnedSelected} spend={spend} valuePrefs={valuePrefs} highlighted />
           </div>
         ) : null}
         <ol className="mt-4 space-y-3">
@@ -206,6 +211,8 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
               key={r.card.id}
               rank={i + 1}
               score={r}
+              spend={spend}
+              valuePrefs={valuePrefs}
               highlighted={r.card.id === selectedId}
             />
           ))}
@@ -233,14 +240,22 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
 function ResultRow({
   rank,
   score,
+  spend,
+  valuePrefs,
   highlighted = false,
 }: {
   rank: number | null;
   score: CardScore;
+  spend: SpendProfile;
+  valuePrefs: ValuePrefs;
   highlighted?: boolean;
 }) {
   const c = score.card;
   const href = cardHref(c);
+  // Decoupled one-offs: computed from this row's own steady-state result, shown beside it, never ranked on.
+  const extra = valueSummaryLine(
+    explainValueComponents(c, spend, { annual_gross_inr: score.annual_gross_inr, annual_fee_inr: score.annual_fee_effective_inr }, valuePrefs),
+  );
 
   return (
     <li
@@ -296,6 +311,7 @@ function ResultRow({
               formatInr(score.annual_fee_effective_inr)
             )}
           </div>
+          {extra ? <div className="mt-0.5 text-[11px] text-slate-500 tabular-nums">{extra}</div> : null}
         </div>
       </div>
 

@@ -4,6 +4,8 @@ import type { EnrichedCard } from "@/lib/types";
 import { explainCard, type AcceleratorExplain, type BaseSpendExplain, type ScoringContext } from "@/lib/calculator";
 import { useSpendProfile, MAX_MONTHLY_SPEND } from "@/lib/use-spend-profile";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
+import { useValuePrefs } from "@/lib/use-value-prefs";
+import { ValueComponentsPanel } from "./value-components-panel";
 
 const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
 
@@ -124,12 +126,13 @@ export function AccelerationBreakdown({
   hostLabel?: string;
 }) {
   const [spend, setSpend] = useSpendProfile(); // shared + persisted across all calculators
+  const [valuePrefs, setValuePrefs] = useValuePrefs(); // tenure + lounge usage, shared the same way
   const layers = useMemo(() => breakdownLayers(hostCtx, hostLabel), [hostCtx, hostLabel]);
   const [layerId, setLayerId] = useState(() => layers[0].id);
   // Fall back to the primary layer if the host swapped the layer set out from under us.
   const layer = layers.find((l) => l.id === layerId) ?? layers[0];
 
-  const ex = useMemo(() => explainCard(card, spend, layer.ctx), [card, spend, layer]);
+  const ex = useMemo(() => explainCard(card, spend, layer.ctx, valuePrefs), [card, spend, layer, valuePrefs]);
   // Absolute layer, computed unconditionally (explainCard is pure/cheap): the source of
   // truth for "what got cut" notes on base-rate rows in the selected layer (FIX 1).
   const exAbs = useMemo(() => explainCard(card, spend, { valueBasis: "face" }), [card, spend]);
@@ -201,6 +204,10 @@ export function AccelerationBreakdown({
       <p className="mt-1 text-[11px] text-slate-400 tabular-nums">
         {inr(ex.annual_gross_inr)} rewards − {inr(ex.annual_fee_inr)} annual fee. Estimate for the spend you entered.
       </p>
+
+      {ex.value_components ? (
+        <ValueComponentsPanel vc={ex.value_components} prefs={valuePrefs} onPrefsChange={(p) => setValuePrefs(() => p)} />
+      ) : null}
     </section>
   );
 }

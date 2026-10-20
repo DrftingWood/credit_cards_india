@@ -12,9 +12,15 @@ field and the cards. A claim is applied to a card only when
   * the field's current value equals what the claim says the document states:
     a literal value from the doc, or, for "confirmed as-is" claims, the value
     the field had at the verification commit (same record, same effective_from),
-  * and, for reward claims, every accelerator on the record is covered, so the
+  * for reward claims, every accelerator on the record is covered, so the
     record's `fields_verified` never makes an inherited rule look vouched for
-    (or contradicted) when it was not checked (see provenance._vouches_for).
+    (or contradicted) when it was not checked (see provenance._vouches_for);
+  * and the field did not carry a `# TODO verify` marker before the 2026-07-03
+    TODO cleanup (CLEANUP_PRE_REV), which stripped markers without re-reading
+    sources. The audit docs predate that cleanup, so a marker on a field means
+    the audit itself left that card's value unconfirmed. Claims tied to a
+    verification commit made after the cleanup (`rev`) re-examined the field
+    and are exempt.
 
 Nothing is read from the PDFs themselves; `--archive DIR` only checks that each
 cited file exists in a checkout that has the gitignored archive. Insertion is a
@@ -33,6 +39,7 @@ from __future__ import annotations
 import argparse
 import difflib
 import io
+import re
 import subprocess
 import sys
 from collections import Counter, defaultdict
@@ -43,6 +50,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 AS_OF = object()  # "the value the field had at the claim's verification commit"
+CLEANUP_PRE_REV = "2a2c5b4~1"  # last commit before the 2026-07-03 "TODO cleanup" series
 
 
 @dataclass
@@ -170,8 +178,38 @@ def open_record(doc: dict, section: str) -> tuple[int, dict] | tuple[None, None]
     return recs[0] if len(recs) == 1 else (None, None)
 
 
-def evaluate(claim: Claim, slug: str, rec: dict | None, old_rec: dict | None) -> tuple[list[str], str]:
-    """Return (verified dotted paths, reason). Pure: no I/O. Empty list means skip."""
+def todo_keys(text: str) -> dict[tuple[str, str], set[str]]:
+    """Keys marked `TODO` per (section, effective_from) record; a nested marked
+    line also marks its record-level parent key (e.g. pct -> cash_advance_fee)."""
+    out: dict[tuple[str, str], set[str]] = {}
+    sec = eff = parent = None
+    for line in text.splitlines():
+        m = re.match(r"^([a-z_]+):", line)
+        if m:
+            sec, eff, parent = m.group(1), None, None
+            continue
+        m = re.match(r"^  - effective_from:\s*['\"]?([0-9-]+)", line)
+        if m and sec in ("fees", "rewards"):
+            eff, parent = m.group(1), None
+            continue
+        m = re.match(r"^    ([a-z_]+):", line)
+        if m:
+            parent = m.group(1)
+        if eff and sec in ("fees", "rewards") and re.search(r"\bTODO\b(?!\.md)", line):
+            keys = out.setdefault((sec, eff), set())
+            k = re.match(r"^\s*(?:-\s+)?([a-z_]+):", line)
+            if k:
+                keys.add(k.group(1))
+            if parent:
+                keys.add(parent)
+    return out
+
+
+def evaluate(claim: Claim, slug: str, rec: dict | None, old_rec: dict | None,
+             todo: frozenset | set = frozenset()) -> tuple[list[str], str]:
+    """Return (verified dotted paths, reason). Pure: no I/O. Empty list means skip.
+
+    `todo`: keys of this record that carried a TODO marker before the cleanup."""
     if rec is None:
         return [], "no-open-record"
     src = rec.get("source") or {}
@@ -183,8 +221,12 @@ def evaluate(claim: Claim, slug: str, rec: dict | None, old_rec: dict | None) ->
     if want is None:
         return [], "not-in-claim"
     ok = []
+    flagged = 0
     for f in claim.fields:
         if f not in want:
+            continue
+        if not claim.rev and ({f.split(".")[0], f.split(".")[-1]} & set(todo)):
+            flagged += 1
             continue
         cur = get_path(rec, f)
         if cur is KeyError:
@@ -201,15 +243,20 @@ def evaluate(claim: Claim, slug: str, rec: dict | None, old_rec: dict | None) ->
         ok.append(f"{claim.section}.{f}")
     if claim.all_accelerators and len(ok) != len(claim.fields):
         return [], "value-changed"
-    return ok, ("ok" if ok else "value-mismatch")
+    return ok, ("ok" if ok else ("todo-flagged" if flagged else "value-mismatch"))
 
 
-def load_at(rev: str, rel: str) -> dict | None:
+def text_at(rev: str, rel: str) -> str | None:
     try:
         out = subprocess.run(["git", "show", f"{rev}:{rel}"], cwd=ROOT, capture_output=True, check=True)
     except subprocess.CalledProcessError:
         return None
-    return yaml.safe_load(out.stdout.decode("utf-8"))
+    return out.stdout.decode("utf-8")
+
+
+def load_at(rev: str, rel: str) -> dict | None:
+    text = text_at(rev, rel)
+    return yaml.safe_load(text) if text is not None else None
 
 
 def make_yaml():
@@ -294,7 +341,11 @@ def main(argv=None) -> int:
                 old_doc = load_at(claim.rev, rel) or {}
                 old_rec = next((r for r in old_doc.get(claim.section) or []
                                 if str(r.get("effective_from")) == str(rec.get("effective_from"))), None)
-            paths, reason = evaluate(claim, slug, rec, old_rec)
+            todo: set[str] = set()
+            if not claim.rev and rec is not None:
+                pre = text_at(CLEANUP_PRE_REV, rel)
+                todo = todo_keys(pre).get((claim.section, str(rec.get("effective_from"))), set()) if pre else set()
+            paths, reason = evaluate(claim, slug, rec, old_rec, todo)
             stats[reason] += 1
             if not paths:
                 skips.append(f"{claim.id} {slug}: {reason}")

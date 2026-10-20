@@ -47,7 +47,6 @@ fees:
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
-        - fees.finance_charge_monthly_pct
         - fees.cash_advance_fee
       notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE."
 

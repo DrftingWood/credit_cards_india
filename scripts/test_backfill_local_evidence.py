@@ -1,5 +1,5 @@
 """scripts/test_backfill_local_evidence.py — D3 local-evidence backfill rule tests (no git, no PDFs)."""
-from backfill_local_evidence import AS_OF, CLAIMS, Claim, evaluate, get_path, pure_insert
+from backfill_local_evidence import AS_OF, CLAIMS, Claim, evaluate, get_path, pure_insert, todo_keys
 
 SRC = {"url": "https://www.example.bank.in/card", "retrieved_on": "2026-07-03", "type": "issuer-page"}
 
@@ -52,6 +52,23 @@ assert evaluate(ASOF, "card", fee(), None) == ([], "no-record-at-rev")
 assert evaluate(EARN, "card", reward(), reward()) == (["rewards.base.rate", "rewards.accelerated.cap_per_cycle"], "ok")
 assert evaluate(EARN, "card", reward(cap=2000), reward(cap=2000)) == ([], "value-changed")
 assert evaluate(EARN, "card", reward(n_acc=2), reward(n_acc=2)) == ([], "accelerators-not-all-covered")
+
+# 5b. A field the audit left TODO-flagged is not claimed by a literal (pre-cleanup) claim;
+#     a claim tied to a later verification commit re-examined it and is exempt.
+assert evaluate(FEES, "card", fee(), None, {"forex_markup_pct"}) == (["fees.finance_charge_monthly_pct"], "ok")
+assert evaluate(FEES, "card", fee(), None, {"forex_markup_pct", "finance_charge_monthly_pct"}) == ([], "todo-flagged")
+assert evaluate(ASOF, "card", fee(), fee(), {"annual_fee_inr"}) == (["fees.annual_fee_inr"], "ok")
+PRE = (
+    "fees:\n  - effective_from: 2024-01-01\n    effective_until: null\n"
+    "    finance_charge_monthly_pct: 3.75  # TODO verify\n"
+    "    cash_advance_fee:\n      pct: 2.5  # TODO verify\n      min_inr: 500\n"
+    "    notes: \"see docs/TODO.md\"\n"
+    "rewards:\n  - effective_from: '2024-01-01'\n    accelerated:\n      - category: x\n        cap_per_cycle: 10  # TODO cap\n"
+)
+assert todo_keys(PRE) == {
+    ("fees", "2024-01-01"): {"finance_charge_monthly_pct", "cash_advance_fee", "pct"},
+    ("rewards", "2024-01-01"): {"accelerated", "cap_per_cycle"},
+}
 
 # 6. The write guard accepts only the inserted evidence lines.
 before = "    source:\n      url: u\n      confidence: high\n"

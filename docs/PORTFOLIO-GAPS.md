@@ -32,6 +32,14 @@ Every "high-value gap" the previous review listed has been added and is active:
 | **ICICI Mine** | icici | Customisable card; may have been withdrawn post-2024. | low — confirm status first |
 | **Kotak Mojo Platinum** | kotak | Likely a casualty of the 2024 RBI issuance pause. | low — likely discontinued |
 
+**D11 outcome (2026-10-20)** — all three resolved; none left to add:
+
+| Candidate | Status found | Evidence | Action |
+|---|---|---|---|
+| Axis Burgundy Private | Open, relationship-gated (Burgundy Private clients, TRV ≥ ₹5 Cr) | axis.bank.in/burgundyprivate/creditcard (enquiry form, no standalone apply); revision notice campaign.axis.bank.in/generic/terms-and-conditions-burgundy.pdf (PDF dated 2026-07-27) | Already held as `axis-burgundy-private` (`invite-only`, added 2026-07-28). Appended fee record (annual ₹1,00,000 + GST from 01-09-2026, only if TRV < ₹5 Cr) and benefits record (domestic lounges by card, not Priority Pass, from 28-08-2026) |
+| ICICI Mine | Withdrawn | Old `/millennial-banking/credit-card/*` URLs redirect to icici.bank.in's generic credit-card page with no Mine content; the current credit-card MITC (icici.bank.in/terms-condition/tnc-for-mitc, "MITC_CSA_09-10-2026") has no Mine/MineCash entry. A TechnoFino forum repost of a bank message says it was retired 30-Nov-2025 (forum-only, not issuer-published) | Not added. No issuer page to source terms from |
+| Kotak Mojo Platinum | Discontinued for new applications | kotak.bank.in/en/personal-banking/cards/credit-cards/mojo-platinum-credit-card.html — breadcrumb "Mojo Platinum Credit Card (Discontinued)", no apply link; card listing tags it "Discontinued for new applications" | Not added (D11 adds only cards open to new applicants) |
+
 These are the only mainstream candidates from the previous review that remain
 absent. No new gap candidates are asserted here without a sourced basis.
 

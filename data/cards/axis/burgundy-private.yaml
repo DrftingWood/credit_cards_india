@@ -5,6 +5,8 @@
 #                2026-07-28 and parsed in full — earn rate, exclusions and the
 #                rent/insurance caps below are verbatim from it.
 #   Verified   : 2026-07-28   Confidence: MIXED
+#   2026-10-20 : fee revision (Rs 1 lakh from 01-09-2026) and domestic-lounge
+#                access change (28-08-2026) from the Axis revision-notice PDF.
 #                HIGH (pdf)  : base earn, exclusions, rent + insurance caps.
 #                MEDIUM (web): fees, forex, lounge, memberships, eligibility —
 #                              product/aggregator pages, not an issuer MITC.
@@ -29,7 +31,7 @@ discontinued_on: null
 
 fees:
   - effective_from: 2024-04-20
-    effective_until: null
+    effective_until: 2026-08-31
     joining_fee_inr: 50000
     annual_fee_inr: 50000
     # The published fee is Rs 50,000 + GST, but it is NIL for Burgundy Private
@@ -52,6 +54,38 @@ fees:
     source:
       url: https://www.axisbank.com/burgundyprivate/creditcard
       retrieved_on: 2026-07-28
+  # Axis "Revision of Burgundy Private - The One Card Terms and Conditions"
+  # (PDF dated 2026-07-27): from 01-09-2026 the annual fee is revised from
+  # INR 50,000 to INR 1 lakh + GST, charged only when TRV falls below INR 5 Cr.
+  - effective_from: 2026-09-01
+    effective_until: null
+    # The revision notice changes only the annual fee; no revised joining fee
+    # is stated, so the previous figure is carried forward.
+    joining_fee_inr: 50000
+    annual_fee_inr: 100000
+    # Waiver is a RELATIONSHIP condition (TRV >= INR 5 Cr, excluding demat),
+    # not a spend threshold; the schema has no field for it (TODO E19).
+    fee_waiver: null
+    forex_markup_pct: 0.0
+    finance_charge_monthly_pct: null
+    cash_advance_fee:
+      pct: 0
+      min_inr: 0
+    gst_applicable: true
+    notes: >-
+      Annual fee INR 1,00,000 + GST (revised from INR 50,000 w.e.f. 01-09-2026), charged in the card
+      anniversary month only if the Burgundy Private Total Relationship Value fell below INR 5 crore
+      (excluding demat) in the month before it; complimentary for clients who maintain INR 5 crore TRV.
+      Zero forex markup and zero cash-withdrawal charges carried forward from the product page.
+    source:
+      url: https://campaign.axis.bank.in/generic/terms-and-conditions-burgundy.pdf
+      retrieved_on: 2026-10-20
+      type: issuer-pdf
+      confidence: high
+      notes: >-
+        Fee revision verbatim from the issuer's revision notice ("The annual fee has been revised from
+        INR 50,000 to INR 1 lakh", effective 01-09-2026). Forex and cash-advance terms are carried
+        forward from the product page, not this notice.
 
 rewards:
   - effective_from: 2024-04-20
@@ -105,7 +139,7 @@ rewards:
 
 benefits:
   - effective_from: 2024-04-20
-    effective_until: null
+    effective_until: 2026-08-27
     lounge_access:
       domestic:
         visits_per_cycle: unlimited
@@ -135,6 +169,43 @@ benefits:
       url: https://www.axisbank.com/burgundyprivate/creditcard
       retrieved_on: 2026-07-28
       notes: "Lounge counts and memberships are web-tier (product/aggregator pages), not confirmed against an Axis MITC."
+  # Revision notice: from 28-08-2026 Priority Pass no longer works at Indian
+  # domestic lounges; the Burgundy Private card itself is presented instead.
+  - effective_from: 2026-08-28
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [issuer-direct]
+        notes: "Unlimited for primary and add-on members; 12 complimentary guest visits per year. From 28-08-2026 domestic lounges in India are accessed with the Burgundy Private credit card itself; Priority Pass is no longer valid at domestic lounges."
+      international:
+        visits_per_cycle: unlimited
+        cycle: annual
+        guests_per_visit: 0
+        via: [priority-pass]
+        notes: "Unlimited via complimentary Priority Pass; 12 complimentary guest visits per year."
+    concierge: true
+    other:
+      - name: Club Marriott membership
+        description: Complimentary Club Marriott membership.
+      - name: Taj Epicure membership
+        description: Complimentary Taj Epicure membership.
+      - name: ALL Accor Plus Explorer membership
+        description: Complimentary ALL Accor Plus Explorer membership.
+      - name: EazyDiner membership
+        description: Complimentary EazyDiner membership.
+      - name: Airport concierge
+        description: Complimentary airport concierge / meet-and-greet service.
+    source:
+      url: https://campaign.axis.bank.in/generic/terms-and-conditions-burgundy.pdf
+      retrieved_on: 2026-10-20
+      type: issuer-pdf
+      notes: >-
+        Domestic-lounge access change (card only, Priority Pass no longer valid at Indian domestic
+        lounges w.e.f. 28-08-2026) is verbatim from the issuer's revision notice. Unlimited visits, 12
+        guest visits and the memberships are carried forward from the earlier record (web-tier).
 
 eligibility:
   min_age: 18
@@ -154,5 +225,5 @@ application:
   apply_url: https://www.axisbank.com/burgundyprivate/creditcard
 
 metadata:
-  last_verified_on: 2026-07-28
+  last_verified_on: 2026-10-20
   tags: [super-premium, invite-only, relationship-gated, zero-forex, lounge, travel, points]

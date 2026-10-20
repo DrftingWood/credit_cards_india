@@ -157,6 +157,7 @@ Run `python scripts/validate.py` locally; CI runs it on every PR.
 - `metadata.last_verified_on` earlier than any nested `source.retrieved_on` ⇒ error.
 - `application.apply_url` / `application.pre_approval_check_url` must use `http(s)`; off-allowlist domains warn.
 - Optional URL checks (`python scripts/validate.py --check-urls`) perform best-effort reachability checks for `source.url` + application URLs.
+- Source-link health: `python scripts/check_links.py` checks every URL cited under `data/` (HEAD then GET, per-host throttling, browser UA, curl re-check of blocked/network failures) and writes `dist/link-report.{json,md}`, classifying ok / redirect (cosmetic, host-moved, moved, to-homepage, to-error-page) / not-found / blocked (bot-wall 401/403/429) / client-error / server-error / network-error. Runs weekly in `.github/workflows/link-check.yml`, failing only on not-found.
 - Reward-rule provenance (D-21): every run prints a coverage block. A rule whose effective source has no url/date, a non-http or bare-homepage URL, or an inherited source whose `fields_verified` does not cover the rule ⇒ warning. `--strict-provenance` (or `STRICT_PROVENANCE=1`) additionally fails on missing `type`/`confidence`, `retrieved_on` older than 180 days, and aggregator hosts, for open records of active/invite-only cards. `--provenance-report PATH` writes per-rule grades as JSON.
 - `rewards[].loyalty_program` must reference an id under `data/loyalty_programs/`.
 - `accelerated[].channel.merchants[]` tokens must exist under the declared class in `data/channels/known.yaml`.

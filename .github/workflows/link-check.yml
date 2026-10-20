@@ -1,0 +1,42 @@
+name: Source link check
+
+# Weekly health check of every URL the dataset cites (scripts/check_links.py).
+# Network-dependent and slow, so it never runs on PRs. It needs no secrets.
+# The report is uploaded as an artifact; the job fails only when a cited page
+# is gone (404/410), so bot-wall 403s from bank CDNs do not cause false alarms.
+
+on:
+  schedule:
+    - cron: "30 3 * * 1" # Mondays 03:30 UTC, after validate.yml's url-health run
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r scripts/requirements.txt
+
+      - name: Link-checker unit tests
+        run: python scripts/test_check_links.py
+
+      - name: Check source links
+        run: python scripts/check_links.py --out-dir link-report --fail-on not-found
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-report
+          path: link-report/

@@ -19,6 +19,8 @@ data/
   channels/known.yaml               # merchant/channel token index
 scripts/
   validate.py                       # JSON Schema + cross-file lints
+  provenance.py                     # reward-rule provenance grading (D-21)
+  check_links.py                    # source-link health report
   new_card.py                       # scaffold a new card file
   category_rules.yaml               # regex -> canonical bucket map
   tag_canonical_categories.py       # one-shot category tagger

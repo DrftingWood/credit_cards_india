@@ -1,7 +1,9 @@
 import { describe, test, expect } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { UsagePanel, DeclaredUsageSummary } from "./usage-panel";
-import { DEFAULT_USAGE, setFamilyShare, toggleEcosystem, type UsageGroup, type UsageDelta } from "@/lib/usage";
+import { DEFAULT_USAGE, setFamilyShare, setLoyaltyTier, toggleEcosystem, type UsageGroup, type UsageDelta } from "@/lib/usage";
+import type { LoyaltyProgram } from "@/lib/types";
+import type { LoyaltyTierItem } from "@/lib/value-components";
 
 const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}]/u;
 const GROUPS: UsageGroup[] = [
@@ -30,6 +32,41 @@ describe("UsagePanel", () => {
     const html = renderToStaticMarkup(<UsagePanel groups={GROUPS} usage={DEFAULT_USAGE} ecosystem={null} deltas={deltas} />);
     expect(html).toMatch(/Unlocked/);
     expect(html).toContain("+₹320/mo");
+  });
+
+  const PROG = {
+    id: "test-air", name: "Test Air Club",
+    earn: { tiers: [{ id: "silver", name: "Silver", bonus_rate: 2, bonus_per_inr: 100 }, { id: "gold", name: "Gold", bonus_rate: 4, bonus_per_inr: 100 }] },
+  } as unknown as LoyaltyProgram;
+  const BONUS: LoyaltyTierItem = {
+    program_id: "test-air", program_name: "Test Air Club", tier_id: "gold", tier_name: "Gold",
+    qualifying_spend_annual_inr: 120000, annual_inr: 2160,
+  };
+
+  test("a card that stacks with a tiered programme asks for the user's tier, even with no other questions", () => {
+    const u = setLoyaltyTier(DEFAULT_USAGE, "test-air", "gold");
+    const html = renderToStaticMarkup(<UsagePanel groups={[]} usage={u} ecosystem={null} deltas={[]} tier={{ program: PROG, bonus: BONUS }} />);
+    expect(html).toMatch(/Your Test Air Club tier/);
+    expect(html).toContain(">None<");
+    expect(html).toContain(">Silver<");
+    expect(html).toMatch(/<option value="gold" selected="">Gold<\/option>/);
+    expect(html).toContain("+₹2,160/yr");
+    expect(html).toContain("₹1,20,000");
+    expect(EMOJI.test(html)).toBe(false);
+  });
+
+  test("a tier with no qualifying spend says so instead of showing ₹0", () => {
+    const u = setLoyaltyTier(DEFAULT_USAGE, "test-air", "gold");
+    const html = renderToStaticMarkup(<UsagePanel groups={[]} usage={u} ecosystem={null} deltas={[]} tier={{ program: PROG, bonus: null }} />);
+    expect(html).toMatch(/no spend through this card(?:'|&#x27;)s Test Air Club bookings yet/i);
+  });
+
+  test("an entry tier with no bonus says it earns no bonus, not that spend is missing", () => {
+    const prog = { ...PROG, earn: { tiers: [{ id: "base", name: "Base", bonus_rate: 0, bonus_per_inr: 100 }] } } as unknown as LoyaltyProgram;
+    const u = setLoyaltyTier(DEFAULT_USAGE, "test-air", "base");
+    const html = renderToStaticMarkup(<UsagePanel groups={[]} usage={u} ecosystem={null} deltas={[]} tier={{ program: prog, bonus: null }} />);
+    expect(html).toMatch(/Base earns no tier bonus/);
+    expect(html).not.toMatch(/no spend through/i);
   });
 
   test("renders nothing when the card has no usage questions", () => {

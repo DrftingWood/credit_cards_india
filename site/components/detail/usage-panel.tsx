@@ -1,8 +1,10 @@
 import { CATEGORY_LABELS } from "@/lib/category-mapping";
 import {
-  familyOf, familySharePct, setFamilyShare, toggleEcosystem, tokenLabel,
+  familyOf, familySharePct, setFamilyShare, setLoyaltyTier, toggleEcosystem, tokenLabel,
   type UsageDelta, type UsageGroup, type UsageProfile,
 } from "@/lib/usage";
+import type { LoyaltyProgram } from "@/lib/types";
+import type { LoyaltyTierItem } from "@/lib/value-components";
 
 const inr = (n: number) => `₹${Math.round(Math.abs(n)).toLocaleString("en-IN")}`;
 const signed = (n: number) => `${n < 0 ? "−" : "+"}${inr(n)}/mo`;
@@ -15,7 +17,7 @@ const CHANGE_LABEL: Record<UsageDelta["change"], string> = { unlocked: "Unlocked
  * hook-driven AccelerationBreakdown owns the store and passes `onChange`.
  */
 export function UsagePanel({
-  groups, usage, ecosystem, deltas, onChange,
+  groups, usage, ecosystem, deltas, onChange, tier,
 }: {
   groups: UsageGroup[];
   usage: UsageProfile;
@@ -23,8 +25,10 @@ export function UsagePanel({
   ecosystem: string | null;
   deltas: UsageDelta[];
   onChange?: (u: UsageProfile) => void;
+  /** The tiered programme this card stacks with, and the bonus the user's tier earns here (null = none). */
+  tier?: { program: LoyaltyProgram; bonus: LoyaltyTierItem | null };
 }) {
-  if (groups.length === 0 && !ecosystem) return null;
+  if (groups.length === 0 && !ecosystem && !tier) return null;
   return (
     <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-3">
       <h3 className="text-sm font-semibold text-slate-900">Your usage</h3>
@@ -69,6 +73,8 @@ export function UsagePanel({
         </label>
       ) : null}
 
+      {tier ? <TierPicker program={tier.program} bonus={tier.bonus} usage={usage} onChange={onChange} /> : null}
+
       {deltas.length > 0 ? (
         <ul className="mt-2 flex flex-wrap gap-1.5">
           {deltas.map((d) => (
@@ -85,6 +91,42 @@ export function UsagePanel({
           ))}
         </ul>
       ) : null}
+    </div>
+  );
+}
+
+/**
+ * "Your <programme> tier": the tier the user holds, persisted with the rest of the usage
+ * profile. The bonus is the programme's earn (D-9), shown as its own ledger line in the value
+ * totals and never added to the card's rewards or rank.
+ */
+function TierPicker({
+  program, bonus, usage, onChange,
+}: { program: LoyaltyProgram; bonus: LoyaltyTierItem | null; usage: UsageProfile; onChange?: (u: UsageProfile) => void }) {
+  const selected = usage.loyalty_tiers[program.id] ?? "";
+  const selectedTier = program.earn?.tiers?.find((t) => t.id === selected);
+  const note = !selectedTier
+    ? null
+    : bonus
+      ? `+${inr(bonus.annual_inr)}/yr ${bonus.tier_name} tier bonus on ${inr(bonus.qualifying_spend_annual_inr)} a year of bookings this card accelerates. Paid by ${program.name}, so it is listed separately and not ranked.`
+      : !(selectedTier.bonus_rate > 0)
+        ? `${selectedTier.name ?? selectedTier.id} earns no tier bonus.`
+        : `No spend through this card's ${program.name} bookings yet, so the tier adds nothing here.`;
+  return (
+    <div className="mt-2 text-xs text-slate-700">
+      <label className="flex items-center gap-2">
+        <span>Your {program.name} tier</span>
+        <select
+          value={selected}
+          disabled={!onChange}
+          onChange={onChange ? (e) => onChange(setLoyaltyTier(usage, program.id, e.target.value || null)) : undefined}
+          className="rounded-md border border-slate-300 px-1.5 py-0.5 text-xs text-slate-900"
+        >
+          <option value="">None</option>
+          {(program.earn?.tiers ?? []).map((t) => <option key={t.id} value={t.id}>{t.name ?? t.id}</option>)}
+        </select>
+      </label>
+      {note ? <p className="mt-1 text-[11px] text-slate-500 tabular-nums">{note}</p> : null}
     </div>
   );
 }

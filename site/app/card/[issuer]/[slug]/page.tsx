@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { allCardRouteParams, cardHref, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
+import { allCardRouteParams, cardHref, getAllLoyaltyPrograms, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
+import { cardTierProgram } from "@/lib/usage";
 import { formatDate, formatInr } from "@/lib/utils";
 import { pickTopAccelerated, formatAcceleratedRate } from "@/lib/detail-derivations";
 import { HistoryTimeline } from "@/components/history-timeline";
@@ -238,7 +239,7 @@ export default async function CardPage({
 
       {/* Scannable grids */}
       <RewardsBenefitsGrid card={card} />
-      <AccelerationBreakdown card={card} />
+      <AccelerationBreakdown card={card} programs={tierProgramsFor(card)} />
       <FeesChargesGrid card={card} />
 
       {/* Product details + pros/cons */}
@@ -366,4 +367,10 @@ function Fact({ label, value }: { label: string; value: string }) {
       <dd className="prose-card-value text-sm">{value}</dd>
     </div>
   );
+}
+
+/** Only the programme this card stacks with, and only when it has tiers: keeps the page payload small. */
+function tierProgramsFor(card: Parameters<typeof cardTierProgram>[0]) {
+  const p = cardTierProgram(card, getAllLoyaltyPrograms());
+  return p ? [p] : [];
 }

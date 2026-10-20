@@ -19,6 +19,7 @@ export function valueSummaryLine(vc: ValueComponents): string | null {
   const ms = vc.first_year.milestones_inr;
   if (ms > 0) parts.push(`${inr(ms)} milestones`);
   if (vc.lounge.annual_inr > 0) parts.push(`${inr(vc.lounge.annual_inr)} lounge`);
+  if (vc.loyalty_tier && vc.loyalty_tier.annual_inr > 0) parts.push(`${inr(vc.loyalty_tier.annual_inr)} ${vc.loyalty_tier.tier_name} tier`);
   const y1 = vc.ledger.first_year.total_inr;
   const y2 = vc.ledger.steady_state.total_inr;
   if (parts.length === 0 && y1 === y2) return null;

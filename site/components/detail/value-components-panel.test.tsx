@@ -84,6 +84,20 @@ describe("ValueComponentsPanel renders every component as its own honest line", 
   });
 });
 
+describe("ValueComponentsPanel shows a declared loyalty tier as its own ledger line", () => {
+  test("the tier line is labelled with the tier and who pays it", () => {
+    const tier = {
+      program_id: "test-air", program_name: "Test Air Club", tier_id: "gold", tier_name: "Gold",
+      qualifying_spend_annual_inr: 120000, annual_inr: 2160,
+    };
+    const vc = explainValueComponents(card({}), SPEND, { annual_gross_inr: 9000, annual_fee_inr: 1000, loyalty_tier: tier }, DEFAULT_VALUE_PREFS);
+    const html = renderToStaticMarkup(<ValueComponentsPanel vc={vc} prefs={DEFAULT_VALUE_PREFS} />);
+    expect(html).toContain("Gold tier bonus, paid by Test Air Club");
+    expect(html).toContain("₹2,160");
+    expect(valueSummaryLine(vc)).toContain("₹2,160 Gold tier");
+  });
+});
+
 describe("ValueComponentsPanel with no benefits on record", () => {
   test("says so plainly instead of rendering empty lists", () => {
     const vc = explainValueComponents(card({}), SPEND, { annual_gross_inr: 1000, annual_fee_inr: 0 }, DEFAULT_VALUE_PREFS);

@@ -3,18 +3,18 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import type { EnrichedCard } from "@/lib/types";
+import type { EnrichedCard, LoyaltyProgram } from "@/lib/types";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
-import { rankCards, listEcosystems, type CardScore, type ScoringContext, type SpendProfile } from "@/lib/calculator";
+import { explainCard, rankCards, listEcosystems, type CardScore, type ScoringContext, type SpendProfile } from "@/lib/calculator";
 import { useSpendProfile, MAX_MONTHLY_SPEND } from "@/lib/use-spend-profile";
 import { useValuePrefs } from "@/lib/use-value-prefs";
 import { explainValueComponents, type ValuePrefs } from "@/lib/value-components";
 import { valueSummaryLine } from "@/components/detail/value-components-panel";
 import { useUsageProfile } from "@/lib/use-usage-profile";
-import { toggleEcosystem, usageContext } from "@/lib/usage";
+import { tierContext, toggleEcosystem, usageContext } from "@/lib/usage";
 import { DeclaredUsageSummary } from "@/components/detail/usage-panel";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
 import { formatInr, formatPct } from "@/lib/utils";
@@ -36,7 +36,7 @@ const ECO_GROUPS: { label: string; icon: string; ecos: string[] }[] = [
   { label: "Bills & apps", icon: "💳", ecos: ["CheQ"] },
 ];
 
-export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
+export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard[]; programs?: LoyaltyProgram[] }) {
   const [spend, setSpend] = useSpendProfile();
   const [valuePrefs] = useValuePrefs();
   const selectedId = useSearchParams().get("card");
@@ -68,6 +68,10 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
     if (usage.gate_calculator) return { ...usageContext(usage), applyApplicability: true };
     return { enabledEcosystems: enabledEco };
   }, [mode, enabledEco, usage]);
+
+  // The user's declared loyalty tiers (Phase 3). They add only a separate value line, never
+  // the rank, so the row one-liners use them while rankCards keeps rankCtx unchanged.
+  const tierCtx = useMemo(() => tierContext(usage.loyalty_tiers, programs), [usage.loyalty_tiers, programs]);
 
   const { ranked, pinnedSelected } = useMemo(() => {
     const all = rankCards(cards, spend, rankCtx);
@@ -226,7 +230,7 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
         {pinnedSelected ? (
           <div className="mt-4">
             <div className="text-xs uppercase tracking-wide text-brand-700 mb-1">Selected card</div>
-            <ResultRow rank={null} score={pinnedSelected} spend={spend} valuePrefs={valuePrefs} highlighted />
+            <ResultRow rank={null} score={pinnedSelected} spend={spend} valuePrefs={valuePrefs} rankCtx={rankCtx} tierCtx={tierCtx} highlighted />
           </div>
         ) : null}
         <ol className="mt-4 space-y-3">
@@ -237,6 +241,8 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
               score={r}
               spend={spend}
               valuePrefs={valuePrefs}
+              rankCtx={rankCtx}
+              tierCtx={tierCtx}
               highlighted={r.card.id === selectedId}
             />
           ))}
@@ -253,6 +259,7 @@ export function CalculatorClient({ cards }: { cards: EnrichedCard[] }) {
               card={selectedCard}
               hostCtx={rankCtx}
               hostLabel={mode === "best" ? "Best-case" : "Realistic"}
+              programs={programs}
             />
           </div>
         ) : null}
@@ -266,19 +273,33 @@ function ResultRow({
   score,
   spend,
   valuePrefs,
+  rankCtx,
+  tierCtx,
   highlighted = false,
 }: {
   rank: number | null;
   score: CardScore;
   spend: SpendProfile;
   valuePrefs: ValuePrefs;
+  rankCtx: ScoringContext;
+  tierCtx: ReturnType<typeof tierContext>;
   highlighted?: boolean;
 }) {
   const c = score.card;
   const href = cardHref(c);
+  // A declared tier for this card's programme: value it the way the embedded breakdown does
+  // (same rank ctx + tier fields), so the row's Year 1 / Year 2+ match the panel below it.
+  const pid = c.current_rewards?.loyalty_program;
+  const loyaltyTier = pid && tierCtx.tierMap[pid]
+    ? explainCard(c, spend, { ...rankCtx, ...tierCtx }, valuePrefs).value_components?.loyalty_tier ?? null
+    : null;
   // Decoupled one-offs: computed from this row's own steady-state result, shown beside it, never ranked on.
   const extra = valueSummaryLine(
-    explainValueComponents(c, spend, { annual_gross_inr: score.annual_gross_inr, annual_fee_inr: score.annual_fee_effective_inr }, valuePrefs),
+    explainValueComponents(
+      c, spend,
+      { annual_gross_inr: score.annual_gross_inr, annual_fee_inr: score.annual_fee_effective_inr, loyalty_tier: loyaltyTier },
+      valuePrefs,
+    ),
   );
 
   return (

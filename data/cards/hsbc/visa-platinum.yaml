@@ -33,7 +33,7 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free card."
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
+      url: https://www.hsbc.bank.in/credit-cards/products/visa-platinum/
       retrieved_on: 2026-07-03
 
 rewards:
@@ -159,7 +159,7 @@ rewards:
             notes: 10:1 -> ~Rs 0.05/pt [below floor — avoid]
     notes: "Accelerated reward points on hotels, flights & car rentals via HSBC Travel Edit. 15% cashback to MakeMyTrip 'My Cash' wallet on bookings."
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
+      url: https://www.hsbc.bank.in/credit-cards/products/visa-platinum/
       retrieved_on: '2026-07-05'
       type: issuer-page
 
@@ -186,7 +186,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
+      url: https://www.hsbc.bank.in/credit-cards/products/visa-platinum/
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -199,7 +199,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hsbc.co.in/credit-cards/products/visa-platinum/
+  apply_url: https://www.hsbc.bank.in/credit-cards/products/visa-platinum/
 
 metadata:
   last_verified_on: '2026-07-05'

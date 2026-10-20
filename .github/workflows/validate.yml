@@ -29,7 +29,9 @@ jobs:
         run: python scripts/test_provenance.py
 
       - name: Evidence backfill rule tests (D3)
-        run: python scripts/test_backfill_source_confidence.py
+        run: |
+          python scripts/test_backfill_source_confidence.py
+          python scripts/test_backfill_local_evidence.py
 
       - name: Local evidence check tests (D3)
         run: python scripts/test_local_evidence.py

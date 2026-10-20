@@ -84,6 +84,7 @@ rewards:
       url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 benefits:
   - effective_from: 2022-09-01

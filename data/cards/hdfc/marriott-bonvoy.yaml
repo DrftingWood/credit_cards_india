@@ -39,6 +39,10 @@ fees:
       url: https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card
       retrieved_on: 2026-06-12
       type: issuer-page
+      local_refs:
+        - docs/sources/hdfc/_shared/mitc-in-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
       notes: "Waiver corrected 2026-06: the earlier ₹6L spend waiver was wrong."
 
 rewards:

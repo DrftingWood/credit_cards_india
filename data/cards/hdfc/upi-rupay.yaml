@@ -37,6 +37,10 @@ fees:
       url: https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      local_refs:
+        - docs/sources/hdfc/_shared/mitc-in-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
 
 rewards:
   - effective_from: 2026-07-03

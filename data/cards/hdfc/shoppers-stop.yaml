@@ -35,6 +35,10 @@ fees:
       retrieved_on: 2026-07-03
       type: issuer-page
       confidence: high
+      local_refs:
+        - docs/sources/hdfc/_shared/mitc-in-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
     notes: "₹299 joining and annual fee for customers joining from Mar-2024; earlier customers are lifetime-free."
 
 rewards:

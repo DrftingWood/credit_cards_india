@@ -39,6 +39,8 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
       notes: "Secured 'Advantage' variant of SimplyCLICK SBI Card (issued against a fixed deposit)."
 
 rewards:
@@ -118,6 +120,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

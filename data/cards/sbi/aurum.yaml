@@ -44,6 +44,7 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/luxury/aurum.page
       retrieved_on: 2026-04-15
+      type: issuer-page
       notes: "Historical record; finance charge before the 1-Nov-2024 hike."
 
   - effective_from: 2024-11-01
@@ -63,6 +64,7 @@ fees:
     source:
       url: https://cardinsider.com/blog/important-update-on-sbi-credit-cards-finance-charges-and-utility-bill-payments/
       retrieved_on: 2026-06-12
+      type: aggregator
       notes: "Finance charge 3.75%/month on all unsecured SBI cards from 1-Nov-2024."
 
 rewards:
@@ -186,6 +188,7 @@ benefits:
     source:
       url: https://cardmaven.in/sbi-aurum-credit-card/
       retrieved_on: 2026-06-12
+      type: aggregator
       notes: "2026-06 corrections: domestic lounge is 4/quarter not unlimited; welcome is 40,000 points (med confidence); milestones and ₹12L fee-reversal added; Club Marriott membership also bundled (not modelled)."
 
 eligibility:

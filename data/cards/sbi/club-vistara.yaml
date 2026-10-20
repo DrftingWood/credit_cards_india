@@ -38,6 +38,8 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
       notes: "Renewal fee shown as Nil on the live page."
 
 rewards:
@@ -97,6 +99,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
       notes: "Renewal benefit (1 Premium Economy ticket) discontinued for renewals after 01 Apr 2025."
 
 eligibility:

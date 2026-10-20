@@ -38,6 +38,8 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
       notes: "Renewal fee shown as Nil on the live page."
 
 rewards:
@@ -99,6 +101,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
       retrieved_on: 2026-07-03
+      type: issuer-page
       notes: "Renewal benefit (1 Premium Economy ticket) and spend-milestone flight tickets discontinued for renewals after 01 Apr 2025. Up to 6 ticket cancellations/year covered at Rs.3,500 each."
 
 eligibility:

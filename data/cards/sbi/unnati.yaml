@@ -35,6 +35,8 @@ fees:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
     notes: "Annual fee of ₹499 waived for the first 4 years; renewal fee of ₹499 applies from the 5th year onwards. Finance charge shown at SBI standard; TODO verify."
 
 rewards:
@@ -59,6 +61,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
     notes: "Cash Advance, Balance Transfer, Flexipay and Fuel transactions are excluded from the Reward Points programme."
 
     mcc_exclusions: ['6513']
@@ -82,6 +85,7 @@ benefits:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

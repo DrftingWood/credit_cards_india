@@ -109,7 +109,7 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
         </li>
       ))}
       {milestones.length > 4 ? (
-        <li className="text-slate-500">+{milestones.length - 4} more milestones</li>
+        <li className="text-fg-muted">+{milestones.length - 4} more milestones</li>
       ) : null}
     </ul>
   ) : (
@@ -122,11 +122,11 @@ export function RewardsBenefitsGrid({ card }: { card: EnrichedCard }) {
       {otherList.slice(0, 3).map((o, i) => (
         <li key={i}>
           <strong>{o.name}</strong>
-          {o.description ? <span className="text-slate-600"> — {o.description}</span> : null}
+          {o.description ? <span className="text-fg-muted"> — {o.description}</span> : null}
         </li>
       ))}
       {otherList.length > 3 ? (
-        <li className="text-slate-500">+{otherList.length - 3} more</li>
+        <li className="text-fg-muted">+{otherList.length - 3} more</li>
       ) : null}
     </ul>
   ) : (

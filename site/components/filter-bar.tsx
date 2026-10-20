@@ -92,14 +92,14 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
         type="button"
         onClick={() => setMobileOpen((open) => !open)}
         aria-expanded={mobileOpen}
-        className="md:hidden sticky top-0 z-10 mb-3 flex w-full items-center justify-between rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm"
+        className="md:hidden sticky top-0 z-10 mb-3 flex w-full items-center justify-between rounded-md border border-line-strong bg-surface px-3 py-2 text-sm font-medium text-fg-secondary shadow-sm"
       >
         <span>Filters{activeCount > 0 ? ` (${activeCount} active)` : ""}</span>
         <span aria-hidden="true">{mobileOpen ? "▲" : "▼"}</span>
       </button>
       <div className={`space-y-5 ${mobileOpen ? "block" : "hidden"} md:block`}>
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">
+        <label className="block text-xs font-semibold uppercase tracking-wide text-fg-muted mb-1">
           Search
         </label>
         <input
@@ -107,7 +107,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
           placeholder="Card or issuer name"
           value={state.q}
           onChange={(e) => onChange({ ...state, q: e.target.value })}
-          className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+          className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-focus"
         />
       </div>
 
@@ -121,7 +121,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
               label={
                 <span className="inline-flex items-center gap-1.5">
                   <IssuerLogo issuer={iss} variant="with-name" height={14} />
-                  <span className="text-xs text-slate-500">({counts.get(iss.id) ?? 0})</span>
+                  <span className="text-xs text-fg-muted">({counts.get(iss.id) ?? 0})</span>
                 </span>
               }
             />
@@ -174,29 +174,29 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
       </Group>
 
       <Group title="Forex markup">
-        <label className="flex items-center gap-2 cursor-pointer select-none hover:text-slate-900">
+        <label className="flex items-center gap-2 cursor-pointer select-none hover:text-fg">
           <input
             type="radio"
             name="forex-band"
-            className="border-slate-400 text-brand-600 focus:ring-brand-500"
+            className="border-line-strong text-accent-fg focus:ring-focus"
             checked={state.forexBand === null}
             onChange={() => onChange({ ...state, forexBand: null })}
           />
-          <span className="text-sm text-slate-700">Any</span>
+          <span className="text-sm text-fg-secondary">Any</span>
         </label>
         {FOREX_BANDS.map((b) => (
           <label
             key={b.value}
-            className="flex items-center gap-2 cursor-pointer select-none hover:text-slate-900"
+            className="flex items-center gap-2 cursor-pointer select-none hover:text-fg"
           >
             <input
               type="radio"
               name="forex-band"
-              className="border-slate-400 text-brand-600 focus:ring-brand-500"
+              className="border-line-strong text-accent-fg focus:ring-focus"
               checked={state.forexBand === b.value}
               onChange={() => onChange({ ...state, forexBand: b.value })}
             />
-            <span className="text-sm text-slate-700">{b.label}</span>
+            <span className="text-sm text-fg-secondary">{b.label}</span>
           </label>
         ))}
       </Group>
@@ -254,7 +254,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
                 key={t}
                 type="button"
                 onClick={() => toggle("tags", t)}
-                className="chip hover:bg-slate-100"
+                className="chip hover:bg-surface-muted"
               >
                 {t.replace(/-/g, " ")} ✕
               </button>
@@ -270,7 +270,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <div className="text-xs font-semibold uppercase tracking-wide text-slate-600 mb-1">{title}</div>
+      <div className="text-xs font-semibold uppercase tracking-wide text-fg-muted mb-1">{title}</div>
       <div className="space-y-1">{children}</div>
     </div>
   );
@@ -286,14 +286,14 @@ function Check({
   label: React.ReactNode;
 }) {
   return (
-    <label className="flex items-center gap-2 cursor-pointer select-none hover:text-slate-900">
+    <label className="flex items-center gap-2 cursor-pointer select-none hover:text-fg">
       <input
         type="checkbox"
-        className="rounded border-slate-400 text-brand-600 focus:ring-brand-500"
+        className="rounded border-line-strong text-accent-fg focus:ring-focus"
         checked={checked}
         onChange={onChange}
       />
-      <span className="text-sm text-slate-700">{label}</span>
+      <span className="text-sm text-fg-secondary">{label}</span>
     </label>
   );
 }

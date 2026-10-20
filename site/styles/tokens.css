@@ -1,0 +1,245 @@
+/*
+ * Design tokens — single source of truth for colour, type, spacing, radius
+ * and elevation. Tailwind maps onto these in tailwind.config.ts; components
+ * use the semantic Tailwind names (bg-surface, text-fg-muted, border-line …)
+ * and never raw palette colours.
+ *
+ * Colour tokens are stored as space-separated sRGB channels ("R G B") so
+ * Tailwind's opacity modifiers keep working (e.g. bg-surface/90).
+ *
+ * Theme resolution:
+ *   1. :root                                   light (default)
+ *   2. @media (prefers-color-scheme: dark)     dark, unless data-theme="light"
+ *   3. :root[data-theme="dark"]                dark, manual override
+ * The manual choice is persisted in localStorage("cci-theme") and applied
+ * before paint by the inline script in app/layout.tsx.
+ *
+ * Every text/background pairing is checked for WCAG 2.2 contrast in
+ * lib/design-tokens.test.ts — change a value here and run `npm test`.
+ * See docs/design/TOKENS.md for the rationale.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ── Surfaces ─────────────────────────────────────────────── */
+  --color-canvas: 250 251 252;          /* page background */
+  --color-surface: 255 255 255;         /* cards, panels, inputs */
+  --color-surface-subtle: 244 246 249;  /* inset panels, table stripes */
+  --color-surface-muted: 233 237 242;   /* pressed / selected-neutral, tracks */
+  --color-inverse: 15 23 42;            /* high-emphasis feature band */
+
+  /* ── Text ─────────────────────────────────────────────────── */
+  --color-fg: 15 23 42;                 /* primary text, headings */
+  --color-fg-secondary: 51 65 85;       /* body copy on dense panels */
+  --color-fg-muted: 82 96 114;          /* captions, labels, meta */
+  --color-fg-disabled: 148 163 184;     /* inactive controls only (WCAG-exempt) */
+  --color-fg-placeholder: 100 113 131;  /* input placeholder — held to 4.5:1 (it is text) */
+  --color-on-accent: 255 255 255;
+  --color-on-inverse: 241 245 249;
+  --color-on-inverse-muted: 203 213 225;
+  --color-on-inverse-accent: 165 193 255;
+
+  /* ── Lines ────────────────────────────────────────────────── */
+  --color-line: 226 232 240;            /* decorative dividers, card edges */
+  --color-line-strong: 128 141 158;     /* control boundaries — ≥3:1 */
+
+  /* ── Accent (brand blue) ──────────────────────────────────── */
+  --color-accent: 29 78 216;            /* primary buttons, active states */
+  --color-accent-hover: 30 64 175;
+  --color-accent-fg: 29 78 216;         /* links, accent text */
+  --color-accent-strong: 30 58 138;     /* accent text on accent-subtle */
+  --color-accent-subtle: 238 244 255;   /* selected chip / highlight bg */
+  --color-accent-line: 191 211 254;
+  --color-focus: 37 99 235;
+  --color-accent-disabled: 209 220 246; /* disabled primary button fill */
+  --color-on-accent-disabled: 66 87 134;
+
+  /* ── Status ───────────────────────────────────────────────── */
+  --color-success: 4 120 87;
+  --color-success-subtle: 236 253 245;
+  --color-success-line: 167 243 208;
+  --color-warn: 146 64 14;
+  --color-warn-subtle: 255 251 235;
+  --color-warn-line: 253 216 120;
+  --color-danger: 190 18 60;
+  --color-danger-subtle: 255 241 242;
+  --color-danger-line: 254 205 211;
+
+  /* ── Chart series (≥3:1 against surface) ──────────────────── */
+  --color-chart-1: 37 99 235;
+  --color-chart-2: 13 128 116;
+  --color-chart-3: 180 83 9;
+  --color-chart-4: 124 58 237;
+  --color-chart-5: 190 18 60;
+  --color-chart-6: 71 85 105;
+
+  /* ── Type scale (1.125–1.25 modular, 16px base) ───────────── */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
+  --text-xs: 0.75rem;   --leading-xs: 1rem;       /* 12 — captions, chips */
+  --text-sm: 0.875rem;  --leading-sm: 1.25rem;    /* 14 — UI, table cells */
+  --text-base: 1rem;    --leading-base: 1.5rem;   /* 16 — body */
+  --text-lg: 1.125rem;  --leading-lg: 1.75rem;    /* 18 — lead, card title */
+  --text-xl: 1.25rem;   --leading-xl: 1.75rem;    /* 20 — section title */
+  --text-2xl: 1.5rem;   --leading-2xl: 2rem;      /* 24 — metric, page title (mobile) */
+  --text-3xl: 1.875rem; --leading-3xl: 2.25rem;   /* 30 — page title */
+  --text-4xl: 2.25rem;  --leading-4xl: 2.5rem;    /* 36 — hero */
+
+  /* ── Spacing (4px grid; semantic aliases) ─────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-inline: var(--space-2);   /* gap between inline items */
+  --space-stack: var(--space-4);    /* gap between stacked blocks */
+  --space-card: var(--space-4);     /* card padding */
+  --space-section: var(--space-8);  /* gap between page sections */
+
+  /* ── Radius ───────────────────────────────────────────────── */
+  --radius-sm: 0.125rem;
+  --radius: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+
+  /* ── Elevation (depth) ────────────────────────────────────── */
+  --shadow-color: 15 23 42;
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px 0 rgb(var(--shadow-color) / 0.06);
+  --elevation-2: 0 1px 3px 0 rgb(var(--shadow-color) / 0.08), 0 1px 2px -1px rgb(var(--shadow-color) / 0.08);
+  --elevation-3: 0 4px 8px -2px rgb(var(--shadow-color) / 0.10), 0 2px 4px -2px rgb(var(--shadow-color) / 0.06);
+  --elevation-4: 0 12px 24px -6px rgb(var(--shadow-color) / 0.14), 0 4px 8px -4px rgb(var(--shadow-color) / 0.08);
+
+  /* Issuer/network logos are drawn for light backgrounds; in dark mode they
+     sit on a light plate (see .logo-plate in globals.css). */
+  --logo-plate: transparent;
+}
+
+/* Dark palette — declared twice (media query + manual override) on purpose;
+   keep the two blocks identical. The contrast test asserts they match. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --color-canvas: 10 15 26;
+    --color-surface: 17 24 39;
+    --color-surface-subtle: 22 31 49;
+    --color-surface-muted: 32 43 64;
+    --color-inverse: 27 39 66;
+
+    --color-fg: 232 236 242;
+    --color-fg-secondary: 200 207 218;
+    --color-fg-muted: 156 169 188;
+    --color-fg-disabled: 92 104 122;
+  --color-fg-placeholder: 128 142 163;
+    --color-fg-placeholder: 128 142 163;
+    --color-on-accent: 10 15 26;
+    --color-on-inverse: 241 245 249;
+    --color-on-inverse-muted: 196 205 219;
+    --color-on-inverse-accent: 165 193 255;
+
+    --color-line: 38 50 72;
+    --color-line-strong: 104 119 142;
+
+    --color-accent: 122 167 255;
+    --color-accent-hover: 160 192 255;
+    --color-accent-fg: 138 178 255;
+    --color-accent-strong: 196 214 255;
+    --color-accent-subtle: 23 37 72;
+    --color-accent-line: 46 72 128;
+    --color-focus: 122 167 255;
+  --color-accent-disabled: 48 66 104;
+  --color-on-accent-disabled: 170 186 214;
+    --color-accent-disabled: 48 66 104;
+    --color-on-accent-disabled: 170 186 214;
+
+    --color-success: 94 224 160;
+    --color-success-subtle: 14 40 32;
+    --color-success-line: 30 90 64;
+    --color-warn: 245 195 90;
+    --color-warn-subtle: 44 34 14;
+    --color-warn-line: 107 79 23;
+    --color-danger: 255 138 154;
+    --color-danger-subtle: 50 18 26;
+    --color-danger-line: 110 38 54;
+
+    --color-chart-1: 122 167 255;
+    --color-chart-2: 45 212 191;
+    --color-chart-3: 245 177 74;
+    --color-chart-4: 183 148 246;
+    --color-chart-5: 255 138 154;
+    --color-chart-6: 148 163 184;
+
+    --shadow-color: 0 0 0;
+    --elevation-1: 0 1px 2px 0 rgb(var(--shadow-color) / 0.30);
+    --elevation-2: 0 1px 3px 0 rgb(var(--shadow-color) / 0.40), 0 1px 2px -1px rgb(var(--shadow-color) / 0.30);
+    --elevation-3: 0 4px 10px -2px rgb(var(--shadow-color) / 0.45), 0 2px 4px -2px rgb(var(--shadow-color) / 0.30);
+    --elevation-4: 0 14px 28px -6px rgb(var(--shadow-color) / 0.55), 0 4px 8px -4px rgb(var(--shadow-color) / 0.35);
+
+  --logo-plate: rgb(226 232 240);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-canvas: 10 15 26;
+  --color-surface: 17 24 39;
+  --color-surface-subtle: 22 31 49;
+  --color-surface-muted: 32 43 64;
+  --color-inverse: 27 39 66;
+
+  --color-fg: 232 236 242;
+  --color-fg-secondary: 200 207 218;
+  --color-fg-muted: 156 169 188;
+  --color-fg-disabled: 92 104 122;
+  --color-fg-placeholder: 128 142 163;
+  --color-on-accent: 10 15 26;
+  --color-on-inverse: 241 245 249;
+  --color-on-inverse-muted: 196 205 219;
+  --color-on-inverse-accent: 165 193 255;
+
+  --color-line: 38 50 72;
+  --color-line-strong: 104 119 142;
+
+  --color-accent: 122 167 255;
+  --color-accent-hover: 160 192 255;
+  --color-accent-fg: 138 178 255;
+  --color-accent-strong: 196 214 255;
+  --color-accent-subtle: 23 37 72;
+  --color-accent-line: 46 72 128;
+  --color-focus: 122 167 255;
+  --color-accent-disabled: 48 66 104;
+  --color-on-accent-disabled: 170 186 214;
+
+  --color-success: 94 224 160;
+  --color-success-subtle: 14 40 32;
+  --color-success-line: 30 90 64;
+  --color-warn: 245 195 90;
+  --color-warn-subtle: 44 34 14;
+  --color-warn-line: 107 79 23;
+  --color-danger: 255 138 154;
+  --color-danger-subtle: 50 18 26;
+  --color-danger-line: 110 38 54;
+
+  --color-chart-1: 122 167 255;
+  --color-chart-2: 45 212 191;
+  --color-chart-3: 245 177 74;
+  --color-chart-4: 183 148 246;
+  --color-chart-5: 255 138 154;
+  --color-chart-6: 148 163 184;
+
+  --shadow-color: 0 0 0;
+  --elevation-1: 0 1px 2px 0 rgb(var(--shadow-color) / 0.30);
+  --elevation-2: 0 1px 3px 0 rgb(var(--shadow-color) / 0.40), 0 1px 2px -1px rgb(var(--shadow-color) / 0.30);
+  --elevation-3: 0 4px 10px -2px rgb(var(--shadow-color) / 0.45), 0 2px 4px -2px rgb(var(--shadow-color) / 0.30);
+  --elevation-4: 0 14px 28px -6px rgb(var(--shadow-color) / 0.55), 0 4px 8px -4px rgb(var(--shadow-color) / 0.35);
+
+  --logo-plate: rgb(226 232 240);
+}

@@ -30,8 +30,8 @@ function CardTileImpl({ card }: { card: EnrichedCard }) {
       href={href}
       title={`Data verified ${card.metadata.last_verified_on}`}
       className={cn(
-        "group block rounded-xl border border-slate-200 bg-white p-4 transition-colors",
-        "hover:border-brand-500/50 hover:bg-brand-50/30",
+        "group block rounded-xl border border-line bg-surface p-4 transition-colors",
+        "hover:border-accent/50 hover:bg-accent-subtle/30",
         "no-underline",
       )}
     >
@@ -40,7 +40,7 @@ function CardTileImpl({ card }: { card: EnrichedCard }) {
       <div className="mt-3 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <IssuerLogo issuer={card.issuer_detail} height={16} />
-          <h3 className="mt-1 text-sm font-semibold text-slate-900 leading-snug line-clamp-2">
+          <h3 className="mt-1 text-sm font-semibold text-fg leading-snug line-clamp-2">
             {card.name}
           </h3>
         </div>
@@ -48,14 +48,14 @@ function CardTileImpl({ card }: { card: EnrichedCard }) {
       </div>
 
       <div className="mt-3">
-        <div className="text-lg font-semibold text-slate-900 tabular-nums">
+        <div className="text-lg font-semibold text-fg tabular-nums">
           {bestRate != null ? `up to ${formatPct(bestRate, 1)}` : formatPct(rate, 2)}
-          <span className="ml-1 text-xs font-normal text-slate-500">rewards</span>
+          <span className="ml-1 text-xs font-normal text-fg-muted">rewards</span>
         </div>
-        <div className="mt-0.5 text-sm text-slate-700 tabular-nums">
+        <div className="mt-0.5 text-sm text-fg-secondary tabular-nums">
           {card.computed.is_lifetime_free ? "Lifetime free" : formatFeeInr(fee)}
-          {waiverAt ? <span className="text-xs text-slate-500"> · waived at {formatInr(waiverAt)}</span> : null}
-          {!card.computed.is_lifetime_free ? <span className="text-xs text-slate-500"> · annual fee</span> : null}
+          {waiverAt ? <span className="text-xs text-fg-muted"> · waived at {formatInr(waiverAt)}</span> : null}
+          {!card.computed.is_lifetime_free ? <span className="text-xs text-fg-muted"> · annual fee</span> : null}
         </div>
       </div>
 

@@ -30,9 +30,9 @@ export function UsagePanel({
 }) {
   if (groups.length === 0 && !ecosystem && !tier) return null;
   return (
-    <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-3">
-      <h3 className="text-sm font-semibold text-slate-900">Your usage</h3>
-      <p className="mt-0.5 text-xs text-slate-500">
+    <div className="mt-4 rounded-lg border border-line bg-surface-subtle p-3">
+      <h3 className="text-sm font-semibold text-fg">Your usage</h3>
+      <p className="mt-0.5 text-xs text-fg-muted">
         Co-brand and portal rates count only on the share you say goes through them; the rest earns base. Shared
         with every calculator on this site.
       </p>
@@ -41,9 +41,9 @@ export function UsagePanel({
         <ul className="mt-2 space-y-1.5">
           {groups.map((g) => (
             <li key={g.family} className="flex items-center justify-between gap-3 text-xs">
-              <span className="text-slate-700">
+              <span className="text-fg-secondary">
                 <span className="font-medium">{g.label}</span>{" "}
-                <span className="text-slate-500">· share of {g.categories.map((c) => CATEGORY_LABELS[c] ?? c).join(" / ")}</span>
+                <span className="text-fg-muted">· share of {g.categories.map((c) => CATEGORY_LABELS[c] ?? c).join(" / ")}</span>
               </span>
               <span className="flex items-center gap-1">
                 <input
@@ -52,9 +52,9 @@ export function UsagePanel({
                   value={familySharePct(usage, g.family)}
                   readOnly={!onChange}
                   onChange={onChange ? (e) => onChange(setFamilyShare(usage, g.family, Math.max(0, Math.min(100, Number(e.target.value) || 0)))) : undefined}
-                  className="w-16 rounded-md border border-slate-300 px-2 py-0.5 text-right text-xs text-slate-900 tabular-nums"
+                  className="w-16 rounded-md border border-line-strong px-2 py-0.5 text-right text-xs text-fg tabular-nums"
                 />
-                <span className="text-slate-500">%</span>
+                <span className="text-fg-muted">%</span>
               </span>
             </li>
           ))}
@@ -62,7 +62,7 @@ export function UsagePanel({
       ) : null}
 
       {ecosystem ? (
-        <label className="mt-2 flex items-center gap-2 text-xs text-slate-700">
+        <label className="mt-2 flex items-center gap-2 text-xs text-fg-secondary">
           <input
             type="checkbox"
             checked={usage.ecosystems.includes(ecosystem)}
@@ -82,8 +82,8 @@ export function UsagePanel({
               key={d.category}
               className={
                 d.delta_inr_monthly >= 0
-                  ? "rounded border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[11px] text-emerald-800 tabular-nums"
-                  : "rounded border border-amber-200 bg-amber-50 px-2 py-0.5 text-[11px] text-amber-800 tabular-nums"
+                  ? "rounded border border-success-line bg-success-subtle px-2 py-0.5 text-[11px] text-success tabular-nums"
+                  : "rounded border border-warn-line bg-warn-subtle px-2 py-0.5 text-[11px] text-warn tabular-nums"
               }
             >
               {CHANGE_LABEL[d.change]}: {d.label} {signed(d.delta_inr_monthly)}
@@ -113,20 +113,20 @@ function TierPicker({
         ? `${selectedTier.name ?? selectedTier.id} earns no tier bonus.`
         : `No spend through this card's ${program.name} bookings yet, so the tier adds nothing here.`;
   return (
-    <div className="mt-2 text-xs text-slate-700">
+    <div className="mt-2 text-xs text-fg-secondary">
       <label className="flex items-center gap-2">
         <span>Your {program.name} tier</span>
         <select
           value={selected}
           disabled={!onChange}
           onChange={onChange ? (e) => onChange(setLoyaltyTier(usage, program.id, e.target.value || null)) : undefined}
-          className="rounded-md border border-slate-300 px-1.5 py-0.5 text-xs text-slate-900"
+          className="rounded-md border border-line-strong px-1.5 py-0.5 text-xs text-fg"
         >
           <option value="">None</option>
           {(program.earn?.tiers ?? []).map((t) => <option key={t.id} value={t.id}>{t.name ?? t.id}</option>)}
         </select>
       </label>
-      {note ? <p className="mt-1 text-[11px] text-slate-500 tabular-nums">{note}</p> : null}
+      {note ? <p className="mt-1 text-[11px] text-fg-muted tabular-nums">{note}</p> : null}
     </div>
   );
 }
@@ -139,15 +139,15 @@ export function DeclaredUsageSummary({ usage, onChange }: { usage: UsageProfile;
     families.set(f, Math.max(families.get(f) ?? 0, pct));
   }
   if (families.size === 0) {
-    return <p className="text-[11px] text-slate-500">No merchant shares declared yet — set them in any card&apos;s breakdown.</p>;
+    return <p className="text-[11px] text-fg-muted">No merchant shares declared yet — set them in any card&apos;s breakdown.</p>;
   }
   return (
     <ul className="flex flex-wrap gap-1.5">
       {[...families].sort((a, b) => a[0].localeCompare(b[0])).map(([f, pct]) => (
-        <li key={f} className="flex items-center gap-1 rounded-full border border-slate-300 bg-white px-2 py-0.5 text-[11px] text-slate-700">
+        <li key={f} className="flex items-center gap-1 rounded-full border border-line-strong bg-surface px-2 py-0.5 text-[11px] text-fg-secondary">
           {tokenLabel(f)} {pct}%
           {onChange ? (
-            <button type="button" aria-label={`Remove ${tokenLabel(f)}`} onClick={() => onChange(setFamilyShare(usage, f, 0))} className="text-slate-400 hover:text-slate-700">
+            <button type="button" aria-label={`Remove ${tokenLabel(f)}`} onClick={() => onChange(setFamilyShare(usage, f, 0))} className="text-fg-muted hover:text-fg-secondary">
               ×
             </button>
           ) : null}

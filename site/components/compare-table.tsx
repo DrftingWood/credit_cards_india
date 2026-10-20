@@ -13,7 +13,7 @@ import { CardImage } from "./card-image";
 
 // The emphasis class applied to the winning cell(s) of a comparable row.
 // Reuses the accent already used for positive/"pro" text elsewhere (pros-cons.tsx).
-const WINNER_CLASS = "font-semibold text-emerald-700";
+const WINNER_CLASS = "font-semibold text-success";
 
 // lower-is-better for fees; higher-is-better for value-% and lounge counts.
 export function winners(values: (number | null)[], higherWins: boolean): boolean[] {
@@ -52,7 +52,7 @@ function loungeSummary(
     return (
       <>
         {visits}{" "}
-        <span className="text-xs text-amber-700">
+        <span className="text-xs text-warn">
           (after {formatInr(d.spend_threshold_inr)} spend)
         </span>
       </>
@@ -71,7 +71,7 @@ function topAcceleratedRow(card: EnrichedCard): React.ReactNode {
   return (
     <>
       <span className="prose-card-value">{rate}</span>
-      <span className="block text-xs text-slate-500 mt-0.5 capitalize">
+      <span className="block text-xs text-fg-muted mt-0.5 capitalize">
         {top.category.replace(/-/g, " ")}
       </span>
     </>
@@ -136,7 +136,7 @@ const ROWS: Row[] = [
       <span className="capitalize">
         {c.current_rewards?.currency ?? "—"}
         {c.current_rewards?.currency_name ? (
-          <span className="block text-xs text-slate-500 mt-0.5">
+          <span className="block text-xs text-fg-muted mt-0.5">
             {c.current_rewards.currency_name}
           </span>
         ) : null}
@@ -162,7 +162,7 @@ const ROWS: Row[] = [
         <span>
           {w.benefit}
           {w.value_inr != null ? (
-            <span className="block text-xs text-slate-500 mt-0.5">
+            <span className="block text-xs text-fg-muted mt-0.5">
               ≈ {formatInr(w.value_inr)} value
             </span>
           ) : null}
@@ -183,7 +183,7 @@ const ROWS: Row[] = [
             </li>
           ))}
           {m.length > 3 ? (
-            <li className="text-xs text-slate-500">+{m.length - 3} more</li>
+            <li className="text-xs text-fg-muted">+{m.length - 3} more</li>
           ) : null}
         </ul>
       );
@@ -239,7 +239,7 @@ const ROWS: Row[] = [
             </li>
           ))}
           {ins.length > 3 ? (
-            <li className="text-xs text-slate-500">+{ins.length - 3} more</li>
+            <li className="text-xs text-fg-muted">+{ins.length - 3} more</li>
           ) : null}
         </ul>
       );
@@ -276,7 +276,7 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
   // if a future caller passes an empty array.
   if (cards.length === 0) {
     return (
-      <div className="rounded-xl border border-slate-200 bg-white p-6 text-sm text-slate-500">
+      <div className="rounded-xl border border-line bg-surface p-6 text-sm text-fg-muted">
         No cards selected to compare.
       </div>
     );
@@ -289,7 +289,7 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
   const cardColPct = Math.floor(80 / cards.length);
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+    <div className="overflow-x-auto rounded-xl border border-line bg-surface">
       <table className="min-w-full text-sm table-fixed">
         <colgroup>
           <col style={{ width: "20%" }} />
@@ -298,8 +298,8 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
           ))}
         </colgroup>
         <thead>
-          <tr className="border-b border-slate-200 bg-slate-50">
-            <th className="text-left p-3 text-xs uppercase tracking-wide text-slate-500 sticky left-0 bg-slate-50 z-10">
+          <tr className="border-b border-line bg-surface-subtle">
+            <th className="text-left p-3 text-xs uppercase tracking-wide text-fg-muted sticky left-0 bg-surface-subtle z-10">
               Field
             </th>
             {cards.map((c) => (
@@ -310,7 +310,7 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
                 <IssuerLogo issuer={c.issuer_detail} height={16} />
                 <Link
                   href={cardHref(c)}
-                  className="block mt-1 text-sm font-semibold text-slate-900 hover:text-slate-900"
+                  className="block mt-1 text-sm font-semibold text-fg hover:text-fg"
                 >
                   {c.name}
                 </Link>
@@ -324,14 +324,14 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
               ? winners(cards.map(row.compare.value), row.compare.higherWins)
               : null;
             return (
-              <tr key={i} className="border-b border-slate-100 last:border-0">
-                <td className="p-3 text-xs uppercase tracking-wide text-slate-500 align-top sticky left-0 bg-white z-10">
+              <tr key={i} className="border-b border-line last:border-0">
+                <td className="p-3 text-xs uppercase tracking-wide text-fg-muted align-top sticky left-0 bg-surface z-10">
                   {row.label}
                 </td>
                 {cards.map((c, ci) => (
                   <td
                     key={c.id}
-                    className={`p-3 align-top text-slate-800${win?.[ci] ? ` ${WINNER_CLASS}` : ""}`}
+                    className={`p-3 align-top text-fg${win?.[ci] ? ` ${WINNER_CLASS}` : ""}`}
                   >
                     {row.render(c)}
                   </td>

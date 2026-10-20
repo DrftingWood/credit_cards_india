@@ -89,17 +89,17 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
     <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
       <form className="space-y-4">
         <div>
-          <h2 className="text-sm font-semibold text-slate-900">Your monthly spend</h2>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <h2 className="text-sm font-semibold text-fg">Your monthly spend</h2>
+          <p className="text-xs text-fg-muted mt-0.5">
             Fill in how much you spend per category each month. Set to ₹0 to ignore.
           </p>
         </div>
 
         {CANONICAL_CATEGORIES.map((cat) => (
           <div key={cat}>
-            <label className="block text-sm text-slate-700 mb-1">{CATEGORY_LABELS[cat]}</label>
+            <label className="block text-sm text-fg-secondary mb-1">{CATEGORY_LABELS[cat]}</label>
             <div className="flex items-center gap-2">
-              <span className="text-slate-500">₹</span>
+              <span className="text-fg-muted">₹</span>
               <input
                 type="number"
                 min={0}
@@ -109,27 +109,27 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                 onChange={(e) =>
                   setSpend((s) => ({ ...s, [cat]: clampSpend(e.target.value) }))
                 }
-                className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+                className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-focus"
               />
             </div>
           </div>
         ))}
 
-        <div className="rounded-md bg-slate-50 p-3 text-sm">
+        <div className="rounded-md bg-surface-subtle p-3 text-sm">
           <div className="flex justify-between">
             <span>Monthly total</span>
             <strong className="tabular-nums">{formatInr(monthlyTotal)}</strong>
           </div>
-          <div className="flex justify-between text-slate-500">
+          <div className="flex justify-between text-fg-muted">
             <span>Annualised</span>
             <span className="tabular-nums">{formatInr(monthlyTotal * 12)}</span>
           </div>
         </div>
 
         {ecosystems.length > 0 ? (
-          <div className="border-t border-slate-200 pt-4">
-            <h2 className="text-sm font-semibold text-slate-900">Ecosystem-locked points 🔒</h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+          <div className="border-t border-line pt-4">
+            <h2 className="text-sm font-semibold text-fg">Ecosystem-locked points 🔒</h2>
+            <p className="text-xs text-fg-muted mt-0.5">
               Some cards earn points redeemable only inside one ecosystem — real ₹1 money only if you use it.
             </p>
             {/* master mode */}
@@ -143,7 +143,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                     onChange={() => setMode(m)}
                     className="mt-0.5"
                   />
-                  <span className="text-slate-700">
+                  <span className="text-fg-secondary">
                     {m === "realistic" ? (
                       <><strong>Realistic</strong> — only count ecosystems I use (tick below)</>
                     ) : (
@@ -161,7 +161,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                   if (present.length === 0) return null;
                   return (
                     <div key={g.label}>
-                      <div className="text-[11px] font-medium text-slate-500">{g.icon} {g.label}</div>
+                      <div className="text-[11px] font-medium text-fg-muted">{g.icon} {g.label}</div>
                       <div className="mt-1 flex flex-wrap gap-1.5">
                         {present.map((eco) => {
                           const on = enabledEco.has(eco);
@@ -173,8 +173,8 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                               aria-pressed={on}
                               className={
                                 on
-                                  ? "rounded-full border border-emerald-500 bg-emerald-50 text-emerald-800 px-2.5 py-1 text-xs font-medium"
-                                  : "rounded-full border border-slate-300 bg-white text-slate-600 px-2.5 py-1 text-xs"
+                                  ? "rounded-full border border-success bg-success-subtle text-success px-2.5 py-1 text-xs font-medium"
+                                  : "rounded-full border border-line-strong bg-surface text-fg-muted px-2.5 py-1 text-xs"
                               }
                             >
                               {on ? "✓ " : "+ "}{eco}
@@ -185,13 +185,13 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                     </div>
                   );
                 })}
-                <p className="text-[11px] text-slate-400 pt-1">
+                <p className="text-[11px] text-fg-muted pt-1">
                   Tick the ones you genuinely use — we only count rewards you can actually spend. Everything else
                   shows at base rate.
                 </p>
               </div>
             ) : (
-              <p className="mt-3 rounded-md bg-amber-50 border border-amber-200 p-2 text-[11px] text-amber-800">
+              <p className="mt-3 rounded-md bg-warn-subtle border border-warn-line p-2 text-[11px] text-warn">
                 Best-case: every ecosystem-locked card is valued at full worth, as if you use them all. Switch to
                 Realistic for your actual numbers.
               </p>
@@ -200,9 +200,9 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
         ) : null}
 
         {mode === "realistic" ? (
-          <div className="border-t border-slate-200 pt-4">
-            <h2 className="text-sm font-semibold text-slate-900">Co-brand &amp; portal rates</h2>
-            <label className="mt-2 flex items-start gap-2 text-xs text-slate-700 cursor-pointer">
+          <div className="border-t border-line pt-4">
+            <h2 className="text-sm font-semibold text-fg">Co-brand &amp; portal rates</h2>
+            <label className="mt-2 flex items-start gap-2 text-xs text-fg-secondary cursor-pointer">
               <input
                 type="checkbox"
                 checked={usage.gate_calculator}
@@ -222,14 +222,14 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
       </form>
 
       <div>
-        <h2 className="text-lg font-semibold text-slate-900">Ranked by net annual value</h2>
-        <p className="text-xs text-slate-500 mt-0.5">
+        <h2 className="text-lg font-semibold text-fg">Ranked by net annual value</h2>
+        <p className="text-xs text-fg-muted mt-0.5">
           Approximate, and ranked on steady-state spend rewards only. Welcome, milestone and lounge value are shown
           separately on each row and in the breakdown, never mixed into the rank. Some complex caps are simplified.
         </p>
         {pinnedSelected ? (
           <div className="mt-4">
-            <div className="text-xs uppercase tracking-wide text-brand-700 mb-1">Selected card</div>
+            <div className="text-xs uppercase tracking-wide text-accent-fg mb-1">Selected card</div>
             <ResultRow rank={null} score={pinnedSelected} spend={spend} valuePrefs={valuePrefs} rankCtx={rankCtx} tierCtx={tierCtx} highlighted />
           </div>
         ) : null}
@@ -248,7 +248,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
           ))}
         </ol>
         {ranked.length === 0 ? (
-          <div className="mt-4 rounded-md border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-600">
+          <div className="mt-4 rounded-md border border-dashed border-line-strong bg-surface-subtle p-8 text-center text-fg-muted">
             Enter some spend on the left to see rankings.
           </div>
         ) : null}
@@ -306,17 +306,17 @@ function ResultRow({
     <li
       className={
         highlighted
-          ? "rounded-xl border-2 border-brand-500 bg-brand-50 p-4"
-          : "rounded-xl border border-slate-200 bg-white p-4"
+          ? "rounded-xl border-2 border-accent bg-accent-subtle p-4"
+          : "rounded-xl border border-line bg-surface p-4"
       }
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-3">
-          <div className="text-slate-400 font-semibold tabular-nums w-6 text-right">
+          <div className="text-fg-muted font-semibold tabular-nums w-6 text-right">
             {rank != null ? `#${rank}` : "★"}
           </div>
           <div>
-            <Link href={href} className="font-semibold text-slate-900 hover:text-slate-900">
+            <Link href={href} className="font-semibold text-fg hover:text-fg">
               {c.name}
             </Link>
             {score.closed_loop_ecosystem ? (
@@ -328,15 +328,15 @@ function ResultRow({
                 }
                 className={
                   score.ecosystem_credited
-                    ? "ml-2 rounded-full bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200 px-1.5 py-0.5 text-[10px] font-medium align-middle"
-                    : "ml-2 rounded-full bg-slate-100 text-slate-500 ring-1 ring-slate-200 px-1.5 py-0.5 text-[10px] font-medium align-middle"
+                    ? "ml-2 rounded-full bg-success-subtle text-success ring-1 ring-success-line px-1.5 py-0.5 text-[10px] font-medium align-middle"
+                    : "ml-2 rounded-full bg-surface-muted text-fg-muted ring-1 ring-line px-1.5 py-0.5 text-[10px] font-medium align-middle"
                 }
               >
                 {score.ecosystem_credited ? "🔓" : "🔒"} {score.closed_loop_ecosystem}
                 {score.ecosystem_credited ? "" : " · base rate"}
               </span>
             ) : null}
-            <div className="mt-1 flex items-center gap-2 text-xs text-slate-500">
+            <div className="mt-1 flex items-center gap-2 text-xs text-fg-muted">
               <IssuerLogo issuer={c.issuer_detail} height={14} />
               <span>· {c.tier.replace("-", " ")}</span>
               <span>·</span>
@@ -345,28 +345,28 @@ function ResultRow({
           </div>
         </div>
         <div className="text-right">
-          <div className="text-lg font-semibold tabular-nums text-emerald-700">
+          <div className="text-lg font-semibold tabular-nums text-success">
             {formatInr(Math.round(score.annual_net_inr))} / yr
           </div>
-          <div className="text-xs text-slate-500 tabular-nums">
+          <div className="text-xs text-fg-muted tabular-nums">
             gross {formatInr(Math.round(score.annual_gross_inr))} − fee{" "}
             {score.fee_waived ? (
-              <span className="text-emerald-700">waived</span>
+              <span className="text-success">waived</span>
             ) : (
               formatInr(score.annual_fee_effective_inr)
             )}
           </div>
-          {extra ? <div className="mt-0.5 text-[11px] text-slate-500 tabular-nums">{extra}</div> : null}
+          {extra ? <div className="mt-0.5 text-[11px] text-fg-muted tabular-nums">{extra}</div> : null}
         </div>
       </div>
 
       <details className="mt-3 text-sm" open={highlighted}>
-        <summary className="cursor-pointer text-slate-600 hover:text-slate-900 text-xs uppercase tracking-wide">
+        <summary className="cursor-pointer text-fg-muted hover:text-fg text-xs uppercase tracking-wide">
           Breakdown
         </summary>
         <table className="mt-2 w-full text-sm">
           <thead>
-            <tr className="text-left text-xs uppercase tracking-wide text-slate-500 border-b border-slate-200">
+            <tr className="text-left text-xs uppercase tracking-wide text-fg-muted border-b border-line">
               <th className="py-1 pr-3 font-medium">Category</th>
               <th className="py-1 pr-3 font-medium">Rate</th>
               <th className="py-1 pr-3 font-medium">Monthly</th>
@@ -374,10 +374,10 @@ function ResultRow({
           </thead>
           <tbody>
             {score.buckets.map((b) => (
-              <tr key={b.category} className="border-b border-slate-100 last:border-0">
+              <tr key={b.category} className="border-b border-line last:border-0">
                 <td className="py-1.5 pr-3 capitalize">
                   {b.category.replace("-", " ")}
-                  {b.note ? <span className="text-xs text-amber-700 ml-2">{b.note}</span> : null}
+                  {b.note ? <span className="text-xs text-warn ml-2">{b.note}</span> : null}
                 </td>
                 <td className="py-1.5 pr-3 tabular-nums">{formatPct(b.effective_rate_pct, 2)}</td>
                 <td className="py-1.5 pr-3 tabular-nums">
@@ -387,7 +387,7 @@ function ResultRow({
             ))}
           </tbody>
         </table>
-        {score.disclaimer ? <p className="mt-2 text-xs text-slate-500">{score.disclaimer}</p> : null}
+        {score.disclaimer ? <p className="mt-2 text-xs text-fg-muted">{score.disclaimer}</p> : null}
       </details>
     </li>
   );

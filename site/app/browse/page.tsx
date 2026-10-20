@@ -18,12 +18,12 @@ export default function BrowsePage() {
   return (
     <div className="space-y-4">
       <header>
-        <h1 className="text-2xl font-semibold text-slate-900">Browse</h1>
-        <p className="mt-1 text-slate-600 text-sm">
+        <h1 className="text-2xl font-semibold text-fg">Browse</h1>
+        <p className="mt-1 text-fg-muted text-sm">
           All active cards. Filters are shareable — copy the URL.
         </p>
       </header>
-      <Suspense fallback={<div className="text-slate-500 text-sm">Loading filters…</div>}>
+      <Suspense fallback={<div className="text-fg-muted text-sm">Loading filters…</div>}>
         <BrowseClient cards={cards} issuers={issuers} />
       </Suspense>
     </div>

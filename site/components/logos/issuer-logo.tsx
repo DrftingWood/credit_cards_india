@@ -15,7 +15,7 @@ import type { IssuerRecord } from "@/lib/types";
 interface IssuerLogoProps {
   issuer: IssuerRecord;
   variant?: "mark-only" | "with-name";
-  /** Height of the logo in pixels; width is auto. */
+  /** Height of the logo in pixels; width is auto, capped at 6× height. */
   height?: number;
   className?: string;
 }
@@ -37,11 +37,14 @@ export function IssuerLogo({
           alt={`${issuer.name} logo`}
           height={height}
           width={Math.round(height * 2.5)}
-          style={{ height, width: "auto", objectFit: "contain" }}
+          // Cap very wide wordmarks (IndusInd is ~9:1) so they never crowd
+          // the name/count beside them; object-fit keeps the aspect ratio.
+          style={{ height, width: "auto", maxWidth: height * 6, objectFit: "contain" }}
+          className="logo-plate shrink-0"
           unoptimized
         />
         {variant === "with-name" ? (
-          <span className="text-sm text-slate-700">{displayName}</span>
+          <span className="text-sm text-fg-secondary">{displayName}</span>
         ) : null}
       </span>
     );
@@ -50,7 +53,7 @@ export function IssuerLogo({
   // Text fallback
   return (
     <span
-      className={`${wrapperClass} text-xs uppercase tracking-wide text-slate-500`}
+      className={`${wrapperClass} text-xs uppercase tracking-wide text-fg-muted`}
       aria-label={issuer.name}
     >
       {variant === "with-name" ? issuer.name : displayName}

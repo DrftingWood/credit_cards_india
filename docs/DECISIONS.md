@@ -126,7 +126,9 @@ The programme owns:
 
 Cards opt into stacking via `accelerated[].stacks_with_program: true`.
 When set, calculator adds programme baseline + matching channel bonus +
-matching tier bonus to the card's slice.
+matching tier bonus to the card's slice. Since 2026-10-21 this happens only
+on `/recommend`. Card pages and `/calculator` use programme unit values without
+stacking (D-27).
 
 ### D-10. Internal card currencies stay inline
 
@@ -356,11 +358,12 @@ state it, and that is evidence, not invention.
   It is earned only on spend through the card's `stacks_with_program`
   accelerators and valued at the layer's own unit value. It is shown in every
   layer except Absolute. Programme records reach it through the narrow
-  `ScoringContext.tierPrograms`, which never changes rates or unit values. The
-  full `programs` map is still not passed on the card page or `/calculator`,
-  because that would switch 19 co-brand cards to programme unit values, which
-  needs its own decision. When `programs` is set (as on /recommend), the tier is
-  already stacked into the rate, so no separate line is added.
+  `ScoringContext.tierPrograms`, which never changes rates or unit values.
+  *Updated 2026-10-21 (D-27):* the card page and `/calculator` now get the full
+  `programs` map for unit values, with `stackProgramEarn: false`, and the
+  declared tier travels as `ScoringContext.tierLine`, so it stays a separate
+  line. Only `/recommend` puts tiers in `tierMap`, where they are stacked into
+  the rate and no separate line is added.
 
 ### D-25. Authored `applicability_pct` = published market share, as a floor (D12)
 
@@ -436,6 +439,47 @@ outrank a 0%-markup card for someone who spends heavily abroad.
   unless an exact spend is passed, so its rank only moves when that happens.
   The portfolio optimiser (`site/lib/portfolio.ts`) still nets only rewards
   and fees. Cross-currency or DCC surcharges are not modelled.
+
+### D-27. Card pages and /calculator use programme unit values, not programme earn
+
+Accepted by the owner on 2026-10-21, after the review of the 19 co-brand cards
+in `docs/PROGRAMME-VALUES-REVIEW-2026-10-21.md`. The card page and `/calculator`
+now receive the full loyalty-programme records (`ScoringContext.programs`), as
+`/recommend` already did. A co-brand card's points are valued at the
+programme's `unit_value_inr` (D-9), so one programme file sets the value for
+every card linked to it.
+
+- **Programme data was corrected first.** Four programme files were stale or
+  broke the closed-loop rule. Each fix cites its source beside the value:
+  - IndiGo BluChip: 0.45 realized / 0.60 face.
+  - Air India Maharaja: 0.55 / 0.70.
+  - IRCTC and Tata NeuCoins: realized 1.0.
+
+  After the fixes, the realized value of all 19 linked cards is unchanged.
+  Marriott Bonvoy's face value goes from 0.80 to 0.85, which affects only the
+  Absolute layer.
+- **A card can opt out of programme unit values.** The rewards field
+  `unit_value_from_program: false` is for a card that earns its own currency and
+  converts it into the programme's at a ratio other than 1:1. `bob-irctc` (4
+  BOBCARD points = 1 IRCTC point) is the only card that sets it. Before this,
+  `/recommend` valued its points at ₹0.95 instead of ₹0.18.
+- **Programme earn stays out of the rank on these pages.** They pass
+  `stackProgramEarn: false`, so D-9 stacking (programme baseline + channel +
+  tier earn on `stacks_with_program` accelerators) is not added. That earn comes
+  with programme membership whichever card pays, so crediting it to the co-brand
+  card brings back the overcredit D-8 removed. Stacking would have moved
+  `kotak-indigo` on /calculator from ₹3,900 to ₹16,860 (rank 169 to 36). This
+  also matches D-24's rule for tiers. A declared tier is still its own ledger
+  line, now carried in `ScoringContext.tierLine`. `tierMap` (stacked into the
+  rate) is used only by the `/recommend` wizard.
+- **Open question for the owner.** `/recommend` still stacks programme earn
+  (D-9). On a ₹20k online + ₹20k travel profile, `kotak-indigo` nets ₹15,780 on
+  /recommend and ₹3,900 on /calculator. Decide whether /recommend should also set
+  `stackProgramEarn: false`, which would retire D-9 stacking in the rank, or
+  keep it on as the wizard's "everything you'd receive" view.
+- `site/lib/program-values.test.ts` pins the 19 cards' values on live data.
+  Linking a new card to a programme, or changing a programme value, means
+  updating that test and the review doc.
 
 ### D-17. Build pipeline is pure Node
 

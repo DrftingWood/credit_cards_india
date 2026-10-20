@@ -137,6 +137,13 @@ under `data/loyalty_programs/<type>/<id>.yaml` and carry:
   warns when a card with a matching `co_brand.partner` doesn't reference
   the programme via `rewards[].loyalty_program`.
 
+A rewards record linked to a programme normally takes the programme's
+`unit_value_inr`. Set `rewards[].unit_value_from_program: false` when the card
+earns its own currency that converts into the programme's at a ratio other than
+1:1 (e.g. `bob-irctc`: 4 BOBCARD points = 1 IRCTC point). The calculator then
+uses the record's own `base.unit_value_inr` / `unit_value_inr_realized`
+(DECISIONS D-27).
+
 A card-side accelerator can opt into stacking via:
 
 ```yaml

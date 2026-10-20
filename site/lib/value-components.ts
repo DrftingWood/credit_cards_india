@@ -33,7 +33,7 @@ export const CYCLE_MONTHS: Record<Cycle, number> = { annual: 12, quarterly: 3, m
 /** Warning threshold only — a milestone award worth more than this share of its own trigger spend is flagged. Never alters a ₹ figure. */
 export const IMPLAUSIBLE_MILESTONE_SHARE = 0.15;
 const DAYS_PER_YEAR = 365;
-const MAX_TENURE_YEARS = 10;
+export const MAX_TENURE_YEARS = 10;
 
 /** User-supplied valuation inputs. Nothing here comes from the dataset. */
 export interface ValuePrefs {

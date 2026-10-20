@@ -42,6 +42,11 @@ fees:
       retrieved_on: 2026-07-03
       type: issuer-page
       confidence: high
+      local_refs:
+        - docs/sources/icici/_shared/mitc_cc.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.forex_markup_pct
 
 rewards:
   - effective_from: 2014-01-01

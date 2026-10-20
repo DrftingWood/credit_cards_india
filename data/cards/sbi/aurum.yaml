@@ -19,6 +19,13 @@ status: invite-only
 launched_on: 2021-10-01
 discontinued_on: null
 
+# Link check 2026-10-20: the cited aurum.page URL is a 404 and was never archived.
+# It stays as the historical citation for the pre-Nov-2024 records it backed;
+# repointing those to today's page would credit old values to a page that never
+# showed them. The card is live: the issuer's current product page is
+# https://www.sbicard.com/en/personal/credit-cards/aurum-sbi-card.html
+# (200 on 2026-10-20). Cite it when the current records are next re-verified.
+
 fees:
   - effective_from: 2021-10-01
     effective_until: 2024-10-31

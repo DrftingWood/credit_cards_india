@@ -18,6 +18,13 @@ co_brand: null
 status: active
 launched_on: null
 
+# Link check 2026-10-20: the cited sbi-card-prime-business.page URL (also apply_url) is a 404.
+# SBI Card has no current page for SBI Card Prime Business: every candidate URL 404s, the
+# live credit-card listing doesn't include it, and sitemap.xml still lists only the
+# dead .page URL. No discontinuation notice was found (SBI customer notices,
+# aggregator discontinued lists), so status stays as is: not listed by the
+# issuer, not confirmed discontinued.
+
 fees:
   - effective_from: 2026-07-03
     effective_until: null

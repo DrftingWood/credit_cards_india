@@ -39,6 +39,11 @@ fees:
       retrieved_on: 2026-07-03
       type: issuer-page
       confidence: high
+      local_refs:
+        - docs/sources/rbl/_shared/CardsScheduleCharges.pdf
+      fields_verified:
+        - fees.annual_fee_inr
+        - fees.forex_markup_pct
 
 rewards:
   - effective_from: 2018-01-01

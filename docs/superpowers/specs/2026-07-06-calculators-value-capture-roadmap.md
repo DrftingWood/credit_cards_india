@@ -25,7 +25,7 @@ calculator shows first-year total vs steady-state, resolving `/calculator`'s
   decoupling (welcome ÷ tenure, milestone by % of trigger, lounge by usage input).
 - **Depends on:** Phase 1 `CardExplanation`.
 
-## Phase 3 — Usage inputs (channels / brands / ecosystem)
+## Phase 3 — Usage inputs (channels / brands / ecosystem) (DONE 2026-10-20 — see DECISIONS D-22, TODO CALC-3; loyalty `tierMap` not yet surfaced)
 Let the user declare which channels/brands/ecosystems they actually use, so the
 Realistic layer is truly personal (not just base-vs-ceiling).
 - **Leverage:** `ScoringContext` already carries `channelMix`, `tierMap`,

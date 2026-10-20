@@ -322,6 +322,25 @@ steady-state rewards, never summed into a rank (`site/lib/value-components.ts`).
 - All milestone/threshold checks assume all of the user's entered spend counts
   toward the trigger; issuer-specific trigger exclusions are not modelled.
 
+### D-22. A user's own merchant share is authored applicability (CALC-3)
+
+D-18 refuses to invent the share of a broad bucket that goes through a narrow
+(merchant / co-brand / portal) accelerator. The person whose spend it is can
+state it, and that is evidence, not invention.
+
+- `ScoringContext.merchantShares` maps a merchant token to the user's share
+  (0–1). With `applyApplicability`, a narrow accelerator listing that token earns
+  its rate on the share and base on the rest. Precedence: user share >
+  authored `applicability_pct` > category-wide 1 > narrow-unknown → base.
+- Alias tokens of one merchant (`amazon` / `amazon-pay`) take the **max** share,
+  never the sum. A partner-list accelerator (Swiggy + Zomato) also takes the max,
+  which can undercount a user who splits between partners. That is the
+  conservative choice.
+- No share is ever defaulted. An undeclared merchant stays at base.
+- `/calculator` stays channel-optimistic by default (D-3). Gating on declared
+  shares is an explicit opt-in (`UsageProfile.gate_calculator`). Ecosystem ticks
+  are shared with the card pages' Realistic layer.
+
 ### D-17. Build pipeline is pure Node
 
 `site/scripts/prebuild.mjs` runs `gen-types.mjs` then `build.mjs`. No

@@ -104,6 +104,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
       notes: "Research-verified: co-brand RP = Rs1 HDFC statement credit (liquid) -> NOT closed-loop. Tag removed."
 
       confidence: high

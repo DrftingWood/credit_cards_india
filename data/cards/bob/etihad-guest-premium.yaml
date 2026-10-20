@@ -79,6 +79,7 @@ rewards:
     source:
       url: https://www.bobcard.co.in/credit-card-types/bobcard-etihad-guest-premium
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       confidence: medium
       notes: 'Verified 2026-07-05: Etihad Guest miles ~Rs0.55-0.70 India economy (floors: prepaid ~Rs0.60, voucher ~Rs0.52); was ~Rs0.3.'

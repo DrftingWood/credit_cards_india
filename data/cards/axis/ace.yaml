@@ -86,6 +86,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05.
     mcc_exclusions: ['6513']

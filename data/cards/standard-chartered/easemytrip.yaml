@@ -73,6 +73,7 @@ rewards:
     source:
       url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: "Corrected 2026-07-05: 1 RP = Rs 0.25 (voucher only), not Rs 1.0. Card's main value is its direct EaseMyTrip discounts, not point value."

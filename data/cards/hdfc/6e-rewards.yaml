@@ -99,6 +99,7 @@ rewards:
     source:
       url: https://www.paisabazaar.com/hdfc-bank/6e-rewards-indigo-hdfc-bank-credit-card/
       retrieved_on: 2026-04-22
+      type: aggregator
 
 benefits:
   - effective_from: 2022-11-07

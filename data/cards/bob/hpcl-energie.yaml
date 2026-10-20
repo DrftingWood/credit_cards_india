@@ -84,6 +84,7 @@ rewards:
     source:
       url: https://www.bobcard.co.in/credit-card-types/hpcl-energie
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:

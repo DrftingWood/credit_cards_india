@@ -98,6 +98,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
       confidence: high
       notes: 'Research-verified: co-brand RP = Rs1 HDFC statement credit (liquid), Rs0.30 catalogue -> NOT closed-loop. Tag removed.'
     notes: "Base rate models the 1% Reward Points on UPI Scan & Pay spends. Reward points posted monthly for eligible transactions settled in the previous calendar month."

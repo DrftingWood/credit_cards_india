@@ -25,6 +25,15 @@ jobs:
       - name: Validate
         run: python scripts/validate.py
 
+      - name: Provenance unit tests
+        run: python scripts/test_provenance.py
+
+      # Strict reward-rule provenance (D-21). Non-blocking until coverage is
+      # high enough to promote; drop continue-on-error then.
+      - name: Provenance coverage (strict, non-blocking)
+        continue-on-error: true
+        run: python scripts/validate.py --strict-provenance
+
   # Weekly source-URL health check (separate job: network-dependent and slow,
   # so it never blocks PR validation; failures surface as workflow alerts).
   url-health:

@@ -88,6 +88,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: "Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05."

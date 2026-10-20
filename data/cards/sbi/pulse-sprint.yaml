@@ -75,6 +75,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
+      type: issuer-page
       notes: "Crawl reflects parent SBI Card PULSE."
 
     mcc_exclusions: ['6513']

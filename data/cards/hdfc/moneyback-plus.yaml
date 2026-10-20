@@ -74,6 +74,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
     mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
 benefits:

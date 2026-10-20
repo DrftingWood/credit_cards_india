@@ -71,6 +71,7 @@ rewards:
     source:
       url: https://www.federal.bank.in/rupay-signet-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2023-01-01

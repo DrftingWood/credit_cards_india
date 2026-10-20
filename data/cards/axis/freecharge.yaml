@@ -61,6 +61,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
     notes: "Regular EDGE REWARDS earn plus milestone-based EDGE REWARDS on achieving spend milestones (milestone slabs not published -"
 
     mcc_exclusions: ['6513']

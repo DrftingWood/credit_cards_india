@@ -69,6 +69,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
       retrieved_on: 2026-07-05
+      type: issuer-page
     notes: "1% Cashback on any other spends across offline and online stores (base). Category exclusions not published on crawl."
 
     mcc_exclusions: ['6513']

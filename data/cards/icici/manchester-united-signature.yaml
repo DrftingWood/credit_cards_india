@@ -74,6 +74,7 @@ rewards:
     source:
       url: https://www.icicibank.com/personal-banking/cards/credit-card/manchester-united-signature-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
 
 benefits:
   - effective_from: 2019-01-01

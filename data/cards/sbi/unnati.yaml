@@ -58,6 +58,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
       retrieved_on: 2026-07-03
+      type: issuer-page
     notes: "Cash Advance, Balance Transfer, Flexipay and Fuel transactions are excluded from the Reward Points programme."
 
     mcc_exclusions: ['6513']

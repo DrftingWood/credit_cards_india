@@ -81,6 +81,7 @@ rewards:
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
 
 benefits:
   - effective_from: 2023-03-01

@@ -73,6 +73,7 @@ rewards:
     source:
       url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2022-01-01

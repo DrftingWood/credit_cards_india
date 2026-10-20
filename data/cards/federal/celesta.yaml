@@ -78,6 +78,7 @@ rewards:
     source:
       url: https://www.federal.bank.in/visa-celesta-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2022-03-01

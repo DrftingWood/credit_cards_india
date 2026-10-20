@@ -92,6 +92,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: 'Research-verified: 1 NeuCoin = Rs1 across Tata Neu, no cash conversion.'
       confidence: high

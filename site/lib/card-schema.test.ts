@@ -117,3 +117,33 @@ describe("card schema — B2-BL2 co_brand.category enum expansion", () => {
     expect(validate(cardWithCobrand("made-up-category"))).toBe(false);
   });
 });
+
+describe("card schema — D-21 rule-level provenance", () => {
+  function cardWithAccelerator(acc: Record<string, unknown>) {
+    return {
+      ...validBaseCard,
+      rewards: [{ ...validBaseCard.rewards[0], accelerated: [{ category: "dining", multiplier: 5, ...acc }] }],
+    };
+  }
+  const ruleSource = {
+    url: "https://example.com/tnc.pdf",
+    retrieved_on: "2024-02-01",
+    type: "issuer-pdf",
+    confidence: "high",
+    verified_by: "agent",
+    method: "pdf-extract",
+  };
+  test("an accelerator without its own source is accepted (inherits the record's)", () => {
+    expect(validate(cardWithAccelerator({}))).toBe(true);
+  });
+  test("an accelerator with a full rule-level source is accepted", () => {
+    expect(validate(cardWithAccelerator({ source: ruleSource }))).toBe(true);
+  });
+  test("a rule-level source without retrieved_on is rejected", () => {
+    const { retrieved_on: _omit, ...noDate } = ruleSource;
+    expect(validate(cardWithAccelerator({ source: noDate }))).toBe(false);
+  });
+  test("an unknown verification method is rejected", () => {
+    expect(validate(cardWithAccelerator({ source: { ...ruleSource, method: "vibes" } }))).toBe(false);
+  });
+});

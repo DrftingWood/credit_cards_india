@@ -86,6 +86,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
     mcc_exclusions: ['6513']
 benefits:

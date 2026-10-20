@@ -84,6 +84,7 @@ rewards:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
       retrieved_on: '2026-07-05'
+      type: issuer-page
       confidence: medium
       notes: 'Verified 2026-07-05: Emirates Skywards miles; heavy YQ fuel surcharges drag India economy to ~Rs0.6-0.7 (was wrongly ~Rs0.2).'
     notes: "Earn 2 Skywards Miles per ₹100 on both domestic and international spend; miles credited to Emirates Skywards account at end of billing cycle."

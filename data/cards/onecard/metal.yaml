@@ -77,6 +77,7 @@ rewards:
     source:
       url: https://www.getonecard.app/card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: 'Corrected 2026-07-05: 1 OneCard point = Rs 0.10 fixed (statement credit vs spends), not Rs 1.0. Face/realized were both overstated 10x.'

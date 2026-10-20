@@ -108,6 +108,7 @@ rewards:
     source:
       url: https://www.paisabazaar.com/yes-bank/paisabazaar-paisasave-credit-card/
       retrieved_on: '2026-07-28'
+      type: aggregator
 
       notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:

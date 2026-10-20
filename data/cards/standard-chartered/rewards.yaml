@@ -82,6 +82,7 @@ rewards:
     source:
       url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: 'Earn corrected 2026-07-05: flat 4 RP per Rs150 on retail (was 1/150); 1 RP per Rs150 on govt/insurance; 4x bonus RP once monthly retail spend crosses Rs20,000 (capped 2,000 bonus pts/cycle). Value: 1 RP = Rs0.25 voucher / Rs0.20 statement credit.'

@@ -62,6 +62,7 @@ rewards:
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/wealth-management-infinite-credit-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2018-01-01

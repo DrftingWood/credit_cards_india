@@ -69,6 +69,7 @@ rewards:
     source:
       url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: medium
       notes: 'Verified 2026-07-05: SC Beyond 360 RP = Rs1.0 (premium 1:1, exception vs generic SC ~Rs0.25) -> realized 1.0->0.90 after Rs99+GST fee.'

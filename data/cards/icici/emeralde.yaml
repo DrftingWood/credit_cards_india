@@ -99,6 +99,7 @@ rewards:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       notes: 'Corrected 2026-07-05: RP = Rs 0.25 (was 0.6). Removed unsupported 6:1 Air India transfer (1:1 is Private Metal only; classic eligibility doubtful). Card phased out in favour of Emeralde Private Metal.'
       confidence: medium

@@ -71,6 +71,7 @@ rewards:
     source:
       url: https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: '2026-07-05: AU Rewardz portal only, Rs 1/pt; no airline/hotel transfer partners.'
 benefits:

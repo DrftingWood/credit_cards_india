@@ -106,6 +106,7 @@ rewards:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
       confidence: high

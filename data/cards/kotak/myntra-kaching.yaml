@@ -87,6 +87,7 @@ rewards:
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html
       retrieved_on: 2026-04-15
+      type: issuer-page
 
 benefits:
   - effective_from: 2021-07-01

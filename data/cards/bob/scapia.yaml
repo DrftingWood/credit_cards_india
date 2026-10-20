@@ -90,6 +90,7 @@ rewards:
     source:
       url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: "Rebuilt 2026-07-05: 1 Scapia Coin = Rs 0.20 (was wrongly Rs 1.0). '10%/20%/5% coins' are coin COUNTS = ~2%/4%/1% real value. Aligned with Federal Scapia."

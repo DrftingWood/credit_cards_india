@@ -85,6 +85,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: 'Research-verified: dedicated IRCTC Reward Point = Rs1 on rail fare (regulated/fixed -> NO price premium). HDFC caps redemption at 70% of fare.'
       confidence: high

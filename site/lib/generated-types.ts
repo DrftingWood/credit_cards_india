@@ -223,6 +223,14 @@ export interface Source {
    * Dotted record paths (e.g. rewards.accelerated.cap_per_cycle) that the local evidence directly supports, so coverage can be checked mechanically.
    */
   fields_verified?: string[];
+  /**
+   * Who compared the record against the source (a maintainer handle, or 'agent' for an automated/assisted pass). Optional provenance detail.
+   */
+  verified_by?: string;
+  /**
+   * How the source was read: manual-read (a person read it), pdf-extract (pypdf text extraction), rendered-page (Playwright/browser-rendered HTML), crawl-diff (scripts/crawl_diff.py presence match), secondary (restated from another cited document).
+   */
+  method?: "manual-read" | "pdf-extract" | "rendered-page" | "crawl-diff" | "secondary";
   notes?: string;
 }
 export interface RewardRecord {

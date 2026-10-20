@@ -85,6 +85,7 @@ rewards:
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: medium
       notes: 'Research-verified: CheQ Points ~Rs0.5 (travel/gift-card best), Rs0.25 bill-offset; CheQ-app only. Redemption value secondary-sourced (CardInsider).'

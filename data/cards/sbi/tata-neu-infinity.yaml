@@ -95,6 +95,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: 'Research-verified: 1 NeuCoin = Rs1 across Tata Neu, no cash conversion. Layer-3: Croma electronics ~5% premium.'

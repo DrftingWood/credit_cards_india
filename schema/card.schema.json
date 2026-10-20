@@ -177,6 +177,16 @@
           "items": { "type": "string", "minLength": 1 },
           "description": "Dotted record paths (e.g. rewards.accelerated.cap_per_cycle) that the local evidence directly supports, so coverage can be checked mechanically."
         },
+        "verified_by": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Who compared the record against the source (a maintainer handle, or 'agent' for an automated/assisted pass). Optional provenance detail."
+        },
+        "method": {
+          "type": "string",
+          "enum": ["manual-read", "pdf-extract", "rendered-page", "crawl-diff", "secondary"],
+          "description": "How the source was read: manual-read (a person read it), pdf-extract (pypdf text extraction), rendered-page (Playwright/browser-rendered HTML), crawl-diff (scripts/crawl_diff.py presence match), secondary (restated from another cited document)."
+        },
         "notes": { "type": "string" }
       }
     },
@@ -570,6 +580,10 @@
                     "notes": { "type": "string" }
                   }
                 }
+              },
+              "source": {
+                "$ref": "#/$defs/Source",
+                "description": "Rule-level provenance for this accelerator. Optional: when absent the rule inherits the parent reward record's `source`. Set it when this rule was verified against a different document or on a different date than the record as a whole."
               },
               "notes": { "type": "string" }
             }

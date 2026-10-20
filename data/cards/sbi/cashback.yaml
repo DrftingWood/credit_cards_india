@@ -96,6 +96,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
     # 1 Apr 2026 additions: digital gaming (7993/7994/5816), tolls (4784),

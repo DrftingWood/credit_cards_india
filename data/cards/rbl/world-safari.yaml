@@ -65,6 +65,7 @@ rewards:
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: 'Removed fabricated ''10x international'' accelerator: World Safari earns ZERO reward points on international spend (0% forex but no TP). Travel 5 TP/Rs100 is uncapped. 2026-07-05.'
 benefits:

@@ -79,6 +79,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
       retrieved_on: 2026-07-05
+      type: issuer-page
       confidence: high
       notes: 'Research-verified: co-brand Reward Points redeem as SBI statement credit at Rs1 = liquid cash -> NOT closed-loop (only in-app PhonePe cashback vouchers are). Tag removed.'
     notes: "1 Reward Point per Rs. 100 on other spends (base). Eligible-spend exclusions not detailed on crawl."

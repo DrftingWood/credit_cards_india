@@ -94,6 +94,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       confidence: high
       notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'

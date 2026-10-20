@@ -89,6 +89,7 @@ rewards:
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       notes: 'Research-verified: dedicated IRCTC Reward Point = Rs1 on rail fare (regulated -> no premium). Min Rs200.'
       confidence: high

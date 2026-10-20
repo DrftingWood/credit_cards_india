@@ -66,6 +66,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: EDGE Reward Points redeem at a uniform Rs 0.20/pt (EDGE portal), ~Rs 0.18 realistic. No card-tier premium (verified 2026). Corrected face Rs1.0->Rs0.20.

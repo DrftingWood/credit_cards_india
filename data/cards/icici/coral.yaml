@@ -95,6 +95,7 @@ rewards:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
       retrieved_on: 2026-07-05
+      type: issuer-page
 
     mcc_exclusions: ['6513']
 benefits:

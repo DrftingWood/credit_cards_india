@@ -69,6 +69,7 @@ rewards:
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/insignia-preferred-banking-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: "2026-07-05: catalogue-only, no airline/hotel transfers. Hotel 'partners' are elite-status perks, not point transfers."
 benefits:

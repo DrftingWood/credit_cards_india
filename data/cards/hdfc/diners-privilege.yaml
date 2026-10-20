@@ -91,6 +91,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: '2026-07-05: partner transfers discontinued on new DCP cards (cardmaven, 2026-06-25). SmartBuy floor ~Rs 0.50/RP retained.'
 benefits:

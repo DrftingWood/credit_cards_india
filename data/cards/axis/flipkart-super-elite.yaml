@@ -76,6 +76,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: medium
       notes: Flipkart SuperCoins ~Rs 0.25 on Flipkart, realistic Rs 0.22.

@@ -344,3 +344,36 @@ Follow-up migrations (tracked in `docs/PORTFOLIO-GAPS.md`):
   terms differ materially; split only if they do.
 - **Closed** — cards that merely note an alternate network with identical scored
   terms stay single-file (the default above).
+
+### D-21. Reward-rule provenance: inherit by default, grade always, enforce on opt-in
+
+Every reward *rule* (a record's `base`, and each `accelerated[]` entry) must be
+traceable to a source URL and the date it was read. Reward records already
+require `source.url` + `source.retrieved_on`, so the schema change is small:
+
+- `accelerated[].source` is an **optional** `Source`. When absent the rule
+  **inherits** the parent record's `source`; set it only when the rule was
+  verified against a different document or on a different date.
+- `Source` gains optional `verified_by` (who) and `method`
+  (`manual-read | pdf-extract | rendered-page | crawl-diff | secondary`, how).
+- `base` gets no own `source`: the record's source *is* the base rule's source.
+
+`scripts/provenance.py` grades each rule's effective source on every
+`validate.py` run and prints a coverage block. Gaps are split in two tiers:
+
+- **Hard** (broken or contradicted: no url/date, non-http, bare-homepage URL,
+  or an inherited source whose `fields_verified` lists reward paths that do not
+  cover the rule) — **warning** by default, one line per card.
+- **Soft** (thin: no `type`, no `confidence`, `retrieved_on` older than 180 days,
+  aggregator host) — counted in the coverage block only.
+
+`--strict-provenance` (or `STRICT_PROVENANCE=1`) makes every gap on an open
+record of an active/invite-only card an **error**. Strict mode is opt-in until
+coverage is high enough to promote it, following the warn → error promotion
+pattern of D-16a/D-16b. Inheritance is computed, not materialised: copying the
+record source onto ~400 accelerators would add no information and would make the
+copies look independently verified.
+
+Rejected: a new `verified_on` key (it would duplicate `retrieved_on`, whose
+meaning — the date the source was read — is already documented); a required
+per-rule source (would fail all 320 cards today).

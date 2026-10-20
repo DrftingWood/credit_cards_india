@@ -157,6 +157,7 @@ benefits:
     source:
       url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

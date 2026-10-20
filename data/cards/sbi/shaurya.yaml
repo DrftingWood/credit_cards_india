@@ -38,7 +38,6 @@ fees:
       url: https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
@@ -76,7 +75,6 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/shaurya-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
 
     mcc_exclusions: ['6513']
 benefits:

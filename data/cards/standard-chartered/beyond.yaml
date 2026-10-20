@@ -36,7 +36,6 @@ fees:
       url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
 
 rewards:
   - effective_from: 2025-01-01

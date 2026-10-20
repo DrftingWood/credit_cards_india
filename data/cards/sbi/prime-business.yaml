@@ -44,7 +44,6 @@ fees:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
@@ -94,7 +93,6 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
       notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
 
     mcc_exclusions: ['6513']

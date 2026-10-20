@@ -76,7 +76,6 @@ rewards:
       url: https://www.bobcard.co.in/credit-card-types/bobcard-one
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
 
 benefits:
   - effective_from: 2023-01-01

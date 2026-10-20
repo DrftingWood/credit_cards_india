@@ -39,7 +39,6 @@ fees:
       url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 rewards:
   - effective_from: 2024-01-01

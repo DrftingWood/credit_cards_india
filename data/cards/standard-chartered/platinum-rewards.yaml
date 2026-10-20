@@ -38,7 +38,6 @@ fees:
       url: https://www.sc.bank.in/credit-cards/platinum-rewards/
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
 
 rewards:
   - effective_from: 2026-01-01

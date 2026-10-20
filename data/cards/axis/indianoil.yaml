@@ -38,7 +38,6 @@ fees:
       url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
       local_refs:
         - docs/sources/axis/_shared/mitc-credit-cards.pdf
       fields_verified:

@@ -71,7 +71,6 @@ rewards:
       url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 benefits:
   - effective_from: 2021-01-01

@@ -72,7 +72,6 @@ rewards:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/tiger-credit-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 benefits:
   - effective_from: 2023-01-01

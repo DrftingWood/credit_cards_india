@@ -1,7 +1,7 @@
 """scripts/test_backfill_source_confidence.py — D3 confidence-backfill rule tests (no git, no data files)."""
 import copy
 
-from backfill_source_confidence import decide, header_tier, hedged, pure_insert
+from backfill_source_confidence import decide, header_tier, hedged, pure_insert, todo_flagged
 
 HIGH_HDR = "# ---\n#   Verified   : 2026-07-04   Confidence: HIGH (pdf)\n# ---\nid: x\n"
 MED_HDR = "#   Verified   : 2026-07-04   Confidence: MEDIUM (web)\n"
@@ -94,6 +94,21 @@ assert decide(excl, "rewards", "high", wave(rw, section="rewards")) == (None, "c
 # fees have no uncovered keys: a changed note still counts as an edit
 noted = fee(notes="Renewal fee waived on Rs 2L spend.")
 assert decide(noted, "fees", "high", wave(r)) == (None, "changed-since-wave")
+
+# 3c. A record that carried a TODO marker before the cleanup stays unset unless the wave re-examined it.
+assert decide(r, "fees", "high", wave(r), flagged=True) == (None, "todo-flagged")
+assert decide(r, "fees", "high", wave(r), flagged=True, rechecked=True) == ("high", "ok")
+assert decide(r, "fees", "high", wave(r), flagged=False, rechecked=True) == ("high", "ok")
+PRE = (
+    "id: x\nfees:\n  - effective_from: 2021-01-01\n    effective_until: null\n"
+    "    joining_fee_inr: 2999  # TODO verify\n    source:\n      url: u\n"
+    "rewards:\n  - effective_from: '2021-01-01'\n    effective_until: null\n"
+    "    notes: \"see docs/TODO.md E16\"\n"
+    "  - effective_from: 2023-04-01\n    effective_until: null\n    notes: \"caps # TODO verify from live tabs\"\n"
+    "benefits:\n  - effective_from: 2021-01-01\n    lounge: 4  # TODO\n"
+    "eligibility:\n  min_age: 21  # TODO verify\n"
+)
+assert todo_flagged(PRE) == {("fees", "2021-01-01"), ("rewards", "2023-04-01"), ("benefits", "2021-01-01")}
 
 # 4. Hedge detection reads both the record notes and the source notes.
 assert hedged({"notes": "fees widely reported as ~Rs 1.5L"})

@@ -38,7 +38,6 @@ fees:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-credit-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 rewards:
   - effective_from: 2022-01-01

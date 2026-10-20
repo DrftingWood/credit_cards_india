@@ -30,7 +30,13 @@ ALL of these hold:
     the later modelling research, not for the header;
   * neither the source notes nor the record's notes hedge the values
     (unverified / estimate / aggregator / not stated / not published /
-    widely reported / verify against ...).
+    widely reported / verify against ...);
+  * the record carried no `TODO` marker before the 2026-07-03 "TODO cleanup"
+    commits (CLEANUP_PRE_REV). That cleanup stripped 1,300+ `# TODO verify`
+    markers without re-reading sources, so a record that had one was flagged as
+    doubtful and never cleared — unless the wave itself then edited the record
+    (its values differ between CLEANUP_POST_REV and WAVE_REV), which means it
+    was re-examined against the issuer source.
 
 Sources that already have a `confidence` are never changed. Insertion follows
 backfill_source_type.py: ruamel round-trip, `confidence` placed after `type`
@@ -58,6 +64,8 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 WAVE_REV = "4091c6d"  # "Provenance & confidence: annotate all 317 cards" (2026-07-04)
+CLEANUP_PRE_REV = "2a2c5b4~1"  # last commit before the 2026-07-03 "TODO cleanup" series
+CLEANUP_POST_REV = "96b197f"  # "TODO cleanup: ... ZERO markers left"
 SECTIONS = ("fees", "rewards")
 ISSUER_OWNED = {"issuer-page", "issuer-pdf"}
 TIER_MAP = {("HIGH", "pdf"): "high", ("MEDIUM", "web"): "medium", ("LOW", "unconfirmed"): "low"}
@@ -111,6 +119,24 @@ def hedged(rec: dict) -> bool:
     return any(HEDGE_RE.search(t) for t in texts)
 
 
+def todo_flagged(text: str) -> set[tuple[str, str]]:
+    """(section, effective_from) of every fees/rewards/benefits record with a TODO marker on any of its lines."""
+    out: set[tuple[str, str]] = set()
+    sec = eff = None
+    for line in text.splitlines():
+        m = re.match(r"^([a-z_]+):", line)
+        if m:
+            sec, eff = m.group(1), None
+            continue
+        m = re.match(r"^  - effective_from:\s*['\"]?([0-9-]+)", line)
+        if m and sec in ("fees", "rewards", "benefits"):
+            eff = m.group(1)
+            continue
+        if eff and sec in ("fees", "rewards", "benefits") and re.search(r"\bTODO\b(?!\.md)", line):
+            out.add((sec, eff))
+    return out
+
+
 def wave_record(wave_doc: dict | None, section: str, rec: dict) -> dict | None:
     if not wave_doc:
         return None
@@ -120,8 +146,13 @@ def wave_record(wave_doc: dict | None, section: str, rec: dict) -> dict | None:
     return None
 
 
-def decide(rec: dict, section: str, tier: str | None, wave_doc: dict | None) -> tuple[str | None, str]:
-    """Return (confidence-to-insert or None, reason). Pure: no I/O."""
+def decide(rec: dict, section: str, tier: str | None, wave_doc: dict | None,
+           flagged: bool = False, rechecked: bool = False) -> tuple[str | None, str]:
+    """Return (confidence-to-insert or None, reason). Pure: no I/O.
+
+    `flagged`: the record had a TODO marker before the cleanup; `rechecked`: the
+    wave edited the record after the cleanup (so the flag was looked at again).
+    """
     src = rec.get("source") or {}
     if src.get("confidence"):
         return None, "already-set"
@@ -144,6 +175,8 @@ def decide(rec: dict, section: str, tier: str | None, wave_doc: dict | None) -> 
             return None, "resourced-since-wave"
     if hedged(rec):
         return None, "notes-hedged"
+    if flagged and not rechecked:
+        return None, "todo-flagged"
     return tier, "ok"
 
 
@@ -173,12 +206,28 @@ def pure_insert(before: str, after: str, added: int, key: str = "confidence") ->
     return len(diff) == added and all(ln.startswith("+ ") and ln[2:].strip().startswith(f"{key}: ") for ln in diff)
 
 
-def load_at_rev(rel: str) -> dict | None:
+def text_at(rev: str, rel: str) -> str | None:
     try:
-        out = subprocess.run(["git", "show", f"{WAVE_REV}:{rel}"], cwd=ROOT, capture_output=True, check=True)
+        out = subprocess.run(["git", "show", f"{rev}:{rel}"], cwd=ROOT, capture_output=True, check=True)
     except subprocess.CalledProcessError:
         return None
-    return yaml.safe_load(out.stdout.decode("utf-8"))
+    return out.stdout.decode("utf-8")
+
+
+def load_at_rev(rel: str, rev: str = WAVE_REV) -> dict | None:
+    text = text_at(rev, rel)
+    return yaml.safe_load(text) if text is not None else None
+
+
+def flag_state(rel: str, section: str, rec: dict, wave_doc: dict | None) -> tuple[bool, bool]:
+    """(flagged before the TODO cleanup, re-checked by the wave afterwards)."""
+    pre = text_at(CLEANUP_PRE_REV, rel)
+    if pre is None or (section, str(rec.get("effective_from"))) not in todo_flagged(pre):
+        return False, False
+    post = wave_record(load_at_rev(rel, CLEANUP_POST_REV), section, rec)
+    wave = wave_record(wave_doc, section, rec)
+    rechecked = post is not None and wave is not None and strip_source(post) != strip_source(wave)
+    return True, rechecked
 
 
 def main(argv=None) -> int:
@@ -209,7 +258,8 @@ def main(argv=None) -> int:
             for i, rec in enumerate(plain.get(sec) or []):
                 if not isinstance(rec, dict) or not isinstance(rec.get("source"), dict):
                     continue
-                value, reason = decide(rec, sec, tier, wave_doc)
+                flagged, rechecked = flag_state(rel, sec, rec, wave_doc) if sec in SECTIONS else (False, False)
+                value, reason = decide(rec, sec, tier, wave_doc, flagged, rechecked)
                 stats[reason] += 1
                 if value is None:
                     if reason not in {"already-set", "closed-record", "section-not-covered"}:

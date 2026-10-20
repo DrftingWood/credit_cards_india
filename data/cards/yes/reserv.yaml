@@ -86,7 +86,6 @@ rewards:
       url: https://www.yes.bank.in/personal-banking/cards/credit-card/reserv-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 benefits:
   - effective_from: 2026-06-15

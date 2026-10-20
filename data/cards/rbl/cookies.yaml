@@ -35,7 +35,6 @@ fees:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
       local_refs:
         - docs/sources/rbl/_shared/CardsScheduleCharges.pdf
       fields_verified:

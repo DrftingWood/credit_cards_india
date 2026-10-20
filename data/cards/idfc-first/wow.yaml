@@ -36,7 +36,6 @@ fees:
       url: https://www.idfcfirst.bank.in/credit-card/wow
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
 
 rewards:
   - effective_from: 2021-06-01

@@ -75,7 +75,6 @@ rewards:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
 
 benefits:
   - effective_from: 2023-01-01

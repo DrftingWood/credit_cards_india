@@ -36,7 +36,6 @@ fees:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 rewards:
   - effective_from: 2020-01-01
@@ -80,7 +79,6 @@ rewards:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 benefits:
   - effective_from: 2020-01-01

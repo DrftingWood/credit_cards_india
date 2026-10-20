@@ -36,7 +36,6 @@ fees:
       url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 rewards:
   - effective_from: 2024-01-01

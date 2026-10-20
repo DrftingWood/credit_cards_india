@@ -81,7 +81,6 @@ rewards:
       url: https://www.federal.bank.in/visa-imperio-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 benefits:
   - effective_from: 2022-03-01

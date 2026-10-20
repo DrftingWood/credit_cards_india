@@ -39,7 +39,6 @@ fees:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-amex-credit-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: medium
 
 rewards:
   - effective_from: 2021-01-01
@@ -75,7 +74,6 @@ rewards:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-voyage-amex-credit-card.html
       retrieved_on: '2026-07-05'
       type: issuer-page
-      confidence: medium
 
       notes: IndusInd-InterMiles co-brand discontinued; cards migrated (Voyage Visa->Legend, Voyage Amex/Odyssey->Celesta) and no longer earn InterMiles. Residual InterMile ~Rs 0.17-0.25.
 benefits:

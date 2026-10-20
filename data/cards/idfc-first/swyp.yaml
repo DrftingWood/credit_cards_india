@@ -73,7 +73,6 @@ rewards:
       url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
 
 benefits:
   - effective_from: 2024-02-01

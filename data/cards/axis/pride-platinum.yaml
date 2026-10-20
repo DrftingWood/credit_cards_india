@@ -72,7 +72,6 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
 
     mcc_exclusions: ['6513']
 benefits:

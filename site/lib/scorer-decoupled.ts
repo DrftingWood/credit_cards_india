@@ -26,6 +26,7 @@ import { pointsToPct } from "./rate-math.mjs";
 import { CanonicalCategory } from "./category-mapping";
 import type { RecommendPayload } from "./recommender";
 import { INCOME_BAND_ANNUAL_INR, BRAND_PREF_TO_CHANNELS } from "./recommender-constants";
+import { explainValueComponents, CYCLE_MONTHS } from "./value-components";
 
 // The scorer invents NO value or spend numbers. The only constants below are
 // (a) WARNING thresholds that never change a ₹ figure, and (b) the coarse
@@ -49,13 +50,10 @@ const HEDGED_RATE_CEILING = /\bup\s+to\b[^.;]*?(\d+(?:\.\d+)?)\s*%/gi;
 const SLAB_SCHEDULE = /\b(tiered|tier|slab|marginal)\b/i;
 /** Finds every "N%" in a note so the encoded rate can be checked against the schedule. */
 const ANY_RATE_PCT = /(\d+(?:\.\d+)?)\s*%/g;
-/** A milestone award worth more than this share of its own trigger spend is flagged (warning only). */
-const IMPLAUSIBLE_MILESTONE_SHARE = 0.15;
 
 /** Coarse band midpoints for the legacy band input. Prefer `exactSpend` for real amounts. */
 const BAND_TO_INR: Record<string, number> = { "0": 0, "lt-5k": 2500, "5k-15k": 10000, "15k-30k": 22500, "gt-30k": 40000 };
 const MACRO_TO_BUCKET: Record<string, CanonicalCategory> = { online: "online", travel: "travel", dining: "dining", groceries: "groceries", fuel: "fuel" };
-const CYCLE_MONTHS: Record<string, number> = { annual: 12, quarterly: 3, monthly: 1, statement: 1, "per-txn": 1 };
 
 export interface DecoupledScore {
   card: EnrichedCard;
@@ -94,35 +92,12 @@ function channelMixFromPayload(p: RecommendPayload): Set<string> {
   return out;
 }
 
-/** Recurring milestone ₹ value at the card's data-stated values (A4 logic: one-times excluded); also reports whether any award is implausibly large vs its trigger. */
-function milestoneRecurring(b: BenefitRecord | null, annualSpendInr: number): { inr: number; implausible: boolean } {
-  if (!b?.milestones?.length) return { inr: 0, implausible: false };
-  let total = 0;
-  let implausible = false;
-  for (const m of b.milestones) {
-    if (m.value_inr == null) continue;
-    if (m.trigger_window === "first-year" || m.trigger_window === "one-time") continue;
-    const cyclesPerYear = CYCLE_MONTHS[m.cycle] ? 12 / CYCLE_MONTHS[m.cycle] : 1;
-    const perCycleSpend = annualSpendInr / cyclesPerYear;
-    const threshold = m.spend_inr ?? 0;
-    if (threshold > 0 && perCycleSpend < threshold) continue;
-    if (threshold > 0 && m.value_inr > threshold * IMPLAUSIBLE_MILESTONE_SHARE) implausible = true;
-    total += m.value_inr * (m.is_repeatable === false ? 1 : cyclesPerYear);
-  }
-  return { inr: total, implausible };
-}
-
-function welcomeOneTime(b: BenefitRecord | null): number {
-  if (!b?.welcome?.length) return 0;
-  return b.welcome.reduce((s, w) => s + (w.value_inr ?? 0), 0);
-}
-
 function loungeVisits(b: BenefitRecord | null): DecoupledScore["lounge_visits"] {
   const la = b?.lounge_access ?? {};
   const annual = (v: number | "unlimited" | undefined, cycle: string | undefined): number | "unlimited" => {
     if (v === undefined) return 0;
     if (v === "unlimited") return "unlimited";
-    return v * (12 / (CYCLE_MONTHS[cycle ?? "annual"] ?? 12));
+    return v * (12 / (CYCLE_MONTHS[(cycle ?? "annual") as keyof typeof CYCLE_MONTHS] ?? 12));
   };
   return { domestic: annual(la.domestic?.visits_per_cycle, la.domestic?.cycle), international: annual(la.international?.visits_per_cycle, la.international?.cycle) };
 }
@@ -222,7 +197,6 @@ export function scoreDecoupled(
   opts: ScoreOpts = {},
 ): DecoupledScore[] {
   const spend = opts.exactSpend ? { ...emptySpend(), ...opts.exactSpend } : spendFromPayload(payload);
-  const annualSpend = Object.values(spend).reduce((a, b) => a + b, 0) * 12;
   const channelMix = channelMixFromPayload(payload);
   const topBucket = (Object.keys(spend) as CanonicalCategory[]).filter((k) => spend[k] > 0).sort((a, b) => spend[b] - spend[a])[0] ?? null;
 
@@ -244,18 +218,23 @@ export function scoreDecoupled(
     const uv = realizedUnitValue(card, programs);
     const s = scoreCard(card, spend, ctx);
     const rewardedBuckets = new Set(s.buckets.filter((b) => b.monthly_value_inr > 0).map((b) => b.category));
-    const ms = milestoneRecurring(card.current_benefits, annualSpend);
+    // Welcome + milestones come from the shared value-components engine, so /recommend,
+    // /calculator and the card page tell one story (trigger-gated, max_awards-aware,
+    // fee-waiver milestones not double-counted, welcome gated by its stated spend).
+    const vc = explainValueComponents(card, spend, { annual_gross_inr: s.annual_gross_inr, annual_fee_inr: s.annual_fee_effective_inr });
     const flags = ratesFlags(card, topBucket, rewardedBuckets, uv);
-    if (ms.implausible) flags.push("Milestone value implausibly large vs its spend trigger — likely a data error");
+    if (vc.milestones.items.some((m) => m.kind === "recurring" && m.status === "reached" && m.implausible)) {
+      flags.push("Milestone value implausibly large vs its spend trigger — likely a data error");
+    }
     const lounge = loungeVisits(card.current_benefits);
-    const welcome = Math.round(welcomeOneTime(card.current_benefits));
+    const welcome = vc.welcome.total_inr;
     return {
       card,
       net_rewards_inr: Math.round(s.annual_gross_inr - s.annual_fee_effective_inr),
       annual_rewards_inr: Math.round(s.annual_gross_inr),
       annual_fee_inr: s.annual_fee_effective_inr,
       first_year_bonus_inr: welcome,
-      milestone_value_inr: Math.round(ms.inr),
+      milestone_value_inr: vc.milestones.recurring_annual_inr,
       lounge_visits: lounge,
       reason: buildReason(s.buckets, s.annual_fee_effective_inr, lounge, welcome),
       flags,

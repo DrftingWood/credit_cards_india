@@ -7,6 +7,7 @@ import type {
 } from "./types";
 import { CanonicalCategory, resolveBuckets, CATEGORY_LABELS } from "./category-mapping";
 import { pointsToPct } from "./rate-math.mjs";
+import { explainValueComponents, type ValueComponents, type ValuePrefs } from "./value-components";
 
 export type SpendProfile = Record<CanonicalCategory, number>;
 
@@ -790,9 +791,17 @@ export interface CardExplanation {
   accelerators: AcceleratorExplain[];
   base_spend: BaseSpendExplain[];
   annual_gross_inr: number; annual_fee_inr: number; annual_net_inr: number;
+  /** Phase 2: welcome / milestone / lounge line items + year-1 vs steady-state totals.
+   *  Present only when the caller passes ValuePrefs; never part of annual_net_inr (the rank). */
+  value_components?: ValueComponents;
 }
 
-export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: ScoringContext): CardExplanation {
+export function explainCard(
+  card: EnrichedCard,
+  spend: SpendProfile,
+  ctx?: ScoringContext,
+  valuePrefs?: ValuePrefs,
+): CardExplanation {
   const rewards = card.current_rewards;
   const basis: ValueBasis = ctx?.valueBasis ?? "realized";
   // Layer is inferred from the context the caller built (see Global Constraints).
@@ -879,10 +888,16 @@ export function explainCard(card: EnrichedCard, spend: SpendProfile, ctx?: Scori
   const annualGross = monthlyGross * 12;
   const annualSpend = totalSpend * 12;
   const { annualFeeEffective } = effectiveAnnualFee(card, annualSpend);
-  return {
+  const out: CardExplanation = {
     layer, value_basis: basis, accelerators, base_spend,
     annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective, annual_net_inr: annualGross - annualFeeEffective,
   };
+  if (valuePrefs) {
+    out.value_components = explainValueComponents(
+      card, spend, { annual_gross_inr: annualGross, annual_fee_inr: annualFeeEffective }, valuePrefs,
+    );
+  }
+  return out;
 }
 
 /** The constraint/cut list shown per accelerator row. Realistic: what was cut.

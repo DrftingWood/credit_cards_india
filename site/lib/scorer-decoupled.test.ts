@@ -1,5 +1,6 @@
 import { describe, test, expect } from "vitest";
 import { scoreDecoupled, ratesFlags } from "./scorer-decoupled";
+import { explainValueComponents } from "./value-components";
 import type { RecommendPayload } from "./recommender";
 import type { EnrichedCard, LoyaltyProgram } from "./types";
 
@@ -171,5 +172,34 @@ describe("decoupled scorer prototype", () => {
       const flags = ratesFlags(bob, "utilities", new Set(["utilities"]), 0.25);
       expect(flags.some((f) => /ceiling/i.test(f))).toBe(false);
     }
+  });
+});
+
+describe("decoupled scorer shares the value-components engine (one milestone/welcome story site-wide)", () => {
+  test("milestone_value_inr and first_year_bonus_inr equal explainValueComponents for every scored card", async () => {
+    const { cards, programs } = await load();
+    const exact = { online: 50000, dining: 15000, groceries: 10000, travel: 20000, fuel: 0, utilities: 0, rent: 0, international: 0 };
+    const res = scoreDecoupled(cards, programs, base({ goals: ["cashback"] }), { topN: 400, exactSpend: exact, dedupeVariants: false });
+    expect(res.length).toBeGreaterThan(50);
+    for (const d of res) {
+      const vc = explainValueComponents(d.card, exact, { annual_gross_inr: d.annual_rewards_inr, annual_fee_inr: d.annual_fee_inr });
+      expect(d.milestone_value_inr, d.card.id).toBe(vc.milestones.recurring_annual_inr);
+      expect(d.first_year_bonus_inr, d.card.id).toBe(vc.welcome.total_inr);
+    }
+  });
+
+  test("a renewal-fee-waiver milestone is not ALSO reported as milestone value (icici-emeralde-private-metal)", async () => {
+    const { cards } = await load();
+    const c = cards.find((x) => x.id === "icici-emeralde-private-metal");
+    if (!c || c.computed.fee_waiver_spend_inr == null) return;
+    const monthly = Math.ceil(c.computed.fee_waiver_spend_inr / 12);
+    const exact = { online: monthly, dining: 0, groceries: 0, travel: 0, fuel: 0, utilities: 0, rent: 0, international: 0 };
+    const waiverMs = c.current_benefits?.milestones?.find((m) => m.spend_inr === c.computed.fee_waiver_spend_inr && /waive/i.test(m.benefit));
+    expect(waiverMs).toBeTruthy();
+    // Fee is waived at this spend (rewards net already gains the fee back) — the milestone must not add it again.
+    const vc = explainValueComponents(c, exact, { annual_gross_inr: 0, annual_fee_inr: 0 });
+    const item = vc.milestones.items.find((i) => i.benefit === waiverMs!.benefit)!;
+    expect(item.status).toBe("counted-in-fee");
+    expect(item.annual_value_inr).toBe(0);
   });
 });

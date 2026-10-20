@@ -341,6 +341,48 @@ state it, and that is evidence, not invention.
   shares is an explicit opt-in (`UsageProfile.gate_calculator`). Ecosystem ticks
   are shared with the card pages' Realistic layer.
 
+### D-25. Authored `applicability_pct` = published market share, as a floor (D12)
+
+D-18 allows an authored `applicability_pct` only "from evidence". The method:
+
+1. **Evidence is a published market share** of the accelerator's merchant,
+   from a company filing, regulator data or a named research firm (press
+   reports of a named brokerage are acceptable; unsourced blogs are not).
+2. **Within the bucket the accelerator sits in.** If the share is of a
+   narrower market than the bucket (food delivery vs all dining), multiply by
+   that market's published share of the bucket. If either factor is missing,
+   leave the field unset (base rate + caveat, as D-18).
+3. **Take the lowest current figure, rounded down** to a whole percent, and
+   record source, period and denominator in a comment beside the value.
+4. **It is a floor, not an estimate of the user.** A market share is a
+   population average, and /recommend only counts the accelerator for users
+   who picked the brand, who will usually route more than average through it.
+   A user-declared share (D-24) always wins.
+
+Applied 2026-10-20:
+
+| Card / accelerator | Bucket | Value | Derivation |
+|---|---|---|---|
+| `icici-amazon-pay` Amazon.in Prime 5% and non-Prime 3% | online | 25 | Amazon India 25-30% of e-commerce GMV (ICICI Securities, FY25 market; Entrackr, 14-May-2026), lower bound |
+| `hdfc-swiggy-hdfc` Swiggy ecosystem 10% | dining | 3 | Swiggy 42% of food-delivery GOV (Motilal Oswal Q1 FY25 via Inc42, 20-Nov-2024; Bernstein Jan-2025) x online delivery ~8% of food services (Bernstein Jan-2025; Swiggy-Bain's 12% not used) = 3.4% |
+
+Left unset, with reasons:
+
+- `icici-amazon-pay` Amazon Pay partners 2%: no share data for the partner set.
+- Tata Neu cards (HDFC and SBI Infinity/Plus), partner-brand accelerators in
+  the online bucket: no 2024-26 published share for Tata Neu, Tata CLiQ,
+  Croma or IHCL; BigBasket (2022) and 1mg (2023) figures are stale; Air
+  India's DGCA domestic share (23.9-26.7%, Jun-Aug 2026) is a travel-market
+  figure and the accelerator sits in online.
+- Swiggy HDFC 5% online-MCC accelerator: an MCC accelerator, not a co-brand
+  merchant; out of D12's scope.
+
+Sources: https://entrackr.com/report/flipkart-leads-gmv-maus-as-india-e-comm-market-may-hit-214-bn-by-fy30-icici-securities-11833061 ;
+https://inc42.com/?p=487118 ;
+https://ts.yourstory.com/2025/01/swiggy-food-delivery-quick-commerce-market-share-bernstein-brokerage ;
+https://cwv.yourstory.com/2024/07/online-food-delivery-make-up-one-fifth-food-services-market-fy31-study .
+Re-check yearly; food-delivery and e-commerce shares move a few points a year.
+
 ### D-17. Build pipeline is pure Node
 
 `site/scripts/prebuild.mjs` runs `gen-types.mjs` then `build.mjs`. No

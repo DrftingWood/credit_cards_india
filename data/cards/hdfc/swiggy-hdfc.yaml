@@ -61,6 +61,13 @@ rewards:
         cap_unit: cashback-inr
         cycle: statement
         merchants: [swiggy-food, swiggy-instamart, swiggy-dineout, swiggy-genie]
+        # D12 / DECISIONS D-25: the bucket is all dining, not just delivery, so
+        # the floor is Swiggy's food-delivery share (42%, Motilal Oswal Q1 FY25
+        # GOV; Bernstein Jan-2025) x online delivery's share of Indian food
+        # services (about 8%, Bernstein Jan-2025; Swiggy-Bain put it at 12%,
+        # the lower figure is used) = 3.4%, rounded down. A user-declared
+        # Swiggy share overrides it.
+        applicability_pct: 3
         channel:
           class: cobrand-merchant
           merchants: [swiggy, instamart]

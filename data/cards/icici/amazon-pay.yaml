@@ -58,6 +58,11 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [amazon.in]
+        # D12 / DECISIONS D-25: Amazon India's share of Indian e-commerce GMV,
+        # lower bound of ICICI Securities' 25-30% estimate (FY25 market, reported
+        # by Entrackr 14-May-2026). A population average, so a floor for a user
+        # who shops on Amazon; a user-declared share overrides it.
+        applicability_pct: 25
         channel:
           required: true
           class: cobrand-merchant
@@ -71,6 +76,11 @@ rewards:
         cap_unit: cashback-inr
         cycle: monthly
         merchants: [amazon.in]
+        # D12 / DECISIONS D-25: Amazon India's share of Indian e-commerce GMV,
+        # lower bound of ICICI Securities' 25-30% estimate (FY25 market, reported
+        # by Entrackr 14-May-2026). A population average, so a floor for a user
+        # who shops on Amazon; a user-declared share overrides it.
+        applicability_pct: 25
         channel:
           required: true
           class: cobrand-merchant

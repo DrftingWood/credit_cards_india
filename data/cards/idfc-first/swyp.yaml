@@ -35,7 +35,7 @@ fees:
     gst_applicable: true
     notes: "Card is EMI-first: every spend above ₹2,500 auto-converts to EMI at 0.99% p.m. (tiered)."
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/swyp
+      url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
       retrieved_on: 2026-07-03
 
 rewards:
@@ -68,7 +68,7 @@ rewards:
         program: IDFC FIRST Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/swyp
+      url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
 
@@ -93,7 +93,7 @@ benefits:
         description: Spends above ₹2,500 auto-convert to tenure-EMI at 0.99% monthly (interest rate may vary by risk tier).
     concierge: false
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/swyp
+      url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -106,7 +106,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idfcfirst.bank.in/credit-card/swyp
+  apply_url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
 
 metadata:
   last_verified_on: 2026-07-03

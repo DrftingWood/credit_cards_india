@@ -302,3 +302,125 @@ describe("value components on live data", () => {
     expect(item.awards_per_year).toBe(12 * Math.min(m.max_awards_per_cycle!, Math.floor(50000 / m.spend_inr)));
   });
 });
+
+// ── Ledger: every rupee in a displayed total traces to a labelled line ─────────
+describe("ledger — each total is the sum of labelled, whole-rupee lines", () => {
+  const card = makeCard({
+    joiningFee: 1000,
+    annualFee: 2500,
+    welcome: [{ benefit: "₹3,000 voucher", value_inr: 3000 }],
+    milestones: [
+      { spend_inr: 100000, cycle: "annual", benefit: "₹1,000 voucher", value_inr: 1000 },
+      { spend_inr: 50000, cycle: "annual", benefit: "₹500 first-year voucher", value_inr: 500, trigger_window: "first-year" },
+    ],
+    lounge: { domestic: { visits_per_cycle: 2, cycle: "quarterly" } },
+  });
+  const prefs: ValuePrefs = {
+    tenure_years: 3,
+    lounge_visits: { domestic: 2, international: 0 },
+    lounge_value_inr: { domestic: 1000, international: 0 },
+  };
+  // Fractional gross, as explainCard produces it (monthly × 12).
+  const vc = explainValueComponents(card, spend({ online: 20000 }), rewards(10000.4, 2500), prefs);
+  const sum = (l: { lines: { inr: number }[] }) => l.lines.reduce((s, x) => s + x.inr, 0);
+  const line = (l: { lines: { key: string; inr: number }[] }, key: string) => l.lines.find((x) => x.key === key)?.inr;
+
+  test("year 1: rewards − joining fee + welcome + all milestones + lounge", () => {
+    const l = vc.ledger.first_year;
+    expect(l.lines.map((x) => x.key)).toEqual(["rewards", "fee", "welcome", "milestones", "lounge"]);
+    expect(line(l, "rewards")).toBe(10000);
+    expect(line(l, "fee")).toBe(-1000);
+    expect(line(l, "welcome")).toBe(3000);
+    expect(line(l, "milestones")).toBe(1500);
+    expect(line(l, "lounge")).toBe(2000);
+    expect(l.total_inr).toBe(15500);
+    expect(sum(l)).toBe(l.total_inr);
+    expect(l.total_inr).toBe(Math.round(vc.first_year.total_inr));
+  });
+
+  test("year 2+: rewards − annual fee + recurring milestones + lounge; no welcome line", () => {
+    const l = vc.ledger.steady_state;
+    expect(l.lines.map((x) => x.key)).toEqual(["rewards", "fee", "milestones", "lounge"]);
+    expect(line(l, "fee")).toBe(-2500);
+    expect(line(l, "milestones")).toBe(1000);
+    expect(l.total_inr).toBe(10500);
+    expect(sum(l)).toBe(l.total_inr);
+    expect(l.total_inr).toBe(Math.round(vc.steady_state.total_inr));
+  });
+
+  test("tenure average: each component averaged over the years held", () => {
+    const l = vc.ledger.tenure_avg;
+    expect(line(l, "rewards")).toBe(10000);
+    expect(line(l, "fee")).toBe(-2000); // (1000 + 2 × 2500) / 3
+    expect(line(l, "welcome")).toBe(1000); // 3000 / 3
+    expect(line(l, "milestones")).toBe(1167); // (1500 + 2 × 1000) / 3
+    expect(line(l, "lounge")).toBe(2000);
+    expect(sum(l)).toBe(l.total_inr);
+    expect(l.total_inr).toBe(vc.tenure_avg_annual_inr); // 12167
+
+  });
+
+  test("rounding never moves a line by a rupee or more", () => {
+    // Raw tenure milestones = 1166.67; rewards = 10000.4. The one spare rupee goes to the larger remainder.
+    expect(Math.abs((line(vc.ledger.tenure_avg, "milestones") ?? 0) - 3500 / 3)).toBeLessThan(1);
+    expect(Math.abs((line(vc.ledger.tenure_avg, "rewards") ?? 0) - 10000.4)).toBeLessThan(1);
+  });
+
+  test("every line carries a human label", () => {
+    for (const l of [vc.ledger.first_year, vc.ledger.steady_state, vc.ledger.tenure_avg]) {
+      for (const x of l.lines) expect(x.label.length, x.key).toBeGreaterThan(3);
+    }
+  });
+
+  test("rewards and fee are always listed; zero optional components are left out", () => {
+    const bare = explainValueComponents(makeCard({}), spend({ online: 1000 }), rewards(1200, 0), DEFAULT_VALUE_PREFS);
+    expect(bare.ledger.first_year.lines.map((x) => x.key)).toEqual(["rewards", "fee"]);
+    expect(bare.ledger.steady_state.lines.map((x) => x.key)).toEqual(["rewards", "fee"]);
+    expect(bare.ledger.first_year.lines.find((x) => x.key === "fee")!.inr).toBe(0);
+  });
+
+  test("a renewal fee waived by spend is labelled as waived, not silently ₹0", () => {
+    const c = makeCard({ annualFee: 2500, feeWaiverSpend: 200000 });
+    const v = explainValueComponents(c, spend({ online: 20000 }), rewards(5000, 0), DEFAULT_VALUE_PREFS);
+    const fee = v.ledger.steady_state.lines.find((x) => x.key === "fee")!;
+    expect(fee.inr).toBe(0);
+    expect(fee.label).toMatch(/waived/i);
+  });
+});
+
+describe("ledger on live data — reconciles for every active card", () => {
+  test("lines sum to the total, totals track the unrounded figures, and every component is itemised", async () => {
+    const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
+    const profiles = [
+      spend({ online: 5000, groceries: 3000, utilities: 2000 }),
+      spend({ online: 40000, dining: 10000, travel: 20000, fuel: 5000 }),
+      spend({ online: 150000, groceries: 30000, travel: 120000, international: 50000 }),
+    ];
+    const prefs: ValuePrefs = { tenure_years: 4, lounge_visits: { domestic: 8, international: 3 }, lounge_value_inr: { domestic: 1200, international: 2500 } };
+    let checked = 0;
+    for (const c of (cards as unknown as EnrichedCard[]).filter((x) => x.computed.is_active && x.current_rewards)) {
+      for (const sp of profiles) {
+        const ex = explainCard(c, sp, { valueBasis: "realized" }, prefs);
+        const vc = ex.value_components!;
+        const { first_year: fy, steady_state: ss, tenure_avg: ta } = vc.ledger;
+        for (const l of [fy, ss, ta]) {
+          expect(l.lines.reduce((s, x) => s + x.inr, 0), c.id).toBe(l.total_inr);
+          for (const x of l.lines) expect(Number.isInteger(x.inr), `${c.id} ${x.key}`).toBe(true);
+        }
+        // Whole-rupee lines are reconciled (largest remainder), so each total is the rounded engine total.
+        expect(fy.total_inr, c.id).toBe(Math.round(vc.first_year.total_inr));
+        expect(ss.total_inr, c.id).toBe(Math.round(vc.steady_state.total_inr));
+        expect(ta.total_inr, c.id).toBe(vc.tenure_avg_annual_inr);
+        // Every counted component appears as its own line with its own figure.
+        const get = (k: string) => fy.lines.find((x) => x.key === k)?.inr ?? 0;
+        expect(get("welcome"), c.id).toBe(vc.welcome.total_inr);
+        expect(get("milestones"), c.id).toBe(vc.first_year.milestones_inr);
+        expect(get("lounge"), c.id).toBe(vc.lounge.annual_inr);
+        expect(Math.abs(get("rewards") - ex.annual_gross_inr), c.id).toBeLessThan(1);
+        expect(Math.abs(get("fee") + vc.first_year.fee_inr), c.id).toBeLessThan(1);
+        checked++;
+      }
+    }
+    expect(checked).toBeGreaterThan(300);
+  });
+});

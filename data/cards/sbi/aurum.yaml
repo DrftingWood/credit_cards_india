@@ -138,6 +138,7 @@ rewards:
     source:
       url: https://www.business-standard.com/finance/personal-finance/sbi-card-update-no-reward-points-for-spending-on-digital-gaming-platforms-124120500479_1.html
       retrieved_on: 2026-06-12
+      type: press
       notes: "1-Dec-2024 wave: digital gaming earns nothing, government excluded, utility >₹50k 1% fee."
 
     mcc_exclusions: ['6513']

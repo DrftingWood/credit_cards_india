@@ -96,6 +96,7 @@ rewards:
     source:
       url: https://www.business-standard.com/finance/personal-finance/every-swipe-counts-how-indigo-s-new-credit-card-can-cut-your-travel-costs-125081800470_1.html
       retrieved_on: '2026-07-05'
+      type: press
 
       confidence: high
       notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'

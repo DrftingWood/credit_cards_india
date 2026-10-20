@@ -107,6 +107,11 @@ export const PAIRS: Pair[] = [
   // Disabled primary button: WCAG-exempt (inactive), but we hold the label
   // to body contrast so it stays legible while reading as disabled.
   { fg: "on-accent-disabled", bg: "accent-disabled", kind: "body", note: "disabled primary button label" },
+  // Pinned card row in /calculator (bg-accent-subtle) holds the net ₹/yr,
+  // the Year 1 / Year 2+ ledger and the loyalty-tier select (calc phase 2/3).
+  { fg: "success", bg: "accent-subtle", kind: "body", note: "net ₹/yr in pinned calculator row" },
+  { fg: "line-strong", bg: "accent-subtle", kind: "large-ui", note: "tier select / input border in pinned row" },
+  { fg: "accent", bg: "accent-subtle", kind: "large-ui", note: "pinned-row border" },
   // Inverse feature band (home "why trust the numbers").
   { fg: "on-inverse", bg: "inverse", kind: "body" },
   { fg: "on-inverse-muted", bg: "inverse", kind: "body" },

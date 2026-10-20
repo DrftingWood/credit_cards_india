@@ -91,16 +91,20 @@ export function breakdownLayers(hostCtx?: ScoringContext, hostLabel?: string, us
 }
 
 /**
- * The context a layer is explained with: its own ctx plus the user's declared loyalty tiers,
- * except for Absolute (the data's best case, not personal). Tier fields only add a separate
+ * The context a layer is explained with: its own ctx, plus the programme records (D-27: unit
+ * values only, in every layer; programme earn never stacks here), plus the user's declared loyalty tiers except for
+ * Absolute (the data's best case, not personal). Tier fields only add a separate
  * value-components line; they never change rates or annual_net_inr, so a host layer still
  * reconciles with its ranked row. The host's object is copied, never mutated.
  */
 export function explainContext(layer: BreakdownLayer, tiers: Record<string, string>, programs: LoyaltyProgram[]): ScoringContext {
-  if (layer.id === "absolute") return layer.ctx;
+  const base = programs.length > 0 && !layer.ctx.programs
+    ? { ...layer.ctx, programs: Object.fromEntries(programs.map((p) => [p.id, p])), stackProgramEarn: false }
+    : layer.ctx;
+  if (layer.id === "absolute") return base;
   const t = tierContext(tiers, programs);
-  if (Object.keys(t.tierMap).length === 0) return layer.ctx;
-  return { ...layer.ctx, ...t };
+  if (Object.keys(t.tierLine).length === 0) return base;
+  return { ...base, ...t };
 }
 
 export function AcceleratorRow({ item }: { item: AcceleratorExplain }) {
@@ -140,7 +144,8 @@ export function AccelerationBreakdown({
   programs = [],
 }: {
   card: EnrichedCard;
-  /** Loyalty programmes (only tiered ones matter): lets the user's declared tier be valued. */
+  /** The card's loyalty programme records (D-27): programme unit values in every layer (no
+   *  stacking of programme earn), and the user's declared tier valued as its own line. */
   programs?: LoyaltyProgram[];
   /** The exact ScoringContext the embedding view ranked with, if any. Supplying it makes
    *  this panel's total reconcile with the row above it instead of scoring its own way. */
@@ -160,15 +165,15 @@ export function AccelerationBreakdown({
   const tierProgram = useMemo(() => cardTierProgram(card, programs), [card, programs]);
   // Absolute layer, computed unconditionally (explainCard is pure/cheap): the source of
   // truth for "what got cut" notes on base-rate rows in the selected layer (FIX 1).
-  const exAbs = useMemo(() => explainCard(card, spend, { valueBasis: "face" }), [card, spend]);
+  const exAbs = useMemo(() => explainCard(card, spend, explainContext(ABSOLUTE_LAYER, {}, programs)), [card, spend, programs]);
   // Usage questions apply only to a realistic layer (one that gates narrow rates). What the
   // user's answers changed = this layer vs the same layer with nothing declared.
   const usageGroups = useMemo(() => cardUsageGroups(card), [card]);
   const ecosystem = card.current_rewards?.redemption_scope === "closed-loop" ? card.current_rewards.ecosystem_label ?? null : null;
   const isRealistic = layer.ctx.applyApplicability === true;
   const deltas = useMemo(
-    () => (isRealistic ? usageDelta(ex, explainCard(card, spend, withoutUsage(layer.ctx))) : []),
-    [isRealistic, ex, card, spend, layer],
+    () => (isRealistic ? usageDelta(ex, explainCard(card, spend, withoutUsage(ctx))) : []),
+    [isRealistic, ex, card, spend, ctx],
   );
 
   return (

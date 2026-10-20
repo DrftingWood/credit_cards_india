@@ -44,17 +44,26 @@ export interface CardScore {
 export interface ScoringContext {
   /** Merchant tokens the user is willing to transact through. When omitted, the calculator is "optimistic" — channel-locked accelerators fire as if the user always books on the right channel. */
   channelMix?: Set<string>;
-  /** program-id → tier-id (e.g. {"indigo-bluchip": "silver"}). */
+  /** program-id → tier-id (e.g. {"indigo-bluchip": "silver"}). Stacked INTO the rate (and so the
+   *  rank) when `programs` is set. Only the /recommend wizard uses this (D-7). */
   tierMap?: Record<string, string | null>;
   /**
-   * Programme records used ONLY to value the user's declared tier bonus as a separate
-   * value-components line (explainCard). Unlike `programs`, they never change unit values,
-   * rates or the rank. Ignored when `programs` is set, because then the tier is already
-   * stacked into the accelerator rate (programStackPct) and a second line would double count.
+   * program-id → tier-id the user declared on a card page or /calculator (D-24). Valued ONLY
+   * as a separate value-components line (explainCard); never stacked into rates or the rank,
+   * even when `programs` is set (D-27).
    */
+  tierLine?: Record<string, string>;
+  /** Programme records used to value `tierLine` tiers. Never change unit values, rates or the rank. */
   tierPrograms?: Record<string, LoyaltyProgram>;
-  /** id → loyalty program record. */
+  /** id → loyalty program record. Supplies programme unit values (unitValueFor) and, unless
+   *  stackProgramEarn is false, D-9 stacking of programme earn into stacks_with_program rates. */
   programs?: Record<string, LoyaltyProgram>;
+  /**
+   * false = use `programs` for unit values only; never add programme baseline / channel / tier
+   * earn to a card's rate or rank. Card pages and /calculator set this (D-27): that earn comes
+   * from programme membership, not the card (D-8, D-24). Omitted = stack (the /recommend wizard).
+   */
+  stackProgramEarn?: boolean;
   /**
    * When true (realistic /recommend mode), a merchant/MCC/co-brand-specific
    * accelerator is applied to only a fraction of a broad spend bucket — the
@@ -177,13 +186,17 @@ const MONTHS_PER_YEAR = 12;
 export type ValueBasis = "realized" | "face";
 
 /** Sourced unit value for the chosen basis. Realized: program.realized > base.realized > base.face.
- *  Face: program.face > base.face > base.realized. No made-up friction — just the two data points. */
-function unitValueFor(
+ *  Face: program.face > base.face > base.realized. No made-up friction — just the two data points.
+ *  A record with `unit_value_from_program: false` (its own currency converts into the programme's
+ *  at a non-1:1 ratio, D-27) always uses its own base values. */
+export function unitValueFor(
   rewards: RewardRecord,
   programs?: Record<string, LoyaltyProgram>,
   basis: ValueBasis = "realized",
 ): number | null {
-  const program = rewards.loyalty_program ? programs?.[rewards.loyalty_program] : null;
+  const program = rewards.loyalty_program && rewards.unit_value_from_program !== false
+    ? programs?.[rewards.loyalty_program]
+    : null;
   if (program) {
     return basis === "face"
       ? program.unit_value_inr.face ?? program.unit_value_inr.realized
@@ -248,7 +261,7 @@ function programStackPct(
   ctx: ScoringContext | undefined,
   unitValue: number,
 ): number {
-  if (!rewards.loyalty_program || !ctx?.programs) return 0;
+  if (!rewards.loyalty_program || !ctx?.programs || ctx.stackProgramEarn === false) return 0;
   const program = ctx.programs[rewards.loyalty_program];
   if (!program?.earn) return 0;
   let pct = 0;
@@ -876,8 +889,8 @@ export interface CardExplanation {
 /**
  * The user's declared programme tier bonus (D-9: programme earn, not card earn), on the
  * spend that flows through this card's stacks_with_program accelerators, valued at the
- * layer's own unit value. Null when no tier is declared, the tier is unknown, nothing
- * qualifies, or ctx.programs already stacks the tier into the rate.
+ * layer's own unit value. Null when no tier is declared in ctx.tierLine, the tier is
+ * unknown, nothing qualifies, or ctx.tierMap already stacks a tier into the rate.
  */
 function loyaltyTierBonus(
   rewards: RewardRecord | null,
@@ -886,9 +899,10 @@ function loyaltyTierBonus(
   unitValue: number | null,
 ): LoyaltyTierItem | null {
   const id = rewards?.loyalty_program;
-  if (!id || !ctx || ctx.programs || !ctx.tierPrograms || unitValue == null || qualifyingAnnualSpend <= 0) return null;
+  if (!id || !ctx || !ctx.tierPrograms || unitValue == null || qualifyingAnnualSpend <= 0) return null;
+  if (ctx.programs && ctx.tierMap?.[id]) return null; // already stacked into the rate (/recommend)
   const program = ctx.tierPrograms[id];
-  const tierId = ctx.tierMap?.[id];
+  const tierId = ctx.tierLine?.[id];
   const tier = tierId ? program?.earn?.tiers?.find((t) => t.id === tierId) : undefined;
   if (!program || !tier || !(tier.bonus_per_inr > 0) || !(tier.bonus_rate > 0)) return null;
   return {

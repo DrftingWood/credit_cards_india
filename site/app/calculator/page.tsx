@@ -13,8 +13,9 @@ export const metadata: Metadata = pageMetadata({
 
 export default function CalculatorPage() {
   const cards = getActiveCards();
-  // Only tiered programmes can change a value (the user's declared tier); keep the payload small.
-  const tieredPrograms = getAllLoyaltyPrograms().filter((p) => (p.earn?.tiers?.length ?? 0) > 0);
+  // Every programme (five small records): unit values and D-9 stacking for the co-brand cards,
+  // and tier valuation for the tiered ones (D-27).
+  const programs = getAllLoyaltyPrograms();
   return (
     <div className="space-y-4">
       <header>
@@ -32,7 +33,7 @@ export default function CalculatorPage() {
         </p>
       </header>
       <Suspense fallback={<div className="text-fg-muted text-sm">Loading…</div>}>
-        <CalculatorClient cards={cards} programs={tieredPrograms} />
+        <CalculatorClient cards={cards} programs={programs} />
       </Suspense>
     </div>
   );

@@ -97,16 +97,23 @@ describe("explainContext — the user's loyalty tier joins every layer except Ab
   const PROG = { id: "test-air", name: "Test Air", earn: { tiers: [{ id: "gold", name: "Gold", bonus_rate: 4, bonus_per_inr: 100 }] } } as unknown as LoyaltyProgram;
   const tiers = { "test-air": "gold" };
 
-  test("Absolute is returned by identity, with no tier", () => {
+  test("Absolute gets the programme data (D-27) but no tier", () => {
     const [, absolute] = breakdownLayers();
-    expect(explainContext(absolute, tiers, [PROG])).toBe(absolute.ctx);
+    const ctx = explainContext(absolute, tiers, [PROG]);
+    expect(ctx.programs?.["test-air"]).toBe(PROG);
+    expect(ctx.stackProgramEarn).toBe(false);
+    expect(ctx.tierLine).toBeUndefined();
+    expect(ctx.valueBasis).toBe("face");
+    expect(explainContext(absolute, tiers, [])).toBe(absolute.ctx);
   });
 
   test("Realistic gains the tier fields and keeps its own", () => {
     const [realistic] = breakdownLayers(undefined, undefined, setFamilyShare(DEFAULT_USAGE, "amazon", 40));
     const ctx = explainContext(realistic, tiers, [PROG]);
-    expect(ctx.tierMap).toEqual({ "test-air": "gold" });
+    expect(ctx.tierLine).toEqual({ "test-air": "gold" });
+    expect(ctx.tierMap).toBeUndefined(); // a tier never enters the rate here (D-24)
     expect(ctx.tierPrograms?.["test-air"]).toBe(PROG);
+    expect(ctx.programs?.["test-air"]).toBe(PROG);
     expect(ctx.merchantShares).toEqual(realistic.ctx.merchantShares);
     expect(ctx.applyApplicability).toBe(true);
   });
@@ -116,13 +123,17 @@ describe("explainContext — the user's loyalty tier joins every layer except Ab
     const [host] = breakdownLayers(hostCtx, "Realistic");
     const ctx = explainContext(host, tiers, [PROG]);
     expect(ctx).not.toBe(hostCtx);
-    expect(hostCtx.tierMap).toBeUndefined();
+    expect(hostCtx.tierLine).toBeUndefined();
+    expect(hostCtx.programs).toBeUndefined();
     expect(ctx.enabledEcosystems).toBe(hostCtx.enabledEcosystems);
   });
 
-  test("no tiers declared → the layer's ctx unchanged", () => {
+  test("no tiers and no programmes → the layer's ctx unchanged; programmes only → just the programme map added", () => {
     const [realistic] = breakdownLayers();
-    expect(explainContext(realistic, {}, [PROG])).toBe(realistic.ctx);
+    expect(explainContext(realistic, {}, [])).toBe(realistic.ctx);
+    const ctx = explainContext(realistic, {}, [PROG]);
+    expect(ctx.programs?.["test-air"]).toBe(PROG);
+    expect(ctx.tierLine).toBeUndefined();
   });
 });
 

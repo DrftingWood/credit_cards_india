@@ -60,14 +60,21 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
   // The single context this view scores with. Memoised on its own so the exact object can
   // also be handed to the embedded AccelerationBreakdown — the panel must reconcile with the
   // row it sits under, which it can't do if it builds a context of its own.
+  // D-27: programme records value co-brand points at the programme's unit value. Programme
+  // earn (baseline / channel / tier) is not card earn, so it never stacks into this rank
+  // (stackProgramEarn: false); a declared tier is a separate line (tierCtx).
+  const programCtx = useMemo(
+    () => ({ programs: Object.fromEntries(programs.map((p) => [p.id, p])), stackProgramEarn: false }),
+    [programs],
+  );
   const rankCtx: ScoringContext = useMemo(() => {
     // Best-case → enabledEcosystems undefined (optimistic path credits every ecosystem in full).
-    if (mode === "best") return {};
+    if (mode === "best") return { ...programCtx };
     // Opt-in (D-3 keeps /calculator channel-optimistic by default): co-brand and portal rates
     // count only on the merchant shares the user declared; undeclared ones earn base.
-    if (usage.gate_calculator) return { ...usageContext(usage), applyApplicability: true };
-    return { enabledEcosystems: enabledEco };
-  }, [mode, enabledEco, usage]);
+    if (usage.gate_calculator) return { ...usageContext(usage), applyApplicability: true, ...programCtx };
+    return { enabledEcosystems: enabledEco, ...programCtx };
+  }, [mode, enabledEco, usage, programCtx]);
 
   // The user's declared loyalty tiers (Phase 3). They add only a separate value line, never
   // the rank, so the row one-liners use them while rankCards keeps rankCtx unchanged.
@@ -290,7 +297,7 @@ function ResultRow({
   // A declared tier for this card's programme: value it the way the embedded breakdown does
   // (same rank ctx + tier fields), so the row's Year 1 / Year 2+ match the panel below it.
   const pid = c.current_rewards?.loyalty_program;
-  const loyaltyTier = pid && tierCtx.tierMap[pid]
+  const loyaltyTier = pid && tierCtx.tierLine[pid]
     ? explainCard(c, spend, { ...rankCtx, ...tierCtx }, valuePrefs).value_components?.loyalty_tier ?? null
     : null;
   // Decoupled one-offs: computed from this row's own steady-state result, shown beside it, never ranked on.

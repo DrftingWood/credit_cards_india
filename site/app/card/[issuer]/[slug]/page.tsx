@@ -243,7 +243,7 @@ export default async function CardPage({
 
       {/* Scannable grids */}
       <RewardsBenefitsGrid card={card} />
-      <AccelerationBreakdown card={card} programs={tierProgramsFor(card)} />
+      <AccelerationBreakdown card={card} programs={programsFor(card)} />
       <FeesChargesGrid card={card} />
 
       {/* Product details + pros/cons */}
@@ -373,8 +373,8 @@ function Fact({ label, value }: { label: string; value: string }) {
   );
 }
 
-/** Only the programme this card stacks with, and only when it has tiers: keeps the page payload small. */
-function tierProgramsFor(card: Parameters<typeof cardTierProgram>[0]) {
-  const p = cardTierProgram(card, getAllLoyaltyPrograms());
-  return p ? [p] : [];
+/** Only this card's own loyalty programme (D-27: unit values, stacking and tiers): keeps the page payload small. */
+function programsFor(card: Parameters<typeof cardTierProgram>[0]) {
+  const id = card.current_rewards?.loyalty_program;
+  return id ? getAllLoyaltyPrograms().filter((p) => p.id === id) : [];
 }

@@ -68,17 +68,17 @@ export function setLoyaltyTier(u: UsageProfile, programId: string, tierId: strin
 export function tierContext(
   choices: Record<string, string>,
   programs: LoyaltyProgram[],
-): Required<Pick<ScoringContext, "tierMap" | "tierPrograms">> {
-  const tierMap: Record<string, string> = {};
+): Required<Pick<ScoringContext, "tierLine" | "tierPrograms">> {
+  const tierLine: Record<string, string> = {};
   const tierPrograms: Record<string, LoyaltyProgram> = {};
   for (const p of programs) {
     const t = choices[p.id];
     if (t && p.earn?.tiers?.some((x) => x.id === t)) {
-      tierMap[p.id] = t;
+      tierLine[p.id] = t;
       tierPrograms[p.id] = p;
     }
   }
-  return { tierMap, tierPrograms };
+  return { tierLine, tierPrograms };
 }
 
 /** True when a declared tier can change this card's value: it has an accelerator that stacks with a tiered programme. */
@@ -90,20 +90,20 @@ export function cardTierProgram(card: EnrichedCard, programs: LoyaltyProgram[]):
 }
 
 /** The ScoringContext fields this profile contributes. */
-export function usageContext(u: UsageProfile): Required<Pick<ScoringContext, "channelMix" | "merchantShares" | "enabledEcosystems" | "tierMap">> {
+/** Tiers are not here: they reach a card page or /calculator only through tierContext, as a separate line (D-24/D-27). */
+export function usageContext(u: UsageProfile): Required<Pick<ScoringContext, "channelMix" | "merchantShares" | "enabledEcosystems">> {
   const merchantShares: Record<string, number> = {};
   for (const [k, v] of Object.entries(u.merchant_share_pct)) if (v > 0) merchantShares[k] = v / 100;
   return {
     channelMix: new Set(Object.keys(merchantShares)),
     merchantShares,
     enabledEcosystems: new Set(u.ecosystems),
-    tierMap: { ...u.loyalty_tiers },
   };
 }
 
 /** Same context with every usage field emptied — the "you declared nothing" baseline. */
 export function withoutUsage(ctx: ScoringContext): ScoringContext {
-  return { ...ctx, channelMix: new Set(), merchantShares: undefined, enabledEcosystems: new Set(), tierMap: {}, tierPrograms: undefined };
+  return { ...ctx, channelMix: new Set(), merchantShares: undefined, enabledEcosystems: new Set(), tierMap: {}, tierLine: {}, tierPrograms: undefined };
 }
 
 /** Tokens that name the SAME merchant through different channels. One share covers all of them. */

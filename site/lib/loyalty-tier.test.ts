@@ -86,9 +86,17 @@ describe("loyalty tier bonus — its own labelled line, never part of the rank",
     }
   });
 
-  test("no double count when the context already stacks programme earn into the rate (ctx.programs)", () => {
-    const ctx: ScoringContext = { ...realistic("gold"), programs: { "test-air": PROGRAM } };
+  test("no double count when the context already stacks the tier into the rate (ctx.programs + tierMap, /recommend)", () => {
+    const ctx: ScoringContext = { ...realistic("gold"), programs: { "test-air": PROGRAM }, tierMap: { "test-air": "gold" } };
     expect(explainCard(makeCard(), sp, ctx, DEFAULT_VALUE_PREFS).value_components!.loyalty_tier).toBeNull();
+  });
+
+  test("with programme data but no tierMap (card pages and /calculator, D-27) the tier is still a separate line", () => {
+    const ctx: ScoringContext = { ...realistic("gold"), programs: { "test-air": PROGRAM } };
+    const ex = explainCard(makeCard(), sp, ctx, DEFAULT_VALUE_PREFS);
+    expect(ex.value_components!.loyalty_tier?.annual_inr).toBeGreaterThan(0);
+    const without = explainCard(makeCard(), sp, { ...realistic(null), programs: { "test-air": PROGRAM } }, DEFAULT_VALUE_PREFS);
+    expect(ex.annual_net_inr).toBe(without.annual_net_inr);
   });
 
   test("the Absolute layer (no usage context) shows no tier", () => {
@@ -105,9 +113,10 @@ describe("loyalty tier bonus — its own labelled line, never part of the rank",
 describe("tierContext — builds the narrow tier fields from the user's choice and programme data", () => {
   test("keeps only programmes and tiers that exist", () => {
     const c = tierContext({ "test-air": "gold", "other-air": "gold" }, [PROGRAM]);
-    expect(c.tierMap).toEqual({ "test-air": "gold" });
+    expect(c.tierLine).toEqual({ "test-air": "gold" });
     expect(Object.keys(c.tierPrograms)).toEqual(["test-air"]);
-    expect(tierContext({ "test-air": "diamond" }, [PROGRAM]).tierMap).toEqual({});
+    expect(tierContext({ "test-air": "diamond" }, [PROGRAM]).tierLine).toEqual({});
+    expect("tierMap" in c).toBe(false); // never stacked into the rate
   });
 });
 

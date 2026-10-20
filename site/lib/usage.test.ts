@@ -153,10 +153,12 @@ describe("loyalty tiers in the usage profile", () => {
     expect(a.loyalty_tiers["indigo-bluchip"]).toBe("blu-2");
     expect(setLoyaltyTier(a, "indigo-bluchip", null).loyalty_tiers).toEqual({});
   });
-  test("usageContext carries the tier map; withoutUsage clears it", () => {
+  test("usageContext never carries tiers into the rate (D-24/D-27: tiers are a separate line via tierContext); withoutUsage clears both tier fields", () => {
     const ctx = usageContext(setLoyaltyTier(DEFAULT_USAGE, "indigo-bluchip", "blu-1"));
-    expect(ctx.tierMap).toEqual({ "indigo-bluchip": "blu-1" });
-    expect(withoutUsage(ctx).tierMap).toEqual({});
+    expect("tierMap" in ctx).toBe(false);
+    const cleared = withoutUsage({ ...ctx, tierLine: { "indigo-bluchip": "blu-1" } });
+    expect(cleared.tierMap).toEqual({});
+    expect(cleared.tierLine).toEqual({});
   });
 });
 

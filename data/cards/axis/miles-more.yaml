@@ -39,6 +39,8 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
       notes: "Models the 'World' variant: joining/annual ₹3,500 (Axis MITC). The 'World Select' variant is ₹10,000 joining / ₹4,500 annual. Forex 3.5%, finance 3.75%/mo, cash advance 2.5% (min ₹500) per MITC."
 
 rewards:
@@ -99,6 +101,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

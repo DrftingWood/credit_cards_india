@@ -41,6 +41,8 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
       notes: "Joining/annual ₹3,000 (Axis MITC). Forex 3.5%, finance 3.75%/mo, cash advance 2.5% (min ₹500) per MITC. Post-merger, annual (renewal) fee waived on next renewal cycle."
 
 rewards:
@@ -94,6 +96,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-signature-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

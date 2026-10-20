@@ -34,6 +34,8 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
     notes: "Lifetime free card - zero joining and annual fee (confirmed Nil/Nil in Axis MITC). Forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). RuPay Credit Card on UPI. T&C updated w.e.f 20 June 2025."
 
 rewards:
@@ -112,6 +114,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

@@ -36,6 +36,8 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
       notes: "Joining/annual ₹750 (Axis MITC). Forex 3.5%, finance 3.0%/mo, cash advance 2.5% (min ₹500) per MITC."
 
 rewards:
@@ -155,6 +157,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
       notes: "Renewal benefit: 1,000 bonus SpiceClub Points (≈₹500) on annual fee repayment."
 
 eligibility:

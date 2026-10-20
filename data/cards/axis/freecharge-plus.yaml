@@ -37,6 +37,8 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
     notes: "Invite-only card sourced via the Freecharge app. Joining/annual fee INR 350 each (waived on INR 50,000 spends), forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). T&C updated w.e.f 20 June 2025."
 
 rewards:
@@ -110,6 +112,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
     notes: "Welcome voucher not applicable for cards issued on or after 4 January 2023."
 
 eligibility:

@@ -37,6 +37,8 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
       notes: "Joining + annual fee ₹500 + GST (Axis MITC fee table). Finance charge 3.75%/mo, forex 3.5%, cash advance 2.5% (min ₹500) per Axis MITC."
 
 rewards:
@@ -98,6 +100,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

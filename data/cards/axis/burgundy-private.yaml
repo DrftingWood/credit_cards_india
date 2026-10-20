@@ -52,6 +52,7 @@ fees:
     source:
       url: https://www.axisbank.com/burgundyprivate/creditcard
       retrieved_on: 2026-07-28
+      type: issuer-page
 
 rewards:
   - effective_from: 2024-04-20
@@ -134,6 +135,7 @@ benefits:
     source:
       url: https://www.axisbank.com/burgundyprivate/creditcard
       retrieved_on: 2026-07-28
+      type: issuer-page
       notes: "Lounge counts and memberships are web-tier (product/aggregator pages), not confirmed against an Axis MITC."
 
 eligibility:

@@ -40,6 +40,7 @@ fees:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/olympus-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
 
 rewards:
   - effective_from: 2023-12-01
@@ -122,6 +123,7 @@ benefits:
     source:
       url: https://www.axisbank.com/retail/cards/credit-card/olympus-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
 
 eligibility:
   min_age: 21

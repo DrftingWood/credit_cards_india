@@ -37,6 +37,8 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2025-06-20
@@ -118,6 +120,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

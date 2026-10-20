@@ -41,6 +41,8 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
       notes: "Joining + annual fee ₹5,000 per Axis Bank press release (Feb-2026). Low forex markup 2.5% vs base 3.5%."
 
 rewards:
@@ -174,6 +176,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

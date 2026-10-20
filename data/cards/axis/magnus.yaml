@@ -39,6 +39,8 @@ fees:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
       notes: "No cash withdrawal fees per live page; 3% finance charge; 2% forex markup."
 
 rewards:
@@ -215,6 +217,7 @@ benefits:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 18

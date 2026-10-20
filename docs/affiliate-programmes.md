@@ -129,6 +129,45 @@ Second-tier networks found while checking the bank route:
 - None of the programmes says a vercel.app subdomain disqualifies a site, but
   Cuelinks and vCommission screen applications, and a custom domain will help.
 
+## Disclosure rules that apply once links go live
+
+Checked 2026-10-20. Not legal advice; the primary texts were not read in full
+(sources are law-firm and portal summaries unless marked).
+
+- **CCPA, Guidelines for Prevention of Misleading Advertisements and Endorsements
+  for Misleading Advertisements, 2022** (notified 9 June 2022). An endorser must
+  disclose a material connection with the advertiser, and the endorsement must
+  reflect a genuine, reasonably current opinion. Penalties reach ₹10 lakh (₹50
+  lakh for repeat violations).
+- **ASCI, Guidelines for Influencer Advertising in Digital Media** (applies to
+  content from 14 June 2021). A "material connection" includes any monetary or
+  other benefit, and affiliate deals are generally read as one. Disclosure is
+  required even when the review is unbiased. A disclosure that appears only on an
+  "about" page, in a bio, or at the end of content is "likely to be missed";
+  accepted labels include "Ad", "Sponsored" and "Collaboration".
+- **What this means for the site.** The footer and `/about` disclosure added on
+  this branch is accurate while there are no affiliate links. Under the ASCI
+  placement rule it would not be enough on its own once links exist: each
+  affiliate link or card that carries one needs a visible label next to it (for
+  example "Affiliate link: we may earn a commission"), and the homepage "no
+  affiliate links" claims must go at the same time.
+- **RBI.** The RBI Credit Card and Debit Card Issuance and Conduct Directions,
+  2022 govern banks and their direct selling / marketing agents. Nothing found
+  in this pass applies them directly to an affiliate website that only refers
+  readers. If a programme asks the site to collect applicant data or act as a
+  sourcing agent, re-check these rules first.
+
+Sources: Khaitan & Co summary of the CCPA guidelines
+(https://khaitanco.com/thought-leaderships/CCPA-releases-guidelines-for-Prevention-of-Misleading-Advertisements-and-Endorsements-for-Misleading-Advertisements-2022);
+Vikaspedia (Ministry of Consumer Affairs material)
+(https://en.vikaspedia.in/social-welfare/social-awareness/consumer-education/guidelines-for-prevention-of-misleading-advertisements-and-endorsements-for-misleading-advertisements-2022);
+Khurana & Khurana summary of the ASCI influencer guidelines
+(https://www.khuranaandkhurana.com/2021/06/21/final-guidelines-for-influencer-advertising-on-digital-media/);
+Mondaq summary of the ASCI guidelines
+(https://webiis08.mondaq.com/india/social-media/1084770/final-guidelines-for-influencer-advertising-on-digital-media);
+SCC Online on the RBI 2022 Directions
+(https://www.scconline.com/blog/post/2022/04/30/rbi-introduces-master-directions-rbi-credit-card-and-debit-card-issuance-and-conduct-directions-2022/).
+
 ## Reading of the options for this site
 
 Not a decision, just what the evidence suggests. EarnKaro has the lowest bar

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Browse every Indian credit card",
   description:
     "Filter Indian credit cards by issuer, network, tier, reward currency, lifetime-free, lounge access, and co-brand.",
+  alternates: { canonical: "/browse" },
 };
 
 export default function BrowsePage() {

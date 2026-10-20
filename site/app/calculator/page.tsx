@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Reward calculator — find the best card for your spend",
   description:
     "Enter your monthly spend across online, groceries, dining, fuel, travel, utilities, rent and international — see Indian credit cards ranked by net annual value.",
+  alternates: { canonical: "/calculator" },
 };
 
 export default function CalculatorPage() {

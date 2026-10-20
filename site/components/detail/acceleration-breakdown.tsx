@@ -92,19 +92,19 @@ export function breakdownLayers(hostCtx?: ScoringContext, hostLabel?: string, us
 
 export function AcceleratorRow({ item }: { item: AcceleratorExplain }) {
   return (
-    <li className="rounded-lg border border-slate-200 bg-white p-3">
+    <li className="rounded-lg border border-line bg-surface p-3">
       <div className="flex items-baseline justify-between gap-3">
-        <span className="text-sm font-semibold text-slate-900">{item.label}</span>
-        <span className="text-sm font-semibold text-slate-900 tabular-nums">{inr(item.net_value_inr)}/mo</span>
+        <span className="text-sm font-semibold text-fg">{item.label}</span>
+        <span className="text-sm font-semibold text-fg tabular-nums">{inr(item.net_value_inr)}/mo</span>
       </div>
-      <p className="mt-1 text-xs text-slate-600 tabular-nums">
+      <p className="mt-1 text-xs text-fg-muted tabular-nums">
         You spend {inr(item.monthly_spend)} ·{" "}
         {item.applicability != null && item.applicability < 1 ? `${Math.round(item.applicability * 100)}% at ` : "earns "}
         {item.rate_pct.toFixed(1)}% ={" "}
-        <span className="text-slate-900">{inr(item.uncapped_value_inr)}</span> uncapped
+        <span className="text-fg">{inr(item.uncapped_value_inr)}</span> uncapped
         {item.cap_bound && item.cap_monthly_inr != null ? (
           <>
-            {" "}→ cap {inr(item.cap_monthly_inr)} clamps it, <span className="text-amber-700">{inr(item.lost_to_cap_inr)} lost to the cap</span>
+            {" "}→ cap {inr(item.cap_monthly_inr)} clamps it, <span className="text-warn">{inr(item.lost_to_cap_inr)} lost to the cap</span>
             {item.base_spillover_inr > 0 ? <> · {inr(item.base_spillover_inr)} earned at base beyond it</> : null}
           </>
         ) : null}
@@ -112,7 +112,7 @@ export function AcceleratorRow({ item }: { item: AcceleratorExplain }) {
       {item.factors.length > 0 ? (
         <ul className="mt-1.5 flex flex-wrap gap-1.5">
           {item.factors.map((f, i) => (
-            <li key={i} className="rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-[11px] text-slate-600">{f}</li>
+            <li key={i} className="rounded border border-line bg-surface-subtle px-2 py-0.5 text-[11px] text-fg-muted">{f}</li>
           ))}
         </ul>
       ) : null}
@@ -154,27 +154,27 @@ export function AccelerationBreakdown({
   );
 
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-5">
+    <section className="rounded-xl border border-line bg-surface p-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-lg font-semibold text-slate-900">See the math — accelerations &amp; caps</h2>
-        <div className="inline-flex rounded-lg border border-slate-300 p-0.5 text-xs">
+        <h2 className="text-lg font-semibold text-fg">See the math — accelerations &amp; caps</h2>
+        <div className="inline-flex rounded-lg border border-line-strong p-0.5 text-xs">
           {layers.map((l) => (
             <button key={l.id} type="button" onClick={() => setLayerId(l.id)}
-              className={l.id === layer.id ? "rounded-md bg-slate-900 px-3 py-1 font-medium text-white" : "rounded-md px-3 py-1 text-slate-600"}>
+              className={l.id === layer.id ? "rounded-md bg-fg px-3 py-1 font-medium text-surface" : "rounded-md px-3 py-1 text-fg-muted"}>
               {l.label}
             </button>
           ))}
         </div>
       </div>
-      <p className="mt-1 text-xs text-slate-500">{layer.blurb}</p>
+      <p className="mt-1 text-xs text-fg-muted">{layer.blurb}</p>
 
       <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
         {CANONICAL_CATEGORIES.map((cat) => (
-          <label key={cat} className="text-xs text-slate-600">
+          <label key={cat} className="text-xs text-fg-muted">
             {CATEGORY_LABELS[cat] ?? cat}
             <input type="number" min={0} max={MAX_MONTHLY_SPEND} inputMode="numeric" value={spend[cat]}
               onChange={(e) => setSpend((s) => ({ ...s, [cat]: Math.max(0, Math.min(MAX_MONTHLY_SPEND, Number(e.target.value) || 0)) }))}
-              className="mt-0.5 w-full rounded-md border border-slate-300 px-2 py-1 text-sm text-slate-900 tabular-nums" />
+              className="mt-0.5 w-full rounded-md border border-line-strong px-2 py-1 text-sm text-fg tabular-nums" />
           </label>
         ))}
       </div>
@@ -188,25 +188,25 @@ export function AccelerationBreakdown({
           {ex.accelerators.map((a) => <AcceleratorRow key={a.category} item={a} />)}
         </ul>
       ) : (
-        <p className="mt-4 text-sm text-slate-500">No accelerated categories apply to the spend you entered — everything earns the base rate.</p>
+        <p className="mt-4 text-sm text-fg-muted">No accelerated categories apply to the spend you entered — everything earns the base rate.</p>
       )}
 
       {ex.base_spend.length > 0 ? (
-        <div className="mt-4 border-t border-slate-200 pt-3">
-          <h3 className="text-sm font-semibold text-slate-900">Base-rate spend</h3>
-          <p className="mt-0.5 text-xs text-slate-500">Non-accelerated spend, summarized at this card&apos;s base rate.</p>
+        <div className="mt-4 border-t border-line pt-3">
+          <h3 className="text-sm font-semibold text-fg">Base-rate spend</h3>
+          <p className="mt-0.5 text-xs text-fg-muted">Non-accelerated spend, summarized at this card&apos;s base rate.</p>
           <ul className="mt-2 space-y-1.5">
             {ex.base_spend.map((b: BaseSpendExplain) => {
               const cutNote = baseRowCutNote(b.category, exAbs.accelerators);
               return (
-                <li key={b.category} className="rounded-lg border border-slate-200 bg-slate-50 p-2.5">
+                <li key={b.category} className="rounded-lg border border-line bg-surface-subtle p-2.5">
                   <div className="flex items-baseline justify-between gap-3 text-xs">
-                    <span className="font-medium text-slate-700">{b.label}</span>
-                    <span className="tabular-nums text-slate-600">
+                    <span className="font-medium text-fg-secondary">{b.label}</span>
+                    <span className="tabular-nums text-fg-muted">
                       {inr(b.monthly_spend)} · {b.rate_pct.toFixed(1)}% = {inr(b.value_inr)}/mo
                     </span>
                   </div>
-                  {cutNote ? <p className="mt-1 text-[11px] text-slate-500">{cutNote}</p> : null}
+                  {cutNote ? <p className="mt-1 text-[11px] text-fg-muted">{cutNote}</p> : null}
                 </li>
               );
             })}
@@ -214,14 +214,14 @@ export function AccelerationBreakdown({
         </div>
       ) : null}
 
-      <div className="mt-4 flex items-baseline justify-between border-t border-slate-200 pt-3">
+      <div className="mt-4 flex items-baseline justify-between border-t border-line pt-3">
         <div>
-          <span className="mr-1 rounded border border-amber-300 bg-amber-50 px-1 text-[10px] font-bold uppercase text-amber-800">Est.</span>
-          <span className="text-sm text-slate-600">net rewards for this spend, {layer.label.toLowerCase()}</span>
+          <span className="mr-1 rounded border border-warn-line bg-warn-subtle px-1 text-[10px] font-bold uppercase text-warn">Est.</span>
+          <span className="text-sm text-fg-muted">net rewards for this spend, {layer.label.toLowerCase()}</span>
         </div>
-        <span className="text-lg font-semibold text-slate-900 tabular-nums">{inr(ex.annual_net_inr)}/yr</span>
+        <span className="text-lg font-semibold text-fg tabular-nums">{inr(ex.annual_net_inr)}/yr</span>
       </div>
-      <p className="mt-1 text-[11px] text-slate-400 tabular-nums">
+      <p className="mt-1 text-[11px] text-fg-muted tabular-nums">
         {inr(ex.annual_gross_inr)} rewards − {inr(ex.annual_fee_inr)} annual fee. Estimate for the spend you entered.
       </p>
 

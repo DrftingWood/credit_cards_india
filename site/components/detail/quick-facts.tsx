@@ -18,7 +18,7 @@ export function QuickFacts({ card }: { card: EnrichedCard }) {
   const base = card.computed.headline_rate_pct;
 
   return (
-    <section className="rounded-xl border border-slate-200 bg-white">
+    <section className="rounded-xl border border-line bg-surface">
       <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-5 p-5">
         <div className="w-full md:w-[220px]">
           <CardImage card={card} size="tile" />
@@ -40,7 +40,7 @@ export function QuickFacts({ card }: { card: EnrichedCard }) {
               <li className="prose-card-value">Base rate {formatPct(base, 2)}</li>
             ) : null}
             {accelerated.length > 0 && base !== null ? (
-              <li className="text-slate-600 leading-snug">Base {formatPct(base, 2)} on other spends</li>
+              <li className="text-fg-muted leading-snug">Base {formatPct(base, 2)} on other spends</li>
             ) : null}
           </Group>
 
@@ -50,15 +50,15 @@ export function QuickFacts({ card }: { card: EnrichedCard }) {
                 <li key={i} className="prose-card-value leading-snug">{w.benefit}</li>
               ))
             ) : (
-              <li className="text-slate-500">Not applicable</li>
+              <li className="text-fg-muted">Not applicable</li>
             )}
           </Group>
         </div>
       </div>
 
-      <div className="border-t border-slate-100 px-5 py-2.5 text-xs text-slate-500">
+      <div className="border-t border-line px-5 py-2.5 text-xs text-fg-muted">
         Data verified {formatDate(card.metadata.last_verified_on)} —{" "}
-        <Link href="/about" className="underline hover:text-slate-700">
+        <Link href="/about" className="underline hover:text-fg-secondary">
           see our methodology
         </Link>
       </div>
@@ -70,7 +70,7 @@ function Group({ title, children }: { title?: string; children: React.ReactNode 
   return (
     <div>
       {title ? (
-        <div className="text-xs uppercase tracking-wide text-slate-500 mb-2">{title}</div>
+        <div className="text-xs uppercase tracking-wide text-fg-muted mb-2">{title}</div>
       ) : null}
       <ul className="space-y-1.5 list-none">{children}</ul>
     </div>
@@ -80,7 +80,7 @@ function Group({ title, children }: { title?: string; children: React.ReactNode 
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <li className="flex items-baseline justify-between gap-3">
-      <span className="text-slate-500">{label}</span>
+      <span className="text-fg-muted">{label}</span>
       <span className="prose-card-value text-right">{value}</span>
     </li>
   );

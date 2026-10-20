@@ -321,6 +321,14 @@ steady-state rewards, never summed into a rank (`site/lib/value-components.ts`).
   proxies stay removed.
 - All milestone/threshold checks assume all of the user's entered spend counts
   toward the trigger; issuer-specific trigger exclusions are not modelled.
+- **Every rupee is itemised (added 2026-10-20, `calc/phase-2`).** Each total
+  carries a `ledger`: labelled, signed, whole-rupee lines (spend rewards, fee,
+  welcome, milestones, lounge) that sum exactly to the displayed total. Lines are
+  rounded by largest remainder, so a ledger total equals the rounded engine total
+  and no line moves by ₹1 or more. Rewards and fee lines always show; zero-valued
+  optional lines are omitted. A renewal fee cleared by spend reads "waived at your
+  spend", not a bare ₹0. Later phases (forex, redemption fees) add ledger lines
+  rather than adjusting a total silently.
 
 ### D-24. A user's own merchant share is authored applicability (CALC-3)
 
@@ -340,6 +348,19 @@ state it, and that is evidence, not invention.
 - `/calculator` stays channel-optimistic by default (D-3). Gating on declared
   shares is an explicit opt-in (`UsageProfile.gate_calculator`). Ecosystem ticks
   are shared with the card pages' Realistic layer.
+- **Loyalty tiers (added 2026-10-20, `calc/phase-3-tiers`).** The tier a user
+  holds is stored as `UsageProfile.loyalty_tiers` in the same usage store. Per
+  D-9 a tier bonus is programme earn, not card earn, so it is never added to
+  spend rewards or the rank (`annual_net_inr`). It is a separate value-components
+  line (`loyalty_tier`, ledger key `tier`) in Year 1, Year 2+ and the average.
+  It is earned only on spend through the card's `stacks_with_program`
+  accelerators and valued at the layer's own unit value. It is shown in every
+  layer except Absolute. Programme records reach it through the narrow
+  `ScoringContext.tierPrograms`, which never changes rates or unit values. The
+  full `programs` map is still not passed on the card page or `/calculator`,
+  because that would switch 19 co-brand cards to programme unit values, which
+  needs its own decision. When `programs` is set (as on /recommend), the tier is
+  already stacked into the rate, so no separate line is added.
 
 ### D-25. Authored `applicability_pct` = published market share, as a floor (D12)
 

@@ -1,13 +1,13 @@
 "use client";
 import { useMemo, useState } from "react";
-import type { EnrichedCard } from "@/lib/types";
+import type { EnrichedCard, LoyaltyProgram } from "@/lib/types";
 import { explainCard, type AcceleratorExplain, type BaseSpendExplain, type ScoringContext } from "@/lib/calculator";
 import { useSpendProfile, MAX_MONTHLY_SPEND } from "@/lib/use-spend-profile";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
 import { useValuePrefs } from "@/lib/use-value-prefs";
 import { ValueComponentsPanel } from "./value-components-panel";
 import { useUsageProfile } from "@/lib/use-usage-profile";
-import { DEFAULT_USAGE, cardUsageGroups, usageContext, usageDelta, withoutUsage, type UsageProfile } from "@/lib/usage";
+import { DEFAULT_USAGE, cardTierProgram, cardUsageGroups, tierContext, usageContext, usageDelta, withoutUsage, type UsageProfile } from "@/lib/usage";
 import { UsagePanel } from "./usage-panel";
 
 const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
@@ -90,6 +90,19 @@ export function breakdownLayers(hostCtx?: ScoringContext, hostLabel?: string, us
   ];
 }
 
+/**
+ * The context a layer is explained with: its own ctx plus the user's declared loyalty tiers,
+ * except for Absolute (the data's best case, not personal). Tier fields only add a separate
+ * value-components line; they never change rates or annual_net_inr, so a host layer still
+ * reconciles with its ranked row. The host's object is copied, never mutated.
+ */
+export function explainContext(layer: BreakdownLayer, tiers: Record<string, string>, programs: LoyaltyProgram[]): ScoringContext {
+  if (layer.id === "absolute") return layer.ctx;
+  const t = tierContext(tiers, programs);
+  if (Object.keys(t.tierMap).length === 0) return layer.ctx;
+  return { ...layer.ctx, ...t };
+}
+
 export function AcceleratorRow({ item }: { item: AcceleratorExplain }) {
   return (
     <li className="rounded-lg border border-slate-200 bg-white p-3">
@@ -124,8 +137,11 @@ export function AccelerationBreakdown({
   card,
   hostCtx,
   hostLabel,
+  programs = [],
 }: {
   card: EnrichedCard;
+  /** Loyalty programmes (only tiered ones matter): lets the user's declared tier be valued. */
+  programs?: LoyaltyProgram[];
   /** The exact ScoringContext the embedding view ranked with, if any. Supplying it makes
    *  this panel's total reconcile with the row above it instead of scoring its own way. */
   hostCtx?: ScoringContext;
@@ -139,7 +155,9 @@ export function AccelerationBreakdown({
   // Fall back to the primary layer if the host swapped the layer set out from under us.
   const layer = layers.find((l) => l.id === layerId) ?? layers[0];
 
-  const ex = useMemo(() => explainCard(card, spend, layer.ctx, valuePrefs), [card, spend, layer, valuePrefs]);
+  const ctx = useMemo(() => explainContext(layer, usage.loyalty_tiers, programs), [layer, usage.loyalty_tiers, programs]);
+  const ex = useMemo(() => explainCard(card, spend, ctx, valuePrefs), [card, spend, ctx, valuePrefs]);
+  const tierProgram = useMemo(() => cardTierProgram(card, programs), [card, programs]);
   // Absolute layer, computed unconditionally (explainCard is pure/cheap): the source of
   // truth for "what got cut" notes on base-rate rows in the selected layer (FIX 1).
   const exAbs = useMemo(() => explainCard(card, spend, { valueBasis: "face" }), [card, spend]);
@@ -179,8 +197,15 @@ export function AccelerationBreakdown({
         ))}
       </div>
 
-      {isRealistic ? (
-        <UsagePanel groups={usageGroups} usage={usage} ecosystem={ecosystem} deltas={deltas} onChange={(u) => setUsage(() => u)} />
+      {isRealistic || (tierProgram && layer.id !== "absolute") ? (
+        <UsagePanel
+          groups={isRealistic ? usageGroups : []}
+          usage={usage}
+          ecosystem={isRealistic ? ecosystem : null}
+          deltas={deltas}
+          onChange={(u) => setUsage(() => u)}
+          tier={tierProgram ? { program: tierProgram, bonus: ex.value_components?.loyalty_tier ?? null } : undefined}
+        />
       ) : null}
 
       {ex.accelerators.length > 0 ? (

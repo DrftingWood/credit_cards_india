@@ -1,8 +1,10 @@
 import type { Cycle } from "@/lib/types";
-import type { ValueComponents, ValuePrefs, MilestoneItem, WelcomeItem, LoungeItem } from "@/lib/value-components";
+import type { Ledger, ValueComponents, ValuePrefs, MilestoneItem, WelcomeItem, LoungeItem } from "@/lib/value-components";
 import { MAX_LOUNGE_VISITS, MAX_LOUNGE_VALUE_INR, MAX_TENURE_YEARS } from "@/lib/use-value-prefs";
 
 const inr = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
+/** Signed ledger amount: costs read "−₹1,000" (true minus sign), gains "₹1,000". */
+const signedInr = (n: number) => (n < 0 ? `−${inr(-n)}` : inr(n));
 const PER: Record<Cycle, string> = { monthly: "month", quarterly: "quarter", annual: "year", statement: "statement", "per-txn": "transaction" };
 const SCOPE_LABEL = { domestic: "Domestic", international: "International" } as const;
 
@@ -17,9 +19,26 @@ export function valueSummaryLine(vc: ValueComponents): string | null {
   const ms = vc.first_year.milestones_inr;
   if (ms > 0) parts.push(`${inr(ms)} milestones`);
   if (vc.lounge.annual_inr > 0) parts.push(`${inr(vc.lounge.annual_inr)} lounge`);
-  if (parts.length === 0 && vc.first_year.total_inr === vc.steady_state.total_inr) return null;
+  if (vc.loyalty_tier && vc.loyalty_tier.annual_inr > 0) parts.push(`${inr(vc.loyalty_tier.annual_inr)} ${vc.loyalty_tier.tier_name} tier`);
+  const y1 = vc.ledger.first_year.total_inr;
+  const y2 = vc.ledger.steady_state.total_inr;
+  if (parts.length === 0 && y1 === y2) return null;
   const tail = parts.length ? ` incl. ${parts.join(", ")}` : "";
-  return `Year 1 ${inr(vc.first_year.total_inr)}${tail} · Year 2+ ${inr(vc.steady_state.total_inr)}`;
+  return `Year 1 ${inr(y1)}${tail} · Year 2+ ${inr(y2)}`;
+}
+
+/** The labelled lines a total is the exact sum of — every rupee in the total is on one of them. */
+function LedgerLines({ ledger }: { ledger: Ledger }) {
+  return (
+    <ul className="mt-1.5 space-y-0.5 border-t border-slate-100 pt-1.5">
+      {ledger.lines.map((l) => (
+        <li key={l.key} data-ledger-line className="flex items-baseline justify-between gap-2 text-[11px] text-slate-500">
+          <span>{l.label}</span>
+          <span className="tabular-nums">{signedInr(l.inr)}</span>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 function WelcomeRow({ w }: { w: WelcomeItem }) {
@@ -136,7 +155,8 @@ export function ValueComponentsPanel({
       <h3 className="text-sm font-semibold text-slate-900">One-off &amp; benefit value</h3>
       <p className="mt-0.5 text-xs text-slate-500">
         Not part of the ranking. Welcome and milestone figures are the card&apos;s own stated values, counted only when
-        your spend meets the condition; lounge is valued only from the usage you enter.
+        your spend meets the condition; lounge is valued only from the usage you enter. Each total below lists the
+        lines it adds up from, rounded to whole rupees.
       </p>
 
       {empty ? (
@@ -169,13 +189,13 @@ export function ValueComponentsPanel({
       <dl className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
         <div className="rounded-lg border border-slate-200 p-2.5">
           <dt className="text-[11px] text-slate-500">Year 1</dt>
-          <dd className="text-sm font-semibold text-slate-900 tabular-nums">{inr(vc.first_year.total_inr)}</dd>
-          <dd className="text-[11px] text-slate-400 tabular-nums">pays the {inr(vc.first_year.fee_inr)} joining fee</dd>
+          <dd className="text-sm font-semibold text-slate-900 tabular-nums">{inr(vc.ledger.first_year.total_inr)}</dd>
+          <dd><LedgerLines ledger={vc.ledger.first_year} /></dd>
         </div>
         <div className="rounded-lg border border-slate-200 p-2.5">
           <dt className="text-[11px] text-slate-500">Year 2 onward</dt>
-          <dd className="text-sm font-semibold text-slate-900 tabular-nums">{inr(vc.steady_state.total_inr)}</dd>
-          <dd className="text-[11px] text-slate-400">annual fee, recurring benefits</dd>
+          <dd className="text-sm font-semibold text-slate-900 tabular-nums">{inr(vc.ledger.steady_state.total_inr)}</dd>
+          <dd><LedgerLines ledger={vc.ledger.steady_state} /></dd>
         </div>
         <div className="rounded-lg border border-slate-200 p-2.5">
           <dt className="text-[11px] text-slate-500">
@@ -192,8 +212,8 @@ export function ValueComponentsPanel({
             ) : vc.tenure_years}{" "}
             {vc.tenure_years === 1 ? "year" : "years"}
           </dt>
-          <dd className="text-sm font-semibold text-slate-900 tabular-nums">{inr(vc.tenure_avg_annual_inr)}</dd>
-          <dd className="text-[11px] text-slate-400">one-offs spread over the years held</dd>
+          <dd className="text-sm font-semibold text-slate-900 tabular-nums">{inr(vc.ledger.tenure_avg.total_inr)}</dd>
+          <dd><LedgerLines ledger={vc.ledger.tenure_avg} /></dd>
         </div>
       </dl>
     </div>

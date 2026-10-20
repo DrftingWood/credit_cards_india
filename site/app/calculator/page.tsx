@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/site-config";
 import { Suspense } from "react";
-import { getActiveCards } from "@/lib/data";
+import { getActiveCards, getAllLoyaltyPrograms } from "@/lib/data";
 import { CalculatorClient } from "./calculator-client";
 
 export const metadata: Metadata = pageMetadata({
@@ -13,6 +13,8 @@ export const metadata: Metadata = pageMetadata({
 
 export default function CalculatorPage() {
   const cards = getActiveCards();
+  // Only tiered programmes can change a value (the user's declared tier); keep the payload small.
+  const tieredPrograms = getAllLoyaltyPrograms().filter((p) => (p.earn?.tiers?.length ?? 0) > 0);
   return (
     <div className="space-y-4">
       <header>
@@ -30,7 +32,7 @@ export default function CalculatorPage() {
         </p>
       </header>
       <Suspense fallback={<div className="text-slate-500 text-sm">Loading…</div>}>
-        <CalculatorClient cards={cards} />
+        <CalculatorClient cards={cards} programs={tieredPrograms} />
       </Suspense>
     </div>
   );

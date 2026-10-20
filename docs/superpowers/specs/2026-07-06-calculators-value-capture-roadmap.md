@@ -13,7 +13,7 @@ scoped stubs here so they aren't lost.
   (`useSpendProfile`), the `AccelerationBreakdown` component on the card page AND
   `/calculator`. The reusable spine every later phase plugs into.
 
-## Phase 2 — Full value components
+## Phase 2 — Full value components (DONE 2026-10-20 — see DECISIONS D-21, TODO CALC-2)
 Surface welcome bonus + milestones + lounge as separate honest line items so the
 calculator shows first-year total vs steady-state, resolving `/calculator`'s
 "ignores welcome bonuses, milestone vouchers" disclaimer.

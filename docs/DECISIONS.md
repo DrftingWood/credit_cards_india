@@ -297,6 +297,31 @@ codes already present in the data's `mcc_exclusions`: `5541`/`5542`/`5983`/`5172
 travel) are *not* zeroed by a single excluded code, since one excluded MCC does
 not cover the bucket.
 
+### D-21. Value components are separate line items, valued only from data or the user (CALC-2)
+
+Welcome benefits, spend milestones and lounge access are shown beside the
+steady-state rewards, never summed into a rank (`site/lib/value-components.ts`).
+
+- **Three totals, all labelled.** Year 1 = rewards − joining fee + welcome +
+  every reached milestone + lounge. Year 2 onward = rewards − waiver-aware annual
+  fee + recurring milestones + lounge. Tenure average spreads year 1 over a
+  user-chosen 1–10 years (default 3 — a UI default the user changes, not a
+  dataset value).
+- **Welcome** counts only if its condition's explicit ₹ spend (parsed from the
+  text; never guessed) is met by the user's spend over `window_days` (a year when
+  no window is stated). A condition with no ₹ amount is assumed met and shown.
+- **Milestones** count only when per-cycle spend reaches the trigger; multiples
+  only from `max_awards_per_cycle`. A milestone that is the renewal-fee waiver
+  (`reward_kind: fee-waiver`, or same spend as `fee_waiver_spend_inr` with
+  "waive" in the text) adds ₹0 — the waiver-aware fee already nets it.
+  Implausible awards (> 15% of trigger) are flagged, not clipped (D19).
+- **Lounge** is valued only as `min(visits the user would use, allowance) ×
+  ₹ a visit is worth to the user`, both user inputs that default to 0, and only
+  when the card's spend threshold is cleared. The removed ₹1,500/₹2,500 per-visit
+  proxies stay removed.
+- All milestone/threshold checks assume all of the user's entered spend counts
+  toward the trigger; issuer-specific trigger exclusions are not modelled.
+
 ### D-17. Build pipeline is pure Node
 
 `site/scripts/prebuild.mjs` runs `gen-types.mjs` then `build.mjs`. No

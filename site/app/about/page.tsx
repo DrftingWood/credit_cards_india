@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "About — data methodology",
   description:
     "What this site is, where the data comes from, and how to contribute to the open dataset of Indian credit cards.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

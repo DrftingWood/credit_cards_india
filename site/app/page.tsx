@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getIndex } from "@/lib/data";
 import { CategoryTiles } from "@/components/home/category-tiles";
 import { SpendStarter } from "@/components/home/spend-starter";
+
+// Title and description come from the layout default; only the canonical is
+// page-specific. It can't live on the layout, where every page lacking its
+// own would inherit "/" as its canonical.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   const index = getIndex();

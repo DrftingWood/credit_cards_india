@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Find your card — guided questionnaire",
   description:
     "Answer a few short steps about income, spend, brand preferences and lifestyle — get a personalised credit-card shortlist.",
+  alternates: { canonical: "/recommend" },
 };
 
 export default function RecommendPage() {

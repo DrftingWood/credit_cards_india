@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Compare Indian credit cards side by side",
   description:
     "Pin up to 4 Indian credit cards and see fees, rewards, lounge access, eligibility and more side by side. Selection is shareable via URL.",
+  alternates: { canonical: "/compare" },
 };
 
 export default function ComparePage() {

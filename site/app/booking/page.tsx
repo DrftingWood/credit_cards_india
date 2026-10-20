@@ -5,7 +5,8 @@ import { BookingClient } from "./booking-client";
 export const metadata: Metadata = {
   title: "How should I actually book this? — cheapest net cost by channel",
   description:
-    "For a single flight or hotel, compare booking channels (bank portals, aggregators, direct) by net cost after the channel's price markup AND the reward your card earns there. The highest reward doesn't always win.",
+    "Compare bank portals, aggregators and direct booking for one flight or hotel by net cost: the channel's price markup minus the reward your card earns there.",
+  alternates: { canonical: "/booking" },
 };
 
 export default function BookingPage() {

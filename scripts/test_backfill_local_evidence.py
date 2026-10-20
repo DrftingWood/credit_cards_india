@@ -59,6 +59,11 @@ after = before + "      local_refs:\n        - docs/sources/x/a.pdf\n      field
 assert pure_insert(before, after, 4)
 assert not pure_insert(before, after, 3)
 assert not pure_insert(before, after.replace("url: u", "url: v"), 4)
+tail = "\nrewards:\n"
+assert pure_insert(before + tail, after + tail, 4, blocks=1)
+# a blank line that drifts into the middle of the inserted block splits it: refused
+drift = before + "      local_refs:\n        - docs/sources/x/a.pdf\n      fields_verified:\n\n        - fees.forex_markup_pct\nrewards:\n"
+assert not pure_insert(before + tail, drift, 4, blocks=1)
 
 # 7. The shipped claims are well-formed: refs under docs/sources/*.pdf, every expected field is declared,
 #    AS_OF claims name a commit, and reward claims cover all accelerators.

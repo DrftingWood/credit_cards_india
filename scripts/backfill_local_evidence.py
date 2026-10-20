@@ -229,19 +229,33 @@ def add_evidence(src, refs: list[str], paths: list[str]) -> None:
     keys = list(src.keys())
     anchor = next((k for k in ("confidence", "type", "retrieved_on") if k in keys), keys[-1])
     pos = keys.index(anchor) + 1
+    fv = CommentedSeq(paths)
     src.insert(pos, "local_refs", CommentedSeq(refs))
-    src.insert(pos + 1, "fields_verified", CommentedSeq(paths))
+    src.insert(pos + 1, "fields_verified", fv)
     if anchor in src.ca.items:
-        src.ca.items["fields_verified"] = src.ca.items.pop(anchor)
+        # the comment / blank line that followed the anchor's value now follows
+        # the last fields_verified item (a sequence keeps it per item, not per key)
+        token = src.ca.items.pop(anchor)[2]
+        if token is not None:
+            fv.ca.items[len(paths) - 1] = [token, None]
 
 
-def pure_insert(before: str, after: str, added_lines: int) -> bool:
-    diff = [ln for ln in difflib.ndiff(before.splitlines(), after.splitlines()) if ln[:1] in "+-"]
-    if len(diff) != added_lines:
+def pure_insert(before: str, after: str, added_lines: int, blocks: int | None = None) -> bool:
+    """Only evidence lines were inserted, each source's lines as one contiguous block."""
+    a, b = before.splitlines(), after.splitlines()
+    ops = difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes()
+    inserts = [b[j1:j2] for tag, _i1, _i2, j1, j2 in ops if tag == "insert"]
+    if any(tag in ("replace", "delete") for tag, *_ in ops):
         return False
-    for ln in diff:
-        body = ln[2:].strip()
-        if not ln.startswith("+ ") or not (body in ("local_refs:", "fields_verified:") or body.startswith("- ")):
+    if sum(len(blk) for blk in inserts) != added_lines:
+        return False
+    if blocks is not None and len(inserts) != blocks:
+        return False
+    for blk in inserts:
+        bodies = [ln.strip() for ln in blk]
+        if bodies[0] != "local_refs:" or "fields_verified:" not in bodies:
+            return False
+        if not all(x in ("local_refs:", "fields_verified:") or x.startswith("- ") for x in bodies):
             return False
     return True
 
@@ -311,7 +325,7 @@ def main(argv=None) -> int:
         buf = io.StringIO()
         y.dump(doc, buf)
         out = buf.getvalue()
-        if not pure_insert(text, out, added):
+        if not pure_insert(text, out, added, blocks=len(sections)):
             refused.append(path.relative_to(ROOT).as_posix())
             continue
         stats["files"] += 1

@@ -198,6 +198,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: "Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05."
   - effective_from: 2026-07-01
@@ -371,6 +372,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       notes: "SmartBuy flights 10X->5X + 3,000 RP brand-voucher sub-cap confirmed vs HDFC's live SmartBuy T&C (offers.smartbuy.hdfcbank.com offer 15282, effective 2026-07-01); hotels 10X and the 7,500 RP/month overall cap unchanged."
 benefits:

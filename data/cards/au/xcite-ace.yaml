@@ -65,6 +65,7 @@ rewards:
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2024-01-01

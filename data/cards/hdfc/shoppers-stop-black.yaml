@@ -84,6 +84,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: 'Research-verified: HDFC Reward Point = Rs1 Shoppers Stop voucher, store-only. Layer-3: ~20-40% cheaper online in sales.'

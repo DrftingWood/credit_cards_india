@@ -70,6 +70,7 @@ rewards:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/swyp
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2024-02-01

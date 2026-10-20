@@ -71,6 +71,7 @@ rewards:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: Standard ICICI RP ~Rs 0.25, realistic Rs 0.22.

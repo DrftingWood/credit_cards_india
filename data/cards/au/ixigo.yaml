@@ -80,6 +80,7 @@ rewards:
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       confidence: high
       notes: 'Research-verified: ixigo Money = Rs0.5 (100% vs bookings); also Rs0.25 statement credit (partial-open). Apr-2026 earn devaluation, rate held.'

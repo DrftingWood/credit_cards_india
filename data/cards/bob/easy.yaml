@@ -73,6 +73,7 @@ rewards:
     source:
       url: https://www.bobcard.co.in/credit-card-types/easy
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2019-01-01

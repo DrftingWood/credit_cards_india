@@ -99,6 +99,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card
       retrieved_on: 2026-04-15
+      type: issuer-page
       notes: "Historical record; structure before the 1-Jul-2025 revision."
 
   - effective_from: 2025-07-01
@@ -158,6 +159,7 @@ rewards:
     source:
       url: https://cardmaven.in/tata-neu-infinity-hdfc-bank-credit-card/
       retrieved_on: '2026-07-05'
+      type: aggregator
       notes: "Research-verified: 1 NeuCoin = Rs1 across Tata Neu (BigBasket/Croma/CLiQ/1mg), no cash conversion. 12-mo expiry from 01-Aug-2025. Layer-3: Croma electronics ~5% premium."
 
       confidence: high

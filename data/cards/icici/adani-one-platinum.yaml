@@ -71,6 +71,7 @@ rewards:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       confidence: high
       notes: 'Research-verified: 1 Adani Reward Point = Rs1, closed-loop (Adani One app + Adani Airports), no cash/transfer. Layer-3: airport retail ~10-25% premium.'

@@ -87,6 +87,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
     mcc_exclusions: ['5172', '5541', '5542', '5983', '6513', '6540', '5094', '5944', '9211', '9222', '9223', '9311', '9399', '9402', '9405', '9950', '5947', '5816', '8211', '8220', '8241', '8244', '8249', '8299']
 benefits:

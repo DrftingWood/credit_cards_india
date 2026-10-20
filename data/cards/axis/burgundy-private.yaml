@@ -97,6 +97,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/docs/default-source/default-document-library/bp-rewards-program-tnc.pdf
       retrieved_on: 2026-07-28
+      type: issuer-pdf
       notes: >-
         Base earn, the exclusion list, the rent and insurance caps, the EMI point-debit rule and the
         transfer caps are verbatim from the Burgundy Private "The One Card" Rewards Program T&C PDF

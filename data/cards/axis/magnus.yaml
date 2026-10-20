@@ -64,6 +64,7 @@ rewards:
     source:
       url: https://web.archive.org/web/2023/https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card
       retrieved_on: 2026-04-15
+      type: archive
       notes: "Historical record; values prior to the Sept-2023 revision."
 
     mcc_exclusions: ['6513']
@@ -165,6 +166,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: "EDGE Reward Points: Rs 0.18 catalogue floor (uniform); face Rs 0.44 = best 5:2 transfer to airline/hotel partners."
       confidence: high

@@ -74,6 +74,7 @@ rewards:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2024-01-01

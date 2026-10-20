@@ -83,6 +83,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-plus-credit-card
       retrieved_on: 2026-07-05
+      type: issuer-page
     notes: "Value chart: Freecharge 5%, local commute 2%, other spends 1% (Rs 85,000 -> Rs 850). Total illustrative annual benefit 2.59%."
 
     mcc_exclusions: ['6513']

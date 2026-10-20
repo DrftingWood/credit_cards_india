@@ -78,6 +78,7 @@ rewards:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: "Verified 2026-07-05: Ashva ceiling Rs0.40 (app travel; Rs0.5 was Mayura's rate); realized ~0.30."

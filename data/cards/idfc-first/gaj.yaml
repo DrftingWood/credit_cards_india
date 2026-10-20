@@ -85,6 +85,7 @@ rewards:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj
       retrieved_on: 2026-07-05
+      type: issuer-page
 
 benefits:
   - effective_from: 2025-01-01

@@ -78,6 +78,7 @@ rewards:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       notes: '2026-07-05: closed-loop, no transfer partners. IDFC app Travel&Shop Rs 0.50/pt travel, Rs 0.25 other.'
     capping_rules:

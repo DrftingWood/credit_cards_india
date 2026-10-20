@@ -79,6 +79,7 @@ rewards:
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-prime-credit-card.html
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2025-01-01

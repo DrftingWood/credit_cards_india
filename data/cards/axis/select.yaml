@@ -126,6 +126,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: "EDGE Reward Points: Rs 0.18 catalogue floor (uniform); face Rs 0.44 = best 5:2 transfer to airline/hotel partners."
       confidence: high

@@ -65,6 +65,7 @@ rewards:
     source:
       url: https://www.hsbc.co.in/credit-cards/products/taj/
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 benefits:
   - effective_from: 2025-01-01

@@ -76,6 +76,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
     mcc_exclusions: ['1361', '5172', '5541', '5542', '5983', '9752', '6513', '6540', '7349', '9211', '9222', '9223', '9311', '9399', '9402', '9405', '9950']
 benefits:

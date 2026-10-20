@@ -73,6 +73,7 @@ rewards:
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: low
       notes: "Research-verified (LOW confidence): general RBL Reward Points, NOT a Play ecosystem -> closed-loop tag removed. Per-point value unsourced; RBL cut points to ~Rs0.16-0.25. NEEDS manual T&C check (card may be BookMyShow-milestone-only)."

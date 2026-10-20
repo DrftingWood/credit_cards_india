@@ -80,6 +80,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       confidence: medium
       notes: 'Verified 2026-07-05: Reward Points convert 1:1 to Air India Maharaja (~Rs0.5-0.7 economy post Apr-2026 chart; 20-50% conversion bonuses lift value). Was face Rs1.0.'

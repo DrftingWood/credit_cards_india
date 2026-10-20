@@ -71,6 +71,7 @@ rewards:
     source:
       url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/byoc-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
 benefits:

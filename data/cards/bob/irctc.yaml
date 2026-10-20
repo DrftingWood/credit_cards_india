@@ -86,6 +86,7 @@ rewards:
     source:
       url: https://www.bobcard.co.in/credit-card-types/irctc-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: 'Research-verified: earns GENERIC BOB Reward Points (Rs0.25), also redeemable on statement/catalogue -> NOT closed-loop. 4 BOB RP = 1 IRCTC travel point. Closed-loop tag removed.'
       confidence: high

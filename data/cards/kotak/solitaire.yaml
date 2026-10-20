@@ -122,6 +122,7 @@ rewards:
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
       confidence: high

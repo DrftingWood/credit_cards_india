@@ -90,6 +90,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       notes: 'Research-verified: dedicated IRCTC RP = Rs1 on rail fare (regulated -> no premium).'
       confidence: high

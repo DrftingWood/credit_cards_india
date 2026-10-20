@@ -201,6 +201,7 @@ rewards:
     source:
       url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: "face raised 0.55->0.65 (SmartBuy Gold Catalogue best rate); realized 0.5 kept."
     reward_cap:

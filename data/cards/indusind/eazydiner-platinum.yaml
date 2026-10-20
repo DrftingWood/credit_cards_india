@@ -86,6 +86,7 @@ rewards:
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: 'Corrected 2026-07-05: EazyPoints = Rs 0.20, dining-locked (no cash/statement). Was Rs 1.0 nominal / 0.5 realized.'

@@ -57,6 +57,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
       retrieved_on: '2026-07-05'
+      type: issuer-page
       notes: "DISCONTINUED: Vistara merged into Air India (2024-11-12); Club Vistara points migrated to Air India Maharaja (~Rs0.55). Card no longer issued."
 
       confidence: high

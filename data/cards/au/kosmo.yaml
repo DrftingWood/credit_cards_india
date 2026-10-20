@@ -66,6 +66,7 @@ rewards:
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: 'Corrected 2026-07-05: Kiwi = Rs0.25 (4 Kiwis=Rs1), not Rs1.0. face/realized 1.0->0.25/0.22.'

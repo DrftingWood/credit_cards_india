@@ -161,6 +161,7 @@ rewards:
     source:
       url: https://www.hsbc.co.in/credit-cards/products/rupay-platinum-credit-card/
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
       confidence: high

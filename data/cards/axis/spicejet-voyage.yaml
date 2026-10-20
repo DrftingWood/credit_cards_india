@@ -107,6 +107,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card
       retrieved_on: 2026-07-05
+      type: issuer-page
       notes: "Research-verified: 1 SpiceClub Point = Rs0.5, SpiceJet-only. Redemption-availability risk (network cuts). Layer-3: direct booking forgoes ~2-8% aggregator coupons."
 
       confidence: high

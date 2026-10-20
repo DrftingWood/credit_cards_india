@@ -92,6 +92,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       confidence: high
       notes: 'Research-verified: Axis First Citizen Point = Rs0.5 (DIFFERENT currency from HDFC Shoppers Stop RP), Shoppers Stop-only voucher.'

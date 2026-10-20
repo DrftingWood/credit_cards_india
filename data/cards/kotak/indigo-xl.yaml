@@ -94,6 +94,7 @@ rewards:
     source:
       url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.html
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'

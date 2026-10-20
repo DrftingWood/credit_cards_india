@@ -86,6 +86,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card.html
       retrieved_on: '2026-07-05'
+      type: issuer-page
       confidence: high
       notes: Standard SBI RP Rs 0.25, realistic Rs 0.22.
     notes: "1 Reward Point per Rs.100 on other retail purchases (base). Exclusions include Fuel, Rental, Govt Spends, Gaming (mapped to 'other'), Wallet, EMI."

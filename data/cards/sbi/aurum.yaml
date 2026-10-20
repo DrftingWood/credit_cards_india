@@ -90,6 +90,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/luxury/aurum.page
       retrieved_on: 2026-04-15
+      type: issuer-page
       notes: "Historical record; structure before the 1-Dec-2024 exclusion wave."
 
   - effective_from: 2024-12-01

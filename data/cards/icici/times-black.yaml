@@ -75,6 +75,7 @@ rewards:
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: high
       notes: 'Corrected 2026-07-05: statement-credit is Rs 0.40/pt (was Rs 1.0). Rs 1.0 only for travel/voucher redemptions; realized 0.5 kept as blend.'

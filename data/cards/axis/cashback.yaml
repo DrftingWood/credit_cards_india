@@ -124,6 +124,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/docs/default-source/default-document-library/axis-bank-cashback-credit-card-tnc.pdf
       retrieved_on: 2026-07-28
+      type: issuer-pdf
       notes: "Re-verified 2026-07-28 against the Member T&C PDF (created 2026-06-08). Corrections: accelerator scope is channel-based (card-not-present), not the `online` merchant bucket — the T&C worked example on page 6 routes an ONLINE grocery purchase into the accelerated tier and an OFFLINE dining purchase to base, so food delivery and online groceries qualify. Rate is a rising 3-slab schedule (2/5/7%), not a flat 7%. Base 0.75% is card-present + travel only."
 
     mcc_exclusions: ['6513']

@@ -67,6 +67,7 @@ rewards:
     source:
       url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/icon-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: Added 2,000 RP/mo per-category cap (was uncapped) - 2026-07-05.
 benefits:

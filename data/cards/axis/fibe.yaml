@@ -83,6 +83,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
       notes: Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05.
     notes: "Cashback T&C table: 3% on online food delivery/entertainment/local commute, 1% other spends; capped INR 1,500 per statement cycle."
 

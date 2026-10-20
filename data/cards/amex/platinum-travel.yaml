@@ -107,6 +107,7 @@ rewards:
     source:
       url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
 benefits:

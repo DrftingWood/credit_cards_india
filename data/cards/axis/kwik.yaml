@@ -56,6 +56,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
     notes: "Earn 2 EDGE REWARD Points on every Rs 200 spent on domestic and international transactions."
 
     mcc_exclusions: ['6513']

@@ -66,6 +66,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
       notes: "Lufthansa Miles & More award miles: ~Rs 0.80 best / ~Rs 0.50 realistic economy from India."
 
       confidence: medium

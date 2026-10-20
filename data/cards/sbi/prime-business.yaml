@@ -79,6 +79,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
       retrieved_on: 2026-07-03
+      type: issuer-page
       notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
 
     mcc_exclusions: ['6513']

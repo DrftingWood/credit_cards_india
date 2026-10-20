@@ -81,6 +81,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-infinite-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
       confidence: high
       notes: EDGE Reward Points Rs 0.20 catalogue, realistic Rs 0.18.
     notes: "Samsung purchase cashback (10%, incl. EMI) is captured under benefits.other as it is a separate cashback benefit, not an EDGE Reward Point earn."

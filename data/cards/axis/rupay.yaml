@@ -47,6 +47,7 @@ rewards:
     source:
       url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
       retrieved_on: '2026-07-05'
+      type: issuer-page
 
       confidence: medium
       notes: EDGE Reward Points Rs 0.20 nominal / Rs 0.18 realistic (base earn is 0).

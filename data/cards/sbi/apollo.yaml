@@ -93,6 +93,7 @@ rewards:
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card.html
       retrieved_on: 2026-07-05
+      type: issuer-page
 
       confidence: high
       notes: 'Research-verified: SBI RP -> Apollo Health Credit 1:1, 1 HC = Rs1, Apollo-only (one-way). Layer-3: Apollo medicines ~0-10% above discount pharmacies (medicines only).'

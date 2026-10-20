@@ -404,6 +404,39 @@ https://ts.yourstory.com/2025/01/swiggy-food-delivery-quick-commerce-market-shar
 https://cwv.yourstory.com/2024/07/online-food-delivery-make-up-one-fifth-food-services-market-fy31-study .
 Re-check yearly; food-delivery and e-commerce shares move a few points a year.
 
+### D-26. Forex markup is a cost that lowers the rank (CALC-4 B1)
+
+Accepted by the owner on 2026-10-21. A card's `forex_markup_pct` is charged on
+the user's international spend and **subtracted from the ranking total**, not
+just shown beside it. Unlike a welcome bonus or a milestone, the markup is a
+recurring cost that grows with spend. Before this, a 3.5%-markup card could
+outrank a 0%-markup card for someone who spends heavily abroad.
+
+- **Formula.** `international monthly spend × 12 × forex_markup_pct / 100 ×
+  (1 + GST)`. It is `annual_forex_inr` on `scoreCard` and `explainCard`.
+  `annual_net_inr` (the /calculator rank, and the /recommend rank via
+  `scorer-decoupled`) is now rewards − effective annual fee − forex.
+- **GST is an assumption, not yet verified.** The GST rate on the markup is
+  one named constant, `GST_ON_FOREX_MARKUP = 0.18` in `site/lib/calculator.ts`.
+  It assumes the usual 18% GST on card fees and charges. The rate and the
+  practice of charging GST on the markup amount still need checking against an
+  issuer MITC or a CBIC source before this ships. GST is added only when the
+  fee record's `gst_applicable` is not `false`. No active card sets it to
+  `false` today.
+- **Every rupee is on the ledger.** The Year 1, Year 2+ and tenure-average
+  totals each get a negative `forex` line, labelled "Forex markup on
+  international spend (x% + 18% GST, assumed)". It appears only when the cost is
+  non-zero, so a 0%-markup card or a user with no international spend sees no
+  line.
+- **Missing data stays at ₹0 and is labelled.** A card with no stated markup
+  (one active card, `equitas-selfe`) is charged ₹0. When the user has
+  international spend, the card gets the disclaimer "Forex markup not stated,
+  counted as ₹0". No markup is guessed.
+- **Not covered yet.** The `/recommend` wizard sends no international spend
+  unless an exact spend is passed, so its rank only moves when that happens.
+  The portfolio optimiser (`site/lib/portfolio.ts`) still nets only rewards
+  and fees. Cross-currency or DCC surcharges are not modelled.
+
 ### D-17. Build pipeline is pure Node
 
 `site/scripts/prebuild.mjs` runs `gen-types.mjs` then `build.mjs`. No

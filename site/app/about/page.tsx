@@ -42,6 +42,17 @@ export default function AboutPage() {
         before applying. If you spot an error, please open an issue or a pull request on GitHub.
       </p>
 
+      <h2 id="affiliate-disclosure" className="mt-6 text-lg font-semibold text-slate-900">
+        Affiliate disclosure
+      </h2>
+      <p className="mt-2 text-slate-700">
+        Today this site has no affiliate links and earns nothing when you apply for a card. We may
+        add affiliate links in future to cover running costs. If we do, we may earn a commission
+        when you apply for a card through one of them, at no extra cost to you, and links that can
+        earn us money will be labelled. Rankings, calculator results and recommendations are
+        computed from the dataset alone, and no issuer or affiliate network can pay to change them.
+      </p>
+
       <h2 className="mt-6 text-lg font-semibold text-slate-900">Out of scope (for now)</h2>
       <ul className="mt-2 list-disc pl-6 text-slate-700 space-y-1">
         <li>Side-by-side card comparison.</li>

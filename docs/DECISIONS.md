@@ -297,7 +297,7 @@ codes already present in the data's `mcc_exclusions`: `5541`/`5542`/`5983`/`5172
 travel) are *not* zeroed by a single excluded code, since one excluded MCC does
 not cover the bucket.
 
-### D-21. Value components are separate line items, valued only from data or the user (CALC-2)
+### D-23. Value components are separate line items, valued only from data or the user (CALC-2)
 
 Welcome benefits, spend milestones and lounge access are shown beside the
 steady-state rewards, never summed into a rank (`site/lib/value-components.ts`).
@@ -322,7 +322,7 @@ steady-state rewards, never summed into a rank (`site/lib/value-components.ts`).
 - All milestone/threshold checks assume all of the user's entered spend counts
   toward the trigger; issuer-specific trigger exclusions are not modelled.
 
-### D-22. A user's own merchant share is authored applicability (CALC-3)
+### D-24. A user's own merchant share is authored applicability (CALC-3)
 
 D-18 refuses to invent the share of a broad bucket that goes through a narrow
 (merchant / co-brand / portal) accelerator. The person whose spend it is can

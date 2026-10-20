@@ -39,8 +39,11 @@ export async function generateMetadata({
   // Per-card OG/Twitter so share previews aren't identical across all 150+ pages.
   // Falls back to the layout's site-level images when the card has no licensed art.
   const images = card.image_path ? [{ url: card.image_path, alt: card.name }] : undefined;
+  // Keyword-led title (owner decision 2026-10-20): what people search for is
+  // the card plus "fees" / "rewards", not the bare name. Share previews keep
+  // the plain name below.
   return {
-    title: card.name,
+    title: `${card.name}: fees, rewards & benefits`,
     description,
     alternates: { canonical: cardHref(card) },
     openGraph: {

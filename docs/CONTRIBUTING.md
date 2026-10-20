@@ -64,6 +64,11 @@ and confirmed the values.
 - Prefer the issuer's official domain.
 - Archive.org links are acceptable for historical records only.
 - `source.retrieved_on` is the date you personally loaded the source.
+- When you verify one accelerator against a different document or on a
+  different date than its reward record, give that `accelerated[]` entry its own
+  `source` (D-21). Otherwise it inherits the record's source.
+- Set `source.type` and `source.confidence` on records you touch;
+  `python scripts/validate.py --strict-provenance` reports what is still missing.
 - If the issuer publishes a PDF, cite the PDF URL directly.
 - Do not cite aggregators as primary sources unless no issuer evidence exists
   and the record is clearly marked low-confidence.

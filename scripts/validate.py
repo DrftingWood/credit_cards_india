@@ -2,13 +2,21 @@
 """Validate all YAML data files against their JSON Schemas and cross-file invariants.
 
 Usage:
-    python scripts/validate.py
+    python scripts/validate.py [--check-urls] [--strict-provenance]
+                               [--provenance-report PATH]
 
 Exits 0 on success, 1 on any error. Prints warnings but still exits 0 if only warnings.
+
+Reward-rule provenance (D-21, scripts/provenance.py) is graded on every run and
+summarised in a coverage block. By default only broken provenance warns.
+`--strict-provenance` (or env STRICT_PROVENANCE=1) turns every provenance gap on
+an open reward record of an active/invite-only card into an error.
+`--provenance-report PATH` writes the per-rule grades as JSON.
 """
 from __future__ import annotations
 
 import json
+import os
 import socket
 import sys
 from datetime import date, datetime, timedelta
@@ -19,6 +27,9 @@ from pathlib import Path
 
 import yaml
 from jsonschema import Draft202012Validator, FormatChecker
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import provenance  # noqa: E402  (sibling module; scripts/ is not a package)
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_DIR = ROOT / "schema"
@@ -279,8 +290,48 @@ def _load_category_rules():
     return rules, untaggable
 
 
+def _arg_value(flag: str):
+    """Value following `flag` in argv (`--flag VALUE` or `--flag=VALUE`), else None."""
+    args = sys.argv[1:]
+    for i, a in enumerate(args):
+        if a == flag and i + 1 < len(args):
+            return args[i + 1]
+        if a.startswith(flag + "="):
+            return a.split("=", 1)[1]
+    return None
+
+
+def check_rule_provenance(errors, warnings, coverage, path: Path, instance: dict, strict: bool):
+    """Grade every reward rule's effective source (D-21).
+
+    Default mode: hard gaps (broken or contradicted provenance) warn, one line
+    per card. Strict mode: every gap on an in-scope rule is an error.
+    """
+    rel = path.relative_to(ROOT)
+    hard_hits = []
+    for rule in provenance.iter_rules(instance):
+        provenance.grade(rule, date.today(), AGGREGATOR_SOURCE_DOMAINS)
+        coverage.add(instance, rel.as_posix(), rule)
+        scoped = provenance.in_strict_scope(rule, instance)
+        if strict and scoped and rule.gaps:
+            errors.append(
+                f"[provenance] {rel} :: {rule.loc} :: "
+                + "; ".join(provenance.GAP_TEXT[g] for g in rule.gaps)
+            )
+        hard = [g for g in rule.gaps if g in provenance.HARD_GAPS]
+        if hard and not (strict and scoped):
+            hard_hits.append(f"{rule.loc} ({', '.join(hard)})")
+    if hard_hits:
+        warnings.append(
+            f"[warn] {rel} :: reward-rule provenance: " + "; ".join(hard_hits)
+        )
+
+
 def main() -> int:
     check_urls = "--check-urls" in sys.argv[1:]
+    strict_provenance = "--strict-provenance" in sys.argv[1:] or os.environ.get("STRICT_PROVENANCE") == "1"
+    provenance_report = _arg_value("--provenance-report")
+    coverage = provenance.Coverage()
     errors: list[str] = []
     warnings: list[str] = []
     category_rules, untaggable_re = _load_category_rules()
@@ -550,6 +601,7 @@ def main() -> int:
 
         check_application_urls(errors, warnings, path, instance, check_urls)
         check_local_evidence(errors, warnings, path, instance)
+        check_rule_provenance(errors, warnings, coverage, path, instance, strict_provenance)
 
     # deferred: replaces_card references
     for path, instance in cards:
@@ -563,6 +615,15 @@ def main() -> int:
         f"Checked {len(cards)} cards, {len(issuers)} issuers, {len(networks)} networks, "
         f"{len(loyalty_programs)} loyalty programs."
     )
+    for line in coverage.summary_lines():
+        print(line)
+    if strict_provenance:
+        print("  (strict provenance mode: gaps above are errors)")
+    if provenance_report:
+        report_path = Path(provenance_report)
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(json.dumps(coverage.as_report(), indent=2), encoding="utf-8")
+        print(f"  provenance report written to {report_path}")
     if warnings:
         print(f"\n{len(warnings)} warning(s):")
         for w in warnings:

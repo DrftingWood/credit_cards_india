@@ -22,6 +22,10 @@ export interface Source {
   confidence?: "high" | "medium" | "low";
   local_refs?: string[];
   fields_verified?: string[];
+  /** Who compared the record against the source (handle, or 'agent'). */
+  verified_by?: string;
+  /** How the source was read. */
+  method?: "manual-read" | "pdf-extract" | "rendered-page" | "crawl-diff" | "secondary";
   notes?: string;
 }
 
@@ -163,6 +167,8 @@ export interface AcceleratedReward {
   stacks_with_program?: boolean;
   channel?: AcceleratorChannel | null;
   earn_components?: EarnComponent[];
+  /** Rule-level provenance; when absent the rule inherits the parent reward record's `source`. */
+  source?: Source;
   notes?: string;
 }
 

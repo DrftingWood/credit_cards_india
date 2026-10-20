@@ -22,6 +22,12 @@ status: discontinued
 launched_on: 2019-01-01
 discontinued_on: 2026-07-03
 
+# Link check 2026-10-20: the cited product URL is a 404. Kotak's credit-card listing
+# (https://www.kotak.bank.in/en/personal-banking/cards/credit-cards.html) shows
+# "PVR Kotak Gold Credit Card ... Discontinued for new applications" with no product
+# page, which confirms status: discontinued. The dead URLs are kept as the historical
+# citation. Exact sunset date unknown, so discontinued_on stays the observed date.
+
 fees:
   - effective_from: 2019-01-01
     effective_until: 2026-07-03

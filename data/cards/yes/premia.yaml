@@ -19,6 +19,11 @@ status: discontinued
 launched_on: 2017-01-01
 discontinued_on: 2026-07-03
 
+# Link check 2026-10-20: the cited product URL is a 404. YES Premia was renamed ELITE
+# (w.e.f. 18-Dec-2023, per DesiDime/Paisabazaar) and is now sold as ELITE+
+# (data/cards/yes/elite-plus.yaml, https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/elite-plus-credit-card).
+# The dead URLs are kept as the historical citation for this discontinued record.
+
 fees:
   - effective_from: 2017-01-01
     effective_until: 2026-07-03

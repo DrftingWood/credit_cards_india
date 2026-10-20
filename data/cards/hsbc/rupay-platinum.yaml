@@ -33,7 +33,7 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free RuPay card, UPI-enabled. International ATM/POS access."
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/rupay-platinum-credit-card/
+      url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
       retrieved_on: 2026-07-03
 
 rewards:
@@ -159,7 +159,7 @@ rewards:
             last_verified_on: '2026-07-05'
             notes: 10:1 -> ~Rs 0.05/pt [below floor — avoid]
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/rupay-platinum-credit-card/
+      url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
       retrieved_on: '2026-07-05'
       type: issuer-page
 
@@ -186,7 +186,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/rupay-platinum-credit-card/
+      url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -199,7 +199,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hsbc.co.in/credit-cards/products/rupay-platinum-credit-card/
+  apply_url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
 
 metadata:
   last_verified_on: '2026-07-05'

@@ -23,6 +23,10 @@ discontinued_on: null
 # strictly by invitation. India fees and figures below are based on publicly
 # reported terms and are approximate; confirm with Amex India on any actual
 # card issuance.
+# Link check 2026-10-20: the cited /in/credit-cards/centurion/ URL is a 404 and Amex
+# India has no public Centurion product page. /in/centurion/ redirects to
+# /in/benefits/centurion/, which is login-gated. The URL is kept until the user decides
+# how to cite an invite-only card (see reports/decisions/credit_cards_india_remediation.md).
 
 fees:
   - effective_from: 1999-01-01

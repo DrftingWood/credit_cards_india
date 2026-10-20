@@ -34,7 +34,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/live-plus/
+      url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
       retrieved_on: 2026-07-03
 
 rewards:
@@ -72,7 +72,7 @@ rewards:
         rate_inr_per_unit: 1.0
         min_units: 500
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/live-plus/
+      url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
       retrieved_on: '2026-07-05'
       type: issuer-page
 
@@ -100,7 +100,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/live-plus/
+      url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -113,7 +113,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hsbc.co.in/credit-cards/products/live-plus/
+  apply_url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
 
 metadata:
   last_verified_on: '2026-07-05'

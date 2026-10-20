@@ -54,3 +54,13 @@ variant), `au-ixigo` (rate), `rbl-irctc` (rail earn model).
 - `audit_uncapped.py`: 39 uncapped ≥3% — **4 undocumented, all logged deferrals**.
 - `audit_stamps.py`: 0 mismatches.
 - Site: 86/86 tests, prebuild + typecheck clean.
+
+## 2026-10-20 link-check remediation (claude/remediate-links)
+
+2026-10-20 | link check: 20 host-moved URLs | issuer websites + HSBC card URLs moved to .bank.in; hsbc.bank.in allowlisted in validate.py | 59f6188
+2026-10-20 | link check: 404s | IDFC first-private/power/power-plus/swyp, YES marquee, Kotak indigo-xl apply_url repointed; evidence comments on discontinued pvr-gold/zomato-edition/premia | 9f32a18
+2026-10-20 | amex/mrcc fee waiver | full waiver ₹90,000 -> ₹1,50,000 (official page; ₹90k was the 50% tier) | 9e47a71
+2026-10-20 | link check: axis/magnus archive, amex/centurion | Magnus repointed to a 2023-06-04 Wayback snapshot; Centurion annotated | 9e85771
+2026-10-20 | link check: sbi/aurum historical sources | SKIPPED: aurum.page was never archived; the current page (aurum-sbi-card.html) cannot back pre-Nov-2024 records | user decision
+2026-10-20 | link check: sbi/elite-business, sbi/prime-business | SKIPPED: no issuer page and no discontinuation notice found; status left active | user decision
+2026-10-20 | rbl/zomato-edition discontinued_on | SKIPPED: evidence puts sunset ~2023-05-14 but launched_on is 2023-03-01 (inconsistent); date fix left for a dedicated pass | user decision

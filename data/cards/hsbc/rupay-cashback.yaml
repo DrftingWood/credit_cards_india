@@ -35,7 +35,7 @@ fees:
     gst_applicable: true
     notes: "UPI-enabled RuPay cashback card. 0% FX markup (promotional, until 31-Jul-2026)."
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/
+      url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
       retrieved_on: 2026-07-03
 
 rewards:
@@ -75,7 +75,7 @@ rewards:
         program: Cashback
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/
+      url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
       retrieved_on: 2026-07-04
       type: issuer-page
       confidence: high
@@ -106,7 +106,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/
+      url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -119,7 +119,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hsbc.co.in/credit-cards/products/rupay-cashback-credit-card/
+  apply_url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
 
 metadata:
   last_verified_on: 2026-07-04

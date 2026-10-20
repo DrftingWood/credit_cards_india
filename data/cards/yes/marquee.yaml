@@ -34,7 +34,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card
       retrieved_on: 2026-07-03
 
 rewards:
@@ -84,7 +84,7 @@ rewards:
             last_verified_on: '2026-07-05'
             notes: 15:1 -> ~Rs 0.04/pt [below floor — avoid]
     source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card
       retrieved_on: '2026-07-05'
       type: issuer-page
 
@@ -126,7 +126,7 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
+      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -139,7 +139,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-card/marquee-credit-card
+  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card
 
 metadata:
   last_verified_on: '2026-07-05'

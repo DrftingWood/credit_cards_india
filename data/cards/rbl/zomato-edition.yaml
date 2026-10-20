@@ -22,6 +22,13 @@ status: discontinued
 launched_on: 2023-03-01
 discontinued_on: 2026-07-03
 
+# Link check 2026-10-20: the cited product URL is a 404 and rbl.bank.in/sitemap.xml has
+# no Edition/Zomato card. RBL's notice
+# (https://webassets.rbl.bank.in/document/credit-cards/edition-card-1-423.pdf) says the
+# Zomato co-brand is discontinued and cards are replaced by the RBL Shoprite card;
+# CardInsider (17-Apr-2023) dates the switch to May 2023. discontinued_on is still the
+# observed date; the real sunset (~2023-05-14) is a pending decision (see REMEDIATION_LOG).
+
 fees:
   - effective_from: 2023-03-01
     effective_until: 2026-07-03

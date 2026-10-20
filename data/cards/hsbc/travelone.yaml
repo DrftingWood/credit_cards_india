@@ -35,7 +35,7 @@ fees:
     gst_applicable: true
     notes: "Travel rewards card. Renewal fee waived on ₹8,00,000 annual spend."
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/travelone/
+      url: https://www.hsbc.bank.in/credit-cards/products/travelone/
       retrieved_on: 2026-07-05
       type: issuer-page
       confidence: high
@@ -185,7 +185,7 @@ rewards:
             last_verified_on: '2026-07-05'
             notes: 5:1 -> ~Rs 0.10/pt [below floor — avoid]
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/travelone/
+      url: https://www.hsbc.bank.in/credit-cards/products/travelone/
       retrieved_on: '2026-07-05'
       type: issuer-page
       confidence: medium
@@ -220,7 +220,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.hsbc.co.in/credit-cards/products/travelone/
+      url: https://www.hsbc.bank.in/credit-cards/products/travelone/
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -233,7 +233,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.hsbc.co.in/credit-cards/products/travelone/
+  apply_url: https://www.hsbc.bank.in/credit-cards/products/travelone/
 
 metadata:
   last_verified_on: '2026-07-05'

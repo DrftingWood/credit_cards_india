@@ -25,9 +25,9 @@ fees:
     joining_fee_inr: 1000
     annual_fee_inr: 4500
     fee_waiver:
-      spend_inr: 90000
+      spend_inr: 150000
       cycle: annual
-      conditions: "Renewal fee waived on spends of ₹90k in the preceding year. First year fee may be separately waived on welcome offers."
+      conditions: "Renewal fee (₹4,500) 100% waived on ₹1,50,000+ spend in the preceding membership year; 50% waived on ₹90,000–₹1,49,999. Per cardmember notices reported by LiveFromALounge (9-Oct-2026) and InsideFlyer, the 50% tier is being removed (effective 15-Nov-2026, postponed from 11-Oct-2026). First-year fee may be separately waived on welcome offers."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.5
     cash_advance_fee:
@@ -36,7 +36,10 @@ fees:
     gst_applicable: true
     source:
       url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-20
+      type: issuer-page
+      confidence: high
+      notes: Fee waiver re-verified 2026-10-20 on the official product page (Fee Waiver section). Earlier ₹90,000 was the 50%-waiver tier, not the full-waiver threshold. Page also shows a banner pausing new applications in India.
 
 rewards:
   - effective_from: 2010-01-01
@@ -169,5 +172,5 @@ application:
   apply_url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-20'
   tags: [entry, points, amex, mr-points]

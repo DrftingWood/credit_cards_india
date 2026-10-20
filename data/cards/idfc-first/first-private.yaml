@@ -33,7 +33,7 @@ fees:
     gst_applicable: true
     notes: "Lifetime-free (invite-only)."
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/first-private
+      url: https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard
       retrieved_on: 2026-07-03
 
 rewards:
@@ -74,7 +74,7 @@ rewards:
         program: IDFC FIRST Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/first-private
+      url: https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard
       retrieved_on: 2026-07-03
       type: issuer-page
 
@@ -109,7 +109,7 @@ benefits:
       cycle: monthly
     concierge: true
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/first-private
+      url: https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard
       retrieved_on: 2026-07-03
 
 eligibility:

@@ -37,7 +37,7 @@ fees:
       min_inr: 500
     gst_applicable: true
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/power
+      url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
       retrieved_on: 2026-07-03
 
 rewards:
@@ -79,7 +79,7 @@ rewards:
       - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/power
+      url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
 
@@ -95,7 +95,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/power
+      url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
       retrieved_on: 2026-07-03
 
 eligibility:
@@ -108,7 +108,7 @@ eligibility:
   residency: resident-indian
 
 application:
-  apply_url: https://www.idfcfirst.bank.in/credit-card/power
+  apply_url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
 
 metadata:
   last_verified_on: 2026-07-03

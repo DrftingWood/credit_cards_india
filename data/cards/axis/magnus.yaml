@@ -62,10 +62,10 @@ rewards:
         ratio: "5:4"
         constraints: "Pre-Sept-2023 transfer ratio across partners."
     source:
-      url: https://web.archive.org/web/2023/https://www.axisbank.com/retail/cards/credit-card/magnus-credit-card
+      url: https://web.archive.org/web/20230604081754/https://www.axisbank.com/retail/cards/credit-card/axis-bank-magnus-card/feature-benefits
       retrieved_on: 2026-04-15
       type: archive
-      notes: "Historical record; values prior to the Sept-2023 revision."
+      notes: "Historical record; values prior to the Sept-2023 revision. URL repointed 2026-10-20 from a dead undated Wayback link (wrong slug) to the 4-Jun-2023 snapshot of the pre-revision feature page, which states 12 EDGE points per Rs.200; the 5:4 transfer ratio is not on that page."
 
     mcc_exclusions: ['6513']
   - effective_from: 2023-09-01

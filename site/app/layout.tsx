@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "../styles/globals.css";
 import { BetaBanner } from "@/components/beta-banner";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://credit-cards-india.vercel.app";
+import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -13,18 +12,20 @@ export const metadata: Metadata = {
   },
   description:
     "Open dataset and comparison site for every major credit card in India. Fees, rewards, benefits, history — all source-linked.",
+  applicationName: SITE_NAME,
   openGraph: {
-    title: "Credit Cards of India",
-    description:
-      "Open dataset and comparison site for Indian credit cards. Fees, rewards, benefits, history — all source-linked.",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
     type: "website",
-    siteName: "Credit Cards of India",
+    siteName: SITE_NAME,
+    locale: "en_IN",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Credit Cards of India",
-    description:
-      "Open dataset and comparison site for Indian credit cards. Fees, rewards, benefits, history — all source-linked.",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE.url],
   },
   robots: { index: true, follow: true },
 };

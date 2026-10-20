@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-config";
 import { Suspense } from "react";
 import { BookingClient } from "./booking-client";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "How should I actually book this? — cheapest net cost by channel",
   description:
     "Compare bank portals, aggregators and direct booking for one flight or hotel by net cost: the channel's price markup minus the reward your card earns there.",
-  alternates: { canonical: "/booking" },
-};
+  path: "/booking",
+});
 
 export default function BookingPage() {
   return (

@@ -17,6 +17,7 @@ import { ProsCons } from "@/components/detail/pros-cons";
 import { DeepDive } from "@/components/detail/deep-dive";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
 import type { EnrichedCard } from "@/lib/types";
+import { DEFAULT_OG_IMAGE, SITE_NAME } from "@/lib/site-config";
 
 interface Params {
   issuer: string;
@@ -37,8 +38,9 @@ export async function generateMetadata({
   if (!card) return { title: "Card not found", robots: { index: false } };
   const description = composeMetaDescription(card);
   // Per-card OG/Twitter so share previews aren't identical across all 150+ pages.
-  // Falls back to the layout's site-level images when the card has no licensed art.
-  const images = card.image_path ? [{ url: card.image_path, alt: card.name }] : undefined;
+  // Falls back to the site-level share image when the card has no licensed art
+  // (a page-level openGraph replaces the layout's, so the fallback is explicit).
+  const images = card.image_path ? [{ url: card.image_path, alt: card.name }] : [DEFAULT_OG_IMAGE];
   // Keyword-led title (owner decision 2026-10-20): what people search for is
   // the card plus "fees" / "rewards", not the bare name. Share previews keep
   // the plain name below.
@@ -51,13 +53,15 @@ export async function generateMetadata({
       description,
       type: "article",
       url: cardHref(card),
-      ...(images ? { images } : {}),
+      siteName: SITE_NAME,
+      locale: "en_IN",
+      images,
     },
     twitter: {
-      card: images ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: card.name,
       description,
-      ...(images ? { images } : {}),
+      images: images.map((i) => i.url),
     },
   };
 }

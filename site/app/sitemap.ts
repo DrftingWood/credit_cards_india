@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { cardHref, getActiveCards } from "@/lib/data";
-
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://credit-cards-india.vercel.app";
+import { SITE_URL as BASE } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

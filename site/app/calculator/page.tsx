@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-config";
 import { Suspense } from "react";
 import { getActiveCards } from "@/lib/data";
 import { CalculatorClient } from "./calculator-client";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Reward calculator — find the best card for your spend",
   description:
     "Enter your monthly spend across online, groceries, dining, fuel, travel, utilities, rent and international — see Indian credit cards ranked by net annual value.",
-  alternates: { canonical: "/calculator" },
-};
+  path: "/calculator",
+});
 
 export default function CalculatorPage() {
   const cards = getActiveCards();

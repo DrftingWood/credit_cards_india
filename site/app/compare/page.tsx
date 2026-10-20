@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-config";
 import { Suspense } from "react";
 import { getActiveCards } from "@/lib/data";
 import { CompareClient } from "./compare-client";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Compare Indian credit cards side by side",
   description:
     "Pin up to 4 Indian credit cards and see fees, rewards, lounge access, eligibility and more side by side. Selection is shareable via URL.",
-  alternates: { canonical: "/compare" },
-};
+  path: "/compare",
+});
 
 export default function ComparePage() {
   const cards = getActiveCards();

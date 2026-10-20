@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <article className="prose prose-slate max-w-2xl">
-      <h1 className="text-2xl font-semibold text-slate-900">About</h1>
+      <h1 className="text-2xl font-semibold text-fg">About</h1>
 
-      <p className="mt-4 text-slate-700">
+      <p className="mt-4 text-fg-secondary">
         Credit Cards of India is an open dataset and comparison site for every major credit card
         issued in India. It&apos;s built on top of a YAML dataset in the{" "}
         <a href="https://github.com/DrftingWood/credit_cards_india" target="_blank" rel="noopener noreferrer">
@@ -21,37 +21,37 @@ export default function AboutPage() {
         repository — every value on this site links back to the issuer page it came from.
       </p>
 
-      <h2 className="mt-6 text-lg font-semibold text-slate-900">How the data works</h2>
-      <p className="mt-2 text-slate-700">
+      <h2 className="mt-6 text-lg font-semibold text-fg">How the data works</h2>
+      <p className="mt-2 text-fg-secondary">
         Fees, rewards and benefits are stored as <strong>effective-dated records</strong>: when an
         issuer revises an annual fee or reward rate, we close the old record with an
         <code className="mx-1">effective_until</code> date and append a new one, so historical
         values are never lost. You can see these revisions on any card&apos;s page under{" "}
         <em>History</em>.
       </p>
-      <p className="mt-2 text-slate-700">
+      <p className="mt-2 text-fg-secondary">
         Every dated record carries a <code>source.url</code> and the date we retrieved it, so every
         number is traceable. The schema is a JSON Schema in <code>schema/card.schema.json</code> and
         the validator runs on every pull request.
       </p>
 
-      <h2 className="mt-6 text-lg font-semibold text-slate-900">Data quality</h2>
-      <p className="mt-2 text-slate-700">
+      <h2 className="mt-6 text-lg font-semibold text-fg">Data quality</h2>
+      <p className="mt-2 text-fg-secondary">
         The dataset is in beta. Values were populated from widely-reported public figures and will
         have drifted for some cards since their retrieval dates. Always confirm with the issuer
         before applying. If you spot an error, please open an issue or a pull request on GitHub.
       </p>
 
-      <h2 className="mt-6 text-lg font-semibold text-slate-900">Out of scope (for now)</h2>
-      <ul className="mt-2 list-disc pl-6 text-slate-700 space-y-1">
+      <h2 className="mt-6 text-lg font-semibold text-fg">Out of scope (for now)</h2>
+      <ul className="mt-2 list-disc pl-6 text-fg-secondary space-y-1">
         <li>Side-by-side card comparison.</li>
         <li>Favourites / bookmarks.</li>
         <li>Community reviews and ratings.</li>
         <li>Welcome bonuses and milestone vouchers in the calculator.</li>
       </ul>
 
-      <h2 className="mt-6 text-lg font-semibold text-slate-900">Contributing</h2>
-      <p className="mt-2 text-slate-700">
+      <h2 className="mt-6 text-lg font-semibold text-fg">Contributing</h2>
+      <p className="mt-2 text-fg-secondary">
         See{" "}
         <a
           href="https://github.com/DrftingWood/credit_cards_india/blob/main/docs/CONTRIBUTING.md"

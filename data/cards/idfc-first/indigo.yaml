@@ -43,6 +43,8 @@ fees:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2025-08-18
@@ -141,6 +143,7 @@ benefits:
     source:
       url: https://www.paisabazaar.com/idfc-first-bank/indigo-idfc-first-dual-credit-card/
       retrieved_on: 2026-07-03
+      type: aggregator
 
 eligibility:
   min_age: 21

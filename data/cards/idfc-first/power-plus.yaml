@@ -39,6 +39,8 @@ fees:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2022-09-01
@@ -110,6 +112,7 @@ benefits:
     source:
       url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

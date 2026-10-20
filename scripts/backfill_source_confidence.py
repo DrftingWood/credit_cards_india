@@ -78,6 +78,21 @@ HEDGE_RE = re.compile(
     re.I,
 )
 
+# Open records an audit doc names as still unconfirmed, where neither the notes
+# nor a TODO marker carries the doubt. The header tier does not override these.
+DOC_HEDGES = {
+    ("data/cards/hdfc/diners-rewardz.yaml", "fees"):
+        "docs/hdfc-pdf-verification.md: fee_waiver 'possibly Rs 1L (MITC table garbled - verify)'",
+    ("data/cards/hdfc/indianoil.yaml", "fees"):
+        "docs/hdfc-audit.md follow-ups: joining fee Rs 500 vs live 'without any joining fee' - confirm",
+    ("data/cards/axis/kwik.yaml", "rewards"):
+        "docs/axis-audit.md follow-ups: base earn rate for freecharge, rupay, kwik - page/PDF silent",
+    ("data/cards/axis/rupay.yaml", "rewards"):
+        "docs/axis-audit.md follow-ups: base earn rate for freecharge, rupay, kwik - page/PDF silent",
+    ("data/cards/axis/freecharge.yaml", "rewards"):
+        "docs/axis-audit.md follow-ups: base earn rate for freecharge, rupay, kwik - page/PDF silent",
+}
+
 
 def header_tier(text: str) -> str | None:
     """The card's header confidence mapped to the schema enum, or None if absent/non-standard."""
@@ -260,6 +275,8 @@ def main(argv=None) -> int:
                     continue
                 flagged, rechecked = flag_state(rel, sec, rec, wave_doc) if sec in SECTIONS else (False, False)
                 value, reason = decide(rec, sec, tier, wave_doc, flagged, rechecked)
+                if value is not None and (rel, sec) in DOC_HEDGES and rec.get("effective_until") is None:
+                    value, reason = None, "doc-hedged"
                 stats[reason] += 1
                 if value is None:
                     if reason not in {"already-set", "closed-record", "section-not-covered"}:

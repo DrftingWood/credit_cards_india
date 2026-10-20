@@ -110,6 +110,13 @@ PRE = (
 )
 assert todo_flagged(PRE) == {("fees", "2021-01-01"), ("rewards", "2023-04-01"), ("benefits", "2021-01-01")}
 
+# 3d. Doc-level hedges point at real card files and covered sections, each with a citation.
+from backfill_source_confidence import DOC_HEDGES, ROOT, SECTIONS  # noqa: E402
+
+for (rel, sec), cite in DOC_HEDGES.items():
+    assert (ROOT / rel).exists(), rel
+    assert sec in SECTIONS and cite.startswith("docs/"), (rel, sec)
+
 # 4. Hedge detection reads both the record notes and the source notes.
 assert hedged({"notes": "fees widely reported as ~Rs 1.5L"})
 assert hedged({"source": {"notes": "values are program-standard estimates"}})

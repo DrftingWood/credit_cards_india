@@ -37,7 +37,6 @@ fees:
       url: https://www.hdfc.bank.in/credit-cards/diners-club-rewardz-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-      confidence: high
       local_refs:
         - docs/sources/hdfc/_shared/mitc-in-english.pdf
       fields_verified:

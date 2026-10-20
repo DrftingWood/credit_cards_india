@@ -63,6 +63,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               .
             </div>
             <div>Data in beta. Verify with the issuer before applying.</div>
+            {/* Worded to stay true before and after any affiliate link exists. */}
+            <p className="w-full text-xs text-slate-500">
+              Affiliate disclosure: this site has no affiliate links today. If we add them, we may
+              earn a commission when you apply through one, at no extra cost to you. Rankings and
+              calculator results come from the dataset alone and do not depend on commissions.{" "}
+              <Link href="/about#affiliate-disclosure">More</Link>
+            </p>
           </div>
         </footer>
       </body>

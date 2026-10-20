@@ -37,6 +37,8 @@ fees:
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
+      confidence: medium
 
 rewards:
   - effective_from: 2024-01-01
@@ -66,6 +68,7 @@ rewards:
       url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
 
 benefits:
   - effective_from: 2024-01-01
@@ -93,6 +96,7 @@ benefits:
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
       retrieved_on: 2026-07-03
+      type: issuer-page
 
 eligibility:
   min_age: 21

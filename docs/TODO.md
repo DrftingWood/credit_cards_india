@@ -517,6 +517,21 @@ recommendation before it was caught.
 | E10 | Open | Engine | **Nothing surfaces WHY a card is in a stack.** `PortfolioSlot` reports the rate and the rupees but not which accelerator fired or what gated it, so auditing a recommendation means hand-reading YAML — which is exactly how the E7 defects survived. Carry the winning `AcceleratedReward` (at minimum its `category`, `merchants`, `channel`) through to the slot so a stack can be checked from its own output. |
 | E11 | Open | Engine | **Reward FORM is invisible in ranking.** Every card in the final stack happened to pay ₹1.00/unit as statement credit, but nothing in the scorer distinguishes that from closed-loop currency (Tata Neu's NeuCoins) or a partner-wallet credit (`axis-airtel`'s value-back is credited to a partner wallet, not cash). `redemption_scope: closed-loop` exists and the calculator honours it for VALUE, yet a ranked list still shows cash and non-cash side by side. Surface `redemption[0].type` and any `min_units` floor in recommender output. |
 
+## Provenance backlog (opened 2026-10-20, from D-21 and the first link check)
+
+`python scripts/validate.py --strict-provenance` and `python scripts/check_links.py`
+(report in `dist/link-report.md`) are the gates for these rows.
+
+| ID | Priority | Area | Task |
+| --- | --- | --- | --- |
+| P1 | Open | Data quality | **15 cited URLs return 404** (first link check, 2026-10-20): amex-centurion, icici-manchester-united-signature, idfc-first first-private/power/power-plus/swyp, kotak indigo-xl/pvr-gold, rbl-zomato-edition, sbi elite-business/prime-business/aurum, yes marquee/premia, plus the axis-magnus archive.org link. Several are likely discontinued cards — confirm status against the issuer before touching `status` or swapping the URL (B4). |
+| P2 | Open | Data quality | **3 soft 404s** — `axis-olympus` redirects to the Axis sitemap; `indusind-pinnacle` and `indusind-platinum` redirect to IndusInd's 404 page. Same treatment as P1. |
+| P3 | Open | Data quality | **36 moved / host-moved URLs** (HSBC `.co.in`→`.bank.in`, Axis `axisbank.com`→`axis.bank.in`, SBI `.page`→`.html`, issuer `website` fields). Swap only after re-reading the new page; a redirect is not a re-verification, so leave `retrieved_on` alone unless you re-read it. |
+| P4 | Open | Provenance | **`source.confidence` missing on 413 of 666 in-scope reward rules.** Not mechanically derivable: the per-issuer tiers in `docs/PROVENANCE.md` describe the July audit, not each record. Set it when a record is next re-verified. |
+| P5 | Open | Provenance | **8 "unvouched" rules**: the record's `fields_verified` lists reward paths that do not cover the rule (axis-atlas, axis-horizon accelerators; equitas-powermiles, hsbc-rupay-cashback, sbi-phonepe-select-black bases; hsbc-travelone accelerator). Either extend `fields_verified` after checking, or give the rule its own `source`. |
+| P6 | Open | Provenance | **5 bare-homepage sources** on federal-scapia, pnb-rupay-select and slice-rupay reward records. Replace with the page that states the rates. |
+| P7 | Open | Validation | **Promote `--strict-provenance` to blocking in CI** once strict-ready coverage is high (236/666 = 35% on 2026-10-20); drop `continue-on-error` in `validate.yml`. |
+
 ## Completed Recently
 
 - **2026-07-04 audit board (A0â€“C3 + B1â€“B5):** all 12 tasks done on branch

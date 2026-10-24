@@ -17,6 +17,7 @@ import { ProductDetails } from "@/components/detail/product-details";
 import { ProsCons } from "@/components/detail/pros-cons";
 import { DeepDive } from "@/components/detail/deep-dive";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
+import { CardImage } from "@/components/card-image";
 import type { EnrichedCard } from "@/lib/types";
 import { DEFAULT_OG_IMAGE, SITE_NAME } from "@/lib/site-config";
 
@@ -173,11 +174,14 @@ export default async function CardPage({
 
       <StatusNotice card={card} />
 
-      {/* Summary prose */}
-      <SummaryProse card={card} />
-
-      {/* Quick facts box */}
-      <QuickFacts card={card} />
+      {/* Hero Visual + Facts Strip */}
+      <div className="grid grid-cols-1 md:grid-cols-[340px_1fr] gap-6 items-start">
+        <CardImage card={card} size="hero" className="shadow-xl" />
+        <div className="space-y-4">
+          <SummaryProse card={card} />
+          <QuickFacts card={card} />
+        </div>
+      </div>
 
       {/* Identity + actions strip */}
       <section className="flex flex-wrap items-center justify-between gap-3">

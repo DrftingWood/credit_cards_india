@@ -1,5 +1,6 @@
 id: utkarsh-supercard
 name: Utkarsh SuperCard RuPay Credit Card
+image_path: /cards/utkarsh/supercard.webp
 issuer: utkarsh
 network: rupay
 network_tier: classic

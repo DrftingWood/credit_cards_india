@@ -12,6 +12,7 @@
 # ---------------------------------------------------------------------------
 id: idbi-winnings
 name: IDBI Bank Winnings Credit Card
+image_path: /cards/idbi/winnings.webp
 issuer: idbi
 network: rupay
 network_tier: select

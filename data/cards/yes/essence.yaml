@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-essence
 name: YES Bank Essence Credit Card
+image_path: /cards/yes/essence.webp
 issuer: "yes"
 network: mastercard
 network_tier: world

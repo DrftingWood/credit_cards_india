@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-phonepe-purple
 name: "PhonePe SBI Card Purple"
+image_path: /cards/sbi/phonepe-purple.webp
 issuer: sbi
 network: rupay
 network_tier: platinum

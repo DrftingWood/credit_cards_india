@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-white
 name: Kotak White Credit Card
+image_path: /cards/kotak/white.webp
 issuer: kotak
 network: mastercard
 network_tier: world

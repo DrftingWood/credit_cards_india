@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-league-platinum
 name: Kotak League Platinum Credit Card
+image_path: /cards/kotak/league-platinum.webp
 issuer: kotak
 network: visa
 network_tier: platinum

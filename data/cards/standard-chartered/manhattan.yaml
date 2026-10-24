@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: standard-chartered-manhattan
 name: Standard Chartered Manhattan Credit Card
+image_path: /cards/standard-chartered/manhattan.webp
 issuer: standard-chartered
 network: visa
 network_tier: platinum

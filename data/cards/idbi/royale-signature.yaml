@@ -1,5 +1,6 @@
 id: idbi-royale-signature
 name: IDBI Royale Signature Credit Card
+image_path: /cards/idbi/royale-signature.webp
 issuer: idbi
 network: visa
 network_tier: signature

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-reliance
 name: Reliance SBI Card
+image_path: /cards/sbi/reliance.webp
 issuer: sbi
 network: rupay
 network_tier: platinum

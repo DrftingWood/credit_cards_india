@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: rbl-play
 name: Play RBL Bank Credit Card
+image_path: /cards/rbl/play.webp
 issuer: rbl
 network: mastercard
 network_tier: titanium

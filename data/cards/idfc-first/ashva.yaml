@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-ashva
 name: IDFC FIRST Ashva Credit Card
+image_path: /cards/idfc-first/ashva.webp
 issuer: idfc-first
 network: visa
 network_tier: signature

@@ -16,6 +16,7 @@
 # ---------------------------------------------------------------------------
 id: union-nexteria
 name: Union Bank NEXTERIA Credit Card
+image_path: /cards/union/nexteria.webp
 issuer: union
 network: rupay
 network_tier: ekaa

@@ -1,5 +1,6 @@
 id: sbi-prime
 name: SBI Card PRIME
+image_path: /cards/sbi/prime.webp
 issuer: sbi
 network: visa
 network_tier: signature

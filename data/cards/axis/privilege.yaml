@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-privilege
 name: Axis Bank Privilege Credit Card
+image_path: /cards/axis/privilege.webp
 issuer: axis
 network: visa
 network_tier: signature

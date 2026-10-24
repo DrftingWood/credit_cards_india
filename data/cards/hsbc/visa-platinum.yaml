@@ -1,5 +1,6 @@
 id: hsbc-visa-platinum
 name: HSBC Visa Platinum Credit Card
+image_path: /cards/hsbc/visa-platinum.webp
 issuer: hsbc
 network: visa
 network_tier: platinum

@@ -1,5 +1,6 @@
 id: sbi-air-india-platinum
 name: Air India SBI Platinum Credit Card
+image_path: /cards/sbi/air-india-platinum.png
 issuer: sbi
 network: visa
 network_tier: platinum

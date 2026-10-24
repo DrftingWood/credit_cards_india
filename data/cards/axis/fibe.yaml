@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-fibe
 name: Fibe Axis Bank Credit Card
+image_path: /cards/axis/fibe.webp
 issuer: axis
 network: rupay
 network_tier: platinum

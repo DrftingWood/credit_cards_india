@@ -1,5 +1,6 @@
 id: federal-scapia
 name: Scapia Federal Bank Credit Card
+image_path: /cards/federal/scapia.webp
 issuer: federal
 network: visa
 network_tier: signature

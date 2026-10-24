@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-wow
 name: IDFC FIRST WOW! Credit Card
+image_path: /cards/idfc-first/wow.webp
 issuer: idfc-first
 network: visa
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-indianoil-kotak
 name: IndianOil Kotak Credit Card
+image_path: /cards/kotak/indianoil-kotak.webp
 issuer: kotak
 network: rupay
 network_tier: platinum

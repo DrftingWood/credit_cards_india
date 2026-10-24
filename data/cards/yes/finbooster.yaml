@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-finbooster
 name: YES Bank FinBooster Credit Card
+image_path: /cards/yes/finbooster.png
 issuer: "yes"
 network: mastercard
 network_tier: platinum

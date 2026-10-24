@@ -1,5 +1,6 @@
 id: sbi-air-india-signature
 name: Air India SBI Signature Card
+image_path: /cards/sbi/air-india-signature.jpg
 issuer: sbi
 network: visa
 network_tier: signature

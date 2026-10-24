@@ -1,5 +1,6 @@
 id: axis-scapia
 name: Scapia Axis Bank Credit Card
+image_path: /cards/axis/scapia.webp
 issuer: axis
 network: mastercard
 network_tier: world

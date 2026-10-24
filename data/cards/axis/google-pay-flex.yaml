@@ -1,5 +1,6 @@
 id: axis-google-pay-flex
 name: Google Pay Flex Axis Bank Credit Card
+image_path: /cards/axis/google-pay-flex.webp
 issuer: axis
 network: rupay
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-shoppers-stop
 name: Axis Bank Shoppers Stop Credit Card
+image_path: /cards/axis/shoppers-stop.webp
 issuer: axis
 network: visa
 network_tier: platinum

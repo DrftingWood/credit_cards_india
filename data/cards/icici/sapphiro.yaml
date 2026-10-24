@@ -1,5 +1,6 @@
 id: icici-sapphiro
 name: ICICI Bank Sapphiro Credit Card
+image_path: /cards/icici/sapphiro.webp
 issuer: icici
 network: visa
 network_tier: infinite

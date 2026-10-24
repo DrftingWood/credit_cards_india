@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-laksya
 name: AU Bank Laksya Credit Card
+image_path: /cards/au/laksya.webp
 issuer: au
 network: visa
 network_tier: platinum

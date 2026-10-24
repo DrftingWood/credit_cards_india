@@ -1,5 +1,6 @@
 id: hdfc-swiggy-ornge
 name: Swiggy Ornge HDFC Bank Credit Card
+image_path: /cards/hdfc/swiggy-ornge.webp
 issuer: hdfc
 network: mastercard
 network_tier: platinum

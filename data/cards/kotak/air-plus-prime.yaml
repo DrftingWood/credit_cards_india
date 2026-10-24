@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-air-plus-prime
 name: Kotak Air+ Prime Credit Card
+image_path: /cards/kotak/air-plus-prime.webp
 issuer: kotak
 network: visa
 network_tier: signature

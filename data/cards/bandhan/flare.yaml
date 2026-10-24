@@ -1,5 +1,6 @@
 id: bandhan-flare
 name: Bandhan Bank Flare Credit Card
+image_path: /cards/bandhan/flare.webp
 issuer: bandhan
 network: visa
 network_tier: signature

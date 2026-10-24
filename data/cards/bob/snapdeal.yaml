@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-snapdeal
 name: Snapdeal BOBCARD Credit Card
+image_path: /cards/bob/snapdeal.webp
 issuer: bob
 network: rupay
 network_tier: platinum

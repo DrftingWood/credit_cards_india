@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-samman
 name: IndusInd Bank Samman RuPay Credit Card
+image_path: /cards/indusind/samman.webp
 issuer: indusind
 network: rupay
 network_tier: platinum

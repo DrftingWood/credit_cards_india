@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: rbl-world-safari
 name: RBL Bank World Safari Credit Card
+image_path: /cards/rbl/world-safari.webp
 issuer: rbl
 network: mastercard
 network_tier: world

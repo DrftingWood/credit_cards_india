@@ -1,5 +1,6 @@
 id: boi-rupay-platinum
 name: Bank of India RuPay Platinum Credit Card
+image_path: /cards/boi/rupay-platinum.webp
 issuer: boi
 network: rupay
 network_tier: platinum

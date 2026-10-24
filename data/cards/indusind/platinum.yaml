@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-platinum
 name: IndusInd Bank Platinum Credit Card
+image_path: /cards/indusind/platinum.webp
 issuer: indusind
 network: mastercard
 network_tier: platinum

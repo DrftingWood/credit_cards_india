@@ -1,5 +1,6 @@
 id: bandhan-ignite
 name: Bandhan Bank Ignite Credit Card
+image_path: /cards/bandhan/ignite.webp
 issuer: bandhan
 network: visa
 network_tier: platinum

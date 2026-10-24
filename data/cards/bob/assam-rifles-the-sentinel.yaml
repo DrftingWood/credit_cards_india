@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-assam-rifles-the-sentinel
 name: Assam Rifles The SENTINEL BOBCARD Credit Card
+image_path: /cards/bob/assam-rifles-the-sentinel.webp
 issuer: bob
 network: rupay
 network_tier: select

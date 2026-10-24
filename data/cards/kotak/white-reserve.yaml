@@ -1,5 +1,6 @@
 id: kotak-white-reserve
 name: Kotak White Reserve Credit Card
+image_path: /cards/kotak/white-reserve.webp
 issuer: kotak
 network: mastercard
 network_tier: world

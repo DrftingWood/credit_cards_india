@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-ai-inside-rupay
 name: YES Bank AI Inside RuPay Credit Card
+image_path: /cards/yes/ai-inside-rupay.webp
 issuer: "yes"
 network: rupay
 network_tier: platinum

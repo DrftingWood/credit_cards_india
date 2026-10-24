@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-emi
 name: YES Bank EMI Credit Card
+image_path: /cards/yes/emi.webp
 issuer: "yes"
 network: mastercard
 network_tier: platinum

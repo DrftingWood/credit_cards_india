@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hsbc-taj
 name: HSBC Taj Credit Card
+image_path: /cards/hsbc/taj.webp
 issuer: hsbc
 network: mastercard
 network_tier: world-elite

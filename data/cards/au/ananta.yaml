@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-ananta
 name: AU Bank Ananta Credit Card
+image_path: /cards/au/ananta.webp
 issuer: au
 network: visa
 network_tier: signature

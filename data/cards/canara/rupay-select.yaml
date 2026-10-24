@@ -10,6 +10,7 @@
 # ---------------------------------------------------------------------------
 id: canara-rupay-select
 name: Canara Bank RuPay Select Credit Card
+image_path: /cards/canara/rupay-select.webp
 issuer: canara
 network: rupay
 network_tier: select

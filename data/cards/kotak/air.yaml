@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-air
 name: Kotak Air Credit Card
+image_path: /cards/kotak/air.webp
 issuer: kotak
 network: visa
 network_tier: platinum

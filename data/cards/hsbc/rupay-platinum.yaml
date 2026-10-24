@@ -1,5 +1,6 @@
 id: hsbc-rupay-platinum
 name: HSBC RuPay Platinum Credit Card
+image_path: /cards/hsbc/rupay-platinum.webp
 issuer: hsbc
 network: rupay
 network_tier: platinum

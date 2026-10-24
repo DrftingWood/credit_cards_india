@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: federal-signet
 name: Federal Bank Signet Credit Card
+image_path: /cards/federal/signet.webp
 issuer: federal
 network: visa
 network_tier: platinum

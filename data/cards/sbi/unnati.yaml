@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-unnati
 name: SBI Unnati Credit Card
+image_path: /cards/sbi/unnati.webp
 issuer: sbi
 network: visa
 network_tier: platinum

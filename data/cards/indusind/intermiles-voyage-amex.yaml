@@ -1,5 +1,6 @@
 id: indusind-intermiles-voyage-amex
 name: InterMiles IndusInd Bank Voyage Amex Credit Card
+image_path: /cards/indusind/intermiles-voyage-amex.webp
 issuer: indusind
 network: amex
 network_tier: platinum

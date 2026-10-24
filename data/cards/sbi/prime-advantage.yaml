@@ -1,5 +1,6 @@
 id: sbi-prime-advantage
 name: SBI Card PRIME Advantage
+image_path: /cards/sbi/prime-advantage.webp
 issuer: sbi
 network: visa
 network_tier: signature

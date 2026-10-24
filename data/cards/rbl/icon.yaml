@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: rbl-icon
 name: RBL Bank Icon Credit Card
+image_path: /cards/rbl/icon.webp
 issuer: rbl
 network: mastercard
 network_tier: world

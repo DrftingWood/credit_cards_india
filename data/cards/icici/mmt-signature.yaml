@@ -1,5 +1,6 @@
 id: icici-mmt-signature
 name: MakeMyTrip ICICI Bank Signature Credit Card
+image_path: /cards/icici/mmt-signature.webp
 issuer: icici
 network: mastercard
 network_tier: world

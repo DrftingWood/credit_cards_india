@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-myntra-kaching
 name: Myntra Kotak Credit Card
+image_path: /cards/kotak/myntra-kaching.webp
 issuer: kotak
 network: visa
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hdfc-indianoil
 name: IndianOil HDFC Bank Credit Card
+image_path: /cards/hdfc/indianoil.png
 issuer: hdfc
 network: rupay
 network_tier: platinum

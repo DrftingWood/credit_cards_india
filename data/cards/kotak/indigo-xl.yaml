@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-indigo-xl
 name: IndiGo Kotak Premium Credit Card
+image_path: /cards/kotak/indigo-xl.webp
 issuer: kotak
 network: mastercard
 network_tier: world

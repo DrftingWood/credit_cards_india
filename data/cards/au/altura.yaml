@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-altura
 name: AU Bank Altura Credit Card
+image_path: /cards/au/altura.webp
 issuer: au
 network: rupay
 network_tier: platinum

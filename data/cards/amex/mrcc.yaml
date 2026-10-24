@@ -1,5 +1,6 @@
 id: amex-mrcc
 name: American Express Membership Rewards Credit Card
+image_path: /cards/amex/mrcc.png
 issuer: amex
 network: amex
 network_tier: green

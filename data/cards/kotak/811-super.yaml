@@ -1,5 +1,6 @@
 id: kotak-811-super
 name: Kotak 811 Super Money Credit Card
+image_path: /cards/kotak/811-super.webp
 issuer: kotak
 network: rupay
 network_tier: classic

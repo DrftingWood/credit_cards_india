@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-pvr-gold
 name: PVR INOX Kotak Gold Credit Card
+image_path: /cards/kotak/pvr-gold.webp
 issuer: kotak
 network: visa
 network_tier: classic

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-ace
 name: YES Bank ACE Credit Card
+image_path: /cards/yes/ace.webp
 issuer: "yes"
 network: visa
 network_tier: platinum

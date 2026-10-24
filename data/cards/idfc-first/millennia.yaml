@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-millennia
 name: IDFC FIRST Millennia Credit Card
+image_path: /cards/idfc-first/millennia.webp
 issuer: idfc-first
 network: visa
 network_tier: platinum

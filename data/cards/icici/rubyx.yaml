@@ -1,5 +1,6 @@
 id: icici-rubyx
 name: ICICI Bank Rubyx Credit Card
+image_path: /cards/icici/rubyx.webp
 issuer: icici
 network: visa
 network_tier: signature

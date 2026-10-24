@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: federal-celesta
 name: Federal Bank Celesta Credit Card
+image_path: /cards/federal/celesta.webp
 issuer: federal
 network: visa
 network_tier: signature

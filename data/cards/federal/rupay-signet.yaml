@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: federal-rupay-signet
 name: Federal Bank RuPay Signet Credit Card
+image_path: /cards/federal/rupay-signet.webp
 issuer: federal
 network: rupay
 network_tier: platinum

@@ -1,5 +1,6 @@
 id: idbi-euphoria-world
 name: IDBI Euphoria World Credit Card
+image_path: /cards/idbi/euphoria-world.webp
 issuer: idbi
 network: mastercard
 network_tier: world

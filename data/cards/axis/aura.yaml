@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-aura
 name: Axis Bank Aura Credit Card
+image_path: /cards/axis/aura.webp
 issuer: axis
 network: visa
 network_tier: platinum

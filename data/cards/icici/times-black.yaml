@@ -1,5 +1,6 @@
 id: icici-times-black
 name: Times Black ICICI Bank Credit Card
+image_path: /cards/icici/times-black.webp
 issuer: icici
 network: visa
 network_tier: infinite

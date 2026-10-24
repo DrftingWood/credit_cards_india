@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-paisabazaar-rupay
 name: YES Bank Paisabazaar PaisaSave RuPay Credit Card
+image_path: /cards/yes/paisabazaar-rupay.webp
 issuer: "yes"
 network: rupay
 network_tier: platinum

@@ -1,5 +1,6 @@
 id: hdfc-tata-neu-infinity
 name: Tata Neu Infinity HDFC Bank Credit Card
+image_path: /cards/hdfc/tata-neu-infinity.webp
 issuer: hdfc
 network: visa
 network_tier: signature

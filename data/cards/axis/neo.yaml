@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-neo
 name: Axis Bank NEO Credit Card
+image_path: /cards/axis/neo.webp
 issuer: axis
 network: visa
 network_tier: classic

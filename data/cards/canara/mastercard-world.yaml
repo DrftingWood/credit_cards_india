@@ -1,5 +1,6 @@
 id: canara-mastercard-world
 name: Canara Bank Mastercard World Credit Card
+image_path: /cards/canara/mastercard-world.webp
 issuer: canara
 network: mastercard
 network_tier: world

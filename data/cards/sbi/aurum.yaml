@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-aurum
 name: Aurum SBI Card
+image_path: /cards/sbi/aurum.webp
 issuer: sbi
 network: mastercard
 network_tier: world-elite

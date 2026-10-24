@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-klick
 name: YES Bank Klick Credit Card
+image_path: /cards/yes/klick.webp
 issuer: "yes"
 network: mastercard
 network_tier: platinum

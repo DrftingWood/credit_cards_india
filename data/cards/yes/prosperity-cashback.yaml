@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-prosperity-cashback
 name: YES Bank Prosperity Cashback Credit Card
+image_path: /cards/yes/prosperity-cashback.webp
 issuer: "yes"
 network: mastercard
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-811-dreamdifferent
 name: Kotak 811 #DreamDifferent Credit Card
+image_path: /cards/kotak/811-dreamdifferent.webp
 issuer: kotak
 network: visa
 network_tier: classic

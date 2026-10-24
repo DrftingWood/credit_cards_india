@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-indulge
 name: IndusInd Bank Indulge Credit Card
+image_path: /cards/indusind/indulge.webp
 issuer: indusind
 network: visa
 network_tier: infinite

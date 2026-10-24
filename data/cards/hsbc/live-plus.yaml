@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hsbc-live-plus
 name: HSBC Live+ Credit Card
+image_path: /cards/hsbc/live-plus.webp
 issuer: hsbc
 network: visa
 network_tier: signature

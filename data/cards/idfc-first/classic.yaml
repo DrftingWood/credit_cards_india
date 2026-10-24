@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-classic
 name: IDFC FIRST Classic Credit Card
+image_path: /cards/idfc-first/classic.webp
 issuer: idfc-first
 network: visa
 network_tier: platinum

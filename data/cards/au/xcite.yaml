@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-xcite
 name: AU Bank Xcite Credit Card
+image_path: /cards/au/xcite.webp
 issuer: au
 network: visa
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-irctc-premier
 name: IRCTC SBI Card Premier
+image_path: /cards/sbi/irctc-premier.webp
 issuer: sbi
 network: rupay
 network_tier: platinum

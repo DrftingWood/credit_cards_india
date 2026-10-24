@@ -1,5 +1,6 @@
 id: sbi-tata-neu-plus
 name: Tata Neu Plus SBI Card
+image_path: /cards/sbi/tata-neu-plus.webp
 issuer: sbi
 network: rupay
 network_tier: platinum

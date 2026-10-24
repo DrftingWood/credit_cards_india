@@ -1,5 +1,6 @@
 id: amex-platinum-reserve
 name: American Express Platinum Reserve Credit Card
+image_path: /cards/amex/platinum-reserve.png
 issuer: amex
 network: amex
 network_tier: platinum

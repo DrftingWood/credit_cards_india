@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-tiara
 name: BOBCARD Tiara Credit Card
+image_path: /cards/bob/tiara.webp
 issuer: bob
 network: visa
 network_tier: signature

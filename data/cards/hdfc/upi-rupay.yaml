@@ -1,5 +1,6 @@
 id: hdfc-upi-rupay
 name: HDFC Bank UPI RuPay Credit Card
+image_path: /cards/hdfc/upi-rupay.webp
 issuer: hdfc
 network: rupay
 network_tier: platinum

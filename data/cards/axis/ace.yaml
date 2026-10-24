@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-ace
 name: Axis Bank ACE Credit Card
+image_path: /cards/axis/ace.webp
 issuer: axis
 network: visa
 network_tier: platinum

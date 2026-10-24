@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-instapay
 name: AU Bank InstaPay RuPay Credit Card
+image_path: /cards/au/instapay.webp
 issuer: au
 network: rupay
 network_tier: platinum

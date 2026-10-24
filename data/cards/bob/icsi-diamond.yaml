@@ -1,5 +1,6 @@
 id: bob-icsi-diamond
 name: ICSI Diamond BOBCARD Credit Card
+image_path: /cards/bob/icsi-diamond.webp
 issuer: bob
 network: visa
 network_tier: signature

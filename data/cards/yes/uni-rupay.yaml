@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-uni-rupay
 name: YES Bank Uni RuPay Credit Card
+image_path: /cards/yes/uni-rupay.webp
 issuer: "yes"
 network: rupay
 network_tier: platinum

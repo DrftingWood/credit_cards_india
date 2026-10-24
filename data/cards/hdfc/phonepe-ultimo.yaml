@@ -1,5 +1,6 @@
 id: hdfc-phonepe-ultimo
 name: PhonePe HDFC Bank Ultimo Credit Card
+image_path: /cards/hdfc/phonepe-ultimo.webp
 issuer: hdfc
 network: rupay
 network_tier: select

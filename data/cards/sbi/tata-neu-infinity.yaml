@@ -1,5 +1,6 @@
 id: sbi-tata-neu-infinity
 name: Tata Neu Infinity SBI Card
+image_path: /cards/sbi/tata-neu-infinity.webp
 issuer: sbi
 network: rupay
 network_tier: select

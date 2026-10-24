@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: rbl-insignia
 name: RBL Bank Insignia Preferred Banking Credit Card
+image_path: /cards/rbl/insignia.webp
 issuer: rbl
 network: visa
 network_tier: infinite

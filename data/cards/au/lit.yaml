@@ -1,5 +1,6 @@
 id: au-lit
 name: AU Bank LIT Credit Card
+image_path: /cards/au/lit.webp
 issuer: au
 network: visa
 network_tier: signature

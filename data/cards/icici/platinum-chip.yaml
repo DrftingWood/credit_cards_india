@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: icici-platinum-chip
 name: ICICI Bank Platinum Chip Credit Card
+image_path: /cards/icici/platinum-chip.webp
 issuer: icici
 network: visa
 network_tier: platinum

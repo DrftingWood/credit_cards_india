@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-wealth
 name: IDFC FIRST Wealth Credit Card
+image_path: /cards/idfc-first/wealth.webp
 issuer: idfc-first
 network: visa
 network_tier: signature

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-bpcl-octane
 name: BPCL SBI Card OCTANE
+image_path: /cards/sbi/bpcl-octane.webp
 issuer: sbi
 network: visa
 network_tier: signature

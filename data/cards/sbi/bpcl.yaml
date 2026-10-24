@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-bpcl
 name: BPCL SBI Card
+image_path: /cards/sbi/bpcl.webp
 issuer: sbi
 network: visa
 network_tier: platinum

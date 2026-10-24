@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: standard-chartered-digismart
 name: Standard Chartered DigiSmart Credit Card
+image_path: /cards/standard-chartered/digismart.webp
 issuer: standard-chartered
 network: visa
 network_tier: platinum

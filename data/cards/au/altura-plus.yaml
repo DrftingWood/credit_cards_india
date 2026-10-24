@@ -1,5 +1,6 @@
 id: au-altura-plus
 name: AU Bank Altura Plus Credit Card
+image_path: /cards/au/altura-plus.webp
 issuer: au
 network: rupay
 network_tier: platinum

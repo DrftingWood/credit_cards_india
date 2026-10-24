@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: icici-manchester-united-signature
 name: Manchester United Platinum ICICI Bank Credit Card
+image_path: /cards/icici/manchester-united-signature.webp
 issuer: icici
 network: visa
 network_tier: signature

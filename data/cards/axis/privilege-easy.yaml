@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-privilege-easy
 name: Axis Bank Privilege Easy Credit Card
+image_path: /cards/axis/privilege-easy.webp
 issuer: axis
 network: mastercard # value chart references lounges affiliated with Mastercard
 network_tier: world

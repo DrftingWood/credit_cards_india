@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-jio-bp-mobility
 name: IndusInd Bank Jio-bp Mobility+ Credit Card
+image_path: /cards/indusind/jio-bp-mobility.png
 issuer: indusind
 network: rupay
 network_tier: platinum

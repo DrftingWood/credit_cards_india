@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-wellness
 name: YES Bank Wellness Credit Card
+image_path: /cards/yes/wellness.webp
 issuer: "yes"
 network: mastercard
 network_tier: platinum

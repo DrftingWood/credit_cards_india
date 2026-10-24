@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-indian-army-yoddha
 name: Indian Army YODDHA BOBCARD Credit Card
+image_path: /cards/bob/indian-army-yoddha.webp
 issuer: bob
 network: rupay
 network_tier: select

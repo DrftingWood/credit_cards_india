@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: standard-chartered-super-value-titanium
 name: Standard Chartered Super Value Titanium Credit Card
+image_path: /cards/standard-chartered/super-value-titanium.webp
 issuer: standard-chartered
 network: visa
 network_tier: platinum

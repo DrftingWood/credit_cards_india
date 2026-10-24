@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-my-zone-easy
 name: Axis Bank My Zone Easy Credit Card
+image_path: /cards/axis/my-zone-easy.webp
 issuer: axis
 network: visa
 network_tier: platinum

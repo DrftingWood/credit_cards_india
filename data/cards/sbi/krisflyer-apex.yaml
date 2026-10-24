@@ -1,5 +1,6 @@
 id: sbi-krisflyer-apex
 name: KrisFlyer SBI Card APEX
+image_path: /cards/sbi/krisflyer-apex.png
 issuer: sbi
 network: visa
 network_tier: signature

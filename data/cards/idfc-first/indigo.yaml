@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-indigo
 name: IndiGo IDFC FIRST Dual Credit Card
+image_path: /cards/idfc-first/indigo.webp
 issuer: idfc-first
 network: mastercard
 network_tier: world

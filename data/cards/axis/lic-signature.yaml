@@ -1,5 +1,6 @@
 id: axis-lic-signature
 name: LIC Axis Bank Signature Credit Card
+image_path: /cards/axis/lic-signature.webp
 issuer: axis
 network: visa
 network_tier: signature

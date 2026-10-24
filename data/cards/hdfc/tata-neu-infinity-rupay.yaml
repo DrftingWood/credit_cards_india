@@ -1,5 +1,6 @@
 id: hdfc-tata-neu-infinity-rupay
 name: Tata Neu Infinity HDFC Bank Credit Card (RuPay)
+image_path: /cards/hdfc/tata-neu-infinity-rupay.webp
 issuer: hdfc
 network: rupay
 network_tier: select

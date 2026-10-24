@@ -1,5 +1,6 @@
 id: axis-vistara-infinite
 name: Axis Bank Vistara Infinite Credit Card
+image_path: /cards/axis/vistara-infinite.webp
 issuer: axis
 network: visa
 network_tier: infinite

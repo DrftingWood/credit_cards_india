@@ -1,5 +1,6 @@
 id: sbi-google-pay-flex
 name: Google Pay Flex SBI Card
+image_path: /cards/sbi/google-pay-flex.webp
 issuer: sbi
 network: rupay
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: standard-chartered-priority-visa-infinite
 name: Standard Chartered Priority Banking Visa Infinite Credit Card
+image_path: /cards/standard-chartered/priority-visa-infinite.webp
 issuer: standard-chartered
 network: visa
 network_tier: infinite

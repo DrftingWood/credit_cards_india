@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-airtel
 name: Airtel Axis Bank Credit Card
+image_path: /cards/axis/airtel.webp
 issuer: axis
 network: mastercard
 network_tier: platinum

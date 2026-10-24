@@ -1,5 +1,6 @@
 id: kotak-solitaire
 name: Kotak Solitaire Credit Card
+image_path: /cards/kotak/solitaire.webp
 issuer: kotak
 network: visa
 network_tier: infinite

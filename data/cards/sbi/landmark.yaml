@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-landmark
 name: Landmark SBI Card
+image_path: /cards/sbi/landmark.webp
 issuer: sbi
 network: visa
 network_tier: platinum

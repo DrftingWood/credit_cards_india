@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-intermiles-odyssey-visa
 name: InterMiles IndusInd Bank Odyssey Visa Credit Card
+image_path: /cards/indusind/intermiles-odyssey-visa.webp
 issuer: indusind
 network: visa
 network_tier: signature

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-zenith-plus
 name: AU Bank Zenith+ Credit Card
+image_path: /cards/au/zenith-plus.webp
 issuer: au
 network: visa
 network_tier: infinite

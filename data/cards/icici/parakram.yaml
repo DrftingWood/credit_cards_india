@@ -1,5 +1,6 @@
 id: icici-parakram
 name: ICICI Bank Parakram Credit Card
+image_path: /cards/icici/parakram.webp
 issuer: icici
 network: visa
 network_tier: platinum

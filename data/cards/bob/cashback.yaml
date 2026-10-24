@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-cashback
 name: BOBCARD Cashback Credit Card
+image_path: /cards/bob/cashback.webp
 issuer: bob
 network: mastercard
 network_tier: platinum

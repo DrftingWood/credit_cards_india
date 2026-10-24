@@ -6,6 +6,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-eternal
 name: Eternal SBI Card
+image_path: /cards/sbi/eternal.webp
 issuer: sbi
 network: rupay
 network_tier: platinum

@@ -1,5 +1,6 @@
 id: slice-slice-rupay
 name: slice UPI Credit Card (RuPay)
+image_path: /cards/slice/slice-rupay.webp
 issuer: slice
 network: rupay
 network_tier: classic

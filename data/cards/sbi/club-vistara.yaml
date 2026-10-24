@@ -1,5 +1,6 @@
 id: sbi-club-vistara
 name: Club Vistara SBI Card
+image_path: /cards/sbi/club-vistara.webp
 issuer: sbi
 network: visa
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-indigo-premium
 name: IndiGo Axis Bank Premium Credit Card
+image_path: /cards/axis/indigo-premium.webp
 issuer: axis
 network: visa
 network_tier: signature

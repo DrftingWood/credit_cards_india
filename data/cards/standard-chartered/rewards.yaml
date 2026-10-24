@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: standard-chartered-rewards
 name: Standard Chartered Rewards Credit Card
+image_path: /cards/standard-chartered/rewards.webp
 issuer: standard-chartered
 network: visa
 network_tier: platinum

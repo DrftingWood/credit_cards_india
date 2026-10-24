@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: rbl-cookies
 name: RBL Bank Cookies Credit Card
+image_path: /cards/rbl/cookies.webp
 issuer: rbl
 network: mastercard
 network_tier: platinum

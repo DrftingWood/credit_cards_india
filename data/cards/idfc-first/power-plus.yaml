@@ -1,5 +1,6 @@
 id: idfc-first-power-plus
 name: IDFC FIRST Power+ Credit Card
+image_path: /cards/idfc-first/power-plus.webp
 issuer: idfc-first
 network: rupay
 network_tier: select

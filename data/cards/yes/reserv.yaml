@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-reserv
 name: YES Bank Reserv Credit Card
+image_path: /cards/yes/reserv.webp
 issuer: "yes"
 network: mastercard
 network_tier: world

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-simplyclick
 name: SimplyCLICK SBI Card
+image_path: /cards/sbi/simplyclick.png
 issuer: sbi
 network: visa
 network_tier: platinum

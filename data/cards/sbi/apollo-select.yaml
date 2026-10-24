@@ -1,5 +1,6 @@
 id: sbi-apollo-select
 name: Apollo SBI Card SELECT
+image_path: /cards/sbi/apollo-select.webp
 issuer: sbi
 network: visa
 network_tier: signature

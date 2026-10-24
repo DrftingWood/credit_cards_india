@@ -1,5 +1,6 @@
 id: icici-adani-one-platinum
 name: Adani One ICICI Bank Platinum Credit Card
+image_path: /cards/icici/adani-one-platinum.webp
 issuer: icici
 network: visa
 network_tier: platinum

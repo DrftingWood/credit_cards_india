@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-pride-signature
 name: Axis Bank Pride Signature Credit Card
+image_path: /cards/axis/pride-signature.webp
 issuer: axis
 network: visa
 network_tier: signature

@@ -1,5 +1,6 @@
 id: hdfc-tata-neu-plus-rupay
 name: Tata Neu Plus HDFC Bank Credit Card (RuPay)
+image_path: /cards/hdfc/tata-neu-plus-rupay.webp
 issuer: hdfc
 network: rupay
 network_tier: platinum

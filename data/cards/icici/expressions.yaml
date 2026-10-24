@@ -1,5 +1,6 @@
 id: icici-expressions
 name: ICICI Bank Expressions Credit Card
+image_path: /cards/icici/expressions.webp
 issuer: icici
 network: visa
 network_tier: platinum

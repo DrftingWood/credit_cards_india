@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-secured-rupay
 name: IDFC FIRST EARN Credit Card
+image_path: /cards/idfc-first/secured-rupay.webp
 issuer: idfc-first
 network: rupay
 network_tier: platinum

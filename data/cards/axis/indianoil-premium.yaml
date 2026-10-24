@@ -1,5 +1,6 @@
 id: axis-indianoil-premium
 name: IndianOil Axis Bank Premium Credit Card
+image_path: /cards/axis/indianoil-premium.webp
 issuer: axis
 network: rupay
 network_tier: select

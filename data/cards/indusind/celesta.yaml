@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-celesta
 name: IndusInd Bank Celesta Credit Card
+image_path: /cards/indusind/celesta.webp
 issuer: indusind
 network: visa
 network_tier: infinite

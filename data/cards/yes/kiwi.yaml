@@ -1,5 +1,6 @@
 id: yes-kiwi
 name: YES Bank Kiwi RuPay Credit Card
+image_path: /cards/yes/kiwi.webp
 issuer: 'yes'
 network: rupay
 network_tier: platinum

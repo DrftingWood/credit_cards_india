@@ -1,5 +1,6 @@
 id: jk-bank-rupay-platinum
 name: J&K Bank RuPay Platinum Credit Card
+image_path: /cards/jk-bank/rupay-platinum.webp
 issuer: jk-bank
 network: rupay
 network_tier: platinum

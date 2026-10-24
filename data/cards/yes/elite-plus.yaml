@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-elite-plus
 name: YES Bank ELITE+ Credit Card
+image_path: /cards/yes/elite-plus.webp
 issuer: "yes"
 network: mastercard
 network_tier: world

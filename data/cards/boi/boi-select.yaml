@@ -10,6 +10,7 @@
 # ---------------------------------------------------------------------------
 id: boi-boi-select
 name: Bank of India RuPay Select Credit Card
+image_path: /cards/boi/boi-select.webp
 issuer: boi
 network: rupay
 network_tier: select

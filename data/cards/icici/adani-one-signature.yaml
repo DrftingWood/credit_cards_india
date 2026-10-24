@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: icici-adani-one-signature
 name: Adani One ICICI Bank Signature Credit Card
+image_path: /cards/icici/adani-one-signature.webp
 issuer: icici
 network: visa
 network_tier: signature

@@ -1,5 +1,6 @@
 id: hdfc-millennia
 name: HDFC Bank Millennia Credit Card
+image_path: /cards/hdfc/millennia.webp
 issuer: hdfc
 network: visa
 network_tier: platinum

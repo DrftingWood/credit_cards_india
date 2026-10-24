@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-olympus
 name: Axis Bank Olympus Credit Card
+image_path: /cards/axis/olympus.webp
 issuer: axis
 network: visa
 network_tier: infinite

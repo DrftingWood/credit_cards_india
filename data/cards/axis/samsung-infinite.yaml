@@ -1,5 +1,6 @@
 id: axis-samsung-infinite
 name: Samsung Axis Bank Infinite Credit Card
+image_path: /cards/axis/samsung-infinite.png
 issuer: axis
 network: visa
 network_tier: infinite

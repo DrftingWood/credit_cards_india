@@ -1,5 +1,6 @@
 id: hdfc-swiggy-blck
 name: Swiggy BLCK HDFC Bank Credit Card
+image_path: /cards/hdfc/swiggy-blck.webp
 issuer: hdfc
 network: mastercard
 network_tier: world

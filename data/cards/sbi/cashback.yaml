@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-cashback
 name: SBI Cashback Credit Card
+image_path: /cards/sbi/cashback.webp
 issuer: sbi
 network: visa
 network_tier: platinum

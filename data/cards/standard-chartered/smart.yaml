@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: standard-chartered-smart
 name: Standard Chartered Smart Credit Card
+image_path: /cards/standard-chartered/smart.webp
 issuer: standard-chartered
 network: visa
 network_tier: platinum

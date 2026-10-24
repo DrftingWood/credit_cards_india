@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-lic-platinum
 name: LIC Axis Bank Platinum Credit Card
+image_path: /cards/axis/lic-platinum.webp
 issuer: axis
 network: visa
 network_tier: platinum

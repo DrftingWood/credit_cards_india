@@ -1,5 +1,6 @@
 id: axis-samsung-signature
 name: Samsung Axis Bank Signature Credit Card
+image_path: /cards/axis/samsung-signature.png
 issuer: axis
 network: visa
 network_tier: signature

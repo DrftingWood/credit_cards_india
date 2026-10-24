@@ -10,6 +10,7 @@
 # ---------------------------------------------------------------------------
 id: pnb-rupay-select
 name: PNB RuPay Select Credit Card
+image_path: /cards/pnb/rupay-select.webp
 issuer: pnb
 network: rupay
 network_tier: select

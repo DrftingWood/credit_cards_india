@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hdfc-6e-rewards
 name: 6E Rewards IndiGo HDFC Bank Credit Card
+image_path: /cards/hdfc/6e-rewards.webp
 issuer: hdfc
 network: visa
 network_tier: platinum

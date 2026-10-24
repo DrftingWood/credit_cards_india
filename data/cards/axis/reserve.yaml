@@ -1,5 +1,6 @@
 id: axis-reserve
 name: Axis Bank Reserve Credit Card
+image_path: /cards/axis/reserve.webp
 issuer: axis
 network: visa
 network_tier: infinite

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-kwik
 name: Axis Bank Kwik Credit Card
+image_path: /cards/axis/kwik.webp
 issuer: axis
 network: rupay
 network_tier: platinum

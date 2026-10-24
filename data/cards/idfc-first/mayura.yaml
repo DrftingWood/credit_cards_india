@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-mayura
 name: IDFC FIRST Mayura Credit Card
+image_path: /cards/idfc-first/mayura.webp
 issuer: idfc-first
 network: visa
 network_tier: infinite

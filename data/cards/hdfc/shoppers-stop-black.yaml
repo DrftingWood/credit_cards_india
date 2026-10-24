@@ -1,5 +1,6 @@
 id: hdfc-shoppers-stop-black
 name: Shoppers Stop Black HDFC Bank Credit Card
+image_path: /cards/hdfc/shoppers-stop-black.png
 issuer: hdfc
 network: visa
 network_tier: signature

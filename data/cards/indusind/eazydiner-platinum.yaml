@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-eazydiner-platinum
 name: EazyDiner IndusInd Bank Platinum Credit Card
+image_path: /cards/indusind/eazydiner-platinum.webp
 issuer: indusind
 network: mastercard
 network_tier: platinum

@@ -1,5 +1,6 @@
 id: dbs-superx
 name: DBS SuperX Credit Card
+image_path: /cards/dbs/superx.webp
 issuer: dbs
 network: visa
 network_tier: signature

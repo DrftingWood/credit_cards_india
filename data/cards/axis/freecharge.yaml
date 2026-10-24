@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-freecharge
 name: Axis Bank FreeCharge Credit Card
+image_path: /cards/axis/freecharge.webp
 issuer: axis
 network: rupay
 network_tier: platinum

@@ -13,6 +13,7 @@
 # ---------------------------------------------------------------------------
 id: pnb-rupay-platinum
 name: PNB RuPay Platinum Credit Card
+image_path: /cards/pnb/rupay-platinum.webp
 issuer: pnb
 network: rupay
 network_tier: platinum

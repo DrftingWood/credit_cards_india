@@ -1,5 +1,6 @@
 id: idfc-first-hello-cashback
 name: IDFC FIRST Hello Cashback Credit Card
+image_path: /cards/idfc-first/hello-cashback.webp
 issuer: idfc-first
 network: visa
 network_tier: platinum

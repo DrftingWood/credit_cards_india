@@ -10,6 +10,7 @@
 # ---------------------------------------------------------------------------
 id: equitas-selfe
 name: Equitas Selfe Credit Card
+image_path: /cards/equitas/selfe.webp
 issuer: equitas
 network: visa
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-freo
 name: YES Bank Freo Credit Card
+image_path: /cards/yes/freo.webp
 issuer: "yes"
 network: mastercard
 network_tier: platinum

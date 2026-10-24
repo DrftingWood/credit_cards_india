@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-shaurya-select
 name: SBI Card SHAURYA Select
+image_path: /cards/sbi/shaurya-select.webp
 issuer: sbi
 network: visa
 network_tier: signature

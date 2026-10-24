@@ -1,5 +1,6 @@
 id: hdfc-pixel-play
 name: HDFC Bank Pixel Play Credit Card
+image_path: /cards/hdfc/pixel-play.webp
 issuer: hdfc
 network: rupay
 network_tier: select

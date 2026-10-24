@@ -1,5 +1,6 @@
 id: rbl-bfl-platinum-plus
 name: Bajaj Finserv RBL Bank Platinum Plus SuperCard
+image_path: /cards/rbl/bfl-platinum-plus.webp
 issuer: rbl
 network: mastercard
 network_tier: platinum

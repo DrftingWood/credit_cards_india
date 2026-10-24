@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: rbl-platinum-maxima-plus
 name: RBL Bank Platinum Maxima Plus Credit Card
+image_path: /cards/rbl/platinum-maxima-plus.webp
 issuer: rbl
 network: mastercard
 network_tier: platinum

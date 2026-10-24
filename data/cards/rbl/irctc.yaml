@@ -1,5 +1,6 @@
 id: rbl-irctc
 name: IRCTC RBL Bank Credit Card
+image_path: /cards/rbl/irctc.webp
 issuer: rbl
 network: mastercard
 network_tier: platinum

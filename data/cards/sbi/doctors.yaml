@@ -1,5 +1,6 @@
 id: sbi-doctors
 name: Doctor's SBI Card
+image_path: /cards/sbi/doctors.webp
 issuer: sbi
 network: visa
 network_tier: signature

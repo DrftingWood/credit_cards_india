@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hdfc-freedom
 name: HDFC Bank Freedom Credit Card
+image_path: /cards/hdfc/freedom.png
 issuer: hdfc
 network: visa
 network_tier: classic

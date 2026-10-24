@@ -1,5 +1,6 @@
 id: pnb-easemytrip
 name: PNB EaseMyTrip Credit Card
+image_path: /cards/pnb/easemytrip.webp
 issuer: pnb
 network: rupay
 network_tier: platinum

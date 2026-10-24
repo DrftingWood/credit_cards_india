@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-pop-club
 name: YES Bank POP-CLUB Credit Card
+image_path: /cards/yes/pop-club.webp
 issuer: "yes"
 network: rupay
 network_tier: platinum

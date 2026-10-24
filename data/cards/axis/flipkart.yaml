@@ -1,5 +1,6 @@
 id: axis-flipkart
 name: Flipkart Axis Bank Credit Card
+image_path: /cards/axis/flipkart.webp
 issuer: axis
 network: mastercard
 network_tier: world

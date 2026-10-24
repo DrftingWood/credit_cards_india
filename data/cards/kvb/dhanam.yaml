@@ -1,5 +1,6 @@
 id: kvb-dhanam
 name: KVB Dhanam Credit Card
+image_path: /cards/kvb/dhanam.webp
 issuer: kvb
 network: visa
 network_tier: platinum

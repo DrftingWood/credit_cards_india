@@ -1,5 +1,6 @@
 id: icici-mmt-platinum
 name: MakeMyTrip ICICI Bank Platinum Credit Card
+image_path: /cards/icici/mmt-platinum.webp
 issuer: icici
 network: visa
 network_tier: platinum

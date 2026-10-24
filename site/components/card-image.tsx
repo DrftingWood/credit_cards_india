@@ -10,12 +10,12 @@ import { NetworkLogo } from "./logos/network-logo";
  * Visual features:
  *   - ISO 7810 credit-card ratio (1.586 : 1) with smooth rounded corners.
  *   - Signature Kiwi-style micro-dot / pixel matrix texture overlay.
- *   - Realistic EMV smart chip and contactless NFC wave icons.
- *   - Dynamic palette mapping (metal/onyx, travel midnight, dining flame, fintech neon).
- *   - Masked card number with deterministic 4-digit card ending.
- *   - Tactile inner bevel, holographic reflection sheen, and ambient rim light.
- *   - If licensed image art is available (card.image_path), embeds it cleanly inside
- *     the same flattened frame with pixelated overlay.
+ *   - Diagonal frosted glass light sheen and ambient rim light.
+ *   - If authentic card face artwork is available (card.image_path), renders the real
+ *     card artwork cleanly inside the flattened frame with the Kiwi pixelated overlay.
+ *   - If no image is available, renders a rich synthetic card face with dynamic palette,
+ *     realistic EMV microchip, deterministic last 4 digits, contactless NFC icon,
+ *     and crisp issuer & network emblems.
  */
 
 interface CardImageProps {
@@ -36,14 +36,14 @@ function getCardLastFour(id: string): string {
     hash = (hash << 5) - hash + id.charCodeAt(i);
     hash |= 0;
   }
-  const positive = Math.abs(hash) % 9000 + 1000;
+  const positive = (Math.abs(hash) % 9000) + 1000;
   return positive.toString();
 }
 
 /** Determine authentic card color palette and styling based on card characteristics */
 function getCardStyling(card: EnrichedCard) {
   const id = card.id.toLowerCase();
-  const brandColor = card.issuer_detail.brand_color || "#1e293b";
+  const brandColor = card.issuer_detail?.brand_color || "#1e293b";
   const tier = card.tier;
 
   // 1. Super-Premium / Metal / Black cards
@@ -61,7 +61,7 @@ function getCardStyling(card: EnrichedCard) {
     return {
       gradient: "linear-gradient(135deg, #18181b 0%, #09090b 50%, #27272a 100%)",
       accent: "#e4e4e7",
-      chipColor: "#fbbf24", // gold chip
+      chipColor: "#fbbf24",
       isDark: true,
       tag: "METAL",
     };
@@ -92,7 +92,7 @@ function getCardStyling(card: EnrichedCard) {
     return {
       gradient: "linear-gradient(135deg, #091e3a 0%, #0f172a 55%, #0284c7 100%)",
       accent: "#bae6fd",
-      chipColor: "#e2e8f0", // silver chip
+      chipColor: "#e2e8f0",
       isDark: true,
       tag: "VOYAGE",
     };
@@ -156,24 +156,25 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
   const styling = getCardStyling(card);
   const last4 = getCardLastFour(card.id);
   const isHero = size === "hero";
+  const hasArt = Boolean(card.image_path);
 
-  const wrapperClass = `relative w-full ${heightClass} overflow-hidden rounded-xl border border-white/10 shadow-lg select-none ${className ?? ""}`.trim();
+  const wrapperClass = `relative w-full ${heightClass} overflow-hidden rounded-xl border border-white/10 shadow-lg select-none bg-slate-900 ${className ?? ""}`.trim();
 
   return (
     <div
       className={wrapperClass}
-      style={{ background: styling.gradient }}
+      style={{ background: hasArt ? "#0f172a" : styling.gradient }}
       aria-label={card.name}
     >
-      {/* Real Card Artwork (if licensed art is provided) */}
-      {card.image_path ? (
+      {/* Real Card Face Artwork (when authentic card art is available) */}
+      {hasArt && card.image_path ? (
         <div className="absolute inset-0 z-0">
           <Image
             src={card.image_path}
             alt={card.name}
             fill
             sizes={isHero ? "560px" : "340px"}
-            className="object-cover opacity-85"
+            className="object-cover"
             unoptimized
           />
         </div>
@@ -183,10 +184,10 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
       <div
         className="absolute inset-0 pointer-events-none z-10"
         style={{
-          backgroundImage: "radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.16) 1.2px, transparent 1.2px)",
-          backgroundSize: "7px 7px",
+          backgroundImage: "radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.14) 1.1px, transparent 1.1px)",
+          backgroundSize: "6px 6px",
           mixBlendMode: "overlay",
-          opacity: 0.75,
+          opacity: 0.65,
         }}
       />
 
@@ -195,80 +196,82 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
         className="absolute inset-0 pointer-events-none z-10"
         style={{
           backgroundImage:
-            "linear-gradient(118deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 40%, transparent 60%)",
+            "linear-gradient(118deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.03) 40%, transparent 60%)",
         }}
       />
 
-      {/* Tactile Card Details Container */}
-      <div className="absolute inset-0 z-20 flex flex-col justify-between p-3.5 sm:p-4 text-white">
-        {/* Top Bar: Issuer Logo + Contactless NFC & Tag */}
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <span className="rounded-md bg-white/95 px-2 py-1 shadow-sm flex items-center">
-              <IssuerLogo issuer={card.issuer_detail} height={isHero ? 18 : 14} />
+      {/* Fallback Synthetic Card Face (rendered only if no authentic artwork exists) */}
+      {!hasArt ? (
+        <div className="absolute inset-0 z-20 flex flex-col justify-between p-3.5 sm:p-4 text-white">
+          {/* Top Bar: Issuer Logo + Contactless NFC & Tag */}
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <span className="rounded-md bg-white/95 px-2 py-1 shadow-sm flex items-center">
+                <IssuerLogo issuer={card.issuer_detail} height={isHero ? 18 : 14} />
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              {/* Contactless Waves SVG */}
+              <svg
+                className="w-4 h-4 text-white/70"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+              >
+                <path d="M8.5 16.5a5 5 0 0 1 0-7" />
+                <path d="M12 19a8.5 8.5 0 0 0 0-12" />
+                <path d="M15.5 21.5a12 12 0 0 0 0-17" />
+              </svg>
+
+              {/* Sub-tier / Tag Chip */}
+              <span className="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded bg-black/40 text-white/90 border border-white/10 uppercase">
+                {styling.tag}
+              </span>
+            </div>
+          </div>
+
+          {/* Middle Area: Realistic EMV Microchip */}
+          <div className="my-auto pt-1">
+            <div className="flex items-center justify-between">
+              {/* EMV Microchip SVG */}
+              <div className="relative w-8 h-6 sm:w-9 sm:h-7 rounded-sm bg-gradient-to-br from-amber-200 via-amber-400 to-amber-500 border border-amber-600/60 shadow-sm flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0.5 border border-amber-700/40 rounded-sm" />
+                <div className="w-full h-[1px] bg-amber-800/40 absolute top-1/2 -translate-y-1/2" />
+                <div className="h-full w-[1px] bg-amber-800/40 absolute left-1/3" />
+                <div className="h-full w-[1px] bg-amber-800/40 absolute right-1/3" />
+              </div>
+
+              {/* Masked PAN placeholder */}
+              <div className="font-mono text-xs sm:text-sm tracking-widest text-white/75 drop-shadow-sm tabular-nums">
+                •••• {last4}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar: Card Name + Network Hologram Logo */}
+          <div className="flex items-end justify-between gap-3 pt-1">
+            <div className="min-w-0 pr-2">
+              <div
+                className={`${
+                  isHero ? "text-base sm:text-lg" : "text-xs sm:text-sm"
+                } font-bold text-white tracking-tight leading-snug drop-shadow-md line-clamp-1`}
+              >
+                {card.name}
+              </div>
+              <div className="text-[10px] uppercase tracking-wider text-white/60 font-medium mt-0.5">
+                {card.network_tier ? card.network_tier.replace("-", " ") : card.network}
+              </div>
+            </div>
+
+            <span className="rounded-md bg-white/95 px-2 py-1 shadow-sm shrink-0 flex items-center">
+              <NetworkLogo network={card.network_detail} height={isHero ? 16 : 13} />
             </span>
           </div>
-
-          <div className="flex items-center gap-2">
-            {/* Contactless Waves SVG */}
-            <svg
-              className="w-4 h-4 text-white/70"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-            >
-              <path d="M8.5 16.5a5 5 0 0 1 0-7" />
-              <path d="M12 19a8.5 8.5 0 0 0 0-12" />
-              <path d="M15.5 21.5a12 12 0 0 0 0-17" />
-            </svg>
-
-            {/* Sub-tier / Tag Chip */}
-            <span className="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded bg-black/40 text-white/90 border border-white/10 uppercase">
-              {styling.tag}
-            </span>
-          </div>
         </div>
-
-        {/* Middle Area: Realistic EMV Microchip */}
-        <div className="my-auto pt-1">
-          <div className="flex items-center justify-between">
-            {/* EMV Microchip SVG */}
-            <div className="relative w-8 h-6 sm:w-9 sm:h-7 rounded-sm bg-gradient-to-br from-amber-200 via-amber-400 to-amber-500 border border-amber-600/60 shadow-sm flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0.5 border border-amber-700/40 rounded-sm" />
-              <div className="w-full h-[1px] bg-amber-800/40 absolute top-1/2 -translate-y-1/2" />
-              <div className="h-full w-[1px] bg-amber-800/40 absolute left-1/3" />
-              <div className="h-full w-[1px] bg-amber-800/40 absolute right-1/3" />
-            </div>
-
-            {/* Masked PAN placeholder */}
-            <div className="font-mono text-xs sm:text-sm tracking-widest text-white/75 drop-shadow-sm tabular-nums">
-              •••• {last4}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar: Card Name + Network Hologram Logo */}
-        <div className="flex items-end justify-between gap-3 pt-1">
-          <div className="min-w-0 pr-2">
-            <div
-              className={`${
-                isHero ? "text-base sm:text-lg" : "text-xs sm:text-sm"
-              } font-bold text-white tracking-tight leading-snug drop-shadow-md line-clamp-1`}
-            >
-              {card.name}
-            </div>
-            <div className="text-[10px] uppercase tracking-wider text-white/60 font-medium mt-0.5">
-              {card.network_tier ? card.network_tier.replace("-", " ") : card.network}
-            </div>
-          </div>
-
-          <span className="rounded-md bg-white/95 px-2 py-1 shadow-sm shrink-0 flex items-center">
-            <NetworkLogo network={card.network_detail} height={isHero ? 16 : 13} />
-          </span>
-        </div>
-      </div>
+      ) : null}
 
       {/* Subtle Inner Highlight Rim */}
       <div className="absolute inset-0 rounded-xl pointer-events-none ring-1 ring-inset ring-white/20 z-30" />

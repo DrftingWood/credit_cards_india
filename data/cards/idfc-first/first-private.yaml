@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-first-private
 name: IDFC FIRST Private Credit Card
+image_path: /cards/idfc-first/first-private.webp
 issuer: idfc-first
 network: visa
 network_tier: infinite

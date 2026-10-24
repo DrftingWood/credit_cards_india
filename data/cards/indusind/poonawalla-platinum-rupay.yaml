@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-poonawalla-platinum-rupay
 name: IndusInd Bank Poonawalla Platinum RuPay Credit Card
+image_path: /cards/indusind/poonawalla-platinum-rupay.webp
 issuer: indusind
 network: rupay
 network_tier: platinum

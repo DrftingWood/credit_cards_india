@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-shaurya
 name: SBI Card SHAURYA
+image_path: /cards/sbi/shaurya.webp
 issuer: sbi
 network: visa
 network_tier: platinum

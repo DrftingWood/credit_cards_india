@@ -1,5 +1,6 @@
 id: icici-emirates-emeralde
 name: Emirates Skywards ICICI Bank Emeralde Credit Card
+image_path: /cards/icici/emirates-emeralde.webp
 issuer: icici
 network: visa
 network_tier: infinite

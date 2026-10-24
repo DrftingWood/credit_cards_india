@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-miles
 name: SBI Card MILES
+image_path: /cards/sbi/miles.webp
 issuer: sbi
 network: visa
 network_tier: platinum

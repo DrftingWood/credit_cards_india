@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hdfc-marriott-bonvoy
 name: Marriott Bonvoy HDFC Bank Credit Card
+image_path: /cards/hdfc/marriott-bonvoy.png
 issuer: hdfc
 network: diners
 network_tier: privilege

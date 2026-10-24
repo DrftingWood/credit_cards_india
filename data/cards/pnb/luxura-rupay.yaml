@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: pnb-luxura-rupay
 name: PNB LUXURA Metal Credit Card (RuPay)
+image_path: /cards/pnb/luxura-rupay.webp
 issuer: pnb
 network: rupay
 network_tier: ekaa

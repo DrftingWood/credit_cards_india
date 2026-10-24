@@ -1,5 +1,6 @@
 id: dbs-bfl-5x
 name: Bajaj Finserv DBS Bank 5X Rewards SuperCard
+image_path: /cards/dbs/bfl-5x.png
 issuer: dbs
 network: visa
 network_tier: platinum

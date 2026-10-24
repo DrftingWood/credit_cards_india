@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-lic-select
 name: LIC IDFC FIRST Select Credit Card
+image_path: /cards/idfc-first/lic-select.webp
 issuer: idfc-first
 network: visa
 network_tier: signature

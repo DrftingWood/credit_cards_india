@@ -1,5 +1,6 @@
 id: axis-vistara-signature
 name: Axis Bank Vistara Signature Credit Card
+image_path: /cards/axis/vistara-signature.webp
 issuer: axis
 network: visa
 network_tier: signature

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-uni
 name: YES Bank Uni Credit Card
+image_path: /cards/yes/uni.webp
 issuer: "yes"
 network: mastercard
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-prosperity-rewards
 name: YES Bank Prosperity Rewards Credit Card
+image_path: /cards/yes/prosperity-rewards.webp
 issuer: "yes"
 network: mastercard
 network_tier: platinum

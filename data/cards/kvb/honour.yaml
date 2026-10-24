@@ -11,6 +11,7 @@
 # ---------------------------------------------------------------------------
 id: kvb-honour
 name: KVB Honour Credit Card
+image_path: /cards/kvb/honour.webp
 issuer: kvb
 network: visa
 network_tier: signature

@@ -1,5 +1,6 @@
 id: hdfc-pixel-go
 name: HDFC Bank PIXEL Go Credit Card
+image_path: /cards/hdfc/pixel-go.png
 issuer: hdfc
 network: rupay
 network_tier: platinum

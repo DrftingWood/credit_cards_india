@@ -1,5 +1,6 @@
 id: indusind-avios
 name: IndusInd Bank Avios Visa Infinite Credit Card
+image_path: /cards/indusind/avios.webp
 issuer: indusind
 network: visa
 network_tier: infinite

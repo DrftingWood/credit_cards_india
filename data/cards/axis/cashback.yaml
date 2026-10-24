@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-cashback
 name: Axis Bank Cashback Credit Card
+image_path: /cards/axis/cashback.webp
 issuer: axis
 network: visa
 network_tier: signature

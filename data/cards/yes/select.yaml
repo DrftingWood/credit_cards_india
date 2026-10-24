@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-select
 name: YES Bank SELECT Credit Card
+image_path: /cards/yes/select.webp
 issuer: "yes"
 network: mastercard
 network_tier: world

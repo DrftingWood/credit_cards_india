@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-landmark-select
 name: Landmark Rewards SBI Card SELECT
+image_path: /cards/sbi/landmark-select.webp
 issuer: sbi
 network: visa
 network_tier: signature

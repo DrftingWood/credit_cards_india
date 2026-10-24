@@ -1,5 +1,6 @@
 id: sbi-miles-elite
 name: SBI Miles ELITE Credit Card
+image_path: /cards/sbi/miles-elite.webp
 issuer: sbi
 network: mastercard
 network_tier: world

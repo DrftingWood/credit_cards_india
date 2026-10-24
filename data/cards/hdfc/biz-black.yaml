@@ -6,6 +6,7 @@
 # ---------------------------------------------------------------------------
 id: hdfc-biz-black
 name: HDFC Bank BizBlack Metal Edition Credit Card
+image_path: /cards/hdfc/biz-black.png
 issuer: hdfc
 network: diners
 network_tier: black

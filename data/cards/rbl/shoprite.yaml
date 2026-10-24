@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: rbl-shoprite
 name: RBL Bank ShopRite Credit Card
+image_path: /cards/rbl/shoprite.webp
 issuer: rbl
 network: mastercard
 network_tier: platinum

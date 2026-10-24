@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-indianoil
 name: IndianOil Axis Bank Credit Card
+image_path: /cards/axis/indianoil.webp
 issuer: axis
 network: rupay
 network_tier: platinum

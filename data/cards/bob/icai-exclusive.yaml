@@ -1,5 +1,6 @@
 id: bob-icai-exclusive
 name: ICAI Exclusive BOBCARD Credit Card
+image_path: /cards/bob/icai-exclusive.webp
 issuer: bob
 network: visa
 network_tier: signature

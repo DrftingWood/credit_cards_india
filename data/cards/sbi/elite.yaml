@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-elite
 name: SBI Card ELITE
+image_path: /cards/sbi/elite.webp
 issuer: sbi
 network: mastercard
 network_tier: world

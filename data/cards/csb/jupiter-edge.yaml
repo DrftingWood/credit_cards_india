@@ -1,5 +1,6 @@
 id: csb-jupiter-edge
 name: CSB Bank Edge+ RuPay Credit Card
+image_path: /cards/csb/jupiter-edge.webp
 issuer: csb
 network: rupay
 network_tier: platinum

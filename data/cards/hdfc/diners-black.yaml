@@ -1,5 +1,6 @@
 id: hdfc-diners-black
 name: HDFC Bank Diners Club Black Metal Edition Credit Card
+image_path: /cards/hdfc/diners-black.webp
 issuer: hdfc
 network: diners
 network_tier: black

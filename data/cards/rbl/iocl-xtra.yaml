@@ -1,5 +1,6 @@
 id: rbl-iocl-xtra
 name: IndianOil RBL Bank XTRA Credit Card
+image_path: /cards/rbl/iocl-xtra.webp
 issuer: rbl
 network: rupay
 network_tier: platinum

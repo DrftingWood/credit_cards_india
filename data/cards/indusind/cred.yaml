@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-cred
 name: CRED IndusInd Bank RuPay Credit Card
+image_path: /cards/indusind/cred.webp
 issuer: indusind
 network: rupay
 network_tier: platinum

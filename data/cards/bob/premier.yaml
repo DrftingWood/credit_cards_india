@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-premier
 name: BOBCARD Premier Credit Card
+image_path: /cards/bob/premier.webp
 issuer: bob
 network: visa
 network_tier: platinum

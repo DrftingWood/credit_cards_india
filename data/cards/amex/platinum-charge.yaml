@@ -1,5 +1,6 @@
 id: amex-platinum-charge
 name: American Express Platinum Card (Charge)
+image_path: /cards/amex/platinum-charge.png
 issuer: amex
 network: amex
 network_tier: platinum

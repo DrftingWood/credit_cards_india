@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: federal-imperio
 name: Federal Bank Imperio Credit Card
+image_path: /cards/federal/imperio.webp
 issuer: federal
 network: visa
 network_tier: signature

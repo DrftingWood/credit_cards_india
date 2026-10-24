@@ -1,5 +1,6 @@
 id: hdfc-regalia-gold
 name: HDFC Bank Regalia Gold Credit Card
+image_path: /cards/hdfc/regalia-gold.png
 issuer: hdfc
 network: visa
 network_tier: signature

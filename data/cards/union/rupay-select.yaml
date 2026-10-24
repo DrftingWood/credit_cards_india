@@ -12,6 +12,7 @@
 # ---------------------------------------------------------------------------
 id: union-rupay-select
 name: Union Bank RuPay Select Credit Card
+image_path: /cards/union/rupay-select.webp
 issuer: union
 network: rupay
 network_tier: select

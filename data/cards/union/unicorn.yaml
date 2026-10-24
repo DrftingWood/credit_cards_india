@@ -14,6 +14,7 @@
 # ---------------------------------------------------------------------------
 id: union-unicorn
 name: Union Bank UNICORN Credit Card
+image_path: /cards/union/unicorn.webp
 issuer: union
 network: rupay
 network_tier: select

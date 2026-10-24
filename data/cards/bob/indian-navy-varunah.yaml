@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-indian-navy-varunah
 name: Indian Navy VARUNAH Premium BOBCARD Credit Card
+image_path: /cards/bob/indian-navy-varunah.webp
 issuer: bob
 network: rupay
 network_tier: select

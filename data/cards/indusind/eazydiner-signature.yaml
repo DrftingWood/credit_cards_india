@@ -1,5 +1,6 @@
 id: indusind-eazydiner-signature
 name: IndusInd Bank EazyDiner Signature Credit Card
+image_path: /cards/indusind/eazydiner-signature.webp
 issuer: indusind
 network: visa
 network_tier: signature

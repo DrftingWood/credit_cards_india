@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hdfc-tata-neu-plus
 name: Tata Neu Plus HDFC Bank Credit Card
+image_path: /cards/hdfc/tata-neu-plus.webp
 issuer: hdfc
 network: visa
 network_tier: platinum

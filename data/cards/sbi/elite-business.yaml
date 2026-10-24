@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-elite-business
 name: SBI Card ELITE Business
+image_path: /cards/sbi/elite-business.webp
 issuer: sbi
 network: visa
 network_tier: signature

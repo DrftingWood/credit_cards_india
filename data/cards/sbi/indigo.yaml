@@ -1,5 +1,6 @@
 id: sbi-indigo
 name: IndiGo SBI Card
+image_path: /cards/sbi/indigo.webp
 issuer: sbi
 network: visa
 network_tier: signature

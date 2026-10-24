@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: kotak-indigo
 name: IndiGo Kotak Credit Card
+image_path: /cards/kotak/indigo.webp
 issuer: kotak
 network: mastercard
 network_tier: world

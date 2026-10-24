@@ -1,5 +1,6 @@
 id: hdfc-infinia
 name: HDFC Bank Infinia Credit Card (Metal Edition)
+image_path: /cards/hdfc/infinia.webp
 issuer: hdfc
 network: visa
 network_tier: infinite

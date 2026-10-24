@@ -1,5 +1,6 @@
 id: hdfc-shoppers-stop
 name: Shoppers Stop HDFC Bank Credit Card
+image_path: /cards/hdfc/shoppers-stop.webp
 issuer: hdfc
 network: rupay
 network_tier: platinum

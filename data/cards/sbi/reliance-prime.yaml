@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-reliance-prime
 name: Reliance SBI Card PRIME
+image_path: /cards/sbi/reliance-prime.webp
 issuer: sbi
 network: mastercard
 network_tier: world

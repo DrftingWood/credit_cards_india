@@ -1,5 +1,6 @@
 id: axis-magnus
 name: Axis Bank Magnus Credit Card
+image_path: /cards/axis/magnus.webp
 issuer: axis
 network: mastercard
 network_tier: world

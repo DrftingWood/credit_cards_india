@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-prathama
 name: AU Bank Prathama Credit Card
+image_path: /cards/au/prathama.webp
 issuer: au
 network: visa
 network_tier: platinum

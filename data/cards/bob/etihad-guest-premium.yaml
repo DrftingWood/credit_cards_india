@@ -1,5 +1,6 @@
 id: bob-etihad-guest-premium
 name: BOBCARD Etihad Guest Premium Credit Card
+image_path: /cards/bob/etihad-guest-premium.webp
 issuer: bob
 network: visa
 network_tier: signature

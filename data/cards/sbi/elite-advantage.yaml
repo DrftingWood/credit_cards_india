@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-elite-advantage
 name: SBI Card ELITE Advantage
+image_path: /cards/sbi/elite-advantage.webp
 issuer: sbi
 network: visa
 network_tier: signature

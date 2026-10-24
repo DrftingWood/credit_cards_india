@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: rbl-zomato-edition
 name: Zomato RBL Bank Edition Credit Card
+image_path: /cards/rbl/zomato-edition.webp
 issuer: rbl
 network: mastercard
 network_tier: platinum

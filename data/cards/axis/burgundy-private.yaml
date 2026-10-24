@@ -1,5 +1,6 @@
 id: axis-burgundy-private
 name: Axis Bank Burgundy Private Credit Card
+image_path: /cards/axis/burgundy-private.webp
 issuer: axis
 network: visa
 network_tier: infinite

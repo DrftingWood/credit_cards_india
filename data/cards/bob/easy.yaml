@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-easy
 name: BOBCARD Easy Credit Card
+image_path: /cards/bob/easy.webp
 issuer: bob
 network: visa
 network_tier: classic

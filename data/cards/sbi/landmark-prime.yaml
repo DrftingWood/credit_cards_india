@@ -1,5 +1,6 @@
 id: sbi-landmark-prime
 name: Landmark Rewards SBI Card PRIME
+image_path: /cards/sbi/landmark-prime.webp
 issuer: sbi
 network: visa
 network_tier: signature

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-select
 name: BOBCARD Select Credit Card
+image_path: /cards/bob/select.webp
 issuer: bob
 network: visa
 network_tier: platinum

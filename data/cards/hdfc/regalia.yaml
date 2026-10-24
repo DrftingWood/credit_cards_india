@@ -1,5 +1,6 @@
 id: hdfc-regalia
 name: HDFC Bank Regalia Credit Card
+image_path: /cards/hdfc/regalia.webp
 issuer: hdfc
 network: visa
 network_tier: signature

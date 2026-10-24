@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-duo
 name: IndusInd Bank Duo Card
+image_path: /cards/indusind/duo.webp
 issuer: indusind
 network: visa
 network_tier: infinite

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-zagg
 name: YES Bank Zagg Credit Card
+image_path: /cards/yes/zagg.webp
 issuer: "yes"
 network: mastercard
 network_tier: platinum

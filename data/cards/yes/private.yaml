@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-private
 name: YES Bank YES Private Credit Card
+image_path: /cards/yes/private.webp
 issuer: "yes"
 network: mastercard
 network_tier: world

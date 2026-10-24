@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-simplyclick-advantage
 name: SimplyCLICK Advantage SBI Card
+image_path: /cards/sbi/simplyclick-advantage.png
 issuer: sbi
 network: visa
 network_tier: platinum

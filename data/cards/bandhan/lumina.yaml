@@ -1,5 +1,6 @@
 id: bandhan-lumina
 name: Bandhan Bank Lumina Credit Card
+image_path: /cards/bandhan/lumina.webp
 issuer: bandhan
 network: visa
 network_tier: infinite

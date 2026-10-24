@@ -1,5 +1,6 @@
 id: indusind-crest
 name: IndusInd Bank Crest Credit Card
+image_path: /cards/indusind/crest.webp
 issuer: indusind
 network: visa
 network_tier: infinite

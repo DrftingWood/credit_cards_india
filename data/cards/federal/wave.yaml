@@ -1,5 +1,6 @@
 id: federal-wave
 name: Federal Bank RuPay Wave Credit Card
+image_path: /cards/federal/wave.webp
 issuer: federal
 network: rupay
 network_tier: classic

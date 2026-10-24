@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: equitas-powermiles
 name: Equitas PowerMiles Credit Card
+image_path: /cards/equitas/powermiles.webp
 issuer: equitas
 network: visa
 network_tier: signature

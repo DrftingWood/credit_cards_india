@@ -1,5 +1,6 @@
 id: axis-select
 name: Axis Bank Select Credit Card
+image_path: /cards/axis/select.webp
 issuer: axis
 network: visa
 network_tier: platinum

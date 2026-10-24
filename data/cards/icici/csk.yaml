@@ -1,5 +1,6 @@
 id: icici-csk
 name: Chennai Super Kings ICICI Bank Credit Card
+image_path: /cards/icici/csk.webp
 issuer: icici
 network: visa
 network_tier: platinum

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-vikram
 name: BOBCARD VIKRAM Credit Card
+image_path: /cards/bob/vikram.webp
 issuer: bob
 network: rupay
 network_tier: platinum

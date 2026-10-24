@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: yes-premia
 name: YES Bank Premia Credit Card
+image_path: /cards/yes/premia.webp
 issuer: "yes"
 network: mastercard
 network_tier: world

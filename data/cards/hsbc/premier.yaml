@@ -1,5 +1,6 @@
 id: hsbc-premier
 name: HSBC Premier Credit Card
+image_path: /cards/hsbc/premier.webp
 issuer: hsbc
 network: mastercard
 network_tier: world-elite

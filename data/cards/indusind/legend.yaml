@@ -1,5 +1,6 @@
 id: indusind-legend
 name: IndusInd Bank Legend Credit Card
+image_path: /cards/indusind/legend.webp
 issuer: indusind
 network: visa
 network_tier: signature

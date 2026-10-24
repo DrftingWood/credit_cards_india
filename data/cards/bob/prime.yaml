@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-prime
 name: BOBCARD Prime Credit Card
+image_path: /cards/bob/prime.webp
 issuer: bob
 network: visa
 network_tier: classic

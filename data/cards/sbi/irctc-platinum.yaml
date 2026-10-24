@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-irctc-platinum
 name: IRCTC SBI Platinum Card
+image_path: /cards/sbi/irctc-platinum.png
 issuer: sbi
 network: visa
 network_tier: platinum

@@ -1,5 +1,6 @@
 id: pnb-luxura-visa
 name: PNB LUXURA Metal Credit Card (Visa Infinite)
+image_path: /cards/pnb/luxura-visa.webp
 issuer: pnb
 network: visa
 network_tier: infinite

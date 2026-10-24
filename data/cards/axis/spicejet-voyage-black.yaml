@@ -1,5 +1,6 @@
 id: axis-spicejet-voyage-black
 name: SpiceJet Axis Bank Voyage Black Credit Card
+image_path: /cards/axis/spicejet-voyage-black.webp
 issuer: axis
 network: visa
 network_tier: signature

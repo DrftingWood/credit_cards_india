@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: idfc-first-select
 name: IDFC FIRST Select Credit Card
+image_path: /cards/idfc-first/select.webp
 issuer: idfc-first
 network: visa
 network_tier: signature

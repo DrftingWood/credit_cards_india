@@ -1,5 +1,6 @@
 id: union-uni-carbon
 name: Union Bank UNI-CARBON Credit Card
+image_path: /cards/union/uni-carbon.webp
 issuer: union
 network: rupay
 network_tier: select

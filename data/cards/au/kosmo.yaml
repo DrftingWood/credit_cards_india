@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-kosmo
 name: AU Bank Kosmo Credit Card
+image_path: /cards/au/kosmo.webp
 issuer: au
 network: rupay
 network_tier: platinum

@@ -1,5 +1,6 @@
 id: hsbc-rupay-cashback
 name: HSBC RuPay Cashback Credit Card
+image_path: /cards/hsbc/rupay-cashback.webp
 issuer: hsbc
 network: rupay
 network_tier: platinum

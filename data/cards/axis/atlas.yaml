@@ -1,5 +1,6 @@
 id: axis-atlas
 name: Axis Bank Atlas Credit Card
+image_path: /cards/axis/atlas.webp
 issuer: axis
 network: visa
 network_tier: signature

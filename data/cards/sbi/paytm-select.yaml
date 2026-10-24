@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-paytm-select
 name: "Paytm SBI Card SELECT"
+image_path: /cards/sbi/paytm-select.webp
 issuer: sbi
 network: visa
 network_tier: signature

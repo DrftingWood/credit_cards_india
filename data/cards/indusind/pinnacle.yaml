@@ -1,5 +1,6 @@
 id: indusind-pinnacle
 name: IndusInd Bank Pinnacle World Credit Card
+image_path: /cards/indusind/pinnacle.webp
 issuer: indusind
 network: mastercard
 network_tier: world

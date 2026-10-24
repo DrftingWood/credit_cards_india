@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hdfc-diners-rewardz
 name: HDFC Bank Diners Club Rewardz Credit Card
+image_path: /cards/hdfc/diners-rewardz.webp
 issuer: hdfc
 network: diners
 network_tier: rewardz

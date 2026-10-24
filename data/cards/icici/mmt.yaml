@@ -1,5 +1,6 @@
 id: icici-mmt
 name: MakeMyTrip ICICI Bank Credit Card
+image_path: /cards/icici/mmt.webp
 issuer: icici
 network: rupay
 network_tier: select

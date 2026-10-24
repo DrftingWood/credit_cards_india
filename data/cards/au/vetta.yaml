@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-vetta
 name: AU Bank Vetta Credit Card
+image_path: /cards/au/vetta.webp
 issuer: au
 network: visa
 network_tier: signature

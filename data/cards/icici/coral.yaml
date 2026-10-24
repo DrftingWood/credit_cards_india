@@ -1,5 +1,6 @@
 id: icici-coral
 name: ICICI Bank Coral Credit Card
+image_path: /cards/icici/coral.webp
 issuer: icici
 network: visa
 network_tier: classic

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-pioneer-private
 name: IndusInd Bank Pioneer Private Credit Card
+image_path: /cards/indusind/pioneer-private.webp
 issuer: indusind
 network: visa
 network_tier: infinite

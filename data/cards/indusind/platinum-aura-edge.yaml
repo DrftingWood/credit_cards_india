@@ -1,5 +1,6 @@
 id: indusind-platinum-aura-edge
 name: IndusInd Bank Platinum Aura Edge Credit Card
+image_path: /cards/indusind/platinum-aura-edge.webp
 issuer: indusind
 network: visa
 network_tier: platinum

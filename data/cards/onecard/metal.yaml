@@ -1,5 +1,6 @@
 id: onecard-metal
 name: OneCard Metal Credit Card
+image_path: /cards/onecard/metal.webp
 issuer: onecard
 network: visa
 network_tier: signature

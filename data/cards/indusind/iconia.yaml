@@ -1,5 +1,6 @@
 id: indusind-iconia
 name: IndusInd Bank Iconia Credit Card
+image_path: /cards/indusind/iconia.webp
 issuer: indusind
 network: amex
 network_tier: gold

@@ -1,5 +1,6 @@
 id: amex-centurion
 name: American Express Centurion Card (Black Card)
+image_path: /cards/amex/centurion.jpg
 issuer: amex
 network: amex
 network_tier: centurion

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-titan
 name: Titan SBI Card
+image_path: /cards/sbi/titan.webp
 issuer: sbi
 network: visa
 network_tier: signature

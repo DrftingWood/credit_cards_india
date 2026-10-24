@@ -1,5 +1,6 @@
 id: indusind-intermiles-odyssey-amex
 name: InterMiles IndusInd Bank Odyssey Amex Credit Card
+image_path: /cards/indusind/intermiles-odyssey-amex.webp
 issuer: indusind
 network: amex
 network_tier: platinum

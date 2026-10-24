@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: au-paytm
 name: AU Bank Paytm AU Credit Card
+image_path: /cards/au/paytm.webp
 issuer: au
 network: rupay
 network_tier: platinum

@@ -1,5 +1,6 @@
 id: sbi-club-vistara-prime
 name: Club Vistara SBI Card PRIME
+image_path: /cards/sbi/club-vistara-prime.webp
 issuer: sbi
 network: visa
 network_tier: signature

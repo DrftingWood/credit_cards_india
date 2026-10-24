@@ -1,5 +1,6 @@
 id: pnb-rupay-millennial
 name: PNB RuPay Millennial Credit Card
+image_path: /cards/pnb/rupay-millennial.webp
 issuer: pnb
 network: rupay
 network_tier: platinum

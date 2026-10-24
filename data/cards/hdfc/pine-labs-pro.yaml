@@ -1,5 +1,6 @@
 id: hdfc-pine-labs-pro
 name: Pine Labs HDFC Bank Pro Credit Card
+image_path: /cards/hdfc/pine-labs-pro.webp
 issuer: hdfc
 network: visa
 network_tier: signature

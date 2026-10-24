@@ -1,5 +1,6 @@
 id: hdfc-phonepe-uno
 name: PhonePe HDFC Bank Uno Credit Card
+image_path: /cards/hdfc/phonepe-uno.webp
 issuer: hdfc
 network: rupay
 network_tier: platinum

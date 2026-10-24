@@ -1,5 +1,6 @@
 id: axis-horizon
 name: Axis Bank Horizon Credit Card
+image_path: /cards/axis/horizon.webp
 issuer: axis
 network: visa
 network_tier: signature

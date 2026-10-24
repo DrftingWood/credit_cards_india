@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: indusind-tiger
 name: IndusInd Bank Tiger Credit Card
+image_path: /cards/indusind/tiger.webp
 issuer: indusind
 network: visa
 network_tier: signature

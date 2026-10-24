@@ -1,5 +1,6 @@
 id: amex-platinum-travel
 name: American Express Platinum Travel Credit Card
+image_path: /cards/amex/platinum-travel.png
 issuer: amex
 network: amex
 network_tier: platinum

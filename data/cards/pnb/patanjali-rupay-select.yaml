@@ -1,5 +1,6 @@
 id: pnb-patanjali-rupay-select
 name: PNB Patanjali RuPay Select Credit Card
+image_path: /cards/pnb/patanjali-rupay-select.webp
 issuer: pnb
 network: rupay
 network_tier: select

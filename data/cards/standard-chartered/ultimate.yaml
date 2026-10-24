@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: standard-chartered-ultimate
 name: Standard Chartered Ultimate Credit Card
+image_path: /cards/standard-chartered/ultimate.webp
 issuer: standard-chartered
 network: mastercard
 network_tier: world-elite

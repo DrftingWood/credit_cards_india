@@ -1,5 +1,6 @@
 id: yes-marquee
 name: YES Bank Marquee Credit Card
+image_path: /cards/yes/marquee.webp
 issuer: 'yes'
 network: mastercard
 network_tier: world-elite

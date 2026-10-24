@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-hpcl-energie
 name: HPCL ENERGIE BOBCARD Credit Card
+image_path: /cards/bob/hpcl-energie.webp
 issuer: bob
 network: visa
 network_tier: platinum

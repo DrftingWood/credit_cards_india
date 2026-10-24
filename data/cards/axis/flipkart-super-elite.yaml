@@ -1,5 +1,6 @@
 id: axis-flipkart-super-elite
 name: Flipkart Axis Bank Super Elite Credit Card
+image_path: /cards/axis/flipkart-super-elite.webp
 issuer: axis
 network: visa
 network_tier: platinum

@@ -1,5 +1,6 @@
 id: hsbc-travelone
 name: HSBC TravelOne Credit Card
+image_path: /cards/hsbc/travelone.webp
 issuer: hsbc
 network: mastercard
 network_tier: world

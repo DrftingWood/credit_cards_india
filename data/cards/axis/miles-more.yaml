@@ -1,5 +1,6 @@
 id: axis-miles-more
 name: Axis Bank Miles & More Credit Card
+image_path: /cards/axis/miles-more.webp
 issuer: axis
 network: mastercard
 network_tier: world

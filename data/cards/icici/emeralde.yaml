@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: icici-emeralde
 name: ICICI Bank Emeralde Credit Card
+image_path: /cards/icici/emeralde.webp
 issuer: icici
 network: mastercard
 network_tier: world-elite

@@ -1,5 +1,6 @@
 id: hdfc-biz-power
 name: HDFC Bank BizPower Credit Card
+image_path: /cards/hdfc/biz-power.png
 issuer: hdfc
 network: visa
 network_tier: signature

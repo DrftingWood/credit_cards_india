@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: bob-irctc
 name: IRCTC BOBCARD Credit Card
+image_path: /cards/bob/irctc.webp
 issuer: bob
 network: rupay
 network_tier: platinum

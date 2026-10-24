@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hdfc-moneyback-plus
 name: HDFC Bank MoneyBack+ Credit Card
+image_path: /cards/hdfc/moneyback-plus.webp
 issuer: hdfc
 network: visa
 network_tier: platinum

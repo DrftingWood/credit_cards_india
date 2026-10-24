@@ -1,5 +1,6 @@
 id: au-nomo
 name: AU Bank NOMO Credit Card
+image_path: /cards/au/nomo.webp
 issuer: au
 network: visa
 network_tier: platinum

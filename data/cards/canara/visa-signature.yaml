@@ -1,5 +1,6 @@
 id: canara-visa-signature
 name: Canara Bank Visa Signature Credit Card
+image_path: /cards/canara/visa-signature.webp
 issuer: canara
 network: visa
 network_tier: signature

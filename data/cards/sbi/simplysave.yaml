@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-simplysave
 name: SimplySAVE SBI Card
+image_path: /cards/sbi/simplysave.png
 issuer: sbi
 network: visa
 network_tier: platinum

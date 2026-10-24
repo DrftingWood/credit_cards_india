@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-phonepe-select-black
 name: "PhonePe SBI Card SELECT Black"
+image_path: /cards/sbi/phonepe-select-black.webp
 issuer: sbi
 network: rupay
 network_tier: select

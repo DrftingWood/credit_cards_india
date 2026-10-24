@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: axis-pride-platinum
 name: Axis Bank Pride Platinum Credit Card
+image_path: /cards/axis/pride-platinum.webp
 issuer: axis
 network: visa
 network_tier: platinum

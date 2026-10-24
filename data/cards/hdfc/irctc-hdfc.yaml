@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: hdfc-irctc-hdfc
 name: IRCTC HDFC Bank Credit Card
+image_path: /cards/hdfc/irctc-hdfc.webp
 issuer: hdfc
 network: rupay
 network_tier: select

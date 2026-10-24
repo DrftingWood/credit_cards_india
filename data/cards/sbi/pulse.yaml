@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 id: sbi-pulse
 name: SBI Card PULSE
+image_path: /cards/sbi/pulse.webp
 issuer: sbi
 network: visa
 network_tier: signature

@@ -1,5 +1,6 @@
 id: icici-emeralde-private-metal
 name: ICICI Bank Emeralde Private Metal Credit Card
+image_path: /cards/icici/emeralde-private-metal.webp
 issuer: icici
 network: visa
 network_tier: infinite

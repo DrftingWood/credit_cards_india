@@ -1,5 +1,6 @@
 id: icici-hpcl-coral
 name: ICICI Bank HPCL Coral Credit Card
+image_path: /cards/icici/hpcl-coral.webp
 issuer: icici
 network: visa
 network_tier: platinum

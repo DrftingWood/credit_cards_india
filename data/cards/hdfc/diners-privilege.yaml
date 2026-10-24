@@ -1,5 +1,6 @@
 id: hdfc-diners-privilege
 name: HDFC Bank Diners Club Privilege Credit Card
+image_path: /cards/hdfc/diners-privilege.webp
 issuer: hdfc
 network: diners
 network_tier: privilege

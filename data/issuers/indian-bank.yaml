@@ -1,0 +1,8 @@
+id: indian-bank
+name: Indian Bank
+short_name: Indian Bank
+legal_name: Indian Bank
+website: https://www.indianbank.in
+customer_care:
+  phone: "1800-425-00000"
+type: bank

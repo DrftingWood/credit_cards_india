@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-diners-privilege
 name: HDFC Bank Diners Club Privilege Credit Card
 issuer: hdfc
@@ -18,138 +9,155 @@ co_brand: null
 status: active
 launched_on: 2019-04-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2019-04-01
-    effective_until: null
-    joining_fee_inr: 1000
-    annual_fee_inr: 1000
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-      conditions: "Renewal fee waived on spends of ₹3L in the preceding year."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/_shared/mitc-in-english.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-
+- effective_from: 2019-04-01
+  effective_until: null
+  joining_fee_inr: 1000
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 300000
+    cycle: annual
+    conditions: Renewal fee waived on spends of ₹3L in the preceding year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
 rewards:
-  - effective_from: 2019-04-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 4
-      per_inr: 200
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.4
-    accelerated:
-      - category: smartbuy-flights-hotels
-        canonical_categories: [travel]
-        multiplier: 10
-        effective_rate: 40
-        cap_per_cycle: 7500
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [smartbuy]
-      - category: dining-food-delivery
-        canonical_categories: [dining]
-        multiplier: 5
-        effective_rate: 20
-        cap_per_cycle: 2500
-        cap_unit: points
-        cycle: monthly
-        mcc_list: ["5812", "5814"]
-        channel:
-          required: true
-          class: food-delivery
-          merchants: [swiggy, zomato]
-        notes: "5X Reward Points (20 per ₹200) on Swiggy & Zomato online food orders, capped at 2,500 RP/month."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: catalog
-        program: SmartBuy
-        rate_inr_per_unit: 0.5
-      - type: airmiles
-        program: Multiple (Airmiles hub)
-        ratio: null
-        constraints: Airmiles/partner transfer is DISCONTINUED on newly issued Diners Club Privilege cards (SmartBuy rejects them as ineligible). Legacy DCP cards retain 100:50 to HDFC partners. SmartBuy redemption still works at ~Rs 0.50/RP — use that.
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: '2026-07-05: partner transfers discontinued on new DCP cards (cardmaven, 2026-06-25). SmartBuy floor ~Rs 0.50/RP retained.'
+- effective_from: 2019-04-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 4
+    per_inr: 200
+    unit_value_inr: 0.5
+    unit_value_inr_realized: 0.4
+  accelerated:
+  - category: smartbuy-flights-hotels
+    canonical_categories:
+    - travel
+    multiplier: 10
+    effective_rate: 40
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - smartbuy
+  - category: dining-food-delivery
+    canonical_categories:
+    - dining
+    multiplier: 5
+    effective_rate: 20
+    cap_per_cycle: 2500
+    cap_unit: points
+    cycle: monthly
+    mcc_list:
+    - '5812'
+    - '5814'
+    channel:
+      required: true
+      class: food-delivery
+      merchants:
+      - swiggy
+      - zomato
+    notes: 5X Reward Points (20 per ₹200) on Swiggy & Zomato online food orders, capped
+      at 2,500 RP/month.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - emi
+  redemption:
+  - type: catalog
+    program: SmartBuy
+    rate_inr_per_unit: 0.5
+  - type: airmiles
+    program: Multiple (Airmiles hub)
+    ratio: null
+    constraints: Airmiles/partner transfer is DISCONTINUED on newly issued Diners
+      Club Privilege cards (SmartBuy rejects them as ineligible). Legacy DCP cards
+      retain 100:50 to HDFC partners. SmartBuy redemption still works at ~Rs 0.50/RP
+      — use that.
+    rate_inr_per_unit: 0.5
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
+    retrieved_on: '2026-07-05'
+    type: issuer-page
+    notes: '2026-07-05: partner transfers discontinued on new DCP cards (cardmaven,
+      2026-06-25). SmartBuy floor ~Rs 0.50/RP retained.'
 benefits:
-  - effective_from: 2026-07-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [priority-pass]
-        spend_threshold_inr: 60000
-        spend_threshold_cycle: quarterly
-        notes: "2 domestic lounge vouchers per calendar quarter, unlocked by ₹60,000 spend in the preceding quarter. Voucher-based structure effective 01 Jul 2026."
-      international:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [priority-pass]
-        spend_threshold_inr: 60000
-        spend_threshold_cycle: quarterly
-        notes: "1 international lounge voucher per calendar quarter, unlocked by ₹60,000 spend in the preceding quarter."
-    milestones:
-      - spend_inr: 150000
-        cycle: quarterly
-        benefit: "Voucher worth ₹1,500 (Marriott Experience / Barbeque Nation / Lakme Salon / O2 Spa / Decathlon / Dominos)"
-        value_inr: 1500
-    welcome:
-      - condition: "₹75,000 spend within first 90 days of card issuance"
-        benefit: "Complimentary annual Swiggy One & Times Prime memberships"
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 10000000
-      - type: travel-medical
-        sum_insured_inr: 2500000
-        conditions: "Emergency medical expenses on international travel (USD 31,250); pre-existing illness excluded."
-      - type: credit-shield
-        sum_insured_inr: 900000
-    movies:
-      type: bogo
-      partner: BookMyShow
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 250
-      notes: "Buy One Get One Free on BookMyShow for Fri/Sat/Sun shows; max ₹250/ticket, up to 2 free tickets per calendar month (min 2 tickets per booking)."
-    concierge: false
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-07-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      spend_threshold_inr: 60000
+      spend_threshold_cycle: quarterly
+      notes: 2 domestic lounge vouchers per calendar quarter, unlocked by ₹60,000
+        spend in the preceding quarter. Voucher-based structure effective 01 Jul 2026.
+    international:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      spend_threshold_inr: 60000
+      spend_threshold_cycle: quarterly
+      notes: 1 international lounge voucher per calendar quarter, unlocked by ₹60,000
+        spend in the preceding quarter.
+  milestones:
+  - spend_inr: 150000
+    cycle: quarterly
+    benefit: Voucher worth ₹1,500 (Marriott Experience / Barbeque Nation / Lakme Salon
+      / O2 Spa / Decathlon / Dominos)
+    value_inr: 1500
+  welcome:
+  - condition: ₹75,000 spend within first 90 days of card issuance
+    benefit: Complimentary annual Swiggy One & Times Prime memberships
+    window_days: 90
+    value_inr: 2500
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 10000000
+  - type: travel-medical
+    sum_insured_inr: 2500000
+    conditions: Emergency medical expenses on international travel (USD 31,250); pre-existing
+      illness excluded.
+  - type: credit-shield
+    sum_insured_inr: 900000
+  movies:
+    type: bogo
+    partner: BookMyShow
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 250
+    notes: Buy One Get One Free on BookMyShow for Fri/Sat/Sun shows; max ₹250/ticket,
+      up to 2 free tickets per calendar month (min 2 tickets per booking).
+  concierge: false
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 60
@@ -158,11 +166,14 @@ eligibility:
     self_employed: 600000
   credit_score_min: 750
   residency: resident-indian
-  notes: "Salaried net monthly income ₹35,000+ (₹4.2L p.a.); self-employed ITR above ₹6L p.a."
-
+  notes: Salaried net monthly income ₹35,000+ (₹4.2L p.a.); self-employed ITR above
+    ₹6L p.a.
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
-
 metadata:
   last_verified_on: '2026-07-05'
-  tags: [premium, diners, travel, points]
+  tags:
+  - premium
+  - diners
+  - travel
+  - points

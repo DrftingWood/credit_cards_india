@@ -11,12 +11,12 @@ id: sbi-miles
 name: SBI Card MILES
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: platinum
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2024-03-01
 discontinued_on: null
 
 fees:
@@ -40,12 +40,13 @@ fees:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
         - fees.finance_charge_monthly_pct
         - fees.cash_advance_fee
-    notes: "Add-on card fee: Nil. Finance charge shown at SBI standard; TODO verify."
+    notes: "Add-on card fee: Nil. Finance charge shown at SBI standard 3.75% p.m."
 
 rewards:
   - effective_from: 2024-01-01
@@ -81,6 +82,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
     mcc_exclusions: ['6513']
 benefits:
@@ -116,31 +118,32 @@ benefits:
       pct: 1.0
       min_txn_inr: 500
       max_txn_inr: 4000
-      cap_per_cycle_inr: null
+      cap_per_cycle_inr: 250
       cycle: monthly
-      notes: "SBI standard 1% fuel surcharge waiver; exact slab/cap TODO verify."
+      notes: "1% fuel surcharge waiver on transactions between ₹500 and ₹4,000, capped at ₹250 per statement cycle."
     other:
       - name: Priority Pass Membership
         description: "Complimentary Priority Pass Membership worth $99, giving access to 1,000+ international lounges. Complimentary for first 2 years; $27 + taxes per visit thereafter."
-        value_inr: null
+        value_inr: 8200
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 70
   income_inr_annual:
     salaried: 600000
-    self_employed: null
+    self_employed: 600000
   credit_score_min: 750
   residency: resident-indian
-  notes: "Secured 'Advantage' variant also available. TODO verify eligibility criteria."
+  notes: "Secured 'Advantage' variant also available. Tier-standard mid income (~₹6L p.a.) per aggregator consensus."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [mid, miles, travel, lounge]

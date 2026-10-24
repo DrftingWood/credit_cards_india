@@ -16,7 +16,7 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2025-12-01
 discontinued_on: null
 
 fees:
@@ -174,7 +174,7 @@ eligibility:
   income_inr_annual:
     salaried: 1800000
     self_employed: 1800000
-  credit_score_min: null
+  credit_score_min: 750
   residency: resident-indian
   notes: "Salaried: gross monthly salary Rs 1,50,000+ (recorded as Rs 18 lakh a year). Non-salaried: annual income Rs 18 lakh+. Also issued against a fixed deposit of at least Rs 1.5 lakh."
 
@@ -182,5 +182,5 @@ application:
   apply_url: https://creditcard.pnb.bank.in/types16.html
 
 metadata:
-  last_verified_on: 2026-10-20
+  last_verified_on: 2026-10-24
   tags: [premium, metal, rupay, points, zero-forex, lounge, psu-bank, upi-linkable]

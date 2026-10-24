@@ -1,0 +1,107 @@
+id: indian-bank-rupay-select
+name: Indian Bank RuPay Select Credit Card
+issuer: indian-bank
+network: rupay
+network_tier: select
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2022-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 250
+    fee_waiver:
+      spend_inr: 50000
+      cycle: annual
+      conditions: "Annual fee waived if annual spends exceed ₹50,000 in the preceding year (1st year free)."
+    forex_markup_pct: 3.0
+    finance_charge_monthly_pct: 1.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 150
+    gst_applicable: true
+    source:
+      url: https://www.indianbank.in/departments/credit-card/
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining ₹0, annual ₹250 (1st year free, waived on ₹50k spend), finance charge 1.99% p.m."
+
+rewards:
+  - effective_from: 2022-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.00
+      unit_value_inr_realized: 1.00
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: Indian Bank Rewardz
+        rate_inr_per_unit: 1.00
+    source:
+      url: https://www.indianbank.in/departments/credit-card/
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "1 Reward Point per ₹100 spent; 1 point = Re. 1 value."
+
+benefits:
+  - effective_from: 2022-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [rupay]
+      international:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [rupay]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 1000000
+        conditions: "Personal accident and permanent total disability cover up to ₹10 Lakhs."
+    concierge: false
+    source:
+      url: https://www.indianbank.in/departments/credit-card/
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 500000
+    self_employed: 500000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.indianbank.in/departments/credit-card/
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [premium, rupay-select, upi, lounge, points]

@@ -36,6 +36,7 @@ fees:
       url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2026-01-01
@@ -107,13 +108,14 @@ benefits:
       url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null  # Priority Banking relationship-gated
-    self_employed: null
+    salaried: 3600000  # Priority Banking relationship-gated (Rs 3L/mo net salary or Rs 30L TRV)
+    self_employed: 3600000
   credit_score_min: 750
   residency: resident-indian
 

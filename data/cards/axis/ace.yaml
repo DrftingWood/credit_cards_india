@@ -53,6 +53,7 @@ rewards:
       rate: 1.5
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: bill-payments-recharges-google-pay
         canonical_categories: [utilities]
@@ -94,6 +95,7 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
       retrieved_on: '2026-07-05'
       type: issuer-page
+      confidence: high
 
       notes: Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05.
     mcc_exclusions: ['6513']
@@ -121,6 +123,7 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18

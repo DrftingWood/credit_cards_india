@@ -1,0 +1,169 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : SBI Card live page, sbicard.com/en/personal/credit-cards/eternal-sbi-card.html
+#   Verified   : 2026-10-24   Confidence: HIGH (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# ---------------------------------------------------------------------------
+id: sbi-eternal
+name: Eternal SBI Card
+issuer: sbi
+network: rupay
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand:
+  partner: Eternal
+  category: food-delivery
+  partner_website: https://www.zomato.com
+status: active
+launched_on: 2026-10-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2026-10-01
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    renewal_fee_inr: 499
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+      conditions: "Annual renewal fee waived on reaching Rs. 2,00,000 eligible retail spends in the preceding membership year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    supplementary_card_fee_inr: 0
+    gst_applicable: true
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/eternal-sbi-card.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Issued on both RuPay and Mastercard networks; co-branded with Eternal Limited (Zomato, Blinkit, District, Bistro)."
+    notes: "Joining and renewal fee Rs. 499 + GST, waived on Rs. 2 lakh annual spend. Available on RuPay (UPI-enabled) and Mastercard networks."
+
+rewards:
+  - effective_from: 2026-10-01
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+      cap_per_cycle: 500
+      cap_unit: cashback-inr
+      cycle: monthly
+    accelerated:
+      - category: zomato-district-bistro-blinkit-select
+        canonical_categories: [dining, entertainment, online]
+        multiplier: 10
+        effective_rate: 10
+        cap_per_cycle: 2000
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [zomato, district, blinkit]
+        channel:
+          class: cobrand-merchant
+          merchants: [zomato, district, blinkit]
+        notes: "10% value back (instant discount stacking above platform coupons) on Zomato, District, Bistro, and Blinkit beauty & electronics categories; shares a combined Rs. 2,000/calendar-month cap across Eternal ecosystem apps."
+      - category: blinkit-groceries
+        canonical_categories: [groceries]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: 2000
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [blinkit]
+        channel:
+          class: quick-commerce
+          merchants: [blinkit]
+        notes: "5% value back on Blinkit groceries and daily essentials; shares the combined Rs. 2,000/calendar-month Eternal ecosystem cap."
+      - category: preferred-partners-travel-lifestyle
+        canonical_categories: [travel, online]
+        multiplier: 5
+        effective_rate: 5
+        cap_per_cycle: 1000
+        cap_unit: cashback-inr
+        cycle: monthly
+        merchants: [ixigo, uber, urban-company, apollo-24-7]
+        channel:
+          class: cobrand-merchant
+          merchants: [uber, urban-company, apollo-24-7]
+        notes: "5% cashback on preferred partner platforms (Uber, ixigo, Urban Company, Apollo 24/7), capped at Rs. 1,000 per calendar month."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - utilities
+      - insurance-premiums
+      - education
+      - jewellery
+      - emi
+      - government
+      - cash-advance
+    capping_rules:
+      - "10% on Zomato/District/Bistro & Blinkit beauty/electronics and 5% on Blinkit groceries share a combined monthly cap of Rs. 2,000 per calendar month."
+      - "5% cashback on preferred partners (ixigo, Uber, Urban Company, Apollo 24/7) is capped at Rs. 1,000 per calendar month."
+      - "1% base cashback on other eligible retail spends is capped at Rs. 500 per calendar month."
+    redemption:
+      - type: statement-credit
+        program: Eternal SBI Cashback
+        rate_inr_per_unit: 1.0
+        constraints: "Partner and base cashback auto-credited to the monthly card statement; Eternal ecosystem 10%/5% benefits apply as instant checkout discounts."
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/eternal-sbi-card.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Verified against live Eternal SBI Card page (launched Oct 2026)."
+    mcc_exclusions: ['6513']
+
+benefits:
+  - effective_from: 2026-10-01
+    effective_until: null
+    lounge_access: null
+    welcome:
+      - condition: "On card activation"
+        benefit: "Complimentary 6-month Zomato Gold membership"
+        value_inr: 999
+        window_days: 30
+    movies:
+      type: bogo
+      partner: District
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 200
+      notes: "Buy 1 Get 1 movie ticket on the District app once a month, up to Rs. 200 off on the second ticket."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 100
+      cycle: statement
+    concierge: false
+    source:
+      url: https://www.sbicard.com/en/personal/credit-cards/eternal-sbi-card.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 360000
+  credit_score_min: 720
+  residency: resident-indian
+  notes: "Apply via Zomato, Blinkit, District apps or sbicard.com."
+
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/eternal-sbi-card.html
+
+metadata:
+  last_verified_on: 2026-10-24
+  tags: [co-branded, food-delivery, quick-commerce, cashback, entry, upi]

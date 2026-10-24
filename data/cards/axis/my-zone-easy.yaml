@@ -11,12 +11,12 @@ id: axis-my-zone-easy
 name: Axis Bank My Zone Easy Credit Card
 issuer: axis
 network: visa
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: secured
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2018-01-01
 discontinued_on: null
 
 fees:
@@ -101,14 +101,15 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/my-zone-easy-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
-  credit_score_min: null
+    salaried: 0
+    self_employed: 0
+  credit_score_min: 300
   residency: resident-indian
   notes: "Fixed Deposit backed (secured). Minimum FD ₹15,000, maximum ₹25 lakh. Guaranteed approval. Not issued against Tax Saver FDs, Flexi/auto-sweep FDs, or FDs of HUFs/societies/trusts/companies. Minors not eligible."
 

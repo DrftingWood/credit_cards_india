@@ -11,7 +11,7 @@ id: axis-indianoil
 name: IndianOil Axis Bank Credit Card
 issuer: axis
 network: rupay
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
@@ -19,7 +19,7 @@ co_brand:
   category: fuel
   partner_website: https://www.iocl.com
 status: active
-launched_on: null
+launched_on: 2019-12-17
 discontinued_on: null
 
 fees:
@@ -38,6 +38,7 @@ fees:
       url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
       local_refs:
         - docs/sources/axis/_shared/mitc-credit-cards.pdf
       fields_verified:
@@ -125,6 +126,7 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18

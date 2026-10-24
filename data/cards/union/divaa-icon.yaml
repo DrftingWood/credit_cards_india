@@ -16,7 +16,7 @@ tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2025-09-25
 discontinued_on: null
 
 fees:
@@ -108,8 +108,8 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
+    salaried: 250000
+    self_employed: 250000
   credit_score_min: 700
   residency: resident-indian
   notes: "Women only. Age 21-65 (18+ with no upper limit against a term deposit). No income threshold stated on the card page."
@@ -118,5 +118,5 @@ application:
   apply_url: https://www.unionbankofindia.bank.in/en/Details/divaa-icon-credit-card
 
 metadata:
-  last_verified_on: 2026-10-20
+  last_verified_on: 2026-10-24
   tags: [mid, rupay, points, lounge, psu-bank, women, upi-linkable]

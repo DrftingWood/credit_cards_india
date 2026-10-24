@@ -11,14 +11,14 @@ id: sbi-paytm-select
 name: "Paytm SBI Card SELECT"
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: signature
 tier: mid
 card_type: credit
 co_brand:
   partner: "Paytm"
   category: other
 status: active
-launched_on: null
+launched_on: 2020-11-04
 discontinued_on: null
 
 fees:
@@ -33,13 +33,21 @@ fees:
       conditions: "Renewal fee waived if annual spends in the previous year >= Rs. 2 Lakhs."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     supplementary_card_fee_inr: 0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
     notes: "Annual Fee Rs. 1,499 + taxes; Renewal Fee Rs. 1,499 + taxes from second year onwards; Add-on card fee Nil."
 
 rewards:
@@ -51,6 +59,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
       # Both rates are Paytm-app-only per the card's own product copy, but were
       # authored ungated — so every user's whole travel/online bucket earned them
@@ -82,6 +91,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
       retrieved_on: 2026-07-05
       type: issuer-page
+      confidence: high
     notes: "1% Cashback on any other spends across offline and online stores (base). Category exclusions not published on crawl."
 
     mcc_exclusions: ['6513']
@@ -133,6 +143,7 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
@@ -148,5 +159,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: 2026-10-24
   tags: [cashback, co-brand, mid, lounge]

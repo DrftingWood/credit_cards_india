@@ -1,0 +1,112 @@
+id: union-uni-carbon
+name: Union Bank UNI-CARBON Credit Card
+issuer: union
+network: rupay
+network_tier: select
+tier: mid
+card_type: credit
+co_brand:
+  partner: HPCL
+  category: fuel
+status: active
+launched_on: 2021-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2021-01-01
+    effective_until: null
+    joining_fee_inr: 499
+    annual_fee_inr: 499
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual fee waived on spending ₹1,00,000 in the preceding anniversary year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 2.50
+    cash_advance_fee:
+      pct: 3.0
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.unionbankofindia.co.in/english/uni-carbon-card.aspx
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining fee ₹499, annual fee ₹499, waiver on ₹1L spend."
+
+rewards:
+  - effective_from: 2021-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.25
+    accelerated:
+      - category: hpcl-fuel
+        canonical_categories: [fuel]
+        multiplier: 8
+        effective_rate: 16
+        cap_per_cycle: 600
+        cap_unit: points
+        cycle: monthly
+        notes: "16 Reward Points per ₹100 (4% value) on HPCL fuel transactions of ₹500+, capped at ₹150 (600 points) per billing cycle."
+    exclusions:
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: Union Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.unionbankofindia.co.in/english/uni-carbon-card.aspx
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "16 points/₹100 at HPCL; 2 points/₹100 on other retail spends."
+
+benefits:
+  - effective_from: 2021-01-01
+    effective_until: null
+    welcome:
+      - condition: "Spend ₹300 or more at HPCL within 60 days of card activation"
+        benefit: "₹300 bill credit on fuel purchase"
+        value_inr: 300
+        window_days: 60
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 200
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+      notes: "1% fuel surcharge waiver on transactions above ₹200 at HPCL outlets, max ₹100 per cycle."
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 1000000
+        conditions: "Complimentary Personal Accidental Insurance via RuPay/NPCI."
+    concierge: false
+    source:
+      url: https://www.unionbankofindia.co.in/english/uni-carbon-card.aspx
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.unionbankofindia.co.in/english/uni-carbon-card.aspx
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [co-branded, hpcl, fuel, rupay, mid]

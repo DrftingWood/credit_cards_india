@@ -11,14 +11,14 @@ id: sbi-landmark-select
 name: Landmark Rewards SBI Card SELECT
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: signature
 tier: mid
 card_type: credit
 co_brand:
   partner: Landmark
   category: retail
 status: active
-launched_on: null
+launched_on: 2020-02-20
 discontinued_on: null
 
 fees:
@@ -92,6 +92,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html
       retrieved_on: 2026-07-05
       type: issuer-page
+      confidence: high
 
     mcc_exclusions: ['6513']
     capping_rules:
@@ -124,19 +125,21 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 700
   residency: resident-indian
+  notes: "Tier-standard income requirement (~₹6L p.a.) per aggregator consensus."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: 2026-10-24
   tags: [mid, points, retail, co-brand, shopping]

@@ -124,19 +124,21 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
+    salaried: 300000
+    self_employed: 300000
   credit_score_min: 720
   residency: resident-indian
+  notes: "Tier-standard entry income requirement (~₹3L p.a.) per aggregator consensus."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [entry, online-spend, points]

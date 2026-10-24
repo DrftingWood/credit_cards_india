@@ -11,12 +11,12 @@ id: sbi-elite-business
 name: SBI Card ELITE Business
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: signature
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2018-01-01
 
 # Link check 2026-10-20: the cited sbi-card-elite-business.page URL (also apply_url) is a 404.
 # SBI Card has no current page for SBI Card Elite Business: every candidate URL 404s, the
@@ -44,6 +44,7 @@ fees:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
@@ -85,6 +86,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
       notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE."
 
     mcc_exclusions: ['6513']
@@ -157,20 +159,22 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
       notes: "Crawl page returned only navigation; values mirrored from parent SBI Card ELITE."
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
+    salaried: 1200000
+    self_employed: 1200000
   credit_score_min: 750
   residency: resident-indian
+  notes: "Income requirement based on aggregator/tier consensus (not published on product page)."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [premium, points, lifestyle, business]

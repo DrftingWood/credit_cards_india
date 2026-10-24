@@ -1,0 +1,117 @@
+id: bandhan-lumina
+name: Bandhan Bank Lumina Credit Card
+issuer: bandhan
+network: visa
+network_tier: infinite
+tier: super-premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2023-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-01-01
+    effective_until: null
+    joining_fee_inr: 9999
+    annual_fee_inr: 9999
+    fee_waiver:
+      spend_inr: 1000000
+      cycle: annual
+      conditions: "Annual fee waived on ₹10,00,000 spend in the preceding year."
+    forex_markup_pct: 1.00
+    finance_charge_monthly_pct: 3.50
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining ₹9,999, annual ₹9,999, industry-leading 1.0% forex markup."
+
+rewards:
+  - effective_from: 2023-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 16
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.25
+    accelerated:
+      - category: international-spends
+        canonical_categories: [international]
+        multiplier: 1.5
+        effective_rate: 24
+        cap_per_cycle: unlimited
+        cap_unit: points
+        cycle: monthly
+        notes: "24 Reward Points per ₹200 (3% reward rate) on international transactions."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: Bandhan Delights
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "16 RP per ₹200 domestic; 24 RP per ₹200 international."
+
+benefits:
+  - effective_from: 2023-01-01
+    effective_until: null
+    welcome:
+      - condition: "Payment of joining fee and first transaction"
+        benefit: "₹10,000 Oberoi Hotels & Resorts stay voucher"
+        value_inr: 10000
+        window_days: 60
+    lounge_access:
+      domestic:
+        visits_per_cycle: unlimited
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+      international:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 500
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 2400000
+    self_employed: 2400000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [super-premium, metal, low-forex, lounge, oberoi, points]

@@ -29,6 +29,11 @@ fees:
       spend_inr: 240000
       cycle: annual
       conditions: "First year free; renewal fee waived on spends of Rs 2,40,000 in the previous anniversary year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 250
     gst_applicable: true
     source:
       url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
@@ -118,5 +123,5 @@ application:
   apply_url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-10-24
   tags: [mid, points, lifestyle, ott, lounge, choose-categories]

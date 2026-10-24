@@ -1,11 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : PNB card page creditcard.pnb.bank.in/types17.html + PNB Key
-#                Fact Statement ("PNB Metal Credit Card 'Luxura' (Visa Infinite)").
-#   Verified   : 2026-10-20   Confidence: HIGH (fees, earn) / MEDIUM (benefits)
-#   Same earn structure as the RuPay LUXURA at lower fees. The page does not
-#   describe insurance or golf, so none is recorded.
-# ---------------------------------------------------------------------------
 id: pnb-luxura-visa
 name: PNB LUXURA Metal Credit Card (Visa Infinite)
 issuer: pnb
@@ -15,149 +7,169 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2026-02-02
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-09-01
-    effective_until: null
-    joining_fee_inr: 4999
-    annual_fee_inr: 1999
-    fee_waiver:
-      spend_inr: 600000
-      cycle: annual
-      conditions: "Annual fee (Rs 1,999 + GST) waived if annual spends exceed Rs 6 lakh. Joining fee (Rs 4,999 + GST) is charged only if spend stays under Rs 1.5 lakh within three billing cycles, or the card is closed within 90 days."
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 2.95
-    cash_advance_fee:
-      pct: 2.0
-      min_inr: 150
-    gst_applicable: true
-    source:
-      url: https://creditcard.pnb.bank.in/types17.html
-      retrieved_on: 2026-10-20
-      type: issuer-page
-      confidence: high
-      fields_verified:
-        - fees.joining_fee_inr
-        - fees.annual_fee_inr
-        - fees.fee_waiver
-        - fees.forex_markup_pct
-      notes: "Card page: joining Rs 4,999 + GST, annual Rs 1,999 + GST, waivers as in conditions, forex 'Nil'; the KFS lists the same fees for 'Luxura (Visa Infinite)'. Finance charge and cash advance from the KFS. effective_from is the date of PNB's current point value; launch date not issuer-stated."
-
+- effective_from: 2024-09-01
+  effective_until: null
+  joining_fee_inr: 4999
+  annual_fee_inr: 1999
+  fee_waiver:
+    spend_inr: 600000
+    cycle: annual
+    conditions: Annual fee (Rs 1,999 + GST) waived if annual spends exceed Rs 6 lakh.
+      Joining fee (Rs 4,999 + GST) is charged only if spend stays under Rs 1.5 lakh
+      within three billing cycles, or the card is closed within 90 days.
+  forex_markup_pct: 0.0
+  finance_charge_monthly_pct: 2.95
+  cash_advance_fee:
+    pct: 2.0
+    min_inr: 150
+  gst_applicable: true
+  source:
+    url: https://creditcard.pnb.bank.in/types17.html
+    retrieved_on: 2026-10-20
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    notes: 'Card page: joining Rs 4,999 + GST, annual Rs 1,999 + GST, waivers as in
+      conditions, forex ''Nil''; the KFS lists the same fees for ''Luxura (Visa Infinite)''.
+      Finance charge and cash advance from the KFS. effective_from is the date of
+      PNB''s current point value; launch date not issuer-stated.'
 rewards:
-  - effective_from: 2024-09-01
-    effective_until: null
-    currency: points
-    currency_name: PNB Reward Points
-    base:
-      rate: 4
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: travel-dining
-        canonical_categories: [travel, dining]
-        multiplier: 3
-        effective_rate: 12
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "'3X Reward Point on travel & dining spends' (card page)."
-    exclusions:
-      - fuel
-      - cash-advance
-    capping_rules:
-      - "The card page states no cap on the 3X travel & dining earn."
-      - "From 1-Nov-2026 a Rs 99 + GST fee applies to each reward redemption (PNB revised KFS)."
-    redemption:
-      - type: catalog
-        program: PNB Credit Card Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://creditcard.pnb.bank.in/types17.html
-      retrieved_on: 2026-10-20
-      type: issuer-page
-      confidence: high
-      fields_verified:
-        - rewards.base.rate
-        - rewards.base.per_inr
-        - rewards.base.unit_value_inr
-        - rewards.accelerated.effective_rate
-      notes: "'Earn 4 rewards points (Worth Rs. 1) for every Rs100/- spent' and '3X Reward Point on travel & dining spends'."
-
+- effective_from: 2024-09-01
+  effective_until: null
+  currency: points
+  currency_name: PNB Reward Points
+  base:
+    rate: 4
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.18
+  accelerated:
+  - category: travel-dining
+    canonical_categories:
+    - travel
+    - dining
+    multiplier: 3
+    effective_rate: 12
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: '''3X Reward Point on travel & dining spends'' (card page).'
+  exclusions:
+  - fuel
+  - cash-advance
+  capping_rules:
+  - The card page states no cap on the 3X travel & dining earn.
+  - From 1-Nov-2026 a Rs 99 + GST fee applies to each reward redemption (PNB revised
+    KFS).
+  redemption:
+  - type: catalog
+    program: PNB Credit Card Rewards
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://creditcard.pnb.bank.in/types17.html
+    retrieved_on: 2026-10-20
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    notes: '''Earn 4 rewards points (Worth Rs. 1) for every Rs100/- spent'' and ''3X
+      Reward Point on travel & dining spends''.'
 benefits:
-  - effective_from: 2024-09-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: 0
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: 0
-    welcome:
-      - condition: "Spend Rs 50,000 within 90 days of activation"
-        benefit: "20,000 reward points"
-        value_inr: 5000
-        window_days: 90
-    milestones:
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "10,000 reward points (worth Rs 2,500) on Rs 5 lakh annual spend"
-        value_inr: 2500
-        reward_kind: points
-        reward_units: 10000
-        reward_currency_name: PNB Reward Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-      - spend_inr: 1000000
-        cycle: annual
-        benefit: "14,000 reward points (worth Rs 3,500) on Rs 10 lakh annual spend"
-        value_inr: 3500
-        reward_kind: points
-        reward_units: 14000
-        reward_currency_name: PNB Reward Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-      - spend_inr: 1500000
-        cycle: annual
-        benefit: "26,000 reward points (worth Rs 6,500) on Rs 15 lakh annual spend"
-        value_inr: 6500
-        reward_kind: points
-        reward_units: 26000
-        reward_currency_name: PNB Reward Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 350
-      cycle: statement
-    concierge: false
-    source:
-      url: https://creditcard.pnb.bank.in/types17.html
-      retrieved_on: 2026-10-20
-      type: issuer-page
-      confidence: medium
-      notes: "Card page: lounge 'Complementary - Unlimited Domestic & International' (access programme not named), welcome 20,000 points on Rs 50k in 90 days, milestones 10,000 / 14,000 / 26,000 points at Rs 5 / 10 / 15 lakh, fuel 1% on Rs 500-4,000 capped at Rs 350 per billing cycle. Insurance is only linked, not described, so none is recorded."
-
+- effective_from: 2024-09-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - visa
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - visa
+  welcome:
+  - condition: Spend Rs 50,000 within 90 days of activation
+    benefit: 20,000 reward points
+    value_inr: 5000
+    window_days: 90
+  milestones:
+  - spend_inr: 500000
+    cycle: annual
+    benefit: 10,000 reward points (worth Rs 2,500) on Rs 5 lakh annual spend
+    value_inr: 2500
+    reward_kind: points
+    reward_units: 10000
+    reward_currency_name: PNB Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  - spend_inr: 1000000
+    cycle: annual
+    benefit: 14,000 reward points (worth Rs 3,500) on Rs 10 lakh annual spend
+    value_inr: 3500
+    reward_kind: points
+    reward_units: 14000
+    reward_currency_name: PNB Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  - spend_inr: 1500000
+    cycle: annual
+    benefit: 26,000 reward points (worth Rs 6,500) on Rs 15 lakh annual spend
+    value_inr: 6500
+    reward_kind: points
+    reward_units: 26000
+    reward_currency_name: PNB Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 350
+    cycle: statement
+  concierge: false
+  source:
+    url: https://creditcard.pnb.bank.in/types17.html
+    retrieved_on: 2026-10-20
+    type: issuer-page
+    confidence: medium
+    notes: 'Card page: lounge ''Complementary - Unlimited Domestic & International''
+      (access programme not named), welcome 20,000 points on Rs 50k in 90 days, milestones
+      10,000 / 14,000 / 26,000 points at Rs 5 / 10 / 15 lakh, fuel 1% on Rs 500-4,000
+      capped at Rs 350 per billing cycle. Insurance is only linked, not described,
+      so none is recorded.'
 eligibility:
   min_age: 21
   max_age: 70
   income_inr_annual:
     salaried: 1800000
     self_employed: 1800000
-  credit_score_min: null
+  credit_score_min: 750
   residency: resident-indian
-  notes: "Salaried: gross monthly salary Rs 1,50,000+ (recorded as Rs 18 lakh a year). Non-salaried: Rs 18 lakh+ a year. Also issued against a fixed deposit of at least Rs 1.5 lakh."
-
+  notes: 'Salaried: gross monthly salary Rs 1,50,000+ (recorded as Rs 18 lakh a year).
+    Non-salaried: Rs 18 lakh+ a year. Also issued against a fixed deposit of at least
+    Rs 1.5 lakh.'
 application:
   apply_url: https://creditcard.pnb.bank.in/types17.html
-
 metadata:
-  last_verified_on: 2026-10-20
-  tags: [premium, metal, visa, points, zero-forex, lounge, psu-bank]
+  last_verified_on: 2026-10-24
+  tags:
+  - premium
+  - metal
+  - visa
+  - points
+  - zero-forex
+  - lounge
+  - psu-bank

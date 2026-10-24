@@ -165,6 +165,7 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18

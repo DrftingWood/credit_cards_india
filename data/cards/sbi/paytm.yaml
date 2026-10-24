@@ -11,14 +11,14 @@ id: sbi-paytm
 name: "Paytm SBI Card"
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
   partner: "Paytm"
   category: other
 status: active
-launched_on: null
+launched_on: 2020-11-04
 discontinued_on: null
 
 fees:
@@ -30,13 +30,21 @@ fees:
     fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     supplementary_card_fee_inr: 0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
     notes: "Annual Fee Rs. 499 + taxes; Renewal Fee Rs. 499 + taxes from second year onwards; Add-on card fee Nil."
 
 rewards:
@@ -48,11 +56,16 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: paytm-travel
         canonical_categories: [travel]
         multiplier: 3
         effective_rate: 3
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [paytm-app]
         notes: "3% Cashback on Paytm Travel bookings via the Paytm App. Cap not stated on crawl."
       - category: paytm-app-spends
         channel:
@@ -71,6 +84,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
       retrieved_on: 2026-07-05
       type: issuer-page
+      confidence: high
     notes: "1% Cashback on any other spends across offline and online stores (base). Category exclusions not published on crawl."
 
     mcc_exclusions: ['6513']
@@ -104,6 +118,7 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
@@ -119,5 +134,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: 2026-10-24
   tags: [cashback, co-brand, entry]

@@ -1,0 +1,107 @@
+id: idbi-royale-signature
+name: IDBI Royale Signature Credit Card
+issuer: idbi
+network: visa
+network_tier: signature
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2018-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2018-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 1499
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual fee waived on ₹1,00,000 spend in the preceding year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.40
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.idbi.bank.in/credit-card.aspx
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "IDBI Royale Signature: joining fee ₹0, annual ₹1,499."
+
+rewards:
+  - effective_from: 2018-01-01
+    effective_until: null
+    currency: points
+    currency_name: Delight Points
+    base:
+      rate: 3
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: IDBI Delight
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.idbi.bank.in/credit-card.aspx
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "3 Delight Points per ₹100 spent."
+
+benefits:
+  - effective_from: 2018-01-01
+    effective_until: null
+    welcome:
+      - condition: "Spend ₹1,500 within 30 days of issuance"
+        benefit: "750 Delight Points"
+        value_inr: 187
+        window_days: 30
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 500
+      cycle: monthly
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 2500000
+        conditions: "Complimentary Air Travel Accident Insurance."
+    concierge: false
+    source:
+      url: https://www.idbi.bank.in/credit-card.aspx
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 400000
+    self_employed: 400000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.idbi.bank.in/credit-card.aspx
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [mid, visa-signature, lounge, points]

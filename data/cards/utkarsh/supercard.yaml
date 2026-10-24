@@ -1,0 +1,96 @@
+id: utkarsh-supercard
+name: Utkarsh SuperCard RuPay Credit Card
+issuer: utkarsh
+network: rupay
+network_tier: classic
+tier: entry
+card_type: secured
+co_brand: null
+status: active
+launched_on: 2023-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 2.50
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 250
+    gst_applicable: true
+    source:
+      url: https://www.utkarsh.bank.in/personal-banking/cards/credit-cards
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining Nil, annual fee Nil (Lifetime Free). Issued against FD."
+
+rewards:
+  - effective_from: 2023-01-01
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback INR
+    base:
+      rate: 1.0
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: online-shopping
+        canonical_categories: [online]
+        multiplier: 2
+        effective_rate: 2.0
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "Up to 5% on Myntra and 2% on Flipkart / online merchant shopping."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - cash-advance
+    mcc_exclusions: ['6513', '6540']
+    redemption:
+      - type: statement-credit
+        program: Direct Cashback
+        rate_inr_per_unit: 1.00
+    source:
+      url: https://www.utkarsh.bank.in/personal-banking/cards/credit-cards
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "1% flat base cashback, 2-5% on top e-commerce merchants."
+
+benefits:
+  - effective_from: 2023-01-01
+    effective_until: null
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.utkarsh.bank.in/personal-banking/cards/credit-cards
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 18
+  max_age: 70
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Secured credit card issued against Utkarsh Fixed Deposit (starting from ₹500). No income proof or prior credit history required."
+
+application:
+  apply_url: https://www.utkarsh.bank.in/personal-banking/cards/credit-cards
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [secured, fd-backed, rupay, ltf, entry, utkarsh]

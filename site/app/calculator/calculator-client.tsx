@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { EnrichedCard, LoyaltyProgram } from "@/lib/types";
-import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
+import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
@@ -17,6 +17,7 @@ import { useUsageProfile } from "@/lib/use-usage-profile";
 import { tierContext, toggleEcosystem, usageContext } from "@/lib/usage";
 import { DeclaredUsageSummary } from "@/components/detail/usage-panel";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
+import { allocatePortfolio, type Portfolio, type PortfolioSlot } from "@/lib/portfolio";
 import { formatInr, formatPct } from "@/lib/utils";
 
 /** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY_SPEND]. The ceiling
@@ -36,6 +37,62 @@ const ECO_GROUPS: { label: string; icon: string; ecos: string[] }[] = [
   { label: "Bills & apps", icon: "💳", ecos: ["CheQ"] },
 ];
 
+interface SpendPreset {
+  id: string;
+  label: string;
+  icon: string;
+  tooltip: string;
+  spend: SpendProfile;
+  merchant?: { key: string; share: number };
+}
+
+const SPEND_PRESETS: SpendPreset[] = [
+  {
+    id: "swiggy-50k",
+    label: "Swiggy / Food Apps",
+    icon: "🍔",
+    tooltip: "₹50,000/mo on food delivery (Swiggy, Zomato)",
+    spend: { online: 0, groceries: 0, dining: 50000, fuel: 0, travel: 0, utilities: 0, rent: 0, international: 0 },
+    merchant: { key: "swiggy", share: 100 },
+  },
+  {
+    id: "travel-100k",
+    label: "Frequent Traveler",
+    icon: "✈️",
+    tooltip: "₹1,00,000/mo on flights, hotels & travel booking",
+    spend: { online: 0, groceries: 0, dining: 0, fuel: 0, travel: 100000, utilities: 0, rent: 0, international: 0 },
+  },
+  {
+    id: "ecom-50k",
+    label: "Online Shopping",
+    icon: "🛍️",
+    tooltip: "₹50,000/mo on e-commerce (Amazon, Flipkart)",
+    spend: { online: 50000, groceries: 0, dining: 0, fuel: 0, travel: 0, utilities: 0, rent: 0, international: 0 },
+    merchant: { key: "amazon", share: 80 },
+  },
+  {
+    id: "fuel-20k",
+    label: "Daily Commute & Fuel",
+    icon: "⛽",
+    tooltip: "₹20,000/mo on petrol/diesel & vehicle expenses",
+    spend: { online: 0, groceries: 0, dining: 0, fuel: 20000, travel: 0, utilities: 0, rent: 0, international: 0 },
+  },
+  {
+    id: "groceries-30k",
+    label: "Groceries & Quick-Commerce",
+    icon: "🛒",
+    tooltip: "₹30,000/mo on Instamart, Blinkit & supermarkets",
+    spend: { online: 0, groceries: 30000, dining: 0, fuel: 0, travel: 0, utilities: 0, rent: 0, international: 0 },
+  },
+  {
+    id: "balanced-50k",
+    label: "Balanced Household",
+    icon: "⚖️",
+    tooltip: "₹50,000/mo across multiple typical categories",
+    spend: { online: 15000, groceries: 12000, dining: 8000, fuel: 5000, travel: 5000, utilities: 5000, rent: 0, international: 0 },
+  },
+];
+
 export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard[]; programs?: LoyaltyProgram[] }) {
   const [spend, setSpend] = useSpendProfile();
   const [valuePrefs] = useValuePrefs();
@@ -45,41 +102,29 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
     [cards, selectedId],
   );
 
-  // Layer 2 — ecosystem preferences. Closed-loop points (Adani One, Tata Neu, …) are real ₹1
-  // money only if you use that ecosystem. Default is REALISTIC: nothing ticked, so closed-loop
-  // cards show at base rate until you opt into the ecosystems you actually use. A one-click
-  // Best-case mode assumes you use every ecosystem (optimistic — the old behaviour).
+  // Strategy view: Single Best Card vs. Cap-Aware Multi-Card Stack
+  const [strategy, setStrategy] = useState<"single" | "portfolio">("single");
+
+  // Layer 2 — ecosystem preferences.
   const ecosystems = useMemo(() => listEcosystems(cards), [cards]);
   const [mode, setMode] = useState<"realistic" | "best">("realistic");
-  // Ecosystems and merchant shares live in the shared usage store (Phase 3), so what you
-  // tick here is what the card pages' Realistic layer uses too, and it survives a reload.
   const [usage, setUsage] = useUsageProfile();
   const enabledEco = useMemo(() => new Set(usage.ecosystems), [usage.ecosystems]);
   const toggleEco = (eco: string) => setUsage((u) => toggleEcosystem(u, eco));
 
-  // The single context this view scores with. Memoised on its own so the exact object can
-  // also be handed to the embedded AccelerationBreakdown — the panel must reconcile with the
-  // row it sits under, which it can't do if it builds a context of its own.
-  // D-27: programme records value co-brand points at the programme's unit value. Programme
-  // earn (baseline / channel / tier) is not card earn, so it never stacks into this rank
-  // (stackProgramEarn: false); a declared tier is a separate line (tierCtx).
   const programCtx = useMemo(
     () => ({ programs: Object.fromEntries(programs.map((p) => [p.id, p])), stackProgramEarn: false }),
     [programs],
   );
   const rankCtx: ScoringContext = useMemo(() => {
-    // Best-case → enabledEcosystems undefined (optimistic path credits every ecosystem in full).
     if (mode === "best") return { ...programCtx };
-    // Opt-in (D-3 keeps /calculator channel-optimistic by default): co-brand and portal rates
-    // count only on the merchant shares the user declared; undeclared ones earn base.
     if (usage.gate_calculator) return { ...usageContext(usage), applyApplicability: true, ...programCtx };
     return { enabledEcosystems: enabledEco, ...programCtx };
   }, [mode, enabledEco, usage, programCtx]);
 
-  // The user's declared loyalty tiers (Phase 3). They add only a separate value line, never
-  // the rank, so the row one-liners use them while rankCards keeps rankCtx unchanged.
   const tierCtx = useMemo(() => tierContext(usage.loyalty_tiers, programs), [usage.loyalty_tiers, programs]);
 
+  // Single-card ranking
   const { ranked, pinnedSelected } = useMemo(() => {
     const all = rankCards(cards, spend, rankCtx);
     const top = all.slice(0, 10);
@@ -90,39 +135,104 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
     return { ranked: top, pinnedSelected: pinned };
   }, [cards, spend, selectedId, rankCtx]);
 
+  // Cap-aware multi-card portfolio
+  const portfolio = useMemo(() => {
+    return allocatePortfolio(cards, spend, rankCtx, { dropFeeNegative: true });
+  }, [cards, spend, rankCtx]);
+
   const monthlyTotal = Object.values(spend).reduce((a, b) => a + (b || 0), 0);
 
+  const topSingleScore = ranked[0] ?? null;
+  const portfolioGainAnnual = topSingleScore ? portfolio.annual_net_inr - topSingleScore.annual_net_inr : 0;
+
+  const applyPreset = (preset: SpendPreset) => {
+    setSpend(() => preset.spend);
+    if (preset.merchant) {
+      setUsage((u) => ({
+        ...u,
+        merchant_share_pct: { ...u.merchant_share_pct, [preset.merchant!.key]: preset.merchant!.share },
+      }));
+    }
+  };
+
+  const clearSpend = () => {
+    setSpend(() => ({
+      online: 0,
+      groceries: 0,
+      dining: 0,
+      fuel: 0,
+      travel: 0,
+      utilities: 0,
+      rent: 0,
+      international: 0,
+    }));
+  };
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-8">
       <form className="space-y-4">
         <div>
-          <h2 className="text-sm font-semibold text-fg">Your monthly spend</h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-fg">Your monthly spend</h2>
+            {monthlyTotal > 0 ? (
+              <button
+                type="button"
+                onClick={clearSpend}
+                className="text-xs text-accent-fg hover:underline cursor-pointer"
+              >
+                Reset to ₹0
+              </button>
+            ) : null}
+          </div>
           <p className="text-xs text-fg-muted mt-0.5">
-            Fill in how much you spend per category each month. Set to ₹0 to ignore.
+            Select a quick scenario or type your monthly spend per category.
           </p>
         </div>
 
-        {CANONICAL_CATEGORIES.map((cat) => (
-          <div key={cat}>
-            <label className="block text-sm text-fg-secondary mb-1">{CATEGORY_LABELS[cat]}</label>
-            <div className="flex items-center gap-2">
-              <span className="text-fg-muted">₹</span>
-              <input
-                type="number"
-                min={0}
-                max={MAX_MONTHLY_SPEND}
-                step={500}
-                value={spend[cat]}
-                onChange={(e) =>
-                  setSpend((s) => ({ ...s, [cat]: clampSpend(e.target.value) }))
-                }
-                className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-focus"
-              />
-            </div>
+        {/* Quick Scenario Preset Chips */}
+        <div>
+          <div className="text-[11px] font-medium text-fg-muted uppercase tracking-wider mb-1.5">
+            Quick Scenarios
           </div>
-        ))}
+          <div className="flex flex-wrap gap-1.5">
+            {SPEND_PRESETS.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                title={p.tooltip}
+                onClick={() => applyPreset(p)}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-surface hover:bg-surface-subtle px-2.5 py-1 text-xs text-fg-secondary transition-colors"
+              >
+                <span>{p.icon}</span>
+                <span>{p.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
 
-        <div className="rounded-md bg-surface-subtle p-3 text-sm">
+        <div className="border-t border-line pt-3 space-y-3">
+          {CANONICAL_CATEGORIES.map((cat) => (
+            <div key={cat}>
+              <label className="block text-sm text-fg-secondary mb-1">{CATEGORY_LABELS[cat]}</label>
+              <div className="flex items-center gap-2">
+                <span className="text-fg-muted">₹</span>
+                <input
+                  type="number"
+                  min={0}
+                  max={MAX_MONTHLY_SPEND}
+                  step={500}
+                  value={spend[cat]}
+                  onChange={(e) =>
+                    setSpend((s) => ({ ...s, [cat]: clampSpend(e.target.value) }))
+                  }
+                  className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-focus bg-surface text-fg"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="rounded-md bg-surface-subtle p-3 text-sm border border-line">
           <div className="flex justify-between">
             <span>Monthly total</span>
             <strong className="tabular-nums">{formatInr(monthlyTotal)}</strong>
@@ -139,7 +249,6 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
             <p className="text-xs text-fg-muted mt-0.5">
               Some cards earn points redeemable only inside one ecosystem — real ₹1 money only if you use it.
             </p>
-            {/* master mode */}
             <div className="mt-2 space-y-1 text-xs">
               {(["realistic", "best"] as const).map((m) => (
                 <label key={m} className="flex items-start gap-2 cursor-pointer">
@@ -192,17 +301,8 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                     </div>
                   );
                 })}
-                <p className="text-[11px] text-fg-muted pt-1">
-                  Tick the ones you genuinely use — we only count rewards you can actually spend. Everything else
-                  shows at base rate.
-                </p>
               </div>
-            ) : (
-              <p className="mt-3 rounded-md bg-warn-subtle border border-warn-line p-2 text-[11px] text-warn">
-                Best-case: every ecosystem-locked card is valued at full worth, as if you use them all. Switch to
-                Realistic for your actual numbers.
-              </p>
-            )}
+            ) : null}
           </div>
         ) : null}
 
@@ -228,37 +328,189 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
         ) : null}
       </form>
 
-      <div>
-        <h2 className="text-lg font-semibold text-fg">Ranked by net annual value</h2>
-        <p className="text-xs text-fg-muted mt-0.5">
-          Approximate, and ranked on steady-state spend rewards only. Welcome, milestone and lounge value are shown
-          separately on each row and in the breakdown, never mixed into the rank. Some complex caps are simplified.
-        </p>
-        {pinnedSelected ? (
-          <div className="mt-4">
-            <div className="text-xs uppercase tracking-wide text-accent-fg mb-1">Selected card</div>
-            <ResultRow rank={null} score={pinnedSelected} spend={spend} valuePrefs={valuePrefs} rankCtx={rankCtx} tierCtx={tierCtx} highlighted />
+      {/* Right Column: Comparative Results */}
+      <div className="space-y-4">
+        {/* Strategy Switcher */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-line pb-3">
+          <div>
+            <h2 className="text-lg font-semibold text-fg">
+              {strategy === "single" ? "Ranked by net annual value" : "Optimal Multi-Card Stack (Portfolio)"}
+            </h2>
+            <p className="text-xs text-fg-muted mt-0.5">
+              {strategy === "single"
+                ? "If you want to pick just one card for all your spending."
+                : "Composes cards up to their monthly caps, spilling excess spend to the next card."}
+            </p>
           </div>
-        ) : null}
-        <ol className="mt-4 space-y-3">
-          {ranked.map((r, i) => (
-            <ResultRow
-              key={r.card.id}
-              rank={i + 1}
-              score={r}
-              spend={spend}
-              valuePrefs={valuePrefs}
-              rankCtx={rankCtx}
-              tierCtx={tierCtx}
-              highlighted={r.card.id === selectedId}
-            />
-          ))}
-        </ol>
-        {ranked.length === 0 ? (
-          <div className="mt-4 rounded-md border border-dashed border-line-strong bg-surface-subtle p-8 text-center text-fg-muted">
-            Enter some spend on the left to see rankings.
+          <div className="flex items-center gap-1 bg-surface-subtle p-1 rounded-lg border border-line shrink-0">
+            <button
+              type="button"
+              onClick={() => setStrategy("single")}
+              className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+                strategy === "single"
+                  ? "bg-surface shadow text-fg font-semibold"
+                  : "text-fg-muted hover:text-fg"
+              }`}
+            >
+              Single Card
+            </button>
+            <button
+              type="button"
+              onClick={() => setStrategy("portfolio")}
+              className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+                strategy === "portfolio"
+                  ? "bg-accent text-accent-fg font-semibold shadow"
+                  : "text-fg-muted hover:text-fg"
+              }`}
+            >
+              Multi-Card Stack ⚡
+            </button>
           </div>
-        ) : null}
+        </div>
+
+        {monthlyTotal === 0 ? (
+          <div className="rounded-md border border-dashed border-line-strong bg-surface-subtle p-8 text-center text-fg-muted">
+            Enter spend on the left or click a quick scenario above to see comparisons.
+          </div>
+        ) : strategy === "portfolio" ? (
+          /* Multi-Card Stack View */
+          <div className="space-y-4">
+            {/* Value Header Stats */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="rounded-xl border border-line bg-surface p-3">
+                <div className="text-xs text-fg-muted font-medium">Net Annual Value</div>
+                <div className="text-lg font-bold text-success tabular-nums mt-0.5">
+                  {formatInr(Math.round(portfolio.annual_net_inr))}
+                </div>
+                <div className="text-[11px] text-fg-muted">after all card fees</div>
+              </div>
+              <div className="rounded-xl border border-line bg-surface p-3">
+                <div className="text-xs text-fg-muted font-medium">Monthly Rewards</div>
+                <div className="text-lg font-bold text-fg tabular-nums mt-0.5">
+                  {formatInr(Math.round(portfolio.monthly_value_inr))}
+                </div>
+                <div className="text-[11px] text-fg-muted">per month</div>
+              </div>
+              <div className="rounded-xl border border-line bg-surface p-3">
+                <div className="text-xs text-fg-muted font-medium">Effective Return</div>
+                <div className="text-lg font-bold text-accent-fg tabular-nums mt-0.5">
+                  {monthlyTotal > 0 ? ((portfolio.monthly_value_inr / monthlyTotal) * 100).toFixed(2) : "0"}%
+                </div>
+                <div className="text-[11px] text-fg-muted">blended rate on spend</div>
+              </div>
+              <div className="rounded-xl border border-line bg-surface p-3">
+                <div className="text-xs text-fg-muted font-medium">Annual Card Fees</div>
+                <div className="text-lg font-bold text-fg-muted tabular-nums mt-0.5">
+                  {formatInr(Math.round(portfolio.annual_fee_inr))}
+                </div>
+                <div className="text-[11px] text-fg-muted">net of waivers</div>
+              </div>
+            </div>
+
+            {/* Comparison Callout */}
+            {portfolioGainAnnual > 500 && topSingleScore ? (
+              <div className="rounded-xl border border-success/30 bg-success-subtle/50 p-4 flex items-start gap-3">
+                <span className="text-xl">💡</span>
+                <div className="text-xs sm:text-sm text-fg">
+                  <strong>Stacking Advantage: </strong>
+                  By using this {portfolio.slots.length}-card stack instead of relying on a single card (
+                  <strong>{topSingleScore.card.name}</strong>), you earn an extra{" "}
+                  <strong className="text-success">{formatInr(Math.round(portfolioGainAnnual))} per year</strong>{" "}
+                  because your spend no longer gets clipped by single-card monthly caps!
+                </div>
+              </div>
+            ) : null}
+
+            {/* Spend Allocation Visualizer */}
+            <div className="rounded-xl border border-line bg-surface p-4 space-y-2">
+              <div className="flex items-center justify-between text-xs text-fg-muted font-medium">
+                <span>Monthly Spend Routing ({formatInr(monthlyTotal)}/mo)</span>
+                <span>{portfolio.slots.length} Cards in Stack</span>
+              </div>
+              <div className="h-3 w-full bg-surface-subtle rounded-full overflow-hidden flex border border-line">
+                {portfolio.slots.map((s, idx) => {
+                  const pct = (s.monthly_spend_inr / monthlyTotal) * 100;
+                  const colors = [
+                    "bg-blue-500",
+                    "bg-emerald-500",
+                    "bg-purple-500",
+                    "bg-amber-500",
+                    "bg-rose-500",
+                  ];
+                  return (
+                    <div
+                      key={s.card.id}
+                      style={{ width: `${pct}%` }}
+                      title={`${s.card.name}: ${formatInr(Math.round(s.monthly_spend_inr))} (${pct.toFixed(1)}%)`}
+                      className={`${colors[idx % colors.length]} h-full transition-all`}
+                    />
+                  );
+                })}
+              </div>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-fg-muted pt-1">
+                {portfolio.slots.map((s, idx) => {
+                  const colors = [
+                    "bg-blue-500",
+                    "bg-emerald-500",
+                    "bg-purple-500",
+                    "bg-amber-500",
+                    "bg-rose-500",
+                  ];
+                  return (
+                    <span key={s.card.id} className="inline-flex items-center gap-1.5">
+                      <span className={`w-2 h-2 rounded-full ${colors[idx % colors.length]}`} />
+                      <span className="font-medium text-fg">{s.card.name}</span>: {formatInr(Math.round(s.monthly_spend_inr))}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Stack Card Slots */}
+            <div className="space-y-3">
+              {portfolio.slots.map((slot, index) => (
+                <PortfolioSlotRow key={slot.card.id} slot={slot} index={index} />
+              ))}
+            </div>
+
+            {portfolio.unallocated_monthly_spend_inr > 0 ? (
+              <div className="rounded-xl border border-warn/30 bg-warn-subtle/50 p-4 text-xs text-warn">
+                ⚠️ <strong>Unallocated Spend: </strong>
+                {formatInr(Math.round(portfolio.unallocated_monthly_spend_inr))}/mo could not be routed to any
+                card offering an accelerated reward because all eligible candidate cards hit their monthly caps.
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          /* Single Card Ranking View */
+          <div>
+            {pinnedSelected ? (
+              <div className="mb-4">
+                <div className="text-xs uppercase tracking-wide text-accent-fg mb-1">Selected card</div>
+                <ResultRow rank={null} score={pinnedSelected} spend={spend} valuePrefs={valuePrefs} rankCtx={rankCtx} tierCtx={tierCtx} highlighted />
+              </div>
+            ) : null}
+            <ol className="space-y-3">
+              {ranked.map((r, i) => (
+                <ResultRow
+                  key={r.card.id}
+                  rank={i + 1}
+                  score={r}
+                  spend={spend}
+                  valuePrefs={valuePrefs}
+                  rankCtx={rankCtx}
+                  tierCtx={tierCtx}
+                  highlighted={r.card.id === selectedId}
+                />
+              ))}
+            </ol>
+            {ranked.length === 0 ? (
+              <div className="mt-4 rounded-md border border-dashed border-line-strong bg-surface-subtle p-8 text-center text-fg-muted">
+                Enter some spend on the left to see rankings.
+              </div>
+            ) : null}
+          </div>
+        )}
 
         {selectedCard ? (
           <div className="mt-6">
@@ -271,6 +523,84 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
           </div>
         ) : null}
       </div>
+    </div>
+  );
+}
+
+function PortfolioSlotRow({ slot, index }: { slot: PortfolioSlot; index: number }) {
+  const c = slot.card;
+  const href = cardHref(c);
+
+  return (
+    <div className="rounded-xl border border-line bg-surface p-4 space-y-3">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+        <div className="flex items-start gap-3">
+          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-subtle text-accent-fg text-xs font-bold">
+            #{index + 1}
+          </div>
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <Link href={href} className="font-semibold text-fg hover:underline">
+                {c.name}
+              </Link>
+              {slot.cap_bound ? (
+                <span className="rounded-full bg-warn-subtle text-warn border border-warn-line px-2 py-0.5 text-[10px] font-semibold">
+                  ⚠️ Cap Bound — Spend Spills
+                </span>
+              ) : (
+                <span className="rounded-full bg-success-subtle text-success border border-success-line px-2 py-0.5 text-[10px] font-semibold">
+                  ✓ Efficient
+                </span>
+              )}
+            </div>
+            <div className="mt-1 flex items-center gap-2 text-xs text-fg-muted">
+              <IssuerLogo issuer={c.issuer_detail} height={14} />
+              <span>· {c.tier.replace("-", " ")}</span>
+              <span>·</span>
+              <NetworkLogo network={c.network_detail} height={14} />
+            </div>
+          </div>
+        </div>
+
+        <div className="sm:text-right">
+          <div className="text-base font-semibold tabular-nums text-success">
+            +{formatInr(Math.round(slot.monthly_value_inr * 12))} / yr
+          </div>
+          <div className="text-xs text-fg-muted tabular-nums">
+            {formatInr(Math.round(slot.monthly_value_inr))}/mo reward ({slot.effective_rate_pct.toFixed(1)}%)
+          </div>
+        </div>
+      </div>
+
+      <div className="rounded-lg bg-surface-subtle p-2.5 text-xs grid grid-cols-1 sm:grid-cols-3 gap-2 border border-line">
+        <div>
+          <span className="text-fg-muted block">Spend Routed Here</span>
+          <strong className="text-fg tabular-nums text-sm">
+            {formatInr(Math.round(slot.monthly_spend_inr))}/mo
+          </strong>
+        </div>
+        <div>
+          <span className="text-fg-muted block">Effective Realised Rate</span>
+          <strong className="text-accent-fg tabular-nums text-sm">
+            {slot.effective_rate_pct.toFixed(2)}%
+          </strong>
+        </div>
+        <div>
+          <span className="text-fg-muted block">Net Annual Fee</span>
+          <strong className="text-fg tabular-nums text-sm">
+            {slot.annual_fee_inr === 0 ? "₹0 (Waived / Free)" : formatInr(slot.annual_fee_inr)}
+          </strong>
+        </div>
+      </div>
+
+      {slot.allocation.length > 0 ? (
+        <div className="text-xs text-fg-muted">
+          <span className="font-medium text-fg-secondary">Routed categories: </span>
+          {slot.allocation
+            .map((a) => `${a.category.replace("-", " ")} (${formatInr(Math.round(a.monthly_spend_inr))})`)
+            .join(", ")}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -294,13 +624,10 @@ function ResultRow({
 }) {
   const c = score.card;
   const href = cardHref(c);
-  // A declared tier for this card's programme: value it the way the embedded breakdown does
-  // (same rank ctx + tier fields), so the row's Year 1 / Year 2+ match the panel below it.
   const pid = c.current_rewards?.loyalty_program;
   const loyaltyTier = pid && tierCtx.tierLine[pid]
     ? explainCard(c, spend, { ...rankCtx, ...tierCtx }, valuePrefs).value_components?.loyalty_tier ?? null
     : null;
-  // Decoupled one-offs: computed from this row's own steady-state result, shown beside it, never ranked on.
   const extra = valueSummaryLine(
     explainValueComponents(
       c, spend,

@@ -126,19 +126,21 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 730
   residency: resident-indian
+  notes: "Income requirement based on aggregator/tier consensus (not published on product page)."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [co-branded, fuel, bpcl, mid-tier, points]

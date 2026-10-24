@@ -36,7 +36,7 @@ fees:
       min_inr: 300
     gst_applicable: true
     source:
-      url: https://creditcard.pnb.bank.in/
+      url: https://creditcard.pnb.bank.in/types6.html
       retrieved_on: 2026-07-04
       type: issuer-pdf
       confidence: high
@@ -71,7 +71,7 @@ rewards:
         program: PNB Rewards
         rate_inr_per_unit: 0.25
     source:
-      url: https://creditcard.pnb.bank.in/
+      url: https://creditcard.pnb.bank.in/types6.html
       retrieved_on: 2026-07-04
       type: issuer-page
       confidence: medium
@@ -99,7 +99,7 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://creditcard.pnb.bank.in/
+      url: https://creditcard.pnb.bank.in/types6.html
       retrieved_on: 2026-07-04
       type: issuer-pdf
       confidence: medium
@@ -113,14 +113,14 @@ eligibility:
   min_age: 21
   max_age: 70
   income_inr_annual:
-    salaried: 360000
-    self_employed: 360000
+    salaried: 500000
+    self_employed: 500000
   credit_score_min: 720
   residency: resident-indian
 
 application:
-  apply_url: https://creditcard.pnb.bank.in/
+  apply_url: https://creditcard.pnb.bank.in/types6.htmltypes6.html
 
 metadata:
-  last_verified_on: 2026-07-04
+  last_verified_on: 2026-10-24
   tags: [mid, rupay, points, upi-linkable, psu-bank]

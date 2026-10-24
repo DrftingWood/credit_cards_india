@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-pixel-play
 name: HDFC Bank Pixel Play Credit Card
 issuer: hdfc
@@ -18,114 +9,143 @@ co_brand: null
 status: active
 launched_on: 2024-03-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-03-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "RuPay variant supports UPI linkage. Joining fee of ₹500 is also waived on ₹20,000 spend within 90 days of card issuance (separate from the annual-fee waiver)."
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/_shared/mitc-in-english.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-
+- effective_from: 2024-03-01
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: RuPay variant supports UPI linkage. Joining fee of ₹500 is also waived on
+    ₹20,000 spend within 90 days of card issuance (separate from the annual-fee waiver).
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
 rewards:
-  - effective_from: 2024-03-01
-    effective_until: null
-    currency: cashback
-    currency_name: CashPoints
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-    accelerated:
-      - category: user-chosen-packs
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: monthly
-        mcc_list: ["4121", "7512"]
-        notes: "5% cashback on 2 self-selected merchant packs (e.g. Swiggy+Zomato, Amazon+Flipkart, travel). Uber (Travel pack) earns 5% only on travel/commute MCC 4121 & 7512."
-      - category: smartbuy
-        canonical_categories: [travel, online]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: monthly
-        channel:
-          class: issuer-portal
-          merchants: [smartbuy]
-        notes: "5% CashPoints on spends via HDFC SmartBuy."
-      - category: upi
-        multiplier: 1
-        effective_rate: 1
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: monthly
-        channel:
-          class: online-any
-          merchants: [any]
-        notes: "1% CashPoints on UPI spends (RuPay variant)."
-      - category: online-other
-        canonical_categories: [online]
-        multiplier: 1
-        effective_rate: 3
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-      - government
-      - cash-advance
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
-    mcc_exclusions: ['1361', '5172', '5541', '5542', '5983', '9752', '6513', '6540', '7349', '9211', '9222', '9223', '9311', '9399', '9402', '9405', '9950']
+- effective_from: 2024-03-01
+  effective_until: null
+  currency: cashback
+  currency_name: CashPoints
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: user-chosen-packs
+    multiplier: 1
+    effective_rate: 5
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    mcc_list:
+    - '4121'
+    - '7512'
+    notes: 5% cashback on 2 self-selected merchant packs (e.g. Swiggy+Zomato, Amazon+Flipkart,
+      travel). Uber (Travel pack) earns 5% only on travel/commute MCC 4121 & 7512.
+    canonical_categories:
+    - online
+    - dining
+  - category: smartbuy
+    canonical_categories:
+    - travel
+    - online
+    multiplier: 1
+    effective_rate: 5
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    channel:
+      class: issuer-portal
+      merchants:
+      - smartbuy
+    notes: 5% CashPoints on spends via HDFC SmartBuy.
+  - category: upi
+    multiplier: 1
+    effective_rate: 1
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    channel:
+      class: online-any
+      merchants:
+      - any
+    notes: 1% CashPoints on UPI spends (RuPay variant).
+    canonical_categories:
+    - other
+  - category: online-other
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 3
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  - government
+  - cash-advance
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+  mcc_exclusions:
+  - '1361'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '9752'
+  - '6513'
+  - '6540'
+  - '7349'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '9950'
 benefits:
-  - effective_from: 2024-03-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    other:
-      - name: Digital-first card
-        description: Fully digital onboarding, no physical card by default; spend categories configurable in PayZapp.
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
-      retrieved_on: 2026-04-15
-      type: issuer-page
-
+- effective_from: 2024-03-01
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  concierge: false
+  other:
+  - name: Digital-first card
+    description: Fully digital onboarding, no physical card by default; spend categories
+      configurable in PayZapp.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
+    retrieved_on: 2026-04-15
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 60
@@ -134,10 +154,13 @@ eligibility:
     self_employed: 600000
   credit_score_min: 720
   residency: resident-indian
-
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
-
 metadata:
   last_verified_on: 2026-07-03
-  tags: [digital-first, rupay, customisable, entry, cashback]
+  tags:
+  - digital-first
+  - rupay
+  - customisable
+  - entry
+  - cashback

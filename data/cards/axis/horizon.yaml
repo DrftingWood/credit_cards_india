@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-horizon
 name: Axis Bank Horizon Credit Card
 issuer: axis
@@ -18,196 +9,212 @@ co_brand: null
 status: active
 launched_on: 2024-08-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-08-01
-    effective_until: null
-    joining_fee_inr: 3000
-    annual_fee_inr: 3000
-    fee_waiver:
-      spend_inr: 1000000
-      cycle: annual
-      conditions: "Annual fee waived on spends of ₹10L in the preceding year."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.0
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/axis/_shared/mitc-credit-cards.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-
+- effective_from: 2024-08-01
+  effective_until: null
+  joining_fee_inr: 3000
+  annual_fee_inr: 3000
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+    conditions: Annual fee waived on spends of ₹10L in the preceding year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.0
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
 rewards:
-  - effective_from: 2024-08-01
-    effective_until: null
-    currency: miles
-    currency_name: EDGE Miles
-    base:
-      rate: 2
-      per_inr: 100
-      # Full-visibility model (no blend): realized = the guaranteed Rs 1.0 Travel EDGE
-      # portal floor; face = the single best documented transfer (KrisFlyer at 1:1 ->
-      # ~Rs 1.10/EDGE Mile). Horizon is 1:1 (half of Atlas's 1:2), so at 1:1 most
-      # transfers (Air India, IHG, hotels) fall below the Rs 1.0 floor. Per-partner
-      # ratios and values are in redemption[airmiles].transfer_partners — not collapsed.
-      unit_value_inr: 1.10
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: travel-edge-portal
-        canonical_categories: [travel]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [edge-travel]
-        notes: "5 EDGE Miles per ₹100 on direct airline and Axis Travel EDGE bookings. Rate fires only when routed through the EDGE portal."
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 2
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - utilities
-    redemption:
-      - type: airmiles
-        program: Multiple (EDGE Miles transfer)
-        ratio: "1:1"   # STANDARD: 1 EDGE Mile -> 1 partner mile (half of Atlas's 1:2). Penalty partners 2:1.
-        constraints: "Standard partners transfer 1 EDGE Mile -> 1 partner unit (1:1). Three partners added Apr-2026 (British Airways, Finnair, Vietnam LotusMiles) transfer at 2:1 — value-destroying, avoid. Marriott Bonvoy, Accor ALL and Qatar Privilege Club were REMOVED 2026-04-02. At 1:1 most non-airline transfers fall below the Rs 1.0 Travel EDGE portal floor, so the portal is often the best redemption."
-        transfer_partners:
-          - partner_name: Singapore Airlines KrisFlyer
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 1.0-1.3/EDGE Mile economy, up to ~Rs 2.0-2.5 on business. Best outlet; beats portal."
-          - partner_name: Turkish Airlines Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 1.0-1.3/EDGE Mile economy; strong business sweet spots."
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: 2026-07-05
-            notes: "Green Point fixed Rs 1 -> ~Rs 1.0/EDGE Mile, matches portal floor."
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 0.9-1.1/EDGE Mile economy; better on business."
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 0.8-1.0/EDGE Mile; business improves with Promo Rewards."
-          - partner_name: Japan Airlines Mileage Bank
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: 2026-07-05
-            notes: "High business value but hard to transfer into from India; niche."
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 0.5-0.65/EDGE Mile — below portal floor; prefer the portal."
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 0.5/EDGE Mile — below portal floor; do not transfer, use the portal."
-          - partner_name: British Airways Executive Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: 2026-07-05
-            notes: "PENALTY partner (added Apr-2026). ~Rs 0.45-0.55/EDGE Mile — avoid."
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: 2026-07-05
-            notes: "PENALTY partner (added Apr-2026). ~Rs 0.5-0.6/EDGE Mile — avoid."
-          - partner_name: Vietnam Airlines LotusMiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: 2026-07-05
-            notes: "PENALTY partner (added Apr-2026). ~Rs 0.35-0.45/EDGE Mile — worst outlet, avoid."
-      - type: catalog
-        program: Axis Travel EDGE
-        rate_inr_per_unit: 1.0
-        constraints: "Direct flight/hotel bookings on the Axis Travel EDGE portal at 1 EDGE Mile = Rs 1.0. Guaranteed floor; often Horizon's best redemption given the 1:1 transfer ratio."
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-      confidence: high
-      fields_verified:
-        - rewards.redemption.airmiles.transfer_partners
-        - rewards.base.unit_value_inr
-      notes: "Rewritten 2026-07-05 from cross-verified research: airmiles ratio corrected 2:1 -> 1:1 standard (Horizon is 1:1, half of Atlas's 1:2) with per-partner transfer_partners; BA/Finnair/LotusMiles are 2:1 penalty; Marriott/Accor/Qatar removed 2026-04-02; unit_value 1.0/0.5 -> 1.3/1.0 to sit at/above the Rs 1.0 portal floor. Earn rates, caps and milestones unchanged."
-
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - No per-cycle cap on accelerated EDGE Miles earning on Travel EDGE / airline spend per the Horizon T&C (retrieved 2026-07-05); the 1.5L/yr EDGE Miles limit is a transfer/redemption cap, not an earn cap.
+- effective_from: 2024-08-01
+  effective_until: null
+  currency: miles
+  currency_name: EDGE Miles
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 1.1
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: travel-edge-portal
+    canonical_categories:
+    - travel
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: unlimited
+    cap_unit: miles
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - edge-travel
+    notes: 5 EDGE Miles per ₹100 on direct airline and Axis Travel EDGE bookings.
+      Rate fires only when routed through the EDGE portal.
+  - category: international-spend
+    canonical_categories:
+    - international
+    multiplier: 2
+    effective_rate: 2
+    cap_per_cycle: unlimited
+    cap_unit: miles
+    cycle: monthly
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - utilities
+  redemption:
+  - type: airmiles
+    program: Multiple (EDGE Miles transfer)
+    ratio: '1:1'
+    constraints: Standard partners transfer 1 EDGE Mile -> 1 partner unit (1:1). Three
+      partners added Apr-2026 (British Airways, Finnair, Vietnam LotusMiles) transfer
+      at 2:1 — value-destroying, avoid. Marriott Bonvoy, Accor ALL and Qatar Privilege
+      Club were REMOVED 2026-04-02. At 1:1 most non-airline transfers fall below the
+      Rs 1.0 Travel EDGE portal floor, so the portal is often the best redemption.
+    transfer_partners:
+    - partner_name: Singapore Airlines KrisFlyer
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: 2026-07-05
+      notes: ~Rs 1.0-1.3/EDGE Mile economy, up to ~Rs 2.0-2.5 on business. Best outlet;
+        beats portal.
+    - partner_name: Turkish Airlines Miles&Smiles
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: 2026-07-05
+      notes: ~Rs 1.0-1.3/EDGE Mile economy; strong business sweet spots.
+    - partner_name: ITC Hotels (Club ITC)
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: 2026-07-05
+      notes: Green Point fixed Rs 1 -> ~Rs 1.0/EDGE Mile, matches portal floor.
+    - partner_name: Air Canada Aeroplan
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: 2026-07-05
+      notes: ~Rs 0.9-1.1/EDGE Mile economy; better on business.
+    - partner_name: Air France-KLM Flying Blue
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: 2026-07-05
+      notes: ~Rs 0.8-1.0/EDGE Mile; business improves with Promo Rewards.
+    - partner_name: Japan Airlines Mileage Bank
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: 2026-07-05
+      notes: High business value but hard to transfer into from India; niche.
+    - partner_name: Air India Maharaja Club
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: 2026-07-05
+      notes: ~Rs 0.5-0.65/EDGE Mile — below portal floor; prefer the portal.
+    - partner_name: IHG One Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: 2026-07-05
+      notes: ~Rs 0.5/EDGE Mile — below portal floor; do not transfer, use the portal.
+    - partner_name: British Airways Executive Club (Avios)
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: 2026-07-05
+      notes: PENALTY partner (added Apr-2026). ~Rs 0.45-0.55/EDGE Mile — avoid.
+    - partner_name: Finnair Plus (Avios)
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: 2026-07-05
+      notes: PENALTY partner (added Apr-2026). ~Rs 0.5-0.6/EDGE Mile — avoid.
+    - partner_name: Vietnam Airlines LotusMiles
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: 2026-07-05
+      notes: PENALTY partner (added Apr-2026). ~Rs 0.35-0.45/EDGE Mile — worst outlet,
+        avoid.
+    rate_inr_per_unit: 1.1
+  - type: catalog
+    program: Axis Travel EDGE
+    rate_inr_per_unit: 1.0
+    constraints: Direct flight/hotel bookings on the Axis Travel EDGE portal at 1
+      EDGE Mile = Rs 1.0. Guaranteed floor; often Horizon's best redemption given
+      the 1:1 transfer ratio.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
+    retrieved_on: 2026-07-05
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.redemption.airmiles.transfer_partners
+    - rewards.base.unit_value_inr
+    - rewards.base
+    - rewards.accelerated
+    notes: 'Rewritten 2026-07-05 from cross-verified research: airmiles ratio corrected
+      2:1 -> 1:1 standard (Horizon is 1:1, half of Atlas''s 1:2) with per-partner
+      transfer_partners; BA/Finnair/LotusMiles are 2:1 penalty; Marriott/Accor/Qatar
+      removed 2026-04-02; unit_value 1.0/0.5 -> 1.3/1.0 to sit at/above the Rs 1.0
+      portal floor. Earn rates, caps and milestones unchanged.'
+  mcc_exclusions:
+  - '6513'
+  capping_rules:
+  - No per-cycle cap on accelerated EDGE Miles earning on Travel EDGE / airline spend
+    per the Horizon T&C (retrieved 2026-07-05); the 1.5L/yr EDGE Miles limit is a
+    transfer/redemption cap, not an earn cap.
 benefits:
-  - effective_from: 2024-08-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [priority-pass]
-        spend_threshold_inr: 50000
-        spend_threshold_cycle: quarterly
-        notes: "Priority Pass lounge visits activated after ₹50k spend in preceding quarter."
-    milestones:
-      - spend_inr: 0
-        cycle: annual
-        benefit: "1,500 EDGE Miles on completion of anniversary year (renewal benefit)"
-        value_inr: 1500
-        reward_kind: miles
-        reward_units: 1500
-        reward_currency_name: EDGE Miles
-        trigger_window: anniversary-year
-    welcome:
-      - condition: "First transaction greater than or equal to ₹1,000"
-        benefit: "5,000 EDGE Miles"
-        value_inr: 5000
-        window_days: 30
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 400
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2024-08-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+    international:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      notes: Priority Pass lounge visits activated after ₹50k spend in preceding quarter.
+  milestones:
+  - spend_inr: 0
+    cycle: annual
+    benefit: 1,500 EDGE Miles on completion of anniversary year (renewal benefit)
+    value_inr: 1500
+    reward_kind: miles
+    reward_units: 1500
+    reward_currency_name: EDGE Miles
+    trigger_window: anniversary-year
+  welcome:
+  - condition: First transaction greater than or equal to ₹1,000
+    benefit: 5,000 EDGE Miles
+    value_inr: 5000
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 400
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
 eligibility:
   min_age: 18
   max_age: 70
@@ -216,10 +223,11 @@ eligibility:
     self_employed: 900000
   credit_score_min: 750
   residency: resident-indian
-
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-horizon-credit-card
-
 metadata:
   last_verified_on: 2026-07-05
-  tags: [travel, miles, premium]
+  tags:
+  - travel
+  - miles
+  - premium

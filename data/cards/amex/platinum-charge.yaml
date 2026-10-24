@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : American Express live product pages, americanexpress.com/in
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: amex-platinum-charge
 name: American Express Platinum Card (Charge)
 issuer: amex
@@ -18,166 +9,176 @@ co_brand: null
 status: active
 launched_on: 2001-01-01
 discontinued_on: null
-
-# NOTE: This is Amex's flagship charge card — no pre-set spending limit, and
-# the full outstanding balance is due each billing cycle (no revolve).
-# finance_charge_monthly_pct is 0 because the product has no revolving credit.
-
 fees:
-  - effective_from: 2001-01-01
-    effective_until: null
-    joining_fee_inr: 66000
-    annual_fee_inr: 66000
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 0
-    cash_advance_fee:
-      pct: 3.5
-      min_inr: 500
-    late_payment_slabs:
-      - {up_to_inr: 100, fee_inr: 0}
-      - {up_to_inr: "any", fee_inr: 1500}
-    gst_applicable: true
-    notes: "Charge card — no revolving credit. Full statement balance due each cycle; late/non-payment attracts flat delinquency fees."
-    source:
-      url: https://www.americanexpress.com/in/charge-cards/platinum-card/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: 2001-01-01
+  effective_until: null
+  joining_fee_inr: 66000
+  annual_fee_inr: 66000
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 0
+  cash_advance_fee:
+    pct: 3.5
+    min_inr: 500
+  late_payment_slabs:
+  - up_to_inr: 100
+    fee_inr: 0
+  - up_to_inr: any
+    fee_inr: 1500
+  gst_applicable: true
+  notes: Charge card — no revolving credit. Full statement balance due each cycle;
+    late/non-payment attracts flat delinquency fees.
+  source:
+    url: https://www.americanexpress.com/in/charge-cards/platinum-card/
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: medium
 rewards:
-  - effective_from: 2001-01-01
-    effective_until: null
-    currency: points
-    currency_name: Membership Rewards
-    base:
-      rate: 1
-      per_inr: 40
-      unit_value_inr: 0.55
-      unit_value_inr_realized: 0.45
-    exclusions:
-      - fuel
-      - wallet-loads
-      - insurance-premiums
-      - cash-advance
-      - utilities
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.35
-      - type: airmiles
-        program: Multiple (MR transfer)
-        ratio: "2:1"
-        constraints: "8 transfer partners; ratios are card-point : partner-unit. realized Rs 0.45 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.55/pt
-          - partner_name: Hilton Honors
-            partner_type: hotel
-            transfer_ratio: "1:0.9"
-            last_verified_on: '2026-07-05'
-            notes: 1:0.9 -> ~Rs 0.32/pt [below floor — avoid]
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.55/pt
-          - partner_name: Emirates Skywards
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt
-          - partner_name: Virgin Atlantic Flying Club
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt
-      - type: voucher
-        program: Amex gift vouchers
-        rate_inr_per_unit: 0.5
-    source:
-      url: https://www.americanexpress.com/in/charge-cards/platinum-card/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
+- effective_from: 2001-01-01
+  effective_until: null
+  currency: points
+  currency_name: Membership Rewards
+  base:
+    rate: 1
+    per_inr: 40
+    unit_value_inr: 0.55
+    unit_value_inr_realized: 0.45
+  exclusions:
+  - fuel
+  - wallet-loads
+  - insurance-premiums
+  - cash-advance
+  - utilities
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 0.35
+  - type: airmiles
+    program: Multiple (MR transfer)
+    ratio: '2:1'
+    constraints: '8 transfer partners; ratios are card-point : partner-unit. realized
+      Rs 0.45 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7
+      partners beat the floor. Full per-partner values below.'
+    transfer_partners:
+    - partner_name: Marriott Bonvoy
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 0.55/pt
+    - partner_name: Hilton Honors
+      partner_type: hotel
+      transfer_ratio: '1:0.9'
+      last_verified_on: '2026-07-05'
+      notes: 1:0.9 -> ~Rs 0.32/pt [below floor — avoid]
+    - partner_name: Singapore KrisFlyer
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.55/pt
+    - partner_name: Emirates Skywards
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.45/pt
+    - partner_name: British Airways Avios
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.50/pt
+    - partner_name: Qatar Privilege Club (Avios)
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.50/pt
+    - partner_name: Virgin Atlantic Flying Club
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.50/pt
+    - partner_name: Cathay Asia Miles
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.47/pt
+    rate_inr_per_unit: 0.55
+  - type: voucher
+    program: Amex gift vouchers
+    rate_inr_per_unit: 0.5
+  source:
+    url: https://www.americanexpress.com/in/charge-cards/platinum-card/
+    retrieved_on: '2026-07-05'
+    type: issuer-page
+    notes: 'Encoded 2026-07-05, full-visibility model: every transfer partner is listed
+      with its own ratio and Rs/point. No blended or averaged value. realized = the
+      guaranteed non-transfer floor; face = the single best documented transfer (ceiling).
+      See transfer_partners for the complete per-partner spread. Earn rates unchanged.'
 benefits:
-  - effective_from: 2024-04-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: 1
-        via: [dreamfolks, issuer-direct]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: 1
-        via: [priority-pass, issuer-direct]
-        notes: "Access to Amex Centurion Lounges globally plus Priority Pass network."
-    golf:
-      rounds_per_cycle: unlimited
-      cycle: monthly
-      lessons_per_cycle: unlimited
-    milestones:
-      - spend_inr: 2000000
-        cycle: annual
-        benefit: "Renewal benefit: vouchers up to ₹35,000 on ₹20,00,000 annual spend + renewal-fee payment"
-        value_inr: 35000
-        reward_kind: voucher
-        trigger_window: anniversary-year
-        is_repeatable: true
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome gift worth up to ₹60,000 (choice of Taj Hotels / Luxe Gift Card / Postcard Hotels & Resorts)"
-        value_inr: 60000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 100000000
-      - type: travel-medical
-        sum_insured_inr: 50000000
-      - type: purchase-protection
-        sum_insured_inr: 100000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 500
-      cycle: monthly
-    dining:
-      program: Amex Dining Partners / Taj Epicure
-      discount_pct: 25
-    concierge: true
-    other:
-      - name: Taj / Marriott Bonvoy elite status
-        description: Complimentary Taj Epicure + Marriott Bonvoy Gold + Hilton Honors Gold status.
-      - name: Fine Hotels + Resorts benefits
-        description: Complimentary breakfast, room upgrade, late checkout at 1,000+ luxury properties globally.
-    source:
-      url: https://www.americanexpress.com/in/charge-cards/platinum-card/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2024-04-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 1
+      via:
+      - dreamfolks
+      - issuer-direct
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 1
+      via:
+      - priority-pass
+      - issuer-direct
+      notes: Access to Amex Centurion Lounges globally plus Priority Pass network.
+  golf:
+    rounds_per_cycle: unlimited
+    cycle: monthly
+    lessons_per_cycle: unlimited
+  milestones:
+  - spend_inr: 2000000
+    cycle: annual
+    benefit: 'Renewal benefit: vouchers up to ₹35,000 on ₹20,00,000 annual spend +
+      renewal-fee payment'
+    value_inr: 35000
+    reward_kind: voucher
+    trigger_window: anniversary-year
+    is_repeatable: true
+  welcome:
+  - condition: Joining fee paid
+    benefit: Welcome gift worth up to ₹60,000 (choice of Taj Hotels / Luxe Gift Card
+      / Postcard Hotels & Resorts)
+    value_inr: 60000
+    window_days: 90
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 100000000
+  - type: travel-medical
+    sum_insured_inr: 50000000
+  - type: purchase-protection
+    sum_insured_inr: 100000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 500
+    cycle: monthly
+  dining:
+    program: Amex Dining Partners / Taj Epicure
+    discount_pct: 25
+  concierge: true
+  other:
+  - name: Taj / Marriott Bonvoy elite status
+    description: Complimentary Taj Epicure + Marriott Bonvoy Gold + Hilton Honors
+      Gold status.
+  - name: Fine Hotels + Resorts benefits
+    description: Complimentary breakfast, room upgrade, late checkout at 1,000+ luxury
+      properties globally.
+  source:
+    url: https://www.americanexpress.com/in/charge-cards/platinum-card/
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 18
   max_age: 70
@@ -186,11 +187,15 @@ eligibility:
     self_employed: 2500000
   credit_score_min: 780
   residency: resident-indian
-  notes: "Amex acceptance in India is narrower than Visa/Mastercard. Charge card — no pre-set spending limit but balance due in full each cycle."
-
+  notes: Amex acceptance in India is narrower than Visa/Mastercard. Charge card —
+    no pre-set spending limit but balance due in full each cycle.
 application:
   apply_url: https://www.americanexpress.com/in/charge-cards/platinum-card/
-
 metadata:
   last_verified_on: '2026-07-05'
-  tags: [super-premium, charge-card, amex, travel, invite-like]
+  tags:
+  - super-premium
+  - charge-card
+  - amex
+  - travel
+  - invite-like

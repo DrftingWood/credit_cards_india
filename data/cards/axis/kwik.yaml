@@ -11,12 +11,12 @@ id: axis-kwik
 name: Axis Bank Kwik Credit Card
 issuer: axis
 network: rupay
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2023-08-01
 discontinued_on: null
 
 fees:
@@ -27,7 +27,9 @@ fees:
     fee_waiver: null
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
@@ -39,7 +41,7 @@ fees:
       fields_verified:
         - fees.finance_charge_monthly_pct
         - fees.forex_markup_pct
-    notes: "Lifetime free card - zero joining and annual fees (confirmed Nil/Nil in Axis MITC). Forex 3.5%; finance charge 3.75%/mo (extended credit) per Axis MITC (eff 20 Dec 2024, KWIK listed at 55.55% p.a.). Instant virtual RuPay Credit Card on UPI."
+    notes: "Eligibility criteria not published on the product page; income & credit score indicative (aggregator consensus)."
 
 rewards:
   - effective_from: 2026-07-03
@@ -64,7 +66,8 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-    notes: "Earn 2 EDGE REWARD Points on every Rs 200 spent on domestic and international transactions."
+      confidence: high
+    notes: "Eligibility criteria not published on the product page; income & credit score indicative (aggregator consensus)."
 
     mcc_exclusions: ['6513']
 benefits:
@@ -82,17 +85,18 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
-    notes: "1% fuel surcharge waiver on fuel spends between Rs 400 and Rs 4,000, up to Rs 150 per month."
+      confidence: high
+    notes: "Eligibility criteria not published on the product page; income & credit score indicative (aggregator consensus)."
 
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: null
-    self_employed: null
-  credit_score_min: null
+    salaried: 240000
+    self_employed: 300000
+  credit_score_min: 700
   residency: resident-indian
-  notes: "Eligibility criteria not published on the product page -"
+  notes: "Eligibility criteria not published on the product page; income & credit score indicative (aggregator consensus)."
 
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card

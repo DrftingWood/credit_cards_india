@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-mmt-signature
 name: MakeMyTrip ICICI Bank Signature Credit Card
 issuer: icici
@@ -21,145 +12,153 @@ co_brand:
 status: on-hold
 launched_on: 2019-12-01
 discontinued_on: null
-
-# NOTE: ICICI is no longer accepting new applications for this card (per live
-# page 2026-07-03); existing cardholders retain benefits -> status: on-hold.
-
 fees:
-  - effective_from: 2019-12-01
-    effective_until: null
-    joining_fee_inr: 2500
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/icici/_shared/mitc_cc.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-
+- effective_from: 2019-12-01
+  effective_until: null
+  joining_fee_inr: 2500
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/_shared/mitc_cc.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
 rewards:
-  - effective_from: 2019-12-01
-    effective_until: null
-    currency: cashback
-    currency_name: myCash
-    base:
-      rate: 1.25
-      per_inr: 200
-      unit_value_inr: 1.0
-    accelerated:
-      - category: makemytrip-hotel-booking
-        canonical_categories: [travel]
-        multiplier: 3.2
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [makemytrip, goibibo]
-        notes: "4 myCash per ₹200 on hotel bookings."
-      - category: makemytrip-flight-booking
-        canonical_categories: [travel]
-        multiplier: 1.6
-        effective_rate: 2
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [makemytrip, goibibo]
-        notes: "2 myCash per ₹200 on flight bookings."
-      - category: international-spends
-        canonical_categories: [international]
-        multiplier: 1.2
-        effective_rate: 1.5
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "₹1.50 myCash per ₹200 on international spends outside MakeMyTrip."
-    exclusions:
-      - fuel
-      - emi
-    redemption:
-      - type: cashback-bank
-        program: MakeMyTrip myCash
-        rate_inr_per_unit: 1.0
-        constraints: "myCash redeemable on MakeMyTrip for hotel / flight / holiday bookings."
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
-    mcc_exclusions: ['6513']
+- effective_from: 2019-12-01
+  effective_until: null
+  currency: cashback
+  currency_name: myCash
+  base:
+    rate: 1.25
+    per_inr: 200
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: makemytrip-hotel-booking
+    canonical_categories:
+    - travel
+    multiplier: 3.2
+    effective_rate: 4
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+    merchants:
+    - makemytrip
+    - goibibo
+    notes: 4 myCash per ₹200 on hotel bookings.
+  - category: makemytrip-flight-booking
+    canonical_categories:
+    - travel
+    multiplier: 1.6
+    effective_rate: 2
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+    merchants:
+    - makemytrip
+    - goibibo
+    notes: 2 myCash per ₹200 on flight bookings.
+  - category: international-spends
+    canonical_categories:
+    - international
+    multiplier: 1.2
+    effective_rate: 1.5
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: ₹1.50 myCash per ₹200 on international spends outside MakeMyTrip.
+  exclusions:
+  - fuel
+  - emi
+  redemption:
+  - type: cashback-bank
+    program: MakeMyTrip myCash
+    rate_inr_per_unit: 1.0
+    constraints: myCash redeemable on MakeMyTrip for hotel / flight / holiday bookings.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+  mcc_exclusions:
+  - '6513'
 benefits:
-  - effective_from: 2019-12-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: 1
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-    milestones:
-      - spend_inr: 250000
-        cycle: annual
-        benefit: "1,100 myCash on ₹2.5 lakh spend"
-        reward_kind: cashback
-        reward_units: 1100
-        reward_currency_name: myCash
-        trigger_window: anniversary-year
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "4,000 myCash on ₹5 lakh spend"
-        reward_kind: cashback
-        reward_units: 4000
-        reward_currency_name: myCash
-        trigger_window: anniversary-year
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "₹1,500 myCash (Joining Benefit)"
-        value_inr: 1500
-        window_days: 10
-      - benefit: "MakeMyTrip holiday voucher (max discount ₹2,500 on holiday bookings)"
-        value_inr: 2500
-      - condition: "Joining fee paid"
-        benefit: "Complimentary MMTBLACK Exclusive membership (includes ₹20,000 holiday voucher)"
-    movies:
-      type: discount
-      partner: BookMyShow / INOX
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 150
-      notes: "25% off up to ₹150 on min two tickets per transaction, up to twice a month."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-      notes: "At HPCL pumps on ICICI Bank POS machines."
-    concierge: false
-    other:
-      - name: MMTBLACK Exclusive Tier
-        description: Complimentary MMTBLACK Exclusive tier membership (top tier of the new MMTBLACK programme).
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2019-12-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+    international:
+      visits_per_cycle: 1
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+  milestones:
+  - spend_inr: 250000
+    cycle: annual
+    benefit: 1,100 myCash on ₹2.5 lakh spend
+    reward_kind: cashback
+    reward_units: 1100
+    reward_currency_name: myCash
+    trigger_window: anniversary-year
+    value_inr: 1100
+  - spend_inr: 500000
+    cycle: annual
+    benefit: 4,000 myCash on ₹5 lakh spend
+    reward_kind: cashback
+    reward_units: 4000
+    reward_currency_name: myCash
+    trigger_window: anniversary-year
+    value_inr: 4000
+  welcome:
+  - condition: Joining fee paid
+    benefit: ₹1,500 myCash (Joining Benefit)
+    value_inr: 1500
+    window_days: 10
+  - benefit: MakeMyTrip holiday voucher (max discount ₹2,500 on holiday bookings)
+    value_inr: 2500
+  - condition: Joining fee paid
+    benefit: Complimentary MMTBLACK Exclusive membership (includes ₹20,000 holiday
+      voucher)
+  movies:
+    type: discount
+    partner: BookMyShow / INOX
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 150
+    notes: 25% off up to ₹150 on min two tickets per transaction, up to twice a month.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: null
+    cycle: monthly
+    notes: At HPCL pumps on ICICI Bank POS machines.
+  concierge: false
+  other:
+  - name: MMTBLACK Exclusive Tier
+    description: Complimentary MMTBLACK Exclusive tier membership (top tier of the
+      new MMTBLACK programme).
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 65
@@ -168,10 +167,13 @@ eligibility:
     self_employed: 900000
   credit_score_min: 750
   residency: resident-indian
-
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/signature-credit-card
-
 metadata:
   last_verified_on: 2026-07-03
-  tags: [co-branded, travel, mmt, premium, cashback]
+  tags:
+  - co-branded
+  - travel
+  - mmt
+  - premium
+  - cashback

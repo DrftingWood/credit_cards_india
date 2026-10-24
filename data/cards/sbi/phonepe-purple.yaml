@@ -11,14 +11,14 @@ id: sbi-phonepe-purple
 name: "PhonePe SBI Card Purple"
 issuer: sbi
 network: rupay
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
   partner: "PhonePe"
   category: other
 status: active
-launched_on: null
+launched_on: 2025-07-22
 discontinued_on: null
 
 fees:
@@ -33,13 +33,16 @@ fees:
       conditions: "Annual fee reversal on spends of Rs. 1 lakh or more in the previous membership year."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     supplementary_card_fee_inr: 0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
     notes: "Annual Fee Rs. 499 + taxes; Renewal Fee Rs. 499 + taxes from second year onwards; Add-on card fee Nil. RuPay card usable on UPI."
 
 rewards:
@@ -112,6 +115,7 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
@@ -127,5 +131,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: 2026-10-24
   tags: [points, co-brand, entry, upi]

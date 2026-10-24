@@ -11,7 +11,7 @@ id: sbi-titan
 name: Titan SBI Card
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: signature
 tier: premium
 card_type: credit
 co_brand:
@@ -19,7 +19,7 @@ co_brand:
   category: retail
   partner_website: https://www.titan.co.in
 status: active
-launched_on: null
+launched_on: 2024-03-21
 discontinued_on: null
 
 fees:
@@ -34,12 +34,21 @@ fees:
       conditions: "Renewal fee reversed (spend-based reversal) on annual spends of ₹3,00,000 (second year onwards)."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
 
 rewards:
   - effective_from: 2026-07-03
@@ -114,15 +123,21 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 65
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
   residency: resident-indian
+  notes: "Tier-standard premium income requirement (~₹12L p.a.) per aggregator consensus."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [co-branded, retail, titan, premium, points]

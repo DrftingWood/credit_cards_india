@@ -11,7 +11,7 @@ id: sbi-flipkart
 name: Flipkart SBI Card
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: platinum
 tier: mid
 card_type: credit
 co_brand:
@@ -19,7 +19,7 @@ co_brand:
   category: ecommerce
   partner_website: https://www.flipkart.com
 status: active
-launched_on: null
+launched_on: 2025-08-26
 discontinued_on: null
 
 fees:
@@ -34,12 +34,16 @@ fees:
       conditions: "Renewal fee reversed on annual spends of ₹3,50,000 in the previous year (second year onwards)."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2026-07-03
@@ -49,7 +53,8 @@ rewards:
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 1
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
       cap_unit: cashback-inr
     accelerated:
       - category: myntra
@@ -92,7 +97,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
       retrieved_on: '2026-07-05'
       type: issuer-page
-
+      confidence: high
       notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
     mcc_exclusions: ['6513']
 benefits:
@@ -120,15 +125,21 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 360000
+  credit_score_min: 720
   residency: resident-indian
+  notes: "Income and credit score requirements based on aggregator/tier consensus (not published on product page)."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-24'
   tags: [co-branded, ecommerce, flipkart, mid-tier, cashback]

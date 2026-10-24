@@ -101,7 +101,7 @@ const EXPECTED: Record<string, [number, number]> = {
   "bob-irctc": [0.18, 0.25],
   "hdfc-irctc-hdfc": [1, 1], "rbl-irctc": [1, 1], "sbi-irctc-platinum": [1, 1], "sbi-irctc-premier": [1, 1],
   "hdfc-marriott-bonvoy": [0.55, 0.85],
-  "hdfc-tata-neu-infinity": [1, 1], "hdfc-tata-neu-plus": [1, 1], "sbi-tata-neu-infinity": [1, 1], "sbi-tata-neu-plus": [1, 1],
+  "hdfc-tata-neu-infinity": [1, 1], "hdfc-tata-neu-infinity-rupay": [1, 1], "hdfc-tata-neu-plus": [1, 1], "hdfc-tata-neu-plus-rupay": [1, 1], "sbi-tata-neu-infinity": [1, 1], "sbi-tata-neu-plus": [1, 1],
   "sbi-air-india-platinum": [0.55, 0.7], "sbi-air-india-signature": [0.55, 0.7],
 };
 

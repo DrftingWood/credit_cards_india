@@ -1,16 +1,7 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: bob-scapia
 name: BOBCARD Scapia Credit Card
 issuer: bob
-network: visa  # RuPay variant also exists (5% on all incl. UPI); Visa variant modelled here
+network: visa
 network_tier: signature
 tier: mid
 card_type: credit
@@ -21,107 +12,120 @@ co_brand:
 status: active
 launched_on: 2024-01-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free. Available in Visa and RuPay variants; RuPay gives 5% on all spends incl. UPI (min ₹500)."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2024-01-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 0.0
+  finance_charge_monthly_pct: 3.49
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Lifetime-free. Available in Visa and RuPay variants; RuPay gives 5% on all
+    spends incl. UPI (min ₹500).
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Scapia Coins
-    base:
-      rate: 10
-      per_inr: 100
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: upi-spends
-        canonical_categories:
-          - other
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: statement
-        notes: "5 Scapia Coins per Rs100 (~1% value) on RuPay UPI spends (min Rs500/txn on RuPay variant)."
-      - category: scapia-app-travel
-        canonical_categories: [travel]
-        multiplier: 2
-        effective_rate: 20
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: statement
-        merchants: [scapia-app]
-        channel:
-          class: cobrand-merchant
-          merchants: [scapia-app]
-        notes: "20 Scapia Coins per Rs100 (~4% value) on travel (flights/stays/visas/trains/buses) via the Scapia app. Base 10 coins/Rs100 (~2%) on other eligible spends."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-      - education
-      - government
-      - gift-cards
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: Scapia Coins
-        rate_inr_per_unit: 0.2
-        constraints: "1 Scapia Coin = Rs 0.20 (5 coins = Rs 1); redeemable ONLY on Scapia-app travel, up to 100% of a booking. Closed-loop."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: "Rebuilt 2026-07-05: 1 Scapia Coin = Rs 0.20 (was wrongly Rs 1.0). '10%/20%/5% coins' are coin COUNTS = ~2%/4%/1% real value. Aligned with Federal Scapia."
-    capping_rules:
-      - "Accelerated Scapia-app travel earning is uncapped per Scapia's own blog + 2026 reviews (retrieved 2026-07-05): 5 Scapia Coins = Rs1 (Rs0.20/coin), up to 100% of an app booking payable via coins, coins valid 36 months. Realized approximately equals face at the coin level; the real value-erosion vector is Scapia-app fare variance vs open-market prices, not a coin markup or earn cap. (Utility/telecom/cable earning is separately capped at Rs20,000 combined spend/month.)"
+- effective_from: 2024-01-01
+  effective_until: null
+  currency: cashback
+  currency_name: Scapia Coins
+  base:
+    rate: 10
+    per_inr: 100
+    unit_value_inr: 0.2
+    unit_value_inr_realized: 0.2
+  accelerated:
+  - category: upi-spends
+    canonical_categories:
+    - other
+    multiplier: 1
+    effective_rate: 5
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: 5 Scapia Coins per Rs100 (~1% value) on RuPay UPI spends (min Rs500/txn
+      on RuPay variant).
+  - category: scapia-app-travel
+    canonical_categories:
+    - travel
+    multiplier: 2
+    effective_rate: 20
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: statement
+    merchants:
+    - scapia-app
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - scapia-app
+    notes: 20 Scapia Coins per Rs100 (~4% value) on travel (flights/stays/visas/trains/buses)
+      via the Scapia app. Base 10 coins/Rs100 (~2%) on other eligible spends.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - utilities
+  - education
+  - government
+  - gift-cards
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    program: Scapia Coins
+    rate_inr_per_unit: 0.2
+    constraints: 1 Scapia Coin = Rs 0.20 (5 coins = Rs 1); redeemable ONLY on Scapia-app
+      travel, up to 100% of a booking. Closed-loop.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
+    retrieved_on: '2026-07-05'
+    type: issuer-page
+    confidence: high
+    notes: 'Rebuilt 2026-07-05: 1 Scapia Coin = Rs 0.20 (was wrongly Rs 1.0). ''10%/20%/5%
+      coins'' are coin COUNTS = ~2%/4%/1% real value. Aligned with Federal Scapia.'
+  capping_rules:
+  - 'Accelerated Scapia-app travel earning is uncapped per Scapia''s own blog + 2026
+    reviews (retrieved 2026-07-05): 5 Scapia Coins = Rs1 (Rs0.20/coin), up to 100%
+    of an app booking payable via coins, coins valid 36 months. Realized approximately
+    equals face at the coin level; the real value-erosion vector is Scapia-app fare
+    variance vs open-market prices, not a coin markup or earn cap. (Utility/telecom/cable
+    earning is separately capped at Rs20,000 combined spend/month.)'
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: monthly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-        spend_threshold_inr: 20000
-        spend_threshold_cycle: monthly
-        notes: "Unlimited domestic lounge access on ₹20,000 prior-month spend; airport privileges up to ₹1,000."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
+- effective_from: 2024-01-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
       cycle: monthly
-    concierge: false
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      guests_per_visit: 0
+      via:
+      - visa
+      - dreamfolks
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      notes: Unlimited domestic lounge access on ₹20,000 prior-month spend; airport
+        privileges up to ₹1,000.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: monthly
+  concierge: false
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 25
   max_age: 60
@@ -130,10 +134,14 @@ eligibility:
     self_employed: 600000
   credit_score_min: 720
   residency: resident-indian
-
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card
-
 metadata:
   last_verified_on: '2026-07-05'
-  tags: [mid, points, travel, lifetime-free, lounge, co-brand]
+  tags:
+  - mid
+  - points
+  - travel
+  - lifetime-free
+  - lounge
+  - co-brand

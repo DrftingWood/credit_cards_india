@@ -11,7 +11,7 @@ id: sbi-reliance
 name: Reliance SBI Card
 issuer: sbi
 network: rupay
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
@@ -19,7 +19,7 @@ co_brand:
   category: retail
   partner_website: https://www.reliancedigital.in
 status: active
-launched_on: null
+launched_on: 2023-10-31
 discontinued_on: null
 
 fees:
@@ -34,12 +34,21 @@ fees:
       conditions: "Renewal fee reversed on annual spends of ₹1,00,000 in the previous year (second year onwards)."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
 
 rewards:
   - effective_from: 2026-07-03
@@ -88,6 +97,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
     mcc_exclusions: ['6513']
 benefits:
@@ -133,15 +143,21 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
   residency: resident-indian
+  notes: "Tier-standard entry income requirement (~₹3L p.a.) per aggregator consensus."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [co-branded, retail, reliance, entry-tier, points]

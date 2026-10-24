@@ -1,0 +1,98 @@
+id: federal-wave
+name: Federal Bank RuPay Wave Credit Card
+issuer: federal
+network: rupay
+network_tier: classic
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.49
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.federalbank.co.in/wave-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Lifetime Free virtual RuPay UPI floater credit card."
+
+rewards:
+  - effective_from: 2024-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: FedDelight
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.federalbank.co.in/wave-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "1 Reward Point per ₹200 spent."
+
+benefits:
+  - effective_from: 2024-01-01
+    effective_until: null
+    welcome:
+      - condition: "UPI transaction of ₹150+ within 30 days"
+        benefit: "10% cashback up to ₹100"
+        value_inr: 100
+        window_days: 30
+    milestones:
+      - spend_inr: 50000
+        cycle: quarterly
+        benefit: "1,000 Bonus Reward Points on quarterly spend of ₹50,000"
+        value_inr: 250
+        reward_kind: points
+        reward_units: 1000
+        reward_currency_name: Reward Points
+        is_repeatable: true
+    fuel_surcharge_waiver: null
+    concierge: false
+    source:
+      url: https://www.federalbank.co.in/wave-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.federalbank.co.in/wave-credit-card
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [entry, upi, rupay, virtual, ltf, floater]

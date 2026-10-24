@@ -1,0 +1,110 @@
+id: hdfc-biz-grow
+name: HDFC Bank BizGrow Credit Card
+issuer: hdfc
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-03-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-03-01
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual fee waived on spends of ₹1 Lakh or more in an anniversary year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/business-credit-cards/biz-grow
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining ₹500, annual ₹500, fee waiver on ₹1L annual spend."
+
+rewards:
+  - effective_from: 2024-03-01
+    effective_until: null
+    currency: points
+    currency_name: CashPoints
+    base:
+      rate: 2
+      per_inr: 150
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.25
+    accelerated:
+      - category: business-bills-tax
+        canonical_categories: [utilities, groceries]
+        multiplier: 5
+        effective_rate: 10
+        cap_per_cycle: 1000
+        cap_unit: points
+        cycle: monthly
+        notes: "Accelerated CashPoints on bill payments, tax, and groceries via PayZapp/business merchants."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: CashPoints Statement Credit
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/business-credit-cards/biz-grow
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "2 CashPoints per ₹150 base spend; 1 CashPoint = ₹0.25."
+
+benefits:
+  - effective_from: 2024-03-01
+    effective_until: null
+    milestones:
+      - spend_inr: 100000
+        cycle: quarterly
+        benefit: "2,000 Bonus CashPoints on quarterly spend of ₹1 Lakh"
+        value_inr: 500
+        reward_kind: points
+        reward_units: 2000
+        reward_currency_name: CashPoints
+        is_repeatable: true
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/business-credit-cards/biz-grow
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 400000
+    self_employed: 400000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.hdfcbank.com/personal/pay/cards/business-credit-cards/biz-grow
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [entry, business, commercial, cashpoints]

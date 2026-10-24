@@ -11,12 +11,12 @@ id: axis-privilege-easy
 name: Axis Bank Privilege Easy Credit Card
 issuer: axis
 network: mastercard # value chart references lounges affiliated with Mastercard
-network_tier: null
+network_tier: world
 tier: mid
 card_type: secured
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2018-01-01
 discontinued_on: null
 
 fees:
@@ -73,6 +73,7 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
     mcc_exclusions: ['6513']
 benefits:
@@ -117,14 +118,15 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/privilege-easy-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
-  credit_score_min: null
+    salaried: 0
+    self_employed: 0
+  credit_score_min: 300
   residency: resident-indian
   notes: "Fixed Deposit backed (secured). Minimum FD ₹65,000, maximum ₹25,00,000. Guaranteed approval. Not issued against Tax Saver FDs, Flexi/auto-sweep FDs, or FDs of HUFs/societies/trusts/companies. Minors not eligible."
 

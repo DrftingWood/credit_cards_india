@@ -1,0 +1,109 @@
+id: cbi-rupay-select
+name: Central Bank of India RuPay Select Credit Card
+issuer: cbi
+network: rupay
+network_tier: select
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2022-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 500
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual fee waived on spending ₹1,00,000 or more in the preceding anniversary year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 2.25
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 200
+    gst_applicable: true
+    source:
+      url: https://www.centralbankofindia.co.in/en/credit-cards
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining ₹0, annual ₹500, waiver on ₹1,00,000 spend."
+
+rewards:
+  - effective_from: 2022-01-01
+    effective_until: null
+    currency: points
+    currency_name: Anmol Rewardz
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: Central Bank Anmol Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.centralbankofindia.co.in/en/credit-cards
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "2 Anmol Rewardz points per ₹100 spent."
+
+benefits:
+  - effective_from: 2022-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [rupay]
+        notes: "2 complimentary domestic airport lounge visits per calendar quarter via RuPay Select."
+      international:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [rupay]
+        notes: "2 complimentary international airport lounge visits per calendar year."
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 1000000
+        conditions: "Accidental insurance cover worth ₹10,00,000."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 3000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.centralbankofindia.co.in/en/credit-cards
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.centralbankofindia.co.in/en/credit-cards
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [psu, rupay, select, lounge, cbi, mid]

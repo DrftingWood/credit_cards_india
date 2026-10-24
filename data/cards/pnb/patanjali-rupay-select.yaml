@@ -1,0 +1,123 @@
+id: pnb-patanjali-rupay-select
+name: PNB Patanjali RuPay Select Credit Card
+issuer: pnb
+network: rupay
+network_tier: select
+tier: mid
+card_type: credit
+co_brand:
+  partner: Patanjali
+  category: retail
+status: active
+launched_on: 2022-02-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-02-01
+    effective_until: null
+    joining_fee_inr: 500
+    annual_fee_inr: 750
+    fee_waiver:
+      spend_inr: 0
+      cycle: annual
+      conditions: "Annual fee waived on using the card at least once in each quarter of the preceding year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 2.95
+    cash_advance_fee:
+      pct: 3.0
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://creditcard.pnb.bank.in/types12.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining ₹500, annual ₹750, waived on 1 transaction per quarter."
+
+rewards:
+  - effective_from: 2022-02-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 150
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.18
+    accelerated:
+      - category: patanjali-stores
+        canonical_categories: [groceries]
+        multiplier: 1
+        effective_rate: 2
+        cap_per_cycle: 250
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "2% cashback on transactions above ₹2,500 at Patanjali stores, max ₹50 per transaction."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: PNB Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://creditcard.pnb.bank.in/types12.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "2 Reward Points per ₹150 spend; 2% cashback at Patanjali stores."
+
+benefits:
+  - effective_from: 2022-02-01
+    effective_until: null
+    welcome:
+      - condition: "Card activation on first retail usage"
+        benefit: "300 Reward Points"
+        value_inr: 75
+        window_days: 90
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [rupay]
+      international:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [rupay]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 150
+      cycle: monthly
+    insurance:
+      - type: personal-accident
+        sum_insured_inr: 1000000
+        conditions: "Accidental death and personal permanent total disability cover."
+    concierge: false
+    source:
+      url: https://creditcard.pnb.bank.in/types12.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://creditcard.pnb.bank.in/types12.html
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [co-branded, patanjali, rupay-select, grocery, cashback, mid]

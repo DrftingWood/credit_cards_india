@@ -1,0 +1,133 @@
+id: dbs-bfl-10x
+name: Bajaj Finserv DBS Bank 10X Rewards SuperCard
+issuer: dbs
+network: visa
+network_tier: signature
+tier: mid
+card_type: credit
+co_brand:
+  partner: Bajaj Finserv
+  category: retail
+status: active
+launched_on: 2022-04-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-04-01
+    effective_until: null
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual fee waived on spending ₹1,00,000 or more in the preceding anniversary year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.dbs.com/in/personal/cards/credit-cards/bajaj-finserv-dbs-bank-10x-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining fee ₹999, annual fee ₹999, waiver on ₹1,00,000 annual spend."
+
+rewards:
+  - effective_from: 2022-04-01
+    effective_until: null
+    currency: points
+    currency_name: Cash Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.20
+      unit_value_inr_realized: 0.20
+    accelerated:
+      - category: online-spends
+        canonical_categories: [online]
+        multiplier: 2
+        effective_rate: 4
+        cap_per_cycle: unlimited
+        cap_unit: points
+        cycle: monthly
+        notes: "4 Cash Points per ₹100 on all online spends."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - cash-advance
+    mcc_exclusions: ['6513', '6540']
+    redemption:
+      - type: catalog
+        program: DBS Card+ Rewards
+        rate_inr_per_unit: 0.20
+      - type: statement-credit
+        program: DBS Card+ Cashback
+        rate_inr_per_unit: 0.20
+    source:
+      url: https://www.dbs.com/in/personal/cards/credit-cards/bajaj-finserv-dbs-bank-10x-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "2 CP/₹100 offline, 4 CP/₹100 online, 1 CP = ₹0.20."
+
+benefits:
+  - effective_from: 2022-04-01
+    effective_until: null
+    welcome:
+      - condition: "Make first purchase within 30 days and pay joining fee"
+        benefit: "4,000 Cash Points"
+        value_inr: 800
+        window_days: 30
+    milestones:
+      - spend_inr: 20000
+        cycle: monthly
+        benefit: "10X Cash Points milestone accelerator on monthly spends exceeding ₹20,000 (up to 2,000 bonus Cash Points/month)"
+        value_inr: 400
+        reward_kind: points
+        reward_units: 2000
+        reward_currency_name: Cash Points
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+        notes: "1 complimentary domestic airport lounge visit per calendar quarter."
+    movies:
+      type: discount
+      partner: BookMyShow
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 200
+      notes: "Buy 1 Get 1 free or up to ₹200 off once a month on BookMyShow."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 150
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.dbs.com/in/personal/cards/credit-cards/bajaj-finserv-dbs-bank-10x-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 450000
+    self_employed: 450000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.dbs.com/in/personal/cards/credit-cards/bajaj-finserv-dbs-bank-10x-credit-card
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [co-branded, bajaj-finserv, supercard, dbs, lounge, mid]

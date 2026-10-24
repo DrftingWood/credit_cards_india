@@ -11,7 +11,7 @@ id: axis-shoppers-stop
 name: Axis Bank Shoppers Stop Credit Card
 issuer: axis
 network: visa
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
@@ -19,7 +19,7 @@ co_brand:
   category: retail
   partner_website: https://www.shoppersstop.com
 status: active
-launched_on: null
+launched_on: 2024-04-16
 discontinued_on: null
 
 fees:
@@ -128,6 +128,7 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-shoppers-stop-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18

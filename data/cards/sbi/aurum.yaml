@@ -145,6 +145,7 @@ rewards:
       url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tandc-aurum-reward-portal.pdf
       retrieved_on: 2026-10-20
       type: issuer-pdf
+      confidence: high
       notes: "AURUM rewards T&C (read 2026-10-20): 'W.e.f. 1 Dec 2024, accrual of Reward Points on spends done on Digital Gaming Platforms/Merchants with AURUM will be discontinued' (MCC 5816/7993/7994); base 4 RP per Rs 100, 1 RP = Rs 0.25. Replaces a Business Standard citation. The government exclusion and utility fee lines were in that article; the utility fee is confirmed by the SBI Card MITC."
 
     mcc_exclusions: ['6513']
@@ -196,21 +197,22 @@ benefits:
       url: https://cardmaven.in/sbi-aurum-credit-card/
       retrieved_on: 2026-06-12
       type: aggregator
+      confidence: medium
       notes: "2026-06 corrections: domestic lounge is 4/quarter not unlimited; welcome is 40,000 points (med confidence); milestones and ₹12L fee-reversal added; Club Marriott membership also bundled (not modelled)."
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
+    salaried: 4000000
+    self_employed: 4000000
   credit_score_min: 780
   residency: resident-indian
-  notes: "Invite-only to SBI Card's top-tier customers."
+  notes: "Invite-only to SBI Card's top-tier customers; ~₹40L annual income threshold per aggregator consensus."
 
 application:
   apply_url: https://www.aurumcreditcard.com/
 
 metadata:
-  last_verified_on: 2026-10-20
+  last_verified_on: 2026-10-24
   tags: [invite-only, super-premium, lifestyle, points]

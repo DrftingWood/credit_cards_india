@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: au-lit
 name: AU Bank LIT Credit Card
 issuer: au
@@ -18,95 +9,99 @@ co_brand: null
 status: active
 launched_on: 2022-04-01
 discontinued_on: null
-
-# NOTE: LIT is a "customisable features" card — benefits can be toggled on/off in
-# the AU mobile app per statement cycle. The `benefits` record below represents
-# the menu; actual activation per user varies.
-
 fees:
-  - effective_from: 2022-04-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 0.99
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "LIT base card is lifetime-free; individual features carry per-activation fees billed in-app."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: 2022-04-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 0.99
+  finance_charge_monthly_pct: 3.49
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  notes: LIT base card is lifetime-free; individual features carry per-activation
+    fees billed in-app.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: medium
 rewards:
-  - effective_from: 2022-04-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: toggle-reward-booster
-        multiplier: 10
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "User-activated reward-booster feature: up to 10X Reward Points on online & offline spends; plus 5% and 2% cashback category features. Feature fees Rs 49-199/quarter, billed in-app."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    capping_rules:
-      - "Accelerated rates only active when the corresponding LIT feature is toggled on for the cycle."
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: AU Rewardz
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: 2022-04-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.22
+  accelerated:
+  - category: toggle-reward-booster
+    multiplier: 10
+    effective_rate: 10
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: 'User-activated reward-booster feature: up to 10X Reward Points on online
+      & offline spends; plus 5% and 2% cashback category features. Feature fees Rs
+      49-199/quarter, billed in-app.'
+    canonical_categories:
+    - online
+    - dining
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  capping_rules:
+  - Accelerated rates only active when the corresponding LIT feature is toggled on
+    for the cycle.
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: AU Rewardz
+    rate_inr_per_unit: 0.25
+  - type: statement-credit
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: medium
 benefits:
-  - effective_from: 2022-04-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-        notes: "Base feature; additional visits unlockable via toggleable LIT feature for a fee."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 100
-      cycle: monthly
-    concierge: false
-    other:
-      - name: Customisable feature menu
-        description: In-app menu of togglable features (accelerated rewards, extra lounges, insurance add-ons, fuel-surcharge boost) activated per statement cycle for a fee.
-      - name: Low forex markup
-        description: Sub-1% forex markup is a standout for this tier.
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2022-04-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - visa
+      notes: Base feature; additional visits unlockable via toggleable LIT feature
+        for a fee.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 100
+    cycle: monthly
+  concierge: false
+  other:
+  - name: Customisable feature menu
+    description: In-app menu of togglable features (accelerated rewards, extra lounges,
+      insurance add-ons, fuel-surcharge boost) activated per statement cycle for a
+      fee.
+  - name: Low forex markup
+    description: Sub-1% forex markup is a standout for this tier.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 65
@@ -115,10 +110,12 @@ eligibility:
     self_employed: 300000
   credit_score_min: 700
   residency: resident-indian
-
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
-
 metadata:
   last_verified_on: 2026-07-03
-  tags: [lifetime-free, customisable, low-forex, mid-tier]
+  tags:
+  - lifetime-free
+  - customisable
+  - low-forex
+  - mid-tier

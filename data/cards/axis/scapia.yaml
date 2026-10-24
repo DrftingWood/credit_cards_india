@@ -1,0 +1,146 @@
+id: axis-scapia
+name: Scapia Axis Bank Credit Card
+issuer: axis
+network: mastercard
+network_tier: world
+tier: mid
+card_type: credit
+co_brand:
+  partner: Scapia
+  category: travel-agency
+  partner_website: https://www.scapia.cards
+status: active
+launched_on: 2026-09-01
+discontinued_on: null
+fees:
+- effective_from: 2026-09-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 0.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Lifetime-free card (Rs. 0 joining and annual fee) with zero forex markup.
+    Issued on Mastercard and RuPay (UPI-enabled) networks.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/scapia-axis-bank-credit-card
+    retrieved_on: 2026-10-24
+    type: issuer-page
+    confidence: high
+rewards:
+- effective_from: 2026-09-01
+  effective_until: null
+  currency: cashback
+  currency_name: Scapia Coins
+  redemption_scope: closed-loop
+  ecosystem_label: Scapia travel
+  base:
+    rate: 10
+    per_inr: 100
+    unit_value_inr: 0.2
+    unit_value_inr_realized: 0.2
+  accelerated:
+  - category: scapia-app-travel
+    canonical_categories:
+    - travel
+    multiplier: 2
+    effective_rate: 20
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: statement
+    merchants:
+    - scapia-app
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - scapia-app
+    notes: 20% Scapia Coins (20 Coins per Rs. 100 = 4% value at Rs. 0.20/Coin) on
+      travel bookings (flights, hotels, buses, trains, visas) via the Scapia app.
+      Base is 10% Scapia Coins (10 Coins per Rs. 100 = 2% value) on eligible everyday
+      and UPI spends.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - utilities
+  - education
+  - government
+  - gift-cards
+  mcc_exclusions:
+  - '6513'
+  capping_rules:
+  - 5 Scapia Coins = Re. 1 (Rs. 0.20 per Coin); redeemable up to 100% of travel bookings
+    on the Scapia app (flights, hotels, trains, buses). Coins are valid for 36 months.
+  - Accelerated 20% Scapia-app travel earning is uncapped; utility/telecom/cable earning
+    is capped at Rs. 20,000 combined spend per statement cycle.
+  redemption:
+  - type: voucher
+    program: Scapia travel
+    rate_inr_per_unit: 0.2
+    constraints: 1 Scapia Coin = Rs. 0.20 (5 Coins = Re. 1); redeemable exclusively
+      on the Scapia app for flights, hotels, buses, and trains up to 100% of booking
+      value.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/scapia-axis-bank-credit-card
+    retrieved_on: 2026-10-24
+    type: issuer-page
+    confidence: high
+    notes: 'Aligned with Federal Scapia and BOBCARD Scapia coin model: 5 Scapia Coins
+      = Re. 1 (unit_value_inr: 0.20), 10 Coins/Rs. 100 base (2%), 20 Coins/Rs. 100
+      on Scapia app bookings (4%).'
+benefits:
+- effective_from: 2026-09-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: monthly
+      guests_per_visit: 0
+      via:
+      - mastercard
+      - rupay
+      spend_threshold_inr: 10000
+      spend_threshold_cycle: monthly
+      notes: Unlimited domestic airport lounge access unlocked on Rs. 10,000 monthly
+        card spend (alongside airport dining/shopping/spa privileges on the Scapia
+        app).
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 500
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/scapia-axis-bank-credit-card
+    retrieved_on: 2026-10-24
+    type: issuer-page
+    confidence: high
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 360000
+  credit_score_min: 720
+  residency: resident-indian
+  notes: Digital onboarding via the Scapia mobile app; issued by Axis Bank on Mastercard
+    and RuPay networks.
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/scapia-axis-bank-credit-card
+metadata:
+  last_verified_on: 2026-10-24
+  tags:
+  - lifetime-free
+  - co-branded
+  - fintech
+  - travel
+  - zero-forex
+  - lounge
+  - upi

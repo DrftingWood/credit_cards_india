@@ -65,6 +65,7 @@ rewards:
         canonical_categories: [travel]
         multiplier: 1
         effective_rate: 10
+        effective_per_inr: 100
         card_attributable_rate: 10
         card_attributable_per_inr: 100
         stacks_with_program: false
@@ -142,19 +143,21 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 720
   residency: resident-indian
+  notes: "Income requirement based on aggregator/tier consensus (not published on product page)."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-24'
   tags: [co-branded, railway, irctc, rupay, entry]

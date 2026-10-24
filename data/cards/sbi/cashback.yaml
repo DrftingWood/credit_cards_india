@@ -54,6 +54,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
       # 1% offline earn is ALSO capped at Rs 2,000/cycle; with the 5% online cap
       # that puts a hard Rs 4,000/cycle ceiling on the whole card (1 Apr 2026).
       cap_per_cycle: 2000
@@ -104,7 +105,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
       retrieved_on: '2026-07-05'
       type: issuer-page
-
+      confidence: high
       notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
     # 1 Apr 2026 additions: digital gaming (7993/7994/5816), tolls (4784),
     # government (9222/9311/9402). 6513 = real estate (pre-existing).
@@ -137,15 +138,15 @@ eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 750
   residency: resident-indian
-  notes: "Specific income threshold not published; internal underwriting applies."
+  notes: "Specific income threshold not published; ₹6L annual income reflects aggregator/tier consensus."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
 
 metadata:
-  last_verified_on: '2026-07-28'
+  last_verified_on: '2026-10-24'
   tags: [cashback, online-spend, mid-tier]

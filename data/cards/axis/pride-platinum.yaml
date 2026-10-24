@@ -11,12 +11,12 @@ id: axis-pride-platinum
 name: Axis Bank Pride Platinum Credit Card
 issuer: axis
 network: visa
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2016-01-01
 discontinued_on: null
 
 fees:
@@ -72,6 +72,7 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
     mcc_exclusions: ['6513']
 benefits:
@@ -101,6 +102,7 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/pride-platinum-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18

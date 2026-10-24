@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-reserve
 name: Axis Bank Reserve Credit Card
 issuer: axis
@@ -18,186 +9,193 @@ co_brand: null
 status: active
 launched_on: 2015-09-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2015-09-01
-    effective_until: null
-    joining_fee_inr: 50000
-    annual_fee_inr: 50000
-    fee_waiver:
-      spend_inr: 2500000
-      cycle: annual
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.0
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/axis/_shared/mitc-credit-cards.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-
+- effective_from: 2015-09-01
+  effective_until: null
+  joining_fee_inr: 50000
+  annual_fee_inr: 50000
+  fee_waiver:
+    spend_inr: 2500000
+    cycle: annual
+  forex_markup_pct: 1.5
+  finance_charge_monthly_pct: 3.0
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
 rewards:
-  - effective_from: 2015-09-01
-    effective_until: null
-    currency: points
-    currency_name: EDGE Reward Points
-    base:
-      rate: 15
-      per_inr: 200
-      unit_value_inr: 0.44
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 30
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "2X EDGE Reward Points (30 per ₹200) on international spends up to the assigned credit limit per calendar month (w.e.f 20 Jun 2025); base 15 per ₹200 thereafter."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - utilities
-      - jewellery
-    redemption:
-      - type: catalog
-        program: EDGE Rewards
-        rate_inr_per_unit: 0.2
-      - type: airmiles
-        program: Multiple (EDGE transfer)
-        ratio: "5:2"
-        constraints: "10 transfer partners; ratios are card-point : partner-unit. realized Rs 0.40 = guaranteed non-transfer floor; best documented transfer Rs 0.44. 5 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.44/pt
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.22/pt [below floor — avoid]
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.36/pt
-          - partner_name: Turkish Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.44/pt
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.40/pt
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.40/pt
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.20/pt [below floor — avoid]
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "5:1"
-            last_verified_on: '2026-07-05'
-            notes: 5:1 -> ~Rs 0.20/pt [below floor — avoid]
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "5:1"
-            last_verified_on: '2026-07-05'
-            notes: 5:1 -> ~Rs 0.21/pt [below floor — avoid]
-          - partner_name: Vietnam LotusMiles
-            partner_type: airline
-            transfer_ratio: "5:1"
-            last_verified_on: '2026-07-05'
-            notes: 5:1 -> ~Rs 0.16/pt [below floor — avoid]
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "EDGE Reward Points: Rs 0.18 catalogue floor (uniform); face Rs 0.44 = best 5:2 transfer to airline/hotel partners. Corrected catalogue Rs0.40->Rs0.20 (was an error) and realized Rs0.40->Rs0.18."
-      confidence: high
-    mcc_exclusions: ['6513']
+- effective_from: 2015-09-01
+  effective_until: null
+  currency: points
+  currency_name: EDGE Reward Points
+  base:
+    rate: 15
+    per_inr: 200
+    unit_value_inr: 0.44
+    unit_value_inr_realized: 0.18
+  accelerated:
+  - category: international-spend
+    canonical_categories:
+    - international
+    multiplier: 2
+    effective_rate: 30
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: 2X EDGE Reward Points (30 per ₹200) on international spends up to the assigned
+      credit limit per calendar month (w.e.f 20 Jun 2025); base 15 per ₹200 thereafter.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - utilities
+  - jewellery
+  redemption:
+  - type: catalog
+    program: EDGE Rewards
+    rate_inr_per_unit: 0.2
+  - type: airmiles
+    program: Multiple (EDGE transfer)
+    ratio: '5:2'
+    constraints: '10 transfer partners; ratios are card-point : partner-unit. realized
+      Rs 0.40 = guaranteed non-transfer floor; best documented transfer Rs 0.44. 5
+      partners beat the floor. Full per-partner values below.'
+    transfer_partners:
+    - partner_name: Singapore KrisFlyer
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-07-05'
+      notes: 5:2 -> ~Rs 0.44/pt
+    - partner_name: Air India Maharaja Club
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-07-05'
+      notes: 5:2 -> ~Rs 0.22/pt [below floor — avoid]
+    - partner_name: Air France-KLM Flying Blue
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-07-05'
+      notes: 5:2 -> ~Rs 0.36/pt
+    - partner_name: Turkish Miles&Smiles
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-07-05'
+      notes: 5:2 -> ~Rs 0.44/pt
+    - partner_name: ITC Hotels (Club ITC)
+      partner_type: hotel
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-07-05'
+      notes: 5:2 -> ~Rs 0.40/pt
+    - partner_name: Air Canada Aeroplan
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-07-05'
+      notes: 5:2 -> ~Rs 0.40/pt
+    - partner_name: IHG One Rewards
+      partner_type: hotel
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-07-05'
+      notes: 5:2 -> ~Rs 0.20/pt [below floor — avoid]
+    - partner_name: British Airways Avios
+      partner_type: airline
+      transfer_ratio: '5:1'
+      last_verified_on: '2026-07-05'
+      notes: 5:1 -> ~Rs 0.20/pt [below floor — avoid]
+    - partner_name: Finnair Plus (Avios)
+      partner_type: airline
+      transfer_ratio: '5:1'
+      last_verified_on: '2026-07-05'
+      notes: 5:1 -> ~Rs 0.21/pt [below floor — avoid]
+    - partner_name: Vietnam LotusMiles
+      partner_type: airline
+      transfer_ratio: '5:1'
+      last_verified_on: '2026-07-05'
+      notes: 5:1 -> ~Rs 0.16/pt [below floor — avoid]
+    rate_inr_per_unit: 0.44
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
+    retrieved_on: '2026-07-05'
+    type: issuer-page
+    notes: 'EDGE Reward Points: Rs 0.18 catalogue floor (uniform); face Rs 0.44 =
+      best 5:2 transfer to airline/hotel partners. Corrected catalogue Rs0.40->Rs0.20
+      (was an error) and realized Rs0.40->Rs0.18.'
+    confidence: high
+  mcc_exclusions:
+  - '6513'
 benefits:
-  - effective_from: 2015-09-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 4
-      cycle: monthly
-      lessons_per_cycle: 2
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Taj Epicure membership + 50,000 bonus EDGE Reward Points"
-        value_inr: 25000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 35000000
-      - type: travel-medical
-        sum_insured_inr: 5000000
-      - type: lost-card-liability
-        sum_insured_inr: 300000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
-    concierge: true
-    dining:
-      program: EazyDiner Prime
-      notes: "Complimentary EazyDiner Prime membership; Visa Dining Delights."
-    movies:
-      type: free
-      partner: BookMyShow
-      notes: "Complimentary movie tickets on BookMyShow."
-    other:
-      - name: Club ITC Culinaire membership
-        description: Complimentary Club ITC Culinaire membership.
-      - name: Accor Plus membership
-        description: Complimentary Accor Plus membership.
-      - name: Club Marriott Asia Pacific membership
-        description: Complimentary handcrafted Club Marriott Asia Pacific membership.
-      - name: Swiggy One membership
-        description: Complimentary Swiggy One membership.
-      - name: Postcard Hotel savings
-        description: 15% savings at Postcard Hotel.
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2015-09-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: unlimited
+      via:
+      - dreamfolks
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: unlimited
+      via:
+      - priority-pass
+  golf:
+    rounds_per_cycle: 4
+    cycle: monthly
+    lessons_per_cycle: 2
+  welcome:
+  - condition: Joining fee paid
+    benefit: Taj Epicure membership + 50,000 bonus EDGE Reward Points
+    value_inr: 25000
+    window_days: 90
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 35000000
+  - type: travel-medical
+    sum_insured_inr: 5000000
+  - type: lost-card-liability
+    sum_insured_inr: 300000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 400
+    cycle: monthly
+  concierge: true
+  dining:
+    program: EazyDiner Prime
+    notes: Complimentary EazyDiner Prime membership; Visa Dining Delights.
+  movies:
+    type: free
+    partner: BookMyShow
+    notes: Complimentary movie tickets on BookMyShow.
+  other:
+  - name: Club ITC Culinaire membership
+    description: Complimentary Club ITC Culinaire membership.
+  - name: Accor Plus membership
+    description: Complimentary Accor Plus membership.
+  - name: Club Marriott Asia Pacific membership
+    description: Complimentary handcrafted Club Marriott Asia Pacific membership.
+  - name: Swiggy One membership
+    description: Complimentary Swiggy One membership.
+  - name: Postcard Hotel savings
+    description: 15% savings at Postcard Hotel.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
 eligibility:
   min_age: 18
   max_age: 70
@@ -206,11 +204,13 @@ eligibility:
     self_employed: 3500000
   credit_score_min: 780
   residency: resident-indian
-  notes: "Typically available to Axis Burgundy Private / Priority banking clients."
-
+  notes: Typically available to Axis Burgundy Private / Priority banking clients.
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
-
 metadata:
   last_verified_on: '2026-07-05'
-  tags: [super-premium, travel, dining, invite-only-like]
+  tags:
+  - super-premium
+  - travel
+  - dining
+  - invite-only-like

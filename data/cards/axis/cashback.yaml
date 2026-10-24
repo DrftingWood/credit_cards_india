@@ -11,12 +11,12 @@ id: axis-cashback
 name: Axis Bank Cashback Credit Card
 issuer: axis
 network: visa
-network_tier: null
+network_tier: signature
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2024-06-01
 discontinued_on: null
 
 fees:
@@ -54,6 +54,7 @@ rewards:
       rate: 0.75
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
       cap_per_cycle: "unlimited"
       cap_unit: cashback-inr
       cycle: monthly
@@ -132,6 +133,7 @@ rewards:
       url: https://www.axis.bank.in/docs/default-source/default-document-library/axis-bank-cashback-credit-card-tnc.pdf
       retrieved_on: 2026-07-28
       type: issuer-pdf
+      confidence: high
       notes: "Re-verified 2026-07-28 against the Member T&C PDF (created 2026-06-08). Corrections: accelerator scope is channel-based (card-not-present), not the `online` merchant bucket — the T&C worked example on page 6 routes an ONLINE grocery purchase into the accelerated tier and an OFFLINE dining purchase to base, so food delivery and online groceries qualify. Rate is a rising 3-slab schedule (2/5/7%), not a flat 7%. Base 0.75% is card-present + travel only."
 
     mcc_exclusions: ['6513']
@@ -150,6 +152,7 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18

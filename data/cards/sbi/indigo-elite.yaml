@@ -102,7 +102,6 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html
       retrieved_on: 2026-07-05
       type: issuer-page
-
       confidence: high
       notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'
     mcc_exclusions: ['6513']
@@ -170,6 +169,7 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
@@ -185,5 +185,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: 2026-10-24
   tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex, lounge]

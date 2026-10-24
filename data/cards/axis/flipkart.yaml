@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-flipkart
 name: Flipkart Axis Bank Credit Card
 issuer: axis
@@ -21,128 +12,151 @@ co_brand:
 status: active
 launched_on: 2019-07-30
 discontinued_on: null
-
 fees:
-  - effective_from: 2019-07-30
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 350000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.0
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/axis/_shared/mitc-credit-cards.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-
+- effective_from: 2019-07-30
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 350000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.0
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
 rewards:
-  - effective_from: 2019-07-30
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-    accelerated:
-      - category: myntra
-        canonical_categories: [online]
-        multiplier: 1
-        effective_rate: 7.5
-        cap_per_cycle: 4000
-        cap_unit: cashback-inr
-        cycle: quarterly
-        merchants: [myntra]
-        channel:
-          class: cobrand-merchant
-          merchants: [myntra]
-        notes: "7.5% cashback on Myntra spends, capped at ₹4,000 per statement quarter."
-      - category: flipkart
-        canonical_categories: [online]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 4000
-        cap_unit: cashback-inr
-        cycle: quarterly
-        merchants: [flipkart]
-        channel:
-          class: cobrand-merchant
-          merchants: [flipkart]
-        notes: "5% cashback on Flipkart, capped at ₹4,000 per statement quarter."
-      - category: cleartrip
-        canonical_categories: [online, travel]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 4000
-        cap_unit: cashback-inr
-        cycle: quarterly
-        merchants: [cleartrip]
-        channel:
-          class: third-party-ota
-          merchants: [cleartrip]
-        notes: "5% cashback on Cleartrip, capped at ₹4,000 per statement quarter."
-      - category: preferred-merchants
-        multiplier: 1
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [swiggy, pvr, uber, cult.fit]
-        channel:
-          class: cobrand-merchant
-          merchants: [swiggy, pvr, uber, cult-fit]
-        notes: "4% cashback on preferred merchants."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-      - insurance-premiums
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-        constraints: "Credited to next statement."
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - The 4% preferred-merchants cashback (Swiggy/Uber/PVR/cult.fit bucket) is explicitly 'Unlimited' in the Flipkart Axis cashback T&C capping table (retrieved 2026-07-05); the ₹4,000/statement-quarter caps apply only to Flipkart/Myntra/Cleartrip. High confidence.
+- effective_from: 2019-07-30
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: myntra
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 7.5
+    cap_per_cycle: 4000
+    cap_unit: cashback-inr
+    cycle: quarterly
+    merchants:
+    - myntra
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - myntra
+    notes: 7.5% cashback on Myntra spends, capped at ₹4,000 per statement quarter.
+  - category: flipkart
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 5
+    cap_per_cycle: 4000
+    cap_unit: cashback-inr
+    cycle: quarterly
+    merchants:
+    - flipkart
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - flipkart
+    notes: 5% cashback on Flipkart, capped at ₹4,000 per statement quarter.
+  - category: cleartrip
+    canonical_categories:
+    - online
+    - travel
+    multiplier: 1
+    effective_rate: 5
+    cap_per_cycle: 4000
+    cap_unit: cashback-inr
+    cycle: quarterly
+    merchants:
+    - cleartrip
+    channel:
+      class: third-party-ota
+      merchants:
+      - cleartrip
+    notes: 5% cashback on Cleartrip, capped at ₹4,000 per statement quarter.
+  - category: preferred-merchants
+    multiplier: 1
+    effective_rate: 4
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+    merchants:
+    - swiggy
+    - pvr
+    - uber
+    - cult.fit
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - swiggy
+      - pvr
+      - uber
+      - cult-fit
+    notes: 4% cashback on preferred merchants.
+    canonical_categories:
+    - online
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  - insurance-premiums
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+    constraints: Credited to next statement.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
+    retrieved_on: 2026-07-05
+    type: issuer-page
+    confidence: high
+  mcc_exclusions:
+  - '6513'
+  capping_rules:
+  - The 4% preferred-merchants cashback (Swiggy/Uber/PVR/cult.fit bucket) is explicitly
+    'Unlimited' in the Flipkart Axis cashback T&C capping table (retrieved 2026-07-05);
+    the ₹4,000/statement-quarter caps apply only to Flipkart/Myntra/Cleartrip. High
+    confidence.
 benefits:
-  - effective_from: 2019-07-30
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Card activation"
-        benefit: "Flipkart voucher worth ₹250"
-        value_inr: 250
-        window_days: 30
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2019-07-30
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Card activation
+    benefit: Flipkart voucher worth ₹250
+    value_inr: 250
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 400
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
 eligibility:
   min_age: 18
   max_age: 70
@@ -151,10 +165,12 @@ eligibility:
     self_employed: 300000
   credit_score_min: 720
   residency: resident-indian
-
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/flipkart-axisbank-credit-card
-
 metadata:
   last_verified_on: 2026-07-05
-  tags: [co-branded, flipkart, cashback, entry]
+  tags:
+  - co-branded
+  - flipkart
+  - cashback
+  - entry

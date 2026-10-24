@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-regalia
 name: HDFC Bank Regalia Credit Card
 issuer: hdfc
@@ -18,137 +9,139 @@ co_brand: null
 status: active
 launched_on: 2009-01-01
 discontinued_on: null
-
-# NOTE: Regalia Gold (launched 2022) is the evolved variant; the original
-# Regalia is still offered to select segments (live page confirmed 2026-07-03).
-# Benefits shown reflect the current (post-2024 revision) structure.
-
 fees:
-  - effective_from: 2009-01-01
-    effective_until: null
-    joining_fee_inr: 2500
-    annual_fee_inr: 2500
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/_shared/mitc-in-english.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-
+- effective_from: 2009-01-01
+  effective_until: null
+  joining_fee_inr: 2500
+  annual_fee_inr: 2500
+  fee_waiver:
+    spend_inr: 300000
+    cycle: annual
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
 rewards:
-  - effective_from: 2009-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 4
-      per_inr: 200
-      unit_value_inr: 0.55
-      unit_value_inr_realized: 0.5
-    accelerated:
-      - category: smartbuy-flights-hotels-vouchers
-        canonical_categories: [travel]
-        multiplier: 5
-        effective_rate: 20
-        cap_unit: points
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [smartbuy]
-        notes: "SmartBuy 5X capped 4,000 RP/month (max 3,000 from brand vouchers)."
-        cap_per_cycle: 4000
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: catalog
-        program: SmartBuy
-        rate_inr_per_unit: 0.5
-      - type: airmiles
-        program: Multiple (Airmiles hub)
-        ratio: "100:50"
-        constraints: Classic Regalia is limited to Singapore Airlines (legacy netbanking airmiles) at 100:50; the full multi-partner transfer program is Infinia/Diners Black/Regalia Gold only. SmartBuy floor Rs 0.50/Rp.
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.55/pt (only transfer partner on classic Regalia)
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: "Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05."
+- effective_from: 2009-01-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 4
+    per_inr: 200
+    unit_value_inr: 0.55
+    unit_value_inr_realized: 0.5
+  accelerated:
+  - category: smartbuy-flights-hotels-vouchers
+    canonical_categories:
+    - travel
+    multiplier: 5
+    effective_rate: 20
+    cap_unit: points
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - smartbuy
+    notes: SmartBuy 5X capped 4,000 RP/month (max 3,000 from brand vouchers).
+    cap_per_cycle: 4000
+    cycle: monthly
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - emi
+  redemption:
+  - type: catalog
+    program: SmartBuy
+    rate_inr_per_unit: 0.5
+  - type: airmiles
+    program: Multiple (Airmiles hub)
+    ratio: '100:50'
+    constraints: Classic Regalia is limited to Singapore Airlines (legacy netbanking
+      airmiles) at 100:50; the full multi-partner transfer program is Infinia/Diners
+      Black/Regalia Gold only. SmartBuy floor Rs 0.50/Rp.
+    transfer_partners:
+    - partner_name: Singapore KrisFlyer
+      partner_type: airline
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.55/pt (only transfer partner on classic Regalia)
+    rate_inr_per_unit: 0.55
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
+    retrieved_on: '2026-07-05'
+    type: issuer-page
+    confidence: high
+    notes: Added missing monthly cap(s) on accelerated categories (were uncapped)
+      — 2026-07-05.
 benefits:
-  - effective_from: 2024-10-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [issuer-direct]
-        spend_threshold_inr: 100000
-        spend_threshold_cycle: quarterly
-        notes: "Up to 2 domestic lounge access vouchers per calendar quarter for self and add-on, based on ₹1L spend per calendar quarter."
-      international:
-        visits_per_cycle: 6
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-        notes: "Priority Pass for self and add-on issued after using the card at least 4 times; up to 6 complimentary visits/yr, US$27 + GST per visit beyond that."
-    milestones:
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "10,000 bonus reward points"
-        value_inr: 5000
-      - spend_inr: 800000
-        cycle: annual
-        benefit: "additional 5,000 bonus reward points"
-        value_inr: 2500
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "2,500 bonus Reward Points"
-        value_inr: 1250
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 10000000
-      - type: travel-medical
-        sum_insured_inr: 1500000
-      - type: credit-shield
-        sum_insured_inr: 900000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 500
-      cycle: statement
-    concierge: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2024-10-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+      spend_threshold_inr: 100000
+      spend_threshold_cycle: quarterly
+      notes: Up to 2 domestic lounge access vouchers per calendar quarter for self
+        and add-on, based on ₹1L spend per calendar quarter.
+    international:
+      visits_per_cycle: 6
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Priority Pass for self and add-on issued after using the card at least
+        4 times; up to 6 complimentary visits/yr, US$27 + GST per visit beyond that.
+  milestones:
+  - spend_inr: 500000
+    cycle: annual
+    benefit: 10,000 bonus reward points
+    value_inr: 5000
+  - spend_inr: 800000
+    cycle: annual
+    benefit: additional 5,000 bonus reward points
+    value_inr: 2500
+  welcome:
+  - condition: Joining fee paid
+    benefit: 2,500 bonus Reward Points
+    value_inr: 1250
+    window_days: 90
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 10000000
+  - type: travel-medical
+    sum_insured_inr: 1500000
+  - type: credit-shield
+    sum_insured_inr: 900000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 500
+    cycle: statement
+  concierge: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 60
@@ -157,10 +150,11 @@ eligibility:
     self_employed: 1500000
   credit_score_min: 750
   residency: resident-indian
-
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/regalia-credit-card
-
 metadata:
   last_verified_on: '2026-07-05'
-  tags: [premium, travel, points]
+  tags:
+  - premium
+  - travel
+  - points

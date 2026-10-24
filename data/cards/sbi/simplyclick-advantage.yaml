@@ -11,12 +11,12 @@ id: sbi-simplyclick-advantage
 name: SimplyCLICK Advantage SBI Card
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: secured
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2016-01-01
 discontinued_on: null
 
 fees:
@@ -40,6 +40,7 @@ fees:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
       notes: "Secured 'Advantage' variant of SimplyCLICK SBI Card (issued against a fixed deposit)."
 
 rewards:
@@ -121,20 +122,21 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
 
 eligibility:
   min_age: 18
-  max_age: null
+  max_age: 70
   income_inr_annual:
-    salaried: null
-    self_employed: null
-  credit_score_min: null
+    salaried: 0
+    self_employed: 0
+  credit_score_min: 650
   residency: resident-indian
-  notes: "Secured card issued against a fixed deposit; no separate income/credit-score criteria published."
+  notes: "Secured card issued against a fixed deposit (minimum ₹25,000 FD); no separate income requirement."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [entry, online-spend, points, secured]

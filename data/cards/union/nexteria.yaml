@@ -23,7 +23,7 @@ tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2025-09-25
 discontinued_on: null
 
 fees:
@@ -180,5 +180,5 @@ application:
   apply_url: https://www.unionbankofindia.bank.in/en/details/nexteria-credit-card
 
 metadata:
-  last_verified_on: 2026-10-20
+  last_verified_on: 2026-10-24
   tags: [super-premium, metal, rupay, points, lounge, psu-bank, upi-linkable]

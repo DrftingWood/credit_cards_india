@@ -1,0 +1,109 @@
+id: indusind-eazydiner-signature
+name: IndusInd Bank EazyDiner Signature Credit Card
+issuer: indusind
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand:
+  partner: EazyDiner
+  category: lifestyle
+status: active
+launched_on: 2022-06-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-06-01
+    effective_until: null
+    joining_fee_inr: 2999
+    annual_fee_inr: 2999
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.83
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 300
+    gst_applicable: true
+    source:
+      url: https://www.indusind.com/in/en/personal/cards/credit-cards/eazydiner-credit-card.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining ₹2,999, annual ₹2,999 with no spend-based waiver."
+
+rewards:
+  - effective_from: 2022-06-01
+    effective_until: null
+    currency: points
+    currency_name: EazyPoints
+    base:
+      rate: 4
+      per_inr: 100
+      unit_value_inr: 0.20
+      unit_value_inr_realized: 0.20
+    accelerated:
+      - category: dining-eazydiner
+        canonical_categories: [dining]
+        multiplier: 2.5
+        effective_rate: 10
+        cap_per_cycle: unlimited
+        cap_unit: points
+        cycle: monthly
+        notes: "10 EazyPoints per ₹100 spent on dining via PayEazy, shopping, and entertainment."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: PayEazy Instant Discount
+        rate_inr_per_unit: 0.20
+    source:
+      url: https://www.indusind.com/in/en/personal/cards/credit-cards/eazydiner-credit-card.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Base 4 EazyPoints/₹100; 10 EazyPoints/₹100 on dining/entertainment."
+
+benefits:
+  - effective_from: 2022-06-01
+    effective_until: null
+    welcome:
+      - condition: "Card issuance and fee payment"
+        benefit: "Annual EazyDiner Prime Membership + 2,000 Bonus EazyPoints + The Postcard Hotel ₹7,500 stay voucher"
+        value_inr: 10450
+        window_days: 30
+    dining:
+      program: EazyDiner Prime
+      discount_pct: 25
+      notes: "Extra 25% off up to ₹1,000 on dining via PayEazy on EazyDiner."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.indusind.com/in/en/personal/cards/credit-cards/eazydiner-credit-card.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 720
+  residency: resident-indian
+
+application:
+  apply_url: https://www.indusind.com/in/en/personal/cards/credit-cards/eazydiner-credit-card.html
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [premium, dining, eazydiner, travel, lifestyle]

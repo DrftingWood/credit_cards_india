@@ -108,6 +108,7 @@ benefits:
       url: https://www.sc.bank.in/credit-cards/rewards-credit-card/
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21

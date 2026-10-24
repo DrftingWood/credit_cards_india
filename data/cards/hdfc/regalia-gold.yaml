@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-regalia-gold
 name: HDFC Bank Regalia Gold Credit Card
 issuer: hdfc
@@ -18,253 +9,271 @@ co_brand: null
 status: active
 launched_on: 2022-06-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-06-01
-    effective_until: null
-    joining_fee_inr: 2500
-    annual_fee_inr: 2500
-    fee_waiver:
-      spend_inr: 400000
-      cycle: annual
-      conditions: "Renewal fee waived on spends of ₹4L in the preceding year."
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/_shared/mitc-in-english.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-
+- effective_from: 2022-06-01
+  effective_until: null
+  joining_fee_inr: 2500
+  annual_fee_inr: 2500
+  fee_waiver:
+    spend_inr: 400000
+    cycle: annual
+    conditions: Renewal fee waived on spends of ₹4L in the preceding year.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
 rewards:
-  - effective_from: 2022-06-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 5
-      per_inr: 200
-      unit_value_inr: 0.65
-      unit_value_inr_realized: 0.5
-    accelerated:
-      - category: marquee-partners
-        canonical_categories: [online, groceries]
-        multiplier: 5
-        effective_rate: 25
-        cap_per_cycle: 5000
-        cap_unit: points
-        cycle: monthly
-        merchants: [myntra, nykaa, reliance-digital, marks-spencer]
-        channel:
-          class: cobrand-merchant
-          merchants: [myntra, nykaa, reliance-digital, marks-spencer]
-        notes: "5X Reward Points at select merchants (Myntra, Nykaa, Reliance Digital, Marks & Spencer). Minimum transaction value of ₹150 to be eligible; 5X cap of 5,000 RP/month across all brands combined."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: catalog
-        program: SmartBuy Gold Catalogue
-        rate_inr_per_unit: 0.65
-      - type: catalog
-        program: SmartBuy Flights & Hotels
-        rate_inr_per_unit: 0.5
-        constraints: "Redeem up to a maximum of 70% of the travel booking value using Reward Points."
-      - type: catalog
-        program: SmartBuy Products & Vouchers
-        rate_inr_per_unit: 0.35
-      - type: statement-credit
-        program: Statement balance (cashback)
-        rate_inr_per_unit: 0.20
-      - type: airmiles
-        program: Multiple (Airmiles hub)
-        ratio: "100:50"
-        constraints: "22 transfer partners; ratios are card-point : partner-unit. realized Rs 0.50 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.55/pt
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.53/pt
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.45/pt
-          - partner_name: Vietnam LotusMiles
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.40/pt [below floor — avoid]
-          - partner_name: SpiceJet SpiceClub
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.15/pt [below floor — avoid]
-          - partner_name: AirAsia Rewards
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.11/pt [below floor — avoid]
-          - partner_name: Turkish Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.55/pt
-          - partner_name: Avianca LifeMiles
-            partner_type: airline
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.45/pt
-          - partner_name: Accor ALL
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.47/pt
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.50/pt
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
-          - partner_name: Radisson Rewards
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.08/pt [below floor — avoid]
-          - partner_name: Wyndham Rewards
-            partner_type: hotel
-            transfer_ratio: "100:50"
-            last_verified_on: '2026-07-05'
-            notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.31/pt [below floor — avoid]
-          - partner_name: Etihad Guest
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
-          - partner_name: Thai Royal Orchid Plus
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.20/pt [below floor — avoid]
-          - partner_name: United MileagePlus
-            partner_type: airline
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "100:33"
-            last_verified_on: '2026-07-05'
-            notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
-        min_units: 100
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "face raised 0.55->0.65 (SmartBuy Gold Catalogue best rate); realized 0.5 kept."
-    reward_cap:
-      max_units: 50000
-      cap_unit: points
-      cycle: statement
+- effective_from: 2022-06-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 200
+    unit_value_inr: 0.65
+    unit_value_inr_realized: 0.5
+  accelerated:
+  - category: marquee-partners
+    canonical_categories:
+    - online
+    - groceries
+    multiplier: 5
+    effective_rate: 25
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - myntra
+    - nykaa
+    - reliance-digital
+    - marks-spencer
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - myntra
+      - nykaa
+      - reliance-digital
+      - marks-spencer
+    notes: 5X Reward Points at select merchants (Myntra, Nykaa, Reliance Digital,
+      Marks & Spencer). Minimum transaction value of ₹150 to be eligible; 5X cap of
+      5,000 RP/month across all brands combined.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - emi
+  redemption:
+  - type: catalog
+    program: SmartBuy Gold Catalogue
+    rate_inr_per_unit: 0.65
+  - type: catalog
+    program: SmartBuy Flights & Hotels
+    rate_inr_per_unit: 0.5
+    constraints: Redeem up to a maximum of 70% of the travel booking value using Reward
+      Points.
+  - type: catalog
+    program: SmartBuy Products & Vouchers
+    rate_inr_per_unit: 0.35
+  - type: statement-credit
+    program: Statement balance (cashback)
+    rate_inr_per_unit: 0.2
+  - type: airmiles
+    program: Multiple (Airmiles hub)
+    ratio: '100:50'
+    constraints: '22 transfer partners; ratios are card-point : partner-unit. realized
+      Rs 0.50 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7
+      partners beat the floor. Full per-partner values below.'
+    transfer_partners:
+    - partner_name: Singapore KrisFlyer
+      partner_type: airline
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.55/pt
+    - partner_name: Finnair Plus (Avios)
+      partner_type: airline
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.53/pt
+    - partner_name: Air France-KLM Flying Blue
+      partner_type: airline
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.45/pt
+    - partner_name: Vietnam LotusMiles
+      partner_type: airline
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.40/pt [below floor — avoid]
+    - partner_name: SpiceJet SpiceClub
+      partner_type: airline
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.15/pt [below floor — avoid]
+    - partner_name: AirAsia Rewards
+      partner_type: airline
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.11/pt [below floor — avoid]
+    - partner_name: Turkish Miles&Smiles
+      partner_type: airline
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.55/pt
+    - partner_name: Avianca LifeMiles
+      partner_type: airline
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.45/pt
+    - partner_name: Accor ALL
+      partner_type: hotel
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.47/pt
+    - partner_name: ITC Hotels (Club ITC)
+      partner_type: hotel
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.50/pt
+    - partner_name: IHG One Rewards
+      partner_type: hotel
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
+    - partner_name: Radisson Rewards
+      partner_type: hotel
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.08/pt [below floor — avoid]
+    - partner_name: Wyndham Rewards
+      partner_type: hotel
+      transfer_ratio: '100:50'
+      last_verified_on: '2026-07-05'
+      notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
+    - partner_name: Air Canada Aeroplan
+      partner_type: airline
+      transfer_ratio: '100:33'
+      last_verified_on: '2026-07-05'
+      notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
+    - partner_name: Air India Maharaja Club
+      partner_type: airline
+      transfer_ratio: '100:33'
+      last_verified_on: '2026-07-05'
+      notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
+    - partner_name: British Airways Avios
+      partner_type: airline
+      transfer_ratio: '100:33'
+      last_verified_on: '2026-07-05'
+      notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
+    - partner_name: Cathay Asia Miles
+      partner_type: airline
+      transfer_ratio: '100:33'
+      last_verified_on: '2026-07-05'
+      notes: 100:33 -> ~Rs 0.31/pt [below floor — avoid]
+    - partner_name: Etihad Guest
+      partner_type: airline
+      transfer_ratio: '100:33'
+      last_verified_on: '2026-07-05'
+      notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
+    - partner_name: Qatar Privilege Club (Avios)
+      partner_type: airline
+      transfer_ratio: '100:33'
+      last_verified_on: '2026-07-05'
+      notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
+    - partner_name: Thai Royal Orchid Plus
+      partner_type: airline
+      transfer_ratio: '100:33'
+      last_verified_on: '2026-07-05'
+      notes: 100:33 -> ~Rs 0.20/pt [below floor — avoid]
+    - partner_name: United MileagePlus
+      partner_type: airline
+      transfer_ratio: '100:33'
+      last_verified_on: '2026-07-05'
+      notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
+    - partner_name: Marriott Bonvoy
+      partner_type: hotel
+      transfer_ratio: '100:33'
+      last_verified_on: '2026-07-05'
+      notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
+    min_units: 100
+    rate_inr_per_unit: 0.65
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
+    retrieved_on: '2026-07-05'
+    type: issuer-page
+    notes: face raised 0.55->0.65 (SmartBuy Gold Catalogue best rate); realized 0.5
+      kept.
+  reward_cap:
+    max_units: 50000
+    cap_unit: points
+    cycle: statement
 benefits:
-  - effective_from: 2024-10-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 3
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [issuer-direct]
-        spend_threshold_inr: 60000
-        spend_threshold_cycle: quarterly
-        notes: "3 domestic lounge visits per calendar quarter, unlocked by ₹60,000 spend in the preceding quarter."
-      international:
-        visits_per_cycle: 6
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    milestones:
-      - spend_inr: 150000
-        cycle: quarterly
-        benefit: "Myntra / Nykaa / Reliance Digital / Marriott voucher worth ₹1,500"
-        value_inr: 1500
-      - spend_inr: 750000
-        cycle: annual
-        benefit: "SmartBuy flight voucher worth ₹5,000"
-        value_inr: 5000
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Gift voucher worth ₹2,500"
-        value_inr: 2500
-        window_days: 90
-      - condition: "₹1,00,000 net retail spend within 90 days of card issuance"
-        benefit: "Complimentary Swiggy One & MakeMyTrip (MMT) Black Gold memberships"
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 10000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    other:
-      - name: Boarding Edge Program
-        description: "Complimentary Spa, Buffet, Hotel Room Upgrade, and Airport transfer (any 2 every calendar quarter) by uploading your boarding pass on SmartBuy."
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2024-10-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 3
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+      spend_threshold_inr: 60000
+      spend_threshold_cycle: quarterly
+      notes: 3 domestic lounge visits per calendar quarter, unlocked by ₹60,000 spend
+        in the preceding quarter.
+    international:
+      visits_per_cycle: 6
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  milestones:
+  - spend_inr: 150000
+    cycle: quarterly
+    benefit: Myntra / Nykaa / Reliance Digital / Marriott voucher worth ₹1,500
+    value_inr: 1500
+  - spend_inr: 750000
+    cycle: annual
+    benefit: SmartBuy flight voucher worth ₹5,000
+    value_inr: 5000
+  welcome:
+  - condition: Joining fee paid
+    benefit: Gift voucher worth ₹2,500
+    value_inr: 2500
+    window_days: 90
+  - condition: ₹1,00,000 net retail spend within 90 days of card issuance
+    benefit: Complimentary Swiggy One & MakeMyTrip (MMT) Black Gold memberships
+    value_inr: 2999
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 10000000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  concierge: false
+  other:
+  - name: Boarding Edge Program
+    description: Complimentary Spa, Buffet, Hotel Room Upgrade, and Airport transfer
+      (any 2 every calendar quarter) by uploading your boarding pass on SmartBuy.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 60
@@ -273,10 +282,12 @@ eligibility:
     self_employed: 1500000
   credit_score_min: 750
   residency: resident-indian
-
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
-
 metadata:
   last_verified_on: '2026-07-05'
-  tags: [travel, mid-premium, points, mass-premium]
+  tags:
+  - travel
+  - mid-premium
+  - points
+  - mass-premium

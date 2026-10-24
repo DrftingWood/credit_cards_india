@@ -1,0 +1,102 @@
+id: kotak-811-super
+name: Kotak 811 Super Money Credit Card
+issuer: kotak
+network: rupay
+network_tier: classic
+tier: entry
+card_type: credit
+co_brand:
+  partner: super.money
+  category: other
+status: active
+launched_on: 2024-06-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-06-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.50
+    cash_advance_fee: null
+    gst_applicable: true
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Lifetime Free FD-backed credit card against minimum ₹1,000 fixed deposit."
+
+rewards:
+  - effective_from: 2024-06-01
+    effective_until: null
+    currency: cashback
+    currency_name: Cashback
+    base:
+      rate: 1.0
+      per_inr: 100
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: upi-supermoney
+        canonical_categories: [other]
+        multiplier: 1
+        effective_rate: 1.0
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "1% cashback on UPI transactions via super.money app."
+      - category: myntra-spends
+        canonical_categories: [online]
+        multiplier: 5
+        effective_rate: 5.0
+        cap_per_cycle: 500
+        cap_unit: cashback-inr
+        cycle: monthly
+        notes: "5% cashback on Myntra."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: super.money Cashback
+        rate_inr_per_unit: 1.0
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "1% UPI cashback via super.money; 5% on Myntra."
+
+benefits:
+  - effective_from: 2024-06-01
+    effective_until: null
+    fuel_surcharge_waiver: null
+    concierge: false
+    source:
+      url: https://www.kotak.com/en/personal-banking/cards/credit-cards.html
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 18
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: "Secured credit card issued against a fixed deposit (minimum ₹1,00,0 FD)."
+
+application:
+  apply_url: https://www.kotak.com/en/personal-banking/cards/credit-cards.html
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [entry, secured, fd-backed, rupay, upi, cashback, ltf]

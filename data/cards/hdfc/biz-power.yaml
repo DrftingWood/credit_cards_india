@@ -1,0 +1,112 @@
+id: hdfc-biz-power
+name: HDFC Bank BizPower Credit Card
+issuer: hdfc
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-03-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2024-03-01
+    effective_until: null
+    joining_fee_inr: 2500
+    annual_fee_inr: 2500
+    fee_waiver:
+      spend_inr: 400000
+      cycle: annual
+      conditions: "Annual fee waived on spends of ₹4 Lakhs or more in an anniversary year."
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.60
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/business-credit-cards/biz-power
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining ₹2,500, annual ₹2,500, waiver on ₹4L spend, forex 2.0%."
+
+rewards:
+  - effective_from: 2024-03-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 4
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.25
+    accelerated:
+      - category: business-tax-utilities
+        canonical_categories: [utilities, government]
+        multiplier: 5
+        effective_rate: 20
+        cap_per_cycle: 2500
+        cap_unit: points
+        cycle: monthly
+        notes: "5X Reward Points on income tax, GST, business software/tools, and PayZapp utility bill payments."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: statement-credit
+        program: SmartBuy Business Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/business-credit-cards/biz-power
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "4 RP per ₹200 base; 5X on business spends."
+
+benefits:
+  - effective_from: 2024-03-01
+    effective_until: null
+    welcome:
+      - condition: "Spend ₹25,000 within 30 days of issuance"
+        benefit: "Complimentary Amazon Prime annual membership"
+        value_inr: 1499
+        window_days: 30
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.hdfcbank.com/personal/pay/cards/business-credit-cards/biz-power
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.hdfcbank.com/personal/pay/cards/business-credit-cards/biz-power
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [premium, business, commercial, lounge, tax, points]

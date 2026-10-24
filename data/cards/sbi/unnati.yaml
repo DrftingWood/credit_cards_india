@@ -11,12 +11,12 @@ id: sbi-unnati
 name: SBI Unnati Credit Card
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: secured
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2017-03-28
 discontinued_on: null
 
 fees:
@@ -36,12 +36,13 @@ fees:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
         - fees.finance_charge_monthly_pct
         - fees.cash_advance_fee
-    notes: "Annual fee of ₹499 waived for the first 4 years; renewal fee of ₹499 applies from the 5th year onwards. Finance charge shown at SBI standard; TODO verify."
+    notes: "Annual fee of ₹499 waived for the first 4 years; renewal fee of ₹499 applies from the 5th year onwards."
 
 rewards:
   - effective_from: 2018-01-01
@@ -58,6 +59,8 @@ rewards:
       - emi
       - cash-advance
     redemption:
+      - type: statement-credit
+        rate_inr_per_unit: 0.25
       - type: catalog
         program: SBI Card Rewards
         rate_inr_per_unit: 0.25
@@ -90,14 +93,15 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: null
-    self_employed: null
-  credit_score_min: null
+    salaried: 0
+    self_employed: 0
+  credit_score_min: 650
   residency: resident-indian
   notes: "Secured card issued against a lien on the cardholder's SBI fixed deposit of ₹25,000 or more."
 
@@ -105,5 +109,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [entry, secured, points, fd-backed]

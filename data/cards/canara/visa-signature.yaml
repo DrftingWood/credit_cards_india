@@ -1,0 +1,107 @@
+id: canara-visa-signature
+name: Canara Bank Visa Signature Credit Card
+issuer: canara
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2020-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2020-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    fee_waiver:
+      spend_inr: 200000
+      cycle: annual
+      conditions: "Annual turnover of ₹2,00,000 required to maintain free status, else ₹1,000 fee applies."
+    forex_markup_pct: 3.0
+    finance_charge_monthly_pct: 2.50
+    cash_advance_fee:
+      pct: 3.0
+      min_inr: 150
+    gst_applicable: true
+    source:
+      url: https://canarabank.com/User_page.aspx?othlink=384
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining ₹0, annual ₹0 (waived on ₹2L turnover), finance charge 2.50% p.m."
+
+rewards:
+  - effective_from: 2020-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: Canara Rewardz
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://canarabank.com/User_page.aspx?othlink=384
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "2 Reward Points per ₹100 spent."
+
+benefits:
+  - effective_from: 2020-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 3
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+      international:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [visa]
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: monthly
+    insurance:
+      - type: fraud-liability
+        sum_insured_inr: 500000
+        conditions: "Fraud liability protection up to ₹5,00,000."
+    concierge: true
+    source:
+      url: https://canarabank.com/User_page.aspx?othlink=384
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 1000000
+    self_employed: 1000000
+  credit_score_min: 740
+  residency: resident-indian
+
+application:
+  apply_url: https://canarabank.com/User_page.aspx?othlink=384
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [premium, visa-signature, lounge, travel, points]

@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-swiggy-hdfc
 name: Swiggy HDFC Bank Credit Card
 issuer: hdfc
@@ -21,114 +12,202 @@ co_brand:
 status: active
 launched_on: 2023-09-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-09-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/_shared/mitc-in-english.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-
+- effective_from: 2023-09-01
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
 rewards:
-  - effective_from: 2023-09-01
-    effective_until: null
-    currency: cashback
-    currency_name: Swiggy Money
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-      cap_per_cycle: 500
-      cap_unit: cashback-inr
-      cycle: statement
-    accelerated:
-      - category: swiggy-ecosystem
-        canonical_categories: [dining]
-        multiplier: 1
-        effective_rate: 10
-        cap_per_cycle: 1500
-        cap_unit: cashback-inr
-        cycle: statement
-        merchants: [swiggy-food, swiggy-instamart, swiggy-dineout, swiggy-genie]
-        # D12 / DECISIONS D-25: the bucket is all dining, not just delivery, so
-        # the floor is Swiggy's food-delivery share (42%, Motilal Oswal Q1 FY25
-        # GOV; Bernstein Jan-2025) x online delivery's share of Indian food
-        # services (about 8%, Bernstein Jan-2025; Swiggy-Bain put it at 12%,
-        # the lower figure is used) = 3.4%, rounded down. A user-declared
-        # Swiggy share overrides it.
-        applicability_pct: 3
-        channel:
-          class: cobrand-merchant
-          merchants: [swiggy, instamart]
-        notes: "10% cashback on Swiggy app (Food, Instamart, Dineout, Genie)."
-      - category: online-mcc
-        canonical_categories: [online]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 1500
-        cap_unit: cashback-inr
-        cycle: statement
-        mcc_list: ["5137", "5139", "5611", "5621", "5631", "5641", "5651", "5655", "5661", "5691", "5697", "5699", "5948", "5200", "5300", "5311", "5331", "5949", "5973", "1731", "5045", "5046", "5065", "5099", "5722", "5732", "5734", "5946", "7372", "7622", "7623", "7629", "7631", "4411", "4899", "5193", "5992", "7032", "7033", "7333", "7832", "7911", "7922", "7929", "7933", "7991", "7996", "7997", "5198", "5211", "5231", "5251", "5712", "5713", "5714", "5718", "5719", "5950", "7641", "5122", "5912", "5975", "8042", "8043", "5977", "7230", "7297", "7298", "4121", "4111", "5511", "5521", "7512", "5192", "5733", "5735", "5941", "5942", "5945", "5995", "7829", "7941", "5399", "5411"]
-        notes: "5% cashback on online spends across eligible MCCs (Table 1.2: Apparels, Department Store, Electronics, Entertainment, Home Decor, Pharmacies, Personal Care, Local Cabs, Pet Stores, Discount Stores, Grocery). Only select merchants mapped under these MCCs qualify."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-    redemption:
-      - type: statement-credit
-        program: Swiggy cashback (auto statement credit)
-        rate_inr_per_unit: 1.0
-        constraints: "Auto-credited against the card statement balance (w.e.f. 21 Jun 2024). Prior to that, Swiggy Money was redeemable only on the Swiggy app."
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-pdf
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/swiggy-hdfc/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf
-      fields_verified:
-        - rewards.base.cap_per_cycle
-        - rewards.accelerated.effective_rate
-        - rewards.accelerated.cap_per_cycle
-        - rewards.accelerated.cycle
-      notes: "Archived Swiggy HDFC T&C supports 10% Swiggy (cap ₹1,500), 5% online-MCC (cap ₹1,500) and 1% other (cap ₹500) per billing cycle (per docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md)."
-
+- effective_from: 2023-09-01
+  effective_until: null
+  currency: cashback
+  currency_name: Swiggy Money
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: statement
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: swiggy-ecosystem
+    canonical_categories:
+    - dining
+    multiplier: 1
+    effective_rate: 10
+    cap_per_cycle: 1500
+    cap_unit: cashback-inr
+    cycle: statement
+    merchants:
+    - swiggy-food
+    - swiggy-instamart
+    - swiggy-dineout
+    - swiggy-genie
+    applicability_pct: 3
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - swiggy
+      - instamart
+    notes: 10% cashback on Swiggy app (Food, Instamart, Dineout, Genie).
+  - category: online-mcc
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 5
+    cap_per_cycle: 1500
+    cap_unit: cashback-inr
+    cycle: statement
+    mcc_list:
+    - '5137'
+    - '5139'
+    - '5611'
+    - '5621'
+    - '5631'
+    - '5641'
+    - '5651'
+    - '5655'
+    - '5661'
+    - '5691'
+    - '5697'
+    - '5699'
+    - '5948'
+    - '5200'
+    - '5300'
+    - '5311'
+    - '5331'
+    - '5949'
+    - '5973'
+    - '1731'
+    - '5045'
+    - '5046'
+    - '5065'
+    - '5099'
+    - '5722'
+    - '5732'
+    - '5734'
+    - '5946'
+    - '7372'
+    - '7622'
+    - '7623'
+    - '7629'
+    - '7631'
+    - '4411'
+    - '4899'
+    - '5193'
+    - '5992'
+    - '7032'
+    - '7033'
+    - '7333'
+    - '7832'
+    - '7911'
+    - '7922'
+    - '7929'
+    - '7933'
+    - '7991'
+    - '7996'
+    - '7997'
+    - '5198'
+    - '5211'
+    - '5231'
+    - '5251'
+    - '5712'
+    - '5713'
+    - '5714'
+    - '5718'
+    - '5719'
+    - '5950'
+    - '7641'
+    - '5122'
+    - '5912'
+    - '5975'
+    - '8042'
+    - '8043'
+    - '5977'
+    - '7230'
+    - '7297'
+    - '7298'
+    - '4121'
+    - '4111'
+    - '5511'
+    - '5521'
+    - '7512'
+    - '5192'
+    - '5733'
+    - '5735'
+    - '5941'
+    - '5942'
+    - '5945'
+    - '5995'
+    - '7829'
+    - '7941'
+    - '5399'
+    - '5411'
+    notes: '5% cashback on online spends across eligible MCCs (Table 1.2: Apparels,
+      Department Store, Electronics, Entertainment, Home Decor, Pharmacies, Personal
+      Care, Local Cabs, Pet Stores, Discount Stores, Grocery). Only select merchants
+      mapped under these MCCs qualify.'
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - utilities
+  redemption:
+  - type: statement-credit
+    program: Swiggy cashback (auto statement credit)
+    rate_inr_per_unit: 1.0
+    constraints: Auto-credited against the card statement balance (w.e.f. 21 Jun 2024).
+      Prior to that, Swiggy Money was redeemable only on the Swiggy app.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/swiggy-hdfc/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf
+    fields_verified:
+    - rewards.base.cap_per_cycle
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cycle
+    notes: Archived Swiggy HDFC T&C supports 10% Swiggy (cap ₹1,500), 5% online-MCC
+      (cap ₹1,500) and 1% other (cap ₹500) per billing cycle (per docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md).
 benefits:
-  - effective_from: 2023-09-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Complimentary Swiggy One membership for 3 months"
-        value_inr: 1000
-        window_days: 30
-    fuel_surcharge_waiver: null
-    concierge: false
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2023-09-01
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Joining fee paid
+    benefit: Complimentary Swiggy One membership for 3 months
+    value_inr: 1000
+    window_days: 30
+  fuel_surcharge_waiver: null
+  concierge: false
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 60
@@ -137,11 +216,14 @@ eligibility:
     self_employed: 600000
   credit_score_min: 720
   residency: resident-indian
-
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/swiggy-hdfc-bank-credit-card
-
 metadata:
   last_verified_on: 2026-07-03
-  tags: [co-branded, swiggy, cashback, entry, food-delivery]
-  exclusive_group: hdfc-swiggy   # HDFC issues only one card from the Swiggy family
+  tags:
+  - co-branded
+  - swiggy
+  - cashback
+  - entry
+  - food-delivery
+  exclusive_group: hdfc-swiggy

@@ -11,12 +11,12 @@ id: sbi-pulse-sprint
 name: SBI Card PULSE Sprint
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: signature
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2022-05-01
 
 fees:
   - effective_from: 2026-07-03
@@ -39,6 +39,7 @@ fees:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
@@ -81,6 +82,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
       notes: "Crawl reflects parent SBI Card PULSE."
 
     mcc_exclusions: ['6513']
@@ -133,20 +135,22 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
       notes: "Crawl reflects parent SBI Card PULSE."
 
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: null
-    self_employed: null
+    salaried: 600000
+    self_employed: 600000
   credit_score_min: 730
   residency: resident-indian
+  notes: "Tier-standard mid income requirement (~₹6L p.a.) per aggregator consensus."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [health-wellness, mid-tier, points, lifestyle]

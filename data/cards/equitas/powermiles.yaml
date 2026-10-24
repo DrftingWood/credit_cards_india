@@ -29,6 +29,10 @@ fees:
       cycle: annual
       conditions: "First year free; renewal fee waived on spends of Rs 4,80,000 in the previous anniversary year."
     forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 250
     gst_applicable: true
     source:
       url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
@@ -66,13 +70,20 @@ rewards:
       - insurance-premiums
       - emi
     mcc_exclusions: ['6513']
-    redemption: []
+    redemption:
+      - type: catalog
+        program: Equitas Xchange Rewards
+        rate_inr_per_unit: 0.5
+        constraints: "1 RP = Rs 0.50 (Blue base tier) on the Equitas Xchange rewards portal."
     source:
       url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
-      retrieved_on: 2026-07-05
+      retrieved_on: 2026-10-24
       type: issuer-page
-      confidence: medium
+      confidence: high
       fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.base.unit_value_inr
         - rewards.accelerated.effective_rate
       notes: "2026-07-05: 1:1 transfer program ANNOUNCED (BA/United/Finnair/Aeroplan/Etihad/Thai/AirAsia/Air India/JAL/IHG/Wyndham) but NOT LIVE (expected ~Sep 2026). Current value Rs 0.50/pt via portal."
 
@@ -122,5 +133,5 @@ application:
   apply_url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: 2026-10-24
   tags: [premium, points, travel, miles, lounge, metal, forex]

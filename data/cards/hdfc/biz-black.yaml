@@ -1,0 +1,167 @@
+# ---------------------------------------------------------------------------
+# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
+#   Source     : HDFC Bank Business Credit Cards product page & T&C, hdfc.bank.in
+#   Verified   : 2026-10-24   Confidence: HIGH (web)
+#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
+# ---------------------------------------------------------------------------
+id: hdfc-biz-black
+name: HDFC Bank BizBlack Metal Edition Credit Card
+issuer: hdfc
+network: diners
+network_tier: black
+tier: super-premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2023-06-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2023-06-01
+    effective_until: null
+    joining_fee_inr: 10000
+    annual_fee_inr: 10000
+    renewal_fee_inr: 10000
+    fee_waiver:
+      spend_inr: 750000
+      cycle: annual
+      conditions: "First-year fee waived on spending Rs. 1.5 lakh within 90 days of issuance; annual renewal fee waived on spends of Rs. 7.5 lakh in the preceding anniversary year."
+    forex_markup_pct: 2.0
+    finance_charge_monthly_pct: 1.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.hdfc.bank.in/business-credit-cards/bizblack-metal-edition-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Super-premium metal business credit card on the Diners Club Black tier; Rs. 10,000 fee waived at Rs. 7.5L annual spend."
+
+rewards:
+  - effective_from: 2023-06-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 5
+      per_inr: 150
+      unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
+    accelerated:
+      - category: business-tax-utility-smartbuy
+        canonical_categories: [utilities, government, travel, online]
+        multiplier: 5
+        effective_rate: 25
+        cap_per_cycle: 7500
+        cap_unit: points
+        cycle: statement
+        channel:
+          required: false
+          class: issuer-portal
+          merchants: [smartbuy]
+        notes: "5X Reward Points (25 RP per Rs. 150 = 16.67% value) on business essentials: Income Tax & Advance Tax, GST portal payments, utility & telecom bills via SmartPay/PayZapp, MMT MyBiz & SmartBuy BizDeals, and SaaS/productivity tools (AWS, Google Workspace, Microsoft 365, Tally, Canva). Requires Rs. 50,000 minimum statement-cycle spend; bonus points capped at 7,500 RP per statement cycle."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - insurance-premiums
+      - education
+      - emi
+      - cash-advance
+    capping_rules:
+      - "5X accelerated earn on business essentials requires a minimum statement-cycle spend of Rs. 50,000 and is capped at 7,500 bonus Reward Points per statement cycle."
+      - "Flight and hotel redemptions via SmartBuy / BizDeals redeem at 1 RP = Re. 1 (up to 70% of booking value, capped at 50,000 RP per calendar month)."
+    redemption:
+      - type: catalog
+        program: SmartBuy Flights, Hotels & BizDeals
+        rate_inr_per_unit: 1.0
+        constraints: "1 RP = Re. 1 on flights, hotels, and SmartBuy BizDeals (up to 70% of booking value, max 50,000 RP/month)."
+      - type: airmiles
+        program: Airline & Hotel Transfer Partners
+        rate_inr_per_unit: 1.0
+        ratio: "1:1"
+        constraints: "1:1 transfer to select airline/hotel loyalty programmes via HDFC NetBanking."
+      - type: statement-credit
+        program: Cashback Redemption
+        rate_inr_per_unit: 0.30
+    source:
+      url: https://www.hdfc.bank.in/business-credit-cards/bizblack-metal-edition-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "5 RP per Rs. 150 base (3.33%); 5X on business/tax/utility/SmartBuy BizDeals (25 RP per Rs. 150, capped at 7,500 bonus RP/statement cycle on min Rs. 50,000 cycle spend)."
+    mcc_exclusions: ['6513']
+
+benefits:
+  - effective_from: 2023-06-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: "unlimited"
+        cycle: annual
+        guests_per_visit: 0
+        via: [diners]
+        notes: "Unlimited complimentary domestic airport lounge access for primary and add-on cardholders via Diners Club network."
+      international:
+        visits_per_cycle: "unlimited"
+        cycle: annual
+        guests_per_visit: 0
+        via: [diners]
+        notes: "Unlimited complimentary international airport lounge access globally for primary and add-on cardholders."
+    golf:
+      rounds_per_cycle: 6
+      lessons_per_cycle: 0
+      cycle: quarterly
+      notes: "6 complimentary golf games per calendar quarter across premier golf courses worldwide."
+    milestones:
+      - spend_inr: 500000
+        cycle: annual
+        benefit: "Rs. 5,000 SmartBuy Flight or Taj Stay voucher on every Rs. 5 lakh annual spend (up to Rs. 20,000 across 4 milestones at Rs. 5L, Rs. 10L, Rs. 15L, and Rs. 20L in a calendar year)"
+        value_inr: 5000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: true
+        max_awards_per_cycle: 4
+    welcome:
+      - condition: "Spend Rs. 1.5 lakh within first 90 days of card issuance"
+        benefit: "First-year fee waiver plus Club Marriott annual membership and Rs. 5,000 Taj Stay voucher (or All Accor+ Explorer membership from Sept 2026)"
+        value_inr: 5000
+        window_days: 90
+    insurance:
+      - type: air-accident
+        sum_insured_inr: 20000000
+      - type: travel-medical
+        sum_insured_inr: 5000000
+      - type: credit-shield
+        sum_insured_inr: 900000
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 400
+      max_txn_inr: 5000
+      cap_per_cycle_inr: 1000
+      cycle: statement
+    concierge: true
+    source:
+      url: https://www.hdfc.bank.in/business-credit-cards/bizblack-metal-edition-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: 3000000
+  credit_score_min: 750
+  residency: resident-indian
+  notes: "Designed for self-employed professionals, business owners, and entrepreneurs with annual ITR > Rs. 30 lakh."
+
+application:
+  apply_url: https://www.hdfc.bank.in/business-credit-cards/bizblack-metal-edition-credit-card
+
+metadata:
+  last_verified_on: 2026-10-24
+  tags: [metal, diners, business, super-premium, points, travel, lounge]

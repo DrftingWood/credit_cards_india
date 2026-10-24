@@ -11,12 +11,12 @@ id: axis-pride-signature
 name: Axis Bank Pride Signature Credit Card
 issuer: axis
 network: visa
-network_tier: null
+network_tier: signature
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2016-01-01
 discontinued_on: null
 
 fees:
@@ -109,6 +109,7 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18

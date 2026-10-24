@@ -11,7 +11,7 @@ id: sbi-bpcl
 name: BPCL SBI Card
 issuer: sbi
 network: visa
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
@@ -19,7 +19,7 @@ co_brand:
   category: fuel
   partner_website: https://www.bharatpetroleum.in
 status: active
-launched_on: null
+launched_on: 2017-12-01
 discontinued_on: null
 
 fees:
@@ -122,15 +122,21 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
   max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
   residency: resident-indian
+  notes: "Income and credit score requirements based on aggregator/tier consensus (not published on product page)."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-24
   tags: [co-branded, fuel, bpcl, entry-tier, points]

@@ -98,6 +98,7 @@ rewards:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
       retrieved_on: 2026-07-05
       type: issuer-page
+      confidence: high
 
     mcc_exclusions: ['6513']
     capping_rules:
@@ -123,6 +124,7 @@ benefits:
         window_days: 90
       - condition: "Joining fee paid"
         benefit: "Additional discount vouchers worth ₹11,999 across participating Reliance Retail stores"
+        value_inr: 11999
     milestones:
       - spend_inr: 75000
         cycle: annual
@@ -153,6 +155,7 @@ benefits:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
@@ -167,5 +170,5 @@ application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: 2026-10-24
   tags: [co-branded, retail, reliance, premium, points]

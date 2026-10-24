@@ -56,6 +56,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: airtel-thanks-utility
         canonical_categories: [utilities]
@@ -108,6 +109,7 @@ rewards:
       url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
     mcc_exclusions: ['6513']
 benefits:
@@ -130,6 +132,7 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 18

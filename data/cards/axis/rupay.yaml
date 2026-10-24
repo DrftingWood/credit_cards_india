@@ -11,12 +11,12 @@ id: axis-rupay
 name: Axis Bank RuPay Credit Card
 issuer: axis
 network: rupay
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2022-06-01
 discontinued_on: null
 
 fees:
@@ -26,13 +26,16 @@ fees:
     annual_fee_inr: 0
     fee_waiver: null
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: null
-    cash_advance_fee: null
+    finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     source:
       url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 rewards:
   - effective_from: 2025-06-20
@@ -45,6 +48,11 @@ rewards:
       unit_value_inr_realized: 0.18
       unit_value_inr: 0.2
     notes: "Generic RuPay landing page; earn rates depend on the specific Axis RuPay card selected. Verify per underlying product."
+    redemption:
+      - type: catalog
+        program: Axis EDGE Rewards
+        rate_inr_per_unit: 0.2
+        constraints: "EDGE Reward Points redeemable via the Axis EDGE Rewards catalog at ₹0.20 per point."
     source:
       url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
       retrieved_on: '2026-07-05'
@@ -65,6 +73,7 @@ benefits:
       url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21

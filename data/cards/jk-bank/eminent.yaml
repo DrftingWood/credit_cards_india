@@ -1,0 +1,124 @@
+id: jk-bank-eminent
+name: J&K Bank Eminent World Credit Card
+issuer: jk-bank
+network: mastercard
+network_tier: world
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2022-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2022-01-01
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 1500
+    fee_waiver:
+      spend_inr: 300000
+      cycle: annual
+      conditions: "Annual fee waived on spending ₹3,00,000 or more in the preceding anniversary year."
+    forex_markup_pct: 2.5
+    finance_charge_monthly_pct: 2.25
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 250
+    gst_applicable: true
+    source:
+      url: https://www.jkbank.com/personal/cards/eminent-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining Nil, annual fee ₹1,500, waiver on ₹3,00,000 spend."
+
+rewards:
+  - effective_from: 2022-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 2
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.25
+    accelerated:
+      - category: dining-and-travel
+        canonical_categories: [dining, travel]
+        multiplier: 2
+        effective_rate: 4
+        cap_per_cycle: 2000
+        cap_unit: points
+        cycle: monthly
+        notes: "4 Reward Points per ₹100 on dining and travel spends."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - cash-advance
+    mcc_exclusions: ['6513', '6540']
+    redemption:
+      - type: catalog
+        program: J&K Bank Rewards
+        rate_inr_per_unit: 0.25
+      - type: statement-credit
+        program: J&K Bank Cashback
+        rate_inr_per_unit: 0.20
+    source:
+      url: https://www.jkbank.com/personal/cards/eminent-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "2 RP/₹100 base, 4 RP/₹100 on dining & travel."
+
+benefits:
+  - effective_from: 2022-01-01
+    effective_until: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 2
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [mastercard]
+        notes: "2 complimentary domestic airport lounge visits per calendar quarter via Mastercard World."
+      international:
+        visits_per_cycle: 2
+        cycle: annual
+        guests_per_visit: 0
+        via: [mastercard]
+        notes: "2 complimentary international lounge visits per year via LoungeKey."
+    movies:
+      type: bogo
+      partner: BookMyShow
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 250
+      notes: "Buy 1 Get 1 free movie ticket up to ₹250 off per month on BookMyShow."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 150
+      cycle: monthly
+    concierge: true
+    source:
+      url: https://www.jkbank.com/personal/cards/eminent-credit-card
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: 750
+  residency: resident-indian
+
+application:
+  apply_url: https://www.jkbank.com/personal/cards/eminent-credit-card
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [premium, mastercard, world, jk-bank, lounge, movies]

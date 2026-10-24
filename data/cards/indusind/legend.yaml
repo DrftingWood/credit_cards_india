@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-legend
 name: IndusInd Bank Legend Credit Card
 issuer: indusind
@@ -18,118 +9,119 @@ co_brand: null
 status: active
 launched_on: 2015-01-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2015-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.8
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Lifetime-free card."
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: 2015-01-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 1.8
+  finance_charge_monthly_pct: 3.83
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  notes: Lifetime-free card.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: medium
 rewards:
-  - effective_from: 2015-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      # Corrected 2026-07-28. The record claimed Rs 0.75 face AND realized, but no
-      # redemption on this card pays anything close: catalog and statement credit are
-      # Rs 0.25, and the best documented airmiles transfer is Rs 0.28 (KrisFlyer 4:1).
-      # The Rs 0.75 'floor' was backed by no redemption option and inflated every rate
-      # on the card by 3x. See docs/TODO.md E18.
-      unit_value_inr: 0.28
-      unit_value_inr_realized: 0.25
-    accelerated:
-      - category: weekend-spend
-        multiplier: 2
-        effective_rate: 2
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "2x points on weekend spends (Sat, Sun)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: airmiles
-        program: Multiple (transfer partners)
-        ratio: "4:1"
-        constraints: "2 transfer partners; ratios are card-point : partner-unit. realized Rs 0.25 = guaranteed non-transfer floor (catalog / statement credit); best documented transfer Rs 0.28. 0 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "4:1"
-            last_verified_on: '2026-07-05'
-            notes: 4:1 -> ~Rs 0.28/pt [below floor — avoid]
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "4:1"
-            last_verified_on: '2026-07-05'
-            notes: 4:1 -> ~Rs 0.14/pt [below floor — avoid]
-      - type: catalog
-        program: IndusMoments
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
+- effective_from: 2015-01-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 0.28
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: weekend-spend
+    multiplier: 2
+    effective_rate: 2
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: 2x points on weekend spends (Sat, Sun).
+    canonical_categories:
+    - dining
+    - entertainment
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: airmiles
+    program: Multiple (transfer partners)
+    ratio: '4:1'
+    constraints: '2 transfer partners; ratios are card-point : partner-unit. realized
+      Rs 0.25 = guaranteed non-transfer floor (catalog / statement credit); best documented
+      transfer Rs 0.28. 0 partners beat the floor. Full per-partner values below.'
+    transfer_partners:
+    - partner_name: Singapore KrisFlyer
+      partner_type: airline
+      transfer_ratio: '4:1'
+      last_verified_on: '2026-07-05'
+      notes: 4:1 -> ~Rs 0.28/pt [below floor — avoid]
+    - partner_name: Air India Maharaja Club
+      partner_type: airline
+      transfer_ratio: '4:1'
+      last_verified_on: '2026-07-05'
+      notes: 4:1 -> ~Rs 0.14/pt [below floor — avoid]
+    rate_inr_per_unit: 0.28
+  - type: catalog
+    program: IndusMoments
+    rate_inr_per_unit: 0.25
+  - type: statement-credit
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
+    retrieved_on: '2026-07-05'
+    type: issuer-page
+    notes: 'Encoded 2026-07-05, full-visibility model: every transfer partner is listed
+      with its own ratio and Rs/point. No blended or averaged value. realized = the
+      guaranteed non-transfer floor; face = the single best documented transfer (ceiling).
+      See transfer_partners for the complete per-partner spread. Earn rates unchanged.'
 benefits:
-  - effective_from: 2015-01-01
-    effective_until: null
-    lounge_access: null  # Lounge access discontinued effective 7-Mar-2025 (per live page).
-    golf:
-      rounds_per_cycle: 1
-      cycle: monthly
-      lessons_per_cycle: 1
-    milestones:
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "3,000 bonus reward points on ₹5,00,000 annual spend"
-        value_inr: 750
-        reward_kind: points
-        reward_units: 3000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 25000000
-      - type: travel-medical
-        sum_insured_inr: 2500000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2015-01-01
+  effective_until: null
+  lounge_access: null
+  golf:
+    rounds_per_cycle: 1
+    cycle: monthly
+    lessons_per_cycle: 1
+  milestones:
+  - spend_inr: 500000
+    cycle: annual
+    benefit: 3,000 bonus reward points on ₹5,00,000 annual spend
+    value_inr: 750
+    reward_kind: points
+    reward_units: 3000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 25000000
+  - type: travel-medical
+    sum_insured_inr: 2500000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: null
+    cycle: monthly
+  concierge: true
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 65
@@ -138,10 +130,12 @@ eligibility:
     self_employed: 600000
   credit_score_min: 750
   residency: resident-indian
-
 application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html
-
 metadata:
   last_verified_on: '2026-07-05'
-  tags: [lifetime-free, premium, points, low-forex]
+  tags:
+  - lifetime-free
+  - premium
+  - points
+  - low-forex

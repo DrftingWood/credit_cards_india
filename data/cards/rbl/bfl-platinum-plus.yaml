@@ -1,0 +1,131 @@
+id: rbl-bfl-platinum-plus
+name: Bajaj Finserv RBL Bank Platinum Plus SuperCard
+issuer: rbl
+network: mastercard
+network_tier: platinum
+tier: mid
+card_type: credit
+co_brand:
+  partner: Bajaj Finserv
+  category: retail
+status: active
+launched_on: 2019-01-01
+discontinued_on: null
+
+fees:
+  - effective_from: 2019-01-01
+    effective_until: null
+    joining_fee_inr: 999
+    annual_fee_inr: 999
+    fee_waiver:
+      spend_inr: 100000
+      cycle: annual
+      conditions: "Annual fee waived on spending ₹1,00,000 or more in the preceding year."
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: 3.99
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
+    gst_applicable: true
+    source:
+      url: https://www.rblbank.com/personal-banking/cards/credit-cards/bajaj-finserv-rbl-bank-supercard
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "Joining ₹999, annual ₹999, waived on ₹1,00,000 spend."
+
+rewards:
+  - effective_from: 2019-01-01
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 100
+      unit_value_inr: 0.25
+      unit_value_inr_realized: 0.20
+    accelerated:
+      - category: online-spends
+        canonical_categories: [online]
+        multiplier: 2
+        effective_rate: 2
+        cap_per_cycle: unlimited
+        cap_unit: points
+        cycle: monthly
+        notes: "2X Reward Points (2 per ₹100) on all online spends."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
+      - utilities
+      - emi
+    mcc_exclusions: ['6513']
+    redemption:
+      - type: catalog
+        program: RBL Rewards
+        rate_inr_per_unit: 0.25
+    source:
+      url: https://www.rblbank.com/personal-banking/cards/credit-cards/bajaj-finserv-rbl-bank-supercard
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+      notes: "1 RP/₹100 offline, 2 RP/₹100 online."
+
+benefits:
+  - effective_from: 2019-01-01
+    effective_until: null
+    welcome:
+      - condition: "Spend ₹2,000 within 30 days of issuance"
+        benefit: "4,000 Reward Points"
+        value_inr: 1000
+        window_days: 30
+    milestones:
+      - spend_inr: 150000
+        cycle: annual
+        benefit: "10,000 Bonus Reward Points on annual spend of ₹1,50,000"
+        value_inr: 2500
+        reward_kind: points
+        reward_units: 10000
+        reward_currency_name: Reward Points
+        trigger_window: anniversary-year
+    lounge_access:
+      domestic:
+        visits_per_cycle: 1
+        cycle: quarterly
+        guests_per_visit: 0
+        via: [mastercard]
+    movies:
+      type: bogo
+      partner: BookMyShow
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 200
+      notes: "1+1 free movie ticket up to ₹200 off once a month (Monday to Friday)."
+    fuel_surcharge_waiver:
+      pct: 1.0
+      min_txn_inr: 500
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 100
+      cycle: monthly
+    concierge: false
+    source:
+      url: https://www.rblbank.com/personal-banking/cards/credit-cards/bajaj-finserv-rbl-bank-supercard
+      retrieved_on: 2026-10-24
+      type: issuer-page
+      confidence: high
+
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+
+application:
+  apply_url: https://www.rblbank.com/personal-banking/cards/credit-cards/bajaj-finserv-rbl-bank-supercard
+
+metadata:
+  last_verified_on: '2026-10-24'
+  tags: [co-branded, bajaj-finserv, supercard, movies, lounge, mid]

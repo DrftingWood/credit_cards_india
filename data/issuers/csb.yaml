@@ -1,0 +1,8 @@
+id: csb
+name: CSB Bank
+short_name: CSB
+legal_name: CSB Bank Limited
+website: https://www.csb.co.in
+customer_care:
+  phone: "1800-266-9090"
+type: bank

@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-rubyx
 name: ICICI Bank Rubyx Credit Card
 issuer: icici
@@ -18,170 +9,178 @@ co_brand: null
 status: active
 launched_on: 2014-01-01
 discontinued_on: null
-
-# NOTE: Rubyx is offered on both Visa Signature and American Express networks;
-# this entry tracks the Visa variant. The Amex variant earns MR points and can
-# be added as a separate card file if needed.
-
 fees:
-  - effective_from: 2014-01-01
-    effective_until: null
-    joining_fee_inr: 3000
-    annual_fee_inr: 2000
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/icici/_shared/mitc_cc.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-
+- effective_from: 2014-01-01
+  effective_until: null
+  joining_fee_inr: 3000
+  annual_fee_inr: 2000
+  fee_waiver:
+    spend_inr: 300000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/_shared/mitc_cc.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
 rewards:
-  - effective_from: 2014-01-01
-    effective_until: null
-    currency: points
-    currency_name: ICICI Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: utility-and-insurance
-        canonical_categories: [utilities, insurance]
-        multiplier: 0.5
-        effective_rate: 1
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: ishop-hotels
-        canonical_categories:
-          - travel
-        multiplier: 12
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 12X reward points on HOTEL bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap (ICICI capping PDF, WEF 1-Oct-2025) with iShop flights; iShop also gives 6X on bus + shopping vouchers (not modelled).
-      - category: ishop-flights
-        canonical_categories:
-          - travel
-        multiplier: 6
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 6X reward points on FLIGHT bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap with iShop hotels.
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-      - type: catalog
-        program: ICICI Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
+- effective_from: 2014-01-01
+  effective_until: null
+  currency: points
+  currency_name: ICICI Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.2
+  accelerated:
+  - category: international-spend
+    canonical_categories:
+    - international
+    multiplier: 2
+    effective_rate: 4
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+  - category: utility-and-insurance
+    canonical_categories:
+    - utilities
+    - insurance
+    multiplier: 0.5
+    effective_rate: 1
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+  - category: ishop-hotels
+    canonical_categories:
+    - travel
+    multiplier: 12
+    cap_per_cycle: 15000
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - ishop
+    notes: Up to 12X reward points on HOTEL bookings via ICICI iShop (booked via iShop
+      only). Shares the 15,000 RP/calendar-month iShop cap (ICICI capping PDF, WEF
+      1-Oct-2025) with iShop flights; iShop also gives 6X on bus + shopping vouchers
+      (not modelled).
+  - category: ishop-flights
+    canonical_categories:
+    - travel
+    multiplier: 6
+    cap_per_cycle: 15000
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - ishop
+    notes: Up to 6X reward points on FLIGHT bookings via ICICI iShop (booked via iShop
+      only). Shares the 15,000 RP/calendar-month iShop cap with iShop hotels.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 0.25
+  - type: catalog
+    program: ICICI Rewards
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card
+    retrieved_on: 2026-07-05
+    type: issuer-page
+  mcc_exclusions:
+  - '6513'
 benefits:
-  - effective_from: 2014-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-        spend_threshold_inr: 75000
-        spend_threshold_cycle: quarterly
-        notes: "Complimentary domestic lounge access requires ₹75,000 spend in the preceding calendar quarter (MITC, w.e.f. Jan 1, 2025)."
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
-    milestones:
-      - spend_inr: 300000
-        cycle: annual
-        benefit: "3,000 Reward Points on ₹3 lakh annual spend"
-        reward_kind: points
-        reward_units: 3000
-        reward_currency_name: ICICI Reward Points
-        trigger_window: anniversary-year
-      - spend_inr: 100000
-        cycle: annual
-        benefit: "1,500 Reward Points for every additional ₹1 lakh spend (up to 15,000 points per year)"
-        reward_kind: points
-        reward_units: 1500
-        reward_currency_name: ICICI Reward Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-    welcome:
-      - condition: "Joining fee paid; claimed via iMobile/Net Banking"
-        benefit: "Welcome gift vouchers: Tata CLiQ ₹2,000, EaseMyTrip ₹2,000 (2×₹1,000), Croma ₹1,000 (2×₹500) and EazyDiner 3-month Prime membership"
-        value_inr: 5000
-    movies:
-      type: discount
-      partner: BookMyShow and INOX
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 150
-      notes: "25% off up to ₹150 on movie tickets, twice a month each on BookMyShow and INOX."
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 10000000
-      - type: personal-accident
-        sum_insured_inr: 200000
-        conditions: "RuPay variant"
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2014-01-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      notes: Complimentary domestic lounge access requires ₹75,000 spend in the preceding
+        calendar quarter (MITC, w.e.f. Jan 1, 2025).
+    international:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+  golf:
+    rounds_per_cycle: 2
+    cycle: monthly
+    lessons_per_cycle: 0
+  milestones:
+  - spend_inr: 300000
+    cycle: annual
+    benefit: 3,000 Reward Points on ₹3 lakh annual spend
+    reward_kind: points
+    reward_units: 3000
+    reward_currency_name: ICICI Reward Points
+    trigger_window: anniversary-year
+    value_inr: 750
+  - spend_inr: 100000
+    cycle: annual
+    benefit: 1,500 Reward Points for every additional ₹1 lakh spend (up to 15,000
+      points per year)
+    reward_kind: points
+    reward_units: 1500
+    reward_currency_name: ICICI Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+    value_inr: 375
+  welcome:
+  - condition: Joining fee paid; claimed via iMobile/Net Banking
+    benefit: 'Welcome gift vouchers: Tata CLiQ ₹2,000, EaseMyTrip ₹2,000 (2×₹1,000),
+      Croma ₹1,000 (2×₹500) and EazyDiner 3-month Prime membership'
+    value_inr: 5000
+  movies:
+    type: discount
+    partner: BookMyShow and INOX
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 150
+    notes: 25% off up to ₹150 on movie tickets, twice a month each on BookMyShow and
+      INOX.
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 10000000
+  - type: personal-accident
+    sum_insured_inr: 200000
+    conditions: RuPay variant
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: null
+    cycle: monthly
+  concierge: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 65
@@ -190,10 +189,12 @@ eligibility:
     self_employed: 900000
   credit_score_min: 730
   residency: resident-indian
-
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/rubyx-credit-card
-
 metadata:
   last_verified_on: 2026-07-05
-  tags: [mid, points, golf, travel]
+  tags:
+  - mid
+  - points
+  - golf
+  - travel

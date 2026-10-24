@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: kotak-white-reserve
 name: Kotak White Reserve Credit Card
 issuer: kotak
@@ -18,101 +9,103 @@ co_brand: null
 status: active
 launched_on: 2020-01-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2020-01-01
-    effective_until: null
-    joining_fee_inr: 3000
-    annual_fee_inr: 3000
-    fee_waiver:
-      spend_inr: 750000
-      cycle: annual
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: 2020-01-01
+  effective_until: null
+  joining_fee_inr: 3000
+  annual_fee_inr: 3000
+  fee_waiver:
+    spend_inr: 750000
+    cycle: annual
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: medium
 rewards:
-  - effective_from: 2020-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Whites Pass
-    base:
-      rate: 3
-      per_inr: 200
-      unit_value_inr: 1.0
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 6
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: Whites Catalogue
-        rate_inr_per_unit: 1.0
-        constraints: "Whites Pass redeemable on curated lifestyle catalogue."
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: 2020-01-01
+  effective_until: null
+  currency: cashback
+  currency_name: Whites Pass
+  base:
+    rate: 3
+    per_inr: 200
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: international-spend
+    canonical_categories:
+    - international
+    multiplier: 2
+    effective_rate: 6
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - utilities
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: Whites Catalogue
+    rate_inr_per_unit: 1.0
+    constraints: Whites Pass redeemable on curated lifestyle catalogue.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: medium
 benefits:
-  - effective_from: 2020-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
-      international:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "3,000 Whites Pass"
-        value_inr: 3000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 15000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 3500
+- effective_from: 2020-01-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
       cycle: annual
-    concierge: true
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      guests_per_visit: 0
+      via:
+      - mastercard
+      - dreamfolks
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  golf:
+    rounds_per_cycle: 2
+    cycle: monthly
+    lessons_per_cycle: 0
+  welcome:
+  - condition: Joining fee paid
+    benefit: 3,000 Whites Pass
+    value_inr: 3000
+    window_days: 90
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 15000000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 3500
+    cycle: annual
+  concierge: true
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+    retrieved_on: 2026-07-03
+    type: issuer-page
 eligibility:
   min_age: 21
   max_age: 65
@@ -121,10 +114,12 @@ eligibility:
     self_employed: 3000000
   credit_score_min: 780
   residency: resident-indian
-
 application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-
 metadata:
   last_verified_on: 2026-07-03
-  tags: [super-premium, lifestyle, travel, whites-pass]
+  tags:
+  - super-premium
+  - lifestyle
+  - travel
+  - whites-pass

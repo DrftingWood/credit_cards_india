@@ -1,0 +1,135 @@
+id: yes-kiwi
+name: YES Bank Kiwi RuPay Credit Card
+issuer: 'yes'
+network: rupay
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand:
+  partner: Kiwi
+  category: other
+  partner_website: https://gokiwi.in
+status: active
+launched_on: 2024-06-01
+discontinued_on: null
+fees:
+- effective_from: 2024-06-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  notes: Lifetime-free virtual RuPay credit card issued by YES Bank in partnership
+    with GoKiwi (often issued on the YES Bank Klick RuPay card bin). Optional paid
+    Kiwi Neon subscription (Rs. 999/yr) unlocks higher milestone UPI cashback and
+    lounge vouchers.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/klick-credit-card
+    retrieved_on: 2026-10-24
+    type: issuer-page
+    confidence: high
+rewards:
+- effective_from: 2024-06-01
+  effective_until: null
+  currency: cashback
+  currency_name: Kiwis
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: upi-scan-and-pay
+    multiplier: 3
+    effective_rate: 6
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 1.5% flat cashback (6 Kiwis per Rs. 100 at 4 Kiwis = Re. 1) on eligible
+      merchant UPI Scan & Pay transactions via the Kiwi app (2% base / up to 5% on
+      Rs. 1.5L annual spend for optional Kiwi Neon subscribers). Base non-UPI online/POS
+      spend earns 0.5% (2 Kiwis per Rs. 100).
+    canonical_categories:
+    - other
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - utilities
+  - education
+  - government
+  - jewellery
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  capping_rules:
+  - 4 Kiwis = Re. 1 (Rs. 0.25 per Kiwi), redeemable instantly as direct bank account
+    cashback in the Kiwi app.
+  - Standard non-Neon cardholders earn 1.5% (6 Kiwis per Rs. 100) on UPI Scan & Pay
+    and 0.5% (2 Kiwis per Rs. 100) on non-UPI online spends; Monthly Kiwi cashback
+    is capped at 1% of credit limit (or per Kiwi T&C).
+  redemption:
+  - type: cashback-bank
+    program: Kiwi App Instant Cashback
+    rate_inr_per_unit: 0.25
+    constraints: 4 Kiwis = Re. 1 (Rs. 0.25/unit); instant credit to the user's linked
+      bank account via the Kiwi app.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/klick-credit-card
+    retrieved_on: 2026-10-24
+    type: issuer-page
+    confidence: high
+    notes: 'Modelled in Kiwis (4 Kiwis = Re. 1, unit_value_inr: 0.25): 2 Kiwis/Rs.
+      100 (0.5%) base non-UPI and 6 Kiwis/Rs. 100 (1.5%) on UPI Scan & Pay via Kiwi
+      app.'
+benefits:
+- effective_from: 2024-06-01
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: monthly
+  concierge: false
+  other:
+  - name: Optional Kiwi Neon Membership
+    description: Cardholders can optionally subscribe to Kiwi Neon (Rs. 999/yr) in
+      the Kiwi app to boost Scan & Pay UPI rewards to 2% (3% at Rs. 50k, 4% at Rs.
+      1L, 5% at Rs. 1.5L annual spend) and unlock milestone domestic airport lounge
+      vouchers.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/klick-credit-card
+    retrieved_on: 2026-10-24
+    type: issuer-page
+    confidence: high
+eligibility:
+  min_age: 21
+  max_age: 60
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+  notes: Apply digitally through the GoKiwi mobile app; virtual RuPay credit card
+    issued instantly upon video KYC approval.
+application:
+  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/klick-credit-card
+metadata:
+  last_verified_on: 2026-10-24
+  tags:
+  - entry
+  - cashback
+  - co-branded
+  - upi
+  - rupay
+  - lifetime-free
+  - virtual-card

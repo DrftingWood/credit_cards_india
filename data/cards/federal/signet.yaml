@@ -107,6 +107,7 @@ benefits:
       url: https://www.federal.bank.in/visa-signet-credit-card
       retrieved_on: 2026-07-03
       type: issuer-page
+      confidence: medium
 
 eligibility:
   min_age: 21

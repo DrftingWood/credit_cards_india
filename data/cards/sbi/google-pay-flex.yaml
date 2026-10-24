@@ -1,0 +1,153 @@
+id: sbi-google-pay-flex
+name: Google Pay Flex SBI Card
+issuer: sbi
+network: rupay
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand:
+  partner: Google Pay
+  category: other
+  partner_website: https://pay.google.com
+status: active
+launched_on: 2026-07-01
+discontinued_on: null
+fees:
+- effective_from: 2026-07-01
+  effective_until: null
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  renewal_fee_inr: 499
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+    conditions: Annual renewal fee waived on eligible spends of Rs. 1,00,000 or more
+      in the preceding membership year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  supplementary_card_fee_inr: 0
+  gst_applicable: true
+  emi_conversion:
+    interest_pct_annual: null
+    processing_fee_pct: null
+    processing_fee_min_inr: null
+    notes: Flexible bill-to-EMI and transaction-to-EMI conversion available directly
+      inside the Google Pay app.
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/google-pay-flex-sbi-card.page
+    retrieved_on: 2026-10-24
+    type: issuer-page
+    confidence: high
+    notes: Launched July 2026 as part of the 'Flex by Google Pay' suite in partnership
+      with SBI Card (issued on RuPay and Visa networks).
+  notes: Digital-first RuPay UPI-enabled credit card managed on the Google Pay app.
+    Joining and annual fee Rs. 499 + GST, waived on Rs. 1 lakh annual spend.
+rewards:
+- effective_from: 2026-07-01
+  effective_until: null
+  currency: points
+  currency_name: Stars
+  base:
+    rate: 1
+    per_inr: 500
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: 2x-spend-active
+    multiplier: 2
+    effective_rate: 2
+    cap_unit: points
+    cycle: monthly
+    notes: 2 Stars per cumulative Rs. 500 spent (2X) during the first two reward cycles
+      and in subsequent cycles when the account is spend-active (minimum Rs. 100 net
+      spend in the previous cycle).
+    canonical_categories:
+    - other
+  - category: spend-above-15k-monthly
+    multiplier: 4
+    effective_rate: 4
+    cap_per_cycle: 18000
+    cap_unit: points
+    cycle: annual
+    notes: 4 Stars per cumulative Rs. 500 spent (4X, scaling up to 8X with promotional
+      tiers) on crossing Rs. 15,000 spend in a billing cycle, capped at 18,000 Stars
+      per annum.
+    canonical_categories:
+    - other
+  exclusions:
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - education
+  - cash-advance
+  - jewellery
+  - emi
+  reward_cap:
+    max_units: 18000
+    cap_unit: points
+    cycle: annual
+  capping_rules:
+  - Total Stars earned across base and accelerated tiers are capped at 18,000 Stars
+    per year (1 Star = Re. 1).
+  redemption:
+  - type: cashback-bank
+    program: Google Pay Stars
+    rate_inr_per_unit: 1.0
+    constraints: 1 Star = Re. 1. Redeemable instantly on the Google Pay app while
+      making UPI payments or against brand vouchers.
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/google-pay-flex-sbi-card.page
+    retrieved_on: 2026-10-24
+    type: issuer-page
+    confidence: high
+    notes: 1 Star = Re. 1 instant redemption on Google Pay; 1 Star/Rs. 500 base, 2
+      Stars/Rs. 500 spend-active, 4 Stars/Rs. 500 above Rs. 15,000 monthly spend,
+      capped at 18,000 Stars/year.
+  mcc_exclusions:
+  - '6513'
+benefits:
+- effective_from: 2026-07-01
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Joining fee realisation and first transaction on Google Pay
+    benefit: Welcome rewards worth Rs. 1,000 (split between Google Pay gift voucher
+      and bonus Stars)
+    value_inr: 1000
+    window_days: 60
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 100
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/google-pay-flex-sbi-card.page
+    retrieved_on: 2026-10-24
+    type: issuer-page
+    confidence: high
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: 700
+  residency: resident-indian
+  notes: Apply digitally via the 'Money -> Flex by Google Pay' section in the Google
+    Pay mobile app.
+application:
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/google-pay-flex-sbi-card.page
+metadata:
+  last_verified_on: 2026-10-24
+  tags:
+  - entry
+  - points
+  - co-branded
+  - upi
+  - rupay

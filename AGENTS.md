@@ -11,4 +11,4 @@ The full project rules are in [CLAUDE.md](CLAUDE.md). Any coding agent working h
 
 ## Next.js version
 
-The site uses Next.js 15 today and is planned to move to 16. APIs and conventions differ between versions: check the official docs for the installed version (see `site/package.json`) before writing routing, caching or config code, and heed deprecation notices (`next lint` is deprecated).
+The site uses Next.js 16 (Turbopack by default). APIs and conventions differ between versions: check the official docs for the installed version (see `site/package.json`) before writing routing, caching or config code, and heed deprecation notices (`next lint` and `middleware` are gone or renamed in 16; `params` and `searchParams` are Promises).

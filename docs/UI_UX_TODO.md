@@ -42,12 +42,12 @@
 
 - [ ] **2.3 Quick Filter Chips**
   - [ ] One-click filter pills above the grid:
-    - `✨ Lifetime Free`
-    - `✈️ Zero Forex Markup`
-    - `🛋️ Free Lounge Access`
-    - `⚡ UPI RuPay`
-    - `💳 Metal Cards`
-    - `🍔 Dining & Delivery`
+    - `Lifetime Free`
+    - `Zero Forex Markup`
+    - `Free Lounge Access`
+    - `UPI RuPay`
+    - `Metal Cards`
+    - `Dining & Delivery`
 
 - [ ] **2.4 View Switcher (Kiwi Grid vs. Data Table)**
   - [ ] Grid View: Rich Kiwi-style flattened visual cards.
@@ -99,4 +99,4 @@
   - [ ] Filter out identical attributes to immediately highlight differences between selected cards.
 
 - [ ] **5.3 Category Winner Badges**
-  - [ ] Auto-highlight the leading card per category (`👑 Lowest Forex`, `👑 Highest Dining Yield`, `👑 Best Lounge Allowance`).
+  - [ ] Auto-highlight the leading card per category (`Lowest Forex`, `Highest Dining Yield`, `Best Lounge Allowance` - text labels, optionally with a Phosphor icon from `@/components/icons`; no emoji).

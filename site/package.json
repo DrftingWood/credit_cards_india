@@ -25,6 +25,7 @@
     "arch": "depcruise app lib components --config .dependency-cruiser.cjs --output-type err"
   },
   "dependencies": {
+    "@phosphor-icons/react": "2.1.10",
     "clsx": "^2.1.1",
     "fuse.js": "^7.0.0",
     "js-yaml": "^4.1.0",

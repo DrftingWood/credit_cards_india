@@ -11,7 +11,7 @@ Written 2026-11-01 (standards plan, Task 8). Behaviour and interaction rules for
 | ID | Rule | Enforcement |
 |---|---|---|
 | UX-1 | Amounts first. The figure a user came for (fee, reward rate, net value) is the most prominent element in its block; its label sits next to it. | Q |
-| UX-2 | Labels first, icons second. Every icon has a text label or an accessible name. No decorative emoji. | Q; Task 9 lint (planned) |
+| UX-2 | Labels first, icons second. Every icon has a text label or an accessible name. No decorative emoji. | Q; ESLint ban + `components/no-emoji.test.tsx` |
 | UX-3 | Every number shows its unit and period: `₹1,000 / year`, `5%`, `per month`. | Q |
 | UX-4 | Provenance is visible: a value links to its issuer source, shows its verification date, and marks estimates (`Est.`). The beta notice stays on every page. | Q |
 | UX-5 | Rankings and calculator results say what they assume, in one line, and say they do not depend on commissions. | Q |

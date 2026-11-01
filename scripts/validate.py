@@ -48,6 +48,7 @@ from validate_extras import (  # noqa: E402
     collect_sources,
     find_orphans,
     find_stale,
+    parse_stale_days,
     ratchet_result,
 )
 
@@ -359,6 +360,12 @@ def main() -> int:
     provenance_report = _arg_value("--provenance-report")
     warn_orphans = "--warn-orphans" in sys.argv[1:]
     warn_stale = _arg_value("--warn-stale")
+    stale_days = None
+    if warn_stale is not None:
+        stale_days = parse_stale_days(warn_stale)
+        if stale_days is None:
+            print(f"error: --warn-stale expects a whole number of days (integer), got {warn_stale!r}", file=sys.stderr)
+            return 2
     check_ratchet = "--check-ratchet" in sys.argv[1:]
     coverage = provenance.Coverage()
     ref_state: dict = {}
@@ -666,7 +673,7 @@ def main() -> int:
     if warn_orphans:
         extra += find_orphans(cards, issuers, networks, loyalty_programs)
     if warn_stale is not None:
-        extra += find_stale(cards, int(warn_stale))
+        extra += find_stale(cards, stale_days)
     if extra:
         print(f"\n{len(extra)} opt-in warning(s) (not counted by the ratchet):")
         for w in extra:

@@ -93,6 +93,11 @@ def find_orphans(cards, issuers, networks, loyalty_programs) -> list[str]:
     return out
 
 
+def parse_stale_days(raw: str) -> int | None:
+    """Parse the --warn-stale argument; None when it is not a non-negative integer."""
+    return int(raw) if raw.strip().isdigit() else None
+
+
 def find_stale(cards, days: int, today: date | None = None) -> list[str]:
     """Warnings for cards whose newest evidence date is older than `days`.
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { compareToBaseline, countEscapeHatches, countLintWarnings, runRatchet } from "./check-ratchet.mjs";
+import { compareToBaseline, countEscapeHatches, countLintWarnings, countSetStateInEffect, runRatchet } from "./check-ratchet.mjs";
 
-const base = { any: 2, asUnknownAs: 1, nonNull: 3, eslintDisable: 1, lintWarnings: 10 };
+const base = { any: 2, asUnknownAs: 1, nonNull: 3, eslintDisable: 1, lintWarnings: 10, setStateInEffect: 4 };
 
 describe("compareToBaseline", () => {
   it("exits 1 when any count is above baseline", () => {
@@ -53,9 +53,24 @@ describe("countLintWarnings", () => {
   });
 });
 
+describe("setStateInEffect", () => {
+  it("counts only react-hooks/set-state-in-effect and leaves lintWarnings alone", () => {
+    const json = [
+      { messages: [{ ruleId: "react-hooks/set-state-in-effect" }, { ruleId: "max-lines" }] },
+      { messages: [{ ruleId: "react-hooks/set-state-in-effect" }, { ruleId: "react-hooks/exhaustive-deps" }] },
+    ];
+    expect(countSetStateInEffect(json)).toBe(2);
+    expect(countLintWarnings(json)).toBe(1);
+  });
+  it("fails above baseline and says to lower it below", () => {
+    expect(compareToBaseline({ ...base, setStateInEffect: 5 }, base).lines.join("\n")).toMatch(/setStateInEffect.*FAIL/);
+    expect(compareToBaseline({ ...base, setStateInEffect: 3 }, base).lines.join("\n")).toMatch(/lower the baseline/);
+  });
+});
+
 describe("runRatchet", () => {
   it("returns the comparison exit code using injected counts", () => {
-    const counts = { any: 0, asUnknownAs: 0, nonNull: 0, eslintDisable: 0, lintWarnings: 11 };
+    const counts = { any: 0, asUnknownAs: 0, nonNull: 0, eslintDisable: 0, lintWarnings: 11, setStateInEffect: 4 };
     expect(runRatchet({ counts, baseline: base }).exitCode).toBe(1);
   });
 });

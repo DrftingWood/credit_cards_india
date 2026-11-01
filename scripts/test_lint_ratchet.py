@@ -127,6 +127,16 @@ def test_real_repo_schema_version_is_consistent():
     assert validate.check_schema_version() == []
 
 
+def test_warn_stale_non_integer_is_a_usage_error_not_a_traceback():
+    import subprocess
+    script = Path(__file__).resolve().parent / "validate.py"
+    r = subprocess.run([sys.executable, str(script), "--warn-stale", "abc"],
+                       capture_output=True, text=True)
+    assert r.returncode == 2
+    assert "Traceback" not in r.stderr
+    assert "--warn-stale" in r.stderr and "integer" in r.stderr
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

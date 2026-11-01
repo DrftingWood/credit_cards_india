@@ -668,6 +668,12 @@ Deviations from "just run the upgrade tool" (all chosen to keep rendering identi
    The classes now say that explicitly. The evident intent (a rule under every
    row but the last) is a one-line change for the owner to decide.
 
+User-visible changes (all listed in `docs/HANDOFF.md`, "User-visible changes in this stack"):
+Inter via `next/font/google` (rupee renders; 2 glyphs on `/browse` fall back to Arial);
+`scrollbar-gutter: stable` narrows desktop content about 15px on Windows classic scrollbars
+(1280 left edge 64 -> 56.5; none on overlay scrollbars or phones); hover styles only on
+hover-capable devices (Tailwind 4 default); plus items 4, 6 and 7 above.
+
 Rollback: revert the single 11b commit (subject "chore(site): upgrade Tailwind CSS to 4.3.3,
 config in CSS (D-30)"), then `npm ci` in `site/`. It restores `package.json`, the lockfile,
 `tailwind.config.ts`, `postcss.config.js` and the CSS together.
@@ -720,8 +726,10 @@ Deferred owner decision: eslint-config-next 16 adds react-hooks 7 rules. One fir
 `react-hooks/set-state-in-effect` (4 sites: `app/browse/browse-client.tsx:49`,
 `app/compare/compare-client.tsx:34`, `components/beta-banner.tsx:18`, `components/theme-toggle.tsx:25`; each
 sets state in an effect after hydration on purpose). It is set to `warn` with a comment in
-`eslint.config.mjs`, not rewritten, to keep the upgrade behaviour-neutral. The ratchet counts only the five
-size rules, so these 4 warnings are not baselined; fixing means `useSyncExternalStore` or derived state.
+`eslint.config.mjs`, not rewritten, to keep the upgrade behaviour-neutral. The `lintWarnings` ratchet key counts only the five
+size rules; these 4 warnings have their own key, `setStateInEffect` (baseline 4), added in the final
+review fix, so they cannot grow. The 3 warnings in `site/scripts/*.mjs` are intentionally not ratcheted
+(build tooling). Fixing the 4 means `useSyncExternalStore` or derived state.
 
 Behaviour verified (built server, base e9afdea vs this change): `/browse?page=2` canonical `.../browse?page=2`,
 `?page=999` -> `?page=15`, `/browse` bare, unchanged; `/browse` still `ƒ` (dynamic per request, D-28), other

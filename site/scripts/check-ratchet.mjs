@@ -10,6 +10,10 @@
 // eslint.config.mjs (max-lines, max-lines-per-function, complexity, max-params,
 // max-depth) over app, components and lib.
 //
+// setStateInEffect: warnings from react-hooks/set-state-in-effect over the same
+// directories. The 3 warnings in site/scripts/*.mjs are intentionally not
+// ratcheted (build tooling, not shipped code).
+//
 // Each count must stay at or below site/ratchet-baseline.json. When a count
 // falls, lower the baseline in the same PR so the ratchet only tightens.
 // Raising a number needs a reason in the PR body.
@@ -24,9 +28,10 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
-export const KEYS = ["any", "asUnknownAs", "nonNull", "eslintDisable", "lintWarnings"];
+export const KEYS = ["any", "asUnknownAs", "nonNull", "eslintDisable", "lintWarnings", "setStateInEffect"];
 export const SCAN_DIRS = ["app", "components", "lib", "scripts"];
 export const LINT_DIRS = ["app", "components", "lib"];
+export const SET_STATE_RULE = "react-hooks/set-state-in-effect";
 export const LINT_RULES = new Set([
   "max-lines",
   "max-lines-per-function",
@@ -77,6 +82,13 @@ export function countEscapeHatches(files) {
 export function countLintWarnings(eslintJson) {
   let n = 0;
   for (const f of eslintJson) for (const m of f.messages) if (LINT_RULES.has(m.ruleId)) n++;
+  return n;
+}
+
+/** @param eslintJson parsed `eslint -f json` output */
+export function countSetStateInEffect(eslintJson) {
+  let n = 0;
+  for (const f of eslintJson) for (const m of f.messages) if (m.ruleId === SET_STATE_RULE) n++;
   return n;
 }
 
@@ -135,7 +147,7 @@ export function collectFiles(root) {
   return files;
 }
 
-function lintWarningCount(root) {
+function lintResults(root) {
   let stdout;
   try {
     stdout = execFileSync(
@@ -153,13 +165,18 @@ function lintWarningCount(root) {
     stdout = e.stdout;
     if (!stdout) throw e;
   }
-  return countLintWarnings(JSON.parse(stdout));
+  return JSON.parse(stdout);
 }
 
 function main() {
   const root = process.cwd();
   const baseline = JSON.parse(readFileSync(resolve(root, "ratchet-baseline.json"), "utf8"));
-  const counts = { ...countEscapeHatches(collectFiles(root)), lintWarnings: lintWarningCount(root) };
+  const lint = lintResults(root);
+  const counts = {
+    ...countEscapeHatches(collectFiles(root)),
+    lintWarnings: countLintWarnings(lint),
+    setStateInEffect: countSetStateInEffect(lint),
+  };
   const { exitCode, lines } = runRatchet({ counts, baseline });
   for (const l of lines) (exitCode ? console.error : console.log)(l);
   return exitCode;

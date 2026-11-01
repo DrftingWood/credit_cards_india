@@ -3,5 +3,6 @@
   "asUnknownAs": 6,
   "nonNull": 11,
   "eslintDisable": 3,
-  "lintWarnings": 116
+  "lintWarnings": 116,
+  "setStateInEffect": 4
 }

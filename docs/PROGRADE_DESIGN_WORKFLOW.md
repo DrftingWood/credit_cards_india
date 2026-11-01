@@ -168,7 +168,7 @@ a named token or be removed.
 
 Done when:
 
-- `tailwind.config.ts` describes the visual language.
+- `site/styles/theme.css` (with `tokens.css`) describes the visual language.
 - Page files no longer invent raw visual decisions ad hoc.
 
 ## Phase 5: Component Library

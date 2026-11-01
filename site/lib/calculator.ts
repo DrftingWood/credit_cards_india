@@ -1077,7 +1077,7 @@ export function explainCard(
 function buildFactors(
   layer: "realistic" | "absolute",
   hit: AcceleratorHit,
-  basis: ValueBasis,
+  _basis: ValueBasis,
   rewards: RewardRecord | null,
   ctx?: ScoringContext,
 ): string[] {

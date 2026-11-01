@@ -16,6 +16,8 @@
     "gen-types": "node scripts/gen-types.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
+    "ratchet": "node scripts/check-ratchet.mjs",
+    "file-size": "node scripts/check-file-size.mjs",
     "verify": "npm run typecheck && npm run lint && npm test && npm run build",
     "knip": "knip",
     "dup": "jscpd",

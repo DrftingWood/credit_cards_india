@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
 import { allocatePortfolio } from "./portfolio";
 import { scoreCard, type SpendProfile } from "./calculator";
-import type { EnrichedCard, LoyaltyProgram } from "./types";
+import type { EnrichedCard } from "./types";
 
 async function load() {
   const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });

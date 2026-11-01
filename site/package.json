@@ -16,7 +16,10 @@
     "gen-types": "node scripts/gen-types.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "verify": "npm run typecheck && npm run lint && npm test && npm run build"
+    "verify": "npm run typecheck && npm run lint && npm test && npm run build",
+    "knip": "knip",
+    "dup": "jscpd",
+    "arch": "depcruise app lib components --config .dependency-cruiser.cjs --output-type err"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -35,9 +38,12 @@
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "autoprefixer": "^10.4.20",
+    "dependency-cruiser": "17.4.3",
     "eslint": "^9.15.0",
     "eslint-config-next": "^15.1.0",
+    "jscpd": "5.4.1",
     "json-schema-to-typescript": "^15.0.3",
+    "knip": "6.41.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3",

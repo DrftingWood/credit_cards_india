@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
 import type { EnrichedCard, IssuerRecord } from "@/lib/types";
 import { EMPTY_FILTERS, filterCards, paramsToState, stateToParams } from "@/lib/filters";
-import { PAGE_SIZE, browseHref, paginate, parsePage, type BrowseView } from "@/lib/paginate";
+import { PAGE_SIZE, browseHref, paginate, parsePage, sameParams, type BrowseView } from "@/lib/paginate";
 import { cn } from "@/lib/utils";
 import { CardGrid } from "@/components/card-grid";
 import { CardTable } from "@/components/card-table";
@@ -34,7 +34,7 @@ export function BrowseClient({
     const cur = new URLSearchParams(params.toString());
     cur.delete("page");
     cur.delete("view");
-    if (next.toString() === cur.toString()) return;
+    if (sameParams(next, cur)) return;
     router.replace(browseHref(next, 1, view) as never, { scroll: false });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);

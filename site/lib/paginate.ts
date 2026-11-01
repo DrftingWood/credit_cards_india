@@ -39,16 +39,22 @@ export function browseHref(filters: URLSearchParams, page: number, view: BrowseV
 
 /**
  * Canonical path for /browse. Page N of the unfiltered list is its own canonical (?page=N) so page 2+ can
- * be indexed; page 1, filtered views and the table view canonicalise to /browse as before.
+ * be indexed; page 1, filtered views and the table view (any `view` param) canonicalise to /browse.
  */
 export function browseCanonical(
   query: Record<string, string | string[] | undefined>,
   total: number,
 ): string {
   const filtered = Object.entries(query).some(
-    ([k, v]) => k !== "page" && k !== "view" && (Array.isArray(v) ? v.length > 0 : !!v),
+    ([k, v]) => k !== "page" && (Array.isArray(v) ? v.length > 0 : !!v),
   );
-  if (filtered) return "/browse";
+  if (filtered || query.view) return "/browse";
   const { page } = paginate(new Array<null>(total), parsePage(query.page));
   return page > 1 ? `/browse?page=${page}` : "/browse";
+}
+
+/** Same params regardless of order (a hand-written URL may order them differently from stateToParams). */
+export function sameParams(a: URLSearchParams, b: URLSearchParams): boolean {
+  const key = (p: URLSearchParams) => [...p.entries()].map(([k, v]) => `${k}=${v}`).sort().join("&");
+  return key(a) === key(b);
 }

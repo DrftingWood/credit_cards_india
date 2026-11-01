@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, test } from "vitest";
+import { afterEach, describe, expect, test, vi } from "vitest";
 import { cleanup, render } from "@testing-library/react";
 import { getActiveCards } from "@/lib/data";
 import { CardTable } from "./card-table";
@@ -32,6 +32,13 @@ describe("CardTable", () => {
     const { container } = render(<CardTable cards={cards} />);
     expect(container.querySelector("table")!.className).toContain("table-fixed");
     expect(container.querySelectorAll("colgroup col")).toHaveLength(5);
+  });
+  test("renders without React key warnings", () => {
+    const err = vi.spyOn(console, "error").mockImplementation(() => {});
+    render(<CardTable cards={cards} />);
+    const keyWarnings = err.mock.calls.filter((c) => /same key|unique "key"/.test(String(c[0])));
+    err.mockRestore();
+    expect(keyWarnings).toHaveLength(0);
   });
   test("card name links to the card page", () => {
     const { container } = render(<CardTable cards={cards} />);

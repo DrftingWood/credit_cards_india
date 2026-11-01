@@ -42,7 +42,7 @@ Written 2026-11-01 (standards plan, Task 8). Behaviour and interaction rules for
 
 **UX-6 and UX-7, columns.** Tabular figures plus right alignment make a column comparable at a glance. Row height is a measured number, not a feel: 34 px on desktop fits about 25 rows in a 900 px viewport; 44 px on touch meets the touch-target guideline. Existing tables using `p-3` are taller; adjust them when you next touch them.
 
-**UX-8 and UX-9, size.** The compare table is wider than a phone. It scrolls inside its own region, which therefore needs a name and keyboard focus. A 368-card grid is slow and hard to scan, so lists are paged.
+**UX-8 and UX-9, size.** The compare table is wider than a phone. It scrolls inside its own region, which therefore needs a name and keyboard focus. A grid of all 346 active cards is slow and hard to scan, so lists are paged.
 
 **UX-11 to UX-14, structure.** These are the Task 7 basics: skip link, one main, a title per route, one `h1`, `aria-current`.
 

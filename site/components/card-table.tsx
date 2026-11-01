@@ -20,8 +20,8 @@ export function CardTable({ cards }: { cards: EnrichedCard[] }) {
     >
       <table className="w-full min-w-[40rem] table-fixed border-collapse">
         <colgroup>
-          {COLS.map((w) => (
-            <col key={w} className={w} />
+          {COLS.map((w, i) => (
+            <col key={i} className={w} />
           ))}
         </colgroup>
         <thead className="bg-surface-subtle">
@@ -44,7 +44,7 @@ export function CardTable({ cards }: { cards: EnrichedCard[] }) {
                   </Link>
                   <span className="ml-2 text-xs font-normal text-fg-muted">{c.issuer_detail.short_name ?? c.issuer_detail.name}</span>
                 </th>
-                <td className={TD}>{c.network_detail.name}</td>
+                <td className={TD}>{c.network_detail?.name ?? c.network ?? "Not stated"}</td>
                 <td className={cn(TD, "num text-right")}>
                   {c.computed.is_lifetime_free ? "Free" : formatFeeInr(c.current_fees?.annual_fee_inr ?? null)}
                 </td>

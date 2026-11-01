@@ -561,3 +561,28 @@ copies look independently verified.
 Rejected: a new `verified_on` key (it would duplicate `retrieved_on`, whose
 meaning — the date the source was read — is already documented); a required
 per-rule source (would fail all 320 cards today).
+
+---
+
+## Site
+
+### D-28. /browse renders per request so page N can carry its own canonical
+
+`/browse` pages the filtered list at 24 per page (`?page=N`, `view=table` for the
+opt-in dense table). Page 2+ should be indexable with a self-referencing
+canonical, and a canonical in the initial HTML needs `generateMetadata` to read
+`searchParams`. Reading `searchParams` makes the route dynamic: the build shows
+`ƒ` instead of `○`. Canonicals: unfiltered `?page=N` is its own canonical
+(clamped to the last page); page 1, any filtered URL and any `view` URL
+canonicalise to `/browse`. `?page=` URLs are not in the sitemap.
+
+Cost accepted:
+
+- No CDN caching by default (each request renders).
+- Paging is client-side over the filtered list. The DOM drops from about 8,847
+  nodes to about 1,060 (346 tiles to 24), but the RSC payload does not shrink:
+  the full card list is still shipped to the client.
+
+Follow-ups considered, not done: a CDN `s-maxage` on the response, or a
+path-based `/browse/page/[n]` with `generateStaticParams` (static again, but
+filters would need a different URL story). The owner can revisit.

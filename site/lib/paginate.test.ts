@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { browseCanonical, browseHref, paginate, parsePage } from "./paginate";
+import { browseCanonical, browseHref, sameParams, paginate, parsePage } from "./paginate";
 
 const items = (n: number) => Array.from({ length: n }, (_, i) => i);
 
@@ -76,7 +76,19 @@ describe("browseCanonical", () => {
     expect(browseCanonical({ page: "2.7" }, 368)).toBe("/browse?page=2");
     expect(browseCanonical({ page: "999" }, 368)).toBe("/browse?page=16");
   });
+  test("table view canonicalises to /browse even with a page", () => {
+    expect(browseCanonical({ view: "table", page: "2" }, 368)).toBe("/browse");
+  });
   test("filtered views keep the existing /browse canonical", () => {
     expect(browseCanonical({ page: "2", issuer: "hdfc" }, 368)).toBe("/browse");
+  });
+});
+
+describe("sameParams", () => {
+  test("ignores order, not content", () => {
+    const q = (s: string) => new URLSearchParams(s);
+    expect(sameParams(q("a=1&b=2"), q("b=2&a=1"))).toBe(true);
+    expect(sameParams(q("a=1"), q("a=2"))).toBe(false);
+    expect(sameParams(q("a=1"), q("a=1&b=2"))).toBe(false);
   });
 });

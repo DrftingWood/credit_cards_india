@@ -13,6 +13,8 @@ import type { ComponentType } from "react";
 import type { IconProps } from "@phosphor-icons/react";
 import {
   Airplane,
+  CaretLeft,
+  CaretRight,
   ArrowRight,
   Basket,
   Check,
@@ -54,6 +56,8 @@ function glyph(Base: ComponentType<IconProps>, displayName: string) {
 }
 
 export const IconArrowRight = glyph(ArrowRight, "IconArrowRight");
+export const IconCaretLeft = glyph(CaretLeft, "IconCaretLeft");
+export const IconCaretRight = glyph(CaretRight, "IconCaretRight");
 export const IconSearch = glyph(MagnifyingGlass, "IconSearch");
 export const IconLink = glyph(LinkSimple, "IconLink");
 export const IconCashback = glyph(HandCoins, "IconCashback");

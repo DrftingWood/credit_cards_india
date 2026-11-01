@@ -55,6 +55,23 @@
   .num-prop {
     font-variant-numeric: proportional-nums;
   }
+  /* Dense rows and compact controls: 34 px on desktop, 44 px on touch (DI-18, UX-7). */
+  .row-dense {
+    height: 34px;
+  }
+  .hit-dense {
+    min-height: 34px;
+    min-width: 34px;
+  }
+  @media (pointer: coarse) {
+    .row-dense {
+      height: 44px;
+    }
+    .hit-dense {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
   .prose-card-value {
     @apply text-fg font-medium tabular-nums;
   }

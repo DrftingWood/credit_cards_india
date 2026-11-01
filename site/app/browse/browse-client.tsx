@@ -5,7 +5,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
 import type { EnrichedCard, IssuerRecord } from "@/lib/types";
 import { EMPTY_FILTERS, filterCards, paramsToState, stateToParams } from "@/lib/filters";
+import { PAGE_SIZE, browseHref, paginate, parsePage, type BrowseView } from "@/lib/paginate";
+import { cn } from "@/lib/utils";
 import { CardGrid } from "@/components/card-grid";
+import { CardTable } from "@/components/card-table";
+import { Pager } from "@/components/pager";
 import { FilterBar } from "@/components/filter-bar";
 
 export function BrowseClient({
@@ -19,10 +23,19 @@ export function BrowseClient({
   const params = useSearchParams();
   const [state, setState] = useState(() => paramsToState(new URLSearchParams(params.toString())));
 
-  // Keep URL in sync (replace, not push, so back-button isn't flooded)
+  const view: BrowseView = params.get("view") === "table" ? "table" : "cards";
+  const rawPage = parsePage(params.get("page") ?? undefined);
+
+  // Keep URL in sync (replace, not push, so back-button isn't flooded). Only a real filter change
+  // writes: it keeps `view`, and drops `page` so a new result set starts at page 1. Pager and view
+  // links own the other params, and a mount that matches the URL must not strip them.
   useEffect(() => {
-    const q = stateToParams(state).toString();
-    router.replace((q ? `/browse?${q}` : "/browse") as never, { scroll: false });
+    const next = stateToParams(state);
+    const cur = new URLSearchParams(params.toString());
+    cur.delete("page");
+    cur.delete("view");
+    if (next.toString() === cur.toString()) return;
+    router.replace(browseHref(next, 1, view) as never, { scroll: false });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
@@ -55,6 +68,11 @@ export function BrowseClient({
 
   const filtered = useMemo(() => filterCards(searched, state), [searched, state]);
 
+  const paged = paginate(filtered, rawPage);
+  const filterParams = stateToParams(state);
+  const first = (paged.page - 1) * PAGE_SIZE + 1;
+  const hrefFor = (p: number) => browseHref(filterParams, p, view);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8">
       {/* On mobile the filter list is long; show results first and let filters
@@ -65,22 +83,66 @@ export function BrowseClient({
       </div>
 
       <div className="order-1 md:order-none">
-        <div className="flex items-center justify-between mb-3">
-          <div className="text-sm text-fg-muted">
-            Showing <strong>{filtered.length}</strong> of {cards.length}
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div aria-live="polite" className="text-sm text-fg-muted num">
+            {paged.total === 0 ? (
+              "No cards"
+            ) : (
+              <>
+                Showing{" "}
+                <strong>
+                  {first}–{first + paged.items.length - 1}
+                </strong>{" "}
+                of {paged.total} cards
+              </>
+            )}
           </div>
-          {hasAny(state) ? (
-            <button
-              type="button"
-              onClick={() => setState(EMPTY_FILTERS)}
-              className="text-sm text-accent-fg hover:text-accent-strong"
-            >
-              Reset filters
-            </button>
-          ) : null}
+          <div className="flex items-center gap-3">
+            {hasAny(state) ? (
+              <button
+                type="button"
+                onClick={() => setState(EMPTY_FILTERS)}
+                className="hit-dense text-sm text-accent-fg hover:text-accent-strong"
+              >
+                Reset filters
+              </button>
+            ) : null}
+            <ViewToggle view={view} hrefFor={(v) => browseHref(filterParams, paged.page, v)} />
+          </div>
         </div>
-        <CardGrid cards={filtered} />
+        {view === "table" && paged.items.length > 0 ? (
+          <CardTable cards={paged.items} />
+        ) : (
+          <CardGrid cards={paged.items} />
+        )}
+        <Pager page={paged.page} pageCount={paged.pageCount} hrefFor={hrefFor} />
       </div>
+    </div>
+  );
+}
+
+function ViewToggle({ view, hrefFor }: { view: BrowseView; hrefFor: (v: BrowseView) => string }) {
+  const router = useRouter();
+  const options: { id: BrowseView; label: string }[] = [
+    { id: "cards", label: "Cards" },
+    { id: "table", label: "Table" },
+  ];
+  return (
+    <div role="group" aria-label="Layout" className="inline-flex rounded-md border border-line p-0.5">
+      {options.map((o) => (
+        <button
+          key={o.id}
+          type="button"
+          aria-pressed={view === o.id}
+          onClick={() => router.replace(hrefFor(o.id) as never, { scroll: false })}
+          className={cn(
+            "hit-dense rounded px-3 text-sm",
+            view === o.id ? "bg-accent text-on-accent font-semibold" : "text-fg-secondary hover:bg-surface-muted",
+          )}
+        >
+          {o.label}
+        </button>
+      ))}
     </div>
   );
 }

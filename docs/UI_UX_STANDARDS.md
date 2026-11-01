@@ -18,7 +18,7 @@ Written 2026-11-01 (standards plan, Task 8). Behaviour and interaction rules for
 | UX-6 | Numbers compared across cards or rows use `.num` and are right-aligned in their column. | `test`; Q |
 | UX-7 | Dense tables: 34 px rows on desktop, 44 px on touch; one row height per table; the row-head column is sticky on narrow screens. | `measure`; Q |
 | UX-8 | A wide table sits in a region that scrolls sideways, is keyboard-focusable, and is named. The page itself never scrolls sideways. | `test` (focusable table); `axe:scrollable-region-focusable`; smoke `overflowX` |
-| UX-9 | Long lists are paged (`/browse`: 24 per page, "N of total", state in the URL). | Task 10 (planned) |
+| UX-9 | Long lists are paged (`/browse`: 24 per page, "N of total", state in the URL). | `test` (paginate, pager, card-table); `measure` |
 | UX-10 | Filters are shareable: the URL carries them, and Back restores them. | Q |
 | UX-11 | Mobile first: design at 390 px, then widen. Touch targets 44 px for primary controls, never under 24 px. | `axe:target-size`; smoke `targets` |
 | UX-12 | One `<main id="main">`; header, nav and footer sit outside it; a skip link is the first focusable element and lands in it. | `test` (skip link); `axe:landmark-one-main` |

@@ -586,3 +586,23 @@ Cost accepted:
 Follow-ups considered, not done: a CDN `s-maxage` on the response, or a
 path-based `/browse/page/[n]` with `generateStaticParams` (static again, but
 filters would need a different URL story). The owner can revisit.
+
+### D-29. TypeScript 5.9 -> 6.0.3, not 7 (2026-11-01, Task 11a)
+
+Change: `site/package.json` `typescript` `^5.6.3` -> `~6.0.3` (installed 5.9.3 -> 6.0.3;
+6.0.3 published 2026-04-16 per the npm registry). `site/tsconfig.json` gains
+`"noUncheckedSideEffectImports": false`: TS 6.0 defaults it to true, which made
+`import '../styles/globals.css'` in `app/layout.tsx` fail (TS2882, the only new
+error, no source changes). Task 4 strictness flags are untouched.
+
+Why 6.0, not 7: TypeScript 7.0.2 (native port, released 2026-07-08) is `latest`,
+but `@typescript-eslint/*` 8.59.0 (pulled in by `eslint-config-next` 15.5.15)
+declares `typescript >=4.8.4 <6.1.0`, and `json-schema-to-typescript` 15 the same
+range. 7 would break type-aware lint and force `--legacy-peer-deps`. Compatible
+with 6.0: Next 15.5.15 (no TS peer), `eslint-config-next` (`>=3.3.1`), vitest 4.1.7,
+`@types/node` 22. Revisit when typescript-eslint supports 7 (keep `~6.0` until then).
+
+Rollback: `git revert <11a commit sha>` (restores `package.json`, the lockfile and
+`tsconfig.json` together), then `npm ci` in `site/`.
+Next TS step: TypeScript 7 once typescript-eslint and json-schema-to-typescript
+declare support. Next in the order of Task 11: Tailwind 4.

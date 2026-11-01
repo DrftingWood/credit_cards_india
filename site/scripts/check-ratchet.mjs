@@ -7,7 +7,7 @@
 //   nonNull        postfix `!` assertions
 //   eslintDisable  eslint-disable directives with no ` -- reason`
 // plus lintWarnings: warnings from the five size/complexity rules in
-// .eslintrc.json (max-lines, max-lines-per-function, complexity, max-params,
+// eslint.config.mjs (max-lines, max-lines-per-function, complexity, max-params,
 // max-depth) over app, components and lib.
 //
 // Each count must stay at or below site/ratchet-baseline.json. When a count
@@ -140,12 +140,11 @@ function lintWarningCount(root) {
   try {
     stdout = execFileSync(
       process.execPath,
-      [join(root, "node_modules/eslint/bin/eslint.js"), ...LINT_DIRS, "--ext", ".ts,.tsx", "-f", "json"],
+      [join(root, "node_modules/eslint/bin/eslint.js"), ...LINT_DIRS, "-f", "json"],
       {
         cwd: root,
         encoding: "utf8",
         maxBuffer: 256 * 1024 * 1024,
-        env: { ...process.env, ESLINT_USE_FLAT_CONFIG: "false" },
         stdio: ["ignore", "pipe", "ignore"],
       },
     );

@@ -8,13 +8,22 @@ on:
   schedule:
     - cron: "0 3 * * 1" # weekly URL-health run (Mon 03:00 UTC)
 
-jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+permissions:
+  contents: read
 
-      - uses: actions/setup-python@v5
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  data:
+    name: data
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
           cache: pip
@@ -42,14 +51,77 @@ jobs:
         continue-on-error: true
         run: python scripts/validate.py --strict-provenance
 
+  # Site checks. prebuild (schema types + dist/*.json) must run before typecheck
+  # and test: several tests import ../../dist/*.json, which is gitignored.
+  site:
+    name: site
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Generate types and dist data
+        run: npm run prebuild
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+  # The Python tests are plain-assert scripts (no pytest test functions), so each
+  # is run directly; a failing script exits non-zero.
+  python-tests:
+    name: python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version-file: .python-version
+          cache: pip
+
+      - name: Install deps
+        run: pip install -r scripts/requirements.txt
+
+      - name: Script tests
+        run: |
+          set -e
+          for f in scripts/test_*.py booking-savings/test_*.py; do
+            echo "::group::$f"
+            python "$f"
+            echo "::endgroup::"
+          done
+
   # Weekly source-URL health check (separate job: network-dependent and slow,
   # so it never blocks PR validation; failures surface as workflow alerts).
   url-health:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
           cache: pip

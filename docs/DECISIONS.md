@@ -745,3 +745,20 @@ pages against 381 before (the old count included one internal page); the route s
 Rollback: revert the single 11c commit (subject "chore(site): upgrade Next.js to 16.4.2 and React to
 19.3.1, native flat ESLint (D-31)"), then `npm ci` in `site/`. It restores `package.json`, the lockfile,
 `next.config.mjs`, `eslint.config.mjs`, `knip.json`, `tsconfig.json` and the doc mentions together.
+
+### D-32. CDN cache for /browse via Vercel-CDN-Cache-Control (2026-11-01, Task 14)
+
+Context: D-28 left `/browse` rendering per request (so `?page=N` can carry its own canonical). Owner chose option 1
+of D-28 (CDN `s-maxage`) over a static `/browse/page/[n]`, keeping one URL shape.
+
+Decision: `site/next.config.mjs` `headers()` sets, for `/browse` only, `Vercel-CDN-Cache-Control:
+public, s-maxage=3600, stale-while-revalidate=86400` and `Cache-Control: public, max-age=0, must-revalidate`.
+Card data changes only on deploy and the Vercel CDN cache key includes the deployment URL, so a new deploy starts
+empty; one hour fresh is safe. The CDN key includes the query string, so each page and filter URL caches separately.
+Source: https://vercel.com/docs/caching/cache-control-headers (read 2026-11-01).
+
+Verified on `next start` (production build): `/browse?page=2` returns both headers; `/calculator` is unchanged
+(`s-maxage=31536000`, no Vercel-CDN header). Test: `site/scripts/next-config.test.mjs`. Not verified on a real
+Vercel deploy (the CDN behaviour itself); check `x-vercel-cache: HIT` on a preview after the base is published.
+
+Rollback: remove the `headers()` block and the test.

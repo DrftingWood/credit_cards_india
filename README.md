@@ -31,13 +31,26 @@ docs/
   DECISIONS.md                      # architecture decisions
   ROADMAP.md                        # high-level roadmap themes
   CONTRIBUTING.md                   # how to add/update cards
+  HANDOFF.md                        # orientation, CI jobs, open owner decisions
+  CODING_STANDARDS.md               # rules and how each is enforced
+  DESIGN_INSTRUCTIONS.md            # visual system rules
+  UI_UX_STANDARDS.md                # behaviour and accessibility rules
+  SCHEMA_CHANGELOG.md               # one entry per schema/VERSION bump
 site/                               # Next.js app
-.github/workflows/validate.yml      # CI validation
+  eslint.config.mjs                 # flat ESLint config
+  styles/theme.css                  # Tailwind 4 theme tokens (CSS-first config)
+  ratchet-baseline.json             # escape-hatch and lint-warning baselines (only go down)
+  scripts/                          # prebuild, check-ratchet, check-file-size (+ allowlist)
+CLAUDE.md                           # instructions for agents
+.github/workflows/validate.yml      # CI: data, site, python-tests, report, url-health
+.github/workflows/link-check.yml    # weekly source-link check
 ```
 
 ## Status
 
-- 317 card YAML files across 24 issuers.
+- 368 card YAML files across 33 issuers (`data/cards/<issuer>/`); 346 are active
+  (status `active` or `invite-only`, the set `/browse` and the engines use), the
+  rest are discontinued or otherwise inactive but kept for history.
 - Source confidence is tracked in [docs/PROVENANCE.md](docs/PROVENANCE.md).
 - Local PDF evidence lives under `docs/sources/**/*.pdf`; PDFs are intentionally
   gitignored and must be preserved locally.
@@ -71,7 +84,13 @@ For site-facing changes, also run:
 ```powershell
 npm.cmd --prefix site test -- --run
 npm.cmd --prefix site run typecheck
+npm.cmd --prefix site run lint
+npm.cmd --prefix site run ratchet
+npm.cmd --prefix site run file-size
 ```
+
+Rules and enforcement: [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md).
+Orientation and open decisions: [docs/HANDOFF.md](docs/HANDOFF.md).
 
 ## Schema And Design
 

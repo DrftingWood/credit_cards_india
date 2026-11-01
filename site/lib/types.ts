@@ -461,6 +461,8 @@ export interface EnrichedCard extends CardRecord {
 }
 
 export interface DatasetIndex {
+  /** From schema/VERSION; see docs/SCHEMA_CHANGELOG.md. */
+  schema_version: string;
   generated_at: string;
   counts: {
     cards_total: number;

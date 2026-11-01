@@ -68,6 +68,37 @@ Not all fields in a card carry the same confidence, regardless of the card's tie
 - **HTML** pages were read with Playwright via `document.body.textContent` (which captures
   JS-tab content that `innerText` drops).
 
+## Source-PDF backup plan
+
+The PDFs under `docs/sources/**` are gitignored (large binaries) and exist on **one
+machine only**. If that disk is lost the evidence behind every HIGH (pdf) card is lost
+with it. Rule DA-3 in `docs/CODING_STANDARDS.md`: never delete or move them.
+
+What is in git and what is not:
+
+| Item | In git | Role |
+| --- | --- | --- |
+| `docs/sources/<issuer>/_manifest.json`, `INDEX.md` | yes | Lists what was downloaded and when. The only record of the archive's contents. |
+| `docs/sources/**/*.pdf` | no (gitignored) | The evidence itself. |
+| `source.local_refs` in card YAML | yes | Points at a PDF path; `validate.py` warns when it does not resolve. |
+
+Manifest check (idea, not built yet): a small script that walks every
+`docs/sources/*/_manifest.json`, lists the PDFs each names, and compares them with the
+files on disk and with their recorded size or SHA-256. Run it after a restore to prove
+the copy is complete, and before any bulk change under `docs/sources/`. Today
+`validate.py` only reports `local_refs` that do not resolve (one summary line when the
+archive is absent, one line per ref when it is present). The manifests do not share one
+format yet (some record only counts), so the script would first need them to list files
+with hashes.
+
+### Owner decision needed: backup location
+
+Not decided and not invented here. Please choose one documented copy location, for
+example an external drive, a cloud folder you control, or a private storage bucket, and
+say how often it is refreshed. Once chosen, record the location (not any credentials) in
+this section, and the check above is run against that copy. Until then the PDFs have no
+backup.
+
 ## Caveat
 A **MEDIUM/HIGH** tag means the card's *primary* fields (fees, reward rates, forex) were
 checked against the issuer's own source on the date shown — it is not a guarantee that

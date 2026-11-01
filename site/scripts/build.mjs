@@ -26,6 +26,12 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(HERE, "..", "..");
 const DATA_DIR = path.join(REPO_ROOT, "data");
 const OUT_DIR = path.join(REPO_ROOT, "dist");
+// schema/VERSION is the single source of the dataset schema version; it is
+// copied into dist/index.json (see docs/SCHEMA_CHANGELOG.md).
+const SCHEMA_VERSION = readFileSync(
+  path.join(REPO_ROOT, "schema", "VERSION"),
+  "utf8",
+).trim();
 
 // --- YAML → JSON normalisation -------------------------------------------
 
@@ -189,6 +195,7 @@ function buildIndex(cards, issuers, networks) {
   const lifetimeFree = cards.filter((c) => c.computed?.is_lifetime_free).length;
 
   return {
+    schema_version: SCHEMA_VERSION,
     generated_at: new Date().toISOString().replace(/\.\d+Z$/, "+00:00"),
     counts: {
       cards_total: cards.length,

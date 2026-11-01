@@ -266,7 +266,7 @@ export default async function CardPage({
       {/* Tag chips for discoverability */}
       {(card.metadata.tags ?? []).length > 0 ? (
         <section className="flex flex-wrap items-center gap-1.5 pt-1">
-          <span className="text-xs uppercase tracking-wide text-fg-muted mr-1">Tags</span>
+          <span className="text-xs uppercase tracking-label text-fg-muted mr-1">Tags</span>
           {(card.metadata.tags ?? []).map((t) => (
             <Link
               key={t}
@@ -371,7 +371,7 @@ function EligibilitySection({ card }: { card: ReturnType<typeof getCardByIssuerA
 function Fact({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-xs uppercase tracking-wide text-fg-muted">{label}</dt>
+      <dt className="text-xs uppercase tracking-label text-fg-muted">{label}</dt>
       <dd className="prose-card-value text-sm">{value}</dd>
     </div>
   );

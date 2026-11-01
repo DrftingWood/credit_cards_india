@@ -83,6 +83,14 @@ const config: Config = {
         "3xl": ["var(--text-3xl)", { lineHeight: "var(--leading-3xl)" }],
         "4xl": ["var(--text-4xl)", { lineHeight: "var(--leading-4xl)" }],
       },
+      maxWidth: {
+        page: "var(--container-page)",
+        prose: "var(--container-prose)",
+      },
+      letterSpacing: {
+        label: "var(--tracking-label)",
+        heading: "var(--tracking-heading)",
+      },
       spacing: {
         inline: "var(--space-inline)",
         stack: "var(--space-stack)",

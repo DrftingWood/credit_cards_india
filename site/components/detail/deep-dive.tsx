@@ -56,7 +56,7 @@ export function DeepDive({ card }: { card: EnrichedCard }) {
           </ul>
           {capping.length > 0 ? (
             <div className="mt-3">
-              <div className="text-xs uppercase tracking-wide text-fg-muted mb-1">Capping rules</div>
+              <div className="text-xs uppercase tracking-label text-fg-muted mb-1">Capping rules</div>
               <ul className="list-disc pl-5 text-sm space-y-0.5">
                 {capping.map((c, i) => (<li key={i}>{c}</li>))}
               </ul>

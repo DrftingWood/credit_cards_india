@@ -240,11 +240,11 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
         <div className="rounded-md bg-surface-subtle p-3 text-sm border border-line">
           <div className="flex justify-between">
             <span>Monthly total</span>
-            <strong className="tabular-nums">{formatInr(monthlyTotal)}</strong>
+            <strong className="num">{formatInr(monthlyTotal)}</strong>
           </div>
           <div className="flex justify-between text-fg-muted">
             <span>Annualised</span>
-            <span className="tabular-nums">{formatInr(monthlyTotal * 12)}</span>
+            <span className="num">{formatInr(monthlyTotal * 12)}</span>
           </div>
         </div>
 
@@ -384,28 +384,28 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div className="rounded-xl border border-line bg-surface p-3">
                 <div className="text-xs text-fg-muted font-medium">Net Annual Value</div>
-                <div className="text-lg font-bold text-success tabular-nums mt-0.5">
+                <div className="text-lg font-bold text-success num mt-0.5">
                   {formatInr(Math.round(portfolio.annual_net_inr))}
                 </div>
                 <div className="text-[11px] text-fg-muted">after all card fees</div>
               </div>
               <div className="rounded-xl border border-line bg-surface p-3">
                 <div className="text-xs text-fg-muted font-medium">Monthly Rewards</div>
-                <div className="text-lg font-bold text-fg tabular-nums mt-0.5">
+                <div className="text-lg font-bold text-fg num mt-0.5">
                   {formatInr(Math.round(portfolio.monthly_value_inr))}
                 </div>
                 <div className="text-[11px] text-fg-muted">per month</div>
               </div>
               <div className="rounded-xl border border-line bg-surface p-3">
                 <div className="text-xs text-fg-muted font-medium">Effective Return</div>
-                <div className="text-lg font-bold text-accent-fg tabular-nums mt-0.5">
+                <div className="text-lg font-bold text-accent-fg num mt-0.5">
                   {monthlyTotal > 0 ? ((portfolio.monthly_value_inr / monthlyTotal) * 100).toFixed(2) : "0"}%
                 </div>
                 <div className="text-[11px] text-fg-muted">blended rate on spend</div>
               </div>
               <div className="rounded-xl border border-line bg-surface p-3">
                 <div className="text-xs text-fg-muted font-medium">Annual Card Fees</div>
-                <div className="text-lg font-bold text-fg-muted tabular-nums mt-0.5">
+                <div className="text-lg font-bold text-fg-muted num mt-0.5">
                   {formatInr(Math.round(portfolio.annual_fee_inr))}
                 </div>
                 <div className="text-[11px] text-fg-muted">net of waivers</div>
@@ -491,7 +491,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
           <div>
             {pinnedSelected ? (
               <div className="mb-4">
-                <div className="text-xs uppercase tracking-wide text-accent-fg mb-1">Selected card</div>
+                <div className="text-xs uppercase tracking-label text-accent-fg mb-1">Selected card</div>
                 <ResultRow rank={null} score={pinnedSelected} spend={spend} valuePrefs={valuePrefs} rankCtx={rankCtx} tierCtx={tierCtx} highlighted />
               </div>
             ) : null}
@@ -568,10 +568,10 @@ function PortfolioSlotRow({ slot, index }: { slot: PortfolioSlot; index: number 
         </div>
 
         <div className="sm:text-right">
-          <div className="text-base font-semibold tabular-nums text-success">
+          <div className="text-base font-semibold num text-success">
             +{formatInr(Math.round(slot.monthly_value_inr * 12))} / yr
           </div>
-          <div className="text-xs text-fg-muted tabular-nums">
+          <div className="text-xs text-fg-muted num">
             {formatInr(Math.round(slot.monthly_value_inr))}/mo reward ({slot.effective_rate_pct.toFixed(1)}%)
           </div>
         </div>
@@ -580,19 +580,19 @@ function PortfolioSlotRow({ slot, index }: { slot: PortfolioSlot; index: number 
       <div className="rounded-lg bg-surface-subtle p-2.5 text-xs grid grid-cols-1 sm:grid-cols-3 gap-2 border border-line">
         <div>
           <span className="text-fg-muted block">Spend Routed Here</span>
-          <strong className="text-fg tabular-nums text-sm">
+          <strong className="text-fg num text-sm">
             {formatInr(Math.round(slot.monthly_spend_inr))}/mo
           </strong>
         </div>
         <div>
           <span className="text-fg-muted block">Effective Realised Rate</span>
-          <strong className="text-accent-fg tabular-nums text-sm">
+          <strong className="text-accent-fg num text-sm">
             {slot.effective_rate_pct.toFixed(2)}%
           </strong>
         </div>
         <div>
           <span className="text-fg-muted block">Net Annual Fee</span>
-          <strong className="text-fg tabular-nums text-sm">
+          <strong className="text-fg num text-sm">
             {slot.annual_fee_inr === 0 ? "₹0 (Waived / Free)" : formatInr(slot.annual_fee_inr)}
           </strong>
         </div>
@@ -651,7 +651,7 @@ function ResultRow({
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-3">
-          <div className="text-fg-muted font-semibold tabular-nums w-6 text-right">
+          <div className="text-fg-muted font-semibold num w-6 text-right">
             {rank != null ? `#${rank}` : <IconStar className="ml-auto h-4 w-4" />}
           </div>
           <div>
@@ -684,10 +684,10 @@ function ResultRow({
           </div>
         </div>
         <div className="text-right">
-          <div className="text-lg font-semibold tabular-nums text-success">
+          <div className="text-lg font-semibold num text-success">
             {formatInr(Math.round(score.annual_net_inr))} / yr
           </div>
-          <div className="text-xs text-fg-muted tabular-nums">
+          <div className="text-xs text-fg-muted num">
             gross {formatInr(Math.round(score.annual_gross_inr))} − fee{" "}
             {score.fee_waived ? (
               <span className="text-success">waived</span>
@@ -696,17 +696,17 @@ function ResultRow({
             )}
             {score.annual_forex_inr > 0 ? <> − forex {formatInr(Math.round(score.annual_forex_inr))}</> : null}
           </div>
-          {extra ? <div className="mt-0.5 text-[11px] text-fg-muted tabular-nums">{extra}</div> : null}
+          {extra ? <div className="mt-0.5 text-[11px] text-fg-muted num">{extra}</div> : null}
         </div>
       </div>
 
       <details className="mt-3 text-sm" open={highlighted}>
-        <summary className="cursor-pointer text-fg-muted hover:text-fg text-xs uppercase tracking-wide">
+        <summary className="cursor-pointer text-fg-muted hover:text-fg text-xs uppercase tracking-label">
           Breakdown
         </summary>
         <table className="mt-2 w-full text-sm">
           <thead>
-            <tr className="text-left text-xs uppercase tracking-wide text-fg-muted border-b border-line">
+            <tr className="text-left text-xs uppercase tracking-label text-fg-muted border-b border-line">
               <th className="py-1 pr-3 font-medium">Category</th>
               <th className="py-1 pr-3 font-medium">Rate</th>
               <th className="py-1 pr-3 font-medium">Monthly</th>
@@ -719,8 +719,8 @@ function ResultRow({
                   {b.category.replace("-", " ")}
                   {b.note ? <span className="text-xs text-warn ml-2">{b.note}</span> : null}
                 </td>
-                <td className="py-1.5 pr-3 tabular-nums">{formatPct(b.effective_rate_pct, 2)}</td>
-                <td className="py-1.5 pr-3 tabular-nums">
+                <td className="py-1.5 pr-3 num">{formatPct(b.effective_rate_pct, 2)}</td>
+                <td className="py-1.5 pr-3 num">
                   {formatInr(Math.round(b.monthly_value_inr))}
                 </td>
               </tr>

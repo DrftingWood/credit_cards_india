@@ -6,7 +6,7 @@ const CATS = ["Dining", "Travel", "Online", "Fuel", "Groceries"];
 export function SpendStarter() {
   return (
     <div className="mt-6 rounded-xl border border-line bg-surface p-4 shadow-sm max-w-2xl">
-      <div className="text-[11px] font-semibold uppercase tracking-wide text-fg-muted">Where does most of your money go?</div>
+      <div className="text-[11px] font-semibold uppercase tracking-label text-fg-muted">Where does most of your money go?</div>
       <div className="mt-2 flex flex-wrap items-center gap-2">
         {CATS.map((c) => (
           <span key={c} className="rounded-full border border-line bg-surface-subtle px-3 py-1.5 text-sm text-fg-secondary">{c}</span>

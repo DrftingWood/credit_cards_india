@@ -12,7 +12,7 @@ export function ProsCons({ card }: { card: EnrichedCard }) {
       </header>
       <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-line">
         <div className="p-5">
-          <div className="text-xs uppercase tracking-wide text-success font-medium mb-2">
+          <div className="text-xs uppercase tracking-label text-success font-medium mb-2">
             Pros
           </div>
           {pros.length > 0 ? (
@@ -29,7 +29,7 @@ export function ProsCons({ card }: { card: EnrichedCard }) {
           )}
         </div>
         <div className="p-5">
-          <div className="text-xs uppercase tracking-wide text-danger font-medium mb-2">
+          <div className="text-xs uppercase tracking-label text-danger font-medium mb-2">
             Cons
           </div>
           {cons.length > 0 ? (

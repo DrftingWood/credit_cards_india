@@ -52,7 +52,7 @@ export function UsagePanel({
                   value={familySharePct(usage, g.family)}
                   readOnly={!onChange}
                   onChange={onChange ? (e) => onChange(setFamilyShare(usage, g.family, Math.max(0, Math.min(100, Number(e.target.value) || 0)))) : undefined}
-                  className="w-16 rounded-md border border-line-strong px-2 py-0.5 text-right text-xs text-fg tabular-nums"
+                  className="w-16 rounded-md border border-line-strong px-2 py-0.5 text-right text-xs text-fg num"
                 />
                 <span className="text-fg-muted">%</span>
               </span>
@@ -82,8 +82,8 @@ export function UsagePanel({
               key={d.category}
               className={
                 d.delta_inr_monthly >= 0
-                  ? "rounded border border-success-line bg-success-subtle px-2 py-0.5 text-[11px] text-success tabular-nums"
-                  : "rounded border border-warn-line bg-warn-subtle px-2 py-0.5 text-[11px] text-warn tabular-nums"
+                  ? "rounded border border-success-line bg-success-subtle px-2 py-0.5 text-[11px] text-success num"
+                  : "rounded border border-warn-line bg-warn-subtle px-2 py-0.5 text-[11px] text-warn num"
               }
             >
               {CHANGE_LABEL[d.change]}: {d.label} {signed(d.delta_inr_monthly)}
@@ -126,7 +126,7 @@ function TierPicker({
           {(program.earn?.tiers ?? []).map((t) => <option key={t.id} value={t.id}>{t.name ?? t.id}</option>)}
         </select>
       </label>
-      {note ? <p className="mt-1 text-[11px] text-fg-muted tabular-nums">{note}</p> : null}
+      {note ? <p className="mt-1 text-[11px] text-fg-muted num">{note}</p> : null}
     </div>
   );
 }

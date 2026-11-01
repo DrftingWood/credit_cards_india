@@ -48,6 +48,8 @@ CI (`.github/workflows/validate.yml`) runs the Python checks today; site checks 
 
 ## UI rules
 
+Full rule sets: `docs/DESIGN_INSTRUCTIONS.md` (visual system, DI-) and `docs/UI_UX_STANDARDS.md` (behaviour and accessibility, UX-).
+
 - **Measure before done.** Before calling a UI change finished, measure in the browser at 1280, 1920 and 390 widths: left edges, column positions, computed font size and tracking. Report the numbers, not "looks aligned". Page long lists instead of rendering them whole.
 - **No decorative emoji. Labels first.** Text labels carry the meaning; an icon supports a label and never replaces it. One icon system (Phosphor, planned) through one barrel; hand-drawn SVGs stay only for issuer and network marks.
 - Numbers users compare (fees, reward rates, rupee amounts) use tabular figures and right alignment in columns.

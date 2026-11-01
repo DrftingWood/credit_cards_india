@@ -15,6 +15,8 @@ and what is historical.
 | `PROVENANCE.md` | Current | Source-confidence matrix and caveats from the verification wave. |
 | `LOCAL_DATA_PDF_REVIEW_2026-07-04.md` | Current review | Holistic local review of dataset, PDFs, manifests, and schema suitability. |
 | `MAINTENANCE_HISTORY.md` | Current log | Durable record of merges, cleanup, branch pruning, and local maintenance. |
+| `DESIGN_INSTRUCTIONS.md` | Current | Visual system rules (DI-): tokens, Inter, container, tracking, numerals. |
+| `UI_UX_STANDARDS.md` | Current | Behaviour and accessibility rules (UX-) for the site. |
 | `CONTRIBUTING.md` | Current | How to add or update card data. |
 | `ASSETS.md` | Current | Asset and branding notes. |
 

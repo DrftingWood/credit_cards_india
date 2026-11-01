@@ -6,6 +6,9 @@
 
 @layer base {
   html {
+    /* Reserve the scrollbar track so short and long pages share one left
+       edge (no horizontal jump when a scrollbar appears). */
+    scrollbar-gutter: stable;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -42,6 +45,15 @@
     background-color: var(--logo-plate);
     border-radius: var(--radius-sm);
     box-shadow: 0 0 0 3px var(--logo-plate); /* padding without layout shift */
+  }
+  /* Numerals: .num = tabular figures for numbers compared down a column
+     (fees, rewards, calculator output). .num-prop = proportional figures for
+     hero numbers read on their own. */
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  .num-prop {
+    font-variant-numeric: proportional-nums;
   }
   .prose-card-value {
     @apply text-fg font-medium tabular-nums;

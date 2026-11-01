@@ -25,7 +25,7 @@ export function BetaBanner() {
 
   return (
     <div className="bg-warn-subtle border-b border-warn-line text-warn text-sm">
-      <div className="mx-auto max-w-6xl px-4 py-2 flex items-start justify-between gap-3">
+      <div className="mx-auto max-w-page px-4 py-2 flex items-start justify-between gap-3">
         <p>
           <strong>Beta data.</strong> Numbers are community-sourced and may be out of date.
           Every value links to the issuer page — always verify before applying.

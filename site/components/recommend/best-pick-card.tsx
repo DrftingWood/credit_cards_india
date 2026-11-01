@@ -14,7 +14,7 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
   const verified = c.metadata?.last_verified_on;
   return (
     <article className="rounded-xl border border-line bg-surface p-5">
-      <div className="text-[11px] font-semibold uppercase tracking-wide text-accent-fg">{highlight.label}</div>
+      <div className="text-[11px] font-semibold uppercase tracking-label text-accent-fg">{highlight.label}</div>
       <h3 className="mt-1 text-lg font-semibold text-fg">
         <Link href={href} className="hover:underline">{c.name}</Link>
       </h3>
@@ -26,7 +26,7 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
       <dl className="mt-3 grid grid-cols-2 gap-2 text-xs">
         <div className="rounded-md bg-surface-subtle px-2 py-1.5">
           <dt className="text-fg-muted">Annual fee</dt>
-          <dd className="font-semibold text-fg tabular-nums">
+          <dd className="font-semibold text-fg num">
             {c.computed.is_lifetime_free
               ? "Lifetime free"
               : c.current_fees?.annual_fee_inr != null
@@ -37,7 +37,7 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
         </div>
         <div className="rounded-md bg-surface-subtle px-2 py-1.5">
           <dt className="text-fg-muted">Headline reward</dt>
-          <dd className="font-semibold text-fg tabular-nums">
+          <dd className="font-semibold text-fg num">
             {c.computed.headline_rate_pct != null ? `${c.computed.headline_rate_pct}%` : "—"}
             <span className="ml-1 font-normal text-fg-muted">base</span>
           </dd>
@@ -47,8 +47,8 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
       {/* ESTIMATE (personalized, clearly tagged, links to the breakdown) */}
       <div className="mt-3 flex items-center justify-between rounded-md border border-warn-line bg-warn-subtle px-3 py-2">
         <div>
-          <span className="mr-1 rounded border border-warn-line bg-warn-subtle px-1 text-[9px] font-bold uppercase tracking-wide text-warn">Est.</span>
-          <span className="text-lg font-semibold text-fg tabular-nums">{inr(s.net_rewards_inr)}</span>
+          <span className="mr-1 rounded border border-warn-line bg-warn-subtle px-1 text-[9px] font-bold uppercase tracking-label text-warn">Est.</span>
+          <span className="text-lg font-semibold text-fg num">{inr(s.net_rewards_inr)}</span>
           <span className="ml-1 text-xs text-fg-muted">/yr net for your spend</span>
         </div>
         <Link href={href} className="inline-flex items-center gap-1 text-xs font-semibold text-accent-fg hover:underline">

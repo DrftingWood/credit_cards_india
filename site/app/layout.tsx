@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Link from "next/link";
 import "../styles/globals.css";
 import { BetaBanner } from "@/components/beta-banner";
@@ -7,6 +8,15 @@ import { NavLink } from "@/components/nav-link";
 import { SkipLink } from "@/components/skip-link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
+
+// Self-hosted at build time by next/font (no runtime request to Google).
+// Rupee sign U+20B9 is NOT in Google's "latin" subset (it is in latin-ext),
+// so both subsets are listed; unicode-range keeps each file lazy.
+const inter = Inter({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -37,7 +47,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // suppressHydrationWarning: the init script may set data-theme before React hydrates.
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
@@ -45,8 +55,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SkipLink />
         <BetaBanner />
         <header className="border-b border-line bg-surface">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3">
-            <Link href="/" className="text-fg hover:text-fg font-semibold tracking-tight">
+          <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3">
+            <Link href="/" className="text-fg hover:text-fg font-semibold tracking-heading">
               Credit Cards <span className="text-accent-fg">·</span> India
             </Link>
             {/* Wrap + responsive gaps so five links never overflow a narrow
@@ -64,9 +74,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </header>
-        <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 py-8 focus:outline-none">{children}</main>
+        <main id="main" tabIndex={-1} className="mx-auto max-w-page px-4 py-8 focus:outline-none">{children}</main>
         <footer className="border-t border-line bg-surface-subtle">
-          <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-fg-muted flex flex-wrap justify-between gap-3">
+          <div className="mx-auto max-w-page px-4 py-6 text-sm text-fg-muted flex flex-wrap justify-between gap-3">
             <div>
               Open dataset — MIT licensed.{" "}
               <a href="https://github.com/DrftingWood/credit_cards_india" target="_blank" rel="noopener noreferrer">

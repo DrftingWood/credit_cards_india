@@ -158,11 +158,18 @@ export default async function CardPage({
 
   return (
     <article className="space-y-5">
+      {/* JSON-LD structured data for SEO. First, not last: Tailwind 4's space-y
+          puts the gap below every child but the last, so a trailing hidden
+          <script> would add 20px of empty space under the page. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdForCard(card)) }}
+      />
       <Breadcrumb card={card} />
 
       {/* Title strip */}
       <header className="space-y-2">
-        <h1 className="text-2xl md:text-3xl font-semibold text-fg leading-tight">
+        <h1 className="text-2xl md:text-3xl font-semibold text-fg leading-tight md:leading-9">
           {card.name}
         </h1>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-fg-muted">
@@ -278,12 +285,6 @@ export default async function CardPage({
           ))}
         </section>
       ) : null}
-
-      {/* JSON-LD structured data for SEO. */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdForCard(card)) }}
-      />
     </article>
   );
 }

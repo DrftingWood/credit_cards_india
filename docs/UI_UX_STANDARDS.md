@@ -24,7 +24,7 @@ Written 2026-11-01 (standards plan, Task 8). Behaviour and interaction rules for
 | UX-12 | One `<main id="main">`; header, nav and footer sit outside it; a skip link is the first focusable element and lands in it. | `test` (skip link); `axe:landmark-one-main` |
 | UX-13 | Every route has its own `<title>`; one `h1` per page; heading levels do not skip. | `axe:document-title`, `page-has-heading-one`, `heading-order` |
 | UX-14 | The current page is marked `aria-current="page"` in the nav, exactly once. | `test` (nav) |
-| UX-15 | Focus is always visible. No `outline-none` without a full-strength `focus-visible` ring. | Q |
+| UX-15 | Focus is always visible. No `outline-none` (Tailwind 4: `outline-hidden` is the transparent-outline reset) without a full-strength `focus-visible` ring. | Q |
 | UX-16 | Every field has a visible `<label>`; option groups sit in `fieldset` with `legend`. | `axe:label`, `select-name` |
 | UX-17 | Field errors appear in text next to the field, linked by `aria-describedby`; never only in a toast; never only red. | Q |
 | UX-18 | A control's accessible name contains its visible label and, in a list, says which row it acts on. | `axe:button-name`, `link-name`, `label-content-name-mismatch` |

@@ -31,10 +31,10 @@ export function contrastRatio(a: Rgb, b: Rgb): number {
   return (hi + 0.05) / (lo + 0.05);
 }
 
-/** Extract `--color-*: R G B;` declarations from one CSS block body. */
+/** Extract `--rgb-*: R G B;` declarations from one CSS block body. */
 function parseColorVars(block: string): Palette {
   const out: Palette = {};
-  const re = /--color-([a-z0-9-]+)\s*:\s*(\d{1,3})\s+(\d{1,3})\s+(\d{1,3})\s*;/g;
+  const re = /--rgb-([a-z0-9-]+)\s*:\s*(\d{1,3})\s+(\d{1,3})\s+(\d{1,3})\s*;/g;
   for (const m of block.matchAll(re)) {
     out[m[1]] = [Number(m[2]), Number(m[3]), Number(m[4])];
   }

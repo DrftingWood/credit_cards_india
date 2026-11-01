@@ -1,5 +1,22 @@
 import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { extendTailwindMerge } from "tailwind-merge";
+
+/**
+ * tailwind-merge only knows Tailwind's stock scales. The names that
+ * styles/theme.css adds (tracking-label, tracking-heading, max-w-page,
+ * p-card …) must be declared here too, or `cn("tracking-wide", "tracking-label")`
+ * keeps both classes and the winner is decided by stylesheet order instead of
+ * argument order. Keep this list in step with theme.css.
+ */
+const twMerge = extendTailwindMerge({
+  extend: {
+    theme: {
+      tracking: ["label", "heading"],
+      container: ["page"],
+      spacing: ["inline", "stack", "card", "section"],
+    },
+  },
+});
 
 export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));

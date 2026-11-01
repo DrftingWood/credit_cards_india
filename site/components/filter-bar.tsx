@@ -107,7 +107,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
           placeholder="Card or issuer name"
           value={state.q}
           onChange={(e) => onChange({ ...state, q: e.target.value })}
-          className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-focus"
+          className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-hidden focus:ring-1 focus:ring-focus"
         />
       </div>
 

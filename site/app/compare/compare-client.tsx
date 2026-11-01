@@ -112,7 +112,7 @@ export function CompareClient({ cards }: { cards: EnrichedCard[] }) {
                 : "Search by card or issuer name…"
             }
             disabled={selectedIds.length >= MAX_CARDS}
-            className="w-full rounded-md border border-line-strong px-3 py-2 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-focus disabled:bg-surface-subtle disabled:cursor-not-allowed"
+            className="w-full rounded-md border border-line-strong px-3 py-2 text-sm focus:border-accent focus:outline-hidden focus:ring-1 focus:ring-focus disabled:bg-surface-subtle disabled:cursor-not-allowed"
           />
           {suggestions.length > 0 ? (
             <div className="absolute left-0 right-0 mt-1 z-10 rounded-md border border-line bg-surface shadow-sm max-h-72 overflow-auto">

@@ -74,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </header>
-        <main id="main" tabIndex={-1} className="mx-auto max-w-page px-4 py-8 focus:outline-none">{children}</main>
+        <main id="main" tabIndex={-1} className="mx-auto max-w-page px-4 py-8 focus:outline-hidden">{children}</main>
         <footer className="border-t border-line bg-surface-subtle">
           <div className="mx-auto max-w-page px-4 py-6 text-sm text-fg-muted flex flex-wrap justify-between gap-3">
             <div>

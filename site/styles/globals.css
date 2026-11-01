@@ -1,8 +1,19 @@
+/*
+ * Tailwind 4: configuration lives in CSS (theme.css replaces tailwind.config.ts).
+ * `source(none)` turns off automatic class detection; the @source lines below
+ * keep the exact scan scope the old `content` array had.
+ */
+@import "tailwindcss" source(none);
 @import "./tokens.css";
+@import "./theme.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@source "../app/**/*.{ts,tsx,mdx}";
+@source "../components/**/*.{ts,tsx,mdx}";
+@source "../lib/**/*.{ts,tsx}";
+
+/* The theme follows data-theme / prefers-color-scheme in tokens.css. This
+   variant only matters if someone adds an explicit `dark:` class. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @layer base {
   html {
@@ -15,28 +26,40 @@
   body {
     @apply bg-canvas text-fg font-sans;
   }
+  /* Tailwind 4 preflight no longer sets a pointer on buttons; keep the
+     Tailwind 3 behaviour (disabled buttons keep the default cursor). */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  /* Preflight 4 zeroes the browser's 1px cell padding; Tailwind 3 left it,
+     and cells that set only some sides (pr-3 py-1) relied on it. */
+  td,
+  th {
+    padding: 1px;
+  }
   a {
     @apply text-accent-fg hover:text-accent-strong;
   }
   /* Native checkboxes, radios and range sliders follow the accent. */
   input,
   progress {
-    accent-color: rgb(var(--color-accent));
+    accent-color: rgb(var(--rgb-accent));
   }
   /* Without this, dark color-scheme gives unstyled fields the UA's grey. */
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
   select,
   textarea {
-    background-color: rgb(var(--color-surface));
+    background-color: rgb(var(--rgb-surface));
   }
   /* Placeholder is text, so SC 1.4.3 applies (4.5:1). Firefox also lowers
      placeholder opacity by default; pin it to 1 so the token is what renders. */
   ::placeholder {
-    color: rgb(var(--color-fg-placeholder));
+    color: rgb(var(--rgb-fg-placeholder));
     opacity: 1;
   }
   :focus-visible {
-    outline-color: rgb(var(--color-focus));
+    outline-color: rgb(var(--rgb-focus));
   }
 }
 
@@ -86,6 +109,18 @@
   }
   .chip-success {
     @apply bg-success-subtle text-success border-success-line;
+  }
+}
+
+/* Link hover colour, as it behaved under Tailwind 3. There the base rule
+   `a:hover` (specificity 0,1,1) beat any plain text-* utility on the link
+   (0,1,0), so links with an explicit colour still turned accent-strong on
+   hover unless they set their own hover:text-*. Tailwind 4 puts utilities in a
+   later cascade layer, which would silently drop that; unlayered, this rule
+   wins over utilities again, and links with their own hover:text-* opt out. */
+@media (hover: hover) {
+  a:not([class*="hover:text-"]):hover {
+    color: rgb(var(--rgb-accent-strong));
   }
 }
 

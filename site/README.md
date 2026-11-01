@@ -1,6 +1,6 @@
 # site/ - Credit Cards of India
 
-Next.js 15 App Router, TypeScript, and Tailwind. The app reads the compiled JSON
+Next.js 15 App Router, TypeScript, and Tailwind 4. The app reads the compiled JSON
 artifact generated from the YAML dataset in the parent directory.
 
 ## Develop
@@ -58,7 +58,7 @@ the production host.
 - `lib/` - data loading, filters, calculator, recommender, types, and utilities.
 - `scripts/` - prebuild, schema validation, JSON generation, and generated
   schema types.
-- `styles/` - Tailwind entry.
+- `styles/` - Tailwind 4 entry (`globals.css`), design tokens (`tokens.css`) and the `@theme` mapping (`theme.css`).
 
 ## Current Features
 

@@ -39,7 +39,7 @@ export function ThemeToggle() {
       onClick={onClick}
       aria-label={`${LABEL[current]}. Switch to ${nextThemePref(current)}.`}
       title={LABEL[current]}
-      className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-line text-fg-muted hover:border-line-strong hover:text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+      className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-line text-fg-muted hover:border-line-strong hover:text-fg focus:outline-hidden focus-visible:ring-2 focus-visible:ring-focus"
     >
       <ThemeIcon pref={current} />
     </button>

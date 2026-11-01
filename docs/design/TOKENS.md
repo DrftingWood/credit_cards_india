@@ -1,7 +1,8 @@
 # Design tokens
 
-Source of truth: `site/styles/tokens.css`. Tailwind mapping:
-`site/tailwind.config.ts`. Contrast test: `site/lib/design-tokens.test.ts`.
+Source of truth: `site/styles/tokens.css` (themed colour channels, now named
+`--rgb-*`) and `site/styles/theme.css` (literal tokens plus the Tailwind 4
+`@theme` mapping that replaced `tailwind.config.ts`). Contrast test: `site/lib/design-tokens.test.ts`.
 References: [REFERENCES.md](REFERENCES.md). Screenshots:
 [screenshots/](screenshots/).
 
@@ -224,7 +225,7 @@ These four defaults are accepted and stay as built. Make no further design
 changes until the owner's longer UI/UX conversation (TODO UI-3).
 
 - **Light canvas:** the page background is off-white, `rgb(250 251 252)`,
-  rather than pure white, so white cards read as raised (`--color-canvas`).
+  rather than pure white, so white cards read as raised (`--rgb-canvas`).
 - **System font:** the system stack is kept, with no webfont. That means no
   network fetch at build and no layout shift (`--font-sans`). Inter or IBM Plex
   Sans through `next/font` remains an option for the UI/UX conversation, but it
@@ -232,7 +233,7 @@ changes until the owner's longer UI/UX conversation (TODO UI-3).
 - **Merged muted greys:** `slate-500` and `slate-600` are merged into one
   `fg-muted`, giving a three-step text hierarchy.
 - **Dark-mode primary:** in dark mode the primary button is light blue
-  (`--color-accent: 122 167 255`) with dark text (`--color-on-accent: 10 15 26`),
+  (`--rgb-accent: 122 167 255`) with dark text (`--rgb-on-accent: 10 15 26`),
   at 8.03:1. Light mode keeps the deep blue with white text.
 
 ### Still open
@@ -240,4 +241,4 @@ changes until the owner's longer UI/UX conversation (TODO UI-3).
 - **Dark-mode warn tint (taste question):** the "How we rank" band uses
   `warn-subtle` and reads quite brown in dark mode. It passes contrast, so it
   is left alone until the owner's UI/UX conversation. To warm it, change
-  `--color-warn-subtle` and `--color-warn-line` in the dark blocks.
+  `--rgb-warn-subtle` and `--rgb-warn-line` in the dark blocks.

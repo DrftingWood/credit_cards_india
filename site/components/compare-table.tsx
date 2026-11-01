@@ -290,7 +290,12 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
   const cardColPct = Math.floor(80 / cards.length);
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-line bg-surface">
+    <div
+      role="region"
+      aria-label="Comparison table, scrolls horizontally"
+      tabIndex={0}
+      className="overflow-x-auto rounded-xl border border-line bg-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    >
       <table className="min-w-full text-sm table-fixed">
         <colgroup>
           <col style={{ width: "20%" }} />

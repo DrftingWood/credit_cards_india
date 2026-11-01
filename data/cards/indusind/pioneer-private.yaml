@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-pioneer-private
 name: IndusInd Bank Pioneer Private Credit Card
 image_path: /cards/indusind/pioneer-private.webp
@@ -17,94 +8,250 @@ tier: invite-only
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2015-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2015-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Invite-only Pioneer Private banking metal card."
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-private.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 25000
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+    conditions: Combined eligible spend of INR10 lakh or more in the previous anniversary year; INR50,000 + GST annual fee applies if customer is downgraded from Pioneer Private status.
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: 2
+  cash_advance_fee:
+    pct: 0
+    min_inr: 0
+  gst_applicable: true
+  notes: No joining fee for Pioneer Private clients in current card-specific terms. Annual fee INR25,000 + GST, waived at INR10 lakh previous-year spend; downgrade from Pioneer Private status attracts INR50,000 + GST annual fee. Current MITC also waives cash-advance fee, forex markup, cash-redemption fee, and specified fuel-transaction fees for this card. Fuel surcharge reversal is a separate benefit.
+  source:
+    url: https://bank.indusind.bank.in/content/dam/ipbprivate/attachments/Pioneer-Private-Card-detailed-TNCs.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/pioneer-private/pioneer-private-detailed-tnc-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/pioneer-private/mitc-premium-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2015-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1.5
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "Reward rates/caps"
-    redemption:
-      - type: catalog
-        program: IndusMoments
-        rate_inr_per_unit: 0.25
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 3
+    per_inr: 100
+    unit_value_inr: 1
+    unit_value_inr_realized: 1
+    notes: 3 points per INR100 on eligible purchases; selected MCCs earn 0.7 points per INR100. Fuel transactions earn no points. Points are stated to remain live while the card account remains active.
+  accelerated:
+  - category: low-mcc-merchant-spend
+    effective_rate: 0.7
+    effective_per_inr: 100
+    cap_status: not-published
+    canonical_categories:
+    - utilities
+    - insurance
+    - education
+    - telecom
+    - government
+    notes: Issuer lists transportation/tolls MCCs 4111, 4121, 4131, 4112 and 4784; utilities 4900; insurance 5960 and 6300; education 8211, 8241, 8244, 8249 and 8299; telecom 4812; securities brokers 6211; cleaning and maintenance 7349; and government 9211, 9222, 9311, 9399, 9402, 9405 and 8220. Fuel itself earns no points.
     source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-private.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      url: https://bank.indusind.bank.in/content/dam/ipbprivate/attachments/Pioneer-Private-Card-detailed-TNCs.pdf
+      retrieved_on: 2026-10-26
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+      - docs/sources/indusind/pioneer-private/pioneer-private-detailed-tnc-retrieved-2026-10-26.pdf
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].effective_per_inr
+  exclusions:
+  - fuel
+  mcc_exclusions: []
+  capping_rules:
+  - No general earning cap is stated in the card-specific terms. A previously indexed version of the issuer cash-credit page stated a 30,000-point monthly cash-credit cap, while the current fetched issuer page and detailed T&Cs say no monthly redemption cap across eligible options. Treat the 30,000-point figure as stale/uncertain and confirm at redemption.
+  redemption:
+  - type: statement-credit
+    program: cash credit
+    rate_inr_per_unit: 1
+    min_units: 500
+    fee_inr: 0
+    constraints: INR1 per point; minimum redemption 500 points. Current issuer reward page and detailed T&Cs say no monthly cap across eligible options, but an indexed older version of the page stated 30,000 points/month for cash credit. Confirm applicable cap at redemption.
+  - type: catalog
+    program: IndusMoments gift vouchers
+    rate_inr_per_unit: 1
+    constraints: Card-specific terms list INR1 per point for gift vouchers; catalogue and partner terms apply.
+  - type: airmiles
+    program: airline miles
+    rate_inr_per_unit: null
+    ratio: '1:1'
+    constraints: Detailed card terms list 1 point = 1 airmile; eligible partners and transfer terms apply.
+  source:
+    url: https://bank.indusind.bank.in/content/dam/ipbprivate/attachments/Pioneer-Private-Card-detailed-TNCs.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/pioneer-private/pioneer-private-detailed-tnc-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].effective_per_inr
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption[0].rate_inr_per_unit
+    - rewards.redemption[0].min_units
+    - rewards.redemption[0].fee_inr
+    - rewards.redemption[1].rate_inr_per_unit
+    - rewards.redemption[2].ratio
 benefits:
-  - effective_from: 2015-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 1
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 1
-        via: [priority-pass]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-private.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+      notes: Unlimited visits for primary and supplementary cardmembers at participating lounges in India; each eligible cardholder must present their card. Guests are chargeable.
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Unlimited Priority Pass visits outside India for primary and supplementary members. Up to 12 complimentary guest visits outside India are shared under card-specific T&Cs; additional guest visits may be charged up to USD35 each.
+  golf:
+    rounds_per_cycle: unlimited
+    lessons_per_cycle: unlimited
+    cycle: monthly
+    notes: Unlimited complimentary domestic games and lessons for primary cardholder at specified locations, subject to at least INR50,000 spend in the latest statement. Four complimentary international games annually, also subject to the INR50,000 latest-statement spend. Supplementary cardholders are not eligible for complimentary golf.
+  milestones:
+  - spend_inr: 100000
+    cycle: annual
+    benefit: Welcome bonus for primary cardholder after eligible settled retail spend within 30 days of issuance.
+    reward_kind: points
+    reward_units: 6000
+    reward_currency_name: Reward Points
+    trigger_window: first-year
+    is_repeatable: false
+  - spend_inr: 7500000
+    cycle: annual
+    benefit: Taj hotel experiences e-gift card after eligible spend in the membership year.
+    reward_kind: voucher
+    reward_units: 100000
+    reward_currency_name: INR
+    trigger_window: anniversary-year
+    is_repeatable: true
+  fuel_surcharge_waiver:
+    pct: 1
+    min_txn_inr: 500
+    max_txn_inr: 10000
+    cap_per_cycle_inr: null
+    cycle: monthly
+  movies:
+    type: free
+    partner: BookMyShow
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: null
+    notes: Two complimentary movie tickets per month with no ticket-price cap. Three complimentary non-movie tickets per quarter, capped at INR1,000 per ticket. Card-account quota is shared with add-on cards; primary cardmember eligibility applies.
+  insurance:
+  - type: travel-medical
+    sum_insured_inr: null
+    conditions: Overseas health insurance up to USD25,000 and accidental death aggregate limit USD100,000 per incident under international travel cover; cardholder and accompanying spouse, eligible card-booked travel, up to 60 days/trip and age up to 65. Policy exclusions apply.
+  - type: baggage-loss
+    sum_insured_inr: null
+    conditions: International travel insurance includes checked-baggage loss; current public card guide does not state the cover amount. Policy terms apply.
+  - type: other
+    sum_insured_inr: null
+    conditions: International travel insurance includes passport loss; current public card guide does not state the cover amount. Policy terms apply.
+  - type: other
+    sum_insured_inr: null
+    conditions: International travel insurance includes ticket loss and missed flight connection; current public card guide does not state the cover amounts. Policy terms apply.
+  - type: other
+    sum_insured_inr: 20000
+    conditions: Hole-in-one insurance for golf, up to INR20,000; policy terms apply.
+  - type: fraud-liability
+    sum_insured_inr: null
+    conditions: Total Protect for lost card, counterfeiting/skimming, phishing and online fraud; numeric limit not established in reviewed card sources.
+  concierge: true
+  other:
+  - name: Dining vouchers
+    description: Two INR3,000 EazyDiner vouchers every six months for primary cardmember, subject to card terms.
+  - name: Taj Epicure Preferred membership
+    description: First-year complimentary membership; renewal requires INR50 lakh previous-year spend and must be claimed. Partner terms apply.
+  - name: Club ITC Culinaire Select membership
+    description: Issuance currently on hold according to the live issuer page; do not treat as currently issuable until the bank resumes it.
+  - name: EazyDiner Prime
+    description: First-year complimentary EazyDiner Prime membership; renewal requires INR50 lakh previous-year spend.
+  - name: Postcard Hotels
+    description: Two complimentary hotel vouchers per year, issued on request; voucher terms apply.
+  - name: Airport transfers
+    description: Two complimentary domestic and two international airport pick-up/drop services per year for primary cardmember; booking and service terms apply.
+  - name: Airport meet and greet
+    description: Two complimentary domestic and two international meet-and-greet services per year for primary cardholder, subject to booking, location and issuer/partner terms.
+  - name: Concierge
+    description: 24x7 concierge; services requested may be chargeable and location-limited.
+  source:
+    url: https://bank.indusind.bank.in/content/dam/ipbprivate/attachments/Pioneer-Private-Card-detailed-TNCs.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/pioneer-private/pioneer-private-detailed-tnc-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/pioneer-private/pioneer-private-benefit-guide-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/pioneer-private/fuel-surcharge-waiver-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[0].reward_units
+    - benefits.milestones[1].spend_inr
+    - benefits.milestones[1].reward_units
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.movies.max_per_cycle
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.insurance[4].sum_insured_inr
 eligibility:
-  min_age: 21
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 800
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Invite-only to IndusInd Pioneer banking clients."
-
+  notes: Issued exclusively to Pioneer Private banking customers, subject to bank credit policy. Public card-specific age, income, and bureau-score cutoffs were not established in reviewed issuer sources.
+  source:
+    url: https://bank.indusind.bank.in/in/en/personal/faq.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: medium
+    local_refs: []
+    fields_verified:
+    - eligibility.residency
 application:
-  apply_url: null
-
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-private.html
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [invite-only, points, metal]
+  last_verified_on: 2026-10-26
+  tags:
+  - invite-only
+  - points
+  - metal

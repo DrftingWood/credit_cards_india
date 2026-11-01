@@ -1,137 +1,213 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: kotak-zen-signature
 name: Kotak Zen Credit Card
 image_path: /cards/kotak/zen-signature.webp
 issuer: kotak
 network: visa
-network_tier: signature
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 1500
-    annual_fee_inr: 1500
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 1500
+  annual_fee_inr: 1500
+  fee_waiver:
+    spend_inr: 150000
+    cycle: annual
+    conditions: Annual retail spends of INR150,000 or more in the anniversary year waive the annual fee.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: KFS version KFSZS12032026 lists a INR1,500 joining and annual fee, joining fee waiver NA, and annual waiver at INR1.5 lakh retail spend. The current fees page agrees. Finance charge is 3.75% monthly (45% annualized); cash advance is 2.5%, minimum INR500. Exact launch date and network tier are not established by current card-specific issuer evidence.
+  source:
+    url: https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/key-fact-statement-kfs-zensignature.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/zen-signature/kfs-zen-signature-2026-10-27.pdf
+    - docs/sources/kotak/zen-signature/mitc-wealth-and-white-reserve-2026-10-27.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].fee_waiver.spend_inr
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    - fees[0].gst_applicable
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: points
-    currency_name: Zen Points
-    base:
-      rate: 5
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: shopping
-        canonical_categories: [online]
-        multiplier: 2
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: statement
-        notes: "10 Zen Points per ₹150 on shopping (apparel, lifestyle goods, departmental stores & jewellery); 5 per ₹150 on other spends."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513', '5172', '5541', '5542', '5983']
-    reward_cap:
-      max_units: 6500
-      cap_unit: points
-      cycle: statement
-    capping_rules:
-      - "Overall reward points capped at 6,500 per billing cycle."
-      - "Education & insurance points only up to ₹70,000/statement; utility only up to ₹50,000/statement."
-      - "No Zen points on wallet loads, fuel, rent, or online skill-based gaming."
-    redemption:
-      - type: catalog
-        program: Kotak Zen Rewards
-        rate_inr_per_unit: 0.15
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: 'Research-verified: Zen Points cash value Rs0.20 (w.e.f. 01-Jun-2025, was Rs0.25), voucher up to Rs0.25. NOT closed-loop (open Kotak catalogue, cash-convertible) — closed-loop tag removed.'
-      confidence: high
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: Zen Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.2
+    notes: 5 Zen Points per INR150 on eligible non-shopping retail spends. Cash redemption realizes INR0.20 per point; catalogue categories including recharge, shopping, vouchers, movies and travel list INR0.25 per point. Cash redemption requires at least 2,000 points.
+  accelerated:
+  - category: shopping
+    canonical_categories:
+    - online
+    multiplier: 2
+    effective_rate: 10
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: statement
+    notes: 10 points per INR150 on shopping including apparel, lifestyle goods, departmental stores and jewellery; all reward points together are capped at 6,500 per billing cycle.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  - other
+  mcc_exclusions:
+  - '6513'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  reward_cap:
+    max_units: 6500
+    cap_unit: points
+    cycle: statement
+  capping_rules:
+  - Overall earned Zen Points are capped at 6,500 per billing cycle.
+  - Education and insurance earn points only on spend up to INR70,000 per statement cycle; utility up to INR50,000; government up to INR40,000.
+  - Wallet load, fuel, rent and online skill-based gaming earn no points. EMI transactions are also excluded from earn.
+  - Education, insurance, utility, government, wallet load, fuel, rent and online skill-based gaming spends do not count toward milestone benefits; MCC mapping applies.
+  redemption:
+  - type: catalog
+    program: Kotak Rewards catalogue
+    rate_inr_per_unit: 0.25
+    constraints: Issuer lists INR0.25 per Zen Point for categories including mobile recharge, shopping, e-vouchers, movies and travel; item/offer terms may apply.
+  - type: statement-credit
+    program: Cash value redemption
+    rate_inr_per_unit: 0.2
+    min_units: 2000
+    constraints: Since 2025-06-01 cash redemption is INR0.20 per point, minimum 2,000 points.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/zen-signature/mitc-wealth-and-white-reserve-2026-10-27.pdf
+    - docs/sources/kotak/indigo-xl/kotak-reward-mcc-schedule-2025-06-01.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].base.unit_value_inr_realized
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].reward_cap.max_units
+    - rewards[0].mcc_exclusions
+    - rewards[0].redemption[0].rate_inr_per_unit
+    - rewards[0].redemption[1].rate_inr_per_unit
+    - rewards[0].redemption[1].min_units
+  notes: Reward rates and caps apply by MCC as specified on Kotak's current card page. The overall cap, rate and category restrictions have been checked against the current issuer terms; verify MCC mapping at transaction time.
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    milestones:
-      - spend_inr: 300000
-        cycle: annual
-        benefit: "7,500 bonus Zen points on ₹3L spend (or 15,000 on ₹6L) per year"
-        value_inr: 1125
-        reward_kind: points
-        reward_units: 7500
-        reward_currency_name: Zen Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 3500
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - visa
+      - dreamfolks
+      notes: Two complimentary visits in the next calendar quarter after at least INR75,000 card spend in the preceding quarter. The product page does not specify guest entitlement.
+    international:
+      visits_per_cycle: 3
       cycle: annual
-    concierge: false
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      guests_per_visit: 0
+      via:
+      - visa
+      - priority-pass
+      notes: Three complimentary visits per calendar year outside India, primary cardholder only. Guests are charged USD35 per person per visit. USD1 validation charge is credited back within seven working days.
+  milestones:
+  - spend_inr: 300000
+    cycle: annual
+    benefit: 7,500 bonus Zen Points on INR300,000 eligible anniversary-year spend; only one milestone tier is awarded.
+    value_inr: 1500
+    reward_kind: points
+    reward_units: 7500
+    reward_currency_name: Zen Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  - spend_inr: 600000
+    cycle: annual
+    benefit: 15,000 bonus Zen Points on INR600,000 eligible anniversary-year spend instead of the INR300,000 milestone award.
+    value_inr: 3000
+    reward_kind: points
+    reward_units: 15000
+    reward_currency_name: Zen Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 3500
+    cycle: annual
+  concierge: false
+  other:
+  - name: Welcome Zen Points
+    description: 1,500 welcome Zen Points are available on payment of the INR1,500 joining fee; not available on a free card.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/zen-signature/kfs-zen-signature-2026-10-27.pdf
+    - docs/sources/kotak/zen-signature/mitc-wealth-and-white-reserve-2026-10-27.pdf
+    fields_verified:
+    - benefits[0].lounge_access.domestic.visits_per_cycle
+    - benefits[0].lounge_access.international.visits_per_cycle
+    - benefits[0].milestones[0].spend_inr
+    - benefits[0].milestones[0].reward_units
+    - benefits[0].milestones[1].spend_inr
+    - benefits[0].milestones[1].reward_units
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.min_txn_inr
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 60
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Current card-specific issuer eligibility page specifies primary applicant age 21-60, India residency and net income INR480,000 or more annually; it does not split income thresholds by employment type or publish a bureau-score minimum. It limits application locations to Ahmedabad, Bangalore, Chandigarh, Chennai, Delhi including Gurgaon and Noida, Hyderabad, Kolkata, Mumbai and Pune.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card/eligibility-criteria.html
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
+    notes: Published location list, annual net-income threshold and lack of a score cutoff are documented in the issuer extract; the schema does not model the income criterion without an employment split.
 application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [mid, points, shopping, lounge]
+  last_verified_on: '2026-10-27'
+  tags:
+  - mid
+  - points
+  - shopping
+  - lounge

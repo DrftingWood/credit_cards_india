@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-first-private
 name: IDFC FIRST Private Credit Card
 image_path: /cards/idfc-first/first-private.webp
@@ -17,119 +8,457 @@ tier: invite-only
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2022-10-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-10-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free (invite-only)."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-07-17
+  effective_until: null
+  joining_fee_inr: 50000
+  annual_fee_inr: 25000
+  fee_waiver: null
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: >-
+    Current product page prices the card issued on/after 17-Jul-2026 at a
+    commencement fee of INR 50,000 + GST and annual fee of INR 25,000 + GST from
+    year two. New issue cohort receives 50,000 Reward Points after commencement
+    fee payment (up to INR 50,000 redemption value). The page advertises 9% annual
+    onboarding interest; the cardholder-specific APR after onboarding is not
+    published, so no monthly rate is asserted. Cash withdrawal is advertised as
+    0% interest globally until the due date; issuer FAQ lists INR 199 + GST per
+    cash advance, with the card-specific fee schedule not displayed. This dated
+    schedule is for post-17-Jul-2026 issuance; treatment of earlier-issued accounts
+    is not fully described in the live page. The issuer also advertises zero late
+    payment and over-limit charges. Older lifetime-free fees should not be assumed
+    for newly issued cards.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    local_refs:
+    - docs/sources/idfc-first/first-private/first-private-consolidated-terms-2026-07-17.pdf
+    - docs/sources/idfc-first/first-private/current-credit-card-policy.pdf
+    notes: >-
+      Current consolidated FIRST Private terms, effective 17-Jul-2026:
+      https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-private/FIRST-Private-Credit-Card-Consolidated-TnC-17072026.pdf
+      Cash-advance fee reference is the issuer FAQ/general cash-advance page; it is
+      not shown in the consolidated FIRST Private privilege document.
 rewards:
-  - effective_from: 2022-10-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: incremental-monthly-above-20k
-        canonical_categories: [other]
-        multiplier: 3.33
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10X (10 RP per ₹150) on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000."
-      - category: utility-insurance-railway-fastag
-        canonical_categories: [utilities, insurance]
-        multiplier: 0.33
-        effective_rate: 1
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Reduced 1X (1 RP per ₹150) on utility bill payments, insurance premiums, railway spends and FASTag recharges."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
+- effective_from: 2026-07-17
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 150
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+    notes: >-
+      Current terms earn 10 points/INR 150 on eligible domestic spend and 5
+      points/INR 150 on eligible international spend, with 1 point/INR 150 on
+      listed reduced-rate categories. Points are not awarded below the credit-limit
+      spend cap; failure to pay MAD by due date reverses the cycle's points.
+  accelerated:
+  - category: eligible-domestic-spend
+    canonical_categories:
+    - online
+    - groceries
+    - dining
+    - travel
+    - entertainment
+    - other
+    multiplier: 10
+    effective_rate: 10
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard
-      retrieved_on: 2026-07-03
-      type: issuer-page
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-private/FIRST-Private-Credit-Card-Consolidated-TnC-17072026.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
       confidence: high
-
-benefits:
-  - effective_from: 2022-10-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass, loungekey]
-    golf:
-      rounds_per_cycle: unlimited
-      cycle: monthly
-      lessons_per_cycle: unlimited
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 50000000
-      - type: travel-medical
-        sum_insured_inr: 10000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: 10 points/INR 150 on eligible domestic spends except categories earning 1X or excluded transactions.
+  - category: eligible-international-spend
+    canonical_categories:
+    - international
+    multiplier: 5
+    effective_rate: 5
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-private/FIRST-Private-Credit-Card-Consolidated-TnC-17072026.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: 5 points/INR 150 on eligible international transactions other than excluded transactions.
+  - category: reduced-rate-categories
+    canonical_categories:
+    - rent
+    - education
+    - utilities
+    - insurance
+    - government
+    - wallet-loads
+    - other
+    effective_rate: 1
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-private/FIRST-Private-Credit-Card-Consolidated-TnC-17072026.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: >-
+      1 point/INR 150 on rent, education, utilities, insurance, government services,
+      FASTag, wallet loads, railways, gift vouchers and jewellery (including gold
+      and watches). Some named subcategories are combined under `other` because
+      the schema has no dedicated category for them.
+  - category: travel-app-hotel-bonus
+    canonical_categories:
+    - travel
+    multiplier: 6
+    effective_rate: 60
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-private/FIRST-Private-Credit-Card-Consolidated-TnC-17072026.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: >-
+      Total 60 points/INR 150 on hotel bookings via FIRST Rewards Gallery on the
+      IDFC FIRST app, including 50 bonus points over the 10-point eligible domestic
+      base. Full-swipe payments only; bonus credited after completed stay.
+  - category: travel-app-flight-bonus
+    canonical_categories:
+    - travel
+    multiplier: 3
+    effective_rate: 30
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-private/FIRST-Private-Credit-Card-Consolidated-TnC-17072026.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: >-
+      Total 30 points/INR 150 on flight bookings via FIRST Rewards Gallery on the
+      IDFC FIRST app, including 20 bonus points over the 10-point eligible domestic
+      base. Full-swipe payments only; bonus credited after completed travel.
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions: []
+  redemption:
+  - type: other
+    program: IDFC FIRST Rewards - travel through IDFC FIRST app
+    rate_inr_per_unit: 1
+    fee_inr: 99
+    constraints: >-
+      INR 99 + GST per redemption. No more than 600,000 points may be redeemed
+      against travel bookings through the app per calendar year; up to 70% of
+      booking value can be points on eligible travel transactions.
+  - type: catalog
+    program: IDFC FIRST Rewards - other redemptions
+    rate_inr_per_unit: 0.25
+    fee_inr: 99
+    constraints: INR 99 + GST per redemption; no expiry per issuer product page.
+  source:
+    url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-private/FIRST-Private-Credit-Card-Consolidated-TnC-17072026.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    local_refs:
+    - docs/sources/idfc-first/first-private/first-private-consolidated-terms-2026-07-17.pdf
+    notes: >-
+      Pre-17-Jul-2026 historical earn terms are not reconstructed here. Current
+      July-2026 terms replace the old 3X/10X incremental structure and distinguish
+      international earning. Separate charity Karma Points are documented under
+      benefits, not mixed into redeemable Reward Points. Current terms also exclude
+      quasi-cash, fees/GST, loans on card and balance transfers; the category-only
+      exclusion field cannot express all of these transaction types.
+benefits:
+- effective_from: 2026-07-17
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 1
+      via:
+      - visa
+      - dreamfolks
+      notes: >-
+        Unlimited access at select domestic airport lounges and airport spas for
+        primary and add-on cardholders. Up to four complimentary accompanied guest
+        visits per year; one guest per use is implied by the issuer wording, and
+        the per-year limit cannot be represented exactly in this schema.
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+      notes: Unlimited access at participating overseas lounges for primary and add-on cardholders; guests are chargeable.
+  golf:
+    rounds_per_cycle: unlimited
+    lessons_per_cycle: unlimited
+    cycle: monthly
+    notes: >-
+      Unlimited rounds or lessons at select golf courses in India for primary
+      cardholders. One complimentary round per quarter at select international
+      courses. Booking/availability, handicap and provider requirements apply.
+  milestones: []
+  welcome:
+  - condition: FIRST Private card issued on or after 17-Jul-2026; commencement fee paid; offer terms apply
+    benefit: 50,000 Reward Points redeemable up to INR 50,000
+    value_inr: 50000
+    window_days: null
+  insurance:
+  - type: other
+    sum_insured_inr: 25000
+    conditions: >-
+      Trip cancellation CFAR cover up to INR 25,000 for eligible flight bookings
+      and a separate INR 25,000 for eligible hotel bookings (not fungible between
+      the two). Two claims total shared between primary and add-on cardholders;
+      policy period 08-May-2026 through 07-May-2027 or later card issue date. Booking
+      and cancellation must occur within policy period and cancellation must be at
+      least 24 hours before travel/stay. Non-refundable amount only; no-shows and
+      non-room/flight charges excluded.
+  - type: other
+    sum_insured_inr: 25000
+    conditions: >-
+      Separate hotel cancellation sublimit of INR 25,000 under the same CFAR policy;
+      not fungible with the flight sublimit. The maximum cover is INR 25,000 flight
+      plus INR 25,000 hotel across two claims, shared with add-on cardholders.
+  - type: air-accident
+    sum_insured_inr: 25000000
+    conditions: >-
+      Personal air accident cover of INR 2.5 crore. Air ticket must be purchased
+      using the covered card; active-card and policy conditions apply.
+  - type: personal-accident
+    sum_insured_inr: 2500000
+    conditions: >-
+      INR25 lakh personal accident cover as listed in IDFC FIRST's current
+      insurance overview for FIRST Private; at least one card purchase or ATM
+      withdrawal in the prior 30 days is required. Claim and exclusions follow
+      insurer terms; card-specific consolidated terms describe the cover but do
+      not restate its limit.
+  - type: purchase-protection
+    sum_insured_inr: 500000
+    coverage_duration_days: 60
+    conditions: >-
+      INR 5 lakh cover for fire/allied perils and burglary at the cardholder's
+      recorded Indian residence, for purchases made on the card. At least one
+      purchase or ATM withdrawal in the prior 30 days is required.
+  - type: lost-card-liability
+    sum_insured_inr: 50000
+    conditions: >-
+      Zero card liability cover includes lost-card, counterfeit/skimming and online
+      fraud protection. The card-specific product page states INR50,000, while
+      IDFC FIRST's separate current insurance overview table lists INR5 lakh for
+      FIRST Private; limit conflict retained. Exclusions, active-card and
+      claim-reporting conditions apply.
+  - type: baggage-loss
+    sum_insured_inr: null
+    sum_insured_amount: 500
+    sum_insured_currency: USD
+    conditions: >-
+      International checked-in baggage loss. Covered international air ticket must
+      be purchased using the card and card must have at least one purchase/ATM
+      withdrawal in prior 30 days.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: >-
+      International flight delay, subject to 12-hour delay and policy requirements;
+      covered ticket paid using card and active-card condition applies.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 100
+    sum_insured_currency: USD
+    conditions: >-
+      International checked-in baggage delay, subject to policy definition and
+      emergency purchase expenses; covered ticket paid using card.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: >-
+      International loss of passport and travel documents; covered ticket paid
+      using card and active-card condition applies.
+  movies:
+    type: discount
+    partner: BookMyShow
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 750
+    notes: >-
+      Up to INR 750 off each of two monthly transactions on movies, events, food
+      combos and eligible non-movie categories. Current T&C validity through
+      31-Mar-2027; eligible BIN and merchant terms apply.
+  fuel_surcharge_waiver:
+    pct: 1
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: null
+    cycle: monthly
+    notes: Current issuer MITC assigns FIRST Private no per-statement cap on the 1% waiver.
+  concierge: true
+  other:
+  - name: Railway lounge access
+    description: >-
+      Unlimited complimentary access to select railway lounges in India for primary
+      and add-on cardholders. Present a valid train ticket; a INR 2 card validation
+      charge applies. Complimentary guest visits are not provided, though a guest
+      may use the cardholder's quota subject to lounge terms.
+    value_inr: null
+  - name: Roadside assistance
+    description: >-
+      Complimentary roadside assistance up to four services per year, issuer-stated
+      value INR 1,399, for vehicles owned/registered to cardholder; service terms and
+      coverage limits apply.
+    value_inr: 1399
+  - name: Airport meet and greet
+    description: >-
+      One complimentary meet-and-greet service annually at major Indian airports
+      after USD 1,000 international POS spend in preceding 12 months; 10% discount
+      on other services/extra guests. Terms apply.
+    value_inr: null
+  - name: The Postcard Hotels & Resorts
+    description: >-
+      INR 7,500 off a minimum INR 25,000 booking with promo code IDFCFPVIP, once per
+      month per card; issuer terms list offer validity through 10-Feb-2027.
+    value_inr: 7500
+  - name: ITC Hotels
+    description: >-
+      Issuer terms list both a free third night after two consecutive paid nights
+      (code ITCVIS) and 50% off the second night on a two-night stay (code ITCV50);
+      partner dates and availability apply.
+    value_inr: null
+  - name: Charity Karma Points
+    description: >-
+      Earn one separate Karma Point per INR 150 monthly statement spend (subject to
+      exclusions); each is valued at INR 0.25 for donation. When the account reaches
+      20,000 points (INR 5,000), the full available pool can be donated to a selected
+      partner charity. These are not standard Reward Points. An optional birthday
+      donation feature can add 10% of eligible birthday spend, capped INR 25,000/year.
+    value_inr: null
+  - name: Fuel surcharge waiver
+    description: >-
+      1% fuel surcharge waiver on fuel transactions of INR 200-INR 5,000. Current
+      issuer MITC says FIRST Private has no per-statement waiver cap.
+    value_inr: null
+  - name: Taj Epicure
+    description: >-
+      Issuer lists 25% off dine-in/takeaway food and beverage, 20% off Qmin app
+      orders, 20% off Jiva Spa treatments, plus one stay voucher each for 20% off
+      best-available room rates at participating hotels, Taj Palaces and Taj Safaris;
+      partner-specific validity and booking terms apply.
+    value_inr: null
+  - name: Club ITC Culinaire legacy membership
+    description: >-
+      Discontinued effective 17-Jul-2026 for cards issued on/after that date. Eligible
+      legacy cardholders receive membership only if anniversary falls on/before
+      17-Jul-2026 and INR 40 lakh spend is achieved before that anniversary; no new
+      membership or renewal is awarded for later anniversary cycles.
+    value_inr: null
+  - name: Taj Experiences dining voucher legacy milestone
+    description: >-
+      Discontinued effective 17-Jul-2026. Eligible legacy customers need anniversary
+      on/before that date and INR 15 lakh spend in the first six statement cycles of
+      the applicable year; unavailable to new cardholders from 17-Jul-2026 onward.
+    value_inr: null
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.golf.lessons_per_cycle
+    - benefits.welcome
+    - benefits.insurance
+    - benefits.movies
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    local_refs:
+    - docs/sources/idfc-first/first-private/first-private-consolidated-terms-2026-07-17.pdf
+    - docs/sources/idfc-first/first-private/cfar-policy-linked-current-page.pdf
+    notes: >-
+      Current consolidated terms dated 17-Jul-2026:
+      https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/first-private/FIRST-Private-Credit-Card-Consolidated-TnC-17072026.pdf
+      Current policy runs from 8-May-2026 or later card-issue date (whichever is
+      later) through 7-May-2027. The separately linked one-page CFAR PDF is stale
+      and ends 7-May-2025; the consolidated July-2026 terms and current card page
+      support current coverage.
+      The issuer says spending milestones were discontinued effective 17-Jul-2026;
+      current issue fees and welcome points are in the product page. Fuel waiver
+      schedule is in the issuer credit-card policy document:
+      https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/regulatory-disclosures/IDFC-FIRST-Bank-Credit-Card-Policy-Document.pdf
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 780
+  credit_score_min: null
   residency: resident-indian
-  notes: "Invite-only to IDFC FIRST Private / Wealth banking customers."
-
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.residency
+  notes: >-
+    Invitation-only card promoted to IDFC FIRST Private/Wealth banking customers.
+    Card-specific minimum age, income and bureau thresholds are unpublished in the
+    reviewed issuer materials; approval is subject to bank underwriting.
 application:
-  apply_url: null
-
+  apply_url: https://www.idfcfirst.bank.in/credit-card/FIRSTPrivateCreditCard
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [invite-only, super-premium, lifetime-free, points]
+  last_verified_on: 2026-10-27
+  tags:
+  - invite-only
+  - super-premium
+  - metal
+  - points
+  - zero-forex
+  - travel

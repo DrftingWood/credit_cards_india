@@ -1,18 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-indianoil
 name: IndianOil HDFC Bank Credit Card
 image_path: /cards/hdfc/indianoil.png
 issuer: hdfc
-network: rupay
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -20,108 +11,230 @@ co_brand:
   category: fuel
   partner_website: https://www.iocl.com
 status: active
-launched_on: 2017-01-01
+launched_on: 2019-09-25
 discontinued_on: null
-
 fees:
-  - effective_from: 2017-01-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 50000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
-      type: issuer-page
-      local_refs:
-        - docs/sources/hdfc/_shared/mitc-in-english.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-
+- effective_from: 2019-09-25
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 50000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.49
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Current card fee page confirms INR 500 joining/renewal fee and INR 50,000 renewal waiver. Card fee FAQ lists overdue interest up to 3.49% monthly while current personal MITC v4.15 lists 3.75%; retained card-specific page amount and documented conflict. Card fee FAQ says reissue costs INR 100, conflicting with May-2026 HDFC notice of INR 199 for non-metal cards. May notice also sets DCC markup to 1.75%; schema has no dedicated fields for these charges. Current schedule effective dates are not stated; 2019 launch date is the schema-required row start date.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card/fees-and-charges
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    local_refs:
+    - docs/sources/hdfc/indianoil/fees-and-charges-updated-2025-03-14.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    - docs/sources/hdfc/_shared/hdfc-card-changes-effective-2026-05-15.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Card-specific page lists overdue interest up to 3.49% monthly; current shared MITC states 3.75% for all other variants. Modeled the card-page maximum and recorded the conflict. Reissue is INR 100 on the current card fee FAQ versus INR 199 for non-metal cards in the May-2026 notice. May notice also states 1.75% DCC; schema has no dedicated fields.
 rewards:
-  - effective_from: 2017-01-01
-    effective_until: null
-    currency: points
-    currency_name: Fuel Points
-    redemption_scope: closed-loop
-    ecosystem_label: IndianOil
-    base:
-      rate: 1
-      per_inr: 150
-      unit_value_inr: 0.96
-      unit_value_inr_realized: 0.96
-    accelerated:
-      - category: indianoil-fuel
-        canonical_categories: [fuel]
-        effective_rate: 5
-        cap_per_cycle: 150
-        cap_unit: points
-        cycle: monthly
-        merchants: [indianoil-fuel-stations]
-        channel:
-          class: fuel-network
-          merchants: [iocl]
-        notes: "5% back (as Fuel Points) on fuel at IOC outlets — capped at 250 Fuel Points/month for the first 6 months, 150/month thereafter (cap field shows the steady-state 150)."
-      - category: groceries-bill-payments
-        canonical_categories: [groceries, utilities]
-        effective_rate: 5
-        cap_per_cycle: 100
-        cap_unit: points
-        cycle: monthly
-        notes: "Capped at 100 Fuel Points per month per category."
-    exclusions:
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: voucher
-        program: IndianOil fuel
-        rate_inr_per_unit: 0.96
-        constraints: "Redeemable as fuel at IOC outlets via XtraRewards programme (1 FP ≈ ₹0.96 of fuel)."
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-      notes: "Research-verified: Fuel Point = Rs0.96 for fuel at IndianOil (best; Rs0.20 cashback/catalogue). Fuel price regulated -> no premium. Caps 250 FP/mo (6mo) then 150 FP/mo."
-
-      confidence: high
+- effective_from: 2019-09-25
+  effective_until: null
+  currency: points
+  currency_name: Fuel Points
+  redemption_scope: open
+  base:
+    rate: 1
+    per_inr: 150
+    unit_value_inr: 0.96
+    unit_value_inr_realized: 0.96
+    excluded_categories:
+    - fuel
+    notes: Fuel at non-IOCL outlets earns no points. Eligible IOCL and special-category earn is scoped to separate rules; base earn applies on other eligible transactions including RuPay UPI.
+  accelerated:
+  - category: indianoil-fuel
+    canonical_categories:
+    - fuel
+    effective_rate: 5
+    effective_per_inr: 100
+    cap_per_cycle: 150
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - indianoil-fuel-stations
+    channel:
+      class: fuel-network
+      merchants:
+      - iocl
+    over_cap_earns_base: false
+    notes: 5 Fuel Points per INR 100 on non-UPI fuel transactions at IOCL authorized POS with recognized TID/MID. Cap is 250 points/month for first 6 months after issuance, then 150; no points after the cap.
+  - category: groceries
+    canonical_categories:
+    - groceries
+    mcc_list:
+    - '5499'
+    effective_rate: 5
+    effective_per_inr: 100
+    cap_per_cycle: 100
+    cap_unit: points
+    cycle: monthly
+    over_cap_earns_base: false
+    notes: 5 Fuel Points per INR 100, min transaction INR 150, cap 100/month. MCC 5499 modeled conservatively because the terms also exclude supermarkets, package stores and bakeries despite listing MCCs 5411, 5921 and 5462 as grocery MCCs.
+  - category: utility-bill-payments
+    canonical_categories:
+    - utilities
+    - telecom
+    mcc_list:
+    - '4812'
+    - '4814'
+    - '4900'
+    effective_rate: 5
+    effective_per_inr: 100
+    cap_per_cycle: 100
+    cap_unit: points
+    cycle: monthly
+    over_cap_earns_base: false
+    notes: 5 Fuel Points per INR 100, minimum INR 150 transaction, cap 100 points/month shared across eligible utility/telecom bill MCCs.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - emi
+  - cash-advance
+  - jewellery
+  redemption:
+  - type: voucher
+    program: IndianOil fuel
+    rate_inr_per_unit: 0.96
+    min_units: 500
+    constraints: Convert Fuel Points to XTRAREWARDS for fuel at participating IOCL outlets; 1 FP = 3 XRP = INR 0.96. Minimum 500 points in multiples of 500; transfer takes 3-4 working days.
+  - type: statement-credit
+    rate_inr_per_unit: 0.2
+    min_units: 12500
+    fee_inr: 50
+    constraints: Statement cashback; monthly 50,000-point cap.
+  - type: catalog
+    program: HDFC SmartBuy / NetBanking
+    rate_inr_per_unit: 0.2
+    fee_inr: 99
+    constraints: Up to INR 0.20 per point; INR 99 plus taxes per redemption; selected products/vouchers redeem up to 70% of value.
+  - type: other
+    program: HDFC SmartBuy flights and hotels
+    rate_inr_per_unit: 0.2
+    constraints: Up to INR 0.20 per point; maximum 50% of booking value and 50,000 points per month.
+  - type: airmiles
+    ratio: '1:0.25'
+    constraints: 1 Fuel Point converts to 0.25 AirMiles.
+  capping_rules:
+  - Other-spend transactions have a minimum INR 150 transaction amount to earn.
+  - Fuel Points expire after two years.
+  - Fuel T&C lists grocery MCCs 5411, 5499, 5921 and 5462 but separately excludes supermarkets, package stores and bakeries; MCC 5499 is modeled conservatively pending clarification. It also excludes tax, vending-machine miscellaneous foods and insurance.
+  source:
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/indian-oil-hdfc-bank-credit-card/T-and-C-Indian-Oil-Credit-Card.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.base.excluded_categories
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.effective_per_inr
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cap_unit
+    - rewards.accelerated.cycle
+    - rewards.accelerated.over_cap_earns_base
+    - rewards.accelerated.mcc_list
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    - rewards.redemption.fee_inr
+    local_refs:
+    - docs/sources/hdfc/indianoil/T-and-C-Indian-Oil-Credit-Card.pdf
+    notes: Current card T&C and product page confirm earn and caps. Grocery MCC eligibility conflicts with exclusions for supermarkets, package stores and bakeries; MCC 5499 modeled conservatively. Page wording that broadly associates 5% earn with IOCL fuel conflicts with its separate table for grocery and utility/telecom bill earn; modeled the separate table rules. The current schedule's effective date is not separately stated; 2019 launch date is the schema-required row start date.
 benefits:
-  - effective_from: 2017-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
-      retrieved_on: 2026-04-15
-      type: issuer-page
-
+- effective_from: 2019-09-25
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: At least one transaction within 37 days from card issuance; no minimum transaction value. Blocked and closed cards are ineligible.
+    benefit: INR 250 activation voucher
+    value_inr: 250
+    window_days: 37
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: IndianOil XTRAREWARDS membership
+    description: Complimentary IXRP membership is created automatically at card issuance for fuel-point conversion; changing the registered mobile number may create a new loyalty ID and cause prior points to lapse.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card/eligibility
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/indianoil/T-and-C-Indian-Oil-Credit-Card.pdf
+    - docs/sources/hdfc/indianoil/launch-release-2019-09-25.pdf
+    fields_verified:
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    notes: Activation voucher requires one transaction within 37 days and has no minimum transaction amount, per current card T&C. Card product terms have no separately published start date; the 2019 launch date is the schema-required row start date.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 65
   income_inr_annual:
-    salaried: 300000
+    salaried: 144000
     self_employed: 600000
-  credit_score_min: 720
+  credit_score_min: 751
   residency: resident-indian
-
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  notes: >-
+    Current main card page says Indian nationality; dedicated eligibility-page FAQ says Indian resident. Salaried: card page says age 21-60 and net monthly income > INR 12,000; another FAQ says > INR 10,000, while the eligibility page says gross monthly income > INR 12,000. Self-employed card page says age 21-65 and ITR > INR 6 lakh; eligibility-page table says age max 60, but its FAQ and the card page say below 65. Modeled the main card page's thresholds and documented conflicts. Annual salaried value annualizes the monthly threshold; actual criterion is monthly. Eligibility FAQ says credit score above 750, represented as 751 because the schema stores an integer floor.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.credit_score_min
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, fuel, indianoil, rupay, entry]
+  last_verified_on: 2026-10-27
+  tags:
+  - co-branded
+  - fuel
+  - indianoil
+  - entry

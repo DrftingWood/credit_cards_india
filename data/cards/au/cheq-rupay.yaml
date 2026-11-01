@@ -1,0 +1,357 @@
+﻿id: au-cheq-rupay
+name: AU Bank CheQ AU Credit Card (RuPay)
+image_path: /cards/au/cheq.webp
+issuer: au
+network: rupay
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: CheQ
+  category: other
+  partner_website: https://www.cheq.one
+status: active
+launched_on: 2026-04-15
+discontinued_on: null
+fees:
+- effective_from: '2026-10-25'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  late_payment_slabs: null
+  gst_applicable: true
+  notes: 'Classic Visa is lifetime free; optional Visa LED card costs INR 999 plus
+    GST one time. Current AU general charges are modeled: 3.49% forex, 3.75% monthly
+    finance, cash advance 2.5% or INR 500 minimum. Late payment is 15% of total amount
+    due (INR 10 min, INR 1,300 max); fees subject to GST. KFS cash withdrawal limit
+    is up to 20% of credit limit; interest-free period is up to 50 days when terms
+    are met. KFS fair-use charges may apply to utility, rent, fuel, education and
+    transportation aggregates above the published threshold, even where rewards are
+    otherwise eligible.'
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: 'Card page confirms lifetime-free membership and LED issuance surcharge.
+      AU 30 Sep 2026 KFS confirms general AU retail finance and cash advance fees;
+      3.49% forex was also stated for CheQ in the issuer KFS version dated 28 Apr
+      2026. Sources: https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf
+      and https://www.au.bank.in/pdf/credit-card/SOC_CC-MITC%28with-Schedule-of-Charges%29.pdf.'
+rewards:
+- effective_from: '2026-10-25'
+  effective_until: null
+  currency: points
+  currency_name: CheQ Points
+  redemption_scope: closed-loop
+  ecosystem_label: CheQ
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 0.5
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: partner-brand-UPI-via-CheQ
+    canonical_categories:
+    - online
+    merchants:
+    - Amazon
+    - Flipkart
+    - Zomato
+    - BigBasket
+    - Apple products via Unicorn
+    multiplier: 12
+    effective_rate: 12
+    cap_per_cycle: 12000
+    cap_unit: points
+    cap_group: cheq-accelerated-12k
+    cycle: statement
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - cheq-au-upi-partners
+    notes: 24 points per INR 200 on qualifying partnered brands via CheQ UPI; UPI
+      through other TPAPs earns zero. Merchant eligibility is MID-based and may change.
+  - category: CheQ-Travel-bookings
+    canonical_categories:
+    - travel
+    multiplier: 12
+    effective_rate: 12
+    cap_per_cycle: 12000
+    cap_unit: points
+    cap_group: cheq-accelerated-12k
+    cycle: statement
+    channel:
+      class: issuer-portal
+      merchants:
+      - cheq-travel
+    notes: 24 points per INR 200 on eligible flight and hotel bookings made through
+      CheQ Travel with the RuPay card; booking through the CheQ travel channel is
+      required.
+  - category: CheQ-app-utility-bills
+    canonical_categories:
+    - utilities
+    - telecom
+    multiplier: 12
+    effective_rate: 12
+    cap_per_cycle: 12000
+    cap_unit: points
+    cap_group: cheq-accelerated-12k
+    cycle: statement
+    channel:
+      class: utility-rail
+      merchants:
+      - cheq-utility-bills
+    notes: 24 points per INR 200 on eligible utility bills paid through CheQ App using
+      RuPay; app payment rail is required.
+  - category: selected-category-MCCs-via-CheQ-UPI
+    canonical_categories:
+    - online
+    - groceries
+    - dining
+    - travel
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 12000
+    cap_unit: points
+    cap_group: cheq-accelerated-12k
+    cycle: statement
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - cheq-au-upi
+    mcc_list:
+    - '5814'
+    - '5812'
+    - '5262'
+    - '5611'
+    - '5621'
+    - '5651'
+    - '5691'
+    - '5699'
+    - '5732'
+    - '5942'
+    - '5311'
+    - '5631'
+    - '5641'
+    - '5999'
+    - '7296'
+    - '5310'
+    - '5331'
+    - '5399'
+    - '5655'
+    - '5661'
+    - '5681'
+    - '5698'
+    - '5941'
+    - '5945'
+    - '5411'
+    - '5499'
+    - '4112'
+    - '4511'
+    - '4131'
+    - '4722'
+    - '4723'
+    - '4011'
+    - '4121'
+    - '7011'
+    notes: 10 CheQ points per INR 200 on issuer-listed MCCs only when paid by CheQ
+      UPI using the RuPay variant. UPI through another TPAP is zero; RuPay POS/ECOM
+      on these MCCs earns only base 1%.
+  - category: other-CheQ-UPI-spends
+    canonical_categories:
+    - other
+    multiplier: 2.5
+    effective_rate: 2.5
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: statement
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - cheq-au-upi
+    notes: 5 CheQ points per INR 200 (2.5 points per INR 100) on otherwise eligible
+      CheQ UPI spends; uncapped. Do not stack this with the 12% or 5% categories.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - education
+  - government
+  - cash-advance
+  mcc_exclusions:
+  - '6540'
+  - '5944'
+  - '5094'
+  - '6513'
+  - '6300'
+  - '6381'
+  - '5960'
+  - '6012'
+  - '6051'
+  - '6399'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9400'
+  - '9402'
+  - '9405'
+  - '5983'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5816'
+  - '6010'
+  - '6011'
+  reward_cap: null
+  capping_rules:
+  - Minimum eligible transaction is INR 200; points are calculated on each INR 200
+    increment, so partial increments do not earn points. Refunds/reversals reverse
+    points.
+  - 12% and 5% earn groups share one 12,000-point cap per statement cycle. 1% base
+    and 2.5% CheQ UPI are uncapped. No points on fuel, education, gold/jewellery,
+    insurance, rent, wallet reload, government-service MCCs, EMI-converted, gaming,
+    or cash transactions.
+  - RuPay UPI earns only when routed through CheQ App; UPI through other TPAPs earns
+    zero. Base accrual is not earned on RuPay POS/ECOM purchases at partner brands
+    or 5% MCCs where terms specify the base rate; the schema cannot scope base exclusions
+    by transaction channel, so the generic base estimate may overstate these cases.
+  redemption:
+  - type: voucher
+    program: CheQ Travel and gift cards
+    rate_inr_per_unit: 0.5
+    constraints: 2 CheQ points = INR 1; value is limited to eligible CheQ Travel or
+      gift-card redemption.
+  - type: other
+    program: CheQ App bill payments
+    rate_inr_per_unit: 0.25
+    constraints: 4 CheQ points = INR 1; no cash-out or bank transfer.
+  source:
+    url: https://www.au.bank.in/pdf/credit-card/CheQ-Rewards-TnC.pdf
+    retrieved_on: '2026-11-01'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.mcc_list
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.base.unit_value_inr_realized
+    notes: AU/CheQ rewards T&C (https://www.au.bank.in/pdf/credit-card/CheQ-Rewards-TnC.pdf),
+      CheQ cardholder terms (https://cheq.one/legal/credit-card-terms-and-conditions)
+      and AU member agreement confirm earn mechanics, 12,000 cap, redemption values
+      and exclusions. The The 24-Mar-2026 AU Card Member Agreement explicitly says no fee is levied for CheQ Points redemption; AU's general INR 99 reward redemption fee does not apply to this program. INR
+      0.50 is the best-case travel/gift-card conversion; INR 0.25 is the conservative
+      bill-payment conversion used for realized-value estimates.
+benefits:
+- effective_from: '2026-10-25'
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: New user, pays at least the minimum amount due on first statement;
+      unavailable to users with an active EazyDiner Prime membership at card issuance.
+      Benefit terms may change or be replaced.
+    benefit: Complimentary EazyDiner Prime membership one time
+    value_inr: 695
+    window_days: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 150
+    cycle: statement
+  concierge: false
+  other:
+  - name: Dual network issuance
+    description: A single application provides both Visa and RuPay cards; both cards
+      must be closed together. Visa variant is separately recorded as AU CheQ Visa.
+  - name: LED Visa variant
+    description: Optional LED Visa card has a one-time INR 999 plus GST issuance fee;
+      standard Visa and RuPay cards are lifetime free.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    - benefits.welcome.value_inr
+    notes: Fuel terms and welcome membership are from CheQ T&C (https://cheq.one/legal/credit-card-terms-and-conditions);
+      card page confirms INR 150 fuel cap. AU card page says 2 cards are issued and
+      both must close together. The page's generic insurance summary and linked
+      policy do not establish CheQ-specific insurance eligibility or limits; AU's
+      Card Member Agreement says complimentary cover varies by card. No insurance
+      amounts are modeled for this record.
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  notes: AU card page lists salaried ages 21-60, self-employed 25-65, add-on over
+    18, resident Indian. Income and bureau-score floors are not published on the AU
+    card page. CheQ partner website separately advertises INR 25,000 monthly income
+    and a 750 credit score, while AU card eligibility page publishes only age/residency
+    and says criteria are indicative; these partner-marketed thresholds are not treated
+    as binding bank floors. See https://cheq.one/cheq-au-credit-card.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.residency
+application:
+  apply_url: https://www.au.bank.in/personal-banking/credit-cards/cheq-au-credit-card
+metadata:
+  last_verified_on: '2026-11-01'
+  tags:
+  - mid
+  - co-brand
+  - rupay
+  - upi
+  - points

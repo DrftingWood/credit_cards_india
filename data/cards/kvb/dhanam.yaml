@@ -1,5 +1,5 @@
 id: kvb-dhanam
-name: KVB Dhanam Credit Card
+name: KVB Platinum Credit Card
 image_path: /cards/kvb/dhanam.webp
 issuer: kvb
 network: visa
@@ -8,86 +8,108 @@ tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-      conditions: "Annual fee waived on spending ₹1,00,000 or more in the preceding anniversary year."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.25
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: medium
-      notes: "Joining ₹0, annual ₹500, fee waiver on ₹1,00,000 annual spend."
-
+- effective_from: 2026-03-09
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 599
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+    conditions: Annual fee waived when previous-year retail spends exceed ₹1,00,000; the MITC also states the first-year annual fee is waived.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.25
+  cash_advance_fee:
+    pct: 2
+    min_inr: 300
+  gst_applicable: true
+  source:
+    url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-platinum-credit-card/
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Current product page gives ₹599 annual fee, nil joining, spend-based waiver, 3.25% monthly finance, 2% cash withdrawal fee or ₹300 whichever is higher, 3.5% FX markup and GST. MITC says first year waived; exact application of fee waiver thresholds varies in wording between current product page and MITC.
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: KVB Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: medium
-      notes: "2 Reward Points per ₹150 spent."
-
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 150
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: Domestic and international travel, hotels and air tickets
+    canonical_categories:
+    - travel
+    multiplier: 2
+    effective_rate: 4
+    notes: 2x the base rate on travel, hotel and air-ticket spends; modelled as total 4 points per ₹150.
+  - category: Restaurants, medical, books, insurance, rail tickets, movie tickets and car rentals
+    canonical_categories:
+    - dining
+    - insurance
+    - travel
+    - entertainment
+    - other
+    multiplier: 1.5
+    effective_rate: 3
+    notes: 1.5x the base rate on listed categories; modelled as total 3 points per ₹150. Current issuer page does not state a category cap.
+  notes: Current issuer page publishes 2 Reward Points per ₹150, with 2x on travel/hotels/air tickets and 1.5x on restaurants, medical, books, insurance, rail, movies and car rentals. It does not publish current INR value per point. Issuer page states points lapse after three years or if minimum due is unpaid for over 60 days.
+  redemption:
+  - type: other
+    program: KVB Reward Points
+    min_units: 2000
+    fee_inr: 99
+    constraints: Current issuer page states ₹99 per redemption request, minimum 2,000 points for first redemption and 250 points for subsequent requests; does not state a current INR conversion rate.
+  source:
+    url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-platinum-credit-card/
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Current KVB Platinum issuer page publishes earn rates but no point conversion value. Redemption fee and minimum redemption thresholds are stated separately on the product page.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 100
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: medium
-
+- effective_from: 2026-10-27
+  effective_until: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 200
+    cycle: statement
+    notes: 1% petrol surcharge waiver on a single transaction from ₹500 to ₹4,000, capped at ₹200 per billing cycle.
+  welcome:
+  - benefit: 500 bonus Reward Points on card activation.
+    condition: Card activation.
+    value_inr: null
+    window_days: null
+  concierge: null
+  source:
+    url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-platinum-credit-card/
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Current issuer page lists 500 activation points, fuel waiver and redemption fee ₹99/request; first redemption minimum 2,000 points, subsequent minimum 250. Points lapse after three years or if MAD unpaid for over 60 days.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 240000
-    self_employed: 240000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Current issuer product page does not publish product-specific age, income or credit-score cutoffs.
 application:
-  apply_url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
-
+  apply_url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-platinum-credit-card/
 metadata:
-  last_verified_on: '2026-10-24'
-  tags: [entry, visa, platinum, kvb, rewards]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - visa
+  - platinum
+  - kvb
+  - rewards
+  - fuel-waiver

@@ -1,142 +1,382 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-millennia
 name: IDFC FIRST Millennia Credit Card
 image_path: /cards/idfc-first/millennia.webp
 issuer: idfc-first
 network: visa
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2021-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2021-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free card (low-APR; monthly finance charge from ~0.75% up to 3.5% by profile). UPI activation on the RuPay rail costs ₹199 + GST (one-time)."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/millennia
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-09-17
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: >-
+    Lifetime-free. The issuer publishes APR as a variable annual range of 8.5%-46.2%;
+    no fixed monthly rate is asserted. ATM withdrawals carry a flat INR 199 + GST per
+    transaction and have up to 45 interest-free days; the issuer states a maximum
+    INR 10,000 per transaction subject to the available cash limit. Add-on and
+    personalized-card services are INR 499 + GST per card/service. IDFC FIRST Bank's
+    17-Sep-2026 announcement applies zero forex markup to all existing and new cards,
+    superseding the older standard MITC rate.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/millennia
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.flat_inr
+    local_refs:
+    - docs/sources/idfc-first/millennia/current-mitc.pdf
+    - docs/sources/idfc-first/millennia/zero-forex-notice-2026-09-17.pdf
+    notes: >-
+      Product-specific page confirms lifetime-free status, APR range, ATM fee,
+      interest-free period and cash withdrawal limit. Card-specific page:
+      https://www.idfcfirst.bank.in/credit-card/millennia. The cardmember communication
+      also offers a 20% bonus on app hotel bookings and 10% on app flight bookings;
+      the bonus is not expressed as absolute points in the current schema.
 rewards:
-  - effective_from: 2021-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: incremental-monthly-above-20k
-        canonical_categories: [other]
-        multiplier: 3.33
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10X (10 RP per ₹150) on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000."
-      - category: utility-insurance-railway-fastag
-        canonical_categories: [utilities, insurance]
-        multiplier: 0.33
-        effective_rate: 1
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Reduced 1X (1 RP per ₹150) on utility bill payments, insurance premiums, railway spends and FASTag recharges."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
+- effective_from: 2026-06-18
+  effective_until: 2026-10-25
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+    notes: Base unit is 1 Reward Point per INR 200. Reward eligibility is limited to
+      spend within the assigned credit limit; points are withheld/reversed for a
+      statement cycle when the Minimum Amount Due is unpaid by its due date.
+  accelerated:
+  - category: dining-travel-international-and-birthday
+    canonical_categories:
+    - dining
+    - travel
+    - international
+    multiplier: 10
+    effective_rate: 10
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: 10X from the first eligible transaction for dining (MCC 5812, 5813, 5814),
+      travel and international purchases; issuer also states 10X on birthday spends.
+      The exact travel MCC set is listed in the June-2026 cardmember communication.
+      Birthday-wide applicability and MCC ranges are retained here as source notes
+      because the current model cannot encode transaction date or MCC ranges on this
+      general rule.
+  - category: general-eligible-spends
+    canonical_categories:
+    - online
+    - groceries
+    - rent
+    - government
+    - education
+    - wallet-loads
+    - entertainment
+    - other
+    multiplier: 3
+    effective_rate: 3
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: All other eligible categories earn 3X, excluding the separately listed 1X
+      categories and fuel, EMI, cash withdrawals, fees and charges. FIRST DIGITAL UPI
+      add-on earns 1X on transactions up to INR 2,000 and 3X above INR 2,000; the
+      transaction-value split is retained as a note because it is not modeled here.
+  - category: insurance-utilities-railway-fastag
+    canonical_categories:
+    - insurance
+    - utilities
+    effective_rate: 1
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: Insurance, utilities, railway and FASTag transactions earn 1X. FIRST
+      DIGITAL UPI transactions up to INR 2,000 also earn 1X.
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions: []
+  redemption:
+  - type: other
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.25
+  - type: catalog
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.effective_per_inr
+    - rewards.redemption.rate_inr_per_unit
+    local_refs:
+    - docs/sources/idfc-first/millennia/millennia-communication-may-26.pdf
+    - docs/sources/idfc-first/millennia/current-mitc.pdf
+    notes: >-
+      Effective 18-Jun-2026. The issuer's current product page confirms point validity
+      of 24 months, INR 99 + GST redemption fee, eligible categories and credit-limit/
+      MAD rules. Current page:
+      https://www.idfcfirst.bank.in/credit-card/millennia
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+    notes: Base unit is 1 Reward Point per INR 200. Reward eligibility is limited to
+      spend within the assigned credit limit; points are withheld/reversed for a
+      statement cycle when the Minimum Amount Due is unpaid by its due date.
+  accelerated:
+  - category: dining-travel-and-birthday
+    canonical_categories:
+    - dining
+    - travel
+    multiplier: 10
+    effective_rate: 10
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: points
     source:
       url: https://www.idfcfirst.bank.in/credit-card/millennia
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
       confidence: high
-
-benefits:
-  - effective_from: 2021-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-        spend_threshold_inr: 20000
-        spend_threshold_cycle: quarterly
-    welcome:
-      - condition: "On card activation / first spend"
-        benefit: "₹500 gift voucher from a partner brand"
-        value_inr: 500
-        window_days: 30
-      - condition: "First EMI conversion"
-        benefit: "Up to ₹1,000 cashback on first EMI"
-        value_inr: 1000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    movies:
-      type: discount
-      cycle: monthly
-      cap_inr: 150
-      notes: "25% off on movie tickets."
-    other:
-      - name: FIRST Rewards Gallery travel bonus
-        description: "20% bonus reward points on hotel bookings and 10% on flight bookings made via the FIRST Rewards Gallery on the IDFC FIRST Bank app (over & above base RP)."
-      - name: Comprehensive insurance
-        description: "Complimentary insurance cover bundle (personal accident, purchase protection, etc.)."
-    concierge: false
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: 10X from the first eligible transaction for dining (MCC 5812, 5813, 5814)
+      and travel; issuer also states 10X on birthday spends. The exact travel MCC set
+      is in the June-2026 cardmember communication; birthday-wide applicability and
+      MCC ranges cannot be fully represented in this schema.
+  - category: general-eligible-spends
+    canonical_categories:
+    - online
+    - groceries
+    - rent
+    - government
+    - education
+    - wallet-loads
+    - entertainment
+    - other
+    multiplier: 3
+    effective_rate: 3
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: points
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/millennia
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: All other eligible categories earn 3X, excluding the separately listed 1X
+      categories and fuel, EMI, cash withdrawals, fees and charges. FIRST DIGITAL UPI
+      add-on earns 1X on transactions up to INR 2,000 and 3X above INR 2,000; the
+      transaction-value split is retained as a note because it is not modeled here.
+  - category: insurance-utilities-railway-fastag
+    canonical_categories:
+    - insurance
+    - utilities
+    effective_rate: 1
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Millennia-Credit-Card-Communication-May-26.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: Insurance, utilities, railway and FASTag transactions earn 1X. FIRST
+      DIGITAL UPI transactions up to INR 2,000 also earn 1X.
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  - international
+  mcc_exclusions: []
+  redemption:
+  - type: other
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.25
+  - type: catalog
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/millennia
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.effective_per_inr
+    notes: Effective 26-Oct-2026, international transactions no longer earn Reward
+      Points. The issuer page retains 10X dining, travel and birthday; the May-2026
+      communication confirms the other earn rates and eligibility rules, including
+      a 20% bonus on app hotel bookings and 10% on app flight bookings.
+benefits:
+- effective_from: 2026-06-18
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Primary card spend of INR 5,000 within 30 days from issue confirmation
+    benefit: INR 500 voucher from a selected top brand; voucher claim link sent after qualification
+    value_inr: 500
+    window_days: 30
+  - condition: First EMI conversion within 30 days from issue confirmation
+    benefit: 5% cashback on first EMI transaction, capped at INR 1,000
+    value_inr: 1000
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1
+    min_txn_inr: null
+    max_txn_inr: null
+    cap_per_cycle_inr: 200
+    cycle: monthly
+    notes: Issuer communication confirms 1% fuel surcharge waiver up to INR 200 per
+      month; eligible transaction range is not captured in the reviewed current source.
+  movies:
+    type: discount
+    partner: District by Zomato
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 100
+    notes: 25% discount up to INR 100 once per month; requires at least one purchase
+      or ATM transaction in the previous calendar month.
+  other:
+  - name: Railway lounge access
+    description: Four complimentary railway lounge visits per quarter. Spend INR 20,000 in the current calendar month to unlock access for the following month; primary and add-on cards share access.
+    value_inr: null
+  - name: Travel-booking bonus Reward Points
+    description: 20% bonus points on hotel bookings and 10% on flight bookings through the IDFC FIRST Bank mobile app, over applicable base rewards.
+    value_inr: null
+  - name: Roadside assistance
+    description: Up to four services per year through Global Assure, available to an active card with a purchase or ATM transaction in the previous 30 days.
+    value_inr: 1399
+  - name: Card liability cover
+    description: Lost-card liability, counterfeit/skimming and online-fraud cover; active-card condition applies.
+    value_inr: 25000
+  - name: Personal accident cover
+    description: Personal accident / permanent disability cover; active-card condition applies.
+    value_inr: 200000
+  - name: Credit shield cover
+    description: Cover for qualifying card debit on accidental death.
+    value_inr: 50000
+  - name: Purchase protection
+    description: Residential-premises fire/allied-perils and burglary protection for 60 days from purchase.
+    value_inr: 25000
+  - name: FIRST Digital RuPay UPI add-on
+    description: Optional virtual RuPay card linked to Millennia for UPI; activation is INR 199. Separate UPI points schedule is recorded in reward notes.
+    value_inr: null
+  concierge: false
+  source:
+    url: https://www.idfcfirst.bank.in/content/dam/IDFCFirstBank/credit-cards/FIRSTMillenniaCreditCard/FIRST-Millennia-Privileges.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.other.description
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.movies.cap_inr
+    - benefits.movies.max_per_cycle
+    - benefits.other.value_inr
+    local_refs:
+    - docs/sources/idfc-first/millennia/millennia-privileges.pdf
+    - docs/sources/idfc-first/millennia/millennia-communication-may-26.pdf
+    notes: Current product page and May-2026 cardmember communication also confirm
+      welcome offer exclusions, movie terms, monthly fuel waiver cap and railway
+      lounge threshold. Insurance table lists the above limits; travel insurance and
+      personal air accident are marked unavailable. RSA value is INR 1,399 for the
+      package, with up to four annual call-outs.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age:
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: >-
+    The issuer's 16-Sep-2026 Millennia eligibility article says age 21+, while its
+    current lifetime-free-card comparison lists age 18 for Millennia; minimum age
+    is left unknown pending issuer clarification. Both sources give annual income
+    of INR 300,000, but do not split salaried and self-employed thresholds. The
+    comparison lists Indian residents, while general issuer guidance also says NRIs
+    may apply subject to card criteria. No numeric bureau-score floor or upper age
+    limit is published in the reviewed card-specific sources.
+  source:
+    url: https://www.idfcfirst.bank.in/finfirst-blogs/credit-card/eligibility-for-first-millennia-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.income_inr_annual
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/millennia
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [lifetime-free, entry, points, online-spend]
+  last_verified_on: 2026-10-27
+  tags:
+  - lifetime-free
+  - entry
+  - points
+  - online-spend
+  - network-tier-unverified

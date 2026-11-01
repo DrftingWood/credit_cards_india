@@ -8,34 +8,56 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2019-04-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2019-04-01
+- effective_from: '2026-05-15'
   effective_until: null
   joining_fee_inr: 1000
   annual_fee_inr: 1000
+  renewal_fee_inr: 1000
   fee_waiver:
     spend_inr: 300000
     cycle: annual
-    conditions: Renewal fee waived on spends of ₹3L in the preceding year.
+    conditions: Renewal spend threshold is INR 300,000 in the anniversary year before renewal.
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.75
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
   gst_applicable: true
+  notes: Current HDFC fee page confirms INR 1,000 joining/renewal, INR 3 lakh renewal waiver, 3.5% foreign-currency
+    markup, 3.75% monthly finance charges and cash-advance fee 2.5% or INR 500 minimum. The May-2026 notice sets
+    1.75% DCC on INR transactions at overseas/foreign-registered merchants and INR 199 reissuance from 15-May-2026;
+    current personal MITC dates DCC from 20-May and sets reissuance at INR 199 + GST, while the current fee-page FAQ
+    separately says INR 100 reissue. Reissue amount and DCC effective date therefore conflict across issuer pages.
+    Current MITC also sets a 1% rent transaction fee (cap INR 4,999/transaction), 1% fuel fee above INR 15,000 (cap
+    INR 4,999/transaction), 1% wallet fee above INR 10,000/month (cap INR 4,999/month), utility fee above INR 50,000/
+    month, third-party education-app fee, and 1% balance-transfer fee or INR 250 minimum. These transaction charges,
+    DCC and reissuance are not separately modeled. The 15-May effective date is the product-update date, not
+    independently confirmed as the start date of all listed membership fees.
   source:
-    url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
-    retrieved_on: 2026-07-03
+    url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card/fees-and-charges
+    retrieved_on: '2026-10-27'
     type: issuer-page
     confidence: high
+    method: rendered-page
     local_refs:
-    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    - docs/sources/hdfc/diners-privilege/diners-privilege-product-feature-change.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
     - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current product fee page confirms fee, waiver and forex; HDFC personal MITC v4.15 supplies finance/cash-advance
+      charges and confirms fuel surcharge waiver is not applicable. May 2026 notice records 1.75% DCC and INR 199
+      reissuance, while the current fee-page FAQ says INR 100 for reissue; discrepancy unresolved.
 rewards:
-- effective_from: 2019-04-01
+- effective_from: '2026-05-15'
   effective_until: null
   currency: points
   currency_name: Reward Points
@@ -43,26 +65,34 @@ rewards:
     rate: 4
     per_inr: 200
     unit_value_inr: 0.5
-    unit_value_inr_realized: 0.4
+    unit_value_inr_realized: 0.2
+    notes: 'Current product page says 4 RP/INR 200 on eligible general spends. Redemption value varies by route:
+      SmartBuy flights/hotels INR 0.50, select restaurants INR 0.50, exclusive catalogue up to INR 0.35, cashback
+      up to INR 0.20. Model uses best-case and conservative cashback values; route-specific net realized value depends
+      on use.'
   accelerated:
   - category: smartbuy-flights-hotels
     canonical_categories:
     - travel
     multiplier: 10
     effective_rate: 40
-    cap_per_cycle: 7500
+    effective_per_inr: 200
+    cap_status: not-published
     cap_unit: points
-    cycle: monthly
     channel:
       required: true
       class: issuer-portal
       merchants:
       - smartbuy
+    notes: Current issuer page advertises up to 10X points via SmartBuy. Exact eligible portal categories, earn rate by
+      category and a category cap are not specified in the reviewed current card terms; treat this as an advertised
+      maximum, not a universal 10X rate.
   - category: dining-food-delivery
     canonical_categories:
     - dining
-    multiplier: 5
-    effective_rate: 20
+    multiplier: 4
+    effective_rate: 16
+    effective_per_inr: 200
     cap_per_cycle: 2500
     cap_unit: points
     cycle: monthly
@@ -75,104 +105,260 @@ rewards:
       merchants:
       - swiggy
       - zomato
-    notes: 5X Reward Points (20 per ₹200) on Swiggy & Zomato online food orders, capped
-      at 2,500 RP/month.
+    notes: '5X total on eligible direct online food orders from Swiggy/Zomato/Eternal: 4 base + 16 incremental RP per
+      INR 200. Incremental bonus cap 2,500 points/month combined; minimum transaction INR 200. June-2026 terms specify
+      MCC 5812/5814 or merchant TID/MID; settled online orders only, no wallet payments, and reversal-adjusted net
+      spend. This matches the May update and current product page.'
   exclusions:
   - fuel
   - wallet-loads
+  - emi
   - rent
   - government
-  - insurance-premiums
-  - emi
+  - cash-advance
+  category_caps:
+  - category: insurance
+    mcc_list:
+    - '1411'
+    - '1235'
+    - '5960'
+    - '6300'
+    - '6381'
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: HDFC personal MITC v4.15 caps insurance points at 2,000 per month for this card group, effective 1-Jul-2025.
+  - category: groceries
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: HDFC MITC grocery cap for Diners Privilege.
+  - category: utilities
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: HDFC MITC utility cap, effective 1-Sep-2024.
+  - category: telecom
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: HDFC MITC telecom cap, effective 1-Sep-2024.
+  reward_cap:
+    max_units: 50000
+    cap_unit: points
+    cycle: statement
+  capping_rules:
+  - Reward points expire 2 years after accumulation. Points are nullified if the card is unused for more than 365 days.
+  - SmartBuy flight/hotel redemption is limited to 50% of booking value; selected product/voucher redemption is limited to 70% of value.
+  - Cashback redemption is capped at 50,000 points per calendar month; minimum cashback redemption is INR 500 (2,500 points at INR 0.20 each). Cashback redemption also incurs INR 50 + GST per request. Catalogue redemption incurs INR 99 + GST per request.
+  - Reward points earned on eligible settled transactions are reversed on refunds/reversals; HDFC may reverse points for spend converted to SmartEMI. Third-party-app education payments are excluded under MITC.
   redemption:
   - type: catalog
-    program: SmartBuy
+    program: Exclusive catalogue
+    rate_inr_per_unit: 0.35
+    fee_inr: 99
+    constraints: Exclusive catalogue up to INR 0.35 per point; selected product/voucher redemptions may use points for up to 70% of value. HDFC MITC fee INR 99 + GST per catalogue redemption request.
+  - type: statement-credit
+    rate_inr_per_unit: 0.2
+    min_units: 2500
+    fee_inr: 50
+    constraints: INR 0.20 per point; minimum cashback amount INR 500 (2,500 points), capped at 50,000 points per calendar month. HDFC MITC cashback redemption fee INR 50 + GST per request; cashback credit does not count as payment of the last statement.
+  - type: other
+    program: SmartBuy flights and hotels
     rate_inr_per_unit: 0.5
-  - type: airmiles
-    program: Multiple (Airmiles hub)
-    ratio: null
-    constraints: Airmiles/partner transfer is DISCONTINUED on newly issued Diners
-      Club Privilege cards (SmartBuy rejects them as ineligible). Legacy DCP cards
-      retain 100:50 to HDFC partners. SmartBuy redemption still works at ~Rs 0.50/RP
-      — use that.
+    constraints: 50% maximum of booking value may be redeemed through Reward Points; balance must be paid with the card.
+  - type: other
+    program: Select restaurants
     rate_inr_per_unit: 0.5
   source:
     url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    notes: '2026-07-05: partner transfers discontinued on new DCP cards (cardmaven,
-      2026-06-25). SmartBuy floor ~Rs 0.50/RP retained.'
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/hdfc/diners-privilege/diners-privilege-tnc-2026.pdf
+    - docs/sources/hdfc/diners-privilege/diners-privilege-product-feature-change.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.category_caps
+    - rewards.reward_cap.max_units
+    - rewards.redemption
+    notes: Current product page and June 2026 card T&C cover base, Swiggy/Zomato, redemption routes and exclusions.
+      The June terms, May notice and current product page agree on INR 200 basis for base and food orders; older
+      pre-2026 terms used INR 150 and are superseded. Current MITC supports expiry, monthly/category and statement caps,
+      redemption values/limits and processing fees. No current issuer partner-transfer schedule was found.
 benefits:
-- effective_from: 2026-07-01
+- effective_from: '2026-07-01'
   effective_until: null
   lounge_access:
     domestic:
       visits_per_cycle: 2
       cycle: quarterly
-      guests_per_visit: 0
-      via:
-      - priority-pass
       spend_threshold_inr: 60000
       spend_threshold_cycle: quarterly
-      notes: 2 domestic lounge vouchers per calendar quarter, unlocked by ₹60,000
-        spend in the preceding quarter. Voucher-based structure effective 01 Jul 2026.
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+      notes: Two domestic lounge vouchers per calendar quarter after INR 60,000 eligible posted/settled spend in the
+        preceding calendar quarter, effective 1-Jul-2026. Primary cardholder only; voucher generated via SmartBuy and
+        valid 180 days from generation.
     international:
       visits_per_cycle: 1
       cycle: quarterly
-      guests_per_visit: 0
-      via:
-      - priority-pass
       spend_threshold_inr: 60000
       spend_threshold_cycle: quarterly
-      notes: 1 international lounge voucher per calendar quarter, unlocked by ₹60,000
-        spend in the preceding quarter.
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+      notes: One international lounge voucher per calendar quarter after INR 60,000 eligible posted/settled spend in
+        the preceding calendar quarter, effective 1-Jul-2026. Primary cardholder only; voucher generated via SmartBuy
+        and valid 180 days from generation.
   milestones:
   - spend_inr: 150000
     cycle: quarterly
-    benefit: Voucher worth ₹1,500 (Marriott Experience / Barbeque Nation / Lakme Salon
-      / O2 Spa / Decathlon / Dominos)
+    benefit: One INR 1,500 voucher, chosen from Marriott, Dominos, Decathlon, Barbeque Nation, O2 Spa or Lakme Salon,
+      after net spends of INR 150,000 or more in a calendar quarter; voucher download window applies.
     value_inr: 1500
   welcome:
-  - condition: ₹75,000 spend within first 90 days of card issuance
-    benefit: Complimentary annual Swiggy One & Times Prime memberships
+  - condition: Net retail spends of INR 75,000 within 90 days from card issuance or last upgrade/downgrade date;
+      posted/settled dates count. Voucher can be downloaded within 90 days after the welcome period ends.
+    benefit: Complimentary annual memberships of Swiggy One and Times Prime.
     window_days: 90
-    value_inr: 2500
-  insurance:
-  - type: air-accident
-    sum_insured_inr: 10000000
-  - type: travel-medical
-    sum_insured_inr: 2500000
-    conditions: Emergency medical expenses on international travel (USD 31,250); pre-existing
-      illness excluded.
-  - type: credit-shield
-    sum_insured_inr: 900000
+    value_inr: null
   movies:
     type: bogo
     partner: BookMyShow
     max_per_cycle: 2
     cycle: monthly
     cap_inr: 250
-    notes: Buy One Get One Free on BookMyShow for Fri/Sat/Sun shows; max ₹250/ticket,
-      up to 2 free tickets per calendar month (min 2 tickets per booking).
-  concierge: false
+    notes: Buy one get one on movies, events, concerts, plays, sports and activities via BookMyShow for Friday/Saturday/
+      Sunday shows, regardless of booking day. Minimum 2 tickets; max 2 free tickets per calendar month and INR 250
+      discount per ticket. Excludes BMS Stream, F&B and gift cards; booking fees remain payable.
+  dining:
+    program: Dineout
+    discount_pct: 10
+    notes: Current product page advertises an extra 10% off bills at participating Dineout restaurants; merchant
+      participation and offer terms apply.
+  insurance:
+  - type: air-accident
+    sum_insured_inr: null
+    sum_insured_amount: 125000
+    sum_insured_currency: USD
+    conditions: Primary cardholder only; policy 2999204800579204000 effective 23-Jul-2026 to 22-Jul-2027. Cover
+      activates after card activation and if air tickets are purchased using Diners; bodily injury resulting in death
+      within 12 months of accident.
+  - type: travel-medical
+    sum_insured_inr: null
+    sum_insured_amount: 31250
+    sum_insured_currency: USD
+    conditions: Primary cardholder only; emergency medical expense for bodily injury or sudden illness during
+      international travel outside India; pre-existing illness excluded. Policy valid 23-Jul-2026 to 22-Jul-2027.
+  - type: lost-card-liability
+    sum_insured_inr: 900000
+    conditions: Primary cardholder only; policy covers INR 900,000 liability for 2 days before card block and 30 days
+      after block, subject to policy terms.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 625
+    sum_insured_currency: USD
+    conditions: Baggage delay on international flights beyond 8 hours; maximum USD 10/hour up to USD 625. Primary
+      cardholder only; travel must originate in India, Diners-ticket purchase, trip maximum 30 days; policy valid
+      23-Jul-2026 to 22-Jul-2027.
+  - type: credit-shield
+    sum_insured_inr: 900000
+    conditions: Credit Shield up to INR 900,000 for the primary cardholder under policy valid 23-Jul-2026 to 22-Jul-2027.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 625
+    sum_insured_currency: USD
+    conditions: Loss of personal documents during international travel; actual duplicate-document costs, with 10%
+      sublimit per article, subject to policy valid 23-Jul-2026 to 22-Jul-2027.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 625
+    sum_insured_currency: USD
+    conditions: Hijacking on international flights; USD 75 per 6 hours after a 12-hour deductible, maximum USD 625;
+      primary cardholder, policy valid 23-Jul-2026 to 22-Jul-2027.
+  fuel_surcharge_waiver: null
+  concierge: true
   source:
-    url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/diners-privilege-credit-card/pdf/diners-privilege-tnc-2026.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    local_refs:
+    - docs/sources/hdfc/diners-privilege/diners-privilege-tnc-2026.pdf
+    - docs/sources/hdfc/diners-privilege/diners-privilege-update-faq-and-tnc.pdf
+    - docs/sources/hdfc/diners-privilege/diners-privilege-product-feature-change.pdf
+    - docs/sources/hdfc/diners-privilege/diners_privilege_insurance_policy.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.milestones
+    - benefits.welcome
+    - benefits.movies
+    - benefits.dining
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver
+    notes: June-2026 card terms and July-2026 lounge voucher terms support current benefits. Current policy
+      2999204800579204000 runs 23-Jul-2026 to 22-Jul-2027 and limits covers to the primary cardholder. HDFC MITC says
+      fuel surcharge waiver is not applicable (a separate 1% fuel transaction fee applies above INR 15,000). Lounge
+      vouchers require the spend threshold and are only for primary cardholders. Product page lists SmartBuy Concierge
+      contact number 1860 425 1188.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 65
   income_inr_annual:
     salaried: 420000
     self_employed: 600000
-  credit_score_min: 750
-  residency: resident-indian
-  notes: Salaried net monthly income ₹35,000+ (₹4.2L p.a.); self-employed ITR above
-    ₹6L p.a.
+  credit_score_min: null
+  residency: null
+  notes: >-
+    HDFC lists Indian nationality; a specific residence-status requirement is not stated. Salaried applicants age 21–60:
+    the eligibility subpage says gross monthly income >INR 35,000, while the main card page says net monthly salary
+    INR 35,000 and its FAQ says net income at least INR 35,000. Self-employed age 21–65 and annual ITR >INR 600,000.
+    No mandatory numeric credit-score cutoff is published; application remains subject to bank assessment and clean
+    repayment history.
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+    retired_pensioner:
+      min_age: null
+      max_age: null
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    notes: Current issuer eligibility subpage and main card page differ on whether the salaried INR 35,000 threshold
+      is gross or net. The issuer says Indian nationality but does not specify resident/NRI status or a numeric score
+      floor.
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/diners-privilege-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - premium
   - diners

@@ -1,146 +1,178 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-olympus
 name: Axis Bank Olympus Credit Card
 image_path: /cards/axis/olympus.webp
 issuer: axis
-network: visa
-network_tier: infinite
+network: null
+network_tier: null
 tier: super-premium
 card_type: credit
 co_brand: null
-status: discontinued
-launched_on: 2023-12-01
-discontinued_on: 2026-07-03
-
-# The Axis Bank Olympus product page returns 404 on the live site as of
-# 2026-07-03 and it no longer appears in Axis's credit-card catalogue.
-# discontinued_on is the observed-withdrawal date; exact sunset unconfirmed.
-
+status: invite-only
+launched_on: null
+discontinued_on: null
 fees:
-  - effective_from: 2023-12-01
-    effective_until: 2026-07-02
-    joining_fee_inr: 20000
-    annual_fee_inr: 20000
-    fee_waiver:
-      spend_inr: 2500000
-      cycle: annual
-    forex_markup_pct: 1.8
-    finance_charge_monthly_pct: 3.0
-    cash_advance_fee:
-      pct: 2.0
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/olympus
-      retrieved_on: 2026-04-15
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-10-08
+  effective_until: null
+  joining_fee_inr: 20000
+  annual_fee_inr: 20000
+  fee_waiver: null
+  forex_markup_pct: 1.8
+  finance_charge_monthly_pct: 3.0
+  cash_advance_fee:
+    pct: 2.0
+    min_inr: 300
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/docs/default-source/credit-cards/terms-and-conditions/sosc-credit-cards.pdf?sfvrsn=fdf65956_102
+    retrieved_on: 2026-10-25
+    type: issuer-pdf
+    confidence: high
+    notes: Current Key Fact Sheet updated 2026-10-08. Standard joining and annual fee INR 20,000; no waiver listed. 42.58% p.a. APR (3% monthly). Cash fee 2%, INR 300 minimum. FX and DCC markup 1.8%. Over-limit fee waived; rent fee nil. Fuel surcharge refund 1% for INR 400-5,000 transactions, capped INR 500 per statement cycle. Late fee follows general Axis slabs.
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2023-12-01
-    effective_until: 2026-07-02
-    currency: miles
-    currency_name: EDGE Miles
-    base:
-      rate: 10
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: travel-edge-portal
-        canonical_categories: [travel]
-        multiplier: 3
-        effective_rate: 30
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [edge-travel]
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - utilities
-      - education
-    redemption:
-      - type: airmiles
-        program: Multiple (EDGE Miles transfer)
-        ratio: "2:1"
-      - type: catalog
-        program: Axis Travel EDGE
-        rate_inr_per_unit: 1.0
+- effective_from: 2026-08-28
+  effective_until: null
+  currency: miles
+  currency_name: EDGE Miles
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: international-spends
+    canonical_categories:
+    - international
+    multiplier: 2.0
+    effective_rate: 2
+    notes: 2 EDGE Miles per INR 100 on international transactions; the current terms do not state a category cap.
     source:
-      url: https://www.axis.bank.in/olympus
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: medium
-      notes: DISCONTINUED (2026-07-03). EDGE Miles Rs1.0 Travel EDGE floor; realized Rs0.5->Rs1.0. Historical transfer ratio not re-verified for this dead card.
-benefits:
-  - effective_from: 2023-12-01
-    effective_until: 2026-07-02
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: unlimited
-      cycle: monthly
-      lessons_per_cycle: unlimited
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "25,000 EDGE Miles"
-        value_inr: 25000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 50000000
-      - type: travel-medical
-        sum_insured_inr: 50000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.axis.bank.in/olympus
-      retrieved_on: 2026-04-15
-      type: issuer-page
+      url: https://www.axis.bank.in/docs/default-source/default-document-library/olympus-terms-and-conditions.pdf
+      retrieved_on: 2026-10-26
+      type: issuer-pdf
       confidence: high
-
+      fields_verified:
+      - rewards.accelerated.effective_rate
+  exclusions:
+  - bridge-fees
+  - road-fees-and-tolls
+  - utilities
+  - insurance-premiums
+  - education
+  - government
+  - wallet-loads
+  - gift-cards
+  - rent
+  - fuel
+  redemption:
+  - type: catalog
+    program: Axis Travel EDGE
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.axis.bank.in/docs/default-source/default-document-library/olympus-terms-and-conditions.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    notes: Current terms effective 2026-08-28 specify 1 EDGE Mile per INR 100 domestic and 2 per INR 100 international; international earning is modeled as a 2x category rate. The current Axis Citi-migration page (https://www.axis.bank.in/forward-together/migrate-credit-cards/transfer-citi-olympus-credit-card) confirms 1 EDGE Mile = INR 1 on Travel EDGE and says converted pre-migration points remain non-expiring; post-migration points expire after 365 days with no transaction, redemption, or EDGE Rewards portal login. Redemption methods include catalogue, partner miles with dynamic ratios, outlet and SMS redemption; no universal realized value asserted. Terms identify Visa Infinite and Mastercard World Elite variants, so the scalar network and network-tier fields are null rather than selecting one variant.
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.redemption[0].rate_inr_per_unit
+benefits:
+- effective_from: 2026-08-28
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - issuer-direct
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - priority-pass
+  welcome:
+  - condition: Applied for and issued on or after 2024-07-01; first transaction within 30 days of issuance; primary card only
+    benefit: Taj or ITC hotel voucher worth INR 10,000
+    value_inr: 10000
+  - condition: Primary cardholders issued the card on or after 2024-07-01; make first transaction within 30 days of issuance
+    benefit: 2,500 EDGE Miles welcome benefit
+    value_inr: 2500
+    window_days: 30
+  insurance: []
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 500
+    cycle: monthly
+  concierge: true
+  other:
+  - name: Domestic golf benefit
+    description: 8 complimentary domestic golf rounds or lessons per year, with one guest; one additional round or lesson for each INR 50,000 spend. The issuer terms state a combined rounds-or-lessons entitlement, so separate counts are not inferred.
+  - name: Annual renewal rewards
+    description: For an active primary card after its anniversary, 2,500 EDGE Miles are credited within 30 days and an INR 10,000 Taj or ITC hotel voucher is offered, subject to the issuer terms.
+  - name: Complimentary Stay Program
+    description: Book at least 3 consecutive nights at participating Hotels.com properties through the concierge. The third-night base fare is returned as a statement credit within 2 billing cycles (up to 90 days); one room in the primary cardholder's name, up to twice per calendar year, and full payment is required.
+  - name: BookMyShow movie offer
+    description: Up to INR 650 off the second movie ticket, at most twice per month on an active primary card.
+  - name: BookMyShow non-movie offer
+    description: Up to INR 1,000 off the second non-movie ticket, at most twice per month on an active primary card.
+  - name: Taj Epicure membership
+    description: Complimentary membership for the primary cardholder, renewed annually if the card is active; includes 25% savings on participating hotel dining for up to 10 people, unlimited 20% Jiva Spa savings, and unlimited 25% Qmin app savings, subject to membership terms.
+  - name: Domestic airport concierge and transfer
+    description: The current issuer page lists 8 domestic airport meet-and-assist services and 2 airport transfers per year; transfers allow up to 3 guests per booking, subject to booking terms.
+  source:
+    url: https://www.axis.bank.in/docs/default-source/default-document-library/olympus-terms-and-conditions.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    notes: >-
+      Domestic lounge access is unlimited at select airports; 10 guest visits per
+      calendar year shared across cardholders. Priority Pass: unlimited international
+      visits and 10 guest visits per anniversary year; from 2026-08-28 PP is invalid
+      for Indian domestic lounges. Primary cardholders get 8 domestic airport concierge
+      visits/calendar year, 2 domestic airport transfers/year (up to 3 guests per
+      booking), Taj Epicure renewed annually while active, and INR 10,000 Taj/ITC
+      welcome and annual vouchers. BookMyShow offers up to INR 650 off a second movie
+      ticket and INR 1,000 off a second non-movie ticket, each up to twice monthly.
+      Current terms specify 8 domestic golf rounds or lessons per year with one guest and one additional round or lesson per INR 50,000 spend. The terms distinguish Visa Infinite and Mastercard World Elite variants; separate scalar network/tier fields are not assigned. They also specify 2,500 EDGE Miles and an INR 10,000 Taj/ITC voucher as annual benefits for active primary cardholders.
+      The issuer migration page states Olympus is offered to former Citi Prestige cardholders. The current offer is migration-restricted, not listed among Axis's open-market credit cards. The migration page says pre-migration converted points do not expire, but post-migration points expire after 365 days without a transaction, redemption or portal login. Card-specific insurance coverage is not established by the current product page or card terms; the empty insurance list does not claim that no cover exists.
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome.value_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.other
 eligibility:
-  min_age: 21
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 3500000
-    self_employed: 3500000
-  credit_score_min: 780
-  residency: resident-indian
-  notes: "Typically available to Burgundy Private / Priority banking clients."
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: The current Axis migration page offers Olympus to former Citi Prestige cardholders; no open-market application route or standard card-specific age, income, credit-score, or residency criteria is published. Eligibility is therefore recorded as migration-restricted; do not infer criteria from an unrelated banking relationship tier.
 application:
-  apply_url: https://www.axis.bank.in/olympus
-
+  apply_url: https://www.axis.bank.in/forward-together/migrate-credit-cards/transfer-citi-olympus-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [super-premium, travel, miles, low-forex, invite-like]
+  last_verified_on: '2026-10-26'
+  tags:
+  - super-premium
+  - travel
+  - miles
+  - low-forex
+  - migration-only

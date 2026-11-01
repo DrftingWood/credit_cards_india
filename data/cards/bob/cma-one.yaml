@@ -1,38 +1,46 @@
 id: bob-cma-one
-name: CMA One BOBCARD Credit Card
+name: CMA One BOBCARD Credit Card (RuPay)
 image_path: /cards/bob/cma-one.webp
 issuer: bob
-network: visa
-network_tier: signature
+network: rupay
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
   partner: ICMAI
   category: other
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2022-01-01
+- effective_from: 2026-10-26
   effective_until: null
   joining_fee_inr: 1
   annual_fee_inr: 0
   fee_waiver: null
   forex_markup_pct: 2.0
-  finance_charge_monthly_pct: 3.49
+  finance_charge_monthly_pct: 3.75
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
   gst_applicable: true
-  notes: ₹1 joining fee, zero annual fee. Exclusively for ICMAI (Institute of Cost
-    Accountants of India) members.
+  notes: ₹1 joining fee, zero annual fee. Exclusively for ICMAI (Institute of Cost Accountants of India) members.
   source:
     url: https://www.bobcard.co.in/credit-card-types/cma-one
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
+    notes: >-
+      Product page directly supports joining fee, annual fee and 2% forex. Current generic BOBCARD MITC supports 3.75%
+      monthly finance and 2.5% cash advance (minimum INR500):
+      https://media.bobcard.co.in/media/gaudahay/bob_mitc_a4-booklet_ver-19jan26_15jan2026.pdf.
+      These are not repeated in the card-specific page; current effective dates are not fully published.
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
 rewards:
-- effective_from: 2022-01-01
+- effective_from: 2026-04-01
   effective_until: null
   currency: points
   currency_name: Reward Points
@@ -40,7 +48,7 @@ rewards:
     rate: 1
     per_inr: 100
     unit_value_inr: 0.25
-    unit_value_inr_realized: 0.18
+    unit_value_inr_realized: 0.25
   accelerated:
   - category: dining-online-utilities
     canonical_categories:
@@ -52,89 +60,196 @@ rewards:
     cap_per_cycle: 1000
     cap_unit: points
     cycle: statement
+    notes: 5 points per INR100 total. Qualifying groups are online transactions flagged by the acquirer, dining MCC5812,
+      and utilities MCC4812 or 4899; MCC4900, UPI, special-exclusion MCCs and transactions below INR100 do not qualify.
+      After the 1,000-point accelerator cap, further eligible category spend earns core points at 1 per INR100.
   exclusions:
   - fuel
   - wallet-loads
   - rent
   - insurance-premiums
-  - emi
   mcc_exclusions:
+  - '0763'
+  - '0780'
+  - '0820'
+  - '0821'
+  - '0822'
+  - '0823'
+  - '0824'
+  - '0825'
+  - '1520'
+  - '1711'
+  - '1731'
+  - '1740'
+  - '1750'
+  - '1761'
+  - '1771'
+  - '1799'
+  - '4111'
+  - '4112'
+  - '4131'
+  - '4784'
+  - '4789'
+  - '5261'
+  - '5331'
+  - '5411'
+  - '5499'
+  - '5814'
+  - '5960'
+  - '6300'
   - '6513'
+  - '6539'
+  - '6540'
+  - '6541'
+  - '6542'
+  - '6543'
+  - '7211'
+  - '7230'
+  - '7276'
+  - '7349'
+  - '8011'
+  - '8062'
+  - '8111'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8398'
+  - '8641'
+  - '8661'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
   redemption:
   - type: statement-credit
     program: BOBCARD Rewards
     rate_inr_per_unit: 0.25
+    constraints: Statement cashback redemption requires a minimum of 1,000 points.
   source:
     url: https://www.bobcard.co.in/credit-card-types/cma-one
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cycle
+    - rewards.mcc_exclusions
+    - rewards.redemption.rate_inr_per_unit
+    notes: >-
+      Current BOBCARD shared feature terms confirm core rate, INR100 minimum transaction, accelerator categories/cap,
+      UPI restriction and Annexure 1 MCC exclusions (local copy:
+      docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf). Product page supports
+      INR0.25 cashback value; issuer's July-2025 revision sets a 1,000-point statement-redemption floor. Points expire
+      after 2 years; arrears/default, fraud, death and closure can also result in forfeiture. BOBCARD's 2024
+      application form lists CMA One under Mastercard and RuPay, and its current insurance schedule lists RUPAY CMA
+      ONE; this record represents the RuPay variant. The Mastercard variant is not modeled separately.
 benefits:
-- effective_from: 2022-01-01
+- effective_from: 2026-10-26
   effective_until: null
   lounge_access:
     domestic:
       visits_per_cycle: 3
       cycle: quarterly
-      guests_per_visit: 0
-      via:
-      - visa
-      - dreamfolks
+      spend_threshold_inr: 40000
+      spend_threshold_cycle: quarterly
+      notes: Requires INR40,000 net eligible settled spend in the prior calendar quarter; new-card issue-quarter waiver may apply.
   welcome:
-  - condition: Spend ₹5,000 or more within 60 days of issuance
+  - condition: Spend INR5,000 or more within 60 days of issuance; first-year primary-card benefit.
     benefit: 500 reward points
     value_inr: 125
     window_days: 60
   milestones:
   - spend_inr: 100000
     cycle: quarterly
-    benefit: 4,000 reward points on quarterly spend above ₹1,00,000 or credit limit
-      (whichever higher)
+    benefit: 4,000 points on financial-calendar-quarter spend exceeding the higher of INR100,000 or the assigned credit limit.
     reward_kind: points
     reward_units: 4000
     reward_currency_name: Reward Points
-    trigger_window: rolling
     is_repeatable: true
     max_awards_per_cycle: 1
     value_inr: 1000
   insurance:
   - type: other
     sum_insured_inr: 500000
-    conditions: Professional indemnity insurance cover up to ₹5 Lakhs.
+    conditions: Up to INR5 lakh professional indemnity cover; only practicing CMA members with a valid Certificate of Practice at card issuance and claim qualify.
   - type: air-accident
     sum_insured_inr: 1500000
-    conditions: Air accidental death cover.
+    conditions: Up to INR15 lakh air-accident death cover; claim conditions apply.
   - type: personal-accident
     sum_insured_inr: 500000
-    conditions: Non-air accidental death cover.
+    conditions: Up to INR5 lakh non-air-accident death cover; claim conditions apply.
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
     max_txn_inr: 5000
     cap_per_cycle_inr: 250
-    cycle: monthly
+    cycle: statement
+    notes: 1% waiver for INR400–5,000 fuel transactions, capped at INR250 per statement. GST on surcharge is not reversed; fuel earns no points.
   other:
   - name: Add-on cards
-    description: Up to 3 lifetime-free add-on cards for spouse, parents, siblings
-      or kids (18+).
+    description: Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+).
+  - name: FITPASS PRO
+    description: 12-month membership for primary cards issued on or after 1-Aug-2026; code sent by email within 30 days.
+  - name: Smart EMI
+    description: Purchases above INR2,500 may be converted to 6–48 month EMIs; applicable charges are shown at conversion.
+  - name: Network variants
+    description: BOBCARD lists RuPay and Mastercard CMA One variants. This record represents RuPay; Mastercard is not modeled separately.
+  - name: Lost-card liability
+    description: Issuer advertises zero liability for fraudulent transactions after immediate loss reporting, subject to issuer terms.
   concierge: false
   source:
     url: https://www.bobcard.co.in/credit-card-types/cma-one
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.milestones.reward_units
+    - benefits.milestones.max_awards_per_cycle
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.insurance.sum_insured_inr
+    notes: Current product page confirms 3 lounge visits per quarter subject to INR40,000 prior-calendar-quarter spend, welcome and quarterly milestone awards (4,000 points when quarter spend exceeds the higher of INR100,000 or credit limit), fuel waiver, insurance amounts, add-ons, smart EMI and the FITPASS issue-date gate. Professional-indemnity cover is limited to practicing ICMAI members with a current Certificate of Practice at issuance and claim. The product page says the 500-point welcome award requires INR5,000 spend in 60 days. FITPASS terms only apply to primary cards issued from 01-Aug-2026.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 75
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: null
   residency: resident-indian
-  notes: Exclusively for ICMAI members.
+  notes: Resident Indian; eligible and active ICMAI members only, subject to BOBCARD credit policy. Current issuer page
+    states age 21–75, salaried net annual income at least INR3 lakh, and self-employed annual ITR at least INR3 lakh.
+    Minimum bureau score is unpublished.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/cma-one
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/cma-one
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-26
   tags:
   - mid
   - points

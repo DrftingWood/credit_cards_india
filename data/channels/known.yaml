@@ -1,127 +1,126 @@
-# Authoritative merchant token index for accelerator channel.merchants[].
-# Validator (scripts/validate.py) cross-checks every accelerator's tokens
-# against this file. Adding a new merchant means a one-line PR here, not a
-# schema change.
-#
-# Keys are the closed channel.class enum values from schema/card.schema.json;
-# values are the tokens admissible under each class.
-
 issuer-portal:
-  - smartbuy            # HDFC SmartBuy
-  - edge-travel         # Axis Travel EDGE
-  - edge-mall           # Axis Edge Mall / shopping portal
-  - ishop               # ICICI iShop
-  - sbi-rewardz         # SBI Card Rewardz portal
-  - amex-travel         # Amex India travel portal
-  - kotak-unbox        # Kotak Unbox travel portal
-
+- cheq-travel
+- smartbuy
+- edge-travel
+- edge-mall
+- ishop
+- sbi-rewardz
+- amex-travel
+- kotak-unbox
+- au-rewardz
 cobrand-merchant:
-  - indigo-app
-  - indigo-web
-  - air-india-direct
-  - amazon-pay
-  - tata-neu
-  - marriott-direct
-  - irctc-direct
-  - flipkart
-  - myntra
-  - reliance-retail
-  - adani-one
-  - swiggy-one
-  - vistara-direct
-  - snapdeal
-  - uni-store
-  - scapia-app
-  - spicejet
-  - airtel-thanks-app
-  - ajio
-  - jiomart
-  - phonepe-app
-
-  - amazon
-  - baby-shop
-  - blinkit
-  - bookmyshow
-  - cult-fit
-  - district
-  - easemytrip
-  - easybuy
-  - google-pay-bills
-  - google-pay-recharges
-  - home-centre
-  - homestop
-  - lifestyle
-  - max
-  - netmeds
-  - nykaa
-  - ola
-  - pvr
-  - reliance-digital
-  - reliance-smart
-  - shoppers-stop
-  - spar
-  - swiggy
-  - trends
-  - uber
-  - zomato
-  - bigbasket
-  - marks-spencer
-  - reliance-smart-superstore
-  - tata-1mg
-  - urban-company
-  - amazon-prime
-  - apollo-24-7
-  - cleartrip
-  - dominos
-  - etihad-direct
-  - gyftr
-  - hotstar
-  - igp
-  - instamart
-  - netflix
-  - oyo
-  - paytm-app
-  - sony-liv
-  - tata-cliq
-  - yatra
-  - zee5
-  - payzapp
+- bharat-gas-website
+- bharat-gas-app
+- kiwi-app
+- lic-official-website
+- cheq-au-partners
+- cheq-au-upi-partners
+- cheq-au-upi
+- indigo-app
+- indigo-web
+- air-india-direct
+- amazon-pay
+- tata-neu
+- marriott-direct
+- irctc-direct
+- irctc-air
+- irctc-ecatering
+- flipkart
+- shopsy
+- myntra
+- reliance-retail
+- adani-one
+- swiggy-one
+- vistara-direct
+- snapdeal
+- uni-store
+- scapia-app
+- spicejet
+- airtel-thanks-app
+- airtel-thanks-telecom
+- airtel-thanks-utilities
+- ajio
+- jiomart
+- phonepe-app
+- amazon
+- baby-shop
+- blinkit
+- bookmyshow
+- cult-fit
+- district
+- easemytrip
+- easybuy
+- google-pay-bills
+- google-pay-recharges
+- home-centre
+- homestop
+- lifestyle
+- max
+- netmeds
+- nykaa
+- ola
+- pvr
+- reliance-digital
+- reliance-smart
+- shoppers-stop
+- spar
+- swiggy
+- trends
+- uber
+- zomato
+- bigbasket
+- marks-spencer
+- reliance-smart-superstore
+- tata-1mg
+- urban-company
+- amazon-prime
+- apollo-24-7
+- cleartrip
+- dominos
+- etihad-direct
+- gyftr
+- hotstar
+- igp
+- instamart
+- netflix
+- oyo
+- paytm-app
+- sony-liv
+- tata-cliq
+- yatra
+- zee5
+- payzapp
 third-party-ota:
-  - mmt
-  - easemytrip
-  - cleartrip
-  - yatra
-  - ixigo
-  - ota-any              # generic OTA bucket when user signals "no preference"
-
-  - abhibus
-  - confirmtkt
+- mmt
+- easemytrip
+- cleartrip
+- yatra
+- ixigo
+- ota-any
+- abhibus
+- confirmtkt
 food-delivery:
-  - swiggy
-  - zomato
-  - eazydiner
-
+- swiggy
+- zomato
+- eazydiner
 quick-commerce:
-  - blinkit
-  - zepto
-  - bigbasket
-  - instamart
-
+- blinkit
+- zepto
+- bigbasket
+- instamart
 fuel-network:
-  - iocl
-  - bpcl
-  - hpcl
-  - shell
-  - reliance-bp
-  - fuel-network-any
-
-  - hp-pay
+- iocl
+- bpcl
+- hpcl
+- shell
+- reliance-bp
+- fuel-network-any
+- hp-pay
 utility-rail:
-  - bbps
-  - irctc-rail
-
+- bbps
+- irctc-rail
+- cheq-utility-bills
 physical:
-  - pos-any
-
+- pos-any
 online-any:
-  - any
+- any

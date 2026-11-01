@@ -1,17 +1,8 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-freecharge
 name: Axis Bank FreeCharge Credit Card
 image_path: /cards/axis/freecharge.webp
 issuer: axis
-network: rupay
+network: visa
 network_tier: platinum
 tier: entry
 card_type: credit
@@ -19,93 +10,130 @@ co_brand:
   partner: FreeCharge
   category: other
 status: invite-only
-launched_on: 2019-08-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-06-20
-    effective_until: null
-    joining_fee_inr: 250
-    annual_fee_inr: 250
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.0
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/axis/_shared/mitc-credit-cards.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-    notes: "Invite-only: eligible customers see the banner on their Freecharge mobile app. Income & credit score indicative (aggregator consensus)."
-
+- effective_from: 2025-06-20
+  effective_until: null
+  joining_fee_inr: 250
+  annual_fee_inr: 250
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    - docs/sources/axis/freecharge/terms-and-conditions-freecharge-final.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+  notes: 'Issuer schedule: joining fee ₹250, first-year annual fee nil, second-year annual fee ₹250. A spend-based annual-fee
+    waiver exists, but the product page does not publish its threshold; rent and wallet-load spends are excluded from waiver
+    calculation. Card replacement nil; cash payment ₹175; duplicate statement, charge-slip retrieval, outstation cheque,
+    mobile alerts and balance inquiry waived/free; overlimit 2.5% (minimum ₹500); cheque return 2% (minimum ₹500); railway
+    ticket surcharges as prescribed; EDGE portal redemption ₹99 per transaction and partner transfer ₹199; rent 1%; wallet
+    1% on cumulative ₹10,000+ per statement; fuel 1% on cumulative ₹50,000+; education 1% on third-party payments; utilities
+    1% on cumulative ₹25,000+; online skill gaming 1% on cumulative ₹10,000+; DCC 3.5% plus taxes. Late fee amount at exactly
+    ₹500 total due is not specified on the page. Invite-only: eligible customers see a banner in the Freecharge app. The issuer states a spend-based annual-fee waiver exists, but the current page does not publish its threshold. Current generic terms effective 28 Aug 2026 set DCC markup at 3.5%; rent and wallet-load fees/waiver exclusions remain category-based.'
 rewards:
-  - effective_from: 2025-06-20
-    effective_until: null
-    currency: points
-    currency_name: EDGE REWARD Points
-    base:
-      rate: 1
-      per_inr: 200
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.18
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - jewellery
-      - cash-advance
-    redemption:
-      - type: catalog
-        program: EDGE Rewards
-        rate_inr_per_unit: 0.2
-        constraints: "1 EDGE REWARD Point redeemable across 500+ options."
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-    notes: "Invite-only: eligible customers see the banner on their Freecharge mobile app. Income & credit score indicative (aggregator consensus)."
-
-    mcc_exclusions: ['6513']
+- effective_from: 2025-06-20
+  effective_until: null
+  currency: points
+  currency_name: EDGE REWARD Points
+  base:
+    rate: 1
+    per_inr: 200
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated: []
+  exclusions:
+  - rent
+  - wallet-loads
+  - jewellery
+  - fuel
+  - financial-institutions
+  - cash-advance
+  redemption:
+  - type: catalog
+    program: EDGE Rewards
+    rate_inr_per_unit: null
+    constraints: Redeemable across 500+ options; value varies by option and no universal cash conversion is published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/freecharge/terms-and-conditions-freecharge-final.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.exclusions
+    - rewards.redemption
+    notes: Current Axis product/application material states 1 EDGE REWARD Point per INR 200. Card-specific terms effective 20 Jun 2025 confirm exclusions for rent, wallet loads, gold/jewellery, fuel, financial institutions, cash advances and repayments. Effective 1 Oct 2025, points may be forfeited 30 days after closure or when minimum payment is overdue over 90 days. No fixed INR point value is published for this card.
+  notes: "Invite-only: eligible customers see the banner on their Freecharge mobile app. Reward redemption value varies; numeric values attributed to other cards or third-party estimates are not used."
 benefits:
-  - effective_from: 2025-06-20
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver: null   # Fuel surcharge refund NOT applicable for FreeCharge Credit Card per Axis MITC
-    concierge: false
-    other:
-      - name: Wednesday Delight
-        description: "Exciting offers every Wednesday for cardholders."
-        value_inr: null
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-    notes: "Invite-only: eligible customers see the banner on their Freecharge mobile app. Income & credit score indicative (aggregator consensus)."
-
+- effective_from: 2025-06-20
+  effective_until: null
+  lounge_access: null
+  milestones:
+  - spend_inr: 2000
+    cycle: monthly
+    benefit: 100 EDGE REWARD Points at monthly spends of ₹2,000–₹4,999
+    value_inr: null
+    reward_kind: points
+    reward_units: 100
+    reward_currency_name: EDGE REWARD Points
+    is_repeatable: true
+  - spend_inr: 5000
+    cycle: monthly
+    benefit: 350 EDGE REWARD Points total (100 + 250) at monthly spends of ₹5,000 or more
+    value_inr: null
+    reward_kind: points
+    reward_units: 350
+    reward_currency_name: EDGE REWARD Points
+    is_repeatable: true
+  fuel_surcharge_waiver: null
+  concierge: false
+  other:
+  - name: Wednesday Delight
+    description: Offers vary by Wednesday; current issuer page lists up to 15% on Goibibo/MakeMyTrip, 10% on Swiggy/Amazon Fresh, and 10% off up to INR 1,000 on Tira. Availability and offer terms may change.
+    value_inr: null
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.milestones.spend_inr
+    - benefits.milestones.reward_units
+    - benefits.other
+  notes: Current issuer page lists monthly spend milestones of 100 EDGE REWARD Points at INR 2,000-4,999 and 350 total points at INR 5,000 or more; Wednesday offers vary. Eligible customers see the invite-only banner in Freecharge.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 240000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
-  notes: "Invite-only: eligible customers see the banner on their Freecharge mobile app. Income & credit score indicative (aggregator consensus)."
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current issuer page describes invite-only access, with an eligible-customer banner in the Freecharge app. It does not publish product-specific age, residency, income or credit-score thresholds; third-party estimates were not used.
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-freecharge-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, co-branded, invite-only]
+  last_verified_on: 2026-10-27
+  tags:
+  - entry
+  - points
+  - co-branded
+  - invite-only

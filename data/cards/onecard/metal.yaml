@@ -2,123 +2,116 @@ id: onecard-metal
 name: OneCard Metal Credit Card
 image_path: /cards/onecard/metal.webp
 issuer: onecard
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2020-07-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2020-07-01
+- effective_from: '2026-10-27'
   effective_until: null
   joining_fee_inr: 0
   annual_fee_inr: 0
   fee_waiver: null
   forex_markup_pct: 1.0
-  finance_charge_monthly_pct: 2.5
-  cash_advance_fee:
-    pct: 2.5
-    min_inr: 300
+  finance_charge_monthly_pct: null
+  cash_advance_fee: null
   gst_applicable: true
-  notes: Lifetime-free card marketed by OneCard; monthly finance charge starts at
-    2.5% (tiered by internal risk).
+  notes: OneCard's current FAQ says no joining or annual fee and 1% forex markup. The fees page says Forex Pass can reduce the markup to 0%; its current activation terms are app-based. Interest and cash-advance schedules are issuer-specific across six partner banks and aren't represented as a single generic value.
   source:
-    url: https://www.getonecard.app/card
-    retrieved_on: 2026-07-03
+    url: https://www.getonecard.app/faq/
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    confidence: medium
+    confidence: high
+    local_refs:
+    - docs/sources/onecard/metal/bobcard-mitc-2026-09-11.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].forex_markup_pct
+    - fees[0].gst_applicable
 rewards:
-- effective_from: 2020-07-01
+- effective_from: '2026-10-27'
   effective_until: null
   currency: points
   currency_name: OneCard Reward Points
   base:
     rate: 1
     per_inr: 50
-    unit_value_inr: 0.1
-    unit_value_inr_realized: 0.1
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: Current BOBCARD, CSB, Federal and South Indian Bank OneCard terms list 1 point per INR50 and fractional points. OneCard's public generic FAQ does not publish the base rate; bank-issued reward terms can vary.
   accelerated:
-  - category: top-2-categories-monthly
+  - category: top two monthly spending categories
     multiplier: 5
     effective_rate: 5
-    cap_per_cycle: unlimited
     cap_unit: points
     cycle: monthly
-    notes: 5x points on your top 2 spend categories each calendar month (auto-selected).
-    canonical_categories:
-    - online
-    - dining
+    notes: The OneCard FAQ and partner-bank terms advertise 5x on the top two monthly spend categories. Bank terms reviewed require at least INR750 spend in each of three categories; bonus points post on the 10th of the following month. Categories are auto-assigned from MCC/network or issuer mapping and aren't a fixed pair.
   exclusions:
   - fuel
-  - wallet-loads
   - rent
-  - insurance-premiums
-  - emi
-  mcc_exclusions:
-  - '6513'
+  - wallet-loads
+  - cash-advance
+  - other
   redemption:
   - type: statement-credit
-    rate_inr_per_unit: 0.1
-    min_units: 100
-    constraints: In-app redemption at 1 point = ₹1.
-  - type: catalog
-    program: OneCard catalogue
-    rate_inr_per_unit: 0.1
+    program: OneCard Pay with Points in app
+    rate_inr_per_unit: null
+    constraints: Issuer terms allow points to pay for prior transactions less than two months old and/or redeem for in-app offers. No fee or minimum threshold is advertised in the current generic OneCard FAQ; no shared rupee conversion value is published.
   source:
-    url: https://www.getonecard.app/card
-    retrieved_on: '2026-07-05'
+    url: https://www.getonecard.app/faq/
+    retrieved_on: '2026-10-27'
     type: issuer-page
     confidence: high
-    notes: 'Corrected 2026-07-05: 1 OneCard point = Rs 0.10 fixed (statement credit
-      vs spends), not Rs 1.0. Face/realized were both overstated 10x.'
+    local_refs:
+    - docs/sources/onecard/metal/bobcard-terms-2026-10-27.pdf
+    - docs/sources/onecard/metal/csb-terms-2026-07-11.pdf
+    - docs/sources/onecard/metal/federal-terms-2026-10-27.pdf
+    - docs/sources/onecard/metal/sib-terms-current.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].accelerated[0].effective_rate
+  notes: OneCard FAQ identifies six issuing partners (BOBCARD, CSB Bank, Federal Bank, SBM Bank, South Indian Bank and Indian Bank) and three possible networks (Visa, Mastercard and RuPay). Reviewed several active partner terms, but terms, exclusions and rates may vary by issuing bank; no static MCC exclusion list or shared point-to-rupee value was found.
 benefits:
-- effective_from: 2020-07-01
+- effective_from: '2026-10-27'
   effective_until: null
-  lounge_access:
-    domestic:
-      visits_per_cycle: 4
-      cycle: quarterly
-      guests_per_visit: 0
-      via:
-      - visa
-      - dreamfolks
-      spend_threshold_inr: 50000
-      spend_threshold_cycle: quarterly
-      notes: Lounge access unlocked on ₹50k quarterly spend.
   fuel_surcharge_waiver:
     pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 4000
-    cap_per_cycle_inr: null
+    cap_per_cycle_inr: 400
     cycle: monthly
   concierge: false
   other:
-  - name: App-first experience
-    description: Full card lifecycle (application, limit, PIN, statements, reward
-      redemption, block/unblock) runs inside the OneCard mobile app.
-  - name: Metal body
-    description: Premium metal card body on all active OneCards.
+  - name: Metal card and OneCard app
+    description: OneCard markets the physical card as metal and offers app controls for card use, payments and reward redemption. Partner bank, network, issuance and replacement terms may differ.
   source:
-    url: https://www.getonecard.app/card
-    retrieved_on: 2026-07-03
+    url: https://www.getonecard.app/metal-credit-card/fees-and-charges/
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    confidence: medium
+    confidence: high
+    local_refs:
+    - docs/sources/onecard/metal/bobcard-mitc-2026-09-11.pdf
+    fields_verified:
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
+  notes: Current OneCard fees page advertises fuel surcharge waiver up to INR400/month. BOBCARD One MITC specifies 1% of transaction or actual surcharge (excluding GST), whichever is lower, maximum INR400 per calendar month per account. Current generic product pages do not advertise airport lounge access; removed the unsupported quarterly visits and spend threshold.
 eligibility:
-  min_age: 18
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
-  residency: resident-indian
-  notes: Co-issued with partner banks; exact underwriting and credit limit depend
-    on the assigned partner.
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: OneCard says application is available to residents of 66 cities; eligibility is determined by the issuing partner bank. Current generic pages do not publish numeric age, income or credit-score criteria.
 application:
   apply_url: https://www.getonecard.app/card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - lifetime-free
   - metal

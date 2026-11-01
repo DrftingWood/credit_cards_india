@@ -11,10 +11,10 @@ co_brand:
   category: other
   partner_website: https://gokiwi.in
 status: active
-launched_on: 2024-06-01
+launched_on: '2024-07-04'
 discontinued_on: null
 fees:
-- effective_from: 2024-06-01
+- effective_from: '2026-10-27'
   effective_until: null
   joining_fee_inr: 0
   annual_fee_inr: 0
@@ -22,20 +22,33 @@ fees:
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.99
   cash_advance_fee:
-    pct: 2.5
-    min_inr: 300
+    pct: 0
+    min_inr: 0
   gst_applicable: true
-  notes: Lifetime-free virtual RuPay credit card issued by YES Bank in partnership
-    with GoKiwi (often issued on the YES Bank Klick RuPay card bin). Optional paid
-    Kiwi Neon subscription (Rs. 999/yr) unlocks higher milestone UPI cashback and
-    lounge vouchers.
+  notes: Lifetime-free virtual RuPay card issued by YES Bank through Kiwi; YES Bank
+    SOC lists cash advance fee as nil on its virtual RuPay/Klick variant. Current
+    YES Bank notice effective 15-Jun-2026 sets Klick/RuPay Virtual FX markup to 3.5%
+    and fuel waiver transaction range to ₹500–₹3,000.
   source:
-    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/klick-credit-card
-    retrieved_on: 2026-10-24
-    type: issuer-page
+    url: https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONT8966189EF8734F58919CDA61BAFF0D96/native/communication_group_1_final_sms.pdf?download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
     confidence: high
+    local_refs:
+    - docs/sources/yes/klick/yesbank-mitc-v18-current-2026-10-26.pdf
+    - docs/sources/yes/klick/klick-user-guide.pdf
+    notes: 'YES BANK notice effective 15-Jun-2026: Klick and RuPay virtual markup
+      3.5%; fuel waiver range ₹500–₹3,000, existing cycle cap unchanged. YES BANK
+      current SOC/MITC lists nil cash advance fee for Klick-RuPay/virtual card. Kiwi
+      card is virtual only.'
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-- effective_from: 2024-06-01
+- effective_from: '2026-10-27'
   effective_until: null
   currency: cashback
   currency_name: Kiwis
@@ -44,6 +57,9 @@ rewards:
     per_inr: 100
     unit_value_inr: 0.25
     unit_value_inr_realized: 0.25
+    notes: 'Kiwis on eligible online transactions for Kiwi-issued card since 04-Jul-2024:
+      2 Kiwis per ₹100 (0.5% at ₹0.25/Kiwi). Kiwis accrue only on ₹100 spend increments,
+      rounded down; they are not issued on every partial-₹100 remainder.'
   accelerated:
   - category: upi-scan-and-pay
     multiplier: 3
@@ -51,10 +67,10 @@ rewards:
     cap_per_cycle: unlimited
     cap_unit: cashback-inr
     cycle: monthly
-    notes: 1.5% flat cashback (6 Kiwis per Rs. 100 at 4 Kiwis = Re. 1) on eligible
-      merchant UPI Scan & Pay transactions via the Kiwi app (2% base / up to 5% on
-      Rs. 1.5L annual spend for optional Kiwi Neon subscribers). Base non-UPI online/POS
-      spend earns 0.5% (2 Kiwis per Rs. 100).
+    notes: For non-Neon cardholders, eligible Kiwi-app merchant Scan & Pay transactions
+      earn 6 Kiwis per ₹100 (1.5%). The Kiwi-issued-card rewards policy caps monthly
+      Kiwis at 1% of assigned credit limit; Kiwis are worth ₹0.25 each. Kiwi Neon
+      members instead get 2% scan-and-pay rate, subject to membership terms.
     canonical_categories:
     - other
   exclusions:
@@ -68,64 +84,196 @@ rewards:
   - government
   - jewellery
   - cash-advance
+  - other
   mcc_exclusions:
+  - '0742'
+  - '0743'
+  - '0744'
+  - '0763'
+  - 0780
+  - 0820
+  - 0821
+  - 0822
+  - 0823
+  - 0824
+  - 0825
+  - '4784'
+  - '4789'
+  - '4812'
+  - '4813'
+  - '4814'
+  - '4816'
+  - '4821'
+  - '4829'
+  - '4899'
+  - '4900'
+  - '5094'
+  - '5172'
+  - '5451'
+  - '5511'
+  - '5521'
+  - '5531'
+  - '5532'
+  - '5533'
+  - '5541'
+  - '5542'
+  - '5599'
+  - '5944'
+  - '5947'
+  - '5960'
+  - '5962'
+  - '5964'
+  - '5965'
+  - '5967'
+  - '5968'
+  - '5969'
+  - '5983'
+  - '6011'
+  - '6012'
+  - '6051'
+  - '6300'
+  - '6381'
+  - '6399'
   - '6513'
+  - '6529'
+  - '6540'
+  - '7311'
+  - '7512'
+  - '7523'
+  - '7531'
+  - '7535'
+  - '7538'
+  - '7631'
+  - '8111'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8675'
+  - '8931'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9400'
+  - '9402'
+  - '9405'
+  - '9700'
+  - '9701'
+  - '9702'
+  - '9751'
+  - '9754'
+  - '9950'
   capping_rules:
-  - 4 Kiwis = Re. 1 (Rs. 0.25 per Kiwi), redeemable instantly as direct bank account
-    cashback in the Kiwi app.
-  - Standard non-Neon cardholders earn 1.5% (6 Kiwis per Rs. 100) on UPI Scan & Pay
-    and 0.5% (2 Kiwis per Rs. 100) on non-UPI online spends; Monthly Kiwi cashback
-    is capped at 1% of credit limit (or per Kiwi T&C).
+  - 'Kiwi-issued-card rewards policy: maximum monthly earn is 1% of assigned credit
+    limit measured in Kiwis; at ₹0.25 per Kiwi, this is equivalent to 0.25% of limit
+    in cash value. Kiwis accrue per ₹100 transaction increment (fractions rounded
+    down).'
+  - Minimum redemption is 500 Kiwis and redemptions must be in multiples of 500; Kiwis
+    can be redeemed to the customer’s linked goaxb UPI ID.
+  - Reward exclusions are determined by merchant category code. Direct educational
+    institution payments may earn even though third-party-app education payments do
+    not; policy also excludes agriculture, horticulture/veterinary, business services,
+    government, marketing/advertising, professional services, retail/fuel, tolls,
+    utilities, and miscellaneous/financial/insurance/real-estate/gift-card merchant
+    codes.
   redemption:
   - type: cashback-bank
     program: Kiwi App Instant Cashback
     rate_inr_per_unit: 0.25
-    constraints: 4 Kiwis = Re. 1 (Rs. 0.25/unit); instant credit to the user's linked
-      bank account via the Kiwi app.
+    constraints: 4 Kiwis = ₹1. Redeem 500 Kiwis minimum and in multiples of 500 to
+      a linked goaxb UPI ID.
   source:
-    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/klick-credit-card
-    retrieved_on: 2026-10-24
-    type: issuer-page
+    url: https://gokiwi.in/rewards-policy-v2/
+    retrieved_on: '2026-10-27'
+    type: other
     confidence: high
-    notes: 'Modelled in Kiwis (4 Kiwis = Re. 1, unit_value_inr: 0.25): 2 Kiwis/Rs.
-      100 (0.5%) base non-UPI and 6 Kiwis/Rs. 100 (1.5%) on UPI Scan & Pay via Kiwi
-      app.'
+    notes: 'Kiwi Rewards Policy current page, sections 1–3: rewards for cards issued
+      via Kiwi since 04-Jul-2024, ₹100 earn increments, ₹0.25 per Kiwi, monthly cap
+      of 1% of credit limit, excluded MCC schedule and minimum redemption. Neon and
+      Boost terms are separately described under current linked membership policies.'
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].redemption[0].rate_inr_per_unit
 benefits:
-- effective_from: 2024-06-01
+- effective_from: '2026-10-27'
   effective_until: null
-  lounge_access: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 3
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+      notes: Optional Kiwi Neon subscribers receive one lounge pass for each annual
+        spend milestone reached at ?50,000, ?1 lakh, and ?1.5 lakh after joining;
+        one person per pass, maximum two hours, valid six months from issue. Not a
+        base-card benefit.
   fuel_surcharge_waiver:
     pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 5000
+    min_txn_inr: 500
+    max_txn_inr: 3000
     cap_per_cycle_inr: 250
-    cycle: monthly
+    cycle: statement
   concierge: false
   other:
-  - name: Optional Kiwi Neon Membership
-    description: Cardholders can optionally subscribe to Kiwi Neon (Rs. 999/yr) in
-      the Kiwi app to boost Scan & Pay UPI rewards to 2% (3% at Rs. 50k, 4% at Rs.
-      1L, 5% at Rs. 1.5L annual spend) and unlock milestone domestic airport lounge
-      vouchers.
+  - name: Optional Kiwi Neon membership
+    description: '₹999 plus taxes per year, select-user eligibility. On eligible Kiwi
+      card transactions, 2% scan-and-pay; annual membership spend milestones from
+      enrollment: ₹50,000 earns a total 3% on eligible annual spend and one lounge
+      pass, ₹1 lakh total 4% and one pass, ₹1.5 lakh total 5% and one pass. Each milestone
+      cashback is net of cashback already credited under the subscription. Monthly
+      cap is 1% of credit limit, excluding milestone cashback. Each lounge pass is
+      one-person, up to two hours and valid six months after issue.'
+  - name: Optional Kiwi Boost membership
+    description: ₹49 plus taxes for three months, select-user eligibility and no auto-renewal.
+      Increases eligible online transactions through Kiwi app from 0.5% to 1% while
+      active; Scan & Pay remains at its usual rate. Kiwis are worth ₹0.25 and are
+      redeemable in 500-Kiwi multiples.
   source:
-    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/klick-credit-card
-    retrieved_on: 2026-10-24
-    type: issuer-page
+    url: https://gokiwi.in/neon/neon2/
+    retrieved_on: '2026-10-27'
+    type: other
     confidence: high
+    notes: Kiwi Neon membership terms (effective 01-Feb-2025) and Kiwi Boost terms
+      (effective 29-Jun-2026) confirm select-user eligibility, prices, bonus rates,
+      annual spend milestones and lounge voucher access. YES BANK current MITC confirms
+      fuel waiver range/cycle cap.
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.lounge_access.domestic.visits_per_cycle
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: Apply digitally through the GoKiwi mobile app; virtual RuPay credit card
-    issued instantly upon video KYC approval.
+  notes: Kiwi card application and issue are digital through Kiwi app and subject
+    to Kiwi/YES BANK assessment; no numeric age, income, or bureau-score cutoff is
+    published in the sources reviewed.
+  source:
+    url: https://gokiwi.in/cards/yesbank/
+    retrieved_on: '2026-10-27'
+    type: other
+    confidence: medium
+    notes: Kiwi partner card page and Rewards Policy reviewed; numeric card applicant
+      thresholds not disclosed.
+    fields_verified: []
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/klick-credit-card
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-10-27'
   tags:
   - entry
   - cashback

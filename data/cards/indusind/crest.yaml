@@ -2,118 +2,162 @@ id: indusind-crest
 name: IndusInd Bank Crest Credit Card
 image_path: /cards/indusind/crest.webp
 issuer: indusind
-network: visa
-network_tier: infinite
+network: mastercard
+network_tier: world-elite
 tier: super-premium
 card_type: credit
 co_brand: null
-status: active
-launched_on: 2019-01-01
+status: on-hold
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2019-01-01
+- effective_from: 2026-10-26
   effective_until: null
-  joining_fee_inr: 5000
-  annual_fee_inr: 5000
-  fee_waiver: null
-  forex_markup_pct: 1.5
-  finance_charge_monthly_pct: 3.83
+  joining_fee_inr: 75000
+  annual_fee_inr: 10000
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+    conditions: Combined primary and add-on card spend of INR 10 lakh or more in the last anniversary year; annual fee reversed.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 2.99
   cash_advance_fee:
     pct: 2.5
-    min_inr: 500
+    min_inr: 300
   gst_applicable: true
-  notes: Super-premium metal card.
+  notes: Current snapshot verified 2026-10-26. Current consolidated MITC also lists a 1% + GST fee on cumulative fuel spends above INR 50,000 per statement cycle effective 2026-06-15. FY2026-27 issuance policy's list of cards currently actively issued omits Crest, although its product and benefits pages remain published for existing cardholders; status is therefore on-hold pending explicit issuer confirmation. Exact launch date not found.
   source:
-    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/crest-credit-card.html
-    retrieved_on: 2026-07-03
+    url: https://www.indusind.bank.in/in/en/microsites/crest/schedule-of-charges.html
+    retrieved_on: 2026-10-26
     type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    local_refs:
+    - docs/sources/indusind/crest/mitc-premium-retrieved-2026-10-26.pdf
 rewards:
-- effective_from: 2019-01-01
+- effective_from: 2026-10-26
   effective_until: null
   currency: points
   currency_name: Reward Points
   base:
     rate: 1
     per_inr: 100
-    unit_value_inr: 0.25
-    unit_value_inr_realized: 0.2
+    unit_value_inr: null
   accelerated:
-  - category: weekend-spend
-    multiplier: 2
-    effective_rate: 2
-    cap_per_cycle: unlimited
+  - category: international-spend
+    canonical_categories:
+    - international
+    multiplier: 2.5
+    effective_rate: 2.5
+    cap_status: not-published
     cap_unit: points
     cycle: monthly
-    notes: 2 RP per ₹100 on weekends; 1 RP per ₹100 on weekdays (base).
-    canonical_categories:
-    - dining
-    - entertainment
+    notes: Current Crest rewards page publishes 2.5 Reward Points per INR 100 for international transactions and 1 per INR 100 for domestic transactions; it does not publish an earning cap.
+    source:
+      url: https://www.indusind.bank.in/in/en/microsites/crest/crest-rewards-and-redemption.html/1000
+      retrieved_on: 2026-10-26
+      type: issuer-page
+      confidence: high
   exclusions:
   - fuel
-  - wallet-loads
-  - rent
-  - insurance-premiums
-  - emi
-  mcc_exclusions:
-  - '6513'
+  mcc_exclusions: []
   capping_rules:
-  - Cash redemption capped at 10,000 RP/calendar month (eff 1-Sep-2024).
+  - Cash redemption is capped at 10000 Reward Points per calendar month, effective 2024-09-01; this is a redemption cap, not an earning cap.
   redemption:
+  - type: cashback-bank
+    program: Cash credit
+    rate_inr_per_unit: 0.75
+    constraints: Minimum redemption 500 points; maximum 10000 points per calendar month. Current MITC lists a INR149 cash-redemption fee effective 2025-04-01.
+  - type: airmiles
+    program: Singapore Airlines KrisFlyer
+    rate_inr_per_unit: null
+    constraints: 2 Reward Points convert to 1 KrisFlyer mile; minimum 500 points. Partner terms apply.
   - type: catalog
     program: IndusMoments
-    rate_inr_per_unit: 0.25
+    rate_inr_per_unit: null
+    constraints: Merchandise, travel and other catalog redemption; issuer does not publish one fixed cash value for all options. Current MITC lists INR100 for non-cash redemption.
   source:
-    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/crest-credit-card.html
-    retrieved_on: 2026-07-03
+    url: https://www.indusind.bank.in/in/en/microsites/crest/crest-rewards-and-redemption.html/1000
+    retrieved_on: 2026-10-26
     type: issuer-page
-    confidence: medium
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.redemption[0].rate_inr_per_unit
+    local_refs:
+    - docs/sources/indusind/crest/mitc-premium-retrieved-2026-10-26.pdf
 benefits:
-- effective_from: 2019-01-01
+- effective_from: 2026-10-26
   effective_until: null
   lounge_access:
     domestic:
-      visits_per_cycle: unlimited
-      cycle: annual
+      visits_per_cycle: 2
+      cycle: quarterly
       guests_per_visit: 0
       via:
-      - visa
-      - dreamfolks
+      - mastercard
+      notes: Primary cardholder, subject to at least INR 500000 eligible spend in the preceding calendar quarter. Access is enabled from the July 2026 quarter after tracking began in April 2026.
     international:
-      visits_per_cycle: unlimited
-      cycle: annual
+      visits_per_cycle: 2
+      cycle: quarterly
       guests_per_visit: 0
       via:
-      - priority-pass
+      - loungekey
+      notes: Primary cardholder; complimentary visits are outside India. Guest visits are chargeable at up to USD 35 per person per visit.
   golf:
-    rounds_per_cycle: 4
+    rounds_per_cycle: 2
     cycle: monthly
-    lessons_per_cycle: 4
+    lessons_per_cycle: 2
+    notes: Effective 2026-03-10 per the dated issuer product-page update. Primary cardholder only; the live Crest golf subpage still says 3 games and lessons per month, which conflicts with the newer product-page notice and shared revised golf terms. Two active bookings at a time; games and lessons count together.
   concierge: true
   fuel_surcharge_waiver:
     pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 4000
+    min_txn_inr: 500
+    max_txn_inr: 10000
     cap_per_cycle_inr: null
     cycle: monthly
+    notes: Current published waiver band is INR500-INR10000 with no billing-cycle cap, effective 2024-05-05. Taxes on the surcharge are not waived. A separate 1% + GST fuel fee applies to cumulative fuel spends above INR50000 per statement cycle effective 2026-06-15.
   source:
     url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/crest-credit-card.html
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.golf.lessons_per_cycle
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    local_refs:
+    - docs/sources/indusind/crest/lounge-terms-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/crest/golf-terms-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/crest/fuel-waiver-retrieved-2026-10-26.pdf
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: 18
+  max_age: 70
   income_inr_annual:
-    salaried: 2500000
-    self_employed: 2500000
-  credit_score_min: 780
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
+  notes: Age 18-70 and India residence are published in the FY2026-27 general credit-card policy and FAQ, not as Crest-specific terms. The bank's general policy lists minimum income INR20000 but omits the period and employment split, so annual salaried/self-employed values are left unknown. Credit bureau threshold is internal/unpublished. The same policy's list of cards currently actively issued omits Crest; current product/benefits pages remain live for cardholders, so new-application status is treated as on-hold rather than discontinued.
 application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/crest-credit-card.html
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-26
   tags:
   - super-premium
-  - metal
   - golf
   - lounge
   - points

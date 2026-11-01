@@ -7,146 +7,255 @@ network_tier: infinite
 tier: super-premium
 card_type: credit
 co_brand:
-  partner: Avios
+  partner: Avios Group (AGL), Qatar Airways Group and British Airways Executive Club
   category: airline
 status: active
-launched_on: 2024-01-01
+launched_on: '2023-08-17'
 discontinued_on: null
 fees:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-13'
   effective_until: null
   joining_fee_inr: 10000
-  annual_fee_inr: 10000
+  annual_fee_inr: 5000
   fee_waiver: null
-  forex_markup_pct: 1.5
-  finance_charge_monthly_pct: 3.83
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.0
   cash_advance_fee:
-    pct: 2.5
-    min_inr: 500
+    flat_inr: 0
   gst_applicable: true
-  notes: 'Ultra-premium metal card. Choose airline loyalty programme: Qatar Airways
-    Privilege Club or British Airways Executive Club.'
+  notes: 'Current premium MITC dated 13-Oct-2026: joining fee INR10,000; annual fee INR5,000; cash advance transaction
+    fee waived; interest 3.00% per month on revolving credit and cash advances. Standard foreign currency markup
+    is 3.5%; it is discounted to 1.5% only for POS transactions at the selected preferred international destination.
+    MITC also lists 1% + GST DCC fee from 15-Jun-2026. Targeted lifetime-free offers may differ from the standard
+    schedule.'
   source:
-    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.flat_inr
+    method: manual-read
+    local_refs: &id001
+    - docs/sources/indusind/avios/MITC-Premium-retrieved-2026-10-27.pdf
+    - docs/sources/indusind/avios/Qatar-Avios-Cardholder-Agreement.pdf
+    - docs/sources/indusind/avios/British-Airways-Benefit-Guide.pdf
+    notes: DCC markup is not represented by the card fee schema. Interest on cash advances is still charged from
+      the transaction date despite waived transaction fee.
 rewards:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-27'
   effective_until: null
   currency: miles
   currency_name: Avios
   base:
-    rate: 2
-    per_inr: 100
-    unit_value_inr: 0.8
-    unit_value_inr_realized: 0.6
+    rate: 3
+    per_inr: 200
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: 3 Avios per INR200 on all other eligible spends, domestic and other international transactions. Avios
+      are credited directly to the selected Qatar Airways Privilege Club or British Airways Executive Club account;
+      no INR valuation asserted.
   accelerated:
-  - category: international-spend
+  - category: preferred-international-destination-pos
     canonical_categories:
     - international
-    - travel
     multiplier: 2
-    effective_rate: 4
-    cap_per_cycle: unlimited
+    effective_rate: 6
+    effective_per_inr: 200
+    cap_status: not-published
     cap_unit: miles
-    cycle: monthly
-    notes: Accelerated Avios on international / travel spends
+    notes: 6 Avios per INR200 on POS transactions at the single preferred international destination selected by
+      the cardholder. The 1.5% foreign currency markup discount applies to these POS transactions.
+    source: &id002
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
+      retrieved_on: '2026-10-27'
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.base.rate
+      - rewards.base.per_inr
+      - rewards.base.unit_value_inr
+      - rewards.base.unit_value_inr_realized
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].effective_per_inr
+      - rewards.accelerated[1].effective_rate
+      - rewards.accelerated[1].effective_per_inr
+      - rewards.accelerated[2].effective_rate
+      - rewards.accelerated[2].effective_per_inr
+      - rewards.exclusions
+      - rewards.mcc_exclusions
+      - rewards.redemption
+      method: manual-read
+      local_refs: *id001
+      notes: Current product page reward table and linked 5-Avios T&Cs; Avios credit 10 days after statement generation
+        for standard spend. Rewards are available only up to the assigned credit limit per statement cycle. Redemption
+        is governed by the chosen airline programme; current MITC exempts Avios from its usual reward redemption
+        fee.
+  - category: qatar-airways-or-british-airways-website-app
+    canonical_categories:
+    - travel
+    multiplier: 1.6667
+    effective_rate: 5
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: miles
+    notes: 5 Avios per INR200 on the selected partner airline website/app. With Qatar as selected program, the card
+      credits 3 Avios and Qatar credits the additional 2 subject to passenger/booking conditions. With British Airways
+      selected, all 5 are credited to the BA account in the following billing cycle.
+    source: *id002
+  - category: utilities-government-education-insurance
+    canonical_categories:
+    - utilities
+    - government
+    - education
+    - insurance
+    multiplier: 0.3333
+    effective_rate: 1
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: miles
+    notes: 1 Avios per INR200 on utilities, government services, education and insurance transactions.
+    source: *id002
   exclusions:
   - fuel
-  - wallet-loads
-  - rent
-  - insurance-premiums
-  - emi
-  mcc_exclusions:
-  - '6513'
-  transfer_partners:
-  - program: Qatar Airways Privilege Club
-    category: airline
-    ratio: '1:1'
-  - program: British Airways Executive Club
-    category: airline
-    ratio: '1:1'
+  mcc_exclusions: []
   redemption:
   - type: airmiles
-    program: Avios (Qatar / British Airways)
-    constraints: Earns Avios DIRECTLY (no bank-point -> partner conversion). Avios
-      pool 1:1 across British Airways, Qatar Privilege Club, Iberia Plus, Aer Lingus
-      AerClub and Finnair Plus — move freely between them. Realistic ~Rs 1.0-1.5 per
-      Avios on short Qatar/Finnair hops and Mumbai-London.
-    ratio: null
-    transfer_partners:
-    - partner_name: British Airways Avios
-      partner_type: airline
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: Avios pooling (same currency), free/anytime
-    - partner_name: Qatar Privilege Club (Avios)
-      partner_type: airline
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: Avios pooling (same currency), free/anytime
-    - partner_name: Iberia Plus (Avios)
-      partner_type: airline
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: Avios pooling (same currency), free/anytime
-    - partner_name: Aer Lingus AerClub (Avios)
-      partner_type: airline
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: Avios pooling (same currency), free/anytime
-    - partner_name: Finnair Plus (Avios)
-      partner_type: airline
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: Avios pooling (same currency), free/anytime
-    rate_inr_per_unit: 0.8
-  source:
-    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
-    retrieved_on: '2026-07-05'
-    type: issuer-page
-    notes: '2026-07-05: card credits Avios directly; the only ''conversion'' is free
-      1:1 pooling across the 5 Avios schemes.'
+    program: Qatar Airways Privilege Club or British Airways Executive Club (selected programme)
+    constraints: Avios are credited directly to the selected airline loyalty account and redeemed under that programme?s
+      terms. The issuer no longer supports the old claim that the card earns into five Avios schemes or that the
+      bank performs 1:1 partner transfers.
+  source: *id002
 benefits:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-27'
   effective_until: null
   lounge_access:
     domestic:
-      visits_per_cycle: unlimited
-      cycle: annual
+      visits_per_cycle: 2
+      cycle: quarterly
       guests_per_visit: 0
       via:
       - visa
-      - dreamfolks
     international:
-      visits_per_cycle: unlimited
-      cycle: annual
+      visits_per_cycle: 2
+      cycle: quarterly
       guests_per_visit: 0
       via:
       - priority-pass
-  concierge: true
+  welcome:
+  - condition: Joining fee received; choose Qatar Airways Privilege Club or British Airways Executive Club as preferred
+      loyalty programme
+    benefit: 20,000 bonus Avios credited to the selected programme after joining fee receipt
+    value_inr: null
+  milestones:
+  - spend_inr: 800000
+    cycle: annual
+    benefit: 18,000 bonus Avios after the first INR800,000 spend milestone in the year
+    value_inr: null
+    trigger_window: anniversary-year
+  - spend_inr: 800000
+    cycle: annual
+    benefit: Another 18,000 bonus Avios after the second INR800,000 spend milestone in the year (up to 36,000 total/year)
+    value_inr: null
+    trigger_window: anniversary-year
+  insurance:
+  - type: travel-medical
+    sum_insured_amount: 25000
+    sum_insured_currency: USD
+    conditions: Issuer calls this international travel health cover (page text also says personal air accident cover).
+      Pays eligible hospitalisation costs for accidental injury or illness on an international trip; cardholder
+      and accompanying spouse; trip up to 60 days; ticket must be booked with this card; covered ages up to 65;
+      reimbursement basis.
+    sum_insured_inr: null
+  - type: other
+    sum_insured_inr: 100000
+    conditions: 'Travel insurance: lost baggage; subject to current issuer/OIC policy terms.'
+  - type: other
+    sum_insured_inr: 25000
+    conditions: 'Travel insurance: delayed baggage; subject to current issuer/OIC policy terms.'
+  - type: other
+    sum_insured_inr: 50000
+    conditions: 'Travel insurance: loss of passport; subject to current issuer/OIC policy terms.'
+  - type: other
+    sum_insured_inr: 25000
+    conditions: 'Travel insurance: lost ticket; subject to current issuer/OIC policy terms.'
+  - type: other
+    sum_insured_inr: 25000
+    conditions: 'Travel insurance: missed flight connection; subject to current issuer/OIC policy terms.'
+  - type: lost-card-liability
+    conditions: Total Protect covers unauthorized transactions up to 48 hours before loss is reported and counterfeit
+      fraud; claimed maximum is limited by the card credit limit and policy terms.
+    sum_insured_inr: null
   fuel_surcharge_waiver:
     pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 4000
+    min_txn_inr: null
+    max_txn_inr: null
     cap_per_cycle_inr: null
     cycle: monthly
+  concierge: true
+  other:
+  - name: Avios renewal benefit
+    description: 5,000 bonus Avios credited to the selected Qatar Airways Privilege Club or British Airways Executive
+      Club account after renewal fee receipt.
+  - name: Airport meet-and-greet
+    description: Two complimentary services per anniversary year at eligible international airports; primary cardholder
+      or accompanying travel companion while the primary cardholder is present.
+  - name: Elderly care concierge
+    description: Access to elderly-care assistance arrangements for family members in India; third-party service
+      costs are payable by the cardholder.
   source:
     url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome[0]
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[1].spend_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.insurance
+    method: manual-read
+    local_refs: *id001
+    notes: Current issuer product page and linked benefit/insurance terms. International Priority Pass requires
+      a separately requested membership; two visits per calendar quarter are complimentary. Additional PP visits
+      and guest visits can incur up to USD35 per person. Domestic lounge benefit is two participating lounges per
+      calendar quarter using the card. Meet-and-greet quota is two per anniversary year. The page still advertises
+      10% Qatar flight savings, but its linked promotion expired 31-Mar-2026 and is not asserted as a current benefit.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 2500000
-    self_employed: 2500000
-  credit_score_min: 780
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
+  notes: The current issuer product page does not publish card-specific age, income or credit-score thresholds.
+    The general application page does not provide an Avios-specific numeric rule; keep all such thresholds unknown.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.credit_score_min
+    - eligibility.residency
+    method: manual-read
+    local_refs: *id001
 application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - super-premium
   - metal

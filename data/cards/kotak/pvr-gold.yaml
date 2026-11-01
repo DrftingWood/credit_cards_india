@@ -1,125 +1,127 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: kotak-pvr-gold
-name: PVR INOX Kotak Gold Credit Card
+﻿id: kotak-pvr-gold
+name: PVR Kotak Gold Credit Card
 image_path: /cards/kotak/pvr-gold.webp
 issuer: kotak
-network: visa
-network_tier: classic
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
   partner: PVR INOX
   category: lifestyle
   partner_website: https://www.pvrinox.com
-status: discontinued
-launched_on: 2019-01-01
-discontinued_on: 2026-07-03
-
-# Link check 2026-10-20: the cited product URL is a 404. Kotak's credit-card listing
-# (https://www.kotak.bank.in/en/personal-banking/cards/credit-cards.html) shows
-# "PVR Kotak Gold Credit Card ... Discontinued for new applications" with no product
-# page, which confirms status: discontinued. The dead URLs are kept as the historical
-# citation. Exact sunset date unknown, so discontinued_on stays the observed date.
-
+status: on-hold
+launched_on: null
+discontinued_on: null
 fees:
-  - effective_from: 2019-01-01
-    effective_until: 2026-07-03
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver:
-      spend_inr: 75000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
-      retrieved_on: 2026-04-15
-      type: issuer-page
-
+- effective_from: '2026-03-12'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 499
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Current published KFS version KFSPGP12032026. Card is discontinued for new applications; existing cardholder fee schedule remains published.
+  source:
+    url: https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/key-fact-statement-kfs-pvr.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    verified_by: agent
+    method: pdf-extract
 rewards:
-  - effective_from: 2019-01-01
-    effective_until: 2026-07-03
-    currency: points
-    currency_name: PVR Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: pvr-tickets-fnb
-        canonical_categories: [entertainment]
-        multiplier: 1
-        effective_rate: 3
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        merchants: [pvr, inox]
-        notes: "3% value-back on PVR / INOX tickets and F&B."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: voucher
-        program: PVR movie vouchers
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
-      retrieved_on: 2026-04-15
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: cashback
+  currency_name: null
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  capping_rules:
+  - Kotak's cardholder terms do not list PVR Gold among cards participating in the Reward Points Programme; card value is delivered through ticket milestones and PVR INOX discounts.
+  redemption: []
+  source:
+    url: https://www.kotak.bank.in/content/dam/Kotak/Customer-Service/others/credit_card_tandc.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: medium
+    fields_verified:
+    - rewards.currency
+    - rewards.base.rate
+    verified_by: agent
+    method: pdf-extract
+    notes: No ambient Kotak reward-points earn programme is established for this card; the points currency is a schema placeholder only.
 benefits:
-  - effective_from: 2019-01-01
-    effective_until: 2026-07-03
-    lounge_access: null
-    movies:
-      type: free
-      partner: PVR INOX
-      max_per_cycle: 4
-      cycle: quarterly
-      cap_inr: 300
-      notes: "4 complimentary PVR INOX movie tickets per quarter on min spend of ₹10,000/month."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 3500
-      cycle: annual
-    concierge: false
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
-      retrieved_on: 2026-04-15
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access: null
+  movies:
+    type: free
+    partner: PVR INOX
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 800
+    notes: >-
+      1 ticket worth up to INR 400 at INR 10,000 eligible monthly billing-cycle spend; 2 tickets total worth up to INR 400 each at INR 15,000. Eligible spend exclusions include utility, education, wallet load, rent and online skill-based gaming. Coupon redemption is one movie ticket per M-coupon. Separate instant discounts: 5% on movie tickets and 20% on food and beverages per the product page; Kotak's main card listing instead says 15% cashback on food and beverages. Discount stacking and exact qualifying-spend details remain unclear.
+  fuel_surcharge_waiver: null
+  concierge: null
+  other:
+  - name: PVR INOX food and beverage discount
+    description: Product page states 20% instant discount; main Kotak card listing states 15% cashback. Kept the product-page offer and logged the conflict; no cash value assumed.
+  - name: PVR INOX movie ticket discount
+    description: Product page states 5% instant discount on PVR INOX movie tickets.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-gold-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits.movies
+    - benefits.other
+    verified_by: agent
+    method: manual-read
+    notes: Product page has current offer terms but card listing marks this product discontinued for new applications. How-to-use page says each M-coupon redeems against one movie ticket. KFS does not state a fuel surcharge waiver; no waiver modeled.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Kotak FAQ specifies age 21â€“65, Indian residency, and income/employment documentation; numerical income and credit-score cutoffs are not published.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/credit-card-faqs.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
+    verified_by: agent
+    method: manual-read
 application:
-  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-gold-credit-card.html
-
+  apply_url: null
 metadata:
-  last_verified_on: '2026-10-24'
-  last_swept_on: 2026-07-03
-  tags: [co-branded, movies, pvr, entry]
+  last_verified_on: '2026-10-26'
+  tags:
+  - co-branded
+  - movies
+  - pvr
+  - entry
+  - discontinued
+

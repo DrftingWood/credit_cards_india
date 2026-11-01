@@ -1,129 +1,154 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: standard-chartered-super-value-titanium
 name: Standard Chartered Super Value Titanium Credit Card
 image_path: /cards/standard-chartered/super-value-titanium.webp
 issuer: standard-chartered
-network: visa
-network_tier: platinum
+network: mastercard
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2018-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-01-01
-    effective_until: null
-    joining_fee_inr: 750
-    annual_fee_inr: 750
-    fee_waiver:
-      spend_inr: 60000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Fuel/utility/telecom cashback card. Dial-a-loan & balance transfer at 0.99% p.m. (first 6 months)."
-    source:
-      url: https://www.sc.bank.in/credit-cards/super-value-titanium/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 750
+  annual_fee_inr: 750
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 3.0
+    min_inr: 300
+  gst_applicable: true
+  notes: Current tariff lists INR750 first-year and renewal fees; no card-specific waiver found on the current
+    product page. A separate pre-approved lead page says waiver at INR90,000 annual spend, conflicting with
+    the product page/tariff; not encoded as a general waiver. Supplementary card fees are nil.
+  source:
+    url: https://www.sc.bank.in/credit-cards/tariffs-and-charges/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/super-value-titanium/most-important-document-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2026-01-01
-    effective_until: null
-    currency: points
-    currency_name: 360 Reward Points
-    base:
-      rate: 1
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: fuel
-        canonical_categories: [fuel]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 200
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "5% cashback on fuel (max ₹100/txn, ₹200/month); transactions up to ₹2,000 eligible."
-      - category: utilities
-        canonical_categories: [utilities]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 100
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "5% cashback on utility bills (min txn ₹750, max ₹100/txn, ₹100/month)."
-      - category: telephone
-        canonical_categories: [utilities]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 100
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "5% cashback on phone/telephone bills (min txn ₹750, max ₹100/txn, ₹100/month)."
-    exclusions:
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "Each 5% category (fuel/phone/utility) capped ₹100/txn; fuel ₹200/month, phone ₹100/month, utility ₹100/month."
-    redemption:
-      - type: catalog
-        program: 360 Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.sc.bank.in/credit-cards/super-value-titanium/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: 'Verified 2026-07-05: generic SC 360 Reward Point = Rs0.25 catalogue (was placeholder Rs0.5).'
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: 360 Reward Points and cashback
+  base:
+    rate: 1
+    per_inr: 150
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: One reward point per INR150 on eligible other-category spending. The current card-specific terms do
+      not establish a fixed rupee value per point.
+  accelerated:
+  - category: fuel
+    canonical_categories:
+    - fuel
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 200
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 5% cashback; maximum INR100 per transaction and INR200 per statement cycle; eligible fuel transaction
+      amount must be INR2,000 or less. Fuel surcharge is included in the cashback percentage.
+  - category: utilities
+    canonical_categories:
+    - utilities
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 100
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 5% cashback on electricity, water and gas payments; minimum INR750, maximum INR100 per transaction
+      and per statement cycle; must be paid through Standard Chartered Billpay.
+  - category: telephone
+    canonical_categories:
+    - utilities
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 200
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 5% cashback on telephone bills; minimum INR750, maximum INR100 per transaction and INR200 per
+      statement cycle; must be paid through Standard Chartered Billpay.
+  exclusions:
+  - cash-advance
+  redemption:
+  - type: catalog
+    program: 360 Rewards
+    rate_inr_per_unit: null
+    constraints: Cashback redemption requires at least INR1,000 and is in INR500 multiples. Reward-point
+      redemption requires at least 500 points for catalogue products, vouchers or services. Current card-specific
+      sources do not establish a fixed rupee value per reward point.
+  source:
+    url: https://www.sc.bank.in/credit-cards/super-value-titanium/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/super-value-titanium/product-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+  notes: Current terms cap total cashback at INR500 per statement cycle across the customer's SC cards, including
+    supplementary cards. The current product page gives INR100 per-transaction limits; the linked 2019 T&C
+    states INR200 per fuel and telecom transaction, so the older terms conflict with the current product page.
+    Product terms exclude returned, disputed, unauthorized/fraudulent, charged-back transactions, finance charges
+    and card-account fees; cash advances and loans are ineligible for cashback. Cashback and points are both
+    credited to Rewards360. Removed unsupported old wallet/rent/insurance/EMI exclusions and MCC 6513.
 benefits:
-  - effective_from: 2026-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.sc.bank.in/credit-cards/super-value-titanium/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver: null
+  concierge: false
+  source:
+    url: https://www.sc.bank.in/credit-cards/super-value-titanium/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+  notes: Current product page states the 1% fuel-surcharge waiver was discontinued in August 2024. Premium
+    Banking clients may separately qualify for Priority Pass membership and conditional international lounge
+    access; this conditional Premium variant benefit is not represented as standard card access.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 360000
-    self_employed: 360000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Current product page states age 21–65, stable monthly income and bank sourcing-location requirements;
+    applications are subject to credit and policy checks. No occupation-specific annual income threshold or bureau
+    score cutoff is published.
+  source:
+    url: https://www.sc.bank.in/credit-cards/super-value-titanium/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
 application:
   apply_url: https://www.sc.bank.in/credit-cards/super-value-titanium/
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [entry, cashback, fuel, utilities, points]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - cashback
+  - fuel
+  - utilities
+  - points

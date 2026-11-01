@@ -2,108 +2,188 @@ id: bandhan-flare
 name: Bandhan Bank Flare Credit Card
 image_path: /cards/bandhan/flare.webp
 issuer: bandhan
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 2499
-    annual_fee_inr: 2499
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-      conditions: "Annual fee waived on ₹3,00,000 spend in the preceding year."
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.50
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "Joining ₹2,499, annual ₹2,499, low forex 1.99%."
-
+- effective_from: 2026-09-07
+  effective_until: null
+  joining_fee_inr: 2499
+  annual_fee_inr: 2499
+  fee_waiver:
+    spend_inr: 600000
+    cycle: annual
+    conditions: Renewal fee waived on minimum annual spend of ₹6,00,000.
+  forex_markup_pct: 1.99
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee:
+    pct: 3.5
+    min_inr: 500
+  overlimit_fee:
+    pct: 2.5
+    min_inr: 500
+  late_payment_slabs:
+  - up_to_inr: 99
+    fee_inr: 0
+  - up_to_inr: 500
+    fee_inr: 100
+  - up_to_inr: 5000
+    fee_inr: 500
+  - up_to_inr: 10000
+    fee_inr: 750
+  - up_to_inr: any
+    fee_inr: 1100
+  emi_conversion:
+    interest_pct_annual: null
+    processing_fee_pct: null
+    processing_fee_min_inr: null
+    notes: ₹99 + taxes flat processing fee; foreclosure fee is 3% of remaining outstanding (minimum ₹100 + taxes).
+  supplementary_card_fee_inr: 0
+  notes: Other current panel charges include rent payment fee of 1% capped at ₹250/transaction plus taxes, ₹100 reissue fee, ₹350 returned-payment fee, and nil branch cash-payment/outstation-cheque fees. EMI and rent fee details are not all representable in structured fields.
+  gst_applicable: true
+  source:
+    url: https://creditcards.bandhan.bank.in/card-details/Flare/
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.overlimit_fee
+    - fees.late_payment_slabs
+    - fees.supplementary_card_fee_inr
+    notes: Issuer fee panel confirms ₹2,499 + taxes joining/renewal, ₹6 lakh annual waiver, 1.99% forex, and 3.5% (minimum ₹500) cash withdrawal fee. Monthly finance rate is 2% for existing customers with CASA and 3.5% for new customers. The record uses the new-customer rate; existing CASA customers may pay less. Effective date is not stated; current terms were confirmed from the live issuer page on 2026-10-26.
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 10
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: Bandhan Delights
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "10 Reward Points per ₹200 spent."
-
+- effective_from: 2026-09-07
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 10
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  redemption:
+  - type: catalog
+    program: Bandhan Delights
+    rate_inr_per_unit: 0.25
+    constraints: The issuer Delights portal lists a ₹100 Flipkart SuperCoins voucher for 400 Delight Points (₹0.25 per point); this verifies that voucher route only, not one fixed rate for all catalogue or cashback redemptions. https://delights.bandhan.bank.in/
+  source:
+    url: https://creditcards.bandhan.bank.in/card-details/Flare/
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.redemption[0].rate_inr_per_unit
+    notes: Issuer card page confirms 10 reward points per ₹200 eligible spend and says points do not expire while the account is active; the Cardholder Agreement and MITC provide for immediate forfeiture on cancellation. The August 2026 MITC says purchase-earned points become redeemable in the next billing cycle and monthly milestone points after two months, with refunds/reversals adjusted against milestone awards. Delights catalogue supports ₹0.25 per point; no fixed realized value is assigned because redemption routes/outcomes can vary. The live value chart assumes travel spend of ₹25,000/month for an accelerated-reward value, but does not publish enough current T&C detail to model it. Card-specific spend exclusions remain unconfirmed.
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    welcome:
-      - condition: "Spend ₹25,000 within 60 days of issuance"
-        benefit: "Amazon Pay e-voucher worth ₹2,000"
-        value_inr: 2000
-        window_days: 60
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-      international:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-09-07
+  effective_until: null
+  welcome:
+  - condition: Spend ₹10,000 within the first 30 days of card issuance
+    benefit: Amazon Pay e-voucher worth ₹2,000
+    value_inr: 2000
+    window_days: 30
+  lounge_access:
+    domestic:
+      visits_per_cycle: 4
+      cycle: quarterly
+      guests_per_visit: 0
+    international:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+  movies:
+    type: discount
+    partner: BookMyShow
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 500
+    notes: 25% discount up to ₹500 once every month.
+  dining:
+    program: EazyDiner
+    discount_pct: 15
+    notes: Flare page's rotating hero carousel advertises 15% off up to ₹750 once every month; the detailed benefits panel separately lists the BookMyShow discount. Restaurant, payment and offer conditions are not published in the visible card-page panels.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 500
+    cycle: statement
+    notes: August 2026 MITC gives eligible transaction bounds of ₹500–₹5,000 and a ₹500 statement-cycle cap; the issuer value chart and product page also list the cap.
+  golf:
+    cycle: annual
+    lessons_per_cycle: 4
+    notes: Four complimentary golf lessons per calendar year, one per quarter.
+  milestones:
+  - spend_inr: 75000
+    cycle: monthly
+    benefit: 5,000 reward points on monthly spend of ₹75,000.
+    value_inr: null
+    reward_kind: points
+    reward_units: 5000
+    reward_currency_name: Reward Points
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  other:
+  - name: First EMI booking cashback
+    description: 10% cashback up to ₹750 on the first EMI conversion with a minimum 12-month tenure; applicable once.
+  source:
+    url: https://creditcards.bandhan.bank.in/card-details/Flare/
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    fields_verified:
+    - benefits.welcome
+    - benefits.lounge_access
+    - benefits.movies
+    - benefits.dining
+    - benefits.fuel_surcharge_waiver
+    - benefits.golf
+    - benefits.milestones
+    - benefits.other
+    notes: Current issuer page confirms the ₹2,000 Amazon Pay voucher after ₹10,000 spend in 30 days, 4 domestic and 1 international lounge visit per calendar quarter, 25% BookMyShow discount capped at ₹500/month, 5,000 points on ₹75,000 monthly spend, ₹500 statement-cycle fuel waiver, first-EMI cashback and four annual golf lessons. Via-network and detailed card-specific reward exclusions need confirmation; the August 2026 MITC supplies fuel transaction thresholds. The 19-Aug-2026 MITC says only primary cardholders receive complimentary lounge access; guests pay an airport-specific entry fee. Its monthly-milestone spend rule excludes fuel/petroleum and service stations; government and other lotteries/gambling; rentals/real estate; GCAS emergency services; postal services; tax, bail/bond, housekeeping and court/alimony/child-support payments; limousines/taxis; local/suburban transport, ferries, buses, bridges and tolls; utilities; insurance direct marketing/sales/underwriting/premiums; wallet loads; joining/annual fees; forex, GST/VAT, fuel surcharge, late fees, interest, surcharges, cheque-bounce fees, EMI processing/foreclosure, over-limit, card-reissue and other Bank fees. Effective date of the current terms is not stated.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 740
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Issuer page states indicative income above ₹12 lakh but does not specify period or gross/net basis; no annual threshold is modeled. The bank reserves approval discretion. Credit-score cutoff is unpublished.
+  source:
+    url: https://creditcards.bandhan.bank.in/card-details/Flare/
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
+    notes: Issuer eligibility panel states age 21–65, resident in India and indicative income above ₹12 lakh; income period/basis is unspecified.
 application:
-  apply_url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
-
+  apply_url: https://applycc.bandhan.bank.in/
 metadata:
-  last_verified_on: '2026-10-24'
-  tags: [premium, lounge, low-forex, points, lifestyle]
+  last_verified_on: '2026-10-26'
+  tags:
+  - premium
+  - lounge
+  - low-forex
+  - points
+  - lifestyle

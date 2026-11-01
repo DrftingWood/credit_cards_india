@@ -1,134 +1,185 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: au-vetta
+﻿id: au-vetta
 name: AU Bank Vetta Credit Card
-image_path: /cards/au/vetta.webp
+image_path: null
 issuer: au
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-04-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-04-01
-    effective_until: null
-    joining_fee_inr: 2999
-    annual_fee_inr: 2999
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 2999
+  annual_fee_inr: 2999
+  fee_waiver:
+    spend_inr: 150000
+    cycle: annual
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Current Vetta page also offers first-year annual-fee waiver after â‚¹40,000 retail spend within 90 days of card setup; schema fee_waiver represents the â‚¹1.5 lakh renewal waiver only.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current Vetta page publishes â‚¹2,999 annual fee, â‚¹40,000 first-year waiver spend in 90 days, and â‚¹1.5 lakh annual renewal-waiver spend. Current 30 Sep 2026 AU KFS/MITC confirms â‚¹2,999 joining and annual fees, 3.49% forex, 3.75% monthly finance and 2.5%/â‚¹500 cash advance. https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf
 rewards:
-  - effective_from: 2022-04-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 1
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: AU Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: 0.0025
+    unit_value_inr_realized: null
+    notes: Current page states up to 4 Reward Points per â‚¹100 but does not publish the base or category rates in text. AU Rewardz FAQ values ordinary points at 0.25 paise and e-vouchers at 0.20 paise.
+  accelerated: []
+  exclusions:
+  - fuel
+  - rent
+  - emi
+  - cash-advance
+  - government
+  - education
+  mcc_exclusions:
+  - '6513'
+  capping_rules:
+  - AU Card Member Agreement section 23.5 places Vetta in the 25,000 Reward Point cap per statement cycle; sections 23.5.1 and 23.6 exclude rent, education/government, BBPS, EMI, fuel, cash withdrawal, quasi-cash, fees and charges. Utility/telecom earn 1 point per INR 100, capped at 100 points per transaction. https://www.au.bank.in/credit-cards/credit-card-member-agreement.pdf
+  redemption:
+  - type: catalog
+    program: AU Rewardz
+    rate_inr_per_unit: 0.0025
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    fields_verified:
+    - rewards.base.unit_value_inr
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.capping_rules
+    notes: Product page advertises up to 4 points/â‚¹100, without a text breakdown of base and category rates. AU Rewardz FAQ states 0.25 paise/point for ordinary catalogue redemptions and 0.20 paise for e-vouchers.
 benefits:
-  - effective_from: 2022-04-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
-    milestones:
-      - spend_inr: 0
-        cycle: annual
-        benefit: "1,000 Reward Points on any retail transaction on your birthday"
-        value_inr: 250
-        reward_kind: points
-        reward_units: 1000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 5000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: null
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      notes: One domestic visit is available in the calendar quarter after at least INR 50,000 of net retail spend in the preceding calendar quarter. Primary cardholders only; add-on cards are ineligible. A non-reversible INR 2 validation charge applies. This replaced same-quarter language in the prior record.
+    international:
+      visits_per_cycle: 4
+      cycle: annual
+      guests_per_visit: null
+      notes: One visit per calendar quarter outside India (four annually) using Priority Pass; Priority Pass use within India costs USD 35 plus GST, and excess international visits cost USD 35 plus applicable taxes. Priority Pass membership is issued on request for Vetta.
+  milestones:
+  - spend_inr: 0
+    cycle: annual
+    benefit: 1,000 Reward Points on any retail transaction on your birthday
+    value_inr: null
+    reward_kind: points
+    reward_units: 1000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 5000000
+    conditions: AU advertises up to INR 50 lakh. Generic AU insurance terms require an active card and an airline ticket purchased using an AU credit card; passenger-only coverage and policy exclusions apply.
+  - type: lost-card-liability
+    sum_insured_inr: null
+    conditions: Vetta page advertises zero liability for fraudulent transactions on a lost card after the loss is reported to AU; reporting and policy terms apply.
+  other:
+  - name: Railway lounge access
+    description: 2 complimentary railway lounge visits per calendar quarter; add-on cardholders can use the shared complimentary visits.
+  - name: Quarterly and yearly milestone benefits
+    description: AU advertises quarterly and yearly milestone benefits but publishes no qualifying spend thresholds or award details in accessible current Vetta page text; not modeled.
+  - name: Xpress EMI
+    description: EMI conversion is available on eligible transactions of INR 2,000 or more; tenures are selected by the cardholder. Processing fees and complete eligibility conditions are not stated on the Vetta page.
+  - name: Contactless usage
+    description: Pin-free payments at participating merchants up to INR 5,000.
+  - name: Add-on cards
+    description: AU advertises free add-on cards; quantity and eligibility conditions are not detailed on the Vetta page.
+  - name: Curated offers and priority support
+    description: Current page advertises selected ITC Hotels, Elivaas and Visa offers and priority customer support; offer terms and availability can vary.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: statement
+  concierge: true
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.lounge_access.international.cycle
+    - benefits.milestones[0].reward_units
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.other.0.description
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: "Current issuer page states one domestic and one international lounge visit per quarter. From 10 Apr 2026, INR 50,000 net retail spend in a calendar quarter unlocks domestic access in the next quarter; only primary cardholders qualify. International Priority Pass access is one per calendar quarter outside India; Priority Pass use within India and excess international visits are chargeable. Birthday benefit is 1,000 points on a retail transaction; spend_inr: 0 is a schema sentinel for an event-triggered benefit, not an issuer-published spend threshold. The product page advertises quarterly and yearly milestones without publishing their thresholds or award details. Fuel waiver is 1% on INR 400â€“5,000 transactions, capped at INR 100/statement. The current MITC lists 2 railway lounge visits/calendar quarter for Vetta; modeled separately as a card benefit note."
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 730
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Income and bureau-score thresholds previously stored were issuer-tier estimates without card-specific evidence;
+    keep unknown until the issuer publishes or confirms a product threshold. Broad minimum/maximum age figures without
+    an exact issuer evidence path or a source-verified occupational range were left unknown; this does not imply
+    there is no age criterion.
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    fields_verified:
+    - eligibility.residency
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/vetta-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, travel, low-forex, points]
+  last_verified_on: '2026-11-01'
+  tags:
+  - mid
+  - travel
+  - low-forex
+  - points

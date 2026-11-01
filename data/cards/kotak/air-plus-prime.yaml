@@ -1,132 +1,237 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: kotak-air-plus-prime
 name: Kotak Air+ Prime Credit Card
 image_path: /cards/kotak/air-plus-prime.webp
 issuer: kotak
 network: visa
-network_tier: signature
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2025-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-01-01
-    effective_until: null
-    joining_fee_inr: 3000
-    annual_fee_inr: 3000
-    fee_waiver: null
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Prime variant of Air+ — adds accelerated Air Miles on auto-dealer merchant spends."
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-prime-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 3000
+  annual_fee_inr: 3000
+  fee_waiver:
+    spend_inr: 400000
+    cycle: annual
+    conditions: Retail spend in an anniversary year; rent, wallet, utility/telecom, education and transportation excluded from waiver spend.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Joining and annual fees are INR3,000 plus GST. No joining-fee waiver. Annual fee waiver at INR400,000 eligible retail spend in an anniversary year.
+  source:
+    url: https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/kfs-kotak-air-plus-prime-credit-card.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/air-plus-prime/kfs-air-plus-prime-2026-10-26.pdf
+    - docs/sources/kotak/air-plus-prime/mitc-wealth-white-reserve-2026-10-26.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].fee_waiver.spend_inr
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    notes: KFS version KFSA+P24042026 specifies INR3000 joining and annual fees, the annual waiver, 3.50% monthly interest (42% APR), cash advance 2.5% minimum INR500 and 2% forex/DCC. Consolidated MITC confirms current interest and foreign-exchange charges.
+    method: manual-read
 rewards:
-  - effective_from: 2025-01-01
-    effective_until: null
-    currency: miles
-    currency_name: Air Miles
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.70
-    accelerated:
-      - category: flight-hotel-via-unbox
-        canonical_categories: [travel]
-        multiplier: 2.5
-        effective_rate: 5
-        cap_per_cycle: 15000
-        cap_unit: miles
-        cycle: statement
-        notes: "5 Air Miles per ₹100 on flight/hotel (+ add-ons) via Kotak Unbox, capped 15,000 Air Miles/statement."
-      - category: auto-dealer-merchants
-        canonical_categories: [other]
-        multiplier: 2.5
-        effective_rate: 5
-        cap_per_cycle: 1500
-        cap_unit: miles
-        cycle: statement
-        mcc_list: ['5013', '5511', '5521', '5533']
-        notes: "5 Air Miles per ₹100 on select auto-dealer MCCs, capped 1,500 Air Miles/statement."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: airmiles
-        program: Kotak Unbox
-        rate_inr_per_unit: 1.0
-        constraints: "1 Air Mile = ₹1 on flight & hotel bookings via Kotak Unbox."
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-prime-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: miles
+  currency_name: Air Miles
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    excluded_categories:
+    - insurance
+  accelerated:
+  - category: flight-hotel-via-unbox
+    canonical_categories:
+    - travel
+    multiplier: 2.5
+    effective_rate: 5
+    cap_per_cycle: 15000
+    cap_unit: miles
+    cycle: statement
+    notes: 5 Air Miles per INR100 on flight, flight add-ons, hotel and hotel add-ons booked via Kotak Unbox, capped at 15,000 Air Miles per statement cycle; after the cap, the 2 Air Mile base rate continues.
+  - category: auto-dealer-merchants
+    canonical_categories:
+    - other
+    multiplier: 2.5
+    effective_rate: 5
+    cap_per_cycle: 1500
+    cap_unit: miles
+    cycle: statement
+    mcc_list:
+    - '5013'
+    - '5511'
+    - '5521'
+    - '5533'
+    notes: 5 Air Miles per INR100 on eligible auto-dealer MCCs, capped at 1,500 Air Miles per statement cycle; after the cap the 2 Air Mile base rate continues.
+  - category: insurance-mcc-6300
+    canonical_categories:
+    - insurance
+    multiplier: 1
+    effective_rate: 2
+    cap_per_cycle: 25000
+    cap_unit: spend-inr
+    cycle: statement
+    mcc_list:
+    - '6300'
+    notes: 2 Air Miles per INR100 on insurance MCC 6300, on cumulative spend up to INR25,000 per statement cycle.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - utilities
+  - international
+  - emi
+  - cash-advance
+  - education
+  mcc_exclusions:
+  - '4812'
+  - '4814'
+  - '4899'
+  - '4900'
+  - '5960'
+  - '6381'
+  - '6399'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '9950'
+  - '6513'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5552'
+  - '5983'
+  - '6540'
+  - '5816'
+  - '7994'
+  redemption:
+  - type: airmiles
+    program: Kotak Unbox travel
+    rate_inr_per_unit: 1.0
+    constraints: 1 Air Mile = INR1 for flight, flight add-ons, hotel and hotel add-ons booked via Kotak Unbox; miles can fund at most 80% of booking value.
+  - type: voucher
+    program: Kotak Unbox vouchers
+    rate_inr_per_unit: 0.5
+    constraints: Detailed Prime T&Cs state 1 Air Mile = INR0.50 on instant vouchers. The current product webpage instead displays INR5; this tenfold value conflict is unresolved.
+  source:
+    url: https://images.kotak.bank.in/bank/mailers/2026/files/Detailed%20T%26C_Kotak%20Air%2B%20Prime%20Credit%20Card-Clean%20copy.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: medium
+    local_refs:
+    - docs/sources/kotak/air-plus-prime/air-plus-prime-terms-2026-10-26.pdf
+    - docs/sources/kotak/air-plus-prime/mitc-wealth-white-reserve-2026-10-26.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].accelerated[0].cap_per_cycle
+    - rewards[0].accelerated[1].effective_rate
+    - rewards[0].accelerated[1].cap_per_cycle
+    - rewards[0].accelerated[2].effective_rate
+    - rewards[0].accelerated[2].cap_per_cycle
+    notes: Current issuer Prime T&Cs give base 2 Air Miles per INR100, travel/auto 5 per INR100 with separate statement-cycle caps, 2 per INR100 on insurance MCC6300 up to INR25,000 spend, and exclude international transactions. T&Cs value travel redemptions at INR1 per Air Mile but voucher purchases at INR0.50; the current card page says voucher value INR5. Values were left variable rather than setting one generic Air Mile value. Partner transfer ratios are generally 2:1 for listed airlines and Accor, and 3:1 for Marriott.
+    method: manual-read
 benefits:
-  - effective_from: 2025-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    welcome:
-      - condition: "Card activation"
-        benefit: "Bonus Air Miles (welcome + renewal)"
-        value_inr: null
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 3500
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 4
       cycle: annual
-    concierge: false
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-prime-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      guests_per_visit: 0
+      via:
+      - visa
+    international:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  welcome:
+  - condition: Pay the joining fee; credited within 120 days of card issuance.
+    benefit: 3,000 welcome Air Miles credited within 120 days
+    value_inr: null
+    window_days: 120
+  - condition: Pay the annual fee; credited within 30 days of fee payment.
+    benefit: 3,000 renewal Air Miles after each anniversary year, credited within 30 days of annual fee payment
+    value_inr: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 7500
+    cap_per_cycle_inr: 4500
+    cycle: annual
+  concierge: null
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-prime-credit-card/features.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/air-plus-prime/air-plus-prime-terms-2026-10-26.pdf
+    fields_verified:
+    - benefits[0].lounge_access.domestic.visits_per_cycle
+    - benefits[0].lounge_access.international.visits_per_cycle
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.min_txn_inr
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: 4 domestic lounge visits/calendar year (maximum 2/calendar quarter) and 2 international/calendar year for primary cardholder only. INR2 domestic lounge validation charge; USD1 international validation charge reversed within 7 working days; post-quota international visits cost USD35. Fuel waiver 1% on INR400-INR7,500, max INR4,500 per anniversary year. No Air Miles on fuel or international transactions.
+    method: manual-read
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: 18
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: General Kotak eligibility page requires applicants to be at least 18, salaried or self-employed, meet bank-set income requirements and provide income proof; numeric income cutoff, upper age and minimum credit score for Air+ Prime are not published.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.residency
+    notes: Current Kotak eligibility overview states minimum age 18 and lists salaried/self-employed applicants, minimum income criteria and required documents. It does not publish Air+ Prime-specific income or score cutoffs.
+    method: manual-read
 application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-prime-credit-card.html
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, miles, travel, lounge]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - miles
+  - travel
+  - lounge

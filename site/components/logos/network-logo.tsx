@@ -12,7 +12,7 @@ import type { NetworkRecord, Network } from "@/lib/types";
  */
 
 interface NetworkLogoProps {
-  network: NetworkRecord | Network;
+  network: NetworkRecord | Network | null;
   /** Height in pixels. The width scales to preserve the logo's aspect ratio. */
   height?: number;
   /** Optional className on the wrapper. */
@@ -28,6 +28,9 @@ const NETWORK_NAMES: Record<Network, string> = {
 };
 
 export function NetworkLogo({ network, height = 18, className }: NetworkLogoProps) {
+  if (network === null) {
+    return <span className={className} aria-label="Network not stated">Network not stated</span>;
+  }
   const isRecord = typeof network !== "string";
   const slug = isRecord ? network.id : network;
   const name = isRecord ? network.name : NETWORK_NAMES[slug as Network] ?? slug;

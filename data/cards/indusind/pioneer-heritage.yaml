@@ -1,110 +1,242 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-pioneer-heritage
 name: IndusInd Bank Pioneer Heritage Credit Card
 image_path: /cards/indusind/pioneer-heritage.webp
 issuer: indusind
-network: visa
-network_tier: infinite
+network: null
+network_tier: null
 tier: invite-only
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2015-01-01
+launched_on: 2020-12-17
 discontinued_on: null
-
 fees:
-  - effective_from: 2015-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Invite-only Pioneer Heritage banking metal card."
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 100000
+  annual_fee_inr: 25000
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+    conditions: Waived on qualifying spends of ₹10 lakh or more in the preceding anniversary year. Actual fee communicated at application and select offers may differ.
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: 2.99
+  cash_advance_fee:
+    pct: 0
+    min_inr: 0
+  gst_applicable: true
+  notes: Current MITC lists ₹1,00,000 joining and ₹25,000 annual fee (waivable at ₹10 lakh). It states Pioneer Heritage is exempt from cash-advance charges. The benefit guide describes a joining-fee offer; actual application plan may differ. Current term waives foreign-currency markup.
+  source:
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/pioneer-heritage/mitc-premium-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2015-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1.5
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "Reward rates/caps"
-    redemption:
-      - type: catalog
-        program: IndusMoments
-        rate_inr_per_unit: 0.25
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1
+    unit_value_inr_realized: 1
+    notes: Base domestic earning. International transactions earn 2.5 points per ₹100. Selected categories earn 0.7 per ₹100 regardless of domestic/international status.
+  accelerated:
+  - category: international-spend
+    effective_rate: 2.5
+    effective_per_inr: 100
+    canonical_categories:
+    - international
+    cap_status: not-published
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-26
       type: issuer-page
-
+      confidence: high
+  - category: utilities, insurance, government, education and rent
+    effective_rate: 0.7
+    effective_per_inr: 100
+    canonical_categories:
+    - utilities
+    - insurance
+    - government
+    - education
+    - rent
+    cap_status: not-published
+    source:
+      url: https://www.indusind.bank.in/in/en/personal/revision-indusInd-bank-credit-card-rewards-program.html
+      retrieved_on: 2026-10-26
+      type: issuer-page
+      confidence: high
+  exclusions:
+  - fuel
+  - wallet-loads
+  - cash-advance
+  - emi
+  mcc_exclusions: []
+  capping_rules:
+  - No issuer-stated earning cap found. Current Pioneer rewards terms say redemption is capped at 50,000 points per calendar month across options; the product page retains an older 30,000-point cash-credit cap. The newer terms are modeled and the discrepancy is documented. Cash credit minimum is 500 points.
+  redemption:
+  - type: statement-credit
+    program: cash credit
+    rate_inr_per_unit: 1
+    min_units: 500
+    constraints: Maximum 50,000 points per calendar month per current Pioneer rewards terms.
+  - type: catalog
+    program: IndusMoments
+    rate_inr_per_unit: null
+    constraints: Catalogue value varies by redemption item; monthly redemption cap applies.
+  - type: airmiles
+    program: KrisFlyer
+    rate_inr_per_unit: null
+    ratio: '2:1'
+    constraints: Current product page specifies 2 Reward Points = 1 KrisFlyer mile; 50,000-point calendar-month redemption cap applies.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/pioneer-heritage/heritage-benefit-guide-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].effective_per_inr
+    - rewards.accelerated[1].effective_rate
+    - rewards.accelerated[1].effective_per_inr
+    - rewards.redemption[0].rate_inr_per_unit
+    - rewards.redemption[0].min_units
+    - rewards.redemption[1].rate_inr_per_unit
+    - rewards.redemption[2].ratio
+    - rewards.capping_rules
 benefits:
-  - effective_from: 2015-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 1
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 1
-        via: [priority-pass]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+      notes: Newer Heritage variant has unlimited access; erstwhile variant is limited to 2 visits per quarter. Select lounges and network eligibility apply; no spend gate is stated for Heritage.
+    international:
+      visits_per_cycle: unlimited
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      - loungekey
+      notes: Newer Heritage variant has unlimited access; erstwhile variant is limited to 2 visits per quarter. LoungeKey is Mastercard only. Guest visits are chargeable, up to USD35 each.
+  golf:
+    rounds_per_cycle: 4
+    lessons_per_cycle: 4
+    cycle: monthly
+    notes: Effective 10-Mar-2026; subject to at least ₹25,000 purchases/spends in the latest statement. Shared customer-level cap applies across eligible cards; Heritage entitlement is four games and four lessons monthly.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 10000
+    cap_per_cycle_inr: null
+    cycle: monthly
+  dining:
+    program: EazyDiner
+    discount_pct: null
+    notes: Issuer advertises ₹3,000 off dining bills twice a year at participating restaurants; booking and current offer conditions apply.
+  movies:
+    type: free
+    partner: BookMyShow
+    max_per_cycle: 4
+    cycle: quarterly
+    cap_inr: 1000
+    notes: Applies to current Heritage variant. Erstwhile variant has a separate BOGO offer with 3 monthly tickets capped at ₹700 each.
+  insurance:
+  - type: baggage-loss
+    sum_insured_inr: 100000
+    conditions: Lost baggage, up to stated sum; policy terms apply.
+  - type: other
+    sum_insured_inr: 25000
+    conditions: Delayed baggage, up to stated sum; policy terms apply.
+  - type: other
+    sum_insured_inr: 50000
+    conditions: Loss of passport, up to stated sum; policy terms apply.
+  - type: other
+    sum_insured_inr: 25000
+    conditions: Lost ticket, up to stated sum; policy terms apply.
+  - type: other
+    sum_insured_inr: 25000
+    conditions: Missed connection, up to stated sum; policy terms apply.
+  - type: fraud-liability
+    sum_insured_inr: null
+    conditions: Total Protect cover up to the card credit limit, including add-on cards; full policy terms apply.
+  concierge: true
+  welcome:
+  - condition: Joining fee plan of INR 100,000; actual fee and offer eligibility depend on application plan.
+    benefit: Choice of welcome vouchers
+    value_inr: 100000
+  other:
+  - name: BookMyShow non-movie events
+    description: Current Heritage variant offers 20% off or ₹350, whichever is lower, for every two tickets purchased; offer terms apply.
+  - name: Dining voucher
+    description: Issuer advertises ₹3,000 dining savings twice a year at participating restaurants; offer conditions apply.
+    value_inr: 3000
+  - name: ITC Club Culinaire
+    description: Discontinued effective 5-Oct-2025 for existing cardholders and 15-Sep-2025 for new cardholders; not treated as a current benefit.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/pioneer-heritage/heritage-benefit-guide-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/pioneer-heritage/fuel-surcharge-waiver-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/pioneer-heritage/pioneer-program-revision-2026.pdf
+    notes: Card variants have different entitlements. Current page distinguishes the newer Heritage card from an erstwhile variant; current database record models the newer benefit set. Visa/Mastercard issue variants and product naming/tier are not represented separately. The live page gives a 30,000-point monthly cash-credit cap, while current Heritage reward terms give a 50,000 cap across eligible redemption options; follow the newer terms and document the discrepancy.
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.golf.lessons_per_cycle
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.movies.max_per_cycle
+    - benefits.movies.cap_inr
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.insurance[1].sum_insured_inr
+    - benefits.insurance[2].sum_insured_inr
+    - benefits.insurance[3].sum_insured_inr
+    - benefits.insurance[4].sum_insured_inr
+    - benefits.welcome[0].value_inr
+    - benefits.other[0].value_inr
 eligibility:
-  min_age: 21
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 800
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Invite-only to IndusInd Pioneer banking clients."
-
+  notes: Invite-only for IndusInd Pioneer banking customers. Public numeric age, income and bureau-score cutoffs were not found in current card-specific sources reviewed.
 application:
-  apply_url: null
-
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [invite-only, points, metal]
+  last_verified_on: 2026-10-26
+  tags:
+  - invite-only
+  - points
+  - premium

@@ -1,13 +1,4 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: idfc-first-indigo
+﻿id: idfc-first-indigo
 name: IndiGo IDFC FIRST Dual Credit Card
 image_path: /cards/idfc-first/indigo.webp
 issuer: idfc-first
@@ -22,144 +13,562 @@ co_brand:
 status: active
 launched_on: 2025-08-18
 discontinued_on: null
-
-# Dual-network card — combines Mastercard (global acceptance, low forex)
-# with a RuPay chip for UPI transactions in a single plastic. Launched
-# 2025-08-18 as IndiGo × IDFC FIRST Bank partnership. Offered as either a
-# ₹4,999 joining-fee card or a ₹0-fee variant secured against a ₹1L FD.
-
 fees:
-  - effective_from: 2025-08-18
-    effective_until: null
-    joining_fee_inr: 4999
-    annual_fee_inr: 4999
-    fee_waiver: null
-    forex_markup_pct: 1.49
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Fee-based variant; FD-backed variant at ₹0 joining fee is available against a ₹1,00,000 fixed deposit pledge."
+- effective_from: 2025-08-18
+  effective_until: '2026-09-16'
+  joining_fee_inr: 4999
+  annual_fee_inr: 4999
+  fee_waiver: null
+  forex_markup_pct: 1.49
+  finance_charge_monthly_pct: null
+  cash_advance_fee: null
+  gst_applicable: true
+  notes: >-
+    Historical fee record through 16-Sep-2026. The card-specific historical purchase
+    APR and cash-advance fee were not verified in this pass and are left unknown.
+    Joining and annual fees are INR 4,999 + GST. Historical FD-backed minimum is
+    unresolved; the current product page conflicts between INR 50,000 and INR 1 lakh.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+    retrieved_on: 2026-07-03
+    type: issuer-page
+    confidence: high
+    notes: The legacy 1.49% rate was still shown on older issuer product/portfolio copy. IDFC FIRST announced zero
+      forex for all existing and new cards on 17 Sep 2026; see the next record.
+- effective_from: '2026-09-17'
+  effective_until: null
+  joining_fee_inr: 4999
+  annual_fee_inr: 4999
+  fee_waiver: null
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: >-
+    Fee-based joining route is â‚¹4,999 + GST and annual fee â‚¹4,999 + GST from year
+    two; FD-backed route has a â‚¹0 joining fee. The product page conflicts on the
+    FD minimum (â‚¹50,000 in headline/FAQ, â‚¹1,00,000 in application workflow), preserved
+    in the benefits notes. The live page contradicts its zero-forex headline/FAQ with
+    a stale paragraph saying 1.49%; the record follows the dedicated 0% FAQ and the
+    bank-wide 17-Sep-2026 notice. Merchant DCC may still apply if INR is selected abroad.
+    Current ATM advances cost a flat â‚¹199 + GST, have up to 45
+    interest-free days, and are limited to 10% of the assigned credit limit. Purchase
+    APR is dynamic (8.5%â€“46.2% p.a.); no cardholder-specific monthly rate is published.
+    Add-on cards cost â‚¹499 + GST each, up to three.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.flat_inr
+    notes: >-
+      Bank-wide zero-FX announcement dated 17-Sep-2026 applies to existing and new
+      cards. The current page conflicts with itself: headline/FAQ state zero forex but
+      one stale paragraph says 1.49%; the record follows the dedicated zero-FX FAQ and
+      bank-wide notice. DCC may still apply if INR is selected abroad. Current product
+      page states dynamic 8.5%-46.2% p.a. purchase APR and a
+      flat INR 199 + GST ATM fee; the precise APR varies by account and no monthly
+      value is inferred. ATM advances are interest-free up to 45 days and limited to
+      10% of the credit limit. Add-on cards are INR 499 + GST each, up to three. The
+      same page conflicts on the FD minimum: INR 50,000 in headline/FAQ versus INR
+      1 lakh in the application workflow; preserved as unresolved in benefits.
+      Zero-forex source:
+      https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/news-media/press-release/Press-Release-IDFC-FIRST-Bank-introduces-Zero-Forex-Markup-across-all-its-Credit-Cards-existing-and-new-1709.pdf
+    local_refs:
+    - docs/sources/idfc-first/indigo/current-mitc.pdf
+    - docs/sources/idfc-first/indigo/zero-forex-notice-2026-09-17.pdf
+rewards:
+- effective_from: '2026-10-25'
+  effective_until: '2026-10-25'
+  currency: miles
+  currency_name: IndiGo BluChips
+  loyalty_program: indigo-bluchip
+  base:
+    rate: 0.5
+    per_inr: 100
+    applies_to_categories:
+    - fuel
+    - utilities
+    - rent
+    - insurance
+    - education
+    - government
+    - wallet-loads
+  accelerated:
+  - category: general eligible retail
+    effective_rate: 3
+    effective_per_inr: 100
+    canonical_categories:
+    - online
+    - groceries
+    - dining
+    - entertainment
+    notes: 3 BluChips per ?100 on other eligible spend. This structured mapping excludes ambiguous "other" and channel-cross-cutting
+      UPI spend to avoid treating those as 3-point spend. Rate may be overstated for any portion of a broad spend
+      bucket paid through RuPay UPI, because UPI separately earns 0.5 and the current calculator has no payment-rail
+      split.
     source:
       url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-10-27'
       type: issuer-page
       confidence: high
-
-rewards:
-  - effective_from: 2025-08-18
-    effective_until: null
-    currency: miles
-    currency_name: IndiGo BluChips
-    loyalty_program: indigo-bluchip
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.6
-      unit_value_inr_realized: 0.45
-    accelerated:
-      - category: indigo-flights-direct
-        canonical_categories: [travel]
-        multiplier: 1
-        effective_rate: 22
-        card_attributable_rate: 6
-        card_attributable_per_inr: 100
-        stacks_with_program: true
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-        merchants: [indigo-web, indigo-app]
-        channel:
-          required: true
-          class: cobrand-merchant
-          merchants: [indigo-app, indigo-web]
-        notes: "Up to 22 visible BluChips per ₹100 on IndiGo web/app bookings. ~6 is card-attributable; the rest stacks from BluChip baseline + channel + tier earn (joined via loyalty_program: indigo-bluchip). Headline of 22 assumes top-tier BluChip status."
-      - category: dining-entertainment
-        canonical_categories: [dining, entertainment]
-        multiplier: 1
-        effective_rate: 3
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: voucher
-        program: IndiGo flights + 6E Prime add-ons
-        rate_inr_per_unit: 0.6
-        constraints: "IndiGo BluChip floats ~Rs0.40-0.60 toward IndiGo fares (min 500); no fixed value."
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].canonical_categories
+      notes: 'Card-specific current issuer terms, observed 25 Oct 2026. Earlier card-specific issuer notice and
+        MCC detail: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-IDFC-FIRST-Credit-Card-Communication-May-26.pdf'
+  - category: IndiGo direct booking
+    multiplier: 1
+    effective_rate: 22
+    effective_per_inr: 100
+    card_attributable_rate: 6
+    card_attributable_per_inr: 100
+    canonical_categories:
+    - travel
+    stacks_with_program: true
+    cap_per_cycle: unlimited
+    cap_unit: miles
+    cycle: monthly
+    merchants:
+    - indigo-web
+    - indigo-app
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - indigo-app
+      - indigo-web
+    notes: 6 card BluChips + up to 16 IndiGo programme BluChips (8 member baseline + 4 direct-channel bonus + up
+      to 4 tier bonus). Headline 22 requires top eligible tier; most customers receive less.
     source:
-      url: https://www.business-standard.com/finance/personal-finance/every-swipe-counts-how-indigo-s-new-credit-card-can-cut-your-travel-costs-125081800470_1.html
-      retrieved_on: '2026-07-05'
-      type: press
-
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-Product-Guide.pdf
+      retrieved_on: '2026-10-27'
+      type: issuer-pdf
       confidence: high
-      notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'
-benefits:
-  - effective_from: 2025-08-18
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-        notes: "Complimentary domestic lounge visits via Dreamfolks (exact cap pending IDFC FIRST T&C verification)."
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [loungekey]
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "5,000 IndiGo BluChips welcome voucher + 6E Eats voucher — renews on fee payment"
-        value_inr: 5000
-        window_days: 90
-    milestones:
-      - spend_inr: 100000
-        cycle: quarterly
-        benefit: "3,000 IndiGo BluChips activation bonus (first 90 days only)"
-        value_inr: 3000
-    insurance:
-      - type: other
-        sum_insured_inr: 25000
-        conditions: "Flight and hotel cancellation coverage up to ₹25,000."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    other:
-      - name: Dual network (Mastercard + RuPay)
-        description: "Card combines Mastercard (global acceptance, 1.49% forex) with a RuPay chip for seamless UPI transactions — one of the few dual-network cards in the Indian market."
-      - name: 6E Eats voucher
-        description: Complimentary 6E Eats voucher redeemable on IndiGo in-flight meals as part of the welcome and renewal benefit.
-    concierge: false
+      fields_verified:
+      - rewards.accelerated[1].effective_rate
+      - rewards.accelerated[1].canonical_categories
+      - rewards.accelerated[1].card_attributable_rate
+      - rewards.accelerated[1].cap_per_cycle
+      notes: 'Card-specific current issuer terms, observed 25 Oct 2026. Earlier card-specific issuer notice and
+        MCC detail: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-IDFC-FIRST-Credit-Card-Communication-May-26.pdf'
+  - category: international purchases
+    effective_rate: 3
+    effective_per_inr: 100
+    canonical_categories:
+    - international
+    notes: until 25 Oct 2026; international earn is 1/?100 from 26 Oct 2026.
     source:
-      url: https://www.paisabazaar.com/idfc-first-bank/indigo-idfc-first-dual-credit-card/
-      retrieved_on: 2026-07-03
-      type: aggregator
-
+      url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+      retrieved_on: '2026-10-27'
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[2].effective_rate
+      - rewards.accelerated[2].canonical_categories
+      notes: 'Card-specific current issuer terms, observed 25 Oct 2026. Earlier card-specific issuer notice and
+        MCC detail: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-IDFC-FIRST-Credit-Card-Communication-May-26.pdf'
+  exclusions:
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  capping_rules:
+  - BluChips are earned only on spends up to the shared credit limit per billing cycle; re-use of repaid limit does
+    not earn beyond that limit. The schema has no spend-ceiling field for this rule.
+  - UPI transactions earn 0.5 BluChips/?100 irrespective of underlying spend category. The current spend model has
+    no UPI payment-rail field, so UPI is intentionally omitted from scored 3-point category accelerators.
+  - Fuel, insurance, utilities, rent, wallet, FASTag, education, railway, and government transactions earn 0.5/?100
+    under issuer MCC definitions. Only the categories available in the current card model are represented in base.applies_to_categories;
+    FASTag/railway and MCC boundaries need richer modeling.
+  - Issuer notice effective 22 Jul 2026 specifically names FASTag MCC 4784; railway MCCs 4111/4112; Government Services
+    MCCs 9000?9999; and education MCCs 8211, 8220, 8241, 8244, 8249, 8299 for 0.5 BluChips/?100. The newer card
+    page lists a broader 0.5-rate set; MCC-level and high-usage conditions are not fully reconciled.
+  redemption:
+  - type: voucher
+    program: IndiGo BluChips for IndiGo flights
+    rate_inr_per_unit: null
+    constraints: Redeem on IndiGo website/app against base fare; issuer states redemption value varies by route,
+      flight source and booking date at IndiGo?s discretion. Do not treat the secondary programme-wide ?0.45 estimate
+      as a guaranteed card value.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[1].card_attributable_rate
+    - rewards.accelerated[2].effective_rate
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    local_refs:
+    - docs/sources/idfc-first/indigo/indigo-communication-may-2026.pdf
+    notes: Current card-specific earn schedule observed 25 Oct 2026. International earn changes to 3 BluChip/?100
+      until 25 Oct 2026; international earn is 1/?100 from 26 Oct 2026.. Reward credits are conditional on at least
+      minimum amount due being realised by the due date; late/non-payment forfeits that statement?s points. Product
+      page describes co-branded dual Mastercard + RuPay issuance under one shared limit and reward pool. Earlier
+      issuer notice dated May 2026 sets 22 Jul 2026 for specific MCC caps; those exact MCCs are preserved in capping_rules.
+      Earlier notice displayed 1.49% FX, superseded by the 17 Sep 2026 bank-wide zero-FX announcement.
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: miles
+  currency_name: IndiGo BluChips
+  loyalty_program: indigo-bluchip
+  base:
+    rate: 0.5
+    per_inr: 100
+    applies_to_categories:
+    - fuel
+    - utilities
+    - rent
+    - insurance
+    - education
+    - government
+    - wallet-loads
+  accelerated:
+  - category: general eligible retail
+    effective_rate: 3
+    effective_per_inr: 100
+    canonical_categories:
+    - online
+    - groceries
+    - dining
+    - entertainment
+    notes: 3 BluChips per ?100 on other eligible spend. This structured mapping excludes ambiguous "other" and channel-cross-cutting
+      UPI spend to avoid treating those as 3-point spend. Rate may be overstated for any portion of a broad spend
+      bucket paid through RuPay UPI, because UPI separately earns 0.5 and the current calculator has no payment-rail
+      split.
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+      retrieved_on: '2026-10-27'
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].canonical_categories
+      notes: 'Card-specific current issuer terms, observed 25 Oct 2026. Earlier card-specific issuer notice and
+        MCC detail: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-IDFC-FIRST-Credit-Card-Communication-May-26.pdf'
+  - category: IndiGo direct booking
+    multiplier: 1
+    effective_rate: 22
+    effective_per_inr: 100
+    card_attributable_rate: 6
+    card_attributable_per_inr: 100
+    canonical_categories:
+    - travel
+    stacks_with_program: true
+    cap_per_cycle: unlimited
+    cap_unit: miles
+    cycle: monthly
+    merchants:
+    - indigo-web
+    - indigo-app
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - indigo-app
+      - indigo-web
+    notes: 6 card BluChips + up to 16 IndiGo programme BluChips (8 member baseline + 4 direct-channel bonus + up
+      to 4 tier bonus). Headline 22 requires top eligible tier; most customers receive less.
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-Product-Guide.pdf
+      retrieved_on: '2026-10-27'
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[1].effective_rate
+      - rewards.accelerated[1].canonical_categories
+      - rewards.accelerated[1].card_attributable_rate
+      - rewards.accelerated[1].cap_per_cycle
+      notes: 'Card-specific current issuer terms, observed 25 Oct 2026. Earlier card-specific issuer notice and
+        MCC detail: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-IDFC-FIRST-Credit-Card-Communication-May-26.pdf'
+  - category: international purchases
+    effective_rate: 1
+    effective_per_inr: 100
+    canonical_categories:
+    - international
+    notes: effective 26 Oct 2026 per issuer product-page FAQ.
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+      retrieved_on: '2026-10-27'
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[2].effective_rate
+      - rewards.accelerated[2].canonical_categories
+      notes: 'Card-specific current issuer terms, observed 25 Oct 2026. Earlier card-specific issuer notice and
+        MCC detail: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-IDFC-FIRST-Credit-Card-Communication-May-26.pdf'
+  exclusions:
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  capping_rules:
+  - BluChips are earned only on spends up to the shared credit limit per billing cycle; re-use of repaid limit does
+    not earn beyond that limit. The schema has no spend-ceiling field for this rule.
+  - UPI transactions earn 0.5 BluChips/?100 irrespective of underlying spend category. The current spend model has
+    no UPI payment-rail field, so UPI is intentionally omitted from scored 3-point category accelerators.
+  - Fuel, insurance, utilities, rent, wallet, FASTag, education, railway, and government transactions earn 0.5/?100
+    under issuer MCC definitions. Only the categories available in the current card model are represented in base.applies_to_categories;
+    FASTag/railway and MCC boundaries need richer modeling.
+  - Issuer notice effective 22 Jul 2026 specifically names FASTag MCC 4784; railway MCCs 4111/4112; Government Services
+    MCCs 9000?9999; and education MCCs 8211, 8220, 8241, 8244, 8249, 8299 for 0.5 BluChips/?100. The newer card
+    page lists a broader 0.5-rate set; MCC-level and high-usage conditions are not fully reconciled.
+  redemption:
+  - type: voucher
+    program: IndiGo BluChips for IndiGo flights
+    rate_inr_per_unit: null
+    constraints: Redeem on IndiGo website/app against base fare; issuer states redemption value varies by route,
+      flight source and booking date at IndiGo?s discretion. Do not treat the secondary programme-wide ?0.45 estimate
+      as a guaranteed card value.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[1].card_attributable_rate
+    - rewards.accelerated[2].effective_rate
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    notes: Current card-specific earn schedule observed 25 Oct 2026. International earn changes to 1 BluChip/?100
+      effective 26 Oct 2026 per issuer product-page FAQ.. Reward credits are conditional on at least minimum amount
+      due being realised by the due date; late/non-payment forfeits that statement?s points. Product page describes
+      co-branded dual Mastercard + RuPay issuance under one shared limit and reward pool. Earlier issuer notice
+      dated May 2026 sets 22 Jul 2026 for specific MCC caps; those exact MCCs are preserved in capping_rules. Earlier
+      notice displayed 1.49% FX, superseded by the 17 Sep 2026 bank-wide zero-FX announcement.
+benefits:
+- effective_from: '2026-10-25'
+  effective_until: null
+  welcome:
+  - condition: Fee-based variant; joining fee paid. Not available on FD-backed variant.
+    benefit: 5,000 IndiGo BluChips voucher plus one complimentary IndiGo meal voucher. The card page says renewal-fee
+      payment also earns these benefits; recurring renewal cannot be expressed in the welcome schema.
+    value_inr: null
+    window_days: null
+  - condition: Annual fee paid; renewal year
+    benefit: 5,000 IndiGo BluChips voucher plus one complimentary IndiGo meal voucher; issuer says credited within 5 working days after annual fee payment
+    value_inr: null
+    window_days: null
+  - condition: New unsecured card sourced 1â€“31 October 2026; joining fee of â‚¹4,999 + GST paid
+    benefit: Additional 5,000 IndiGo BluChips voucher under the October 2026 offer; voucher issued 10â€“15 November 2026 and valid for 6 months
+    value_inr: null
+    window_days: null
+  - condition: Fee-based or FD-backed card; spend â‚¹1,00,000 within 90 days of card issuance; first year only
+    benefit: 3,000 IndiGo BluChips early-activation voucher; issuer says voucher is issued by day 105
+    value_inr: null
+    window_days: 90
+  milestones:
+  - spend_inr: 200000
+    cycle: annual
+    benefit: Incremental 5,000 IndiGo BluChips voucher when cumulative anniversary-year spend reaches ?200,000.
+      Voucher valid 6 months; amount is not a fixed cash value.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 500000
+    cycle: annual
+    benefit: Incremental 5,000 IndiGo BluChips voucher when cumulative anniversary-year spend reaches ?500,000.
+      Voucher valid 6 months; amount is not a fixed cash value.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 800000
+    cycle: annual
+    benefit: Incremental 5,000 IndiGo BluChips voucher when cumulative anniversary-year spend reaches ?800,000.
+      Voucher valid 6 months; amount is not a fixed cash value.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 1000000
+    cycle: annual
+    benefit: Incremental 5,000 IndiGo BluChips voucher when cumulative anniversary-year spend reaches ?1,000,000.
+      Voucher valid 6 months; amount is not a fixed cash value.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 1200000
+    cycle: annual
+    benefit: Incremental 5,000 IndiGo BluChips voucher when cumulative anniversary-year spend reaches ?1,200,000.
+      Voucher valid 6 months; amount is not a fixed cash value.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 10000000
+    conditions: ?1 crore. Ticket must be purchased on covered card; this cover is payable only once across IDFC
+      FIRST cards held by the cardholder.
+  - type: personal-accident
+    sum_insured_inr: 1000000
+    conditions: ?10 lakh; active-card condition applies (at least one purchase or ATM transaction in preceding 30
+      days); claim payable once across IDFC FIRST cards.
+  - type: lost-card-liability
+    sum_insured_inr: 50000
+    conditions: ?50,000 card-liability cover; exclusions and reporting deadlines apply.
+  - type: purchase-protection
+    sum_insured_inr: 50000
+    coverage_duration_days: 60
+    conditions: ?50,000; issuer privileges document states covered fire/allied perils and burglary under conditions,
+      including active-card requirement.
+  - type: baggage-loss
+    sum_insured_inr: null
+    sum_insured_amount: 500
+    sum_insured_currency: USD
+    conditions: International travel insurance; airline ticket must be purchased on card; active-card condition
+      applies.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: Flight-delay cover; international travel; ticket must be purchased on card; policy terms apply.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 100
+    sum_insured_currency: USD
+    conditions: Checked-in baggage delay; classify as trip delay; international travel; ticket must be purchased on card; policy terms apply.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: Loss of passport and travel documents; international travel; ticket must be purchased on card.
+  - type: other
+    sum_insured_inr: 25000
+    conditions: Trip cancellation reimbursement up to ?25,000/year, maximum two transactions per policy period;
+      non-refundable eligible flight/hotel bookings charged to the card. Policy terms and exclusions apply.
+  fuel_surcharge_waiver: null
+  other:
+  - name: Dual-network issuance
+    description: One application issues Mastercard and RuPay cards with a shared credit limit, statement and BluChip
+      pool. The schema can store only one network, so the card record remains indexed under Mastercard and describes
+      the RuPay variant here.
+  - name: FD-backed alternative
+    description: Issuer page headline and FAQ state ?50,000 minimum FD for ?0 joining fee; a separate application-workflow
+      paragraph states ?1,00,000. Keep ?50,000 as the repeated headline/FAQ term and flag the conflicting workflow
+      text for bank confirmation. Annual fee from year two is ?4,999 + GST for both variants.
+  - name: Trip cancellation cover
+    description: Current issuer page advertises up to ?25,000 per year. The dated privileges PDF gives two-transaction
+      and booking/card-use conditions; its policy-period passages conflict (some refer to May 2026, elsewhere validity
+      is through 7 May 2027), so confirm current policy dates before relying on cover.
+  - name: EazyDiner Prime and Postcard Hotels offers
+    description: >-
+      Current product page lists three months of complimentary EazyDiner Prime membership
+      (stated value INR 1,095) and a Postcard Hotels stay voucher of INR 3,000 as one-time
+      exclusive benefits for both the fee-based and FD-backed application routes. Partner
+      eligibility and voucher terms apply; these are not guaranteed cash value.
+  concierge: false
+  source:
+    url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/IndiGo-privileges-document.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.golf.rounds_per_cycle
+    - benefits.golf.lessons_per_cycle
+    - benefits.other
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.insurance[1].sum_insured_inr
+    - benefits.insurance[2].sum_insured_inr
+    - benefits.insurance[3].sum_insured_inr
+    - benefits.insurance[4].sum_insured_amount
+    - benefits.insurance[5].sum_insured_amount
+    - benefits.insurance[6].sum_insured_amount
+    - benefits.insurance[7].sum_insured_amount
+    - benefits.insurance[8].sum_insured_inr
+    - benefits.milestones[0].reward_units
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[1].spend_inr
+    - benefits.milestones[1].reward_units
+    - benefits.milestones[2].spend_inr
+    - benefits.milestones[2].reward_units
+    - benefits.milestones[3].spend_inr
+    - benefits.milestones[3].reward_units
+    - benefits.milestones[4].spend_inr
+    - benefits.milestones[4].reward_units
+    - benefits.welcome[0].benefit
+    - benefits.welcome[1].benefit
+    - benefits.welcome[2].benefit
+    - benefits.welcome[3].benefit
+    notes: 'Issuer privileges PDF dated 12 Dec 2025. Trip-cancellation term is cross-checked to the product page;
+      policy-period conflict is preserved in notes. Current product-page source for milestone ladder and FD minimum:
+      https://www.idfcfirst.bank.in/credit-card/indigo-credit-card. Welcome, renewal, and early-activation benefits
+      are verified on that page. The additional 5,000-chip offer applies only to eligible unsecured cards sourced
+      1â€“31 Oct 2026 after joining-fee payment; current product page and linked October 2026 offer terms:
+      https://www.idfcfirst.bank.in/credit-card/indigo-credit-card/additional-bluchips-voucher-welcome-offer-terms-and-conditions-Oct-26'
+    local_refs:
+    - docs/sources/idfc-first/indigo/indigo-privileges-2025-12-12.pdf
+    - docs/sources/idfc-first/indigo/indigo-product-guide.pdf
+  golf:
+    rounds_per_cycle: 12
+    lessons_per_cycle: 12
+    cycle: annual
+    notes: >-
+      The current issuer FAQ specifies 12 complimentary green-fee rounds per calendar year
+      (maximum three per calendar quarter), 12 lessons per year and four guest rounds per
+      year (one per quarter). The same live page's Mastercard World graphic and linked
+      Product Guide instead say four rounds plus 12 lessons. The structured count follows
+      the detailed FAQ; round quantity remains a direct issuer conflict.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: 18
+  max_age: null
   income_inr_annual:
-    salaried: 900000
-    self_employed: 900000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "FD-backed variant available for customers without credit history — ₹1L FD pledge unlocks the card."
-
+  notes: Issuer application page states age 18+ and resident of India. Unsecured approval depends on bank eligibility
+    rules without a published income/score floor; FD-backed route is presented for customers with no credit history.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.residency
+    notes: ''
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/indigo-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex, dual-network]
+  last_verified_on: '2026-10-27'
+  tags:
+  - co-branded
+  - airline
+  - indigo
+  - premium
+  - miles
+  - bluchip
+  - low-forex
+  - dual-network

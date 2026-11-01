@@ -1,134 +1,218 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-freedom
 name: HDFC Bank Freedom Credit Card
 image_path: /cards/hdfc/freedom.png
 issuer: hdfc
-network: visa
-network_tier: classic
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2014-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2014-01-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 50000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/_shared/mitc-in-english.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-
+- effective_from: '2026-05-15'
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  renewal_fee_inr: 500
+  fee_waiver:
+    spend_inr: 50000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Current Freedom page lists INR 500 joining/renewal fee and waiver after INR 50,000 annual spend. General
+    HDFC MITC charges 3.5% forex, 3.75% monthly finance and 2.5%/INR 500 cash advance. May 2026 HDFC update also
+    states 1.75% DCC markup for INR transactions at overseas/foreign-registered merchants and INR 199 reissue fee;
+    schema has no dedicated fields for those charges.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card/fees-and-charges
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    local_refs:
+    - docs/sources/hdfc/freedom/freedom-tncs.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    - docs/sources/hdfc/_shared/hdfc-card-changes-effective-2026-05-15.pdf
+    notes: Card page confirms membership fee/waiver and cash advance fee; current personal MITC v4.15 supplies 3.5% forex markup and 3.75% monthly finance charge. The card page still mentions a lower introductory rate, while current Freedom T&Cs say the 0.99%/90-day feature does not apply to cards sourced from 1-Feb-2024 onward. May 2026 issuer notice specifies 1.75% DCC markup and INR 199 non-metal reissue fee; the schema has no dedicated fields for those charges.
 rewards:
-  - effective_from: 2014-01-01
-    effective_until: null
-    currency: points
-    currency_name: CashPoints
-    base:
-      rate: 1
-      per_inr: 200
-      unit_value_inr: 0.15
-      unit_value_inr_realized: 0.15
-    accelerated:
-      - category: select-merchants
-        canonical_categories: [groceries, dining, entertainment, travel]
-        multiplier: 10
-        effective_rate: 10
-        cap_per_cycle: 2500
-        cap_unit: points
-        cycle: monthly
-        merchants: [bigbasket, bookmyshow, oyo, swiggy, uber]
-        channel:
-          class: cobrand-merchant
-          merchants: [bigbasket, bookmyshow, oyo, swiggy, uber]
-        notes: "10X CashPoints on Big Basket, BookMyShow, OYO, Swiggy & Uber (capped 2,500 CashPoints/month)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    capping_rules:
-      - "Utility MCC 4900 capped at 2,000 CashPoints/month."
-      - "Telecom & Cable MCCs 4812, 4814, 4899 capped at 2,000 CashPoints/month."
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.15
-        min_units: 500
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
-      retrieved_on: 2026-07-03
-
-      type: issuer-pdf
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/freedom/freedom-tncs.pdf
-      fields_verified:
-        - rewards.base.rate
-        - rewards.base.per_inr
-        - rewards.base.unit_value_inr
-        - rewards.accelerated.effective_rate
-    mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
+- effective_from: '2026-05-15'
+  effective_until: null
+  currency: points
+  currency_name: CashPoints
+  base:
+    rate: 1
+    per_inr: 200
+    unit_value_inr: 0.15
+    unit_value_inr_realized: 0.15
+    excluded_categories:
+    - fuel
+    - rent
+    - government
+    - wallet-loads
+    - emi
+    notes: Since 15-May-2026, 1 CashPoint per INR 200 on other eligible spends. CashPoint redemption value is INR
+      0.15 for catalogue/SmartBuy travel/cashback. Third-party app education MCCs are excluded, while direct school/college-site
+      or POS education may earn; broad education exclusion removed.
+  accelerated:
+  - category: select-merchants
+    canonical_categories:
+    - groceries
+    - dining
+    - entertainment
+    - travel
+    effective_rate: 10
+    effective_per_inr: 200
+    cap_per_cycle: 2500
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - bigbasket
+    - bookmyshow
+    - oyo
+    - swiggy
+    - uber
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - bigbasket
+      - bookmyshow
+      - oyo
+      - swiggy
+      - uber
+    notes: Current Freedom T&Cs dated 15-May-2026 state 10 CashPoints per INR 200 on non-EMI purchases at BigBasket, BookMyShow, OYO, Swiggy and Uber, capped at 2,500 per calendar month. Eligible merchant IDs/category assignment apply; settled transactions count and reversals can adjust points.
+  exclusions:
+  - fuel
+  - rent
+  - government
+  - wallet-loads
+  - emi
+  - cash-advance
+  - gift-cards
+  capping_rules:
+  - Overall reward points capped at 15,000 per statement cycle.
+  - Utility MCC 4900 capped at 2,000 CashPoints per calendar month.
+  - Telecom/cable MCCs 4812, 4814 and 4899 capped at 2,000 CashPoints per calendar month.
+  - Education payments through third-party apps do not earn; direct school/college websites or POS may earn.
+  redemption:
+  - type: catalog
+    program: HDFC Reward Catalogue
+    rate_inr_per_unit: 0.15
+  - type: other
+    program: Unified SmartBuy flights/hotels
+    rate_inr_per_unit: 0.15
+  - type: cashback-bank
+    program: Cashback
+    rate_inr_per_unit: 0.15
+    min_units: 3334
+    fee_inr: 50
+    constraints: Minimum redemption 3,334 CashPoints (INR 500); INR 50 redemption fee.
+  - type: airmiles
+    program: HDFC AirMiles
+    rate_inr_per_unit: null
+    constraints: 1 CashPoint converts to 0.15 AirMiles; INR value depends on redemption.
+  source:
+    url: https://v.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/freedom-credit-card/freedom-tncs.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption
+    local_refs:
+    - docs/sources/hdfc/freedom/freedom-tncs.pdf
+    - docs/sources/hdfc/_shared/hdfc-card-changes-effective-2026-05-15.pdf
+    notes: Current Freedom T&Cs dated 15-May-2026 state base 1/INR 200 and partner 10/INR 200 (10X) on the five named merchants; earlier 27-Feb-2026 T&Cs used the superseded 10/INR 150 rate. Rent, government, fuel, wallet/gift/prepaid/voucher loads, EMI, cash advances, unpaid statement balances and card fees do not earn. Utility and telecom/cable MCC caps are 2,000 CashPoints each per calendar month; overall earned points cap is 15,000 per statement cycle. Direct school/college web/POS education may earn; third-party app education does not. Cashback redemption requires 3,334 CashPoints (INR 500) and costs INR 50; SmartBuy/catalogue/cashback values are INR 0.15 per point. AirMiles conversion is 0.15 per point. Redemption routes vary and some have fees/limits.
 benefits:
-  - effective_from: 2014-01-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Joining membership fee paid"
-        benefit: "500 CashPoints"
-        value_inr: 75
-      - condition: "Renewal membership fee paid"
-        benefit: "500 CashPoints"
-        value_inr: 75
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-05-15'
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Joining membership fee is realized by HDFC Bank; not a renewal-fee reward.
+    benefit: 500 CashPoints
+    value_inr: 75
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+    notes: 1% waiver for fuel transactions of INR 400–5,000, capped at INR 250 per statement cycle.
+  concierge: false
+  other:
+  - name: Swiggy Dineout discount
+    description: Issuer card page advertises an additional 10% discount with coupon code HDFCCARDS; offer conditions and current validity are unresolved because the linked offer page shows conflicting validity text.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+    local_refs:
+    - docs/sources/hdfc/freedom/freedom-tncs.pdf
+    notes: Current issuer page confirms 500 CashPoints only when the joining membership fee is paid and the fuel waiver limits/cap. No renewal bonus is currently listed; the annual renewal waiver is a spend-based fee condition. Product page advertises a 10% Swiggy Dineout discount with code HDFCCARDS; linked offer copy contains conflicting validity dates, so exact conditions remain unresolved.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 65
   income_inr_annual:
-    salaried: 120000
-    self_employed: 240000
-  credit_score_min: 700
-  residency: resident-indian
-
+    salaried: 144000
+    self_employed: 600000
+  credit_score_min: null
+  residency: null
+  notes: Current main card page says Indian nationality; this does not establish resident/NRI status. It states salaried net monthly income > INR 12,000 and self-employed ITR > INR 6 lakh/year. The separate eligibility page says gross monthly income > INR 12,000 and self-employed ITR > INR 2 lakh/year; these conflicts are unresolved, and the card page's thresholds are modeled. Numeric bureau-score floor is not published. Exact launch date was not established from an official source.
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    notes: Current card page specifies age/income thresholds by employment type and Indian nationality; separate eligibility subpage differs on gross vs net salary and self-employed ITR floor.
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/freedom-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, lowest-tier]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - points
+  - lowest-tier

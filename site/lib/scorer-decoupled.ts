@@ -198,7 +198,7 @@ export function scoreDecoupled(
 ): DecoupledScore[] {
   const spend = opts.exactSpend ? { ...emptySpend(), ...opts.exactSpend } : spendFromPayload(payload);
   const channelMix = channelMixFromPayload(payload);
-  const topBucket = (Object.keys(spend) as CanonicalCategory[]).filter((k) => spend[k] > 0).sort((a, b) => spend[b] - spend[a])[0] ?? null;
+  const topBucket = (Object.keys(spend) as CanonicalCategory[]).filter((k) => (spend[k] ?? 0) > 0).sort((a, b) => (spend[b] ?? 0) - (spend[a] ?? 0))[0] ?? null;
 
   // Brand-aware, optimistic-on-selected-brand: a co-brand rate fires (at its real
   // rate) only if the user selected that brand's channel. No applicability fudge.

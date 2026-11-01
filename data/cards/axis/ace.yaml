@@ -1,143 +1,189 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-ace
 name: Axis Bank ACE Credit Card
 image_path: /cards/axis/ace.webp
 issuer: axis
 network: visa
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2020-07-15
+launched_on: 2020-10-12
 discontinued_on: null
-
 fees:
-  - effective_from: 2020-07-15
-    effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.0
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/axis/_shared/mitc-credit-cards.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-
+- effective_from: 2020-07-15
+  effective_until: null
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: Annual fee is waived only when eligible spend is greater than â‚¹2,00,000 in the anniversary year; rent and wallet loads do not count.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee
+    notes: Joining fee is reversed when spend reaches â‚¹10,000 within 45 days of card setup. Product page lists annual fee waiver for eligible annual spend greater than â‚¹2 lakh; rent and wallet load excluded.
 rewards:
-  - effective_from: 2020-07-15
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.5
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: bill-payments-recharges-google-pay
-        canonical_categories: [utilities]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: statement
-        merchants: [google-pay-bills, google-pay-recharges]
-        channel:
-          class: cobrand-merchant
-          merchants: [google-pay-bills, google-pay-recharges]
-        notes: "5% bill-pay + 4% Swiggy/Zomato/Ola SHARE a single Rs500/month cashback cap."
-      - category: swiggy-zomato-ola-partners
-        canonical_categories: [dining]
-        multiplier: 1
-        effective_rate: 4
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: statement
-        merchants: [swiggy, zomato, ola]
-        channel:
-          class: cobrand-merchant
-          merchants: [swiggy, zomato, ola]
-        notes: "Shares the Rs500/month cashback cap with the 5% bill-pay category."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    capping_rules:
-      - "Combined accelerated + base cashback capped at ₹500 per statement cycle across 4%/5% categories."
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-        constraints: "Auto-credited to next statement."
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-      confidence: high
-
-      notes: Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05.
-    mcc_exclusions: ['6513']
+- effective_from: 2020-07-15
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1.5
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    applies_to_categories:
+    - online
+    - groceries
+    - dining
+    - travel
+    - international
+    - entertainment
+    - other
+    excluded_categories:
+    - utilities
+  accelerated:
+  - category: bill-payments-recharges-google-pay
+    canonical_categories:
+    - utilities
+    multiplier: 1
+    effective_rate: 5
+    cap_per_cycle: 500
+    cap_group: ace-accelerated-cashback
+    cap_unit: cashback-inr
+    cycle: statement
+    over_cap_earns_base: false
+    merchants:
+    - google-pay-bills
+    - google-pay-recharges
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - google-pay-bills
+      - google-pay-recharges
+    notes: Google Pay Android bill and recharge transactions only; share one â‚¹500 per statement cap with the 4% preferred-merchant cashback. Google Pay utility transactions are excluded from the 1.5% base rate and earn no base cashback above the shared accelerator cap.
+  - category: swiggy-zomato-ola-partners
+    canonical_categories:
+    - dining
+    multiplier: 1
+    effective_rate: 4
+    cap_per_cycle: 500
+    cap_group: ace-accelerated-cashback
+    cap_unit: cashback-inr
+    cycle: statement
+    over_cap_earns_base: false
+    merchants:
+    - swiggy
+    - zomato
+    - ola
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - swiggy
+      - zomato
+      - ola
+    notes: Swiggy, Zomato and Ola website/app transactions only; shares one â‚¹500 per statement cap with Google Pay bill/recharge cashback. Preferred-merchant spend above the cap earns no 1.5% base cashback.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - government
+  - education
+  - gift-cards
+  capping_rules:
+  - 5% Google Pay and 4% preferred-merchant cashback share a single â‚¹500 cap per statement cycle; the 1.5% rate remains uncapped for eligible non-preferred spends.
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+    constraints: Auto-credited to next statement.
+  source:
+    url: https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/axis-bank-ace-credit-card-tncs.pdf?sfvrsn=a3effc42_6
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base
+    - rewards.base.applies_to_categories
+    - rewards.base.excluded_categories
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption
+    notes: Current issuer cashback T&C confirms rates, â‚¹500 combined statement cap across the 5%/4% categories, unlimited 1.5% on eligible other spend, channel conditions and exclusions. The current PDF also excludes telecom, gift cards, bridge fees, road fees and tolls.
 benefits:
-  - effective_from: 2020-07-15
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 500
-      cycle: statement
-    dining:
-      program: EazyDiner Prime
-      discount_pct: 15
-      notes: "Up to 15% off at partner restaurants via EazyDiner."
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2020-07-15
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 4
+      cycle: annual
+      guests_per_visit: 0
+      spend_threshold_cycle: quarterly
+      notes: â‚¹50,000 eligible spend in the previous 3 calendar months is required; newly issued cards get a waiver for the issuance month and following 3 calendar months. Guest/child and lounge participation rules apply.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 500
+    cycle: statement
+    notes: 1% surcharge waiver on fuel transactions from â‚¹400 to â‚¹4,000; maximum â‚¹500 per statement. GST charged on fuel surcharge is not refunded and fuel earns no cashback.
+  dining:
+    program: Axis Bank Dining Delights
+    discount_pct: 15
+    notes: Current Axis Dining Delights offer is 15% off up to â‚¹500, minimum order value â‚¹2,500, once per card per month; partner offer terms can change.
+  concierge: false
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.fuel_surcharge_waiver
+    - benefits.dining.discount_pct
+    notes: >-
+      Lounge count and fuel terms are on the ACE product page; the linked Axis lounge program PDF supplies the
+      â‚¹50,000 previous-three-calendar-month spend gate and new-card waiver. Dining offer terms:
+      https://www.axis.bank.in/docs/default-source/default-document-library/debit-card/terms-and-conditions-for-dining-delights.pdf?sfvrsn=7f5393a1_1
 eligibility:
-  min_age: 18
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Income and bureau-score figures in the previous record were tier-derived estimates, not card-specific issuer
+    evidence; thresholds remain unknown pending verification. Broad minimum/maximum age figures without an exact
+    issuer evidence path or a source-verified occupational range were left unknown; this does not imply there is
+    no age criterion.
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-ace-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [cashback, bill-payments, entry]
+  last_verified_on: 2026-10-27
+  tags:
+  - cashback
+  - bill-payments
+  - entry
+

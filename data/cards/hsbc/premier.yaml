@@ -3,242 +3,326 @@ name: HSBC Premier Credit Card
 image_path: /cards/hsbc/premier.webp
 issuer: hsbc
 network: mastercard
-network_tier: world-elite
+network_tier: null
 tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2021-11-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2021-11-01
+- effective_from: '2026-10-27'
   effective_until: null
   joining_fee_inr: 12000
   annual_fee_inr: 20000
-  fee_waiver:
-    spend_inr: 1600000
-    cycle: annual
+  fee_waiver: null
   forex_markup_pct: 0.99
-  finance_charge_monthly_pct: 3.5
+  finance_charge_monthly_pct: 2.99
   cash_advance_fee:
     pct: 2.5
-    min_inr: 500
+    min_inr: 300
   gst_applicable: true
-  notes: Annual fee waived if the customer maintains an HSBC Premier relationship.
-    Otherwise ₹20,000 + GST.
+  notes: Current snapshot verified 2026-10-27. INR20,000 renewal fee is waived for qualified HSBC Premier customers
+    maintaining an eligible Premier relationship; no card-spend waiver threshold is published. Joining fee
+    INR12,000 after activation. Card-specific MITC gives 2.99% monthly finance charge and cash advance fee
+    2.5%, minimum INR300. HSBC Premier relationship thresholds depend on account opening date and customer
+    qualification.
   source:
-    url: https://www.hsbc.bank.in/credit-cards/products/premier/
-    retrieved_on: 2026-07-03
-    type: issuer-page
-    confidence: medium
+    url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/premier_cc_tariff_mitc.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/premier/premier-mitc-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    method: pdf-extract
 rewards:
-- effective_from: 2021-11-01
+- effective_from: '2026-10-27'
   effective_until: null
   currency: points
   currency_name: Reward Points
   base:
     rate: 3
     per_inr: 100
-    unit_value_inr: 1.1
-    unit_value_inr_realized: 0.25
+    unit_value_inr: null
   accelerated:
-  - category: travel-bookings
+  - category: travel-flights
+    canonical_categories:
+    - travel
+    multiplier: 2
+    effective_rate: 6
+    notes: 'Current Travel with Points offer: 6X total points on flight bookings paid with Premier card through
+      2026-12-31; base earn is 3 points per INR100. No cap stated on the offer page.'
+  - category: travel-hotels
     canonical_categories:
     - travel
     multiplier: 4
     effective_rate: 12
-    cap_per_cycle: 18000
-    cap_unit: points
-    cycle: monthly
-    notes: 12X reward points on hotels, flights & car rentals booked via HSBC Travel
-      Edit; 3 RP per ₹100 base. Accelerated travel reward points capped at 18,000/calendar
-      month per HSBC's travel-rewards page (retrieved 2026-07-05); base points remain
-      uncapped.
+    notes: 'Current Travel with Points offer: 12X total points on hotel bookings paid with Premier card through
+      2026-12-31; base earn is 3 points per INR100. No cap stated on the offer page.'
   exclusions:
-  - fuel
-  - wallet-loads
+  - utilities
+  - government
   - rent
+  - other
+  - jewelry
   - insurance-premiums
+  - fuel
+  - financial-institutions
+  - wallet-loads
+  - cash-advance
   - emi
   mcc_exclusions:
+  - '4900'
+  - '9311'
   - '6513'
+  - '6051'
+  - '4829'
+  - '5944'
+  - '5094'
+  - '6300'
+  - '5960'
+  - '5541'
+  - '5983'
+  - '5172'
+  - '5542'
+  - '5552'
+  - '6011'
+  - '6012'
+  - '6010'
+  - '6540'
+  - '9223'
+  - '9399'
+  - '8299'
+  - '8220'
+  - '8211'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '9222'
+  - '9402'
+  - '9211'
+  - '9405'
   redemption:
   - type: catalog
-    program: HSBC Rewards
-    rate_inr_per_unit: 0.25
+    program: HSBC Rewards Marketplace
+    rate_inr_per_unit: null
+    constraints: Point value depends on reward category/card and redemption choice; HSBC generic guidance gives
+      INR0.25-INR1.00 range. Premier product page states INR1 per point for Apple products. Points cannot be
+      redeemed for cash or statement credit.
   - type: airmiles
-    program: HSBC India Rewards (airline & hotel loyalty partners)
-    ratio: '1:1'
-    constraints: '20 transfer partners; ratios are card-point : partner-unit. realized
-      Rs 0.25 = guaranteed non-transfer floor; best documented transfer Rs 1.10. 19
-      partners beat the floor. Full per-partner values below.'
+    program: HSBC India Rewards transfer partners
+    ratio: varies by partner
+    constraints: Current published ratios are listed by partner below; no universal INR value is asserted.
+      Premier points are evergreen while card account remains open and in good standing.
     transfer_partners:
-    - partner_name: Singapore KrisFlyer
-      partner_type: airline
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 1.10/pt
     - partner_name: Air India Maharaja Club
       partner_type: airline
       transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.55/pt
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: airasia rewards
+      partner_type: airline
+      transfer_ratio: '1:3'
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
     - partner_name: Air France-KLM Flying Blue
       partner_type: airline
       transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.90/pt
-    - partner_name: British Airways Avios
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: British Airways Club
       partner_type: airline
       transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 1.00/pt
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
     - partner_name: Etihad Guest
       partner_type: airline
       transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.90/pt
-    - partner_name: EVA Air Infinity
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: EVA Air Infinity MileageLands
       partner_type: airline
       transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.90/pt
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: Hainan Airlines Fortune Wings Club
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
     - partner_name: JAL Mileage Bank
       partner_type: airline
       transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.95/pt
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: Singapore Airlines KrisFlyer
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
     - partner_name: Qantas Frequent Flyer
       partner_type: airline
       transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.80/pt
-    - partner_name: Qatar Privilege Club (Avios)
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: Qatar Airways Privilege Club
       partner_type: airline
       transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 1.00/pt
-    - partner_name: Thai Royal Orchid Plus
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: Thai Airways Royal Orchid Plus
       partner_type: airline
       transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.60/pt
-    - partner_name: Vietnam LotusMiles
-      partner_type: airline
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.80/pt
-    - partner_name: Accor ALL
-      partner_type: hotel
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.95/pt
-    - partner_name: IHG One Rewards
-      partner_type: hotel
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.50/pt
-    - partner_name: Marriott Bonvoy
-      partner_type: hotel
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.55/pt
-    - partner_name: Wyndham Rewards
-      partner_type: hotel
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.50/pt
-    - partner_name: AirAsia Rewards
-      partner_type: airline
-      transfer_ratio: '1:3'
-      last_verified_on: '2026-07-05'
-      notes: 1:3 -> ~Rs 0.66/pt
-    - partner_name: Hainan Fortune Wings
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: Turkish Airlines Miles&Smiles
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.25/pt
-    - partner_name: Turkish Miles&Smiles
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.55/pt
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
     - partner_name: United MileagePlus
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.45/pt
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: Vietnam Airlines Lotusmiles
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: Accor ALL
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: IHG One Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: Marriott Bonvoy
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
     - partner_name: Shangri-La Circle
       partner_type: hotel
       transfer_ratio: '5:1'
-      last_verified_on: '2026-07-05'
-      notes: 5:1 -> ~Rs 0.10/pt [below floor — avoid]
-    rate_inr_per_unit: 1.1
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
+    - partner_name: Wyndham Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-27'
+      notes: Current HSBC Rewards page transfer ratio; partner list and ratios may change.
   source:
-    url: https://www.hsbc.bank.in/credit-cards/products/premier/
-    retrieved_on: 2026-07-05
+    url: https://www.hsbc.bank.in/credit-cards/products/premier/rewards/
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    notes: 'Encoded 2026-07-05, full-visibility model: every transfer partner is listed
-      with its own ratio and Rs/point. No blended or averaged value. realized = the
-      guaranteed non-transfer floor; face = the single best documented transfer (ceiling).
-      See transfer_partners for the complete per-partner spread. Earn rates unchanged.'
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/premier/hsbc-rewards-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    - rewards.rate_inr_per_unit
+    notes: Current reward rules and partner ratios checked against HSBC Premier Rewards page and current HSBC
+      Rewards Terms; generic catalogue value and travel portal offers are redemption-context dependent. Other
+      issuer MCC exclusions include non-financial institutions, money transfer, bail/bond, education and disputed
+      transactions; full MCC list is archived in the local Rewards Terms extract. Current offer page confirms
+      6X flights and 12X hotel bookings for Premier through 2026-12-31; Premier page also says up to 12X for
+      car rentals, but the travel offer page only specifies 2X for eligible HSBC cards without identifying
+      Premier. Car-rental rate is unresolved and not encoded as a numeric accelerator.
 benefits:
-- effective_from: 2021-11-01
+- effective_from: '2026-10-27'
   effective_until: null
   lounge_access:
     domestic:
       visits_per_cycle: unlimited
       cycle: annual
       guests_per_visit: 0
-      via:
-      - mastercard
-      - dreamfolks
+      via: []
+      notes: HSBC product page says unlimited domestic airport lounge access for cardholders.
     international:
       visits_per_cycle: unlimited
       cycle: annual
       guests_per_visit: 8
-      via:
-      - loungekey
-      notes: Unlimited cardholder access + 8 international guest visits/year.
-  golf:
-    rounds_per_cycle: 2
-    cycle: monthly
-    lessons_per_cycle: 0
+      via: []
+      notes: Unlimited international access for cardholder plus 8 international guest visits; product page
+        does not specify the access provider.
   insurance:
   - type: air-accident
-    sum_insured_inr: 50000000
-  - type: travel-medical
-    sum_insured_inr: 25000000
+    sum_insured_inr: null
+  - type: other
+    sum_insured_inr: null
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
     max_txn_inr: 4000
     cap_per_cycle_inr: null
-    cycle: monthly
+    notes: 1% surcharge waiver for fuel transactions INR400-INR4,000; issuer does not state a cycle cap.
   concierge: true
   dining:
     program: EazyDiner
     discount_pct: 30
-    notes: 30% off dining (up to ₹1,500) via EazyDiner; 20% off Agoda hotels + one
-      free night.
+    notes: Product page advertises 30% off dining up to INR1,500 via EazyDiner; offer terms apply.
   source:
     url: https://www.hsbc.bank.in/credit-cards/products/premier/
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/premier/premier-intro-offer-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.lounge_access.international.guests_per_visit
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.dining.discount_pct
+    - benefits.welcome[0].window_days
+    notes: Benefits checked against current HSBC product page, card-specific insurance terms, and Premier introductory
+      offer terms. Golf round quota and insurance limits were not retained because current source evidence
+      did not substantiate the old figures. Insurance terms and conditions list international travel inconvenience
+      categories; no current numeric sum-insured amount appears on the accessible page.
+  welcome:
+  - condition: New primary Premier credit cardholder issued between 2025-10-09 and 2026-12-31, after paying
+      joining fee; first eligible purchase/payment within 30 days of issuance. Exclusions and full offer terms
+      apply.
+    benefit: 20,000 reward points
+    value_inr: null
+    window_days: 30
 eligibility:
-  min_age: 18
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 4000000
-    self_employed: 4000000
-  credit_score_min: 780
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: Typically requires HSBC Premier banking relationship (qualifying relationship
-    balance).
+  notes: HSBC Premier Credit Card is available only to HSBC qualified Premier customers with a Premier relationship
+    in India. Current Premier qualification route is average quarterly TRB INR50 lakh, net monthly salary credit
+    INR3 lakh, or mortgage relationship INR1.15 crore plus INR50 lakh TRB within 12 months; existing Premier
+    accounts opened before 2026-01-01 may have a INR40 lakh TRB threshold. These are Premier banking relationship
+    criteria, not a card-specific minimum-income guarantee. Card approval remains subject to bank underwriting;
+    age and bureau-score cutoffs are unpublished.
 application:
   apply_url: https://www.hsbc.bank.in/credit-cards/products/premier/
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: '2026-10-27'
   tags:
   - super-premium
   - premier-banking

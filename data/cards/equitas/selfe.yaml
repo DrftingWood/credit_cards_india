@@ -1,128 +1,180 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Equitas issuer page (equitas.bank.in Selfe) captured via
-#                Playwright + paisabazaar/cardinsider cross-check.
-#   Verified   : 2026-07-05   Confidence: HIGH (issuer page) for fee/waiver/
-#                lounge/base rate/5X categories; MEDIUM for RP value + eligibility.
-#   Modelled as the Visa variant (also issued on RuPay). The 5X applies to 2
-#   self-selected categories, modelled across all five (only two qualify per
-#   cardholder choice — see capping_rules).
-# ---------------------------------------------------------------------------
 id: equitas-selfe
 name: Equitas Selfe Credit Card
 image_path: /cards/equitas/selfe.webp
 issuer: equitas
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2025-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 1000
-    fee_waiver:
-      spend_inr: 240000
-      cycle: annual
-      conditions: "First year free; renewal fee waived on spends of Rs 2,40,000 in the previous anniversary year."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 250
-    gst_applicable: true
-    source:
-      url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
-      retrieved_on: 2026-07-05
-      type: issuer-page
-      confidence: high
-      fields_verified:
-        - fees.annual_fee_inr
-        - fees.fee_waiver
-      notes: "Issuer page: annual fee Rs 1,000 (first year free), waived on Rs 2.4L annual spend."
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 1000
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 240000
+    cycle: annual
+    conditions: Renewal fee waived when eligible spend reaches INR240,000 in the preceding anniversary year. Current
+      issuer page advertises a limited-period first year free offer, excluding GST. For standard paid joining-fee
+      applications, INR60,000 spend within 90 days reverses the joining fee; not applicable to FYF/LTF cards.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 250
+  gst_applicable: true
+  source:
+    url: https://equitas.bank.in/strapi-dev/uploads/MITC_V1_2_Track_change_8ed95eca57.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current product page and official product/pricing form corroborate the active first-year-free offer and
+      INR240,000 renewal waiver; exact cardmember charges may vary by application offer.
+  notes: Fees exclude GST. Current product page advertises limited-period first year free; card pricing form lists
+    INR1,000 standard membership fee and FYF option. Selfe plastic/green card has no additional issue charge; metal
+    design has a one-time INR3,500 charge. Cash advance 2.5% or INR250 minimum.
 rewards:
-  - effective_from: 2025-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.35
-      unit_value_inr_realized: 0.25
-    accelerated:
-      - category: choose-2-of-5-categories
-        canonical_categories: [online, dining, groceries, utilities, travel]
-        multiplier: 5
-        effective_rate: 10
-        effective_per_inr: 100
-        cycle: monthly
-        notes: "5X reward points (10 RP per Rs 100) on 2 self-selected categories from Apparel (online), Dining, Grocery, Utility and Taxi (travel). Only the two chosen categories qualify."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "5X applies to only 2 of the 5 eligible categories, chosen by the cardholder; the other three earn the base 2 RP/Rs 100."
-    redemption:
-      - type: catalog
-        program: Equitas Xchange Rewards
-        rate_inr_per_unit: 0.5
-        constraints: "1 RP = Rs 0.50; redeemable on the Equitas rewards catalogue."
-    source:
-      url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-      confidence: medium
-      fields_verified:
-        - rewards.base.rate
-        - rewards.accelerated.effective_rate
-      notes: "Verified 2026-07-05: Equitas Selfe ~Rs0.35 Xchange travel/vouchers, ~Rs0.25 realistic (was 0.5); Rs1 only at Diamond tier."
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.35
+    unit_value_inr_realized: 0.15
+  accelerated:
+  - category: choose-2-of-5-categories
+    canonical_categories:
+    - online
+    - dining
+    - groceries
+    - utilities
+    - travel
+    multiplier: 5
+    effective_rate: 10
+    effective_per_inr: 100
+    notes: 'Choose any two categories during onboarding: Apparel, Dining, Grocery, Utility or Taxi. Accelerated
+      earn is 10 RP per INR100 in selected MCC-classified categories; other eligible transactions earn 2 RP per
+      INR100. Apparel maps to online and Taxi to travel in the canonical category approximation.'
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - cash-advance
+  - emi
+  capping_rules: []
+  redemption:
+  - type: catalog
+    program: Equitas Xchange Rewards
+    rate_inr_per_unit: 0.35
+    fee_inr: 99
+    constraints: Issuer FAQ states INR0.35 per point for travel, vouchers and catalogue redemptions; INR99 redemption
+      fee applies per transaction. Points expire after 24 months.
+  - type: statement-credit
+    program: Equitas Xchange Rewards
+    rate_inr_per_unit: 0.15
+    min_units: 500
+    fee_inr: 99
+    constraints: Issuer FAQ states INR0.15 per point for cashback/statement credit; minimum 500 points for cashback.
+      INR99 redemption fee applies per transaction.
+  source:
+    url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
+    notes: Current issuer product page and FAQs provide earn rates, category choices, redemption values, minimum,
+      expiry, fee and exclusions.
+  notes: 'Issuer page states 2 RP per INR100 and 1 RP=INR0.35; its FAQ differentiates value by redemption type:
+    INR0.35 for travel/vouchers/catalogue and INR0.15 for cashback/instant redemption. Cashback minimum 500 points,
+    points expire after 24 months, redemption fee INR99 per transaction. Fuel, rent, wallet loads, government payments,
+    cash advances and EMI conversions excluded per issuer FAQ. MCC determines category eligibility.'
 benefits:
-  - effective_from: 2025-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-    concierge: false
-    other:
-      - name: OTT / Prime memberships
-        description: "2 complimentary memberships from Amazon Prime, JioHotstar, SonyLIV, Zee5 or Discovery+ (cardholder's choice)."
-    source:
-      url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
-      retrieved_on: 2026-07-05
-      type: issuer-page
-      confidence: high
-      fields_verified:
-        - lounge_access.domestic.visits_per_cycle
-      notes: "Issuer page: one complimentary domestic lounge visit per calendar quarter; 2 complimentary OTT/Prime memberships of choice."
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - visa
+      - rupay
+  concierge: false
+  other:
+  - name: Selectable memberships
+    description: Choose two memberships from Amazon Prime, JioHotstar, SonyLIV and Zee5. Memberships appear after
+      activation and must be claimed within 90 days of issuance. Issuer MITC sets spend milestones of INR60,000
+      in the first 3 months for first-year membership, and INR240,000 annually from the second year onward; benefits
+      depend on paid joining/renewal fee and do not apply when the card is FYF/LTF.
+  - name: Customizable card design and network
+    description: Choose regular plastic, green plastic or metal design and Visa or RuPay. Metal design carries a
+      one-time INR3,500 charge; plastic/green design has no additional charge.
+  source:
+    url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+    notes: Current product page supports one domestic lounge visit per calendar quarter, fuel waiver and selectable
+      memberships. Pricing/MITC document supports membership milestones and card design options.
+  fuel_surcharge_waiver:
+    pct: 1
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 250
+    cycle: monthly
+    notes: Issuer product page states 1% waiver on fuel transactions between INR500 and INR3,000, up to INR250 per
+      statement cycle.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 400000
-    self_employed: 500000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Eligibility income/age are tier-standard defaults, not published on the product page."
-
+  notes: No Selfe-specific age, income or bureau-score cutoff was established in reviewed issuer sources. Current
+    credit-card application form declares applicant is a Resident Indian or foreign national working in India; it
+    also says the card may be blocked if resident status changes to NRI. Schema residency value is recorded as resident-indian,
+    with this form caveat.
+  source:
+    url: https://equitas.bank.in/strapi-dev/uploads/Elite_Artha_Card_2ad825fc9a.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - eligibility.residency
+    notes: Application form residency declaration covers Resident Indian or foreign national working in India and
+      says status change to NRI may result in card blocking. No numeric criteria sourced.
 application:
   apply_url: https://equitas.bank.in/personal-banking/pay/credit-cards/selfe-credit-card/
-
 metadata:
-  last_verified_on: 2026-10-24
-  tags: [mid, points, lifestyle, ott, lounge, choose-categories]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - points
+  - lifestyle
+  - ott
+  - lounge
+  - choose-categories

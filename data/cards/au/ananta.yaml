@@ -1,121 +1,289 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: au-ananta
 name: AU Bank Ananta Credit Card
-image_path: /cards/au/ananta.webp
+image_path: null
 issuer: au
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: '2026-05-06'
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 2000
-    annual_fee_inr: 2000
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Joining fee ₹2,000 + GST charged on activation; renewal waived on ₹3,00,000 previous-anniversary-year spend."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/ananta-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 2000
+  annual_fee_inr: 2000
+  fee_waiver:
+    spend_inr: 300000
+    cycle: annual
+    conditions: Renewal annual fee waived after at least INR 300,000 eligible retail spend in the card anniversary year; joining fee is not waived.
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  late_payment_slabs: null
+  gst_applicable: true
+  notes: Joining fee INR 2,000 + GST is charged on activation; renewal is waived after INR 300,000 eligible retail spend in the previous card-anniversary year.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/ananta-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current product page confirms INR 2,000 joining and annual fees, with no joining-fee waiver and INR 300,000 renewal waiver. Current Key Fact Statement (30 Sep 2026) confirms 3.75% monthly finance, 2.5% cash advance with INR 500 minimum, 3.49% forex markup, cash advance limit up to 20% of credit limit, and late-payment charge of 15% of amount due subject to INR 10 minimum and INR 1,300 maximum. The KFS lists additional fair-usage fees on rent, fuel, utilities, education/government and transportation under conditions; these are not modeled.
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: shopping-dining-travel
-        canonical_categories: [online, dining, travel]
-        multiplier: 2.5
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "5 Reward Points per ₹100 on Shopping, Dining & Travel; 2 RP per ₹100 on other spends (base)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: AU Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/ananta-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    excluded_categories:
+    - utilities
+    - telecom
+    - insurance
+  accelerated:
+  - category: shopping-dining-travel
+    canonical_categories:
+    - online
+    - dining
+    - travel
+    multiplier: 2.5
+    effective_rate: 5
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: statement
+    notes: 5 Reward Points per ₹100 on Shopping, Dining & Travel; 2 RP per ₹100 on other spends (base).
+  - category: insurance-utility-telecom
+    canonical_categories:
+    - utilities
+    - telecom
+    - insurance
+    effective_rate: 1
+    effective_per_inr: 100
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: statement
+    notes: 1 Reward Point per INR 100 on insurance, utility and telecom. Utility and telecom are capped at 100 points per transaction, which the monthly spend model cannot reproduce.
+  exclusions:
+  - fuel
+  - rent
+  - government
+  - education
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  reward_cap:
+    max_units: 25000
+    cap_unit: points
+    cycle: statement
+  capping_rules:
+  - Shopping, Dining and Travel earning has a separate 5,000-point statement-cycle cap; total Reward Points are separately capped at 25,000 per statement cycle.
+  - The current Ananta page also excludes BBPS, transportation and quasi-cash transactions. The schema has no dedicated exclusions for BBPS, transportation or quasi-cash, so transaction-level classification is not inferred from broad spend categories.
+  - Fuel, cash and non-retail spends do not count toward anniversary milestones. The exact MCCs for Shopping/Dining/Travel are not published on the card page; broad category scoring uses only the available spend-profile proxies.
+  - Points are valid for 2 years from accrual; the issuer agreement also says points may be forfeited after 12 months without card use, on account closure, or after delinquency over 90 days.
+  redemption_floor_value_inr: null
+  redemption_ceiling_value_inr: null
+  redemption:
+  - type: catalog
+    program: AU Rewardz
+    rate_inr_per_unit: null
+    constraints: General AU FAQ states INR 0.0025 per point for catalogue and INR 0.002 for e-vouchers, while Ananta's milestone table implies INR 0.25 per bonus point. AU has not reconciled this 100x discrepancy; no generic point value is applied.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/ananta-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_per_inr
+    - rewards.accelerated.cap_per_cycle
+    - rewards.reward_cap.max_units
+    - rewards.exclusions
+    - rewards.redemption_floor_value_inr
+    - rewards.redemption_ceiling_value_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.redemption.0.rate_inr_per_unit
+    notes: 'Current Ananta page and AU Card Member Agreement confirm 2/5/1 Reward Point earn rates, 5,000 accelerated and 25,000 total statement-cycle caps, and exclusions. The agreement states points accrue in multiples of INR 100 and expire after two years. General AU redemption FAQ says 0.25 paise per point for catalogue and 0.20 paise for e-vouchers, while the Ananta milestone table assigns INR 1,250 value to 5,000 points (INR 0.25 per point). The 100x discrepancy is unresolved, so generic valuation remains unknown.'
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-    welcome:
-      - condition: "Card activation"
-        benefit: "8,000 bonus Reward Points"
-        value_inr: 2000
-        window_days: 90
-    other:
-      - name: "No-Cost EMI on travel bookings"
-        description: "No-Cost EMI on flight & hotel bookings."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 200
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/ananta-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 4
+      cycle: quarterly
+      guests_per_visit: null
+      via:
+      - issuer-direct
+      notes: A flight booking of at least INR 5,000 through AU Rewardz qualifies for lounge access in the same calendar quarter. Only primary-cardholder bookings qualify. Each one-way ticket generates one QR and a round trip generates two, with four QR visits maximum per customer per calendar quarter. Guests pay the lounge fee. Canceled/refunded bookings invalidate the QR; QR is single-entry and valid through travel date.
+  welcome:
+  - condition: Primary cardholder who paid joining fee must activate the card and make the first successful transaction within 30 days of issuance.
+    benefit: 8,000 bonus Reward Points
+    value_inr: null
+    window_days: 30
+  milestones:
+  - spend_inr: 250000
+    cycle: annual
+    benefit: 5,000 bonus Reward Points at INR 250,000 cumulative eligible anniversary-year spend
+    reward_units: 5000
+    reward_kind: points
+    reward_currency_name: Reward Points
+    value_inr: 1250
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 500000
+    cycle: annual
+    benefit: 10,000 bonus Reward Points at INR 500,000 cumulative eligible anniversary-year spend
+    reward_units: 10000
+    reward_kind: points
+    reward_currency_name: Reward Points
+    value_inr: 2500
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 750000
+    cycle: annual
+    benefit: 15,000 bonus Reward Points at INR 750,000 cumulative eligible anniversary-year spend
+    reward_units: 15000
+    reward_kind: points
+    reward_currency_name: Reward Points
+    value_inr: 3750
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 1000000
+    cycle: annual
+    benefit: 20,000 bonus Reward Points at INR 1,000,000 cumulative eligible anniversary-year spend
+    reward_units: 20000
+    reward_kind: points
+    reward_currency_name: Reward Points
+    value_inr: 5000
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  other:
+  - name: Partner merchant discounts
+    description: Up to 15% instant discount, capped at INR 500 per month and once per month at each partner. Minimum INR 1,000 at Amazon Fashion and District dining; minimum INR 3,000 for AU Rewardz hotel bookings. Add-on cards are eligible for shopping and dining offers, but not travel offers.
+  - name: No-Cost EMI on AU Rewardz travel
+    description: 3-month No-Cost EMI on flight and hotel bookings through AU Rewardz. Conversion fee INR 199 plus GST; minimum transaction INR 2,000.
+  - name: Xpress EMI
+    description: Transactions of INR 500 or more can be converted to EMIs when the total value is at least INR 2,000; current card page does not state a card-specific Xpress EMI processing fee.
+  - name: Contactless payments
+    description: Tap the card or a digitally added card at POS for payments up to INR 5,000 without entering a PIN.
+  - name: Add-on cards
+    description: AU advertises lifetime-free add-on cards for Ananta.
+  - name: Protection covers
+    description: Issuer lists insurance coverage, card liability, air accident, purchase protection, baggage loss and delay, flight delay, passport loss, credit shield and device protection. Limits and applicable conditions are not established for Ananta from the available card-specific terms. See https://www.au.bank.in/pdf/credit-card/insurance-terms-and-conditions.pdf.
+  insurance:
+  - type: lost-card-liability
+    sum_insured_inr: null
+    conditions: The Ananta product page advertises Card Liability Cover. Ananta-specific limits, reporting window and exclusions remain unpublished in the available product-specific material.
+  - type: air-accident
+    sum_insured_inr: null
+    conditions: The Ananta product page advertises Air Accident Cover. Ananta-specific sum insured and applicable conditions remain unpublished in the available product-specific material.
+  - type: purchase-protection
+    sum_insured_inr: null
+    conditions: The Ananta product page advertises Purchase Protection. Ananta-specific sum insured, covered purchases, exclusions and duration remain unpublished in the available product-specific material.
+  - type: baggage-loss
+    sum_insured_inr: null
+    conditions: The Ananta product page advertises Baggage Loss cover. Ananta-specific sum insured and claim conditions remain unpublished in the available product-specific material.
+  - type: other
+    sum_insured_inr: null
+    conditions: The Ananta product page advertises Baggage Delay cover; the schema has no separate baggage-delay type, and Ananta-specific limits and claim conditions remain unpublished in the available product-specific material.
+  - type: trip-delay
+    sum_insured_inr: null
+    conditions: The Ananta product page advertises Flight Delay cover. Ananta-specific sum insured and claim conditions remain unpublished in the available product-specific material.
+  - type: other
+    sum_insured_inr: null
+    conditions: The Ananta product page advertises Loss of Passport cover; Ananta-specific limits and claim conditions remain unpublished in the available product-specific material.
+  - type: credit-shield
+    sum_insured_inr: null
+    conditions: The Ananta product page advertises Credit Shield. Ananta-specific sum insured, eligibility and conditions remain unpublished in the available product-specific material.
+  - type: other
+    sum_insured_inr: null
+    conditions: The Ananta product page advertises a Device Protection Plan; covered devices, limits, exclusions and claim conditions remain unpublished in the available product-specific material.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 200
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/ananta-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.welcome.window_days
+    - benefits.milestones.spend_inr
+    - benefits.milestones.reward_units
+    - benefits.milestones.value_inr
+    - benefits.milestones.trigger_window
+    - benefits.milestones.is_repeatable
+    - benefits.milestones.max_awards_per_cycle
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    - benefits.insurance
+    - benefits.other
+    notes: Current card page verifies the welcome trigger, four anniversary milestones and rupee values, partner discounts, Xpress EMI, contactless and add-on-card terms, protection-cover types, and statement-cycle fuel-waiver amount. AU's milestone terms say bonuses can be earned in each card-anniversary year. Lounge rules are from https://www.au.bank.in/pdf/TnC_Ananta_Lounge.pdf. Card-specific protection limits and detailed conditions remain unverified. AU says partner offers depend on the selected network variant but does not identify the network(s) or tier on this product page.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 740
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  notes: Issuer page lists salaried applicants aged 21-60 and self-employed applicants aged 25-65. No card-specific minimum income or bureau-score threshold is stated.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/ananta-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/ananta-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, shopping, dining, travel, points]
+  last_verified_on: '2026-11-01'
+  tags:
+  - premium
+  - shopping
+  - dining
+  - travel
+  - points

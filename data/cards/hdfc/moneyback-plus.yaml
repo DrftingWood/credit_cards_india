@@ -1,130 +1,218 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-moneyback-plus
 name: HDFC Bank MoneyBack+ Credit Card
 image_path: /cards/hdfc/moneyback-plus.webp
 issuer: hdfc
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2020-07-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2020-07-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 50000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/_shared/mitc-in-english.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 50000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card/fees-and-charges
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    - docs/sources/hdfc/_shared/hdfc-card-changes-effective-2026-05-15.pdf
+    - docs/sources/hdfc/moneyback-plus/MBPlus-TnCs.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: Current shared HDFC personal MITC lists 3.75% monthly for other variants. The MoneyBack+ fee-page FAQ says 3.6% but labels the product MoneyBack (without plus), so the current MITC figure is modeled and the page-label conflict noted. HDFC May-2026 notice sets 1.75% DCC and INR 199 non-metal reissue fee; the schema has no dedicated fields. The fee page gives no effective date; effective_from is the 27-Oct-2026 audit snapshot anchor, not a claimed term start. Exact launch date is unverified; HDFC records a 29-Sep-2021 relaunch, not the initial launch.
 rewards:
-  - effective_from: 2020-07-01
-    effective_until: null
-    currency: points
-    currency_name: CashPoints
-    base:
-      rate: 2
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: online-partner-merchants
-        canonical_categories: [online]
-        multiplier: 5
-        effective_rate: 20
-        cap_per_cycle: 2500
-        cap_unit: points
-        cycle: monthly
-        merchants: [amazon, bigbasket, flipkart, swiggy, reliance-smart-superstore]
-        channel:
-          class: cobrand-merchant
-          merchants: [amazon, bigbasket, flipkart, swiggy, reliance-smart-superstore]
-        notes: "10X CashPoints (20 CashPoints per ₹200) on Amazon, BigBasket, Flipkart, Reliance Smart SuperStore & Swiggy, capped at 2,500 CashPoints/month."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - utilities
-      - insurance-premiums
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-        min_units: 2000
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
-    mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
+- effective_from: '2026-05-15'
+  effective_until: null
+  currency: points
+  currency_name: CashPoints
+  base:
+    rate: 2
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.2
+  accelerated:
+  - category: online-partner-merchants
+    canonical_categories:
+    - online
+    multiplier: 10
+    effective_rate: 20
+    cap_per_cycle: 2500
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - amazon
+    - bigbasket
+    - flipkart
+    - swiggy
+    - reliance-smart-superstore
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - amazon
+      - bigbasket
+      - flipkart
+      - swiggy
+      - reliance-smart-superstore
+    over_cap_earns_base: false
+    notes: Current terms dated 15-May-2026 specify 20 CashPoints per INR 200 on eligible non-EMI merchant-ID transactions at Amazon, BigBasket, Flipkart, Reliance Smart SuperStore and Swiggy; cap 2,500 points per calendar month. Spends beyond this cap do not post CashPoints.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - emi
+  - cash-advance
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 0.2
+    min_units: 2000
+    fee_inr: 50
+    constraints: Product page states INR 0.20 per point; May-2026 detailed terms say up to INR 0.25. May-2026 linked detailed terms cap cashback redemption at 50,000 points/calendar month; the product page still states 3,000, treated as stale conflicting content.
+  - type: catalog
+    program: HDFC SmartBuy rewards catalogue
+    rate_inr_per_unit: 0.25
+    fee_inr: 99
+    constraints: Up to INR 0.25 per point; INR 99 plus taxes per redemption request; selected product/voucher redemption up to 70% of value.
+  - type: other
+    program: HDFC SmartBuy flights and hotels
+    rate_inr_per_unit: 0.25
+    constraints: Up to INR 0.25 per point; maximum 50% of booking value payable with points and 50,000 points per calendar month.
+  - type: airmiles
+    ratio: '1:0.25'
+    constraints: 1 CashPoint converts to 0.25 AirMiles per issuer product page.
+  capping_rules:
+  - Overall maximum 15,000 reward points per statement cycle.
+  - Grocery transactions are capped at 1,000 reward points per calendar month per terms; interaction with the 10X merchant cap is unspecified.
+  - Direct school/college website or POS education may earn; third-party education apps do not. MCC alone cannot distinguish channels.
+  - May-2026 linked terms say statement cashback is capped at 50,000 points/month; the current product page still says 3,000, preserved as an issuer-page conflict. Terms also require transactions to be at least INR 200 and in INR 200 multiples for points posting.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/moneyback-plus/MBPlus-TnCs.pdf
+    - docs/sources/hdfc/moneyback-plus/mbp_faqs.pdf
+    - docs/sources/hdfc/_shared/hdfc-card-changes-effective-2026-05-15.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cap_unit
+    - rewards.accelerated.cycle
+    - rewards.accelerated.over_cap_earns_base
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    - rewards.redemption.fee_inr
+    - rewards.mcc_exclusions
+  mcc_exclusions:
+  - '6540'
 benefits:
-  - effective_from: 2020-07-01
-    effective_until: null
-    lounge_access: null
-    milestones:
-      - spend_inr: 50000
-        cycle: quarterly
-        benefit: "₹500 gift voucher"
-        value_inr: 500
-    welcome:
-      - condition: "Joining membership fee paid"
-        benefit: "500 CashPoints"
-        value_inr: 125
-      - condition: "Renewal membership fee paid"
-        benefit: "500 CashPoints"
-        value_inr: 125
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-05-15
+  effective_until: null
+  lounge_access: null
+  milestones:
+  - spend_inr: 50000
+    cycle: quarterly
+    benefit: INR 500 Gyftr brand voucher after INR 50,000 net spend (spends minus reversals) in each calendar quarter; one voucher per quarter. EMI principal counts; SmartEMI/Dial-an-EMI does not. Message within 60 working days; claim within 120 days of message; vendor terms set voucher validity.
+    value_inr: 500
+  welcome:
+  - condition: Joining membership fee paid
+    benefit: 500 CashPoints
+    value_inr: 100
+  - condition: Renewal membership fee paid
+    benefit: 500 CashPoints
+    value_inr: 100
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: Swiggy Dineout discount
+    description: Additional 10% discount with coupon HDFCCARDS; offer terms apply.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/moneyback-plus/MBPlus-TnCs.pdf
+    - docs/sources/hdfc/moneyback-plus/mbp_faqs.pdf
+    - docs/sources/hdfc/_shared/hdfc-card-changes-effective-2026-05-15.pdf
+    fields_verified:
+    - benefits.milestones.spend_inr
+    - benefits.milestones.value_inr
+    - benefits.welcome.value_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    notes: Current card-specific T&C dated 15-May-2026 specifies net spend, settlement-date eligibility, eligible EMI principal, voucher message within 60 working days and 120-day claim window. Voucher value/validity depends on selected vendor. Welcome and renewal awards are 500 points when the respective membership fee is paid; INR 100 structured value uses the product-page statement redemption rate of INR 0.20/point, while terms allow up to INR 0.25 via other redemptions. RuPay variants earn 2 points per INR 200 on eligible UPI transactions, capped at 500 points/month; the schema cannot express this network-specific condition cleanly.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 65
   income_inr_annual:
-    salaried: 300000
+    salaried: 240000
     self_employed: 600000
-  credit_score_min: 720
-  residency: resident-indian
-
+  credit_score_min: null
+  residency: null
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  notes: Current product page states salaried Indian applicants age 21-60 with net monthly income over INR 20,000; self-employed Indian applicants age 21-65 with ITR over INR 6 lakh. The current eligibility page instead gives gross monthly income over INR 20,000 for salaried applicants; retained the product-page net threshold and documented the conflict. Indian nationality is specified, but residency status is not, so residency remains null. Salaried annual figure annualizes a monthly threshold; actual criterion is monthly. Credit-score FAQ language is generic and no product-specific threshold is published.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    local_refs:
+    - docs/sources/hdfc/moneyback-plus/mbp_faqs.pdf
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/moneyback-plus-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, online-spend]
+  last_verified_on: 2026-10-27
+  tags:
+  - entry
+  - points
+  - online-spend

@@ -1,100 +1,138 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-ai-inside
 name: YES Bank AI Inside Credit Card
-issuer: "yes"
-network: mastercard
-network_tier: platinum
+image_path: /cards/yes/ai-inside.webp
+issuer: 'yes'
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free (zero joining + renewal fees). Zero foreign currency markup. Issued to employees of specific corporates with a service-provider tie-up."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ai-inside-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: '2026-06-15'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 0.0
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee: null
+  gst_applicable: true
+  notes: Current issuer page advertises lifetime-free membership, up to 3% cashback and zero foreign-currency
+    markup. Current MITC v18 states 3.99% monthly revolving finance, no foreign-currency/DCC charge for
+    AI Inside, and cash-advance fee waived for AI Inside. No card-specific launch date or network variant
+    was established.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ai-inside-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/ai-inside/ybl-mitc-v18-2026-10-05.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current card page rendered 26-Oct-2026. MITC v18 confirms FX/DCC treatment and cash-advance
+      fee exemption for AI Inside.
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "Up to 3% assured cashback on spends; exact tier/category structure"
-    redemption:
-      - type: statement-credit
-        program: Cashback
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ai-inside-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-06-15'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    notes: Current issuer card page advertises up to 3% assured cashback on spends but does not publish
+      the earning schedule or the conditions for the maximum rate. No general/base rate is asserted.
+  accelerated: []
+  exclusions:
+  - fuel
+  - emi
+  mcc_exclusions: []
+  capping_rules:
+  - Issuer advertises up to 3% assured cashback on spends; the currently published card page does not
+    expose the category/tier earning schedule or cashback caps.
+  - Issuer page excludes cashback on EMI transactions, fuel, fees and charges.
+  redemption:
+  - type: statement-credit
+    program: Cashback
+    rate_inr_per_unit: 1.0
+    constraints: Cashback is denominated in INR. Current public issuer material does not explain posting
+      timing, caps, qualifying spend schedule or redemption mechanics.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ai-inside-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    local_refs: []
+    fields_verified:
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.exclusions
+    notes: Current card page rendered 26-Oct-2026. Issuer says up to 3% cashback but publishes no earning
+      schedule or caps.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ai-inside-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-06-15
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 750
+    cycle: statement
+    notes: 'Current MITC v18: 1% on eligible fuel transactions INR400?5,000; AI Inside cap is INR750 per
+      statement. Taxes on the surcharge are not waived. UPI fuel transactions are generally excluded from
+      surcharge waiver.'
+  concierge: null
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ai-inside-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/ai-inside/ybl-mitc-v18-2026-10-05.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    - benefits.concierge
+    notes: Current card page advertises zero forex and fuel waiver; MITC v18 gives the current band and
+      AI Inside cap. No lounge or concierge benefit is listed on rendered page.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
+    salaried: null
     self_employed: null
-  credit_score_min: 700
-  residency: resident-indian
-
+  credit_score_min: null
+  residency: null
+  notes: The current rendered card page does not publish eligibility conditions or age, income, bureau-score,
+    or residency thresholds.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ai-inside-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    local_refs: []
+    fields_verified: []
+    notes: Current rendered card page did not expose an eligibility section or criteria.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ai-inside-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, cashback, lifetime-free, zero-forex]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - cashback
+  - lifetime-free
+  - zero-forex

@@ -1,147 +1,559 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-ashva
 name: IDFC FIRST Ashva Credit Card
 image_path: /cards/idfc-first/ashva.webp
 issuer: idfc-first
 network: visa
-network_tier: signature
+network_tier: infinite
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-05-01
+launched_on: 2024-09-19
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-05-01
-    effective_until: null
-    joining_fee_inr: 2999
-    annual_fee_inr: 2999
-    fee_waiver:
-      spend_inr: 600000
-      cycle: annual
-    forex_markup_pct: 1.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Metal card; joining fee payable upfront (non-refundable) for card dispatch."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-09-17
+  effective_until: null
+  joining_fee_inr: 2999
+  annual_fee_inr: 2999
+  fee_waiver: null
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: >-
+    The primary metal card has a non-refundable joining fee payable upfront before
+    dispatch. The current product page does not state a fixed finance-charge rate;
+    no rate is asserted here. The product page separately says international ATM
+    withdrawals attract a 1% markup, a cash-withdrawal charge distinct from the
+    zero-markup policy for international card purchases. ATM withdrawals carry a
+    flat INR 199 + GST fee per transaction, including overseas withdrawals; the
+    page states up to 45 interest-free days when the bill is repaid by the due date.
+    The INR 8 lakh annual spend benefit awards 7,500 points after annual fee payment;
+    it does not waive the annual fee. Add-on cards separately cost INR 2,000 +
+    GST joining for metal or INR 1,500 + GST joining for plastic, plus INR 1,000 +
+    GST annual fee for either variant.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.flat_inr
+    local_refs:
+    - docs/sources/idfc-first/ashva/zero-forex-announcement-2026-09-17.pdf
+    notes: >-
+      Zero forex markup applies bank-wide effective 17-Sep-2026. The current Ashva
+      FAQ separately says foreign ATM cash withdrawals attract 1% forex markup,
+      which conflicts with the zero-markup announcement's bank-wide wording; the
+      possible ATM-specific exception is retained in notes pending clearer terms.
+      The product page lists a flat INR 199 + GST ATM charge, up to 45 interest-free
+      days if fully repaid by the due date, and a INR 10,000 per-transaction limit.
+      No fixed Ashva-specific purchase APR is published in the reviewed material.
 rewards:
-  - effective_from: 2024-05-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 150
-      unit_value_inr: 0.40
-      unit_value_inr_realized: 0.3
-    accelerated:
-      - category: weekend-dining
-        canonical_categories: [dining]
-        multiplier: 3
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 3
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
-        constraints: "Up to ₹0.40 per reward point when redeemed for hotel & flight bookings via FIRST Rewards Gallery."
+- effective_from: 2026-06-18
+  effective_until: 2026-10-25
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: 0.4
+    unit_value_inr_realized: 0.25
+    notes: >-
+      5 points per INR 150 on eligible spend up to INR 20,000 per statement cycle;
+      total rate is 10 points per INR 150 on eligible incremental spend above that
+      threshold. The schema cannot express the cumulative threshold exactly.
+      Point value is INR 0.40 for flight/hotel bookings in Travel & Shop and INR
+      0.25 for other redemption options. Points do not expire while the card is active.
+  accelerated:
+  - category: eligible-incremental-spend-above-20000
+    effective_rate: 10
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    cycle: statement
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25-copy.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
       confidence: high
-      notes: "Verified 2026-07-05: Ashva ceiling Rs0.40 (app travel; Rs0.5 was Mayura's rate); realized ~0.30."
-benefits:
-  - effective_from: 2024-05-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [loungekey]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "7,500 reward points (worth up to ₹3,000)"
-        value_inr: 3000
-        window_days: 90
-    insurance:
-      - type: trip-delay
-        sum_insured_inr: 25000
-        conditions: "Reimbursement for non-refundable flight & hotel cancellations, up to ₹25,000, twice a year."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    other:
-      - name: Railway lounge access
-        description: "4 complimentary railway lounge visits per quarter."
-      - name: Hotel booking discount
-        description: "Flat ₹5,000 off on a minimum hotel booking of ₹25,000."
-        value_inr: 5000
-    concierge: true
+      local_refs:
+      - docs/sources/idfc-first/ashva/ashva-rewards-terms-2025-05-28.pdf
+      fields_verified:
+      - rewards.accelerated.eligible-incremental-spend-above-20000.effective_rate
+    notes: >-
+      Total 10-point rate on eligible incremental spend above INR 20,000 per
+      statement cycle; the schema lacks a cumulative threshold field, so this is
+      not scored as a blanket rate.
+  - category: international-spends
+    canonical_categories:
+    - international
+    effective_rate: 5
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25-copy.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: >-
+      Eligible international transactions earn 5 points per INR 150 and count
+      toward the monthly INR 20,000 threshold for the 10-point rate. Effective
+      26-Oct-2026, the international rate changes to 2 points per INR 150.
+  - category: rent-education-government-and-wallet
+    canonical_categories:
+    - rent
+    - education
+    - government
+    - wallet-loads
+    effective_rate: 3
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25-copy.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: These categories earn 3 points per INR 150 and do not count toward the monthly INR 20,000 threshold.
+  - category: insurance-utilities-railway-and-fastag
+    canonical_categories:
+    - insurance
+    - utilities
+    effective_rate: 1
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Ashva-CC-Rewards-Structure-TnC-28-05-25-copy.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: Insurance, utilities, railway and FASTag earn 1 point per INR 150 and do not count toward the monthly INR 20,000 threshold.
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions: []
+  redemption:
+  - type: other
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.4
+    fee_inr: 99
+    constraints: INR 0.40 per point for flight/hotel bookings through Travel & Shop; INR 99 + GST redemption fee per transaction. Travel-booking redemptions are capped at 100,000 points per calendar month and 200,000 per calendar year.
+  - type: catalog
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.25
+    fee_inr: 99
+    constraints: INR 0.25 per point on other redemption options; INR 99 + GST redemption fee per transaction.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.eligible-incremental-spend-above-20000.effective_rate
+    notes: >-
+      Effective 18-Jun-2026, reward points accrue only on spends up to the credit
+      limit per billing cycle. The 5X rate applies to eligible monthly spend up to
+      INR 20,000; eligible incremental spend above INR 20,000 earns 10X. The schema
+      cannot represent that cumulative monthly threshold exactly, so these rates
+      are retained here rather than scored as if they applied to all spend.
+      The May-2026 cardmember notice says app hotel bookings earn a 20% bonus and
+      flights a 10% bonus over applicable rewards. The current product page and
+      Ashva reward T&Cs still show fixed bonuses of 30 points per INR 150 on hotels
+      and 15 per INR 150 on flights (the T&C illustration instead says 10 on
+      flights) with a 15,000-point monthly bonus cap. This issuer conflict is
+      unresolved; no app-booking bonus rate is modeled. The issuer's general
+      rewards page also says Ashva earns 10X on birthday purchases, but card-specific
+      birthday terms are not published.
+      The associated FIRST Digital RuPay UPI card earns 1 point per INR 150 on
+      transactions up to INR 2,000 and 3 points per INR 150 above INR 2,000;
+      UPI spend contributes to the Ashva threshold. Other exclusions include
+      fees/charges and GST, loan-on-card, balance transfer, and transactions below
+      INR 150. Reward points are credited on statement generation and may be
+      reversed if the Minimum Amount Due is unpaid. Points do not expire while
+      the card remains active. Reward history before 18-Jun-2026 was not rebuilt
+      from a complete series of dated issuer notices.
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: 0.4
+    unit_value_inr_realized: 0.25
+    notes: >-
+      5 points per INR 150 on eligible spend up to INR 20,000 per statement cycle;
+      total rate is 10 points per INR 150 on eligible incremental spend above that
+      threshold. The schema cannot express the cumulative threshold exactly.
+      Travel redemptions are worth INR 0.40 per point; other redemptions are worth INR 0.25.
+  accelerated:
+  - category: eligible-incremental-spend-above-20000
+    effective_rate: 10
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    cycle: statement
     source:
       url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
-
+      confidence: high
+      local_refs:
+      - docs/sources/idfc-first/ashva/ashva-rewards-terms-2025-05-28.pdf
+      fields_verified:
+      - rewards.accelerated.eligible-incremental-spend-above-20000.effective_rate
+    notes: >-
+      Total 10-point rate on eligible incremental spend above INR 20,000 per
+      statement cycle; the schema lacks a cumulative threshold field, so this is
+      not scored as a blanket rate.
+  - category: international-spends
+    canonical_categories:
+    - international
+    effective_rate: 2
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: >-
+      Effective 26-Oct-2026, international spends earn 2 points per INR 150,
+      replacing the earlier 5-point rate. The issuer page does not clearly state
+      whether these transactions continue to count toward the monthly INR 20,000
+      threshold; that condition remains unresolved.
+  - category: rent-education-government-and-wallet
+    canonical_categories:
+    - rent
+    - education
+    - government
+    - wallet-loads
+    effective_rate: 3
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: These categories earn 3 points per INR 150 and do not count toward the monthly INR 20,000 threshold.
+  - category: insurance-utilities-railway-and-fastag
+    canonical_categories:
+    - insurance
+    - utilities
+    effective_rate: 1
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: Insurance, utilities, railway and FASTag earn 1 point per INR 150 and do not count toward the monthly INR 20,000 threshold.
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions: []
+  redemption:
+  - type: other
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.4
+    fee_inr: 99
+    constraints: INR 0.40 per point for flight/hotel bookings through Travel & Shop; INR 99 + GST redemption fee per transaction. Travel-booking redemptions are capped at 100,000 points per calendar month and 200,000 per calendar year.
+  - type: catalog
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.25
+    fee_inr: 99
+    constraints: INR 0.25 per point on other redemption options; INR 99 + GST redemption fee per transaction.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/idfc-first/ashva/ashva-rewards-terms-2025-05-28.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.eligible-incremental-spend-above-20000.effective_rate
+    notes: >-
+      Eligible spend earns 5 points per INR 150 up to INR 20,000 per statement
+      cycle and 10 points per INR 150 on eligible incremental spend above INR 20,000.
+      The schema cannot express this cumulative threshold exactly; the total 10X
+      rule is retained but not scored as a blanket rate. Reward accrual is limited
+      to the assigned credit limit. Effective 26-Oct-2026, international purchases
+      earn 2 points per INR 150; the page still says 5X international spend counts
+      toward the INR 20,000 threshold, so whether the 2X transactions still count
+      is unresolved. Travel & Shop booking bonuses are not scored: the May-2026
+      notice says 20%/10%, while the live product page and terms show fixed point
+      bonuses (30 hotel/15 flight), and the detailed terms' flight example says 10.
+      The bonus is capped at 15,000 points/month. Travel redemptions are capped at
+      100,000 points/month and 200,000/year. Birthday 10X appears on the general
+      rewards page but Ashva-specific birthday terms are unpublished. Points do not
+      expire while the card remains active; linked FIRST Digital UPI earns separately.
+benefits:
+- effective_from: 2026-06-18
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 4
+      cycle: quarterly
+      guests_per_visit: null
+      via:
+      - visa
+      - dreamfolks
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      notes: Spend INR 20,000 in a calendar month unlocks access in the next month. The quarterly quota is shared between the primary cardholder and add-on cardholders; one entry per visit, no guest beyond quota.
+    international:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: null
+      via:
+      - dreamfolks
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      notes: Spend INR 20,000 in a calendar month unlocks access in the next month. The quarterly quota is shared between the primary cardholder and add-on cardholders; one entry per visit, no guest beyond quota.
+  golf:
+    rounds_per_cycle: null
+    lessons_per_cycle: null
+    cycle: monthly
+    notes: >-
+      Up to two complimentary golf rounds or golf lessons per month: one session
+      at INR 20,000 and two at INR 40,000 or more in eligible statement-cycle spend.
+      The issuer describes a shared rounds-or-lessons entitlement, so separate
+      round and lesson counts are left null. Primary cardholder only; each earned
+      session is valid for 60 days after it appears in the golf account.
+  milestones:
+  - spend_inr: 800000
+    cycle: annual
+    benefit: 7,500 Reward Points after paying the next annual fee
+    value_inr: null
+    reward_kind: points
+    reward_units: 7500
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  welcome:
+  - condition: Ashva card generated on or after 2025-09-01; joining fee successfully realized; primary cardholder; once per customer
+    benefit: 2,500 Reward Points
+    value_inr: 1000
+    window_days: null
+  - condition: Same joining-fee offer; at least INR 20,000 net settled eligible spend in the second statement cycle
+    benefit: 2,500 Reward Points
+    value_inr: 1000
+    window_days: null
+  - condition: Same joining-fee offer; at least INR 20,000 net settled eligible spend in the third statement cycle
+    benefit: 2,500 Reward Points
+    value_inr: 1000
+    window_days: null
+  insurance:
+  - type: other
+    sum_insured_inr: 25000
+    conditions: >-
+      Cancel-for-any-reason trip-cancellation cover for non-refundable flight and
+      eligible hotel bookings, maximum two cancellations shared by primary and
+      add-on cardholders during the policy period 2026-05-08 through 2027-05-07;
+      bookings/cancellations must fall within the policy period and cancellation
+      must be at least 24 hours before travel. Four-/five-star hotels only. Current
+      terms and claim conditions are in the linked issuer policy.
+  - type: air-accident
+    sum_insured_inr: 10000000
+    conditions: >-
+      Air accident cover. Current insurer schedule requires the ticket to be
+      purchased using the covered card; active-card and claim conditions apply.
+  - type: personal-accident
+    sum_insured_inr: 1000000
+    conditions: >-
+      Personal accident cover; insurer requires at least one purchase or ATM
+      withdrawal within the preceding 30 days. Claim is payable once across the
+      cardholder's IDFC FIRST cards.
+  - type: lost-card-liability
+    sum_insured_inr: 50000
+    conditions: >-
+      Lost-card, counterfeit/skimming and online-fraud liability cover. At least
+      one purchase or ATM withdrawal within the preceding 30 days is required;
+      detailed exclusions and reporting deadlines are in issuer insurance terms.
+  - type: baggage-loss
+    sum_insured_inr: null
+    sum_insured_amount: 500
+    sum_insured_currency: USD
+    conditions: >-
+      Loss of checked-in baggage on international travel; ticket must be purchased
+      with the covered card, and the card must have had a purchase or ATM
+      withdrawal in the preceding 30 days.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: International flight delay cover; ticket must be purchased with the covered card and active-card terms apply.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 100
+    sum_insured_currency: USD
+    conditions: International checked-in baggage delay cover; ticket must be purchased with the covered card and active-card terms apply.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: >-
+      Reimbursement for loss of passport and other travel documents on eligible
+      international travel; ticket must be purchased with the covered card and
+      active-card terms apply. Together with baggage and delay sublimits, these
+      issuer-published travel protections total USD 1,200.
+  - type: purchase-protection
+    sum_insured_inr: 50000
+    coverage_duration_days: 60
+    conditions: >-
+      Shared issuer insurance schedule lists INR 50,000 for Ashva. Covers fire,
+      allied perils and burglary of eligible purchases at the cardholder's
+      recorded Indian residence for 60 days; card must have been used at least
+      once in the preceding 30 days.
+  fuel_surcharge_waiver:
+    pct: 1
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 300
+    cycle: monthly
+    notes: Issuer describes the INR 300 ceiling per statement cycle.
+  movies:
+    type: bogo
+    partner: District by Zomato
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 400
+    notes: >-
+      Up to INR 400 off each of two tickets/transactions per calendar month
+      (maximum INR 800 total). From 18-Jun-2026, spend INR 20,000 in the current
+      calendar month to unlock the next month's offer.
+  concierge: true
+  dining:
+    program: Visa Infinite dining privileges
+    discount_pct: 20
+    notes: Up to 20% off at participating restaurants; individual merchant terms apply.
+  other:
+  - name: Railway lounge access
+    description: >-
+      Up to four complimentary visits per quarter at participating Indian railway
+      lounges, shared between primary and add-on cardholders. Spend INR 20,000 in
+      the current calendar month to unlock access in the next month; one guest may
+      accompany a visit within the quota, with valid train ticket and ID.
+    value_inr: null
+  - name: The Postcard Hotels & Resorts
+    description: >-
+      Flat INR 5,000 off a minimum INR 25,000 booking once per calendar quarter
+      with promo code IDFCVIP; issuer page lists validity through 2027-02-10.
+    value_inr: 5000
+  - name: Roadside assistance
+    description: Roadside-assistance service advertised at an issuer-stated value of INR 1,399; service counts and exclusions are in linked terms.
+    value_inr: 1399
+  - name: Visa Infinite hotel, stay and airport privileges
+    description: >-
+      Current Ashva page lists ITC Hotels stay offers, Elivaas offers, airport
+      meet-and-greet/transfer discounts, and luxury-hotel benefits. Availability,
+      partner conditions and current offer periods vary; see issuer-linked Visa
+      terms.
+    value_inr: null
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/idfc-first/ashva/airport-lounge-terms.pdf
+    - docs/sources/idfc-first/ashva/railway-lounge-terms-2025-01-16.pdf
+    - docs/sources/idfc-first/ashva/golf-terms.pdf
+    - docs/sources/idfc-first/ashva/movie-offer-terms-2026-06-25.pdf
+    - docs/sources/idfc-first/ashva/trip-cancellation-policy-2026-05-19.pdf
+    - docs/sources/idfc-first/ashva/insurance-privileges-2026-08-31.pdf
+    - docs/sources/idfc-first/ashva/roadside-assistance-terms-2025-10-28.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.lounge_access.international.spend_threshold_inr
+    - benefits.golf.rounds_per_cycle
+    - benefits.golf.lessons_per_cycle
+    - benefits.milestones
+    - benefits.welcome
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver
+    - benefits.movies
+    - benefits.dining
+    - benefits.other
+    notes: >-
+      Current product and linked cover conditions were checked against the archived
+      lounge, railway, golf, movie, CFAR, roadside-assistance, welcome, annual-fee,
+      and shared insurance documents listed in local_refs. The CFAR policy starts
+      8-May-2026 or the later issue date and ends 7-May-2027. The shared insurance
+      schedule requires an active card and, for travel covers, international travel
+      with the ticket purchased on the covered card.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: null
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: >-
+    IDFC FIRST's general credit-card application page says applicants must be at
+    least 21 and Indian citizens, and should have a healthy credit score. The data
+    model has no citizenship field, so residency is left null instead of equating
+    citizenship with residence. No Ashva-specific minimum income or numeric
+    credit-score threshold is published; approval is subject to bank underwriting.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card?cardType=Select
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [premium, metal, dining, travel, low-forex]
+  last_verified_on: 2026-10-27
+  tags:
+  - premium
+  - metal
+  - dining
+  - travel
+  - zero-forex

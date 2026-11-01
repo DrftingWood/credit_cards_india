@@ -20,9 +20,9 @@ export type CreditCardIndia = {
    */
   issuer: string;
   /**
-   * Slug of an entry under data/networks/.
+   * Slug of an entry under data/networks/. Null when the issuer does not identify the issued or selected network variant.
    */
-  network: "visa" | "mastercard" | "rupay" | "amex" | "diners";
+  network: "visa" | "mastercard" | "rupay" | "amex" | "diners" | null;
   /**
    * Network-specific tier (e.g. infinite, signature, world-elite). Must exist in the network's `tiers`.
    */
@@ -32,9 +32,9 @@ export type CreditCardIndia = {
    */
   tier: "entry" | "mid" | "premium" | "super-premium" | "invite-only";
   /**
-   * Credit behaviour. 'charge' means no revolving credit (Amex).
+   * Credit behaviour. 'charge' means no revolving credit (Amex). Null when issuer evidence does not establish the classification.
    */
-  card_type?: "credit" | "charge" | "secured";
+  card_type?: "credit" | "charge" | "secured" | null;
   co_brand?: null | {
     partner: string;
     /**
@@ -98,7 +98,7 @@ export type Cycle = "monthly" | "quarterly" | "annual" | "statement" | "per-txn"
 export type LoungeDetails = LoungeDetails1 & {
   visits_per_cycle?: number | "unlimited";
   cycle?: Cycle;
-  guests_per_visit?: number | "unlimited";
+  guests_per_visit?: null | number | "unlimited";
   via?: (
     | "visa"
     | "mastercard"
@@ -120,7 +120,7 @@ export type LoungeDetails = LoungeDetails1 & {
 } & LoungeDetails1 & {
     visits_per_cycle?: number | "unlimited";
     cycle?: Cycle;
-    guests_per_visit?: number | "unlimited";
+    guests_per_visit?: null | number | "unlimited";
     via?: (
       | "visa"
       | "mastercard"
@@ -151,8 +151,11 @@ export type LoungeDetails1 =
 export interface FeeRecord {
   effective_from: string;
   effective_until: string | null;
-  joining_fee_inr: number;
-  annual_fee_inr: number;
+  joining_fee_inr: number | null;
+  /**
+   * Null when available issuer evidence does not establish the annual fee.
+   */
+  annual_fee_inr: number | null;
   /**
    * If different from annual_fee_inr (rare).
    */
@@ -164,9 +167,21 @@ export interface FeeRecord {
   };
   forex_markup_pct?: number | null;
   finance_charge_monthly_pct?: number | null;
+  /**
+   * Relationship- or balance-dependent monthly finance rates. Use alongside a null flat finance_charge_monthly_pct when no single rate applies.
+   */
+  finance_charge_tiers?: {
+    min_amb_inr: number;
+    max_amb_inr: number | null;
+    monthly_rate_pct: number | null;
+    annual_rate_pct?: number | null;
+    basis?: string;
+    conditions?: string;
+  }[];
   cash_advance_fee?: null | {
     pct?: number;
     min_inr?: number;
+    flat_inr?: number;
   };
   late_payment_slabs?:
     | {
@@ -258,8 +273,8 @@ export interface RewardRecord {
    */
   unit_value_from_program?: boolean;
   base: {
-    rate: number;
-    per_inr: number;
+    rate: number | null;
+    per_inr: number | null;
     /**
      * Best-case (face) INR value of one unit on redemption. When loyalty_program is set, prefer the program's unit_value_inr.realized for math.
      */
@@ -287,6 +302,7 @@ export interface RewardRecord {
         | "fuel"
         | "travel"
         | "utilities"
+        | "telecom"
         | "rent"
         | "international"
         | "entertainment"
@@ -304,6 +320,7 @@ export interface RewardRecord {
         | "fuel"
         | "travel"
         | "utilities"
+        | "telecom"
         | "rent"
         | "international"
         | "entertainment"
@@ -315,6 +332,31 @@ export interface RewardRecord {
         | "other"
       )[]
     ];
+    /**
+     * Buckets excluded from base earn while still allowing a separately scoped accelerator to earn, such as utility spends eligible only through a named channel.
+     */
+    excluded_categories?: (
+      | "online"
+      | "groceries"
+      | "dining"
+      | "fuel"
+      | "travel"
+      | "utilities"
+      | "telecom"
+      | "rent"
+      | "international"
+      | "entertainment"
+      | "government"
+      | "insurance"
+      | "education"
+      | "wallet-loads"
+      | "emi"
+      | "other"
+    )[];
+    /**
+     * Evidence caveats for this base earn rule; use null for unverified numeric values rather than a guess.
+     */
+    notes?: string;
   };
   accelerated?: (
     | {
@@ -336,6 +378,8 @@ export interface RewardRecord {
     | "rent"
     | "government"
     | "utilities"
+    | "telecom"
+    | "international"
     | "insurance-premiums"
     | "education"
     | "jewellery"
@@ -345,11 +389,26 @@ export interface RewardRecord {
     | "mutual-funds"
     | "crypto"
     | "other"
+    | "jewelry"
+    | "bridge-fees"
+    | "road-fees-and-tolls"
+    | "financial-institutions"
   )[];
   /**
    * Specific 4-digit MCCs that earn ZERO rewards on this card (from the card's T&C). Machine-readable complement to the category-level `exclusions`; the calculator scores spend on these MCCs at 0.
    */
   mcc_exclusions?: string[];
+  /**
+   * Issuer-defined reward caps scoped to a category or MCC set, including caps on total points earned in that category.
+   */
+  category_caps?: {
+    category: string;
+    mcc_list?: string[];
+    cap_per_cycle: number;
+    cap_unit: "points" | "cashback-inr" | "miles" | "spend-inr";
+    cycle: Cycle;
+    conditions?: string;
+  }[];
   /**
    * Card-wide ceiling on reward units earned per cycle across ALL categories (e.g. 50,000 points per statement cycle). Distinct from per-accelerator caps and base.cap_per_cycle.
    */
@@ -465,11 +524,17 @@ export interface BenefitRecord {
       | "credit-shield"
       | "fraud-liability"
       | "other";
-    sum_insured_inr: number;
+    sum_insured_inr: number | null;
+    sum_insured_amount?: number | null;
+    sum_insured_currency?: "INR" | "USD" | null;
+    coverage_duration_days?: number | null;
     conditions?: string;
   }[];
   fuel_surcharge_waiver?: {
-    pct: number;
+    /**
+     * Null when the issuer publishes a surcharge reversal but does not state a fixed percentage rate.
+     */
+    pct: number | null;
     min_txn_inr?: number | null;
     max_txn_inr?: number | null;
     cap_per_cycle_inr?: number | null;
@@ -489,7 +554,10 @@ export interface BenefitRecord {
     cap_inr?: number | null;
     notes?: string;
   } | null;
-  concierge?: boolean;
+  /**
+   * Whether concierge service is offered; use null when current issuer evidence does not establish availability.
+   */
+  concierge?: boolean | null;
   /**
    * Surcharge waivers other than fuel (e.g. railway booking, utility bill, online education). Fuel has its own dedicated `fuel_surcharge_waiver` field.
    */
@@ -516,13 +584,28 @@ export interface BenefitRecord {
 export interface Eligibility {
   min_age?: number | null;
   max_age?: number | null;
+  age_ranges?: {
+    salaried?: {
+      min_age?: number | null;
+      max_age?: number | null;
+    };
+    self_employed?: {
+      min_age?: number | null;
+      max_age?: number | null;
+    };
+    retired_pensioner?: {
+      min_age?: number | null;
+      max_age?: number | null;
+    };
+  };
   income_inr_annual?: {
     salaried?: number | null;
     self_employed?: number | null;
   };
   credit_score_min?: number | null;
-  residency?: "resident-indian" | "nri" | "either";
+  residency?: "resident-indian" | "nri" | "either" | null;
   notes?: string;
+  source?: Source;
 }
 export interface Metadata {
   last_verified_on: string;

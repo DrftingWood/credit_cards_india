@@ -8,165 +8,128 @@ tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2015-09-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2015-09-01
+- effective_from: 2026-10-25
   effective_until: null
   joining_fee_inr: 50000
   annual_fee_inr: 50000
   fee_waiver:
-    spend_inr: 2500000
+    spend_inr: 3500000
     cycle: annual
   forex_markup_pct: 1.5
   finance_charge_monthly_pct: 3.0
   cash_advance_fee:
-    pct: 2.5
-    min_inr: 500
+    pct: 0
+    min_inr: 0
   gst_applicable: true
   source:
-    url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
-    retrieved_on: 2026-07-03
+    url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card/beyond-expectations-always
+    retrieved_on: 2026-10-27
     type: issuer-page
     confidence: high
-    local_refs:
-    - docs/sources/axis/_shared/mitc-credit-cards.pdf
     fields_verified:
-    - fees.finance_charge_monthly_pct
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
     - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    local_refs:
+    - docs/sources/axis/reserve/sosc-credit-cards-updated-2026.pdf
+    - docs/sources/axis/reserve/reserve-current-card-terms.pdf
+    notes: Current issuer KFS/MITC and Reserve product page confirm the fee schedule. INR 35,00,000 is the current standard annual waiver threshold; issuer terms describe a transition for customers onboarded before 1 Sep 2023.
 rewards:
-- effective_from: 2015-09-01
+- effective_from: 2026-10-25
   effective_until: null
   currency: points
   currency_name: EDGE Reward Points
   base:
     rate: 15
     per_inr: 200
-    unit_value_inr: 0.44
-    unit_value_inr_realized: 0.18
   accelerated:
   - category: international-spend
     canonical_categories:
     - international
     multiplier: 2
     effective_rate: 30
-    cap_per_cycle: unlimited
     cap_unit: points
     cycle: monthly
-    notes: 2X EDGE Reward Points (30 per ₹200) on international spends up to the assigned
-      credit limit per calendar month (w.e.f 20 Jun 2025); base 15 per ₹200 thereafter.
+    notes: Earn 30 EDGE Reward Points per INR 200 on eligible international spend up to the assigned credit limit per calendar month; 15 per INR 200 above that limit. Temporary credit limit increases are excluded. Base points post within T+7 days; accelerated points post on the 45th day after month-end. The schema cannot express a spend cap equal to the card-specific credit limit.
   exclusions:
-  - fuel
   - wallet-loads
-  - rent
   - government
   - insurance-premiums
   - utilities
+  - telecom
+  - gift-cards
   - jewellery
+  - fuel
+  - bridge-fees
+  - road-fees-and-tolls
+  - cash-advance
   redemption:
   - type: catalog
     program: EDGE Rewards
-    rate_inr_per_unit: 0.2
-  - type: airmiles
-    program: Multiple (EDGE transfer)
-    ratio: '5:2'
-    constraints: '10 transfer partners; ratios are card-point : partner-unit. realized
-      Rs 0.40 = guaranteed non-transfer floor; best documented transfer Rs 0.44. 5
-      partners beat the floor. Full per-partner values below.'
-    transfer_partners:
-    - partner_name: Singapore KrisFlyer
-      partner_type: airline
-      transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.44/pt
-    - partner_name: Air India Maharaja Club
-      partner_type: airline
-      transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.22/pt [below floor — avoid]
-    - partner_name: Air France-KLM Flying Blue
-      partner_type: airline
-      transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.36/pt
-    - partner_name: Turkish Miles&Smiles
-      partner_type: airline
-      transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.44/pt
-    - partner_name: ITC Hotels (Club ITC)
-      partner_type: hotel
-      transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.40/pt
-    - partner_name: Air Canada Aeroplan
-      partner_type: airline
-      transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.40/pt
-    - partner_name: IHG One Rewards
-      partner_type: hotel
-      transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.20/pt [below floor — avoid]
-    - partner_name: British Airways Avios
-      partner_type: airline
-      transfer_ratio: '5:1'
-      last_verified_on: '2026-07-05'
-      notes: 5:1 -> ~Rs 0.20/pt [below floor — avoid]
-    - partner_name: Finnair Plus (Avios)
-      partner_type: airline
-      transfer_ratio: '5:1'
-      last_verified_on: '2026-07-05'
-      notes: 5:1 -> ~Rs 0.21/pt [below floor — avoid]
-    - partner_name: Vietnam LotusMiles
-      partner_type: airline
-      transfer_ratio: '5:1'
-      last_verified_on: '2026-07-05'
-      notes: 5:1 -> ~Rs 0.16/pt [below floor — avoid]
-    rate_inr_per_unit: 0.44
+    rate_inr_per_unit: null
+    constraints: Redemption value varies by catalogue item; current issuer page does not state a universal INR per point value.
   source:
-    url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
-    retrieved_on: '2026-07-05'
+    url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card/beyond-expectations-always
+    retrieved_on: 2026-10-27
     type: issuer-page
-    notes: 'EDGE Reward Points: Rs 0.18 catalogue floor (uniform); face Rs 0.44 =
-      best 5:2 transfer to airline/hotel partners. Corrected catalogue Rs0.40->Rs0.20
-      (was an error) and realized Rs0.40->Rs0.18.'
+    notes: Rent earns EDGE points up to INR 100,000 monthly; the issuer lists dynamic transfer ratios, so stale fixed partner ratios and point valuations were removed pending current partner-specific verification.
     confidence: high
-  mcc_exclusions:
-  - '6513'
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    local_refs:
+    - docs/sources/axis/reserve/reserve-revision-effective-2025-06-20.pdf
+    - docs/sources/axis/reserve/reserve-revision-effective-2026-08-28.pdf
+    notes: Current issuer terms exclude utility/telecom, rent (points earned only up to INR 100,000 per calendar month), wallet, gift cards, government, insurance, gold/jewellery, fuel, bridge fees, road fees/tolls, cash advances and repayments. EMI-converted transactions have points debited; cancelled EMIs do not restore points. Fee-waiver spend additionally excludes reversals, fees/charges and EMI transactions, among the other listed categories. No universal point redemption value is published.
+  mcc_exclusions: []
 benefits:
-- effective_from: 2015-09-01
+- effective_from: 2026-10-25
   effective_until: null
   lounge_access:
     domestic:
       visits_per_cycle: unlimited
       cycle: annual
-      guests_per_visit: unlimited
+      guests_per_visit: null
       via:
-      - dreamfolks
+      - issuer-direct
+      notes: Unlimited visits for primary and add-on cardholders at eligible domestic lounges. Up to 12 accompanying guest visits per calendar year are complimentary. Present the physical Reserve card and boarding pass; Priority Pass is not valid for domestic lounge entry in India effective 28 Aug 2026. The card-specific lounge PDF in the archive describes an older program valid only through Mar 2022, so it was not used for current terms. Guest quota is annual, not per visit.
     international:
       visits_per_cycle: unlimited
       cycle: annual
-      guests_per_visit: unlimited
+      guests_per_visit: null
       via:
       - priority-pass
+      notes: Complimentary Priority Pass for primary and add-on cardholders; unlimited international visits per card anniversary year and 12 guest visits per anniversary year. Guest quota is annual, not per visit.
   golf:
-    rounds_per_cycle: 4
-    cycle: monthly
-    lessons_per_cycle: 2
+    rounds_per_cycle: 50
+    cycle: annual
+    notes: Issuer golf terms state 50 complimentary rounds per year. Booking is through Extraordinary Weekends/Golflan at least four days ahead, subject to availability; maximum two confirmed slots at once and one per day. This is not a golf-club membership.
   welcome:
-  - condition: Joining fee paid
-    benefit: Taj Epicure membership + 50,000 bonus EDGE Reward Points
-    value_inr: 25000
-    window_days: 90
+  - condition: First transaction within 30 days of card creation; not applicable to first-year-free or lifetime-free issuance
+    benefit: 15,000 EDGE Reward Points in the first year
+    value_inr: null
+    window_days: 30
   insurance:
-  - type: air-accident
-    sum_insured_inr: 35000000
-  - type: travel-medical
-    sum_insured_inr: 5000000
-  - type: lost-card-liability
-    sum_insured_inr: 300000
+  - type: purchase-protection
+    sum_insured_inr: 200000
+    conditions: Issuer summary lists INR 2 lakh purchase protection; detailed coverage is subject to policy terms.
+  - type: baggage-loss
+    sum_insured_inr: null
+    sum_insured_amount: 500
+    sum_insured_currency: USD
+    conditions: Issuer summary lists USD 500 for baggage loss/delay and personal documents; detailed coverage is subject to policy terms.
+  - type: credit-shield
+    sum_insured_inr: 500000
+    conditions: Issuer summary lists INR 5 lakh credit shield; detailed coverage is subject to policy terms.
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
@@ -176,42 +139,59 @@ benefits:
   concierge: true
   dining:
     program: EazyDiner Prime
-    notes: Complimentary EazyDiner Prime membership; Visa Dining Delights.
+    notes: Complimentary EazyDiner Prime membership.
   movies:
     type: free
     partner: BookMyShow
-    notes: Complimentary movie tickets on BookMyShow.
+    notes: Complimentary movie tickets are advertised; current offer quota and conditions were not verified.
   other:
+  - name: Airport concierge
+    description: Complimentary airport concierge service. Luxury airport transfers were discontinued effective 20 April 2024.
   - name: Club ITC Culinaire membership
-    description: Complimentary Club ITC Culinaire membership.
+    description: Complimentary membership advertised on current issuer page.
   - name: Accor Plus membership
-    description: Complimentary Accor Plus membership.
+    description: Complimentary membership advertised on current issuer page.
   - name: Club Marriott Asia Pacific membership
-    description: Complimentary handcrafted Club Marriott Asia Pacific membership.
-  - name: Swiggy One membership
-    description: Complimentary Swiggy One membership.
+    description: Complimentary membership advertised on current issuer page.
   - name: Postcard Hotel savings
-    description: 15% savings at Postcard Hotel.
+    description: 15% savings advertised on current issuer page.
   source:
-    url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
-    retrieved_on: 2026-07-03
+    url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card/beyond-expectations-always
+    retrieved_on: 2026-10-27
     type: issuer-page
     confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.dining
+    - benefits.golf.rounds_per_cycle
+    local_refs:
+    - docs/sources/axis/reserve/reserve-revision-effective-2026-08-28.pdf
+    - docs/sources/axis/reserve/reserve-current-card-terms.pdf
+    - docs/sources/axis/reserve/reserve-priority-pass-terms.pdf
+    - docs/sources/axis/reserve/reserve-golf-terms.pdf
+    - docs/sources/axis/reserve/reserve-visa-infinite-issuer-card-list-2025.pdf
+    notes: The issuer's 2025 card-list PDF identifies the 436560 BIN as Axis Bank Infinite Reserve Credit Card, supporting Visa Infinite for the documented Reserve variant. The 28 Aug 2026 revision states complimentary card-linked memberships renew only with explicit consent effective 15 Nov 2026. Oberoi offers ended 1 Oct 2025. BookMyShow quota/conditions and EazyDiner membership tenure remain unverified. Memberships may vary by issuance cohort.
 eligibility:
-  min_age: 18
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 3500000
-    self_employed: 3500000
-  credit_score_min: 780
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: Typically available to Axis Burgundy Private / Priority banking clients.
+  notes: Numeric income, age, and credit-score requirements were not verified from current issuer eligibility evidence. Issuer underwriting and relationship criteria may apply.
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - super-premium
   - travel
   - dining
-  - invite-only-like

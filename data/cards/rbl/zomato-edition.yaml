@@ -1,18 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : RBL central CardsScheduleCharges.pdf + per-card T&C PDFs (docs/sources/rbl/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: rbl-zomato-edition
-name: Zomato RBL Bank Edition Credit Card
+﻿id: rbl-zomato-edition
+name: RBL Bank Edition Classic Credit Card
 image_path: /cards/rbl/zomato-edition.webp
 issuer: rbl
 network: mastercard
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -20,112 +11,168 @@ co_brand:
   category: lifestyle
   partner_website: https://www.zomato.com
 status: discontinued
-launched_on: 2023-03-01
-discontinued_on: 2026-07-03
-
-# Link check 2026-10-20: the cited product URL is a 404 and rbl.bank.in/sitemap.xml has
-# no Edition/Zomato card. RBL's notice
-# (https://webassets.rbl.bank.in/document/credit-cards/edition-card-1-423.pdf) says the
-# Zomato co-brand is discontinued and cards are replaced by the RBL Shoprite card;
-# CardInsider (17-Apr-2023) dates the switch to May 2023. discontinued_on is still the
-# observed date; the real sunset (~2023-05-14) is a pending decision (see REMEDIATION_LOG).
-
+launched_on: '2020-03-02'
+discontinued_on: '2023-05-15'
 fees:
-  - effective_from: 2023-03-01
-    effective_until: 2026-07-03
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card
-      retrieved_on: 2026-04-15
-      type: issuer-page
-
+- effective_from: '2020-03-02'
+  effective_until: '2023-05-14'
+  joining_fee_inr: null
+  annual_fee_inr: null
+  fee_waiver: null
+  forex_markup_pct: null
+  finance_charge_monthly_pct: null
+  cash_advance_fee: null
+  gst_applicable: true
+  notes: Historical fee amounts and card-specific waiver conditions remain unknown because surviving official Edition Classic fee evidence was not located. RBL's 2023 transition notice says annual/renewal fees paid after 1-May-2022 were to be reversed. Generic RBL finance charges vary by cardmember and category; exact Edition Classic rate was not established.
+  source:
+    url: https://webassets.rbl.bank.in/document/credit-cards/edition-card-1-423.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: medium
+    local_refs:
+    - docs/sources/rbl/zomato-edition/edition-card-replacement-notice-2023-04.pdf
+    - docs/sources/rbl/_shared/CardsScheduleCharges.pdf
+    fields_verified:
+    - fees.effective_until
+    verified_by: agent
+    method: manual-read
 rewards:
-  - effective_from: 2023-03-01
-    effective_until: 2026-07-03
-    currency: cashback
-    currency_name: Zomato Credits
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-    accelerated:
-      - category: zomato-ordering-dining
-        canonical_categories: [dining]
-        multiplier: 1
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [zomato, zomato-dining]
-        notes: "10% back on Zomato food delivery and Zomato Dining Out."
-      - category: other-online
-        canonical_categories: [online]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-      - insurance-premiums
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: cashback-bank
-        program: Zomato Credits
-        rate_inr_per_unit: 1.0
-        constraints: "Redeemable only on Zomato at 1 credit = ₹1."
-    source:
-      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card
-      retrieved_on: 2026-04-15
-      type: issuer-page
-
+- effective_from: '2022-09-20'
+  effective_until: '2023-05-14'
+  currency: points
+  currency_name: Edition Cash
+  redemption_scope: closed-loop
+  ecosystem_label: Zomato
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+  accelerated:
+  - category: zomato-blinkit-app
+    canonical_categories:
+    - dining
+    - groceries
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - zomato
+    - blinkit
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - zomato
+      - blinkit
+    notes: 5% Edition Cash on Zomato and Blinkit app spends, capped at 500 Edition Cash per day. Daily cap is not representable in the card schema; recorded in notes rather than incorrectly converted to a monthly cap.
+    cap_status: unknown
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  mcc_exclusions:
+  - '6513'
+  capping_rules:
+  - Zomato/Blinkit accelerator is capped at 500 Edition Cash per day. The schema has no daily cap cycle; the modeled monthly accelerator cap is marked unknown and the daily cap is retained here for interpretation.
+  redemption:
+  - type: voucher
+    program: Zomato app
+    rate_inr_per_unit: 1.0
+    constraints: Edition Cash could be used on the Zomato app for food orders or restaurant payments, at 1 Edition Cash = INR 1. Unused balances were to be redeemed by 14-May-2023; remaining value was to transfer as cashback to replacement Shoprite accounts by 10-Jun-2023.
+  source:
+    url: https://webassets.rbl.bank.in/document/credit-cards/tnc-edition-classic-922.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/rbl/zomato-edition/edition-classic-terms.pdf
+    - docs/sources/rbl/zomato-edition/edition-classic-benefits-effective-2022-09-20.pdf
+    - docs/sources/rbl/zomato-edition/edition-card-replacement-notice-2023-04.pdf
+    fields_verified:
+    - rewards.currency
+    - rewards.currency_name
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    verified_by: agent
+    method: pdf-extract
+    notes: >-
+      The 20-Sep-2022 Classic update sets final earn terms: 5% on Zomato/Blinkit apps up to 500 Edition Cash/day, 1% everywhere else, and 2,000 bonus Edition Cash after INR 2 lakh annual spend. Edition Cash is closed-loop Zomato value, not bank cashback. Full-fee cards only qualify for the 500 Edition Cash issue-time welcome benefit; lifetime-free and first-year-free cards are excluded.
 benefits:
-  - effective_from: 2023-03-01
-    effective_until: 2026-07-03
-    lounge_access: null
-    welcome:
-      - condition: "First transaction within 30 days"
-        benefit: "Zomato Gold membership for 3 months"
-        value_inr: 500
-        window_days: 30
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card
-      retrieved_on: 2026-04-15
-      type: issuer-page
-
+- effective_from: '2022-09-20'
+  effective_until: '2023-05-14'
+  lounge_access: null
+  welcome:
+  - condition: Issued instantly upon card issuance to full-fee cards; not applicable to lifetime-free or first-year-free cards.
+    benefit: 500 Edition Cash welcome benefit.
+    value_inr: 500
+    window_days: 0
+  milestones:
+  - spend_inr: 200000
+    cycle: annual
+    benefit: 2,000 bonus Edition Cash after INR 2 lakh spend in an anniversary year.
+    value_inr: 2000
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: Edition Cash
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  concierge: null
+  other:
+  - name: Zomato Gold membership
+    description: RBL's March 2020 launch announcement listed a complimentary annual city Zomato Gold membership for Edition Classic. Later/latest membership terms were not found; retained as launch-era positioning only.
+  - name: Domestic lounge access
+    description: The 2020 launch announcement advertised complimentary access at major domestic airports but gave no visit count or qualification terms; no quantified lounge benefit is modeled.
+  source:
+    url: https://webassets.rbl.bank.in/document/credit-cards/edition-card-1-423.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: medium
+    local_refs:
+    - docs/sources/rbl/zomato-edition/edition-classic-terms.pdf
+    - docs/sources/rbl/zomato-edition/edition-card-replacement-notice-2023-04.pdf
+    - docs/sources/rbl/zomato-edition/launch-announcement-2020-03-02.pdf
+    fields_verified:
+    - benefits.welcome
+    - benefits.milestones
+    verified_by: agent
+    method: pdf-extract
+    notes: RBL announced the Zomato partnership was ending; Edition Classic/Black would be replaced with lifetime-free Shoprite effective 15-May-2023. Edition Cash redemption on Zomato ended 14-May-2023; residual value was to transfer to Shoprite accounts by 10-Jun-2023. The initial launch announcement's general lounge and Gold claims have no quantified current terms in later card documents.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Card-specific age, income and credit-score thresholds were not found in surviving issuer material. The card is discontinued and replaced for former holders.
+  source:
+    url: https://webassets.rbl.bank.in/document/credit-cards/edition-card-1-423.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: medium
+    fields_verified:
+    - eligibility.residency
+    verified_by: agent
+    method: pdf-extract
 application:
-  apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card
-
+  apply_url: null
 metadata:
-  last_verified_on: '2026-10-24'
-  last_swept_on: 2026-07-03
-  tags: [co-branded, zomato, food-delivery, cashback, entry]
+  last_verified_on: '2026-10-26'
+  tags:
+  - co-branded
+  - zomato
+  - food-delivery
+  - points
+  - discontinued

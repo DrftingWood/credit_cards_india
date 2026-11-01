@@ -11,8 +11,8 @@ id: sbi-titan
 name: Titan SBI Card
 image_path: /cards/sbi/titan.webp
 issuer: sbi
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand:
@@ -42,12 +42,17 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.renewal_fee_inr
+        - fees.fee_waiver
+        - fees.forex_markup_pct
         - fees.finance_charge_monthly_pct
         - fees.cash_advance_fee
 
@@ -66,21 +71,21 @@ rewards:
       - wallet-loads
       - rent
       - utilities
+      - emi
+      - cash-advance
     capping_rules:
-      - "6 Reward Points per ₹100 on all categories outside Titan spends. Titan-brand spends earn cashback / gift vouchers instead (see benefits)."
+      - "6 Reward Points per INR 100 outside Titan stores, capped at 6,000 points (INR 1,500 stated value) per month. Titan-store benefits have separate quarterly caps by brand; see benefits."
     redemption:
       - type: voucher
         program: Titan gift vouchers
         rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
 
-    mcc_exclusions: ['6513']
+    mcc_exclusions: ['6513', '6540', '6541']
 benefits:
   - effective_from: 2026-07-03
     effective_until: null
@@ -89,14 +94,14 @@ benefits:
         visits_per_cycle: 8
         cycle: annual
         guests_per_visit: 0
-        via: [visa]
-        notes: "8 complimentary domestic airport lounge visits per year (max. 2 per quarter)."
+        via: []
+        notes: 8 complimentary domestic visits per year, maximum 2 per quarter; card is issued on Visa and RuPay networks, confirm applicable access method and current participating lounge list for the individual card.
       international:
         visits_per_cycle: 4
         cycle: annual
         guests_per_visit: 0
-        via: [priority-pass]
-        notes: "4 complimentary international airport lounge visits per year (max. 2 per quarter). Complimentary Priority Pass membership for first 2 years."
+        via: []
+        notes: 4 complimentary international visits per year, maximum 2 per quarter. SBI booklet describes Priority Pass membership for first 2 years; confirm current eligibility and program terms for the issued variant.
     welcome:
       - condition: "Payment of Annual Fee"
         benefit: "12,000 Reward Points worth ₹3,000"
@@ -114,31 +119,41 @@ benefits:
       pct: 1.0
     other:
       - name: "Tanishq value back"
-        description: "3% value back as gift vouchers on spends at Tanishq (quarterly cap applicable)."
+        description: "3% value back as Tanishq gift vouchers, capped at INR 25,000 per quarter. No accelerated benefit on Golden Harvest or other ongoing schemes."
       - name: "Mia / CaratLane / Zoya cashback"
-        description: "5% cashback on spends at Mia, CaratLane & Zoya (quarterly cap applicable)."
+        description: "5% cashback at Mia, CaratLane and Zoya, capped at INR 10,000 per quarter."
       - name: "Titan brands cashback"
-        description: "7.5% cashback on spends at World of Titan, Taneira, Titan Eye+, Helios, Fastrack, Skinn, Irth & Sonata (quarterly cap applicable)."
+        description: "7.5% cashback at World of Titan, Taneira, Titan Eye+, Helios, Fastrack, Skinn, Irth and Sonata, capped at INR 10,000 per quarter. Benefits auto-credited within 15 days after statement cycle."
     concierge: false
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Tier-standard premium income requirement (~₹12L p.a.) per aggregator consensus."
-
+  notes: "SBI Card policy states age 21–65 for salaried applicants and 25–70 for self-employed applicants. No card-specific minimum income or fixed credit-score cutoff is published in reviewed issuer sources; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/titan-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-11-01'
   tags: [co-branded, retail, titan, premium, points]

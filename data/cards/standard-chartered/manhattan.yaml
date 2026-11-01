@@ -1,114 +1,147 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: standard-chartered-manhattan
 name: Standard Chartered Manhattan Credit Card
 image_path: /cards/standard-chartered/manhattan.webp
 issuer: standard-chartered
 network: visa
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2015-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-01-01
-    effective_until: null
-    joining_fee_inr: 999
-    annual_fee_inr: 999
-    fee_waiver:
-      spend_inr: 120000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free supplementary cards. Offered on Visa network."
-    source:
-      url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 999
+  annual_fee_inr: 999
+  fee_waiver:
+    spend_inr: 120001
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 3.0
+    min_inr: 300
+  gst_applicable: true
+  notes: Current page states INR999 + GST joining and renewal fees; renewal reversed on preceding-year
+    spend greater than INR120,000. Encoded as INR120,001 because schema threshold implies spend >= stored
+    value. Supplementary cards are lifetime-free. Current SC tariff states 3.5% forex, 3.75% monthly finance
+    and 3% cash advance, minimum INR300.
+  source:
+    url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2026-01-01
-    effective_until: null
-    currency: points
-    currency_name: 360 Reward Points
-    base:
-      rate: 3
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: supermarket
-        canonical_categories: [groceries]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "5% cashback at supermarkets (subject to caps); 3 Reward Points per ₹150 (3X) on all other spends."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "5% supermarket cashback subject to monthly caps"
-    redemption:
-      - type: catalog
-        program: 360 Rewards
-        rate_inr_per_unit: 0.25
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: 360 Reward Points
+  base:
+    rate: 3
+    per_inr: 150
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+    notes: 'Current issuer value chart: 3 Reward Points per INR150 on other spends; point catalog value
+      INR0.25.'
+  accelerated:
+  - category: supermarkets-groceries-departmental-stores
+    canonical_categories:
+    - groceries
+    multiplier: 1
+    effective_rate: 5
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 5% cashback at supermarkets, groceries and departmental stores. INR500 monthly cap is inferred
+      (medium confidence) from the issuer value chart showing INR6,000 annual cashback for INR150,000
+      annual eligible spend; the current page does not explicitly state the cap. No transaction minimum
+      encoded because not stated in the current issuer page.
     source:
       url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
-      retrieved_on: '2026-07-05'
+      retrieved_on: '2026-10-27'
       type: issuer-page
-
-      confidence: high
-      notes: 'Verified 2026-07-05: generic SC 360 Reward Point = Rs0.25 catalogue (was placeholder Rs0.5).'
+      confidence: medium
+      notes: Cashback rate/category are explicit; cap is inferred from annual value-chart arithmetic and
+        needs issuer confirmation.
+  exclusions: []
+  mcc_exclusions: []
+  redemption:
+  - type: catalog
+    program: Standard Chartered 360 Rewards catalogue
+    rate_inr_per_unit: 0.25
+    constraints: Current product value chart implies INR0.25 per Reward Point; direct Manhattan T&C link
+      currently opens a different Rewards card document, so redemption detail beyond the catalogue remains
+      unverified.
+  source:
+    url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated[0].effective_rate
+    notes: The product page/value chart supports the points earn and reward value. Cashback cap remains
+      an inference; not marked field-verified.
+  notes: Current card page states 3 Reward Points per INR150 on all other expenses. Cashback category
+    is separately listed as an accelerated rule. The Manhattan T&C accordion links to a document titled
+    Standard Chartered Rewards Credit Card and that PDF conflicts with Manhattan fees and reward rates;
+    it was not used as Manhattan evidence.
 benefits:
-  - effective_from: 2026-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver: null
+  concierge: false
+  source:
+    url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.welcome
+    notes: Current page advertises 5,000 Reward Points on joining fee payment. No lounge or fuel-waiver
+      benefit is stated on the Manhattan page; linked terms PDF appears to be for another SC card.
+  welcome:
+  - condition: Payment of joining fee
+    benefit: 5,000 Reward Points joining benefit
+    value_inr: null
+    window_days: null
 eligibility:
-  min_age: 21
+  min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: 360000
-    self_employed: 360000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current product page states age 18-65, stable monthly income and bank card-sourcing city/location;
+    all applications remain subject to bank policy. No numerical minimum income or bureau score published.
+  source:
+    url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
 application:
   apply_url: https://www.sc.bank.in/credit-cards/manhattan-platinum/
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [entry, points, groceries, cashback]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - points
+  - groceries
+  - cashback

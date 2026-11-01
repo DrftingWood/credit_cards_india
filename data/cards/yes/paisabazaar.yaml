@@ -1,17 +1,8 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-paisabazaar
 name: YES Bank Paisabazaar PaisaSave Credit Card
-issuer: "yes"
-network: rupay
-network_tier: platinum
+issuer: 'yes'
+network: mastercard
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -21,125 +12,209 @@ co_brand:
 status: active
 launched_on: 2023-01-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 499
-    fee_waiver:
-      spend_inr: 120000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Zero joining fee; lifetime-free on limited-time offer, else renewal ₹499 waived on ₹1,20,000 annual spend. Co-branded with Paisabazaar (PB Fintech)."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-06-15
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 499
+  fee_waiver:
+    spend_inr: 120000
+    cycle: annual
+  forex_markup_pct: 3.4
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  notes: Zero joining fee; lifetime-free on limited-time offer, else renewal ₹499 waived on ₹1,20,000 annual spend.
+    Co-branded with Paisabazaar (PB Fintech).
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 200
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: dining-travel
-        # FOOD DELIVERY DOES NOT EARN THE 6% — field-reported 2026-07-28 and acted on.
-        # Paisabazaar's own product page claims the dining side covers "Dining,
-        # including Swiggy, Zomato, Dineout"; cardholders report aggregator spend
-        # posting at the 1% base instead. That page is lead-gen marketing, not the
-        # issuer's MITC (which is session-gated and unread), so the claim never had
-        # issuer backing. `dining` is REMOVED from the scored categories: the
-        # canonical buckets cannot separate a restaurant swipe from an aggregator
-        # order, and over-crediting sends people to a card that will not pay them.
-        # This deliberately under-credits genuine in-restaurant dining on MCC
-        # 5812/5813/5814 — restore only against the MITC. See docs/TODO.md E16.
-        canonical_categories: [travel]
-        multiplier: 6
-        effective_rate: 12
-        cap_per_cycle: 3000
-        cap_unit: cashback-inr
-        cycle: monthly
-        # The 6% is an explicit 24-MCC ALLOWLIST, not a broad dining/travel
-        # category. Verified 2026-07-28 against the Paisabazaar product page.
-        # 5812/5813/5814 are the restaurant codes food-delivery aggregators bill
-        # under, and the issuer names Swiggy, Zomato and Dineout outright.
-        mcc_list: ['4511', '4582', '4722', '7011', '5812', '5813', '5814', '3020', '3501', '3509',
-                   '3513', '3520', '3530', '3543', '3553', '3583', '3637', '3640', '3642', '3649',
-                   '3657', '3659', '3690', '3812']
-        notes: >-
-          6% cashback on an explicit allowlist of 24 dining & travel MCCs, capped Rs 3,000/month,
-          then flat 1%. FOOD DELIVERY DOES NOT EARN THE 6%: Paisabazaar's page claims the dining
-          side covers "Dining, including Swiggy, Zomato, Dineout", but cardholders report aggregator
-          spend posting at the 1% base. That page is lead-gen marketing, not the issuer MITC, so the
-          claim never had issuer backing — `dining` is excluded from the scored categories until the
-          MITC settles it. In practice this card earns the 6% on TRAVEL (airlines, hotels, agents).
-          Also excluded: "UPI spends on dining & travel do not qualify for 6% cashback."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-      - education
-      - government
-      - jewellery
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "6% cashback applies ONLY to the 24 allowlisted dining/travel MCCs; everything else earns the 1% base."
-      - "FOOD DELIVERY (Swiggy/Zomato/aggregators) is field-reported to earn the 1% base, NOT the 6%, despite marketing copy to the contrary. Unverified against the MITC."
-      - "6% dining/travel cashback capped at Rs 3,000 per month, then flat 1%."
-      - "UPI-routed dining & travel spends are excluded from the 6% rate and earn the 1% base instead."
-      - "No cashback on rent, utilities, education, insurance, EMI, wallet loads, cash advance, toll, government, fuel, hospitals or pharmacies"
-    redemption:
-      - type: statement-credit
-        program: PaisaSave
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.paisabazaar.com/yes-bank/paisabazaar-paisasave-credit-card/
-      retrieved_on: '2026-07-28'
-      type: aggregator
-
-      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
+- effective_from: '2026-10-25'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 200
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: dining-travel
+    canonical_categories:
+    - travel
+    multiplier: 6
+    effective_rate: 12
+    cap_per_cycle: 3000
+    cap_unit: cashback-inr
+    cycle: monthly
+    mcc_list:
+    - '4511'
+    - '4582'
+    - '4722'
+    - '7011'
+    - '5812'
+    - '5813'
+    - '5814'
+    - '3020'
+    - '3501'
+    - '3509'
+    - '3513'
+    - '3520'
+    - '3530'
+    - '3543'
+    - '3553'
+    - '3583'
+    - '3637'
+    - '3640'
+    - '3642'
+    - '3649'
+    - '3657'
+    - '3659'
+    - '3690'
+    - '3812'
+    notes: '6% cashback on an explicit allowlist of 24 dining & travel MCCs, capped Rs 3,000/month, then flat 1%.
+      FOOD DELIVERY DOES NOT EARN THE 6%: Paisabazaar''s page claims the dining side covers "Dining, including Swiggy,
+      Zomato, Dineout", but cardholders report aggregator spend posting at the 1% base. That page is lead-gen marketing,
+      not the issuer MITC, so the claim never had issuer backing — `dining` is excluded from the scored categories
+      until the MITC settles it. In practice this card earns the 6% on TRAVEL (airlines, hotels, agents). Also excluded:
+      "UPI spends on dining & travel do not qualify for 6% cashback."'
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - utilities
+  - education
+  - government
+  - jewellery
+  mcc_exclusions:
+  - '6513'
+  - '4900'
+  - '8299'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8249'
+  - '6300'
+  - '5094'
+  - '5944'
+  - '6538'
+  - '9399'
+  - '9311'
+  - '8062'
+  - '5912'
+  - '4812'
+  - '4784'
+  - '4112'
+  - '7538'
+  - '5511'
+  - '5521'
+  - '5571'
+  - '5533'
+  - '5013'
+  - '4814'
+  - '8099'
+  - '8071'
+  - '8050'
+  - '5960'
+  - '5965'
+  - '7299'
+  - '7311'
+  - '7392'
+  - '7399'
+  - '8931'
+  - '8999'
+  - '8011'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  capping_rules:
+  - 6% cashback applies ONLY to the 24 allowlisted dining/travel MCCs; everything else earns the 1% base.
+  - FOOD DELIVERY (Swiggy/Zomato/aggregators) is field-reported to earn the 1% base, NOT the 6%, despite marketing
+    copy to the contrary. Unverified against the MITC.
+  - 6% dining/travel cashback capped at Rs 3,000 per month, then flat 1%.
+  - UPI-routed dining & travel spends are excluded from the 6% rate and earn the 1% base instead.
+  - No cashback on rent, utilities, education, insurance, EMI, wallet loads, cash advance, toll, government, fuel,
+    hospitals or pharmacies
+  redemption:
+  - type: statement-credit
+    program: PaisaSave
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-credit-card
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.accelerated.mcc_list
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: YES Bank's live product page directly states the 6%/1% rates, 24 eligible MCCs, ₹3,000 statement-cycle
+      cap, listed exclusions, and 1 RP = ₹1 statement-credit value. The page does not state when this reward structure
+      took effect; effective-date history remains unresolved. Dining is conservatively omitted from calculator category
+      scoring because the model cannot distinguish allowlisted MCCs from other dining transactions, and cardholder
+      reports conflict with the broader dining marketing label. Snapshot date 2026-10-25 is used as the record start
+      only because the issuer page does not publish the term effective date; it is not evidence that the 6% structure
+      began on this date.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-06-15
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.fuel_surcharge_waiver
 eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
     salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    self_employed: 750000
+  credit_score_min: null
   residency: resident-indian
-
+  notes: YES BANK issuer page states applicants are 21-60, with minimum net monthly salary INR 25,000 or self-employed ITR of at least INR 750,000. Annual salaried income uses the schema-required annualized threshold. No minimum credit-score value is published.
+  source:
+    url: https://pri1.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/paisabazaar-credit-card
-
 metadata:
-  last_verified_on: 2026-07-28
-  tags: [entry, cashback, travel, co-brand]
+  last_verified_on: '2026-11-01'
+  tags:
+  - entry
+  - cashback
+  - travel
+  - co-brand

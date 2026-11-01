@@ -1,13 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : PNB issuer MITC (docs/sources/pnb/rupay-select/MITC.pdf) +
-#                creditcard.pnb.bank.in card portal.
-#   Verified   : 2026-07-04   Confidence: HIGH (fees, pdf) / MEDIUM (rewards)
-#   Fees (joining Rs 500, annual Rs 750, usage-based waiver, 3.5% forex) are
-#   confirmed against the PNB MITC "Schedule of Charges". The base earn rate is
-#   the RuPay Select program standard (portal states "2X reward points on retail")
-#   and is not individually rate-stated in the MITC — kept at medium confidence.
-# ---------------------------------------------------------------------------
 id: pnb-rupay-select
 name: PNB RuPay Select Credit Card
 image_path: /cards/pnb/rupay-select.webp
@@ -18,110 +8,186 @@ tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 750
-    fee_waiver:
-      spend_inr: 0
-      cycle: annual
-      conditions: "Annual fee waived if the card is used for at least one retail transaction in each quarter of the preceding year (PNB MITC Schedule of Charges)."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 2.95
-    cash_advance_fee:
-      pct: 3.0
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://creditcard.pnb.bank.in/types6.html
-      retrieved_on: 2026-07-04
-      type: issuer-pdf
-      confidence: high
-      local_refs:
-        - docs/sources/pnb/rupay-select/MITC.pdf
-      fields_verified:
-        - fees.joining_fee_inr
-        - fees.annual_fee_inr
-        - fees.fee_waiver
-        - fees.forex_markup_pct
-      notes: "PNB MITC: RuPay Select joining Rs 500 (add-on Rs 500), annual Rs 750, waived on one retail transaction each quarter of the preceding year; foreign-currency mark-up 3.50%."
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 750
+  supplementary_card_fee_inr: 0
+  fee_waiver:
+    spend_inr: 0
+    cycle: annual
+    conditions: >-
+      Annual fee waived if the card is used at least once in each quarter in the preceding
+      year; issuer says fee waivers are calculated by calendar year. A qualifying use must
+      be made in each of the four quarters.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 2.95
+  cash_advance_fee:
+    pct: 2
+    min_inr: 150
+  gst_applicable: true
+  notes: >-
+    Cash-advance transaction fee varies by ATM location: 2% or INR150 minimum at PNB ATMs
+    in India; 2% or INR200 minimum at other domestic ATMs; 2% or INR300 minimum overseas.
+    The scalar cash_advance_fee uses the lowest domestic minimum; see MITC for each route.
+    Current MITC and Schedule of Fees list INR99 plus GST per reward redemption request,
+    effective 2026-11-01; this future charge is documented under reward redemption notes.
+  source:
+    url: https://creditcard.pnb.bank.in/PDF/MITC.PDF
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/pnb/rupay-select/mitc-retrieved-2026-10-26.pdf
+    - docs/sources/pnb/rupay-select/schedule-of-fees-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: PNB Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://creditcard.pnb.bank.in/types6.html
-      retrieved_on: 2026-07-04
-      type: issuer-page
-      confidence: medium
-      notes: "Portal states '2X reward points on retail merchandise'; exact base earn rate not rate-stated in the MITC — modelled at the RuPay Select program standard (2 RP per Rs 150)."
-
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 150
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated: []
+  exclusions: []
+  redemption:
+  - type: catalog
+    program: PNB Rewardz
+    rate_inr_per_unit: 0.25
+    min_units: 1000
+    fee_inr: null
+    constraints: >-
+      Current card-specific PNB product page gives INR0.25 per point; the generic Rewardz
+      page says INR0.50 and conflicts, so card-specific value is followed with the conflict
+      recorded. MITC states points expire after three years, minimum redemption is 1,000
+      points. A redemption charge of INR99 plus GST per request is scheduled effective
+      2026-11-01; the MITC does not clearly state the fee before that date, so fee_inr remains
+      null in the current snapshot. Points earned on EMI transactions are reversed. Redeem
+      via PNB Rewardz/credit-card portal.
+  notes: >-
+    PNB Rewardz page and card-specific page identify RuPay Select BIN 652859 as earning
+    2 points per INR150 and award 300 points on the first retail/online transaction within
+    90 days of receiving the card. Generic Rewardz page separately states point value
+    INR0.50, while card-specific RuPay Select page and MITC state INR0.25; card-specific
+    value is used. No card-specific eligible-spend exclusion list was found in the current
+    issuer reward page/MITC; unsupported exclusions from the prior record were cleared.
+  source:
+    url: https://creditcard.pnb.bank.in/rewards.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/pnb/rupay-select/mitc-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards.base
+    - rewards.redemption
+    notes: PNB Rewardz portal identifies BIN 652859 and card-specific rate; card detail page supports point value and minimum.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [rupay]
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [rupay]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 150
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://creditcard.pnb.bank.in/types6.html
-      retrieved_on: 2026-07-04
-      type: issuer-pdf
-      confidence: medium
-      local_refs:
-        - docs/sources/pnb/rupay-select/MITC.pdf
-      fields_verified:
-        - fuel_surcharge_waiver.pct
-      notes: "MITC confirms 1% fuel surcharge waiver above Rs 400; lounge access is the NPCI RuPay Select program benefit."
-
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - rupay
+    international:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - rupay
+  welcome:
+  - condition: Complete the first retail or online transaction within 90 days of receiving the card.
+    benefit: 300 PNB Rewardz points.
+    value_inr: 75
+    window_days: 90
+  fuel_surcharge_waiver:
+    pct: 1
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 350
+    cycle: monthly
+    notes: >-
+      MITC describes single fuel transactions greater than INR400 and less than INR4,000;
+      schema min/max cannot encode strict boundaries. Maximum waiver INR350 per billing
+      cycle, excluding applicable taxes. Other surcharge types may differ by merchant.
+  insurance:
+  - type: personal-accident
+    sum_insured_inr: 1000000
+    conditions: PNB product page identifies INR10 lakh personal accident insurance; detailed policy terms and claim conditions apply.
+  other:
+  - name: UPI linkage
+    description: PNB RuPay credit cards can be linked to BHIM, Paytm, PhonePe, MobiKwik and Slice UPI apps for merchant QR payments, subject to issuer/network rules.
+  - name: RuPay Select lifestyle benefits
+    description: PNB lists premium health checkup, complimentary golf, spa and gym sessions; offers and redemption availability are administered through the RuPay Select program and may vary.
+  concierge: true
+  notes: >-
+    PNB product page states two domestic lounge visits per quarter and two international
+    lounge visits per year; no spend threshold is listed. The older RuPay program guide
+    describes offer redemption through a registration portal and a INR1 validation payment;
+    lounge roster and other offer availability may change. PNB product listing advertises
+    24/7 concierge services but detailed eligibility/scope was not found.
+  source:
+    url: https://creditcard.pnb.bank.in/types6.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/pnb/rupay-select/rupay-select-benefit-program-retrieved-2026-10-26.pdf
+    - docs/sources/pnb/rupay-select/mitc-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
+    - benefits.insurance
 eligibility:
   min_age: 21
   max_age: 70
   income_inr_annual:
     salaried: 500000
     self_employed: 500000
-  credit_score_min: 720
-  residency: resident-indian
-
+  credit_score_min: null
+  residency: either
+  notes: >-
+    General PNB application guidance states primary applicants aged 21-70, with annual
+    income INR500,000 for salaried/business/self-employed/professional applicants applying
+    for RuPay Select. Application form permits Resident Indian, NRI and PIO statuses. No
+    universal minimum credit-score cutoff was established; pre-qualified channel score
+    criteria are not used as a general rule here.
+  source:
+    url: https://creditcard.pnb.bank.in/types6.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.income_inr_annual
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
+    local_refs:
+    - docs/sources/pnb/rupay-select/eligibility-guide-retrieved-2026-10-26.pdf
+    - docs/sources/pnb/rupay-select/application-form-retrieved-2026-10-26.pdf
 application:
-  apply_url: https://creditcard.pnb.bank.in/types6.htmltypes6.html
-
+  apply_url: https://creditcard.pnb.bank.in/types6.html
 metadata:
-  last_verified_on: 2026-10-24
-  tags: [mid, rupay, points, upi-linkable, psu-bank]
+  last_verified_on: 2026-10-26
+  tags:
+  - mid
+  - rupay
+  - points
+  - upi-linkable
+  - psu-bank

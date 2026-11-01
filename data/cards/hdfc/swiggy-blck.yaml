@@ -11,46 +11,57 @@ co_brand:
   category: food-delivery
   partner_website: https://www.swiggy.com
 status: active
-launched_on: '2024-01-01'
-discontinued_on: null
+launched_on: '2026-03-12'
+discontinued_on:
 fees:
-- effective_from: 2026-07-03
-  effective_until: null
+- effective_from: '2026-10-15'
+  effective_until:
   joining_fee_inr: 1000
   annual_fee_inr: 1000
   fee_waiver:
     spend_inr: 200000
     cycle: annual
-    conditions: Renewal fee waived on ₹2,00,000 annual spend before renewal date (excludes
-      Cash on Call, Balance Transfer, Cash Withdrawal). Joining fee separately waived
-      on ₹75,000 spend within 90 days of issuance (first year only).
+    conditions: Renewal fee waived on INR 200,000 eligible annual spend before renewal date. Joining
+      fee separately waived on INR 75,000 spend within 90 days, first year only. Renewal spend
+      excludes Cash on Call, balance transfers and cash withdrawals.
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.75
   gst_applicable: true
   source:
     url: https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
+    confidence: medium
     local_refs:
-    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
     - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: 'Current card page and 15-Oct-2026 specific T&Cs confirm INR 1,000 fees, INR 75,000 joining
+      waiver and INR 200,000 renewal waiver. Shared HDFC MITC v4.15 confirms 3.75% monthly finance charges,
+      2.5%/INR 500 cash advance, and 1.75% DCC effective 20-May-2026. The shared fee schedule lists 3.5%
+      FCC as the standard rate but does not repeat it on the Swiggy BLCK row; retained 3.5% with medium
+      confidence pending a card-specific schedule. Current specific terms were retrieved 27-Oct-2026. Sources: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-blck-hdfc-bank-credit-card/pdf/tncs-swiggy-blck-hdfc-bank-credit-card-15102026.pdf;
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf.'
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
 rewards:
-- effective_from: 2026-07-03
-  effective_until: null
+- effective_from: '2026-10-15'
+  effective_until:
   currency: cashback
   currency_name: CashBack
   base:
     rate: 1
     per_inr: 100
     unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
     cap_per_cycle: 1000
     cap_unit: cashback-inr
     cycle: statement
-    unit_value_inr_realized: 1.0
   accelerated:
   - category: swiggy-app
     canonical_categories:
@@ -65,7 +76,10 @@ rewards:
       class: food-delivery
       merchants:
       - swiggy
-    notes: 10% CashBack on Swiggy app spends (Food ordering, Instamart, Dineout).
+    notes: 10% Cashback on Swiggy Food ordering, Instamart and Dineout only; cap INR 1,500/billing
+      cycle. Minimum transaction INR 249. Swiggy Money Wallet and Swiggy Liquor excluded;
+      eligibility uses partner MIDs/TIDs.
+    over_cap_earns_base: false
   - category: online-select
     canonical_categories:
     - online
@@ -129,37 +143,97 @@ rewards:
     - '4131'
     - '4722'
     - '7011'
-    notes: '5% CashBack on eligible online MCCs (Table 2.1: Apparels, Pharmacies,
-      Pet Stores, Personal Care, Local Cabs (Ola/Zoom/Uber), Electronics (Reliance
-      Retail/Vijay Sales/Croma), Travel (Paytm Travel/EaseMyTrip/Ixigo/Yatra/Ibibo)).
-      Only select merchants mapped under these MCCs qualify.'
+    notes: '5% on eligible online merchant/category transactions; cap INR 1,500/billing cycle; minimum
+      transaction INR 100. Use only selected merchants mapped to eligible MCCs. Current T&Cs include named
+      category MCCs plus an all-online-MCC row except standard excluded MCCs; the complete merchant-ID
+      universe cannot be represented, so the explicit MCC list is not exhaustive. Only recognized merchant
+      IDs qualify; online merchants using a different MCC may not receive the cashback.'
+    over_cap_earns_base: false
+    merchants:
+    - amazon
+    - flipkart
+    - myntra
+    - nykaa
+    - cleartrip
+    - ajio
+    - netflix
+    - hotstar
+    - bookmyshow
+    - meesho
+    - ola
+    - uber
+    - zoom
+    - reliance-digital
+    - vijay-sales
+    - croma
+    - paytm-travel
+    - easemytrip
+    - ixigo
+    - yatra
+    - ibibo
+    - pharmeasy
+    - sonyliv
+    - prime-video
   exclusions:
   - fuel
   - wallet-loads
   - rent
-  - insurance-premiums
+  - government
   - emi
-  - utilities
+  - cash-advance
+  - jewellery
+  - education
+  - gift-cards
   redemption:
   - type: statement-credit
-    program: HDFC CashBack
+    program: HDFC Cashback auto-credit
     rate_inr_per_unit: 1.0
-    constraints: CashBack auto-credited as statement credit, subject to the CashBack
-      cycle.
+    constraints: Current billing-cycle cashback is automatically credited against outstanding
+      balance, excluding finance charges. Total cashback is capped at INR 4,000 per statement cycle.
   source:
-    url: https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url:
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-blck-hdfc-bank-credit-card/pdf/tncs-swiggy-blck-hdfc-bank-credit-card-15102026.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
     confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.cap_per_cycle
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.reward_cap
+    - rewards.redemption
+    - rewards.capping_rules
+    notes: Primary source is the product T&C published 15-Oct-2026; it confirms category rates/caps,
+      minimums, exclusions, overall INR 4,000 cap, automatic statement-credit redemption,
+      posting/refund rules and 5% eligible MCCs. The issuer's separate live 1% cashback MCC PDF
+      lists gaming MCC 7995, while the 15-Oct T&C Table 2.5 lists 5816; both are excluded
+      conservatively and the discrepancy is unresolved. The complete online merchant-ID list is not
+      published as a static enumerated list. See
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-blck-hdfc-bank-credit-card/pdf/5-percent-cashback-details-swiggy-black-credit-card.pdf
+      and
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-blck-hdfc-bank-credit-card/pdf/1-percent-cashback-details-swiggy-blck-hdfc-credit-card.pdf.
   mcc_exclusions:
+  - '5094'
   - '5172'
   - '5541'
   - '5542'
+  - '5816'
+  - '5944'
+  - '5947'
   - '5983'
   - '6513'
   - '6540'
-  - '5094'
-  - '5944'
+  - '7995'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
   - '9211'
   - '9222'
   - '9223'
@@ -168,43 +242,102 @@ rewards:
   - '9402'
   - '9405'
   - '9950'
-  - '5947'
-  - '5816'
-  - '8211'
-  - '8220'
-  - '8241'
-  - '8244'
-  - '8249'
-  - '8299'
+  reward_cap:
+    max_units: 4000
+    cap_unit: cashback-inr
+    cycle: statement
+  capping_rules:
+  - 1% cashback on other eligible categories is capped at INR 1,000 per billing/statement cycle;
+    minimum transaction INR 100.
+  - 10% cashback on Swiggy food ordering, Instamart and Dineout is capped at INR 1,500 per
+    billing/statement cycle; minimum transaction INR 249; Swiggy Money Wallet and Swiggy Liquor do
+    not qualify.
+  - 5% cashback on eligible online MCCs/selected merchants is capped at INR 1,500 per
+    billing/statement cycle; minimum transaction INR 100. Eligible MCCs and merchant IDs determine
+    recognition.
+  - Overall cashback maximum is INR 4,000 per statement cycle. Refunds/reversals adjust cashback and
+    posted/settled date determines its cycle.
+  - No cashback on prepaid/gift cards and wallets, rent, government, gaming, education, fuel,
+    jewellery, SmartPay, SmartBuy, EMI, cash advances, traveller's cheques, foreign currency and
+    fees. Specific MCCs control table-based categories; online skill/gaming exclusions and MCC
+    5816/7995 discrepancy remain noted.
+  - Cleartrip and Nykaa additional instant discounts are limited-time offers in the current issuer
+    T&Cs; their offer end dates are not stated. Birthday-week Dineout offer is up to 10%/INR 500 on
+    minimum INR 3,000 order, for seven days around the registered birthday, once per cardholder and
+    only after 30 days from activation.
 benefits:
-- effective_from: 2026-07-03
-  effective_until: null
-  lounge_access: null
+- effective_from: '2026-10-15'
+  effective_until:
+  lounge_access:
   welcome:
-  - condition: Card activation
-    benefit: Complimentary Swiggy BLCK membership for 3 months
+  - condition: Activate the card within 37 days of issuance using an accepted activation method,
+      then claim in the Swiggy app.
+    benefit: Complimentary Swiggy BLCK membership for three months; existing BLCK members receive a
+      three-month extension. Membership claim appears in the app within 2-3 days after activation.
+    value_inr:
     window_days: 37
-    value_inr: 300
-  fuel_surcharge_waiver: null
+  fuel_surcharge_waiver:
   concierge: false
   source:
-    url: https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url:
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/swiggy-blck-hdfc-bank-credit-card/pdf/tncs-swiggy-blck-hdfc-bank-credit-card-15102026.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.welcome
+    notes: Product page and 15-Oct-2026 specific T&Cs reviewed. The product page confirms Mastercard
+      Golf benefits of four green-fee rounds and 12 lessons/year. The specific terms require
+      activation within 37 days and in-app claiming; no monetary value is published for the 3-month
+      membership.
+  other:
+  - name: Mastercard World golf
+    description: Mastercard's 2026 World program lists four complimentary green-fee rounds and 12
+      golf lessons per year, up to one of each per month; additional green-fee bookings are discounted
+      up to 50% and INR 1,800. The linked program terms run through 31-Dec-2026.
+  - name: Birthday-week Dineout offer
+    description: Additional 10% discount up to INR 500 on a minimum INR 3,000 Dineout order for
+      seven days (three days before/after registered birthday), once per cardholder; available only
+      after 30 days from card activation.
+  - name: Limited-time partner discounts
+    description: Current 15-Oct-2026 issuer T&Cs advertise 5% cashback plus instant discounts on
+      Cleartrip and Nykaa; offers are explicitly limited-time and no end dates are published.
+  - name: Merchant and MCC limits
+    description: Only transactions recognized under selected merchant IDs qualify. The 5% terms
+      include a catch-all online MCC row excluding standard excluded MCCs, but do not provide a
+      static full merchant-ID list; the record retains enumerated MCCs and documents this coverage
+      limit.
+  - name: Gaming MCC discrepancy
+    description: The 15-Oct-2026 card T&Cs list gaming MCC 5816; the issuer's separate live 1%
+      cashback-details PDF lists MCC 7995. Both are treated as excluded pending issuer
+      clarification.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
     salaried: 1200000
     self_employed: 1200000
-  credit_score_min: 720
-  residency: resident-indian
-  notes: 'Salaried: age 21-60, net monthly income > ₹1,00,000 (~₹12L p.a.). Self-employed:
-    age 21-65, Annual ITR > ₹12 lakh p.a.'
+  credit_score_min:
+  residency:
+  notes: 'Current HDFC page: Indian nationality; salaried age 21-60 with net monthly income >INR 100,000;
+    self-employed age 21-65 with annual ITR >INR 1,200,000. Schema stores salaried lower bound annualized
+    and self-employed ITR threshold; no numerical bureau score floor is published. The nationality wording
+    does not establish a resident-only restriction. The 15-Oct-2026 card T&Cs say approval also depends on
+    credit profile and location. Source: https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card.'
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/swiggy-blck-hdfc-bank-credit-card
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-10-27'
   tags:
   - co-branded
   - swiggy

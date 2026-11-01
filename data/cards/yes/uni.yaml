@@ -1,18 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-uni
 name: YES Bank Uni Credit Card
 image_path: /cards/yes/uni.webp
-issuer: "yes"
-network: mastercard
-network_tier: platinum
+issuer: 'yes'
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -20,87 +11,107 @@ co_brand:
   category: other
   partner_website: https://www.uni.cards
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Zero joining fee, zero forex markup. Co-branded with Uni (fintech). Rewards issued as Uni coins."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/uni-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 499
+  fee_waiver:
+    spend_inr: 50000
+    cycle: annual
+  forex_markup_pct: 0.0
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee: null
+  gst_applicable: true
+  notes: YES BANK catalogue/KFS list zero joining fee and ?499 renewal fee; ?50,000 anniversary spend waiver applies
+    per co-brand KFS (joining-fee waiver is inapplicable because joining fee is nil). Foreign-currency conversion
+    markup is 0%; finance charge is 3.99% monthly. Cash advance is not applicable to this product.
+  source:
+    url: https://www.yes.bank.in/content/published/api/v1.1/assets/CONT07A77C257C7A4BDD85DB97E51D2B5B8F/native/yesbank_key_fact_statement.pdf?channelToken=21f7ccfa2fc3401091938f541a6f8f2a&download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current catalogue, UNI KFS and co-brand MITC reviewed; KFS says cash advance fee/limit not applicable.
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: Uni Coins
-    base:
-      rate: 100.0
-      per_inr: 100
-      unit_value_inr: 0.01
-      unit_value_inr_realized: 0.01
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: Uni Coins
-        rate_inr_per_unit: 0.01
-        constraints: 100 Uni Coins = Rs 1 (Rs 0.01/coin); auto-convert to 24K digital gold in the Uni app.
-    notes: "1% reward points issued as Uni coins (1 Uni coin = ₹1)."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/uni-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: "Corrected 2026-07-05: 1 Uni Coin = Rs 0.01 (100 coins = Rs 1), NOT Rs 1.0 (100x error; old 'coin=Rs1' was legacy Uni Pay-Later marketing). Earn rate scaled x100 so net %-back is unchanged. Coins convert to digital gold."
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: Uni Coins
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: Current YES BANK catalogue states 1% cashback in Uni Coins on all transactions, but accessible YES BANK
+      terms do not state coin units per rupee or the conversion/redemption value for this specific YES-issued card.
+      Headline cashback is not modeled as realized INR value.
+  accelerated: []
+  exclusions: []
+  mcc_exclusions: []
+  redemption: []
+  notes: Current YES BANK catalogue advertises 1% cashback in Uni Coins on all transactions. Do not apply the SBM-issued
+    UNI Coin terms or newer Uni GoldX terms to this YES BANK card; precise coin denomination, conversion, redemption
+    and card-specific excluded transaction classes remain unverified in accessible issuer evidence.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Issuer catalogue verifies the 1% Uni Coin headline only; no per-INR coin issuance or rupee redemption
+      amount is supplied.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/uni-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: 7500
+    cap_per_cycle_inr: 500
+    cycle: monthly
+    notes: 'YES BANK KFS: 1% surcharge waiver on fuel transactions up to ?7,500, capped at ?500 per statement cycle.
+      Fuel surcharge GST is not reversed.'
+  concierge: null
+  source:
+    url: https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf?download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.fuel_surcharge_waiver
+    notes: Current MITC states the card-specific UNI fuel transaction ceiling and shared ?500 cycle cap.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Age, income, bureau and residency criteria were not established from current product-specific issuer material.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/uni-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [entry, points, co-brand, lifetime-free, zero-forex]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - points
+  - co-brand
+  - lifetime-free
+  - zero-forex

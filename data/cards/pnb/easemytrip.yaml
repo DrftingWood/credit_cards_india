@@ -10,106 +10,143 @@ co_brand:
   partner: EaseMyTrip
   category: travel-agency
 status: active
-launched_on: 2023-01-01
+launched_on: 2024-03-04
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 2000
-    annual_fee_inr: 2000
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-      conditions: "Annual fee waived on spends of ₹1,00,000 in the preceding anniversary year."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 2.95
-    cash_advance_fee:
-      pct: 3.0
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://creditcard.pnb.bank.in/types15.html
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "PNB EaseMyTrip portal: joining fee ₹2,000, annual fee ₹2,000, waiver on ₹1,00,000 annual spend."
-
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 2000
+  annual_fee_inr: 2000
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+    conditions: Annual fee waived if annual spends exceed ₹1,00,000 in the preceding year. PNB says waivers use the calendar year; cash withdrawals, reversals, fees and charges do not count.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 2.95
+  cash_advance_fee:
+    pct: 2.0
+    min_inr: 100
+  gst_applicable: true
+  source:
+    url: https://creditcard.pnb.bank.in/EMT.html
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: 'PNB EMT page lists ₹2,000 joining and annual fees and waiver above ₹1 lakh in the preceding year. PNB MITC says waivers are calculated on a calendar-year basis and excludes cash withdrawals, reversals, fees and charges from waiver spends. Finance is 2.95% monthly (35.89% APR). Cash advance fee is 2%, with minima by channel: ₹100 at PNB ATMs, ₹150 at other domestic ATMs and ₹250 overseas; schema stores the PNB ATM minimum. Schedule: https://creditcard.pnb.bank.in/Documents/pnb_sofc.pdf; MITC: https://creditcard.pnb.bank.in/PDF/MITC.PDF. Revised service charges are announced effective 2026-11-01 and are not applied before that date.'
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.25
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: PNB Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://creditcard.pnb.bank.in/types15.html
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "1 Reward Point per ₹100 spend, value ₹0.25 per point."
-
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 0.25
+  mcc_exclusions: []
+  redemption:
+  - type: catalog
+    program: PNB Rewards
+    rate_inr_per_unit: 0.25
+    min_units: 1000
+    constraints: PNB EMT page values one point at ₹0.25, while generic PNB Rewardz page says ₹0.50. Card-specific realized conversion remains to be confirmed.
+  source:
+    url: https://creditcard.pnb.bank.in/EMT.html
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: 'PNB EMT page says 1 point per ₹100, ₹0.25 per point and 1,000-point redemption minimum. The generic PNB Rewardz page says ₹0.50 per point, creating an unresolved issuer-source conflict. PNB Rewardz says RuPay Platinum earns 300 points on the first retail or online transaction within 90 days. Current card-specific exclusions were not verified and are omitted.'
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.redemption[0].rate_inr_per_unit
+    - rewards.redemption[0].min_units
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    welcome:
-      - condition: "Card issuance and first transaction"
-        benefit: "₹3,000 EaseMyTrip vouchers (₹500 flight, ₹1,000 hotel, ₹1,500 holiday) + 300 Reward Points"
-        value_inr: 3075
-        window_days: 90
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [rupay]
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [rupay]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    insurance:
-      - type: personal-accident
-        sum_insured_inr: 200000
-        conditions: "Accidental Death and Personal Total Disability cover."
-    concierge: false
-    source:
-      url: https://creditcard.pnb.bank.in/types15.html
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-10-27
+  effective_until: null
+  welcome:
+  - condition: Welcome voucher as listed by PNB; 300 Reward Points on first retail or online transaction within 90 days of receiving the card
+    benefit: EaseMyTrip welcome vouchers worth ₹3,000 + 300 Reward Points
+    value_inr: 3000
+    window_days: 90
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - rupay
+    international:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - rupay
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 350
+    cycle: statement
+  insurance:
+  - type: personal-accident
+    sum_insured_inr: 200000
+    conditions: Accidental Death and Personal Total Disability cover.
+  concierge: false
+  other:
+  - name: EaseMyTrip flight and hotel discounts
+    description: 10% off domestic flights up to ₹1,000; 10% off international flights up to ₹5,000; 20% off domestic hotels up to ₹5,000; and 20% off international hotels up to ₹10,000. PNB lists no minimum order value for these discounts. Discount applies to at most four transactions per card per month.
+  - name: EaseMyTrip bus discount
+    description: ₹125 off bus bookings with a minimum order value of ₹500; discount applies within the shared limit of four discounted transactions per card per month.
+  source:
+    url: https://creditcard.pnb.bank.in/EMT.html
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: 'PNB EMT page publishes welcome vouchers, travel discounts and lounge access. PNB Rewards page conditions the 300-point bonus on first retail/online transaction within 90 days. PNB current Schedule of Fees states 1% fuel surcharge refund on transactions ₹400–₹4,000, capped at ₹350 per statement cycle. PNB generic fuel waiver page shows a different lower transaction bound (₹500) for RuPay Platinum; discrepancy unresolved. Schedule: https://creditcard.pnb.bank.in/Documents/pnb_sofc.pdf. The EMT page does not state voucher category allocation or concierge.'
+    fields_verified:
+    - benefits.welcome
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.other
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: 250000
+    self_employed: 250000
+  credit_score_min: null
   residency: resident-indian
-
+  notes: PNB lists annual income of ₹2.50 lakh without distinguishing salaried and self-employed applicants; the same published general threshold is recorded for both schema categories. Age and credit-score cutoffs are not published on the card page.
+  source:
+    url: https://creditcard.pnb.bank.in/EMT.html
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
-  apply_url: https://creditcard.pnb.bank.in/types15.html
-
+  apply_url: https://creditcard.pnb.bank.in/EMT.html
 metadata:
-  last_verified_on: '2026-10-24'
-  tags: [co-branded, travel, easemytrip, rupay, lounge, mid]
+  last_verified_on: '2026-10-27'
+  tags:
+  - co-branded
+  - travel
+  - easemytrip
+  - rupay
+  - lounge
+  - mid

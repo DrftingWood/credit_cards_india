@@ -1,4 +1,4 @@
-# ---------------------------------------------------------------------------
+﻿# ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
 #   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
 #   Verified   : 2026-07-04   Confidence: HIGH (pdf)
@@ -11,8 +11,8 @@ id: sbi-miles
 name: SBI Card MILES
 image_path: /cards/sbi/miles.webp
 issuer: sbi
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
@@ -21,7 +21,7 @@ launched_on: 2024-03-01
 discontinued_on: null
 
 fees:
-  - effective_from: 2024-01-01
+  - effective_from: 2024-03-01
     effective_until: null
     joining_fee_inr: 1499
     annual_fee_inr: 1499
@@ -29,7 +29,7 @@ fees:
     fee_waiver:
       spend_inr: 600000
       cycle: annual
-      conditions: "Annual fee reversed on spends of ₹6 lakhs in a membership year."
+      conditions: "Annual fee reversed on spends of â‚¹6 lakhs in a membership year."
     forex_markup_pct: 3.0
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -39,7 +39,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
       local_refs:
@@ -50,15 +50,15 @@ fees:
     notes: "Add-on card fee: Nil. Finance charge shown at SBI standard 3.75% p.m."
 
 rewards:
-  - effective_from: 2024-01-01
+  - effective_from: 2024-03-01
     effective_until: null
     currency: miles
     currency_name: Travel Credits
     base:
       rate: 1
       per_inr: 200
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
+      unit_value_inr: null
+      unit_value_inr_realized: null
     accelerated:
       - category: travel
         canonical_categories: [travel]
@@ -67,7 +67,7 @@ rewards:
         cap_per_cycle: "unlimited"
         cap_unit: miles
         cycle: monthly
-        notes: "2 Travel Credits per ₹200 spent on travel (vs 1 per ₹200 on other spends)."
+        notes: "2 Travel Credits per â‚¹200 spent on travel (vs 1 per â‚¹200 on other spends)."
     exclusions:
       - fuel
     redemption:
@@ -81,13 +81,13 @@ rewards:
         constraints: "1 Travel Credit = Rs.0.50 for travel bookings."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
 
     mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2024-01-01
+  - effective_from: 2024-03-01
     effective_until: null
     lounge_access:
       domestic:
@@ -95,11 +95,11 @@ benefits:
         cycle: quarterly
         guests_per_visit: 0
         via: [mastercard, rupay]
-        notes: "Max 2 visits per quarter. Plus 1 extra visit per ₹1 lakh spent, capped at 8 additional visits per membership year."
+        notes: "Max 2 visits per quarter. Plus 1 extra visit per â‚¹1 lakh spent, capped at 8 additional visits per membership year."
     milestones:
       - spend_inr: 500000
         cycle: annual
-        benefit: "5,000 Bonus Travel Credits on annual spends of ₹5 lakhs"
+        benefit: "5,000 Bonus Travel Credits on annual spends of â‚¹5 lakhs"
         value_inr: 5000
         reward_kind: miles
         reward_units: 5000
@@ -107,11 +107,11 @@ benefits:
         trigger_window: anniversary-year
       - spend_inr: 100000
         cycle: annual
-        benefit: "1 additional domestic airport lounge visit for every ₹1 lakh spent (capped at 8 additional visits per year)"
+        benefit: "1 additional domestic airport lounge visit for every â‚¹1 lakh spent (capped at 8 additional visits per year)"
         trigger_window: rolling
         is_repeatable: true
     welcome:
-      - condition: "Spends of ₹30,000 within 60 days of card issuance"
+      - condition: "Spends of â‚¹30,000 within 60 days of card issuance"
         benefit: "1,500 Travel Credits as Welcome Gift"
         value_inr: 1500
         window_days: 60
@@ -121,30 +121,40 @@ benefits:
       max_txn_inr: 4000
       cap_per_cycle_inr: 250
       cycle: monthly
-      notes: "1% fuel surcharge waiver on transactions between ₹500 and ₹4,000, capped at ₹250 per statement cycle."
+      notes: "1% fuel surcharge waiver on transactions between â‚¹500 and â‚¹4,000, capped at â‚¹250 per statement cycle."
     other:
       - name: Priority Pass Membership
         description: "Complimentary Priority Pass Membership worth $99, giving access to 1,000+ international lounges. Complimentary for first 2 years; $27 + taxes per visit thereafter."
         value_inr: 8200
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
 
 eligibility:
   min_age: 21
   max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Secured 'Advantage' variant also available. Tier-standard mid income (~₹6L p.a.) per aggregator consensus."
-
+  notes: "Secured 'Advantage' variant also available. Tier-standard mid income (~â‚¹6L p.a.) per aggregator consensus. SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles.html
 
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-11-01'
   tags: [mid, miles, travel, lounge]

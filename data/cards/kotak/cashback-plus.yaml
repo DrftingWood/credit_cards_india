@@ -1,119 +1,178 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: kotak-cashback-plus
 name: Kotak Cashback+ Credit Card
 image_path: /cards/kotak/cashback-plus.webp
 issuer: kotak
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2025-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-01-01
-    effective_until: null
-    joining_fee_inr: 750
-    annual_fee_inr: 750
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: '2026-06-04'
+  effective_until: null
+  joining_fee_inr: 750
+  annual_fee_inr: 750
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: Annual retail spend per annum.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee: null
+  gst_applicable: true
+  notes: '₹750 joining/annual fee plus GST. Joining fee billed within 90 days of card issuance. No cash advance
+    facility. DCC markup is 3.50%. KFS transaction fees include: 1% fuel fee above ₹25,000 cumulative fuel spend
+    per statement cycle; 1% education fee on all third-party-app education payments; 1% utility fee above ₹35,000/cycle;
+    1% wallet-load fee above ₹10,000/cycle; 1% rent fee per transaction; and 1% online skill-based gaming fee above
+    ₹10,000/cycle. GST applies to fees and charges.'
+  source:
+    url: https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/Key-fact-statement-kfs-cashback-credit-card.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/cashback-plus/kfs-cashback-plus-2026-10-27.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].fee_waiver.spend_inr
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee
+    - fees[0].gst_applicable
+    notes: KFS version KCBKFS04062026 supports fee schedule, annual retail-spend waiver, 3.75% monthly/45% APR,
+      unavailable cash-advance facility, 3.50% forex/DCC and transaction charges.
 rewards:
-  - effective_from: 2025-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 0.5
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: online-food-grocery-entertainment
-        canonical_categories: [online, groceries, dining, entertainment]
-        multiplier: 10
-        effective_rate: 5
-        cap_per_cycle: 750
-        cap_unit: cashback-inr
-        cycle: statement
-        notes: "5% cashback on online food deliveries, groceries, movie tickets & OTT subscriptions."
-      - category: fuel
-        canonical_categories: [fuel]
-        multiplier: 6
-        effective_rate: 3
-        cap_per_cycle: 750
-        cap_unit: cashback-inr
-        cycle: statement
-        notes: "3% cashback on all fuel spends (+ 1% fuel-surcharge waiver)."
-    exclusions:
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "Category cashback (5% / 3%) is subject to monthly caps"
-    redemption:
-      - type: statement-credit
-        program: Kotak Cashback
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: 'Corrected 2026-07-05: accelerated 5%/3% cashback is NOT unlimited - combined cap Rs750/billing cycle (0% after). Base 0.5% uncapped. 1 point = Rs1.'
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback reward points
+  base:
+    rate: 0.5
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    notes: ₹1 per point; whole-rupee cashback accrual. Points expire one year after accrual. Current claim page
+      says redemption only against statement outstanding, minimum 500 points effective 16-Oct-2026. Other eligible
+      spends earn uncapped 0.5%. Insurance is excluded for this non-Prime card.
+  accelerated:
+  - category: online food grocery entertainment
+    canonical_categories:
+    - online
+    - groceries
+    - entertainment
+    multiplier: 10
+    effective_rate: 5
+    notes: 5% on eligible online food/grocery delivery and entertainment MCCs; MCC-controlled.
+  - category: fuel
+    canonical_categories:
+    - fuel
+    multiplier: 6
+    effective_rate: 3
+    notes: 3% on eligible fuel MCCs; MCC 5541 (service stations) earns 0% under the card terms annexure.
+  exclusions:
+  - rent
+  - other
+  - utilities
+  - insurance-premiums
+  - education
+  - government
+  - wallet-loads
+  - emi
+  mcc_exclusions:
+  - '4812'
+  - '4814'
+  - '4900'
+  - '6300'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8299'
+  - '9311'
+  - '9399'
+  - '6540'
+  - '7311'
+  - '7399'
+  - '6513'
+  - '5816'
+  capping_rules:
+  - Combined cap of 750 reward points per billing cycle across the 5% and 3% accelerated categories; no further
+    cashback on accelerated categories after the cap. B2B transactions and online skill-based gaming are also excluded.
+  redemption:
+  - type: statement-credit
+    program: Kotak Rewards cashback
+    rate_inr_per_unit: 1.0
+    constraints: Only against statement outstanding; minimum 500 reward points from 16-Oct-2026.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card/claim-your-cashback.html
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/cashback-plus/cashback-plus-terms-2026-10-27.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].exclusions
+    - rewards[0].mcc_exclusions
+    - rewards[0].capping_rules
+    notes: Card-specific Cashback+ terms show 5% online food/grocery delivery and online entertainment, 3% fuel,
+      a combined 750-point accelerated cap and zero earn after cap; other eligible spend unlimited at 0.5%. RuPay
+      variant has an additional 0.5% UPI-on-credit-card earn, including accelerated categories, subject to exclusions.
+      The live claim page sets a minimum 500-point cashback redemption from 16-Oct-2026; old generic term redemption
+      text is not used to set a minimum.
 benefits:
-  - effective_from: 2025-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 3500
-      cycle: annual
-    concierge: false
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 3500
+    cycle: annual
+  concierge: false
+  other:
+  - name: Add-on cards
+    description: Up to three free add-on cards; each holder must be 18 years or older; add-on spending is included
+      in the primary card account/cap.
+  - name: Cash advance and lounge access
+    description: Issuer states cash withdrawal is not allowed and lounge access is unavailable.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/cashback-plus/kfs-cashback-plus-2026-10-27.pdf
+    fields_verified:
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.min_txn_inr
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits[0].lounge_access
+    notes: Issuer states fuel surcharge waiver is 1% for ₹500₹₹4,000 transactions, maximum ₹3,500 per anniversary
+      year; no lounge access; cash withdrawal unavailable; three free add-on cards.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: No card-specific numeric age, income, credit-score or residency criteria found on current issuer product/eligibility
+    material reviewed; values remain unknown.
 application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [entry, cashback, online, fuel]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - cashback
+  - online
+  - fuel

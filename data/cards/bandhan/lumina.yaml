@@ -2,117 +2,204 @@ id: bandhan-lumina
 name: Bandhan Bank Lumina Credit Card
 image_path: /cards/bandhan/lumina.webp
 issuer: bandhan
-network: visa
-network_tier: infinite
+network: mastercard
+network_tier: null
 tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 9999
-    annual_fee_inr: 9999
-    fee_waiver:
-      spend_inr: 1000000
-      cycle: annual
-      conditions: "Annual fee waived on ₹10,00,000 spend in the preceding year."
-    forex_markup_pct: 1.00
-    finance_charge_monthly_pct: 3.50
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "Joining ₹9,999, annual ₹9,999, industry-leading 1.0% forex markup."
-
+- effective_from: 2026-09-07
+  effective_until: null
+  joining_fee_inr: 9999
+  annual_fee_inr: 9999
+  fee_waiver:
+    spend_inr: 1200000
+    cycle: annual
+    conditions: Renewal fee waived on ₹12,00,000 eligible annual spend; rent, wallet loads, and their processing
+      fees are excluded.
+  forex_markup_pct: 1.0
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee:
+    pct: 0
+    min_inr: 0
+  gst_applicable: true
+  source:
+    url: https://creditcards.bandhan.bank.in/landing/uploads/Credit_Card_MITC_English_19082026_2b514a85e4.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee
+    notes: 'MITC confirms ₹9,999 joining/renewal fees, the ₹12 lakh waiver, 1% forex, and no cash-withdrawal fee
+      for Lumina. Its finance-charge table varies by customer relationship: 1.5% monthly for existing-to-bank customers
+      with a CASA relationship and 3.5% for new-to-bank customers; the schema stores the new-to-bank rate, so check
+      the relationship-specific amount before quoting it. Current Lumina fee terms independently confirm retail
+      finance at 1.50% monthly for ETB customers with CASA and 3.50% for NTB customers, cash-withdrawal interest at
+      3.50% monthly, and no cash-withdrawal transaction fee.'
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 16
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.25
-    accelerated:
-      - category: international-spends
-        canonical_categories: [international]
-        multiplier: 1.5
-        effective_rate: 24
-        cap_per_cycle: unlimited
-        cap_unit: points
-        cycle: monthly
-        notes: "24 Reward Points per ₹200 (3% reward rate) on international transactions."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: Bandhan Delights
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "16 RP per ₹200 domestic; 24 RP per ₹200 international."
-
+- effective_from: 2026-09-07
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 16
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  accelerated:
+  - category: international-spends
+    canonical_categories:
+    - international
+    multiplier: 1.5
+    effective_rate: 24
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: monthly
+    notes: 24 Delight Points per ₹200 on international spends. The issuer states a cap of 5,000 bonus points per
+      month; the cap applies to incremental points above the 16-point base rate.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: Bandhan Delights
+    rate_inr_per_unit: 0.25
+    constraints: The issuer Delights portal lists a ₹100 Flipkart SuperCoins voucher for 400 Delight Points (₹0.25 per point); this confirms that specific voucher route, not one fixed rate for every catalogue or cashback redemption. https://delights.bandhan.bank.in/
+  source:
+    url: https://creditcards.bandhan.bank.in/card-details/Lumina/
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.redemption[0].rate_inr_per_unit
+    notes: The issuer product page confirms 16 points per ₹200, 1.5X/24 points per ₹200 internationally, and 5,000
+      bonus points per month. The August 2026 MITC says purchase-earned points become redeemable in the next billing cycle and monthly milestone points after two months, with refunds/reversals adjusted against milestone awards. The page's value chart implies conflicting point valuations across benefit rows; ₹0.25
+      is retained as a provisional value and is not treated as a directly stated, guaranteed redemption rate.
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    welcome:
-      - condition: "Payment of joining fee and first transaction"
-        benefit: "₹10,000 Oberoi Hotels & Resorts stay voucher"
-        value_inr: 10000
-        window_days: 60
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-      international:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 500
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-09-07
+  effective_until: null
+  welcome:
+  - condition: Pay the joining fee and spend ₹20,000 within 30 days of card issuance
+    benefit: ₹10,000 Oberoi Hotels & Resorts stay voucher
+    value_inr: 10000
+    window_days: 30
+  milestones:
+  - spend_inr: 100000
+    cycle: monthly
+    benefit: 10,000 bonus Delight Points on eligible monthly spends of ₹1,00,000.
+    value_inr: null
+    reward_kind: points
+    reward_units: 10000
+    reward_currency_name: Delight Points
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: quarterly
+      notes: 8 complimentary domestic visits per calendar quarter at select airports.
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      notes: Unlimited complimentary international lounge visits at select airports; guest entitlement is not stated
+        on the product page.
+  golf:
+    rounds_per_cycle: 4
+    cycle: annual
+    lessons_per_cycle: 4
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 500
+    cycle: statement
+    notes: The August 2026 MITC caps Lumina's waiver at ₹500 per statement cycle; the live value chart instead quotes
+      ₹1,000 per statement cycle. Confirm this issuer-page/MITC discrepancy.
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 10000000
+    conditions: ₹1 crore complimentary accidental air-death cover; see issuer product terms for claim conditions.
+  dining:
+    program: EazyDiner
+    discount_pct: 25
+    notes: Up to ₹1,000 discount once per month.
+  movies:
+    type: discount
+    partner: BookMyShow
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 1000
+    notes: 25% discount up to ₹1,000 once per month.
+  concierge: true
+  other:
+  - name: Airport meet-and-greet
+    description: 4 complimentary airport meet-and-greet services; participating airports and usage terms apply.
+  source:
+    url: https://creditcards.bandhan.bank.in/card-details/Lumina/
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    fields_verified:
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.lounge_access
+    - benefits.golf
+    - benefits.insurance
+    - benefits.dining
+    - benefits.movies
+    notes: Product page confirms the welcome-spend condition, lounge allowances, monthly milestone, golf, dining,
+      movie, and meet-and-greet benefits. Fuel waiver is retained at the MITC's ₹500 statement-cycle cap because
+      the page's current value chart says ₹1,000; resolve before presenting it as certain. The 19-Aug-2026 MITC says only primary cardholders receive complimentary lounge access; guests pay an airport-specific entry fee. Its monthly-milestone spend rule excludes fuel/petroleum and service stations; government and other lotteries/gambling; rentals/real estate; GCAS emergency services; postal services; tax, bail/bond, housekeeping and court/alimony/child-support payments; limousines/taxis; local/suburban transport, ferries, buses, bridges and tolls; utilities; insurance direct marketing/sales/underwriting/premiums; wallet loads; joining/annual fees; forex, GST/VAT, fuel surcharge, late fees, interest, surcharges, cheque-bounce fees, EMI processing/foreclosure, over-limit, card-reissue and other Bank fees.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 2400000
-    self_employed: 2400000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  source:
+    url: https://creditcards.bandhan.bank.in/card-details/Lumina/
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
+  notes: Issuer page states an income range above ₹18 lakh without specifying the period or gross/net basis, so
+    no annual numeric threshold is modeled. No minimum credit score is published; approval remains at the bank's
+    discretion. Numeric
+    income and credit-score cutoffs are retained only when this eligibility record cites the exact field in issuer
+    evidence; unsupported cutoffs are unknown, not proof of no underwriting requirement. Age and residency criteria
+    are recorded from the issuer's eligibility dialog.
 application:
-  apply_url: https://www.bandhanbank.com/personal-banking/cards/credit-cards
-
+  apply_url: https://applycc.bandhan.bank.in/
 metadata:
-  last_verified_on: '2026-10-24'
-  tags: [super-premium, metal, low-forex, lounge, oberoi, points]
+  last_verified_on: '2026-10-26'
+  tags:
+  - super-premium
+  - metal
+  - low-forex
+  - lounge
+  - oberoi
+  - points

@@ -25,7 +25,7 @@ Review of the AU Small Finance Bank credit-card catalogue against the live
 - **Zenith+** — path/slug fix; fee ₹7,999→₹4,999; waiver ₹18L→₹8L; **base 10→1 RP/₹100**
   + 2x dining/travel/intl; welcome → Taj Epicure + ₹5,000.
 - **LIT** — reward-booster up to 10X (from 5X) + à-la-carte cashback category features.
-- **Ixigo** — now **lifetime-free** (was ₹999); **0% forex**; base → 2.5% rewards; lounge
+- **Ixigo** ? current fee schedule lists ?999 annual fee with spend-based waivers, while the product-specific page advertises limited-period lifetime-free (conflict documented); 0% forex; quarterly milestone and spend-gated lounge terms rechecked.
   → 1 intl/yr; +₹75k milestone + ₹1.5L credit shield.
 
 **15 new cards added:** zenith, ananta, xcite, xcite-ace, xcite-ultra (SwipeUp program),
@@ -51,3 +51,23 @@ Universal rent (MCC 6513) exclusion on all AU cards. See [`au-mcc-map.md`](au-mc
 AU's PDPs are JS-heavy and several fee tables load dynamically, so many new-card fields
 carry `# TODO verify` (exact fees, reward caps, network tier, income) — close from each
 card's MITC / fees PDF in the final TODO-cleanup wave.
+
+
+## Current follow-up (2026-10-25)
+AU ixigo, Prathama, Kosmo and Paytm were rechecked against live AU product pages and the current card-member agreement. See `CARD_CONFIDENCE_AUDIT_2026-10-25.md` for corrected values and unresolved schema/source conflicts. Kosmo?s unpublished earn rate and redemption value are intentionally null; Paytm?s ordinary earn rate, cap and detailed app eligibility remain unresolved.
+
+
+Tejas was rechecked 2026-10-25: fee waiver moved to INR 150,000 annual spend, Rewardz earn scoped to AU portal, current 5-transaction bonus and capped partner cashback offers added. AU Rewardz points are paise fractions (INR 0.0025 catalog; INR 0.002 e-voucher), not INR 0.25. See the issuer page and confidence audit.
+
+
+Laksya was rechecked 2026-10-26: current fees/waiver, grocery and contactless reward caps, lounge spend gate, welcome, monthly partner offer limits, fuel cap and AU Rewardz paise valuation confirmed. Corrected fuel-waiver cycle to statement and replaced unsupported 2024 launch placeholder with AU's 6-May-2026 portfolio launch date. Added explicit unit-value provenance and issuer-advertised insurance, card liability, credit shield, device protection and Xpress EMI benefits; policy details remain unpublished. Exact issued network/tier is not established; Visa tier is now unknown.
+
+
+SPONT was rechecked 2026-10-25: corrected current-quarter airport gate, railway lounge count, finance/cash-advance charges and verified 1% cashback; separated AU0101-only coins as unvalued and flagged unpublished coin rules and cashback exclusions.
+
+
+Ananta was rechecked 2026-10-26 against the current card page, KFS, agreement, milestone and lounge terms. Replaced the unsupported 2024 launch placeholder with AU's 6-May-2026 launch date; set network and tier to unknown because the issuer describes a selected network variant without identifying it; removed the wrong Altura+ Visa image reference; corrected the fuel-waiver cycle and anniversary milestone repeatability; and added the currently advertised Xpress EMI, contactless, add-on-card and protection benefits. Specific insurance limits, conditions and reward-point unit value remain unknown due to unpublished terms and a 100x conflict between AU's general Rewardz FAQ and the Ananta milestone table. The duplicate Altura+ image reference was also removed from Altura, Laksya, NOMO, SPONT, Vetta, Xcite and Zenith+; see `CARD_CONFIDENCE_AUDIT_2026-10-25.md` for sources and full field notes.
+
+Tejas was rechecked 2026-10-26 against the current product page, 30 Sep 2026 KFS, current card-member agreement and dedicated welcome/cashback terms. Corrected fuel waiver cycle; structured overall reward cap, utility/telecom earning and separate catalog/e-voucher redemption; corrected welcome-option values/conditions; separated the partner offers by merchant and statement/month cadence; added liability/credit-shield/device-protection, EMI, contactless and add-on benefits; and left launch date/network/tier unknown where current first-party evidence does not establish them. The product FAQ says BBPS is excluded without defining channel scope, while the agreement specifically excludes AU 0101 BBPS transactions; that remains an explicit unresolved scope note.
+
+Zenith rewards were rechecked 2026-10-26 against the current card-member agreement, Rewardz FAQ and Zenith-specific 2024 revision. Fixed the duplicate accelerated key, added cited utility/telecom and insurance MCC earn, the dining and overall caps, catalog/voucher redemption values and fees, and the birthday award of 2,500 points (specific eligibility remains unpublished). Base and dining/grocery reward rates remain unknown because AU does not state them on the product page.

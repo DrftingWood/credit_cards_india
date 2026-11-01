@@ -2,24 +2,24 @@ id: bob-icsi-diamond
 name: ICSI Diamond BOBCARD Credit Card
 image_path: /cards/bob/icsi-diamond.webp
 issuer: bob
-network: visa
-network_tier: signature
+network: rupay
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
   partner: ICSI
   category: other
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2022-01-01
+- effective_from: '2026-10-26'
   effective_until: null
   joining_fee_inr: 0
   annual_fee_inr: 0
   fee_waiver: null
   forex_markup_pct: 2.0
-  finance_charge_monthly_pct: 3.49
+  finance_charge_monthly_pct: 3.75
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
@@ -28,11 +28,23 @@ fees:
     India) members.
   source:
     url: https://www.bobcard.co.in/credit-card-types/icsi-diamond
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current product page confirms zero fees and 2% forex; Jan-2026 BOBCARD
+      MITC confirms 3.75% monthly finance charge and 2.5%/INR 500 cash-advance fee.
+      Application form lists Mastercard and RuPay options. Schema permits one network
+      only, so RuPay is representative; actual issue network and tier are unknown.
+      Exact fee effective date and launch date are unpublished.
 rewards:
-- effective_from: 2022-01-01
+- effective_from: '2026-10-26'
   effective_until: null
   currency: points
   currency_name: Reward Points
@@ -40,7 +52,7 @@ rewards:
     rate: 1
     per_inr: 100
     unit_value_inr: 0.25
-    unit_value_inr_realized: 0.18
+    unit_value_inr_realized: 0.25
   accelerated:
   - category: dining-online-utilities
     canonical_categories:
@@ -52,6 +64,10 @@ rewards:
     cap_per_cycle: 1000
     cap_unit: points
     cycle: statement
+    notes: 5 total BOBCARD Reward Points per INR 100 on dining, online and utility
+      spend; capped at 1,000 accelerated points per statement, with subsequent eligible
+      spend earning base rate. UPI earns core points only; no bonus points. Fuel transactions
+      earn no points.
   exclusions:
   - fuel
   - wallet-loads
@@ -66,30 +82,40 @@ rewards:
     rate_inr_per_unit: 0.25
   source:
     url: https://www.bobcard.co.in/credit-card-types/icsi-diamond
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Current BOBCARD page confirms 1 point/INR 100 base, 5 total points/INR
+      100 on dining, online and utility, 1,000-point statement cap, and INR 0.25 cashback.
+      UPI receives core points only; fuel receives none. Full current select-MCC appendix
+      is not published on product page.
 benefits:
-- effective_from: 2022-01-01
+- effective_from: '2026-10-26'
   effective_until: null
   lounge_access:
     domestic:
       visits_per_cycle: 3
       cycle: quarterly
-      guests_per_visit: 0
-      via:
-      - visa
-      - dreamfolks
+      guests_per_visit: null
   welcome:
-  - condition: Spend ₹5,000 or more within 60 days of issuance
+  - condition: Spend â‚¹5,000 or more within 60 days of issuance
     benefit: 500 reward points
     value_inr: 125
     window_days: 60
   milestones:
   - spend_inr: 100000
     cycle: quarterly
-    benefit: 3,999 reward points on quarterly spend above ₹1,00,000 or credit limit
-      (whichever higher)
+    benefit: 3,999 Reward Points each quarter on spend greater than INR 100,000 or
+      the card credit limit, whichever is higher; once per quarter
     reward_kind: points
     reward_units: 3999
     reward_currency_name: Reward Points
@@ -100,7 +126,7 @@ benefits:
   insurance:
   - type: other
     sum_insured_inr: 500000
-    conditions: Professional indemnity insurance cover up to ₹5 Lakhs.
+    conditions: Professional indemnity insurance cover up to â‚¹5 Lakhs.
   - type: air-accident
     sum_insured_inr: 1500000
     conditions: Air accidental death cover.
@@ -112,29 +138,55 @@ benefits:
     min_txn_inr: 400
     max_txn_inr: 5000
     cap_per_cycle_inr: 250
-    cycle: monthly
+    cycle: statement
   other:
   - name: Add-on cards
     description: Up to 3 lifetime-free add-on cards for spouse, parents, siblings
       or kids (18+).
+  - name: FITPASS PRO
+    description: 12-month FITPASS PRO membership for cards issued on or after 1-Aug-2026.
+      Code is sent to registered email within 30 days of issuance; primary-cardholder
+      benefit.
+  - name: Lost-card liability
+    description: Product page advertises zero liability for fraudulent transactions
+      when card loss is reported immediately; detailed terms apply.
   concierge: false
   source:
     url: https://www.bobcard.co.in/credit-card-types/icsi-diamond
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.other
+    notes: Current product page confirms 3 lounge visits per quarter subject to INR
+      40,000 net eligible prior-quarter spend, 500-point welcome offer, 3,999-point
+      quarterly milestone, insurance limits, FITPASS condition and fuel waiver. Full
+      lounge participating list, guest policy and insurance policy exclusions are
+      not established.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 75
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: null
   residency: resident-indian
-  notes: Exclusively for ICSI members.
+  notes: Resident India and eligible active ICSI membership required. Product page
+    states age 21-75 for salaried and self-employed; minimums are INR 300,000 net
+    annual salary or INR 300,000 annual ITR for self-employed. Membership proof required.
+    Numeric credit-score cutoff is unpublished.
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/icsi-diamond
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-10-26'
   tags:
   - mid
   - points

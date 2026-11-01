@@ -1,107 +1,119 @@
 id: slice-slice-rupay
-name: slice UPI Credit Card (RuPay)
+name: slice UPI Credit Card
 image_path: /cards/slice/slice-rupay.webp
 issuer: slice
 network: rupay
-network_tier: classic
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-04-01
+launched_on: 2025-06-28
 discontinued_on: null
 fees:
-- effective_from: 2024-04-01
+- effective_from: 2026-10-26
   effective_until: null
   joining_fee_inr: 0
   annual_fee_inr: 0
   fee_waiver: null
-  forex_markup_pct: 3.5
-  finance_charge_monthly_pct: 3.0
-  cash_advance_fee:
-    pct: 2.5
-    min_inr: 300
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee: null
   gst_applicable: true
-  notes: Lifetime-free card; fully app-managed lifecycle.
+  notes: >-
+    Current issuer MITC lists zero joining and annual membership fees, zero bank forex markup,
+    and 3.5% monthly finance charge (42% APR). Bank transfer from the credit limit costs
+    2.5% with a INR25 minimum; this is not represented as a cash-advance fee because the MITC
+    describes a separate bank-transfer facility. The MITC lists other transaction service
+    charges, including fuel 2% (minimum INR10) when cycle fuel spend exceeds INR25,000,
+    utilities 1% above INR25,000, rent 1% above INR10,000, and 1% education/wallet charges.
   source:
-    url: https://www.sliceit.com/slice-super-card
-    retrieved_on: 2026-07-03
+    url: https://slice.bank.in/cc-mitc
+    retrieved_on: 2026-10-26
     type: issuer-page
-    confidence: medium
+    confidence: high
 rewards:
-- effective_from: 2024-04-01
+- effective_from: 2026-10-26
   effective_until: null
-  currency: cashback
-  currency_name: slice Cashback
+  currency: points
+  currency_name: monies
   base:
     rate: 1
-    per_inr: 100
-    unit_value_inr: 1.0
-    unit_value_inr_realized: 1.0
-  accelerated:
-  - category: upi-spend
-    multiplier: 1
-    effective_rate: 2
-    cap_per_cycle: 500
-    cap_unit: cashback-inr
-    cycle: monthly
-    notes: 2% cashback on UPI-QR spends via the slice UPI card.
-    canonical_categories:
-    - other
+    per_inr: 1
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated: []
   exclusions:
   - fuel
-  - wallet-loads
+  - insurance-premiums
   - rent
+  - education
+  - government
+  - wallet-loads
   - emi
   mcc_exclusions:
   - '6513'
   redemption:
   - type: statement-credit
-    rate_inr_per_unit: 1.0
+    rate_inr_per_unit: null
+  notes: >-
+    Monies may be redeemed as cash to a slice savings account. MITC redemption rate is
+      balance-based: 1% up to INR300,000 monies, 1.5% from INR300,001 to INR500,000,
+      2% above INR500,000, or 3% above INR500,000 when both average quarterly slice savings
+      balance and monies balance are at least INR500,000. Reward records the issuer's
+      accrual of 1 monies per INR1 eligible card spend; effective realized value depends on
+      redemption balance and conditions. Unredeemed monies can be forfeited on card closure.
   source:
-    url: https://www.sliceit.com/slice-super-card
-    retrieved_on: 2026-07-03
+    url: https://slice.bank.in/cc-mitc
+    retrieved_on: 2026-10-26
     type: issuer-page
-    confidence: medium
+    confidence: high
 benefits:
-- effective_from: 2024-04-01
+- effective_from: 2026-10-26
   effective_until: null
   lounge_access: null
-  fuel_surcharge_waiver:
-    pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 4000
-    cap_per_cycle_inr: null
-    cycle: monthly
+  fuel_surcharge_waiver: null
   other:
-  - name: UPI linkage
-    description: RuPay credit card fully integrated with UPI apps (GPay / PhonePe
-      / Paytm) for scan-and-pay.
-  - name: App-first lifecycle
-    description: Application, limit management, statements and repayment all in the
-      slice app.
+  - name: RuPay credit card on UPI
+    description: >-
+      The issuer MITC says RuPay cardholders may scan merchant QR codes using UPI, subject
+      to NPCI rules, merchant acceptance and transaction limits. Card UPI transactions are
+      billed to the credit-card account.
+  - name: slice app servicing
+    description: >-
+      The issuer says card limits, statements and account servicing are available through
+      its digital portal/app.
   concierge: false
   source:
-    url: https://www.sliceit.com/slice-super-card
-    retrieved_on: 2026-07-03
+    url: https://slice.bank.in/cc-mitc
+    retrieved_on: 2026-10-26
     type: issuer-page
-    confidence: medium
+    confidence: high
 eligibility:
-  min_age: 18
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 240000
-    self_employed: 240000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
+  notes: >-
+    The issuer says limits are assigned at its discretion based on income verification,
+    obligations, credit history, employment stability and internal risk criteria; it does
+    not publish numeric eligibility cutoffs in the reviewed MITC.
+  source:
+    url: https://slice.bank.in/cc-mitc
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
 application:
-  apply_url: https://www.slice.bank.in
+  apply_url: https://slice.bank.in/credit-card
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: 2026-10-26
   tags:
   - lifetime-free
   - fintech
   - rupay
   - upi
   - entry
-  - cashback
+  - rewards

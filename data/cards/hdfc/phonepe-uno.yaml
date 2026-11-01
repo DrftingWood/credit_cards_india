@@ -3,7 +3,7 @@ name: PhonePe HDFC Bank Uno Credit Card
 image_path: /cards/hdfc/phonepe-uno.webp
 issuer: hdfc
 network: rupay
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -11,38 +11,41 @@ co_brand:
   category: other
   partner_website: https://www.phonepe.com
 status: active
-launched_on: '2024-03-01'
+launched_on: '2025-06-26'
 discontinued_on: null
 fees:
-- effective_from: 2026-07-03
+- effective_from: '2025-06-26'
   effective_until: null
   joining_fee_inr: 499
   annual_fee_inr: 499
   fee_waiver:
     spend_inr: 100000
     cycle: annual
-    conditions: Renewal/annual membership fee waived on spends of ₹1,00,000 in the
-      preceding 12 months.
+    conditions: Renewal fee waived on ₹1,00,000 qualifying spend in the preceding 12 months; joining fee is not
+      waived. Cash advances, fees/charges, and EMI spends do not count toward waiver spend.
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.75
   gst_applicable: true
   source:
     url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
-    retrieved_on: 2026-07-03
-    notes: Fees not published on the product page; TODO verify from MITC / Fees &
-      Charges.
-    type: issuer-pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-page
     confidence: high
     local_refs:
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
     - docs/sources/hdfc/phonepe-uno/phonepe-hdfc-bank-uno-cc-faqs.pdf
     fields_verified:
+    - fees.joining_fee_inr
     - fees.annual_fee_inr
-    - fees.fee_waiver
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
 rewards:
-- effective_from: 2026-07-03
+- effective_from: '2025-06-26'
   effective_until: null
   currency: points
   currency_name: Reward Points
@@ -79,9 +82,8 @@ rewards:
     - '4814'
     - '4899'
     - '4900'
-    notes: 2% Reward Points on select PhonePe categories (Recharges, Utilities, Bill
-      Payments, Travel). Capped at 500 reward points per calendar month. Rewards on
-      PhonePe PINCODE valid until 5th Dec 2025.
+    notes: 2% Reward Points on select PhonePe categories (Recharges, Utilities, Bill Payments, Travel). Capped at
+      500 per calendar month. Pincode offer explicitly expired 2025-12-05 and is excluded.
   - category: select-online-brands
     canonical_categories:
     - online
@@ -122,8 +124,8 @@ rewards:
     - '5811'
     - '5812'
     - '5814'
-    notes: 1% Reward Points on select online brands (Amazon, Flipkart, Myntra, Ajio,
-      Swiggy, Zomato, Uber). Capped at 500 reward points per calendar month.
+    notes: 1% Reward Points on select online brands (Amazon, Flipkart, Myntra, Ajio, Swiggy, Zomato, Uber). Capped
+      at 500 reward points per calendar month.
   - category: upi-scan-and-pay
     canonical_categories:
     - other
@@ -132,8 +134,7 @@ rewards:
     cap_per_cycle: 500
     cap_unit: points
     cycle: monthly
-    notes: 1% Reward Points on all UPI Scan & Pay spends. Capped at 500 reward points
-      per calendar month.
+    notes: 1% Reward Points on all UPI Scan & Pay spends. Capped at 500 reward points per calendar month.
   exclusions:
   - emi
   - fuel
@@ -146,30 +147,42 @@ rewards:
   - cash-advance
   source:
     url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-10-26'
     type: issuer-page
-    notes: 'Research-verified: co-brand RP = Rs1 HDFC statement credit (liquid) ->
-      NOT closed-loop. Tag removed.'
     confidence: high
+    local_refs:
+    - docs/sources/hdfc/phonepe-uno/phonepe-hdfc-bank-uno-cc-faqs.pdf
+    - docs/sources/hdfc/phonepe-uno/phonepe-hdfc-bank-uno-cc-reward-points-tncs.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    notes: Card FAQ says expiry after 2 years; current consolidated MITC says Uno points are valid for 1 year on
+      upgrade/migration, replacement, renewal or re-issuance. Expiry is unresolved; do not model.
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.reward_cap
+    - rewards.redemption
   reward_cap:
     max_units: 1500
     cap_unit: points
     cycle: monthly
   redemption:
   - type: statement-credit
-    program: PhonePe Cashback
+    program: HDFC Bank Reward Points
     rate_inr_per_unit: 1.0
+    min_units: 500
+    fee_inr: 0
+    constraints: Statement credit requires at least 500 points and is capped at ₹7,500 cashback per month; SmartBuy
+      redemption value is ₹0.30/point. No statement-credit redemption fee.
 benefits:
-- effective_from: 2026-07-03
+- effective_from: '2025-06-26'
   effective_until: null
   lounge_access: null
   welcome:
-  - condition: First RuPay CC on UPI transaction (only where Joining Fee is applicable)
-    benefit: PhonePe Gift card worth ₹249
-    value_inr: 249
-  - condition: Next 10 RuPay CC on UPI transactions
-    benefit: Additional scratch cards worth ₹25 each
-    value_inr: 250
+  - condition: Applications on or after 2026-08-01; first 5 PhonePe UPI-on-credit-card transactions, each at least
+      ₹100; only if joining fee is applicable
+    benefit: Five PhonePe scratch cards worth ₹100 each
+    value_inr: 500
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
@@ -179,20 +192,30 @@ benefits:
   concierge: false
   source:
     url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/phonepe-uno/phonepe-hdfc-bank-uno-cc-faqs.pdf
+    - docs/sources/hdfc/phonepe-uno/phonepe-hdfc-bank-uno-cc-reward-points-tncs.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: 240000
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
+  notes: HDFC lists a minimum monthly salary of ₹20,000 on its ₹20K salary card page; stored as annualized ₹240,000.
+    Application is only through PhonePe app. Age, self-employed income, and minimum score thresholds remain unpublished.
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-uno-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-26'
   tags:
   - co-branded
   - phonepe

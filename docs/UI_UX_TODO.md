@@ -8,10 +8,7 @@
 
 ## 🚨 Phase 1: Foundation & Polish (P0 — Immediate)
 
-- [ ] **1.1 Character Encoding & Mojibake Cleanup**
-  - [ ] Sanitize ~2,600 Windows-1252 character artifacts across `site/app` and `site/components`.
-  - [ ] Standardize on valid UTF-8 Indian Rupee (`₹`), em-dash (`—`), en-dash (`–`), bullets (`•`), and arrows (`→`).
-  - [ ] Fix corrupted strings in `site/app/page.tsx`, `site/app/layout.tsx`, and detail components.
+- [x] **1.1 Character Encoding & Mojibake Cleanup** — audited the current `site/app` and `site/components` source as UTF-8. The apparent mojibake came from terminal rendering; no corrupted sequences were present, so no text rewrite was needed.
 
 - [ ] **1.2 Header & Brand Navigation Overhaul**
   - [ ] Add active route indicator (pill/underline) for current section.

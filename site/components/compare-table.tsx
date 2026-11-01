@@ -127,6 +127,7 @@ const ROWS: Row[] = [
     render: (c) => {
       const ca = c.current_fees?.cash_advance_fee;
       if (!ca) return "—";
+      if (ca.flat_inr != null) return `${formatInr(ca.flat_inr)} per withdrawal`;
       return `${formatPct(ca.pct ?? null, 1)} or ${formatInr(ca.min_inr ?? null)} (whichever higher)`;
     },
   },
@@ -201,7 +202,7 @@ const ROWS: Row[] = [
     render: (c) => {
       const f = c.current_benefits?.fuel_surcharge_waiver;
       if (!f) return "—";
-      return `${formatPct(f.pct, 1)}${
+      return `${f.pct == null ? "Surcharge reversed" : formatPct(f.pct, 1)}${
         f.cap_per_cycle_inr ? ` (cap ${formatInr(f.cap_per_cycle_inr)}/${f.cycle ?? "cycle"})` : ""
       }`;
     },

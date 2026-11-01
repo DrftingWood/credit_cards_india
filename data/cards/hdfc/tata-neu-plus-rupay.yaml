@@ -11,10 +11,10 @@ co_brand:
   category: ecommerce
   partner_website: https://www.tataneu.com
 status: active
-launched_on: 2022-08-01
+launched_on: '2022-08-24'
 discontinued_on: null
 fees:
-- effective_from: 2022-08-01
+- effective_from: '2026-10-27'
   effective_until: null
   joining_fee_inr: 499
   annual_fee_inr: 499
@@ -30,8 +30,8 @@ fees:
     min_inr: 500
   gst_applicable: true
   source:
-    url: https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card
-    retrieved_on: 2026-10-24
+    url: https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card/fees-and-charges
+    retrieved_on: '2026-10-27'
     type: issuer-pdf
     confidence: high
     local_refs:
@@ -40,10 +40,16 @@ fees:
     fields_verified:
     - fees.joining_fee_inr
     - fees.annual_fee_inr
-    - fees.fee_waiver
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
     - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current issuer fees page confirms ₹499 plus tax joining/renewal fees, ₹1
+      lakh renewal waiver before renewal date, 3.5% foreign-currency markup, 3.75%
+      monthly interest per issuer FAQ, and current fuel surcharge terms.
 rewards:
-- effective_from: 2024-08-01
+- effective_from: '2026-10-27'
   effective_until: null
   currency: cashback
   currency_name: NeuCoins
@@ -64,8 +70,6 @@ rewards:
     card_attributable_rate: 2
     card_attributable_per_inr: 100
     stacks_with_program: false
-    cap_per_cycle: 100000
-    cap_unit: spend-inr
     cycle: annual
     merchants:
     - tata-neu-app
@@ -79,9 +83,28 @@ rewards:
       class: cobrand-merchant
       merchants:
       - tata-neu
-    notes: 2% NeuCoins on non-EMI spends on partner Tata brands (1% base + 1% additional);
-      additional 5% via Tata NeuPass on select categories. Subject to Annex 1 brand
-      fair-usage spend caps.
+    notes: 2% NeuCoins on eligible non-EMI partner Tata brand spend (1% base + 1%
+      additional), with partner- and category-specific spend caps under the current
+      HDFC Reward and Redemption Program. Additional 5% via Tata NeuPass is separately
+      modeled; use of UPI receives UPI rate instead.
+  - category: tata-neupass-selected-categories
+    canonical_categories:
+    - online
+    multiplier: 5
+    effective_rate: 5
+    card_attributable_rate: 5
+    card_attributable_per_inr: 100
+    stacks_with_program: false
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - tata-neu
+    notes: Additional 5% NeuCoins on selected Tata Neu app/website categories after
+      Tata Neu app download and NeuPass registration. From 15-Jan-2025 only primary
+      cardholder mobile-number account transactions qualify. Not available on Tata
+      Pay bill payments, Tanishq, Cult.fit, Air India or Tata Play; UPI transactions
+      do not qualify. Exact selected brands and Fair Usage Policy may change.
   - category: upi-spends-tata-neu
     multiplier: 1
     effective_rate: 1
@@ -123,16 +146,19 @@ rewards:
   - rent
   - government
   - emi
-  - utilities
   capping_rules:
-  - UPI spends on the RuPay variant earn 0.25% on any UPI app and an additional 0.75%
-    (1.00% total) when paid via Tata Neu UPI ID; total UPI NeuCoins are capped at
-    500 per calendar month (w.e.f. 01-Aug-2024).
-  - Partner Tata Brand transactions paid via UPI earn the UPI rate (up to 1.00% capped
-    at 500/mo), not the 2% non-UPI Tata brand rate.
-  - 'Non-UPI category caps per calendar month: Grocery 1,000 NeuCoins; Insurance 2,000
-    NeuCoins; Utility 2,000 NeuCoins; Telecom & Cable 2,000 NeuCoins.'
-  - 'From 1-Jul-2025: no NeuCoins on online skill-based gaming (MCC 5816).'
+  - UPI NeuCoins total across eligible UPI transactions is capped at 500 per calendar
+    month; 0.25% from HDFC on any UPI ID plus 0.75% posted by Tata Neu for Tata Neu
+    UPI ID payments.
+  - 2% partner Tata Brand earn has brand-specific monthly and annual eligible-spend
+    ceilings in the current card reward and redemption program; do not apply a single
+    shared rule-level cap.
+  - 'Other published caps: grocery 1,000 NeuCoins/month; insurance 2,000/month; utility
+    2,000/calendar month; telecom and cable 2,000/calendar month.'
+  - No NeuCoins on fuel, wallet/gift/prepaid/voucher loads, cash advance, outstanding
+    balance, card fees, Smart EMI/Dial-an-EMI, rent, government payments, third-party-app
+    education payments (direct school/college website or POS may earn), or online
+    skill-based gaming MCC 5816.
   redemption:
   - type: cashback-bank
     program: Tata Neu wallet
@@ -141,22 +167,29 @@ rewards:
       Re. 1.
   source:
     url: https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card
-    retrieved_on: 2026-10-24
-    type: issuer-pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-page
     confidence: high
     local_refs:
     - docs/sources/hdfc/tata-neu-plus/additional-upi-neucoins-plus-new.pdf
     - docs/sources/hdfc/tata-neu-plus/tata_neu_plus_card_tnc.pdf
     fields_verified:
-    - rewards.base
-    - rewards.accelerated
-    notes: Directly verified against archived HDFC Tata Neu Plus PDFs (additional-upi-neucoins-plus-new.pdf
-      updated 27-Oct-2025, tata_neu_plus_card_tnc.pdf updated 03-Jan-2026).
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].base.unit_value_inr_realized
+    - rewards[0].accelerated
+    - rewards[0].redemption[0].rate_inr_per_unit
+    notes: Current issuer product page, 21-Nov-2025 card T&C, 27-Oct-2025 UPI T&C,
+      reward/redemption program, and current value chart checked. NeuCoins redeem
+      at 1 NeuCoin = ₹1 in Tata Neu; current program includes 2% partner non-EMI,
+      1% non-Tata/merchant-EMI, 0.25% general RuPay UPI plus 0.75% Tata Neu UPI, and
+      separate additional 5% NeuPass on selected categories.
   mcc_exclusions:
   - '5816'
   - '6513'
 benefits:
-- effective_from: 2025-06-10
+- effective_from: '2026-10-27'
   effective_until: null
   lounge_access:
     domestic:
@@ -171,7 +204,10 @@ benefits:
         on Rs. 50,000 spend in a calendar quarter (w.e.f. 10-Jun-2025 per milestone_lounge_tata-neu-cc.pdf).
   welcome:
   - condition: First transaction within 30 days of card issuance (on fee-paying cards)
-    benefit: 499 NeuCoins inside Tata Neu App
+    benefit: 499 NeuCoins credited inside Tata Neu as reversal of first-year fee;
+      first retail transaction within 30 days, claim inside the app within 180 days
+      of eligible statement date; valid 365 days after claim. Not available on lifetime-free
+      or first-year-free cards.
     value_inr: 499
     window_days: 30
   fuel_surcharge_waiver:
@@ -183,28 +219,53 @@ benefits:
   concierge: false
   source:
     url: https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card
-    retrieved_on: 2026-10-24
-    type: issuer-pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-page
     confidence: high
     local_refs:
     - docs/sources/hdfc/tata-neu-plus/milestone_lounge_tata-neu-cc.pdf
     - docs/sources/hdfc/tata-neu-plus/tata_neu_plus_card_tnc.pdf
     fields_verified:
-    - benefits.lounge_access
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
     - benefits.welcome
     - benefits.fuel_surcharge_waiver
+    notes: Current HDFC product page confirms quarter-spend-triggered lounge voucher
+      (₹50,000 calendar-quarter spend), welcome NeuCoins for priced cards, and ₹400–₹5,000
+      fuel transactions with 1% waiver capped ₹250 per statement cycle.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 65
   income_inr_annual:
     salaried: 300000
     self_employed: 600000
-  credit_score_min: 720
+  credit_score_min: null
   residency: resident-indian
+  notes: Current issuer eligibility page lists Indian salaried applicants age 21–60
+    with gross monthly income above ₹25,000 and self-employed applicants age 21–65
+    with ITR above ₹6 lakh per annum. Salaried threshold is annualized in income_inr_annual.
+    No numeric credit-score cutoff published.
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card/eligibility
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-10-27'
   tags:
   - co-branded
   - tata-neu

@@ -1,1 +1,26 @@
-{"_source":"kvb .bank.in (card page redirects to home; no extractable fee table)","verified_on":"2026-07-04","result":"seeded RuPay-Select values retained as plausible-unconfirmed; domain+MCC verified in audit","pdfs_downloaded":0}
+{
+  "_source": "Karur Vysya Bank current card pages, retail MITC, reward-redemption page and issuer announcements.",
+  "verified_on": "2026-10-27",
+  "result": "KVB Honour reviewed against the live product page and 2025 retail MITC. Corrected annual fee/waiver, APR, cash advance, rewards, redemption minimum/fee/lapse, lounge description, fuel waiver and removed unsupported launch date. Travel multiplier calculation and lounge cadence remain unspecified by the product page.",
+  "pdfs_downloaded": 2,
+  "honour": {
+    "retrieved_on": "2026-10-27",
+    "product_url": "https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-honour-credit-card/",
+    "mitc_url": "https://www.kvb.bank.in/docs/retail-credit-card-mitc.pdf",
+    "rewards_redemption_url": "https://www.kvb.bank.in/reward-points-redemption/",
+    "pdfs": [
+      "honour/retail-credit-card-mitc-2025-03-04.pdf",
+      "honour/premium-portfolio-launch-2026-05-29.pdf"
+    ],
+    "other_sources": [
+      "honour/product-page-2026-10-27.html",
+      "honour/rewards-redemption-2026-10-27.html"
+    ],
+    "unresolved": [
+      "The current product page headline says 4x rewards on travel/hotels/air tickets but does not provide detailed earning calculation or eligible MCCs.",
+      "Product page advertises four complimentary domestic lounge visits but does not publish the period, guest entitlement or spend gate.",
+      "No point-to-rupee value is published on current Honour or generic reward-redemption pages.",
+      "Exact launch date, numerical applicant age/income/score criteria and residency are not specified on the card page."
+    ]
+  }
+}

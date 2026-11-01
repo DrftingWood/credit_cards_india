@@ -1,9 +1,9 @@
-id: axis-flipkart-super-elite
+﻿id: axis-flipkart-super-elite
 name: Flipkart Axis Bank Super Elite Credit Card
 image_path: /cards/axis/flipkart-super-elite.webp
 issuer: axis
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -11,14 +11,17 @@ co_brand:
   category: ecommerce
   partner_website: https://www.flipkart.com
 status: active
-launched_on: 2022-11-01
+launched_on: 2022-11-22
 discontinued_on: null
 fees:
-- effective_from: 2023-01-01
+- effective_from: 2026-10-25
   effective_until: null
   joining_fee_inr: 500
   annual_fee_inr: 500
-  fee_waiver: null
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: Annual eligible spend must be greater than INR 200,000; rent MCC 6513 and wallet-load MCC 6540 do not count. The product page does not state the anniversary-year boundary in the displayed wording; current Axis fee terms use the card anniversary year.
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.75
   cash_advance_fee:
@@ -27,43 +30,60 @@ fees:
   gst_applicable: true
   source:
     url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-27
     type: issuer-page
     confidence: high
     local_refs:
     - docs/sources/axis/_shared/mitc-credit-cards.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
     - fees.finance_charge_monthly_pct
     - fees.forex_markup_pct
-    notes: Joining + annual fee ₹500 + GST (Axis MITC fee table). Finance charge 3.75%/mo,
-      forex 3.5%, cash advance 2.5% (min ₹500) per Axis MITC.
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current product page confirms INR 500 joining/annual fee, greater-than-INR-200,000 annual fee waiver, 3.75% monthly finance charge, 2.5% cash advance (minimum INR 500) and 3.5% forex markup. Axis generic revision effective 28 Aug 2026 confirms 3.5% DCC markup and INR 1,300 late fee for dues above INR 50,000. Product page's waiver excludes rent MCC 6513 and wallet-load MCC 6540; exact effective date is not stated on the page.
 rewards:
-- effective_from: 2023-01-01
+- effective_from: 2026-08-28
   effective_until: null
   currency: points
   currency_name: SuperCoins
   base:
     rate: 2
     per_inr: 100
-    unit_value_inr: 0.25
-    unit_value_inr_realized: 0.22
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: 2 SuperCoins per INR 100 on other eligible spend; Flipkart purchases instead earn additional card SuperCoins (12 Plus/6 non-Plus) and may also receive separate platform coins.
   accelerated:
   - category: flipkart-plus-members
     canonical_categories:
     - online
     multiplier: 1
-    effective_rate: 14
+    effective_rate: 12
     merchants:
     - flipkart
     channel:
       class: cobrand-merchant
       merchants:
       - flipkart
-    notes: Flipkart spends earn base 2 + additional 12 SuperCoins per ₹100 for Flipkart
-      Plus members (14 total); non-Plus earn 2 + 6 = 8 total.
+    notes: Additional card SuperCoins on Flipkart are 12 per INR 100 for Plus members or 6 for non-Plus members; separate Flipkart platform coins may also apply.
+  - category: flipkart-non-plus-members
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 6
+    merchants:
+    - flipkart
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - flipkart
+    notes: Additional card SuperCoins on Flipkart are 6 per INR 100 for non-Plus members, capped at 150 per transaction; Plus status is supplied by Flipkart.
   capping_rules:
-  - Accelerated Flipkart SuperCoins capped at 300 per transaction for Plus members
-    and 150 per transaction for non-Plus members.
+  - Accelerated card SuperCoins are capped at 300 per transaction for Plus members and 150 per transaction for non-Plus members. These are card-issued coins; Flipkart platform coins are separate and may also apply.
+  - Flipkart Plus/non-Plus status is supplied by Flipkart and is not a user-selectable condition in the card schema; calculator results cannot distinguish the two rates. SuperCoins are credited 30 days after Flipkart moves them to pending status.
+  - Cashback/reward terms exclude fuel, Flipkart gift cards, EMI/post-facto EMI, wallet loads, jewellery, cash advances, outstanding-balance repayment, fees/charges, Flipkart Health third-party integrated purchases, rent MCC 6513, and the documented excluded MCCs.
   exclusions:
   - fuel
   - wallet-loads
@@ -72,51 +92,94 @@ rewards:
   - gift-cards
   - jewellery
   - cash-advance
+  - financial-institutions
   redemption:
   - type: other
     program: Flipkart SuperCoins
-    constraints: SuperCoins credited to the Flipkart app; redeemable for purchases
-      and offers on Flipkart.
-    rate_inr_per_unit: 0.25
+    constraints: SuperCoins credited to the Flipkart app; redeemable for purchases and offers on Flipkart.
+    rate_inr_per_unit: null
   source:
-    url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
-    retrieved_on: '2026-07-05'
-    type: issuer-page
-    confidence: medium
-    notes: Flipkart SuperCoins ~Rs 0.25 on Flipkart, realistic Rs 0.22.
+    url: https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-flipkart-superelite-axis-bank-credit-card.pdf?sfvrsn=949a2028_1
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/axis/flipkart-super-elite/terms-and-conditions-for-flipkart-superelite-axis-bank-credit-card.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated
+    - rewards.accelerated.multiplier
+    - rewards.exclusions
+    notes: Current card-specific SuperCoin T&C confirms the card earns 2 coins per INR 100 on other eligible spend and additional 12/6 per INR 100 on Flipkart for Plus/non-Plus customers, with 300/150 card-coin caps per transaction. Platform-issued SuperCoins are separate. The linked T&C does not state an effective date; the product page says bankwide card terms were updated effective 28 Aug 2026. Point redemption value varies by item/offer and is not established by issuer evidence.
   mcc_exclusions:
   - '6513'
+  - '6012'
+  - '6051'
+  - '5541'
+  - '5983'
+  - '5542'
+  - '5944'
+  - '6011'
+  - '6540'
 benefits:
-- effective_from: 2023-01-01
+- effective_from: 2026-10-25
   effective_until: null
   welcome:
-  - condition: On card activation
+  - condition: On card activation; activation/monthly SuperCoins require a Flipkart account linked to the same mobile number as the card
     benefit: 500 SuperCoins
-    value_inr: 125
+    value_inr: null
+  - condition: Current issuer page; offer terms apply
+    benefit: 2-month YouTube Premium trial
+  - condition: Current issuer page; offer terms apply
+    benefit: 3-month Gaana Plus trial
+  - condition: Current issuer page; offer terms apply
+    benefit: 1-year Lenskart Gold membership
+  - condition: Myntra select styles; orders above INR 2,999; maximum 3 transactions
+    benefit: INR 500 off per eligible transaction
+    value_inr: 500
+  - condition: Domestic Flipkart Flights booking; subject to issuer terms
+    benefit: 15% off, maximum discount INR 1,500
+    value_inr: 1500
+  - condition: First medicine order from Flipkart Health
+    benefit: 30% off; subject to issuer terms
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
     max_txn_inr: 4000
     cap_per_cycle_inr: 400
-    cycle: monthly
+    cycle: statement
   concierge: false
   source:
     url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-27
     type: issuer-page
     confidence: high
+    fields_verified:
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: either
+  notes: Issuer page states age 18-70 and Indian resident or NRI; no numeric income or credit-score cutoff is published. Documents are indicative and approval remains at the bank's discretion.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/flipkart-axis-bank-super-elite-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: 2026-10-27
   tags:
   - co-branded
   - flipkart

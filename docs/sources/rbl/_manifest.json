@@ -1,73 +1,205 @@
 {
   "_audit": {
     "_source": "RBL CardsScheduleCharges.pdf (annual fees + forex for ALL cards) + per-card T&C (read via pypdf)",
-    "verified_on": "2026-07-04",
+    "verified_on": "2026-10-27",
     "shared_soc": "_shared/CardsScheduleCharges.pdf",
-    "result": "Insignia fee, Icon forex, Platinum Maxima Plus fee, IRCTC fee corrected from Schedule of Charges (see INDEX.md)",
+    "shared_mitc": "_shared/RBL-MITC-2026-08-13.pdf",
+    "result": "Insignia fee, Icon forex, Platinum Maxima Plus fee, IRCTC fee corrected from Schedule of Charges; Edition Classic/Zomato archived terms and replacement notice added (see INDEX.md); Cookies reviewed 2026-10-26: corrected monthly fee, reward economics, benefits and network variants; see cookies/ and INDEX.md; Platinum Maxima Plus reviewed 2026-10-26: updated current rewards/milestones/lounge/Movie benefit; removed unsupported tier, launch date and fuel waiver; see platinum-maxima-plus/ and INDEX.md; Icon reviewed 2026-10-27: corrected fee snapshot, reward caps, milestones, lounge rules and Mastercard-only golf; see icon/ and INDEX.md; Insignia reviewed 2026-10-27: corrected reward, mileage transfer, fees, welcome, mileage/lounge/milestones/golf/movie/fuel terms; see insignia/ and INDEX.md; IRCTC reviewed 2026-10-27: corrected earn/reward redemption, fee, benefit and lounge details; see irctc/ and INDEX.md; Play reviewed 2026-10-27: removed unsupported points/lounges; corrected current BMS/fuel/fee benefits and network variants; see play/ and INDEX.md; Shoprite reviewed 2026-10-27: corrected fees, rewards/exclusions, welcome, BookMyShow and fuel terms; network and issuer timing conflicts documented (see shoprite/ and INDEX.md); World Safari reviewed 2026-10-27: refreshed rewards, welcome/milestones, lounge, fuel, concierge, fee evidence and dual-network status; international travel-points conflict documented (see world-safari/ and INDEX.md)",
     "index": "docs/sources/rbl/INDEX.md"
   },
   "cookies": {
     "slug": "cookies-credit-card",
     "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card",
     "pdfs": [
+      "cookies/cookies-terms-retrieved-2026-10-26.pdf",
+      "cookies/schedule-charges-retrieved-2026-10-26.pdf",
+      "cookies/mitc-retrieved-2026-10-26.pdf",
+      "cookies/common-application-form-retrieved-2026-10-26.pdf",
       "_shared/CardsScheduleCharges.pdf"
+    ],
+    "retrieved_on": "2026-10-26",
+    "network_variants": [
+      "Visa",
+      "Mastercard"
+    ],
+    "unresolved": [
+      "schema does not model recurring monthly membership fee; fee preserved in notes",
+      "finance rate varies by CIBIL category; record stores published maximum",
+      "launch date and card-specific age/income/residency/score cutoffs not found"
     ]
   },
   "icon": {
     "slug": "icon-credit-card",
     "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/icon-credit-card",
+    "retrieved_on": "2026-10-27",
+    "network_variants": [
+      "Mastercard",
+      "Visa"
+    ],
     "pdfs": [
-      "_shared/CardsScheduleCharges.pdf"
+      "icon/product-terms-retrieved-2026-10-27.pdf",
+      "icon/mitc-retrieved-2026-10-27.pdf",
+      "icon/schedule-charges-retrieved-2026-10-27.pdf"
+    ],
+    "unresolved": [
+      "network and network tier are variant-specific but schema stores scalar values",
+      "fixed point-to-INR conversion not published in card-specific terms",
+      "international lounge access is chargeable, not complimentary; schema lacks chargeable-per-visit representation",
+      "launch date and card-specific numeric eligibility thresholds not located"
     ]
   },
   "insignia": {
     "slug": "insignia-preferred-banking-credit-card",
     "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/insignia-preferred-banking-credit-card",
+    "retrieved_on": "2026-10-27",
+    "network_variants": [
+      "Mastercard",
+      "Visa"
+    ],
     "pdfs": [
-      "_shared/CardsScheduleCharges.pdf"
+      "insignia/product-terms-retrieved-2026-10-27.pdf",
+      "insignia/kfs-retrieved-2026-10-27.pdf",
+      "insignia/mitc-retrieved-2026-10-27.pdf",
+      "insignia/schedule-charges-retrieved-2026-10-27.pdf",
+      "insignia/miles-transfer-terms-retrieved-2026-10-27.pdf",
+      "insignia/insignia-milestone-benefits-retrieved-2026-10-27.pdf"
+    ],
+    "html_captures": [
+      "insignia/reward-terms-retrieved-2026-10-27.html"
+    ],
+    "unresolved": [
+      "dual networks and network tier cannot be represented in scalar schema",
+      "fee schedule has separate nil-fee Insignia Banking customer segment; standard Preferred Banking fee model used",
+      "fixed reward-point INR value varies by product/category and is not stated",
+      "3:1 miles-transfer ratio has no dedicated schema field",
+      "launch date and card-specific numeric eligibility cutoffs not found"
     ]
   },
   "irctc": {
     "slug": "irctc-rbl-bank-credit-card",
     "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card",
+    "retrieved_on": "2026-10-27",
+    "network_variants": [
+      "Mastercard",
+      "RuPay"
+    ],
     "pdfs": [
-      "_shared/CardsScheduleCharges.pdf"
+      "irctc/product-terms-retrieved-2026-10-27.pdf",
+      "irctc/faqs-retrieved-2026-10-27.pdf",
+      "irctc/mitc-retrieved-2026-10-27.pdf",
+      "irctc/schedule-charges-retrieved-2026-10-27.pdf"
+    ],
+    "unresolved": [
+      "dual Mastercard/RuPay variants do not fit scalar network schema",
+      "FAQ welcome threshold says INR500 and above while product page and terms say above INR500",
+      "current product-specific document is titled RuPay despite network guide listing Mastercard as a variant",
+      "launch date and income/credit-score/residency thresholds not published"
     ]
   },
   "platinum-maxima-plus": {
     "slug": "platinum-maxima-plus-credit-card",
     "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+    "network": "Visa",
+    "retrieved_on": "2026-10-26",
     "pdfs": [
-      "_shared/CardsScheduleCharges.pdf"
+      "platinum-maxima-plus/product-terms-retrieved-2026-10-26.pdf",
+      "platinum-maxima-plus/schedule-charges-retrieved-2026-10-26.pdf",
+      "platinum-maxima-plus/mitc-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "launch date and card-specific eligibility cutoffs unpublished",
+      "redemption values depend on portal options; card-page calculation shown at INR0.25/point",
+      "issuer page lists non-four-digit MCC 711 for contracted services; excluded from structured MCC codes"
     ]
   },
   "play": {
     "slug": "rbl-bank-play-credit-card",
     "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/rbl-bank-play-credit-card",
+    "retrieved_on": "2026-10-27",
+    "network_variants": [
+      "Mastercard",
+      "Visa"
+    ],
     "pdfs": [
-      "_shared/CardsScheduleCharges.pdf"
+      "play/product-terms-retrieved-2026-10-27.pdf",
+      "play/mitc-retrieved-2026-10-27.pdf",
+      "play/schedule-charges-retrieved-2026-10-27.pdf",
+      "play/bms-offers-retrieved-2026-10-27.pdf",
+      "play/rupay-ncmc-faq-retrieved-2026-10-27.pdf"
+    ],
+    "html_captures": [
+      "play/product-page-retrieved-2026-10-27.html"
+    ],
+    "unresolved": [
+      "network guide lists Mastercard/Visa but product T&Cs include RuPay-only terms",
+      "current terms publish BMS discounts but no points/cashback scheme; schema requires reward record",
+      "launch date and card-specific numeric eligibility cutoffs not published"
     ]
   },
   "shoprite": {
     "slug": "shoprite-credit-card",
     "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/shoprite-credit-card",
+    "retrieved_on": "2026-10-27",
+    "network_variants": [
+      "Mastercard",
+      "Visa"
+    ],
+    "network_conflict": "ShopRite product page also claims RuPay; current network guide lists Mastercard and Visa only",
     "pdfs": [
-      "_shared/CardsScheduleCharges.pdf"
+      "shoprite/product-terms-retrieved-2026-10-27.pdf",
+      "shoprite/mitc-retrieved-2026-10-27.pdf",
+      "shoprite/schedule-charges-retrieved-2026-10-27.pdf"
+    ],
+    "html_captures": [
+      "shoprite/product-page-retrieved-2026-10-27.html"
+    ],
+    "text_extracts": [
+      "shoprite/product-terms-retrieved-2026-10-27.txt",
+      "shoprite/mitc-retrieved-2026-10-27.txt",
+      "shoprite/schedule-charges-retrieved-2026-10-27.txt"
+    ],
+    "unresolved": [
+      "product page and product T&Cs differ on reward credit timing (45 vs 60 days)",
+      "grocery cap cycle described as monthly vs billing cycle",
+      "RuPay availability conflicts with current network guide",
+      "numeric age, income, bureau score and residency criteria not found"
     ]
   },
   "world-safari": {
     "slug": "world-safari-credit-card",
     "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/world-safari-credit-card",
+    "retrieved_on": "2026-10-27",
+    "network_variants": [
+      "Mastercard",
+      "Visa"
+    ],
     "pdfs": [
+      "world-safari/product-terms-retrieved-2026-10-27.pdf",
+      "world-safari/terms-world-safari-card.pdf",
       "_shared/CardsScheduleCharges.pdf",
-      "world-safari/terms-world-safari-card.pdf"
+      "_shared/RBL-MITC-2026-08-13.pdf"
+    ],
+    "html_captures": [
+      "world-safari/product-page-retrieved-2026-10-27.html",
+      "world-safari/network-guide-retrieved-2026-10-27.html"
+    ],
+    "unresolved": [
+      "product page states no international reward points but card-specific terms award 5 points per INR100 for international travel-category spend",
+      "insurance types are listed but current numeric limits were not verified",
+      "network/tier are variant-specific while schema stores scalar fields",
+      "card-specific numeric eligibility and launch date were not found"
     ]
   },
   "zomato-edition": {
     "slug": "zomato-rbl-edition-credit-card",
     "url": "https://www.rbl.bank.in/personal-banking/cards/credit-cards/zomato-rbl-edition-credit-card",
     "pdfs": [
-      "_shared/CardsScheduleCharges.pdf"
+      "_shared/CardsScheduleCharges.pdf",
+      "zomato-edition/edition-classic-terms.pdf",
+      "zomato-edition/edition-classic-benefits-effective-2022-09-20.pdf",
+      "zomato-edition/edition-card-replacement-notice-2023-04.pdf",
+      "zomato-edition/launch-announcement-2020-03-02.pdf",
+      "_shared/RBL-MITC-2026-08-13.pdf"
     ]
   }
 }

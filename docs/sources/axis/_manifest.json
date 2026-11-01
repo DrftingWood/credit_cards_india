@@ -61,9 +61,15 @@
     "url": "https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card",
     "pdfs": [
       "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "_shared/axis-bank-airport-lounge-access-program-retrieved-2026-10-26.pdf",
       "_shared/iocl-fuel-outlet-list.pdf",
+      "_shared/iocl-fuel-outlet-list-retrieved-2026-10-26.pdf",
+      "_shared/terms-and-conditions-iocl-premium-final.pdf",
       "indianoil-premium/terms-and-conditions-for-indianoil-axis-bank-premium-credit-card.pdf",
-      "_shared/terms-and-conditions-iocl-premium-final.pdf"
+      "indianoil-premium/terms-and-conditions-indianoil-premium-retrieved-2026-10-26.pdf",
+      "indianoil-premium/indianoil-premium-reward-exclusions-update-effective-2025-06-20.pdf",
+      "indianoil-premium/axis-indianoil-co-brand-launch-2019-12-17.pdf",
+      "google-pay-flex/axis-credit-card-terms-update-effective-2026-08-28.pdf"
     ]
   },
   "indigo-premium": {
@@ -71,6 +77,10 @@
     "url": "https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card",
     "pdfs": [
       "_shared/axis-bank-airport-lounge-access-program.pdf",
+      "indigo-premium/indigo-premium-card-terms-retrieved-2026-10-26.pdf",
+      "indigo-premium/indigo-premium-terms-update-effective-2026-08-28.pdf",
+      "indigo-premium/double-welcome-campaign-terms-retrieved-2026-10-26.pdf",
+      "indigo-premium/indigo-axis-card-launch-2026-02-18.pdf",
       "indigo-premium/terms-and-conditions-for-indigo-axis-bank-premium-credit-card.pdf"
     ]
   },
@@ -93,7 +103,9 @@
       "_shared/mgtc.pdf",
       "magnus/card-member-agreement.pdf",
       "magnus/magnus-credit-card-for-burgundy-faq.pdf",
-      "magnus/mitc-credit-cards.pdf"
+      "magnus/mitc-credit-cards.pdf",
+      "magnus/magnus-terms-2026-08-28.pdf",
+      "magnus/magnus-launch-2019-09-18.pdf"
     ]
   },
   "my-zone": {
@@ -172,7 +184,10 @@
     "pdfs": [
       "_shared/dining-exlusive-program-tnc.pdf",
       "shoppers-stop/terms-and-conditions-for-axis-bank-shoppers-stop-credit-card.pdf",
-      "shoppers-stop/terms-and-conditions-shoppers-stop.pdf"
+      "shoppers-stop/terms-and-conditions-shoppers-stop.pdf",
+      "shoppers-stop/terms-and-conditions-for-axis-bank-shoppers-stop-credit-card-retrieved-2026-10-26.pdf",
+      "shoppers-stop/axis-credit-card-terms-update-effective-2026-08-28.pdf",
+      "shoppers-stop/dining-exlusive-program-tnc-retrieved-2026-10-26.pdf"
     ]
   },
   "vistara": {
@@ -239,13 +254,24 @@
     "slug": "google-pay-flex-axis-bank-credit-card",
     "url": "https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card",
     "pdfs": [
-      "google-pay-flex/terms-and-conditions-for-google-pay-flex-axis-bank-credit-card.pdf"
+      "google-pay-flex/terms-and-conditions-for-google-pay-flex-axis-bank-credit-card.pdf",
+      "google-pay-flex/terms-and-conditions-google-pay-flex-retrieved-2026-10-26.pdf",
+      "google-pay-flex/google-pay-flex-upgraded-reward-structure-effective-2026-10-16.pdf",
+      "google-pay-flex/axis-credit-card-terms-update-effective-2026-08-28.pdf",
+      "_shared/mitc-credit-cards-retrieved-2026-10-26.pdf"
     ]
   },
   "indianoil": {
     "slug": "indianoil-axis-bank-credit-card",
     "url": "https://www.axis.bank.in/cards/credit-card/indianoil-axis-bank-credit-card",
     "pdfs": [
+      "indianoil/terms-and-conditions-for-iocl-credit-card-retrieved-2026-10-26.pdf",
+      "indianoil/indianoil-terms-update-effective-2026-08-28.pdf",
+      "indianoil/indianoil-activation-benefit-terms.pdf",
+      "indianoil/bookmyshow-offer-terms-retrieved-2026-10-26.pdf",
+      "indianoil/iocl-fuel-outlet-list-retrieved-2026-10-26.pdf",
+      "indianoil/indianoil-reward-exclusions-update-effective-2025-06-20.pdf",
+      "indianoil/indianoil-axis-co-brand-launch-2019-12-17.pdf",
       "_shared/iocl-fuel-outlet-list.pdf",
       "_shared/terms-and-conditions-indian-oil-credit-card.pdf"
     ]
@@ -253,24 +279,47 @@
   "lic-platinum": {
     "slug": "lic-axis-bank-platinum-credit-card",
     "url": "https://www.axis.bank.in/cards/credit-card/lic-axis-bank-platinum-credit-card",
-    "pdfs": []
+    "pdfs": [
+      "lic-platinum/axis-credit-card-terms-update-effective-2026-08-28.pdf",
+      "lic-platinum/lic-platinum-reward-exclusions-effective-2025-06-20.pdf",
+      "lic-platinum/lic-rewards-catalogue-terms-retrieved-2026-10-26.pdf"
+    ]
   },
   "lic-signature": {
     "slug": "lic-axis-bank-signature-credit-card",
     "url": "https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card",
     "pdfs": [
-      "_shared/axis-bank-airport-lounge-access-program.pdf",
       "lic-signature/terms-and-conditions-lic-axis-bank-signature-credit-card.pdf",
-      "lic-signature/terms-and-conditions-lic-axis-bank-signature-credit-card.pdf"
+      "_shared/axis-bank-airport-lounge-access-program-retrieved-2026-10-26.pdf",
+      "_shared/mitc-credit-cards-retrieved-2026-10-26.pdf",
+      "lic-platinum/lic-rewards-catalogue-terms-retrieved-2026-10-26.pdf",
+      "lic-platinum/axis-credit-card-terms-update-effective-2026-08-28.pdf"
     ]
   },
   "miles-more": {
     "slug": "miles-more-credit-card",
     "url": "https://www.axis.bank.in/cards/credit-card/miles-more-credit-card",
+    "verified_on": "2026-10-26",
+    "launch_release": "https://www.axis.bank.in/docs/default-source/default-document-library/press-release/2013/june/axis-bank-lufthansa-miles-more-launch-co-branded-credit-card.pdf?sfvrsn=12",
+    "world_terms": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-mmi-world-credit-card.pdf?sfvrsn=5637911b_2",
+    "reward_change_terms": "https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-mmi-world-select-credit-card.pdf?sfvrsn=c6ec22fd_3",
+    "current_mitc": "https://www.axis.bank.in/docs/default-source/default-document-library/mitc-credit-cards.pdf?sfvrsn=aba4dce4_32",
+    "august_2026_world_select_update": "https://campaign.axis.bank.in/generic/terms-and-conditions-world-select.pdf",
     "pdfs": [
       "_shared/axis-bank-mastercard-airport-lounge-access_program.pdf",
       "_shared/terms-and-conditions-mmi-world-credit-card.pdf",
-      "_shared/terms-and-conditions-mmi-world-select-credit-card.pdf"
+      "_shared/terms-and-conditions-mmi-world-select-credit-card.pdf",
+      "miles-more/miles-more-launch-2013-06-11.pdf",
+      "miles-more/mmi-world-terms-retrieved-2026-10-26.pdf",
+      "miles-more/mmi-reward-change-2025-06-20.pdf",
+      "miles-more/mitc-credit-cards-retrieved-2026-10-26.pdf",
+      "miles-more/world-select-terms-2026-08-28.pdf"
+    ],
+    "unresolved": [
+      "The card page's finance-charge table says 3.7% monthly while the current MITC sets 3.75%; the record follows the MITC and preserves the discrepancy.",
+      "The Dec-2025/Aug-2026 linked terms are World Select-specific where stated; current World variant benefits continue to be taken only from the World-specific page/terms.",
+      "Insurance benefits are described but some policy limits and full eligibility conditions are not exposed in the current product-page materials reviewed.",
+      "HON Circle/Senator joining and annual fee waiver is not representable as a spend-threshold waiver in the fee schema, so it is documented in notes."
     ]
   },
   "my-zone-easy": {
@@ -312,7 +361,9 @@
     "slug": "rupay-credit-card",
     "url": "https://www.axis.bank.in/cards/credit-card/rupay-credit-card",
     "pdfs": [
-      "_shared/mitc-credit-cards.pdf"
+      "_shared/mitc-credit-cards.pdf",
+      "_shared/mitc-credit-cards-retrieved-2026-10-26.pdf",
+      "lic-platinum/axis-credit-card-terms-update-effective-2026-08-28.pdf"
     ]
   },
   "samsung-infinite": {
@@ -329,8 +380,10 @@
     "slug": "samsung-axis-bank-signature-credit-card",
     "url": "https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card",
     "pdfs": [
-      "_shared/axis-bank-airport-lounge-access-program.pdf",
-      "samsung-signature/tnc-for-samsung-signature.pdf"
+      "samsung-signature/tnc-for-samsung-signature.pdf",
+      "_shared/axis-bank-airport-lounge-access-program-retrieved-2026-10-26.pdf",
+      "_shared/mitc-credit-cards-retrieved-2026-10-26.pdf",
+      "samsung-signature/tnc-for-samsung-signature-retrieved-2026-10-26.pdf"
     ]
   },
   "spicejet-voyage-black": {
@@ -338,7 +391,15 @@
     "url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card",
     "pdfs": [
       "_shared/axis-bank-airport-lounge-access-program.pdf",
-      "spicejet-voyage-black/tnc-for-spicejet-voyage-black-credit-card.pdf"
+      "spicejet-voyage-black/tnc-for-spicejet-voyage-black-credit-card.pdf",
+      "spicejet-voyage-black/axis-bank-airport-lounge-access-program-retrieved-2026-10-26.pdf",
+      "spicejet-voyage-black/axis-credit-card-terms-update-effective-2026-08-28.pdf",
+      "spicejet-voyage-black/mitc-credit-cards-retrieved-2026-10-26.pdf",
+      "spicejet-voyage-black/spiceclub-points-earn-terms-retrieved-2026-10-26.pdf",
+      "spicejet-voyage-black/voyage-black-activation-benefit-terms.pdf",
+      "spicejet-voyage-black/voyage-black-complimentary-spiceclub-membership-terms.pdf",
+      "spicejet-voyage-black/voyage-black-milestone-renewal-terms.pdf",
+      "spicejet-voyage-black/voyage-black-reward-exclusion-update-effective-2025-06-20.pdf"
     ]
   },
   "spicejet-voyage": {
@@ -346,7 +407,72 @@
     "url": "https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-credit-card",
     "pdfs": [
       "spicejet-voyage/terms-and-conditions-for-voyage-voyage-black-credit-card-spiceclub-points-earn.pdf",
-      "spicejet-voyage-black/tnc-for-spicejet-voyage-black-credit-card.pdf"
+      "spicejet-voyage-black/tnc-for-spicejet-voyage-black-credit-card.pdf",
+      "spicejet-voyage/axis-bank-airport-lounge-access-program-retrieved-2026-10-26.pdf",
+      "spicejet-voyage/axis-credit-card-terms-update-effective-2026-08-28.pdf",
+      "spicejet-voyage/mitc-credit-cards-retrieved-2026-10-26.pdf",
+      "spicejet-voyage/voyage-activation-benefit-terms.pdf",
+      "spicejet-voyage/voyage-complimentary-spiceclub-membership-terms.pdf",
+      "spicejet-voyage/voyage-milestone-renewal-terms.pdf",
+      "spicejet-voyage/voyage-reward-exclusion-update-effective-2025-06-20.pdf"
     ]
+  },
+  "burgundy-private": {
+    "slug": "burgundy-private-the-one-card",
+    "url": "https://www.axis.bank.in/burgundy-private/the-one-card",
+    "retrieved_on": "2026-10-27",
+    "network_variants": [
+      "Visa"
+    ],
+    "pdfs": [
+      "burgundy-private/mitc-retrieved-2026-10-27.pdf",
+      "burgundy-private/kfs-retrieved-2026-10-27.pdf",
+      "burgundy-private/terms-revision-retrieved-2026-10-27.pdf",
+      "burgundy-private/rewards-terms-retrieved-2026-10-27.pdf",
+      "burgundy-private/domestic-lounge-terms-retrieved-2026-10-27.pdf",
+      "burgundy-private/priority-pass-terms-retrieved-2026-10-27.pdf",
+      "burgundy-private/bookmyshow-terms-retrieved-2026-10-27.pdf",
+      "burgundy-private/golf-terms-retrieved-2026-10-27.pdf",
+      "burgundy-private/insurance-benefits-retrieved-2026-10-27.pdf",
+      "burgundy-private/club-marriott-terms-retrieved-2026-10-27.pdf",
+      "burgundy-private/accor-plus-terms-retrieved-2026-10-27.pdf",
+      "burgundy-private/taj-epicure-terms-retrieved-2026-10-27.pdf"
+    ],
+    "html_captures": [
+      "burgundy-private/product-page-retrieved-2026-10-27.html",
+      "burgundy-private/travel-edge-terms-retrieved-2026-10-27.html"
+    ],
+    "text_extracts": [
+      "accor-plus-terms-retrieved-2026-10-27.txt",
+      "bookmyshow-terms-retrieved-2026-10-27.txt",
+      "club-marriott-terms-retrieved-2026-10-27.txt",
+      "domestic-lounge-terms-retrieved-2026-10-27.txt",
+      "golf-terms-retrieved-2026-10-27.txt",
+      "insurance-benefits-retrieved-2026-10-27.txt",
+      "kfs-retrieved-2026-10-27.txt",
+      "mitc-retrieved-2026-10-27.txt",
+      "priority-pass-terms-retrieved-2026-10-27.txt",
+      "rewards-terms-retrieved-2026-10-27.txt",
+      "taj-epicure-terms-retrieved-2026-10-27.txt",
+      "terms-revision-retrieved-2026-10-27.txt"
+    ],
+    "unresolved": [
+      "current MITC and fee revision notice differ over joining fee after 01-Sep-2026; MITC and product KFS differ",
+      "fuel cap cycle differs between product page and MITC",
+      "domestic lounge program may impose quarterly quotas despite unlimited product-page wording",
+      "Travel EDGE transfer table labels card Burgundy Pvt The One Metal while current product page labels The One Card",
+      "future membership consent condition effective 15-Nov-2026",
+      "schema cannot express relationship-based fee waiver and combined 50 domestic rounds/lessons quota"
+    ]
+  },
+  "scapia": {
+    "result": "Reviewed current Axis Scapia product page and Scapia platform/reward sources. Corrected network-variant reward math, coin value, lounge threshold and airport privileges; refreshed fees, fuel waiver and published eligibility; documented schema/source limits.",
+    "verified_on": "2026-10-27",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/axis/scapia/",
+    "files": [
+      "issuer-extract-2026-10-27.md"
+    ],
+    "retrieval_note": "Axis product page is rendered/indexed. Scapia official site used only for coin mechanics and Scapia platform benefits; exact issuer ineligible-transactions list remains unavailable."
   }
 }

@@ -1,1 +1,16 @@
-{"_source":"south-indian .bank.in (card page redirects to home; no extractable fee table)","verified_on":"2026-07-04","result":"seeded RuPay-Select values retained as plausible-unconfirmed; domain+MCC verified in audit","pdfs_downloaded":0}
+{
+  "_source": "South Indian Bank co-branded cards / SBI Card current terms; current SBI product page lacks exposed card-specific benefit content",
+  "verified_on": "2026-10-27",
+  "result": "South Indian Bank SBI Platinum reviewed 2026-10-27: current MITC verifies INR2,999 joining/renewal fees without waiver; live card page exposes no card-specific terms, so archived brochure benefit claims are explicitly historical/unconfirmed. See sib-platinum/ and INDEX.md",
+  "pdfs_downloaded": 1,
+  "html_captures": [
+    "sib-platinum/product-page-retrieved-2026-10-27.html",
+    "sib-platinum/mitc-page-retrieved-2026-10-27.html"
+  ],
+  "unresolved": [
+    "live product page exposes no current card-specific rewards/benefits",
+    "archived undated brochure claims for rewards, lounge, golf, fuel, welcome and milestones need current confirmation",
+    "network variant/tier and launch date lack current issuer evidence",
+    "card-specific APR and numeric eligibility requirements not found"
+  ]
+}

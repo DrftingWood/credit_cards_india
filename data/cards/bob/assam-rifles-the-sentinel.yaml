@@ -1,135 +1,300 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: bob-assam-rifles-the-sentinel
 name: Assam Rifles The SENTINEL BOBCARD Credit Card
 image_path: /cards/bob/assam-rifles-the-sentinel.webp
 issuer: bob
 network: rupay
-network_tier: select
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
   partner: Assam Rifles
   category: other
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free — no joining or annual fee. For Assam Rifles personnel."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/assam-rifles-the-sentinel
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Lifetime-free for eligible Assam Rifles personnel and veterans.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/assam-rifles-the-sentinel
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current product page confirms lifetime-free status. January-2026 BOBCARD
+      MITC lists 3% forex for The Sentinel, 3.75% monthly finance charge for cards
+      other than Eterna/Tiara, and cash advance at 2.5% or INR 500 minimum. Dedicated
+      and universal issuer application forms list the RuPay issue; actual network
+      tier and exact historical fee effective date are not established. Launch date
+      is unknown.
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: departmental-stores
-        canonical_categories: [groceries]
-        multiplier: 5
-        effective_rate: 10
-        cap_per_cycle: 1000
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: BOBCARD Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/assam-rifles-the-sentinel
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: departmental-stores
+    canonical_categories:
+    - other
+    multiplier: 5
+    effective_rate: 10
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: statement
+    notes: Issuer shared feature terms list Departmental Stores MCC 5311 only; 10
+      total points per INR 100, capped at 1,000 accelerated points per statement,
+      then base earn. Product page marketing instead says Departmental Stores and
+      Movies and describes a monthly cap; this discrepancy is unresolved. UPI receives
+      core points only.
+  - category: flights
+    canonical_categories:
+    - travel
+    multiplier: 4
+    effective_rate: 8
+    notes: Additional SmartDeal points for flight bookings made in the logged-in BOBCARD
+      app/portal; points post after journey fulfilment. This is portal-specific, not
+      general flight spend.
+  - category: hotels
+    canonical_categories:
+    - travel
+    multiplier: 10
+    effective_rate: 20
+    notes: Additional SmartDeal points for hotel bookings made in the logged-in BOBCARD
+      app/portal; points post after journey fulfilment. This is portal-specific, not
+      general hotel spend.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - education
+  - insurance-premiums
+  - road-fees-and-tolls
+  - bridge-fees
+  - other
+  mcc_exclusions:
+  - '0763'
+  - '0780'
+  - '0820'
+  - '0821'
+  - '0822'
+  - '0823'
+  - '0824'
+  - '0825'
+  - '1520'
+  - '1711'
+  - '1731'
+  - '1740'
+  - '1750'
+  - '1761'
+  - '1771'
+  - '1799'
+  - '4111'
+  - '4112'
+  - '4131'
+  - '4784'
+  - '4789'
+  - '6513'
+  - '7349'
+  - '7211'
+  - '7230'
+  - '7276'
+  - '8111'
+  - '8641'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8011'
+  - '8062'
+  - '6539'
+  - '6540'
+  - '6541'
+  - '6542'
+  - '6543'
+  - '5261'
+  - '5331'
+  - '5411'
+  - '5499'
+  - '5960'
+  - '6300'
+  - '8398'
+  - '8661'
+  - '5814'
+  redemption:
+  - type: statement-credit
+    program: BOBCARD Rewards
+    rate_inr_per_unit: 0.25
+    constraints: Statement cashback redemption requires at least 1,000 points. Points
+      expire two years after accrual; other forfeiture conditions apply.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/assam-rifles-the-sentinel
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cycle
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Current product page confirms 2 points/INR 100 core and INR 0.25 cashback.
+      BOBCARD shared feature/reward terms effective 1-Apr-2026 (local copy docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf)
+      support 10 total points/INR 100 on Departmental Stores MCC 5311, capped at 1,000
+      points per statement, with base thereafter; they do not include Movies for The
+      Sentinel, while product page marketing does, and the web page says monthly cap.
+      Model follows detailed issuer terms and preserves the conflict. Shared terms
+      provide Annexure 1 MCC exclusions and 2-year expiry; cashback minimum 1,000
+      points. SmartDeal terms give extra 8 points/INR 100 flights and 20/INR 100 hotels
+      only via logged-in BOBCARD app/portal after journey fulfilment. UPI earns core
+      only.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [rupay]
-    welcome:
-      - condition: "Spend ₹5,000 or more within 60 days of issuance"
-        benefit: "500 bonus reward points"
-        value_inr: 125
-        window_days: 60
-    milestones:
-      - spend_inr: 100000
-        cycle: annual
-        benefit: "12 months Amazon Prime membership on ₹1,00,000 spend within 90 days"
-        value_inr: 1499
-        reward_kind: other
-        trigger_window: first-year
-        is_repeatable: false
-    insurance:
-      - type: personal-accident
-        sum_insured_inr: 2000000
-        conditions: "Air / Non-Air accidental death cover."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    other:
-      - name: Add-on cards
-        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
-    concierge: true
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/assam-rifles-the-sentinel
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: null
+      via:
+      - rupay
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: quarterly
+      notes: Two domestic visits per quarter; requires INR 20,000 net eligible settled
+        spend in the preceding calendar quarter. Fresh-card issue-quarter spend gate
+        is waived; upgrades are excluded from this waiver.
+  welcome:
+  - condition: Spend INR 5,000 or more within 60 days of card issuance
+    benefit: 500 bonus BOBCARD Reward Points
+    value_inr: 125
+    window_days: 60
+  milestones:
+  - spend_inr: 100000
+    cycle: annual
+    benefit: 12-month Amazon Prime membership on spending at least INR 100,000 within
+      90 days of issuance; activation code is delivered after milestone and is time
+      limited.
+    reward_kind: other
+    trigger_window: first-year
+    is_repeatable: false
+  insurance:
+  - type: personal-accident
+    sum_insured_inr: 2000000
+    conditions: Personal accidental-death cover for air/non-air accidents; product
+      page states INR 20 lakh. Full insurance conditions not verified.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+    notes: 1% waiver on INR 400-5,000 fuel transactions up to INR 250 per statement;
+      GST on surcharge is not reversed. Fuel earns no reward points.
+  other:
+  - name: FITPASS PRO
+    description: 12-month membership for primary cards issued on or after 1-Aug-2026;
+      code is sent to registered email within 30 days.
+  - name: Smart EMI
+    description: Eligible purchases above INR 2,500 may be converted to 6-48 month
+      EMIs; charges apply.
+  - name: RuPay concierge
+    description: 24/7 domestic and international booking/scheduling assistance powered
+      by RuPay; booked services are paid by cardholder.
+  - name: Add-on cards
+    description: Up to three lifetime-free add-on cards for spouse, parents, siblings
+      or children above 18.
+  - name: Lost-card liability
+    description: Issuer advertises zero liability on fraudulent transactions after
+      immediate loss reporting; detailed conditions apply.
+  - name: Network representation
+    description: The dedicated and universal issuer application forms list The Sentinel
+      under RuPay; no network tier is established.
+  concierge: true
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/assam-rifles-the-sentinel
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.other
+    notes: Current BOBCARD page confirms lounge quota, welcome points, Amazon Prime
+      milestone, FITPASS issue-date gate, fuel waiver, add-ons, Smart EMI, RuPay concierge
+      and INR 20 lakh accident cover. Shared lounge terms confirm INR 20,000 preceding-quarter
+      net eligible spend and fresh-card issue-quarter waiver. Dedicated Prime T&C
+      confirms 90-day spend requirement and time-limited activation code. Lounge guest
+      policy/list and full insurance policy remain unverified.
 eligibility:
   min_age: 18
-  max_age: 65
+  max_age: 70
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
-  residency: resident-indian
-  notes: "Designated personnel of the Assam Rifles."
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Designated Assam Rifles personnel and veterans; issuer page states primary-cardholder
+    age 18-70. Dedicated application form offers Resident Indian and NRI/PIO nationality
+    choices. Numeric minimum income and bureau-score cutoffs are unpublished.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/assam-rifles-the-sentinel
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    notes: Issuer page states primary-cardholder age 18-70 and identifies eligible
+      Assam Rifles personnel/veterans. Dedicated application form lists Resident Indian
+      and NRI/PIO nationality options. No numeric income or bureau-score cutoff found.
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/assam-rifles-the-sentinel
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, defense, lifetime-free, lounge, co-brand]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - points
+  - defense
+  - lifetime-free
+  - lounge
+  - co-brand

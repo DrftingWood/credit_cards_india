@@ -12,7 +12,7 @@ name: Landmark Rewards SBI Card SELECT
 image_path: /cards/sbi/landmark-select.webp
 issuer: sbi
 network: visa
-network_tier: signature
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
@@ -37,7 +37,7 @@ fees:
     supplementary_card_fee_inr: 0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
       local_refs:
@@ -55,7 +55,6 @@ rewards:
       rate: 2 # verified: SELECT booklet — "Earn 2 Reward Points per Rs.100 on other retail purchases (Non fuel)"
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
     accelerated:
       - category: landmark-stores-online-and-retail
         canonical_categories: [online, other]
@@ -65,43 +64,52 @@ rewards:
           merchants: [lifestyle, home-centre, max, spar, baby-shop, easybuy]
         multiplier: 7.5
         effective_rate: 15
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "15 Reward Points per Rs. 100 at online & retail Landmark stores (Lifestyle, Home Centre, Max, Spar, Baby Shop, EasyBuy)."
-      - category: dining-movies-international
-        canonical_categories: [dining, entertainment, international]
+        notes: "15 Reward Points per INR100 at named Landmark stores. The booklet does not state a card-specific cap; SBI's generic cap wording does not clearly resolve this 7.5X tier, so no unlimited cap claim is made."
+      - category: dining-movies
+        canonical_categories: [dining, entertainment]
         multiplier: 5
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 7500
         cap_unit: points
         cycle: monthly
-        notes: "10 Reward Points per Rs. 100 on Dining, Movies & International spends."
+        notes: "10 Reward Points per INR100 on Dining and Movies. The current SBI Cardholder Agreement caps cumulative 5X categories at 7,500 points/month for PRIME and relevant co-brand variants; base 2 points/INR100 continue after the cap."
+      - category: international-spends
+        canonical_categories: [international]
+        multiplier: 5
+        effective_rate: 10
+        notes: "10 Reward Points per INR100 on international spends; international is not among categories named in the PRIME 7,500-point cap clause."
     exclusions:
       - fuel
       - wallet-loads
       - rent
+      - government
       - insurance-premiums
       - emi
     redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
       - type: catalog
-        program: SBI Card Rewards
+        program: Landmark Rewards
         rate_inr_per_unit: 0.25
+        fee_inr: 99
+        constraints: Closed-loop conversion into Landmark Rewards only; 4 SBI Reward Points = INR 1 in the Landmark program. INR 99 + GST conversion fee applies below 1,000 points. No statement-credit redemption is published for this card.
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html
-      retrieved_on: 2026-07-05
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
 
-    mcc_exclusions: ['6513']
+    mcc_exclusions: ['6513', '5712', '5541', '5983', '5542']
     capping_rules:
-      - No monthly/statement/annual cap on the 15 RP/₹100 Landmark-stores accelerated points per the Landmark SBI Card SELECT T&C booklet sec 11.4 (retrieved 2026-07-05); rewards program section states the rate with no capping clause. High confidence.
+      - "Current SBI Cardholder Agreement caps cumulative 5X points on SBI Card PRIME dining, movies, departmental stores and groceries at 7,500/month and says caps apply to relevant co-brand variants. Applied to SELECT's 5X dining/movie tier. The Landmark-specific 7.5X store earn is not explicitly mapped to that 5X wording; its cap applicability is unresolved and no unlimited claim is made."
 benefits:
   - effective_from: 2026-07-03
     effective_until: null
-    lounge_access: null
+    lounge_access:
+      domestic:
+        visits_per_cycle: 8
+        cycle: annual
+        guests_per_visit: 0
+        via: [visa]
+        notes: 8 complimentary visits per calendar year, maximum 2 per quarter. SBI's Jan-2026 lounge revision lists Landmark SELECT in Set A but not among cards whose quota was reduced; current participation list still includes the card.
     milestones:
       - spend_inr: 300000
         cycle: annual
@@ -124,23 +132,33 @@ benefits:
     concierge: false
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Tier-standard income requirement (~₹6L p.a.) per aggregator consensus."
-
+  notes: "SBI Card policy states age 21-65 for salaried applicants and 25-70 for self-employed applicants; the broad 21-70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-select.html
 
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-11-01'
   tags: [mid, points, retail, co-brand, shopping]

@@ -1,182 +1,195 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-emeralde
 name: ICICI Bank Emeralde Credit Card
 image_path: /cards/icici/emeralde.webp
 issuer: icici
-network: mastercard
-network_tier: world-elite
+network: null
+network_tier: null
 tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2017-01-01
+launched_on: null
 discontinued_on: null
-
-# NOTE: The newer Emeralde Private Metal card (launched 2023) is a separate
-# invite-only product and is not represented here.
-
 fees:
-  - effective_from: 2017-01-01
-    effective_until: null
-    joining_fee_inr: 12000
-    annual_fee_inr: 12000
-    fee_waiver:
-      spend_inr: 1000000
-      cycle: annual
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/icici/_shared/mitc_cc.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 12000
+  annual_fee_inr: 12000
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  gst_applicable: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/emeralde/tnc-english-retrieved-2026-10-27.pdf
+    - docs/sources/icici/emeralde/mitc-cc-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    notes: 2026-10-27 is the verification snapshot date, not an issuer-published effective date. Joining and annual
+      fees are INR12,000 plus GST; the current product page waives the next year's annual fee when annual spend
+      exceeds INR1,000,000. The linked MITC points to a separate current tariff schedule but its text extraction
+      does not expose the card-specific cash-advance fee.
+  notes: Current product page shows the card as available to apply. Cash-advance fee is omitted because no readable
+    current card-specific tariff was found.
 rewards:
-  - effective_from: 2017-01-01
-    effective_until: null
-    currency: points
-    currency_name: ICICI Reward Points
-    base:
-      rate: 4
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 1
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: ishop-hotels
-        canonical_categories:
-          - travel
-        multiplier: 12
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 12X reward points on HOTEL bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap (ICICI capping PDF, WEF 1-Oct-2025) with iShop flights; iShop also gives 6X on bus + shopping vouchers (not modelled).
-      - category: ishop-flights
-        canonical_categories:
-          - travel
-        multiplier: 6
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 6X reward points on FLIGHT bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap with iShop hotels.
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    capping_rules:
-      - "Utility and insurance spends earn 1 Reward Point per ₹100"
-    redemption:
-      - type: catalog
-        program: ICICI Rewards
-        rate_inr_per_unit: 0.25
-        constraints: 1 ICICI RP = Rs 0.25 (catalogue/cashback). The 1:1 Air India Maharaja transfer belongs to Emeralde Private Metal only; classic Emeralde's transfer eligibility is doubtful and is NOT 6:1.
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      notes: 'Corrected 2026-07-05: RP = Rs 0.25 (was 0.6). Removed unsupported 6:1 Air India transfer (1:1 is Private Metal only; classic eligibility doubtful). Card phased out in favour of Emeralde Private Metal.'
-      confidence: medium
-    mcc_exclusions: ['6513']
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: ICICI Reward Points
+  base:
+    rate: 4
+    per_inr: 100
+  exclusions:
+  - fuel
+  - emi
+  capping_rules:
+  - Utility and insurance transactions earn 1 ICICI Reward Point per INR100.
+  redemption:
+  - type: catalog
+    program: ICICI Rewards
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/emeralde/emeralde-membership-guide-retrieved-2026-10-27.pdf
+    - docs/sources/icici/emeralde/tnc-english-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    notes: Current product page publishes 4 points per INR100 on domestic and international spend, and 1 per INR100
+      on utility and insurance. The issuer's 2022 membership guide says 4 points per INR100 on retail transactions
+      except fuel. No current card-specific fixed point-to-rupee value was found; redemption values vary by catalogue
+      item and are not encoded. Generic current terms exclude fees, charges, EMI and reversed transactions.
+  notes: No fixed INR value or unsupported iShop multiplier is asserted. Current live page does not publish the exact
+    current reward exclusions list or a stable card-specific iShop earn schedule.
 benefits:
-  - effective_from: 2017-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass, dragonpass]
-    golf:
-      rounds_per_cycle: 4
-      cycle: monthly
-      lessons_per_cycle: 0  # Golf T&C: combined "round/lesson" allowance, max 4/month (1 per Rs50k prev-month spend)
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "12,000 ICICI Reward Points"
-        value_inr: 3000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 10000000
-      - type: travel-medical
-        sum_insured_inr: 5000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    dining:
-      program: Culinary Treats
-      discount_pct: 25
-    movies:
-      type: bogo
-      partner: BookMyShow
-      max_per_cycle: 4
-      cycle: monthly
-      cap_inr: 750
-    concierge: true
-    other:
-      - name: Birthday benefit (Amex variant)
-        description: Tata CLiQ shopping voucher for American Express Cardholders.
-        value_inr: 5000
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via: []
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  golf:
+    rounds_per_cycle: 4
+    cycle: monthly
+    lessons_per_cycle: 4
+    notes: One round or lesson for each INR50,000 spent on retail purchases in the previous calendar month, maximum
+      four rounds/lessons monthly. Benefits are credited by the 10th of the following month and are usable in the
+      next two months; booking and course conditions apply.
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 30000000
+    conditions: Primary cardholder only; international travel only; ticket must be purchased using the card. Current
+      product FAQ also says the card must have been used at least once during the 60 days before the incident; linked
+      group policy separately defines active card using a 90-day window, a source conflict retained in the source note.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: 4000
+    cap_per_cycle_inr: null
+    cycle: monthly
+    notes: Issuer page says 1% on fuel transactions up to INR4,000; applies to primary and Plus cardholders. No
+      minimum transaction or monthly waiver cap stated on the reviewed page.
+  movies:
+    type: bogo
+    partner: BookMyShow
+    max_per_cycle: 4
+    cycle: monthly
+    cap_inr: 750
+    notes: Buy one ticket and get up to INR750 off the second ticket, up to four times monthly. From 2026-04-01,
+      cardholder must spend INR25,000 or more in the preceding spends quarter; each add-on member must meet the
+      threshold individually. Dual-network holders may avail one offer per month per variant.
+  concierge: true
+  other:
+  - name: Birthday voucher (American Express variant)
+    description: ICICI lists a Tata CLiQ voucher worth INR5,000 for eligible American Express Emeralde cardholders;
+      terms apply.
+    value_inr: 5000
+  - name: Birthday voucher (Mastercard variant)
+    description: ICICI lists a PostCard Hotels voucher worth INR5,000 for eligible Mastercard Emeralde cardholders;
+      terms apply.
+    value_inr: 5000
+  - name: Domestic travel cancellation benefit
+    description: No cancellation charges for eligible domestic flight and hotel bookings, up to INR12,000, twice
+      per year; claim conditions apply.
+  - name: Fraud protection
+    description: Counterfeit Card Liability and Account Takeover Cover are advertised on the current issuer page;
+      detailed coverage limits are not stated there.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/emeralde/emeralde-membership-guide-retrieved-2026-10-27.pdf
+    - docs/sources/icici/emeralde/golf-terms-retrieved-2026-10-27.pdf
+    - docs/sources/icici/emeralde/insurance-policy-retrieved-2026-10-27.pdf
+    - docs/sources/icici/emeralde/cancellation-process-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.golf.lessons_per_cycle
+    - benefits.insurance.0.sum_insured_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.movies.max_per_cycle
+    - benefits.movies.cap_inr
+    - benefits.other.0.value_inr
+    - benefits.other.1.value_inr
+    notes: >-
+      2026-10-27 is the verification snapshot date, not an issuer-published effective date. Current issuer page is
+      internally inconsistent about birthday eligibility: the benefit panel names Amex and Mastercard variants,
+      while the FAQ paragraph names Amex only. Insurance FAQ's 60-day active-use wording differs from the linked
+      group policy's 90-day active-card definition. The linked 2022 membership guide contains older fee-waiver and
+      forex terms; current product-page values take precedence.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
     salaried: 1800000
     self_employed: 1800000
-  credit_score_min: 780
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Current card page states Indian citizen over 21, salaried monthly income INR150,000, and self-employed annual
+    income INR1,800,000. Salaried annual figure is normalized from the monthly issuer amount. FAQ gives age range
+    21-65. Credit-score cutoff is unpublished.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-credit-card
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [super-premium, world-elite, golf, lounge, points]
+  last_verified_on: '2026-10-27'
+  tags:
+  - super-premium
+  - lounge
+  - golf
+  - points

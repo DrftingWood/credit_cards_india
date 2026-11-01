@@ -5,179 +5,95 @@ issuer: sbi
 network: visa
 network_tier: signature
 tier: premium
-card_type: secured
+card_type: null
 co_brand: null
 status: active
-launched_on: 2017-01-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-25'
   effective_until: null
-  joining_fee_inr: 2999
+  joining_fee_inr: null
   annual_fee_inr: 2999
   renewal_fee_inr: 2999
   fee_waiver:
     spend_inr: 300000
     cycle: annual
-    conditions: Renewal fee waived on annual spends of ₹3 lakhs.
-  forex_markup_pct: 3.5
-  finance_charge_monthly_pct: 3.75
+    conditions: Renewal fee waived on annual spends of INR 3 lakh or more in the preceding year.
+  forex_markup_pct: null
+  finance_charge_monthly_pct: null
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
-  supplementary_card_fee_inr: 0
+  supplementary_card_fee_inr: null
   gst_applicable: true
   source:
-    url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
-    retrieved_on: 2026-07-03
-    type: issuer-page
-    confidence: medium
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/most-important-terms-and-conditions/mitc-english.pdf
+    retrieved_on: '2026-11-01'
+    type: issuer-pdf
+    confidence: high
     local_refs:
     - docs/sources/sbi/_shared/mitc-english.pdf
     fields_verified:
-    - fees.finance_charge_monthly_pct
-    - fees.cash_advance_fee
-  notes: Secured 'Advantage' variant of SBI Card PRIME (FD-backed). Fees mirror SBI
-    Card PRIME per crawl.
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current MITC/KFS lists PRIME Advantage annual and renewal fee at INR 2,999 and renewal waiver at INR 3 lakh;
+      cash advance is 2.5%/INR 500 minimum. Issuer evidence reviewed does not establish whether PRIME Advantage is
+      secured or unsecured, so its finance rate is unknown; joining fee, forex and add-on fee are also unknown.
+  notes: Advantage-named variant of SBI Card PRIME. Current KFS/MITC independently lists its annual and renewal fees and waiver; no launch date or product-specific reward terms were located. Do not infer FD backing or collateral amount from the Advantage name.
 rewards:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-25'
   effective_until: null
   currency: points
   currency_name: Reward Points
   base:
-    rate: 2
-    per_inr: 100
-    unit_value_inr: 0.25
-    unit_value_inr_realized: 0.22
-  accelerated:
-  - category: dining-grocery-departmental-movies
-    canonical_categories:
-    - groceries
-    - dining
-    - entertainment
-    multiplier: 1
-    effective_rate: 10
-    cap_per_cycle: unlimited
-    cap_unit: points
-    cycle: monthly
-    notes: 10 Reward Points per ₹100 on Dining, Departmental Stores, Movies and Grocery.
-  - category: utility-standing-instructions
-    canonical_categories:
-    - utilities
-    multiplier: 1
-    effective_rate: 20
-    cap_per_cycle: 3000
-    cap_unit: points
-    cycle: annual
-    notes: 20 Reward Points on utility bill payment standing instructions (up to 3,000
-      points).
-  - category: birthday-spend
-    multiplier: 1
-    effective_rate: 20
-    cap_per_cycle: 2000
-    cap_unit: points
-    cycle: annual
-    notes: 20 Reward Points per ₹100 on birthday spends (day before/of/after), capped
-      2,000 per calendar year.
-    canonical_categories:
-    - other
-  exclusions:
-  - fuel
-  - wallet-loads
-  - rent
-  - insurance-premiums
-  - emi
-  redemption:
-  - type: statement-credit
-    rate_inr_per_unit: 0.25
-  - type: catalog
-    program: SBI Card Rewards
-    rate_inr_per_unit: 0.25
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-25'
     type: issuer-page
-    confidence: high
-  mcc_exclusions:
-  - '6513'
+    confidence: low
+    notes: No current PRIME Advantage-specific reward terms were located. Standard PRIME rewards and redemption
+      values are not assumed to apply to the Advantage variant. Previous copied earning rates, caps, redemption
+      values and birthday/utility rules are excluded from estimates pending issuer terms.
 benefits:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-25'
   effective_until: null
-  lounge_access:
-    domestic:
-      visits_per_cycle: 8
-      cycle: annual
-      guests_per_visit: 0
-      via:
-      - visa
-      - mastercard
-      - dreamfolks
-    international:
-      visits_per_cycle: 4
-      cycle: annual
-      guests_per_visit: 0
-      via:
-      - priority-pass
-      notes: Max 2 visits per quarter. Priority Pass membership worth $99.
-  golf:
-    rounds_per_cycle: 4
-    lessons_per_cycle: 1
-    cycle: monthly
-    notes: 4 complimentary green fee rounds and up to 50% off on golf games; 1 complimentary
-      lesson per month at selected courses.
-  milestones:
-  - spend_inr: 50000
-    cycle: quarterly
-    benefit: Pizza Hut e-Voucher worth ₹1,000 on quarterly spends of ₹50,000
-    value_inr: 1000
-    reward_kind: voucher
-    trigger_window: rolling
-    is_repeatable: true
-  - spend_inr: 500000
-    cycle: annual
-    benefit: Yatra.com / Pantaloons e-Gift Voucher worth ₹7,000 on annual spends of
-      ₹5 lakhs
-    value_inr: 7000
-    reward_kind: voucher
-    trigger_window: anniversary-year
-  welcome:
-  - condition: Joining fee paid
-    benefit: Welcome e-Gift voucher worth ₹3,000 (Yatra / Hush Puppies / Bata / Pantaloons
-      / Aditya Birla Fashion / Shoppers Stop)
-    value_inr: 3000
-    window_days: 90
-  fuel_surcharge_waiver:
-    pct: 1.0
-    min_txn_inr: 500
-    max_txn_inr: 4000
-    cap_per_cycle_inr: 250
-    cycle: monthly
-  concierge: true
-  other:
-  - name: Club ITC Silver Tier Membership
-    description: Complimentary 1-year Club ITC Silver Tier Membership.
-    value_inr: null
   source:
-    url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
-    retrieved_on: 2026-07-03
+    url: https://www.sbicard.com/en/most-important-terms-and-conditions.page
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: low
+    notes: The current MITC confirms the PRIME Advantage fee schedule only. Numerical lounge, milestone, welcome,
+      fuel, golf, insurance and membership claims copied from standard PRIME or older sources lack current Advantage-specific
+      confirmation and are omitted pending variant terms.
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: Public material reviewed does not establish whether this card is FD-backed, a collateral minimum, age, income or credit-score cutoffs.
+  source:
+    url: https://www.sbicard.com/en/most-important-terms-and-conditions.page
+    retrieved_on: '2026-10-25'
     type: issuer-page
     confidence: medium
-eligibility:
-  min_age: 18
-  max_age: 70
-  income_inr_annual:
-    salaried: 0
-    self_employed: 0
-  credit_score_min: 650
-  residency: resident-indian
-  notes: Secured 'Advantage' variant issued against a fixed deposit (FD-backed, minimum
-    ₹25,000 FD).
+    fields_verified:
+    - eligibility.notes
+    notes: Public product/fee terms do not state applicant thresholds or deposit requirements.
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-11-01'
   tags:
   - premium
   - points
-  - secured
-  - fd-backed

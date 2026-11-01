@@ -1,108 +1,200 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-finbooster
 name: YES Bank FinBooster Credit Card
 image_path: /cards/yes/finbooster.png
-issuer: "yes"
-network: mastercard
-network_tier: platinum
+issuer: 'yes'
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
   partner: FinBooster
   category: other
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Lifetime-free co-branded card (FinBooster). Accelerated reward points on online dining."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/finbooster-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: Joining and renewal fees are NIL. Current MITC v18 sets 3.5% foreign-currency markup effective 15-Jun-2026,
+    1% DCC, 3.99% monthly finance and cash advance fee of 2.5% or INR650 minimum from 15-Jun-2026. Verification
+    snapshot 2026-10-26. The 2026-10-26 effective_from value is the verification snapshot only; original term effective
+    dates were not established.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs: &id001
+    - docs/sources/yes/finbooster/credit-card-features-update-june-2026.pdf
+    - docs/sources/yes/finbooster/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current issuer listing confirms NIL membership charges; MITC v18 plus June-2026 change notice support
+      current common charges.
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: YES Rewardz Points
-    base:
-      rate: 2
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: online-dining
-        canonical_categories: [online, dining]
-        multiplier: 5
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "5X reward points on online dining (10 YES Rewardz per ₹200); 2 per ₹200 base."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: YES Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/finbooster-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: YES Rewardz Points
+  base:
+    rate: 2
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  accelerated:
+  - category: online-dining
+    canonical_categories:
+    - online
+    - dining
+    multiplier: 5
+    effective_rate: 10
+    cap_unit: points
+    cycle: statement
+    notes: 10 YES Rewardz per INR200 on online dining.
+    cap_status: not-published
+  - category: online-grocery-apparel
+    canonical_categories:
+    - online
+    - groceries
+    - other
+    multiplier: 3
+    effective_rate: 6
+    cap_unit: points
+    cycle: statement
+    notes: 6 YES Rewardz per INR200 on online grocery and online apparel.
+    cap_status: not-published
+  exclusions:
+  - fuel
+  - rent
+  - wallet-loads
+  - government
+  - utilities
+  - cash-advance
+  - emi
+  - insurance-premiums
+  - education
+  - bridge-fees
+  - jewellery
+  - other
+  mcc_exclusions:
+  - '6300'
+  - '6381'
+  - '8211'
+  - '8220'
+  - '8249'
+  - '8299'
+  - '8241'
+  - '8244'
+  - '7911'
+  - '4112'
+  - '4011'
+  - '4784'
+  - '4111'
+  - '5944'
+  redemption:
+  - type: catalog
+    program: YES Rewardz
+    rate_inr_per_unit: 0.25
+    fee_inr: 100
+    constraints: Point value is up to INR0.25 and depends on redemption channel; points expire after three years;
+      redemption requests cost INR100 plus GST.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs: *id001
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Current listing updates earning categories; MITC and June-2026 issuer notice support exclusions, point
+      expiry/value and redemption fee.
+  reward_cap: null
+  capping_rules:
+  - Current issuer listing states 2 YES Rewardz per INR200 on other eligible retail spend except fuel; issuer terms
+    exclude the categories listed in this record. No overall points cap was located in the current listing or MITC.
+  - The June-2026 notice states its MCC list is indicative and may be revised.
+  - The 2026-10-26 effective_from value is the verification snapshot; effective start dates for the current reward
+    schedule were not established.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/finbooster-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 100
+    cycle: statement
+    notes: 'Current MITC v18: UPI fuel transactions are excluded; GST on the surcharge is not reversed. The 2026-10-26
+      effective_from value is the verification snapshot.'
+  concierge: null
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs: *id001
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+    notes: Current listing includes free Credit Strong subscription; updated fuel waiver follows MITC v18. No lounge
+      or concierge benefit is asserted.
+  other:
+  - name: Credit Strong subscription
+    description: Current YES Bank listing includes a free Credit Strong subscription; duration and activation terms
+      are not stated in reviewed material.
+    value_inr: null
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current reviewed card listing and product material do not establish card-specific age, income, bureau-score
+    or residency cutoffs. Generic issuer eligibility text is not attributed to this card.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/finbooster-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    local_refs: []
+    fields_verified: []
+    notes: No card-specific eligibility cutoff was found in reviewed current issuer listing/material; direct detail
+      page is JavaScript-rendered.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/finbooster-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, online, dining, co-brand, lifetime-free]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - points
+  - online
+  - dining
+  - co-brand
+  - lifetime-free

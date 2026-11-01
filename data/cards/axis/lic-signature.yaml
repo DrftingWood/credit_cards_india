@@ -2,18 +2,18 @@ id: axis-lic-signature
 name: LIC Axis Bank Signature Credit Card
 image_path: /cards/axis/lic-signature.webp
 issuer: axis
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
   partner: LIC
   category: other
 status: active
-launched_on: 2011-03-29
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2025-06-20
+- effective_from: '2026-08-28'
   effective_until: null
   joining_fee_inr: 0
   annual_fee_inr: 0
@@ -24,102 +24,162 @@ fees:
     pct: 2.5
     min_inr: 500
   gst_applicable: true
-  notes: Lifetime free (joining and annual fee Nil).
   source:
     url: https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
     local_refs:
-    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    - docs/sources/axis/lic-signature/terms-and-conditions-lic-axis-bank-signature-credit-card.pdf
+    - docs/sources/axis/_shared/mitc-credit-cards-retrieved-2026-10-26.pdf
+    - docs/sources/axis/lic-platinum/axis-credit-card-terms-update-effective-2026-08-28.pdf
     fields_verified:
-    - fees.finance_charge_monthly_pct
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
     - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current product page lists nil joining/annual fees, 3.75% monthly finance, cash advance 2.5% (minimum INR500),
+      forex 3.5%, and no reward redemption fee. The 2026-08-28 terms update changes DCC to 3.5% and sets INR1,300 late fee
+      at INR50,000+ due. Other current published charges include reward redemption fee conflict with LIC catalogue (INR30+GST/request),
+      rent 1%, education-app 1%, and conditional utility, wallet, fuel and gaming fees; some have no dedicated schema fields.
 rewards:
-- effective_from: 2025-06-20
+- effective_from: '2026-08-28'
   effective_until: null
   currency: points
-  currency_name: EDGE Reward Points
+  currency_name: LIC Reward Points
   base:
     rate: 1
     per_inr: 100
-    unit_value_inr: 0.2
-    unit_value_inr_realized: 0.18
+    unit_value_inr: null
+    unit_value_inr_realized: null
   accelerated:
   - category: lic-premium-and-forex
     canonical_categories:
     - insurance
     - international
-    multiplier: 2
+    multiplier: 1
     effective_rate: 2
-    notes: 2 Reward Points per ₹100 spent on LIC premium payments and foreign currency
-      transactions (2X).
+    cap_status: not-published
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - lic-official-website
+    notes: 2 points per INR100 on LIC premiums via official LIC payment gateways only (not third-party apps) and foreign-currency
+      transactions. No accelerator cap is published.
   exclusions:
   - fuel
   - wallet-loads
   - rent
   - government
   - education
-  - jewellery
   - utilities
+  - jewellery
   - cash-advance
+  - emi
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
   redemption:
   - type: catalog
-    program: Axis EDGE Rewards
-    rate_inr_per_unit: 0.2
-    constraints: EDGE Reward Points redeemable via the Axis EDGE Rewards catalog at
-      ₹0.20 per point.
+    program: LIC Cards reward catalogue
+    rate_inr_per_unit: null
+    fee_inr: 30
+    constraints: Redeem by calling against catalogue items. The catalogue specifies INR30 plus GST per request; Signature
+      product page says no reward point redemption fee, so fee conflict is unresolved. Product point prices vary; points expire
+      12 months after accumulation.
   source:
     url: https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
-    notes: EDGE Reward Points redeem at a uniform Rs 0.20/pt (EDGE portal), ~Rs 0.18
-      realistic. No card-tier premium (verified 2026). Corrected face Rs1.0->Rs0.20.
-  mcc_exclusions:
-  - '6513'
+    local_refs:
+    - docs/sources/axis/lic-signature/terms-and-conditions-lic-axis-bank-signature-credit-card.pdf
+    - docs/sources/axis/lic-platinum/lic-rewards-catalogue-terms-retrieved-2026-10-26.pdf
+    - docs/sources/axis/lic-platinum/lic-platinum-reward-exclusions-effective-2025-06-20.pdf
+    - docs/sources/axis/lic-platinum/axis-credit-card-terms-update-effective-2026-08-28.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
+    notes: 'LIC points are a separate catalogue currency, not Axis EDGE Reward Points. Do not assign a fixed rupee value:
+      catalogue prices differ by product. The 2025 exclusion revision identifies categories, not MCC codes; 2026-08-28 terms
+      add gift-card and bridge/road/toll exclusions. The issuer page says redemption fee is nil, but linked common LIC catalogue
+      terms specify INR30+GST per request.'
+  mcc_exclusions: []
+  capping_rules:
+  - Reward points expire 12 months after accumulation; issuer does not publish a general monthly earning cap.
 benefits:
-- effective_from: 2025-06-20
+- effective_from: '2026-08-28'
   effective_until: null
   lounge_access:
     domestic:
-      visits_per_cycle: 8
-      cycle: annual
+      visits_per_cycle: 2
+      cycle: quarterly
       guests_per_visit: 0
-      notes: 8 complimentary lounge visits per calendar year at select domestic airports.
-      via:
-      - visa
+      notes: 2 complimentary domestic lounge visits per quarter at listed lounges after at least INR50,000 eligible spend
+        in the previous 3 calendar months. Product page summarizes this as 8 visits per calendar year.
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
     max_txn_inr: 4000
     cap_per_cycle_inr: 400
-    cycle: statement
-    notes: 1% fuel surcharge waiver on fuel transactions ₹400–₹4,000; max ₹400 per
-      statement cycle (MITC).
+    cycle: monthly
+    notes: 1% waiver for fuel transactions INR400-INR4,000; monthly cap INR400. GST on fuel surcharge is not refunded; no
+      reward points on fuel.
   insurance:
   - type: lost-card-liability
-    sum_insured_inr: 0
-    conditions: Complimentary lost card liability cover up to the credit limit.
+    sum_insured_inr: null
+    conditions: Complimentary lost-card liability cover up to the card's credit limit; no separate numeric amount or full
+      current policy terms found.
   concierge: false
-  notes: Purchases of ₹1,500 or more can be converted to EMI.
+  notes: 'Activation benefit: 100% cashback up to INR300 on first utility bill payment within 30 days of card issuance (offer
+    conditions apply). Purchases of INR1,500+ may be converted to EMI. Wednesday Delight offers are dynamic and merchant/value
+    dependent.'
   source:
     url: https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/axis-bank-airport-lounge-access-program-retrieved-2026-10-26.pdf
+    - docs/sources/axis/lic-platinum/lic-rewards-catalogue-terms-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic
+    - benefits.fuel_surcharge_waiver
+    - benefits.insurance
+    notes: Axis lounge program requires INR50,000 eligible spend in previous three calendar months; the product page states
+      8/year while current program lists 2/quarter. Activation offer is product-page snapshot; detailed campaign terms not
+      yet archived.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
+  notes: Issuer product page states primary applicant age 18-70 and Indian residency. Exact income/bureau thresholds are not
+    published. Current network/tier and exact launch date are not established; ?Signature? is product name, not proof of a
+    specific current network tier. Project tier is an internal classification.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/lic-axis-bank-signature-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-26'
   tags:
   - co-branded
   - lic

@@ -1,14 +1,14 @@
-id: au-lit
+﻿id: au-lit
 name: AU Bank LIT Credit Card
 image_path: /cards/au/lit.webp
 issuer: au
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-04-01
+launched_on: null
 discontinued_on: null
 fees:
 - effective_from: 2022-04-01
@@ -16,19 +16,25 @@ fees:
   joining_fee_inr: 0
   annual_fee_inr: 0
   fee_waiver: null
-  forex_markup_pct: 0.99
-  finance_charge_monthly_pct: 3.49
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
   cash_advance_fee:
     pct: 2.5
-    min_inr: 300
+    min_inr: 500
   gst_applicable: true
-  notes: LIT base card is lifetime-free; individual features carry per-activation
-    fees billed in-app.
+  notes: LIT base card is lifetime-free. Custom features have separate fees for their activation period, billed on opt-in (or card activation if selected during application) plus GST; the app displays the applicable feature prices.
   source:
-    url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
-    confidence: medium
+    url: https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current AU KFS/MITC applies 3.49% forex to LIT, monthly finance charge of 3.75%, and cash advance fee of 2.5% or â‚¹500 minimum. The card page states lifetime-free base card; feature activation fees are separate.
 rewards:
 - effective_from: 2022-04-01
   effective_until: null
@@ -37,86 +43,127 @@ rewards:
   base:
     rate: 1
     per_inr: 100
-    unit_value_inr: 0.25
-    unit_value_inr_realized: 0.22
+    unit_value_inr: 0.0025
+    unit_value_inr_realized: null
+    notes: Base earning is 1 Reward Point per â‚¹100 in eligible retail spend. Utility and telecom earn base points with a 100-point per-transaction cap; listed exclusions include fuel, rent, cash withdrawal, BBPS, EMI, and education/government services. Points are additional to feature cashback.
   accelerated:
   - category: toggle-reward-booster
     multiplier: 10
     effective_rate: 10
-    cap_per_cycle: unlimited
+    cap_per_cycle: 10000
     cap_unit: points
     cycle: monthly
-    notes: 'User-activated reward-booster feature: up to 10X Reward Points on online
-      & offline spends; plus 5% and 2% cashback category features. Feature fees Rs
-      49-199/quarter, billed in-app.'
+    notes: Conditional, paid, customer-selected feature. 5X or 10X can be selected for online and/or offline retail spends; base earning is included in the multiplier. The feature is valid for 90 days and can auto-renew. The calculator does not capture selected mode, feature price, or auto-renewal, so this rate must not be presented as an unconditional card earn rate.
     canonical_categories:
     - online
-    - dining
+    - other
+    source:
+      url: https://www.au.bank.in/lit-terms-and-conditions
+      retrieved_on: '2026-10-27'
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[0].multiplier
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].cap_per_cycle
+      notes: Issuer terms identify online and offline retail as separate feature choices, with 5X or 10X totals including the base point.
   exclusions:
   - fuel
-  - wallet-loads
   - rent
   - emi
   capping_rules:
-  - Accelerated rates only active when the corresponding LIT feature is toggled on
-    for the cycle.
+  - The 10,000-point statement-cycle cap applies to total Reward Points across all earning, not just accelerated earning.
+  - Boosted earning applies only when the matching paid feature is selected and active; customer configuration is not represented by the calculator inputs.
+  reward_cap:
+    max_units: 10000
+    cap_unit: points
+    cycle: monthly
   mcc_exclusions:
   - '6513'
   redemption:
   - type: catalog
     program: AU Rewardz
-    rate_inr_per_unit: 0.25
+    rate_inr_per_unit: 0.0025
   - type: statement-credit
-    rate_inr_per_unit: 0.25
+    rate_inr_per_unit: 0.0025
   source:
-    url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
-    retrieved_on: 2026-07-03
+    url: https://www.au.bank.in/lit-terms-and-conditions
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated[0].multiplier
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].cap_per_cycle
+    - rewards.reward_cap.max_units
+    - rewards.base.unit_value_inr
+    - rewards.redemption[0].rate_inr_per_unit
+    notes: AU LIT terms last updated 15 Jan 2025 confirm the 1-point base rate, 10,000-point statement-cycle cap, exclusions, and conditional 5X/10X feature definition. AU Rewardz FAQ gives ordinary catalogue redemption value as 0.25 paise per point; e-voucher conversion is lower at 0.20 paise, so the modeled value applies to catalogue only.
 benefits:
 - effective_from: 2022-04-01
   effective_until: null
   lounge_access:
     domestic:
-      visits_per_cycle: 1
+      visits_per_cycle: 2
       cycle: quarterly
       guests_per_visit: 0
-      via:
-      - visa
-      notes: Base feature; additional visits unlockable via toggleable LIT feature
-        for a fee.
-  fuel_surcharge_waiver:
-    pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 4000
-    cap_per_cycle_inr: 100
-    cycle: monthly
+      notes: Up to 2 domestic visits per 90-day feature period, only when the paid lounge feature is activated. This is not included automatically with the lifetime-free base card; the in-app feature fee and any selected option are not exposed in the calculator.
+  fuel_surcharge_waiver: null
   concierge: false
   other:
-  - name: Customisable feature menu
-    description: In-app menu of togglable features (accelerated rewards, extra lounges,
-      insurance add-ons, fuel-surcharge boost) activated per statement cycle for a
-      fee.
-  - name: Low forex markup
-    description: Sub-1% forex markup is a standout for this tier.
+  - name: Paid configurable features
+    description: Features are selected in AU 0101 and generally run for 90 days, auto-renewing unless disabled. Activation fee is charged for each period plus GST. Feature pricing is displayed in the app; pricing may vary by selected combination.
+  - name: Conditional fuel surcharge waiver
+    description: A separately selected feature waives 1% on eligible fuel transactions â‚¹400â€“â‚¹5,000, up to â‚¹1,500 per 90-day feature period. AU KFS says the standard LIT card has no fuel surcharge waiver; this benefit requires feature activation and is not represented as a default card waiver.
+  - name: Category cashback features
+    description: Optional 5% grocery and apparel cashback features have a â‚¹500 cap per category in each 30-day period. Milestone options include additional 5% cashback (â‚¹10,000 minimum eligible retail spend, â‚¹500 cap per 30 days) or 2% cashback (â‚¹15,000 minimum, â‚¹1,000 cap per 30 days); feature fees and category/MCC eligibility apply. Only one milestone cashback feature may be selected. Calculator inputs do not capture the selected option or its fee.
+  - name: Membership features
+    description: Optional 3-month ZEE5 and Amazon Prime memberships carry a spend condition of â‚¹5,000 and â‚¹10,000 respectively within 90 days; failure incurs â‚¹50 and â‚¹299 plus GST. Optional â‚¹200 Amazon Pay voucher feature unlocks after â‚¹10,000 spend in 30 days; feature fee is â‚¹50.
+  - name: Card liability cover
+    description: Zero liability for eligible fraud after reporting card loss, up to â‚¹1.5 lakh or the credit limit, whichever is lower; counterfeit/skimming and online fraud protection also described. Full limits and terms should be reviewed before reliance.
+  source:
+    url: https://www.au.bank.in/lit-terms-and-conditions
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.guests_per_visit
+    - benefits.fuel_surcharge_waiver
+    notes: Current LIT features page describes up to 2 airport lounge visits per 90-day period. Official terms specify these are feature-based; selected fee is shown in app. Terms specify conditional fuel waiver of 1% on â‚¹400â€“â‚¹5,000 up to â‚¹1,500 per 90-day feature period, while KFS lists no default LIT fuel waiver. Modelled as paid optional benefit in prose, not as standard waiver.
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  notes: Numeric income and credit-score cutoffs are not published on the product page; null means unknown, not that no underwriting requirement applies. Add-on cardholders should be over 18.
   source:
     url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
-eligibility:
-  min_age: 21
-  max_age: 65
-  income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
+    confidence: high
+    fields_verified:
+    - eligibility.residency
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-10-27'
   tags:
   - lifetime-free
   - customisable
-  - low-forex
-  - mid-tier
+  - feature-based
+  - points

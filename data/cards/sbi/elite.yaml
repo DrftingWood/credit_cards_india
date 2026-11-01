@@ -1,52 +1,59 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
+# Current evidence reviewed 2026-10-27; see docs/sources/sbi/elite/issuer-extract-2026-10-27.md.
 id: sbi-elite
 name: SBI Card ELITE
 image_path: /cards/sbi/elite.webp
 issuer: sbi
-network: mastercard
-network_tier: world
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2015-09-01
+launched_on: 2016-07-06
 discontinued_on: null
 
 fees:
-  - effective_from: 2015-09-01
+  - effective_from: 2026-10-27
     effective_until: null
     joining_fee_inr: 4999
     annual_fee_inr: 4999
+    renewal_fee_inr: 4999
     fee_waiver:
       spend_inr: 1000000
       cycle: annual
+      conditions: Spend-based reversal at INR10 lakh annual spend.
     forex_markup_pct: 1.99
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
+    supplementary_card_fee_inr: 0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
       confidence: high
       local_refs:
-        - docs/sources/sbi/_shared/mitc-english.pdf
+        - docs/sources/sbi/elite/kfs-current.pdf
+        - docs/sources/sbi/elite/mitc-current.pdf
+        - docs/sources/sbi/elite/elite-launch-2016-07-06.pdf
       fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.renewal_fee_inr
+        - fees.fee_waiver.spend_inr
+        - fees.forex_markup_pct
         - fees.finance_charge_monthly_pct
         - fees.cash_advance_fee
+        - fees.supplementary_card_fee_inr
+        - launched_on
+        - network
+        - network_tier
+      notes: Current product page gives INR4,999 annual fee, INR4,999 renewal from year two, 1.99% forex, no add-on fee and annual spend waiver. Current MITC gives the current cash advance fee and finance rate. The 2016 issuer-hosted launch article records the INR4,999 joining fee and Mastercard World launch variant. Historical effective date for current fee schedule is not established. The current product page lists Mastercard, Visa and American Express network privileges; no single current network tier is established.
 
 rewards:
-  - effective_from: 2015-09-01
+  - effective_from: 2026-10-27
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -54,118 +61,145 @@ rewards:
       rate: 2
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr_realized: null
     accelerated:
       - category: dining-grocery-departmental
-        canonical_categories: [groceries, dining]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
+        canonical_categories: [groceries, dining, other]
+        multiplier: 5
+        effective_rate: 10
+        cap_per_cycle: 10000
         cap_unit: points
         cycle: monthly
+        over_cap_earns_base: true
+        notes: 5X total Reward Points (10 points per INR100 including base) on Dining, Departmental Stores and Grocery; combined accelerated earn cap 10,000 points per month, then base 2 points per INR100 continues.
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
+      - government
       - emi
+      - cash-advance
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
+        constraints: Redeem in multiples of 2,000 points; current SBI Card reward terms charge INR99 plus applicable taxes per statement-credit redemption batch.
       - type: catalog
         program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
+    capping_rules:
+      - Current cardholder agreement caps cumulative Dining, Departmental Store and Grocery accelerated earnings at 10,000 Reward Points per month; after cap, base earn of 2 points per INR100 continues.
+      - Points expire after 24 months. SBI identifies eligible merchants and MCCs on a best-effort basis.
+      - Current cardholder agreement also excludes balance transfers and related services, EasyMoney, Encash, Dial a Draft, ATM withdrawals, financial charges, transactions before enrollment, points-plus-pay redemptions and flexipay/merchant EMI transactions.
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
       confidence: high
+      fields_verified: [rewards.base, rewards.accelerated, rewards.exclusions, rewards.redemption, rewards.mcc_exclusions]
+      notes: Current product page supports base earn, 5X dining/departmental/grocery earn, statement redemption at 4 points per INR1 and 1.99% forex. Current cardholder agreement supports the monthly 10,000-point cap, 24-month expiry, redemption fee/minimum, fuel/wallet exclusions and post-cap base accrual. SBI's April 2024 and June 2024 lists specifically exclude Elite rewards on rent MCC6513 and government MCCs 9399/9311.
 
-    mcc_exclusions: ['6513']
+    mcc_exclusions: ['6513', '6540', '6541', '9311', '9399']
 benefits:
-  - effective_from: 2015-09-01
+  - effective_from: 2026-10-27
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
-        cycle: annual
+        visits_per_cycle: 2
+        cycle: quarterly
         guests_per_visit: 0
-        via: [dreamfolks]
+        via: [visa, mastercard, amex]
       international:
         visits_per_cycle: 6
         cycle: annual
         guests_per_visit: 0
         via: [priority-pass]
+        notes: Maximum 2 complimentary visits per quarter outside India; after free visits, Priority Pass charges USD27 plus applicable taxes per visit. Membership valid for 2 years.
     milestones:
       - spend_inr: 300000
         cycle: annual
-        benefit: "10,000 Bonus Reward Points on annual spends of ₹3 lakh"
+        benefit: "10,000 Bonus Reward Points on annual spends of INR3 lakh"
         value_inr: 2500
         reward_kind: points
         reward_units: 10000
         reward_currency_name: Reward Points
       - spend_inr: 400000
         cycle: annual
-        benefit: "10,000 Bonus Reward Points on annual spends of ₹4 lakh"
+        benefit: "10,000 Bonus Reward Points on annual spends of INR4 lakh"
         value_inr: 2500
         reward_kind: points
         reward_units: 10000
         reward_currency_name: Reward Points
       - spend_inr: 500000
         cycle: annual
-        benefit: "15,000 Bonus Reward Points on annual spends of ₹5 lakh"
+        benefit: "15,000 Bonus Reward Points on annual spends of INR5 lakh"
         value_inr: 3750
         reward_kind: points
         reward_units: 15000
         reward_currency_name: Reward Points
       - spend_inr: 800000
         cycle: annual
-        benefit: "15,000 Bonus Reward Points on annual spends of ₹8 lakh"
+        benefit: "15,000 Bonus Reward Points on annual spends of INR8 lakh"
         value_inr: 3750
         reward_kind: points
         reward_units: 15000
         reward_currency_name: Reward Points
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Welcome e-Gift voucher worth ₹5,000 (Yatra / Hush Puppies / Bata / Pantaloons / Aditya Birla Fashion / Shoppers Stop)"
+        benefit: "Welcome e-Gift voucher worth INR5,000 from Yatra, Hush Puppies/Bata, Pantaloons, Aditya Birla Fashion or Shoppers Stop"
         value_inr: 5000
-        window_days: 90
     movies:
       type: free
       partner: BookMyShow
       max_per_cycle: 2
       cycle: monthly
       cap_inr: 500
-      notes: "Free movie tickets worth ₹6,000 per year (max discount ₹250 per ticket)."
+      notes: "Free movie tickets worth INR6,000 per year; maximum discount INR250 per ticket. Primary card only."
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
       max_txn_inr: 4000
       cap_per_cycle_inr: 250
-      cycle: monthly
+      cycle: statement
     concierge: true
+    insurance:
+      - type: fraud-liability
+        sum_insured_inr: 100000
+        conditions: Complimentary credit-card fraud-liability cover; issuer page states cover applies from 48 hours before reporting loss through 7 days after reporting.
     other:
       - name: Club ITC Silver tier membership
         description: Complimentary 1-year Club ITC Silver Tier Membership (eligible after first transaction within 60 days of card issuance).
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
       confidence: high
+      fields_verified: [benefits.lounge_access, benefits.milestones, benefits.welcome, benefits.movies, benefits.fuel_surcharge_waiver, benefits.insurance, benefits.other]
+      notes: Current product page supports the listed welcome/milestone benefits, movies, fuel waiver, concierge, Club ITC and fraud-liability cover; current lounge FAQ confirms Priority Pass quota, and the product page gives domestic quarterly quota.
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Income requirement based on aggregator/tier consensus (not published on product page)."
-
+  notes: "SBI Card issuance policy gives age 21-65 for salaried applicants and 25-70 for self-employed applicants. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    local_refs: [docs/sources/sbi/elite/issuance-policy-2023.pdf]
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
 
 metadata:
-  last_verified_on: 2026-10-24
-  tags: [premium, points, lifestyle, movies]
+  last_verified_on: '2026-10-27'
+  tags: [premium, points, lifestyle, movies, multi-network]
+

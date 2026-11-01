@@ -1,18 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: standard-chartered-easemytrip
 name: EaseMyTrip Standard Chartered Credit Card
 image_path: /cards/standard-chartered/easemytrip.webp
 issuer: standard-chartered
 network: visa
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -20,104 +11,153 @@ co_brand:
   category: travel-agency
   partner_website: https://www.easemytrip.com
 status: active
-launched_on: 2022-09-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-09-01
-    effective_until: null
-    joining_fee_inr: 350
-    annual_fee_inr: 350
-    fee_waiver:
-      spend_inr: 50000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 350
+  annual_fee_inr: 350
+  fee_waiver:
+    spend_inr: 50000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 3.0
+    min_inr: 300
+  gst_applicable: true
+  source:
+    url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/easemytrip/most-important-document-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: Current product page confirms INR350 first-year and renewal fee; renewal is waived on preceding-year
+    spend of at least INR50,000. Current tariff confirms 3.5% forex, 3.75% monthly interest and cash advance
+    fee 3%, minimum INR300.
 rewards:
-  - effective_from: 2022-09-01
-    effective_until: null
-    currency: points
-    currency_name: 360 Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.25
-    accelerated:
-      - category: travel-bookings
-        canonical_categories: [travel]
-        multiplier: 10
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10 Reward Points per ₹100 on standalone hotel & airline bookings; 1 RP per ₹100 on all other retail (1 RP = ₹0.50). Instant booking discounts (20% hotels / 10% flights via EaseMyTrip app, promo EMTSCB) are separate — see benefits."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: voucher
-        rate_inr_per_unit: 0.25
-        constraints: "Redeem on the 360 Rewards portal for vouchers/products; cannot redeem against outstanding balance."
-        program: Standard Chartered 360 Rewards (vouchers)
-    source:
-      url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: "Corrected 2026-07-05: 1 RP = Rs 0.25 (voucher only), not Rs 1.0. Card's main value is its direct EaseMyTrip discounts, not point value."
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: 360 Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+    notes: 2 reward points per INR100 on all other eligible retail spend. Two points have a stated catalogue
+      value of INR0.50; 1 point = INR0.25.
+  accelerated:
+  - category: travel-bookings
+    canonical_categories:
+    - travel
+    multiplier: 5
+    effective_rate: 10
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: 10 points/INR100 on standalone airline and hotel sites/apps/outlets classified under Visa airline/hotel
+      MCCs. EaseMyTrip bookings earn the base 2 points/INR100, not the accelerated rate. No monthly points
+      cap; points expire after two years.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: voucher
+    rate_inr_per_unit: 0.25
+    constraints: Redeem on the 360 Rewards portal for vouchers/products; cannot redeem against outstanding
+      balance.
+    program: Standard Chartered 360 Rewards (vouchers)
+  source:
+    url: https://av.sc.bank.in/content/docs/in-easemytrip-product-terms-and-conditions.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/easemytrip/product-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.redemption
+  notes: Reward earn and booking discounts are separate. EaseMyTrip direct bookings earn base points and
+    separately qualify for promo-code discounts; standalone airline/hotel MCCs earn 10 points/INR100.
 benefits:
-  - effective_from: 2022-09-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa]
-        notes: "International lounge access (both within and outside India) discontinued w.e.f. 15-Oct-2024; domestic only remains."
-    other:
-      - name: "EaseMyTrip booking discounts"
-        description: "Flat 20% instant discount on hotels + 10% off domestic/international flights (capped) on EaseMyTrip website/app with promo code EMTSCB; ₹125 off bus bookings."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - visa
+      notes: Two complimentary domestic visits per calendar year (one per calendar quarter under card
+        T&Cs); primary and supplementary cards individually eligible. International lounge access discontinued
+        effective 15-Oct-2024; Priority Pass visits chargeable.
+  other:
+  - name: EaseMyTrip hotel discounts
+    description: 'Promo EMTSCB: 20% off domestic hotels up to INR5,000 and international hotels up to
+      INR10,000 per transaction; one discount per calendar month in this category per card.'
+  - name: EaseMyTrip flight discounts
+    description: 'Promo EMTSCB: 10% off domestic flights up to INR1,000 and international flights up to
+      INR5,000 per transaction; one discount per calendar month in this category per card.'
+  - name: EaseMyTrip bus discount
+    description: INR125 off domestic bus tickets on minimum booking INR500; one discount per month per
+      card.
+  fuel_surcharge_waiver: null
+  concierge: false
+  source:
+    url: https://av.sc.bank.in/content/docs/in-easemytrip-product-terms-and-conditions.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/easemytrip/product-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
 eligibility:
-  min_age: 21
+  min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: 360000
-    self_employed: 360000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current product page states applicants must be aged 18-65, have stable monthly income, and belong
+    to bank card-sourcing locations. No numeric income or credit-score threshold is published; all applications
+    remain subject to bank credit/policy checks.
+  source:
+    url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
 application:
   apply_url: https://www.sc.bank.in/credit-cards/easemytrip-credit-card/
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, travel, easemytrip, entry, cashback]
+  last_verified_on: '2026-10-27'
+  tags:
+  - co-branded
+  - travel
+  - easemytrip
+  - entry
+  - cashback

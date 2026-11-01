@@ -1,1 +1,49 @@
-{"_source":"pnb .bank.in (card page redirects to home; no extractable fee table)","verified_on":"2026-07-04","result":"seeded RuPay-Select values retained as plausible-unconfirmed; domain+MCC verified in audit","pdfs_downloaded":0}
+{
+  "_source": "Punjab National Bank official RuPay Select product, Rewardz, MITC, schedule of fees, eligibility and application sources",
+  "verified_on": "2026-10-26",
+  "result": "PNB RuPay Select and LUXURA RuPay records refreshed from issuer sources; conflicts and scheduled redemption fee documented.",
+  "pdfs_downloaded": 5,
+  "rupay_select": {
+    "result": "Reviewed current issuer card/reward pages, MITC, fees schedule, eligibility and RuPay program guide. Updated card-specific claims and documented point-value conflict and scheduled 2026-11-01 redemption fee.",
+    "pdfs_downloaded": 5,
+    "local_directory": "docs/sources/pnb/rupay-select/",
+    "unresolved": [
+      "launch date not established by a primary source",
+      "generic Rewardz page says INR0.50/point while card-specific page and MITC say INR0.25",
+      "exact reward exclusions not published in reviewed card-specific source",
+      "lounge roster and detailed use conditions remain dynamic"
+    ]
+  },
+  "luxura_rupay": {
+    "result": "RuPay LUXURA updated from official product page, card sheet, FAQ, MITC and launch announcement; HTML/FAQ welcome-point conflict documented.",
+    "pdfs_downloaded": 3,
+    "local_directory": "docs/sources/pnb/luxura-rupay/",
+    "unresolved": [
+      "current product HTML says 20,000 welcome points while RuPay-specific FAQ and product sheet say 40,000; variant-specific 40,000 retained",
+      "exact eligible MCC list and all reward exclusions are not published in reviewed card-specific sources",
+      "whether PNB's 2026-11-01 redemption fee applies to LUXURA needs confirmation",
+      "milestone stacking and detailed lounge conditions remain unspecified"
+    ]
+  },
+  "luxura_visa": {
+    "result": "Visa Infinite variant refreshed from official product page, Visa card sheet, shared FAQ, MITC and launch announcement.",
+    "pdfs_downloaded": 2,
+    "local_directory": "docs/sources/pnb/luxura-visa/",
+    "unresolved": [
+      "exact MCC exclusions are not published in reviewed Visa-specific sources",
+      "whether PNB's 2026-11-01 redemption fee applies to LUXURA needs confirmation",
+      "milestone stacking and detailed lounge conditions remain unspecified"
+    ]
+  },
+  "rupay_platinum": {
+    "result": "Active RuPay Platinum refreshed against current product page, rewards page, eligibility guide and MITC. No launch date found; card-specific point-value conflict documented.",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/pnb/rupay-select/",
+    "unresolved": [
+      "launch date not established",
+      "generic Rewardz page says INR0.50/point while card page/MITC state INR0.25",
+      "whether the 2026-11-01 generic redemption fee applies to this card requires confirmation",
+      "universal credit-score cutoff not published"
+    ]
+  }
+}

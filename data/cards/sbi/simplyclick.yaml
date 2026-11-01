@@ -1,12 +1,4 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
+﻿# Current card terms and numeric evidence are recorded in the source blocks below.
 id: sbi-simplyclick
 name: SimplyCLICK SBI Card
 image_path: /cards/sbi/simplyclick.png
@@ -21,13 +13,14 @@ launched_on: 2015-08-01
 discontinued_on: null
 
 fees:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-10-25
     effective_until: null
     joining_fee_inr: 499
     annual_fee_inr: 499
     fee_waiver:
       spend_inr: 100000
       cycle: annual
+      conditions: Renewal fee reversed if annual spend in the preceding year is at least INR 1 lakh.
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -36,17 +29,23 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-25
       type: issuer-page
       confidence: high
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.fee_waiver.spend_inr
+        - fees.forex_markup_pct
         - fees.finance_charge_monthly_pct
-        - fees.cash_advance_fee
+        - fees.cash_advance_fee.pct
+        - fees.cash_advance_fee.min_inr
+      notes: Current SimplyCLICK page and eApply flow show INR 499 joining/annual fees and INR 1 lakh annual spend reversal of the renewal fee. Current MITC confirms 3.5% forex markup, up to 3.75% monthly finance charges, and 2.5%/INR 500 cash-advance fee. Issuer sources reviewed do not state when the current fee schedule began; 2026-10-25 is the observation date.
 
 rewards:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-10-25
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -54,20 +53,20 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr_realized: null
     accelerated:
       - category: online-partner-merchants
         canonical_categories: [online]
         multiplier: 10
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 10000
         cap_unit: points
         cycle: monthly
-        merchants: [apollo-24x7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
+        merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
         channel:
           class: cobrand-merchant
           merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
-        notes: "10X points on online spends with partner merchants (Apollo 24x7, BookMyShow, Cleartrip, Dominos, IGP, Myntra, Netmeds, Swiggy, Yatra, Gyftr, Tata Cliq)."
+        notes: "10 total Reward Points per INR 100 on INR-denominated online transactions identified with the listed eligible partner merchant IDs. An SBI notice effective 1-Oct-2020 explicitly capped the cumulative 10X partner stream at 10,000 points/month. The latest SimplyCLICK Reward Point T&C does not restate a partner cap while explicitly capping other-online 5X at 10,000; pending SBI clarification, the model retains the last explicit 10,000-point cap and does not claim an uncapped stream. Cleartrip/Yatra affiliate transactions are excluded; GyFTR e-gift-voucher purchases qualify only through the SimplyCLICK GyFTR portal. Partner eligibility depends on issuer/network merchant identification and is best-effort."
       - category: online-other
         canonical_categories: [online]
         multiplier: 5
@@ -75,45 +74,66 @@ rewards:
         cap_per_cycle: 10000
         cap_unit: points
         cycle: monthly
-        notes: "5X on non-partner online spends, capped at 10,000 RP per calendar month; thereafter 1 RP per Rs.100."
+        over_cap_earns_base: true
+        notes: "5 total Reward Points per INR 100 on other eligible online spends, capped at 10,000 points per calendar month; eligible spend after that cap earns the 1-point base rate. Utility bill payments made through SBI Card website/app do not get 5X. Online classification relies on network/acquirer flags and is best-effort."
     exclusions:
-      - fuel
       - wallet-loads
       - rent
       - government
-      - insurance-premiums
+      - cash-advance
       - emi
+      - fuel
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
       - type: catalog
         program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
+        rate_inr_per_unit: null
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-25
       type: issuer-page
       confidence: high
-
-    mcc_exclusions: ['6513']
+      local_refs:
+        - docs/sources/sbi/_shared/simplyclick-sbi-card-rp-tnc.pdf
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.base.unit_value_inr
+        - rewards.accelerated.effective_rate
+        - rewards.accelerated.cap_per_cycle
+        - rewards.accelerated.cap_unit
+        - rewards.accelerated.cycle
+        - rewards.accelerated.merchants
+        - rewards.exclusions
+        - rewards.mcc_exclusions
+        - rewards.redemption.rate_inr_per_unit
+        - rewards.capping_rules
+      notes: Current product page lists 10X partner and 5X other-online rates, 1 point per INR 100 elsewhere, and 4 points = INR 1 for statement-credit redemption. Card-specific Reward Point T&C specifies INR spend, the 10,000-point monthly cap on other online spend and historical notice cap on partner spend (the current booklet omits the latter), excluded transaction/MCC classes, partner effective dates, partner/MID/network best-effort recognition, affiliate exclusions, and GyFTR portal restriction. Current SBI rewards FAQ/MITC states the INR 99 plus tax redemption fee, points expire after 24 months, and from 1-Apr-2026 statement-credit redemptions are in 4,000-point multiples with a 60,000-point monthly cap for eligible cards. Redemption fees depend on batch timing and redemption choice, so realized value is left unknown.
+    mcc_exclusions: ['5172', '5541', '5542', '5983', '6513', '6540', '6541', '9311', '9399', '5816', '7993', '7994']
+    capping_rules:
+      - Other online spend earns 5 total points per INR 100 up to 10,000 points per calendar month; after that, eligible spend earns 1 base point per INR 100. An older SBI notice explicitly sets a 10,000-point monthly cap on partner 10X; the latest card-specific T&C does not restate that partner cap. The model conservatively retains the last explicit cap pending clarification.
+      - 10X applies only to INR-denominated eligible transactions recognized under partner merchant IDs. Cleartrip and Yatra affiliate channels are excluded; GyFTR e-gift vouchers qualify only through the SimplyCLICK GyFTR portal. Online recognition depends on network/acquirer indicators and partner MID reporting.
+      - SBI Card website/app utility bill payments do not earn 5X. Wallet loads MCC 6540/6541, rent MCC 6513, government MCCs 9311/9399, digital gaming MCCs 5816/7993/7994, cash advances, balance transfers, encash, Flexipay and offline fuel MCCs 5172/5541/5542/5983 do not earn Reward Points.
+      - Statement-credit redemption is INR 0.25 per point before fees. From 1-Apr-2026 it requires 4,000-point multiples and is capped at 60,000 points per card per calendar month. The INR 99 plus tax fee is per daily processing batch and can repeat across batches; points expire after 24 months. Aggregate spend inputs cannot determine redemption batch count or realized net value.
 benefits:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-10-25
     effective_until: null
     lounge_access: null
     milestones:
       - spend_inr: 100000
         cycle: annual
-        benefit: "Cleartrip / Yatra e-voucher worth ₹2,000"
+        benefit: "Cleartrip / Yatra e-voucher worth INR 2,000"
         value_inr: 2000
       - spend_inr: 200000
         cycle: annual
-        benefit: "Additional Cleartrip / Yatra e-voucher worth ₹2,000"
+        benefit: "Additional Cleartrip / Yatra e-voucher worth INR 2,000"
         value_inr: 2000
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "Amazon.in gift card worth ₹500"
+      - condition: "First-year annual membership fee paid; account must be in good standing"
+        benefit: "Amazon.in gift card worth INR 500"
         value_inr: 500
-        window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -123,23 +143,42 @@ benefits:
     concierge: false
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-25
       type: issuer-page
       confidence: high
+      fields_verified:
+        - benefits.milestones.spend_inr
+        - benefits.milestones.value_inr
+        - benefits.welcome.value_inr
+        - benefits.fuel_surcharge_waiver.pct
+        - benefits.fuel_surcharge_waiver.min_txn_inr
+        - benefits.fuel_surcharge_waiver.max_txn_inr
+        - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+      notes: Current issuer page confirms annual online milestones at INR 1 lakh and INR 2 lakh, each worth an INR 2,000 Cleartrip/Yatra voucher; the annual-fee welcome voucher is INR 500 after paying the annual fee; fuel waiver is 1% on INR 500-INR 3,000 transactions, capped INR 100 per statement cycle/account. Card-specific welcome terms say the one-time voucher is issued within 21 days after the first-year annual membership fee is paid, provided the account is in good standing. The code must be added to Amazon Pay within 6 months of issue; the Amazon Pay balance then lasts 12 months from addition. These are validity terms, not calculator spend gates.
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Tier-standard entry income requirement (~₹3L p.a.) per aggregator consensus."
-
+  notes: "SBI Card policy states ages 21 to 65 for salaried applicants and 25 to 70 for self-employed applicants; the broad bounds preserve those occupation-specific ranges. The card-specific issuer sources reviewed do not state a fixed minimum income or credit-score cutoff; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-10-25'
   tags: [entry, online-spend, points]

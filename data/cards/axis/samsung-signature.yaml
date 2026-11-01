@@ -11,38 +11,46 @@ co_brand:
   category: lifestyle
   partner_website: https://www.samsung.com/in
 status: active
-launched_on: 2022-09-26
+launched_on: '2022-09-26'
 discontinued_on: null
 fees:
-- effective_from: 2023-01-01
+- effective_from: '2026-08-28'
   effective_until: null
   joining_fee_inr: 500
   annual_fee_inr: 500
   fee_waiver:
     spend_inr: 200000
     cycle: annual
-    conditions: Annual fee waived on spends of INR 2,00,000 in the preceding card
-      anniversary year.
+    conditions: Annual fee from year 2 waived when annual spends are greater than INR 2,00,000 in preceding card anniversary
+      year.
   forex_markup_pct: 3.5
-  finance_charge_monthly_pct: 3.0
+  finance_charge_monthly_pct: 3.75
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
   gst_applicable: true
   source:
     url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
     local_refs:
-    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    - docs/sources/axis/samsung-signature/tnc-for-samsung-signature-retrieved-2026-10-26.pdf
+    - docs/sources/axis/_shared/mitc-credit-cards-retrieved-2026-10-26.pdf
+    - docs/sources/axis/lic-platinum/axis-credit-card-terms-update-effective-2026-08-28.pdf
     fields_verified:
-    - fees.finance_charge_monthly_pct
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
     - fees.forex_markup_pct
-    notes: Fees, forex (3.5%) and finance charge (3.0%/mo extended credit) per Axis
-      MITC (eff 20 Dec 2024).
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current product page lists INR500 joining, INR500 annual from year two (waived for annual spend greater than INR2
+      lakh), 3.75% monthly finance, cash advance 2.5%/minimum INR500, and 3.5% forex. Current card terms also list EDGE redemption
+      fee INR99 and partner transfer fee INR199 per transaction, plus conditional category transaction fees and DCC 3.5%;
+      these do not all have dedicated schema fields.
 rewards:
-- effective_from: 2023-01-01
+- effective_from: '2026-08-28'
   effective_until: null
   currency: points
   currency_name: EDGE Reward Points
@@ -50,7 +58,7 @@ rewards:
     rate: 5
     per_inr: 100
     unit_value_inr: 0.2
-    unit_value_inr_realized: 0.18
+    unit_value_inr_realized: null
   accelerated:
   - category: preferred-partners
     canonical_categories:
@@ -59,13 +67,11 @@ rewards:
     - online
     multiplier: 1
     effective_rate: 10
-    merchants:
-    - bigbasket
-    - tata-1mg
-    - urban-company
-    - myntra
-    - zomato
+    cap_status: not-published
+    cap_unit: points
+    cycle: monthly
     channel:
+      required: true
       class: cobrand-merchant
       merchants:
       - bigbasket
@@ -73,8 +79,8 @@ rewards:
       - urban-company
       - myntra
       - zomato
-    notes: '10 EDGE Reward Points per ₹100 (≈2%) with preferred partners: BigBasket,
-      Tata 1mg, Urban Company, Myntra, Zomato.'
+    notes: 10 EDGE Reward Points per INR100 at preferred partner merchants, identified by merchant IDs supplied to Axis. No
+      accelerator cap is stated.
   exclusions:
   - fuel
   - wallet-loads
@@ -84,37 +90,58 @@ rewards:
   - utilities
   - rent
   - insurance-premiums
-  - emi
   - cash-advance
+  - emi
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
+  - financial-institutions
   redemption:
   - type: catalog
     program: Axis EDGE Rewards
     rate_inr_per_unit: 0.2
-    constraints: EDGE Reward Points redeemable via the Axis EDGE Rewards catalog;
-      ~₹0.2 per point.
+    fee_inr: 99
+    constraints: EDGE point face value of INR0.20 is supported by issuer value chart (2,500 welcome points = INR500). EDGE
+      platform redemption fee is INR99 per transaction; partner-point transfer fee is INR199.
   source:
     url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
-    notes: EDGE Reward Points Rs 0.20 catalogue, realistic Rs 0.18.
-  notes: Samsung purchase cashback (10%, incl. EMI) is captured under benefits.other
-    as it is a separate cashback benefit, not an EDGE Reward Point earn.
-  mcc_exclusions:
-  - '6513'
+    local_refs:
+    - docs/sources/axis/samsung-signature/tnc-for-samsung-signature-retrieved-2026-10-26.pdf
+    - docs/sources/axis/lic-platinum/axis-credit-card-terms-update-effective-2026-08-28.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
+    notes: Issuer terms exclude fuel, wallet loads, gold/jewellery, government, education, telecom/utilities, rent, insurance,
+      financial-institution transactions, cash advances/repayments, Samsung purchases, non-Samsung EMI, fees/charges, gift
+      cards and bridge/road/toll spends. Merchant-partner accelerators depend on MIDs, and points can take up to 90 days to
+      resolve disputed merchant identification. No exact numeric MCC list is published despite terms referring to excluded
+      MCCs.
+  mcc_exclusions: []
+  capping_rules:
+  - EDGE points may be forfeited 30 days after card closure or if minimum due remains outstanding more than 90 days, effective
+    2025-10-01.
 benefits:
-- effective_from: 2023-01-01
+- effective_from: '2026-08-28'
   effective_until: null
   lounge_access:
     domestic:
       visits_per_cycle: 4
       cycle: annual
       guests_per_visit: 0
-      notes: 4 complimentary domestic airport lounge visits per calendar year.
+      notes: 4 complimentary domestic airport lounge visits per calendar year, subject to at least INR50,000 eligible spend
+        in previous 3 calendar months.
       via:
       - visa
   welcome:
-  - condition: Complete 3 transactions within 30 days of card issuance
+  - condition: Complete 3 card transactions of any value within 30 days of card issuance; welcome benefit available once per
+      Axis cardholder
     benefit: 2,500 EDGE Reward Points
     value_inr: 500
     window_days: 30
@@ -122,31 +149,56 @@ benefits:
     pct: 1.0
     min_txn_inr: 400
     max_txn_inr: 4000
-    cap_per_cycle_inr: 400
+    cap_per_cycle_inr: 500
     cycle: statement
+    notes: 1% surcharge waiver, max INR500 per statement cycle. Detailed page says INR400-INR4,000 qualifying band; the summary
+      heading elsewhere says INR400-INR5,000. GST on surcharge not refunded; fuel earns no cashback.
   concierge: false
   other:
   - name: Samsung purchase cashback
-    description: 10% cashback on Samsung purchases (full-swipe or EMI), capped at
-      INR 2,500 per month and INR 10,000 per year. Flipkart channel excluded from
-      20-12-2024; Amazon channel excluded from 01-01-2026.
+    description: 10% cashback on eligible Samsung products/services via Samsung eStore, Samsung Shop App, specified Samsung
+      retail brand-EMI terminals and authorized service-center channels; capped INR2,500/month and INR10,000/year from card
+      issuance. Flipkart purchases excluded effective 2024-12-20; Amazon excluded effective 2026-01-01. Cashback can take
+      up to 60 days and reverses on returns.
+  - name: EMI conversion
+    description: Purchases of INR2,500 or more may be converted to EMI.
   source:
     url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/axis-bank-airport-lounge-access-program-retrieved-2026-10-26.pdf
+    - docs/sources/axis/samsung-signature/tnc-for-samsung-signature-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+    notes: Dining Delights and Wednesday Delight are dynamic portfolio offers and not represented as evergreen card entitlements.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
+  notes: Issuer product page states primary applicant age 18-70 and resident in India. No card-specific income or bureau-score
+    threshold is published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/samsung-axis-bank-signature-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-26'
   tags:
   - co-branded
   - samsung

@@ -10,15 +10,21 @@ co_brand:
   partner: Vistara
   category: airline
 status: discontinued
-launched_on: 2019-11-26
-discontinued_on: '2024-11-12'
+launched_on: '2019-11-26'
+discontinued_on: '2024-09-28'
 fees:
-- effective_from: 2020-01-01
-  effective_until: null
+- effective_from: '2019-11-26'
+  effective_until: '2026-03-31'
   joining_fee_inr: 2999
   annual_fee_inr: 2999
-  renewal_fee_inr: 0
-  fee_waiver: null
+  renewal_fee_inr: 2999
+  fee_waiver:
+    spend_inr: 0
+    cycle: annual
+    conditions: SBI Card notice waives the INR2,999 renewal fee for card renewal dates after 31 March 2025 because
+      the renewal ticket benefit was discontinued. Cardholders whose renewal fee was levied on or before 31 March
+      2025 paid the INR2,999 fee and remained eligible for the applicable renewal benefit. No annual renewals are
+      to occur after 31 March 2025 under the merger transition terms.
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.75
   cash_advance_fee:
@@ -26,45 +32,82 @@ fees:
     min_inr: 500
   supplementary_card_fee_inr: 0
   gst_applicable: true
+  notes: SBI Card lists INR2,999 annual and renewal fees for this variant. Existing co-brand card benefits continued
+    only through 31-Mar-2026 after the Vistara merger. New issuance stopped 28-Sep-2024. Fee waiver after 31-Mar-2025
+    is due to the discontinued renewal ticket benefit, not spend.
   source:
-    url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
-    retrieved_on: 2026-07-03
+    url: https://www.sbicard.com/en/most-important-terms-and-conditions.page
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
     local_refs:
+    - docs/sources/sbi/club-vistara-prime/club-vistara-prime-tnc.pdf
     - docs/sources/sbi/_shared/mitc-english.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
     - fees.finance_charge_monthly_pct
     - fees.cash_advance_fee
-    notes: Renewal fee shown as Nil on the live page.
+    - fees.supplementary_card_fee_inr
+    method: manual-read
 rewards:
-- effective_from: 2020-01-01
-  effective_until: null
-  currency: miles
-  currency_name: CV Points
+- effective_from: '2019-11-26'
+  effective_until: '2026-03-31'
+  currency: points
+  currency_name: Club Vistara Points; migrated to Maharaja Points
   base:
     rate: 4
     per_inr: 200
-    unit_value_inr: 0.55
-    unit_value_inr_realized: 0.5
-  redemption:
-  - type: airmiles
-    program: Air India Maharaja Club / Partner Airlines
-    constraints: CV Points redeemable on Air India and partner airlines after Vistara-Air
-      India merger.
-    rate_inr_per_unit: 0.55
-  source:
-    url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
-    retrieved_on: '2026-07-05'
-    type: issuer-page
-    notes: 'DISCONTINUED: Vistara merged into Air India (2024-11-12); Club Vistara
-      points migrated to Air India Maharaja (~Rs0.55). Card no longer issued.'
-    confidence: high
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  exclusions:
+  - wallet-loads
+  - rent
+  - government
+  - emi
+  - cash-advance
+  - other
   mcc_exclusions:
   - '6513'
+  - '6540'
+  - '6541'
+  - '9399'
+  - '9311'
+  redemption:
+  - type: airmiles
+    program: Air India Maharaja Club
+    ratio: '1:1'
+    constraints: Club Vistara balances were migrated to linked Maharaja Club accounts at 1:1 after 12-Nov-2024.
+      This was a merger migration of existing account balances, not a cash conversion or a general card-points transfer
+      option.
+  notes: 'SBI Card T&C: 4 CV Points per INR200 on eligible spend; points have no cash or monetary value. Excludes
+    balance transfers, cash advances, financial charges, disputed transactions, Flexipay, merchant EMI, e-wallet
+    loads (MCC 6540/6541), rent (6513 from 15-Apr-2024) and government transactions (9399/9311 from 15-Jul-2024).
+    Air India says existing CV points migrated 1:1 to Maharaja Points after 12-Nov-2024. Air India further says
+    existing Vistara co-brand cardholders continued current benefits through 31-Mar-2026; ongoing 4-per-INR200 earning
+    through that date is inferred from continuation of current card-program terms, as no post-merger SBI reward
+    schedule was found. CV Points were valid 36 months under the Club Vistara terms; migrated balances were guaranteed
+    at least one year from migration under Air India terms.'
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/travel/club-vistara-SBI-Card-PRIME/club-vistara-tnc.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/sbi/club-vistara-prime/club-vistara-prime-tnc.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    method: pdf-extract
 benefits:
-- effective_from: 2020-01-01
-  effective_until: null
+- effective_from: '2019-11-26'
+  effective_until: '2026-03-31'
   lounge_access:
     domestic:
       visits_per_cycle: 8
@@ -72,55 +115,106 @@ benefits:
       guests_per_visit: 0
       via:
       - issuer-direct
-      notes: Max 2 per quarter.
+      notes: Maximum 2 visits per quarter.
     international:
       visits_per_cycle: 4
       cycle: annual
       guests_per_visit: 0
       via:
       - priority-pass
-      notes: Max 2 visits per quarter to Priority Pass lounges outside India.
+      notes: Priority Pass visits outside India; maximum 2 per quarter; primary cardholder only.
+  welcome:
+  - condition: Pay the INR2,999 joining fee and meet the card-specific welcome offer terms.
+    benefit: Premium Economy ticket e-voucher for Vistara domestic network; SBI FAQ also lists 3,000 CV Points after
+      INR75,000 spend within 90 days. The exact welcome voucher conditions vary by card terms and offer date.
+    value_inr: null
+    window_days: 90
   milestones:
+  - spend_inr: 150000
+    cycle: annual
+    benefit: One Premium Economy ticket voucher under the card milestone schedule, subject to then-current T&C and
+      renewal eligibility.
+    value_inr: null
+    reward_kind: voucher
+    trigger_window: anniversary-year
+  - spend_inr: 300000
+    cycle: annual
+    benefit: One Premium Economy ticket voucher under the card milestone schedule, subject to then-current T&C and
+      renewal eligibility.
+    value_inr: null
+    reward_kind: voucher
+    trigger_window: anniversary-year
+  - spend_inr: 450000
+    cycle: annual
+    benefit: One Premium Economy ticket voucher under the card milestone schedule, subject to then-current T&C and
+      renewal eligibility.
+    value_inr: null
+    reward_kind: voucher
+    trigger_window: anniversary-year
   - spend_inr: 800000
     cycle: annual
-    benefit: 1 hotel e-Voucher from Yatra worth Rs. 10,000
+    benefit: One Premium Economy ticket voucher and one Yatra hotel e-voucher worth INR10,000 under card milestone
+      schedule; subject to then-current T&C and renewal eligibility.
     value_inr: 10000
     reward_kind: voucher
     trigger_window: anniversary-year
   insurance:
   - type: lost-card-liability
     sum_insured_inr: 100000
-  - type: baggage-loss
-    sum_insured_inr: 72000
-    conditions: Loss of check-in baggage cover.
-  - type: baggage-loss
-    sum_insured_inr: 7500
-    conditions: Delay of check-in baggage cover.
+    conditions: SBI Card T&C states INR100,000 per cardholder; policy terms, exclusions and reporting conditions
+      apply.
   fuel_surcharge_waiver: null
   concierge: false
   source:
-    url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
-    retrieved_on: 2026-07-03
+    url: https://www.sbicard.com/en/customer-notices.page.page
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    local_refs:
+    - docs/sources/sbi/club-vistara-prime/club-vistara-prime-tnc.pdf
+    - docs/sources/sbi/club-vistara-sbi-card/club-vistara-base-tnc-combined-booklet-09DEC2019.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[1].spend_inr
+    - benefits.milestones[2].spend_inr
+    - benefits.milestones[3].spend_inr
+    - benefits.insurance[0].sum_insured_inr
+    method: manual-read
+    notes: 'SBI notice: new issuance stopped 28-Sep-2024; renewal and milestone ticket benefits were discontinued
+      for renewals after 31-Mar-2025, with the renewal fee waived. Air India says existing co-brand card program
+      benefits continued until 31-Mar-2026 and that all benefits/vouchers migrated to Maharaja Club; benefit records
+      end 31-Mar-2026. The hotel e-voucher is shown in SBI?s official card brochure; no local copy was obtainable
+      during this pass.'
+  notes: Historical card benefits are time-bounded. Air India confirms 1:1 migration of CV balances and unused ticket
+    vouchers to Maharaja Club after 12-Nov-2024. SBI ended ticket renewal/milestone benefits for renewal dates after
+    31-Mar-2025; ticket eligibility remained for earlier fee dates and qualifying milestone cycles. Air India states
+    co-brand benefits continued only through 31-Mar-2026. SBI?s current archived terms do not establish the previously
+    stored baggage-loss amounts INR72,000 and INR7,500; these unverified cover amounts were removed.
+eligibility:
+  min_age: 18
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: SBI FAQ specifies minimum age 18. Numeric income and credit-score thresholds were not established from
+    the issuer evidence reviewed. This discontinued product is closed to new issuance since 28-Sep-2024.
+  source:
+    url: https://www.sbicard.com/en/faq/club-vistara-sbi-card-faq.page
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
-    notes: Renewal benefit (1 Premium Economy ticket) and spend-milestone flight tickets
-      discontinued for renewals after 01 Apr 2025. Up to 6 ticket cancellations/year
-      covered at Rs.3,500 each.
-eligibility:
-  min_age: 21
-  max_age: 65
-  income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
-  residency: resident-indian
-  notes: Vistara merged into Air India (Nov 2024); Club Vistara SBI cards are being
-    wound down / migrated. Renewal and milestone flight-ticket benefits discontinued
-    for cards renewing after 01 Apr 2025; verify open-to-new-applicants status.
+    fields_verified:
+    - eligibility.min_age
+    method: manual-read
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/club-vistara-sbi-card-prime.html
 metadata:
-  last_verified_on: '2026-10-24'
+  last_verified_on: '2026-10-26'
   tags:
   - co-branded
   - airline

@@ -1,110 +1,230 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-first-preferred
 name: YES Bank YES FIRST Preferred Credit Card
 image_path: /cards/yes/first-preferred.webp
-issuer: "yes"
-network: mastercard
-network_tier: world
+issuer: 'yes'
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
-status: active
-launched_on: 2018-01-01
+status: on-hold
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 999
-    annual_fee_inr: 999
-    fee_waiver: null
-    forex_markup_pct: 2.75
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "YES FIRST programme premium card. Membership & renewal fee ₹999."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 999
+  annual_fee_inr: 999
+  fee_waiver:
+    spend_inr: 250000
+    cycle: annual
+    conditions: Renewal fee waiver after qualifying retail spend during the 12 months before the card renewal date. Joining fee is separately waived after INR 50,000 retail spend within three months of card setup.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: Standard joining and renewal membership fees are INR 999 plus GST. The issuer says new issuance to new customers has been discontinued; existing cardholders receive a new card on expiry. Current MITC v18 and June 2026 issuer update set foreign-currency markup at 2.00% from 15-Jun-2026, monthly finance at 3.99% (47.88% APR) for the standard variant, and cash advance at 2.5% or INR 650 minimum from 15-Jun-2026. The product page separately displays 2.49% monthly against Fixed Deposit; this record is the standard unsecured variant. The fee record's 2026-10-26 date is a verification snapshot, not a claim that membership fees first took effect then.
+  source: &yes_first_preferred_fees
+    url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/first-preferred/yesbank-mitc-v18-current-2026-10-26.pdf
+    - docs/sources/yes/first-preferred/credit-card-features-update-june-2026.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current rendered issuer page plus current MITC v18 and June-2026 issuer update. New-customer issuance is discontinued; charges and fee waivers remain relevant to existing cardholders.
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: YES Rewardz Points
-    base:
-      rate: 8
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: YES Rewardz
-        rate_inr_per_unit: 0.25
-    notes: "8 Reward Points per ₹200 on all categories; 4 per ₹200 on Select categories."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: '2026-06-15'
+  effective_until: null
+  currency: points
+  currency_name: YES Rewardz Points
+  base:
+    rate: 8
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  accelerated:
+  - category: select-categories
+    canonical_categories:
+    - travel
+    - utilities
+    - groceries
+    multiplier: 0.5
+    effective_rate: 4
+    cap_unit: points
+    notes: Select categories are current card-page MCCs 4121, 4131, 4900, 5411 and 5499. Utility MCC 4900 earns points subject to a 300-point statement-cycle cap; no separate cap is stated for the other select MCCs.
+  exclusions:
+  - rent
+  - wallet-loads
+  - fuel
+  - cash-advance
+  - emi
+  - government
+  - insurance-premiums
+  - education
+  - other
+  mcc_exclusions:
+  - '6513'
+  - '6540'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '9752'
+  - '9034'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '9700'
+  - '9701'
+  - '9702'
+  - '9751'
+  - '9754'
+  - '9950'
+  - '5960'
+  - '5962'
+  - '5964'
+  - '5965'
+  - '5966'
+  - '5967'
+  - '5968'
+  - '5969'
+  - '7311'
+  - '6300'
+  - '6381'
+  - '8211'
+  - '8220'
+  - '8249'
+  - '8299'
+  - '8241'
+  - '8244'
+  - '7911'
+  - '4112'
+  - '4011'
+  - '4784'
+  - '4111'
+  - '5094'
+  - '5944'
+  capping_rules:
+  - Utility transactions on MCC 4900 are capped at 300 YES Rewardz points per statement cycle.
+  - The current issuer card page excludes rent, wallet and fuel transactions, cash withdrawals, post-purchase and instant EMI, government, marketing/advertising, insurance, education, railways, toll, ferry and jewellery. Its MCC table is indicative; post-purchase/instant EMI has no listed MCC.
+  redemption:
+  - type: catalog
+    program: YES Rewardz
+    rate_inr_per_unit: 0.25
+    fee_inr: 100
+    constraints: Point value is up to INR 0.25 and depends on redemption channel. MITC v18 charges INR 100 plus GST per redemption request, an additional INR 99 plus GST for flight bookings, and states points expire three years after earning. An older issuer page says points do not expire; the current MITC v18 is followed here.
+  notes: The current product page states 8 points per INR 200 on all categories except select categories, which earn 4 points per INR 200. Effective 15-Jun-2026 select MCCs are 4121, 4131, 4900, 5411 and 5499; the historical select-MCC list changed on that date. Point value is a maximum, not a realized redemption value. The issuer's legacy page says points do not expire, conflicting with the current general MITC v18; the current MITC is followed.
+  source: &yes_first_preferred_rewards
+    url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/first-preferred/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.capping_rules
+    - rewards.redemption
+    notes: Reward rates, current select MCCs and exclusions were read from the rendered issuer page; redemption and expiry terms from current MITC v18. The issuer page's generic 8-point headline is supplemented by its current 4/8 reward schedule and MCC glossary.
+  reward_cap: null
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    golf:
-      cycle: monthly
-      notes: "Green fee waiver on golf rounds."
-    movies:
-      type: discount
-      partner: BookMyShow
-      max_per_cycle: null
-      cycle: monthly
-      cap_inr: null
-      notes: "25% discount on BookMyShow."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-06-15'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via: []
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      notes: Two complimentary visits per quarter for the primary cardmember. Domestic access requires INR 75,000 eligible spend in the previous quarter; international lounge access has no spend threshold under the current general MITC.
+    international:
+      visits_per_cycle: 4
+      cycle: annual
+      guests_per_visit: 0
+      via: []
+      notes: Four complimentary visits per year for the primary cardmember; no previous-quarter spend gate applies to international lounge access. The current issuer product page references Priority Pass and third-party lounge terms.
+  golf:
+    lessons_per_cycle: 1
+    cycle: monthly
+    notes: One golf lesson per calendar month and four additional green-fee-waiver sessions at selected golf courses; the issuer page does not specify the period for the four additional sessions.
+  movies:
+    type: discount
+    partner: BookMyShow
+    max_per_cycle: null
+    cycle: monthly
+    cap_inr: 250
+    notes: Current issuer page confirms a 25% discount but does not restate usage or cap terms. An older official value chart says maximum discount INR 250 per month; current cap and usage terms need card-specific confirmation.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+    notes: Current MITC v18 lists INR 500-INR 5,000 eligible transactions, up to INR 250 per statement cycle. UPI fuel transactions are excluded; GST on the surcharge is not waived.
+  concierge: null
+  source: &yes_first_preferred_benefits
+    url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/first-preferred/yesbank-mitc-v18-current-2026-10-26.pdf
+    - docs/sources/yes/first-preferred/credit-card-features-update-june-2026.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.golf
+    - benefits.movies
+    - benefits.fuel_surcharge_waiver
+    notes: Current product page plus MITC v18 support lounge access and current fuel terms. The 25% BookMyShow headline is current; the INR 250 monthly cap comes from an older official value chart. New customer issuance has ended; benefits remain described for existing holders.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 1500000
-    self_employed: 1500000
-  credit_score_min: 730
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: New issuance to new customers has been discontinued. Reviewed current issuer material does not establish card-specific age, income, bureau-score or residency thresholds; these values remain unknown rather than inferred from other YES First products.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs: []
+    fields_verified: []
+    notes: Current product page explicitly limits reissuance to existing cardholders at expiry and states new customer issuance has been discontinued; no numeric eligibility cutoffs published.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-first/cards/credit-card/yes-first-preferred-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, golf, movies]
+  last_verified_on: '2026-10-26'
+  tags:
+  - premium
+  - points
+  - golf
+  - movies

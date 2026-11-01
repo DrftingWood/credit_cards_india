@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-samman
 name: IndusInd Bank Samman RuPay Credit Card
 image_path: /cards/indusind/samman.webp
@@ -17,84 +8,174 @@ tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01
+launched_on: '2024-01-09'
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Lifetime-free Platinum RuPay card, exclusively for government employees; UPI-enabled."
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2024-01-09'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 199
+  fee_waiver:
+    spend_inr: 75000
+    cycle: annual
+    conditions: Spend at least INR75,000 in last anniversary year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.83
+  cash_advance_fee:
+    pct: 0
+    min_inr: 0
+  gst_applicable: true
+  notes: 'Current MITC: NIL joining, INR199 annual fee waived after INR75,000 in last
+    anniversary year; 3.83% monthly interest; cash advance fee waived; 3.5% forex
+    markup.'
+  source:
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/samman/mitc-premium-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    verified_by: agent
+    method: pdf-extract
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "UPI-enabled RuPay card; reward rate on UPI vs card spends"
-    redemption:
-      - type: catalog
-        program: IndusMoments
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2024-01-09'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1
+    unit_value_inr_realized: 1
+    cap_per_cycle: 200
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: 1% on retail spends up to INR20,000 per statement cycle; INR200 cashback
+      cap, credited next statement.
+  exclusions:
+  - fuel
+  mcc_exclusions: []
+  capping_rules:
+  - Maximum INR200 cashback per statement cycle; first INR20,000 eligible retail spends
+    only. Fuel, railway and cash withdrawal excluded.
+  redemption:
+  - type: statement-credit
+    program: Automatic cashback to card account
+    rate_inr_per_unit: 1
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/samman/samman-benefit-guide-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards.currency
+    - rewards.base
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption
+    verified_by: agent
+    method: manual-read
+    notes: Current product page calls this cashback, not reward points.
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2024-01-09'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: null
+    cycle: monthly
+    notes: Shared issuer schedule lists Samman in the INR400-INR4,000 no-cap group;
+      Bank reserves right to impose future cap.
+  concierge: false
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/samman/samman-benefit-guide-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/samman/fuel-surcharge-waiver-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.fuel_surcharge_waiver
+    - benefits.movies
+    - benefits.surcharge_waivers
+    - benefits.insurance
+    verified_by: agent
+    method: manual-read
+    notes: No current lounge listing. Benefits and cover limits per current Samman
+      page; railway cap INR600 per anniversary year. Air accident cover discontinued
+      bank-wide in 2025.
+  movies:
+    type: free
+    partner: BookMyShow
+    max_per_cycle: 2
+    cycle: annual
+    cap_inr: 200
+    notes: One ticket every six months in calendar year; INR200 ticket-value cap.
+  surcharge_waivers:
+  - category: railway
+    pct: 1
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 600
+    cycle: annual
+    notes: IRCTC website/app only.
+  insurance:
+  - type: baggage-loss
+    sum_insured_inr: 100000
+    conditions: Lost baggage.
+  - type: baggage-loss
+    sum_insured_inr: 25000
+    conditions: Delayed baggage.
+  - type: other
+    sum_insured_inr: 50000
+    conditions: Loss of passport.
+  - type: other
+    sum_insured_inr: 25000
+    conditions: Lost ticket.
+  - type: other
+    sum_insured_inr: 25000
+    conditions: Missed connection.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
+    salaried: null
     self_employed: null
-  credit_score_min: 720
-  residency: resident-indian
-  notes: "Exclusively for government employees."
-
+  credit_score_min: null
+  residency: null
+  notes: Issuer markets the card exclusively for government sector employees; card-specific
+    age, income and credit-score cutoffs are not published.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/samman/samman-benefit-guide-retrieved-2026-10-26.pdf
+    fields_verified:
+    - eligibility.notes
+    verified_by: agent
+    method: manual-read
+    notes: Page markets card exclusively to government sector employees; exact individual
+      employment criteria and thresholds not published.
 application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card.html
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, rupay, upi, lifetime-free, government]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - cashback
+  - rupay
+  - upi
+  - government

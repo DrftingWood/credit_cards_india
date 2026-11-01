@@ -1,0 +1,156 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+	<meta property="og:image" content="files/shot.jpg" />
+	<meta property="og:title" content="Eternal" />
+	<meta property="og:description" content="Eternal" />
+	<meta name="og:image" content="files/shot.jpg" />
+	<link rel="image_src" href="files/shot.jpg" />
+	<link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic"
+        rel="stylesheet" type="text/css">
+
+	<meta name="description" content="View the digital brochure of Eternal SBI Card.">
+	<meta name="keywords" content="eternal sbi card ekit, digital kit eternal sbi card, ekit eternal sbi card, digital brochure eternal sbi card, zomato sbi card ekit">
+
+	<title>Eternal SBI Card - Digital Membership Kit</title>
+	<style type="text/css">
+		html {
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+	<link rel="stylesheet" href="style/phoneTemplate.css" />
+	<link rel="stylesheet" href="style/style.css" />
+	<link rel="stylesheet" href="style/player.css" />
+	<script src="javascript/jquery-1.9.1.min.js"></script>
+	<style>
+		.tmpContainer {
+			height: 100% !important;
+		}
+
+		.hide-audio {
+			position: absolute;
+			left: 50%;
+			bottom: 60px;
+			transform: translateX(-50%);
+		}
+
+		.thickness {
+			pointer-events: none;
+			/* display: none; */
+		}
+
+		.pageNumber input {
+			width: 36px;
+			margin-left: -3px;
+		}
+
+		.phoneTopBar,
+		.fbTopBar {
+			display: none;
+		} 
+
+		.links-wrap {
+			position: absolute;
+			bottom: 15px;
+			right: 140px;
+			display: flex;
+			font-family: 'Open Sans', sans-serif;
+		} 
+
+		.links-wrap a {
+			display: inline-block;
+		}
+
+		.links-wrap a,
+		.links-wrap > div {
+			font-size: 12px;
+			color: #ffffff;
+		}
+
+		.links-wrap > div {
+			margin-right: 15px;
+		}
+
+		.links-wrap > div:nth-last-of-type(1) {
+			margin-right: 0;
+		}
+
+		@media screen and (max-width:767px) {
+			.book {
+				margin-top: -40px
+			}
+
+			.links-wrap {
+			bottom: 50px;
+			right: auto;
+			left: 50%;
+			transform: translateX(-50%);
+		} 
+		}
+	</style>
+</head>
+
+<body>
+	<!-- <div class="links-wrap">
+		<div> <a href="https://www.sbicard.com/" target="_blank">T&C</a></div>
+	</div> -->
+	<script src="javascript/config.js"></script>
+	<script src="javascript/LoadingJS.js"></script>
+	<script src='javascript/main.js'></script>
+
+	<script src="files/search/book_config.js"></script>
+	<script type="text/javascript">
+		var textForPages = [];
+		var positionForPages = [];
+	</script>
+	<link rel="stylesheet" href="style/template.css" />
+	<script type="text/javascript">
+		var sendvisitinfo;
+		$(document).ready(function () {
+			sendvisitinfo = function () { };
+		});
+	</script>
+	<script src="javascript/flipHtml5.hiSlider2.min.js"></script>
+	<link rel="stylesheet" href="style/hiSlider2.min.css" />
+	<script src="javascript/FlipBookPlugins.min.js"></script>
+	<link rel="stylesheet" href="style/FlipBookPlugins.min.css" />
+	<script src="slide_javascript/slideJS.js"></script>
+	<!-- <audio autoplay loop controls class="hide-audio" id="audio-back" >
+		<source src="./files/music.mp3" type="audio/mpeg" >
+	  Your browser does not support the audio element.
+	</audio> -->
+	<script>
+		$(document).ready(function () {
+
+			const interval = setInterval(function () {
+				if (document.querySelectorAll('.item_focus').length > 0) {
+					clearInterval(interval);
+					var allThumbs = document.querySelectorAll('.item_focus');
+					console.log(allThumbs);
+					for (let i = 0; i < allThumbs.length; i++) {
+						allThumbs[i].addEventListener('click', function () {
+							thumbnail.hide();
+							// setTimeout(function() {
+							// },800)
+						})
+					}
+				}
+			}, 100);
+		})
+
+	</script>
+</body>
+
+</html>

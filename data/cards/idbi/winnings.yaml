@@ -1,15 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDBI Bank issuer PDFs — Key Fact Statement, MITC & Winnings
-#                Card Usage Guide (archived under docs/sources/idbi/winnings/).
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Network/tier, annual fee, spend waiver, finance charge, forex markup, base
-#   reward rate and fuel-surcharge terms are confirmed against the issuer KFS/MITC.
-#   Prior record modelled this as Visa Platinum with a Rs 999 fee — the issuer
-#   catalogue lists it as "Winnings Select (RuPay)" and the KFS states Rs 899.
-#   Lounge access is the NPCI RuPay Select program benefit (issuer PDF defers
-#   count details to npci.org.in).
-# ---------------------------------------------------------------------------
 id: idbi-winnings
 name: IDBI Bank Winnings Credit Card
 image_path: /cards/idbi/winnings.webp
@@ -18,114 +6,195 @@ network: rupay
 network_tier: select
 tier: mid
 card_type: credit
-co_brand: null
+co_brand:
 status: active
-launched_on: 2021-01-01
-discontinued_on: null
-
+launched_on:
+discontinued_on:
 fees:
-  - effective_from: 2021-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 899
-    fee_waiver:
-      spend_inr: 90000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.40
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.idbi.bank.in/credit-card.aspx
-      retrieved_on: 2026-07-04
-      type: issuer-pdf
-      confidence: high
-      local_refs:
-        - docs/sources/idbi/winnings/key-fact-statement.pdf
-        - docs/sources/idbi/winnings/MITC-CC.pdf
-      fields_verified:
-        - fees.annual_fee_inr
-        - fees.fee_waiver
-        - fees.forex_markup_pct
-        - fees.finance_charge_monthly_pct
-      notes: "IDBI KFS: Winnings annual fee ₹899 (waived on ₹90,000 preceding-year spend); finance charge 3.40% p.m.; cross-currency mark-up 3.5%."
-
+- effective_from: '2026-10-26'
+  effective_until:
+  joining_fee_inr: 0
+  annual_fee_inr: 899
+  fee_waiver:
+    spend_inr: 90000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.4
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.idbi.bank.in/winnings-credit-card.aspx
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/idbi/winnings/key-fact-statement.pdf
+    - docs/sources/idbi/winnings/MITC-CC.pdf
+    fields_verified:
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current Winnings page lists annual fee INR899 from year 2, waived on
+      INR90,000 annual spend, 3.5% forex, 3.4% monthly interest and 2.5% cash
+      advance with INR500 minimum. Archived KFS/MITC support these values; exact
+      schedule effective date is not published.
 rewards:
-  - effective_from: 2021-01-01
-    effective_until: null
-    currency: points
-    currency_name: Delight Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDBI Delight
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.idbi.bank.in/credit-card.aspx
-      retrieved_on: 2026-07-04
-      type: issuer-pdf
-      confidence: high
-      local_refs:
-        - docs/sources/idbi/winnings/Winnings-Card-Usage-Guide.pdf
-      fields_verified:
-        - rewards.base.rate
-        - rewards.base.per_inr
-      notes: "Winnings Card Usage Guide: 2 Delight Points per ₹100 spent."
-
+- effective_from: '2026-10-26'
+  effective_until:
+  currency: points
+  currency_name: Delight Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr:
+    unit_value_inr_realized:
+  mcc_exclusions:
+  - '6010'
+  - '6011'
+  - '6211'
+  - '6300'
+  - '6381'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9405'
+  - '4112'
+  - '5960'
+  - '5541'
+  - '5542'
+  - '5172'
+  - '5983'
+  redemption:
+  - type: catalog
+    program: IDBI Delight
+  source:
+    url: https://www.idbi.bank.in/winnings-credit-card.aspx
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/idbi/winnings/Winnings-Card-Usage-Guide.pdf
+    - docs/sources/idbi/winnings/MITC-CC.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    notes: Current issuer page confirms 2 Delight Points/INR100. Current IDBI
+      FAQ states 1 point = 0.25 paisa (INR0.0025), an implausibly low value that
+      may be a typo; no numeric redemption value is asserted pending issuer
+      clarification. Archived MITC lists excluded MCCs, three-year expiry and
+      nil redemption fee.
 benefits:
-  - effective_from: 2021-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [rupay]
-        notes: "NPCI RuPay Select program lounge access; issuer PDF defers visit details to npci.org.in."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.idbi.bank.in/credit-card.aspx
-      retrieved_on: 2026-07-04
-      type: issuer-pdf
-      confidence: high
-      local_refs:
-        - docs/sources/idbi/winnings/Winnings-Card-Usage-Guide.pdf
-      fields_verified:
-        - fuel_surcharge_waiver.pct
-        - fuel_surcharge_waiver.cap_per_cycle_inr
-      notes: "Usage Guide: 1% fuel-surcharge waiver on ₹400–₹4,000 transactions, max ₹400/month. Lounge via NPCI RuPay Select."
-
+- effective_from: '2026-10-26'
+  effective_until:
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - rupay
+      notes: 2 visits per calendar quarter; issuer defines quarterly periods
+        from the 15th of Jan/Apr/Jul/Oct.
+    international:
+      visits_per_cycle: 4
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - rupay
+      notes: 2 visits per calendar half-year (4 per year) at participating overseas lounges.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 400
+    cycle: monthly
+  concierge:
+  source:
+    url: https://www.idbi.bank.in/winnings-credit-card.aspx
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/idbi/winnings/Winnings-Card-Usage-Guide.pdf
+    - docs/sources/idbi/winnings/MITC-CC.pdf
+    fields_verified:
+    - fuel_surcharge_waiver.pct
+    - fuel_surcharge_waiver.min_txn_inr
+    - fuel_surcharge_waiver.max_txn_inr
+    - fuel_surcharge_waiver.cap_per_cycle_inr
+    - lounge_access.domestic.visits_per_cycle
+    - lounge_access.international.visits_per_cycle
+    - benefits.welcome[0].condition
+    - benefits.welcome[1].window_days
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[0].reward_units
+    - benefits.milestones[1].spend_inr
+    - benefits.milestones[1].reward_units
+    notes: Current issuer page confirms domestic 2/quarter and international
+      2/half-year lounge visits and fuel waiver 1% on INR400-4,000 transactions
+      capped INR400/month. Concierge is not specified on the current product
+      page. Published welcome offers are 500 points on activation and 500 on
+      first transaction of INR1,000+ within 30 days. The page lists 1,000 points
+      at INR100,000 and 1,500 points at INR200,000 net annual spend; whether
+      thresholds stack is not specified. Point cash value remains ambiguous.
+  welcome:
+  - condition: Card activation
+    benefit: 500 Delight Points
+    value_inr:
+  - condition: First transaction of INR1,000 or more within 30 days of
+      activation
+    benefit: 500 Delight Points
+    value_inr:
+    window_days: 30
+  milestones:
+  - spend_inr: 100000
+    cycle: annual
+    benefit: 1,000 Delight Points on net annual spend of INR100,000.
+    value_inr:
+    reward_units: 1000
+    reward_kind: points
+    reward_currency_name: Delight Points
+    is_repeatable: false
+  - spend_inr: 200000
+    cycle: annual
+    benefit: 1,500 Delight Points on net annual spend of INR200,000.
+    value_inr:
+    reward_units: 1500
+    reward_kind: points
+    reward_currency_name: Delight Points
+    is_repeatable: false
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age:
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried:
+    self_employed:
+  credit_score_min:
   residency: resident-indian
-
+  notes: Primary applicant age 21-60; up to 65 for self-employed applicants. Age
+    schema cannot encode the different upper limit by employment type, so
+    max_age is null. Issuer criteria are indicative; approval is discretionary.
+    Income threshold and minimum credit score are not stated.
+  source:
+    url: https://www.idbi.bank.in/winnings-credit-card.aspx
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.residency
 application:
-  apply_url: https://www.idbi.bank.in/credit-card.aspx
-
+  apply_url: https://www.idbi.bank.in/winnings-credit-card.aspx
 metadata:
-  last_verified_on: 2026-07-04
-  tags: [mid, points, lounge, rupay-select]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - points
+  - lounge
+  - rupay-select

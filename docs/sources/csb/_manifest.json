@@ -1,0 +1,18 @@
+{
+  "_source": "CSB Bank official product page, MITC, KFS and card terms, with Jupiter co-brand page for eligibility/offer context",
+  "verified_on": "2026-10-27",
+  "result": "Edge+ RuPay terms reviewed against current CSB documents and current co-brand T&Cs. Standard joining fee is INR999 per MITC, with conflicting CSB and Jupiter marketing offers recorded; rewards schedule effective 2026-10-10 follows detailed co-brand terms, with the conflicting MITC date/cap documented.",
+  "cards": {
+    "jupiter-edge": {
+      "url": "https://csb.bank.in/csb-bank-edge-credit-card",
+      "retrieved_on": "2026-10-27",
+      "local_refs": [
+        "docs/sources/csb/jupiter-edge/mitc.pdf",
+        "docs/sources/csb/jupiter-edge/key-fact-statement.pdf",
+        "docs/sources/csb/jupiter-edge/terms-and-conditions.pdf",
+        "docs/sources/csb/jupiter-edge/jupiter-current-terms-2026-10-27.html",
+        "docs/sources/csb/jupiter-edge-issuer-extract-2026-10-27.md"
+      ]
+    }
+  }
+}

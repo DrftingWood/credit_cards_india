@@ -20,8 +20,8 @@ fees:
   fee_waiver:
     spend_inr: 75000
     cycle: quarterly
-    conditions: First-year annual fee (levied after 90 days of card issuance) waived
-      on ₹75,000 non-EMI spends within the first 90 days.
+    conditions: First-year annual fee (levied after 90 days of card issuance) waived on ₹75,000 non-EMI spends within
+      the first 90 days.
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.6
   cash_advance_fee:
@@ -30,7 +30,7 @@ fees:
   gst_applicable: true
   source:
     url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-11-01
     type: issuer-page
     confidence: high
   notes: Annual fee of ₹1,000 is levied after 90 days of card issuance.
@@ -51,26 +51,24 @@ rewards:
     - government
     multiplier: 1
     effective_rate: 5
-    cap_per_cycle: 250
+    cap_per_cycle: 500
     cap_unit: cashback-inr
     cycle: monthly
-    notes: '5% CashBack on business essentials: Utility, Telecom, IRCTC, Govt. and
-      tax payments. Capped at ₹250 per month. (Telecom/IRCTC not distinct canonical
-      buckets; modelled under utilities/government.)'
+    notes: '5% CashBack on business essentials: Utility, Telecom, IRCTC, Govt. and tax payments. Capped at ₹250
+      per month. (Telecom/IRCTC not distinct canonical buckets; modelled under utilities/government.)'
   exclusions:
   - emi
   - fuel
   - wallet-loads
   source:
     url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-11-01'
     type: issuer-page
     confidence: high
-    notes: HDFC RP ~Rs 0.25 catalogue, realistic Rs 0.22.
-  notes: Base 4 Reward Points per ₹150 on all e-com and POS spends (except EMI, fuel
-    and wallet-load transactions). Up to 50 days free credit period. A launch promo
-    offered 3% CashBack on all non-EMI spends (capped ₹1,500/month, excl. wallet load/fuel/Pine
-    Labs Vendor Payment) until 30-Sep-2022 — now expired, not modelled.
+    notes: HDFC FAQ states cashback redemption at 100 Reward Points = INR 0.50 (minimum 2,500 points); voucher and air-mile redemption values vary by catalog option. Previous generic point-value estimates are not treated as verified card values.
+  notes: Base 4 Reward Points per ₹150 on all e-com and POS spends (except EMI, fuel and wallet-load transactions).
+    Up to 50 days free credit period. A launch promo offered 3% CashBack on all non-EMI spends (capped ₹1,500/month,
+    excl. wallet load/fuel/Pine Labs Vendor Payment) until 30-Sep-2022 — now expired, not modelled.
   redemption:
   - type: statement-credit
     program: NetBanking
@@ -85,32 +83,34 @@ benefits:
   insurance:
   - type: personal-accident
     sum_insured_inr: 3000000
-    conditions: HDFC Ergo accidental death / permanent total disability cover up to
-      ₹30 lakh, tiered by spend.
+    conditions: HDFC Ergo accidental death / permanent total disability cover up to ₹30 lakh, tiered by spend.
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
     cap_per_cycle_inr: 250
     cycle: statement
-    notes: 1% fuel surcharge waived; minimum transaction ₹400, maximum cashback ₹250
-      per statement cycle.
+    notes: 1% fuel surcharge waived; minimum transaction ₹400, maximum cashback ₹250 per statement cycle.
   concierge: false
   source:
     url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-11-01
     type: issuer-page
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
+  notes: Income and minimum bureau-score figures formerly stored here were issuer-tier estimates, not individually
+    verified card thresholds; values remain unknown until backed by card-specific issuer evidence. Broad minimum/maximum
+    age figures without an exact issuer evidence path or a source-verified occupational range were left unknown;
+    this does not imply there is no age criterion.
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/pine-labs-pro-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-11-01'
   tags:
   - co-branded
   - pine-labs

@@ -1,12 +1,4 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
+# Current card terms and numeric evidence are recorded in the source blocks below.
 id: sbi-simplyclick-advantage
 name: SimplyCLICK Advantage SBI Card
 image_path: /cards/sbi/simplyclick-advantage.png
@@ -17,11 +9,11 @@ tier: entry
 card_type: secured
 co_brand: null
 status: active
-launched_on: 2016-01-01
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2026-07-03
+  - effective_from: 2026-10-25
     effective_until: null
     joining_fee_inr: 499
     annual_fee_inr: 499
@@ -29,73 +21,100 @@ fees:
     fee_waiver:
       spend_inr: 100000
       cycle: annual
-      conditions: "Renewal fee reversed on annual spends >= Rs. 1,00,000."
+      conditions: "Renewal fee reversed on annual spends of INR 1 lakh or more in the preceding year."
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
+    finance_charge_monthly_pct: 2.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
-      retrieved_on: 2026-07-03
+      url: https://www.sbicard.com/en/most-important-terms-and-conditions.page
+      retrieved_on: 2026-10-25
       type: issuer-page
-      confidence: medium
-      notes: "Secured 'Advantage' variant of SimplyCLICK SBI Card (issued against a fixed deposit)."
+      confidence: high
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.renewal_fee_inr
+        - fees.fee_waiver.spend_inr
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee.pct
+        - fees.cash_advance_fee.min_inr
+        - fees.supplementary_card_fee_inr
+      notes: Current MITC/KFS list INR 499 annual and renewal fees and INR 1 lakh renewal waiver for SimplyCLICK Advantage, 3.5% forex, 2.75% monthly finance charge for secured cards, and 2.5%/INR 500 cash-advance fee. The Advantage terms identify the card as secured. Joining fee is INR 499 in the Advantage cardholder welcome terms; add-on fees are nil under current SBI product/MITC terms. Issuer sources reviewed do not state when this fee schedule began; 2026-10-25 is the observation date.
 
 rewards:
-  - effective_from: 2026-07-03
+  - effective_from: 2026-10-25
     effective_until: null
     currency: points
     currency_name: Reward Points
     base:
       rate: 1
       per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr: null
+      unit_value_inr_realized: null
     accelerated:
       - category: online-partner-merchants
         canonical_categories: [online]
         multiplier: 10
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 10000
         cap_unit: points
         cycle: monthly
-        merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
+        merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, gyftr, igp, myntra, netmeds, swiggy, yatra]
         channel:
           class: cobrand-merchant
-          merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, igp, myntra, netmeds, swiggy, yatra, gyftr, tata-cliq]
-        notes: "10X Reward Points on online spends with partner merchants: Apollo 24x7, BookMyShow, Cleartrip, Dominos, IGP, Myntra, Netmeds, Swiggy, Yatra, Gyftr, Tata Cliq."
+          merchants: [apollo-24-7, bookmyshow, cleartrip, dominos, gyftr, igp, myntra, netmeds, swiggy, yatra]
+        over_cap_earns_base: true
+        notes: "10 total Reward Points per INR 100 on eligible INR online partner transactions; an SBI 2020 notice capped exclusive-partner accelerated points at 10,000/month, then standard base points continue; the newer Advantage T&C states the 5X cap but does not restate this partner cap, so this record retains the last explicit cap pending issuer clarification. Advantage-specific terms list Apollo 24x7, BookMyShow, Cleartrip, Domino's, GyFTR, IGP, Myntra, Netmeds, Swiggy and Yatra. Cleartrip/Yatra affiliate channels are excluded; Amazon gift-card purchases do not earn 10X. GyFTR voucher earn requires the SimplyCLICK GyFTR portal. Partner merchant IDs and network/acquirer online flags determine eligibility on a best-effort basis."
       - category: online-other
         canonical_categories: [online]
         multiplier: 5
         effective_rate: 5
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 10000
         cap_unit: points
         cycle: monthly
-        notes: "5X Reward Points on all other online spends."
+        over_cap_earns_base: true
+        notes: "5 total Reward Points per INR 100 on other eligible online spends, capped at 10,000 points per calendar month; after the cap, the base rate continues. SBI Card website/app utility bills do not earn 5X."
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
+      - government
+      - cash-advance
       - emi
     redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
       - type: catalog
         program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
+        rate_inr_per_unit: null
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
+      url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/SimplyClickAdvantage-TnC.pdf
+      retrieved_on: 2026-10-25
+      type: issuer-pdf
       confidence: high
-
-    mcc_exclusions: ['6513']
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.accelerated.effective_rate
+        - rewards.accelerated.cap_per_cycle
+        - rewards.accelerated.cap_unit
+        - rewards.accelerated.cycle
+        - rewards.accelerated.merchants
+        - rewards.exclusions
+        - rewards.mcc_exclusions
+        - rewards.capping_rules
+      notes: An SBI 2020 notice sets separate 10,000-point calendar-month caps on cumulative 10X eligible partner and 5X other-online earn, with standard base points continuing after each cap. Newer Advantage T&C confirms the 5X cap but does not restate the partner cap; the record retains the last explicit cap conservatively pending clarification. They also state that Reward Points cannot pay the outstanding card balance, so no fixed point-to-cash value is modeled. General SBI redemption fees/expiry apply where relevant; catalogue e-voucher value varies by item.
+    mcc_exclusions: ['5172', '5541', '5542', '5983', '6513', '6540', '6541', '9311', '9399', '5816', '7993', '7994']
+    capping_rules:
+      - An SBI notice effective 1-Oct-2020 set a 10,000-point monthly cap on each cumulative 10X partner and 5X other-online stream. The newer Advantage T&C restates the 5X cap but not the partner cap; this record retains the last explicit 10X cap conservatively pending issuer clarification. After each cap, standard base earn of 1 point per INR 100 continues.
+      - Advantage-specific T&C list Apollo 24x7, BookMyShow, Cleartrip, Domino's, GyFTR, IGP, Myntra, Netmeds, Swiggy and Yatra. Cleartrip/Yatra affiliate channels are excluded; Amazon gift-card purchases do not earn 10X; GyFTR e-gift vouchers qualify only through the SimplyCLICK GyFTR portal. Partner merchant IDs and network/acquirer online flags determine eligibility on a best-effort basis.
+      - SBI Card website/app utility bill payments do not earn 5X. Wallet MCCs 6540/6541, rent MCC 6513, government MCCs 9311/9399, gaming MCCs 5816/7993/7994, cash advance, balance transfer, Encash, Flexipay and offline fuel MCCs 5172/5541/5542/5983 do not earn Reward Points.
+      - Reward Points cannot be redeemed against the outstanding balance for this variant. Catalogue values vary by item; no fixed point value is modeled. General SBI points expire after 24 months; any applicable catalog redemption fee depends on the item/fulfillment method.
 benefits:
-  - effective_from: 2026-07-03
+  - effective_from: 2026-10-25
     effective_until: null
     lounge_access: null
     milestones:
@@ -108,10 +127,9 @@ benefits:
         benefit: "Additional e-Voucher worth Rs. 2,000 (Cleartrip/Yatra) on annual online spends of Rs. 2 lakh"
         value_inr: 2000
     welcome:
-      - condition: "Annual fee paid"
+      - condition: "First-year annual membership fee paid; account must be in good standing"
         benefit: "Amazon.in e-Gift Card worth Rs. 500"
         value_inr: 500
-        window_days: 90
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -120,24 +138,41 @@ benefits:
       cycle: monthly
     concierge: false
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
+      url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/SimplyClickAdvantage-TnC.pdf
+      retrieved_on: 2026-10-25
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+        - benefits.milestones.spend_inr
+        - benefits.milestones.value_inr
+        - benefits.welcome.value_inr
+        - benefits.fuel_surcharge_waiver.pct
+        - benefits.fuel_surcharge_waiver.min_txn_inr
+        - benefits.fuel_surcharge_waiver.max_txn_inr
+        - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+      notes: Advantage cardholder terms confirm the INR 500 Amazon welcome voucher after the INR 499 first-year fee is paid, sent within 30 days if the account is in good standing and valid for 12 months after adding to Amazon Pay. Current SBI notices confirm the INR 2,000 Cleartrip/Yatra voucher milestones at INR 1 lakh and INR 2 lakh annual online spend. Variant terms state the fuel waiver is capped at INR 100/month for INR 500-INR 3,000 fuel transactions (excluding applicable taxes); current SBI terms describe the waiver as 1% for eligible cards.
 
 eligibility:
-  min_age: 18
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 0
-    self_employed: 0
-  credit_score_min: 650
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Secured card issued against a fixed deposit (minimum ₹25,000 FD); no separate income requirement."
+  notes: "Issuer identifies Advantage as the secured SimplyCLICK variant. The cited public material does not establish the security mechanism, minimum deposit, age, income or credit-score thresholds."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/simply-click-advantage-tnc-booklet.pdf
+    retrieved_on: 2026-10-25
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+      - eligibility.notes
+    notes: "Source confirms the Advantage secured variant but does not publish the omitted applicant thresholds or minimum deposit/security details."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/simplyclick-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: 2026-10-25
   tags: [entry, online-spend, points, secured]

@@ -2,113 +2,211 @@ id: au-altura-plus
 name: AU Bank Altura Plus Credit Card
 image_path: /cards/au/altura-plus.webp
 issuer: au
-network: rupay
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2022-01-01
+- effective_from: '2026-10-27'
   effective_until: null
   joining_fee_inr: 499
   annual_fee_inr: 499
   fee_waiver:
     spend_inr: 80000
     cycle: annual
+    conditions: First-year fee waived after ?20,000 retail spend within 90 days of card setup; renewal waived after
+      ?80,000 eligible retail spend in the preceding card anniversary year.
   forex_markup_pct: 3.49
-  finance_charge_monthly_pct: 3.49
+  finance_charge_monthly_pct: 3.75
   cash_advance_fee:
     pct: 2.5
-    min_inr: 300
+    min_inr: 500
+  late_payment_slabs: null
   gst_applicable: true
+  notes: Current issuer schedule states late-payment charge is 15% of total amount due, minimum INR 10, maximum INR 1,300; schema cannot represent this percentage with bounds as structured slabs.
   source:
-    url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
-    retrieved_on: 2026-07-03
+    url: https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    confidence: medium
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current issuer Key Fact Statement v1.9 dated 30 Sep 2026. The fee waiver field stores the renewal INR 80,000 threshold; first-year fee waiver separately requires INR 20,000 retail spend within 90 days. Late payment charge is 15% of total amount due, minimum INR 10 and maximum INR 1,300; schema cannot represent this formula.
 rewards:
-- effective_from: 2022-01-01
+- effective_from: '2026-10-27'
   effective_until: null
-  currency: cashback
-  currency_name: Cashback
+  currency: points
+  currency_name: AU Reward Points
   base:
-    rate: 1.5
+    rate: 1
     per_inr: 100
-    unit_value_inr: 1.0
-    unit_value_inr_realized: 1.0
+    unit_value_inr: 0.0025
+    unit_value_inr_realized: 0.002
+    applies_to_categories:
+    - utilities
+    - telecom
+    - insurance
   accelerated:
-  - category: merchant-categories
-    multiplier: 1
+  - category: online spends
     effective_rate: 2
-    cap_per_cycle: 500
-    cap_unit: cashback-inr
-    cycle: monthly
-    notes: 2% cashback on Grocery, Dining and Departmental store spends.
+    effective_per_inr: 100
     canonical_categories:
-    - groceries
-    - dining
+    - online
+    notes: 2 Reward Points per INR 100 on eligible online spends; this is the total online rate, not additive to the 1-point base rate.
+    source:
+      url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
+      retrieved_on: '2026-10-27'
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].effective_per_inr
+      - rewards.accelerated[0].canonical_categories
+      notes: Card-specific issuer product page and reward terms.
   exclusions:
   - fuel
-  - wallet-loads
   - rent
+  - government
+  - education
   - emi
-  mcc_exclusions:
-  - '6513'
+  - cash-advance
+  reward_cap:
+    max_units: 25000
+    cap_unit: points
+    cycle: statement
+  capping_rules:
+  - Offline POS spend earns 1.5% cashback up to an issuer-defined maximum cashback limit; the numeric cashback cap
+    is not stated in the current product evidence. The issuer says POS Reward Points accrue only after that cashback
+    limit is reached, so offline points are deliberately not scored by this calculator record.
+  - Utilities and telecom earn 1 point per ?100, capped at 100 points per transaction. BBPS and quasi-cash transactions
+    do not earn points.
+  redemption_floor_value_inr: 0.002
+  redemption_ceiling_value_inr: 0.0025
   redemption:
-  - type: statement-credit
-    rate_inr_per_unit: 1.0
+  - type: catalog
+    program: AU Reward Points catalogue
+    rate_inr_per_unit: 0.0025
+    min_units: 200
+    fee_inr: 99
+    constraints: Issuer FAQ states 0.25 paise per point for catalogue redemption; points expire two years after accrual.
+  - type: voucher
+    program: Eligible e-vouchers
+    rate_inr_per_unit: 0.002
+    min_units: 200
+    fee_inr: 99
+    constraints: Issuer FAQ states 0.20 paise per point for e-voucher redemption; INR 99 + GST redemption fee applies.
   source:
     url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
     confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].effective_per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.base.applies_to_categories
+    - rewards.reward_cap
+    - rewards.exclusions
+    - rewards.redemption_floor_value_inr
+    - rewards.redemption_ceiling_value_inr
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    - rewards.redemption.fee_inr
+    notes: 'Card-specific product page states 2 points per INR 100 online (total rate), and 1 point per INR 100 on utilities/telecom and insurance. Base scope is limited to utilities, telecom and insurance so online accelerator does not stack with a base point. Transportation MCC accrual ceased 1 Apr 2026; calculator spend buckets cannot isolate those MCCs. Offline POS earns 1.5% cashback until an issuer cap is reached; the current page does not quantify the cap, so offline cashback/points are not scored. AU Reward Points FAQ states catalogue value of 0.25 paise and e-voucher value of 0.20 paise per point; AU redemption fee is INR 99 + GST, and points expire two years after accrual. The 25,000-point statement-cycle cap, utility cap and exclusions are in the issuer Card Member Agreement dated 16 May 2026. BBPS and quasi-cash exclusions are documented here because schema categories cannot encode them.'
 benefits:
-- effective_from: 2022-01-01
+- effective_from: '2026-10-27'
   effective_until: null
   lounge_access:
     domestic:
       visits_per_cycle: 8
       cycle: annual
-      guests_per_visit: 0
+      guests_per_visit: null
       via:
       - rupay
+      notes: Issuer product page advertises 8 complimentary railway lounge visits per year.
   milestones:
   - spend_inr: 20000
     cycle: monthly
-    benefit: 500 bonus Reward Points on Rs 20,000 retail spend in a calendar month
-    value_inr: 125
+    benefit: 500 bonus AU Reward Points on ?20,000 retail spend in a calendar month.
+    value_inr: null
     reward_kind: points
     reward_units: 500
-    reward_currency_name: Reward Points
+    reward_currency_name: AU Reward Points
     trigger_window: rolling
     is_repeatable: true
   fuel_surcharge_waiver:
-    pct: 1.0
+    pct: 1
     min_txn_inr: 400
     max_txn_inr: 5000
-    cap_per_cycle_inr: 150
+    cap_per_cycle_inr: 100
     cycle: monthly
+    notes: ?100 cap per statement cycle effective 1 Oct 2026; older MITC showed ?150, superseded by the current
+      product-page notice.
   concierge: false
+  other:
+  - name: Offline cashback
+    description: Earn 1.5% cashback on eligible offline spends. Issuer product page references a maximum cashback
+      limit but does not state its numeric amount in the evidence reviewed; calculator scoring is withheld pending
+      that cap and its reset details.
+  - name: Device protection and liability cover
+    description: Advertised on the issuer product page; coverage amounts, exclusions and claim conditions not established
+      from the reviewed source.
   source:
     url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[0].reward_units
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: Current product page and KFS v1.9 dated 30 Sep 2026 confirm 1% waiver on INR 400-INR 5,000 fuel transactions, capped at INR 100 per statement cycle effective 1 Oct 2026. Older KFS/MITC copies and the product page's superseded headline display INR 150; its dated footnote states the updated cap. The product page also confirms 8 annual railway lounge visits and 500 bonus points on INR 20,000 retail spend in a calendar month. Current issuer materials reviewed do not identify a network/tier or numeric income/score cutoff.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
+  notes: Issuer page publishes age ranges and resident Indian requirement; it does not publish a numeric income
+    or bureau score floor.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.age_ranges
+    - eligibility.residency
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-10-27'
   tags:
   - entry
   - cashback
-  - rupay

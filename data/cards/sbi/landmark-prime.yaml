@@ -3,7 +3,7 @@ name: Landmark Rewards SBI Card PRIME
 image_path: /cards/sbi/landmark-prime.webp
 issuer: sbi
 network: visa
-network_tier: signature
+network_tier: null
 tier: premium
 card_type: credit
 co_brand:
@@ -27,7 +27,7 @@ fees:
   supplementary_card_fee_inr: 0
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-prime.html
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-11-01
     type: issuer-page
     confidence: high
     local_refs:
@@ -44,7 +44,7 @@ rewards:
     rate: 2
     per_inr: 100
     unit_value_inr: 0.25
-    unit_value_inr_realized: 0.22
+    unit_value_inr_realized: 0.25
   accelerated:
   - category: landmark-stores-online-and-retail
     canonical_categories:
@@ -68,39 +68,52 @@ rewards:
       - easybuy
     multiplier: 12.5
     effective_rate: 25
-    cap_per_cycle: unlimited
+    cap_per_cycle: 7500
     cap_unit: points
     cycle: monthly
     notes: 25 Reward Points per Rs. 100 at online & retail Landmark stores (Lifestyle,
       Home Centre, Max, Spar, Baby Shop, EasyBuy).
-  - category: dining-movies-international
+  - category: dining-movies
     canonical_categories:
     - dining
     - entertainment
+    multiplier: 5
+    effective_rate: 10
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: monthly
+    notes: 10 Reward Points per INR 100 on Dining and Movies. Current SBI Cardholder Agreement caps cumulative 5X points on PRIME dining/movie categories at 7,500/month; after the cap, base 2 points per INR 100 continue.
+  - category: international-spends
+    canonical_categories:
     - international
     multiplier: 5
     effective_rate: 10
     cap_per_cycle: unlimited
     cap_unit: points
     cycle: monthly
-    notes: 10 Reward Points per Rs. 100 on Dining, Movies & International spends.
+    notes: 10 Reward Points per INR 100 on International spends per the current card page; the cap clause does not name this category.
+  capping_rules:
+  - "Current SBI Cardholder Agreement caps cumulative 5X accrual on SBI Card PRIME dining, movies, departmental stores and grocery at 7,500 points/month, and says caps apply to corresponding co-brand variants. The 10-point dining/movie rate is modeled with that cap. The 25-point/INR100 Landmark store rate (12.5X relative to the 2-point base) is not expressly mapped to the generic cap's 5X wording; its cap applicability is modeled at 7,500/month because it is a departmental-store co-brand category; the agreement does not expressly name the 12.5X Landmark rate, so this cap mapping is conservative. After the 5X cap, base 2 points/INR100 continue. Sources: https://www.sbicard.com/en/cardholder-agreement.page and Landmark PRIME T&C clause 11.4."
   exclusions:
   - fuel
   - wallet-loads
   - rent
-  - insurance-premiums
+  - government
   - emi
   redemption:
-  - type: statement-credit
-    rate_inr_per_unit: 0.25
   - type: catalog
-    program: SBI Card Rewards
+    program: Landmark Rewards
     rate_inr_per_unit: 0.25
+    constraints: "Closed-loop redemption only by converting SBI Reward Points to Landmark Rewards (4 points = ₹1 equivalent). ₹99 + GST redemption fee applies below 1,000 points."
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-prime.html
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-11-01'
     type: issuer-page
     confidence: high
+    method: rendered-page
+    local_refs: [docs/sources/sbi/_shared/Landmark-PRIME-Booklet.pdf]
+    fields_verified: [rewards.base.rate, rewards.accelerated, rewards.capping_rules, rewards.redemption]
+    notes: "Current product page and Landmark PRIME booklet clause 11.4 confirm 25 points/₹100 at Landmark stores, 10 points/₹100 on dining/movies/international spends, and 2 points/₹100 on other retail spends; clause 11.5 gives closed-loop conversion and fees. Current SBI Cardholder Agreement separately applies a 7,500-point monthly cap to cumulative 5X PRIME categories and extends caps to corresponding co-brand variants; dining/movie cap applied. Whether this 5X cap also limits the distinct 12.5X Landmark-store rate is not specified, so the 7,500 cap applied to Landmark stores is a conservative interpretation of the general co-brand cap rather than an explicit Landmark-specific cap statement."
   mcc_exclusions:
   - '6513'
 benefits:
@@ -144,22 +157,33 @@ benefits:
   concierge: false
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-prime.html
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-11-01
     type: issuer-page
     confidence: high
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: Tier-standard income requirement (~₹12L p.a.) per aggregator consensus.
+  notes: "SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-11-01'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/landmark-sbi-card-prime.html
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-11-01'
   tags:
   - premium
   - points

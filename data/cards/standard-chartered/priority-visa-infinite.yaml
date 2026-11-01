@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: standard-chartered-priority-visa-infinite
 name: Standard Chartered Priority Banking Visa Infinite Credit Card
 image_path: /cards/standard-chartered/priority-visa-infinite.webp
@@ -19,110 +10,161 @@ co_brand: null
 status: active
 launched_on: 2019-01-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Complimentary for Standard Chartered Priority Banking relationship clients (relationship-gated). Reserved for Priority Banking customers."
-    source:
-      url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-25'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee: null
+  supplementary_card_fee_inr: 0
+  gst_applicable: true
+  notes: Complimentary for Priority Banking clients. Current tariff lists Visa Infinite joining/annual/supplementary
+    fees as nil. General MITC gives 3.5% overseas markup (only Ultimate is exempted at 2%) and 3.75% monthly finance.
+    Cash advance is left null because the current card page lists INR 100/350/500/700/800 ATM-withdrawal fees according
+    to statement outstanding balance, while the current general tariff lists 3% of withdrawal (minimum INR 300).
+    The issuer sources do not explain whether the card-specific schedule supersedes or supplements the tariff formula;
+    the schema also cannot model the card-page tiers.
+  source:
+    url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.supplementary_card_fee_inr
+    notes: The card page links to current tariff/MITC; the tariff lists Visa Infinite nil fees, general 3.5% forex
+      (Ultimate alone 2%), and general cash advance charges. Card page ATM fee table is inconsistent with a simple
+      percentage/minimum representation.
 rewards:
-  - effective_from: 2026-01-01
-    effective_until: null
-    currency: points
-    currency_name: 360 Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
-    accelerated:
-      - category: overseas-fashion
-        canonical_categories: [international]
-        multiplier: 2.5
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "5 Reward Points per ₹100 spent overseas or on retail fashion; 2 RP per ₹100 on all other spends."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: 360 Rewards
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      confidence: medium
-      notes: 'Verified 2026-07-05: premium tier, 1 RP = Rs1.0 on brand vouchers (like Beyond/Ultimate), not the Rs0.5 placeholder.'
-    capping_rules:
-      - No per-cycle cap on the 5 RP/₹100 overseas/retail-fashion accelerated points per the SC Priority Visa Infinite product page + MITC (retrieved 2026-07-05); MITC lists only a ₹99 redemption fee + 3.5% forex, no earn cap. Confidence medium.
+- effective_from: '2026-10-25'
+  effective_until: null
+  currency: points
+  currency_name: 360 Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: 2 RP per INR 100 on all spends except overseas and retail fashion. Current card sources do not specify
+      a fixed point redemption value.
+  accelerated:
+  - category: overseas-fashion
+    canonical_categories:
+    - international
+    - online
+    multiplier: 2.5
+    effective_rate: 5
+    effective_per_inr: 100
+    cap_status: not-published
+    cap_unit: points
+    notes: 5 RP per INR 100 on overseas spend or retail fashion; issuer does not publish an earn cap. The flat spend
+      model cannot distinguish retail fashion MCC from general online spend; this accelerator is documented, not
+      reliably scoreable from generic inputs.
+  source:
+    url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated
+    notes: Current page confirms 5 RP/INR 100 overseas or retail fashion and 2 RP/INR 100 elsewhere. No numeric
+      earning cap or stable redemption value is stated in the sources reviewed. Removed unsupported exclusion list
+      and realized value.
 benefits:
-  - effective_from: 2026-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-      international:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [priority-pass]
-        notes: "2 international lounge visits per quarter for FUM-qualified clients."
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 10000000
-      - type: travel-medical
-        sum_insured_inr: 4500000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
+- effective_from: '2026-10-25'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 4
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - visa
+      notes: Four domestic visits per calendar quarter per eligible card; primary and supplementary cards each have
+        an individual allowance. INR 2 validation swipe.
+    international:
+      visits_per_cycle: 2
       cycle: monthly
-    concierge: true
-    source:
-      url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Two Priority Pass uses per month per card if individual-account FUM is at least INR 30 lakh in the
+        calendar month of use and the card is active. Additional and guest visits are chargeable (up to USD 35).
+        FUM includes specified bank balances, investments, Demat, eligible insurance premiums and Homesaver funds.
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 10000000
+    conditions: Primary cardholder only; overseas air ticket must be purchased using this card; additional policy
+      conditions and qualifying recent POS/e-commerce swipe apply.
+  - type: travel-medical
+    sum_insured_inr: null
+    sum_insured_amount: 25000
+    sum_insured_currency: USD
+    conditions: Up to USD 25,000 emergency medical expenses for primary cardholder on international travel outside
+      India; USD 100 deductible; subject to insurer policy.
+  fuel_surcharge_waiver: null
+  source:
+    url: https://www.sc.bank.in/content/dam/sc/in/credit-cards/docs/in-consolidated-priority-visa-infinite-terms-conditions.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.insurance
+    - benefits.golf
+    notes: Current consolidated T&C dated/updated with 1-Oct-2026 golf helpdesk terms supplies lounge quotas/FUM
+      eligibility, chargeable guest/extra visits, detailed insurance terms, and golf games/coaching quotas. The
+      product page describes complimentary Priority Banking relationship, but no separate concierge or fuel surcharge
+      benefit is published there.
+  golf:
+    rounds_per_cycle: 2
+    cycle: monthly
+    lessons_per_cycle: 1
+    notes: Current consolidated T&C grants 2 complimentary domestic golf games and 1 coaching session per month
+      per valid cardholder, plus 1 complimentary guest game/month (not represented by current golf fields). Booking
+      is subject to 7-day advance request and availability; convenience/other charges may apply.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 3600000  # Priority Banking relationship-gated (Rs 3L/mo net salary or Rs 30L TRV)
-    self_employed: 3600000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Current product page says applicants age 21?65, stable monthly income, card sourcing locations and bank
+    policy checks. Card is reserved for Priority Banking clients; no numerical income or bureau-score floor is published.
+    The international lounge entitlement separately requires individual-account FUM of INR 30 lakh in the usage
+    month.
+  source:
+    url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    notes: Card page gives applicant age range and relationship/income/location eligibility; numeric income/score
+      criteria are not stated.
 application:
   apply_url: https://www.sc.bank.in/credit-cards/priority-banking-visa-infinite/
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [super-premium, points, international, lounge, priority-banking, concierge]
+  last_verified_on: '2026-11-01'
+  tags:
+  - super-premium
+  - points
+  - international
+  - lounge
+  - priority-banking
+  - concierge

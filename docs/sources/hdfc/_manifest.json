@@ -10,17 +10,22 @@
       "infinia/Golf-T-and-C-for-INFINIA-05-08-25.pdf",
       "infinia/Insurance-Infinia.pdf",
       "infinia/airport-lounge-access-program-30sep2025.pdf",
-      "infinia/rewards-points-program-terms-and-conditions.pdf"
+      "infinia/rewards-points-program-terms-and-conditions.pdf",
+      "infinia/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf"
     ],
     "shared": [
       "_shared/mitc-in-english.pdf"
     ],
-    "note": ""
+    "note": "Current Infinia page and current co-branded MITC v3.9 rechecked 2026-10-26; issuer extract documents SmartBuy offer 15282 access failure and unresolved accelerator detail."
   },
   "regalia-gold": {
     "slug": "regalia-gold-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card",
     "pdfs": [
+      "regalia-gold/Regalia-Gold-Product-feature-change-retrieved-2026-10-27.pdf",
+      "regalia-gold/terms-and-conditions-retrieved-2026-10-27.pdf",
+      "regalia-gold/reward-points-terms-retrieved-2026-10-27.pdf",
+      "regalia-gold/hdfc-regalia-gold-launch-2023-03-23.pdf",
       "regalia-gold/Priority_Pass_Regalia.pdf",
       "regalia-gold/general-terms-and-conditions.pdf",
       "regalia-gold/lounge-t-and-cs-and-list-Regalia-Gold.pdf",
@@ -33,19 +38,27 @@
       "regalia-gold/rg-domestic-lounge-netbanking-process.pdf",
       "regalia-gold/terms-and-conditions.pdf"
     ],
-    "shared": [],
-    "note": ""
+    "shared": [
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf",
+      "_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf",
+      "_shared/hdfc-card-changes-effective-2026-05-15.pdf"
+    ],
+    "note": "Reviewed 2026-10-27 against current product, fees and eligibility pages, linked 30-Jul-2026 travel/feature terms, current Regalia Gold reward terms, personal MITC v4.15, co-branded MITC v3.9, lounge terms effective 1-Jul-2026 and current insurance policy effective 23-Jul-2026 to 22-Jul-2027. Cleared network/tier and residency because HDFC allows Visa/Mastercard franchise conversion and specifies nationality but not residence. Documented conflicts in cash-redemption value, 5L/7.5L milestone, salaried net/gross eligibility, minimum transaction and reissue fee."
   },
   "regalia": {
     "slug": "regalia-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/regalia-credit-card",
     "pdfs": [
       "regalia/hdfc-ergo-general-insurance-company-limited.pdf",
+      "regalia/hdfc-regalia-launch-2011-08-02.pdf",
       "regalia/rp-regalia.pdf",
       "regalia/t-c.pdf"
     ],
-    "shared": [],
-    "note": ""
+    "shared": [
+      "_shared/mitc-in-english-v4.15-retrieved-2026-10-25.pdf",
+      "_shared/hdfc-card-changes-effective-2026-05-15.pdf"
+    ],
+    "note": "Reviewed 2026-10-27 against current Regalia product/fees pages, May-2026 change notice, linked reward and card terms, launch release dated 2011-08-02, shared Personal MITC v4.15, and linked HDFC ERGO policy PDF. Corrected launch date, cleared unsupported single-network/tier and residency, removed an unsupported SmartBuy accrual cap and incorrect insurance reward exclusion. Current sourcing is discontinued; linked insurance policy is expired 22-Jul-2026 and current wording/limits remain unverified. See regalia/issuer-extract-2026-10-27.md."
   },
   "diners-black": {
     "slug": "diners-club-black-metal-edition-credit-card",
@@ -53,12 +66,13 @@
     "pdfs": [
       "diners-black/diners-club-golf-t-and-c.pdf",
       "diners-black/diners-club-metal-tandc.pdf",
-      "diners-black/insurance.pdf"
+      "diners-black/insurance.pdf",
+      "diners-black/lounge-tnc.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf"
     ],
-    "note": ""
+    "note": "Rechecked 2026-10-27 against current product/fees/eligibility pages, HDFC personal MITC v4.15, 1-Jun-2026 card terms, lounge terms dated 8-Dec-2025 and current insurance policy effective 23-Jul-2026 to 22-Jul-2027. Exact launch and legacy 2014 effective dates remain unverified; partner-specific transfer ratios were not refreshed."
   },
   "diners-privilege": {
     "slug": "diners-privilege-credit-card",
@@ -66,22 +80,27 @@
     "pdfs": [
       "diners-privilege/diners-privilege-lounge-tnc.pdf",
       "diners-privilege/diners-privilege-tnc-2026.pdf",
+      "diners-privilege/diners-privilege-product-feature-change.pdf",
+      "diners-privilege/diners-privilege-update-faq-and-tnc.pdf",
       "diners-privilege/diners_privilege_insurance_policy.pdf",
+      "diners-privilege/diners_privilege_insurance_policy-2025-26.pdf",
       "diners-privilege/diners_privilege_tnc.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf"
     ],
-    "note": ""
+    "note": "Reviewed 2026-10-27 against current product, fee and eligibility pages, June-2026 card T&C, May-2026 product-change notice, July-2026 lounge voucher terms, current personal MITC v4.15, and current insurance policy effective 23-Jul-2026 to 22-Jul-2027. Exact launch date and residence criterion remain unverified. Salaried gross/net threshold and INR 100/199 reissue fee conflicts are documented."
   },
   "diners-rewardz": {
     "slug": "diners-club-rewardz-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/diners-club-rewardz-credit-card",
     "pdfs": [
-      "diners-rewardz/terms-and-conditions.pdf"
+      "diners-rewardz/terms-and-conditions.pdf",
+      "diners-rewardz/fees-and-charges-june-2025.pdf",
+      "diners-rewardz/hdfc-card-changes-effective-2026-05-15.pdf"
     ],
     "shared": [],
-    "note": ""
+    "note": "Rechecked 2026-10-27 against current product/fees pages, the May-2026 changes notice, and card-specific 2025 tariff. Live page says 3% forex vs older tariff 3.5%; conflict documented. New applications are closed; exact launch date/residency criterion remain unverified."
   },
   "millennia": {
     "slug": "millennia-credit-card",
@@ -91,12 +110,15 @@
       "millennia/faq-millennia.pdf",
       "millennia/lounge-voucher-on-millennia-credit-card.pdf",
       "millennia/millennia-tnc-25th apr'25.pdf",
-      "millennia/quarterly-spends-milestone-program.pdf"
+      "millennia/quarterly-spends-milestone-program.pdf",
+      "millennia/millennia-tnc-20th-jul26.pdf",
+      "millennia/hdfc-millennia-launch-2019-08-22.pdf",
+      "millennia/hdfc-credit-card-fd-pricing-mid.pdf"
     ],
     "shared": [
       "_shared/mitc-in-english.pdf"
     ],
-    "note": ""
+    "note": "Reviewed 2026-10-27 against current product/fee/eligibility pages, card T&C linked 20-Jul-2026 (whose inner pages retain Apr-2025 publication dates), Dec-2025 personal MITC, and HDFC launch release dated 22-Aug-2019; HDFC FD-lien pricing MID lists Millennia on Visa (variant-level network evidence). Corrected unsupported launch date, removed unsupported network tier and blanket MCC 6540 exclusion, and documented conflicts in finance rate, headline eligibility, gift/voucher MCC treatment and over-cap base earning. Direct lounge access ended Dec-2023; milestone and HOI voucher continue. Effective dates in schema use launch anchor where issuer does not publish the current row's start date."
   },
   "moneyback-plus": {
     "slug": "moneyback-plus-credit-card",
@@ -104,12 +126,13 @@
     "pdfs": [
       "moneyback-plus/14jan-fees-charges.pdf",
       "moneyback-plus/MBPlus-TnCs.pdf",
-      "moneyback-plus/mbp_faqs.pdf"
+      "moneyback-plus/mbp_faqs.pdf",
+      "moneyback-plus/hdfc-moneyback-plus-relaunch-2021-09-29.pdf"
     ],
     "shared": [
       "_shared/mitc-in-english.pdf"
     ],
-    "note": ""
+    "note": "Reviewed 2026-10-27 against current card, fees and eligibility pages, 15-May-2026 card T&C, 25-Sep-2025 FAQ, personal MITC, May-2026 change notice and HDFC's Sep-2021 card relaunch release. No primary source established the original launch date or current network/tier variant; these are null. Corrected cashback redemption cap to 50,000 points/month per current linked terms while documenting the stale 3,000 product-page figure; preserved net-vs-gross salaried-income and finance-charge conflicts."
   },
   "freedom": {
     "slug": "freedom-credit-card",
@@ -119,14 +142,18 @@
       "freedom/part-i-key-fact-statement-cum-most-important-terms-and-conditions-for-credit-cards.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf",
+      "_shared/hdfc-card-changes-effective-2026-05-15.pdf"
     ],
-    "note": ""
+    "note": "Reviewed 2026-10-27 against current product, fees and eligibility pages, Freedom T&Cs dated 15-May-2026, current personal MITC v4.15 and HDFC May-2026 changes notice. Cleared unsupported launch date, single network/tier and resident-only claim; documented conflicting income thresholds and Swiggy Dineout offer terms."
   },
   "pixel-play": {
     "slug": "pixel-play-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card",
     "pdfs": [
+      "pixel-play/terms-and-conditions-pixel-play-credit-card-08072026.pdf",
+      "pixel-play/MITC-PIXEL-Credit-Card-12Aug-26-1-retrieved-2026-10-27.pdf",
+      "pixel-play/hdfc-pixel-launch-2024-05-14.pdf",
       "pixel-play/terms-and-conditions-pixel-play-credit-card-15042026.pdf",
       "pixel-play/FD_CC_Lien_Online.pdf",
       "pixel-play/mitc-telugu.pdf",
@@ -154,12 +181,14 @@
     "shared": [
       "_shared/mitc-in-english.pdf"
     ],
-    "note": ""
+    "note": "Reviewed 2026-10-27 against current PIXEL Play page, 30-Jul-2026 specific terms, current PIXEL MITC updated 15-Oct-2026, October-2026 pricing MID and HDFC launch release dated 14-May-2024. Corrected launch date proxy and cleared single RuPay/Select designation because standard issue is both networks. Corrected selected-pack/e-commerce over-cap treatment to no CashPoints. Preserved current 15,000-point base cap, stale expired Dineout offer terms, current product-page promotion and eligibility uncertainty."
   },
   "pixel-go": {
     "slug": "pixel-go-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card",
     "pdfs": [
+      "pixel-go/MITC-PIXEL-Credit-Card-12Aug-26-1-retrieved-2026-10-27.pdf",
+      "pixel-go/hdfc-pixel-launch-2024-05-14.pdf",
       "pixel-go/pay-in-parts-terms-and-condition.pdf",
       "pixel-go/pixel-fd-backed-cards-faqs-23-feb-2026.pdf",
       "pixel-go/pixel-go-credit-card-member-agreement.pdf",
@@ -170,16 +199,20 @@
     "shared": [
       "_shared/mitc-in-english.pdf"
     ],
-    "note": ""
+    "note": "Reviewed 2026-10-27 against current PIXEL Go page, current Pixel MITC updated 15-Oct-2026, product-specific terms, eligibility FAQ and dated 14-May-2024 PIXEL launch release. Corrected launch date; network and tier are null because standard issuance is both RuPay and Visa and applicant network choices vary. Current MITC caps 1% other-spend CashPoints at 15,000/month despite live page/older terms saying unlimited. Documented Swiggy Dineout 10% vs FAQ up-to-20%/31-Dec-2026 wording conflict, age and eligibility uncertainties."
   },
   "upi-rupay": {
     "slug": "hdfc-bank-upi-rupay-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/hdfc-bank-upi-rupay-credit-card",
     "pdfs": [
-      "upi-rupay/Terms-and-Conditions-HDFC-Bank-UPI-RuPay-Credit-Card-27032025.pdf"
+      "upi-rupay/Terms-and-Conditions-HDFC-Bank-UPI-RuPay-Credit-Card-27032025.pdf",
+      "upi-rupay/Terms-and-Conditions-HDFC-Bank-UPI-RuPay-Credit-Card-retrieved-2026-10-27.pdf"
     ],
-    "shared": [],
-    "note": ""
+    "shared": [
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf",
+      "_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf"
+    ],
+    "note": "Current card and fee pages rechecked 2026-10-27; archived current card T&Cs and HDFC personal MITC v4.15. Card-specific Fees & Charges page says 3.6% monthly interest while current MITC says 3.75% for other variants; recorded unresolved."
   },
   "swiggy-hdfc": {
     "slug": "swiggy-hdfc-bank-credit-card",
@@ -190,12 +223,14 @@
       "swiggy-hdfc/card-member-agreement-swiggy-hdfc-bank-credit-card-1.pdf",
       "swiggy-hdfc/card-member-agreement-swiggy.pdf",
       "swiggy-hdfc/faqs-swiggy.pdf",
-      "swiggy-hdfc/terms-and-conditions-swiggy-hdfc-bank-credit-card-26052026.pdf"
+      "swiggy-hdfc/terms-and-conditions-swiggy-hdfc-bank-credit-card-18092026.pdf",
+      "swiggy-hdfc/hdfc-swiggy-launch-2023-07-26.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf",
+      "_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf"
     ],
-    "note": ""
+    "note": "Reviewed 2026-10-27 against current product, fees and eligibility pages, 18-Sep-2026 card terms, current MITCs and the dated 26-Jul-2023 launch release. Corrected launch date, cashback scope, redemption settlement, unsupported residency, welcome promotion and Dineout birthday offer; documented 30/37-day welcome and DCC fee conflicts."
   },
   "swiggy-ornge": {
     "slug": "swiggy-ornge-hdfc-bank-credit-card",
@@ -207,10 +242,12 @@
       "swiggy-ornge/card-member-agreement-swiggy.pdf",
       "swiggy-ornge/combined-tncs-ornge-and-blck.pdf",
       "swiggy-ornge/fyf-offer-tncs.pdf",
-      "swiggy-ornge/tncs-swiggy-orange.pdf"
+      "swiggy-ornge/tncs-swiggy-orange.pdf",
+      "swiggy-ornge/swiggy-orange-retrieved-2026-10-26.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-in-english.pdf",
+      "_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf"
     ],
     "note": ""
   },
@@ -223,30 +260,45 @@
       "swiggy-blck/5-percent-cashback-details-swiggy-black-credit-card.pdf",
       "swiggy-blck/card-member-agreement-swiggy.pdf",
       "swiggy-blck/combined-tncs-ornge-and-blck.pdf",
-      "swiggy-blck/t-and-cs-swiggy-black-hdfc-bank-credit-card.pdf"
+      "swiggy-blck/combined-tncs-ornge-and-blck-15102026.pdf",
+      "swiggy-blck/t-and-cs-swiggy-black-hdfc-bank-credit-card.pdf",
+      "swiggy-blck/tncs-swiggy-blck-hdfc-bank-credit-card-15102026.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf",
+      "_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf"
     ],
-    "note": ""
+    "note": "Reviewed 2026-10-27 against HDFC's live product/eligibility page, 15-Oct-2026 BLCK and Ornge/BLCK terms, current Personal MITC v4.15, co-branded MITC v3.9, and Mastercard World golf program. Added 12-Mar-2026 launch date, cleared unsupported resident-only claim, confirmed current Mastercard World network tier, fees, caps and terms. Shared annual cashback cap is INR 4,000; the category caps sum to the same limit. MCC 5816 vs 7995 gaming exclusion and limited-time Cleartrip/Nykaa offers are documented. Swiggy/HDFC launch announcement is archived at swiggy-blck/swiggy-hdfc-launch-2026-03-12.html and field comparison at swiggy-blck/issuer-extract-2026-10-27.md. Mastercard's CDN denied direct PDF download, so its current linked World golf page is referenced without a local PDF copy."
   },
   "marriott-bonvoy": {
     "slug": "marriott-bonvoy-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card",
-    "pdfs": [],
-    "shared": [
-      "_shared/mitc-in-english.pdf"
+    "pdfs": [
+      "marriott-bonvoy/terms-and-condition-retrieved-2026-10-27.pdf",
+      "marriott-bonvoy/lounge-terms-and-condition.pdf",
+      "marriott-bonvoy/golf-access-terms-and-conditions.pdf",
+      "marriott-bonvoy/insurance-cover-summary.pdf",
+      "marriott-bonvoy/hdfc-ergo-payment-protection-package-policy-wording.pdf"
     ],
-    "note": ""
+    "shared": [
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf",
+      "_shared/hdfc-card-changes-effective-2026-05-15.pdf"
+    ],
+    "note": "Reviewed 2026-10-27 against the current product, eligibility and fee pages, 19-Oct-2026 card terms, lounge/golf terms, insurance summary and Diners Club launch release. Corrected launch date, cleared unsupported network tier, refreshed current terms, and replaced stale insurance-expiry note with active-to-22-Jul-2027 cover details and conditions. Local HTML snapshots include card/eligibility pages and launch announcement."
   },
   "indianoil": {
     "slug": "indianoil-hdfc-bank-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
-    "pdfs": [],
-    "shared": [
-      "_shared/mitc-in-english.pdf"
+    "pdfs": [
+      "indianoil/T-and-C-Indian-Oil-Credit-Card.pdf",
+      "indianoil/fees-and-charges-updated-2025-03-14.pdf",
+      "indianoil/launch-release-2019-09-25.pdf"
     ],
-    "note": ""
+    "shared": [
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf",
+      "_shared/hdfc-card-changes-effective-2026-05-15.pdf"
+    ],
+    "note": "Reviewed 2026-10-27 against current card/fees/eligibility pages, current card-specific Fuel Points T&Cs, Mar-2025 tariff, current personal MITC v4.15, May-2026 charge notice and 25-Sep-2019 joint launch release. Documented Visa/RuPay variants, interest/reissue/income conflicts and grocery MCC ambiguities."
   },
   "irctc-hdfc": {
     "slug": "irctc-credit-card",
@@ -256,38 +308,56 @@
       "irctc-hdfc/irctc-tnc-09-10-25.pdf",
       "irctc-hdfc/lounge.pdf",
       "irctc-hdfc/terms-and-conditions-irctc-hdfc-bank-credit-card.pdf",
-      "irctc-hdfc/terms-and-conditions.pdf"
+      "irctc-hdfc/terms-and-conditions.pdf",
+      "irctc-hdfc/launch-release-2023-03-01.pdf",
+      "irctc-hdfc/terms-and-conditions-current-2026-10-27.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-in-english.pdf",
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf",
+      "_shared/hdfc-card-changes-effective-2026-05-15.pdf"
     ],
-    "note": ""
+    "note": "Reviewed 2026-10-27 against the live card, fee, eligibility and redemption pages; linked May-2025 card-specific terms, current MITC, May-2026 fee notice, 1-Mar-2023 launch release and milestone transition. Corrected launch date and milestone cycle, removed unsupported RuPay Select tier and insurance exclusion, clarified EMI principal treatment; documented salary, welcome, expiry, insurance-cap and reissue-fee source conflicts."
   },
   "tata-neu-infinity": {
     "slug": "tata-neu-infinity-hdfc-bank-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
-    "pdfs": [],
-    "shared": [
-      "_shared/mitc-in-english.pdf"
+    "pdfs": [
+      "tata-neu-infinity/tata-neu-infinity-terms-updated-2026-10-24.pdf",
+      "tata-neu-infinity/neu-pass-additional-5-percent-terms.pdf",
+      "tata-neu-infinity/domestic-lounge-terms.pdf",
+      "tata-neu-infinity/insurance-policy-2026-07-23-to-2027-07-22.pdf",
+      "tata-neu-infinity/tata-neu-hdfc-launch-2022-08-24.pdf",
+      "tata-neu-infinity/tata-neu-infinity-card-faq.pdf",
+      "tata-neu-infinity/tata-neu-infinity-terms-2024-08-14.pdf"
     ],
-    "note": ""
+    "shared": [
+      "_shared/mitc-v4.15-retrieved-2026-10-27.pdf"
+    ],
+    "note": "Reviewed both RuPay and Visa variants on 2026-10-27 against current HDFC product/eligibility pages, current 24-Oct-2026 and archived 14-Aug-2024 card terms, FAQ, NeuPass terms, lounge/insurance PDFs, Personal MITC v4.15 and dated launch release. The Visa record has no verified network tier and no valid variant-specific image; Visa Priority Pass terms differ from RuPay. Recorded FCY markup and historic fuel-cap source conflicts, historic merchant caps, and the future 25-Nov-2026 NeuCoin claim/expiry change."
   },
   "tata-neu-plus": {
     "slug": "tata-neu-plus-hdfc-bank-credit-card",
     "url": "https://www.hdfc.bank.in/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
     "pdfs": [
+      "tata-neu-plus/TATA_Neu_List_Brands-retrieved-2026-10-27.pdf",
       "tata-neu-plus/TATA_Neu_List_Brands.pdf",
       "tata-neu-plus/additional-upi-neucoins-plus-new.pdf",
       "tata-neu-plus/complimentary-domestic-airport-lounge-access-tata-neu-plus.pdf",
+      "tata-neu-plus/hdfc-tata-neu-launch-2022-08-24.pdf",
+      "tata-neu-plus/mitc-v4.15-retrieved-2026-10-27.pdf",
       "tata-neu-plus/milestone_lounge_tata-neu-cc.pdf",
+      "tata-neu-plus/tata-neu-pass-neucoins-tnc-retrieved-2026-10-27.pdf",
       "tata-neu-plus/tata-neu-pass-neucoins-tnc.pdf",
+      "tata-neu-plus/tata_neu_plus_card_faq-retrieved-2026-10-27.pdf",
       "tata-neu-plus/tata_neu_plus_card_faq.pdf",
+      "tata-neu-plus/tata_neu_plus_card_tnc-retrieved-2026-10-27.pdf",
       "tata-neu-plus/tata_neu_plus_card_tnc.pdf"
     ],
     "shared": [
       "_shared/mitc-in-english.pdf"
     ],
-    "note": ""
+    "note": "Current product/eligibility pages and terms updated 24-Oct-2026 rechecked 2026-10-27. Archived current card T&Cs, FAQ, eligible partner list, NeuPass terms, HDFC personal MITC v4.15, and Aug-24-2022 launch release. Future redemption claim change effective 25-Nov-2026 documented but not applied before its effective date."
   },
   "phonepe-uno": {
     "slug": "phonepe-hdfc-bank-uno-credit-card",
@@ -295,12 +365,16 @@
     "pdfs": [
       "phonepe-uno/phonepe-hdfc-bank-uno-cc-faqs.pdf",
       "phonepe-uno/phonepe-hdfc-bank-uno-cc-reward-points-tncs.pdf",
-      "phonepe-uno/phonepe-hdfc-bank-uno-credit-card-member-agreement.pdf"
+      "phonepe-uno/phonepe-hdfc-bank-uno-credit-card-member-agreement.pdf",
+      "phonepe-uno/uno-faqs-retrieved-2026-10-26.pdf",
+      "phonepe-uno/uno-reward-points-tncs-v-3-retrieved-2026-10-26.pdf",
+      "phonepe-uno/phonepe-hdfc-launch-release-2025-06-26.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-in-english.pdf",
+      "_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf"
     ],
-    "note": ""
+    "note": "Current product page, FAQ/reward terms, launch release and current co-branded MITC rechecked 2026-10-26. Issuer extract documents current offer, redemption and one-year/two-year expiry conflict."
   },
   "phonepe-ultimo": {
     "slug": "phonepe-hdfc-bank-ultimo-credit-card",
@@ -309,12 +383,16 @@
       "phonepe-ultimo/phonepe-hdfc-bank-ultimo-cc-faqs.pdf",
       "phonepe-ultimo/phonepe-hdfc-bank-ultimo-cc-reward-points-tncs.pdf",
       "phonepe-ultimo/phonepe-hdfc-bank-ultimo-credit-card-member-agreement.pdf",
-      "phonepe-ultimo/phonepe-ultimo-cc-lounge-access-t-and-cs.pdf"
+      "phonepe-ultimo/phonepe-ultimo-cc-lounge-access-t-and-cs.pdf",
+      "phonepe-ultimo/ultimo-faqs-retrieved-2026-10-26.pdf",
+      "phonepe-ultimo/phonepe-ultimo-cc-reward-points-t-cs-v-3-retrieved-2026-10-26.pdf",
+      "phonepe-ultimo/phonepe-hdfc-launch-release-2025-06-26.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-in-english.pdf",
+      "_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf"
     ],
-    "note": ""
+    "note": "Current pages and card-specific FAQ/reward T&Cs rechecked 2026-10-26. Issuer extract records the Aug-2026 welcome change and the 1-year/2-year point-expiry conflict."
   },
   "pine-labs-pro": {
     "slug": "pine-labs-pro-credit-card",
@@ -333,12 +411,15 @@
     "pdfs": [
       "shoppers-stop/SS-T-and-C-latest.pdf",
       "shoppers-stop/card-member-agreement-shoppers-stop.pdf",
-      "shoppers-stop/ss-faqs.pdf"
+      "shoppers-stop/ss-faqs.pdf",
+      "shoppers-stop/standard-terms-retrieved-2026-10-26.pdf",
+      "shoppers-stop/hdfc-shoppers-stop-launch-2022-03-30.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-in-english.pdf",
+      "_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf"
     ],
-    "note": ""
+    "note": "Current HDFC product page, card reward terms, fee waiver table and launch release reviewed 2026-10-26. Extract records terms and evidence paths."
   },
   "shoppers-stop-black": {
     "slug": "shoppers-stop-black-credit-card",
@@ -348,12 +429,15 @@
       "shoppers-stop-black/card-member-agreement-shoppers-stop-black.pdf",
       "shoppers-stop-black/shoppers-stop-black-product-aug-24.pdf",
       "shoppers-stop-black/ss-faqs.pdf",
-      "shoppers-stop-black/t-and-c-for-shoppers-stop-black.pdf"
+      "shoppers-stop-black/t-and-c-for-shoppers-stop-black.pdf",
+      "shoppers-stop-black/shoppers-stop-black-terms-retrieved-2026-10-26.pdf",
+      "shoppers-stop-black/hdfc-shoppers-stop-launch-2022-03-30.pdf"
     ],
     "shared": [
-      "_shared/mitc-in-english.pdf"
+      "_shared/mitc-in-english.pdf",
+      "_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf"
     ],
-    "note": ""
+    "note": "Current product, fees page, linked reward terms, launch release and co-branded MITC reviewed 2026-10-26. Issuer extract records weekend-offer, non-Shopper earn heading and redemption fee conflicts."
   },
   "6e-rewards": {
     "slug": "6e-rewards-indigo-hdfc-bank-credit-card",

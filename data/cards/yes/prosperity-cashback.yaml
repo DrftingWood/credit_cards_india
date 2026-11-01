@@ -1,114 +1,160 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-prosperity-cashback
 name: YES Bank Prosperity Cashback Credit Card
 image_path: /cards/yes/prosperity-cashback.webp
-issuer: "yes"
-network: mastercard
-network_tier: platinum
+issuer: 'yes'
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2019-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 999
-    annual_fee_inr: 999
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Welcome cashback ₹250. No published spend-based fee waiver."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/yes-prosperity-cashback-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 999
+  annual_fee_inr: 999
+  fee_waiver: null
+  forex_markup_pct: 3.4
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: YES BANK still lists the card in its public card catalogue. Current MITC
+    V18 lists INR999 joining and annual fees with no spend waiver, and sets APR at
+    3.99% monthly, cash advance at 2.5% or INR650 minimum (effective 15-Jun-2026),
+    and forex at 3.40%.
+  source:
+    url: https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf?download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 0.5
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: movies-grocery-utilities
-        canonical_categories: [entertainment, groceries, utilities]
-        multiplier: 10
-        effective_rate: 5
-        cap_per_cycle: 100
-        cap_unit: cashback-inr
-        cycle: statement
-        notes: "5% movies/grocery/utilities capped Rs100/cycle COMBINED."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "5% category cashback (movies/grocery/utility) subject to monthly caps"
-    redemption:
-      - type: statement-credit
-        program: Cashback
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/yes-prosperity-cashback-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 0.5
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    notes: Legacy YES BANK product page states 0.50% cashback on all eligible spends
+      other than fuel. Current bank catalogue continues to list the card, but current
+      card-specific reward terms were not retrievable; retain rate as issuer-published
+      historical/current listing evidence and flag details below.
+  accelerated:
+  - category: movies-grocery
+    canonical_categories:
+    - entertainment
+    - groceries
+    multiplier: 10
+    effective_rate: 5
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: Legacy issuer page states 5% cashback on movies and grocery; precise current
+      transaction threshold and cap could not be confirmed for this standard Cashback
+      variant. Do not infer the Cashback Plus variant limits.
+  - category: utility-bill-autopay
+    canonical_categories:
+    - utilities
+    multiplier: 10
+    effective_rate: 5
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: Legacy issuer page says utility bill payment through YES PayNow. Current
+      utility terms cap utility cashback at INR750 per statement cycle and give no
+      cashback once utility spend exceeds INR15,000; 5% AutoPay rule/cap of INR100
+      is published on Cashback Plus, not confirmed for standard Cashback.
+  exclusions:
+  - fuel
+  capping_rules:
+  - 'Current common terms: utility cashback capped INR750 per statement cycle and
+    no utility cashback if utility spend exceeds INR15,000 in that cycle. Cashback
+    variant-specific movie/grocery threshold/cap and utility PayNow cap are not confirmed
+    in current card-specific materials.'
+  redemption:
+  - type: statement-credit
+    program: Cashback
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://applycc.yes.bank.in/creditCardTemplates/yesProsperityCashBack.html
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    notes: Issuer legacy card template is indexed; direct open returned 503. See local
+      extract for limits and distinction from Cashback Plus.
+  notes: Issuer legacy card page states INR250 welcome cashback after INR2,500 total
+    spend within 30 days, 5% on movies/grocery and utility payments through YES PayNow,
+    0.50% on other spends except fuel. Current generic utility revision for Cashback/Cashback
+    Plus caps utility rewards at INR750/statement and excludes all utility spend after
+    INR15,000. The current detailed Cashback Plus page specifies movie/grocery transaction
+    threshold and 5% AutoPay utility cap, but those details were not transferred to
+    standard Cashback. Full current card-specific terms and its cashback subcaps remain
+    unverified.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Card activation"
-        benefit: "Welcome cashback ₹250"
-        value_inr: 250
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/yes-prosperity-cashback-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: INR2,500 total spend within 30 days of card issuance
+    benefit: INR250 cashback
+    value_inr: 250
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 100
+    cycle: statement
+    notes: Current MITC V18 effective 15-Jun-2026; fuel surcharge GST is not waived.
+  concierge: null
+  source:
+    url: https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf?download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
+    - benefits.concierge
+  notes: Issuer legacy page advertises INR250 welcome cashback after INR2,500 total
+    spend within 30 days. No lounge access or concierge benefit is listed for this
+    card in current issuer material reviewed. Current MITC fuel waiver is 1% on INR500?3,000
+    transactions, capped INR100 per statement cycle.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Public catalogue listing does not state card-specific age, income, bureau-score
+    or residency cutoffs; leave these unknown.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
 application:
-  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/yes-prosperity-cashback-credit-card
-
+  apply_url: null
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [entry, cashback, movies, groceries, utilities]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - cashback
+  - movies
+  - groceries
+  - utilities

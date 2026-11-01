@@ -1,17 +1,8 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-anq-phi
 name: YES Bank Anq Phi Credit Card
-issuer: "yes"
-network: mastercard
-network_tier: world
+issuer: 'yes'
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
@@ -19,88 +10,176 @@ co_brand:
   category: other
   partner_website: https://www.anq.co.in
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free (zero joining/renewal). Co-branded with Anq (fintech). Includes complimentary international lounge access."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/anq-phi-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 499
+  fee_waiver:
+    spend_inr: 120000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: Current MITC v18 (05-Oct-2026) lists NIL joining fee, INR499 annual fee, and waiver of the renewal
+    fee after INR120,000 spend in the preceding 12 months. The June-2026 issuer change notice sets forex
+    markup at 3.5% effective 15-Jun-2026; the current MITC fee table is ambiguous, displaying 3.4% and
+    3.5% for the Anq Phi row, so the explicitly dated change notice is followed; standard revolving finance
+    is 3.99% monthly. Cash advance charge is 2.5% or INR650 minimum effective 15-Jun-2026. Fees are subject
+    to GST. The effective date field is the verification snapshot; the issuer does not state an original
+    effective date for the current membership fees.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/anq-phi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/anq-phi/ybl-mitc-v18-2026-10-05.pdf
+    - docs/sources/yes/anq-phi/credit-card-features-june-2026.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Card page shows no joining fee and INR499 renewal fee; current MITC v18 supports fee-waiver
+      threshold, current APR and dated FX change notice and cash advance amount.
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 24
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: Anq Rewards
-        rate_inr_per_unit: 0.25
-    notes: "24 Reward Points per ₹200 spent (headline base rate). Exact point valuation"
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/anq-phi-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: YES Rewardz Points
+  base:
+    rate: 4
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+    notes: 4 points per INR200 on other eligible categories. Issuer says point value is up to INR0.25;
+      realized value depends on redemption channel.
+  accelerated:
+  - category: Phi accelerated categories
+    multiplier: 6
+    effective_rate: 24
+    cap_unit: points
+    notes: 24 points per INR200 for groceries, supermarkets, travel, dining, hotels, apparel, online entertainment,
+      digital goods and OTT. Issuer product guide describes reward earning as uncapped.
+  exclusions:
+  - fuel
+  - rent
+  - wallet-loads
+  - government
+  - insurance-premiums
+  - education
+  - emi
+  - cash-advance
+  - jewellery
+  mcc_exclusions: []
+  capping_rules:
+  - No general earning cap is stated in the issuer Anq Phi product guide.
+  - Current issuer-wide terms effective 15-Jun-2026 add exclusions for UPI, marketing/advertising, railways,
+    toll, ferry and other listed categories; the product guide also excludes utility/telecom bills, hospitals
+    and specified merchant categories.
+  redemption:
+  - type: catalog
+    program: YES Rewardz
+    rate_inr_per_unit: 0.25
+    constraints: 1 point is worth up to INR0.25. The current MITC charges INR100 + GST per redemption
+      request and INR99 + GST for flight bookings. Flight/hotel redemption is limited to 70% of invoice
+      value or 100,000 points per calendar month, whichever is lower; statement-credit and voucher redemptions
+      are subject to the current 50% available-points limit. Points expire after 3 years.
+  notes: Current snapshot checked 2026-10-26; exact original effective date of the current earn schedule
+    is not stated by the issuer.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/anq-phi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/anq-phi/ybl-mitc-v18-2026-10-05.pdf
+    - docs/sources/yes/anq-phi/credit-card-features-june-2026.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
+    notes: Current rendered issuer page and indexed official Phi product guide support the card-category
+      earn rates; current MITC v18 supports reward expiry, fees and redemption caps. The raw one-pager/fintech-MITC
+      URLs served a JavaScript shell rather than signed PDF bytes; extracts are documented locally.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access:
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/anq-phi-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-06-15'
+  effective_until: null
+  lounge_access:
+    international:
+      visits_per_cycle: 3
+      cycle: annual
+      guests_per_visit: 0
+      via: []
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 300
+    cycle: statement
+    notes: Current MITC v18 gives a 1% waiver for INR500?3,000 transactions; maximum waiver INR300 per
+      statement. Taxes on the surcharge are not waived.
+  concierge: null
+  other:
+  - name: Add-on cards
+    description: Up to 3 complimentary add-on cards, subject to issuer terms.
+    value_inr: null
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/anq-phi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/anq-phi/ybl-mitc-v18-2026-10-05.pdf
+    - docs/sources/yes/anq-phi/credit-card-features-june-2026.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+    notes: The current page confirms complimentary international lounge access; the issuer product guide
+      specifies three visits per calendar year and up to three add-on cards. Current MITC v18 confirms
+      revised fuel band and cap.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 500000
-    self_employed: 500000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: The reviewed current product page and card materials do not publish age, income, credit-score
+    or residency thresholds. No value is inferred from generic issuer criteria.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/anq-phi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    local_refs: []
+    fields_verified: []
+    notes: No card-specific eligibility cutoff was found in the reviewed current issuer page, product
+      guide or KFS.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/anq-phi-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, co-brand, lifetime-free, lounge]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - points
+  - co-brand
+  - lifetime-free
+  - lounge

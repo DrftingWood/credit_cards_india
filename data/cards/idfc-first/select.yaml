@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-select
 name: IDFC FIRST Select Credit Card
 image_path: /cards/idfc-first/select.webp
@@ -15,132 +6,219 @@ network: visa
 network_tier: signature
 tier: mid
 card_type: credit
-co_brand: null
+co_brand:
 status: active
-launched_on: 2021-01-01
-discontinued_on: null
-
+launched_on:
+discontinued_on:
 fees:
-  - effective_from: 2021-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free card (low-APR)."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/select
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2021-01-01
+  effective_until: '2026-09-16'
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver:
+  forex_markup_pct: 1.99
+  finance_charge_monthly_pct: 3.85
+  cash_advance_fee:
+  gst_applicable: true
+  notes: 'Lifetime-free. Current issuer APR is cardholder-specific within 0.71%-3.85% monthly (8.5%-46.2% p.a.); schema stores upper bound. Cash advance fee is flat INR199 + GST per transaction and is not representable in the percentage/minimum schema.'
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/select
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Forex markup was 1.99% before the bank-wide zero markup change effective 2026-09-17; current fee applies from that date.
+- effective_from: '2026-09-17'
+  effective_until:
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver:
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: 3.85
+  cash_advance_fee:
+  gst_applicable: true
+  notes: 'Lifetime-free; current issuer APR is cardholder-specific within 0.71%-3.85% monthly (8.5%-46.2% p.a.); schema stores upper bound. Cash advance fee is flat INR199 + GST per transaction and is not representable in the percentage/minimum schema.'
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/select
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: 'Zero forex markup announced for all IDFC FIRST credit cards effective 2026-09-17. Source: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/news-media/press-release/Press-Release-IDFC-FIRST-Bank-introduces-Zero-Forex-Markup-across-all-its-Credit-Cards-existing-and-new-1709.pdf'
 rewards:
-  - effective_from: 2021-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: incremental-monthly-above-20k
-        canonical_categories: [other]
-        multiplier: 3.33
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10X (10 RP per ₹150) on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000."
-      - category: utility-insurance-railway-fastag
-        canonical_categories: [utilities, insurance]
-        multiplier: 0.33
-        effective_rate: 1
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Reduced 1X (1 RP per ₹150) on utility bill payments, insurance premiums, railway spends and FASTag recharges."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
+- effective_from: '2026-01-18'
+  effective_until:
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 3
+    per_inr: 200
+    unit_value_inr: 0.25
+  accelerated:
+  - category: dining-travel-international-birthday
+    canonical_categories:
+    - dining
+    - travel
+    - international
+    multiplier: 3.333333
+    effective_rate: 10
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: '10X = 10 points per INR200 on dining, travel, international purchases and birthday spends. Dining MCCs 5812, 5813, 5814; travel MCCs 3000-3350, 3501-3853, 7011, 4511, 4722, 4723. Birthday spend does not map to a canonical merchant category.'
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/select
-      retrieved_on: 2026-07-03
-      type: issuer-page
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Select-Credit-Card.pdf
+      retrieved_on: '2026-10-26'
+      type: issuer-pdf
       confidence: high
-
-benefits:
-  - effective_from: 2021-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [loungekey]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 2
-    welcome:
-      - condition: "Spend ₹15,000 within 90 days"
-        benefit: "₹500 welcome voucher"
-        value_inr: 500
-        window_days: 90
-    insurance:
-      - type: personal-accident
-        sum_insured_inr: 1000000
-      - type: lost-card-liability
-        sum_insured_inr: 2500000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    movies:
-      type: discount
-      cycle: monthly
-      cap_inr: 250
-      notes: "25% off on movie tickets."
-    concierge: false
+  - category: utility-insurance-railway-fastag
+    canonical_categories:
+    - utilities
+    - insurance
+    multiplier: 0.333333
+    effective_rate: 1
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: '1 point per INR200 on utility, insurance, railway and FASTag spends. Railway/FASTag excluded from 10X threshold calculation; FASTag above INR10,000 and railway above INR25,000 per billing cycle incur 1% surcharge plus GST on total category spend.'
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/select
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Select-Credit-Card.pdf
+      retrieved_on: '2026-10-26'
+      type: issuer-pdf
+      confidence: high
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: FIRST Rewards Gallery
+    rate_inr_per_unit: 0.25
+    constraints: INR99 + GST convenience fee per redemption; points valid 24 months from credit date. Posted on statement generation only if MAD paid by due date.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/select
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[1].effective_rate
+    - rewards.exclusions
+    - rewards.redemption
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/select/product-guide-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/select/important-update-retrieved-2026-10-26.pdf
+  notes: 'Effective 2026-01-18, rewards base changed from 1 point/INR150 to 1/INR200. Product page conflicts: reward FAQ says points never expire, but the product details and separate expiry FAQ state 24 months; this record follows the explicit current validity term. Page FAQ says 10X threshold is >INR20,000, while product guide states 10X on monthly incremental spends above INR20,000; only the qualifying threshold amount gets 10X. FASTag and rail 1X under latest update. No rewards on fuel, EMI or cash withdrawals.'
+benefits:
+- effective_from: '2026-04-01'
+  effective_until:
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      via:
+      - visa
+    international:
+      visits_per_cycle: 0
+      cycle: annual
+      guests_per_visit: 0
+      via: []
+  welcome:
+  - condition: Spend INR5,000 within 30 days of card generation
+    benefit: INR500 voucher from selected brands
+    value_inr: 500
+    window_days: 30
+  - condition: First EMI transaction within 30 days of card generation
+    benefit: 5% cashback on first EMI transaction, capped at INR1,000
+    value_inr: 1000
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 300
+    cycle: monthly
+  movies:
+    type: discount
+    partner: District by Zomato
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 125
+    notes: Buy-one-get-one movie offer up to INR125, twice per month; INR20,000 spend in the preceding calendar month required.
+  other:
+  - name: Railway lounge access
+    description: Four complimentary railway lounge visits per calendar quarter after INR20,000 spend in the previous month; product update says current month activates next month. Eligibility wording varies across issuer page and guide. Present card and valid train ticket; network/validation conditions apply.
+    value_inr:
+  - name: Trip cancellation cover
+    description: Complimentary CFAR cover up to INR10,000 for eligible hotel and flight bookings; policy eligibility and claim limits apply.
+    value_inr: 10000
+  - name: Travel booking bonus points
+    description: 33% bonus points on hotel bookings and 13% on flight bookings through FIRST Rewards Gallery per current Select update; product page separately shows 20% and 10%, so active rates need confirmation.
+    value_inr:
+  - name: Roadside assistance
+    description: Complimentary roadside assistance; current product guide values service at INR1,399.
+    value_inr: 1399
+  concierge: false
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/select
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome
+    - benefits.movies
+    - benefits.other
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/select/product-guide-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/select/important-update-retrieved-2026-10-26.pdf
+  notes: 'Select product guide confirms one domestic airport visit and four railway lounge visits per quarter (railway threshold INR20,000 previous month); Select important update effective 2026-04-01 says airport spend INR20,000 in current month unlocks access next month. Product page FAQs conflict on current vs previous month. Product page says movie BOGO without clear INR cap, current product guide says up to INR125 twice monthly. Current Select update says 33% hotel/13% flight bonus, while product page says 20%/10%; benefit rate unresolved. Product usage guide also lists fuel surcharge waiver up to INR300/month; purchase amount limits shown in guide terms should be reconfirmed.'
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age:
+  max_age:
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 750
+    salaried: 1200000
+    self_employed: 1200000
+  credit_score_min:
   residency: resident-indian
-
+  notes: Product page states annual income of INR12 lakh or more, without publishing a distinct salaried/self-employed split. Same threshold is entered for both employment types; verify if issuer applies identical limits. Minimum age, nationality/residency detail beyond application page, and numeric bureau cutoff not published on current product page.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/select
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
+    method: manual-read
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/select
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [lifetime-free, points, online-spend, mid-tier]
+  last_verified_on: '2026-10-26'
+  tags:
+  - lifetime-free
+  - points
+  - travel
+  - mid-tier

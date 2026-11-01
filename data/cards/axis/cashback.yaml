@@ -1,172 +1,181 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: axis-cashback
+﻿id: axis-cashback
 name: Axis Bank Cashback Credit Card
 image_path: /cards/axis/cashback.webp
 issuer: axis
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-06-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-06-20
-    effective_until: null
-    joining_fee_inr: 1000   # ₹1000 + GST (card T&C sec 3)
-    annual_fee_inr: 1000    # ₹1000 + GST (card T&C sec 3)
-    fee_waiver:
-      spend_inr: 400000
-      cycle: annual
-      conditions: "Spend ₹4,00,000 or above in an anniversary year for annual fee waiver (Rent and Wallet MCCs excluded)."
-    forex_markup_pct: 3.5             # MITC: 3.50% for all other cards
-    finance_charge_monthly_pct: 3.0   # MITC finance charge (42.58% p.a.)
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/axis/_shared/mitc-credit-cards.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-
+- effective_from: 2025-06-20
+  effective_until: null
+  joining_fee_inr: 1000
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 400000
+    cycle: annual
+    conditions: Spend INR 400,000 or above in an anniversary year; settlement date is used. Rent, wallet loads and gift-card purchases do not count. Applicable to customers onboarded through the Axis portal on or after 1 June 2024.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.forex_markup_pct
+    notes: Current Cashback page confirms joining/annual fee INR 1,000, APR 3.75% monthly, cash advance 2.5% (minimum INR 500) and forex markup 3.5%. Axis generic revision effective 28 Aug 2026 sets DCC markup to 3.5%; other threshold-based service fees are listed on the product page and are not modeled in this fee schema.
 rewards:
-  - effective_from: 2025-06-20
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 0.75
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-      cap_per_cycle: "unlimited"
-      cap_unit: cashback-inr
-      cycle: monthly
-      # T&C sec 5 "Base Cashback": paid only "if the customer makes offline spends
-      # (POS/card present transactions) or spends on travel". The canonical buckets
-      # have no card-present axis, so only `travel` can be asserted — which is the
-      # conservative reading, and the one that matters here: online spend past the
-      # ₹4,000 accelerated cap earns NOTHING rather than falling back to 0.75%.
-      applies_to_categories: [travel]
-    accelerated:
-      - category: online-spends
-        # Scope is the transaction CHANNEL, not the merchant category. The member
-        # T&C defines "Online Qualifying Spends" as "all online spends (card not
-        # present) except travel MCCs and other MCC exclusions", and its own
-        # worked example routes an ONLINE grocery/supermarket purchase into the
-        # accelerated tier while an OFFLINE dining purchase falls to base. Food
-        # delivery, groceries and utilities bought card-not-present therefore
-        # qualify; only travel MCCs and the excluded-MCC list are carved out.
-        canonical_categories: [online, dining, groceries, utilities]
-        multiplier: 1
-        # `slabs` below is authoritative for value math. effective_rate stays at the
-        # TOP slab so consumers predating the slab primitive still see a number;
-        # ratesFlags surfaces it as a ceiling rather than a verified flat rate.
-        effective_rate: 7
-        slabs:
-          - upto_spend_inr: 5000
-            rate_pct: 2
-            max_value_inr: 100
-          - upto_spend_inr: 40000
-            rate_pct: 5
-            max_value_inr: 1750
-          - upto_spend_inr: null
-            rate_pct: 7
-            max_value_inr: 2150
-        cap_per_cycle: 4000
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: >-
-          Tiered on NET MONTHLY online (card-not-present) spend, marginal slabs, rates RISING with spend:
-          2% on the first ₹5,000 (max ₹100); 5% on ₹5,001–₹40,000 (max ₹1,750); 7% above ₹40,000 (max ₹2,150).
-          Total accelerated cap ₹4,000 per statement month, reached at ₹70,714 of qualifying monthly spend
-          (blended 5.66% at full utilisation). Verified against the Axis Bank Cashback Credit Card Member
-          Terms and Conditions PDF (created 2026-06-08), section 5 "Earn Cashback" and the worked examples
-          on pages 6-7. NOTE: the 0.75% base does NOT backstop online overflow — per the same section base
-          cashback is paid only on "offline spends (POS/card present transactions) or spends on travel", so
-          qualifying online spend beyond the ₹4,000 cap earns NOTHING. The schema cannot express either the
-          rising slabs or the channel-scoped base; see docs/TODO.md.
-      - category: utilities-bill-payments
-        canonical_categories: [utilities]
-        multiplier: 1
-        effective_rate: 0.5
-        cap_per_cycle: 100
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "0.5% cashback on utility bill payments, capped at ₹100 per month."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - government
-      - education
-      - jewellery
-      - emi
-    capping_rules:
-      - "Accelerated online cashback is tiered on net monthly spend: 2% to ₹5,000 (max ₹100), 5% on ₹5,001-₹40,000 (max ₹1,750), 7% above ₹40,000 (max ₹2,150)."
-      - "Total accelerated cap ₹4,000 per statement month, reached at ₹70,714 of qualifying spend."
-      - "Base 0.75% is paid ONLY on card-present (POS) spend and on travel; it does not apply to online spend, so online spend past the ₹4,000 cap earns nothing."
-      - "Utility bill-payment cashback (0.5%) capped at ₹100 per month (MCCs 4816, 4899, 4900)."
-      - "Excluded MCCs earn no cashback under any category: transportation & tolls, insurance, educational institutions, jewellery/precious metals/watches, government institutions, wallet, rent, fuel."
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-        constraints: "Cashback auto-credited before next statement with no minimum amount requirement."
-    source:
-      url: https://www.axis.bank.in/docs/default-source/default-document-library/axis-bank-cashback-credit-card-tnc.pdf
-      retrieved_on: 2026-07-28
-      type: issuer-pdf
-      confidence: high
-      notes: "Re-verified 2026-07-28 against the Member T&C PDF (created 2026-06-08). Corrections: accelerator scope is channel-based (card-not-present), not the `online` merchant bucket — the T&C worked example on page 6 routes an ONLINE grocery purchase into the accelerated tier and an OFFLINE dining purchase to base, so food delivery and online groceries qualify. Rate is a rising 3-slab schedule (2/5/7%), not a flat 7%. Base 0.75% is card-present + travel only."
-
-    mcc_exclusions: ['6513']
+- effective_from: 2025-06-20
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 0.75
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+    applies_to_categories:
+    - travel
+    notes: Issuer terms award 0.75% on all eligible card-present/POS transactions and travel (online or offline). The category model cannot represent transaction channel, so this record encodes travel only; offline non-travel cashback is therefore omitted by calculator projections.
+  accelerated:
+  - category: online-spends
+    canonical_categories:
+    - online
+    - dining
+    - groceries
+    - utilities
+    multiplier: 1
+    effective_rate: 7
+    slabs:
+    - upto_spend_inr: 5000
+      rate_pct: 2
+      max_value_inr: 100
+    - upto_spend_inr: 40000
+      rate_pct: 5
+      max_value_inr: 1750
+    - upto_spend_inr: null
+      rate_pct: 7
+      max_value_inr: 2150
+    cap_per_cycle: 4000
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 'Marginal tiers on net statement-month online (card-not-present) spend: 2% on first INR 5,000 (max INR 100), 5% on the next INR 35,000 (max INR 1,750), and 7% above INR 40,000 (max INR 2,150); total accelerated cashback is capped at INR 4,000 per statement month. The current schema supports these slabs. Base cashback does not backstop online spend after this cap: base is limited to card-present/POS spend or travel. Cashback rounds down per transaction. Net spend includes purchases, reversals and EMI conversions; later reversals/conversions can debit cashback, including a negative net cashback adjustment. The calculator does not model transaction-level rounding or reversal timing.'
+  - category: utilities-bill-payments
+    canonical_categories:
+    - utilities
+    multiplier: 1
+    effective_rate: 0.5
+    cap_per_cycle: 100
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 0.5% cashback on utility bill payments, capped at INR 100 per statement, for MCCs 4816, 4899 and 4900. MCC 4814 telephone bill payments receive base or online accelerated cashback according to channel, not this separate utility bonus.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - government
+  - education
+  - jewellery
+  - emi
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
+  - cash-advance
+  capping_rules:
+  - 'Accelerated online cashback tiers on net statement-month spend: 2% to INR 5,000, 5% through INR 40,000, then 7%; individual tier maxima INR 100, INR 1,750 and INR 2,150.'
+  - Total accelerated cashback cap is INR 4,000 per statement month; base cashback does not apply to online overflow.
+  - 'Net spend includes purchases, reversals and EMI conversions. Later returns, cancellations, reversals or EMI conversions may debit cashback; a negative net spend can produce a debit.'
+  - Cashback rounds down per transaction; utility bonus is 0.5% up to INR 100 per statement on MCCs 4816, 4899 and 4900. MCC 4814 telephone bill payments earn channel-based base/accelerated cashback.
+  - 'Reward exclusions are category-based (bridge/road fees and tolls, insurance, education, jewellery/precious metals/watches, government, wallet, rent, fuel and gift cards); exact category MCCs are not published in the card-specific terms.'
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+    constraints: Cashback auto-credited before next statement with no minimum amount requirement.
+  source:
+    url: https://www.axis.bank.in/docs/default-source/default-document-library/axis-bank-cashback-credit-card-tnc.pdf?sfvrsn=d015df26_5
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/axis/cashback/axis-bank-cashback-credit-card-tnc.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].accelerated[0].slabs
+    - rewards[0].accelerated[0].cap_per_cycle
+    - rewards[0].accelerated[1].effective_rate
+    - rewards[0].accelerated[1].cap_per_cycle
+    - rewards[0].exclusions
+    - rewards[0].redemption
+    notes: Current card-specific Member Terms PDF version d015df26_5 reviewed 2026-10-27. Reward exclusions are category-based, with no exact MCC table for those categories published in this card-specific PDF; utility bonus MCCs and travel MCCs are published. Axis generic revision effective 28 Aug 2026 separately classifies gift cards outside Wallet and excludes gift-card purchases from rewards and spend-based fee waivers.
 benefits:
-  - effective_from: 2025-06-20
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver: null   # Confirmed not applicable (card T&C sec 7; MITC refund not applicable on Cashback Card)
-    welcome:
-      - condition: "First transaction within 30 days of card issuance."
-        benefit: "EDGE Reward Points worth ₹1,000."
-        value_inr: 1000
-        window_days: 30
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2025-06-20
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver: null
+  welcome:
+  - condition: First transaction within 30 days; available to new-to-card customers who paid the joining fee. Existing Cashback cardholders and card swaps excluded.
+    benefit: EDGE Reward Points worth â‚¹1,000.
+    value_inr: 1000
+    window_days: 30
+  concierge: false
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits[0].welcome[0].benefit
+    - benefits[0].welcome[0].value_inr
+    - benefits[0].welcome[0].window_days
+    - benefits[0].dining
+    notes: Welcome benefit is 5,000 EDGE Reward Points worth INR 1,000, first spend within 30 days, for paid joining-fee customers; one-time for the primary cardholder, unavailable on swaps/existing Cashback holders. The product page also advertises Axis Bank Dining Delights; exact discount/offer terms for this card are not stated, so the dining discount is unknown.
+  dining:
+    program: Axis Bank Dining Delights
+    discount_pct: null
+    notes: Product page advertises the program and links general EazyDiner terms; no Cashback-specific discount or detailed eligibility/offer terms are specified on the card page.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Product-specific issuer criteria give age 18-70 and Indian residency; income and credit-score thresholds are not published. Approval remains at the bank's discretion.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/cashback-credit-card
-
 metadata:
-  last_verified_on: 2026-07-28
-  tags: [cashback, online, entry]
+  last_verified_on: 2026-10-27
+  tags:
+  - cashback
+  - online
+  - entry

@@ -1,4 +1,4 @@
-id: amex-platinum-reserve
+﻿id: amex-platinum-reserve
 name: American Express Platinum Reserve Credit Card
 image_path: /cards/amex/platinum-reserve.png
 issuer: amex
@@ -8,183 +8,199 @@ tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2005-01-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2005-01-01
+- effective_from: 2026-10-27
   effective_until: null
   joining_fee_inr: 10000
   annual_fee_inr: 10000
-  fee_waiver: null
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+    conditions: 100% renewal-fee waiver after INR 10,00,000 total spend on this card in the immediately preceding membership year.
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.5
   cash_advance_fee:
     pct: 3.5
     min_inr: 250
+  late_payment_slabs: null
   gst_applicable: true
+  notes: 'Current standard Option 2 terms: INR 10,000 first-year and renewal fees; 100% renewal waiver after INR 10 lakh
+    spend in immediately preceding membership year. The separate Reserve Option 1 has INR 50,000 lifetime foundation
+    fee plus INR 10,000 annual maintenance; this record models Option 2. Issuer schedule updated 31 Aug 2025 lists
+    3.5% monthly finance, 3.5% cash advance fee (minimum INR 250), and late fee 30% of minimum due (minimum INR 500,
+    maximum INR 1,000). The issuer does not state when current terms became effective; effective_from is the evidence
+    snapshot date required by schema.'
   source:
     url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    confidence: medium
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.fee_waiver.conditions
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.late_payment_slabs
+    notes: 'Current product page supports INR 10,000 first-/renewal-year fee and INR 10 lakh full waiver. Official
+      schedule updated 31 Aug 2025 supports 3.5% monthly finance, 3.5% forex, 3.5% cash fee/INR 250 minimum and
+      30%-of-MAD late fee capped INR 500-1,000. Option 1 is a separate INR 50,000 lifetime foundation fee plus
+      INR 10,000 annual maintenance; this record models Option 2. Effective date of current terms is not published.'
 rewards:
-- effective_from: 2005-01-01
+- effective_from: 2026-10-27
   effective_until: null
   currency: points
   currency_name: Membership Rewards
   base:
     rate: 1
-    per_inr: 40
-    unit_value_inr: 0.55
-    unit_value_inr_realized: 0.45
+    per_inr: 50
+    unit_value_inr: null
+    unit_value_inr_realized: null
   exclusions:
   - fuel
-  - wallet-loads
   - insurance-premiums
-  - emi
   - cash-advance
   - utilities
+  capping_rules:
+  - No points on merchant-selected/POS EMI; SafeKey EMI and post-purchase EMI continue earning points. No points on cash transactions, fuel, insurance or utility payments.
   mcc_exclusions:
   - '6513'
   redemption:
   - type: statement-credit
-    rate_inr_per_unit: 0.25
+    constraints: Redemption is available through Select & Pay; no current INR-per-point value is established in
+      the cited product terms.
   - type: airmiles
-    program: Multiple (MR transfer)
-    ratio: '2:1'
-    constraints: '8 transfer partners; ratios are card-point : partner-unit. realized
-      Rs 0.45 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7
-      partners beat the floor. Full per-partner values below.'
-    transfer_partners:
-    - partner_name: Marriott Bonvoy
-      partner_type: hotel
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.55/pt
-    - partner_name: Hilton Honors
-      partner_type: hotel
-      transfer_ratio: '1:0.9'
-      last_verified_on: '2026-07-05'
-      notes: 1:0.9 -> ~Rs 0.32/pt [below floor — avoid]
-    - partner_name: Singapore KrisFlyer
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.55/pt
-    - partner_name: Emirates Skywards
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.45/pt
-    - partner_name: British Airways Avios
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.50/pt
-    - partner_name: Qatar Privilege Club (Avios)
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.50/pt
-    - partner_name: Virgin Atlantic Flying Club
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.50/pt
-    - partner_name: Cathay Asia Miles
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.47/pt
-    rate_inr_per_unit: 0.55
-  - type: voucher
-    program: Amex gift vouchers
-    rate_inr_per_unit: 0.5
+    program: Eligible airline and hotel loyalty programmes
+    constraints: Issuer lists points transfer as a redemption option; current partner ratios and redemption values
+      are not verified here.
   source:
     url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    notes: 'Encoded 2026-07-05, full-visibility model: every transfer partner is listed
-      with its own ratio and Rs/point. No blended or averaged value. realized = the
-      guaranteed non-transfer floor; face = the single best documented transfer (ceiling).
-      See transfer_partners for the complete per-partner spread. Earn rates unchanged.'
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.exclusions
+    - rewards.capping_rules
+    notes: Current product page lists 1 point per INR 50 and excludes fuel, insurance, utilities, cash transactions
+      and merchant/POS EMI. SafeKey EMI and post-purchase EMI continue earning. Merchant-specific Reward Multiplier
+      and RewardXcelerator offers are dynamic and are not represented as generic category earn. Current point value
+      and partner transfer ratios are not published on this product page. Effective date is not published.
 benefits:
-- effective_from: 2005-01-01
+- effective_from: 2026-10-27
   effective_until: null
   lounge_access:
     domestic:
-      visits_per_cycle: 8
+      visits_per_cycle: 12
       cycle: annual
-      guests_per_visit: 0
+      guests_per_visit: null
       via:
       - dreamfolks
+      notes: Limited to 3 complimentary visits per calendar quarter.
     international:
-      visits_per_cycle: 0
+      visits_per_cycle: 2
       cycle: annual
-      guests_per_visit: 0
+      guests_per_visit: null
       via:
       - priority-pass
-      notes: Priority Pass card fee waived; 2 complimentary visits per year as of
-        current revision. Paid thereafter.
-  golf:
-    rounds_per_cycle: 2
-    cycle: monthly
-    lessons_per_cycle: 2
+      notes: Two complimentary visits per calendar year; additional visits currently USD 35 per person per visit.
+        Priority Pass membership fee waived.
+  golf: null
   milestones:
   - spend_inr: 50000
     cycle: monthly
-    benefit: Movie or online-shopping vouchers worth ₹12,000/year on spending ₹50,000
-      every month
-    value_inr: 12000
+    benefit: INR 1,000 voucher each calendar month after enrollment; up to INR 12,000/year
+    value_inr: 1000
     reward_kind: voucher
     trigger_window: rolling
     is_repeatable: true
+  - spend_inr: 1000000
+    cycle: annual
+    benefit: 100% annual membership renewal fee waiver after INR 10 lakh spend in preceding membership year
+    value_inr: 10000
+    reward_kind: fee-waiver
+    trigger_window: anniversary-year
+    is_repeatable: false
   welcome:
-  - condition: Spend ₹30,000 within 90 days (1st year, on fee payment)
+  - condition: First year only; annual fee paid and INR 30,000 spend within first 90 days
     benefit: 11,000 bonus Membership Rewards points
-    value_inr: 4400
     window_days: 90
   insurance:
   - type: air-accident
     sum_insured_inr: 10000000
-  - type: travel-medical
-    sum_insured_inr: 5000000
-  fuel_surcharge_waiver:
-    pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 5000
-    cap_per_cycle_inr: 250
-    cycle: monthly
+    conditions: Up to INR 1 crore when eligible air ticket is purchased using this card; terms and exclusions apply.
+  - type: purchase-protection
+    sum_insured_inr: null
+    conditions: Eligible purchases covered for 60 days against specified theft and natural-calamity loss/damage;
+      per-claim and annual limits apply but are not published on the card page.
+  fuel_surcharge_waiver: null
   dining:
-    program: Amex Dining Partners
-    discount_pct: 25
+    program: EazyDiner Prime
+    discount_pct: 50
+    notes: Assured 25% to 50% discount at participating premium restaurants and bars; the actual discount varies by venue and offer terms.
   concierge: true
   other:
-  - name: Accor Plus Explorer membership
-    description: Complimentary ALL Accor Plus Explorer membership.
-  - name: Taj Epicure Plus membership
-    description: Complimentary Taj Epicure Plus enrolment.
-  - name: EazyDiner Prime membership
-    description: Complimentary EazyDiner Prime membership for 1 year.
+  - name: Lounge and golf conditions
+    description: 'Golf: up to 2 complimentary rounds per month at 30+ courses in India if INR 50,000 was spent in
+      the previous-previous calendar month. Lessons are discounted, not two complimentary lessons. Domestic lounge
+      visits are limited to 3 per quarter; Priority Pass allows 2 free international visits yearly.'
+  - name: Fuel convenience and HPCL benefit
+    description: Issuer advertises 0% surcharge on HPCL transactions below INR 5,000. BPCL/IOCL and other OMCs may
+      charge separate convenience fees; fee rates vary by operator.
+  - name: Voucher and partner benefits
+    description: Monthly vouchers require enrollment. Complimentary ALL Accor+ Explorer, Taj Epicure Plus, and EazyDiner
+      Prime memberships; their promotional face values are not treated as cash value here. EazyDiner advertises
+      25%-50% dining savings at participating venues.
+  - name: Application availability
+    description: Issuer currently says acceptance of new India applications is temporarily paused.
   source:
-    url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
-    retrieved_on: 2026-07-03
+    url: https://www.americanexpress.com/in/benefits/platinum-reserve-card/
+    retrieved_on: 2026-10-27
     type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.milestones.spend_inr
+    - benefits.milestones.value_inr
+    - benefits.welcome.window_days
+    - benefits.insurance.sum_insured_inr
+    - benefits.dining.discount_pct
+    - benefits.other.description
+    - benefits.welcome.condition
+    - benefits.welcome.benefit
+    notes: Current product page confirms welcome gift (11,000 points after annual-fee payment and INR 30,000 net spend in 90 days), monthly INR 1,000 voucher at INR 50,000 spend after enrollment (up to INR 12,000/year), INR 10 lakh renewal waiver, Priority Pass 2 free international visits/year then currently USD 35/person/visit, and domestic lounge schedule of 12/year limited to 3/quarter. Golf allows up to 2 visits/month after INR 50,000 spend two calendar months prior. HPCL fee is 0% below INR 5,000 and 1% at/above; EazyDiner discount varies 25%-50%. Effective 15 Nov 2026 milestone eligibility switches to transaction posting date with credit by month end. New applications are temporarily paused. Current page lists Accor+ Explorer, Taj Epicure and EazyDiner Prime.
 eligibility:
   min_age: 18
-  max_age: 70
+  max_age: null
   income_inr_annual:
     salaried: 600000
     self_employed: 600000
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-  notes: Amex acceptance in India is narrower than Visa/Mastercard.
+  notes: Current issuer page lists resident Indian, over 18, personal annual income INR 6 lakh or more (salaried and self-employed), Indian bank account, good credit history/no payment defaults, serviceable-city residence, and over 12 months trading if self-employed. No numeric credit-score threshold is published.
+  source:
+    url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - super-premium
   - dining
   - amex
   - points
+

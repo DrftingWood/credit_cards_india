@@ -1,18 +1,14 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+#   Source     : SBI Card product page, current T&C/KFS and issuer launch release in docs/sources/sbi/flipkart/
+#   Verified   : 2026-10-27   Confidence: HIGH (issuer page + issuer PDFs)
 # ---------------------------------------------------------------------------
 id: sbi-flipkart
 name: Flipkart SBI Card
 image_path: /cards/sbi/flipkart.webp
 issuer: sbi
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
@@ -24,7 +20,7 @@ launched_on: 2025-08-26
 discontinued_on: null
 
 fees:
-  - effective_from: 2026-07-03
+  - effective_from: 2025-08-26
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 500
@@ -42,12 +38,15 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
       confidence: high
+      fields_verified: [fees.joining_fee_inr, fees.annual_fee_inr, fees.renewal_fee_inr, fees.fee_waiver.spend_inr, fees.forex_markup_pct, fees.finance_charge_monthly_pct, fees.cash_advance_fee.pct, fees.cash_advance_fee.min_inr, fees.supplementary_card_fee_inr]
+      local_refs: [docs/sources/sbi/flipkart/kfs-current.pdf, docs/sources/sbi/flipkart/flipkart-card-terms.pdf]
+      notes: "Current product page/MITC and May-2026 KFS confirm Rs.500 annual fee and Rs.3.5-lakh reversal threshold; KFS supplies common forex, finance and cash-advance charges. Add-on fee is NIL in the current card T&C."
 
 rewards:
-  - effective_from: 2026-07-03
+  - effective_from: 2025-08-26
     effective_until: null
     currency: cashback
     currency_name: Cashback
@@ -67,7 +66,7 @@ rewards:
         channel:
           class: cobrand-merchant
           merchants: [myntra]
-        notes: "7.5% Myntra capped Rs4,000/quarter (separate bucket)."
+        notes: "7.5% on eligible Myntra MIDs; capped at Rs.4,000 per calendar quarter in a separate bucket."
         cap_per_cycle: 4000
         cycle: quarterly
       - category: flipkart
@@ -75,72 +74,109 @@ rewards:
         multiplier: 5
         effective_rate: 5
         cap_unit: cashback-inr
-        merchants: [flipkart]
-        channel:
-          class: cobrand-merchant
-          merchants: [flipkart]
-        notes: "5% Flipkart capped Rs4,000/quarter."
+        notes: "5% on eligible Flipkart MIDs, including Shopsy and Flipkart Travel per current card terms; capped at Rs.4,000 per calendar quarter in a separate bucket."
         cap_per_cycle: 4000
         cycle: quarterly
+        merchants: [flipkart, shopsy]
+        channel:
+          class: cobrand-merchant
+          merchants: [flipkart, shopsy]
+      - category: cleartrip
+        canonical_categories: [travel, online]
+        multiplier: 5
+        effective_rate: 5
+        cap_unit: cashback-inr
+        cap_per_cycle: 4000
+        cycle: quarterly
+        merchants: [cleartrip]
+        channel:
+          class: third-party-ota
+          merchants: [cleartrip]
+        notes: "5% cashback on eligible Cleartrip MIDs, capped at Rs.4,000 per calendar quarter in a separate bucket."
       - category: preferred-select-merchants
-        canonical_categories: [online]
+        canonical_categories: [online, dining, travel]
         multiplier: 4
         effective_rate: 4
         cap_unit: cashback-inr
-        notes: "4% preferred merchants capped Rs4,000/quarter (separate bucket)."
+        merchants: [zomato, uber, netmeds, pvr]
+        channel:
+          class: cobrand-merchant
+          merchants: [zomato, uber, netmeds, pvr]
+        notes: "4% cashback at Zomato, Uber, Netmeds and PVR; capped at Rs.4,000 per calendar quarter in a separate bucket. Merchant-specific eligible MIDs apply."
         cap_per_cycle: 4000
         cycle: quarterly
+    exclusions: [fuel, wallet-loads, rent, government, utilities, insurance-premiums, education, jewellery, emi, cash-advance, gift-cards, financial-institutions, other]
+    capping_rules:
+      - "Myntra, Flipkart/Shopsy/Flipkart Travel, Cleartrip, and the four preferred merchants each have a separate Rs.4,000 cashback cap per calendar quarter. The 1% base cashback is unlimited."
+      - "Cashback is not earned on transactions below Rs.100; it is rounded down per transaction and credited two days after statement generation. Eligible partner MIDs are controlled by SBI Card and partners."
+      - "The current product page advertises a 12% Cleartrip benefit, but the detailed Cleartrip offer booklet available to this review expired 30-Jun-2026. Current discount amount, coupon and terms are not established; do not treat 12% as a verified active offer."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1
-        constraints: "Cashback auto-credited to the card statement."
+        constraints: "Cashback is directly credited to the SBI Card account two days after statement generation."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: '2026-10-27'
       type: issuer-page
       confidence: high
-      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
-    mcc_exclusions: ['6513']
+      fields_verified: [rewards.base, rewards.accelerated, rewards.exclusions, rewards.capping_rules, rewards.redemption, rewards.mcc_exclusions]
+      local_refs: [docs/sources/sbi/flipkart/flipkart-card-terms.pdf, docs/sources/sbi/flipkart/flipkart-launch-press-release.pdf]
+      notes: "Current cashback schedule and merchant list verified against SBI Card issuer release and card-specific T&C; the issuer release names the four preferred merchants and rates/caps. T&C provide cashback calculation, eligible MIDs, exclusions and MCCs."
+    mcc_exclusions: ['5172', '5541', '5542', '5983', '6513', '7349', '5051', '5094', '5944', '7631', '5111', '5192', '5942', '5943', '5947', '8211', '8220', '8241', '8244', '8249', '8299', '8351', '4900', '4814', '4816', '4899', '9399', '5960', '6300', '6381', '6540', '6541', '4011', '4112', '6011', '6012', '6051', '9311', '5816', '7993', '7994', '4225', '5962', '5963', '5964', '5965', '5966', '5968', '5969']
 benefits:
-  - effective_from: 2026-07-03
+  - effective_from: 2025-08-26
     effective_until: null
     welcome:
       - condition: "On fee realisation"
-        benefit: "₹250 Flipkart Gift Card"
+        benefit: "Flipkart e-Gift Voucher worth Rs. 250 within 60 days of fee realisation; voucher expires after one year."
         value_inr: 250
       - condition: "First transaction on Flipkart"
-        benefit: "₹1,000 additional benefit"
+        benefit: "Flipkart e-Gift Voucher worth Rs. 500 and Cleartrip voucher worth Rs. 500 after first Flipkart transaction within 30 days of card approval; only for applications through the Flipkart app."
         value_inr: 1000
+        window_days: 30
     fuel_surcharge_waiver:
       pct: 1.0
-      min_txn_inr: 500
+      min_txn_inr: null
       max_txn_inr: 4000
       cap_per_cycle_inr: 400
       cycle: statement
-      notes: "1% fuel surcharge waiver on transactions between ₹500 and ₹4,000 at all petrol pumps. Max ₹400 per statement cycle."
+      notes: "Current card-specific T&C state a 1% fuel surcharge waiver on eligible fuel transactions up to Rs.4,000; maximum waiver Rs.400 per statement cycle. No minimum transaction is stated in the current card terms."
     other:
       - name: "Cleartrip discount"
-        description: "12% off on Cleartrip travel bookings (see issuer T&C)."
-    concierge: false
+        description: "The current SBI Card page advertises a 12% Cleartrip benefit. The detailed Cleartrip offer T&C currently archived here expired 30-Jun-2026; the active coupon, booking categories, caps and eligibility are not verified."
+    concierge: null
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
       confidence: high
+      fields_verified: [benefits.welcome, benefits.fuel_surcharge_waiver, benefits.other]
+      local_refs: [docs/sources/sbi/flipkart/flipkart-launch-press-release.pdf, docs/sources/sbi/flipkart/flipkart-card-terms.pdf, docs/sources/sbi/flipkart/cleartrip-offer-terms.pdf]
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 300000
-    self_employed: 360000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Income and credit score requirements based on aggregator/tier consensus (not published on product page)."
-
+  notes: "Apply through Flipkart app or sbicard.com. SBI Card current issuance policy sets age 21-65 for salaried applicants and 25-70 for self-employed applicants; no card-specific minimum income or fixed credit-score cutoff is published. Approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-Issuance-and-conduct-of-credit-cards.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    local_refs: [docs/sources/sbi/flipkart/issuance-policy-current.pdf]
+    notes: "Current issuer policy gives occupation-specific age ranges and states approvals are based on SBI Card credit evaluation/underwriting. The policy gives no card-specific income threshold or fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html
 
 metadata:
-  last_verified_on: '2026-10-24'
-  tags: [co-branded, ecommerce, flipkart, mid-tier, cashback]
+  last_verified_on: '2026-10-27'
+  tags: [co-branded, ecommerce, flipkart, mid-tier, cashback, multi-network]

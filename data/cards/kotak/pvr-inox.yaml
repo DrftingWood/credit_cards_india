@@ -2,8 +2,8 @@ id: kotak-pvr-inox
 name: PVR INOX Kotak Credit Card
 image_path: /cards/kotak/pvr-inox.webp
 issuer: kotak
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -11,100 +11,155 @@ co_brand:
   category: other
   partner_website: https://www.pvrcinemas.com
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-26'
   effective_until: null
   joining_fee_inr: 0
   annual_fee_inr: 499
   fee_waiver: null
   forex_markup_pct: 3.5
-  finance_charge_monthly_pct: 3.5
+  finance_charge_monthly_pct: 3.75
   cash_advance_fee:
     pct: 2.5
-    min_inr: 300
+    min_inr: 500
   gst_applicable: true
-  notes: Zero joining fee; ₹499 annual. Replaces the discontinued PVR Gold/Platinum
-    Kotak cards.
+  notes: 'Current KFS version KFSPIO12032026: joining fee NIL, annual fee INR499, add-on annual fee INR299, no annual
+    fee waiver, 3.75% monthly finance charge, 3.5% foreign currency markup, cash advance 2.5% (minimum INR500).
+    KFS lists a 1% fuel transaction fee above INR35,000 per statement and no card-specific fuel surcharge waiver;
+    wallet, gaming, education, utility, rent and other fee schedules apply as listed in the KFS.'
   source:
-    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-credit-card.html
-    retrieved_on: 2026-07-03
-    type: issuer-page
-    confidence: medium
+    url: https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/key-fact-statement-kfs-pvr-inox.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/pvr-inox/kfs-pvr-inox-2026-10-26.pdf
+    - docs/sources/kotak/air/mitc-wealth-white-reserve-2026-10-26.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].supplementary_card_fee_inr
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    notes: KFS and current consolidated MITC; current product fee page confirms no annual fee waiver. No card-specific
+      fuel surcharge waiver is published in the current card material reviewed.
+    method: manual-read
+  supplementary_card_fee_inr: 299
 rewards:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-26'
   effective_until: null
   currency: points
-  currency_name: Reward Points
+  currency_name: null
   base:
     rate: 0
-    per_inr: 100
-    unit_value_inr: 0.0
-    unit_value_inr_realized: 0.0
-  exclusions:
-  - fuel
-  - wallet-loads
-  - rent
-  - insurance-premiums
-  - emi
-  mcc_exclusions:
-  - '6513'
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  exclusions: []
+  mcc_exclusions: []
   capping_rules:
-  - No ambient reward points; card value is delivered via monthly movie-ticket milestones
-    and PVR INOX discounts (see benefits).
-  redemption:
-  - type: voucher
-    program: PVR INOX movie tickets
-    rate_inr_per_unit: 0.25
+  - No general-purpose reward points are earned; PVR INOX M-Coupons are spend milestones, represented separately
+    under benefits.
+  redemption: []
   source:
     url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-credit-card.html
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
-    confidence: medium
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/pvr-inox/kfs-pvr-inox-2026-10-26.pdf
+    - docs/sources/kotak/air/mitc-wealth-white-reserve-2026-10-26.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    notes: The current card page and PVR-specific terms describe spend-based M-Coupon ticket milestones rather than
+      a general reward-point currency.
+    method: manual-read
+  accelerated: []
 benefits:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-26'
   effective_until: null
   lounge_access: null
   milestones:
   - spend_inr: 10000
     cycle: monthly
-    benefit: 1 PVR INOX movie ticket (worth ₹300) per ₹10,000 monthly spend; scales
-      up to 10 tickets at ₹1,05,000/month
+    benefit: One PVR INOX M-Coupon ticket for every INR10,000 of eligible billed spend in a monthly billing cycle;
+      each coupon value is capped at INR300. Redeem on the PVR app/site within 2 monthly billing cycles after qualifying;
+      coupon validity is 60 days after claim. One coupon covers one ticket; cardholder pays any ticket-price excess,
+      booking/convenience fees and taxes. Rent, wallet loading, online gaming, cash advances, fees, EMI, personal
+      loans and cancelled transactions do not qualify; settled transactions only. Terms reserve bank right to impose
+      a maximum ticket count, while the current product page shows continuing accrual ("and so on").
     value_inr: 300
     reward_kind: voucher
+    reward_units: 1
+    reward_currency_name: PVR INOX M-Coupon
     trigger_window: rolling
     is_repeatable: true
-    max_awards_per_cycle: 10
+    max_awards_per_cycle: null
   movies:
     type: discount
     partner: PVR INOX
+    max_per_cycle: null
     cycle: monthly
-    notes: 1 free movie ticket per ₹10,000 monthly spend; 20% off food & beverages;
-      5% off on movie tickets; access to premium PVR INOX lounges.
-  fuel_surcharge_waiver:
-    pct: 1.0
-    min_txn_inr: 500
-    max_txn_inr: 3000
-    cap_per_cycle_inr: 3500
-    cycle: annual
-  concierge: false
+    cap_inr: null
+    notes: Current issuer page advertises a 20% discount on food and beverages and 5% on movie tickets at PVR INOX
+      cinemas and on the PVR INOX app/site. Cardholders may enter PVR INOX in-cinema lounges without an entry charge;
+      purchases inside are at the cardholder's expense. These are cinema benefits, not airport lounge visits.
+  fuel_surcharge_waiver: null
+  concierge: null
   source:
     url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-credit-card.html
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/pvr-inox/kfs-pvr-inox-2026-10-26.pdf
+    - docs/sources/kotak/air/mitc-wealth-white-reserve-2026-10-26.pdf
+    fields_verified:
+    - benefits[0].milestones[0].spend_inr
+    - benefits[0].milestones[0].value_inr
+    - benefits[0].milestones[0].reward_units
+    - benefits[0].welcome[0].value_inr
+    - benefits[0].welcome[0].window_days
+    notes: Current card page documents monthly M-Coupon milestones, ticket value/claim validity, cinema discounts
+      and cinema-lounge entry. Current limited-time INR400 PVR voucher offer and conditions are at https://www.kotak.bank.in/en/offers/offer-details-netbank/1234583111/pvr-inox.html;
+      linked campaign PDF returned HTTP 403 when archived.
+    method: manual-read
+  welcome:
+  - condition: Limited-time campaign through 2026-12-31. Apply via the PVR app and receive card issuance; make a
+      transaction of INR500 within 30 days of issuance.
+    benefit: PVR voucher worth INR400
+    value_inr: 400
+    window_days: 30
+  surcharge_waivers: []
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 60
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
+  notes: Current card-specific issuer page lists primary cardholder age 21-60 and Indian residency. No card-specific
+    numeric income or credit-score cutoff found.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
+    notes: Card-specific eligibility terms.
+    method: manual-read
 application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-credit-card.html
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-10-26'
   tags:
   - entry
   - co-branded

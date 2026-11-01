@@ -2,8 +2,8 @@ id: rbl-irctc
 name: IRCTC RBL Bank Credit Card
 image_path: /cards/rbl/irctc.webp
 issuer: rbl
-network: mastercard
-network_tier: platinum
+network:
+network_tier:
 tier: entry
 card_type: credit
 co_brand:
@@ -11,14 +11,14 @@ co_brand:
   category: railway
   partner_website: https://www.irctc.co.in
 status: active
-launched_on: 2021-03-01
-discontinued_on: null
+launched_on:
+discontinued_on:
 fees:
-- effective_from: 2021-03-01
-  effective_until: null
+- effective_from: '2026-10-27'
+  effective_until:
   joining_fee_inr: 500
   annual_fee_inr: 500
-  fee_waiver: null
+  fee_waiver:
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.99
   cash_advance_fee:
@@ -26,18 +26,29 @@ fees:
     min_inr: 500
   gst_applicable: true
   source:
-    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url:
+      https://webassets.rbl.bank.in/document/Credit%20Cards/RBL-MITC-final.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
     confidence: high
+    method: pdf-extract
     local_refs:
-    - docs/sources/rbl/_shared/CardsScheduleCharges.pdf
+    - docs/sources/rbl/irctc/mitc-retrieved-2026-10-27.pdf
+    - docs/sources/rbl/irctc/schedule-charges-retrieved-2026-10-27.pdf
     fields_verified:
+    - fees.joining_fee_inr
     - fees.annual_fee_inr
     - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: INR500 first-year and renewal fee plus GST; no fee waiver is stated in
+    current schedule. Current MITC lists up to 3.99% monthly finance, cash
+    advance 2.5% minimum INR500, and 3.5% forex for standard cards. Effective
+    date denotes review snapshot.
 rewards:
-- effective_from: 2021-03-01
-  effective_until: null
+- effective_from: '2026-10-27'
+  effective_until:
   currency: points
   currency_name: IRCTC Reward Points
   redemption_scope: closed-loop
@@ -45,18 +56,18 @@ rewards:
   loyalty_program: irctc-loyalty
   base:
     rate: 1
-    per_inr: 125
+    per_inr: 200
     unit_value_inr: 1.0
     unit_value_inr_realized: 1.0
+    notes: One reward point is worth INR1 only for IRCTC train-ticket bookings;
+      not a universal cash value. Current card terms establish this closed-loop
+      use.
   accelerated:
-  - category: irctc-rail-bookings
+  - category: irctc-train-bookings
     canonical_categories:
     - travel
-    multiplier: 1
-    effective_rate: 10
-    card_attributable_rate: 10
-    card_attributable_per_inr: 100
-    stacks_with_program: false
+    multiplier: 5
+    effective_rate: 5
     cap_per_cycle: 1000
     cap_unit: points
     cycle: monthly
@@ -67,75 +78,208 @@ rewards:
       class: cobrand-merchant
       merchants:
       - irctc-direct
-    notes: 10 points per ₹100 spent on AC train ticket bookings via IRCTC portal/app.
-      Accelerated Reward Points capped at 1,000/monthly cycle; no RP beyond the cap
-      (RBL IRCTC FAQ).
-  - category: groceries-department-stores-utilities
+    notes: 5 points per INR200 on all-class train bookings via IRCTC
+      website/app; max 1,000 points per billing cycle.
+  - category: fastag-ncmc-uts
     canonical_categories:
-    - groceries
-    - utilities
-    multiplier: 1
-    effective_rate: 2
-    cap_per_cycle: unlimited
+    - travel
+    multiplier: 3
+    effective_rate: 3
+    cap_per_cycle: 1000
     cap_unit: points
     cycle: monthly
+    notes: 3 points per INR200 on FASTag recharge via RBL digital channels, NCMC
+      reload and UTS app; max 1,000 points per billing cycle.
+  - category: irctc-flight-hotel-bookings
+    canonical_categories:
+    - travel
+    multiplier: 2
+    effective_rate: 2
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - irctc
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - irctc-direct
+    notes: 2 points per INR200 on flights/hotels booked via IRCTC website/app;
+      max 1,000 points per billing cycle.
   exclusions:
   - fuel
-  - wallet-loads
+  - utilities
+  - insurance-premiums
   - rent
+  - education
+  - wallet-loads
+  - government
   - emi
+  - cash-advance
+  - other
   mcc_exclusions:
+  - '0032'
+  - '2541'
+  - '4001'
+  - '5542'
+  - '5541'
+  - '5172'
+  - '4900'
+  - '6300'
+  - '6310'
+  - '6050'
+  - '6051'
+  - '4829'
   - '6513'
+  - '8220'
+  - '8244'
+  - '8249'
+  - '8211'
+  - '8241'
+  - '8299'
+  - '6540'
+  - '9400'
+  - '1490'
+  - '2490'
+  - '2995'
+  - '7800'
+  - '9406'
+  - '9222'
+  - '9405'
+  - '9399'
+  - '9211'
+  - '9402'
+  - '9401'
+  - '9311'
+  - '9223'
+  - '1711'
+  - '1740'
+  - '0763'
+  - '1520'
+  - '0742'
+  - '1761'
+  - '1799'
+  - '1750'
+  - '1731'
+  - '1771'
+  - '0780'
+  - '6011'
+  - '6010'
+  - '5960'
   redemption:
   - type: voucher
     program: IRCTC
     rate_inr_per_unit: 1.0
-    constraints: Redeemable against IRCTC rail ticket bookings.
+    constraints: INR1 per point only when redeeming for train-ticket bookings on
+      IRCTC website/app via iPay. Other redemption channels may have different
+      values.
   source:
-    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
-    retrieved_on: 2026-07-05
-    type: issuer-page
-    notes: 'Research-verified: dedicated IRCTC Reward Point = Rs1 on rail fare (regulated
-      -> no premium). Min Rs200.'
+    url:
+      https://webassets.rbl.bank.in/document/credit-cards/tnc-irctc-rbl-bank-rupay-credit-card.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
     confidence: high
+    method: pdf-extract
+    local_refs:
+    - docs/sources/rbl/irctc/product-terms-retrieved-2026-10-27.pdf
+    - docs/sources/rbl/irctc/faqs-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.capping_rules
+    - rewards.redemption
+  capping_rules:
+  - 'Quarterly milestone: 500 reward points for INR75,000 eligible settled spend per
+    calendar quarter; excluded categories, fees/charges/GST, cash and EMI do not count.'
+  - RBL terms state one point = INR1 only for IRCTC rail ticket bookings; points
+    redeemed via IRCTC/iPay. No universal value for other reward catalog uses is
+    established.
 benefits:
-- effective_from: 2021-03-01
-  effective_until: null
+- effective_from: '2026-10-27'
+  effective_until:
   lounge_access:
     domestic:
-      visits_per_cycle: 8
-      cycle: annual
+      visits_per_cycle: 2
+      cycle: quarterly
       guests_per_visit: 0
       via:
       - issuer-direct
-      notes: Complimentary access to IRCTC Executive Lounges at select stations (2/quarter,
-        8/year).
+      notes: Two complimentary IRCTC executive railway lounge visits per
+        calendar quarter; primary cardholder only, must present valid card and
+        train ticket; select lounges subject to availability. INR2 RuPay or
+        INR25 Mastercard validation charge applies.
   fuel_surcharge_waiver:
-    pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 4000
-    cap_per_cycle_inr: 100
-    cycle: monthly
   other:
+  - name: Train ticket cancellation protection
+    description: Up to INR5,000 reimbursement for eligible domestic
+      confirmed/RAC train-ticket cancellation close to departure and qualifying
+      alternative train rebooking. One claim per 6 months, up to three claim
+      attempts. Ticket/cardholder/claim timing, eligible class and other
+      detailed conditions apply.
+    value_inr: 5000
   - name: IRCTC transaction charge waiver
-    description: Waiver of the 1% + GST transaction charge on IRCTC ticket bookings.
+    description: 1% transaction charge on IRCTC train ticket bookings up to
+      INR5,000 transaction amount, with maximum reversal INR200/month; shown in
+      the following statement. Cancellation may reverse the waiver.
+    value_inr: 200
   concierge: false
   source:
-    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url:
+      https://webassets.rbl.bank.in/document/credit-cards/tnc-irctc-rbl-bank-rupay-credit-card.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    local_refs:
+    - docs/sources/rbl/irctc/product-terms-retrieved-2026-10-27.pdf
+    - docs/sources/rbl/irctc/faqs-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+  welcome:
+  - condition: Make an eligible retail transaction above INR500 within 30 days
+      of card issuance and pay the first annual membership fee by its due date
+    benefit: 500 reward points; credited within 60 days of issuance
+    value_inr: 500
+    window_days: 30
+  milestones:
+  - spend_inr: 75000
+    cycle: quarterly
+    benefit: 500 reward points at INR75,000 eligible spend per calendar quarter
+    value_inr: 500
+    reward_kind: points
+    reward_units: 500
+    reward_currency_name: IRCTC Reward Points
+    is_repeatable: true
+  notes: The IRCTC product page distinguishes RuPay-only UPI/NCMC features and
+    current issuer network guide lists both Mastercard and RuPay. Train
+    cancellation protection is a conditional reimbursement benefit, not
+    unconditional insurance.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
+    salaried:
+    self_employed:
+  credit_score_min:
+  residency:
+  notes: Current issuer FAQ specifies age 21?70 subject to the bank?s internal
+    policy. No numeric income, bureau-score or residency cutoff published in
+    card-specific current sources.
 application:
-  apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
+  apply_url:
+    https://www.rbl.bank.in/personal-banking/cards/credit-cards/irctc-rbl-bank-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - co-branded
   - railway

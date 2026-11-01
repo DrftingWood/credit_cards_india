@@ -1,117 +1,277 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-swyp
 name: IDFC FIRST SWYP Credit Card
 image_path: /cards/idfc-first/swyp.webp
 issuer: idfc-first
-network: visa
-network_tier: platinum
+network: mastercard
+network_tier:
 tier: entry
 card_type: credit
-co_brand: null
+co_brand:
 status: active
-launched_on: 2024-02-01
-discontinued_on: null
-
+launched_on: '2023-12-08'
+discontinued_on:
 fees:
-  - effective_from: 2024-02-01
-    effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver:
-      spend_inr: 90000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 0.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Card is EMI-first: every spend above ₹2,500 auto-converts to EMI at 0.99% p.m. (tiered)."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2023-12-08'
+  effective_until: '2026-09-16'
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  fee_waiver:
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct:
+  cash_advance_fee:
+  gst_applicable: true
+  notes: 'SWYP is a pay-in-full or EMI-conversion card; standard revolving finance is not applicable. EMI conversion has a dynamic flat monthly fee depending on amount/tenure; merchant EMI has merchant-set interest and processing fees. Cash-advance fee is flat INR199 + GST per transaction, irrespective of amount, not representable by the percentage/minimum fee schema. Joining fee is waived after the first successful SWYP referral; not a spend waiver. Annual fee is INR499, with a separate 2,000-point (INR500 nominal) reward after INR5,000 spend within 45 days of annual-fee levy. Prior to 2026-09-17, forex markup was 3.5%.'
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.gst_applicable
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/swyp/mitc-retrieved-2026-10-26.pdf
+- effective_from: '2026-09-17'
+  effective_until:
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  fee_waiver:
+  forex_markup_pct: 0
+  finance_charge_monthly_pct:
+  cash_advance_fee:
+  gst_applicable: true
+  notes: 'SWYP is a pay-in-full or EMI-conversion card; standard revolving finance is not applicable. EMI conversion has a dynamic flat monthly fee depending on amount/tenure; merchant EMI has merchant-set interest and processing fees. Cash-advance fee is flat INR199 + GST per transaction, irrespective of amount, not representable by the percentage/minimum fee schema. Joining fee is waived after the first successful SWYP referral; not a spend waiver. Annual fee is INR499, with a separate 2,000-point (INR500 nominal) reward after INR5,000 spend within 45 days of annual-fee levy. IDFC FIRST announced zero forex markup on all existing and new credit cards effective 2026-09-17.'
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.gst_applicable
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/swyp/mitc-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/swyp/card-communication-retrieved-2026-10-26.pdf
 rewards:
-  - effective_from: 2024-02-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: incremental-monthly-above-20k
-        canonical_categories: [other]
-        multiplier: 3.33
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10X on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-07-01'
+  effective_until:
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate:
+    per_inr:
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated: []
+  exclusions:
+  - fuel
+  - education
+  - road-fees-and-tolls
+  - emi
+  - cash-advance
+  - other
+  capping_rules:
+  - 'Monthly standard-spend milestones are non-incremental: 200 points at INR5,000; 500 total at INR10,000; 1,000 total at INR15,000; 2,000 total at INR30,000; 4,000 total at INR60,000 eligible statement-cycle spend. Fuel, education, FASTag, rail, cash withdrawals, UPI, and EMI transactions do not count toward standard milestones.'
+  - Effective July 2026 statement cycle, special-category combined eligible education (specified MCCs), FASTag (MCC 4784), and railway spends earn 400 points at INR20,000 and 800 total at INR40,000 in the billing cycle.
+  - Reward points accrue only for spends up to the credit limit in each billing cycle; re-used credit limit after repayments does not generate additional rewards in the same cycle.
+  redemption:
+  - type: catalog
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.25
+    fee_inr: 99
+    constraints: No expiry. Redemption fee INR99 + GST. FIRST Rewards Gallery travel bookings earn bonus points only when paid fully by card; up to 70% of travel booking value may be redeemed in points.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.capping_rules
+    - rewards.exclusions
+    - rewards.redemption
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/swyp/card-communication-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/swyp/privileges-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/swyp/travel-rewards-terms-retrieved-2026-10-26.pdf
+  notes: 'SWYP earns through non-incremental milestone awards rather than a general points-per-rupee base earn; reward thresholds and amounts are recorded in benefits.milestones because the schema has no dedicated reward-milestone object. First Digital RuPay card is an optional separate card with its own fee and UPI rewards, not ordinary SWYP rewards. Travel bonus: 25% on hotels and 12% on flights booked through FIRST Rewards Gallery, capped at 8,000 bonus points/month; account must be active at credit, entire booking paid by card, and points post after stay/travel completion. Points never expire.'
 benefits:
-  - effective_from: 2024-02-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 200
-      cycle: monthly
-    movies:
-      type: bogo
-      partner: Paytm Movies
-      max_per_cycle: 1
-      cycle: monthly
-      cap_inr: 150
-    other:
-      - name: EMI-first design
-        description: Spends above ₹2,500 auto-convert to tenure-EMI at 0.99% monthly (interest rate may vary by risk tier).
-    concierge: false
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-07-01'
+  effective_until:
+  lounge_access: null
+  milestones:
+  - spend_inr: 5000
+    cycle: monthly
+    benefit: 200 Reward Points on eligible standard monthly spend
+    value_inr: 50
+    reward_kind: points
+    reward_units: 200
+    reward_currency_name: Reward Points
+    is_repeatable: true
+  - spend_inr: 10000
+    cycle: monthly
+    benefit: 500 total Reward Points on eligible standard monthly spend (not incremental)
+    value_inr: 125
+    reward_kind: points
+    reward_units: 500
+    reward_currency_name: Reward Points
+    is_repeatable: true
+  - spend_inr: 15000
+    cycle: monthly
+    benefit: 1,000 total Reward Points on eligible standard monthly spend (not incremental)
+    value_inr: 250
+    reward_kind: points
+    reward_units: 1000
+    reward_currency_name: Reward Points
+    is_repeatable: true
+  - spend_inr: 30000
+    cycle: monthly
+    benefit: 2,000 total Reward Points on eligible standard monthly spend (not incremental)
+    value_inr: 500
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: Reward Points
+    is_repeatable: true
+  - spend_inr: 60000
+    cycle: monthly
+    benefit: 4,000 total Reward Points on eligible standard monthly spend (not incremental)
+    value_inr: 1000
+    reward_kind: points
+    reward_units: 4000
+    reward_currency_name: Reward Points
+    is_repeatable: true
+  - spend_inr: 20000
+    cycle: monthly
+    benefit: 400 Reward Points on combined qualifying education, FASTag and railway spends (special-category milestone)
+    value_inr: 100
+    reward_kind: points
+    reward_units: 400
+    reward_currency_name: Reward Points
+    is_repeatable: true
+  - spend_inr: 40000
+    cycle: monthly
+    benefit: 800 total Reward Points on combined qualifying education, FASTag and railway spends (special-category milestone)
+    value_inr: 200
+    reward_kind: points
+    reward_units: 800
+    reward_currency_name: Reward Points
+    is_repeatable: true
+  - spend_inr: 5000
+    cycle: annual
+    benefit: 2,000 Reward Points (INR500 stated value) after spending INR5,000 within 45 days of annual-fee levy
+    value_inr: 500
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  welcome:
+  - condition: First successful EMI transaction within 30 days from joining-fee payment
+    benefit: 1,000 Reward Points
+    value_inr: 250
+    window_days: 30
+  - condition: Cards issued from 2025-06-10; eligible spend INR5,000 within 30 days of joining-fee payment
+    benefit: INR500 welcome gift voucher
+    value_inr: 500
+    window_days: 30
+  - condition: Payment of joining fee
+    benefit: MakeMyTrip discount coupons worth up to INR1,500; one booking per category within 90 days
+    value_inr: 1500
+    window_days: 90
+  - condition: Payment of joining fee
+    benefit: EaseMyTrip discounts up to INR2,100 total across eligible flight/hotel bookings for three months
+    value_inr: 2100
+    window_days: 90
+  - condition: Payment of joining fee
+    benefit: Complimentary Lenskart Gold Max membership for one year
+    value_inr:
+    window_days: 365
+  - condition: First Mokobara.com transaction within 90 days after joining-fee payment
+    benefit: 10% discount on first transaction
+    value_inr:
+    window_days: 90
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 200
+    cycle: monthly
+  movies:
+    type: discount
+    partner: District by Zomato
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 100
+    notes: 25% discount up to INR100 on one movie booking per month; at least one card transaction in the previous calendar month is required to be spend-active.
+  insurance:
+  - type: personal-accident
+    sum_insured_inr: 200000
+  - type: lost-card-liability
+    sum_insured_inr: 25000
+  other:
+  - name: Railway lounge access
+    description: Four complimentary railway lounge visits per quarter after spending INR20,000 in the current calendar month; access activates the following month.
+    value_inr:
+  - name: Roadside assistance
+    description: 24/7 roadside assistance up to four times per year; issuer-stated service value INR1,399.
+    value_inr: 1399
+  - name: Feature partner discounts
+    description: Year-round discounts up to 20% with changing feature partners including travel, food, shopping and beauty brands; offers and eligible merchants can change.
+    value_inr:
+  - name: Joining-fee waiver through referral
+    description: Joining fee is waived after the first successful FIRST SWYP referral. Referral rewards also include anniversary-fee waiver at referral milestone 1, 4,000 points at 3, EMI-fee waiver up to INR1,500 at 5, INR2,000 movie voucher at 7, INR2,500 cashback at 9 and four domestic airport visits at 10 successful referrals; terms and active-card conditions apply.
+    value_inr:
+  - name: FIRST Digital RuPay optional UPI card
+    description: Separate optional add-on card has INR199 joining and annual fee from year two. Eligible linked UPI spend earns 100 Reward Points per INR5,000 statement month; UPI is excluded from SWYP standard monthly spend milestones.
+    value_inr:
+  concierge: false
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.milestones
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.movies
+    - benefits.insurance
+    - benefits.other
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/swyp/card-communication-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/swyp/privileges-retrieved-2026-10-26.pdf
+  notes: 'Effective from July 2026 statement cycle, education is newly included in special-category milestones. Older card FAQ summary has a contradictory line saying Education does not count for monthly milestones; the dedicated May 2026 communication and privileges terms separate standard-spend milestones from special-category education/FASTag/rail milestones. Current page describes movie partner as District by Zomato (older references say Paytm Movies). No airport lounge is included with ordinary card membership; four domestic airport visits are a referral benefit only at 10 successful referrals. Insurance cover amounts are up to INR200,000 personal accident and INR25,000 lost-card liability.'
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age:
+  max_age:
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
-
+    salaried:
+    self_employed:
+  credit_score_min:
+  residency:
+  notes: Current card-specific product page does not publish age, income, credit-score, or residency thresholds. Issuer's general card application guidance provides broad criteria; no card-specific cutoff was promoted.
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/swyp-emi-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [emi-first, entry, points]
+  last_verified_on: '2026-10-26'
+  tags:
+  - emi-first
+  - entry
+  - points
+  - mastercard

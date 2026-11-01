@@ -9,94 +9,391 @@
     "slug": "ashva",
     "url": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva",
     "pdfs": [
-      "ashva/Ashva-Credit-Card-Communication-May-26.pdf"
+      "ashva/Ashva-Credit-Card-Communication-May-26.pdf",
+      "ashva/ashva-launch-2024-09-19.pdf",
+      "ashva/zero-forex-announcement-2026-09-17.pdf",
+      "ashva/ashva-rewards-terms-2025-05-28.pdf",
+      "ashva/ashva-joining-fee-benefit-terms-2025-08-29.pdf",
+      "ashva/ashva-annual-fee-benefit-terms-2025-08-29.pdf",
+      "ashva/airport-lounge-terms.pdf",
+      "ashva/railway-lounge-terms-2025-01-16.pdf",
+      "ashva/golf-terms.pdf",
+      "ashva/movie-offer-terms-2026-06-25.pdf",
+      "ashva/trip-cancellation-policy-2026-05-19.pdf",
+      "ashva/insurance-privileges-2026-08-31.pdf",
+      "ashva/roadside-assistance-terms-2025-10-28.pdf"
+    ],
+    "result": "Reviewed current Ashva product and eligibility pages, launch release, current rewards/benefit terms, zero-forex notice, general MITC and shared insurance schedule. Corrected network tier and launch date, spend-tiered earn model, foreign ATM fee caveat, fees, lounge/golf/movie/milestone/insurance benefits, and age eligibility.",
+    "unresolved": [
+      "The 17-Sep-2026 bank-wide zero-forex notice conflicts with the Ashva FAQ stating 1% markup for overseas ATM withdrawals; purchase markup is modeled at zero and the ATM-specific statement is retained in notes pending clearer terms.",
+      "Effective 26-Oct-2026 international earn is 2 points per INR150, but issuer copy does not resolve whether it still counts toward the INR20,000 monthly threshold.",
+      "Ashva app travel-booking bonus amounts conflict across the May-2026 cardmember communication, current product page and detailed terms; no app bonus rate is modeled.",
+      "Golf provides up to two monthly rounds or lessons as a shared pool; schema allows unknown/null separate round and lesson counts, so the split is not asserted.",
+      "IDFC FIRST general eligibility says Indian citizen; Ashva-specific income and numeric credit-score thresholds are not published, and the data schema has no citizenship field."
+    ],
+    "captures": [
+      "ashva/ashva-product-page-retrieved-2026-10-27.html",
+      "ashva/idfc-credit-card-general-eligibility-retrieved-2026-10-27.html"
     ]
   },
   "classic": {
     "slug": "classic",
     "url": "https://www.idfcfirst.bank.in/credit-card/classic",
-    "pdfs": []
+    "pdfs": [
+      "classic/classic-may-2026-communication.pdf",
+      "classic/classic-january-2026-reward-update.pdf",
+      "classic/classic-privileges.pdf",
+      "classic/revised-international-rewards-notice-2026-09-13.pdf",
+      "classic/initial-international-rewards-notice-2026-09-01.pdf",
+      "classic/zero-forex-announcement-2026-09-17.pdf",
+      "classic/current-customer-mitc.pdf",
+      "classic/classic-tripstacc-bonus-terms.pdf"
+    ],
+    "result": "Reviewed current FIRST Classic page, May-2026 and January-2026 card communications, linked privilege and Tripstacc terms, current MITC and the initial/revised zero-forex reward notices. Corrected the proposed international rewards stop after IDFC?s 13-Sep revision; refreshed rewards, fee and benefit evidence; removed unsupported travel insurance.",
+    "unresolved": [
+      "Current product page still contains the withdrawn 26-Oct international reward stop footnote; the revised 13-Sep bank notice says international rewards continue at each card?s applicable rate.",
+      "Travel-booking bonus rates conflict: current page and May-2026 notice say 20% hotel/10% flight; January update and detailed terms say 33%/13%.",
+      "Current railway lounge page specifies a monthly INR20,000 access gate; linked privileges PDF confirms four quarterly visits but omits the gate.",
+      "Current card-linked privileges PDF names Paytm for movies and lists no travel insurance/personal air-accident cover for Classic, but has no clear publication date.",
+      "Fuel waiver transaction limits/cap are not re-confirmed by current card communication.",
+      "General eligibility source conflicts on age (21 vs 18) and states Indian citizenship rather than residence; no Classic-specific age or score floor is published."
+    ],
+    "captures": [
+      "classic/classic-product-page-retrieved-2026-10-27.html",
+      "classic/classic-general-eligibility-retrieved-2026-10-27.html"
+    ]
   },
   "diamond-reserve": {
     "slug": "diamond-reserve-credit-card",
     "url": "https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card",
-    "pdfs": []
+    "pdfs": [
+      "diamond-reserve/diamond-reserve-launch-2026-01-06.pdf",
+      "diamond-reserve/diamond-reserve-privileges-2026-06-18.pdf",
+      "diamond-reserve/diamond-reserve-may-2026-communication.pdf",
+      "diamond-reserve/current-customer-mitc.pdf",
+      "diamond-reserve/diamond-reserve-product-guide-2025-12-12.pdf",
+      "diamond-reserve/insurance-privileges-2026-08-31.pdf",
+      "diamond-reserve/initial-international-rewards-notice-2026-09-01.pdf",
+      "diamond-reserve/revised-international-rewards-notice-2026-09-13.pdf",
+      "diamond-reserve/zero-forex-announcement-2026-09-17.pdf"
+    ],
+    "result": "Reviewed current Diamond Reserve product and eligibility pages, Jan-2026 launch release, June privileges, May communication, current MITC, Aug-2026 shared insurance schedule, international-rewards notices and zero-forex notice. Corrected fee effective date and eligibility notes, added credit-shield cover and documented unresolved CFAR and travel-reward conflicts.",
+    "unresolved": [
+      "Revised bank-wide international-rewards notice conflicts with current Diamond-specific terms excluding international rewards; record follows card-specific terms.",
+      "App travel-booking bonus rates conflict across marketing page, May communication and detailed privileges terms; no bonus rate is modeled.",
+      "Current product page advertises INR25,000 CFAR, but the linked card policy ended 7-May-2026 and no replacement policy period was found.",
+      "Jan-2026 launch release lists INR10 lakh personal accident cover while the later Aug-2026 shared insurer schedule lists INR5 lakh; record uses the later schedule.",
+      "No Diamond-specific numeric income or credit-score threshold was found; general lounge-card guidance supports age 21 and stable income only."
+    ],
+    "captures": [
+      "diamond-reserve/diamond-reserve-product-page-retrieved-2026-10-27.html",
+      "diamond-reserve/diamond-reserve-general-eligibility-retrieved-2026-10-27.html"
+    ]
   },
   "first-private": {
     "slug": "first-private",
     "url": "https://www.idfcfirst.bank.in/credit-card/first-private",
-    "pdfs": []
+    "pdfs": [
+      "first-private/first-private-consolidated-terms-2026-07-17.pdf",
+      "first-private/cfar-policy-linked-current-page.pdf",
+      "first-private/current-credit-card-policy.pdf"
+    ],
+    "result": "Reviewed the current FIRST Private page and 17-Jul-2026 consolidated terms, current bank-wide insurance overview and fee policy. Verified post-July issue fees, current rewards, travel and lifestyle terms; corrected CFAR period and insurance record while documenting insurer-summary conflicts.",
+    "unresolved": [
+      "Card-specific product page states INR50,000 zero card-liability cover while the current general insurance overview table lists INR5 lakh for FIRST Private; the card-specific figure is retained pending clarification.",
+      "The standalone one-page CFAR PDF linked by the issuer is stale (ends 7-May-2025); the July-2026 consolidated card terms and live product page support a policy through 7-May-2027.",
+      "The current insurance overview lists INR25 lakh personal accident cover, but the card-specific consolidated terms describe the coverage without restating its sum insured.",
+      "Fees and reward changes effective 17-Jul-2026 distinguish new issuance cohorts; the live page does not fully explain treatment of accounts issued earlier.",
+      "Card-specific age, income and credit-score thresholds remain unpublished."
+    ],
+    "captures": [
+      "first-private/product-page-retrieved-2026-10-27.html",
+      "first-private/insurance-overview-retrieved-2026-10-27.html",
+      "first-private/general-credit-card-page-retrieved-2026-10-27.html"
+    ]
   },
   "gaj": {
     "slug": "gaj",
     "url": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/gaj",
-    "pdfs": []
+    "pdfs": [
+      "gaj/gaj-launch-2025-12-29.pdf",
+      "gaj/gaj-privileges-retrieved-2026-10-27.pdf",
+      "gaj/gaj-rewards-terms-retrieved-2026-10-27.pdf",
+      "gaj/gaj-product-guide-2025-12-22.pdf",
+      "gaj/gaj-may-2026-communication.pdf",
+      "gaj/current-customer-mitc.pdf"
+    ],
+    "result": "Reviewed the current Gaj page, launch release, linked privileges/reward terms, May-2026 reward update and current MITC. Corrected shared golf-pool representation, insurance classification/coverage, annual fee payment reward and unsupported residency; added credit-shield cover and DCC/transaction-limit caveats.",
+    "unresolved": [
+      "The detailed Gaj privileges terms limit golf to 24 shared rounds or lessons per year, while product page headlines use broad unlimited wording; structured round/lesson counts remain null.",
+      "The 15,000-point app travel cap applies to bonus points, and schema cannot express that distinction cleanly from total earn.",
+      "The card page says zero forex; merchant DCC may still impose up to 5% as described in the linked privileges PDF.",
+      "The exact CFAR policy period, card-specific APR, age, numeric income/credit-score threshold and residency requirement are not published in current Gaj public sources.",
+      "Issuer page mentions movie ticket and 300+ merchant offers without publishing Gaj-specific movie terms."
+    ],
+    "captures": [
+      "gaj/gaj-product-page-retrieved-2026-10-27.html"
+    ]
   },
   "hello-cashback": {
     "slug": "hello-cashback-credit-card",
     "url": "https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card",
-    "pdfs": []
+    "pdfs": [
+      "hello-cashback/hello-cashback-product-feature-terms.pdf",
+      "hello-cashback/hello-cashback-product-guide.pdf",
+      "hello-cashback/current-customer-mitc.pdf",
+      "hello-cashback/zero-forex-announcement-2026-09-17.pdf"
+    ],
+    "result": "Reviewed the current Hello Cashback page, product feature terms and guide, current customer MITC and bank-wide zero-forex notice. Corrected unsupported RuPay Select tier and single-held FD wording, added source detail for cashback/insurance/fees, and recorded the joining-offer date conflict.",
+    "unresolved": [
+      "No official launch date or card-network tier was identified; network is RuPay, tier is null.",
+      "The issuer FAQ on the current page conflicts internally: one joining-offer section says 30-Oct-2026 and another says 31-Oct-2026; record follows the latter, but confirm with issuer before relying on the offer after 30-Oct.",
+      "The live page says additional fixed deposits from INR5,000 may be linked to raise the card limit; exact FD lien, renewal-mode and account-ownership requirements are not fully specified in the linked Hello Cashback feature document.",
+      "Issuer page does not publish a card-specific post-onboarding APR; revolving APR remains null.",
+      "Current card cashback feature terms do not state an original effective date for the tier/cap structure; effective_from is the date verified, not a launch date."
+    ],
+    "captures": [
+      "hello-cashback/product-page-retrieved-2026-10-27.html"
+    ]
   },
   "indigo": {
     "slug": "indigo-credit-card",
     "url": "https://www.idfcfirst.bank.in/credit-card/indigo-credit-card",
-    "pdfs": []
+    "pdfs": [
+      "indigo/indigo-launch-2025-08-18.pdf",
+      "indigo/indigo-communication-may-2026.pdf",
+      "indigo/indigo-product-guide.pdf",
+      "indigo/indigo-privileges-2025-12-12.pdf",
+      "indigo/current-mitc.pdf",
+      "indigo/zero-forex-notice-2026-09-17.pdf"
+    ],
+    "result": "Reviewed the live IndiGo Dual card page and Oct-2026 offer terms, 18-Aug-2025 launch release, May-2026 communication, current product guide and privileges, current MITC and bank-wide zero-forex notice. Corrected insurance classifications and golf quantity based on the detailed issuer FAQ; added current one-time partner offers and documented source conflicts.",
+    "unresolved": [
+      "The FD-backed joining-fee route is described with a minimum INR50,000 FD in the headline/FAQ and INR1 lakh in the eligibility/application workflow.",
+      "The live product page's dedicated headline/FAQ says zero forex, while one stale paragraph still says 1.49%; the record follows the zero-forex policy effective 17-Sep-2026.",
+      "The detailed FAQ states 12 golf rounds plus 12 lessons per year, while the same current page's Mastercard World graphic and linked Product Guide say four rounds plus 12 lessons; the record follows the detailed FAQ.",
+      "Trip-cancellation terms state coverage through 7-May-2027 in one section but list the policy period ending 7-May-2026 in another; active claim period should be confirmed with issuer/insurer.",
+      "The reward model cannot fully encode RuPay UPI rail overrides or all MCC-level low-earn categories; BluChip cash value varies by flight and booking conditions."
+    ],
+    "captures": [
+      "indigo/indigo-product-page-retrieved-2026-10-27.html",
+      "indigo/october-2026-offer-retrieved-2026-10-27.html"
+    ]
   },
   "lic-select": {
     "slug": "lic-credit-card",
     "url": "https://www.idfcfirst.bank.in/credit-card/lic-credit-card",
-    "pdfs": []
+    "pdfs": [
+      "lic-select/lic-select-travel-shop-terms-2026-06-18.pdf",
+      "lic-select/lic-select-airport-lounge-list.pdf",
+      "lic-select/lic-select-welcome-offers-2026-03-09.pdf",
+      "lic-select/lic-select-privileges-2025-12-09.pdf",
+      "lic-select/lic-select-product-guide.pdf",
+      "lic-select/current-mitc.pdf",
+      "lic-select/zero-forex-notice-2026-09-17.pdf"
+    ],
+    "result": "Reviewed the current LIC Select page, 18-Jun-2026 Travel & Shop terms, March welcome offer, current lounge list, linked privileges/Product Usage Guide, MITC and bank-wide zero-forex notice. Encoded the INR20,000 prior-month airport lounge gate; corrected the network to Mastercard and cleared unsupported Visa Signature; corrected baggage-delay type and documented current conflicts.",
+    "unresolved": [
+      "Welcome reward amount conflicts: product page says 2,000 points while linked offer PDF says 2,500; threshold also conflicts (INR10,000 vs more than INR10,000).",
+      "Travel bonus percentages in the detailed June 2026 T&C are 20% hotel/8% flight, while current product page shows 45 points/INR125, 20 points/INR125 and an up-to-40% headline.",
+      "No card-specific Mastercard tier, exact launch date, age, income, score or residency cutoff was found in the current official source set.",
+      "Current product page summarizes insurance amounts, while linked privileges-policy text extraction has ambiguous table alignment; verify the applicable insurer schedule for claims."
+    ],
+    "captures": [
+      "lic-select/lic-select-product-page-retrieved-2026-10-27.html"
+    ]
   },
   "mayura": {
     "slug": "mayura",
     "url": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura",
     "pdfs": [
-      "mayura/Mayura-Credit-Card-Communication-May-26.pdf"
+      "mayura/Mayura-Credit-Card-Communication-May-26.pdf",
+      "mayura/Mayura-Rewards-Structure-TnC.pdf",
+      "mayura/launch-release-2024-09-19.pdf",
+      "mayura/zero-forex-notice-2026-09-17.pdf"
+    ],
+    "result": "Reviewed current product page, May-2026 card communication, reward structure, launch release and zero-forex notice. Corrected network, launch date, duplicated benefits and baggage-delay classification; cleared unsupported residency-only and Visa Infinite claims.",
+    "unresolved": [
+      "Current product page/current FAQ advertise 30X hotel/15X flight bonus points, while May-2026 communication states 20% hotel and 10% flight bonuses on applicable base points.",
+      "Current product page says trip-cancellation cover up to INR50,000 twice per year; 2024 launch release says in a calendar year. Precise policy terms unresolved.",
+      "Card-specific income, age, bureau-score and residency criteria are not published on the current card page."
+    ],
+    "captures": [
+      "mayura/product-page-retrieved-2026-10-27.html"
     ]
   },
   "millennia": {
     "slug": "millennia",
     "url": "https://www.idfcfirst.bank.in/credit-card/millennia",
-    "pdfs": []
+    "pdfs": [
+      "millennia/millennia-communication-may-26.pdf",
+      "millennia/millennia-privileges.pdf",
+      "millennia/millennia-product-guide.pdf",
+      "millennia/current-mitc.pdf",
+      "millennia/zero-forex-notice-2026-09-17.pdf"
+    ],
+    "result": "Reviewed the current Millennia page, May-2026 communication, current privileges, product guide, MITC, zero-forex notice and issuer eligibility pages. Confirmed current reward periods and corrected stale international reward treatment; age conflict is documented and left unknown.",
+    "unresolved": [
+      "Issuer Millennia eligibility sources conflict on minimum age (18 vs 21).",
+      "Card comparison says Indian residents; general issuer guidance also allows NRIs subject to card criteria.",
+      "Exact current card network tier is not stated; Visa is supported by issuer product-guide card artwork."
+    ],
+    "captures": [
+      "millennia/product-page-retrieved-2026-10-27.html",
+      "millennia/eligibility-guide-retrieved-2026-10-27.html",
+      "millennia/eligibility-comparison-retrieved-2026-10-27.html"
+    ]
   },
   "power-plus": {
-    "slug": "power-plus",
-    "url": "https://www.idfcfirst.bank.in/credit-card/power-plus",
-    "pdfs": []
+    "slug": "hpcl-power-fuel-credit-card",
+    "url": "https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card",
+    "pdfs": [
+      "power-plus/power-plus-communication-may-26.pdf",
+      "power-plus/power-plus-privileges.pdf",
+      "power-plus/power-plus-update-2026-01-18.pdf",
+      "power-plus/power-plus-travel-shop-terms.pdf",
+      "power-plus/power-series-welcome-offer-terms.pdf",
+      "power-plus/savings-maximiser.pdf",
+      "power-plus/current-mitc.pdf",
+      "power-plus/zero-forex-notice-2026-09-17.pdf"
+    ],
+    "result": "Reviewed the current HPCL Power/Power+ page, May-2026 update, privileges, reward schedule, travel terms, welcome offer terms, current MITC and zero-forex notice. Current record matches the main fee and reward values; conflicts for the fuel surcharge waiver and welcome window remain documented.",
+    "unresolved": [
+      "Card page says Power+ has no fuel surcharge waiver while general MITC lists 1% for Power and Power+ with cap Not Applicable.",
+      "Dedicated welcome offer terms give 60 days; product page FAQ also states 30 days.",
+      "Latest travel update expresses bonus as percentages while older travel terms list absolute points per INR150; percentage basis and 8,000 monthly cap retained in notes.",
+      "No exact launch date or RuPay tier is published in the reviewed sources."
+    ],
+    "captures": [
+      "power-plus/product-page-retrieved-2026-10-27.html"
+    ]
   },
   "power": {
-    "slug": "power",
-    "url": "https://www.idfcfirst.bank.in/credit-card/power",
-    "pdfs": []
+    "slug": "hpcl-power-fuel-credit-card",
+    "url": "https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card",
+    "pdfs": [
+      "power/power-communication-may-26.pdf",
+      "power/power-privileges.pdf",
+      "power/power-update.pdf",
+      "power/power-travel-shop-terms.pdf",
+      "power/power-series-welcome-offer-terms.pdf",
+      "power/savings-maximiser.pdf",
+      "power/current-mitc.pdf",
+      "power/zero-forex-notice-2026-09-17.pdf"
+    ],
+    "result": "Reviewed the current Power/Power+ card page, May-2026 Power communication, current privileges, reward schedule, travel terms, welcome terms, MITC and zero-forex notice. Added advertised merchant offers without assigning cash value; retained fuel waiver and welcome-window conflicts.",
+    "unresolved": [
+      "Card page says Power has no fuel surcharge waiver while general MITC lists a 1% waiver for Power/Power+ with cap Not Applicable.",
+      "Detailed welcome terms give 60 days for post-10-Jun-2025 setups; a product FAQ also says 30 days.",
+      "Travel bonus is stated in percentages in the latest update and absolute points in older terms; the schema cannot represent the percentage basis.",
+      "Self-employed age minimum 25 conflicts with combined age 21+ criterion; no exact launch date or network tier was found."
+    ],
+    "captures": [
+      "power/product-page-retrieved-2026-10-27.html"
+    ]
   },
   "secured-rupay": {
     "slug": "secured-rupay-credit-card",
     "url": "https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card",
-    "pdfs": []
+    "result": "Reviewed the current FIRST EARN issuer product page, launch announcement, current general MITC/fees, zero-forex announcement and latest card-specific E-Kit and privileges. Corrected launch, fee timeline, zero forex, cashback/reward terms, eligibility and current movie, roadside and insurance benefits.",
+    "pdfs": [
+      "secured-rupay/launch-retrieved-2026-10-26.pdf",
+      "secured-rupay/mitc-retrieved-2026-10-26.pdf",
+      "secured-rupay/product-guide-retrieved-2026-10-26.pdf",
+      "secured-rupay/privileges-retrieved-2026-10-26.pdf",
+      "secured-rupay/zero-forex-announcement-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Current MITC cash-advance transaction fee is a flat INR199; card schema supports only percentage and minimum, so exact value is recorded in source notes and the unsupported percentage object is null.",
+      "Current issuer page no longer confirms the older fuel-surcharge-waiver boundaries/cap, so no waiver is asserted; it separately confirms fuel purchases earn cashback.",
+      "Current product page advertises up to 5% bonus cashback on travel bookings, but linked program-specific terms and scope need a separate current-source review."
+    ]
   },
   "select": {
     "slug": "select",
     "url": "https://www.idfcfirst.bank.in/credit-card/select",
-    "pdfs": []
+    "pdfs": [
+      "select/product-guide-retrieved-2026-10-26.pdf",
+      "select/important-update-retrieved-2026-10-26.pdf"
+    ],
+    "result": "Reviewed the current FIRST Select product page, linked 2026 product usage guide, and January 2026 reward / April 2026 lounge update PDF. Corrected current fees, reward base and category rates, lounge quotas, current welcome/movie/fuel benefits and income threshold; documented conflicting points expiry, lounge qualification, and travel-booking bonus copy.",
+    "unresolved": [
+      "Product page and guide conflict on whether the INR20,000 airport/rail lounge spend gate applies in the current month or previous month; use monthly threshold with activation next month pending clearer operational terms.",
+      "Product page's travel booking bonus states 20% hotel / 10% flight, while current Select update PDF states 33% / 13%; structured benefit notes preserve both pending reconciliation.",
+      "Issuer pages conflict on Reward Point expiry: one redemption FAQ says points never expire, while current terms say 24 months. Record follows explicit 24-month terms.",
+      "Cash advance fee is flat INR199 + GST per transaction; schema cannot represent a flat fee, so fee object is null and exact fee is in notes."
+    ]
   },
   "swyp": {
     "slug": "swyp",
     "url": "https://www.idfcfirst.bank.in/credit-card/swyp",
-    "pdfs": []
+    "pdfs": [
+      "swyp/launch-retrieved-2026-10-26.pdf",
+      "swyp/mitc-retrieved-2026-10-26.pdf",
+      "swyp/card-communication-retrieved-2026-10-26.pdf",
+      "swyp/privileges-retrieved-2026-10-26.pdf",
+      "swyp/travel-rewards-terms-retrieved-2026-10-26.pdf"
+    ],
+    "result": "Reviewed current FIRST SWYP product page, 2023-12-08 launch announcement, May-2026 card communication with June/July updates, card privileges terms, current general MITC, and current travel bonus terms. Corrected network/launch, zero forex, fee model, milestone rewards, welcome/annual offers, fuel/movie/railway/insurance benefits and EMI/cash-advance details.",
+    "unresolved": [
+      "Current SWYP product page does not publish card-specific eligibility age, income or credit-score thresholds.",
+      "Joining fee waiver is through the first successful referral; the fee schema models only spend-based waiver criteria, so the condition is in benefit notes.",
+      "Flat INR199 cash advance fee is not representable in the percentage/minimum fee schema; exact amount is retained in the fee notes.",
+      "Merchant EMI fees and rates vary by transaction/merchant/tenure; current issuer page does not publish a single numeric rate.",
+      "The 2023 launch release identifies Mastercard, but the current product page does not publish a Mastercard tier; tier is left unknown."
+    ]
   },
   "wealth": {
     "slug": "wealth",
     "url": "https://www.idfcfirst.bank.in/credit-card/wealth",
-    "pdfs": []
+    "pdfs": [
+      "wealth/reward-and-lounge-update-retrieved-2026-10-26.pdf",
+      "wealth/card-communication-retrieved-2026-10-26.pdf",
+      "wealth/travel-rewards-terms-retrieved-2026-10-26.pdf",
+      "wealth/privileges-retrieved-2026-10-26.pdf"
+    ],
+    "result": "Reviewed the current Wealth card page, January/May 2026 card communications, reward/travel T&Cs, current privileges and general MITC. Corrected reward base/effective categories and international earn end-date, fee/forex/cash terms, Visa Infinite tier, lounge/movie/fuel/golf/railway benefits, insurance and eligibility.",
+    "unresolved": [
+      "Current Wealth product copy conflicts on international earning: an explicit effective-26-Oct-2026 footnote says international transactions earn no points, while banners/FAQ and the current reward T&C still show 10X international; YAML follows the dated footnote.",
+      "Railway lounge quota conflicts between the current product FAQ (4 per year) and detailed privileges PDF (up to 4 per quarter); YAML records the conflict without selecting a quota.",
+      "Travel booking terms say 20% hotel / 10% flight bonus, but product-page FAQ examples, rate tables and percentages do not reconcile consistently; bonuses and the 8,000 monthly bonus cap are noted but not encoded as rates.",
+      "Exact card launch day is not verified; an issuer investor filing identifies launch in January 2021, so launched_on is null.",
+      "Issuer page lists annual income INR36 lakh or more but does not distinguish salaried/self-employed thresholds; issuer blog also describes a Wealth banking relationship as an alternate path.",
+      "The current document set includes both a general Wealth travel-insurance summary and itemized coverage; exact policy eligibility/claim limits remain subject to the attached privileges terms."
+    ]
   },
   "wow-black": {
     "slug": "wow-black-credit-card",
     "url": "https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card",
-    "pdfs": []
+    "pdfs": [
+      "wow-black/launch-retrieved-2026-10-26.pdf",
+      "wow-black/privileges-retrieved-2026-10-26.pdf",
+      "wow-black/mitc-retrieved-2026-10-26.pdf"
+    ],
+    "result": "Reviewed current WOW! Black product page, 8-Dec-2025 launch release, current privileges document and current customer MITC. Corrected launch/network, fees, reward earn and redemption, lounge quota/spend gate, welcome package, fuel waiver, movie offer, insurance/CFAR/roadside benefits and secured eligibility.",
+    "unresolved": [
+      "Issuer describes flight/hotel app bonuses with percentage headlines but specific examples state bonus points per INR100; modeled total points use the examples and remain medium confidence.",
+      "The product page's lounge FAQ uses both current-month and previous-month spend wording; it otherwise says current month unlocks next month.",
+      "Cash advance fee is flat INR199 plus taxes per transaction, not representable in the current percentage/minimum schema; exact amount retained in fee notes.",
+      "The card page advertises welcome offers as worth over INR5,000, but several are partner discounts/memberships rather than cash equivalents."
+    ]
   },
   "wow": {
     "slug": "wow",
     "url": "https://www.idfcfirst.bank.in/credit-card/wow",
-    "pdfs": []
+    "pdfs": [
+      "wow/FIRST-WOW-Credit-Card-Communication-May-26.pdf",
+      "wow/FIRST-WOW-Credit-Card-Important-Update.pdf",
+      "wow/MITC-Document-Customer-retrieved-2026-10-27.pdf"
+    ],
+    "result": "Reviewed current FIRST WOW! product page and customer MITC, May-2026 card communication, and earlier update to identify superseded reward and benefit claims. Corrected reward base/rates, expiry, cash fee, standard-card benefits, fuel waiver, network platform and secured eligibility.",
+    "unresolved": [
+      "Current fixed monthly finance charge is not stated; issuer publishes a variable APR range.",
+      "Older Dec-2025 update listed INR200,000 personal accident and INR25,000 lost-card cover; latest May-2026 update and current page do not reaffirm these, so they are excluded pending current confirmation.",
+      "Fuel-waiver transaction bounds are not stated in current product communication."
+    ],
+    "captures": [
+      "wow/product-page-retrieved-2026-10-27.html"
+    ]
   }
 }

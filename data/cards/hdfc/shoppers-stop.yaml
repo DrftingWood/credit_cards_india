@@ -3,17 +3,17 @@ name: Shoppers Stop HDFC Bank Credit Card
 image_path: /cards/hdfc/shoppers-stop.webp
 issuer: hdfc
 network: rupay
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
   partner: Shoppers Stop
   category: retail
 status: active
-launched_on: '2023-01-01'
+launched_on: '2022-03-30'
 discontinued_on: null
 fees:
-- effective_from: 2026-07-03
+- effective_from: '2026-10-26'
   effective_until: null
   joining_fee_inr: 299
   annual_fee_inr: 299
@@ -23,124 +23,205 @@ fees:
   gst_applicable: true
   source:
     url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
     local_refs:
-    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    - docs/sources/hdfc/shoppers-stop/standard-terms-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
     - fees.finance_charge_monthly_pct
-  notes: ₹299 joining and annual fee for customers joining from Mar-2024; earlier
-    customers are lifetime-free.
+    - fees.cash_advance_fee
+    notes: Current HDFC page/pricing lists ?299 joining and annual fees (no waiver for current pricing). HDFC co-branded
+      MITC v3.9 gives 3.5% foreign currency markup, 3.75% monthly finance, 2.5% cash-advance fee (minimum ?500).
+      Product page discloses 1% international DCC markup and 1% rent fee from the second rent transaction in a calendar
+      month. The March 2024 card-change notice states existing pre-change customers remain lifetime-free; current
+      new pricing is ?299.
+  notes: HDFC fee-waiver table lists no waiver for this product. The page's 1% international DCC markup is separate
+    from the foreign currency markup. Existing customers who joined before the March 1, 2024 change may retain lifetime-free
+    status per the earlier card terms.
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
 rewards:
-- effective_from: 2026-07-03
+- effective_from: '2026-10-26'
   effective_until: null
   currency: points
   currency_name: Reward Points
-  redemption_scope: closed-loop
-  ecosystem_label: Shoppers Stop
+  redemption_scope: open
+  ecosystem_label: null
   base:
     rate: 1
     per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 0.2
     cap_per_cycle: 1000
     cap_unit: points
     cycle: monthly
-    unit_value_inr_realized: 1.0
-    unit_value_inr: 1.0
+    notes: 1% on eligible non-Shoppers Stop spend, cap 1,000 points/month; minimum transaction ?150. Realized value
+      is the issuer-listed statement-credit rate; Shoppers Stop voucher redemption is ?1/point.
   accelerated:
   - category: shoppers-stop-purchases
     canonical_categories:
     - other
     multiplier: 3
     effective_rate: 3
+    cap_per_cycle: 500
+    cap_unit: points
+    cycle: monthly
     merchants:
     - shoppers-stop
     channel:
       class: cobrand-merchant
       merchants:
       - shoppers-stop
-    notes: 3% Reward Points on every Shoppers Stop purchase (vs 1% base on non-Shoppers
-      Stop spends).
-    cap_per_cycle: 500
-    cap_unit: points
-    cycle: monthly
+    notes: 3% on Shoppers Stop store/site transactions of ?150 or more, cap 500 points/month. Eligibility depends
+      on Shoppers Stop TIDs/MIDs registered with HDFC.
   exclusions:
   - fuel
   - wallet-loads
   - rent
   - government
+  - insurance-premiums
   - emi
+  - cash-advance
   capping_rules:
-  - Minimum transaction of ₹150 required to earn Reward Points.
+  - No points on supermarkets, tax, miscellaneous vending-machine food, package stores/liquor, bakeries, travelers
+    cheques and categories excluded by HDFC from time to time.
+  - Shoppers Stop reward eligibility is transaction/MID/TID based; transactions under ?150 do not qualify.
   redemption:
   - type: voucher
     program: Shoppers Stop
     rate_inr_per_unit: 1.0
-    constraints: 1 Reward Point = ₹1 when redeemed against a Shoppers Stop voucher.
-      Redemption Limit applicable from 1st Jan, 2023.
-  - type: catalog
-    rate_inr_per_unit: 0.25
+    constraints: 1 Reward Point = ?1 on Shoppers Stop vouchers; redeemable in the Shoppers Stop ecosystem.
   - type: cashback-bank
+    program: HDFC statement credit
     rate_inr_per_unit: 0.2
+    min_units: 500
+    fee_inr: 50
+    constraints: ?0.20/point; statement-credit cashback redemption incurs ?50 fee per current MITC.
+  - type: product
+    program: HDFC Reward Catalogue
+    rate_inr_per_unit: 0.25
+    fee_inr: 99
+  - type: airmiles
+    program: HDFC Airmiles
+    rate_inr_per_unit: 0.25
+    fee_inr: 99
   - type: other
-    program: SmartBuy
+    program: HDFC SmartBuy Flights/Hotels
     rate_inr_per_unit: 0.2
+    fee_inr: 99
+    constraints: Points can cover at most 50% of booking value; issuer publishes calendar-month redemption limits.
   source:
     url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-10-26'
     type: issuer-page
     confidence: high
-    notes: 'Research-verified: HDFC Reward Point = Rs1 as Shoppers Stop voucher, store-only.
-      Layer-3: same goods ~20-40% cheaper online during sales.'
+    local_refs:
+    - docs/sources/hdfc/shoppers-stop/standard-terms-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.cap_per_cycle
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.redemption
+    - rewards.redemption_floor_value_inr
+    - rewards.redemption_ceiling_value_inr
+    notes: Live product page and current linked terms agree on 3%/1% earning, category caps, two-year points validity
+      and ?500 monthly weekend reward. Weekend offer is limited to one per month and five per year.
+  mcc_exclusions: []
+  redemption_floor_value_inr: 0.2
+  redemption_ceiling_value_inr: 1.0
 benefits:
-- effective_from: 2026-07-03
+- effective_from: '2026-10-26'
   effective_until: null
   lounge_access: null
   milestones:
   - spend_inr: 15000
     cycle: monthly
-    benefit: Reward Points worth ₹500 for a purchase of ₹15,000 or above on weekends
-      at Shoppers Stop.
+    benefit: 500 Reward Points for a single Shoppers Stop purchase of ?15,000 or more on Friday, Saturday or Sunday;
+      once per month, at most five times per year
     value_inr: 500
     reward_kind: points
+    reward_units: 500
     reward_currency_name: Reward Points
     trigger_window: rolling
     is_repeatable: true
+    max_awards_per_cycle: 1
+    redemption_constraint_ref: hdfc-shoppers-stop-reward-redemption
   welcome:
-  - condition: On card issuance
-    benefit: ₹500 Shoppers Stop voucher, redeemable on any transaction at a Shoppers
-      Stop store via the card.
+  - condition: On card issuance; issuer sends a WhatsApp welcome message within 3 working days after onboarding.
+    benefit: ?500 Shoppers Stop voucher, usable on a Shoppers Stop transaction with this card.
     value_inr: 500
-  - condition: On card issuance
+  - condition: On card issuance.
     benefit: Complimentary Shoppers Stop Silver Edge membership.
     value_inr: 350
   fuel_surcharge_waiver:
     pct: 1.0
-    min_txn_inr: null
-    max_txn_inr: null
-    cap_per_cycle_inr: null
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+    notes: HDFC co-branded MITC gives eligible transaction band and monthly cap; GST on fuel surcharge is not reversed.
   concierge: false
   source:
     url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-26'
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/shoppers-stop/standard-terms-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.milestones.spend_inr
+    - benefits.milestones.reward_units
+    - benefits.welcome.value_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
     salaried: 240000
     self_employed: 600000
-  credit_score_min: 700
+  credit_score_min: null
   residency: resident-indian
-  notes: 'Salaried: age 21-60, monthly income ₹20,000 (₹2.4L annual). Self-employed:
-    age 21-65, annual ITR > ₹6,00,000.'
+  notes: HDFC lists Indian nationality, salaried age 21?60 and monthly income ?20,000; self-employed age 21?65 and
+    annual ITR strictly greater than ?6,00,000. The schema stores the annualized salaried minimum and the self-employed
+    income floor.
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-26'
   tags:
   - co-branded
   - shoppers-stop

@@ -50,7 +50,7 @@ function bandOf(forex: number | null | undefined): ForexBand | null {
 export function filterCards(cards: EnrichedCard[], f: FilterState): EnrichedCard[] {
   return cards.filter((c) => {
     if (f.issuers.length && !f.issuers.includes(c.issuer)) return false;
-    if (f.networks.length && !f.networks.includes(c.network)) return false;
+    if (f.networks.length && (!c.network || !f.networks.includes(c.network))) return false;
     if (f.tiers.length && !f.tiers.includes(c.tier)) return false;
     if (f.currencies.length) {
       const cur = c.computed.primary_reward_currency;

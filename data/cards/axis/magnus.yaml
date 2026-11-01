@@ -8,17 +8,17 @@ tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2019-07-01
+launched_on: 2019-09-18
 discontinued_on: null
 fees:
-- effective_from: 2019-07-01
+- effective_from: 2023-09-01
   effective_until: null
   joining_fee_inr: 12500
   annual_fee_inr: 12500
   fee_waiver:
     spend_inr: 2500000
     cycle: annual
-    conditions: Annual fee waived on spends of ₹25L in the preceding year.
+    conditions: Annual fee waived on eligible spends of INR 25 lakh in the preceding card anniversary year. Rental, wallet, gift-card, Priority Pass, EMI, government, utility/telecom, insurance, gold/jewellery and fuel spends are excluded; fees and charges are excluded. INR12,500 pricing applies to new accounts from 1-Sep-2023; issuer terms describe legacy customer cohorts with different fee treatment.
   forex_markup_pct: 2.0
   finance_charge_monthly_pct: 3.0
   cash_advance_fee:
@@ -27,24 +27,30 @@ fees:
   gst_applicable: true
   source:
     url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
     local_refs:
-    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    - docs/sources/axis/magnus/mitc-credit-cards.pdf
+    - docs/sources/axis/magnus/magnus-terms-2026-08-28.pdf
+    - docs/sources/axis/magnus/magnus-credit-card-terms-and-conditions.pdf
     fields_verified:
-    - fees.finance_charge_monthly_pct
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
     - fees.forex_markup_pct
-    notes: No cash withdrawal fees per live page; 3% finance charge; 2% forex markup.
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    notes: Current issuer page lists 3% monthly finance charge, 2% forex markup and no cash-withdrawal fee. The 28-Aug-2026 terms set DCC markup at 2% plus applicable taxes (the fee schema has no DCC field); rent transaction fee is 1%, maximum INR1,500 per transaction. Annual-fee waiver uses the card-anniversary year and its published excluded categories.
 rewards:
-- effective_from: 2019-07-01
+- effective_from: 2019-09-18
   effective_until: 2023-08-31
   currency: points
   currency_name: EDGE Reward Points
   base:
     rate: 12
     per_inr: 200
-    unit_value_inr: 0.2
+    unit_value_inr: null
   exclusions:
   - fuel
   - wallet-loads
@@ -61,10 +67,9 @@ rewards:
     retrieved_on: 2026-04-15
     type: archive
     confidence: high
-    notes: Historical record; values prior to the Sept-2023 revision. URL repointed
-      2026-10-20 from a dead undated Wayback link (wrong slug) to the 4-Jun-2023 snapshot
-      of the pre-revision feature page, which states 12 EDGE points per Rs.200; the
-      5:4 transfer ratio is not on that page.
+    notes: Historical record; values prior to the Sept-2023 revision. URL repointed 2026-10-20 from a dead undated
+      Wayback link (wrong slug) to the 4-Jun-2023 snapshot of the pre-revision feature page, which states 12 EDGE
+      points per Rs.200; the 5:4 transfer ratio is not on that page.
   mcc_exclusions:
   - '6513'
 - effective_from: 2023-09-01
@@ -74,18 +79,15 @@ rewards:
   base:
     rate: 12
     per_inr: 200
-    unit_value_inr: 0.44
-    unit_value_inr_realized: 0.18
+    unit_value_inr: null
+    unit_value_inr_realized: null
   accelerated:
   - category: monthly-spend-above-threshold
     multiplier: 1
     effective_rate: 35
-    cap_per_cycle: 35000
     cap_unit: points
     cycle: monthly
-    notes: 35 EDGE Reward points per ₹200 on incremental spends above ₹1.5L in a calendar
-      month; the 35-point rate applies on spends up to (assigned credit limit + ₹1.5L)
-      per calendar month.
+    notes: 35 EDGE Reward points per INR200 on eligible spends above INR1.5 lakh, up to eligible spends equivalent to the assigned credit limit plus INR1.5 lakh per calendar month; thereafter the base 12-point rate applies. This is a limit-dependent spend band, so there is no fixed points cap in the record.
     canonical_categories:
     - other
   - category: travel-edge-portal
@@ -100,87 +102,165 @@ rewards:
       class: issuer-portal
       merchants:
       - edge-travel
-    notes: 5X (60 EDGE Reward Points per ₹200) on Travel EDGE portal spends, capped
-      at ₹2,00,000 per calendar month; base rate thereafter.
+    notes: 60 EDGE Reward Points per INR200 on cumulative Travel EDGE portal transactions up to INR2 lakh per calendar month.
+  - category: travel-edge-portal-above-2-lakh-threshold
+    canonical_categories:
+    - travel
+    effective_rate: 35
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - edge-travel
+    notes: 35 EDGE Reward Points per INR200 on cumulative Travel EDGE portal transactions above INR2 lakh in a calendar month, per current issuer page.
   exclusions:
   - fuel
   - wallet-loads
-  - rent
   - government
   - insurance-premiums
   - utilities
-  - education
   - jewellery
+  - road-fees-and-tolls
+  - bridge-fees
+  - cash-advance
+  - gift-cards
   capping_rules:
   - Transfer to airline partners capped at 5,00,000 EDGE points per year.
   redemption:
   - type: airmiles
     program: Multiple (EDGE transfer)
-    ratio: '5:2'
-    constraints: '10 transfer partners; ratios are card-point : partner-unit. realized
-      Rs 0.20 = guaranteed non-transfer floor; best documented transfer Rs 0.44. 9
-      partners beat the floor. Full per-partner values below.'
+    ratio: null
+    constraints: The issuer product page's 2:5 headline is not universal; the live transfer table lists current partner-specific ratios below. The table currently lists 28 eligible partner rows while the product page headline refers to 20 partners. Transfer cap is 5 lakh EDGE points/year, split between Group A (1 lakh) and Group B (4 lakh).
     transfer_partners:
-    - partner_name: Singapore KrisFlyer
+    - partner_name: All - The limitless hotel loyalty programme
+      partner_type: hotel
+      transfer_ratio: '5:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Air Asia
       partner_type: airline
       transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.44/pt
-    - partner_name: Air India Maharaja Club
+      last_verified_on: '2026-10-26'
+    - partner_name: Aeroplan
       partner_type: airline
       transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.22/pt
-    - partner_name: Air France-KLM Flying Blue
+      last_verified_on: '2026-10-26'
+    - partner_name: Flying Blue
       partner_type: airline
       transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.36/pt
-    - partner_name: Turkish Miles&Smiles
+      last_verified_on: '2026-10-26'
+    - partner_name: Air India
       partner_type: airline
       transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.44/pt
-    - partner_name: ITC Hotels (Club ITC)
+      last_verified_on: '2026-10-26'
+    - partner_name: The British Airways Club
+      partner_type: airline
+      transfer_ratio: '5:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Cathay
+      partner_type: airline
+      transfer_ratio: '5:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Ethiopian Airlines
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Etihad Guest
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Finnair Plus
+      partner_type: airline
+      transfer_ratio: '5:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Hilton Honors
       partner_type: hotel
       transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.40/pt
-    - partner_name: Air Canada Aeroplan
-      partner_type: airline
-      transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.40/pt
+      last_verified_on: '2026-10-26'
     - partner_name: IHG One Rewards
       partner_type: hotel
       transfer_ratio: '5:2'
-      last_verified_on: '2026-07-05'
-      notes: 5:2 -> ~Rs 0.20/pt
-    - partner_name: British Airways Avios
+      last_verified_on: '2026-10-26'
+    - partner_name: IndiGo BluChip
       partner_type: airline
       transfer_ratio: '5:1'
-      last_verified_on: '2026-07-05'
-      notes: 5:1 -> ~Rs 0.20/pt
-    - partner_name: Finnair Plus (Avios)
+      last_verified_on: '2026-10-26'
+    - partner_name: JAL Mileage Bank
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Marriott Bonvoy
+      partner_type: hotel
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Miles & More
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Orchid Rewards
+      partner_type: hotel
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: The Postcard Sunshine Club
+      partner_type: hotel
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Qantas Frequent Flyer
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Privilege Club
       partner_type: airline
       transfer_ratio: '5:1'
-      last_verified_on: '2026-07-05'
-      notes: 5:1 -> ~Rs 0.21/pt
-    - partner_name: Vietnam LotusMiles
+      last_verified_on: '2026-10-26'
+    - partner_name: Radisson Rewards
+      partner_type: hotel
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Singapore Airlines
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: SpiceJet
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Royal Orchid Plus
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Turkish Airlines
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: United MileagePlus
+      partner_type: airline
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    - partner_name: Lotusmiles (Vietnam Airlines)
       partner_type: airline
       transfer_ratio: '5:1'
-      last_verified_on: '2026-07-05'
-      notes: 5:1 -> ~Rs 0.16/pt [below floor — avoid]
-    rate_inr_per_unit: 0.44
+      last_verified_on: '2026-10-26'
+    - partner_name: Wyndham Rewards
+      partner_type: hotel
+      transfer_ratio: '5:2'
+      last_verified_on: '2026-10-26'
+    rate_inr_per_unit: null
   source:
     url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-10-26'
     type: issuer-page
-    notes: 'EDGE Reward Points: Rs 0.18 catalogue floor (uniform); face Rs 0.44 =
-      best 5:2 transfer to airline/hotel partners.'
+    local_refs:
+    - docs/sources/axis/magnus/magnus-terms-2026-08-28.pdf
+    - docs/sources/axis/magnus/terms-and-conditions-for-magnus-credit-card.pdf
+    fields_verified:
+    - rewards[1].base.rate
+    - rewards[1].accelerated
+    - rewards[1].exclusions
+    - rewards[1].redemption
+    notes: Reward-point monetary value varies by catalogue redemption and transfer partner; no single issuer-published INR value is asserted. Rent earns rewards only on cumulative monthly rent spends up to INR50,000; incremental rent spend above this cap is ineligible. Current partner ratios were transcribed from the issuer's live Travel EDGE table; see docs/sources/axis/magnus/edge-transfer-ratios-2026-10-26.md.
     confidence: high
-  mcc_exclusions:
-  - '6513'
+  mcc_exclusions: []
 benefits:
 - effective_from: 2023-09-01
   effective_until: null
@@ -189,37 +269,30 @@ benefits:
       visits_per_cycle: unlimited
       cycle: annual
       via:
-      - dreamfolks
+      - issuer-direct
       spend_threshold_inr: 50000
       spend_threshold_cycle: quarterly
-      notes: W.e.f 1 May 2024, complimentary domestic lounge access requires min ₹50,000
-        spend in the previous 3 calendar months (waived for new cards for the issuance
-        month + next 3 months).
+      notes: Requires INR50,000 spend in the previous 3 calendar months; waived for issuance month and the following 3 months. Effective 28-Aug-2026, domestic Indian lounges require the Magnus credit card; Priority Pass is not valid domestically.
     international:
       visits_per_cycle: unlimited
       cycle: annual
-      guests_per_visit: 4
+      guests_per_visit: null
       via:
       - priority-pass
-      notes: 4 guest visits per year (revised w.e.f 20th April 2024).
-  golf:
-    rounds_per_cycle: 4
-    cycle: monthly
-    lessons_per_cycle: 2
-  milestones:
-  - spend_inr: 150000
-    cycle: monthly
-    benefit: Eligibility for 25,000 EDGE Miles voucher (one-time per tenure)
-    value_inr: 25000
+      notes: Up to 4 additional guest visits per year with Priority Pass; guest must travel with the primary cardholder. International lounge visits are unlimited.
   welcome:
-  - condition: Joining fee paid
-    benefit: 'Choose one voucher worth ₹12,500: Luxe gift card / The Postcard Hotels
-      voucher / Yatra gift voucher'
+  - condition: Joining fee paid; first purchase made within 30 days of issue; primary cardholder only
+    benefit: 'Choose one voucher worth INR12,500: Luxe gift card / The Postcard Hotels voucher / Yatra gift voucher'
     value_inr: 12500
-    window_days: 90
+    window_days: 180
   insurance:
-  - type: air-accident
-    sum_insured_inr: 25000000
+  - type: purchase-protection
+    sum_insured_inr: 200000
+  - type: baggage-loss
+    sum_insured_inr: null
+    conditions: USD500 cover for loss/delay in baggage and personal documents per current issuer benefits page.
+  - type: credit-shield
+    sum_insured_inr: 500000
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
@@ -229,21 +302,44 @@ benefits:
   concierge: false
   source:
     url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
+    local_refs:
+    - docs/sources/axis/magnus/magnus-terms-2026-08-28.pdf
+    - docs/sources/axis/magnus/mitc-credit-cards.pdf
+    - docs/sources/axis/magnus/terms-and-conditions-for-magnus-credit-card.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
     salaried: 2400000
     self_employed: 2400000
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
+  notes: The issuer states net salary of INR24 lakh/year or net annual ITR filed for INR24 lakh; these are indicative and approval remains subject to bank policy. Add-on cardholders must be over 18. Issuer does not publish a numeric credit-score cutoff.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-magnus-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-26'
   tags:
   - travel
   - points

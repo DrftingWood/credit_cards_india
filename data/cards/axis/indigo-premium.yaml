@@ -1,18 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-indigo-premium
 name: IndiGo Axis Bank Premium Credit Card
 image_path: /cards/axis/indigo-premium.webp
 issuer: axis
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand:
@@ -22,181 +13,254 @@ co_brand:
 status: active
 launched_on: 2026-02-18
 discontinued_on: null
-
-# Premium variant of IndiGo's February 2026 Axis Bank partnership — BluChip
-# loyalty, Visa Signature, positioned for affluent frequent travellers.
-# Companion base variant at axis/indigo.yaml.
-
 fees:
-  - effective_from: 2026-02-18
-    effective_until: null
-    joining_fee_inr: 5000
-    annual_fee_inr: 5000
-    fee_waiver: null
-    forex_markup_pct: 2.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/axis/_shared/mitc-credit-cards.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-      notes: "Joining + annual fee ₹5,000 per Axis Bank press release (Feb-2026). Low forex markup 2.5% vs base 3.5%."
-
+- effective_from: 2026-08-28
+  effective_until: null
+  joining_fee_inr: 5000
+  annual_fee_inr: 5000
+  fee_waiver: null
+  forex_markup_pct: 2.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/indigo-premium/indigo-premium-card-terms-retrieved-2026-10-26.pdf
+    - docs/sources/axis/indigo-premium/indigo-premium-terms-update-effective-2026-08-28.pdf
+    - docs/sources/axis/_shared/mitc-credit-cards-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Premium joining and annual fee are INR 5,000 plus GST; no spend-based annual-fee waiver is listed in the card-specific terms. The 2026-08-28 revision sets DCC markup to 2.5% (from 1.5%) and late-payment charge to INR 1,300 for balances at/above INR 50,000. Product page lists additional fees including INR 99 EDGE Rewards redemption, rent 1%, 1% education-app fee, and statement-period transaction fees on wallet, fuel and utility spends. Schema has no fields for these fee classes. The page's MCC 6513 label belongs with the rent fee, not a reward-exclusion list.
 rewards:
-  - effective_from: 2026-02-18
-    effective_until: null
-    currency: miles
-    currency_name: IndiGo BluChips
-    loyalty_program: indigo-bluchip
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.6
-      unit_value_inr_realized: 0.45
-    accelerated:
-      - category: indigo-flights-direct
-        canonical_categories: [travel]
-        multiplier: 1
-        effective_rate: 7
-        card_attributable_rate: 7
-        card_attributable_per_inr: 100
-        stacks_with_program: false
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-        merchants: [indigo-web, indigo-app]
-        channel:
-          required: true
-          class: cobrand-merchant
-          merchants: [indigo-app, indigo-web]
-        notes: "7 BluChips per ₹100 on IndiGo flight bookings via IndiGo web/app. Card-side rate only on this product line."
-      - category: hotels-groceries
-        canonical_categories: [travel, groceries]
-        multiplier: 1
-        effective_rate: 3
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: voucher
-        program: IndiGo flights + 6E Prime add-ons
-        rate_inr_per_unit: 0.6
-        constraints: "IndiGo BluChip floats ~Rs0.40-0.60 toward IndiGo fares (min 500); no fixed value."
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      confidence: high
-      notes: 'BluChip voucher rate corrected 1.0->0.6 to match floating value (2026-07-05).'
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - No per-cycle cap on the accelerated 7 BluChips/₹100 IndiGo-channel earning per the IndiGo Axis Premium T&C (retrieved 2026-07-05); only category exclusions + milestone resets, no BluChip ceiling. High confidence.
+- effective_from: 2026-08-28
+  effective_until: null
+  currency: miles
+  currency_name: IndiGo BluChips
+  loyalty_program: indigo-bluchip
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: indigo-flights-direct
+    canonical_categories:
+    - travel
+    multiplier: 1
+    effective_rate: 7
+    card_attributable_rate: 7
+    card_attributable_per_inr: 100
+    stacks_with_program: false
+    cap_status: not-published
+    cap_unit: miles
+    cycle: monthly
+    merchants:
+    - indigo-web
+    - indigo-app
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - indigo-app
+      - indigo-web
+    notes: 7 BluChips per INR 100 at IndiGo channels, identified under MCC 4511 with merchant-name keywords Indigo or Interglobe. No separate per-cycle reward cap is stated in the card terms. BluChips are issued within 30 working days after statement generation and only for accounts whose applicable fee is paid; first-year-free and lifetime-free accounts do not earn under these terms.
+  - category: hotels-groceries
+    canonical_categories:
+    - travel
+    - groceries
+    multiplier: 1
+    effective_rate: 3
+    cap_status: not-published
+    cap_unit: miles
+    cycle: monthly
+    mcc_list:
+    - '5399'
+    - '5422'
+    - '5441'
+    - '5411'
+    - '5451'
+    - '5462'
+    - '5499'
+    - '5999'
+    notes: 3 BluChips per INR 100 on groceries at the listed MCCs and hotel MCCs 3501-3838 and 7011. The product page says hotels and groceries; dining is not an eligible accelerator for this Premium variant.
+  exclusions:
+  - government
+  - insurance-premiums
+  - utilities
+  - rent
+  - wallet-loads
+  - fuel
+  - jewellery
+  - bridge-fees
+  - road-fees-and-tolls
+  - gift-cards
+  - emi
+  - cash-advance
+  redemption: []
+  source:
+    url: https://www.axis.bank.in/docs/default-source/default-document-library/final_indigo-premium_customer-tnc.pdf?sfvrsn=6394c91f_2
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/axis/indigo-premium/indigo-premium-card-terms-retrieved-2026-10-26.pdf
+    - docs/sources/axis/indigo-premium/indigo-premium-terms-update-effective-2026-08-28.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated
+    - rewards.exclusions
+    notes: Card-specific terms exclude government, insurance, utilities/telecom, rent, wallet, fuel, jewellery, bridge/road/toll fees and gift cards, plus EMI products, cash withdrawals, fees/charges/GST and temporary disputed-transaction credits. The BluChip terms explicitly say points have no monetary value; redemption value and validity are governed by IndiGo. Prior 0.6/0.45 INR unit-value estimates were unsupported and have been cleared. The issuer does not specify an overall earning cap. Product page/terms describe eligible-category limits; current terms require the card fee to be paid for the anniversary year.
+  mcc_exclusions: []
+  capping_rules:
+  - BluChips are awarded only on eligible settled spend; excluded categories, EMI conversions, cash withdrawals, fees/taxes, refunds and dispute credits do not earn.
+  - Reward earning under the card terms is unavailable where applicable joining/annual fees are unpaid, including first-year-free and lifetime-free accounts.
 benefits:
-  - effective_from: 2026-02-18
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-        notes: "Complimentary domestic lounge visits via Dreamfolks."
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-        notes: "Complimentary international lounge visits via Priority Pass."
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Voucher worth 5,000 IndiGo BluChips + one complimentary 6E Eats voucher"
-        value_inr: 5000
-        window_days: 90
-    milestones:
-      - spend_inr: 0
-        cycle: annual
-        benefit: "Voucher worth 5,000 IndiGo BluChips + 6E Eats voucher as renewal benefit on payment of annual fee"
-        value_inr: 5000
-        reward_kind: miles
-        reward_units: 5000
-        reward_currency_name: IndiGo BluChips
-        trigger_window: anniversary-year
-      - spend_inr: 200000
-        cycle: annual
-        benefit: "Voucher worth 5,000 IndiGo BluChips on ₹2 Lakh annual spends"
-        value_inr: 5000
-        reward_kind: miles
-        reward_units: 5000
-        reward_currency_name: IndiGo BluChips
-        trigger_window: anniversary-year
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "Voucher worth 5,000 IndiGo BluChips on ₹5 Lakh annual spends"
-        value_inr: 5000
-        reward_kind: miles
-        reward_units: 5000
-        reward_currency_name: IndiGo BluChips
-        trigger_window: anniversary-year
-      - spend_inr: 800000
-        cycle: annual
-        benefit: "Voucher worth 5,000 IndiGo BluChips on ₹8 Lakh annual spends"
-        value_inr: 5000
-        reward_kind: miles
-        reward_units: 5000
-        reward_currency_name: IndiGo BluChips
-        trigger_window: anniversary-year
-      - spend_inr: 1200000
-        cycle: annual
-        benefit: "Voucher worth 5,000 IndiGo BluChips on ₹12 Lakh annual spends"
-        value_inr: 5000
-        reward_kind: miles
-        reward_units: 5000
-        reward_currency_name: IndiGo BluChips
-        trigger_window: anniversary-year
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
-    other:
-      - name: Entertainment / dining discounts
-        description: Bundled lifestyle privileges — entertainment offers and dining discounts via Axis partner network.
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-08-28
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      notes: Two visits per quarter, subject to at least INR 50,000 eligible spend in the preceding three calendar months. New issuance waives the spend test for the issue month and following three calendar months; an upgrade does not count as new issuance. Lounge validation and cardholder-only entry rules apply.
+    international:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Two international lounge visits per calendar year through Priority Pass. A USD 1 authorization on the card is required for entry and is reversed after successful authorization; guests are not complimentary.
+  movies:
+    type: bogo
+    partner: BookMyShow
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 250
+    notes: Buy-one-get-one movie ticket offer, once per month; maximum discount INR 250 per month. Effective 2026-11-01, an INR 25,000 eligible spend in the preceding three months is required; new-card accounts are exempt for issue month and the next three calendar months. The issuer page does not state whether the spend gate changes the monthly ticket cap.
+  welcome:
+  - condition: Joining fee successfully paid; eligible fee must be paid within 120 days after it is charged. Not applicable to first-year-free/lifetime-free accounts or add-on cards.
+    benefit: Welcome voucher of 5,000 IndiGo BluChips plus one 6E Eats voucher; issued within 30 days of fee payment and valid for six months from issue.
+    value_inr: null
+    window_days: 120
+  - condition: Temporary double-welcome campaign for card applications from 2026-06-01 through 2026-10-31 per campaign PDF (product page says 2026-09-01 through 2026-10-31); joining fee payment required and offer communication may be required.
+    benefit: Additional voucher of 5,000 IndiGo BluChips, issued within 60 days of joining-fee payment and valid for six months. One standard 6E Eats voucher remains part of the welcome offer.
+    value_inr: null
+    window_days: 60
+  milestones:
+  - spend_inr: 0
+    cycle: annual
+    benefit: 5,000 IndiGo BluChips voucher plus one 6E Eats voucher on annual-fee payment; voucher must be used within six months.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+  - spend_inr: 200000
+    cycle: annual
+    benefit: 5,000 IndiGo BluChips voucher at INR 2 lakh eligible anniversary-year spend; fee must be paid, issued within 30 days of next statement and valid six months.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+    is_repeatable: false
+  - spend_inr: 500000
+    cycle: annual
+    benefit: 5,000 IndiGo BluChips voucher at INR 5 lakh eligible anniversary-year spend; fee must be paid, issued within 30 days of next statement and valid six months.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+    is_repeatable: false
+  - spend_inr: 800000
+    cycle: annual
+    benefit: 5,000 IndiGo BluChips voucher at INR 8 lakh eligible anniversary-year spend; fee must be paid, issued within 30 days of next statement and valid six months.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+    is_repeatable: false
+  - spend_inr: 1200000
+    cycle: annual
+    benefit: 5,000 IndiGo BluChips voucher at INR 12 lakh eligible anniversary-year spend; fee must be paid, issued within 30 days of next statement and valid six months.
+    value_inr: null
+    reward_kind: miles
+    reward_units: 5000
+    reward_currency_name: IndiGo BluChips
+    trigger_window: anniversary-year
+    is_repeatable: false
+  fuel_surcharge_waiver: null
+  dining:
+    program: Axis Bank Dining Delights
+    discount_pct: null
+    notes: Current issuer page names Dining Delights but does not state a fixed discount for this card.
+  other:
+  - name: Wednesday Delight
+    description: Dynamic weekly offers are linked on the current issuer page; merchants, values and availability vary over time.
+  concierge: false
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/indigo-premium/indigo-premium-card-terms-retrieved-2026-10-26.pdf
+    - docs/sources/axis/indigo-premium/indigo-premium-terms-update-effective-2026-08-28.pdf
+    - docs/sources/axis/indigo-premium/double-welcome-campaign-terms-retrieved-2026-10-26.pdf
+    - docs/sources/axis/_shared/axis-bank-airport-lounge-access-program-retrieved-2026-10-26.pdf
+    - docs/sources/axis/indigo-premium/indigo-axis-card-launch-2026-02-18.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.movies
+    - benefits.welcome
+    - benefits.milestones
+    notes: BluChip vouchers are loyalty vouchers, not cash; no INR value is assigned. Core T&C require fee payment for welcome, renewal and milestone vouchers. The current double-welcome promotion runs through 2026-10-31, but its PDF says applications from June 1 while the live product page says September 1. The 2026-11-01 BookMyShow spend gate is scheduled in the August revision. The issuer specifies two international visits (not the four recorded previously). No fuel-surcharge waiver is published for this card; the previous 1% fuel waiver was copied/unsupported and has been removed. Launch release says both RuPay and Visa networks are being launched; scalar network and tier remain unknown.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
     salaried: 600000
     self_employed: 600000
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Product page states age 18-70, minimum net income INR 600,000 p.a., and resident India. It does not split the income threshold by employment type; the same issuer threshold is mapped to both schema slots. Card-specific bureau-score cutoff is unpublished.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/indigo-premium/indigo-axis-card-launch-2026-02-18.pdf
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/indigo-axis-bank-premium-credit-card
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [co-branded, airline, indigo, premium, miles, bluchip, low-forex]
+  last_verified_on: 2026-10-26
+  tags:
+  - co-branded
+  - airline
+  - indigo
+  - premium
+  - miles
+  - bluchip

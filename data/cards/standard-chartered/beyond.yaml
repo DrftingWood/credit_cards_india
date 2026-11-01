@@ -1,13 +1,4 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: standard-chartered-beyond
+﻿id: standard-chartered-beyond
 name: Standard Chartered Beyond Credit Card
 image_path: /cards/standard-chartered/beyond.webp
 issuer: standard-chartered
@@ -17,131 +8,212 @@ tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2025-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-01-01
-    effective_until: null
-    joining_fee_inr: 10000
-    annual_fee_inr: 10000
-    fee_waiver: null
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Super-premium lifestyle flagship. Welcome vouchers/Reward Points worth ~₹2.4L on joining fee (60k RP + golf + dining + lounge + movie value breakdown). Reduced 2% forex markup."
-    source:
-      url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-25'
+  effective_until: null
+  joining_fee_inr: 15000
+  annual_fee_inr: 25000
+  renewal_fee_inr: 25000
+  fee_waiver: null
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 3.0
+    min_inr: 300
+  supplementary_card_fee_inr: 0
+  gst_applicable: true
+  notes: Current product page lists INR 15,000 joining and INR 25,000 annual/renewal fees plus GST. Renewal fee
+    waiver is based on FUM qualification, not a published spend threshold; current Beyond terms specify FUM qualification
+    in the last 3 months before the fee is charged. Exact eligibility for fee waiver is not representable in the
+    spend-only waiver field. Values reflect terms observed 2026-10-25; original change effective date not stated.
+  source:
+    url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.forex_markup_pct
+    - fees.supplementary_card_fee_inr
+    notes: The current product page directly states the joining, annual and supplementary fees and the 2% forex
+      markup. June 2026 Standard Chartered MITC confirms 3.75% monthly finance charge and 3%/INR 300 minimum ATM
+      cash-advance fee. Beyond-specific terms confirm joining/renewal amounts and FUM-based renewal waiver.
 rewards:
-  - effective_from: 2025-01-01
-    effective_until: null
-    currency: points
-    currency_name: 360 Reward Points
-    base:
-      rate: 3
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.9
-    accelerated:
-      - category: select-utilities
-        canonical_categories: [utilities]
-        multiplier: 0.67
-        effective_rate: 2
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "2% rewards on select categories (e.g. utilities); 3% unlimited rewards on everyday spends (base)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: 360 Rewards
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: medium
-      notes: 'Verified 2026-07-05: SC Beyond 360 RP = Rs1.0 (premium 1:1, exception vs generic SC ~Rs0.25) -> realized 1.0->0.90 after Rs99+GST fee.'
+- effective_from: '2026-10-25'
+  effective_until: null
+  currency: points
+  currency_name: 360 Reward Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: 1.0
+    unit_value_inr_realized: null
+    notes: 5 points per INR 150 on ordinary eligible transactions. Terms state 1 RP = INR 1 in the 360 Rewards catalogue;
+      a fixed INR 99 handling/courier fee applies per redemption, so realized value depends on redemption size and
+      route.
+  accelerated:
+  - category: essential-categories
+    canonical_categories:
+    - utilities
+    - groceries
+    - insurance
+    - education
+    - government
+    - other
+    multiplier: 0.6
+    effective_rate: 3
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    notes: 3 points per INR 150 on utility payments, supermarkets, insurance, property management, schools and government
+      payments. Property-management merchants are not isolated in the spend profile and are not separately scored.
+      Issuer calls rewards card-level and separates primary/supplementary point balances but gives no numeric earning
+      cap.
+  exclusions:
+  - fuel
+  - rent
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: 360 Rewards
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://av.sc.com/in/content/docs/in-beyond-credit-card-tnc.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Current Beyond terms specify 5 RP/INR 150 for standard transactions, 3 RP/INR 150 on the named essential
+      categories, INR 1 catalogue value, three-year expiry, and a card-level cap without a numeric limit. Fuel,
+      ATM transactions, fees/charges, reversals, disputes, unauthorized transactions and chargebacks do not earn
+      points. Duty-free MCC 5309 earns cashback instead of reward points. June 2026 general MITC states a 1% rental-processing
+      fee for MCC 6513; the dataset-wide rent exclusion remains conservatively applied. No source was found for
+      wallet-load or EMI reward exclusions, so those unsupported exclusions were removed.
 benefits:
-  - effective_from: 2025-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: 4
-        via: [visa, priority-pass]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: 4
-        via: [priority-pass]
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome Reward Points worth ₹60,000"
-        value_inr: 60000
-        window_days: 90
-    milestones:
-      - spend_inr: 2000000
-        cycle: annual
-        benefit: "Reward Points worth ₹40,000 on ₹20 lakh annual spend"
-        value_inr: 40000
-        reward_kind: points
-        reward_units: 40000
-        reward_currency_name: 360 Reward Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-    golf:
-      rounds_per_cycle: 6
+- effective_from: '2026-10-25'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
       cycle: annual
-      lessons_per_cycle: 6
-      notes: "6 complimentary golf games/lessons per year (Buy 1 Get 1 tee-off) at premium courses."
-    dining:
-      program: EazyDiner
-      discount_pct: 25
-      notes: "25% off via EazyDiner."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 10000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    other:
-      - name: "Duty-free cashback"
-        description: "15% cashback on duty-free stores across the world."
-    concierge: true
-    source:
-      url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+      via:
+      - visa
+      notes: 'Current Beyond-specific issuer terms section 9.1 state unlimited complimentary cardholder access at participating lounges in domestic and international terminals within India. Four guest entries per calendar year per eligible primary/supplementary cardholder; guest quota is annual, not per visit. Access is individually available to primary and supplementary holders, subject to FUM qualification and INR 2 validation swipe.'
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      via:
+      - priority-pass
+      notes: 'Current Beyond-specific issuer terms section 10.2 state unlimited complimentary cardholder access to participating Priority Pass lounges outside India. Four guest entries per calendar year per eligible cardholder; guest quota is annual, not per visit. USD 1 authentication fee is reversed within 10 working days. FUM qualification applies; lounge visits may be restricted by operators or availability.'
+  welcome:
+  - condition: Pay the minimum amount due by its due date after the statement that levies the joining fee. Primary
+      cardholder only; choose eligible vouchers worth INR 15,000 from the issuer offer link within its stated validity
+      period.
+    benefit: INR 15,000 choice of welcome vouchers
+    value_inr: 15000
+  milestones:
+  - spend_inr: 2000000
+    cycle: annual
+    benefit: Issuer page states INR 60,000 worth of Reward Points on INR 20 lakh annual spend; qualifying spend
+      components and award posting terms are not detailed in the current terms PDF.
+    value_inr: 60000
+    reward_kind: points
+    reward_units: 60000
+    reward_currency_name: 360 Reward Points
+  golf:
+    rounds_per_cycle: 2
+    cycle: monthly
+    notes: 2 complimentary golf games per month, subject to booking windows, course availability and FUM qualification.
+      Issuer page also phrases this as games/lessons; detailed terms specify games.
+  dining:
+    program: EazyDiner
+    discount_pct: 25
+    notes: 25% instant discount up to INR 2,500 per transaction, once per card per month, with no minimum transaction
+      amount; use code SCB2500 and pay with Beyond card.
+  movies:
+    type: bogo
+    partner: BookMyShow
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 1000
+    notes: Buy-one-get-one on at least 2 movie or non-movie tickets via BookMyShow website/app; up to INR 1,000
+      discount, once per card per month.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    cap_per_cycle_inr: 5000
+    cycle: statement
+    notes: 1% fuel surcharge waiver capped at INR 5,000 per statement cycle on MCC 5172, 5541, 5542 and 5983. Fuel
+      transactions earn no reward points. No minimum/maximum transaction threshold is stated in current Beyond terms.
+  other:
+  - name: Duty-free cashback
+    description: 15% cashback on duty-free merchant MCC 5309, capped at INR 1,500 per statement cycle; cashback
+      posts within 2 days of transaction posting and replaces reward points on those transactions.
+    value_inr: null
+  source:
+    url: https://av.sc.com/in/content/docs/in-beyond-credit-card-tnc.pdf
+    retrieved_on: '2026-11-01'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.golf
+    - benefits.dining
+    - benefits.movies
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+    notes: Detailed current terms establish lounge guest counts, welcome voucher value and qualification, golf quota,
+      EazyDiner and BookMyShow terms, duty-free and fuel caps. The live product page contradicts the detailed lounge
+      T&C with a numeric summary of 8 domestic and 6 international visits/year while the headline and detailed terms
+      say unlimited; the conservative numeric values are retained pending clarification. Annual-spend reward milestone
+      is listed in the current product-page summary but not further specified in the detailed terms.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: 18
+  max_age: 70
   income_inr_annual:
-    salaried: 3000000
-    self_employed: 3000000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Offered to Priority/Private Banking clients with at least INR 50 lakh Funds Under Management for 2 consecutive
+    months. FUM can combine savings balances, term deposits, investments through the bank, Demat value, eligible
+    paid-up life-insurance premiums (excluding term/group insurance), and Homesaver funds for existing Homesaver
+    customers. The product page states age 18-70; applicants must be in card-sourcing locations and pass bank credit/policy
+    checks. No product-specific income or bureau-score threshold is published.
+  source:
+    url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    notes: Current product page states applicant age 18 to 70; it separately describes FUM and sourcing-location criteria.
 application:
   apply_url: https://www.sc.bank.in/credit-cards/beyond-credit-card/
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [super-premium, points, lounge, golf, dining, concierge]
+  last_verified_on: '2026-11-01'
+  tags:
+  - super-premium
+  - points
+  - lounge
+  - golf
+  - dining
+  - concierge

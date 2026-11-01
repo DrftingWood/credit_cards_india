@@ -3,7 +3,7 @@ name: Google Pay Flex Axis Bank Credit Card
 image_path: /cards/axis/google-pay-flex.webp
 issuer: axis
 network: rupay
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -13,41 +13,57 @@ status: active
 launched_on: 2025-12-17
 discontinued_on: null
 fees:
-- effective_from: 2026-07-03
+- effective_from: 2026-08-28
   effective_until: null
   joining_fee_inr: 0
   annual_fee_inr: 0
   fee_waiver: null
   forex_markup_pct: 3.5
-  finance_charge_monthly_pct: 3.0
+  finance_charge_monthly_pct: 3.75
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
+  late_payment_slabs:
+  - up_to_inr: 500
+    fee_inr: 0
+  - up_to_inr: 5000
+    fee_inr: 500
+  - up_to_inr: 10000
+    fee_inr: 750
+  - up_to_inr: 50000
+    fee_inr: 1200
+  - up_to_inr: any
+    fee_inr: 1300
   gst_applicable: true
-  emi_conversion:
-    interest_pct_annual: null
-    processing_fee_pct: null
-    processing_fee_min_inr: null
-    notes: Criteria indicative (aggregator consensus). Apply via the 'Money' tab ->
-      'Flex by Google Pay' section on the Google Pay app.
   source:
     url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
-    retrieved_on: 2026-07-05
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
     local_refs:
-    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    - docs/sources/axis/google-pay-flex/terms-and-conditions-google-pay-flex-retrieved-2026-10-26.pdf
+    - docs/sources/axis/google-pay-flex/axis-credit-card-terms-update-effective-2026-08-28.pdf
+    - docs/sources/axis/_shared/mitc-credit-cards-retrieved-2026-10-26.pdf
     fields_verified:
-    - fees.finance_charge_monthly_pct
-    - fees.forex_markup_pct
-    notes: Network=RuPay confirmed 2026-07-05 (Axis press release 'Built on the RuPay
-      network'); a UPI-first 'CC on UPI' card exclusive to the Google Pay app (already
-      tagged 'upi'). Resolves D30. No standard network_tier for a RuPay-CC-on-UPI
-      product.
-  notes: Criteria indicative (aggregator consensus). Apply via the 'Money' tab ->
-    'Flex by Google Pay' section on the Google Pay app.
+    - launched_on
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    - fees[0].late_payment_slabs[0].up_to_inr
+    - fees[0].late_payment_slabs[0].fee_inr
+    - fees[0].late_payment_slabs[1].up_to_inr
+    - fees[0].late_payment_slabs[1].fee_inr
+    - fees[0].late_payment_slabs[2].up_to_inr
+    - fees[0].late_payment_slabs[2].fee_inr
+    - fees[0].late_payment_slabs[3].up_to_inr
+    - fees[0].late_payment_slabs[3].fee_inr
+    - fees[0].late_payment_slabs[4].fee_inr
+    notes: Current product page lists fees waived; monthly finance 3.75%; foreign currency and DCC 3.5%; rent fee 1%; reversal fee 2% (minimum INR 500); and late-fee slabs. Cash-advance fee is from current Axis MITC. The generic 28-Aug-2026 notice confirms DCC and >= INR 50,000 late-fee updates and exclusions for gift-card, bridge-fee, road-fee and toll rewards. Late-fee wording overlaps at exactly INR 50,000 between the product page and generic notice; encoded as INR 1,200 through INR 50,000 and INR 1,300 above. Rent fee and other non-schema charges are described on the issuer page. Launch date is from the Axis issuer release at https://www.axis.bank.in/about-us/press-releases/google-pay-and-axis-bank-launch-flex.
 rewards:
-- effective_from: 2026-07-03
+- effective_from: 2026-08-28
   effective_until: null
   currency: points
   currency_name: Stars
@@ -55,81 +71,118 @@ rewards:
     rate: 1
     per_inr: 500
     unit_value_inr: 1.0
-    unit_value_inr_realized: 0.9
+    unit_value_inr_realized: null
   accelerated:
-  - category: 2x-spend-active
+  - category: spend-active
     multiplier: 2
     effective_rate: 2
     cap_unit: points
     cycle: monthly
-    notes: Criteria indicative (aggregator consensus). Apply via the 'Money' tab ->
-      'Flex by Google Pay' section on the Google Pay app.
+    notes: First reward cycle earns 2 Stars per cumulative INR 500. In later cycles, earn 2 per cumulative INR 500 when previous-cycle net eligible spend is at least INR 100; otherwise the base is 1 per cumulative INR 500. Reward cycle runs from the 16th to the 15th.
     canonical_categories:
     - other
+    source:
+      url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+      retrieved_on: 2026-10-26
+      type: issuer-page
+      confidence: high
+      local_refs:
+      - docs/sources/axis/google-pay-flex/terms-and-conditions-google-pay-flex-retrieved-2026-10-26.pdf
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      notes: Issuer terms specify 2 Stars per cumulative INR 500 in the first cycle and subsequent cycles after at least INR 100 net eligible spend in the prior cycle.
   exclusions:
-  - wallet-loads
   - rent
-  - government
+  - cash-advance
+  - financial-institutions
   - insurance-premiums
   - education
-  - cash-advance
+  - government
+  - other
+  - wallet-loads
   - jewellery
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
   reward_cap:
     max_units: 1500
     cap_unit: points
     cycle: monthly
   capping_rules:
-  - Maximum 1,500 Stars per reward cycle, of which a maximum of 750 Stars are awarded
-    by Axis Bank (remainder via Google Pay 4X/8X promotional campaigns).
+  - Maximum 1,500 Stars per reward cycle across Axis and Google Pay promotional Stars; maximum 750 Stars are awarded by Axis Bank.
+  - Base Stars are calculated on cumulative eligible spend; refunds, reversals and EMI-converted spends are handled as specified in the card T&Cs.
   redemption:
   - type: cashback-bank
     program: Google Pay
     rate_inr_per_unit: 1.0
-    constraints: 1 Star = Rs 1. Redeem stars instantly on the Google Pay app for cashback
-      while paying.
+    constraints: Each Star is INR 1. Redeem through Google Pay using this card for UPI payment; redemption options are controlled by Google Pay and may change. Stars expire after one year.
   source:
     url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: 2026-10-26
     type: issuer-page
-    confidence: medium
-    notes: Stars redeem ~1:1 as cash with minor friction.
-  notes: Criteria indicative (aggregator consensus). Apply via the 'Money' tab ->
-    'Flex by Google Pay' section on the Google Pay app.
-  mcc_exclusions:
-  - '6513'
+    confidence: high
+    local_refs:
+    - docs/sources/axis/google-pay-flex/terms-and-conditions-google-pay-flex-retrieved-2026-10-26.pdf
+    - docs/sources/axis/google-pay-flex/google-pay-flex-upgraded-reward-structure-effective-2026-10-16.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.exclusions
+    - rewards.reward_cap.max_units
+    - rewards.redemption
+    notes: Card-specific terms confirm fuel is eligible, 1 Star per cumulative INR 500 at INR 1/Star, 2 Stars per INR 500 in the first reward cycle and subsequent cycles after at least INR 100 prior-cycle net eligible spend, INR 1,500 total cycle cap (up to 750 from Axis), one-year Star expiry, and the excluded categories listed. Exact network is RuPay from Axis launch release; issuer launch source does not specify a network tier, so it is null. Stars are a Google Pay passthrough program and redemption modes depend on Google Pay. Google Pay's dated 16-Oct-2026 to 15-Oct-2027 promotional campaign is modeled separately under benefits rather than as base issuer earn.
+  mcc_exclusions: []
 benefits:
-- effective_from: 2026-07-03
+- effective_from: 2026-10-16
   effective_until: null
   lounge_access: null
   welcome:
-  - condition: Earn 2 stars on eligible spends of Rs 500 in the first rewards cycle
-    benefit: Rs 250 gift card and 250 stars on the Google Pay app (welcome rewards
-      worth Rs 500)
-    value_inr: 500
+  - condition: Earn 2 Stars per cumulative INR 500 of eligible spend in the first reward cycle; Google Pay offer availability/eligibility also applies.
+    benefit: INR 1,750 in Stars and an INR 250 Google Pay gift card as the welcome reward, subject to offers run by Google Pay.
+    value_inr: null
     window_days: null
   fuel_surcharge_waiver: null
   concierge: false
+  other:
+  - name: Google Pay Flex reward-cycle campaign (16-Oct-2026 to 15-Oct-2027)
+    description: Google One members who cross INR 15,000 eligible spend in a reward cycle receive 3.2% back in Stars on all eligible spends that cycle; non-members receive 1.6%. Google One membership and prior-cycle activity affect rates. Google Pay also offers 15% back up to INR 450 on INR 3,000 in eligible bills, OTT and recharges, and 5% back up to INR 250 on INR 5,000 UPI spend at listed top food/grocery apps, each once per reward cycle. These Stars are awarded by Google Pay; campaign terms, eligible categories and the INR 1,500 overall cap apply.
+    value_inr: null
   source:
     url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
-  notes: Criteria indicative (aggregator consensus). Apply via the 'Money' tab ->
-    'Flex by Google Pay' section on the Google Pay app.
+    local_refs:
+    - docs/sources/axis/google-pay-flex/terms-and-conditions-google-pay-flex-retrieved-2026-10-26.pdf
+    - docs/sources/axis/google-pay-flex/google-pay-flex-upgraded-reward-structure-effective-2026-10-16.pdf
+    fields_verified:
+    - benefits.welcome
+    - benefits.other
+  notes: Current product page supersedes the July snapshot's INR 250 Stars + INR 250 gift-card welcome headline with INR 1,750 Stars + INR 250 gift card, subject to Google Pay offers. The upgraded issuer terms describe the dated promotional rates; Google Pay directly awards promotional Stars. Reward campaigns are time limited and may change.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 240000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: Criteria indicative (aggregator consensus). Apply via the 'Money' tab ->
-    'Flex by Google Pay' section on the Google Pay app.
+  notes: Axis states age 18-70 and Indian residency; criteria are indicative and approval remains at the bank's discretion. No numeric income or credit-score cutoff is published on the product page.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/google-pay-flex-axis-bank-credit-card
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: 2026-10-26
   tags:
   - entry
   - points

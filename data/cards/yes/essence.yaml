@@ -1,144 +1,285 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-essence
 name: YES Bank Essence Credit Card
 image_path: /cards/yes/essence.webp
-issuer: "yes"
-network: mastercard
-network_tier: world
+issuer: 'yes'
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 799
-    annual_fee_inr: 799
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "First-year fee ₹799 reversed on ₹20,000 spend within 1 month of setup; renewal ₹799 reversed on ₹1,00,000 annual spend. Some variants issued lifetime-free. Women-focused lifestyle card."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/essence-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 799
+  annual_fee_inr: 799
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+  forex_markup_pct: 2.75
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: Standard fee schedule is INR799 joining and renewal, exclusive of GST. Joining fee reversal after INR20,000
+    spend within one month; renewal reversal after INR100,000 qualifying spend in prior 12 months. Limited-period
+    LTF offer also advertised. Original effective date unpublished; verification snapshot 2026-10-26. MITC v18 sets
+    forex markup 2.75%, DCC 3%, finance 3.99% monthly and cash advance 2.5% or INR650 minimum.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/essence-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs: &id001
+    - docs/sources/yes/essence/essence-mitc.pdf
+    - docs/sources/yes/essence/essence-value-chart-may-2026.pdf
+    - docs/sources/yes/essence/ybl-mitc-v18-2026-10-05.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Standard INR799 joining/renewal and spend waivers verified on current page; common charges follow MITC
+      v18. LTF offer also advertised; original effective date unpublished.
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: YES Rewardz Points
-    base:
-      rate: 4
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: online-lifestyle
-        canonical_categories: [online, dining, groceries, travel]
-        multiplier: 3
-        effective_rate: 12
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "12 YES Rewardz per ₹200 on online fashion, beauty, travel, dining & grocery."
-      - category: online-shopping
-        canonical_categories: [online]
-        multiplier: 2
-        effective_rate: 8
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "8 YES Rewardz per ₹200 on other online shopping; 4 per ₹200 base (offline/other)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - government
-      - education
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: YES Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/essence-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: YES Rewardz Points
+  base:
+    rate: 4
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  accelerated:
+  - category: online-lifestyle
+    canonical_categories:
+    - online
+    - dining
+    - groceries
+    - travel
+    multiplier: 3
+    effective_rate: 12
+    cap_per_cycle: 9000
+    cap_unit: points
+    cycle: statement
+    notes: 12 YES Rewardz per ₹200 on online fashion, beauty, travel, dining & grocery.
+  - category: online-shopping
+    canonical_categories:
+    - online
+    multiplier: 2
+    effective_rate: 8
+    cap_per_cycle: 9000
+    cap_unit: points
+    cycle: statement
+    notes: 8 YES Rewardz per ₹200 on other online shopping; 4 per ₹200 base (offline/other).
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - government
+  - education
+  - cash-advance
+  - bridge-fees
+  - other
+  mcc_exclusions:
+  - '6513'
+  - '6540'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '9752'
+  - '9034'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '9700'
+  - '9701'
+  - '9702'
+  - '9751'
+  - '9754'
+  - '9950'
+  - '5960'
+  - '5962'
+  - '5964'
+  - '5965'
+  - '5966'
+  - '5967'
+  - '5968'
+  - '5969'
+  - '7311'
+  - '6300'
+  - '8211'
+  - '8220'
+  - '8249'
+  - '8299'
+  - '8241'
+  - '8244'
+  - '7911'
+  reward_cap:
+    max_units: 9000
+    cap_unit: points
+    cycle: statement
+  capping_rules:
+  - Issuer states a maximum of 9,000 total YES Rewardz points per statement cycle across categories.
+  - Issuer also excludes marketing/advertising, railways, ferry, cash withdrawals, post-purchase or instant EMI,
+    and fees/charges, as itemized in the issuer MCC exclusion list.
+  redemption:
+  - type: catalog
+    program: YES Rewardz
+    rate_inr_per_unit: 0.25
+    fee_inr: 100
+    constraints: Point value is up to INR 0.25 depending on redemption channel; points expire after three years;
+      each redemption costs INR 100 plus GST and flight bookings incur an additional INR 99 plus GST.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/essence-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs: *id001
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated
+    - rewards.reward_cap
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Current page supports 12/8/4 points per INR200 and 9,000 statement maximum. Point value varies by channel;
+      MITC states expiry and redemption fees.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Card setup"
-        benefit: "Welcome vouchers worth ₹1,000"
-        value_inr: 1000
-        window_days: 30
-      - condition: "₹50,000 spend within 90 days of setup"
-        benefit: "5,000 bonus YES Rewardz"
-        value_inr: 1250
-        window_days: 90
-    milestones:
-      - spend_inr: 100000
-        cycle: annual
-        benefit: "10,000 bonus YES Rewardz on ₹1,00,000 annual spend"
-        value_inr: 2500
-        reward_kind: points
-        reward_units: 10000
-        reward_currency_name: YES Rewardz Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-    movies:
-      type: bogo
-      partner: District
-      max_per_cycle: null
-      cycle: monthly
-      cap_inr: null
-      notes: "Buy 1 Get 1 on movie tickets via District. Birthday month: ₹1,000 Myntra voucher + health checkup."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/essence-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      via: []
+      spend_threshold_inr: 25000
+      spend_threshold_cycle: quarterly
+      notes: One primary-cardmember visit each calendar quarter, unlocked by at least INR 25,000 spend in the previous
+        quarter.
+  welcome:
+  - condition: First successful transaction within 45 days of issuance
+    benefit: Welcome vouchers worth ₹1,000
+    value_inr: 1000
+    window_days: 45
+  - condition: ₹50,000 spend within 90 days of setup
+    benefit: 5,000 bonus YES Rewardz
+    value_inr: 1250
+    window_days: 90
+  milestones:
+  - spend_inr: 100000
+    cycle: annual
+    benefit: 10,000 bonus YES Rewardz on ₹1,00,000 annual spend Annual measurement window is not defined more precisely
+      by issuer.
+    value_inr: 2500
+    reward_kind: points
+    reward_units: 10000
+    reward_currency_name: YES Rewardz Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  movies:
+    type: bogo
+    partner: District
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 250
+    notes: 'Buy 1 Get 1 on movie tickets via District. Birthday month: ₹1,000 Myntra voucher + health checkup.'
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 125
+    cycle: statement
+    notes: 1% on INR 500-4,000 transactions, capped at INR 125 per statement; GST on surcharge is not waived and
+      UPI fuel transactions are excluded.
+  concierge: null
+  insurance:
+  - type: purchase-protection
+    sum_insured_inr: null
+    coverage_duration_days: 180
+    conditions: Six-month accidental-damage cover for mobile/electronic devices purchased online; amount and claims
+      terms not established.
+  other:
+  - name: Birthday benefits
+    description: INR 1,000 Myntra voucher and annual health checkup in birthday month.
+    value_inr: 1000
+  - name: Economics Times Prime
+    description: Subscription benefit listed on the current issuer page; duration and activation terms not established.
+    value_inr: null
+  - name: Coffee offer
+    description: Buy-one-get-one coffee twice per calendar quarter at eligible outlets in select malls.
+    value_inr: null
+  - name: Golf green-fee waiver
+    description: Green-fee waivers at select golf courses; quota and participating locations not established.
+    value_inr: null
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/essence-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs: *id001
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.movies
+    - benefits.fuel_surcharge_waiver
+    - benefits.insurance
+    - benefits.other
+    notes: Current page supplies benefit terms; MITC v18 supplies fuel waiver amount and UPI-fuel condition. Purchase
+      protection amount remains unpublished.
 eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
     salaried: 360000
-    self_employed: 600000
-  credit_score_min: 720
-  residency: resident-indian
-
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current issuer page states age 21-60, salaried applicants and minimum net salary INR30,000/month (annualized
+    INR360,000). Existing YES Bank credit-card holders are ineligible for the regular card; separate wording allows
+    existing Mastercard/Visa holders to apply for a virtual RuPay variant, an unresolved ambiguity. No bureau-score
+    cutoff or residency criterion published.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/essence-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs: *id001
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    notes: Current rendered card page gives published age and salary threshold; variant wording is ambiguous.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/essence-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, online, shopping, lifestyle, points, movies]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - online
+  - shopping
+  - lifestyle
+  - points
+  - movies

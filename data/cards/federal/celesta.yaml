@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Federal Bank HTML MITC fee table, /credit-cards-mitc
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: federal-celesta
 name: Federal Bank Celesta Credit Card
 image_path: /cards/federal/celesta.webp
@@ -17,126 +8,201 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-03-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-03-01
+  - effective_from: 2026-10-25
     effective_until: null
-    joining_fee_inr: 3000
-    annual_fee_inr: 3000
-    fee_waiver:
-      spend_inr: 500000
-      cycle: annual
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    renewal_fee_inr: 0
+    fee_waiver: null
     forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.49
+    finance_charge_monthly_pct: null
+    finance_charge_tiers:
+      - min_amb_inr: 0
+        max_amb_inr: 49999
+        monthly_rate_pct: 3.75
+        annual_rate_pct: 45
+        basis: prior-quarter average monthly balance in Federal Bank operative account
+      - min_amb_inr: 50000
+        max_amb_inr: 300000
+        monthly_rate_pct: 2.69
+        annual_rate_pct: 32.28
+        basis: prior-quarter average monthly balance in Federal Bank operative account
+        conditions: Rate shown in Federal Bank APR revision effective 10 January 2026.
+      - min_amb_inr: 300001
+        max_amb_inr: 1000000
+        monthly_rate_pct: 1.99
+        annual_rate_pct: 23.88
+        basis: prior-quarter average monthly balance in Federal Bank operative account
+      - min_amb_inr: 1000001
+        max_amb_inr: null
+        monthly_rate_pct: 0.69
+        annual_rate_pct: 8.28
+        basis: prior-quarter average monthly balance in Federal Bank operative account
+        conditions: Rate shown in Federal Bank APR revision effective 10 January 2026.
     cash_advance_fee:
       pct: 2.5
-      min_inr: 300
+      min_inr: 500
+    supplementary_card_fee_inr: 100
     gst_applicable: true
     source:
-      url: https://www.federal.bank.in/visa-celesta-credit-card
-      retrieved_on: 2026-07-03
+      url: https://www.federal.bank.in/-/credit-card-tc-1
+      retrieved_on: 2026-10-27
       type: issuer-page
-      confidence: medium
-
+      confidence: high
+      method: rendered-page
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.renewal_fee_inr
+        - fees.forex_markup_pct
+        - fees.finance_charge_tiers
+        - fees.cash_advance_fee
+        - fees.supplementary_card_fee_inr
+      notes: "Current issuer page and MITC advertise no joining or annual fee as a limited-period offer; the MITC states the former INR 3,000 fee applies to customers onboarded before 3 April 2023, so zero fee describes current onboarding, not every legacy account. Forex markup is 2%; cash advance is 2.5% or INR 500 minimum. Revised APR schedule effective 10 January 2026: 3.75% monthly below INR 50,000; 2.69% for INR 50,000-INR 300,000; 1.99% for INR 300,001-INR 1,000,000; 0.69% above INR 1,000,000. APR uses prior-quarter Federal Bank operative-account AMB and is refreshed quarterly. The FAQ example assigns 0.69% at exactly INR 1,000,000 although the revision table assigns that boundary to the 1.99% band; use the published band schedule and retain the boundary discrepancy in notes. See https://www.federal.bank.in/revised-credit-card-charges."
 rewards:
-  - effective_from: 2022-03-01
+  - effective_from: 2026-10-25
     effective_until: null
     currency: points
     currency_name: Reward Points
     base:
-      rate: 5
-      per_inr: 150
+      rate: 1
+      per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
+      unit_value_inr_realized: null
+      notes: Catalog face value is INR 0.25 per point; practical realized value varies by redemption. Statement credit is only INR 0.10 per point.
     accelerated:
       - category: dining
         canonical_categories: [dining]
+        multiplier: 2
+        effective_rate: 2
+        cap_status: not-published
+        cap_unit: points
+        cycle: monthly
+      - category: travel
+        canonical_categories: [travel]
         multiplier: 3
-        effective_rate: 15
-        cap_per_cycle: "unlimited"
+        effective_rate: 3
+        cap_status: not-published
         cap_unit: points
         cycle: monthly
       - category: international-spend
         canonical_categories: [international]
         multiplier: 3
-        effective_rate: 15
-        cap_per_cycle: "unlimited"
+        effective_rate: 3
+        cap_status: not-published
         cap_unit: points
         cycle: monthly
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
+      - government
+      - financial-institutions
+    mcc_exclusions: ['5541', '7983', '5172', '5542', '9399', '4784', '9311', '9222', '9402', '4011', '9405', '9211', '6012', '6051', '6050', '6513']
+    category_caps:
+      - category: insurance
+        mcc_list: ['6300', '5960']
+        cap_per_cycle: 250
+        cap_unit: points
+        cycle: monthly
+        conditions: Maximum 250 points per card per calendar month on insurance transactions in these MCCs.
     redemption:
       - type: catalog
         program: FedRewards
         rate_inr_per_unit: 0.25
       - type: statement-credit
-        rate_inr_per_unit: 0.25
+        rate_inr_per_unit: 0.10
     source:
-      url: https://www.federal.bank.in/visa-celesta-credit-card
-      retrieved_on: 2026-07-03
+      url: https://www.federal.bank.in/-/credit-card-tc-1
+      retrieved_on: 2026-10-27
       type: issuer-page
-      confidence: medium
-
+      confidence: high
+      method: rendered-page
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.accelerated
+        - rewards.exclusions
+        - rewards.mcc_exclusions
+        - rewards.category_caps
+        - rewards.redemption
+      notes: Current MITC confirms base earn of 1 point per INR 100, 3x on travel and international spend and 2x on dining. Cash, fuel, wallet loading, government, financial institution/quasi-cash and rent transactions do not earn; listed MCC exclusions include rent MCC 6513. Insurance MCCs 6300 and 5960 are capped at 250 points per card per calendar month. Points have an INR 0.25 catalog face value, but statement credit is INR 0.10 per point. Redemption fee is INR 99/request in MITC; product FAQ calls it a minimum and says actual fee depends on redemption type. No realized redemption value should be inferred; the calculator does not deduct redemption fees.
 benefits:
-  - effective_from: 2022-03-01
+  - effective_from: 2026-10-25
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 8
-        cycle: annual
+        visits_per_cycle: 2
+        cycle: quarterly
+        spend_threshold_inr: 60000
+        spend_threshold_cycle: quarterly
         guests_per_visit: 0
-        via: [visa, dreamfolks]
+        via: [visa, issuer-direct]
+        notes: Primary cardholder only. Spend of INR 60,000 must be met in the immediately preceding qualifying cycle; add-on and primary spends aggregate, but add-on holders cannot use the benefit. Spend cycles run 21st to 20th and eligibility is based on transactions settled/billed within the cycle. An INR 2 non-refundable validation charge applies.
       international:
-        visits_per_cycle: 8
+        visits_per_cycle: 2
         cycle: annual
         guests_per_visit: 0
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
+        via: [loungekey]
+        notes: No spend threshold. Primary cardholder access; lounge charges are initially billed and reimbursed within 30 days. Guest visits are chargeable.
     welcome:
-      - condition: "Spend ₹10,000 within first 30 days"
-        benefit: "Amazon Pay e-Voucher worth ₹600"
+      - condition: Spend at least INR 10,000 within 30 days from card issuance; Federal Bank terms define this as the offer period.
+        benefit: Amazon voucher worth INR 600
         value_inr: 600
         window_days: 30
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 25000000
-      - type: travel-medical
-        sum_insured_inr: 2500000
+    movies:
+      type: bogo
+      partner: INOX
+      max_per_cycle: 1
+      cycle: monthly
+      cap_inr: 100
+      notes: Maximum INR 100 discount; taxes and food/beverages excluded. Active account in good standing required.
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 5000
-      cap_per_cycle_inr: null
+      cap_per_cycle_inr: 150
       cycle: monthly
-    concierge: true
+      notes: Waives 1% of fuel surcharge excluding GST; INR 150 monthly cap.
+    other:
+      - name: Add-on cards
+        description: Up to 4 add-on cards are available for INR 100 plus GST per card.
+      - name: Credit Card EMI
+        description: Eligible purchases can be converted to EMI at purchase or later through supported merchants, FedMobile or customer service; current issuer page does not provide a Celesta-specific minimum amount or tenure.
     source:
       url: https://www.federal.bank.in/visa-celesta-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
-      confidence: medium
-
+      confidence: high
+      method: rendered-page
+      fields_verified:
+        - benefits.lounge_access
+        - benefits.welcome
+        - benefits.movies
+        - benefits.fuel_surcharge_waiver
+        - benefits.other
+      notes: Current product page and Amazon voucher T&Cs (https://www.federal.bank.in/amazon-gift-card-tc) state INR 600 for INR 10,000 spend within 30 days from issuance. Voucher code is communicated within 45 days after the eligible month and valid for 12 months from activation; void/cancelled transactions can invalidate eligibility. Issuer also publishes selected-customer campaigns with individually communicated targets; those are not baseline card benefits.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: either
+  notes: Federal Bank FAQ publishes general minimum ages of 21 for unsecured cards and 18 for secured cards, and accepts Indian residents or NRIs. The card page does not specify Celesta-specific age category, income or bureau-score thresholds; those values remain unknown. Approval and assigned variant remain at the bank discretion.
+  source:
+    url: https://www.federal.bank.in/credit-card-faq
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+      - eligibility.residency
 application:
   apply_url: https://www.federal.bank.in/visa-celesta-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-27
   tags: [premium, travel, dining, low-forex, points]

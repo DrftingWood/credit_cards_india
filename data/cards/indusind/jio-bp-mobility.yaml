@@ -1,131 +1,195 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-jio-bp-mobility
 name: IndusInd Bank Jio-bp Mobility+ Credit Card
 image_path: /cards/indusind/jio-bp-mobility.png
 issuer: indusind
 network: rupay
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
   partner: Jio-bp
   category: fuel
 status: active
-launched_on: 2024-01-01
+launched_on: 2025-12-10
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Fuel co-brand with Jio-bp; earns Jio-bp Smiles."
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 499
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.95
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  notes: Current MITC and card FAQ list a conditional INR499 joining fee if card spend does not reach INR10,000 within the first 90 days after issuance; otherwise the joining fee is not charged. The Jio-bp launch release instead says 30 days; this source conflict is resolved in favor of the current bank MITC/FAQ. Annual fee is NIL. The current card page confirms 3.5% forex markup. Dynamic currency conversion is separately 2% plus GST.
+  source:
+    url: https://bank.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    - fees.forex_markup_pct
+    local_refs:
+    - docs/sources/indusind/jio-bp-mobility/mitc-premium-retrieved-2026-10-26.pdf
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Smiles
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    accelerated:
-      - category: jio-bp-fuel
-        canonical_categories: [fuel]
-        multiplier: 6
-        effective_rate: 12
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "12 Smiles per ₹100 spent at Jio-bp fuel stations."
-    exclusions:
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: Jio-bp Smiles
-        rate_inr_per_unit: 0.25
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Smiles
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: null
+  accelerated:
+  - category: jio-bp-ecosystem
+    canonical_categories:
+    - fuel
+    multiplier: 6
+    effective_rate: 12
+    cap_per_cycle: 1200
+    cap_unit: points
+    cycle: statement
+    notes: Earn rate applies at eligible Jio-bp stations and ecosystem merchants, including fuel, Castrol lubricants, wildbean Cafe, Jio-bp Pulse EV charging and convenience stores. Capped at 1,200 Smiles per statement cycle; participating outlets only. Calculator category mapping only represents fuel; ancillary eligible merchant categories are not separately modeled.
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-26
       type: issuer-page
-
+      confidence: high
+  - category: dining-supermarket-grocery
+    canonical_categories:
+    - dining
+    - groceries
+    multiplier: 2.5
+    effective_rate: 5
+    cap_status: not-published
+    cap_unit: points
+    cycle: statement
+    notes: Current product page publishes 5 Smiles per INR100 for dining, supermarket and grocery spends; no separate cap is stated.
+    source:
+      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html
+      retrieved_on: 2026-10-26
+      type: issuer-page
+      confidence: high
+  exclusions:
+  - insurance-premiums
+  - government
+  - utilities
+  - rent
+  mcc_exclusions: []
+  capping_rules:
+  - Jio-bp ecosystem accelerated earning is capped at 1,200 Smiles per statement cycle; general and dining/supermarket/grocery earn are not stated to share this cap.
+  redemption:
+  - type: other
+    program: Jio-bp Smiles
+    rate_inr_per_unit: null
+    constraints: Redeem at eligible Jio-bp fuel stations, wildbean Cafe, Jio-bp convenience stores and Jio-bp Pulse EV charging locations; a fixed INR-per-Smile value is not published on the current card page.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].cap_per_cycle
+    - rewards.accelerated[1].effective_rate
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "First fuel transaction at Jio-bp within 30 days of card setup"
-        benefit: "400 bonus Smiles"
-        value_inr: 100
-        window_days: 30
-    milestones:
-      - spend_inr: 4000
-        cycle: monthly
-        benefit: "200 bonus Smiles on ₹4,000 monthly Jio-bp spend"
-        value_inr: 50
-        reward_kind: points
-        reward_units: 200
-        reward_currency_name: Smiles
-        trigger_window: rolling
-        is_repeatable: true
-      - spend_inr: 200000
-        cycle: annual
-        benefit: "4,000 bonus Smiles on ₹2,00,000 annual spend"
-        value_inr: 1000
-        reward_kind: points
-        reward_units: 4000
-        reward_currency_name: Smiles
-        trigger_window: anniversary-year
-        is_repeatable: true
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: First Jio-bp fuel transaction within 30 days of card setup by the bank
+    benefit: 400 bonus Smiles
+    window_days: 30
+  - condition: First wildbean Cafe transaction within 30 days of card setup by the bank
+    benefit: INR200 wildbean Cafe coupon
+    value_inr: 200
+    window_days: 30
+  milestones:
+  - spend_inr: 4000
+    cycle: statement
+    benefit: 200 bonus Smiles on at least INR4,000 spend in the Jio-bp ecosystem
+    reward_kind: points
+    reward_units: 200
+    reward_currency_name: Smiles
+    trigger_window: rolling
+    is_repeatable: true
+  - spend_inr: 100000
+    cycle: annual
+    benefit: 2,000 bonus Smiles at INR100,000 anniversary-year spend
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: Smiles
+    trigger_window: anniversary-year
+    is_repeatable: false
+  - spend_inr: 200000
+    cycle: annual
+    benefit: 2,000 additional bonus Smiles on the next INR100,000 of anniversary-year spend
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: Smiles
+    trigger_window: anniversary-year
+    is_repeatable: false
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 100
+    cycle: monthly
+    notes: Product page limits the waiver to Jio-bp fuel stations. The current shared waiver table does not list Jio-bp separately; the INR500-INR3,000 / INR100 billing-cycle cap is the table's general other-card band.
+  concierge: false
+  other:
+  - name: Roadside assistance
+    description: 24/7 roadside helpline, repair, towing and emergency assistance in Delhi, Mumbai, Kolkata, Pune, Chennai and Bengaluru.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/indusind/jio-bp-mobility/jio-bp-card-benefit-guide-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.welcome[0].window_days
+    - benefits.welcome[1].value_inr
+    - benefits.welcome[1].window_days
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[0].reward_units
+    - benefits.milestones[1].spend_inr
+    - benefits.milestones[1].reward_units
+    - benefits.milestones[2].spend_inr
+    - benefits.milestones[2].reward_units
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    local_refs:
+    - docs/sources/indusind/jio-bp-mobility/jio-bp-card-benefit-guide-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/jio-bp-mobility/fuel-surcharge-waiver-retrieved-2026-10-26.pdf
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Numeric age, income and bureau cutoffs were not found in the current public card-specific issuer material reviewed; unknown does not imply no underwriting criterion.
 application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, fuel, co-brand, jio-bp]
+  last_verified_on: 2026-10-26
+  tags:
+  - entry
+  - points
+  - fuel
+  - co-brand
+  - jio-bp

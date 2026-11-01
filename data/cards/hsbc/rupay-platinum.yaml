@@ -8,194 +8,332 @@ tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-27'
   effective_until: null
   joining_fee_inr: 0
   annual_fee_inr: 0
   fee_waiver: null
   forex_markup_pct: 3.5
-  finance_charge_monthly_pct: 3.5
+  finance_charge_monthly_pct: 3.75
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
   gst_applicable: true
-  notes: Lifetime-free RuPay card, UPI-enabled. International ATM/POS access.
+  notes: 'Current snapshot verified 2026-10-27. No joining or annual fee. Current card-specific MITC: 3.75%
+    monthly finance charge, cash advance 2.5% (minimum INR500), foreign-currency markup 3.5%, applicable GST
+    on charges. Card issuance remains subject to HSBC approval.'
   source:
-    url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/credit-cards/rupay-platinum/hsbc-rupay-most-important-tncs.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/rupay-platinum/rupay-platinum-mitc-retrieved-2026-10-27.pdf
+    - docs/sources/hsbc/rupay-platinum/rupay-platinum-key-fact-statement-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    method: pdf-extract
 rewards:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-27'
   effective_until: null
   currency: points
   currency_name: Reward Points
   base:
     rate: 2
     per_inr: 150
-    unit_value_inr: 0.55
-    unit_value_inr_realized: 0.25
-  accelerated: []
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: Reward points are accumulated on settled eligible transactions; qualifying spend fractions carry
+      forward. UPI-linked card payments earn points. Point value varies by redemption category.
+  accelerated:
+  - category: travel-bookings
+    canonical_categories:
+    - travel
+    multiplier: 6
+    effective_rate: 12
+    cap_per_cycle: 18000
+    cap_unit: points
+    cycle: monthly
+    notes: Up to 6X (12 points per INR150) on Travel with Points; current HSBC Rewards terms state accelerated
+      points are capped at 18,000 per cardholder per calendar month; base points remain uncapped.
   exclusions:
   - fuel
   - wallet-loads
   - rent
   - insurance-premiums
   - emi
+  - utilities
+  - government
+  - financial-institutions
+  - jewelry
+  - education
+  - cash-advance
+  - other
   mcc_exclusions:
+  - '4900'
+  - '9311'
   - '6513'
+  - '6051'
+  - '4829'
+  - '5944'
+  - '5094'
+  - '6300'
+  - '5960'
+  - '5541'
+  - '5983'
+  - '5172'
+  - '5542'
+  - '5552'
+  - '6011'
+  - '6012'
+  - '6010'
+  - '6540'
+  - '9223'
+  - '9399'
+  - '8299'
+  - '8220'
+  - '8211'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '9222'
+  - '9402'
+  - '9211'
+  - '9405'
   redemption:
   - type: catalog
-    program: HSBC Rewards
-    rate_inr_per_unit: 0.25
+    program: HSBC Rewards Marketplace
+    rate_inr_per_unit: null
+    constraints: Redemption value depends on item/category. HSBC generic guidance gives INR0.25-INR1.00 across
+      its cards; no fixed RuPay Platinum rupee-per-point value is asserted. Points are not redeemable for cash
+      or statement credit.
   - type: airmiles
-    program: HSBC India Rewards (airline & hotel loyalty partners)
-    ratio: '2:1'
-    constraints: '19 transfer partner(s); ratios card-point:partner-unit. realized
-      Rs 0.25 = non-transfer floor; best transfer Rs 0.55; 17 beat the floor. HSBC
-      Platinum: same 20 partners as TravelOne but ~halved ratio (2:1 vs 1:1).'
+    program: HSBC India Rewards airline and hotel partners
+    ratio: varies by partner
+    constraints: Use card-specific transfer ratios below. HSBC guidance says Platinum reward points are valid
+      for three years; partner list/ratios may change.
     transfer_partners:
-    - partner_name: Singapore KrisFlyer
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.55/pt
     - partner_name: Air India Maharaja Club
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.28/pt
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: airasia rewards
+      partner_type: airline
+      transfer_ratio: '1:2'
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
     - partner_name: Air France-KLM Flying Blue
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.45/pt
-    - partner_name: British Airways Avios
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: British Airways Club
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.50/pt
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
     - partner_name: Etihad Guest
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.45/pt
-    - partner_name: EVA Air Infinity
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: EVA Air Infinity MileageLands
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.45/pt
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: Hainan Airlines Fortune Wings Club
+      partner_type: airline
+      transfer_ratio: '4:1'
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
     - partner_name: JAL Mileage Bank
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.47/pt
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: Singapore Airlines KrisFlyer
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
     - partner_name: Qantas Frequent Flyer
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.40/pt
-    - partner_name: Qatar Privilege Club (Avios)
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: Qatar Airways Privilege Club
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.50/pt
-    - partner_name: Vietnam LotusMiles
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: Thai Airways Royal Orchid Plus
       partner_type: airline
       transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.40/pt
-    - partner_name: Accor ALL
-      partner_type: hotel
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.47/pt
-    - partner_name: IHG One Rewards
-      partner_type: hotel
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.25/pt
-    - partner_name: Marriott Bonvoy
-      partner_type: hotel
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.28/pt
-    - partner_name: Wyndham Rewards
-      partner_type: hotel
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.25/pt
-    - partner_name: AirAsia Rewards
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: Turkish Airlines Miles&Smiles
       partner_type: airline
-      transfer_ratio: '1:2'
-      last_verified_on: '2026-07-05'
-      notes: 1:2 -> ~Rs 0.44/pt
+      transfer_ratio: '4:1'
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
     - partner_name: United MileagePlus
       partner_type: airline
       transfer_ratio: '3:1'
-      last_verified_on: '2026-07-05'
-      notes: 3:1 -> ~Rs 0.30/pt
-    - partner_name: Hainan Fortune Wings
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: Vietnam Airlines Lotusmiles
       partner_type: airline
-      transfer_ratio: '4:1'
-      last_verified_on: '2026-07-05'
-      notes: 4:1 -> ~Rs 0.12/pt [below floor — avoid]
-    - partner_name: Turkish Miles&Smiles
-      partner_type: airline
-      transfer_ratio: '4:1'
-      last_verified_on: '2026-07-05'
-      notes: 4:1 -> ~Rs 0.28/pt
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: Accor ALL
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: IHG One Rewards
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: Marriott Bonvoy
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
     - partner_name: Shangri-La Circle
       partner_type: hotel
       transfer_ratio: '10:1'
-      last_verified_on: '2026-07-05'
-      notes: 10:1 -> ~Rs 0.05/pt [below floor — avoid]
-    rate_inr_per_unit: 0.55
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
+    - partner_name: Wyndham Rewards
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current published HSBC RuPay Platinum transfer ratio; list may change.
   source:
-    url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
-    retrieved_on: '2026-07-05'
+    url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/rewards/
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor,
-      face=best transfer. No blend.'
     confidence: high
+    local_refs:
+    - docs/sources/hsbc/premier/hsbc-rewards-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Current product/rewards page and HSBC Rewards Terms reviewed. The generic catalog value is not card-specific.
+      Reward-earning rules carry qualifying spend fractions forward; refunds/reversals reverse points. Full
+      exclusion MCC list appears in source text archive.
 benefits:
-- effective_from: 2024-01-01
+- effective_from: '2026-10-27'
   effective_until: null
   lounge_access: null
   welcome:
-  - condition: Download the app and log in
-    benefit: ₹500 welcome cashback (+ cashback on UPI linking + 2 transactions)
+  - condition: Primary or add-on eligibility is specified by the offer terms; new RuPay Platinum cardholder
+      must download HSBC India Mobile Banking app, have updated KYC, and make at least INR5,000 in eligible
+      sales transactions within 30 calendar days of issuance. Offer runs 2025-07-15 through 2026-12-31; no
+      other welcome/intro offer may be combined.
+    benefit: INR500 cashback
     value_inr: 500
-    window_days: 90
+    window_days: 30
+  - condition: Online application with successful Video KYC and card issuance during 2026-01-01 through 2026-10-31;
+      subject to offer terms.
+    benefit: INR250 Amazon eGift Voucher
+    value_inr: 250
+    window_days: null
+  - condition: Activate HSBC RuPay credit card during the offer period; register as an EazyDiner user. Add-on
+      cards are not eligible; voucher/code is sent within 60 days from month end of eligibility.
+    benefit: Complimentary EazyDiner Prime membership for 2 months
+    value_inr: null
+    window_days: null
   dining:
     program: District by Zomato
     discount_pct: 10
-    notes: 10% off on dining, activities, shopping and movies via District by Zomato.
+    notes: Current issuer page lists 10% savings on dining, activities and shopping, plus buy-one-get-one cinema
+      tickets. Offer terms apply; offer listing states validity through 2026-10-31.
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
     max_txn_inr: 4000
-    cap_per_cycle_inr: 250
-    cycle: monthly
+    cap_per_cycle_inr: 3000
+    cycle: annual
+    notes: Fuel transaction INR400-INR4,000 inclusive; issuer product page advertises annual savings up to
+      INR3,000. Fuel does not earn reward points.
   concierge: false
   source:
     url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/rupay-platinum/rupay-platinum-welcome-offer-retrieved-2026-10-27.pdf
+    - docs/sources/hsbc/rupay-platinum/rupay-eazydiner-terms-retrieved-2026-10-27.pdf
+    - docs/sources/hsbc/rupay-platinum/rupay-platinum-service-guide-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.welcome[0].value_inr
+    - benefits.welcome[0].window_days
+    - benefits.welcome[1].value_inr
+    - benefits.welcome[2].window_days
+    - benefits.dining.discount_pct
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: The card is branded RuPay Platinum; issuer material says international acceptance is powered by
+      JCB, which the single network field cannot fully represent. Current lounge benefit is not advertised
+      on the RuPay Platinum product page; none asserted.
+  other:
+  - name: RuPay UPI and JCB international acceptance
+    description: HSBC says the card can be linked to UPI apps and earn reward points on eligible card-linked
+      UPI transactions. International ATM/POS acceptance is powered by JCB in over 160 countries/regions; HSBC
+      Service Guide says international usage must be enabled.
 eligibility:
-  min_age: 18
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 400000
-    self_employed: 400000
-  credit_score_min: 720
+    salaried: 600000
+    self_employed: 1200000
+  credit_score_min: null
   residency: resident-indian
+  notes: 'Current product-page criteria: salaried age 18-65 and minimum annual income INR600,000; self-employed
+    age 25-65 and minimum annual income INR1,200,000; resident Indian living in an issuer-listed city (see
+    current page). Issuance remains subject to HSBC approval; no numeric bureau-score threshold is published.'
+  age_ranges:
+    salaried:
+      min_age: 18
+      max_age: 65
+    self_employed:
+      min_age: 25
+      max_age: 65
+  source:
+    url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.age_ranges
+    - eligibility.income_inr_annual
+    - eligibility.residency
+    notes: City list on current product page includes Chennai, Gurgaon, Delhi NCR, Pune, Noida, Hyderabad,
+      Mumbai, Bengaluru, Kochi, Coimbatore, Jaipur, Chandigarh, Ahmedabad, Kolkata, Amritsar, Baroda, Indore,
+      Lucknow, Nagpur, Surat and Trivandrum.
 application:
   apply_url: https://www.hsbc.bank.in/credit-cards/products/rupay-platinum-credit-card/
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - entry
   - points

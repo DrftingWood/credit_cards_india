@@ -17,7 +17,10 @@
       "_shared/domestic_consolidated_lounge_list-1.pdf",
       "_shared/golf-courses-17.pdf",
       "emeralde-private-metal/metal-gifts-tc-website-51023.pdf",
-      "_shared/mitc_cc.pdf"
+      "_shared/mitc_cc.pdf",
+      "emeralde-private-metal/metal-gifts-tc-retrieved-2026-10-27.pdf",
+      "emeralde-private-metal/Comprehensive-Insurance-Cover-retrieved-2026-10-27.pdf",
+      "_shared/capping-retrieved-2026-10-27.pdf"
     ]
   },
   "emeralde": {
@@ -31,7 +34,13 @@
       "_shared/golf-courses-17.pdf",
       "_shared/mitc_cc.pdf",
       "_shared/tnc_english.pdf",
-      "_shared/international-lounge-list.pdf"
+      "_shared/international-lounge-list.pdf",
+      "emeralde/emeralde-membership-guide-retrieved-2026-10-27.pdf",
+      "emeralde/tnc-english-retrieved-2026-10-27.pdf",
+      "emeralde/mitc-cc-retrieved-2026-10-27.pdf",
+      "emeralde/golf-terms-retrieved-2026-10-27.pdf",
+      "emeralde/insurance-policy-retrieved-2026-10-27.pdf",
+      "emeralde/cancellation-process-retrieved-2026-10-27.pdf"
     ]
   },
   "times-black": {
@@ -42,7 +51,16 @@
       "_shared/cancellation-cfar-claim-process.pdf",
       "_shared/domestic_consolidated_lounge_list-1.pdf",
       "_shared/mitc_cc.pdf",
-      "times-black/times-black-icici-credit-card-terms-conditions.pdf"
+      "times-black/times-black-icici-credit-card-terms-conditions.pdf",
+      "times-black/times-black-terms-retrieved-2026-10-27.pdf",
+      "times-black/insurance-retrieved-2026-10-27.pdf",
+      "times-black/cancellation-cfar-retrieved-2026-10-27.pdf",
+      "times-black/mitc-retrieved-2026-10-27.pdf"
+    ],
+    "captures": [
+      "times-black/product-page-retrieved-2026-10-27.html",
+      "times-black/card-faq-retrieved-2026-10-27.html",
+      "times-black/upcoming-changes-retrieved-2026-10-27.html"
     ]
   },
   "sapphiro": {
@@ -58,7 +76,13 @@
       "_shared/mitc_cc.pdf",
       "sapphiro/sapphiro-joining-gift-vouchers-terms1.pdf",
       "_shared/tnc_english.pdf",
-      "_shared/international-lounge-list.pdf"
+      "_shared/international-lounge-list.pdf",
+      "sapphiro/sapphiro-mitc-retrieved-2026-10-27.pdf",
+      "sapphiro/sapphiro-terms-retrieved-2026-10-27.pdf",
+      "sapphiro/sapphiro-insurance-retrieved-2026-10-27.pdf",
+      "sapphiro/sapphiro-golf-terms-retrieved-2026-10-27.pdf",
+      "sapphiro/sapphiro-welcome-terms-retrieved-2026-10-27.pdf",
+      "sapphiro/sapphiro-ishop-caps-retrieved-2026-10-27.pdf"
     ]
   },
   "rubyx": {
@@ -76,7 +100,13 @@
       "_shared/mitc_cc.pdf",
       "_shared/tnc_english.pdf",
       "_shared/Comprehensive-Insurance-Cover-and-t-and-c.pdf",
-      "_shared/entertainment.pdf"
+      "_shared/entertainment.pdf",
+      "rubyx/rubyx-mitc-retrieved-2026-10-27.pdf",
+      "rubyx/rubyx-terms-retrieved-2026-10-27.pdf",
+      "rubyx/rubyx-insurance-retrieved-2026-10-27.pdf",
+      "rubyx/rubyx-golf-terms-retrieved-2026-10-27.pdf",
+      "rubyx/rubyx-welcome-tnc-retrieved-2026-10-27.pdf",
+      "rubyx/rubyx-ishop-caps-retrieved-2026-10-27.pdf"
     ]
   },
   "coral": {
@@ -87,7 +117,9 @@
       "_shared/domestic_consolidated_lounge_list-1.pdf",
       "_shared/entertainment.pdf",
       "_shared/mitc_cc.pdf",
-      "_shared/tnc_english.pdf"
+      "_shared/tnc_english.pdf",
+      "_shared/mitc_cc_2026-10-09.pdf",
+      "coral/coral-membership-guide-retrieved-2026-10-26.pdf"
     ]
   },
   "platinum-chip": {
@@ -122,7 +154,9 @@
     "pdfs": [
       "_shared/domestic_consolidated_lounge_list-1.pdf",
       "_shared/mitc_cc.pdf",
-      "_shared/signature-credit-card.pdf"
+      "_shared/signature-credit-card.pdf",
+      "adani-one-signature/signature-credit-card-terms-2026-10-26.pdf",
+      "adani-one-platinum/mitc-cc-2026-10-26.pdf"
     ]
   },
   "mmt-signature": {
@@ -135,7 +169,8 @@
       "_shared/mitc_cc.pdf",
       "_shared/railway-lounge-programme.pdf",
       "mmt-signature/tnc_mmt_signature.pdf",
-      "_shared/international-lounge-list.pdf"
+      "_shared/international-lounge-list.pdf",
+      "mmt-signature/tnc_mmt_signature_retrieved_2026-10-26.pdf"
     ]
   },
   "adani-one-platinum": {
@@ -144,7 +179,9 @@
     "pdfs": [
       "_shared/domestic_consolidated_lounge_list-1.pdf",
       "_shared/mitc_cc.pdf",
-      "_shared/platinum-credit-card.pdf"
+      "_shared/platinum-credit-card.pdf",
+      "adani-one-platinum/platinum-credit-card-terms-2026-10-26.pdf",
+      "adani-one-platinum/mitc-cc-2026-10-26.pdf"
     ]
   },
   "csk": {
@@ -174,43 +211,51 @@
     ]
   },
   "emirates-emeralde": {
-    "path": "/personal-banking/cards/credit-card/emirates-emeralde-credit-card",
-    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-emeralde-credit-card",
+    "path": "/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde",
     "pdfs": [
       "_shared/inici26-cugo-tnc.pdf",
       "emirates-emeralde/emirates_x-icici-emeralde-tnc-latest.pdf",
       "_shared/mitc_cc.pdf",
-      "_shared/international-lounge-list.pdf"
+      "_shared/international-lounge-list.pdf",
+      "emirates-emeralde/emirates-x-icici-emeralde-tnc-retrieved-2026-10-27.pdf",
+      "emirates-emeralde/mitc-cc-retrieved-2026-10-27.pdf"
     ]
   },
   "emirates-rubyx": {
-    "path": "/personal-banking/cards/credit-card/emirates-rubyx-credit-card",
-    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-rubyx-credit-card",
+    "path": "/personal-banking/cards/credit-card/emirates-skywards/emirates-rubyx",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-rubyx",
     "pdfs": [
       "_shared/inici26-cugo-tnc.pdf",
       "_shared/domestic_consolidated_lounge_list-1.pdf",
       "emirates-rubyx/emirates-icici-bank-rubyx-tnc.pdf",
-      "_shared/mitc_cc.pdf"
+      "_shared/mitc_cc.pdf",
+      "emirates-rubyx/emirates-icici-bank-rubyx-tnc-retrieved-2026-10-27.pdf",
+      "emirates-rubyx/mitc-cc-retrieved-2026-10-27.pdf"
     ]
   },
   "emirates-sapphiro": {
-    "path": "/personal-banking/cards/credit-card/emirates-sapphiro",
-    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-sapphiro",
+    "path": "/personal-banking/cards/credit-card/emirates-skywards/emirates-sapphiro",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-sapphiro",
     "pdfs": [
       "_shared/inici26-cugo-tnc.pdf",
       "_shared/domestic_consolidated_lounge_list-1.pdf",
       "emirates-sapphiro/emirates-icici-bank-sapphiro-tnc.pdf",
       "_shared/mitc_cc.pdf",
-      "_shared/international-lounge-list.pdf"
+      "_shared/international-lounge-list.pdf",
+      "emirates-sapphiro/emirates-icici-bank-sapphiro-tnc-retrieved-2026-10-27.pdf",
+      "emirates-sapphiro/mitc-cc-retrieved-2026-10-27.pdf"
     ]
   },
   "mmt": {
-    "path": "/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-credit-card",
-    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-credit-card",
+    "path": "/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card",
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card",
     "pdfs": [
       "_shared/domestic_consolidated_lounge_list-1.pdf",
       "mmt/makemytrip-icici-credit-card-terms-and-conditions.pdf",
-      "_shared/mitc_cc.pdf"
+      "_shared/mitc_cc.pdf",
+      "mmt/mmt-icici-terms-retrieved-2026-10-27.pdf",
+      "mmt/mitc-cc-retrieved-2026-10-27.pdf"
     ]
   },
   "mmt-platinum": {
@@ -233,7 +278,10 @@
       "_shared/domestic_consolidated_lounge_list-1.pdf",
       "_shared/icici-bank-insurance-prakram.pdf",
       "_shared/mitc_cc.pdf",
-      "parakram/parakram-base-tnc.pdf"
+      "parakram/parakram-base-tnc.pdf",
+      "parakram/parakram-base-tnc-retrieved-2026-10-27.pdf",
+      "parakram/mitc-cc-retrieved-2026-10-27.pdf",
+      "parakram/insurance-policy-retrieved-2026-10-27.pdf"
     ]
   },
   "parakram-select": {
@@ -245,7 +293,17 @@
       "_shared/golf-courses-17.pdf",
       "_shared/icici-bank-insurance-prakram.pdf",
       "_shared/mitc_cc.pdf",
-      "parakram-select/parakram-select-tnc.pdf"
+      "parakram-select/parakram-select-tnc.pdf",
+      "parakram-select/parakram-select-tnc-retrieved-2026-10-27.pdf",
+      "_shared/mitc-cc-retrieved-2026-10-27.pdf"
+    ]
+  },
+  "manchester-united-signature": {
+    "url": "https://www.icici.bank.in/personal-banking/cards/credit-card/manchester-signature-card",
+    "pdfs": [
+      "manchester-united-signature/mu-tnc_retrieved_2026-10-26.pdf",
+      "manchester-united-signature/membership-guide-signature.pdf",
+      "_shared/mitc_cc_2026-10-09.pdf"
     ]
   }
 }

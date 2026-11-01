@@ -1,31 +1,24 @@
-# ---------------------------------------------------------------------------
+﻿# ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
 #   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Verified   : 2026-10-25   Confidence: HIGH for current issuer-published terms
 #   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+# Historic effective dates and detailed insurance policy terms remain unresolved.
 # ---------------------------------------------------------------------------
 id: sbi-aurum
 name: Aurum SBI Card
 image_path: /cards/sbi/aurum.webp
 issuer: sbi
-network: mastercard
-network_tier: world-elite
+network: null
+network_tier: null
 tier: invite-only
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2021-10-01
+launched_on: 2021-02-03
 discontinued_on: null
 
-# Link check 2026-10-20: the cited aurum.page URL is a 404 and was never archived.
-# It stays as the historical citation for the pre-Nov-2024 records it backed;
-# repointing those to today's page would credit old values to a page that never
-# showed them. The card is live: the issuer's current product page is
-# https://www.sbicard.com/en/personal/credit-cards/aurum-sbi-card.html
-# (200 on 2026-10-20). Cite it when the current records are next re-verified.
+# Historical fee and reward observations retain their original source links.
 
 fees:
   - effective_from: 2021-10-01
@@ -35,7 +28,7 @@ fees:
     fee_waiver:
       spend_inr: 1200000
       cycle: annual
-      conditions: "Annual fee reversed on ₹12L annual spend."
+      conditions: "Renewal fee waived at INR 12 lakh or more preceding-year spend."
     forex_markup_pct: 1.99
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -55,7 +48,7 @@ fees:
     fee_waiver:
       spend_inr: 1200000
       cycle: annual
-      conditions: "Annual fee reversed on ₹12L annual spend."
+      conditions: "Renewal fee waived at INR 12 lakh or more preceding-year spend."
     forex_markup_pct: 1.99
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -64,15 +57,20 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/most-important-terms-and-conditions.page
-      retrieved_on: 2026-10-20
+      retrieved_on: 2026-10-27
       type: issuer-page
       confidence: high
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.fee_waiver.spend_inr
+        - fees.forex_markup_pct
         - fees.finance_charge_monthly_pct
-        - fees.cash_advance_fee
-      notes: "SBI Card MITC (read 2026-10-20): 'The current rate of finance charges is upto 3.75% per month [45% per annum]' and 'W.e.f. 1st Dec 2024, 1% of total amount of Utility Payments, if the total amount exceeds Rs.50,000 in a billing cycle'. Replaces a CardInsider blog citation. The AURUM product page still shows an older 3.35% figure, which the MITC supersedes. The 1-Nov-2024 start date of this record comes from the earlier secondary citation."
+        - fees.cash_advance_fee.pct
+        - fees.cash_advance_fee.min_inr
+      notes: "Current SBI MITC lists AURUM annual/renewal fee INR 9,999, renewal waiver at INR 12 lakh preceding-year spend, cash-advance fee 2.5%/INR 500 minimum, and forex markup 1.99%. It gives unsecured finance charges up to 3.75% monthly. Current welcome terms imply INR 9,999 joining fee; the 2024-11-01 effective date remains unverified."
 
 rewards:
   - effective_from: 2021-10-01
@@ -83,25 +81,18 @@ rewards:
       rate: 4
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr_realized: null
     accelerated:
-      - category: dining-grocery-departmental-movies
-        canonical_categories: [groceries, dining, entertainment]
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
+      []
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
+      - cash-advance
     redemption:
       - type: catalog
         program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
         rate_inr_per_unit: 0.25
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/luxury/aurum.page
@@ -117,39 +108,32 @@ rewards:
       rate: 4
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr_realized: null
     accelerated:
-      - category: dining-grocery-departmental-movies
-        canonical_categories: [groceries, dining, entertainment]
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
+      []
     exclusions:
       - fuel
       - wallet-loads
       - rent
-      - insurance-premiums
       - emi
+      - cash-advance
       - government
-      - other
     capping_rules:
-      - "From 1-Dec-2024: digital gaming spends earn no rewards; government-related spends excluded; utility payments above ₹50,000/cycle attract a 1% fee."
-      - "Rent payments attract a ₹199 processing fee; third-party education payments a 1% fee (2024)."
+      - "Digital gaming MCCs 5816, 7993 and 7994 excluded from 1-Dec-2024; rent MCC 6513 excluded from 1-Apr-2024; Government MCCs 9399 and 9311 excluded from 1-Jun-2024. Additional excluded MCCs: 5172, 5541, 5983, 5542, 6540 and 6541."
     redemption:
       - type: catalog
-        program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
+        program: AURUM Rewards Portal
         rate_inr_per_unit: 0.25
     source:
       url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tandc-aurum-reward-portal.pdf
-      retrieved_on: 2026-10-20
+      retrieved_on: 2026-10-27
       type: issuer-pdf
       confidence: high
-      notes: "AURUM rewards T&C (read 2026-10-20): 'W.e.f. 1 Dec 2024, accrual of Reward Points on spends done on Digital Gaming Platforms/Merchants with AURUM will be discontinued' (MCC 5816/7993/7994); base 4 RP per Rs 100, 1 RP = Rs 0.25. Replaces a Business Standard citation. The government exclusion and utility fee lines were in that article; the utility fee is confirmed by the SBI Card MITC."
+      fields_verified: [rewards.base.rate, rewards.base.per_inr, rewards.base.unit_value_inr, rewards.exclusions, rewards.capping_rules, rewards.mcc_exclusions]
+      local_refs: [docs/sources/sbi/aurum/aurum-reward-portal-terms.pdf]
+      notes: "AURUM rewards T&C states 4 RP per INR100, INR0.25 per point and portal catalog redemption, not statement credit. Fuel, charges, cash advances, wallet loads, rent and EMI are excluded. Points never expire while eligible; inactivity for 13 consecutive months forfeits the balance. Government and digital gaming restrictions are in separate issuer notices. No accelerator is stated."
 
-    mcc_exclusions: ['6513']
+    mcc_exclusions: ['6513', '5816', '7993', '7994', '5172', '5541', '5983', '5542', '6540', '6541', '9399', '9311']
 benefits:
   - effective_from: 2021-10-01
     effective_until: null
@@ -158,62 +142,126 @@ benefits:
         visits_per_cycle: 4
         cycle: quarterly
         guests_per_visit: 0
-        via: [mastercard, dreamfolks]
+        via: [visa, mastercard]
       international:
         visits_per_cycle: unlimited
         cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass]
+        guests_per_visit: 1
+        via: [dreamfolks]
+        notes: Unlimited complimentary cardholder visits; one complimentary guest visit per quarter.
     golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
+      rounds_per_cycle: 4
+      cycle: quarterly
+      lessons_per_cycle: 3
     milestones:
+      - spend_inr: 100000
+        cycle: monthly
+        benefit: INR 1,500 monthly e-gift voucher
+        value_inr: 1500
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: true
+        max_awards_per_cycle: 1
       - spend_inr: 500000
         cycle: annual
-        benefit: "Tata CLiQ Luxury voucher worth ₹5,000"
+        benefit: INR 5,000 milestone voucher
         value_inr: 5000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: true
+        max_awards_per_cycle: 1
       - spend_inr: 1000000
         cycle: annual
-        benefit: "Taj voucher worth ₹10,000"
+        benefit: INR 10,000 milestone voucher
         value_inr: 10000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: true
+        max_awards_per_cycle: 1
+      - spend_inr: 1200000
+        cycle: annual
+        benefit: INR 9,999 milestone voucher, plus annual-fee reversal
+        value_inr: 9999
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: true
+        max_awards_per_cycle: 1
+      - spend_inr: 2000000
+        cycle: annual
+        benefit: INR 20,000 milestone voucher
+        value_inr: 20000
+        reward_kind: voucher
+        trigger_window: anniversary-year
+        is_repeatable: true
+        max_awards_per_cycle: 1
     welcome:
-      - condition: "Card activation"
+      - condition: "Payment of first annual fee"
         benefit: "40,000 Reward Points"
         value_inr: 10000
-        window_days: 90
+        window_days: null
     insurance:
       - type: air-accident
-        sum_insured_inr: 30000000
-      - type: travel-medical
-        sum_insured_inr: 10000000
+        sum_insured_inr: 35000000
+        conditions: Current AURUM page advertises air accidental-death cover; detailed policy triggers and exclusions are not published there.
+      - type: trip-delay
+        sum_insured_inr: 100000
+        conditions: Current AURUM page advertises INR 1 lakh travel cover for flight delay and loss of goods/baggage; per-event limits and policy terms are not published there.
+      - type: baggage-loss
+        sum_insured_inr: 100000
+        conditions: Current AURUM page advertises INR 1 lakh travel cover for flight delay and loss of goods/baggage; per-event limits and policy terms are not published there.
+      - type: fraud-liability
+        sum_insured_inr: 1000000
+        conditions: Current AURUM page advertises INR 10 lakh Lost Card & Fraud Protection; detailed conditions are not published there.
+      - type: other
+        sum_insured_inr: null
+        conditions: Two flight-cancellation refunds per year are advertised for refundable and non-refundable tickets; terms are not published on the product page.
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: statement
     concierge: true
+    other:
+      - name: Domestic airport spa access
+        description: One complimentary visit per quarter at select airports in India.
+      - name: BookMyShow movie tickets
+        description: Four tickets worth INR 1,000 monthly; maximum two free tickets per booking and INR 500 discount per booking; 24-hour gap between bookings, convenience fee applies.
+      - name: Complimentary memberships
+        description: One-year Club Marriott membership; one-year digital subscriptions to The Wall Street Journal and Mint; one-year Inflection Point Ventures membership (issuer-stated value INR 29,382).
+      - name: District dining offer
+        description: 15% instant discount on District dining.
     source:
-      url: https://cardmaven.in/sbi-aurum-credit-card/
-      retrieved_on: 2026-06-12
-      type: aggregator
-      confidence: medium
-      notes: "2026-06 corrections: domestic lounge is 4/quarter not unlimited; welcome is 40,000 points (med confidence); milestones and ₹12L fee-reversal added; Club Marriott membership also bundled (not modelled)."
+      url: https://www.sbicard.com/aurum/
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      fields_verified: [benefits.lounge_access, benefits.golf, benefits.milestones, benefits.welcome, benefits.insurance, benefits.fuel_surcharge_waiver, benefits.concierge, benefits.other]
+      notes: "Current AURUM product and benefits pages confirm spend voucher milestones, lounges, spa, golf, memberships, welcome points, fuel waiver and advertised insurance coverage. Insurance policy details are not linked from those pages; amounts are the issuer-advertised limits, not a validation of claim conditions."
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 4000000
-    self_employed: 4000000
-  credit_score_min: 780
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Invite-only to SBI Card's top-tier customers; ~₹40L annual income threshold per aggregator consensus."
-
+  notes: "By invitation only. SBI Card policy states age 21–65 for salaried applicants and 25–70 for self-employed applicants; no card-specific minimum income or fixed credit-score cutoff is published."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
-  apply_url: https://www.aurumcreditcard.com/
+  apply_url: https://www.sbicard.com/en/personal/credit-cards/aurum-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-10-24
-  tags: [invite-only, super-premium, lifestyle, points]
+  last_verified_on: '2026-10-27'
+  tags: [invite-only, super-premium, lifestyle, points, multi-network]

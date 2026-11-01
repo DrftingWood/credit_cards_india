@@ -257,7 +257,7 @@ function allocateOnce(
   opts: PortfolioOpts,
   trancheCache?: Map<string, Tranche[]>,
 ): Portfolio {
-  const buckets = (Object.keys(spend) as CanonicalCategory[]).filter((b) => spend[b] > 0);
+  const buckets = (Object.keys(spend) as CanonicalCategory[]).filter((b) => (spend[b] ?? 0) > 0);
   const held = new Set(opts.heldCardIds ?? []);
 
   // Pre-claim the groups of cards the user already holds: a held Swiggy HDFC
@@ -291,7 +291,7 @@ function allocateOnce(
       .filter((s) => s.ratePct > 0)
       .sort((a, b) => b.ratePct - a.ratePct || a.card.id.localeCompare(b.card.id));
 
-    let remaining = spend[bucket];
+    let remaining = spend[bucket] ?? 0;
 
     for (const seg of segments) {
       if (remaining <= 0) break;

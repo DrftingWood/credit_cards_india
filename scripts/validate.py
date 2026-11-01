@@ -65,7 +65,7 @@ ISSUER_ALLOWED_DOMAINS = {
     "hsbc": {"hsbc.co.in", "www.hsbc.co.in", "hsbc.bank.in", "www.hsbc.bank.in"},
     "idfc-first": {"idfcfirstbank.com", "www.idfcfirstbank.com", "idfcfirst.bank.in", "www.idfcfirst.bank.in"},
     "indusind": {"indusind.com", "www.indusind.com", "indusind.bank.in", "www.indusind.bank.in"},
-    "kotak": {"kotak.com", "www.kotak.com", "kotak.bank.in", "www.kotak.bank.in"},
+    "kotak": {"kotak.com", "www.kotak.com", "kotak.bank.in", "www.kotak.bank.in", "kotak811.bank.in", "www.kotak811.bank.in"},
     "kvb": {"kvb.co.in", "www.kvb.co.in", "kvb.bank.in", "www.kvb.bank.in"},
     "onecard": {"getonecard.app", "www.getonecard.app", "onecard.io", "www.onecard.io"},
     "pnb": {"pnbindia.in", "www.pnbindia.in", "pnb.bank.in", "www.pnb.bank.in", "creditcard.pnb.bank.in", "pnbcard.in", "www.pnbcard.in"},

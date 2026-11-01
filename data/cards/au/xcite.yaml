@@ -1,114 +1,145 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: au-xcite
+﻿id: au-xcite
 name: AU Bank Xcite Credit Card
-image_path: /cards/au/xcite.webp
+image_path: null
 issuer: au
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 249
-    annual_fee_inr: 249
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-    forex_markup_pct: 3.49
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Entry card in AU's SwipeUp upgrade program. Renewal fee waived from 2nd year on ₹1,00,000 retail spend."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 249
+  annual_fee_inr: 249
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: AU's current sources do not establish a launch date or network variant, so those fields are unknown. Current fee schedule effective date is unpublished; effective_from is the verification snapshot date.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current product page lists INR 249 annual fee and INR 100,000 prior-anniversary-year renewal waiver; the 30-Sep-2026 KFS confirms INR 249 joining and annual fees, 3.49% forex, 3.75% monthly finance charge and 2.5%/INR 500 cash advance (https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf). Effective date of the current schedule is unpublished; effective_from is the verification snapshot date.
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: select-categories
-        canonical_categories: [online, other]
-        multiplier: 7.5
-        effective_rate: 15
-        cap_per_cycle: 25000
-        cap_unit: points
-        cycle: statement
-        notes: "Up to 15X Reward Points on select categories; 2X Reward Points per ₹100 on other retail spends (base). AU applies an overall 25,000 RP/statement-cycle cap to Xcite (Card Member Agreement §22.5, 16-May-2026); modelled here as the accelerated-tier ceiling since it bounds all RP earning in a cycle."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: AU Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: 0.0025
+    unit_value_inr_realized: null
+    notes: AU's current page advertises 2X Reward Points on retail spend from the 1st to 5th of each month but does not state the base/category earn rate, so no absolute rate is modeled. AU's generic page states ordinary point value is 0.25 paise; e-vouchers are 0.20 paise.
+  accelerated: []
+  exclusions:
+  - fuel
+  - rent
+  - government
+  - education
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  capping_rules:
+  - Current AU cardmember agreement sets an overall 25,000 Reward Point cap per statement cycle for Xcite. It excludes rent, education, government and BBPS transactions; EMI, fuel, cash withdrawal, quasi-cash, fees and other charges do not earn points. Insurance and wallet-load exclusions are not stated for Xcite in the current agreement and are not modeled.
+  redemption:
+  - type: catalog
+    program: AU Rewardz
+    rate_inr_per_unit: null
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    fields_verified:
+    - rewards.base.unit_value_inr
+    notes: AU Rewardz FAQ gives ordinary points at 0.25 paise and e-vouchers at 0.20 paise (https://www.au.bank.in/personal-banking/credit-cards). Catalog conversion varies by redemption type and is left unknown. Current member agreement confirms 25,000-point statement cap and exclusions including rent, education, government and BBPS; EMI, fuel, cash withdrawal, quasi-cash, fees and other charges also earn no points (https://www.au.bank.in/credit-cards/credit-card-member-agreement.pdf). Xcite base/category earn remains unpublished in accessible page text.
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa]
-        notes: "8 complimentary lounge visits per annum (incl. Railway Lounge access)."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 150
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access: null
+  insurance:
+  - type: lost-card-liability
+    sum_insured_inr: null
+    conditions: Current product page advertises zero liability following card loss; detailed current limits and conditions are not stated. The linked detailed insurance PDF is dated 16-Apr-2021.
+  other:
+  - name: Railway lounge access
+    description: 8 complimentary railway lounge visits per annum, maximum 2 per calendar quarter. Current issuer page does not list airport lounge access.
+  - name: Device Protection Plan
+    description: Complimentary device protection for mobiles, tablets, laptops and select electronics.
+  - name: Contactless payments
+    description: Tap-to-pay transactions up to INR 5,000 without PIN at participating merchants.
+  - name: Xpress EMI
+    description: Convert transactions with minimum total value INR 2,000 into EMI and club up to 20 billed or unbilled transactions; per-transaction minimum is not stated on the product page.
+  - name: Add-on cards
+    description: Add-on cards are offered free for lifetime; the page does not publish a numerical card limit.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: Current Xcite product page checked 2026-10-26. It advertises 2X points on retail spend days 1-5 each month but no calculable base rate; 8 railway lounge visits/year capped at 2/calendar quarter; and 1% fuel waiver on INR 400-5,000 transactions capped INR 100 per statement cycle. It does not list airport lounge access or concierge. Effective date for the current benefit set is unpublished; effective_from is the review snapshot.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  notes: Income and bureau-score thresholds remain unpublished. Current product page lists salaried ages 21-60, self-employed ages 25-65, add-on cardholders over 18 and resident-Indian status; criteria are indicative.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    fields_verified:
+    - eligibility.residency
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-credit-card
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [entry, points, swipeup]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - points
+  - swipeup

@@ -3,18 +3,18 @@ name: Amazon Pay ICICI Bank Credit Card
 image_path: /cards/icici/amazon-pay.webp
 issuer: icici
 network: visa
-network_tier: signature
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
   partner: Amazon
   category: ecommerce
   partner_website: https://www.amazon.in
-status: active
-launched_on: 2018-10-16
+status: invite-only
+launched_on: 2018-10-30
 discontinued_on: null
 fees:
-- effective_from: 2018-10-16
+- effective_from: 2025-10-11
   effective_until: null
   joining_fee_inr: 0
   annual_fee_inr: 0
@@ -25,19 +25,22 @@ fees:
     pct: 2.5
     min_inr: 500
   gst_applicable: true
-  notes: Lifetime-free card.
+  notes: Lifetime-free card. Issuer currently lists zero joining/annual fees, monthly finance charge of 3.75%, and late-payment fees from INR 100 to INR 1,300; other charges are governed by the current MITC and tariff schedule.
   source:
     url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
     local_refs:
-    - docs/sources/icici/_shared/mitc-cc-gk-t.pdf
+    - docs/sources/icici/_shared/mitc_cc.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
     - fees.finance_charge_monthly_pct
     - fees.forex_markup_pct
+    - fees.cash_advance_fee
 rewards:
-- effective_from: 2018-10-16
+- effective_from: 2025-10-11
   effective_until: null
   currency: cashback
   currency_name: Amazon Pay Balance
@@ -46,8 +49,12 @@ rewards:
     per_inr: 100
     unit_value_inr: 1.0
     unit_value_inr_realized: 1.0
+    excluded_categories:
+    - utilities
+    - wallet-loads
+    - government
   accelerated:
-  - category: amazon-in-prime
+  - category: amazon-prime-shopping
     canonical_categories:
     - online
     multiplier: 5
@@ -63,8 +70,8 @@ rewards:
       class: cobrand-merchant
       merchants:
       - amazon-pay
-    notes: 5% back for Amazon Prime members on Amazon.in purchases.
-  - category: amazon-in-non-prime
+    notes: 5% on Amazon.in shopping for Prime members; excludes Gold Coins and flight/hotel bookings via Amazon Pay, which have a separate travel earn rule. Gold, silver and other precious metals, tax payments, fuel and rent do not earn rewards.
+  - category: amazon-nonprime-shopping
     canonical_categories:
     - online
     multiplier: 3
@@ -80,9 +87,13 @@ rewards:
       class: cobrand-merchant
       merchants:
       - amazon-pay
-  - category: amazon-pay-partners
+    notes: 3% on Amazon.in shopping for non-Prime members; digital products and gift cards earn 2% regardless of Prime status. Gold Coins and flight/hotel bookings via Amazon Pay are excluded from this rule.
+  - category: amazon-pay-eligible-categories
     canonical_categories:
     - online
+    - utilities
+    - telecom
+    - wallet-loads
     multiplier: 2
     effective_rate: 2
     cap_per_cycle: unlimited
@@ -93,57 +104,121 @@ rewards:
       class: cobrand-merchant
       merchants:
       - amazon-pay
-    notes: 2% back on 100+ Amazon Pay partner merchants.
+    notes: 2% on digitally fulfilled Amazon Pay categories, Login and Pay with Amazon partner transactions, and physical gift cards on Amazon.in. Includes specified digital products/gift cards regardless of Prime status; excludes rent, tax, and education.
+  - category: amazon-pay-travel-prime
+    canonical_categories:
+    - travel
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - amazon-pay
+    notes: 5% on flight and hotel bookings made via Amazon Pay for Prime members.
+  - category: amazon-pay-travel-nonprime
+    canonical_categories:
+    - travel
+    multiplier: 3
+    effective_rate: 3
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - amazon-pay
+    notes: 3% on flight and hotel bookings made via Amazon Pay for non-Prime members.
+  - category: eligible-other-domestic-spend
+    canonical_categories:
+    - other
+    multiplier: 1
+    effective_rate: 1
+    cap_per_cycle: unlimited
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 1% on otherwise eligible purchases. No reward on fuel, rent, tax, education, utilities outside Amazon, or international transactions; Amazon Pay category transactions use their separate rate.
   exclusions:
   - fuel
-  - wallet-loads
   - rent
+  - education
+  - international
   - emi
   - cash-advance
   redemption:
   - type: cashback-bank
     program: Amazon Pay
     rate_inr_per_unit: 1.0
-    constraints: Credited as Amazon Pay balance, usable across Amazon.in and Amazon
-      Pay merchants.
+    constraints: Automatically credited as Amazon Pay balance within 2 working days after the billing cycle; usable for partial or full payment of Amazon and Amazon Pay purchases.
   source:
     url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
-    retrieved_on: 2026-07-05
+    retrieved_on: 2026-10-26
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/amazon-pay/tc-for-amazon-pay-credit-card.pdf
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
   mcc_exclusions:
   - '6513'
   capping_rules:
-  - 'No earning cap on Amazon.in cashback per ICICI''s own FAQ + product page (retrieved
-    2026-07-05): ''There is no limit on how much you can earn''; ''Unlimited reward
-    points upto 5% on Amazon purchases''. Covers 5% Prime + 3% non-Prime.'
+  - 'Issuer states no earning limit. Tax and precious-metal exclusions are documented in rule notes because the schema has no sufficiently precise category for these product-level exclusions; merchant/MCC classification may affect estimates. The base 1% is excluded from utilities, wallet loads, and government-category transactions while the Amazon Pay 2% scoped rule remains eligible.'
 benefits:
-- effective_from: 2018-10-16
+- effective_from: 2025-10-11
   effective_until: null
   lounge_access: null
   fuel_surcharge_waiver:
     pct: 1.0
-    min_txn_inr: 400
+    min_txn_inr: null
     max_txn_inr: 4000
-    cap_per_cycle_inr: null
+    cap_per_cycle_inr: 50000
     cycle: monthly
-  concierge: false
+    notes: 1% surcharge waiver at petrol pumps; max transaction INR 4,000 and eligible fuel spend capped at INR 50,000 per statement cycle per current ICICI MITC. GST on surcharge may not be reversed on off-us terminals.
+  concierge: null
+  other:
+  - name: Three-month no-cost EMI
+    description: Issuer advertises three-month no-cost EMI on eligible Amazon.in transactions. Complete eligible-product and transaction conditions are not published on the product page.
+    value_inr: null
   source:
     url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/_shared/mitc_cc.pdf
+    fields_verified:
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: null
   income_inr_annual:
-    salaried: 240000
+    salaried: 360000
     self_employed: 360000
-  credit_score_min: 700
+  credit_score_min: null
   residency: resident-indian
-  notes: Invite-only program; application routed via Amazon.in for pre-qualified users.
+  notes: Issuer product page states Indian citizen, minimum age 21, minimum monthly income INR 30,000 for salaried and self-employed applicants, and invite-only intake. Annualized income fields convert the issuer's monthly threshold (INR 360,000); credit-score threshold and maximum age are unpublished.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: 2026-10-26
   tags:
   - co-branded
   - amazon

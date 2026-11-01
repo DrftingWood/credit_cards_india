@@ -1,0 +1,21 @@
+{
+  "_source": "Central Bank of India official credit-card page, annual report and application-form directory",
+  "verified_on": "2026-10-27",
+  "result": "Standalone RuPay Platinum and RuPay Select credit cards are not currently listed and their card-specific terms are unpublished. Official FY2019-20 reporting says standalone issuance was discontinued when co-branded issuance began in October 2019. No exact product discontinuation dates were established.",
+  "cards": {
+    "rupay-platinum": {
+      "url": "https://centralbank.bank.in/en/credit-cards",
+      "retrieved_on": "2026-10-27",
+      "local_refs": [
+        "docs/sources/cbi/rupay-platinum-issuer-extract-2026-10-27.md"
+      ]
+    },
+    "rupay-select": {
+      "url": "https://centralbank.bank.in/en/credit-cards",
+      "retrieved_on": "2026-10-27",
+      "local_refs": [
+        "docs/sources/cbi/rupay-select-issuer-extract-2026-10-27.md"
+      ]
+    }
+  }
+}

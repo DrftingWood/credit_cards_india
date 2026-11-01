@@ -1,4 +1,4 @@
-# ---------------------------------------------------------------------------
+﻿# ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
 #   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
 #   Verified   : 2026-07-04   Confidence: HIGH (pdf)
@@ -41,7 +41,7 @@ fees:
     supplementary_card_fee_inr: 0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
       local_refs:
@@ -55,27 +55,24 @@ rewards:
   - effective_from: 2026-07-03
     effective_until: null
     currency: cashback
-    currency_name: Cashback
+    currency_name: Paytm Cashback Reward Points
     base:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
       unit_value_inr_realized: 1.0
     accelerated:
-      # Both rates are Paytm-app-only per the card's own product copy, but were
-      # authored ungated — so every user's whole travel/online bucket earned them
-      # regardless of whether they use Paytm at all. Gated 2026-07-28 (the
-      # sbi-paytm-select half of the D34 "not covered" list).
-      - category: paytm-travel
-        canonical_categories: [travel]
+      # Paytm-app-only categories per the issuer's card booklet.
+      - category: paytm-travel-movies-mall
+        canonical_categories: [travel, entertainment, other]
         multiplier: 5
         effective_rate: 5
         channel:
           required: true
           class: cobrand-merchant
           merchants: [paytm-app]
-        notes: "5% Cashback on Paytm Travel bookings via the Paytm App. Requires booking through the Paytm app — does not apply to travel booked anywhere else. Cap not stated on crawl."
-      - category: paytm-app-spends
+        notes: "5% cashback on travel, movies and mall purchases through the Paytm App. Requires booking through the Paytm app â€” does not apply to travel booked anywhere else. Cap not stated on crawl."
+      - category: other-paytm-app-spends
         canonical_categories: [online]
         multiplier: 2
         effective_rate: 2
@@ -83,21 +80,26 @@ rewards:
           required: true
           class: cobrand-merchant
           merchants: [paytm-app]
-        notes: "2% Cashback on all other purchases on the Paytm App. Requires transacting inside the Paytm app. Cap not stated on crawl."
+        notes: "2% cashback on all other purchases through the Paytm App, excluding the 5% travel, movies and mall category. Requires transacting inside the Paytm app. Cap not stated on crawl."
     redemption:
-      - type: statement-credit
+      - type: catalog
         rate_inr_per_unit: 1.0
-        constraints: "1 Reward Point = Re. 1."
+        program: Paytm Gift Voucher balance
+        constraints: "Reward Points are automatically converted to Paytm Gift Voucher balance in the cardholder's linked Paytm Wallet; not statement credit. Minimum eligible transaction is INR 100."
+    exclusions:
+      - fuel
+      - wallet-loads
+      - rent
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
-      retrieved_on: 2026-07-05
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
-    notes: "1% Cashback on any other spends across offline and online stores (base). Category exclusions not published on crawl."
+    notes: "1% valueback everywhere else; 2% on other Paytm App purchases and 5% on Paytm App travel, movies and mall purchases. UPI transactions earn 1% valueback."
 
     mcc_exclusions: ['6513']
     capping_rules:
-      - No monthly/statement cap on the 5% Paytm travel/movies/mall Valueback per the Paytm SBI Card SELECT T&C booklet (retrieved 2026-07-05); confidence medium (absence).
+      - No monthly or statement cap stated in the Paytm SBI Card SELECT booklet for the 5% Paytm App category.
 benefits:
   - effective_from: 2026-07-03
     effective_until: null
@@ -142,23 +144,33 @@ benefits:
         description: "2-year complimentary Priority Pass Membership worth US $99 (international lounge program; per-visit charges may apply)."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Eligibility criteria not published on the product page."
-
+  notes: "Eligibility criteria not published on the product page. SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/paytm-sbi-card-select.html
 
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-11-01'
   tags: [cashback, co-brand, mid, lounge]

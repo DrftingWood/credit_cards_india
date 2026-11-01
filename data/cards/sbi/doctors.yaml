@@ -2,8 +2,8 @@ id: sbi-doctors
 name: Doctor's SBI Card
 image_path: /cards/sbi/doctors.webp
 issuer: sbi
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
@@ -28,7 +28,7 @@ fees:
   supplementary_card_fee_inr: 0
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/doctors-sbi-card.html
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-27
     type: issuer-page
     confidence: high
     local_refs:
@@ -44,51 +44,71 @@ rewards:
   base:
     rate: 1
     per_inr: 100
-    unit_value_inr: 0.25
-    unit_value_inr_realized: 0.22
   accelerated:
-  - category: medical-supplies-travel-international
-    canonical_categories:
-    - travel
-    - international
-    - other
+  - category: medical-supplies-travel
+    canonical_categories: [travel, other]
     multiplier: 5
     effective_rate: 5
     cap_per_cycle: 7500
     cap_unit: points
     cycle: monthly
-    notes: 5 RP per Rs.100 on Medical Supplies, Travel Bookings & International Spends.
-      Medical+Travel capped 7,500 RP/month and International capped 7,500 RP/month
-      (separately); thereafter 1 RP per Rs.100.
+    notes: 5 Reward Points per INR100 on Medical Supplies and Travel Agent/Booking spends; combined cap 7,500 points per month, then base 1 point per INR100 continues.
+  - category: international-spends
+    canonical_categories: [international]
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: monthly
+    notes: 5 Reward Points per INR100 on international spends; separate cap of 7,500 points per month, then base 1 point per INR100 continues.
   - category: doctors-day-spends
     multiplier: 5
     effective_rate: 5
-    cap_per_cycle: unlimited
-    cap_unit: points
-    cycle: annual
-    notes: 5X Reward Points on all spends on Doctor's Day, i.e. 1st July.
+    notes: 5 Reward Points per INR100 on all eligible spends made on Doctor's Day (1 July); ordinary program exclusions continue to apply. No separate Doctor's Day cap is stated in current terms.
     canonical_categories:
+    - online
+    - groceries
+    - dining
+    - travel
+    - international
+    - entertainment
+    - utilities
+    - telecom
+    - education
     - other
   exclusions:
   - fuel
   - wallet-loads
   - rent
-  - insurance-premiums
   - emi
+  - cash-advance
+  capping_rules:
+  - Medical Supplies and Travel Booking 5X earn share one 7,500 point monthly cap; International 5X earn has a separate 7,500 point monthly cap. Base points continue after each cap.
+  - Doctor's Day (1 July) earns 5X on all otherwise eligible spend; current issuer terms do not state a separate cap.
+  - Card terms also exclude balance transfers, financial charges, disputes, Merchant EMI and Flexipay; these are recorded here because the schema's exclusion vocabulary has no dedicated values for them.
+  - The terms state points have no cash or monetary value and cannot be exchanged for cash or credit or used against card charges. The brochure mentions catalogue/outstanding-balance redemption; the record asserts catalog redemption only and no fixed point value.
+  - The terms state points expire 24 months after accrual. Wallet MCCs 6540/6541 and rent MCC6513 are excluded; MCC identification is best-effort.
   redemption:
-  - type: statement-credit
-    rate_inr_per_unit: 0.25
-    constraints: Pay card outstanding with Reward Points.
   - type: catalog
     program: SBI Card Rewards
-    rate_inr_per_unit: 0.25
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/doctors-sbi-card.html
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-27
     type: issuer-page
     confidence: high
+    local_refs:
+    - docs/sources/sbi/doctors/non-ima-tnc-current.pdf
+    - docs/sources/sbi/doctors/non-ima-brochure.pdf
+    fields_verified: [rewards.base, rewards.accelerated, rewards.exclusions, rewards.capping_rules, rewards.redemption]
+    notes: Card-specific terms give base and category earn, separate caps, exclusions, 24-month expiry and no cash/monetary point value; brochure wording on outstanding-balance redemption conflicts with the terms.
   mcc_exclusions:
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
   - '6513'
+  - '6540'
+  - '6541'
 benefits:
 - effective_from: 2026-07-03
   effective_until: null
@@ -125,28 +145,48 @@ benefits:
     max_txn_inr: 4000
     cap_per_cycle_inr: 250
     cycle: statement
+  other:
+  - name: Domestic lounge access
+    description: SBI?s current domestic lounge page lists Doctor?s SBI Card as eligible, but does not publish a visit quota for this product. Older brochure?s 2-per-quarter Visa offer was expressly limited-time.
+    value_inr: null
   concierge: false
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/doctors-sbi-card.html
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-27
     type: issuer-page
     confidence: high
+    local_refs:
+    - docs/sources/sbi/doctors/non-ima-tnc-current.pdf
+    - docs/sources/sbi/doctors/non-ima-brochure.pdf
+    fields_verified: [benefits.lounge_access, benefits.milestones, benefits.welcome, benefits.insurance, benefits.fuel_surcharge_waiver]
+    notes: Brochure supports vouchers, indemnity cover, Priority Pass quota and surcharge waiver; current SBI lounge list includes this card in domestic program but does not state a quota. Older brochure domestic lounge offer is expressly limited-time.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: Exclusively for registered doctors; ₹6L income threshold reflects aggregator/tier
-    consensus.
+  notes: "Exclusively for registered doctors; ₹6L income threshold reflects aggregator/tier consensus. SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/doctors-sbi-card.html
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-10-27'
   tags:
   - mid
+  - multi-network
   - points
   - professional
   - lounge

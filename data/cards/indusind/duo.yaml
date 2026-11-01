@@ -1,100 +1,142 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-duo
 name: IndusInd Bank Duo Card
 image_path: /cards/indusind/duo.webp
 issuer: indusind
 network: visa
-network_tier: infinite
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
-status: active
-launched_on: 2015-01-01
+status: on-hold
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2015-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Duo Card combines a RuPay + Visa credit card in one; dual-network."
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/duo-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.83
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  notes: Current MITC lists NIL joining and annual fees; the current product page separately displays an INR249
+    + taxes issuance fee without clarifying whether it applies to credit, debit, or both. Product page states
+    2% cross-currency markup, while the general MITC default for unspecified cards is 3.5%; card-specific display
+    followed. DCC is a separate 2% + GST charge effective 2026-06-15. Product is discontinued for new sourcing;
+    existing accounts remain referenced.
+  source:
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/schedule-of-charges/credit-cards/MITC_Premium.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: medium
+    local_refs:
+    - docs/sources/indusind/duo/mitc-premium-retrieved-2026-10-26.pdf
+    notes: Card-specific product page retained as secondary evidence for 2% forex and INR249 issuance fee;
+      these conflict with generalized MITC treatment.
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2015-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1.5
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "Reward rates/caps"
-    redemption:
-      - type: catalog
-        program: IndusMoments
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/duo-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 150
+    unit_value_inr: 0.75
+  exclusions:
+  - fuel
+  capping_rules:
+  - Cash-credit redemption capped at 2,500 points per calendar month effective 2024-09-01. Current general
+    reward-update table lists Duo 2,500 monthly reward-point cap, but the current Duo benefit guide states
+    no cap on credit-card points earned; unresolved issuer wording conflict.
+  redemption:
+  - type: cashback-bank
+    rate_inr_per_unit: 0.75
+    constraints: Minimum 500 points; maximum 2,500 points per calendar month for cash redemption.
+  - type: airmiles
+    program: Singapore Airlines KrisFlyer
+    constraints: Current transfer ratio not verified.
+  - type: catalog
+    program: IndusMoments
+    constraints: Catalog values vary; no fixed value verified.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/tnc-duoProduct.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    notes: Issuer Duo benefit guide dated 2025-12-20 says credit points have no earning cap and expire while
+      account remains live. Card page caps cash redemption at 2,500/month. General reward-updates page labels
+      2,500 as monthly reward-point capping, creating unresolved ambiguity. Credit reward rate is 1 point per
+      INR150 and cash credit is INR0.75/point; 500-point minimum.
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
 benefits:
-  - effective_from: 2015-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/duo-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 250
+    cycle: statement
+    notes: 1% surcharge waiver across petrol pumps; GST on surcharge not waived. Fuel waiver terms PDF lists
+      the Duo band INR500?3,000 and INR250 per billing cycle.
+  concierge: false
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/duo-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    local_refs:
+    - docs/sources/indusind/duo/fuel-surcharge-waiver-retrieved-2026-10-26.pdf
+    notes: Duo credit lounge access, Travel Plus, concierge, golf and auto-assist were discontinued effective
+      2021-11-30. Fuel waiver and movie details retained for existing cardholders.
+    fields_verified:
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.min_txn_inr
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits[0].movies.max_per_cycle
+    - benefits[0].movies.cap_inr
+  movies:
+    type: bogo
+    partner: BookMyShow
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 200
+    notes: Credit card offer once monthly; ticket value cap INR200 effective 2023-06-01; monthly inventory
+      limited and first-come-first-served.
+  other:
+  - name: Total Protect
+    description: Complimentary credit-card protection for unauthorized transactions reported within 48 hours
+      and counterfeit fraud, up to assigned credit limit; terms apply.
+    value_inr: null
 eligibility:
-  min_age: 21
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: ""
-
+  notes: Numeric age, income and bureau-score cutoffs not verified for existing Duo cardholders. New sourcing
+    is discontinued; do not interpret unknowns as an absence of eligibility rules.
 application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/duo-card.html
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - on-hold
+  - points

@@ -1,114 +1,206 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-wellness
 name: YES Bank Wellness Credit Card
 image_path: /cards/yes/wellness.webp
-issuer: "yes"
-network: mastercard
-network_tier: platinum
+issuer: 'yes'
+network:
+network_tier:
 tier: entry
 card_type: credit
-co_brand: null
+co_brand:
 status: active
-launched_on: 2022-01-01
-discontinued_on: null
-
+launched_on:
+discontinued_on:
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Health/wellness-focused card. First-year & renewal fee ₹499."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/wellness-cards
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-06-15'
+  effective_until:
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  fee_waiver:
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: Standard joining and renewal fees are INR499 + GST. Current MITC v18
+    gives 3.99% monthly finance, 2.5%/INR650 minimum cash advance and 3.50%
+    foreign-currency markup effective 15-Jun-2026. Current issuer listing
+    advertises an INR300 Amazon voucher after health-check completion within the
+    first 90 days; this is a welcome offer, not a fee waiver.
+  source:
+    url:
+      https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/wellness/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: YES Rewardz Points
-    base:
-      rate: 4
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: chemist-pharmacy
-        canonical_categories: [other]
-        multiplier: 5
-        effective_rate: 20
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "20 YES Rewardz per ₹200 at Chemists/Pharmaceutical stores (MCC 5912); 4 per ₹200 on other categories."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: YES Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/wellness-cards
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-06-15'
+  effective_until:
+  currency: points
+  currency_name: YES Rewardz Points
+  base:
+    rate: 4
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized:
+  accelerated:
+  - category: chemist-pharmacy
+    canonical_categories:
+    - other
+    multiplier: 5
+    effective_rate: 20
+    cap_unit: points
+    notes: 20 YES Rewardz per INR200 at retail pharmacy MCC 5912 and 8099; 4 per
+      INR200 on other eligible retail. Product guide gives no accelerator cap.
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  - other
+  - rent
+  - wallet-loads
+  - government
+  - insurance-premiums
+  - education
+  - jewellery
+  - road-fees-and-tolls
+  mcc_exclusions:
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '9752'
+  - '6513'
+  - '6540'
+  - '9034'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '9700'
+  - '9701'
+  - '9702'
+  - '9751'
+  - '9754'
+  - '9950'
+  - '5960'
+  - '5962'
+  - '5964'
+  - '5965'
+  - '5966'
+  - '5967'
+  - '5968'
+  - '5969'
+  - '7311'
+  - '6300'
+  - '6381'
+  - '8211'
+  - '8220'
+  - '8249'
+  - '8299'
+  - '8241'
+  - '8244'
+  - '7911'
+  - '4112'
+  - '4011'
+  - '4784'
+  - '4111'
+  - '5094'
+  - '5944'
+  redemption:
+  - type: catalog
+    program: YES Rewardz
+    rate_inr_per_unit: 0.25
+  source:
+    url:
+      https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONT4011EBD5BC5C4C2A8995947AF410D4BA/native/usage_guide_yes_bank_wellness_cc_pdf.pdf?download=false
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: manual-read
+    local_refs:
+    - docs/sources/yes/wellness/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+  notes: Rewards apply to eligible retail spends only; pharmacy MCC 5912 and
+    8099 earns 20 points/INR200, other eligible retail 4/INR200. Issuer product
+    guide does not state a reward cap. Current general YES page exclusions
+    effective 15-Jun-2026 are listed; exact Wellness-specific MCC/cap details
+    remain unpublished. Point value is up to INR0.25, not a guaranteed realized
+    value.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Complimentary health check-up availed"
-        benefit: "Amazon voucher worth ₹300 + complimentary health check-up"
-        value_inr: 300
-        window_days: 90
-    other:
-      - name: "24x7 doctor consultations"
-        description: "Complimentary 24x7 consultations with doctors + digital health assessment with face scan."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/wellness-cards
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until:
+  lounge_access:
+  welcome:
+  - condition: Complete health check-up within first 90 days after issuance
+    benefit: Amazon voucher worth INR300 plus complimentary annual preventive
+      health check-up
+    value_inr: 300
+    window_days: 90
+  other:
+  - name: Aditya Birla Wellness health and fitness services
+    description: Preventive health check-up up to 25 parameters, 24/7 doctor and
+      specialist on-call consultation, unlimited nutritionist consultation
+      through AB Multiply app, and 6 fitness sessions per month subject to
+      availability.
+  - name: Digital health assessment
+    description: Issuer listing advertises digital face scan; current app
+      service terms and availability are not detailed.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 125
+    cycle: monthly
+    notes: Current MITC v18 cap for Wellness is INR125 per statement and
+      INR500-3,000 transaction band. GST not reversed; no UPI waiver.
+  concierge:
+  source:
+    url:
+      https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/wellness/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age:
+  max_age:
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
-
+    salaried:
+    self_employed:
+  credit_score_min:
+  residency:
+  notes: Reviewed current issuer product listing and official Wellness usage
+    guide; card-specific age, income, bureau and residency thresholds were not
+    located.
 application:
-  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/wellness-cards
-
+  apply_url:
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, wellness, health]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - points
+  - wellness
+  - health

@@ -128,7 +128,9 @@ export function DeepDive({ card }: { card: EnrichedCard }) {
       {card.current_benefits?.fuel_surcharge_waiver ? (
         <Section title="Fuel surcharge waiver">
           <p>
-            {formatPct(card.current_benefits.fuel_surcharge_waiver.pct, 1)} waiver on fuel transactions{" "}
+            {card.current_benefits.fuel_surcharge_waiver.pct == null
+              ? "Fuel surcharge reversed on eligible transactions"
+              : `${formatPct(card.current_benefits.fuel_surcharge_waiver.pct, 1)} waiver on fuel transactions`}{" "}
             {card.current_benefits.fuel_surcharge_waiver.min_txn_inr
               ? `between ${formatInr(card.current_benefits.fuel_surcharge_waiver.min_txn_inr)}`
               : ""}

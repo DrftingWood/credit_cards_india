@@ -8,167 +8,199 @@ tier: invite-only
 card_type: charge
 co_brand: null
 status: invite-only
-launched_on: 1999-01-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 1999-01-01
+- effective_from: 2021-01-19
   effective_until: null
-  joining_fee_inr: 200000
-  annual_fee_inr: 200000
+  joining_fee_inr: 700000
+  annual_fee_inr: 275000
   fee_waiver: null
-  forex_markup_pct: 0.0
-  finance_charge_monthly_pct: 0
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: null
   cash_advance_fee:
     pct: 3.5
-    min_inr: 500
+    min_inr: 250
+  late_payment_slabs: null
   gst_applicable: true
-  notes: Charge card — full statement balance due each cycle. Invitation-only; fees
-    widely reported as ~₹1.5L joining + ₹2L annual, with GST.
+  notes: Charge card; full statement balance is due each cycle, so revolving monthly
+    interest is not applicable. MITC confirms ₹700,000 joining and ₹275,000 annual
+    fee, 3.5% cash advance fee (₹250 minimum), and 2.5% delinquency fee (₹500 minimum).
+    Annual fee covers 1 Centurion supplementary, up to 5 Platinum supplementary and
+    1 Account Card; second Centurion supplementary costs ₹100,000. New supplementary
+    applications are paused from 27-Oct-2026; existing cards continue.
   source:
-    url: https://www.americanexpress.com/in/credit-cards/centurion/
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url: https://www.americanexpress.com/content/dam/amex/in/legal/mitc/Centurion_MITC.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.forex_markup_pct
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].forex_markup_pct
+    notes: Centurion MITC updated 11-Aug-2025 confirms fees, charge-card billing,
+      and delinquency terms. Current Amex FAQ lists 3.5% foreign-currency markup.
+      New supplementary applications paused from 27-Oct-2026; existing cards continue.
 rewards:
-- effective_from: 1999-01-01
+- effective_from: '2026-10-27'
   effective_until: null
   currency: points
   currency_name: Membership Rewards
   base:
-    rate: 1
-    per_inr: 30
-    unit_value_inr: 0.55
-    unit_value_inr_realized: 0.5
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: Centurion-specific base earn is not publicly confirmed. General Amex material
+      and RewardXcelerator show conflicting rates; excluded from calculator estimates
+      until card-specific terms are verified.
   exclusions:
   - fuel
-  - wallet-loads
   - cash-advance
-  mcc_exclusions:
-  - '6513'
+  capping_rules:
+  - 'Centurion-specific card-wide base earn remains unverified: general Amex materials
+    and current Centurion RewardXcelerator standard-points illustrations differ.'
+  - 'RewardXcelerator terms run through 31-Jan-2027. At participating listed merchants:
+    20X = 6 standard + 114 bonus MR per ₹200; 10X = 6 standard + 54 bonus per ₹200.
+    No minimum except ₹10 lakh on Mercedes-Benz bookings. The dynamic merchant list
+    is not modeled as a static category.'
+  - Membership Rewards points do not expire and remain redeemable while the card account
+    is active and in good standing. Redemption rupee values and partner transfer ratios
+    are not card-specific in public sources reviewed.
+  mcc_exclusions: []
   redemption:
-  - type: airmiles
-    program: Multiple (MR transfer)
-    ratio: '2:1'
-    constraints: '8 transfer partners; ratios are card-point : partner-unit. realized
-      Rs 0.50 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7
-      partners beat the floor. Full per-partner values below.'
-    transfer_partners:
-    - partner_name: Marriott Bonvoy
-      partner_type: hotel
-      transfer_ratio: '1:1'
-      last_verified_on: '2026-07-05'
-      notes: 1:1 -> ~Rs 0.55/pt
-    - partner_name: Hilton Honors
-      partner_type: hotel
-      transfer_ratio: '1:0.9'
-      last_verified_on: '2026-07-05'
-      notes: 1:0.9 -> ~Rs 0.32/pt [below floor — avoid]
-    - partner_name: Singapore KrisFlyer
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.55/pt
-    - partner_name: Emirates Skywards
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.45/pt
-    - partner_name: British Airways Avios
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.50/pt
-    - partner_name: Qatar Privilege Club (Avios)
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.50/pt
-    - partner_name: Virgin Atlantic Flying Club
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.50/pt
-    - partner_name: Cathay Asia Miles
-      partner_type: airline
-      transfer_ratio: '2:1'
-      last_verified_on: '2026-07-05'
-      notes: 2:1 -> ~Rs 0.47/pt
-    rate_inr_per_unit: 0.55
   - type: statement-credit
-    rate_inr_per_unit: 0.5
-  - type: voucher
-    program: Amex gift vouchers
-    rate_inr_per_unit: 0.5
+    constraints: Amex lists statement-charge redemption; no current Centurion-specific
+      INR-per-point value is established.
+  - type: airmiles
+    program: Participating airline and hotel loyalty programmes
+    constraints: Issuer offers point transfers. Current Centurion-specific partner
+      ratios and realized values were not verified; no ratios or valuations are modeled.
   source:
-    url: https://www.americanexpress.com/in/credit-cards/centurion/
-    retrieved_on: '2026-07-05'
+    url: https://www.americanexpress.com/en-in/benefits/rewards/membership-rewards/
+    retrieved_on: '2026-10-27'
     type: issuer-page
-    notes: 'Encoded 2026-07-05, full-visibility model: every transfer partner is listed
-      with its own ratio and Rs/point. No blended or averaged value. realized = the
-      guaranteed non-transfer floor; face = the single best documented transfer (ceiling).
-      See transfer_partners for the complete per-partner spread. Earn rates unchanged.'
+    confidence: low
+    fields_verified: []
+    notes: Current Amex Membership Rewards page confirms Centurion is enrolled, points
+      do not expire, and points may be redeemed or transferred while the account is
+      active and in good standing. General Amex materials and Centurion RewardXcelerator
+      illustrations differ on standard earn pace, so no card-wide base rate is modeled.
+      Current RewardXcelerator terms through 31-Jan-2027 state 20X = 6 standard +
+      114 bonus MR per ₹200 and 10X = 6 standard + 54 bonus per ₹200 at participating
+      merchants; no minimum except ₹10 lakh on Mercedes-Benz bookings. Dynamic merchant
+      scope is not scored in calculator.
 benefits:
-- effective_from: 1999-01-01
+- effective_from: '2026-10-27'
   effective_until: null
   lounge_access:
     domestic:
       visits_per_cycle: unlimited
       cycle: annual
-      guests_per_visit: unlimited
+      guests_per_visit: null
       via:
       - issuer-direct
-      - dreamfolks
+      notes: Unlimited complimentary access at participating domestic airport lounges
+        for Basic and Supplementary Centurion Cardmembers. Domestic guest entry is
+        charged at the lounge’s prevailing rate; current partner list and rules vary.
     international:
       visits_per_cycle: unlimited
       cycle: annual
-      guests_per_visit: unlimited
+      guests_per_visit: null
       via:
-      - priority-pass
       - issuer-direct
-  golf:
-    rounds_per_cycle: unlimited
-    cycle: monthly
-    lessons_per_cycle: unlimited
+      notes: Unlimited complimentary access to participating Global Lounge Collection
+        locations for Centurion Cardmembers; guest rules and fees vary by participating
+        lounge.
+  golf: null
   insurance:
   - type: air-accident
-    sum_insured_inr: 150000000
-  - type: travel-medical
     sum_insured_inr: 100000000
-  fuel_surcharge_waiver:
-    pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 5000
-    cap_per_cycle_inr: null
-    cycle: monthly
+    conditions: Up to INR 10 crore primary-cover when eligible air ticket is purchased
+      on this Centurion Card; supplementary cover INR 10 lakh.
+  - type: travel-medical
+    sum_insured_inr: null
+    sum_insured_amount: 250000
+    sum_insured_currency: USD
+    conditions: Overseas medical cover; contact ICICI Lombard to register. Policy
+      terms apply.
+  - type: baggage-loss
+    sum_insured_inr: 100000
+    conditions: Total loss of checked baggage, international/domestic; valuables excluded.
+  - type: other
+    sum_insured_inr: 100000
+    conditions: Loss of passport/documents; reimbursement of replacement charges.
+  - type: trip-delay
+    sum_insured_inr: 50000
+    conditions: Missed connecting flight, including car rentals.
+  - type: baggage-loss
+    sum_insured_inr: 100000
+    conditions: Delayed international checked baggage over 12 hours; emergency essentials
+      reimbursement.
+  fuel_surcharge_waiver: null
   concierge: true
   other:
-  - name: Centurion personal concierge
-    description: 24/7 Centurion concierge and lifestyle management.
-  - name: Elite status bundle
-    description: Complimentary elite status with Marriott Bonvoy, Hilton Honors, Taj,
-      and multiple airline programmes.
-  - name: Fine Hotels + Resorts
-    description: Complimentary Fine Hotels + Resorts benefits globally (room upgrade,
-      breakfast, late checkout).
-  - name: Airport meet-and-greet
-    description: Meet-and-greet and expedited transit at select international airports.
+  - name: RewardXcelerator
+    description: 'Current Amex terms provide 10X/20X at dynamic participating merchants
+      through 31-Jan-2027. Centurion terms: 20X is 6 standard + 114 bonus MR per ₹200;
+      10X is 6 standard + 54 bonus MR per ₹200. No minimum except ₹10 lakh for Mercedes-Benz
+      bookings. Not scored as a static category.'
+  - name: Lounge guest policy
+    description: Unlimited access to participating Global Lounge Collection lounges
+      for Centurion Cardmembers; domestic guest entry is paid, and international guest
+      terms vary by lounge.
+  - name: Centurion Member Services and temporary changes
+    description: '24-hour service: +91 124 670 2900 or 1800 208 1202. Supplementary
+      card applications paused effective 27-Oct-2026; existing supplementary cards
+      continue and in-progress applications are processed through 03-Nov-2026. Eligible
+      hotel elite-tier enrollment temporarily unavailable 11–16 Nov 2026.'
+  - name: Application availability
+    description: Invitation-only. Amex currently says it has temporarily paused new
+      charge-card applications in India during domestic issuing-platform updates;
+      invitation criteria remain unpublished.
   source:
-    url: https://www.americanexpress.com/in/credit-cards/centurion/
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url: https://www.americanexpress.com/en-in/travel/lounges/the-platinum-card/terms
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.insurance.sum_insured_inr
+    - benefits.insurance.sum_insured_amount
+    notes: Centurion MITC updated 11-Aug-2025 confirms insurance terms. Current Amex
+      India lounge terms state unlimited Global Lounge Collection access for Centurion
+      Cardmembers; domestic lounge access is for Basic/Supplementary Centurion cards
+      and guests pay prevailing charges. Amex consumer updates page (27-Oct-2026)
+      records current member-service, supplementary-card and elite-membership changes.
 eligibility:
-  min_age: 21
-  max_age: 70
+  min_age: 18
+  max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 800
+  credit_score_min: null
   residency: resident-indian
-  notes: Strictly invite-only. Typically requires very high annual Amex spend (reported
-    ₹1Cr+) before consideration.
+  source:
+    url: https://www.americanexpress.com/in/credit-know-how/credit-card-application/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    notes: General Amex India application guidance states 18 or above, resident Indian,
+      and good credit history; it does not disclose Centurion-specific invitation
+      thresholds.
+  notes: Invitation-only; no numeric Centurion-specific invitation, income or bureau-score
+    threshold is public. General Amex India guidance says Indian resident and age
+    18+ with good credit history. Amex says new charge-card applications in India
+    are temporarily paused during domestic platform updates.
 application:
   apply_url: null
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - invite-only
   - charge-card

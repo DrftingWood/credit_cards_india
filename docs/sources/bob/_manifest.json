@@ -1,9 +1,9 @@
 {
   "_audit": {
     "_source": "BOBCARD Product Features & Important Terms & Conditions PDF (01-Apr-2026), 14pp",
-    "verified_on": "2026-07-04",
+    "verified_on": "2026-10-26",
     "shared_tnc": "_shared/features-and-rewards-important-terms-conditions-01042026.pdf",
-    "result": "all sampled cards (Eterna/Tiara/Premier/Prime/Select/Easy/Snapdeal/HPCL) match YAML core+accelerated+caps+forex; 0 corrections",
+    "result": "Core and accelerated rewards on the sampled BOBCARD products match issuer rewards terms; Tiara corrections now record current lounge threshold, finance charges, network and launch date.",
     "index": "docs/sources/bob/INDEX.md"
   },
   "assam-rifles-the-sentinel": {
@@ -130,7 +130,9 @@
     "slug": "bobcard-scapia-credit-card",
     "url": "https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card",
     "pdfs": [
-      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+      "scapia/scapia-mitc-retrieved-2026-10-26.pdf",
+      "scapia/scapia-kfs-retrieved-2026-10-26.pdf",
+      "scapia/scapia-cardholder-terms-retrieved-2026-10-26.pdf"
     ]
   },
   "select": {
@@ -151,14 +153,34 @@
     "slug": "tiara",
     "url": "https://www.bobcard.co.in/credit-card-types/tiara",
     "pdfs": [
-      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf",
+      "tiara/july-revision.pdf",
+      "tiara/annual-report-2024-25.pdf",
+      "tiara/generic-mitc-july-2025.pdf"
+    ],
+    "reviewed_on": "2026-10-26",
+    "unresolved": [
+      "current MITC 2026 PDF listed on issuer terms page but not retrievable; cash advance amount retained from generic MITC v1.6 July 2025",
+      "exact effective date of lounge threshold increase unresolved",
+      "current card page income text incomplete; no income or bureau score cutoff encoded",
+      "network tier not verified"
     ]
   },
   "uni-goldx": {
     "slug": "bobcard-uni-goldx",
     "url": "https://www.bobcard.co.in/credit-card-types/bobcard-uni-goldx",
     "pdfs": [
-      "_shared/features-and-rewards-important-terms-conditions-01042026.pdf"
+      "uni-goldx/uni-goldx-mitc-retrieved-2026-10-26.pdf",
+      "uni-goldx/uni-goldx-kfs-retrieved-2026-10-26.pdf",
+      "uni-goldx/uni-bob-reward-mitc.pdf",
+      "uni-goldx/uni-goldx-cardholder-terms-retrieved-2026-10-26.pdf"
+    ],
+    "reviewed_on": "2026-10-26",
+    "unresolved": [
+      "KFS applies the INR100 reward minimum specifically to GoldX UPI; the product page states 1% broadly on eligible transactions",
+      "Uni partner materials advertise 24K digital-gold redemption, while the BOBCARD reward MITC enumerates cashback, Reward Store and other app offers without automatic gold conversion",
+      "current network variants and network tier are not established by the reviewed materials",
+      "exact launch date and numeric income/credit-score criteria are unpublished in reviewed current issuer sources"
     ]
   },
   "vikram": {

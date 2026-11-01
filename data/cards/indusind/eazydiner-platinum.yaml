@@ -1,18 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-eazydiner-platinum
 name: EazyDiner IndusInd Bank Platinum Credit Card
 image_path: /cards/indusind/eazydiner-platinum.webp
 issuer: indusind
-network: mastercard
-network_tier: platinum
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
@@ -20,121 +11,158 @@ co_brand:
   category: lifestyle
   partner_website: https://www.eazydiner.com
 status: active
-launched_on: 2022-08-01
+launched_on: 2024-01-16
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-08-01
-    effective_until: null
-    joining_fee_inr: 1500
-    annual_fee_inr: 1500
-    fee_waiver:
-      spend_inr: 250000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: 2026-10-13
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.83
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  source:
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: 'Consolidated MITC dated 13-Oct-2026: joining and annual fees nil; EazyDiner Platinum is in the 3.83% monthly finance-charge group; cash advance 2.5% (minimum INR 300); all other cards not separately listed have 3.5% forex markup. Additional current charges not represented by dedicated schema fields: over-limit fee 2.5% (minimum INR 500); late-payment slabs effective 15-Jun-2026 are INR 0 up to 100, INR 100 for 101-500, INR 500 for 501-1,000, INR 600 for 1,001-5,000, INR 750 for 5,001-10,000, INR 900 for 10,001-25,000, INR 1,100 for 25,001-50,000 and INR 1,300 above 50,000; DCC fee 2%+GST; rent fee 1%+GST; fuel fee 1%+GST on cumulative fuel above INR 30,000 per statement cycle; reward redemption fee is waived. MITC confirms Priority Pass is unavailable. Current fee terms verified, but their actual effective date is unpublished.'
 rewards:
-  - effective_from: 2022-08-01
-    effective_until: null
-    currency: points
-    currency_name: EazyPoints
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: eazydiner-dining
-        canonical_categories: [dining]
-        multiplier: 1
-        effective_rate: 15
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [eazydiner]
-        channel:
-          class: food-delivery
-          merchants: [eazydiner]
-        notes: "15% value-back as EazyPoints on dining via EazyDiner."
-      - category: dining-other
-        canonical_categories: [dining]
-        multiplier: 1
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "10% on other dining spends."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: voucher
-        program: EazyDiner app (dining bills only)
-        rate_inr_per_unit: 0.2
-        constraints: "Redeemable only via the EazyDiner app / PayEazy against restaurant bills; no cash or statement credit."
+- effective_from: 2024-01-16
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.2
+    unit_value_inr_realized: 0.2
+  accelerated:
+  - category: insurance-rent-utility-government
+    canonical_categories:
+    - insurance
+    - rent
+    - utilities
+    - government
+    multiplier: 0.35
+    effective_rate: 0.7
+    cycle: statement
+    notes: Reduced earn of 0.7 Reward Points per INR 100 on insurance, rent, utility and government spends.
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
-      retrieved_on: '2026-07-05'
+      retrieved_on: '2026-10-26'
       type: issuer-page
-
       confidence: high
-      notes: 'Corrected 2026-07-05: EazyPoints = Rs 0.20, dining-locked (no cash/statement). Was Rs 1.0 nominal / 0.5 realized.'
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].canonical_categories
+      notes: Current EazyDiner card page specifies 0.7 Reward Points per INR 100 on insurance, rent, utility and government transactions.
+  exclusions:
+  - fuel
+  redemption:
+  - type: voucher
+    program: EazyDiner App / PayEazy
+    rate_inr_per_unit: 0.2
+    constraints: Reward Points can be redeemed against restaurant bills via PayEazy or through the EazyDiner App catalogue; cash or statement-credit redemption is not listed. Reward Redemption fee is waived per MITC.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.exclusions
+    - rewards.redemption
+    notes: 'Current issuer page states 2 Reward Points per INR 100 except fuel, insurance, rent, utility and government; 0.7 points per INR 100 on the latter four categories; fuel earns no Reward Points. Reward Points are valued at INR 0.20 and are earned only up to the assigned credit limit per statement cycle. The separate 2X EazyPoints program is advertised without a rupee earn rate or conversion basis and is not combined with Reward Points here. Current terms page does not state an effective date. Other exclusions (including wallet loads and EMI) have not been asserted without current card-specific wording.'
 benefits:
-  - effective_from: 2022-08-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
-    dining:
-      program: EazyDiner Prime
-      discount_pct: 50
-      notes: "Up to 50% off at 2,500+ partner restaurants via EazyDiner Prime (complimentary)."
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "EazyDiner Prime membership + ₹1,500 EazyPoints"
-        value_inr: 2500
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2024-01-16
+  effective_until: null
+  welcome:
+  - condition: Card welcome benefit; issuer page does not state an activation or spend condition
+    benefit: Three-month EazyDiner Prime membership (stated worth INR 1,095)
+    value_inr: 1095
+    window_days: null
+  - condition: Card welcome benefit; issuer page does not state an activation or spend condition
+    benefit: 500 welcome bonus EazyPoints (separate from Reward Points; rupee value not established)
+    value_inr: null
+    window_days: null
+  dining:
+    program: EazyDiner Prime
+    discount_pct: 50
+    notes: Prime guarantees 25%-50% off at 2,000+ partner restaurants; 50% is the published upper bound, not a guaranteed discount at each venue. Card adds 20% off via PayEazy, capped at INR 500 and 3 uses per calendar month; app payment and offer terms apply.
+  milestones:
+  - spend_inr: 30000
+    cycle: quarterly
+    benefit: 2,000 Reward Points; dining spends are excluded from qualifying spend
+    value_inr: 400
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: Reward Points
+    trigger_window: rolling
+  - spend_inr: 30000
+    cycle: quarterly
+    benefit: Three-month EazyDiner Prime membership renewal on INR 30,000 eligible settled spend in each 90-day period; first period starts at onboarding
+    value_inr: 1095
+    trigger_window: rolling
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: null
+    cycle: statement
+    notes: The card-specific issuer PDF (https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf), effective 5-May-2024, lists eligible fuel transactions of INR 400-4,000 with no capping in a billing cycle. The generic fuel-waiver terms (https://www.indusind.bank.in/in/en/personal/tnc-petrol-surcharge-waiver.html) reserve the Bank's right to impose a monthly cap by value or transaction count, so no numeric cap is assumed to remain in force indefinitely. Billing cycle is represented as statement cycle. GST on fuel surcharge is not waived. MITC separately applies a 1%+GST fuel fee on cumulative fuel transactions above INR 30,000 per statement cycle.
+  insurance:
+  - type: fraud-liability
+    sum_insured_inr: null
+    conditions: Total Protect is advertised up to the card's credit limit and applies to add-on cards. The issuer's linked liability terms (https://www.indusind.bank.in/in/en/personal/tnc-lost-card-liability.html) exclude PIN/OTP-authenticated transactions and pre-delivery fraud; cover for unauthorized card transactions spans two days before reporting (including reporting day) through seven days after reporting (including reporting day), and the cardholder must report within 15 days of loss. Eligibility requires at least one POS activity in the prior six months. Counterfeit-fraud claims must be reported within 15 days of the statement containing the disputed transaction. Claim amount depends on actual loss and the covered card's credit limit.
+  concierge: false
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - benefits.welcome
+    - benefits.dining
+    - benefits.milestones
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    - benefits.insurance
+    notes: Product page also confirms PayEazy 20% offer (INR 500 cap, three uses per calendar month), Prime renewal, 2,000-point 90-day milestone, BookMyShow BOGO (one booking/month; free ticket capped INR 200; additional INR 50 off F&B) and Total Protect cover up to credit limit, including unauthorized use and counterfeit fraud. Fuel transaction bounds/no-cycle-cap are sourced from the card-specific issuer PDF effective 5-May-2024; generic fuel terms reserve the right to impose a monthly cap, so the benefit remains subject to later issuer changes. Detailed Total Protect conditions are sourced from the linked card-liability terms. Offer-specific restrictions are not fully represented in the schema. Prime membership is valued at the issuer's stated INR 1,095; EazyPoints are not assigned a rupee value.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 480000
-    self_employed: 480000
-  credit_score_min: 730
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Current product material reviewed does not publish card-specific minimum age, income or bureau-score criteria; unknown does not mean no underwriting criteria.
 application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-platinum-credit-card.html
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, dining, eazydiner, mid]
+  last_verified_on: '2026-10-26'
+  tags:
+  - co-branded
+  - dining
+  - eazydiner
+  - mid

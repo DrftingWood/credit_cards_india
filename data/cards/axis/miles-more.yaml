@@ -1,4 +1,4 @@
-id: axis-miles-more
+﻿id: axis-miles-more
 name: Axis Bank Miles & More Credit Card
 image_path: /cards/axis/miles-more.webp
 issuer: axis
@@ -13,7 +13,7 @@ status: active
 launched_on: 2013-06-11
 discontinued_on: null
 fees:
-- effective_from: 2025-06-20
+- effective_from: 2026-10-26
   effective_until: null
   joining_fee_inr: 3500
   annual_fee_inr: 3500
@@ -23,30 +23,50 @@ fees:
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
+  late_payment_slabs:
+  - up_to_inr: 500
+    fee_inr: 0
+  - up_to_inr: 5000
+    fee_inr: 500
+  - up_to_inr: 10000
+    fee_inr: 750
+  - up_to_inr: 50000
+    fee_inr: 1200
+  - up_to_inr: any
+    fee_inr: 1300
+  overlimit_fee:
+    pct: 2.5
+    min_inr: 500
   gst_applicable: true
+  notes: Models World variant only. Joining and annual fees are waived for Miles & More HON Circle and Senator members. The issuer product-page fee table says monthly finance is 3.7%, while the current generic MITC lists 3.75%; the MITC value is modeled. The product page lists DCC markup 3.5% plus taxes; the fee schema has no separate DCC field. Other listed transaction fees are rent 1%/transaction, wallet load 1% at cumulative INR10,000/statement, fuel 1% at cumulative INR50,000/statement, third-party education 1%/payment, utilities 1% at cumulative INR25,000/statement and skill-based gaming 1% at cumulative INR10,000/statement.
   source:
     url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
     local_refs:
-    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    - docs/sources/axis/miles-more/mitc-credit-cards-retrieved-2026-10-26.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
     - fees.finance_charge_monthly_pct
     - fees.forex_markup_pct
-    notes: 'Models the ''World'' variant: joining/annual ₹3,500 (Axis MITC). The ''World
-      Select'' variant is ₹10,000 joining / ₹4,500 annual. Forex 3.5%, finance 3.75%/mo,
-      cash advance 2.5% (min ₹500) per MITC.'
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    - fees.late_payment_slabs
+    - fees.overlimit_fee.pct
+    - fees.overlimit_fee.min_inr
 rewards:
-- effective_from: 2025-06-20
+- effective_from: 2026-10-26
   effective_until: null
   currency: miles
   currency_name: Miles & More Award Miles
   base:
-    rate: 2
+    rate: 4
     per_inr: 200
-    unit_value_inr: 0.8
-    unit_value_inr_realized: 0.5
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: No fixed INR value for Award Miles is published by Axis Bank; value varies by Miles & More redemption.
   exclusions:
   - fuel
   - wallet-loads
@@ -55,73 +75,98 @@ rewards:
   - government
   - insurance-premiums
   - jewellery
+  - gift-cards
+  - cash-advance
+  - road-fees-and-tolls
   redemption:
   - type: airmiles
     program: Miles & More (India)
-    constraints: Unlimited, never-expiring Award Miles; redeem on the Miles & More
-      (India) website.
-    rate_inr_per_unit: 0.8
+    rate_inr_per_unit: null
+    constraints: Redeem within the Miles & More program. Miles do not expire while cardholder has held the Axis card for at least 3 months and makes at least one eligible miles purchase each month. First transaction must be within 30 days of issuance. Expiry can reactivate if conditions fail, the card is cancelled, or there is an unpaid outstanding.
   source:
     url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: 2026-10-26
     type: issuer-page
-    notes: 'Lufthansa Miles & More award miles: ~Rs 0.80 best / ~Rs 0.50 realistic
-      economy from India.'
-    confidence: medium
-  mcc_exclusions:
-  - '6513'
+    confidence: high
+    local_refs:
+    - docs/sources/axis/miles-more/mmi-world-terms-retrieved-2026-10-26.pdf
+    - docs/sources/axis/miles-more/mmi-reward-change-2025-06-20.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    notes: >-
+      The World variant earns 4 miles per INR200 on eligible spends; World Select earns 6. Since 20-Jun-2025, excluded categories are identified by spend type rather than MCC: utilities/telecom, rent, wallet, government services, insurance, gold/jewellery, gift cards, fuel, cash advances, tolls and repayments. Also ineligible: reversals, fraud, fee payments, cash withdrawals, interest and EMI transactions. Welcome miles credit after the first purchase. The 2024 World terms' MCC exclusions are superseded by the category-based 2025 change.
+  mcc_exclusions: []
 benefits:
-- effective_from: 2025-06-20
+- effective_from: 2026-10-26
   effective_until: null
   lounge_access:
     domestic:
+      visits_per_cycle: 4
+      cycle: quarterly
       spend_threshold_inr: 50000
       spend_threshold_cycle: quarterly
-      notes: Complimentary domestic lounge access based on min spend ₹50,000 in the
-        previous 3 calendar months (T&C w.e.f. 1-May-2024).
+      guests_per_visit: 0
       via:
       - mastercard
+      notes: Four domestic Mastercard lounge visits per quarter, subject to INR50,000 eligible card spend in the previous three calendar months. For new cards, the spend test is waived in the issuance month and following three calendar months. Lounge availability is subject to the current participating-lounge list.
     international:
       visits_per_cycle: 2
       cycle: annual
       guests_per_visit: 0
       via:
       - priority-pass
-      notes: Priority Pass with complimentary lounge visits; exact number not stated
-        on live page (TODO verify).
+      notes: Two complimentary Priority Pass visits per card membership year for the primary cardholder only; guests are chargeable. This allowance is separate from domestic Mastercard visits.
   welcome:
-  - condition: First transaction on the card
-    benefit: 5,000 Bonus Welcome Miles (World variant; 15,000 on World Select) + Priority
-      Pass membership
-    value_inr: 4000
+  - condition: First transaction; first transaction must occur within 30 days of card issuance.
+    benefit: 5,000 welcome Award Miles and complimentary Priority Pass membership (World variant; World Select has different welcome terms).
+    value_inr: null
+    window_days: 30
+  insurance:
+  - type: baggage-loss
+    sum_insured_inr: null
+    conditions: Current product page lists baggage-loss insurance; the amount and full policy conditions are not established in the current card-page material reviewed.
+  - type: air-accident
+    sum_insured_inr: null
+    conditions: Current product page lists air-accident insurance; the amount and full policy conditions are not established in the current card-page material reviewed.
+  - type: lost-card-liability
+    sum_insured_inr: null
+    conditions: Product page describes lost-card cover; monetary limit and policy conditions remain unverified.
+  - type: credit-shield
+    sum_insured_inr: null
+    conditions: Product page describes credit shield; monetary limit and policy conditions remain unverified.
   other:
-  - name: Insurance cover
-    description: Insurance benefits including air accident and baggage loss cover;
-      sum insured not stated on live page (TODO verify).
+  - name: Annual renewal bonus
+    description: The World variant receives 3,000 Award Miles on renewal; exact renewal eligibility and fee-payment conditions are not stated on the comparison table.
     value_inr: null
   - name: Pay bills from any bank account
-    description: Enroll for auto-debit to pay Axis Bank Credit Card bills from any
-      other bank account.
+    description: Enroll for auto-debit to pay Axis Bank Credit Card bills from another bank account.
     value_inr: null
   source:
     url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
+    local_refs:
+    - docs/sources/axis/miles-more/mmi-world-terms-retrieved-2026-10-26.pdf
+    - docs/sources/axis/miles-more/mitc-credit-cards-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: either
-  notes: Primary cardholder 18–70 years; add-on cardholder 18+. Resident Indian or
-    NRI.
+  notes: Primary applicant age 18-70; add-on cardholder must be 18 or older. Axis states applicants may be resident Indians or NRIs. No card-specific income or credit-score threshold was published in the reviewed current issuer material.
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/miles-more-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-26'
   tags:
   - travel
   - miles

@@ -1,111 +1,148 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: standard-chartered-platinum-rewards
 name: Standard Chartered Platinum Rewards Credit Card
 image_path: /cards/standard-chartered/platinum-rewards.webp
 issuer: standard-chartered
 network: visa
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2018-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-01-01
-    effective_until: null
-    joining_fee_inr: 250
-    annual_fee_inr: 250
-    fee_waiver:
-      spend_inr: 6000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Joining fee reversed on ₹500 spend within 30 days of card issuance."
-    source:
-      url: https://www.sc.bank.in/credit-cards/platinum-rewards/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 250
+  annual_fee_inr: 250
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 3.0
+    min_inr: 300
+  gst_applicable: true
+  notes: Standard tariff lists INR250 first-year and renewal fees. The current issuer product page and PRCXC
+    Most Important Document advertise an electronically submitted application offer with INR0 first-year
+    and renewal fees, subject to a transaction of at least INR500 within 30 days after setup; otherwise a
+    one-time INR250 + GST is charged. The electronic offer excludes existing SC cardholders and carries
+    no joining benefit. Supplementary card fees are nil. Generic current tariff rates are used for forex,
+    monthly interest and cash advance fee.
+  source:
+    url: https://www.sc.bank.in/credit-cards/tariffs-and-charges/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/platinum-rewards/most-important-document-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2026-01-01
-    effective_until: null
-    currency: points
-    currency_name: 360 Reward Points
-    base:
-      rate: 1
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: dining-fuel
-        canonical_categories: [dining, fuel]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "5 Reward Points per ₹150 on fine-dining & fuel (no limit); 1 RP per ₹150 on other categories."
-    exclusions:
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: 360 Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.sc.bank.in/credit-cards/platinum-rewards/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: 'Verified 2026-07-05: generic SC 360 Reward Point = Rs0.25 catalogue (was placeholder Rs0.5).'
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: 360 Reward Points
+  base:
+    rate: 1
+    per_inr: 150
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+    notes: One point per INR150 for other eligible spend; catalogue value per point is INR0.25.
+  accelerated:
+  - category: dining-fuel
+    canonical_categories:
+    - dining
+    - fuel
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: Card-specific terms specify Hotels, Restaurants and Fuel; current product page describes fine dining
+      and fuel and says there is no monthly cap. Merchant-category coding by Visa determines eligibility.
+      The T&C also says card-level caps apply without specifying a numeric amount, which conflicts with the
+      product page's no-monthly-cap statement. Hotel earn is therefore documented but the narrow category
+      schema cannot represent it separately.
+  exclusions:
+  - cash-advance
+  redemption:
+  - type: catalog
+    program: 360 Rewards
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.sc.bank.in/content/dam/sc/in/credit-cards/docs/in-sc-platinum-rewards-credit-card-tcs.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/platinum-rewards/product-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.redemption
+  notes: The card-specific T&C excludes cash advances, fees/charges, returns, disputed, unauthorized or fraudulent
+    transactions, cardholder-non-initiated transactions and charged-back transactions. It says primary and
+    supplementary cardholders each have a card-level maximum without stating the amount. The product page
+    calls the accelerated earn uncapped monthly; this source conflict is unresolved. Unsupported legacy
+    category exclusions have been removed.
 benefits:
-  - effective_from: 2026-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.sc.bank.in/credit-cards/platinum-rewards/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver: null
+  concierge: false
+  source:
+    url: https://www.sc.bank.in/content/dam/sc/in/credit-cards/docs/in-sc-platinum-rewards-credit-card-tcs.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/platinum-rewards/product-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.welcome
+  notes: No lounge access or fuel-surcharge waiver is advertised in the current card-specific terms reviewed.
+  welcome:
+  - benefit: 100% cashback up to INR500 on restaurant transactions within 90 days from card setup.
+    condition: Only cardholders who paid the joining fee qualify; not applicable to digital-channel offer applicants
+      receiving zero joining fee. Supplementary cards are excluded.
+    value_inr: 500
+    window_days: 90
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: The current issuer page sets age 21–65, stable monthly income and bank sourcing-location criteria.
+    The PRCXC Most Important Document lists GMI INR20,000, but does not define separate salaried/self-employed
+    annual income cutoffs; these schema fields remain unknown. All applications are subject to bank credit
+    and policy checks. No numeric bureau-score threshold is published.
+  source:
+    url: https://www.sc.bank.in/credit-cards/platinum-rewards/
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/platinum-rewards/most-important-document-retrieved-2026-10-27.pdf
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
 application:
   apply_url: https://www.sc.bank.in/credit-cards/platinum-rewards/
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [entry, points, dining, fuel]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - points
+  - dining
+  - fuel

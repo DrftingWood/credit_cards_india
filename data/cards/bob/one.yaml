@@ -1,18 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: bob-one
 name: BOBCARD One Credit Card
 image_path: /cards/bob/one.webp
 issuer: bob
 network: visa
-network_tier: platinum
+network_tier: null
 tier: premium
 card_type: credit
 co_brand:
@@ -20,86 +11,151 @@ co_brand:
   category: other
   partner_website: https://www.getonecard.app
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.0
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free metal card; managed via the OneCard app (partnership with One Consumer Services Pvt Ltd). Up to 50 days interest-free credit."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/bobcard-one
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2025-11-04
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 1.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Lifetime-free virtual card; card-specific MITC states up to 48 days interest-free (product page advertises up
+    to 50 days). Metal issuance INR 3,000; plastic nil. Metal cancellation within 6 months INR 3,000; plastic INR 500.
+    Add-on cancellation metal nil/plastic INR 500. Plastic replacements are first nil, second INR 145, third onward
+    INR 500; metal replacement INR 3,000. Third-party rent fee 2% from 05-Dec-2025; wallet transfers 2% when monthly
+    cumulative transfers reach INR 10,000. Overlimit 2.5%, minimum INR 500. Card-specific MITC states 1% forex and
+    no reward redemption fee. Generic BOBCARD MITC states finance up to 3.75% monthly. Cash advance fee uses the
+    generic issuer tariff, 2.5%, minimum INR 500; One MITC does not separately restate it.
+  source:
+    url: https://media.bobcard.co.in/media/4qfbv2ka/bobcard-one-mitc-2.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    notes: Late payment fee is INR 0 for dues up to INR 250; INR 250 for INR 251–1,000; INR 500 for INR 1,001–5,000;
+      INR 1,000 for INR 5,001–25,000; INR 1,250 above INR 25,000. GST applies to fees, interest and other charges.
+      Cash advance fee (2.5%, minimum INR 500) is from BOBCARD's [generic Jan-2026 MITC](https://media.bobcard.co.in/media/gaudahay/bob_mitc_a4-booklet_ver-19jan26_15jan2026.pdf);
+      the One-specific schedule reviewed does not list this fee separately.
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.10
-      unit_value_inr_realized: 0.10
-    accelerated:
-      - category: top-2-spend-categories
-        canonical_categories: [other]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: statement
-        notes: "5X reward points on the cardholder's top 2 spend categories (dynamic). Points credited instantly, never expire; redeemable in the OneCard app with no fee/threshold."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: OneCard Rewards
-        rate_inr_per_unit: 0.10
-        constraints: "Instant redemption via OneCard app; zero redemption fee or minimum threshold."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/bobcard-one
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2025-11-04
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 50
+    unit_value_inr: 0.1
+    unit_value_inr_realized: 0.1
+  accelerated:
+  - category: top-2-spend-categories
+    multiplier: 5
+    effective_rate: 5
+    effective_per_inr: 50
+    cap_status: not-published
+    cycle: monthly
+    notes: 5X means five times the base 1 point per INR 50. Qualification requires valid confirmed purchases and at
+      least INR 750 in each of 3 categories in a calendar month; the top 2 then qualify. Bonus points post on the 10th
+      of the following month. An aggregate 25,000-point cap applies to incremental bonus rewards across education,
+      bills/utilities and insurance, not represented as a universal accelerator cap. Dynamic category qualification
+      and the scoped cap cannot be fully calculated by this schema.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    program: OneCard Rewards
+    rate_inr_per_unit: 0.1
+    constraints: Instant redemption via OneCard app; zero redemption fee or minimum threshold.
+  source:
+    url: https://media.bobcard.co.in/media/v2hi0wl0/bobcard-one-tcs-2.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.effective_per_inr
+    - rewards.accelerated.cap_status
+    - rewards.exclusions
+    - rewards.redemption.rate_inr_per_unit
+    notes: >-
+      Base rate and exclusions are from BOBCARD One T&C. The 5X monthly qualification and scoped cap are from the
+      same terms: core points credit on eligible purchases, while 5X bonus points post on the 10th of the next month.
+      Points have lifetime validity but may lapse after 365 days without card use, closure, NPA, delinquency,
+      settlement, fraud or death. Product page says instant app redemption, no fee and no minimum. OneCard's official
+      blog example gives 2,000 points = INR 200 cashback, supporting INR 0.10 per point. UPI transactions earn core
+      points only and are excluded from accelerated rewards. The terms allow Visa or RuPay network variants; this
+      record retains Visa as its single network value and must be treated as the Visa variant only. RuPay-specific
+      UPI behavior is not modeled as a separate card record.
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    lounge_access: null
-    concierge: false
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/bobcard-one
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2025-11-04
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: null
+    cap_per_cycle_inr: 400
+    cycle: monthly
+    notes: One-specific MITC states the waiver is the lower of 1% of the transaction or actual surcharge (excluding
+      GST) and is capped at INR 400 per calendar month. Fuel purchases earn no points; no transaction threshold is
+      specified.
+  other:
+  - name: Metal and app controls
+    description: Metal physical card with virtual card and app-based controls; metal issuance fee applies.
+  - name: Add-on cards
+    description: OneCard terms allow up to five family add-on cards for members aged over 18.
+  concierge: false
+  source:
+    url: https://media.bobcard.co.in/media/4qfbv2ka/bobcard-one-mitc-2.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: 18
+  max_age: null
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Card-specific MITC application declaration says the applicant is a resident Indian over 18. The [generic
+    BOBCARD eligibility page](https://www.bobcard.co.in/apply-for-credit-card-online) says primary applicants are
+    21–65, so the minimum-age criteria conflict; upper age 65 is generic rather than One-specific. Card-specific
+    income and bureau-score cutoffs are unpublished; approval remains subject to issuer underwriting.
+  source:
+    url: https://media.bobcard.co.in/media/4qfbv2ka/bobcard-one-mitc-2.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.residency
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/bobcard-one
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, metal, lifetime-free, co-brand]
+  last_verified_on: 2026-10-26
+  tags:
+  - premium
+  - points
+  - metal
+  - lifetime-free
+  - co-brand

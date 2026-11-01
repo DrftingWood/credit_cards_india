@@ -19,7 +19,7 @@ export function BestPickCard({ highlight }: { highlight: Highlight }) {
         <Link href={href} className="hover:underline">{c.name}</Link>
       </h3>
       <p className="text-xs text-fg-muted capitalize">
-        {c.tier.replaceAll("-", " ")} · {c.network_detail?.name ?? c.network}
+        {c.tier.replaceAll("-", " ")} · {c.network_detail?.name ?? c.network ?? "Network not stated"}
       </p>
 
       {/* FACTS (from T&C) */}

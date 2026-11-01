@@ -1,130 +1,168 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-pride-signature
 name: Axis Bank Pride Signature Credit Card
 image_path: /cards/axis/pride-signature.webp
 issuer: axis
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2016-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 40000
-      cycle: annual
-      conditions: "Annual fee waived on spends of ₹40,000 in the preceding card anniversary year (MITC)."
-    forex_markup_pct: 3.5 # MITC: 3.50% for all other cards
-    finance_charge_monthly_pct: 3.75 # MITC finance charge for Pride Signature (55.55% p.a.)
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/axis/_shared/mitc-credit-cards.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-    notes: "Exclusively for Indian Defence personnel. Joining fee Nil, annual fee ₹500 (per related-products listing)."
-
+- effective_from: 2026-08-28
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 40000
+    cycle: annual
+    conditions: Annual fee waived on spends of ₹40,000 in the preceding card anniversary year (MITC).
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    - docs/sources/axis/pride-signature/sosc-credit-cards-retrieved-2026-10-27.pdf
+    - docs/sources/axis/pride-signature/mitc-credit-cards-retrieved-2026-10-27.pdf
+    - docs/sources/axis/pride-signature/terms-revision-effective-2026-08-28.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: 'Joining fee nil; first-year annual fee nil, then INR 500, waived at INR 40,000 eligible spend in the preceding year. MCC 6513 rent, MCC 6540 wallet loads, MCC 5947 gift cards and MCC 4784 toll/bridge fees do not count toward waiver. Other charges: cash payment INR 175; replacement/add-on nil; duplicate statement, charge-slip retrieval, outstation cheque and balance inquiry waived; mobile alerts free; late fees nil below INR 500, INR 500 for INR 501-5,000, INR 750 for INR 5,001-10,000, INR 1,200 for INR 10,001-50,000 and INR 1,300 above INR 50,000, plus INR 100 after two consecutive unpaid MAD cycles; overlimit 2.5% (minimum INR 500); cheque return/auto-debit reversal 2% (minimum INR 500); railway ticket surcharges per IRCTC; foreign currency 3.5%, DCC 3.5% plus tax; rent 1%, third-party education 1%, wallet 1% at cumulative INR 10,000 per statement, fuel 1% at INR 50,000 per statement, utility 1% at INR 25,000 per statement, and skill gaming 1% at INR 10,000 per statement. Reward redemption fee is listed as applicable, but its amount is not published on this card page. Exact INR 500 late-fee boundary is unspecified. No public numeric income or bureau-score minimum is given.'
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: points
-    currency_name: EDGE Reward Points
-    base:
-      rate: 4
-      per_inr: 200
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.18
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - utilities
-      - education
-    redemption:
-      - type: catalog
-        program: EDGE Rewards
-        rate_inr_per_unit: 0.2
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
-    mcc_exclusions: ['6513']
+- effective_from: 2026-08-28
+  effective_until: null
+  currency: points
+  currency_name: EDGE Reward Points
+  base:
+    rate: 8
+    per_inr: 200
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - utilities
+  - education
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
+  redemption:
+  - type: catalog
+    program: EDGE Rewards
+    rate_inr_per_unit: null
+    constraints: Redeemable through 500+ changing EDGE Rewards options; no universal cash conversion is published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/pride-signature/pride-signature-edge-rewards-mcc-exclusions.pdf
+    - docs/sources/axis/pride-signature/pride-signature-edge-rewards-mcc-exclusions-retrieved-2026-10-27.pdf
+    - docs/sources/axis/pride-signature/terms-revision-effective-2026-08-28.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+  notes: Current general Axis terms also exclude gift cards and bridge/road fees/tolls from rewards. The card-specific rewards PDF excludes utilities, education, insurance, government institutions, wallet loads, rent, and fuel. No Pride Signature reward MCC-exclusion list is published; do not infer MCC 6513 from its fee-waiver exclusion.
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-        notes: "2 complimentary visits to select airport lounges within India per calendar quarter."
-    dining:
-      program: Dining Delights
-      discount_pct: 15
-      notes: "Minimum 15% discount at all partner restaurants."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: statement
-      notes: "1% fuel surcharge waiver on fuel transactions ₹400–₹4,000; max ₹400 per statement cycle (MITC)."
-    insurance:
-      - type: lost-card-liability
-        sum_insured_inr: 0
-        conditions: "Zero lost card liability once the lost/stolen card is reported."
-    concierge: false
-    other:
-      - name: Free add-on cards
-        description: "Free add-on cards for spouse, parents, children and siblings over 18 years of age."
-        value_inr: null
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-08-28
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      notes: Two complimentary domestic lounge visits per calendar quarter after INR 50,000 eligible settled spend in the preceding three calendar months; new-card issuance waives the threshold for the issuance month and next three calendar months. Complimentary entry covers the cardholder only; accompanying guests are paid. Nominal swipe fees and participating-lounge limits apply.
+  dining:
+    program: Dining Delights
+    discount_pct: 15
+    notes: 15% off up to INR 500, INR 2,500 minimum order, once per card per month at partner restaurants.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 400
+    cycle: statement
+    notes: 1% fuel surcharge waiver on INR 400-4,000 India transactions, capped at INR 400 per statement cycle; fuel earns no points and GST on the surcharge is non-refundable.
+  concierge: false
+  other:
+  - name: Personalised Defence card
+    description: Personalised tricolour design with a dedicated fourth embossing line for serving the nation.
+    value_inr: null
+  - name: Zero lost-card liability
+    description: Fraudulent use after the card is reported lost or stolen is covered under Axis cardmember agreement terms.
+    value_inr: null
+  - name: Free add-on cards
+    description: Free add-on cards for spouse, parents, children and siblings over 18 years of age.
+    value_inr: null
+  - name: Wednesday Delight
+    description: Time-sensitive weekly offers; current issuer page lists Goibibo/MakeMyTrip travel, Swiggy/Amazon Fresh and Tira promotions. Exact offer terms can change.
+    value_inr: null
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/pride-signature/domestic-lounge-program-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.guests_per_visit
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.domestic.spend_threshold_cycle
+    - benefits.dining.discount_pct
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: either
-  notes: "For Indian Defence personnel. Resident Indian or NRI."
-
+  notes: Indian Defence personnel; primary cardholder age 18-70; resident Indian or NRI. No numerical income or bureau-score minimum is published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/pride-signature-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, travel, dining, defence]
+  last_verified_on: 2026-10-27
+  tags:
+  - mid
+  - points
+  - travel
+  - dining
+  - defence
+  - network-unverified
+  - tier-unverified

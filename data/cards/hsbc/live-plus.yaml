@@ -1,124 +1,391 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HSBC live product pages, hsbc.co.in (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hsbc-live-plus
 name: HSBC Live+ Credit Card
 image_path: /cards/hsbc/live-plus.webp
 issuer: hsbc
 network: visa
-network_tier: signature
+network_tier: infinite
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-02-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-02-01
-    effective_until: null
-    joining_fee_inr: 999
-    annual_fee_inr: 999
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: medium
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 999
+  annual_fee_inr: 999
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: Annual renewal fee, including applicable GST, is reversed in full when eligible primary
+      plus add-on card spend during the anniversary year exceeds INR 200,000.
+  forex_markup_pct: 1.99
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: 'Current snapshot: joining and renewal fee INR999; annual fee waiver requires eligible anniversary-year
+    spend exceeding INR200,000 across primary and add-on cards. HSBC Live+ Service Guide says 3.75% monthly
+    finance charge; KFS tariff confirms 1.99% forex, 2.5%/INR500 cash advance and fees are subject to
+    applicable GST. No exact effective date for the current fee schedule is published; 2026-10-27 is the
+    verification snapshot date.'
+  source:
+    url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/credit-cards/live-plus-credit-card-services-guide.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/live-plus/live-plus-service-guide-retrieved-2026-10-27.pdf
+    - docs/sources/hsbc/live-plus/live-plus-mitc-retrieved-2026-10-27.pdf
+    - docs/sources/hsbc/live-plus/credit-card-kfs-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    method: pdf-extract
 rewards:
-  - effective_from: 2023-02-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.5
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: dining-food-grocery
-        canonical_categories: [dining, groceries]
-        multiplier: 1
-        effective_rate: 10
-        cap_per_cycle: 1000
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [swiggy, zomato]
-        channel:
-          class: food-delivery
-          merchants: [swiggy, zomato]
-        notes: "10% cashback on dining, food delivery & groceries (cap Rs1,000/month). 1.5% unlimited on other eligible spends."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-        min_units: 500
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1.5
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    excluded_categories:
+    - international
+    notes: 1.5% cashback on most other eligible domestic spends. No 1.5% cashback applies to international
+      spends under the current product page and updated service-guide summary; older generic service-guide
+      text still says international spend can earn cashback, so the older passage is not applied.
+  accelerated:
+  - category: dining-food-grocery-shopping-utilities
+    canonical_categories:
+    - dining
+    - groceries
+    - online
+    - utilities
+    multiplier: 1
+    effective_rate: 10
+    cap_per_cycle: 1200
+    cap_unit: cashback-inr
+    cycle: monthly
+    mcc_list:
+    - '5411'
+    - '5422'
+    - '5441'
+    - '5451'
+    - '5462'
+    - '5499'
+    - '5811'
+    - '5812'
+    - '5813'
+    - '5814'
+    - '5921'
+    - '4812'
+    - '5261'
+    - '5309'
+    - '5310'
+    - '5311'
+    - '5331'
+    - '5399'
+    - '5611'
+    - '5621'
+    - '5631'
+    - '5977'
+    - '5969'
+    - '5965'
+    - '5964'
+    - '5950'
+    - '5948'
+    - '7631'
+    - '7622'
+    - '5992'
+    - '5993'
+    - '5997'
+    - '5998'
+    - '5999'
+    - '7251'
+    - '7296'
+    - '5641'
+    - '5651'
+    - '5655'
+    - '5661'
+    - '5681'
+    - '5691'
+    - '5697'
+    - '5698'
+    - '5699'
+    - '5732'
+    - '5735'
+    - '5931'
+    - '5933'
+    - '5941'
+    - '5945'
+    - '4814'
+    - '4900'
+    notes: 10% cashback across eligible dining, food delivery, grocery, shopping and utility transactions,
+      combined cap INR1,200/month. HSBC Service Guide states cashback is determined solely by MCC; shopping
+      transactions on Amazon, Flipkart and Myntra earn the 1.5% rate instead. The full issuer MCC table
+      is archived locally. Shopping transactions on Amazon, Flipkart and Myntra merchants are excluded
+      from this 10% category and earn 1.5% cashback instead.
     source:
-      url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
+      url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/credit-cards/live-plus-credit-card-services-guide.pdf
+      retrieved_on: '2026-10-27'
+      type: issuer-pdf
       confidence: high
-      notes: "Corrected 2026-07-05: removed fabricated '5% entertainment' tier (HSBC Live+ India is 10% dining/food/grocery capped Rs1,000/mo + 1.5% base only). Cashback = Rs1 statement credit -> realized 1.0."
+      local_refs:
+      - docs/sources/hsbc/live-plus/live-plus-service-guide-retrieved-2026-10-27.pdf
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].cap_per_cycle
+      - rewards.accelerated[0].cycle
+      - rewards.accelerated[0].mcc_list
+      method: pdf-extract
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - education
+  - jewellery
+  - emi
+  - cash-advance
+  - international
+  - financial-institutions
+  - road-fees-and-tolls
+  - bridge-fees
+  - other
+  mcc_exclusions:
+  - '7372'
+  - '7395'
+  - '7829'
+  - '8299'
+  - '6010'
+  - '7995'
+  - '8062'
+  - '5047'
+  - '5122'
+  - '4829'
+  - '5111'
+  - '8211'
+  - '5960'
+  - '8220'
+  - '6012'
+  - '8241'
+  - '6300'
+  - '8244'
+  - '7399'
+  - '8249'
+  - '8398'
+  - '9950'
+  - '9311'
+  - '9223'
+  - '6513'
+  - '5192'
+  - '2741'
+  - '5199'
+  - '2791'
+  - '5932'
+  - '9222'
+  - '2842'
+  - '9405'
+  - '5039'
+  - '5065'
+  - '5045'
+  - '5094'
+  - '5046'
+  - '5131'
+  - '5051'
+  - '5137'
+  - '5072'
+  - '5139'
+  - '5074'
+  - '5193'
+  - '5085'
+  - '5300'
+  - '5099'
+  - '5937'
+  - '5169'
+  - '5944'
+  - '5198'
+  - '7379'
+  - '5552'
+  - '5013'
+  - '7311'
+  - '5172'
+  - '7322'
+  - '5541'
+  - '7349'
+  - '5542'
+  - '7361'
+  - '5983'
+  - '7375'
+  - '9399'
+  - '8351'
+  - '4111'
+  - '8641'
+  - '4784'
+  - '8734'
+  - '7012'
+  - '9211'
+  - '6540'
+  - '9402'
+  - '6011'
+  - '5021'
+  - '6051'
+  - '5044'
+  - '6211'
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+    constraints: Automatic cashback credit to the card account within 45 days of the statement date. Reversed,
+      cancelled or nullified transactions can have cashback recovered.
+  notes: No reward points; rewards are cashback only. Current 10% categories share one INR1,200 monthly
+    cap. International purchases earn no cashback under the product page; the Service Guide retains an
+    older inconsistent passage stating international spend is eligible. Cashback is credited within 45
+    days of statement date. Excluded MCC and eligible MCCs follow the archived Live+ Service Guide (pages
+    22-24); wallet, rent, insurance, fuel, government/education, financial, quasi-cash, business-to-business,
+    charity, toll and other listed categories earn 0%.
+  source:
+    url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/credit-cards/live-plus-credit-card-services-guide.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/live-plus/live-plus-service-guide-retrieved-2026-10-27.pdf
+    - docs/sources/hsbc/live-plus/live-plus-mitc-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.base.excluded_categories
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].cap_per_cycle
+    - rewards.accelerated[0].cycle
+    - rewards.accelerated[0].mcc_list
+    - rewards.accelerated[0].merchants_excluded
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    method: pdf-extract
 benefits:
-  - effective_from: 2023-02-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-    welcome:
-      - condition: "Download the app and log in"
-        benefit: "₹1,000 welcome cashback"
-        value_inr: 1000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - visa
+      notes: One domestic lounge visit every six calendar months per the current Live+ Service Guide;
+        generic HSBC lounge FAQ still says four annual domestic visits and appears stale.
+    international:
+      visits_per_cycle: 1
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - visa
+      notes: One complimentary international lounge visit per year effective 2026-09-01 per the current
+        Live+ Service Guide.
+  welcome:
+  - condition: New primary Live+ cardholders who apply during 2026-07-26 through 2026-12-31; download/log
+      in to HSBC India Mobile Banking app and make eligible sales transactions totalling at least INR25,000
+      within 30 calendar days of card issuance. No combining with other welcome offers; eligibility also
+      requires updated KYC and no minimum-payment delinquency within 30 days.
+    benefit: INR1,000 cashback
+    value_inr: 1000
+    window_days: 30
+  - condition: 'Alternative to the HSBC INR1,000 welcome-cashback offer: a new Visa Infinite consumer
+      credit card must make at least one eligible INR300 transaction processed on VisaNet during the Visa
+      campaign period 2026-02-07 through 2026-10-31 (inclusive), subject to voucher availability. Visa
+      campaign permits one voucher per eligible card/person; HSBC says its INR1,000 welcome offer cannot
+      be combined with another welcome/introductory offer.'
+    benefit: INR750 voucher for Amazon Pay, Swiggy, Zomato or Flipkart
+    value_inr: 750
+    window_days: null
+  milestones: []
+  fuel_surcharge_waiver: null
+  concierge: true
+  other:
+  - name: Fuel contactless cashback offer
+    description: INR250 cashback per calendar quarter for domestic contactless fuel transactions totalling
+      at least INR10,000; each transaction must be INR1,000?INR5,000. Primary and add-on card spend combine.
+      Offer for Live+ runs 2026-07-26 through 2026-12-31; cashback paid to primary cardholder within 45
+      days after quarter end.
+  - name: Visa Infinite privileges
+    description: HSBC product page lists Visa Infinite lifestyle privileges, including Visa Concierge;
+      partner offers are subject to their own terms and can change.
+  - name: Foreign-currency cashback restriction
+    description: Current Live+ Service Guide states international transactions no longer earn the 1.5%
+      cashback; older generic guide text conflicts.
+  source:
+    url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/live-plus/live-plus-service-guide-retrieved-2026-10-27.pdf
+    - docs/sources/hsbc/live-plus/live-plus-welcome-cashback-retrieved-2026-10-27.pdf
+    - docs/sources/hsbc/live-plus/live-plus-fuel-contactless-offer-retrieved-2026-10-27.pdf
+    - docs/sources/hsbc/live-plus/visa-infinite-welcome-offer-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome[0].value_inr
+    - benefits.welcome[0].window_days
+    - benefits.welcome[1].value_inr
+    notes: Current issuer product page and archived current Service Guide support lounge, Visa Infinite
+      and current welcome terms. The fuel transaction rebate is a limited-time contactless cashback offer,
+      not a fuel surcharge waiver. The card-specific guide states 2 domestic visits (one every six calendar
+      months) plus 1 international visit from 2026-09-01; a separate generic HSBC FAQ still says 4 domestic
+      visits.
+    method: pdf-extract
 eligibility:
   min_age: 18
   max_age: 65
   income_inr_annual:
-    salaried: 400000
-    self_employed: 400000
-  credit_score_min: 730
+    salaried: 600000
+    self_employed: 1200000
+  credit_score_min: null
   residency: resident-indian
-
+  notes: 'HSBC product page lists ages 18?65 for salaried applicants and 25?65 for self-employed applicants;
+    the shared schema has only one min_age field, so 18 is recorded with the occupational split preserved
+    here. Applicant must reside in a published service city: Chennai, Gurgaon, Delhi NCR, Pune, Noida,
+    Hyderabad, Mumbai, Bengaluru, Kochi, Coimbatore, Jaipur, Chandigarh, Ahmedabad, Kolkata, Amritsar,
+    Baroda, Indore, Lucknow, Nagpur, Surat or Trivandrum. No minimum credit-score cutoff is published.'
+  source:
+    url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
+    notes: The service-city list and occupational age split are retained in the eligibility notes because
+      the schema has no fields for either detail.
 application:
   apply_url: https://www.hsbc.bank.in/credit-cards/products/live-plus/
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [cashback, dining, entertainment, premium, low-forex]
+  last_verified_on: '2026-10-27'
+  tags:
+  - cashback
+  - dining
+  - groceries
+  - shopping
+  - utilities
+  - premium
+  - low-forex
+  - visa-infinite

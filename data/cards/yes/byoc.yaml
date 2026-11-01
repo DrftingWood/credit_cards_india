@@ -1,117 +1,154 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-byoc
 name: YES Bank BYOC (Build Your Own Card) Credit Card
 image_path: /cards/yes/byoc.webp
-issuer: "yes"
-network: mastercard
-network_tier: platinum
+issuer: 'yes'
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 249
-    annual_fee_inr: 249
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Modular/customizable card. Base variant fees: Silver ₹99, Gold ₹149, Platinum ₹249, Metal ₹3,499 (all + GST). Monthly fee chargeable per selected perks; BYOC Rewards module ₹99/mo (₹49 for cards onboarded before 1-Oct-2023). Fees here reflect the Platinum base variant."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/byoc-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-05'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: 'For regular plastic BYOC, one-time card fee is nil; eco-friendly card is INR249 and metal card INR3,499.
+    There is no annual membership fee in current MITC. Ongoing monthly module fees are not represented in the
+    schema: BYOC Cashback INR99/month or BYOC Rewards INR49/month. Optional merchant subscription costs
+    INR99/149/249 per month for Silver/Gold/Platinum and is separate from the module fee. All fees plus GST.
+    Cash advance fee is 2.5% or INR650, whichever is higher, effective 15-Jun-2026. This record represents
+    standard BYOC with cashback module, not every configurable combination.'
+  source:
+    url: https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf?download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: chosen-merchants
-        canonical_categories: [other]
-        multiplier: 10
-        effective_rate: 10
-        cap_per_cycle: 1000
-        cap_unit: cashback-inr
-        cycle: statement
-        notes: "10% chosen merchants: Rs100/merchant AND Rs1,000/cycle overall cap."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "10% cashback on chosen merchants subject to monthly caps"
-    redemption:
-      - type: statement-credit
-        program: BYOC Rewards
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/byoc-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
+- effective_from: '2026-10-05'
+  effective_until: null
+  currency: cashback
+  currency_name: BYOC Cashback
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1
+    unit_value_inr_realized: 1
+    cap_per_cycle: 1000
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: 1% cashback on eligible retail transactions. Excludes fuel, utility, wallet and rental spends;
+      maximum cashback INR1,000 per statement cycle. BYOC Rewards is an alternative module and earns points,
+      not cashback; this entry models the Cashback module.
+  accelerated:
+  - category: chosen-merchants
+    canonical_categories:
+    - other
+    multiplier: 10
+    effective_rate: 10
+    effective_per_inr: 100
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: Optional Silver/Gold/Platinum subscription selects 2/3/5 merchants from Swiggy, Uber, PharmEasy,
+      Bigbasket and BookMyShow. Cashback is 10% of net transaction value, capped at INR100 per customer per
+      merchant per statement cycle and INR500 total per statement cycle; total value is limited to up to 2x
+      the selected plan fee. Changes take effect from the next statement cycle.
+  exclusions:
+  - fuel
+  - utilities
+  - wallet-loads
+  - rent
+  - cash-advance
+  redemption:
+  - type: statement-credit
+    program: BYOC Cashback
+    rate_inr_per_unit: 1
+    constraints: Cashback is credited to the card account. Cashback module cap is INR1,000 per statement cycle;
+      optional selected-merchant plan has a separate INR500 total statement-cycle cap.
+  source:
+    url: https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf?download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.cap_per_cycle
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+  notes: The current MITC confirms BYOC Cashback has a separate INR1,000 statement-cycle cap, no cashback on
+    utilities or wallet spend, and the optional merchant-plan rules. The indexed BYOC-specific issuer MITC
+    states 1% cashback on retail transactions excluding fuel, utility, wallet and rental transactions. The
+    alternative BYOC Rewards module charges INR49/month, earns 8 points per INR200 except fuel, caps utility
+    points at 600 per statement cycle, and is not representable alongside cashback in this single-currency
+    record. Current MITC refers to MCC-specific exclusions; detailed cash-back exclusions are summarized above.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
-    other:
-      - name: "ET Prime membership"
-        description: "Complimentary ET Prime membership on 1st card anniversary (perk-dependent)."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/byoc-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-05'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      notes: One primary-cardholder domestic visit per quarter per current YES BANK lounge schedule
+        (https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONT23CDBE6F27E4444AA0A336DDB2885343/native/ybl_yes_bank_domestic_lounge_access.pdf?download=false).
+        Eligibility requires at least INR50,000 eligible spend in the previous quarter. Excludes fee payments,
+        reversals/cancellations, rental and wallet transactions; lounge charges apply if the spend gate is not met.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 125
+    cycle: statement
+  concierge: null
+  source:
+    url: https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONTAA57595B2EF245259C4C623B1F7D33B3/native/ybl_mitc_pdf.pdf?download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+  notes: Merchant-plan options, choice of cashback/reward-point module, card image/material customization and
+    conditional lounge access are BYOC configuration features. Mastercard golf was shown on an older issuer
+    value chart but is not established in the current MITC; it is not included as a current benefit. ET Prime
+    membership claim lacked current BYOC-specific issuer support and is removed.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 750000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: The BYOC product terms do not publish an age band, numeric income threshold, minimum credit score or
+    specific residency eligibility. Generic YES BANK eligibility text is not treated as a BYOC-specific cutoff.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/byoc-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [mid, cashback, customizable, lounge]
+  last_verified_on: '2026-10-27'
+  tags:
+  - mid
+  - cashback
+  - customizable
+  - lounge

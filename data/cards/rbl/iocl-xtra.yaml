@@ -10,109 +10,148 @@ co_brand:
   partner: IndianOil
   category: fuel
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 1500
-    annual_fee_inr: 1500
-    fee_waiver:
-      spend_inr: 275000
-      cycle: annual
-      conditions: "Annual fee waived on spending ₹2,75,000 or more in the preceding year."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.rblbank.com/personal-banking/cards/credit-cards/indianoil-rbl-bank-xtra-credit-card
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "Joining ₹1,500, annual ₹1,500, waived on ₹2.75L spend."
-
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 1500
+  annual_fee_inr: 1500
+  fee_waiver:
+    spend_inr: 275000
+    cycle: annual
+    conditions: Annual fee waived on spending ₹2,75,000 or more in the preceding year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/indianoil-rbl-bank-xtra-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: 'Current RBL XTRA page and MITC: joining/annual fee ₹1,500 + GST; annual fee waived on eligible annual spends of ₹2.75 lakh; add-on fee ₹200. Forex markup 3.5%, cash advance fee 2.5% (minimum ₹500). Finance varies by bureau category: 3.35%, 3.85% or 3.99% monthly; schema stores the maximum 3.99%. MITC: https://webassets.rbl.bank.in/document/Credit%20Cards/RBL-MITC-final.pdf.'
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: points
-    currency_name: Fuel Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.50
-      unit_value_inr_realized: 0.50
-    accelerated:
-      - category: indianoil-fuel
-        canonical_categories: [fuel]
-        multiplier: 7.5
-        effective_rate: 15
-        cap_per_cycle: 2000
-        cap_unit: points
-        cycle: monthly
-        notes: "15 Fuel Points per ₹100 spent at IndianOil pumps, capped at 2,000 points per month (up to 8.5% total savings)."
-    exclusions:
-      - wallet-loads
-      - rent
-      - emi
-      - utilities
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: IndianOil XTRA Fuel Rewards
-        rate_inr_per_unit: 0.50
-    source:
-      url: https://www.rblbank.com/personal-banking/cards/credit-cards/indianoil-rbl-bank-xtra-credit-card
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "15 Fuel Points per ₹100 at IndianOil; 1 Fuel Point = ₹0.50."
-
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: Fuel Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.5
+    unit_value_inr_realized: 0.5
+  accelerated:
+  - category: indianoil-fuel
+    canonical_categories:
+    - fuel
+    multiplier: 7.5
+    effective_rate: 15
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    notes: 15 Fuel Points per ₹100 at eligible IndianOil fuel stations, capped at 2,000 points per month.
+  exclusions:
+  - utilities
+  - insurance-premiums
+  - cash-advance
+  - rent
+  - education
+  - wallet-loads
+  - government
+  - other
+  - emi
+  mcc_exclusions: []
+  redemption:
+  - type: catalog
+    program: IndianOil XTRA Rewards
+    rate_inr_per_unit: 0.5
+    constraints: One Fuel Point is worth ₹0.50 when redeemed for XTRA Rewards redeemable at IndianOil fuel stations; it is not general statement credit.
+  source:
+    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/indianoil-rbl-bank-xtra-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: 'RBL XTRA page states 2 Fuel Points per ₹100 on other spend; 15 per ₹100 at eligible IndianOil stations, max 2,000 accelerated points/month; point value ₹0.50 at IndianOil fuel stations. FAQ: https://webassets.rbl.bank.in/document/credit-cards/indianoil-rbl-bank-credit-card-faqs.pdf. RBL Rewardz redemption fee ₹99 + GST applies. Offline RuPay UPI transactions below ₹2,000 at small merchants do not receive product benefits under MITC.'
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].accelerated[0].cap_per_cycle
+    - rewards[0].redemption[0].rate_inr_per_unit
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    welcome:
-      - condition: "Spend ₹500 within 30 days of issuance"
-        benefit: "3,000 Fuel Points worth ₹1,500"
-        value_inr: 1500
-        window_days: 30
-    milestones:
-      - spend_inr: 75000
-        cycle: quarterly
-        benefit: "1,000 Bonus Fuel Points on ₹75,000 quarterly spend"
-        value_inr: 500
-        reward_kind: points
-        reward_units: 1000
-        reward_currency_name: Fuel Points
-        is_repeatable: true
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 200
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.rblbank.com/personal-banking/cards/credit-cards/indianoil-rbl-bank-xtra-credit-card
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-10-27
+  effective_until: null
+  welcome:
+  - condition: Make a transaction above ₹500 within 30 days of card issuance
+    benefit: 3,000 Fuel Points worth ₹1,500
+    value_inr: 1500
+    window_days: 30
+  milestones:
+  - spend_inr: 75000
+    cycle: quarterly
+    benefit: 1,000 Bonus Fuel Points on ₹75,000 quarterly spend
+    value_inr: 500
+    reward_kind: points
+    reward_units: 1000
+    reward_currency_name: Fuel Points
+    is_repeatable: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 200
+    cycle: monthly
+  concierge: false
+  source:
+    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/indianoil-rbl-bank-xtra-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: 'RBL XTRA FAQ confirms 3,000 Fuel Points on a transaction above ₹500 within 30 days; 1,000 quarterly points on ₹75,000 calendar-quarter spend; ₹200/month surcharge refund on ₹500–₹4,000 fuel purchases. FAQ: https://webassets.rbl.bank.in/document/credit-cards/indianoil-rbl-bank-credit-card-faqs.pdf. Benefits exclude the current product-page category list; small-merchant UPI exceptions apply.'
+    fields_verified:
+    - benefits[0].welcome
+    - benefits[0].milestones[0].spend_inr
+    - benefits[0].milestones[0].reward_units
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.min_txn_inr
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: RBL FAQ gives a general eligibility age range of 21–70 subject to bank internal policy. It does not publish a numeric income or bureau-score threshold for this card.
+  source:
+    url: https://webassets.rbl.bank.in/document/credit-cards/indianoil-rbl-bank-credit-card-faqs.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
 application:
-  apply_url: https://www.rblbank.com/personal-banking/cards/credit-cards/indianoil-rbl-bank-xtra-credit-card
-
+  apply_url: https://www.rbl.bank.in/indianoil-rbl-bank-xtra-credit-card
 metadata:
-  last_verified_on: '2026-10-24'
-  tags: [co-branded, indianoil, fuel, rupay, mid]
+  last_verified_on: '2026-10-27'
+  tags:
+  - co-branded
+  - indianoil
+  - fuel
+  - rupay
+  - mid

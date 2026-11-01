@@ -10,7 +10,7 @@ co_brand:
   partner: Vistara
   category: airline
 status: discontinued
-launched_on: 2016-07-13
+launched_on: null
 discontinued_on: '2024-11-12'
 fees:
 - effective_from: 2024-11-12
@@ -27,7 +27,7 @@ fees:
   gst_applicable: true
   source:
     url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-11-01'
     type: issuer-page
     confidence: high
     local_refs:
@@ -35,9 +35,8 @@ fees:
     fields_verified:
     - fees.finance_charge_monthly_pct
     - fees.forex_markup_pct
-    notes: Joining/annual ₹1,500 (Axis MITC). Forex 3.5%, finance 3.75%/mo, cash advance
-      2.5% (min ₹500) per MITC. Post Vistara–Air India merger, annual (renewal) fee
-      waived on next renewal cycle.
+    notes: Joining/annual ₹1,500 (Axis MITC). Forex 3.5%, finance 3.75%/mo, cash advance 2.5% (min ₹500) per MITC.
+      Post Vistara–Air India merger, annual (renewal) fee waived on next renewal cycle.
 rewards:
 - effective_from: 2024-11-12
   effective_until: null
@@ -46,8 +45,8 @@ rewards:
   base:
     rate: 2
     per_inr: 200
-    unit_value_inr: 0.55
-    unit_value_inr_realized: 0.5
+    unit_value_inr: null
+    unit_value_inr_realized: null
   exclusions:
   - wallet-loads
   - rent
@@ -59,16 +58,13 @@ rewards:
   - type: airmiles
     program: Air India Maharaja Club (formerly Club Vistara)
     constraints: Redeem Maharaja Points for upgrades & award flights.
-    rate_inr_per_unit: 0.55
   source:
     url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-11-01'
     type: issuer-page
-    notes: Vistara merged into Air India (2024-11-12); Club Vistara points became
-      Air India Maharaja (~Rs 0.55). Card discontinued.
+    notes: Vistara merged into Air India (2024-11-12); Club Vistara points became Air India Maharaja (~Rs 0.55).
+      Card discontinued.
     confidence: high
-  mcc_exclusions:
-  - '6513'
 benefits:
 - effective_from: 2024-11-12
   effective_until: null
@@ -79,9 +75,8 @@ benefits:
       guests_per_visit: 0
       spend_threshold_inr: 50000
       spend_threshold_cycle: quarterly
-      notes: Complimentary domestic lounge access based on min spend ₹50,000 in the
-        previous 3 calendar months (T&C w.e.f. 1-May-2024; waived for month of issuance
-        + next 3 months).
+      notes: Complimentary domestic lounge access based on min spend ₹50,000 in the previous 3 calendar months (T&C
+        w.e.f. 1-May-2024; waived for month of issuance + next 3 months).
       via:
       - visa
   insurance:
@@ -90,33 +85,33 @@ benefits:
     conditions: Purchase protection cover up to ₹1 lakh.
   other:
   - name: Wednesday Delight
-    description: Instant savings of up to 15% on flights & hotels via Goibibo and
-      MakeMyTrip every Wednesday.
+    description: Instant savings of up to 15% on flights & hotels via Goibibo and MakeMyTrip every Wednesday.
     value_inr: null
   source:
     url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-11-01'
     type: issuer-page
     confidence: high
-    notes: Post Vistara–Air India merger, the welcome ticket voucher, spends-milestone
-      ticket vouchers and complimentary Maharaja Club tier memberships are DISCONTINUED
-      (per revised T&C). Lounge, golf and dining benefits continue.
+    notes: Post Vistara–Air India merger, the welcome ticket voucher, spends-milestone ticket vouchers and complimentary
+      Maharaja Club tier memberships are DISCONTINUED (per revised T&C). Lounge, golf and dining benefits continue.
 eligibility:
-  min_age: 18
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: Min net income ₹6,00,000 p.a. (Vistara Platinum). Following the Vistara–Air
-    India merger (effective 12-Nov-2024), the card's T&C were revised and cardholders
-    are being migrated to Air India's Maharaja Club programme; sourcing of new cards
-    is discontinued.
+  notes: Min net income ₹6,00,000 p.a. (Vistara Platinum). Following the Vistara–Air India merger (effective 12-Nov-2024),
+    the card's T&C were revised and cardholders are being migrated to Air India's Maharaja Club programme; sourcing
+    of new cards is discontinued. Numeric income and credit-score cutoffs are retained only when this eligibility
+    record cites the exact field in issuer evidence; unsupported cutoffs are unknown, not proof of no underwriting
+    requirement. Broad minimum/maximum age figures without an exact issuer evidence path or a source-verified occupational
+    range were left unknown; this does not imply there is no age criterion.
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-11-01'
   tags:
   - travel
   - miles

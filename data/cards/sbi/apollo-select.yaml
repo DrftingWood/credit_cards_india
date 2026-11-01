@@ -2,15 +2,15 @@ id: sbi-apollo-select
 name: Apollo SBI Card SELECT
 image_path: /cards/sbi/apollo-select.webp
 issuer: sbi
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
   partner: Apollo
   category: healthcare
 status: active
-launched_on: 2025-05-01
+launched_on: 2025-05-15
 discontinued_on: null
 fees:
 - effective_from: 2026-07-03
@@ -37,8 +37,14 @@ fees:
     local_refs:
     - docs/sources/sbi/_shared/mitc-english.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.supplementary_card_fee_inr
     - fees.finance_charge_monthly_pct
     - fees.cash_advance_fee
+    - fees.forex_markup_pct
+    notes: Current SBI MITC and product page confirm published charges. Dynamic fees are represented as the issuer's current standard schedule.
 rewards:
 - effective_from: 2026-07-03
   effective_until: null
@@ -80,24 +86,23 @@ rewards:
   - wallet-loads
   - rent
   - government
-  - insurance-premiums
   - emi
   redemption:
-  - type: statement-credit
-    rate_inr_per_unit: 1.0
-    constraints: 1 Reward Point = 1 Health Credit = Re. 1.
   - type: catalog
-    program: SBI Card Rewards
+    program: Apollo Health Credits
     rate_inr_per_unit: 1.0
+    constraints: Redeemable only for Apollo Health Credits, not for statement credit or SBI rewards catalogue. 1 Reward Point = 1 Health Credit = INR 1.
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-10-27'
     type: issuer-page
     confidence: high
-    notes: 'Research-verified: SBI RP -> Apollo Health Credit 1:1 = Rs1, Apollo-only.
-      Layer-3: medicines ~0-10% premium.'
-  mcc_exclusions:
-  - '6513'
+    local_refs:
+    - docs/sources/sbi/apollo-select/apollo-select-faq.pdf
+    - docs/sources/sbi/apollo-select/apollo-select-terms.pdf
+    fields_verified: [rewards.base, rewards.accelerated, rewards.exclusions, rewards.redemption]
+    notes: Reward Points convert only to Apollo Health Credits at 1:1; issuer FAQ says 1 Health Credit = INR 1. Each accelerated bucket caps at 5,000 RP per statement cycle; after each cap, other spend earn rate applies. Points expire 24 months after accrual. Dining MCCs 5812/5814, entertainment 7832/7922 and travel 4511/3020/7011/4112/4722 are specified in the card terms.
+  mcc_exclusions: ['5172', '5541', '5542', '5983', '6540', '6541', '6513', '9399', '9311', '5816', '7993', '7994']
 benefits:
 - effective_from: 2026-07-03
   effective_until: null
@@ -127,10 +132,14 @@ benefits:
     benefit: Complimentary Comprehensive Health Check-up Package
     value_inr: null
     window_days: 90
+  - condition: Spend Rs. 50,000 within 90 days of each card anniversary
+    benefit: Complimentary Comprehensive Health Check-up Package (annual anniversary benefit)
+    value_inr: 1999
+    window_days: 90
   fuel_surcharge_waiver:
     pct: 1.0
-    min_txn_inr: null
-    max_txn_inr: null
+    min_txn_inr: 500
+    max_txn_inr: 4000
     cap_per_cycle_inr: 100
     cycle: statement
   concierge: false
@@ -145,26 +154,43 @@ benefits:
     value_inr: null
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-27
     type: issuer-page
     confidence: high
+    local_refs:
+    - docs/sources/sbi/apollo-select/apollo-select-faq.pdf
+    - docs/sources/sbi/apollo-select/apollo-select-terms.pdf
+    - docs/sources/sbi/apollo-select/health-checkup-fitpass-terms.pdf
+    fields_verified: [benefits.lounge_access, benefits.milestones, benefits.welcome, benefits.fuel_surcharge_waiver, benefits.other]
+    notes: Current page and card terms confirm welcome/renewal offers, lounge and fuel benefits. Health-check package is worth INR 1,999 per dedicated issuer terms. Priority Pass membership is complimentary for two years; visits remain chargeable.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: Income requirement based on aggregator/tier consensus (not published on product
-    page).
+  notes: "Income requirement based on aggregator/tier consensus (not published on product page). SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card-select.html
 metadata:
-  last_verified_on: '2026-10-24'
+  last_verified_on: '2026-10-27'
   tags:
   - mid
   - points
   - healthcare
   - co-brand
   - lounge
+  - multi-network

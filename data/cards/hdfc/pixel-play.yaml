@@ -2,17 +2,17 @@ id: hdfc-pixel-play
 name: HDFC Bank Pixel Play Credit Card
 image_path: /cards/hdfc/pixel-play.webp
 issuer: hdfc
-network: rupay
-network_tier: select
+network:
+network_tier:
 tier: entry
 card_type: credit
-co_brand: null
+co_brand:
 status: active
-launched_on: 2024-03-01
-discontinued_on: null
+launched_on: '2024-05-14'
+discontinued_on:
 fees:
-- effective_from: 2024-03-01
-  effective_until: null
+- effective_from: '2026-10-15'
+  effective_until:
   joining_fee_inr: 500
   annual_fee_inr: 500
   fee_waiver:
@@ -24,20 +24,32 @@ fees:
     pct: 2.5
     min_inr: 500
   gst_applicable: true
-  notes: RuPay variant supports UPI linkage. Joining fee of ₹500 is also waived on
-    ₹20,000 spend within 90 days of card issuance (separate from the annual-fee waiver).
+  notes: Joining fee is waived on eligible spend of INR 20,000 in the first 90
+    days; renewal fee is waived on INR 100,000 eligible spend in a year before
+    renewal. Current Pixel MITC also lists 1.75% dynamic currency conversion
+    markup effective 20 May 2026; schema has no dedicated DCC fee field. The
+    HDFC October-2026 Pricing MID lists a lifetime-free offer through 31-Oct-2026;
+    the published standard fee remains INR 500 and account-specific offer terms
+    may differ.
   source:
-    url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url:
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/MITC-PIXEL-Credit-Card-12Aug-26-1.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
     confidence: high
     local_refs:
-    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    - docs/sources/hdfc/pixel-play/MITC-PIXEL-Credit-Card-12Aug-26-1-retrieved-2026-10-27.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
     - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-- effective_from: 2024-03-01
-  effective_until: null
+- effective_from: '2026-07-30'
+  effective_until:
   currency: cashback
   currency_name: CashPoints
   base:
@@ -45,6 +57,9 @@ rewards:
     per_inr: 100
     unit_value_inr: 1.0
     unit_value_inr_realized: 1.0
+    notes: 1% on other eligible transactions; shared maximum 15,000
+      CashPoints per calendar month under the current Pixel MITC. Minimum
+      transaction INR 100; fractional points round down.
   accelerated:
   - category: user-chosen-packs
     multiplier: 1
@@ -52,11 +67,15 @@ rewards:
     cap_per_cycle: 500
     cap_unit: cashback-inr
     cycle: monthly
-    mcc_list:
-    - '4121'
-    - '7512'
-    notes: 5% cashback on 2 self-selected merchant packs (e.g. Swiggy+Zomato, Amazon+Flipkart,
-      travel). Uber (Travel pack) earns 5% only on travel/commute MCC 4121 & 7512.
+    over_cap_earns_base: false
+    notes: Cardholder selects two fixed issuer-defined packs from
+      BookMyShow/Zomato, MakeMyTrip/Uber, Blinkit/Reliance Smart Bazaar,
+      Croma/Reliance Digital, or Nykaa/Myntra. Each merchant must match
+      issuer-supplied merchant IDs; Croma and Reliance Digital qualify only in
+      physical stores and Blinkit/Reliance Smart Bazaar only in the stated
+      channels. Shared 500 CashPoint calendar-month cap; beyond the cap earns no CashPoints. Uber 5%
+      requires travel/commute MCC 4121 or 7512. Choices can change every three
+      months.
     canonical_categories:
     - online
     - dining
@@ -73,7 +92,11 @@ rewards:
       class: issuer-portal
       merchants:
       - smartbuy
-    notes: 5% CashPoints on spends via HDFC SmartBuy.
+    notes: 5% on successful full-payment SmartBuy IGP, flights, hotels, bus,
+      rail, instant vouchers and Apple Imagine Tresor transactions; 500
+      CashPoint calendar-month cap, with no points beyond cap. Cannot combine
+      with merchant cashback features.
+    over_cap_earns_base: false
   - category: upi
     multiplier: 1
     effective_rate: 1
@@ -84,9 +107,11 @@ rewards:
       class: online-any
       merchants:
       - any
-    notes: 1% CashPoints on UPI spends (RuPay variant).
+    notes: 1% on eligible UPI transactions using PIXEL RuPay, capped at 500
+      CashPoints/calendar month; transactions beyond the cap earn no points.
     canonical_categories:
     - other
+    over_cap_earns_base: false
   - category: online-other
     canonical_categories:
     - online
@@ -95,6 +120,10 @@ rewards:
     cap_per_cycle: 500
     cap_unit: cashback-inr
     cycle: monthly
+    over_cap_earns_base: false
+    notes: One chosen platform (Amazon, Flipkart or PayZapp); 500 CashPoint
+      calendar-month cap; transactions beyond the cap earn no CashPoints. Selection can change every three months; eligibility depends on
+      partner merchant IDs, and Amazon Pay wallet loads are excluded.
   exclusions:
   - fuel
   - wallet-loads
@@ -103,13 +132,44 @@ rewards:
   - government
   - cash-advance
   redemption:
-  - type: statement-credit
+  - type: cashback-bank
+    program: PayZapp CashPoints balance
     rate_inr_per_unit: 1.0
+    min_units: 1000
+    constraints: Redeem through PayZapp; CashPoints transfer to PayZapp
+      CashPoints balance, not as statement credit. Unredeemed points expire two
+      years after accumulation.
   source:
-    url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url:
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/fifa-pixel-credit-card/pdf/terms-and-conditions-pixel-play-credit-card-08072026.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
     confidence: high
+    local_refs:
+    - docs/sources/hdfc/pixel-play/terms-and-conditions-pixel-play-credit-card-08072026.pdf
+    - docs/sources/hdfc/pixel-play/MITC-PIXEL-Credit-Card-12Aug-26-1-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cap_unit
+    - rewards.accelerated.cycle
+    - rewards.accelerated.over_cap_earns_base
+    - rewards.category_caps
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    - rewards.mcc_exclusions
+    notes: Product-specific terms dated 30-Jul-2026 detail fixed merchant packs,
+      exact monthly caps, no-earn treatment beyond accelerator caps, settlement/MID
+      eligibility, exclusions and redemption. Current Pixel MITC updated 15-Oct-2026 confirms the 15,000
+      CashPoint monthly cap for the base 1% feature and two-year expiry. Older
+      product terms described the all-other earn as unlimited; current MITC is
+      modeled.
   mcc_exclusions:
   - '1361'
   - '5172'
@@ -128,10 +188,28 @@ rewards:
   - '9402'
   - '9405'
   - '9950'
+  category_caps:
+  - category: eligible-other-spends
+    cap_per_cycle: 15000
+    cap_unit: cashback-inr
+    cycle: monthly
+    conditions: Current Pixel MITC caps the all-other-spend 1% feature at 15,000
+      CashPoints/calendar month. Product-specific terms say selected-pack and
+      selected-ecommerce spend beyond their accelerator caps earns no CashPoints.
+  capping_rules:
+  - Transactions below INR 100 do not earn CashPoints; fractional CashPoints are
+    rounded down.
+  - Eligible transactions must settle; merchant settlement date determines
+    calendar-month caps. Returns and reversals adjust/reverse points.
+  - CashPoints expire two years after accumulation. Points can be nullified
+    after 365 days of card inactivity; a negative balance persisting beyond 60
+    days may be debited at INR 1 per CashPoint.
+  - Online skill-based gaming, card fees/charges, outstanding-balance payments,
+    and the listed excluded transaction types do not earn points.
 benefits:
-- effective_from: 2024-03-01
-  effective_until: null
-  lounge_access: null
+- effective_from: '2026-07-30'
+  effective_until:
+  lounge_access:
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
@@ -140,28 +218,72 @@ benefits:
     cycle: statement
   concierge: false
   other:
-  - name: Digital-first card
-    description: Fully digital onboarding, no physical card by default; spend categories
-      configurable in PayZapp.
+  - name: Digital card management
+    description: Manage the card, rewards, repayments and controls in PayZapp.
+      Issuance may include a digital RuPay card and a physical Visa card; the
+      cardholder can select Visa, RuPay or both during the available setup
+      window.
+  dining:
+    program: Swiggy Dineout
+    discount_pct: 10
+    notes: Current HDFC product page advertises up to 10% off restaurant bills paid via Swiggy app, inclusive of restaurant and Swiggy discounts. Current page gives no cap or end date. The linked 30-Jul-2026 terms still contain an older offer that expired 31-Dec-2025 (twice monthly, INR 200 per transaction); current offer mechanics are unresolved.
   source:
     url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
-    retrieved_on: 2026-04-15
+    retrieved_on: '2026-10-27'
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/pixel-play/terms-and-conditions-pixel-play-credit-card-08072026.pdf
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.dining.discount_pct
+    notes: Current product page supplies the Dineout offer and 10% maximum; card-specific PDF contains an expired previous offer and no updated expiry/cap terms.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 65
   income_inr_annual:
     salaried: 300000
     self_employed: 600000
-  credit_score_min: 720
-  residency: resident-indian
+  credit_score_min:
+  residency:
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  notes: Current product page lists Indian nationality, salaried age 21-60 and
+    monthly income INR 25,000 without a comparator; self-employed age 21-65 and
+    annual ITR above INR 600,000. Indian nationality does not establish a
+    residency requirement, so residency is null. No minimum credit score is
+    published. The separate FD-backed route has no income-proof requirement and
+    is not modeled by this record.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-10-27'
   tags:
   - digital-first
-  - rupay
+  - multi-network
   - customisable
   - entry
   - cashback
+  exclusive_group: hdfc-pixel

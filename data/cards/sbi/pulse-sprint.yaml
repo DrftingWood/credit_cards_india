@@ -1,4 +1,4 @@
-# ---------------------------------------------------------------------------
+﻿# ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
 #   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
 #   Verified   : 2026-07-04   Confidence: HIGH (pdf)
@@ -12,7 +12,7 @@ name: SBI Card PULSE Sprint
 image_path: /cards/sbi/pulse-sprint.webp
 issuer: sbi
 network: visa
-network_tier: signature
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
@@ -38,14 +38,14 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: medium
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
       fields_verified:
         - fees.cash_advance_fee
-      notes: "Crawl reflects parent SBI Card PULSE; Sprint variant values mirrored."
+      notes: "Issuer URL uses a PULSE Sprint path but serves the general SBI Card PULSE page; no separate Sprint-specific terms were located. The record follows published PULSE terms."
 
 rewards:
   - effective_from: 2026-07-03
@@ -56,13 +56,13 @@ rewards:
       rate: 2
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr_realized: 0.25
     accelerated:
       - category: chemist-pharmacy-sports-dining-movies
         canonical_categories: [dining, entertainment]
         multiplier: 1
         effective_rate: 10
-        cap_per_cycle: "unlimited"
+        cap_per_cycle: 7500
         cap_unit: points
         cycle: monthly
         notes: "10 Reward Points per Rs. 100 on Chemist, Pharmacy, Sports, Dining and Movies."
@@ -81,10 +81,10 @@ rewards:
         rate_inr_per_unit: 0.25
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: medium
-      notes: "Crawl reflects parent SBI Card PULSE."
+      notes: "The issuer source is the general SBI Card PULSE page; no Sprint-specific benefit terms were located."
 
     mcc_exclusions: ['6513']
 benefits:
@@ -96,12 +96,11 @@ benefits:
         cycle: annual
         guests_per_visit: 0
         via: [visa, dreamfolks]
-        notes: "Restricted to 1 per quarter. Complimentary Priority Pass membership (US $99, first 2 years) — international visits not complimentary."
+        notes: "Restricted to 1 per quarter. Complimentary Priority Pass membership (US $99, first 2 years) â€” international visits not complimentary."
     welcome:
       - condition: "Joining fee paid"
         benefit: "Noise ColorFit Pulse 4 Pro smartwatch worth Rs. 7,999"
         value_inr: 7999
-        window_days: 90
     milestones:
       - spend_inr: 400000
         cycle: annual
@@ -122,9 +121,9 @@ benefits:
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 100
-      cycle: monthly
+      max_txn_inr: 4000
+      cap_per_cycle_inr: 250
+      cycle: statement
     other:
       - name: FITPASS PRO membership
         description: Complimentary 1-year FITPASS PRO Membership, renewed every year on card renewal.
@@ -134,24 +133,34 @@ benefits:
     concierge: false
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: medium
-      notes: "Crawl reflects parent SBI Card PULSE."
+      notes: "The issuer source is the general SBI Card PULSE page; no Sprint-specific benefit terms were located."
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 730
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Tier-standard mid income requirement (~₹6L p.a.) per aggregator consensus."
-
+  notes: "Tier-standard mid income requirement (~â‚¹6L p.a.) per aggregator consensus. SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-pulse.html
 
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-11-01'
   tags: [health-wellness, mid-tier, points, lifestyle]

@@ -2,23 +2,24 @@ id: hdfc-regalia-gold
 name: HDFC Bank Regalia Gold Credit Card
 image_path: /cards/hdfc/regalia-gold.png
 issuer: hdfc
-network: visa
-network_tier: signature
-tier: premium
+network:
+network_tier:
+tier: super-premium
 card_type: credit
-co_brand: null
+co_brand:
 status: active
-launched_on: 2022-06-01
-discontinued_on: null
+launched_on: '2023-03-23'
+discontinued_on:
 fees:
-- effective_from: 2022-06-01
-  effective_until: null
+- effective_from: '2026-05-15'
+  effective_until:
   joining_fee_inr: 2500
   annual_fee_inr: 2500
   fee_waiver:
     spend_inr: 400000
     cycle: annual
-    conditions: Renewal fee waived on spends of ₹4L in the preceding year.
+    conditions: Waiver applies to the next renewal fee after INR 400,000 eligible retail spend
+      within 12 billing cycles of the anniversary year.
   forex_markup_pct: 2.0
   finance_charge_monthly_pct: 3.75
   cash_advance_fee:
@@ -26,17 +27,28 @@ fees:
     min_inr: 500
   gst_applicable: true
   source:
-    url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
-    retrieved_on: 2026-07-03
+    url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card/fees-and-charges
+    retrieved_on: '2026-10-27'
     type: issuer-page
     confidence: high
     local_refs:
-    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    - docs/sources/hdfc/_shared/hdfc-card-changes-effective-2026-05-15.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
     - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: 'Card page confirms INR 2,500 fees, INR 400,000 renewal waiver and 2% forex. Shared MITC v4.15
+      confirms 3.75% monthly finance charge and 2.5%/INR 500 cash advance fee. The May 2026 change notice
+      lists a INR 199 reissue fee while the live FAQ still says INR 100; reissue and INR 99 redemption
+      fees have no dedicated schema fields. DCC is 1.75% from 15-May-2026. Sources: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf;
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/pdf/common/Credit-Cards/Regalia-Gold-Product-feature-change.pdf.'
 rewards:
-- effective_from: 2022-06-01
-  effective_until: null
+- effective_from: '2026-05-15'
+  effective_until:
   currency: points
   currency_name: Reward Points
   base:
@@ -48,7 +60,6 @@ rewards:
   - category: marquee-partners
     canonical_categories:
     - online
-    - groceries
     multiplier: 5
     effective_rate: 25
     cap_per_cycle: 5000
@@ -66,15 +77,17 @@ rewards:
       - nykaa
       - reliance-digital
       - marks-spencer
-    notes: 5X Reward Points at select merchants (Myntra, Nykaa, Reliance Digital,
-      Marks & Spencer). Minimum transaction value of ₹150 to be eligible; 5X cap of
-      5,000 RP/month across all brands combined.
+    notes: 5X on Myntra, Nykaa, Reliance Digital and Marks & Spencer, POS and e-commerce, combined
+      cap 5,000 RP/calendar month. Base points continue after the 5X cap. Minimum transaction INR
+      200 per the current Reward Points T&Cs; an older linked milestone T&C still says INR 150.
+      Direct card payment only; wallet-funded payments and stacking with other promotions excluded.
+      Eligibility depends on partner TID/MID and settlement/posting month; reversals adjust points.
+    over_cap_earns_base: true
   exclusions:
   - fuel
   - wallet-loads
   - rent
   - government
-  - insurance-premiums
   - emi
   redemption:
   - type: catalog
@@ -83,146 +96,99 @@ rewards:
   - type: catalog
     program: SmartBuy Flights & Hotels
     rate_inr_per_unit: 0.5
-    constraints: Redeem up to a maximum of 70% of the travel booking value using Reward
-      Points.
+    constraints: Maximum 70% of booking value; 50,000 points per calendar month.
   - type: catalog
     program: SmartBuy Products & Vouchers
     rate_inr_per_unit: 0.35
+    constraints: Selected products and vouchers may be capped at 70% of value.
   - type: statement-credit
     program: Statement balance (cashback)
-    rate_inr_per_unit: 0.2
+    rate_inr_per_unit: 0.15
+    constraints: 50,000 points per calendar month. Current page's summary says up to INR 0.20,
+      but its detailed redemption table and personal MITC v4.15 specify INR 0.15; co-branded
+      MITC v3.9 still says INR 0.20. Model follows the detailed card page/personal MITC value.
   - type: airmiles
-    program: Multiple (Airmiles hub)
+    program: SmartBuy Miles Transfer
     ratio: '100:50'
-    constraints: '22 transfer partners; ratios are card-point : partner-unit. realized
-      Rs 0.50 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 7
-      partners beat the floor. Full per-partner values below.'
-    transfer_partners:
-    - partner_name: Singapore KrisFlyer
-      partner_type: airline
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.55/pt
-    - partner_name: Finnair Plus (Avios)
-      partner_type: airline
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.53/pt
-    - partner_name: Air France-KLM Flying Blue
-      partner_type: airline
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.45/pt
-    - partner_name: Vietnam LotusMiles
-      partner_type: airline
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.40/pt [below floor — avoid]
-    - partner_name: SpiceJet SpiceClub
-      partner_type: airline
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.15/pt [below floor — avoid]
-    - partner_name: AirAsia Rewards
-      partner_type: airline
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.11/pt [below floor — avoid]
-    - partner_name: Turkish Miles&Smiles
-      partner_type: airline
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.55/pt
-    - partner_name: Avianca LifeMiles
-      partner_type: airline
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.45/pt
-    - partner_name: Accor ALL
-      partner_type: hotel
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.47/pt
-    - partner_name: ITC Hotels (Club ITC)
-      partner_type: hotel
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.50/pt
-    - partner_name: IHG One Rewards
-      partner_type: hotel
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
-    - partner_name: Radisson Rewards
-      partner_type: hotel
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.08/pt [below floor — avoid]
-    - partner_name: Wyndham Rewards
-      partner_type: hotel
-      transfer_ratio: '100:50'
-      last_verified_on: '2026-07-05'
-      notes: 100:50 -> ~Rs 0.25/pt [below floor — avoid]
-    - partner_name: Air Canada Aeroplan
-      partner_type: airline
-      transfer_ratio: '100:33'
-      last_verified_on: '2026-07-05'
-      notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
-    - partner_name: Air India Maharaja Club
-      partner_type: airline
-      transfer_ratio: '100:33'
-      last_verified_on: '2026-07-05'
-      notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
-    - partner_name: British Airways Avios
-      partner_type: airline
-      transfer_ratio: '100:33'
-      last_verified_on: '2026-07-05'
-      notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
-    - partner_name: Cathay Asia Miles
-      partner_type: airline
-      transfer_ratio: '100:33'
-      last_verified_on: '2026-07-05'
-      notes: 100:33 -> ~Rs 0.31/pt [below floor — avoid]
-    - partner_name: Etihad Guest
-      partner_type: airline
-      transfer_ratio: '100:33'
-      last_verified_on: '2026-07-05'
-      notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
-    - partner_name: Qatar Privilege Club (Avios)
-      partner_type: airline
-      transfer_ratio: '100:33'
-      last_verified_on: '2026-07-05'
-      notes: 100:33 -> ~Rs 0.33/pt [below floor — avoid]
-    - partner_name: Thai Royal Orchid Plus
-      partner_type: airline
-      transfer_ratio: '100:33'
-      last_verified_on: '2026-07-05'
-      notes: 100:33 -> ~Rs 0.20/pt [below floor — avoid]
-    - partner_name: United MileagePlus
-      partner_type: airline
-      transfer_ratio: '100:33'
-      last_verified_on: '2026-07-05'
-      notes: 100:33 -> ~Rs 0.30/pt [below floor — avoid]
-    - partner_name: Marriott Bonvoy
-      partner_type: hotel
-      transfer_ratio: '100:33'
-      last_verified_on: '2026-07-05'
-      notes: 100:33 -> ~Rs 0.18/pt [below floor — avoid]
-    min_units: 100
-    rate_inr_per_unit: 0.65
+    min_units:
+    rate_inr_per_unit:
+    constraints: Up to 0.5 partner miles per reward point; partner-specific ratio and availability
+      vary. 50,000 points/month cap. Current partner roster and each ratio are portal-dependent and
+      have not been verified, so the previous 22 partner rows and rupee valuations were removed.
   source:
-    url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
-    retrieved_on: '2026-07-05'
-    type: issuer-page
-    notes: face raised 0.55->0.65 (SmartBuy Gold Catalogue best rate); realized 0.5
-      kept.
+    url:
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/regalia-gold-credit-card/pdfs/regalia-gold-credit-card-reward-points-t-and-cs.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.category_caps
+    - rewards.capping_rules
+    - rewards.reward_cap
+    - rewards.redemption
+    local_refs:
+    - docs/sources/hdfc/regalia-gold/reward-points-terms-retrieved-2026-10-27.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    notes: Product page and current Reward Points T&Cs checked. Base rate 5 RP/INR 200 effective
+      15-May-2026. The card-wide 50,000-point statement-cycle cap is in the current shared MITC
+      (https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/mitc-in-english.pdf);
+      page and MITC disagree on cashback redemption value (prominent copy says INR 0.20; detailed
+      table and MITC say INR 0.15), so INR 0.15 is modeled. SmartBuy 10X hotel/flight and brand
+      promotions are advertised, but current portal-specific eligibility, base stacking and caps
+      could not be confirmed from issuer rules and are not encoded as fixed earn rules.
   reward_cap:
     max_units: 50000
     cap_unit: points
     cycle: statement
+  category_caps:
+  - category: grocery
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: Reward points earned from grocery transactions are capped at 2,000 per calendar
+      month.
+  - category: insurance
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: Reward points accrued on insurance transactions are capped at 2,000 per month.
+  - category: utilities
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: Utility transaction reward points are capped at 2,000 per calendar month under the
+      shared HDFC MITC.
+  - category: telecom
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: Telecom transaction reward points are capped at 2,000 per calendar month under the
+      shared HDFC MITC.
+  capping_rules:
+  - Only valid retail purchases earn points; fuel, EasyEMI, e-wallet loads, rent and
+    property-management services, and government transactions are excluded.
+  - Minimum transaction value for reward points is INR 200 in current card-specific Reward Points
+    T&Cs; an older linked milestone T&C says INR 150.
+  - 5X on four named merchants is capped at 5,000 points per calendar month; base points continue
+    beyond that accelerator cap. Merchant TID/MID recognition applies.
+  - Grocery earnings are capped at 2,000 points/calendar month; insurance earnings at 2,000
+    points/calendar month; card-wide maximum is 50,000 points/statement cycle.
+  - Utility and telecom earnings are each capped at 2,000 points/calendar month. Online skill-based
+    gaming transactions do not earn points.
+  - Points expire two years after accumulation and are nullified after more than 365 days without
+    card use. Points reverse if a retail transaction is converted to SmartEMI.
+  - Travel redemption is limited to 70% of booking value and 50,000 points/calendar month; cashback
+    redemption is limited to 50,000 points/calendar month; miles transfer is also capped at 50,000
+    points/month.
 benefits:
-- effective_from: 2024-10-01
-  effective_until: null
+- effective_from: '2026-07-01'
+  effective_until:
   lounge_access:
     domestic:
       visits_per_cycle: 3
@@ -232,63 +198,155 @@ benefits:
       - issuer-direct
       spend_threshold_inr: 60000
       spend_threshold_cycle: quarterly
-      notes: 3 domestic lounge visits per calendar quarter, unlocked by ₹60,000 spend
-        in the preceding quarter.
+      notes: Three visits per calendar quarter unlocked by INR 60,000 eligible retail spend in the
+        preceding calendar quarter, effective 1-Jul-2026. New cards opened in the final month of a
+        quarter may receive one quarter of threshold exemption. Current lounge terms explicitly do
+        not allow guests; each primary/add-on member must present their own card.
     international:
       visits_per_cycle: 6
       cycle: annual
       guests_per_visit: 0
       via:
       - priority-pass
+      notes: Up to six international visits per calendar year via Priority Pass. Primary and add-on
+        members can request a pass after at least four retail transactions. Guest visits are not
+        complimentary.
+  dining:
+    program: Swiggy Dineout Good Food Trail
+    discount_pct: 10
+    notes: Current HDFC product page advertises up to 10% off at partner restaurants via Swiggy Dineout when paying with Regalia Gold; campaign-specific cap and expiry are not stated on the page.
   milestones:
   - spend_inr: 150000
     cycle: quarterly
-    benefit: Myntra / Nykaa / Reliance Digital / Marriott voucher worth ₹1,500
+    benefit: 'Choose one INR 1,500 voucher: Myntra, Nykaa, Reliance Digital, or Marriott.'
     value_inr: 1500
   - spend_inr: 750000
     cycle: annual
-    benefit: SmartBuy flight voucher worth ₹5,000
+    benefit: One complimentary flight ticket/voucher worth INR 5,000 on net retail spend in card
+      anniversary year.
     value_inr: 5000
   welcome:
   - condition: Joining fee paid
-    benefit: Gift voucher worth ₹2,500
+    benefit: Gift voucher equivalent to the INR 2,500 first-year fee.
     value_inr: 2500
+  - condition: INR 100,000 net retail spend within 90 days of setup or latest upgrade/downgrade.
+    benefit: One complimentary annual Swiggy One membership and one complimentary annual MMT Black
+      membership.
+    value_inr:
     window_days: 90
-  - condition: ₹1,00,000 net retail spend within 90 days of card issuance
-    benefit: Complimentary Swiggy One & MakeMyTrip (MMT) Black Gold memberships
-    value_inr: 2999
   insurance:
   - type: air-accident
     sum_insured_inr: 10000000
-  fuel_surcharge_waiver:
-    pct: 1.0
-    min_txn_inr: 400
-    max_txn_inr: 5000
-    cap_per_cycle_inr: 250
-    cycle: statement
+  - type: travel-medical
+    sum_insured_inr: 1500000
+  - type: credit-shield
+    sum_insured_inr: 900000
+  - type: lost-card-liability
+    sum_insured_inr: 900000
+  - type: trip-delay
+    sum_insured_inr:
   concierge: false
   other:
   - name: Boarding Edge Program
-    description: Complimentary Spa, Buffet, Hotel Room Upgrade, and Airport transfer
-      (any 2 every calendar quarter) by uploading your boarding pass on SmartBuy.
+    description: Primary cardholder may choose any two benefits per calendar quarter (spa, buffet, hotel room
+      upgrade or airport transfer) after uploading a valid boarding pass on SmartBuy/DreamFolks. Current terms
+      restrict this to primary cardholders; vouchers are subject to partner availability and conditions.
+  - name: Milestone terms discrepancy
+    description: Live product page advertises INR 5,000 flight vouchers at both INR 500,000 and INR
+      750,000 annual spend. Current card-specific milestone T&Cs specify one INR 5,000 flight ticket
+      only at INR 750,000 in the card anniversary year; only the T&C threshold is modeled.
+  - name: Fuel surcharge
+    description: The current shared MITC schedule lists Regalia Gold with its fee and waiver but no
+      fuel-surcharge waiver; the prior INR 250 waiver claim was removed. Current card-specific
+      issuer sources reviewed do not establish a fuel waiver.
+  - name: Insurance policy details
+    description: 'Active HDFC ERGO policy (23-Jul-2026 to 22-Jul-2027): primary cardholder air-accident
+      cover USD 125,000; overseas emergency medical USD 18,750; credit shield and card financial liability
+      INR 900,000 each; flight delay and missed connecting flight up to USD 313 (delay benefit USD 10/hour
+      after an 8-hour deductible). INR equivalents of USD benefits vary with exchange rate; exclusions,
+      eligibility triggers and reporting windows apply per policy.'
+  - name: Network variants
+    description: 'Current card-specific terms explicitly discuss franchise conversion between Mastercard
+      and Visa. The product can therefore be issued on either network; exact network and network tier
+      for new approvals are not published in the reviewed current sources, so both structured fields
+      are null. Source: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/regalia-gold-credit-card/terms-and-conditions.pdf.'
+  - name: Launch and positioning
+    description: 'HDFC announced the Regalia Gold launch on 23-Mar-2023 and described it as super-premium;
+      the prior 2022-06-01 launch date was incorrect. Source: https://www.hdfc.bank.in/press-release/2023/q1/hdfc-bank-launches-regalia-gold-credit-card-draft-v3-final.'
   source:
-    url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url:
+      https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/regalia-gold-credit-card/terms-and-conditions.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/regalia-gold/terms-and-conditions-retrieved-2026-10-27.pdf
+    - docs/sources/hdfc/regalia-gold/regalia-gold-travel-edge-tnc.pdf
+    - docs/sources/hdfc/regalia-gold/lounge-t-and-cs-and-list-Regalia-Gold.pdf
+    - docs/sources/hdfc/_shared/hdfc-card-changes-effective-2026-05-15.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.domestic.guests_per_visit
+    - benefits.lounge_access.international.guests_per_visit
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.milestones.spend_inr
+    - benefits.milestones.value_inr
+    - benefits.welcome.value_inr
+    - benefits.insurance.sum_insured_inr
+    - benefits.dining.discount_pct
+    notes: 'Milestone/welcome terms checked against current card-specific T&Cs and live product page.
+      Lounge timing/source: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card; current feature
+      notice: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/pdf/common/Credit-Cards/Regalia-Gold-Product-feature-change.pdf.
+      Insurance cross-checked against active policy https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/regalia-credit-card/pdfs/hdfc-ergo-general-insurance-company-limited.pdf
+      (23-Jul-2026 to 22-Jul-2027). Live product page claims annual milestone awards at INR 500,000 and
+      INR 750,000; the specific milestone T&Cs only document the INR 750,000 award. The shared MITC and
+      old fuel-waiver entry conflict; no fuel waiver was found in the current card-specific material.'
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 65
   income_inr_annual:
     salaried: 1200000
-    self_employed: 1500000
-  credit_score_min: 750
-  residency: resident-indian
+    self_employed: 1800000
+  credit_score_min:
+  residency:
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  notes: >-
+    Official eligibility page lists Indian nationality, salaried age 21-60 and
+    self-employed age 21-65; residence requirement is not stated, so residency
+    is null. Government salaried minimum monthly income >INR 100,000 and private
+    salaried >INR 150,000; the schema stores the lower annualized threshold INR
+    1,200,000, so it cannot encode the occupation split. Self-employed ITR >INR
+    1,800,000/year. The page's headline and FAQ use net monthly income, while
+    the detailed eligibility section calls salaried income gross; this wording
+    conflict is unresolved. No numerical bureau-score floor is published.
+    Source: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card/eligibility.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card/eligibility
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - travel
-  - mid-premium
+  - super-premium
   - points
-  - mass-premium

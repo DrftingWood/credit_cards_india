@@ -11,8 +11,8 @@ id: sbi-reliance-prime
 name: Reliance SBI Card PRIME
 image_path: /cards/sbi/reliance-prime.webp
 issuer: sbi
-network: mastercard
-network_tier: world
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand:
@@ -39,7 +39,7 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
       local_refs:
@@ -49,61 +49,69 @@ fees:
         - fees.cash_advance_fee
 
 rewards:
-  - effective_from: 2021-06-01
+  - effective_from: 2025-10-01
     effective_until: null
     currency: points
     currency_name: Reward Points
     base:
-      rate: 4
+      rate: 2
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr_realized: null
     accelerated:
       - category: ajio-jiomart-online
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 20
-        cap_per_cycle: "unlimited"
         cap_unit: points
-        cycle: monthly
         merchants: [ajio, jiomart]
         channel:
           class: cobrand-merchant
           merchants: [ajio, jiomart]
-        notes: "20 Reward Points per ₹100 on AJIO & JioMart online stores (except UPI payments)."
+        notes: "20 Reward Points per INR 100 on AJIO and JioMart online stores except UPI payments."
       - category: reliance-retail
         canonical_categories: [online]
         multiplier: 1
         effective_rate: 10
-        cap_per_cycle: "unlimited"
         cap_unit: points
-        cycle: monthly
         merchants: [reliance-digital, reliance-smart, trends, netmeds]
         channel:
           class: cobrand-merchant
           merchants: [reliance-digital, reliance-smart, trends, netmeds]
-        notes: "10 Reward Points per ₹100 at other participating Reliance Retail stores (except UPI payments)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
+        notes: "10 Reward Points per INR 100 at other participating Reliance Retail stores except UPI payments."
+      - category: dining-movies-airlines
+        canonical_categories: [dining, entertainment, travel]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: 7500
+        cap_unit: points
+        cycle: statement
+        notes: "5 Reward Points per INR 100 on dining, movies, entertainment and domestic airlines; shared 7,500-point statement-cycle cap with international spend."
+      - category: international
+        canonical_categories: [international]
+        multiplier: 1
+        effective_rate: 5
+        cap_per_cycle: 7500
+        cap_unit: points
+        cycle: statement
+        notes: "International spend has a separate 7,500-point cap per statement cycle."
+    exclusions: [fuel, wallet-loads, rent, emi, government]
     redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
       - type: voucher
         program: Reliance Retail gift vouchers
         rate_inr_per_unit: 0.25
+        constraints: "Closed-loop redemption only into Reliance Retail vouchers; no cash, statement credit or card-charge redemption. Four Reward Points equal INR 1."
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
-      retrieved_on: 2026-07-05
-      type: issuer-page
+      url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/reliance-prime-tnc.pdf
+      retrieved_on: 2026-11-01
+      type: issuer-pdf
       confidence: high
-
-    mcc_exclusions: ['6513']
+    mcc_exclusions: ['6513', '9311', '9399', '5172', '5541', '5542', '5983', '6540', '6541']
     capping_rules:
-      - No per-cycle cap on the 20 RP/₹100 AJIO & JioMart accelerated points per the Reliance SBI Card PRIME product page (retrieved 2026-07-05); the ₹1000/month AJIO 5% / JioMart 5% caps in the offers PDF are on separate instant-discount/cashback benefits, not the reward points. Confidence medium.
+      - "Reward points expire 24 months after accrual. After the 7,500-point category cap, base 2 points per INR 100 continue."
+      - "RuPay UPI transactions at participating Reliance Retail stores earn 2 points per INR 100; participating store spend otherwise earns 10 points per INR 100."
+      - "International spend has its own 7,500-point statement-cycle cap."
+
 benefits:
   - effective_from: 2021-06-01
     effective_until: null
@@ -120,24 +128,23 @@ benefits:
         via: [priority-pass]
     welcome:
       - condition: "Joining fee paid"
-        benefit: "Reliance Retail e-voucher worth ₹3,000"
+        benefit: "Reliance Retail e-voucher worth â‚¹3,000"
         value_inr: 3000
-        window_days: 90
       - condition: "Joining fee paid"
-        benefit: "Additional discount vouchers worth ₹11,999 across participating Reliance Retail stores"
+        benefit: "Additional discount vouchers worth â‚¹11,999 across participating Reliance Retail stores"
         value_inr: 11999
     milestones:
       - spend_inr: 75000
         cycle: annual
-        benefit: "Reliance Retail voucher worth ₹1,500"
+        benefit: "Reliance Retail voucher worth â‚¹1,500"
         value_inr: 1500
       - spend_inr: 150000
         cycle: annual
-        benefit: "Reliance Retail voucher worth ₹2,250"
+        benefit: "Reliance Retail voucher worth â‚¹2,250"
         value_inr: 2250
       - spend_inr: 300000
         cycle: annual
-        benefit: "Reliance Retail voucher worth ₹5,000"
+        benefit: "Reliance Retail voucher worth â‚¹5,000"
         value_inr: 5000
     fuel_surcharge_waiver:
       pct: 1.0
@@ -150,26 +157,37 @@ benefits:
       max_per_cycle: 1
       cycle: monthly
       cap_inr: 250
-      notes: "1 free movie ticket per month (up to ₹250), one transaction per month; convenience fee applies."
+      notes: "1 free movie ticket per month (up to â‚¹250), one transaction per month; convenience fee applies."
     concierge: false
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: "SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/reliance-sbi-card-prime.html
 
 metadata:
-  last_verified_on: 2026-10-24
+  last_verified_on: '2026-11-01'
   tags: [co-branded, retail, reliance, premium, points]

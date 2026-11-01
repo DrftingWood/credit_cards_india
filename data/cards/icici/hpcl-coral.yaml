@@ -2,18 +2,18 @@ id: icici-hpcl-coral
 name: ICICI Bank HPCL Coral Credit Card
 image_path: /cards/icici/hpcl-coral.webp
 issuer: icici
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
   partner: HPCL
   category: fuel
 status: active
-launched_on: '2018-01-01'
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2020-01-01
+- effective_from: 2026-10-26
   effective_until: null
   joining_fee_inr: 199
   annual_fee_inr: 199
@@ -22,72 +22,70 @@ fees:
     cycle: annual
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.75
-  gst_applicable: true
-  notes: Late payment fee ranges ₹100–₹1,300 depending on outstanding.
-  source:
-    url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
-    confidence: high
-    local_refs:
-    - docs/sources/icici/_shared/mitc_cc.pdf
-    fields_verified:
-    - fees.finance_charge_monthly_pct
-    - fees.forex_markup_pct
   cash_advance_fee:
     pct: 2.5
     min_inr: 500
+  gst_applicable: true
+  notes: Product page lists INR 199 joining and annual fees, with annual fee waiver after INR 50,000 spend. Another ICICI fuel-card guide lists annual fee NIL in year one and INR 199 from year two; applicability by network variant is not resolved, so the product-page figure is retained with the conflict noted.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/_shared/mitc_cc_2026-10-09.pdf
+    notes: The issuer does not publish one start date for this fee schedule; 2026-10-26 is the verification snapshot.
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
 rewards:
-- effective_from: 2020-01-01
+- effective_from: 2026-10-26
   effective_until: null
   currency: points
   currency_name: ICICI Bank Reward Points
   base:
     rate: 2
     per_inr: 100
-    unit_value_inr: 0.25
-    unit_value_inr_realized: 0.2
+    unit_value_inr: null
+    unit_value_inr_realized: null
   accelerated:
-  - category: hpcl-fuel
-    canonical_categories:
-    - fuel
-    multiplier: 1.25
-    effective_rate: 2.5
-    cap_per_cycle: 100
-    cap_unit: cashback-inr
-    cycle: monthly
-    merchants:
-    - hpcl-fuel-stations
-    channel:
-      class: fuel-network
-      merchants:
-      - hpcl
-    notes: 2.5% cashback on fuel purchases at HPCL fuel pumps (minimum ₹500 per transaction),
-      capped at ₹100 per month.
-  - category: utilities-and-departmental-stores
+  - category: utility-and-insurance
     canonical_categories:
     - utilities
-    - groceries
-    - government
+    - insurance
     multiplier: 0.5
     effective_rate: 1
-    notes: 1 Reward Point per ₹100 on utility (groceries, telecom, government, tax)
-      and departmental store spends.
+    notes: 1 ICICI Reward Point per INR 100 on utility and insurance spends.
+  exclusions:
+  - fuel
+  - rent
+  - wallet-loads
+  - emi
   redemption:
-  - type: voucher
+  - type: catalog
     program: ICICI Bank Rewards
-    constraints: Redeemable for health & beauty, travel & luggage, shopping vouchers,
-      home appliances, electronics, fashion & lifestyle.
-    rate_inr_per_unit: 0.25
+    constraints: Current product page lists reward-catalog categories; no fixed rupee value per point is published. General ICICI Rewards FAQ (https://www.icici.bank.in/personal-banking/cards/credit-card/faqs) states item-specific conversion values, three-year expiry and INR 99 plus GST handling fee per redemption request.
+    rate_inr_per_unit: null
   source:
     url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
+    notes: No single start date for the complete earn schedule is stated; 2026-10-26 is the verification snapshot. Base earning is 2 points/INR 100 retail and 1 point/INR 100 utility/insurance. Current issuer fuel guidance (https://www.icici.bank.in/personal-banking/blogs/card/credit-card/what-is-fuel-surcharge-waiver-in-credit-card) identifies HPCL Coral American Express as an exception that earns 6 points/INR 100 on fuel; this card-wide entry excludes fuel from point estimates because the network variant cannot be selected. Visa/Mastercard fuel cashback is modeled separately in benefits. Rent and wallet loads do not earn points under issuer terms; EMI ineligibility is stated generally.
   mcc_exclusions:
   - '6513'
+  - '7349'
 benefits:
-- effective_from: 2020-01-01
+- effective_from: 2026-10-26
   effective_until: null
   movies:
     type: discount
@@ -95,37 +93,55 @@ benefits:
     max_per_cycle: 2
     cycle: monthly
     cap_inr: 100
-    notes: 25% off up to ₹100 on BookMyShow, twice a month.
+    notes: 25% off up to INR 100 on at least two tickets, twice monthly. From 1-Apr-2026 BookMyShow requires INR 25,000 spend in the preceding quarter; dual-network customers may have one offer per month per variant. Current HPCL Coral page does not advertise the separate INOX benefit listed for regular Coral.
   fuel_surcharge_waiver:
     pct: 1.0
     min_txn_inr: 400
     max_txn_inr: 4000
     cap_per_cycle_inr: null
     cycle: monthly
-    notes: 1% waiver on fuel transactions worth ₹400–₹4,000 at HPCL pumps.
-  concierge: false
+    notes: 1% waiver on HPCL fuel transactions between INR 400 and INR 4,000 when swiped on an ICICI Bank POS machine; issuer does not state a separate monthly cap for this card-specific waiver.
+  concierge: null
   other:
-  - name: Fuel savings at HPCL
-    description: Up to 3.5% savings on fuel transactions at HPCL petrol pumps (2.5%
-      cashback plus 1% fuel surcharge waiver).
+  - name: HPCL fuel cashback
+    description: 2.5% cashback on fuel purchases at HPCL pumps, capped at INR 100 per month. This is separate from the 1% surcharge waiver, which requires an ICICI Bank POS machine.
     value_inr: null
   source:
     url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-26
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/_shared/mitc_cc_2026-10-09.pdf
+    notes: No single start date is stated for this benefits bundle; 2026-10-26 is the verification snapshot. HPCL Coral is offered across network variants; current issuer fuel guide identifies Visa/Mastercard and American Express variants. Amex fuel purchases also earn 6 ICICI Reward Points/INR 100, according to the issuer fuel guide, but that variant-only points rule is not applied to this combined card record. The 1% surcharge waiver uses an ICICI Bank POS; 2.5% cashback is capped at INR 100/month. Current product page and separate ICICI fuel guide differ on first-year annual fee (INR 199/waived); unresolved by network variant.
+    fields_verified:
+    - benefits.movies
+    - benefits.fuel_surcharge_waiver
+    - benefits.concierge
+    - benefits.other
 eligibility:
   min_age: 21
-  max_age: null
+  max_age: 65
   income_inr_annual:
     salaried: 240000
     self_employed: 240000
-  credit_score_min: 700
+  credit_score_min: null
   residency: resident-indian
-  notes: 'Salaried: monthly income ₹20,000. Self-employed: annual income ₹2,40,000.'
+  notes: Current issuer page states Indian citizen aged 21-65, salaried monthly income INR 20,000, and self-employed annual income INR 2.4 lakh. Monthly salaried threshold is annualized here; credit-score cutoff is unpublished.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual
+    - eligibility.residency
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/hpcl-coral-credit-card
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-10-26
   tags:
   - entry
   - co-brand

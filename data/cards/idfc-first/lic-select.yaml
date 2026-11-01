@@ -1,18 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: idfc-first-lic-select
+﻿id: idfc-first-lic-select
 name: LIC IDFC FIRST Select Credit Card
 image_path: /cards/idfc-first/lic-select.webp
 issuer: idfc-first
-network: visa
-network_tier: signature
+network: mastercard
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
@@ -20,107 +11,275 @@ co_brand:
   category: other
   partner_website: https://licindia.in
 status: active
-launched_on: 2023-01-01
-discontinued_on: null
-
+launched_on:
+discontinued_on:
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free. Co-branded with LIC (Select variant; a LIC Classic variant also exists)."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/lic-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-09-17'
+  effective_until:
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver:
+  forex_markup_pct: 0
+  finance_charge_monthly_pct:
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: >-
+    Current LIC Select is lifetime-free. Current issuer FAQ states flat INR 199 + GST cash advance fee, up to
+    45 interest-free days; APR is dynamic and account-specific, not a single monthly rate. Zero forex markup
+    applies from 17-Sep-2026. Older issuer-page captures showed 3.5% forex markup before this date; the current
+    bank-wide zero-forex announcement supersedes it.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/lic-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.flat_inr
+    local_refs:
+    - docs/sources/idfc-first/lic-select/current-mitc.pdf
+    - docs/sources/idfc-first/lic-select/zero-forex-notice-2026-09-17.pdf
+    notes: >-
+      Current issuer page lists zero joining/annual fee and flat INR 199 cash advance fee; general APR is dynamic
+      (8.5%â€“46.2% p.a. from 20-Feb-2025), so no fixed monthly rate is asserted. Bank-wide zero-FX announcement:
+      https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/news-media/press-release/Press-Release-IDFC-FIRST-Bank-introduces-Zero-Forex-Markup-across-all-its-Credit-Cards-existing-and-new-1709.pdf
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 5
-      per_inr: 125
-      unit_value_inr: 0.40
-      unit_value_inr_realized: 0.25
-    accelerated:
-      - category: lic-insurance-premium
-        canonical_categories: [insurance]
-        multiplier: 2
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10X (10 RP per ₹125) on LIC insurance premium payments; 5X (base) on other spends. Bonus 20% RP on hotels / 8% on flights via IDFC FIRST app (up to 40% via Rewards Gallery)."
-    exclusions:
-      - fuel
-      - rent
-      - insurance-premiums
-      - emi
-      - cash-advance
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
-        constraints: "1 RP = ₹0.25 (up to ₹0.40 on hotel/flight via Rewards Gallery). Reward points valid 3 years. Non-LIC insurance, fuel, rent, EMI & cash excluded."
+- effective_from: 2026-01-18
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 125
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+    applies_to_categories:
+    - online
+    - groceries
+    - dining
+    - travel
+    - utilities
+    - telecom
+    - international
+    - entertainment
+    - government
+    - education
+    - other
+    notes: >-
+      1X is 1 point per INR 125. Points are worth INR 0.25 each under the current LIC Select Travel & Shop terms
+      and have a three-year validity from earn date. The issuer's current page/T&C states points reverse for a
+      billing cycle when at least MAD is not paid by the due date.
+  accelerated:
+  - category: LIC premium paid on LIC official website
+    canonical_categories:
+    - insurance
+    multiplier: 2
+    effective_rate: 10
+    cap_unit: points
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - lic-official-website
+    notes: >-
+      10 points per INR 125 on LIC of India premium payments made through licindia.in only. Only the first five
+      eligible LIC premium transactions per statement cycle earn the accelerated rate; non-LIC premiums are excluded.
     source:
       url: https://www.idfcfirst.bank.in/credit-card/lic-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
       confidence: high
-
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+  exclusions:
+  - fuel
+  - rent
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.25
+    constraints: INR 0.25 per point; Travel & Shop redemption is capped monthly and annually and at 70% of a booking.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/lic-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.base.applies_to_categories
+    - rewards.accelerated[0].effective_rate
+    - rewards.redemption[0].rate_inr_per_unit
+    notes: >-
+      Current issuer page and linked LIC Select Travel & Shop T&C. Other eligible retail earns 5 points per INR 125.
+      Essentials (grocery, utilities, railways, FASTag, education, government) earn 5 points/INR 125 but share
+      a 600-point monthly cap. App bookings earn additional bonus points equal to 20% of base points for hotels
+      and 8% for flights, with a shared 8,000 bonus-point monthly cap; the linked T&C says 20/8% bonus, not a
+      guaranteed total earn rate. The same live page separately shows 45 bonus points/INR125 on hotels, 20/INR125
+      on flights, and a 40% headline; these do not reconcile with the June T&C percentages and remain unmodeled.
+      Fuel, rent, non-LIC insurance, EMI and cash withdrawals earn no points.
+      Linked Travel & Shop terms: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/LIC-Select-TnC-Travel-and-Shop.pdf
+    local_refs:
+    - docs/sources/idfc-first/lic-select/lic-select-travel-shop-terms-2026-06-18.pdf
+  capping_rules:
+  - Essentials earn 5 points per INR 125 up to a shared 600-point monthly cap; schema does not encode this cross-category cap.
+  - Only the first five LIC-premium transactions per statement cycle qualify for 10 points per INR 125; the field model has no transaction-count cap.
+  - Travel & Shop app booking bonus is 20% of base points on hotels and 8% on flights, shared cap 8,000 bonus points per calendar month. Bonus is credited after travel/check-in; cash-plus-points and EMI bookings are excluded.
+  - Travel & Shop point redemption is limited to 70% of booking value and 100,000 points/month and 200,000 points/year. Points expire three years after earning.
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-    welcome:
-      - condition: "On joining"
-        benefit: "Joining benefits worth ₹3,000+"
-        value_inr: 3000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    other:
-      - name: Railway lounge access
-        description: "4 complimentary railway lounge visits per quarter."
-      - name: Roadside assistance & insurance covers
-        description: "Complimentary roadside assistance and insurance cover bundle."
-    concierge: false
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/lic-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-03-09
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      notes: >-
+        Spend INR20,000 or more during a calendar month to activate visits for the next month;
+        activation remains valid through the following month. Visits are shared with add-on cards.
+  welcome:
+  - condition: >-
+      Primary LIC Select cardholder; spend within 30 days of card setup; page says INR 10,000 while linked PDF says
+      more than INR 10,000, so threshold conflict remains. Once per cardholder.
+      Reversed, cancelled, disputed, wallet, ATM, add-on and EMI-converted transactions are excluded.
+    benefit: >-
+      Welcome points award conflicts across current issuer sources: the product page says 2,000 Reward Points,
+      while its linked welcome-terms PDF dated 09-Mar-2026 says 2,500. Amount remains unresolved; issuer states
+      fulfilment within 45 days of card generation after qualifying spend.
+    value_inr: null
+    window_days: 30
+  - condition: >-
+      Primary LIC Select cardholder's first EMI transaction within 30 days of card setup; EMI tenure must be at
+      least 6 months; once per cardholder; no cashback for refunded EMI transactions.
+    benefit: 5% cashback on the first qualifying EMI transaction, capped at INR 1,000; credited within 60 days after offer end.
+    value_inr: 1000
+    window_days: 30
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 100000000
+    conditions: INR 1 crore; covered air ticket must be purchased using the card; insurer terms and claim deadlines apply.
+  - type: personal-accident
+    sum_insured_inr: 500000
+    conditions: INR 5 lakh; at least one purchase or ATM withdrawal in preceding 30 days; subject to insurer terms.
+  - type: lost-card-liability
+    sum_insured_inr: 50000
+    conditions: INR 50,000 card-liability/fraud cover; active-card condition and reporting deadlines apply.
+  - type: purchase-protection
+    sum_insured_inr: 25000
+    conditions: INR 25,000; specified fire/burglary perils, up to 60 days from purchase; active-card and insurer terms apply.
+  - type: credit-shield
+    sum_insured_inr: 25000
+    conditions: INR 25,000; applies to eligible card debits after accidental death; active-card and insurer terms apply.
+  - type: baggage-loss
+    sum_insured_inr: 4000
+    conditions: INR 4,000 for loss of checked-in baggage on international travel; ticket must be purchased on the covered card.
+  - type: other
+    sum_insured_inr: 4000
+    conditions: INR 4,000 for checked-in baggage delay on international travel; classify as trip delay; ticket must be purchased on the covered card.
+  - type: trip-delay
+    sum_insured_inr: 4000
+    conditions: INR 4,000 for qualifying international flight delay; ticket must be purchased on the covered card.
+  - type: other
+    sum_insured_inr: 4000
+    conditions: INR 4,000 for loss of passport/travel documents on qualifying international travel; ticket must be purchased on the covered card.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 300
+    cycle: monthly
+  other:
+  - name: Railway lounge access
+    description: 4 complimentary visits per calendar quarter at participating Indian railway lounges through DreamFolks; shared with add-on cards. Cardholder needs a valid train ticket; one guest may use a visit quota.
+  - name: Roadside assistance
+    description: Up to 4 complimentary roadside-assistance services per year through Global Assure; towing/parts/service terms and coverage areas apply.
+    value_inr: 1399
+  - name: Merchant offers
+    description: >-
+      Current product page advertises merchant offers worth INR1,500+ but does not identify a guaranteed cash value;
+      offer catalogue, participating merchants, eligibility and validity can vary.
+  concierge: false
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/lic-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.welcome[0].benefit
+    - benefits.welcome[0].window_days
+    - benefits.welcome[1].benefit
+    - benefits.welcome[1].value_inr
+    - benefits.welcome[1].window_days
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.insurance[1].sum_insured_inr
+    - benefits.insurance[2].sum_insured_inr
+    - benefits.insurance[3].sum_insured_inr
+    - benefits.insurance[4].sum_insured_inr
+    - benefits.insurance[5].sum_insured_inr
+    - benefits.insurance[6].sum_insured_inr
+    - benefits.insurance[7].sum_insured_inr
+    - benefits.insurance[8].sum_insured_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.other[0].description
+    - benefits.other[1].description
+    - benefits.other[1].value_inr
+    - benefits.other[2].description
+    local_refs:
+    - docs/sources/idfc-first/lic-select/lic-select-privileges-2025-12-09.pdf
+    - docs/sources/idfc-first/lic-select/lic-select-airport-lounge-list.pdf
+    - docs/sources/idfc-first/lic-select/lic-select-welcome-offers-2026-03-09.pdf
+    - docs/sources/idfc-first/lic-select/lic-select-product-guide.pdf
+    notes: >-
+      Current LIC Select product page, linked 2026 welcome offer and LIC Select privileges PDF were checked.
+      The product page's welcome offer says 2,000 points but its linked offer PDF says 2,500; unresolved pending
+      issuer clarification. The page also says spend INR 10,000 while the linked offer PDF says more than INR 10,000.
+      Product page lists INR 5 lakh personal accident and INR 25,000 each for purchase
+      protection and credit shield; the linked privileges PDF's extracted sum-insured table is poorly aligned and
+      appears inconsistent, so insurance amounts remain subject to the insurer's current policy schedule. The
+      airport-lounge terms require INR20,000 eligible spend in the previous calendar month, now recorded in the
+      lounge model. Travel terms effective 18-Jun-2026 specify 20%/8% bonuses; the product page also shows
+      inconsistent point-rate and 40% headline figures, preserved as unresolved. The current product guide image
+      shows Mastercard but does not publish a card tier, so Visa Signature was cleared and network tier is unknown.
+      Welcome offer T&C: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/LIC-Joining-Offers-01.pdf
+      Privileges T&C: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Privileges-Document-LIC-Select-11-08-25-Link.pdf
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age:
+  max_age:
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried:
+    self_employed:
+  credit_score_min:
+  residency:
+  notes: >-
+    The current LIC Select product page does not publish an explicit minimum/maximum age, income, credit-score, or
+    residency rule. The previous issuer-tier estimates were not card-specific, so age, income and score remain
+    unknown. Residency is left unknown because the current LIC Select page does not state a card-specific rule.
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/lic-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, insurance, co-brand, lounge]
+  last_verified_on: 2026-10-27
+  tags:
+  - mid
+  - points
+  - insurance
+  - co-brand
+  - lounge

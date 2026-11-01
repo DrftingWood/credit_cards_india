@@ -2,8 +2,8 @@ id: sbi-tata-neu-plus
 name: Tata Neu Plus SBI Card
 image_path: /cards/sbi/tata-neu-plus.webp
 issuer: sbi
-network: rupay
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -33,12 +33,17 @@ fees:
   supplementary_card_fee_inr: 0
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-11-01
     type: issuer-page
     confidence: high
     local_refs:
     - docs/sources/sbi/_shared/mitc-english.pdf
     fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
     - fees.finance_charge_monthly_pct
     - fees.cash_advance_fee
 rewards:
@@ -67,13 +72,15 @@ rewards:
       merchants:
       - tata-neu
     notes: 2% value back as NeuCoins on non-EMI spends at Tata Neu App/Website and
-      partner Tata brands.
+      partner Tata brands. Issuer-listed partners include Air India/Express, BigBasket,
+      Tata CLiQ, IHCL hotels, Tata 1mg, Titan/Tanishq, Croma, Westside and Qmin; eligibility
+      depends on issuer-approved merchant IDs.
   - category: tata-neu-select-categories
     canonical_categories:
     - online
     multiplier: 1
-    effective_rate: 7
-    card_attributable_rate: 7
+    effective_rate: 5
+    card_attributable_rate: 5
     card_attributable_per_inr: 100
     merchants:
     - tata-neu
@@ -81,31 +88,44 @@ rewards:
       class: cobrand-merchant
       merchants:
       - tata-neu
-    notes: +5% select-category NeuCoins capped per category/month (grocery 1,000;
-      utility/telecom/insurance 2,000; UPI 500). Base 2% Tata Neu uncapped.
-    cap_per_cycle: 2000
-    cap_unit: cashback-inr
-    cycle: monthly
+    notes: Additional 5% in select categories above applicable base earn. SBI lists
+      monthly caps of 1,000 NeuCoins grocery; 2,000 each insurance, utility and telecom/cable;
+      500 UPI per statement cycle. Category mapping and all stacking details are not clear
+      in the public issuer material.
     stacks_with_program: false
   exclusions:
   - emi
+  - fuel
+  - wallet-loads
+  - rent
+  - gift-cards
+  - government
+  - education
+  - cash-advance
   capping_rules:
   - Accelerated accrual applies only to non-EMI spends. NeuCoins auto-credited to
     NeuPass account.
+  - Issuer also excludes payment of outstanding balances, card fees/charges and Flexipay.
   redemption:
-  - type: statement-credit
-    rate_inr_per_unit: 1.0
   - type: voucher
     program: Tata Neu App/Website and partner Tata brands
     rate_inr_per_unit: 1.0
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
-    retrieved_on: '2026-07-05'
+    retrieved_on: '2026-11-01'
     type: issuer-page
-    notes: 'Research-verified: 1 NeuCoin = Rs1 across Tata Neu, no cash conversion.'
+    notes: 'Issuer booklet: closed-loop redemption at INR 1 savings in eligible Tata Neu and listed partner channels; not exchangeable for cash, SBI statement credit, or payment of SBI card charges.'
     confidence: high
   mcc_exclusions:
+  - '5172'
+  - '5541'
+  - '5983'
+  - '5542'
+  - '6540'
+  - '6541'
   - '6513'
+  - '9399'
+  - '9311'
 benefits:
 - effective_from: 2026-07-03
   effective_until: null
@@ -118,8 +138,7 @@ benefits:
       spend_threshold_cycle: quarterly
       notes: 4 per year (1 per quarter), each quarter's visit unlocked on Rs. 50,000
         spend in the previous quarter.
-      via:
-      - rupay
+      via: []
   welcome:
   - condition: Within 15 days of joining fee realisation
     benefit: 499 NeuCoins (1 NeuCoin = Re. 1)
@@ -134,22 +153,33 @@ benefits:
   concierge: false
   source:
     url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-11-01
     type: issuer-page
     confidence: high
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: Eligibility criteria per aggregator consensus (~₹3L p.a.).
+  notes: "Eligibility criteria per aggregator consensus (~₹3L p.a.). SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-plus-sbi-card.html
 metadata:
-  last_verified_on: '2026-10-24'
+  last_verified_on: '2026-11-01'
   tags:
   - co-branded
   - conglomerate

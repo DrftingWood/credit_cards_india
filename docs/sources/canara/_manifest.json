@@ -1,1 +1,30 @@
-{"_source":"canara .bank.in (card page redirects to home; no extractable fee table)","verified_on":"2026-07-04","result":"seeded RuPay-Select values retained as plausible-unconfirmed; domain+MCC verified in audit","pdfs_downloaded":0}
+{
+  "_source": "Canara Bank official card pages and source documents",
+  "verified_on": "2026-10-27",
+  "result": "Canara Visa Signature and Mastercard World and RuPay Select reviewed against issuer materials; conflicting, inaccessible and unpublished details are recorded in card-specific extracts.",
+  "cards": {
+    "mastercard-world": {
+      "url": "https://www.canarabank.bank.in/mastercard-world-credit-card",
+      "retrieved_on": "2026-10-27",
+      "local_refs": [
+        "docs/sources/canara/mastercard-world-issuer-extract-2026-10-27.md",
+        "https://canarabank.bank.in/documents/d/guest/credit-card-manual"
+      ]
+    },
+    "rupay-select": {
+      "url": "https://www.canarabank.bank.in/pages/rupay-select-credit-card",
+      "retrieved_on": "2026-10-26",
+      "local_refs": [
+        "docs/sources/canara/rupay-select/canara-credit-card-variants-features-2026-02-09.pdf",
+        "docs/sources/canara/rupay-select/rupay-select-issuer-extract-2026-10-26.md"
+      ]
+    },
+    "visa-signature": {
+      "url": "https://www.canarabank.bank.in/visa-signature-credit-card",
+      "retrieved_on": "2026-10-27",
+      "local_refs": [
+        "docs/sources/canara/visa-signature-issuer-extract-2026-10-27.md"
+      ]
+    }
+  }
+}

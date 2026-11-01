@@ -1,0 +1,219 @@
+                                                                                            Updated on 24-Oct-2026
+Product Feature Related Queries
+
+What are Tata NeuCoins?
+Tata NeuCoins are an exclusive Rewards Points metric system created by Tata Neu.
+‘NeuCoins’ and ‘Tata NeuCoins’ may be interchangeably used in this document
+
+How do I earn NeuCoins on Tata Neu Plus HDFC Bank Credit Card?
+   • NeuCoins will be earned as per the following table:
+
+    Type of Spends                                 NeuCoins
+    Non-EMI Retail Spends on partner Tata Brands   2% back as NeuCoins
+    Non-EMI Retail Spends on Non-Tata Brands       1% back as NeuCoins
+    Merchant EMI Spends (Any Brand)                1% back as NeuCoins
+    Any UPI Spends on Rupay Credit Card            1% back as NeuCoins
+    (Including partner Tata Brands)                (max of 500 NeuCoins per calendar month)
+
+                                                   With effect from 01-Aug-24:-
+                                                   - 0.25% back as NeuCoins for transactions done using any UPI ID
+                                                   (Google Pay, PhonePe, Cred, etc.)
+                                                    - Additional 0.75% back as NeuCoins if the transaction is done
+                                                   using the Tata Neu UPI ID.
+                                                   - The total NeuCoins earned on eligible UPI transactions are
+                                                   capped to 500 NeuCoins per month
+
+
+      •   2% back as NeuCoins (Non-EMI) will be calculated as 1% base NeuCoins + 1% additional NeuCoins on partner
+          Tata Brands transactions. For list of eligible partner brands click here.
+
+      •   NeuCoins will be calculated and posted on nearest round integer, for example Rs 140 transaction will be
+          calculated as (140*1% = 1.4 NeuCoins = 1 NeuCoin (round to nearest integer). Fractional NeuCoins will not be
+          accrued.
+
+      •   For Detailed Calculation and Terms and Conditions on earning of NeuCoins on Tata Neu Plus HDFC Bank Credit
+          Card, refer the ‘Feature Section’ of the Product Page
+
+
+What are the Exclusion Categories for Accrual of NeuCoins?
+Following are the Exclusion Categories for Any type of NeuCoins, NeuCoins will not be accrued for the following
+spends/transactions on the card:-
+
+•     Fuel Spends | Wallet loads / Gift or Prepaid Card load/ Voucher purchase
+•     Cash Advances | Payment of Outstanding Balances
+•     Payment of card fees and other charges | Smart EMI / Dial an EMI transaction
+•     Rental and Government related transactions
+•     With effect from 1st Sep 2024, NeuCoins will not be accrued for Education payments made through third-party apps
+      like (but not limited to) CRED, Cheq, MobiKwik, and others. However, education payments made directly through
+      college/school websites, or their POS machines will earn NeuCoins.
+•     With effect from 1st July 2025, NeuCoins will not be earned on Online Skill-Based Gaming transactions (MCC-5816)
+NeuCoins Redemption –Terms & Conditions
+
+For details on the Tata NeuCoins Claim and Redemption Process on Tata Neu HDFC Bank Credit Card, please click here.
+
+
+What are the applicable capping of the Accrual of the NeuCoins?
+Capping of NeuCoins Accrued as per the Transaction Settlement date:-
+
+    •   Grocery Transactions: - 1,000 NeuCoins per month
+    •   Insurance Transactions: - 2,000 NeuCoins per month
+    •   Utility Transactions: - 2,000 NeuCoins per month
+    •   Telecom&Cable Transactions: - 2,000 NeuCoins per month
+    •   UPI transactions: - 500 NeuCoins per month
+    •   NeuCoins on the partner Tata Brand Transactions is governed by the fair usage policy (Click Here)
+
+How will a cardholder get NeuCoins on EMI spends on Tata Neu Plus HDFC Bank Credit Card?
+• Cardholder will be getting 1% back as NeuCoins on the below type of EMI’s
+   o Merchant/EasyEMI
+   o Aggregator EMI
+   o Brand EMI
+• SmartEMI/Dial an EMI (DAE) is not considered under this feature.
+• Only EMI principal amount will be rewarded with NeuCoins.
+• Interest & processing fees amounts will not be eligible for NeuCoins.
+
+Cardholder did a transaction in Tata Brand Merchants and didn’t get NeuCoins as per the 2% feature?
+       o 2% back as NeuCoins will be calculated basis the Merchant IDs (MIDs), Terminal IDs (TIDs) shared by the
+           respective merchant partners. If in case the MID, TID is not available in the set-up, such transactions will not
+           qualify for the benefit.
+       o Also, if you have completed your transaction using UPI (applicable for RuPay Variant only), then such
+           transaction will not qualify for this benefit.
+       o Also, if the variant of your Tata Neu HDFC Bank Card has been recently changed (which includes Infinity
+           variant to Plus variant or vice versa, and/or RuPay to VISA franchise conversion or vice versa), then
+           accelerated NeuCoins on the unbilled transactions done on the previous card will not be posted.
+Example of Accrual of NeuCoins
+
+Type of Transactions    Process of NeuCoins Credit in the Credit Card Account
+
+NeuCoins on             Up to 1% NeuCoins (max of 500 NeuCoins per calendar month)
+UPI Transactions
+                        - 0.25% NeuCoins for transactions done using any UPI ID (Google Pay, PhonePe, Cred, etc.)
+
+                        0.25% NeuCoins on eligible UPI transactions (on Tata Neu Infinity CC), are posted in the
+                        credit card account on the next day of the settlement of the transaction, however it may
+                        take up to 5 working days for the NeuCoins to reflect in your credit card account. For
+                        example, for the transactions settled on 15-Jan, NeuCoins will reflect in your credit card
+                        account latest by 21-Jan.
+
+                        - Additional 0.75% NeuCoins if the transaction is done using the Tata Neu UPI ID, this is
+                        directly posted in your Tata Neu Account.
+
+                        The total NeuCoins earned on eligible UPI transactions are capped to 500 NeuCoins per
+                        month, NeuCoins will not be accrued for exclusion categories.
+
+                        What is the Tata Neu UPI ID and how can I get it?
+
+                        The Tata Neu UPI ID is a unique UPI identifier provided by Tata Neu. You can create your
+                        Tata Neu UPI ID through the Tata Neu app. Simply follow the instructions in the app to set it
+                        up and link it to your Tata Neu HDFC Credit Card.
+
+NeuCoins on             1% NeuCoins on the eligible Grocery/Insurance/Utility/Telecom&Cable transactions (on Tata
+Grocery/Insurance/      Neu Infinity CC), are posted in the credit card account on the next day of the settlement,
+Utility/                however it may take up to 5 working days for the points to reflect in your credit card
+Telecom&Cable           account. For example, for the transactions settled on 15-Jan, NeuCoins will reflect in your
+                        credit card account latest by 21-Jan.
+(Non-UPI
+Transactions)           Capping of NeuCoins Accrued as per the Transaction Settlement date:-
+
+                        Grocery Transactions: - 1,000 NeuCoins per month
+
+                        Insurance Transactions: - 2,000 NeuCoins per month
+
+                        Utility Transactions: - 2,000 NeuCoins per month
+
+                        Telecom&Cable Transactions: - 2,000 NeuCoins per month
+
+NeuCoins on other       1% NeuCoins on the other eligible transactions (on Tata Neu Infinity CC), are posted in the
+Eligible (Non-UPI       credit card account on settlement of the transactions. NeuCoins will not be accrued for
+Transactions)           exclusion categories.
+
+Additional NeuCoins on •    Till 25-Dec-25, 1% Additional NeuCoins (on Tata Neu Infinity CC) on eligible partner
+Partner Tata                brand transactions, were posted once in the month for the transactions settled in
+Brands (Non-UPI             previous calendar month.
+Transactions)
+                             o   For example, for eligible transactions settled (as per posting date) between 1-Nov to
+                                 30-Nov, NeuCoins were posted in the credit card account by 3-Dec.
+                          •   From 26-Dec-25, 1% Additional NeuCoins (on Tata Neu Infinity CC) on eligible partner
+                              brand transactions will be posted in the credit card account on the next day of the
+                              settlement, however it may take up to 5 working days for the points to reflect in your
+                              credit card account.
+
+                               o   For example, for the transactions settled on 15-Jan, NeuCoins will reflect in your
+                                   credit card account latest by 21-Jan.
+
+                          •   Fair Usage Policy is applicable, NeuCoins will not be accrued for exclusion categories.
+
+
+How do I get additional 5% NeuCoins via Tata Neu Membership Account?
+   • Tata Neu Membership Account is your access to a power-packed membership programme where you shop,
+      order food, book your travel and a lot more, while being rewarded for it.
+   • It rewards you with additional 5% NeuCoins on selected categories on Tata Neu. Each brand may provide
+      additional NeuCoins for transactions on respective brand web & app as per their policy.
+   • W.e.f 15-Jan-25 this benefit will be applicable for transactions done only via Primary Card Holder Mobile
+      Number Account (as per credit card application) on Tata Neu using the Tata Neu HDFC Bank credit card. Click
+      here for details. For details, please click here
+
+What is the welcome benefit on the Tata Neu Plus HDFC Bank Credit Card?
+
+Welcome Benefit of 499 NeuCoins (as reversal of 1st Year Membership Fees) will be given to the cardholder by Tata
+Digital Private Limited inside Tata Neu App. Welcome Benefit is applicable on 1st Transaction done within 30 days of card
+issuance and will be available to claim inside Tata Neu App within 60 days of such transaction.
+
+Note: For eligible customers, option to claim the Welcome Benefit will be available inside Tata Neu App for 180 days
+from statement date of the eligible transaction. The validity of the NeuCoins given against Welcome Benefit will be 365
+days from the claim date. Lifetime Free or First Year Free Cards will not be eligible for the Welcome Benefit.
+
+
+What are the other benefits on the Tata Neu Plus HDFC Bank Credit Card?
+
+For details of other product feature on the card, visit the product page on HDFC Bank website.
+
+Click here to go to the product webpage
+
+
+
+Fees and Charges Related Queries
+
+What is the interest rate applicable on Tata Neu Plus HDFC Bank Credit Card?
+Interest rate applicable on Tata Neu Plus HDFC Bank Credit Card is 3.75% per month.
+What is the Membership fee / renewal annual applicable on Tata Neu Plus HDFC Bank Credit Card?
+Membership fee/ Renewal fee of Rs 499 + Applicable Taxes is applicable on Tata Neu Plus HDFC Bank Credit Card.
+
+What is the Spends based condition for membership fee reversal on Tata Neu Plus HDFC Bank Credit Card?
+Membership fee for the next year will be waived of on spends of Rs 1 lakh in the previous anniversary year
+
+What are the other fees and charges levied on Tata Neu Plus HDFC Bank Credit Card?
+For all fees and charges, please refer MITC on HDFC Bank website.
+Click here to go to the product MITC
+General Queries
+
+How do I generate PIN for my Credit Card?
+You will need to generate the PIN to activate your card, you can use any of the following ways mentioned below-
+a. By calling 1860 266 0333
+b. By using Net Banking
+c. By using Mobile Banking App
+d. By using ATM
+
+How do I activate my Credit Card for online, contactless and/or international transactions?
+   1. Using HDFC Bank MyCards:
+      1. Log in to https://mycards.hdfc.bank.in/using your registered mobile number
+      2. Enter the OTP configured to your registered mobile number
+      3. Click on “Card Control” service under Credit Cards.
+      4. You can set and customise your credit card usage/limits
+      5. Enter OTP configured to your registered mobile number to successfully make these changes.
+
+   2. Or HDFC Bank Mobile Banking – Credit Card Section
+
+   3. Or HDFC Bank Net Banking – Credit Card Section
+
+How do I get Credit card statement?
+Once the credit card statement is generated, it will be sent to your registered email address. You can also view and
+download the credit card statement by logging into HDFC Bank NetBanking or HDFC Bank MyCard App or HDFC Bank
+Mobile App online.
+
+My Tata Neu HDFC Bank Credit Card is lost/stolen. What should I do?
+In case your card is lost or stolen, please block your card immediately to avoid it from being misused. To block your card
+either:
+
+    •   Call HDFC Bank PhoneBanking Number (1800 1600 / 1800 2600) or
+    •   Log onto HDFC Bank NetBanking and block your card using the 'Hotlisting' option
+

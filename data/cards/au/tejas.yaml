@@ -1,115 +1,274 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: au-tejas
+﻿id: au-tejas
 name: AU Bank Tejas Credit Card
 image_path: /cards/au/tejas.webp
 issuer: au
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-    forex_markup_pct: 3.49
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Rewards + cashback card. Flat 10% cashback at partner merchants (movies, grocery delivery & food delivery)."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 150000
+    cycle: annual
+    conditions: Joining fee INR 500 + GST is not waived. Renewal fee INR 500 + GST waived on at least INR 150,000
+      eligible retail spends in the card anniversary year.
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  overlimit_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: >-
+    Rewards and partner-discount/cashback card. Exact fee schedule effective date is not published. The 30 Sep 2026 KFS states a 20% cash-advance limit, 15% of total amount due as late fee (minimum INR 10, maximum INR 1,300), and 2.5% overlimit fee (minimum INR 500). Percentage-based late-fee formula and cash limit are recorded here because the schema cannot model them as card-specific calculator fields.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.fee_waiver.cycle
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    - fees.overlimit_fee.pct
+    - fees.overlimit_fee.min_inr
+    notes: >-
+      Product FAQ confirms INR 500 + GST joining and annual fee, no joining-fee waiver, and INR 150,000 retail-spend anniversary-year renewal waiver. The current 30 Sep 2026 KFS confirms 3.49% forex, 3.75% monthly finance charge, and 2.5%/INR 500 cash-advance fee: https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf.
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: select-categories
-        canonical_categories: [online, other]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Up to 5 Reward Points per ₹100 on select categories; 1 RP per ₹100 base."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "Flat 10% cashback on partner-merchant spends (movies, grocery delivery & food delivery)"
-    redemption:
-      - type: catalog
-        program: AU Rewardz
-        rate_inr_per_unit: 0.25
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 0.0025
+    unit_value_inr_realized: null
+    notes: Product FAQ states 1 Reward Point per INR 100 on all other eligible spend. The 0.25-paise catalogue conversion is a nominal issuer rate, not an independently observed realized value.
+  accelerated:
+  - category: rewardz-portal
+    canonical_categories:
+    - travel
+    - utilities
+    - telecom
+    - other
+    multiplier: 5
+    effective_rate: 5
+    channel:
+      class: issuer-portal
+      merchants:
+      - au-rewardz
+    notes: 5 Reward Points per INR 100 on eligible transactions through AU Rewardz portal.
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-11-01'
       type: issuer-page
-
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.0.effective_rate
+      - rewards.accelerated.0.multiplier
+  - category: Utility and Telecom
+    canonical_categories:
+    - utilities
+    - telecom
+    mcc_list:
+    - '4812'
+    - '4814'
+    - '4899'
+    - '4900'
+    effective_rate: 1
+    effective_per_inr: 100
+    cap_unit: points
+    cycle: statement
+    cap_status: not-published
+    notes: Current AU card-member agreement gives 1 Reward Point per INR 100 on utility and telecom spend, maximum 100 points per transaction. The overall 25,000-point statement cap applies; no separate category-cycle cap is stated.
+    source:
+      url: https://www.au.bank.in/credit-cards/credit-card-member-agreement.pdf
+      retrieved_on: '2026-11-01'
+      type: issuer-pdf
+      confidence: high
+      method: pdf-extract
+      fields_verified:
+      - effective_rate
+      - effective_per_inr
+      - mcc_list
+  exclusions:
+  - fuel
+  - rent
+  - emi
+  - cash-advance
+  - government
+  - education
+  mcc_exclusions:
+  - '6513'
+  reward_cap:
+    max_units: 25000
+    cap_unit: points
+    cycle: statement
+  capping_rules:
+  - Overall maximum 25,000 Reward Points per statement cycle per AU's current card-member agreement. Points accrue only on transaction amounts in multiples of INR 100.
+  - Reward Points are valid for two years from accrual; points are zeroized on account closure or after 12 months without card use, and can be forfeited after more than 90 days delinquent.
+  - Reward points are not earned on cash, rent, education/government, EMI, fuel, cash withdrawal, BBPS, transportation and quasi-cash. The current agreement explicitly excludes BBPS transactions on AU 0101; the product FAQ lists BBPS as excluded without clarifying channel scope.
+  - Partner discounts/cashback are separate from Reward Points. Merchant-specific thresholds and periods are listed in benefits.other; cab and AU 0101 bill-payment offers cap at INR 50 per statement cycle, while District, Amazon Fresh/Now and Zomato terms say once per card per month.
+  redemption:
+  - type: catalog
+    program: AU Rewardz
+    rate_inr_per_unit: 0.0025
+    min_units: 200
+    fee_inr: 99
+    constraints: INR 99 plus GST per successful redemption.
+  - type: voucher
+    program: AU Rewardz e-vouchers
+    rate_inr_per_unit: 0.002
+    min_units: 200
+    fee_inr: 99
+    constraints: INR 99 plus GST per successful redemption.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_per_inr
+    - rewards.capping_rules
+    - rewards.base.unit_value_inr
+    - rewards.reward_cap.max_units
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    - rewards.redemption.fee_inr
+    notes: >-
+      Base 1 point/INR 100; 5 points/INR 100 through AU Rewardz portal. Current AU card-member agreement (24 March 2026): https://www.au.bank.in/credit-cards/credit-card-member-agreement.pdf. It sets a 25,000-point statement cap and utility/telecom earn of 1 point/INR 100 with a 100-point transaction maximum. It excludes rent, education/government, BBPS on AU 0101, EMI, fuel, cash withdrawal and quasi-cash; Tejas product FAQ additionally lists BBPS and transportation exclusions. The card's current product FAQ says BBPS without specifying channel, so channel scope remains unresolved. Cashback offers are separate from points. AU Rewardz FAQ values ordinary catalog points at 0.25 paise (INR 0.0025) and e-vouchers at 0.20 paise (INR 0.002); redemption fee INR 99 plus GST and 200-point minimum.
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Card activation"
-        benefit: "2,000 bonus Reward Points or ₹500 brand voucher"
-        value_inr: 500
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 100
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Primary cardholder who paid the joining fee; activate the card and make the first successful transaction within 30 days of issuance; claim within 6 months of activation. Choose one option.
+    benefit: 2,000 Reward Points
+    value_inr: null
+    window_days: 30
+  - condition: Primary cardholder who paid the joining fee; activate the card and make the first successful transaction within 30 days of issuance; claim within 6 months of activation. Choose one option.
+    benefit: INR 500 brand voucher
+    value_inr: 500
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.welcome
+    - benefits.welcome.window_days
+    - benefits.welcome.value_inr
+    - benefits.milestones.spend_inr
+    - benefits.milestones.reward_units
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    - benefits.insurance
+    - benefits.other
+    notes: >-
+      Welcome requires paid joining fee, activation and first successful transaction within 30 days; benefit must be claimed within six months. The 500-point milestone requires five transactions of INR 500 or more per statement cycle. Fuel waiver is 1% on INR 400-5,000 transactions, capped INR 100 per statement cycle. Partner offers have separate caps and timing by merchant; the two app-based cashback offers cap per statement cycle. Offer terms: https://www.au.bank.in/pdf/TnC-TEJAS_Welcome-Benefit.pdf; District https://www.au.bank.in/pdf/District-by-Zomato-AU-Tejas-Credit-Card.pdf; Amazon Fresh https://www.au.bank.in/pdf/Amazon-FreshNow-AU-Tejas-Credit-Card.pdf; Zomato https://www.au.bank.in/pdf/Zomato-AU-Tejas-Credit-Card.pdf; cab https://www.au.bank.in/pdf/Cab-Services-AU-Tejas-Credit-Card.pdf; AU 0101 bill payment https://www.au.bank.in/pdf/Bill-Payments-AU-Tejas-Credit-Card.pdf.
+  milestones:
+  - spend_inr: 2500
+    cycle: statement
+    benefit: 500 bonus Reward Points after at least 5 transactions of INR 500 or more within one statement cycle.
+      Valued at approximately INR 1.25 using the general catalog point conversion; schema requires whole-INR milestone
+      values, so the numeric value is left null.
+    value_inr: null
+    reward_kind: points
+    reward_units: 500
+    reward_currency_name: Reward Points
+    trigger_window: rolling
+    is_repeatable: true
+  insurance:
+  - type: other
+    sum_insured_inr: null
+    conditions: AU's current Tejas product FAQ advertises Card Liability Cover; card-specific liability amount and claim conditions are not stated on the page.
+  - type: credit-shield
+    sum_insured_inr: null
+    conditions: AU's current Tejas product FAQ advertises Credit Shield; card-specific insured amount and policy conditions are not stated on the page.
+  other:
+  - name: District movie discount
+    description: 10% off movie tickets, minimum INR 150, maximum INR 50, once per card per month; use promo code AUTEJ50 online. Offer applies to eligible Tejas card BINs and cannot be combined with other offers or paid from wallet balance.
+  - name: Amazon Fresh/Now grocery discount
+    description: 10% off, minimum INR 150, maximum INR 50, once per card per month; automatic discount in eligible Amazon Fresh/Now checkout. Issuer terms list BINs 406977506 and 653024929 and serviceable locations only.
+  - name: Zomato food-delivery discount
+    description: 10% off, minimum INR 150, maximum INR 50, once per card per month; promo code AUTEJAS10. Issuer terms list card BIN 406977506; online only and cannot be paid with wallet balance or combined with other offers.
+  - name: Cab-booking cashback
+    description: 10% cashback on eligible India cab bookings, minimum INR 150 per transaction, maximum INR 50 per card per statement cycle; eligible MCC 4121 and providers include Uber, Ola and Rapido. Cashback is credited within 60 days.
+  - name: AU 0101 bill-payment cashback
+    description: 10% cashback on eligible AU 0101 app Bill Payments, minimum INR 150 per transaction, maximum INR 50 per card per statement cycle; eligible billers include utilities, telecom, broadband, DTH, FASTag and municipal payments. Cashback is credited within 60 days; bill payments outside AU 0101 are excluded.
+  - name: Xpress EMI
+    description: Convert eligible transactions of INR 500 or more when the total conversion value is at least INR 2,000; up to 20 billed or unbilled transactions may be combined. Current KFS Xpress EMI processing charge is 1% of amount converted, minimum INR 99 plus GST.
+  - name: Contactless payments
+    description: POS payments up to INR 5,000 can be made without entering a PIN, including digitally added card payments.
+  - name: Add-on cards
+    description: AU's Tejas guide says add-on cards are lifetime-free for family members above 18; general AU materials state up to three lifetime-free add-on cards.
+  - name: Device Protection Plan
+    description: Current AU Tejas FAQ advertises this plan; coverage, eligibility, premium and claim conditions are not stated on the page.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 360000
-    self_employed: 360000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Resident Indian; current AU published salaried age range 21-60 and self-employed age range 25-65. Card-specific
+    income and score thresholds not published.
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.residency
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/tejas-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, cashback, points, entertainment]
+  last_verified_on: '2026-11-01'
+  tags:
+  - mid
+  - cashback
+  - points
+  - entertainment

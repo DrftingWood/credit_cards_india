@@ -1,23 +1,23 @@
-id: icici-emirates-emeralde
+﻿id: icici-emirates-emeralde
 name: Emirates Skywards ICICI Bank Emeralde Credit Card
 image_path: /cards/icici/emirates-emeralde.webp
 issuer: icici
-network: visa
-network_tier: infinite
+network:
+network_tier:
 tier: super-premium
 card_type: credit
 co_brand:
   partner: Emirates Skywards
   category: airline
 status: active
-launched_on: '2022-07-01'
-discontinued_on: null
+launched_on: '2022-03-15'
+discontinued_on:
 fees:
-- effective_from: 2026-07-03
-  effective_until: null
+- effective_from: '2026-10-27'
+  effective_until:
   joining_fee_inr: 10000
   annual_fee_inr: 10000
-  fee_waiver: null
+  fee_waiver:
   forex_markup_pct: 3.5
   finance_charge_monthly_pct: 3.75
   cash_advance_fee:
@@ -46,26 +46,33 @@ fees:
   gst_applicable: true
   source:
     url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
     confidence: high
     local_refs:
-    - docs/sources/icici/_shared/mitc_cc.pdf
+    - docs/sources/icici/emirates-emeralde/mitc-cc-retrieved-2026-10-27.pdf
     fields_verified:
-    - fees.finance_charge_monthly_pct
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
     - fees.forex_markup_pct
-  notes: Late payment fee ranges ₹100 to ₹1,300. ATM withdrawal and revolve (minimum
-    due paid) charged 3.75% interest per month.
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.late_payment_slabs
+    - fees.overlimit_fee
+    - fees.gst_applicable
+  notes: Joining and annual fees ?10,000 + GST; annual fee is not waived in the current MITC. Monthly finance
+    rate is 3.75%; other recorded fee amounts follow the current ICICI MITC. Verification snapshot; the MITC
+    PDF is dated 9 Oct 2026.
 rewards:
-- effective_from: 2026-07-03
-  effective_until: null
+- effective_from: '2026-10-27'
+  effective_until:
   currency: miles
   currency_name: Skywards Miles
   base:
     rate: 2
     per_inr: 100
-    unit_value_inr: 0.9
-    unit_value_inr_realized: 0.65
+    unit_value_inr:
+    unit_value_inr_realized:
   exclusions:
   - fuel
   - cash-advance
@@ -79,95 +86,142 @@ rewards:
   redemption:
   - type: airmiles
     program: Emirates Skywards
-    rate_inr_per_unit: 0.9
+    rate_inr_per_unit:
   source:
-    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
-    retrieved_on: '2026-07-05'
-    type: issuer-page
-    confidence: medium
-    notes: 'Verified 2026-07-05: Emirates Skywards miles; heavy YQ fuel surcharges
-      drag India economy to ~Rs0.6-0.7 (was wrongly ~Rs0.2).'
-  notes: Earn 2 Skywards Miles per ₹100 on both domestic and international spend;
-    miles credited to Emirates Skywards account at end of billing cycle.
-  mcc_exclusions:
-  - '6513'
+    url:
+      https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/emirates_x-icici-emeralde-tnc-latest.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/icici/emirates-emeralde/emirates-x-icici-emeralde-tnc-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.currency
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.exclusions
+    - rewards.redemption
+  notes: Earn 2 Skywards Miles per ?100 on eligible retail spend; the issuer T&C lists zero earn for fuel,
+    cash advances/ATM withdrawals, EMI, balance transfers, PLCC, fees/charges, insurance, utilities,
+    government, education, rent, and e-wallet loads. Reversed transactions do not earn; refunds adjust
+    subsequent miles. Miles post within 48 hours of statement generation, subject to account status, and
+    expire under Emirates Skywards rules after three years. No fixed INR value is published; redemption value
+    varies by reward and itinerary.
 benefits:
-- effective_from: 2026-07-03
-  effective_until: null
+- effective_from: '2026-10-27'
+  effective_until:
   lounge_access:
     domestic:
       visits_per_cycle: unlimited
       cycle: annual
       guests_per_visit: 0
       via:
-      - visa
+      - issuer-direct
+      notes: Unlimited complimentary domestic lounge access for primary cardholder; use the ICICI card.
+        Current issuer page does not describe guest access.
     international:
       visits_per_cycle: unlimited
       cycle: annual
       guests_per_visit: 0
       via:
       - priority-pass
+      - dreamfolks
+      notes: Unlimited international lounge access for the primary cardholder. Priority Pass applies to cards
+        applied for on/after 15 Nov 2024; DreamFolks applies to earlier applicants. No complimentary guest
+        visits are stated.
   movies:
     type: bogo
     partner: BookMyShow
     max_per_cycle: 4
     cycle: monthly
     cap_inr: 750
-    notes: Buy one ticket and get up to ₹750 off on the second ticket, four times
-      every month.
+    notes: Card page advertises up to four uses per month, with up to ?750 off the second ticket. Since 1 Apr
+      2026, eligibility requires ?25,000 spend in the preceding spends quarter to unlock the following
+      calendar quarter; supplementary card members must individually meet the threshold. Issuer BookMyShow T&C
+      lists a ?750 ticket cap for Emeralde but does not explicitly name the Emirates Emeralde variant, while
+      the Emirates Emeralde card page advertises this offer. Confirm exact eligible ticket count at booking;
+      page FAQ has separate one-per-month wording for dual-network card variants.
   milestones:
   - spend_inr: 1500000
     cycle: annual
-    benefit: Emirates Skywards Gold Tier Membership on ₹15 lakh spend (including minimum
-      ₹50,000 on Emirates flights via Emirates.com or the Emirates Contact Centre)
-      in the anniversary year; Gold Tier active upon payment of the next year's annual
-      fee, must be re-achieved each year to retain
-    value_inr: null
+    benefit: Emirates Skywards Gold Tier upgrade after ?15 lakh qualifying retail spend in the anniversary
+      year, including at least ?50,000 on Emirates bookings. Upgrade is after 12 months and payment of the
+      following annual fee; account must be regular, and milestone exclusions/reversals apply. Re-qualify each
+      anniversary year.
+    value_inr:
     reward_kind: other
     trigger_window: anniversary-year
   welcome:
-  - condition: Joining fee paid
-    benefit: 10,000 Skywards Miles
-    value_inr: 8000
-    window_days: null
-  - condition: Card issuance
-    benefit: Emirates Skywards Silver Tier Membership
-    value_inr: null
-    window_days: null
+  - condition: Primary cardholder; joining fee paid (excluding taxes) by the next statement due date; account
+      active and not delinquent at credit.
+    benefit: 10,000 Emirates Skywards Miles
+    value_inr:
+    window_days:
+  - condition: Primary cardholder; joining fee paid; while the card remains active.
+    benefit: Complimentary Emirates Skywards Silver Tier membership
+    value_inr:
+    window_days:
   fuel_surcharge_waiver:
     pct: 1.0
-    min_txn_inr: null
+    min_txn_inr:
     max_txn_inr: 4000
-    cap_per_cycle_inr: null
-    cycle: monthly
+    cap_per_cycle_inr:
+    notes: 1% fuel surcharge waiver on fuel transactions up to ?4,000 at any fuel outlet. Current product page
+      does not publish a minimum transaction or cycle cap.
   other:
-  - name: Annual renewal miles
-    description: Bonus 10,000 Skywards Miles as annual benefit on payment of the annual
-      fee; Emirates Skywards Silver Tier retained while the card is active (Gold Tier
-      is milestone-linked, not automatic on renewal)
-    value_inr: null
+  - name: Annual renewal miles and Skywards Silver
+    description: Primary cardholder may receive 10,000 Skywards Miles after paying the annual fee (excluding
+      taxes) by the next statement due date; Silver membership continues while the card is active. Miles are
+      subject to account status and are credited within 48 hours of fee payment.
+    value_inr:
   - name: Emirates flight discount
-    description: Up to 10% discount on Emirates flight bookings via Emirates.com using
-      promo code INICI26
-    value_inr: null
+    description: Promo code INICI26 gives up to 10% off eligible Emirates airfare booked online from India
+      with this co-branded card; valid for bookings 15 Apr 2026 through 28 Feb 2027. Special fares, taxes and
+      fuel surcharges are excluded; cannot be combined with other discounts.
+    value_inr:
   source:
     url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
-    retrieved_on: 2026-07-03
+    retrieved_on: '2026-10-27'
     type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/emirates-emeralde/emirates-x-icici-emeralde-tnc-retrieved-2026-10-27.pdf
+    - docs/sources/icici/_shared/inici26-cugo-tnc.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.movies
+    - benefits.milestones
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+  notes: BookMyShow eligibility now has a ?25,000 preceding-quarter spend gate. Card page says four monthly
+    uses; issuer BookMyShow T&C does not expressly list the Emirates variant, so exact availability/count
+    remains a source conflict. Self-employed eligibility is also inconsistent across product page text/image
+    (?30 lakh/?45 lakh).
 eligibility:
-  min_age: 21
-  max_age: null
+  min_age:
+  max_age:
   income_inr_annual:
     salaried: 3000000
-    self_employed: 3000000
-  credit_score_min: 750
+    self_employed:
+  credit_score_min:
   residency: resident-indian
-  notes: Indian citizen over 21. Salaried minimum monthly income ₹2,50,000; self-employed
-    minimum annual income ₹30,00,000.
+  notes: 'Issuer page says Indian citizen over 21 and salaried monthly income ??2,50,000 (annualized to ?3,000,000).
+    Exact age boundary is not encoded. Self-employed income conflicts: visible page text says ??30,00,000/year,
+    while the accompanying image text says ??45,00,000/year; structured value left unknown pending issuer clarification.
+    Credit-score cutoff is unpublished.'
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.residency
+    - eligibility.income_inr_annual.salaried
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emirates-skywards/emirates-emeralde
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-10-27'
   tags:
   - super-premium
   - airline
@@ -175,3 +229,4 @@ metadata:
   - miles
   - lounge
   - travel
+

@@ -3,7 +3,7 @@ name: IDFC FIRST Power+ Credit Card
 image_path: /cards/idfc-first/power-plus.webp
 issuer: idfc-first
 network: rupay
-network_tier: select
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -11,84 +11,161 @@ co_brand:
   category: fuel
   partner_website: https://www.hindustanpetroleum.com
 status: active
-launched_on: 2022-09-01
+launched_on: null
 discontinued_on: null
 fees:
-- effective_from: 2022-09-01
+- effective_from: 2026-10-25
   effective_until: null
   joining_fee_inr: 499
   annual_fee_inr: 499
   fee_waiver:
     spend_inr: 150000
     cycle: annual
-  forex_markup_pct: 3.5
-  finance_charge_monthly_pct: 3.5
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: null
+  finance_charge_tiers: []
   cash_advance_fee:
+    flat_inr: 199
+  foreign_atm_inr: null
+  overlimit_fee:
     pct: 2.5
-    min_inr: 500
+    min_inr: 550
   gst_applicable: true
   source:
     url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-27
     type: issuer-page
-    confidence: high
+    confidence: medium
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.flat_inr
+    - fees.overlimit_fee.pct
+    - fees.overlimit_fee.min_inr
+    local_refs:
+    - docs/sources/idfc-first/power-plus/current-mitc.pdf
+    - docs/sources/idfc-first/power-plus/zero-forex-notice-2026-09-17.pdf
+    notes: >-
+      IDFC FIRST Bank's 17-Sep-2026 announcement confirms zero forex markup for all
+      existing and new cards, superseding the older general 3.5% MITC entry. The
+      announcement: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/news-media/press-release/Press-Release-IDFC-FIRST-Bank-introduces-Zero-Forex-Markup-across-all-its-Credit-Cards-existing-and-new-1709.pdf.
+      product page gives dynamic APR 0.71%-3.85% monthly (8.5%-46.2%
+      p.a.), so there is no single current monthly rate. It states interest-free ATM
+      withdrawals until the due date with a flat INR 199 per withdrawal, represented
+      as a flat cash advance fee. The older 2.5%/INR 500 cash fee and fixed
+      3.5% monthly interest are removed. Page states 15% of total due late fee, min
+      INR 100/max INR 1,300. Source references: current product page and
+      https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/MITC-Document-Customer.pdf?77=
 rewards:
-- effective_from: 2022-09-01
+- effective_from: 2026-06-18
   effective_until: null
-  currency: cashback
+  currency: points
   currency_name: Reward Points
   base:
-    rate: 2.5
+    rate: 3
     per_inr: 150
     unit_value_inr: 0.25
-    unit_value_inr_realized: 0.25
+    unit_value_inr_realized: null
+    excluded_categories:
+    - fuel
+    - groceries
+    - utilities
+    - insurance
+    - emi
+    notes: >-
+      The source's accelerator schedule separately awards points on HPCL fuel,
+      grocery/utility and IDFC FASTag. Ordinary retail and UPI purchases earn 3 points
+      per INR 150. The issuer describes HP Pay Happy Coins as a separate loyalty-wallet
+      reward, not card Reward Points. Reward Points are earned only up to the credit
+      limit per billing cycle; they are withheld/reversed for a cycle when at least the
+      Minimum Amount Due is not paid by the due date. The INR 0.25 point value is
+      directly stated for travel-booking redemption; universal realized value is not
+      asserted.
   accelerated:
-  - category: hpcl-fuel-via-hp-pay
+  - category: hpcl-fuel
     canonical_categories:
     - fuel
-    multiplier: 1
-    effective_rate: 5
-    cap_per_cycle: 1000
-    cap_unit: cashback-inr
-    cycle: monthly
-    merchants:
-    - hpcl-fuel-stations
-    - hp-pay
+    effective_rate: 30
+    effective_per_inr: 150
+    cap_per_cycle: 2400
+    cap_unit: points
+    cycle: statement
     channel:
+      required: false
       class: fuel-network
       merchants:
       - hpcl
-      - hp-pay
-    notes: 5% cashback on fuel at HPCL via HP Pay app (up to ₹1,000/month).
+    notes: Up to INR 12,000 eligible HPCL fuel spend per statement cycle; cap 2,400 points. HP Pay app is not required for card points.
   - category: grocery-utility
     canonical_categories:
     - groceries
     - utilities
-    multiplier: 1
-    effective_rate: 2.5
-    cap_per_cycle: 500
-    cap_unit: cashback-inr
+    effective_rate: 30
+    effective_per_inr: 150
+    cap_per_cycle: 400
+    cap_unit: points
+    cycle: statement
+    cap_group: grocery-utility-combined
+    notes: Combined eligible grocery and utility spend capped at INR 2,000 per statement cycle (400 points), identified by MCC.
+  - category: idfc-first-fastag
+    canonical_categories:
+    - other
+    effective_rate: 30
+    effective_per_inr: 150
+    cap_per_cycle: 200
+    cap_unit: points
+    cycle: statement
+    notes: IDFC FIRST FASTag recharges through IDFC FIRST Mobile Banking or FIRST Forward App; eligible recharge spend capped at INR 1,000 per statement cycle.
+  - category: travel-gallery-hotel-flight-bonus
+    canonical_categories:
+    - travel
+    effective_rate: null
+    effective_per_inr: 150
+    cap_per_cycle: 8000
+    cap_unit: points
     cycle: monthly
+    notes: >-
+      Since 18-Jun-2026, issuer terms state 26.7% bonus Reward Points on hotels and
+      13.3% on flights booked in the IDFC FIRST mobile app, capped at 8,000 bonus
+      points per calendar month. The percentage's calculation basis is not encoded
+      because the terms' displayed “up to” rate is not safely convertible to the
+      schema's absolute earn units. EMI transactions and Cash+Points bookings do not
+      earn this bonus; credited after travel/check-in.
   exclusions:
-  - wallet-loads
-  - rent
   - insurance-premiums
   - emi
-  mcc_exclusions:
-  - '6513'
+  - cash-advance
+  mcc_exclusions: []
   redemption:
-  - type: statement-credit
-    rate_inr_per_unit: 0.25
   - type: catalog
-    program: IDFC FIRST Rewards
+    program: IDFC FIRST Travel & Shop booking platform
     rate_inr_per_unit: 0.25
   source:
-    url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
-    retrieved_on: 2026-07-03
-    type: issuer-page
+    url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/Savings-Maximiser-FIRST-Power-plus.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
     confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.effective_per_inr
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cap_unit
+    - rewards.redemption.rate_inr_per_unit
+    local_refs:
+    - docs/sources/idfc-first/power-plus/savings-maximiser.pdf
+    - docs/sources/idfc-first/power-plus/power-plus-communication-may-26.pdf
+    - docs/sources/idfc-first/power-plus/power-plus-travel-shop-terms.pdf
+    notes: >-
+      2026 Savings Maximiser PDF confirms earn rates and spend caps. Travel bonus uses
+      separate issuer terms effective 18-Jun-2026:
+      https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/cards/FIRST-Powerplus-TnC-Travel-Shop.pdf
 benefits:
-- effective_from: 2022-09-01
+- effective_from: 2026-10-25
   effective_until: null
   lounge_access:
     domestic:
@@ -97,37 +174,98 @@ benefits:
       guests_per_visit: 0
       via:
       - rupay
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      notes: INR 20,000 spend in the current calendar month unlocks lounge access in the next month; one visit per quarter.
   welcome:
-  - condition: Spend ₹5,000 within 90 days
-    benefit: BookMyShow voucher worth ₹500 + ₹250 HPCL fuel voucher
-    value_inr: 750
-    window_days: 90
-  fuel_surcharge_waiver:
-    pct: 1.0
-    min_txn_inr: 200
-    max_txn_inr: 5000
-    cap_per_cycle_inr: 200
+  - condition: Primary card; joining fee paid; first eligible HPCL fuel transaction of INR 500+ within 60 days of card setup; not on UPI or add-on card spends
+    benefit: INR 500 HPCL gift voucher
+    value_inr: 500
+    window_days: 60
+  - condition: First EMI transaction of INR 2,500+ within 30 days of setup; 6-month or longer tenure; primary card
+    benefit: 5% cashback up to INR 1,000
+    value_inr: 1000
+    window_days: 30
+  insurance:
+  - type: personal-accident
+    sum_insured_inr: 200000
+  - type: lost-card-liability
+    sum_insured_inr: 25000
+  fuel_surcharge_waiver: null
+  movies:
+    type: discount
+    partner: District by Zomato
+    max_per_cycle: 1
     cycle: monthly
-  concierge: false
+    cap_inr: 100
+    notes: 25% discount, up to INR 100 once monthly; from 18-Jun-2026 requires any card transaction in the previous calendar month.
+  other:
+  - name: Complimentary roadside assistance
+    description: Up to 4 services per year through Global Assure; active card and recent transaction conditions apply.
+    value_inr: 1399
+  - name: HP Pay Happy Coins
+    description: 6 Happy Coins per INR 100 eligible HP Pay fuel spend, up to 600 coins/month (INR 10,000 spend); separate from card Reward Points and subject to HP Pay terms.
+    value_inr: null
   source:
     url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
-    retrieved_on: 2026-07-03
+    retrieved_on: 2026-10-27
     type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.movies.max_per_cycle
+    - benefits.insurance.sum_insured_inr
+    - benefits.movies.cap_inr
+    - benefits.other.value_inr
+    local_refs:
+    - docs/sources/idfc-first/power-plus/power-plus-privileges.pdf
+    - docs/sources/idfc-first/power-plus/power-series-welcome-offer-terms.pdf
+    notes: >-
+      Issuer page says Power+ has no fuel surcharge waiver, while the current MITC
+      schedule lists a 1% waiver for INR 200-5,000 fuel purchases with the Power+ cap
+      marked “Not Applicable” (i.e. no numeric cap). Conflict left unresolved; no
+      structured waiver is asserted. Roadside assistance value up to INR 1,399 and
+      up to four services yearly; eligibility requires an active card with a recent
+      transaction. Sources also include IDFC FIRST Power+ privileges and the current
+      MITC schedule. The dedicated offer details specify the HPCL welcome voucher
+      within 60 days for cards set up from 10-Jun-2025, while a general FAQ on the
+      product page says 30 days; the dedicated current terms are followed and the
+      discrepancy remains documented.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: null
   income_inr_annual:
     salaried: 300000
     self_employed: 300000
-  credit_score_min: 720
+  credit_score_min: null
   residency: resident-indian
+  notes: >-
+    Issuer's combined Power/Power+ eligibility section says age 21+ and income at
+    least INR 3 lakh/year; a separate eligibility FAQ gives 21+ for salaried and 25+
+    for self-employed applicants. The schema cannot encode occupational age variation;
+    self-employed minimum age 25 is preserved here. Issuer says “healthy/good” credit
+    score and acceptable credit utilisation, but publishes no numeric score threshold.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-10-27'
   tags:
   - co-branded
   - fuel
   - hpcl
   - rupay
   - entry
+  - surcharge-waiver-conflict
+  - network-tier-unverified

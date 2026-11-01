@@ -1,133 +1,180 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-my-zone
 name: Axis Bank MY ZONE Credit Card
 image_path: /cards/axis/my-zone.webp
 issuer: axis
-network: mastercard
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2018-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2018-01-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-      local_refs:
-        - docs/sources/axis/_shared/mitc-credit-cards.pdf
-      fields_verified:
-        - fees.finance_charge_monthly_pct
-        - fees.forex_markup_pct
-
+- effective_from: 2026-08-28
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/my-zone/sosc-credit-cards-retrieved-2026-10-27.pdf
+    - docs/sources/axis/my-zone/mitc-credit-cards-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: 'Current detailed product page and October KFS support INR 500 joining and annual fees; KFS has no annual-fee waiver. Current finance is 3.75% monthly (55.55% p.a.), cash advance 2.5% (minimum INR 500), foreign currency fee 3.5%, cash payment INR 175, card replacement nil, duplicate statement/charge slip/outstation cheque waived, mobile alerts free, hotlisting nil and balance enquiry waived. Overlimit 2.5% (minimum INR 500); cheque/auto-debit reversal 2% (minimum INR 500); railway surcharge as prescribed; reward point redemption fee applies, amount unspecified. Late fee: nil below INR 500, INR 500 for INR 501-5,000, INR 750 for INR 5,001-10,000, INR 1,200 for INR 10,001-50,000, INR 1,300 above INR 50,000, plus INR 100 after two consecutive unpaid MAD cycles until cleared; exact INR 500 is unassigned. Current product page lists DCC 3.5% plus GST. Other current transaction fees include rent 1% per transaction; third-party education 1% per transaction; wallet load 1% at cumulative INR 10,000 per statement; fuel 1% at INR 50,000 per statement; utilities 1% at INR 25,000 per statement; online skill gaming 1% at INR 10,000 per statement. T&Cs are announced effective 28-Aug-2026. Axis permits card applicants to choose among Mastercard, Visa and RuPay networks; this record cannot assert one network variant.'
 rewards:
-  - effective_from: 2018-01-01
-    effective_until: null
-    currency: points
-    currency_name: EDGE Reward Points
-    base:
-      rate: 4
-      per_inr: 200
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.18
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-    redemption:
-      - type: catalog
-        program: EDGE Rewards
-        rate_inr_per_unit: 0.2
-      - type: statement-credit
-        rate_inr_per_unit: 0.2
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
-    mcc_exclusions: ['6513']
+- effective_from: 2026-08-28
+  effective_until: null
+  currency: points
+  currency_name: EDGE Reward Points
+  base:
+    rate: 4
+    per_inr: 200
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated: []
+  exclusions:
+  - fuel
+  - insurance-premiums
+  - wallet-loads
+  - rent
+  - utilities
+  - education
+  - government
+  - emi
+  - jewellery
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
+  - cash-advance
+  redemption:
+  - type: catalog
+    program: EDGE Rewards
+    rate_inr_per_unit: null
+    constraints: Redeem through EDGE Rewards catalogue; redemption fee applies. No universal INR-per-point value is published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/my-zone/myzone-revision-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.exclusions
+  notes: Current card page states 4 EDGE points per INR 200 and no points on movies, fuel, insurance, wallet, rent, utilities, education, government institutions, EMI, jewellery, gift cards, bridge fees, road fees and tolls. Movies are documented in notes because the reward exclusion enum has no movie category; exact movie MCCs are not published for this offer. The 2025 card-specific revision also explicitly names utility/telecom, cash advances and repayments; cash advances are listed in the schema, while repayments have no enum category and remain documented here. Point balance may be forfeited 30 days after card closure or when MAD remains overdue over 90 days. Universal cash value is unpublished.
+  mcc_exclusions: []
 benefits:
-  - effective_from: 2018-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
-    milestones:
-      - spend_inr: 150000
-        cycle: annual
-        benefit: "1,000 EDGE REWARD Points on annual spends of ₹1.5 lakhs in the card anniversary year"
-        value_inr: 200
-        reward_kind: points
-        reward_units: 1000
-        reward_currency_name: EDGE Reward Points
-        trigger_window: anniversary-year
-    movies:
-      type: bogo
-      partner: District
-      max_per_cycle: 1
-      cycle: monthly
-      cap_inr: 200
-    other:
-      - name: Swiggy instant discount
-        description: Flat ₹120 off on food delivery at Swiggy with My Zone Credit Card.
-      - name: Cleartrip travel benefit
-        description: Flat 7% off (up to ₹2,000) on domestic and international flight bookings and flat 18% off (up to ₹4,000) on hotel bookings via Cleartrip, once per month each.
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 500
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-08-28
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: null
+      via:
+      - issuer-direct
+      notes: One visit per calendar quarter to select domestic lounges. Requires INR 50,000 eligible spend in previous 3 calendar months; newly issued card spend gate is waived for issuance month and the following 3 calendar months. Guest access not specified.
+  milestones:
+  - spend_inr: 150000
+    cycle: annual
+    benefit: 1,000 EDGE Reward Points on eligible annual spend in the card anniversary year; spends assessed 60 days after anniversary to remove reversals/cancellations; eligible points credited within 90 days
+    value_inr: null
+    reward_kind: points
+    reward_units: 1000
+    reward_currency_name: EDGE Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  welcome:
+  - condition: First card purchase within 30 days of issuance; first-year benefit only and subject to promotional eligibility
+    benefit: Complimentary SonyLIV Premium annual subscription
+    value_inr: 1499
+    window_days: 30
+  movies:
+    type: bogo
+    partner: District
+    max_per_cycle: null
+    cycle: monthly
+    cap_inr: 200
+    notes: 100% off second ticket using code AXIS200; maximum discount INR 200 per month. No EDGE points on movie transactions. Exact number of eligible booking attempts not separately stated.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 400
+    cycle: statement
+    notes: 1% refund on fuel transactions of INR 400-4,000, maximum INR 400 per statement cycle. GST on fuel surcharge is not refunded; some stations levy INR 10 + GST instead of 1% + GST. No EDGE points on fuel.
+  concierge: false
+  other:
+  - name: Swiggy instant discount
+    description: INR 120 off per order on minimum INR 500 spend, code AXIS120, twice monthly per user ID; not valid at Haldiram's restaurants.
+  - name: Cleartrip travel discount
+    description: 7% off domestic/international flights up to INR 2,000 and 18% off hotels up to INR 4,000; each available once per use per month with code CTAXISMYZONE.
+  - name: Dining Delights
+    description: Axis Dining Delights partner restaurant offer; current My Zone page does not state a fixed discount or cap.
+  - name: Wednesday Delight
+    description: Rotating Wednesday merchant offers; current terms vary and are not encoded as guaranteed fixed savings.
+  - name: EMI conversion
+    description: Contact Axis to convert eligible transactions exceeding INR 1,500 into EMIs.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/my-zone/domestic-lounge-program-retrieved-2026-10-27.pdf
+    - docs/sources/axis/my-zone/myzone-revision-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.milestones
+    - benefits.welcome
+    - benefits.movies
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: either
-
+  notes: Axis lists primary applicants aged 18-70 and permits resident Indians or NRIs. Income proof is requested but no card-specific minimum is published; no bureau-score threshold is stated. Bank retains right to approve or decline.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-my-zone-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entertainment, entry, points]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entertainment
+  - entry
+  - points
+  - network-unverified
+  - network-tier-unverified

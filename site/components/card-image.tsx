@@ -262,7 +262,7 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
                 {card.name}
               </div>
               <div className="text-[10px] uppercase tracking-wider text-white/60 font-medium mt-0.5">
-                {card.network_tier ? card.network_tier.replace("-", " ") : card.network}
+                {card.network_tier ? card.network_tier.replace("-", " ") : card.network ?? "Network not stated"}
               </div>
             </div>
 

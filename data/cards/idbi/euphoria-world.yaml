@@ -8,110 +8,121 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2018-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2018-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 1499
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-      conditions: "Annual fee waived on spends of ₹1,50,000 or more in the preceding anniversary year."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.40
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.idbi.bank.in/credit-card.aspx
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "IDBI Euphoria World: zero joining fee, ₹1,499 annual fee, waived on ₹1.5L annual spend."
-
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 1499
+  fee_waiver:
+    spend_inr: 150000
+    cycle: annual
+    conditions: 'Issuer product page says fee waiver on spends of more than ₹1,50,000; key fact statement says ₹1,50,000. Boundary requires confirmation.'
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 2.9
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.idbi.bank.in/euphoria-credit-card.aspx
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: Current issuer search-indexed product page and KFS. Product page/PDF direct retrieval returned HTTP 502/timeout; waiver boundary differs between product page and KFS.
 rewards:
-  - effective_from: 2018-01-01
-    effective_until: null
-    currency: points
-    currency_name: Delight Points
-    base:
-      rate: 3
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    accelerated:
-      - category: travel-booking
-        canonical_categories: [travel]
-        multiplier: 2
-        effective_rate: 6
-        cap_per_cycle: unlimited
-        cap_unit: points
-        cycle: monthly
-        notes: "6 Delight Points per ₹100 spent on airlines, hotels, IRCTC, and bus bookings."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDBI Delight
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.idbi.bank.in/credit-card.aspx
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "Base 3 Delight Points/₹100; 2X (6 Delight Points/₹100) on travel."
-
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: Delight Points
+  base:
+    rate: 3
+    per_inr: 100
+    unit_value_inr: 0.0025
+    unit_value_inr_realized: 0.0025
+  accelerated:
+  - category: travel-booking
+    canonical_categories:
+    - travel
+    multiplier: 2
+    effective_rate: 6
+    notes: 6 Delight Points per ₹100 on airlines, hotels, IRCTC and bus bookings; current issuer page does not state a separate cap.
+  redemption:
+  - type: statement-credit
+    program: IDBI Delight
+    rate_inr_per_unit: 0.0025
+    min_units: 4000
+  - type: other
+    program: IDBI Delight
+    min_units: 1000
+  source:
+    url: https://www.idbi.bank.in/credit-card-faq.aspx
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: FAQ states 1 Delight Point = 0.25 paisa (₹0.0025), with 4,000-point minimum for cashback and 1,000 for services; verify against live redemption catalog. Current exact excluded transaction categories and MCCs could not be confirmed.
 benefits:
-  - effective_from: 2018-01-01
-    effective_until: null
-    welcome:
-      - condition: "Spend ₹1,500 within 60 days of issuance"
-        benefit: "4,000 Delight Points"
-        value_inr: 1000
-        window_days: 60
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [mastercard]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 500
-      cycle: monthly
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 2500000
-        conditions: "Complimentary Air Travel Accident Insurance."
-    concierge: true
-    source:
-      url: https://www.idbi.bank.in/credit-card.aspx
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-10-27
+  effective_until: null
+  welcome:
+  - condition: Card activation
+    benefit: 500 Delight Points
+  - condition: First transaction of ₹5,000 or more within 30 days
+    benefit: 750 Delight Points
+    window_days: 30
+  milestones:
+  - spend_inr: 200000
+    reward_units: 1500
+    cycle: annual
+    benefit: 1,500 Delight Points at ₹2 lakh net annual spend.
+  - spend_inr: 400000
+    reward_units: 2000
+    cycle: annual
+    benefit: 2,000 Delight Points at ₹4 lakh net annual spend.
+  lounge_access:
+    domestic:
+      visits_per_cycle: 12
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - mastercard
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 500
+    cycle: monthly
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 2500000
+    conditions: Air accident cover up to ₹25 lakh; issuer FAQ says at least two ATM/POS/e-commerce transactions in the prior three months and claim within one year.
+  - type: lost-card-liability
+    sum_insured_inr: 500000
+    conditions: Zero lost-card liability up to ₹5 lakh for fraudulent transactions reported within 48 hours, per issuer FAQ.
+  concierge: true
+  source:
+    url: https://www.idbi.bank.in/euphoria-credit-card.aspx
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: Current product-page search extract; direct page retrieval returned HTTP 502. Mastercard World concierge is a network service subject to Mastercard discretion. Current issuer-listed welcome/milestone rewards supersede the older 4,000-point offer found in a legacy guide.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Current issuer page lists resident Indian applicants aged 21–60 for salaried and up to 65 for self-employed; addon cardholder age 18+. Product-specific income and credit-score thresholds not published in sources reviewed. Historical launch date not established.
 application:
-  apply_url: https://www.idbi.bank.in/credit-card.aspx
-
+  apply_url: https://www.idbi.bank.in/euphoria-credit-card.aspx
 metadata:
-  last_verified_on: '2026-10-24'
-  tags: [premium, mastercard-world, travel, lounge, points]
+  last_verified_on: '2026-10-27'
+  tags:
+  - premium
+  - mastercard-world
+  - travel
+  - lounge
+  - points

@@ -1,1 +1,96 @@
-{"_source":"HSBC product-page HTML","verified_on":"2026-07-04","corrections":{"premier":"joining 0->12000 (annual 20000 + forex 0.99 confirmed)"}}
+{
+  "_source": "HSBC product-page HTML",
+  "verified_on": "2026-10-27",
+  "corrections": {
+    "premier": "joining 0->12000 (annual 20000 + forex 0.99 confirmed)"
+  },
+  "rupay_cashback": {
+    "result": "Current issuer product page, MITC, Service Guide, welcome, EazyDiner and forex terms reviewed; corrected fees, cashback, eligibility, lounge discrepancy and current offers.",
+    "pdfs_downloaded": 5,
+    "local_directory": "docs/sources/hsbc/rupay-cashback/",
+    "unresolved": [
+      "launch date not established by primary issuer announcement",
+      "JCB international acceptance does not fit single-network schema",
+      "product page lounge count conflicts with older Service Guide key-summary count",
+      "cashback MCC exclusions are too extensive for complete structured YAML coverage"
+    ]
+  },
+  "travelone": {
+    "result": "Current issuer product page, MITC, KFS, Service Guide, Rewards T&C, intro offer and milestone offer reviewed; corrected stale fees, points cap, unsupported partner cash values, MCC exclusions, benefits and eligibility.",
+    "pdfs_downloaded": 6,
+    "local_directory": "docs/sources/hsbc/travelone/",
+    "unresolved": [
+      "exact launch date not established from primary issuer sources",
+      "10,000-point milestone threshold wording differs between product page (more than INR1,200,000) and offer T&C (INR1,200,000)",
+      "HSBC catalogue value general page spans INR0.25-INR1.00; no card-specific fixed TravelOne INR value was asserted",
+      "partner miles/points have no universal INR value",
+      "Mastercard World platform offer conditions can vary by partner"
+    ]
+  },
+  "taj": {
+    "result": "Reviewed current HSBC Taj product/rewards pages, current card-specific offer terms, lounge terms, EazyDiner terms, service guide, current KFS, and current card-specific important terms. Corrected stale network, fees, rewards, lounge structure, benefits, eligibility, and point redemption model.",
+    "pdfs_downloaded": 6,
+    "shared": [
+      "docs/sources/hsbc/_shared/credit-card-key-fact-statement-retrieved-2026-10-26.pdf"
+    ],
+    "local_directory": "docs/sources/hsbc/taj/",
+    "unresolved": [
+      "Current product page eligibility (INR36L salaried/INR45L self-employed, resident or HSBC-account NRI, broad city list) conflicts with card-specific Important Terms PDF (INR40L/INR60L, resident-only, invite basis and narrower city list); structured data follows the current product page.",
+      "No numeric bureau-score threshold published.",
+      "Launch date uses the issuer announcement date 2024-12-17; exact first-issuance date not independently established.",
+      "Golf page states 12 games and lessons per year but does not clarify whether the count is shared or separate.",
+      "Current offer terms are changeable; no fixed value assigned to hotel vouchers."
+    ]
+  },
+  "live_plus": {
+    "result": "Rechecked current Live+ page, product-specific Service Guide, MITC, KFS, welcome cashback, fuel offer, and Visa Infinite welcome campaign; corrected latest fees/rewards/eligibility/network/lounge/welcome details and archived official sources.",
+    "pdfs_downloaded": 7,
+    "local_directory": "docs/sources/hsbc/live-plus/",
+    "unresolved": [
+      "exact product launch date not established; cleared the unsupported date",
+      "updated Live+ page/service-guide summary conflicts with older general guide language on cashback for international transactions; current product page and summary state no international cashback",
+      "generic HSBC airport lounge FAQ still says four domestic annual visits; product page and Live+ Service Guide state two domestic plus one international per year",
+      "full current issuer MCC table encoded as exclusions, but HSBC still controls classification and merchants may process under different MCCs",
+      "ongoing partner privileges can change and are not exhaustively represented",
+      "accelerated-category treatment after the INR1,200 monthly cashback cap is not explicitly stated; not asserted as a verified 1.5% rule"
+    ]
+  },
+  "premier": {
+    "result": "Reviewed current HSBC Premier product, rewards, fees, card-specific MITC, intro offer, rewards terms and insurance terms; corrected unsupported fee waiver spend threshold, interest/cash-advance fees, accelerated reward scope, partner point valuations, lounge/insurance details and welcome offer.",
+    "pdfs_downloaded": 3,
+    "local_directory": "docs/sources/hsbc/premier/",
+    "unresolved": [
+      "exact card launch date not established from current primary issuer sources",
+      "current issuer page does not name Mastercard World Elite tier; cleared the unsupported tier",
+      "reward value is redemption-dependent; INR1 applies to Apple while other catalog values vary; no partner INR valuations asserted",
+      "Travel with Points current page confirms 6X flights and 12X hotel bookings through 2026-12-31; car-rental offer rate is ambiguous between current product and offer pages",
+      "current accessible insurance terms list coverage types but do not publish numeric sums insured",
+      "card-specific eligibility is Premier relationship only; Premier qualifying-balance threshold differs for existing accounts opened before 2026-01-01"
+    ]
+  },
+  "rupay_platinum": {
+    "result": "Reviewed current RuPay Platinum product/rewards pages, card-specific MITC, Service Guide, KFS, welcome offer and EazyDiner terms; corrected interest, welcome offers, travel accelerator, redemption and partner transfer ratios, fuel waiver and eligibility; documented JCB international acceptance alongside RuPay network.",
+    "pdfs_downloaded": 5,
+    "local_directory": "docs/sources/hsbc/rupay-platinum/",
+    "unresolved": [
+      "exact card launch date not established from primary issuer source; cleared unsupported date",
+      "international JCB acceptance is supplemental to the RuPay network and does not fit the single-network field",
+      "current product page displays multiple offers with different eligibility/expiry dates; these are dynamic and must be refreshed",
+      "the issuer advertises annual fuel-waiver savings up to INR3,000, but detailed per-cycle cap is not shown in the current MITC",
+      "product page does not currently advertise complimentary airport lounge visits; none are encoded"
+    ]
+  },
+  "visa_platinum": {
+    "result": "Reviewed current Visa Platinum product/rewards pages, card-specific MITC, Service Guide, KFS, current 2,000-point welcome terms, EazyDiner terms, fuel contactless offer and District terms; corrected fee, rates, reward redemption values, current offers and issuer eligibility conflict.",
+    "pdfs_downloaded": 7,
+    "local_directory": "docs/sources/hsbc/visa-platinum/",
+    "unresolved": [
+      "exact launch date not established; cleared unsupported date",
+      "product page advertises Visa Signature privileges but does not explicitly identify issued network tier; cleared unsupported Visa Platinum tier field",
+      "separate current HSBC eligibility page says INR400,000 salaried minimum income/eight cities, while current product card page says INR600,000 salaried, INR1,200,000 self-employed and broad 22-city list; structured data follows product card page",
+      "welcome and card-network partner offers have independent periods, eligibility rules, non-stacking rules and may change",
+      "reward values vary by redemption; removed fixed INR per-point claims",
+      "current product card page does not advertise airport lounge access"
+    ]
+  }
+}

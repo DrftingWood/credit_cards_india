@@ -1,125 +1,177 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: au-prathama
+﻿id: au-prathama
 name: AU Bank Prathama Credit Card
 image_path: /cards/au/prathama.webp
 issuer: au
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 99
-    annual_fee_inr: 99
-    fee_waiver:
-      spend_inr: 50000
-      cycle: annual
-    forex_markup_pct: 3.49
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Entry / first credit card ('Make your first move'). Rewards recurring payments and contactless spends."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/prathama-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 100
+  annual_fee_inr: 100
+  fee_waiver:
+    spend_inr: 75000
+    cycle: annual
+    conditions: Joining fee is not waived. Renewal fee is waived at INR 75,000 or more eligible spend during the
+      card anniversary year.
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Entry / first credit card ('Make your first move'). Rewards recurring payments and contactless spends.
+  source:
+    url: https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf
+    retrieved_on: '2026-11-01'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: 'Card FAQ confirms INR 100 + GST joining fee, no joining waiver, and INR 100 + GST annual fee waived
+      at INR 75,000 anniversary-year spend. Current 30-Sep-2026 AU KFS gives 3.75% monthly retail finance, 2.5% cash advance fee (INR 500 minimum), and 3.49% forex markup for the Prathama group. Card page confirms fee and waiver details. Charge effective dates are not separately published; 26-Oct-2026 is the audit snapshot.'
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: contactless
-        canonical_categories: [other]
-        multiplier: 1
-        effective_rate: 2
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Up to 2 Reward Points per ₹100 on contactless transactions and general spends."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: AU Rewardz
-        rate_inr_per_unit: 0.25
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 0.0025
+    unit_value_inr_realized: 0.002
+  accelerated:
+  - category: contactless
+    canonical_categories:
+    - other
+    multiplier: 2
+    effective_rate: 2
+    cap_unit: points
+    cycle: statement
+    notes: 2 Reward Points per INR 100 on Tap & Pay contactless transactions.
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/prathama-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-11-01'
       type: issuer-page
-
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+  exclusions:
+  - fuel
+  - rent
+  - emi
+  - education
+  - government
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: AU Rewardz
+    rate_inr_per_unit: 0.0025
+    constraints: 'General AU Rewardz catalog conversion: INR 0.0025 (0.25 paise) per point; e-vouchers INR 0.002
+      (0.20 paise) per point. INR 99 + GST per successful redemption; at least 200 points required.'
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/prathama-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].multiplier
+    - rewards.reward_cap.max_units
+    - rewards.capping_rules
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.redemption
+    notes: >-
+      Current FAQ says 1 point/INR 100 on other eligible spend and 2/INR 100 on contactless. Fuel, EMI, cash/cash-like,
+      rent, transportation, education and government payments excluded. Point value is modeled at the general AU
+      Rewardz catalog proxy and may vary by redemption. Issuer FAQ describes 2 RP/INR 100 rate
+      on incremental spend after INR 5,000 statement-cycle spend; member agreement section 23.5.2 describes 2 RP/INR 100 after crossing INR 5,000 and
+      a 1,000-point total cycle cap. Schema cannot establish whether this threshold rate stacks with contactless; threshold
+      behavior is kept as a milestone note and not modeled as a second accelerator to avoid double counting. General
+      AU Rewardz terms value a point at 0.25 paise (INR 0.0025) outside e-vouchers, which are 0.20 paise (INR 0.002); see https://www.au.bank.in/personal-banking/credit-cards.
+      The card-member agreement also sets a INR 99 + GST redemption fee and 200-point minimum: https://www.au.bank.in/credit-cards/credit-card-member-agreement.pdf.
+  capping_rules:
+  - Prathama earns at most 1,000 Reward Points across all earn categories per statement cycle per section 23.5.2 of the current AU Card Member Agreement; this card-specific cap is lower than the generic 25,000-point table.
+  - The separate threshold language after INR 5,000 and contactless earn may overlap; the issuer does not state
+    whether they stack.
+  reward_cap:
+    max_units: 1000
+    cap_unit: points
+    cycle: statement
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access: null
-    milestones:
-      - spend_inr: 5000
-        cycle: monthly
-        benefit: "2 Reward Points per ₹100 on incremental spends after crossing ₹5,000 in a cycle"
-        value_inr: 25
-        reward_kind: points
-        trigger_window: rolling
-        is_repeatable: true
-      - spend_inr: 0
-        cycle: monthly
-        benefit: "500 bonus Reward Points on setting up each recurring payment / successful recurring transaction"
-        value_inr: 125
-        reward_kind: points
-        reward_units: 500
-        reward_currency_name: Reward Points
-        trigger_window: rolling
-        is_repeatable: true
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 100
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/prathama-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access: null
+  milestones:
+  - spend_inr: 5000
+    cycle: monthly
+    benefit: After reaching INR 5,000 spend in a statement cycle, issuer says 2 Reward Points per incremental INR
+      100 during the same cycle; overlap with contactless earn is not specified, so exact additive value is unknown.
+    value_inr: null
+    reward_kind: points
+    reward_units: null
+    reward_currency_name: Reward Points
+    trigger_window: rolling
+    is_repeatable: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: monthly
+  concierge: false
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/prathama-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.milestones[0].spend_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: 'No welcome benefit. Standing Instruction bonus is one successful settled setup per merchant per lifetime.
+      Fuel surcharge waiver: 1%, INR 400 to 5,000 transactions, capped INR 100 per statement cycle. Credit Shield and
+      Device Protection are listed, but limits are not published in this FAQ.'
+  other:
+  - name: Standing Instruction setup bonus
+    description: 500 bonus Reward Points for each successful, settled Standing Instruction setup, once per merchant
+      for the lifetime of the card; repeat setups at the same merchant do not qualify.
 eligibility:
-  min_age: 18
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 250000
-    self_employed: 250000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Income and bureau-score thresholds previously stored were issuer-tier estimates without card-specific evidence;
+    keep unknown until the issuer publishes or confirms a product threshold. Broad minimum/maximum age figures without
+    an exact issuer evidence path or a source-verified occupational range were left unknown; this does not imply
+    there is no age criterion.
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/prathama-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, first-card]
+  last_verified_on: '2026-11-01'
+  tags:
+  - entry
+  - points
+  - first-card

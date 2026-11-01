@@ -11,8 +11,8 @@ id: sbi-irctc-platinum
 name: IRCTC SBI Platinum Card
 image_path: /cards/sbi/irctc-platinum.png
 issuer: sbi
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -20,11 +20,11 @@ co_brand:
   category: railway
   partner_website: https://www.irctc.co.in
 status: active
-launched_on: 2018-01-01
+launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2018-01-01
+  - effective_from: 2024-12-26
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 500
@@ -38,18 +38,19 @@ fees:
     supplementary_card_fee_inr: 0
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
+      url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/IRCTC-VISA-HandShak-TnC.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
       confidence: high
       local_refs:
         - docs/sources/sbi/_shared/mitc-english.pdf
+        - docs/sources/sbi/irctc-platinum/irctc-card-terms.pdf
       fields_verified:
         - fees.finance_charge_monthly_pct
         - fees.cash_advance_fee
 
 rewards:
-  - effective_from: 2018-01-01
+  - effective_from: 2024-12-26
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -65,39 +66,45 @@ rewards:
       - category: irctc-rail-bookings
         canonical_categories: [travel]
         multiplier: 1
-        effective_rate: 10
+        effective_rate: 4
         effective_per_inr: 100
-        card_attributable_rate: 10
+        card_attributable_rate: 4
         card_attributable_per_inr: 100
         stacks_with_program: false
         cap_per_cycle: "unlimited"
         cap_unit: points
-        cycle: monthly
+        cycle: statement
         merchants: [irctc]
         channel:
           required: true
           class: cobrand-merchant
           merchants: [irctc-direct]
-        notes: "Up to 10% value back as Reward Points (10 RP per ₹100 on booking base fare for travel dates 15 Jan–31 Mar and 15 Jul–15 Sep; 4 RP per ₹100 for 1 Apr–14 Jul and 16 Sep–14 Jan) on AC1/AC2/AC3/Executive Chair Car/Chair Car bookings via IRCTC app and website."
+        notes: "The issuer specifies 4 RP/₹100 for travel dates 1 Apr–14 Jul and 16 Sep–14 Jan, and 10 RP/₹100 for 15 Jan–31 Mar and 15 Jul–15 Sep. The calculator cannot model date seasons, so the rule uses the lower 4 RP/₹100 throughout to avoid overstating the year-round rate. Applies to AC1/AC2/AC3/Executive Chair Car/Chair Car fare on IRCTC app/site; booking conditions apply."
     exclusions:
       - fuel
+      - rent
+      - government
+      - wallet-loads
+      - cash-advance
+      - emi
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
-      retrieved_on: 2026-07-05
-      type: issuer-page
-      notes: "Research-verified: dedicated IRCTC RP = Rs1 on rail fare (regulated -> no premium)."
-
+      url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/IRCTC-VISA-HandShak-TnC.pdf
+      retrieved_on: '2026-10-27'
+      type: issuer-pdf
       confidence: high
-    mcc_exclusions: ['6513']
+      method: pdf-extract
+      fields_verified: [rewards.base, rewards.accelerated, rewards.capping_rules, rewards.redemption]
+      notes: "Current card terms specify seasonal travel value-back: 4% for travel dates 1-Apr to 14-Jul and 16-Sep to 14-Jan; 10% for 15-Jan to 31-Mar and 15-Jul to 15-Sep. Because the schema cannot represent travel-date seasons, the structured rule uses 4% conservatively. Eligible AC-class ticket points accrue five days after completed travel and transfer to the linked IRCTC loyalty account. No monthly/annual travel value-back cap is stated."
+    mcc_exclusions: ['5172','5541','5983','5542','6540','6541','6513','7349','9399','9311']
     redemption:
       - type: voucher
         program: IRCTC AC-class fare
         rate_inr_per_unit: 1.0
-        constraints: Rs1/pt against AC-class IRCTC rail fare only (link to IRCTC ID); closed-loop, no cash.
+        constraints: INR 1 per point against eligible AC-class IRCTC fare only after linking the IRCTC loyalty account; closed-loop, no cash redemption.
     capping_rules:
-      - No monthly/annual cap on IRCTC value-back documented in the SBI Card IRCTC Platinum FAQ (retrieved 2026-07-05); earn structure stated with no capping clause.
+      - "IRCTC travel reward value-back is uncapped monthly and annually. IRCTC loyalty points expire two years after member registration/renewal; unredeemed SBI Card points also face 13-month inactivity forfeiture and may be lost after account closure as detailed in card terms."
 benefits:
-  - effective_from: 2018-01-01
+  - effective_from: 2024-12-26
     effective_until: null
     lounge_access:
       domestic:
@@ -106,20 +113,15 @@ benefits:
         guests_per_visit: 0
         via: [issuer-direct]
         notes: "Complimentary railway lounge access (not airport lounges); max 1 per quarter, primary cardholder only."
-    milestones:
-      - spend_inr: 0
-        cycle: annual
-        benefit: "500 Reward Points on payment of renewal fee"
-        value_inr: 500
-        reward_kind: points
-        reward_units: 500
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
     welcome:
-      - condition: "Single transaction of Rs.500 or more within 60 days of card issuance"
-        benefit: "350 activation bonus Reward Points"
+      - condition: "First retail transaction of INR 500 or more within 60 days of issuance; fuel and cash spends are excluded"
+        benefit: "350 activation bonus Reward Points, credited within 45 days of eligible transaction"
         value_inr: 350
         window_days: 60
+      - condition: "Realization of annual renewal fee"
+        benefit: "500 Reward Points"
+        value_inr: 500
+        window_days: null
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -127,28 +129,40 @@ benefits:
       cap_per_cycle_inr: 100
       cycle: statement
     other:
+      - name: IRCTC online railway booking transaction charge waiver
+        description: "Waives 1% transaction charges on eligible bookings made directly at irctc.co.in; issuer reviews eligible MID/TID list monthly. A 1% charge on the total refund amount applies if a railway ticket is cancelled."
       - name: Travel offers from IRCTC
         description: "Discounted airline tickets and tailor-made holiday packages via IRCTC."
-    concierge: false
+    concierge: null
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
+      url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/IRCTC-VISA-HandShak-TnC.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
       confidence: high
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Income requirement based on aggregator/tier consensus (not published on product page)."
-
+  notes: "Requires active IRCTC loyalty account for rewards. SBI Card policy states age 21-65 for salaried applicants and 25-70 for self-employed applicants. No card-specific minimum income or fixed credit-score cutoff was found in current issuer material."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html
+  apply_url: https://www.sbicard.com/sprint/irctc-platinum
 
 metadata:
-  last_verified_on: '2026-10-24'
-  tags: [co-branded, railway, irctc, travel, points, entry]
+  last_verified_on: '2026-10-27'
+  tags: [co-branded, railway, irctc, travel, points, entry, multi-network]

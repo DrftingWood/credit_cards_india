@@ -1,141 +1,257 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-wealth
 name: IDFC FIRST Wealth Credit Card
 image_path: /cards/idfc-first/wealth.webp
 issuer: idfc-first
 network: visa
-network_tier: signature
+network_tier: infinite
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2021-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2021-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free card."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/wealth
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      confidence: high
-
+- effective_from: '2026-09-17'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: 3.85
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: Lifetime free. Current issuer APR range is 8.5%-46.2% annually (cardholder-specific); schema stores the 3.85% monthly upper bound. Cash advances cost a flat INR199 plus GST per transaction and can be interest-free for up to 45 days under issuer terms. Zero forex markup for all IDFC FIRST credit cards effective 2026-09-17.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/wealth
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.flat_inr
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/earned-mitc-current-retrieved-2026-10-26.pdf
+    notes: "Zero-forex notice effective 2026-09-17 applies bank-wide: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/news-media/press-release/Press-Release-IDFC-FIRST-Bank-introduces-Zero-Forex-Markup-across-all-its-Credit-Cards-existing-and-new-1709.pdf"
 rewards:
-  - effective_from: 2021-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: incremental-monthly-above-20k
-        canonical_categories: [other]
-        multiplier: 3.33
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10X (10 RP per ₹150) on incremental monthly spends above ₹20,000; 3X (base) up to ₹20,000."
-      - category: utility-insurance-railway-fastag
-        canonical_categories: [utilities, insurance]
-        multiplier: 0.33
-        effective_rate: 1
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Reduced 1X (1 RP per ₹150) on utility bill payments, insurance premiums, railway spends and FASTag recharges."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
+- effective_from: '2026-06-18'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 3
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: dining-travel-birthday
+    canonical_categories:
+    - dining
+    - travel
+    multiplier: 3.333333
+    effective_rate: 10
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: points
+    cycle: monthly
+    notes: 10 points per INR200 on eligible Dining MCCs 5812/5813/5814 (including food delivery), Travel MCCs 3000-3350, 3501-3853, 7011, 4511, 4722, 4723, and birthday purchases. Effective 2026-06-18, the old INR20,000 monthly threshold was removed. Birthday cannot be represented as a merchant category. International transactions stopped earning points effective 2026-10-26, despite conflicting stale issuer page text that still advertises 10X international points.
     source:
       url: https://www.idfcfirst.bank.in/credit-card/wealth
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-10-26'
       type: issuer-page
       confidence: high
-
-benefits:
-  - effective_from: 2021-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [loungekey]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 2
-    insurance:
-      - type: personal-accident
-        sum_insured_inr: 1000000
-      - type: lost-card-liability
-        sum_insured_inr: 5000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    movies:
-      type: discount
-      cycle: monthly
-      cap_inr: 250
-      notes: "25% off on movie tickets."
-    concierge: true
+      fields_verified:
+      - effective_rate
+      - effective_per_inr
+  - category: utility-insurance-railway-fastag
+    canonical_categories:
+    - utilities
+    - insurance
+    multiplier: 0.333333
+    effective_rate: 1
+    effective_per_inr: 200
+    cap_status: not-published
+    cap_unit: points
+    cycle: monthly
+    notes: "1 point per INR200 on utilities, insurance, railway and FASTag. Railway MCCs 4111/4112 and FASTag MCC 4784. High-use fees may apply: 1% on total FASTag spends above INR10,000 per billing cycle and 1% on total railway spends above INR25,000 per billing cycle, plus GST."
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/wealth
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Wealth-1-Credit-Card.pdf
+      retrieved_on: '2026-10-26'
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - effective_rate
+      - effective_per_inr
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: IDFC FIRST Rewards / eligible online purchases
+    rate_inr_per_unit: 0.25
+    fee_inr: 99
+    constraints: Points expire 24 months from credit date for points earned from the July 2026 statement cycle onward. INR99 plus GST convenience fee per redemption.
+  - type: other
+    program: FIRST Rewards Gallery travel bookings
+    rate_inr_per_unit: 0.25
+    constraints: INR0.25 per point; travel redemption can cover up to 70% of eligible flight/hotel booking value. Redemption capped at 100,000 points monthly and 200,000 yearly; INR99 plus GST convenience fee may apply.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/wealth
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].effective_per_inr
+    - rewards.accelerated[1].effective_rate
+    - rewards.accelerated[1].effective_per_inr
+    - rewards.exclusions
+    - rewards.redemption
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/wealth/reward-and-lounge-update-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/wealth/card-communication-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/wealth/travel-rewards-terms-retrieved-2026-10-26.pdf
+  notes: 3 points per INR200 on other eligible online/offline spends; points value INR0.25. No points for transactions below INR200, fuel, EMI, fees/charges, cash withdrawal, Loan on Card or Balance Transfer. Points are earned only on spend up to the credit limit per billing cycle; points for a cycle may be withheld/reversed if MAD is not paid by due date. Current product page explicitly removes international reward earning effective 2026-10-26; older banner/FAQ copy still describes international 10X and conflicts with that dated footnote. FIRST Wealth T&Cs separately advertise 20% hotel and 10% flight bonus points via app, capped at 8,000 bonus points/month, but card page examples and T&C tables phrase total rates inconsistently; bonus rates are preserved under benefits notes, not scored.
+benefits:
+- effective_from: '2026-04-01'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      via:
+      - visa
+    international:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      via:
+      - dreamfolks
+  welcome:
+  - condition: Spend at least INR5,000 within 30 days of card generation; primary card only
+    benefit: INR500 gift voucher from selected brands
+    value_inr: 500
+    window_days: 30
+  - condition: First EMI transaction within 30 days of card generation
+    benefit: 5% cashback on first EMI transaction, capped at INR1,000
+    value_inr: 1000
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 300
+    cycle: monthly
+  movies:
+    type: bogo
+    partner: District by Zomato
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 250
+    notes: INR250 off the second ticket when booking at least two tickets; once per offer use, twice per card per calendar month. Requires INR20,000 card spend in the previous calendar month under the June 2026 update.
+  insurance:
+  - type: personal-accident
+    sum_insured_inr: 1000000
+    conditions: Minimum one purchase or ATM withdrawal on the card within the last 30 days; accidental death/permanent disability terms apply.
+  - type: air-accident
+    sum_insured_inr: 100000000
+    conditions: Covered air ticket must be purchased using the card; one claim per cardholder, subject to insurer terms.
+  - type: lost-card-liability
+    sum_insured_inr: 50000
+    conditions: Active card and insurer claim/reporting terms apply.
+  - type: purchase-protection
+    sum_insured_inr: 50000
+    coverage_duration_days: 60
+    conditions: Residential fire/burglary cover for eligible purchases; active-card and policy terms apply.
+  - type: other
+    sum_insured_inr:
+    sum_insured_amount: 1200
+    sum_insured_currency: USD
+    conditions: Travel insurance including checked baggage loss up to USD500, baggage delay USD100, passport/document loss USD300 and flight delay USD300; ticket must be purchased with card and active-card terms apply.
+  other:
+  - name: Railway lounge access
+    description: "Issuer sources conflict on quota: current product FAQ says four railway lounge visits per year, while the detailed privileges terms say up to four per quarter. No single quota is asserted. Both sources require INR20,000 spend in the current calendar month to unlock access next month."
+    value_inr:
+  - name: Golf privilege
+    description: One complimentary golf round or one golf lesson per quarter after INR20,000 eligible spend in a statement cycle; benefit appears next month and expires after 60 days. The schema cannot represent the either/or choice.
+    value_inr:
+  - name: Trip cancellation cover
+    description: Up to INR10,000 reimbursement for eligible non-refundable flight/hotel cancellations, up to two claims per policy period. Requires an eligible card transaction in the month before policy coverage starts; booking and cancellation must fall within policy period.
+    value_inr: 10000
+  - name: Roadside assistance
+    description: Complimentary 24/7 roadside assistance. Current product page confirms availability; frequency limit for Wealth is not clearly stated in the card-specific terms.
+    value_inr: 1399
+  - name: Travel-booking bonus points
+    description: Current Wealth reward T&Cs state 20% bonus points for app hotel bookings and 10% for app flight bookings, over the normal earn, with an 8,000 bonus-point monthly account cap. Product copy also labels overall travel earn as up to 25% hotel and 15% flight rewards and separately states 40/20 points per INR200; exact total earning is ambiguous, so no accelerator is encoded.
+    value_inr:
+  - name: Visa Infinite privileges
+    description: Concierge, airport meet-and-greet/immigration discounts, airport-transfer discounts and hotel offers. Partner availability and service charges apply.
+    value_inr:
+  concierge: true
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/wealth
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
+    - benefits.movies
+    - benefits.insurance
+    - benefits.other
+    - benefits.concierge
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/wealth/privileges-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/wealth/card-communication-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/wealth/travel-rewards-terms-retrieved-2026-10-26.pdf
+  notes: "Airport lounges and golf privileges changed effective 2026-04-01: one domestic (India) and one global visit per quarter, with INR20,000 current-calendar-month spend activating the following month; airport benefit shared with add-on cards. Railway lounge FAQ and privilege PDF conflict on quota (4 annually vs up to 4 quarterly); current terms otherwise say the same monthly spend activates next month. Movie BOGO requires INR20,000 spend in prior month since 2026-06-18. Fuel-waiver fee guide states 1% for INR200-INR5,000 transactions, monthly maximum INR300. The current card page still inconsistently advertises international rewards after stating that international purchases earn no points effective 2026-10-26."
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age:
+  max_age:
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
+    salaried: 3600000
+    self_employed: 3600000
+  credit_score_min:
   residency: resident-indian
-
+  notes: Current issuer card page lists annual income of INR36 lakh or more but does not split criteria by employment type; an issuer article also says a FIRST Wealth banking relationship can qualify as an alternative. Exact age, credit-score and residency documentation thresholds are not published on the card page; final approval is bank discretion.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/wealth
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    method: manual-read
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/wealth
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [lifetime-free, premium, points, online-spend]
+  last_verified_on: '2026-10-26'
+  tags:
+  - lifetime-free
+  - premium
+  - points
+  - travel
+  - lounge
+  - zero-forex

@@ -6,91 +6,78 @@ network_tier: platinum
 tier: entry
 card_type: credit
 co_brand: null
-status: active
-launched_on: 2022-01-01
+status: on-hold
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 2.25
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 200
-    gst_applicable: true
-    source:
-      url: https://www.centralbankofindia.co.in/en/credit-cards
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "Joining Nil, annual fee Nil (Lifetime Free)."
-
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: null
+  annual_fee_inr: null
+  fee_waiver: null
+  forex_markup_pct: null
+  finance_charge_monthly_pct: null
+  cash_advance_fee: null
+  gst_applicable: true
+  source:
+    url: https://centralbank.bank.in/en/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: low
+    fields_verified: []
+    notes: Current CBI credit-card page publishes no standalone RuPay Platinum terms. The bank's FY2019-20 annual report says standalone-card issuance was discontinued as co-branded issuance started in October 2019. Joining fee, annual fee, forex, finance and cash-advance charges for this specific card are not verifiable from current issuer evidence. Effective_from is the required record observation date, not a published pricing effective date.
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: points
-    currency_name: Anmol Rewardz
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: Central Bank Anmol Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.centralbankofindia.co.in/en/credit-cards
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-      notes: "1 Anmol Rewardz point per ₹100 spent."
-
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: null
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  source:
+    url: https://centralbank.bank.in/en/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: low
+    fields_verified: []
+    notes: No current card-specific issuer reward schedule or redemption value is published on the current credit-card page. Legacy third-party claims are not carried forward as issuer-verified facts. Effective_from is the required record observation date, not an issuer-published schedule start.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [rupay]
-        notes: "1 complimentary domestic airport lounge visit per calendar quarter via RuPay Platinum."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 3000
-      cap_per_cycle_inr: 100
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.centralbankofindia.co.in/en/credit-cards
-      retrieved_on: 2026-10-24
-      type: issuer-page
-      confidence: high
-
+- effective_from: 2026-10-27
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver: null
+  concierge: null
+  source:
+    url: https://centralbank.bank.in/en/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: low
+    fields_verified: []
+    notes: No current card-specific benefit schedule is published on the CBI credit-card page. Do not transfer the RuPay Platinum debit-card lounge or insurance benefits to this credit card. The current legacy Central Platinum application form is specifically for Visa Platinum and is not evidence for this RuPay card. Effective_from is the required record observation date.
 eligibility:
-  min_age: 18
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 200000
-    self_employed: 200000
-  credit_score_min: 700
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current card-specific eligibility is unpublished. The Central Platinum Visa form's eligibility must not be transferred to this RuPay card.
+  source:
+    url: https://centralbank.bank.in/en/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: low
+    fields_verified: []
 application:
-  apply_url: https://www.centralbankofindia.co.in/en/credit-cards
-
+  apply_url: null
 metadata:
-  last_verified_on: '2026-10-24'
-  tags: [psu, rupay, platinum, ltf, lounge, cbi, entry]
+  last_verified_on: '2026-10-27'
+  tags:
+  - legacy
+  - rupay
+  - platinum
+  - cbi
+  - terms-unverified

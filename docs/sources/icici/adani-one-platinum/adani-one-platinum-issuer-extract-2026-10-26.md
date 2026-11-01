@@ -1,0 +1,20 @@
+# Adani One ICICI Bank Platinum — issuer evidence extract
+
+Checked 2026-10-26 against the [current ICICI Platinum card page](https://www.icici.bank.in/personal-banking/cards/credit-card/adani-icici-credit-card/platinum-card), the current page-linked [Platinum card terms PDF](https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/platinum-credit-card.pdf), the current shared [ICICI MITC](https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/mitc_cc.pdf), and [Adani Rewards terms](https://www.adanione.com/terms-and-conditions/adani-rewards). The two issuer PDFs are archived in this directory. ICICI's launch announcement confirms the Visa partnership; Adani's June 2024 launch note identifies 3 June as the launch event date.
+
+## Terms transcribed
+
+- Visa network; Visa partnership launch event on 3-Jun-2024. Current product page calls the product Platinum.
+- Joining fee INR750 + GST; annual fee INR750 + GST; 3.5% forex markup; 3.75% monthly finance rate. Current general MITC sets cash advance at 2.5% of amount, minimum INR500.
+- Annual fee reversal requires at least INR300,000 spend before the next anniversary year; specific card T&Cs exclude EMI spend. The live product page describes the period as a calendar year, so the period wording conflicts; the card-specific T&Cs are followed in the data record.
+- Earn 3 Adani OneApp Rewards per INR100 at participating merchants; 1 per INR100 domestic; 1.5 per INR100 international; 0.5 per INR100 utility/insurance. Points round down to whole points. Card terms exclude cash advances, fuel, rent, charges/interest, fees, joining/renewal fees, EMI, balance transfers, personal loans on card, gambling and business spend. No card-specific point cap is stated; launch terms said rewards were uncapped.
+- The Adani OneApp receives the points. The current Adani Rewards program terms say points are non-cash/non-transferable, have no monetary value, and expire two years after credit. The old record's INR1-per-point and statement-credit redemption assertions were unsupported and have been removed.
+- Joining benefits: INR2,000 flight voucher after INR10,000 qualifying spend in the first 60 days and payment of joining fee; INR1,000 hotel voucher on activation. Both are primary-card benefits; flight voucher only applies where a joining fee is charged.
+- Domestic lounge: 2 quarterly visits for primary cardholder after INR75,000 qualifying spend in the preceding quarter. Premium lounge upgrades: 2 per quarter (8 yearly) at Adani-managed airports. Valet 2 yearly; premium car parking 2 on activation; porter 2 per INR100,000 spend up to 4 yearly.
+- BookMyShow offer: 25% off up to INR100, twice monthly, with minimum 2 tickets; from 1-Apr-2026, requires INR25,000 spend in preceding quarter. Add-on members must individually meet the gate.
+- Fuel surcharge waiver: 1% on fuel transactions up to INR4,000 transaction value; monthly reimbursement cap is not published.
+- Eligibility page states Indian citizen aged over 21, salaried monthly income INR20,000 and self-employed annual income INR240,000. Since schema cannot encode citizenship separately from residency or the exact wording of age, numeric minimum age/residency remain null. Salaried annual income is represented as INR240,000, annualizing the published INR20,000 monthly threshold.
+
+## Conflicts and limits
+
+The specific card terms say annual-fee spend is measured in the preceding anniversary year; page copy says calendar year. Current card page says reward credit at billing-cycle end, while specific T&Cs allow up to 45 business days after statement generation. The linked participating-merchant list is not archived, and the relationship between the 3-point ecosystem rate and 0.5-point utility/insurance rate for Adani electricity is unclear. The card-specific PDF does not print a revision date; `effective_from` in YAML is the review snapshot date, not an asserted issuer-effective date.

@@ -1,12 +1,3 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-secured-rupay
 name: IDFC FIRST EARN Credit Card
 image_path: /cards/idfc-first/secured-rupay.webp
@@ -15,109 +6,253 @@ network: rupay
 network_tier: platinum
 tier: entry
 card_type: secured
-co_brand: null
+co_brand:
 status: active
-launched_on: 2024-01-01
-discontinued_on: null
-
+launched_on: '2025-01-20'
+discontinued_on:
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-      conditions: "Annual fee waived on ₹1,00,000 annual spend. Joining fee ₹0 under a limited-period offer."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "FIRST EA₹N — FD-backed virtual RuPay credit card (no physical card); UPI-enabled. Credit limit = 100% of FD value (min FD ₹5,000); no credit history required."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2025-01-20'
+  effective_until: '2025-12-15'
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  fee_waiver: &id001
+    spend_inr: 100000
+    cycle: annual
+    conditions: INR100,000 or more eligible net purchases in the previous anniversary year waives the INR499 annual fee; ATM cash withdrawals, billed EMIs, fees and charges excluded; reversals/refunds deducted.
+  finance_charge_monthly_pct: 3.85
+  cash_advance_fee:
+  gst_applicable: true
+  forex_markup_pct: 3.5
+  notes: Initial fee schedule before the limited-time zero joining-fee offer announced for new cards issued from 2025-12-16. Current card page shows a limited-period NIL joining fee for cards issued on/after 2025-12-16; annual fee INR499 + GST from second year, waived at eligible INR100,000 anniversary spend. Current MITC shows customer-specific finance rates from 0.71% to 3.85% monthly (8.5%-46.2% APR). The current MITC cash-advance transaction fee is flat INR199; schema only supports percentage-plus-minimum, so cash_advance_fee is null rather than misrepresented. Current card page also states 1% surcharge on rent/property-management payments (minimum INR249 + GST) and a 1% utility surcharge on aggregate statement-cycle utility spends above INR20,000.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified: &id002
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.gst_applicable
+    method: manual-read
+    local_refs: &id003
+    - docs/sources/idfc-first/secured-rupay/mitc-retrieved-2026-10-26.pdf
+- effective_from: '2025-12-16'
+  effective_until: '2026-09-16'
+  joining_fee_inr: 0
+  annual_fee_inr: 499
+  fee_waiver: *id001
+  finance_charge_monthly_pct: 3.85
+  cash_advance_fee:
+  gst_applicable: true
+  forex_markup_pct: 3.5
+  notes: Current card page shows a limited-period NIL joining fee for cards issued on/after 2025-12-16; annual fee INR499 + GST from second year, waived at eligible INR100,000 anniversary spend. Current MITC shows customer-specific finance rates from 0.71% to 3.85% monthly (8.5%-46.2% APR). The current MITC cash-advance transaction fee is flat INR199; schema only supports percentage-plus-minimum, so cash_advance_fee is null rather than misrepresented. Current card page also states 1% surcharge on rent/property-management payments (minimum INR249 + GST) and a 1% utility surcharge on aggregate statement-cycle utility spends above INR20,000.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified: *id002
+    method: manual-read
+    local_refs: *id003
+- effective_from: '2026-09-17'
+  effective_until:
+  joining_fee_inr: 0
+  annual_fee_inr: 499
+  fee_waiver: *id001
+  finance_charge_monthly_pct: 3.85
+  cash_advance_fee:
+  gst_applicable: true
+  forex_markup_pct: 0.0
+  notes: Current card page shows a limited-period NIL joining fee for cards issued on/after 2025-12-16; annual fee INR499 + GST from second year, waived at eligible INR100,000 anniversary spend. Current MITC shows customer-specific finance rates from 0.71% to 3.85% monthly (8.5%-46.2% APR). The current MITC cash-advance transaction fee is flat INR199; schema only supports percentage-plus-minimum, so cash_advance_fee is null rather than misrepresented. Current card page also states 1% surcharge on rent/property-management payments (minimum INR249 + GST) and a 1% utility surcharge on aggregate statement-cycle utility spends above INR20,000. IDFC FIRST Bank announced zero forex markup across all existing and new cards effective 2026-09-17.
+  source:
+    url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/news-media/press-release/Press-Release-IDFC-FIRST-Bank-introduces-Zero-Forex-Markup-across-all-its-Credit-Cards-existing-and-new-1709.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    fields_verified: *id002
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/secured-rupay/mitc-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/secured-rupay/zero-forex-announcement-retrieved-2026-10-26.pdf
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 0.5
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: upi-via-idfc-app
-        canonical_categories: [online]
-        multiplier: 2
-        effective_rate: 1
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: statement
-        notes: "1% cashback on UPI spends via the IDFC FIRST Bank app; 0.5% on UPI via other apps, all online spends, and utility/insurance/wallet loads. Total cashback capped ₹500/statement."
-    exclusions:
-      - fuel
-      - emi
-      - rent
-    mcc_exclusions: ['6513']
-    reward_cap:
-      max_units: 500
-      cap_unit: cashback-inr
-      cycle: statement
-    redemption:
-      - type: statement-credit
-        program: IDFC FIRST Cashback
-        rate_inr_per_unit: 1.0
+- effective_from: '2025-01-20'
+  effective_until: '2025-12-15'
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 0.5
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated: []
+  exclusions:
+  - cash-advance
+  - emi
+  reward_cap:
+    max_units: 500
+    cap_unit: cashback-inr
+    cycle: statement
+  redemption:
+  - type: statement-credit
+    program: IDFC FIRST Cashback
+    rate_inr_per_unit: 1.0
+    constraints: Cashback is credited to card account one day after Payment Due Date, provided at least the Minimum Amount Due is realised by the due date; otherwise statement cashback is forfeited. Cashback reversals/refunds are adjusted.
+  notes: 'Card page describes cashback on purchases: 0.5% standard earn, including all online spends and UPI via other apps, with 0.5% on utility, insurance and wallet loads. Cashback is capped at INR500 per statement cycle and on spend only up to credit limit; cash withdrawal and EMI excluded. Fuel transactions are eligible for cashback. RuPay-on-UPI merchant restrictions under NPCI apply.'
+  source: &id004
+    url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].cap_per_cycle
+    - rewards.reward_cap
+    - rewards.exclusions
+    - rewards.redemption
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/secured-rupay/product-guide-retrieved-2026-10-26.pdf
+- effective_from: '2025-12-16'
+  effective_until:
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 0.5
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: UPI via IDFC FIRST Bank app
+    canonical_categories:
+    - online
+    multiplier: 2
+    effective_rate: 1.0
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: 1% cashback on UPI spends via IDFC FIRST Bank app for new cards issued on or after 2025-12-16. Total cashback across eligible spends remains capped at INR500 per statement cycle.
     source:
       url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-10-26'
       type: issuer-page
       confidence: high
-
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].cap_per_cycle
+      - rewards.accelerated[0].cycle
+      method: manual-read
+      local_refs:
+      - docs/sources/idfc-first/secured-rupay/product-guide-retrieved-2026-10-26.pdf
+  exclusions:
+  - cash-advance
+  - emi
+  reward_cap:
+    max_units: 500
+    cap_unit: cashback-inr
+    cycle: statement
+  redemption:
+  - type: statement-credit
+    program: IDFC FIRST Cashback
+    rate_inr_per_unit: 1.0
+    constraints: Cashback is credited to card account one day after Payment Due Date, provided at least the Minimum Amount Due is realised by the due date; otherwise statement cashback is forfeited. Cashback reversals/refunds are adjusted.
+  notes: 'Card page describes cashback on purchases: 0.5% standard earn, including all online spends and UPI via other apps, with 0.5% on utility, insurance and wallet loads. Cashback is capped at INR500 per statement cycle and on spend only up to credit limit; cash withdrawal and EMI excluded. Fuel transactions are eligible for cashback. RuPay-on-UPI merchant restrictions under NPCI apply.'
+  source: *id004
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "First transaction"
-        benefit: "10% cashback up to ₹250 on first transaction"
-        value_inr: 250
-        window_days: 30
-    movies:
-      type: discount
-      cycle: monthly
-      cap_inr: 100
-      notes: "25% off up to ₹100 on movie tickets, once a month."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2025-12-16'
+  effective_until:
+  lounge_access:
+  welcome:
+  - condition: New cards issued on or after 2025-12-16; first transaction within 15 days of card generation/FD funding
+    benefit: 10% cashback on first transaction, capped at INR250.
+    value_inr: 250
+    window_days: 15
+  - condition: First EMI transaction within 30 days of card generation; terms apply
+    benefit: 5% cashback on the transaction value of the first EMI, up to INR1,000.
+    value_inr: 1000
+    window_days: 30
+  movies:
+    type: discount
+    partner: District by Zomato
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 100
+    notes: 25% off movie tickets up to INR100 once per calendar month; cardholder must make at least one purchase or ATM withdrawal in previous calendar month to be spend-active.
+  fuel_surcharge_waiver:
+  insurance:
+  - type: fraud-liability
+    sum_insured_inr: 25000
+    conditions: Lost-card, counterfeit/skimming and online fraud cover; active card requires at least one purchase or ATM withdrawal in the previous 30 days.
+  - type: personal-accident
+    sum_insured_inr: 200000
+    conditions: Personal accident/death or permanent disability; active card requires at least one purchase or ATM withdrawal in the previous 30 days.
+  - type: credit-shield
+    sum_insured_inr: 50000
+    conditions: Covers eligible card debits upon accidental death; active card requires at least one purchase or ATM withdrawal in the previous 30 days.
+  - type: purchase-protection
+    sum_insured_inr: 25000
+    coverage_duration_days: 60
+    conditions: Fire/allied perils and burglary in the cardholder?s India residence on record; active card required. See insurer terms.
+  other:
+  - name: Virtual FD-backed card
+    description: Virtual RuPay card issued against a singly-held IDFC FIRST Bank fixed deposit of at least INR5,000; credit limit equals 100% of linked FD value. A physical card can be requested for INR199 + GST.
+  - name: Roadside assistance
+    description: Complimentary assistance for a vehicle registered in the cardholder?s name. Card must be active with at least one purchase/ATM withdrawal in the previous 30 days; service activates five days after card status/enrollment change.
+  - name: Cashback timing and eligibility
+    description: Cashback is credited one day after Payment Due Date only if at least the Minimum Amount Due is paid by the due date; otherwise forfeited. Fuel purchases earn cashback, but current source review did not verify a fuel-surcharge waiver, so none is asserted.
+  - name: No add-on card
+    description: Issuer states add-on cards are not available for this FD-backed card.
+  concierge: false
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.welcome
+    - benefits.movies
+    - benefits.fuel_surcharge_waiver
+    - benefits.insurance
+    - benefits.other
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/secured-rupay/product-guide-retrieved-2026-10-26.pdf
+    - docs/sources/idfc-first/secured-rupay/privileges-retrieved-2026-10-26.pdf
+  notes: Current FIRST EA?N Privileges PDF supplies lost-card/fraud, personal accident, credit shield and purchase protection covers. It says travel insurance and personal air-accident cover are not available for FIRST EA?N. No current source was found for the legacy fuel-surcharge-waiver figures, so that field is null.
 eligibility:
   min_age: 18
-  max_age: 70
+  max_age: 80
   income_inr_annual:
-    salaried: null  # secured against FD — no income requirement
-    self_employed: null
-  credit_score_min: null
+    salaried:
+    self_employed:
+  credit_score_min:
   residency: resident-indian
-  notes: "FD-backed — issued against a fixed deposit (min ₹5,000); no income/credit-history requirement."
-
+  notes: 'Issuer criteria: age 18-80, Indian resident with current/permanent address in India, and singly-held IDFC FIRST Bank FD of at least INR5,000. No income proof or prior credit history required. Credit limit equals 100% of linked FD; approval remains subject to issuer internal policy. No numeric credit-score cutoff published.'
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual
+    - eligibility.residency
+    method: manual-read
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/secured-rupay-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, secured, cashback, upi, rupay]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - secured
+  - cashback
+  - upi
+  - rupay

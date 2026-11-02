@@ -1,19 +1,29 @@
 // Flat ESLint config (docs/CODING_STANDARDS.md TE-3).
 //
-// eslint-config-next 15.x ships only legacy (eslintrc) presets, so FlatCompat
-// from @eslint/eslintrc wraps `next/core-web-vitals` and `next/typescript`.
-// Next's own docs show this pattern for ESLint 9 on Next 15:
-// https://nextjs.org/docs/app/api-reference/config/eslint (Next 16 ships
-// native flat exports; drop FlatCompat when upgrading).
-import { FlatCompat } from "@eslint/eslintrc";
-
-const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
+// eslint-config-next 16 ships native flat presets, so they are imported
+// directly (no FlatCompat / @eslint/eslintrc, which Next 15 needed). Docs:
+// https://nextjs.org/docs/app/api-reference/config/eslint
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 
 const config = [
   {
     ignores: [".next/**", "node_modules/**", "dist/**", "lib/generated-types.ts", "next-env.d.ts", "coverage/**", ".reports/**"],
   },
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...nextCoreWebVitals,
+  ...nextTypescript,
+  {
+    // Same file scope as the next presets, so the react-hooks plugin is in scope for this rule.
+    files: ["**/*.{js,jsx,mjs,ts,tsx,mts,cts}"],
+    rules: {
+      // Deferred owner decision (D-31): eslint-config-next 16 (react-hooks 7) added this as an
+      // error. Four existing client components set state inside an effect on purpose (read
+      // localStorage / URL after hydration to avoid a server-client mismatch): browse-client,
+      // compare-client, beta-banner, theme-toggle. Kept as a warning, not rewritten, so the
+      // upgrade changes no behaviour. Fix by moving to useSyncExternalStore or derived state.
+      "react-hooks/set-state-in-effect": "warn",
+    },
+  },
   {
     rules: {
       // Size and complexity, as warnings. The count is baselined in

@@ -672,3 +672,68 @@ Rollback: revert the single 11b commit (subject "chore(site): upgrade Tailwind C
 config in CSS (D-30)"), then `npm ci` in `site/`. It restores `package.json`, the lockfile,
 `tailwind.config.ts`, `postcss.config.js` and the CSS together.
 
+
+### D-31. Next.js 15.5.15 -> 16.4.2, React 19.3.1, flat ESLint (2026-11-01, Task 11c)
+
+Change (all pinned exactly): `next` `^15.1.0` -> `16.4.2` (installed 15.5.15), `eslint-config-next`
+`^15.1.0` -> `16.4.2` (same version as next), `react` and `react-dom` `^19.0.0` -> `19.3.1`
+(installed 19.2.5), `@types/react` `19.3.0`, `@types/react-dom` `19.3.0` (were `^19.0.0`).
+Removed the `@eslint/eslintrc` devDependency (it existed only for FlatCompat).
+
+Version choice (registry `npm view next time`, GitHub releases and advisories, read 2026-11-01):
+16.4.1 (2026-10-14) is the security release (GHSA-2464-fhr4-w9xw image optimisation RCE with SVG,
+GHSA-673q-mjm6-r5xr `use cache` RCE, GHSA-p3m5-59mp-jv5r Server Actions DoS); 16.4.2 (2026-10-15,
+17 days old) is bug-fix backports on top and includes those fixes; 16.4.3 (2026-10-23, 9 days old) is
+bug-fix backports only (no advisory; the list at
+https://github.com/vercel/next.js/security/advisories has none fixed in 16.4.3), so by the two-week rule
+it waits. The 16.4.3 Google-font fix (extensionless font URLs, #100277) is not hit: `next/font/google` builds
+and the rupee glyph renders on 16.4.2. Bump to 16.4.3 (or later) once it is 14 days old, 2026-11-06.
+Release notes: https://github.com/vercel/next.js/releases/tag/v16.4.2 and `v16.4.3`.
+React 19.3.1 (2026-10-14, same-day security release as Next 16.4.1) is within `next`'s
+peer range `^19.0.0`; the App Router runs on the React copy Next bundles either way.
+Upgrade guide followed: https://nextjs.org/docs/app/guides/upgrading/version-16 (last updated 2026-10-15).
+
+Checked against this repo (guide section: result): async request APIs: `params` and `searchParams` were
+already `Promise` props awaited (`card/[issuer]/[slug]/page.tsx`, `browse/page.tsx`), no
+cookies/headers/draftMode use; the `upgrade` codemod (`npx @next/codemod@canary upgrade 16.4.2`,
+run in a copy outside the repo) changed no source except inserting `export const instant = false`
+Cache Components opt-outs in 9 pages and bumping versions plus `overrides`; none applied, since
+`cacheComponents` is not enabled. No `middleware.ts` (proxy rename n/a), no parallel routes, no AMP,
+no `next/legacy/image`, no `images` config (the three `next/image` uses are local static files,
+default `qualities` [75] and `minimumCacheTTL` do not matter), no `experimental.*`, no
+`scroll-behavior` CSS, no `revalidate`/tag caching, `next lint` already replaced by `eslint .`. Node 24 and
+TypeScript 6.0.3 satisfy the minimums (20.9, 5.1).
+
+Changes forced by Next 16:
+1. Turbopack is the default for `dev` and `build`. `lib/data.ts` imports `../../dist/*.json`, which
+   prebuild writes at the repo root, above `site/`. Turbopack rejects imports outside its root (Module not
+   found), so `next.config.mjs` sets `turbopack.root` and `outputFileTracingRoot` to the repo root. No
+   `--webpack` fallback was needed.
+2. `tsconfig.json`: `jsx` `preserve` -> `react-jsx` and `.next/dev/types/**/*.ts` added to `include`; Next
+   makes both edits itself on every build, so they are committed in compact form to keep the tree clean.
+3. `eslint.config.mjs` imports `eslint-config-next/core-web-vitals` and `/typescript` (native flat arrays)
+   instead of FlatCompat. The five size/complexity rules, `_` unused-vars patterns, phosphor
+   `no-restricted-imports` and icons override, and ignores are unchanged; `lintWarnings` stays 116.
+   `knip.json` no longer needs `ignoreDependencies: eslint-config-next` (imported directly now).
+
+Deferred owner decision: eslint-config-next 16 adds react-hooks 7 rules. One fires,
+`react-hooks/set-state-in-effect` (4 sites: `app/browse/browse-client.tsx:49`,
+`app/compare/compare-client.tsx:34`, `components/beta-banner.tsx:18`, `components/theme-toggle.tsx:25`; each
+sets state in an effect after hydration on purpose). It is set to `warn` with a comment in
+`eslint.config.mjs`, not rewritten, to keep the upgrade behaviour-neutral. The ratchet counts only the five
+size rules, so these 4 warnings are not baselined; fixing means `useSyncExternalStore` or derived state.
+
+Behaviour verified (built server, base e9afdea vs this change): `/browse?page=2` canonical `.../browse?page=2`,
+`?page=999` -> `?page=15`, `/browse` bare, unchanged; `/browse` still `ƒ` (dynamic per request, D-28), other
+routes `○`/`●` as before (card page still 365+3 paths); JSON-LD still in card HTML (2 script tags);
+sitemap.xml (353 `<loc>`), robots.txt, og.png (200) unchanged; Inter and the rupee glyph render. Playwright
+a11y smoke: identical (`/` 1, `/browse` 1, `/compare` 1, `/calculator` 3 violations). 64 screenshots
+(8 pages x 4 widths x light/dark): 0 pixel differences. Two non-visual differences: on `/browse`, `<title>`,
+`<meta>` and canonical `<link>` are now in `<head>` (Next 15 streamed them in `<body>` for this dynamic
+route; better for crawlers), and Chromium serialises gradient stops as `0%` instead of `0px` (same rendering).
+The build summary no longer prints Size or First Load JS (removed by Next 16), and counts 380 prerendered
+pages against 381 before (the old count included one internal page); the route set is the same.
+
+Rollback: revert the single 11c commit (subject "chore(site): upgrade Next.js to 16.4.2 and React to
+19.3.1, native flat ESLint (D-31)"), then `npm ci` in `site/`. It restores `package.json`, the lockfile,
+`next.config.mjs`, `eslint.config.mjs`, `knip.json`, `tsconfig.json` and the doc mentions together.

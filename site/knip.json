@@ -1,0 +1,7 @@
+{
+  "$schema": "https://unpkg.com/knip@6.41.0/schema.json",
+  "entry": ["scripts/*.mjs", "lib/**/*.test.{ts,tsx}", "components/**/*.test.tsx"],
+  "project": ["app/**/*.{ts,tsx}", "lib/**/*.{ts,mjs}", "components/**/*.tsx", "scripts/**/*.mjs", "*.{ts,mts,mjs,js}"],
+  "ignore": ["lib/generated-types.ts"],
+  "ignoreDependencies": ["eslint-config-next"]
+}

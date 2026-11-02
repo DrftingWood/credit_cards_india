@@ -87,6 +87,70 @@ jobs:
       - name: Build
         run: npm run build
 
+  # REPORT-ONLY. Every step has continue-on-error and so does the job, so it is
+  # green whatever they find. Outputs: knip (unused code), jscpd (duplicates),
+  # dependency-cruiser (layer rule and cycles), npm audit, gitleaks.
+  report:
+    name: report (non-blocking)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Full history, so gitleaks can scan every commit, not just the tip.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Generate types and dist data
+        run: npm run prebuild
+
+      - name: knip (unused files, exports, dependencies)
+        continue-on-error: true
+        run: npm run knip
+
+      - name: jscpd (duplicated blocks)
+        continue-on-error: true
+        run: npm run dup
+
+      - name: dependency-cruiser (cycles and layer rules)
+        continue-on-error: true
+        run: npm run arch
+
+      - name: npm audit (production dependencies)
+        continue-on-error: true
+        run: npm audit --omit=dev
+
+      # gitleaks from its release binary, checked against a pinned SHA-256 so a
+      # replaced asset fails here instead of running. The gitleaks-action is
+      # avoided: it needs a licence key for organisation accounts. --redact keeps
+      # any real secret out of the log.
+      - name: gitleaks (secrets in history)
+        continue-on-error: true
+        working-directory: .
+        env:
+          GITLEAKS_VERSION: 8.30.1
+          GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/gitleaks.tgz"             "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          echo "${GITLEAKS_SHA256}  $RUNNER_TEMP/gitleaks.tgz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/gitleaks.tgz" -C "$RUNNER_TEMP" gitleaks
+          "$RUNNER_TEMP/gitleaks" git . --redact --no-banner
+
   # The Python tests are plain-assert scripts (no pytest test functions), so each
   # is run directly; a failing script exits non-zero.
   python-tests:

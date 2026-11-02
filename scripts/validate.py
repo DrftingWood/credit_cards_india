@@ -4,6 +4,8 @@
 Usage:
     python scripts/validate.py [--check-urls] [--strict-provenance]
                                [--provenance-report PATH]
+                               [--warn-orphans] [--warn-stale DAYS]
+                               [--check-ratchet]
 
 Exits 0 on success, 1 on any error. Prints warnings but still exits 0 if only warnings.
 
@@ -12,11 +14,21 @@ summarised in a coverage block. By default only broken provenance warns.
 `--strict-provenance` (or env STRICT_PROVENANCE=1) turns every provenance gap on
 an open reward record of an active/invite-only card into an error.
 `--provenance-report PATH` writes the per-rule grades as JSON.
+
+Dataset tooling (docs/SCHEMA_CHANGELOG.md, scripts/lint-baseline.json):
+schema/VERSION must be semver and match the top SCHEMA_CHANGELOG entry (always
+checked, error). `--warn-orphans` lists issuers, networks and loyalty programmes
+no card references; `--warn-stale DAYS` lists cards whose newest
+last_verified_on / source.retrieved_on is older than DAYS days. Both are
+warnings, printed apart from the standing warnings and never counted by the
+ratchet. `--check-ratchet` exits 1 when the standing warning count exceeds
+scripts/lint-baseline.json, and says "lower the baseline" when it is below.
 """
 from __future__ import annotations
 
 import json
 import os
+import re
 import socket
 import sys
 from datetime import date, datetime, timedelta
@@ -36,6 +48,9 @@ SCHEMA_DIR = ROOT / "schema"
 DATA_DIR = ROOT / "data"
 CATEGORY_RULES_PATH = ROOT / "scripts" / "category_rules.yaml"
 STALENESS_WARN_DAYS = 180
+LINT_BASELINE_PATH = ROOT / "scripts" / "lint-baseline.json"
+SEMVER_RE = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
+CHANGELOG_TOP_RE = re.compile(r"^## \[(\d[^\]]*)\]", re.MULTILINE)
 URL_CHECK_TIMEOUT_SECONDS = 10
 AGGREGATOR_SOURCE_DOMAINS = {
     "cardinsider.com",
@@ -357,14 +372,111 @@ def check_rule_provenance(errors, warnings, coverage, path: Path, instance: dict
         )
 
 
+def _rel(path: Path) -> str:
+    """Repo-relative path for messages; falls back to the path as given (test fixtures)."""
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
+def check_schema_version(root: Path = ROOT) -> list[str]:
+    """Errors if schema/VERSION is missing or not semver, or the changelog's top entry differs."""
+    version_path = root / "schema" / "VERSION"
+    changelog_path = root / "docs" / "SCHEMA_CHANGELOG.md"
+    if not version_path.exists():
+        return ["[schema-version] schema/VERSION is missing"]
+    version = version_path.read_text(encoding="utf-8").strip()
+    if not SEMVER_RE.match(version):
+        return [f"[schema-version] schema/VERSION '{version}' is not valid semver (MAJOR.MINOR.PATCH)"]
+    if not changelog_path.exists():
+        return ["[schema-version] docs/SCHEMA_CHANGELOG.md is missing"]
+    top = CHANGELOG_TOP_RE.search(changelog_path.read_text(encoding="utf-8"))
+    if not top:
+        return ["[schema-version] docs/SCHEMA_CHANGELOG.md has no '## [x.y.z]' entry"]
+    if top.group(1) != version:
+        return [
+            f"[schema-version] docs/SCHEMA_CHANGELOG.md top entry is {top.group(1)} but "
+            f"schema/VERSION is {version}; add a changelog entry or fix the version"
+        ]
+    return []
+
+
+def find_orphans(cards, issuers, networks, loyalty_programs) -> list[str]:
+    """Warnings for issuers, networks and loyalty programmes that no card references.
+
+    `cards` is a list of (path, instance). References: card.issuer, card.network,
+    rewards[].loyalty_program.
+    """
+    used_issuers, used_networks, used_programs = set(), set(), set()
+    for _, inst in cards:
+        used_issuers.add(inst.get("issuer"))
+        used_networks.add(inst.get("network"))
+        for rec in inst.get("rewards") or []:
+            used_programs.add(rec.get("loyalty_program"))
+    out = []
+    for kind, known, used in (
+        ("issuer", issuers, used_issuers),
+        ("network", networks, used_networks),
+        ("loyalty programme", loyalty_programs, used_programs),
+    ):
+        for slug in sorted(set(known) - used):
+            out.append(f"[warn] orphan {kind} '{slug}': no card references it")
+    return out
+
+
+def find_stale(cards, days: int, today: date | None = None) -> list[str]:
+    """Warnings for cards whose newest evidence date is older than `days`.
+
+    The evidence date is the latest of metadata.last_verified_on and every
+    source.retrieved_on. Cards with no such date are not reported here.
+    """
+    today = today or date.today()
+    out = []
+    for path, inst in cards:
+        dates = [as_date((inst.get("metadata") or {}).get("last_verified_on"))]
+        dates += [as_date(src.get("retrieved_on")) for src in collect_sources(inst) if src.get("retrieved_on")]
+        dates = [d for d in dates if d is not None]
+        if not dates:
+            continue
+        age = (today - max(dates)).days
+        if age > days:
+            out.append(
+                f"[warn] {_rel(path)} :: newest last_verified_on/source.retrieved_on is {age} days old (> {days})"
+            )
+    return out
+
+
+def ratchet_result(count: int, baseline_path: Path = LINT_BASELINE_PATH) -> tuple[int, str]:
+    """(exit code, message) comparing the standing warning count to the baseline file."""
+    if not baseline_path.exists():
+        return 1, f"[ratchet] baseline file {_rel(baseline_path)} is missing"
+    baseline = json.loads(baseline_path.read_text(encoding="utf-8"))["warnings"]
+    if count > baseline:
+        return 1, (
+            f"[ratchet] {count} warning(s) > baseline {baseline}: fix the new warnings "
+            "(the baseline may only go down)"
+        )
+    if count < baseline:
+        return 0, (
+            f"[ratchet] {count} warning(s) < baseline {baseline}: lower the baseline in "
+            f"{_rel(baseline_path)} to {count}"
+        )
+    return 0, f"[ratchet] {count} warning(s) = baseline {baseline}"
+
+
 def main() -> int:
     check_urls = "--check-urls" in sys.argv[1:]
     strict_provenance = "--strict-provenance" in sys.argv[1:] or os.environ.get("STRICT_PROVENANCE") == "1"
     provenance_report = _arg_value("--provenance-report")
+    warn_orphans = "--warn-orphans" in sys.argv[1:]
+    warn_stale = _arg_value("--warn-stale")
+    check_ratchet = "--check-ratchet" in sys.argv[1:]
     coverage = provenance.Coverage()
     ref_state: dict = {}
     errors: list[str] = []
     warnings: list[str] = []
+    errors.extend(check_schema_version())
     category_rules, untaggable_re = _load_category_rules()
 
     card_schema = load_schema("card")
@@ -661,10 +773,29 @@ def main() -> int:
         print(f"\n{len(warnings)} warning(s):")
         for w in warnings:
             print(f"  {w}")
+    # Opt-in reports: warnings by nature, kept out of the ratchet count.
+    extra: list[str] = []
+    if warn_orphans:
+        extra += find_orphans(cards, issuers, networks, loyalty_programs)
+    if warn_stale is not None:
+        extra += find_stale(cards, int(warn_stale))
+    if extra:
+        print(f"\n{len(extra)} opt-in warning(s) (not counted by the ratchet):")
+        for w in extra:
+            print(f"  {w}")
+    elif warn_orphans or warn_stale is not None:
+        print("\nopt-in checks: no orphans / stale cards found")
+    ratchet_failed = False
+    if check_ratchet:
+        code, message = ratchet_result(len(warnings))
+        print(f"\n{message}")
+        ratchet_failed = code != 0
     if errors:
         print(f"\n{len(errors)} error(s):")
         for e in errors:
             print(f"  {e}")
+        return 1
+    if ratchet_failed:
         return 1
     print("OK")
     return 0

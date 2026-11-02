@@ -34,6 +34,12 @@ jobs:
       - name: Validate
         run: python scripts/validate.py
 
+      # Only the ratchet can fail this step. Orphans and staleness are
+      # reported as warnings and never fail CI. The baseline in
+      # scripts/lint-baseline.json may only go down.
+      - name: Warning ratchet, orphans and stale cards
+        run: python scripts/validate.py --check-ratchet --warn-orphans --warn-stale 365
+
       - name: Provenance unit tests
         run: python scripts/test_provenance.py
 

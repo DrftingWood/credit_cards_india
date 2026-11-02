@@ -181,6 +181,9 @@ Run `python scripts/validate.py` locally; CI runs it on every PR.
 - `status: discontinued` ⇒ `discontinued_on` set.
 - `metadata.last_verified_on` older than 180 days ⇒ warning (non-blocking).
 - `metadata.last_verified_on` earlier than any nested `source.retrieved_on` ⇒ error.
+- `schema/VERSION` must be semver and equal the top `## [x.y.z]` entry of `docs/SCHEMA_CHANGELOG.md` ⇒ error otherwise. The version is copied into `dist/index.json` as `schema_version`.
+- Opt-in reports (warnings only): `--warn-orphans` lists issuers, networks and loyalty programmes no card references; `--warn-stale DAYS` lists cards whose newest `last_verified_on` / `source.retrieved_on` is older than DAYS days.
+- `--check-ratchet` fails when the standing warning count exceeds `scripts/lint-baseline.json` and prints "lower the baseline" when it is below. Opt-in reports are not counted. The baseline is recorded without the gitignored PDF archive (the CI condition).
 - `application.apply_url` / `application.pre_approval_check_url` must use `http(s)`; off-allowlist domains warn.
 - Optional URL checks (`python scripts/validate.py --check-urls`) perform best-effort reachability checks for `source.url` + application URLs.
 - Source-link health: `python scripts/check_links.py` checks every URL cited under `data/` (HEAD then GET, per-host throttling, browser UA, curl re-check of blocked/network failures) and writes `dist/link-report.{json,md}`, classifying ok / redirect (cosmetic, host-moved, moved, to-homepage, to-error-page) / not-found / blocked (bot-wall 401/403/429) / client-error / server-error / network-error. Runs weekly in `.github/workflows/link-check.yml`, failing only on not-found.

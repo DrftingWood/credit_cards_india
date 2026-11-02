@@ -1,0 +1,17 @@
+# One line-ending policy for every checkout (Windows and Linux): LF in the repo
+# and in the working tree. Do not run `git add --renormalize .` casually; it
+# rewrites every file that still has CRLF and collides with open data PRs.
+* text=auto eol=lf
+
+# Binary files: never diff, merge or convert.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.zip binary

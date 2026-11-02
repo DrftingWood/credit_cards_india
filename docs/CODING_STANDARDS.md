@@ -1,0 +1,35 @@
+# Coding standards
+
+About 20 rules for this repo, derived from `docs/audits/standards-gap-2026-11-01.md` (gap against the sibling project debate_cv). Each rule has a reason and an enforcement. "Task N (planned)" refers to the numbered tasks in `docs/superpowers/plans/2026-11-01-standards-alignment.md`; until that task lands the rule is followed by review. "Review" means a human or reviewer agent checks it.
+
+Rule IDs: ST- size and structure, NC- naming and formatting, TE- types, TQ- tests, DP- dependencies, DA- dataset, UI- precision and accessibility, PR- process.
+
+| ID | Rule | Reason | Enforcement |
+|---|---|---|---|
+| ST-1 | New or grown hand-written files stay at or under 800 lines. Generated files and data are excluded; existing larger files (`calculator.ts`, `recommend-client.tsx`, `calculator-client.tsx`) sit on a dated allowlist. | Large files hide bugs and make review slow. | Task 4 (planned): `check-file-size.mjs` |
+| ST-2 | Lint warns at 400 lines per file, 60 per function, complexity 15, 3 params, depth 3. The warning count is a recorded baseline that may only go down. | Size and complexity predict defects; a baseline avoids a big-bang cleanup. | Task 3 (planned) and Task 4 (planned) |
+| ST-3 | Engines in `site/lib/` never import from `app/` or `components/`, and have no import cycles. | Keeps the calculator and recommender testable and reusable by build scripts. | Task 3 (planned): dependency-cruiser, report-only |
+| ST-4 | Before writing a helper, search for an existing one. Duplicated blocks are reported and reduced when touched. | Duplicate logic drifts apart. | Task 3 (planned): jscpd, report-only; review |
+| ST-5 | No dead code or unused exports left behind by a change. | Dead code misleads readers and agents. | Task 3 (planned): knip, report-only |
+| NC-1 | One formatter (Prettier: double quotes, semicolons, trailing commas, width 100, LF), applied in one mechanical commit listed in `.git-blame-ignore-revs`. | Removes style debate; keeps blame useful. | Task 13 (planned), starts after the data review commits |
+| NC-2 | LF line endings everywhere; 2-space indent (4 for Python); final newline. | The Windows checkout otherwise produces CRLF noise. | `.gitattributes` and `.editorconfig` (this PR) |
+| NC-3 | Slugs are kebab-case, no underscores or capitals; TypeScript files are kebab-case, components PascalCase, functions camelCase. | Predictable names and stable URLs. | `scripts/validate.py` for slugs; review for code |
+| TE-1 | TypeScript `strict` plus `noFallthroughCasesInSwitch`, `noImplicitOverride`, `noUnusedLocals`, `noUnusedParameters`. | Catches bugs at compile time. | Task 4 (planned) |
+| TE-2 | Escape hatches (`any`, `as unknown as`, `!`, unexplained `eslint-disable`) are counted; the count may only go down. New ones need a one-line reason. | Stops type safety eroding silently. | Task 4 (planned): `check-ratchet.mjs` |
+| TE-3 | Flat ESLint config (`eslint.config.mjs`) with `eslint .`, `_`-prefixed unused vars allowed. | `next lint` and `.eslintrc.json` are removed in Next 16. | Task 5 (planned) |
+| TQ-1 | A logic change ships with a test in the same PR. Characterization test first when refactoring an engine. | Engines compute money figures; regressions must be visible. | Review; CI runs the suite (Task 2, planned) |
+| TQ-2 | Tests are deterministic: no network, no wall-clock, no random without a seed. | Flaky tests get ignored. | Review |
+| TQ-3 | CI builds and tests the site and runs all Python tests; the checks are required before merge. | Today CI runs only the Python validator. | Task 2 (planned) |
+| DP-1 | npm only, lockfile committed, `npm ci` in CI. Python dependencies pinned. | Reproducible installs. | Task 2 (planned); review |
+| DP-2 | Check the registry and official docs online before an upgrade or new tool; cite version and date in the PR; pin tooling exactly; one upgrade per PR with a rollback note. | Training-data versions are stale; mixed upgrades are hard to revert. | Review (Task 11, planned) |
+| DA-1 | Never edit `data/` outside the workflow in `docs/CONTRIBUTING.md`: dated records are closed and appended, `last_verified_on` is bumped, every value cites an issuer source with `retrieved_on`. | The dataset's value is verifiable history. | `scripts/validate.py` (today); review |
+| DA-2 | Schema changes bump `schema/VERSION` and add an entry to `docs/SCHEMA_CHANGELOG.md`; one-shot backfills live in `scripts/migrations/`. Validator warnings may only go down. | Consumers need to know what changed. | Task 6 (planned) |
+| DA-3 | Local source PDFs (`docs/sources/**/*.pdf`) are never deleted or moved, and have a documented backup. | They exist on one machine only. | Review; Task 6 (planned) for the backup plan |
+| UI-1 | Before a UI change is called done, measure left edges, column positions, computed font size and tracking in the browser at 1280, 1920 and 390, and report the numbers. | "Looks aligned" hides pixel drift. | Review; PR template (this PR) |
+| UI-2 | No decorative emoji. Labels first; an icon supports a label. One icon system (Phosphor) through one barrel file; hand-drawn SVGs only for marks. | Consistent, accessible, translatable UI. | Task 9 (planned): test and lint rule |
+| UI-3 | Compared numbers (fees, rewards, rupee amounts) use tabular figures (`.num`), right-aligned in columns. Inter is the sans face. | Digits line up so users can scan. | Task 8 (planned) |
+| UI-4 | Use existing tokens (colour, spacing, container widths, tracking roles); no raw hex or arbitrary values in components. Palette and dark mode are not redesigned. | One visual system. | `site/lib/design-tokens.test.ts` (today); Task 8 (planned) |
+| UI-5 | Accessibility basics: skip link to `#main`, `aria-current="page"` on the active nav item, one `h1`, 24 px targets, visible focus, colour never the only signal, error and loading states, links that open a new tab say so. | WCAG 2.2 AA. | Task 7 (planned): axe smoke, report-only; review |
+| UI-6 | Long lists are paged (`/browse`: 24 per page, "N of total", URL-synced). | A 368-card grid is slow and hard to scan. | Task 10 (planned) |
+| PR-1 | One PR per concern, stacked in plan order; the owner merges. A PR must not force a rebase of the data review: no `data/` changes in tooling PRs. | Keeps review small and the data review safe. | Review; `git diff --stat <base> -- data` |
+| PR-2 | Agents work in worktrees, dispatch subagents on Sonnet by default, and end commits with the `Co-Authored-By` trailer. | Isolation and attribution. | Review; PR template |

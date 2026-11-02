@@ -17,6 +17,11 @@ and what is historical.
 | `MAINTENANCE_HISTORY.md` | Current log | Durable record of merges, cleanup, branch pruning, and local maintenance. |
 | `DESIGN_INSTRUCTIONS.md` | Current | Visual system rules (DI-): tokens, Inter, container, tracking, numerals. |
 | `UI_UX_STANDARDS.md` | Current | Behaviour and accessibility rules (UX-) for the site. |
+| `HANDOFF.md` | Current | One-page orientation: how to run, CI jobs, standards stack, open owner decisions. |
+| `CODING_STANDARDS.md` | Current | Coding rules (ST/NC/TE/TQ/DP/DA/UI/PR) and how each is enforced. |
+| `SCHEMA_CHANGELOG.md` | Current | One entry per `schema/VERSION` bump; the validator checks it. |
+| `audits/standards-gap-2026-11-01.md` | Historical | Gap analysis against debate_cv that started the standards work. |
+| `superpowers/specs/`, `superpowers/plans/` | Historical | Design specs and implementation plans, including `2026-11-01-standards-alignment`. |
 | `CONTRIBUTING.md` | Current | How to add or update card data. |
 | `ASSETS.md` | Current | Asset and branding notes. |
 

@@ -57,7 +57,7 @@ Full rule sets: `docs/DESIGN_INSTRUCTIONS.md` (visual system, DI-) and `docs/UI_
 
 ## Conventions
 
-- Site code: TypeScript strict, Tailwind with the existing tokens, `@/` imports, engines stay in `site/lib/` and never import from `app/` or `components/`.
+- Site code: TypeScript strict, Tailwind 4 with the existing tokens (config in CSS: `site/styles/theme.css`), `@/` imports, engines stay in `site/lib/` and never import from `app/` or `components/`.
 - Comments explain why, not what. Match the existing style; do not refactor working code for style.
 - Add a test with each logic change. Do not retro-fit tests on stable code.
 - New files stay under 800 lines. Rule names (ST- size, NC- naming, UI- precision) are defined in `docs/CODING_STANDARDS.md`.

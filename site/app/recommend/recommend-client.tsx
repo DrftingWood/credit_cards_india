@@ -333,7 +333,7 @@ export function RecommendClient({
           id="step-heading"
           ref={stepHeadingRef}
           tabIndex={-1}
-          className="text-lg font-semibold text-fg outline-none"
+          className="text-lg font-semibold text-fg outline-hidden"
         >
           Step {step} of {TOTAL_STEPS} · {STEP_LABELS[step - 1]}
         </h2>

@@ -10,7 +10,7 @@ export function ProsCons({ card }: { card: EnrichedCard }) {
       <header className="border-b border-line bg-surface-subtle px-5 py-3">
         <h2 className="text-sm font-semibold text-fg">Pros &amp; Cons</h2>
       </header>
-      <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-line">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="p-5">
           <div className="text-xs uppercase tracking-label text-success font-medium mb-2">
             Pros
@@ -28,7 +28,9 @@ export function ProsCons({ card }: { card: EnrichedCard }) {
             <p className="text-sm text-fg-muted">No derived pros.</p>
           )}
         </div>
-        <div className="p-5">
+        {/* Rule between the columns: top edge below md, left edge from md. Written
+            out here because Tailwind 4 changed how divide-* picks its side. */}
+        <div className="border-t border-line p-5 md:border-l md:border-t-0">
           <div className="text-xs uppercase tracking-label text-danger font-medium mb-2">
             Cons
           </div>

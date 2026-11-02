@@ -606,3 +606,69 @@ Rollback: `git revert <11a commit sha>` (restores `package.json`, the lockfile a
 `tsconfig.json` together), then `npm ci` in `site/`.
 Next TS step: TypeScript 7 once typescript-eslint and json-schema-to-typescript
 declare support. Next in the order of Task 11: Tailwind 4.
+
+### D-30. Tailwind CSS 3.4 -> 4.3.3, config moved into CSS (2026-11-01, Task 11b)
+
+Change: `tailwindcss` `^3.4.15` -> `4.3.3` (published 2026-07-16, still `latest` and
+more than two weeks old on 2026-11-01; `npm view tailwindcss dist-tags time`),
+new `@tailwindcss/postcss` `4.3.3` (same date), `tailwind-merge` `^2.5.4` -> `3.7.0`
+(2026-09-12, the line that understands Tailwind 4 class names). Removed
+`autoprefixer` and the explicit `postcss` devDependency (Tailwind 4 prefixes
+itself and brings `postcss`). Versions are pinned exactly. Sources: the official
+guide https://tailwindcss.com/docs/upgrade-guide (renamed utilities, ring width,
+default border colour, button cursor, space-/divide- selectors, hover media
+query, `@import "tailwindcss"`); the owner's debate_cv repo for the Tailwind 4 setup.
+
+Shape: `tailwind.config.ts` is gone. `styles/globals.css` imports Tailwind with
+`source(none)` plus three `@source` lines that equal the old `content` globs, and
+declares `@custom-variant dark` for `[data-theme="dark"]`. New `styles/theme.css`
+holds every mapping: colours, spacing aliases and the elevation scale in
+`@theme inline`, the literal tokens (fonts, tracking roles, `--container-page` /
+`--container-prose`, type scale with line heights, radius) in `@theme static`.
+`postcss.config.js` uses `@tailwindcss/postcss`.
+
+Deviations from "just run the upgrade tool" (all chosen to keep rendering identical):
+1. Colour channels in `tokens.css` renamed `--color-*` -> `--rgb-*`. Tailwind 4
+   turns a theme variable named `--color-canvas` into `bg-canvas`, so the channel
+   variable and the theme variable cannot share a name (a self-reference, which
+   Tailwind emitted as a cycle). Values are unchanged; theme.css wraps them as
+   `rgb(var(--rgb-x))`, so `bg-surface/90` still works (Tailwind 4 applies the
+   alpha with `color-mix()`). The same collision moved the type, radius,
+   container, tracking and font tokens out of `tokens.css` `:root` into theme.css.
+2. Our scale names are kept, not renamed to Tailwind 4's: `shadow-sm`/`shadow`/
+   `shadow-md`/`shadow-lg` still mean elevation 1-4, `rounded-sm` is still 2px and
+   bare `rounded` 4px. Only `outline-none` -> `outline-hidden` (9 sites) and
+   `drop-shadow-sm` -> `drop-shadow-xs` (1 site) are renames. Re-declared v3
+   values that v4 changed: `drop-shadow-md`, and the 11 palette shades the code
+   uses (v4 ships oklch), so the amber card art does not shift.
+3. Compat rules in `globals.css`: pointer cursor on enabled buttons, 1px `td/th`
+   padding (preflight 4 zeroes it; cells with only some padding sides relied on it),
+   and link hover colour (v3's `a:hover` outranked plain `text-*` utilities by
+   specificity; v4's cascade layers would drop that).
+4. Class changes forced by v4 semantics: `bg-gradient-to-br` -> `bg-linear-to-br/srgb`
+   (v4 interpolates gradients in oklab by default); `md:leading-9` on the card h1 and
+   `sm:leading-5` on the card-art name (v4 `leading-*` now beats a later
+   `text-*` line-height); `info-grid` and `pros-cons` separators written out per
+   cell instead of `divide-*` (selector and specificity changed); the JSON-LD
+   `<script>` moved to be the first child of the card `<article>` (`space-y-*` now
+   puts the gap below every child but the last, so a trailing hidden element added
+   20px).
+5. `cn()` uses `extendTailwindMerge` with `tracking-label`, `tracking-heading`,
+   `max-w-page` and the `p-card`-style spacing aliases (deferred review finding;
+   before, `cn("tracking-wide","tracking-label")` kept both). Covered by tests in
+   `lib/utils.test.ts`; keep that list in step with theme.css.
+6. One intended visual change: input placeholder text. The `::placeholder`
+   rule in globals.css pins the 4.5:1 token `--rgb-fg-placeholder`, but under v3
+   preflight's `input::placeholder { color: #9ca3af }` (higher specificity) won, so
+   the token never rendered on inputs. Under v4 it does (darker, passes SC 1.4.3).
+   About 330 px per search box. Revert by deleting the rule if the owner prefers the
+   old grey (not recommended; it fails contrast).
+7. Latent v3 quirk preserved on purpose: in the card page info grid, `md:divide-y-0`
+   outranked `md:border-b`, so only the first cell ever got a bottom rule at md and up.
+   The classes now say that explicitly. The evident intent (a rule under every
+   row but the last) is a one-line change for the owner to decide.
+
+Rollback: revert the single 11b commit (subject "chore(site): upgrade Tailwind CSS to 4.3.3,
+config in CSS (D-30)"), then `npm ci` in `site/`. It restores `package.json`, the lockfile,
+`tailwind.config.ts`, `postcss.config.js` and the CSS together.
+

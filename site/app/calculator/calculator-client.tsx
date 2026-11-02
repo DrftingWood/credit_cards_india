@@ -226,7 +226,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                   onChange={(e) =>
                     setSpend((s) => ({ ...s, [cat]: clampSpend(e.target.value) }))
                   }
-                  className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-focus bg-surface text-fg"
+                  className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-hidden focus:ring-1 focus:ring-focus bg-surface text-fg"
                 />
               </div>
             </div>

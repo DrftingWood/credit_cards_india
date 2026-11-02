@@ -55,8 +55,8 @@ Written 2026-11-01 (standards plan, Task 8). The visual system of the site: what
 
 | Thing | File |
 |---|---|
-| Tokens (colour, type, space, radius, elevation, container, tracking) | `site/styles/tokens.css` |
-| Tailwind mapping | `site/tailwind.config.ts` |
+| Themed tokens (colour channels `--rgb-*`, spacing aliases, elevation) | `site/styles/tokens.css` |
+| Literal tokens (type scale, radius, container, tracking, fonts) and the Tailwind 4 mapping of every token (`@theme`; replaces `tailwind.config.ts`) | `site/styles/theme.css` |
 | `.num`, `.num-prop`, `html` rules, components | `site/styles/globals.css` |
 | Font loading | `site/app/layout.tsx` |
 | Contrast pairs and tests | `site/lib/design-tokens.ts`, `site/lib/design-tokens.test.ts`, `site/lib/design-standards.test.ts` |

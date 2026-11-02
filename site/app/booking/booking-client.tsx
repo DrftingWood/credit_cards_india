@@ -81,7 +81,7 @@ export function BookingClient() {
               min={0}
               value={price}
               onChange={(e) => setPrice(clampPrice(e.target.value))}
-              className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-focus"
+              className="w-full rounded-md border border-line-strong px-2 py-1.5 text-sm focus:border-accent focus:outline-hidden focus:ring-1 focus:ring-focus"
             />
           </div>
           <p className="text-xs text-fg-muted mt-1">
@@ -175,7 +175,7 @@ function PtField({ label, value, onChange }: { label: string; value: number; onC
           min={0}
           value={value}
           onChange={(e) => onChange(Math.max(0, Number(e.target.value) || 0))}
-          className="w-16 rounded border border-line-strong px-1.5 py-0.5 text-right num focus:border-accent focus:outline-none"
+          className="w-16 rounded border border-line-strong px-1.5 py-0.5 text-right num focus:border-accent focus:outline-hidden"
         />
       </span>
     </label>
@@ -259,7 +259,7 @@ function ChannelRow({
               <span className="text-fg-muted">Real price for this channel:</span>
               <span className="flex items-center gap-1">
                 <span className="text-fg-muted">₹</span>
-                <input type="number" value={quote} onChange={(e) => setQuote(e.target.value)} className="w-24 rounded border border-line-strong px-1.5 py-0.5 num focus:border-accent focus:outline-none" />
+                <input type="number" value={quote} onChange={(e) => setQuote(e.target.value)} className="w-24 rounded border border-line-strong px-1.5 py-0.5 num focus:border-accent focus:outline-hidden" />
               </span>
               <button
                 type="button"

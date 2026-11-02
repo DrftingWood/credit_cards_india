@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <div className="space-y-12">
       {/* hero */}
-      <section className="rounded-2xl border border-line bg-gradient-to-br from-surface to-accent-subtle p-8 md:p-10">
+      <section className="rounded-2xl border border-line bg-linear-to-br/srgb from-surface to-accent-subtle p-8 md:p-10">
         <div className="text-[11px] font-semibold uppercase tracking-label text-accent-fg">
           {n} cards · sourced from issuer T&amp;C · no affiliate links
         </div>

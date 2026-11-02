@@ -237,7 +237,7 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
           <div className="my-auto pt-1">
             <div className="flex items-center justify-between">
               {/* EMV Microchip SVG */}
-              <div className="relative w-8 h-6 sm:w-9 sm:h-7 rounded-sm bg-gradient-to-br from-amber-200 via-amber-400 to-amber-500 border border-amber-600/60 shadow-sm flex items-center justify-center overflow-hidden">
+              <div className="relative w-8 h-6 sm:w-9 sm:h-7 rounded-sm bg-linear-to-br/srgb from-amber-200 via-amber-400 to-amber-500 border border-amber-600/60 shadow-sm flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0.5 border border-amber-700/40 rounded-sm" />
                 <div className="w-full h-[1px] bg-amber-800/40 absolute top-1/2 -translate-y-1/2" />
                 <div className="h-full w-[1px] bg-amber-800/40 absolute left-1/3" />
@@ -245,7 +245,7 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
               </div>
 
               {/* Masked PAN placeholder */}
-              <div className="font-mono text-xs sm:text-sm tracking-widest text-white/75 drop-shadow-sm tabular-nums">
+              <div className="font-mono text-xs sm:text-sm tracking-widest text-white/75 drop-shadow-xs tabular-nums">
                 •••• {last4}
               </div>
             </div>
@@ -257,7 +257,7 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
               <div
                 className={`${
                   isHero ? "text-base sm:text-lg" : "text-xs sm:text-sm"
-                } font-bold text-white tracking-heading leading-snug drop-shadow-md line-clamp-1`}
+                } font-bold text-white tracking-heading leading-snug sm:leading-5 drop-shadow-md line-clamp-1`}
               >
                 {card.name}
               </div>

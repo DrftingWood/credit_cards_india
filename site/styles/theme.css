@@ -1,0 +1,126 @@
+/*
+ * Tailwind 4 theme — the thin mapping of the design tokens onto utilities.
+ * Replaces tailwind.config.ts (Tailwind 3). Themed values (colour channels,
+ * spacing aliases, elevation) are defined in tokens.css and switch between
+ * light and dark there, so components need no `dark:` variants. Use the
+ * semantic names below rather than raw palette colours (slate-500, blue-600 …).
+ */
+
+/* Colours: --color-<name> generates bg-<name>, text-<name>, border-<name>,
+   ring-<name> … `inline` makes utilities emit rgb(var(--rgb-<name>)) directly,
+   so the light/dark swap of --rgb-* is read at the element, and opacity
+   modifiers (bg-surface/90) become color-mix() on that value. */
+@theme inline {
+  --color-canvas: rgb(var(--rgb-canvas));
+  --color-surface: rgb(var(--rgb-surface));
+  --color-surface-subtle: rgb(var(--rgb-surface-subtle));
+  --color-surface-muted: rgb(var(--rgb-surface-muted));
+  --color-inverse: rgb(var(--rgb-inverse));
+  --color-fg: rgb(var(--rgb-fg));
+  --color-fg-secondary: rgb(var(--rgb-fg-secondary));
+  --color-fg-muted: rgb(var(--rgb-fg-muted));
+  --color-fg-disabled: rgb(var(--rgb-fg-disabled));
+  --color-fg-placeholder: rgb(var(--rgb-fg-placeholder));
+  --color-on-accent: rgb(var(--rgb-on-accent));
+  --color-on-inverse: rgb(var(--rgb-on-inverse));
+  --color-on-inverse-muted: rgb(var(--rgb-on-inverse-muted));
+  --color-on-inverse-accent: rgb(var(--rgb-on-inverse-accent));
+  --color-on-accent-disabled: rgb(var(--rgb-on-accent-disabled));
+  --color-line: rgb(var(--rgb-line));
+  --color-line-strong: rgb(var(--rgb-line-strong));
+  --color-accent: rgb(var(--rgb-accent));
+  --color-accent-hover: rgb(var(--rgb-accent-hover));
+  --color-accent-fg: rgb(var(--rgb-accent-fg));
+  --color-accent-strong: rgb(var(--rgb-accent-strong));
+  --color-accent-subtle: rgb(var(--rgb-accent-subtle));
+  --color-accent-line: rgb(var(--rgb-accent-line));
+  --color-accent-disabled: rgb(var(--rgb-accent-disabled));
+  --color-focus: rgb(var(--rgb-focus));
+  --color-success: rgb(var(--rgb-success));
+  --color-success-subtle: rgb(var(--rgb-success-subtle));
+  --color-success-line: rgb(var(--rgb-success-line));
+  --color-warn: rgb(var(--rgb-warn));
+  --color-warn-subtle: rgb(var(--rgb-warn-subtle));
+  --color-warn-line: rgb(var(--rgb-warn-line));
+  --color-danger: rgb(var(--rgb-danger));
+  --color-danger-subtle: rgb(var(--rgb-danger-subtle));
+  --color-danger-line: rgb(var(--rgb-danger-line));
+  --color-chart-1: rgb(var(--rgb-chart-1));
+  --color-chart-2: rgb(var(--rgb-chart-2));
+  --color-chart-3: rgb(var(--rgb-chart-3));
+  --color-chart-4: rgb(var(--rgb-chart-4));
+  --color-chart-5: rgb(var(--rgb-chart-5));
+  --color-chart-6: rgb(var(--rgb-chart-6));
+
+  /* The elevation scale keeps its Tailwind 3 names: shadow-sm, shadow,
+     shadow-md, shadow-lg. (Tailwind 4 renamed the stock scale; these are our
+     tokens, so the names stay and no class changes.) */
+  --shadow-none: var(--elevation-0);
+  --shadow-sm: var(--elevation-1);
+  --shadow: var(--elevation-2);
+  --shadow-md: var(--elevation-3);
+  --shadow-lg: var(--elevation-4);
+
+  /* Spacing aliases: p-card, gap-stack, mt-section, gap-inline … */
+  --spacing-inline: var(--space-inline);
+  --spacing-stack: var(--space-stack);
+  --spacing-card: var(--space-card);
+  --spacing-section: var(--space-section);
+}
+
+/* Literal tokens. `static` keeps every variable in :root even when no utility
+   uses it (tokens must always exist). These names ARE the utility names, so
+   they are declared only here. */
+@theme static {
+  --font-sans: var(--font-inter, "Inter"), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
+
+  /* Tracking roles — one letter-spacing per role (UI_UX_STANDARDS UI-6).
+     Values equal Tailwind's tracking-wide / tracking-tight, so adopting the
+     roles changed nothing visually. */
+  --tracking-label: 0.025em;     /* UPPERCASE micro-labels, table row heads */
+  --tracking-heading: -0.025em;  /* page / brand headings */
+
+  /* Layout widths: max-w-page, max-w-prose. */
+  --container-page: 72rem;       /* the one page width (was max-w-6xl) */
+  --container-prose: 65ch;       /* long-form reading measure */
+
+  /* Type scale (1.125–1.25 modular, 16px base): text-<key> sets size + line-height. */
+  --text-xs: 0.75rem;   --text-xs--line-height: 1rem;       /* 12 — captions, chips */
+  --text-sm: 0.875rem;  --text-sm--line-height: 1.25rem;    /* 14 — UI, table cells */
+  --text-base: 1rem;    --text-base--line-height: 1.5rem;   /* 16 — body */
+  --text-lg: 1.125rem;  --text-lg--line-height: 1.75rem;    /* 18 — lead, card title */
+  --text-xl: 1.25rem;   --text-xl--line-height: 1.75rem;    /* 20 — section title */
+  --text-2xl: 1.5rem;   --text-2xl--line-height: 2rem;      /* 24 — metric, page title (mobile) */
+  --text-3xl: 1.875rem; --text-3xl--line-height: 2.25rem;   /* 30 — page title */
+  --text-4xl: 2.25rem;  --text-4xl--line-height: 2.5rem;    /* 36 — hero */
+
+  /* Radius. Same names and values as before (rounded-sm is 2px, bare
+     rounded is 4px), not Tailwind 4's renamed scale. */
+  --radius-sm: 0.125rem;
+  --radius: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+}
+
+/* Tailwind 3 stock values that the site relies on and Tailwind 4 changed.
+   Re-declared here so the rendering stays identical (no palette drift:
+   v4 ships its palette in oklch). Only the shades the code uses. */
+@theme {
+  --color-slate-900: #0f172a;
+  --color-blue-500: #3b82f6;
+  --color-emerald-500: #10b981;
+  --color-purple-500: #a855f7;
+  --color-rose-500: #f43f5e;
+  --color-amber-200: #fde68a;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  /* v3 drop-shadow-md (v4's stock md is a different, single shadow). */
+  --drop-shadow-md: 0 4px 3px rgb(0 0 0 / 0.07), 0 2px 2px rgb(0 0 0 / 0.06);
+}

@@ -19,7 +19,6 @@ import {
   Basket,
   Check,
   Crown,
-  CreditCard,
   Desktop,
   ForkKnife,
   GasPump,
@@ -28,7 +27,6 @@ import {
   HandCoins,
   Heart,
   Lightbulb,
-  Lightning,
   LinkSimple,
   Lock,
   LockOpen,
@@ -73,13 +71,11 @@ export const IconForex = glyph(Globe, "IconForex");
 export const IconBag = glyph(ShoppingBag, "IconBag");
 export const IconHealth = glyph(Heart, "IconHealth");
 export const IconBills = glyph(Receipt, "IconBills");
-export const IconCard = glyph(CreditCard, "IconCard");
 export const IconBalance = glyph(Scales, "IconBalance");
 export const IconLock = glyph(Lock, "IconLock");
 export const IconUnlock = glyph(LockOpen, "IconUnlock");
 export const IconWarning = glyph(Warning, "IconWarning");
 export const IconTip = glyph(Lightbulb, "IconTip");
-export const IconStack = glyph(Lightning, "IconStack");
 export const IconThemeLight = glyph(Sun, "IconThemeLight");
 export const IconThemeDark = glyph(Moon, "IconThemeDark");
 export const IconThemeSystem = glyph(Desktop, "IconThemeSystem");

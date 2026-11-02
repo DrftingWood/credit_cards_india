@@ -6,7 +6,8 @@ import { useSearchParams } from "next/navigation";
 import type { EnrichedCard, LoyaltyProgram } from "@/lib/types";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
-import { IconBag, IconBalance, IconBills, IconCheck, IconDining, IconFuel, IconHealth, IconLock, IconShopping, IconStar, IconTip, IconTravel, IconUnlock, IconWarning } from "@/components/icons";
+import { IconBag, IconBalance, IconBills, IconCheck, IconDining, IconFuel, IconHealth, IconShopping, IconStar, IconTip, IconTravel, IconWarning } from "@/components/icons";
+import { LockState } from "@/components/lock-state";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
 import { explainCard, forexCost, rankCards, listEcosystems, type CardScore, type ScoringContext, type SpendProfile } from "@/lib/calculator";
@@ -667,7 +668,7 @@ function ResultRow({
                     : "ml-2 rounded-full bg-surface-muted text-fg-muted ring-1 ring-line px-1.5 py-0.5 text-[10px] font-medium align-middle"
                 }
               >
-                {score.ecosystem_credited ? <IconUnlock className="mr-1 inline align-[-0.125em]" /> : <IconLock className="mr-1 inline align-[-0.125em]" />}{score.closed_loop_ecosystem}
+                <LockState unlocked={score.ecosystem_credited === true} />{score.closed_loop_ecosystem}
                 {score.ecosystem_credited ? "" : " · base rate"}
               </span>
             ) : null}

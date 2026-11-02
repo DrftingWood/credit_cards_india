@@ -10,7 +10,7 @@ import {
   type PointValues,
   type ChannelResult,
 } from "@/lib/booking";
-import { IconLock } from "@/components/icons";
+import { LockState } from "@/components/lock-state";
 import { formatInr } from "@/lib/utils";
 
 const ROUTE_KEYS: RouteKey[] = ["dom-flight", "intl-flight", "dom-hotel", "intl-hotel"];
@@ -245,7 +245,7 @@ function ChannelRow({
             )}
           </div>
           {ch.note ? <div className="mt-0.5 text-[11px] text-fg-muted">{ch.note}</div> : null}
-          {ch.closedLoopNote ? <div className="mt-0.5 text-[11px] text-warn"><IconLock className="mr-1 inline align-[-0.125em]" />{ch.closedLoopNote}</div> : null}
+          {ch.closedLoopNote ? <div className="mt-0.5 text-[11px] text-warn"><LockState unlocked={false} />{ch.closedLoopNote}</div> : null}
           {isPoints && marked ? (
             <div className="mt-0.5 text-[11px] text-danger">Redeeming on a marked-up portal wastes value — pay cash and keep the points.</div>
           ) : null}

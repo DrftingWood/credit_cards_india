@@ -66,3 +66,12 @@ python scripts/test_provenance.py                   # Python tests are plain scr
 7. Lint warnings outside the ratchet: the 3 in `site/scripts/*.mjs` (build tooling, intentionally not ratcheted; D-31). `npm run lint` shows 123 warnings; the ratchet counts 116 size/complexity plus 4 hook warnings.
 8. `site/styles/globals.css` opts links out of the default hover colour with a brittle `[class*="hover:text-"]` selector (owner aware). Replace it if a class name ever changes.
 9. Owner decisions: page `<title>` is identical across `?page=N` on `/browse`; `error.tsx` has no home link and there is no `global-error.tsx`.
+
+## Rebase onto the 2026-10 catalogue integration (2026-11-02)
+
+The standards stack was rebased from 94f47ed onto 278c51c (PR #66). Notes:
+
+- `lintWarnings` baseline raised 116 -> 119: the catalogue commit added code (calculator, card table, deep-dive) that trips three size/complexity rules. They are pre-existing in that base, not new from the standards work. They can only fall from here.
+- The new base's `site/components/icons` and `calculator-client.tsx` had their own hand-drawn icons; the Phosphor barrel replaced them, with `IconGroceries`, `IconLightbulb`, `IconCheck`, `IconStar` mapped to Phosphor.
+- `site/lib/validate-schema.test.ts` fails on the base's data and is not caused by the standards work: `data/cards/au/kosmo.yaml` has non-string `mcc_exclusions` entries and `data/cards/axis/reserve.yaml` has a duplicated YAML key. `python scripts/validate.py` passes; the Node schema validator is stricter. The data owner must fix these (standards work never edits `data/`).
+- `docs/TODO.md` from the base has mojibake (double-encoded UTF-8) in several rows. Not touched here.

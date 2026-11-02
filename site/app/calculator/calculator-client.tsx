@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ComponentType } from "react";
 import { useSearchParams } from "next/navigation";
 import type { EnrichedCard, LoyaltyProgram } from "@/lib/types";
 import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
+import { IconBag, IconBalance, IconBills, IconCheck, IconDining, IconFuel, IconHealth, IconLock, IconShopping, IconStar, IconTip, IconTravel, IconUnlock, IconWarning } from "@/components/icons";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
 import { explainCard, forexCost, rankCards, listEcosystems, type CardScore, type ScoringContext, type SpendProfile } from "@/lib/calculator";
@@ -19,11 +20,6 @@ import { DeclaredUsageSummary } from "@/components/detail/usage-panel";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
 import { allocatePortfolio, type PortfolioSlot } from "@/lib/portfolio";
 import { formatInr, formatPct } from "@/lib/utils";
-import {
-  IconCashback, IconCheck, IconDining, IconFuel, IconGroceries, IconHealth, IconLightbulb,
-  IconLock, IconShopping, IconStack, IconStar, IconTravel, IconUnlock, IconWarning,
-} from "@/components/icons";
-import type { ReactNode } from "react";
 
 /** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY_SPEND]. The ceiling
  *  lives in the shared spend store, which enforces it on every write. */
@@ -34,18 +30,18 @@ function clampSpend(raw: string): number {
 }
 
 /** Group the closed-loop ecosystems by the activity a user can actually answer for. */
-const ECO_GROUPS: { label: string; icon: ReactNode; ecos: string[] }[] = [
-  { label: "Shopping & retail", icon: <IconShopping className="h-4 w-4" />, ecos: ["Tata Neu", "Adani One", "Shoppers Stop"] },
-  { label: "Travel", icon: <IconTravel className="h-4 w-4" />, ecos: ["SpiceJet", "IRCTC", "ixigo"] },
-  { label: "Fuel", icon: <IconFuel className="h-4 w-4" />, ecos: ["IndianOil"] },
-  { label: "Health", icon: <IconHealth className="h-4 w-4" />, ecos: ["Apollo"] },
-  { label: "Bills & apps", icon: <IconCashback className="h-4 w-4" />, ecos: ["CheQ"] },
+const ECO_GROUPS: { label: string; Icon: ComponentType<{ className?: string }>; ecos: string[] }[] = [
+  { label: "Shopping & retail", Icon: IconBag, ecos: ["Tata Neu", "Adani One", "Shoppers Stop"] },
+  { label: "Travel", Icon: IconTravel, ecos: ["SpiceJet", "IRCTC", "ixigo"] },
+  { label: "Fuel", Icon: IconFuel, ecos: ["IndianOil"] },
+  { label: "Health", Icon: IconHealth, ecos: ["Apollo"] },
+  { label: "Bills & apps", Icon: IconBills, ecos: ["CheQ"] },
 ];
 
 interface SpendPreset {
   id: string;
   label: string;
-  icon: ReactNode;
+  Icon: ComponentType<{ className?: string }>;
   tooltip: string;
   spend: SpendProfile;
   merchant?: { key: string; share: number };
@@ -55,7 +51,7 @@ const SPEND_PRESETS: SpendPreset[] = [
   {
     id: "swiggy-50k",
     label: "Swiggy / Food Apps",
-    icon: <IconDining className="h-4 w-4" />,
+    Icon: IconDining,
     tooltip: "₹50,000/mo on food delivery (Swiggy, Zomato)",
     spend: { online: 0, groceries: 0, dining: 50000, fuel: 0, travel: 0, utilities: 0, rent: 0, international: 0 },
     merchant: { key: "swiggy", share: 100 },
@@ -63,14 +59,14 @@ const SPEND_PRESETS: SpendPreset[] = [
   {
     id: "travel-100k",
     label: "Frequent Traveler",
-    icon: <IconTravel className="h-4 w-4" />,
+    Icon: IconTravel,
     tooltip: "₹1,00,000/mo on flights, hotels & travel booking",
     spend: { online: 0, groceries: 0, dining: 0, fuel: 0, travel: 100000, utilities: 0, rent: 0, international: 0 },
   },
   {
     id: "ecom-50k",
     label: "Online Shopping",
-    icon: <IconShopping className="h-4 w-4" />,
+    Icon: IconBag,
     tooltip: "₹50,000/mo on e-commerce (Amazon, Flipkart)",
     spend: { online: 50000, groceries: 0, dining: 0, fuel: 0, travel: 0, utilities: 0, rent: 0, international: 0 },
     merchant: { key: "amazon", share: 80 },
@@ -78,21 +74,21 @@ const SPEND_PRESETS: SpendPreset[] = [
   {
     id: "fuel-20k",
     label: "Daily Commute & Fuel",
-    icon: <IconFuel className="h-4 w-4" />,
+    Icon: IconFuel,
     tooltip: "₹20,000/mo on petrol/diesel & vehicle expenses",
     spend: { online: 0, groceries: 0, dining: 0, fuel: 20000, travel: 0, utilities: 0, rent: 0, international: 0 },
   },
   {
     id: "groceries-30k",
     label: "Groceries & Quick-Commerce",
-    icon: <IconGroceries className="h-4 w-4" />,
+    Icon: IconShopping,
     tooltip: "₹30,000/mo on Instamart, Blinkit & supermarkets",
     spend: { online: 0, groceries: 30000, dining: 0, fuel: 0, travel: 0, utilities: 0, rent: 0, international: 0 },
   },
   {
     id: "balanced-50k",
     label: "Balanced Household",
-    icon: <IconStack className="h-4 w-4" />,
+    Icon: IconBalance,
     tooltip: "₹50,000/mo across multiple typical categories",
     spend: { online: 15000, groceries: 12000, dining: 8000, fuel: 5000, travel: 5000, utilities: 5000, rent: 0, international: 0 },
   },
@@ -208,7 +204,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                 onClick={() => applyPreset(p)}
                 className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-surface hover:bg-surface-subtle px-2.5 py-1 text-xs text-fg-secondary transition-colors"
               >
-                <span className="inline-flex" aria-hidden="true">{p.icon}</span>
+                <p.Icon className="text-sm" />
                 <span>{p.label}</span>
               </button>
             ))}
@@ -250,7 +246,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
 
         {ecosystems.length > 0 ? (
           <div className="border-t border-line pt-4">
-            <h2 className="flex items-center gap-1.5 text-sm font-semibold text-fg"><IconLock className="h-4 w-4" />Ecosystem-locked points</h2>
+            <h2 className="text-sm font-semibold text-fg">Ecosystem-locked points</h2>
             <p className="text-xs text-fg-muted mt-0.5">
               Some cards earn points redeemable only inside one ecosystem — real ₹1 money only if you use it.
             </p>
@@ -282,7 +278,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                   if (present.length === 0) return null;
                   return (
                     <div key={g.label}>
-                      <div className="flex items-center gap-1.5 text-[11px] font-medium text-fg-muted">{g.icon}{g.label}</div>
+                      <div className="inline-flex items-center gap-1 text-[11px] font-medium text-fg-muted"><g.Icon />{g.label}</div>
                       <div className="mt-1 flex flex-wrap gap-1.5">
                         {present.map((eco) => {
                           const on = enabledEco.has(eco);
@@ -368,7 +364,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
                   : "text-fg-muted hover:text-fg"
               }`}
             >
-              <span className="inline-flex items-center gap-1"><IconStack className="h-4 w-4" />Multi-Card Stack</span>
+              Multi-Card Stack
             </button>
           </div>
         </div>
@@ -415,7 +411,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
             {/* Comparison Callout */}
             {portfolioGainAnnual > 500 && topSingleScore ? (
               <div className="rounded-xl border border-success/30 bg-success-subtle/50 p-4 flex items-start gap-3">
-                <IconLightbulb className="h-5 w-5 shrink-0" />
+                <IconTip className="shrink-0 text-xl text-accent-fg" />
                 <div className="text-xs sm:text-sm text-fg">
                   <strong>Stacking Advantage: </strong>
                   By using this {portfolio.slots.length}-card stack instead of relying on a single card (
@@ -480,7 +476,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
 
             {portfolio.unallocated_monthly_spend_inr > 0 ? (
               <div className="rounded-xl border border-warn/30 bg-warn-subtle/50 p-4 text-xs text-warn">
-                <IconWarning className="mr-1 inline h-4 w-4 align-text-bottom" /> <strong>Unallocated Spend: </strong>
+                <IconWarning className="mr-1 inline align-[-0.125em]" /><strong>Unallocated Spend: </strong>
                 {formatInr(Math.round(portfolio.unallocated_monthly_spend_inr))}/mo could not be routed to any
                 card offering an accelerated reward because all eligible candidate cards hit their monthly caps.
               </div>
@@ -549,8 +545,8 @@ function PortfolioSlotRow({ slot, index }: { slot: PortfolioSlot; index: number 
                 {c.name}
               </Link>
               {slot.cap_bound ? (
-                <span className="rounded-full bg-warn-subtle text-warn border border-warn-line px-2 py-0.5 text-[10px] font-semibold">
-                  <span className="inline-flex items-center gap-1"><IconWarning className="h-3.5 w-3.5" />Cap Bound — Spend Spills</span>
+                <span className="rounded-full bg-warn-subtle text-warn border border-warn-line px-2 py-0.5 text-[10px] font-semibold inline-flex items-center gap-1">
+                  <IconWarning /> Cap Bound — Spend Spills
                 </span>
               ) : (
                 <span className="rounded-full bg-success-subtle text-success border border-success-line px-2 py-0.5 text-[10px] font-semibold">
@@ -671,7 +667,7 @@ function ResultRow({
                     : "ml-2 rounded-full bg-surface-muted text-fg-muted ring-1 ring-line px-1.5 py-0.5 text-[10px] font-medium align-middle"
                 }
               >
-                {score.ecosystem_credited ? <IconUnlock className="mr-1 inline h-3.5 w-3.5" /> : <IconLock className="mr-1 inline h-3.5 w-3.5" />} {score.closed_loop_ecosystem}
+                {score.ecosystem_credited ? <IconUnlock className="mr-1 inline align-[-0.125em]" /> : <IconLock className="mr-1 inline align-[-0.125em]" />}{score.closed_loop_ecosystem}
                 {score.ecosystem_credited ? "" : " · base rate"}
               </span>
             ) : null}

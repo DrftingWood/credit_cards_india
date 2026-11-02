@@ -30,7 +30,7 @@ Written 2026-11-01 (standards plan, Task 8). The visual system of the site: what
 | DI-18 | Row height in dense tables and lists is 34 px on desktop and 44 px on touch. A table keeps one row height. | `measure`; Q |
 | DI-19 | Issuer and network logos sit on `.logo-plate` in dark mode; logos are never recoloured. | Q |
 | DI-20 | Motion is 200 ms or less, fades and small translates only, and is switched off under `prefers-reduced-motion`. | Q |
-| DI-21 | Icons are Phosphor, through the one barrel file (Task 9). A label always comes first; an icon supports it. No decorative emoji. | Task 9 (planned) lint rule |
+| DI-21 | Icons are Phosphor, through the one barrel file (`components/icons`, imported from `@phosphor-icons/react/dist/ssr`, v2.1.10). A label always comes first; an icon supports it. No decorative emoji. | ESLint ban + `components/no-emoji.test.tsx` |
 | DI-22 | Before a UI change is called done, measure it in a browser at 1280, 1920 and 390 and report the numbers (left edge, width, column x positions, computed font and tracking). | Review; PR template |
 
 ## Rules, with reason

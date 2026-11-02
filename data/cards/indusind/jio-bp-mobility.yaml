@@ -155,8 +155,6 @@ benefits:
     retrieved_on: 2026-10-26
     type: issuer-page
     confidence: high
-    local_refs:
-    - docs/sources/indusind/jio-bp-mobility/jio-bp-card-benefit-guide-retrieved-2026-10-26.pdf
     fields_verified:
     - benefits.welcome[0].window_days
     - benefits.welcome[1].value_inr

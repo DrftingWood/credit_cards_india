@@ -79,7 +79,6 @@ rewards:
     url: https://www.axis.bank.in/cards/credit-card/reserve-credit-card/beyond-expectations-always
     retrieved_on: 2026-10-27
     type: issuer-page
-    notes: Rent earns EDGE points up to INR 100,000 monthly; the issuer lists dynamic transfer ratios, so stale fixed partner ratios and point valuations were removed pending current partner-specific verification.
     confidence: high
     fields_verified:
     - rewards.base.rate
@@ -89,7 +88,7 @@ rewards:
     local_refs:
     - docs/sources/axis/reserve/reserve-revision-effective-2025-06-20.pdf
     - docs/sources/axis/reserve/reserve-revision-effective-2026-08-28.pdf
-    notes: Current issuer terms exclude utility/telecom, rent (points earned only up to INR 100,000 per calendar month), wallet, gift cards, government, insurance, gold/jewellery, fuel, bridge fees, road fees/tolls, cash advances and repayments. EMI-converted transactions have points debited; cancelled EMIs do not restore points. Fee-waiver spend additionally excludes reversals, fees/charges and EMI transactions, among the other listed categories. No universal point redemption value is published.
+    notes: "Rent earns EDGE points up to INR 100,000 monthly; the issuer lists dynamic transfer ratios, so stale fixed partner ratios and point valuations were removed pending current partner-specific verification. Current issuer terms exclude utility/telecom, rent (points earned only up to INR 100,000 per calendar month), wallet, gift cards, government, insurance, gold/jewellery, fuel, bridge fees, road fees/tolls, cash advances and repayments. EMI-converted transactions have points debited; cancelled EMIs do not restore points. Fee-waiver spend additionally excludes reversals, fees/charges and EMI transactions, among the other listed categories. No universal point redemption value is published."
   mcc_exclusions: []
 benefits:
 - effective_from: 2026-10-25

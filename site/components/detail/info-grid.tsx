@@ -26,7 +26,7 @@ export function InfoGrid({ title, cells }: { title: string; cells: InfoCell[] })
                 : "",
             ].filter(Boolean).join(" ")}
           >
-            <div className="text-xs uppercase tracking-wide text-accent-fg font-medium">
+            <div className="text-xs uppercase tracking-label text-accent-fg font-medium">
               {c.label}
             </div>
             <div className="mt-1 text-sm text-fg">{c.value}</div>

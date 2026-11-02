@@ -99,7 +99,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
       </button>
       <div className={`space-y-5 ${mobileOpen ? "block" : "hidden"} md:block`}>
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wide text-fg-muted mb-1">
+        <label className="block text-xs font-semibold uppercase tracking-label text-fg-muted mb-1">
           Search
         </label>
         <input
@@ -270,7 +270,7 @@ export function FilterBar({ state, onChange, cards, issuers }: Props) {
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <div className="text-xs font-semibold uppercase tracking-wide text-fg-muted mb-1">{title}</div>
+      <div className="text-xs font-semibold uppercase tracking-label text-fg-muted mb-1">{title}</div>
       <div className="space-y-1">{children}</div>
     </div>
   );

@@ -174,7 +174,7 @@ function PtField({ label, value, onChange }: { label: string; value: number; onC
           min={0}
           value={value}
           onChange={(e) => onChange(Math.max(0, Number(e.target.value) || 0))}
-          className="w-16 rounded border border-line-strong px-1.5 py-0.5 text-right tabular-nums focus:border-accent focus:outline-none"
+          className="w-16 rounded border border-line-strong px-1.5 py-0.5 text-right num focus:border-accent focus:outline-none"
         />
       </span>
     </label>
@@ -217,7 +217,7 @@ function ChannelRow({
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            {isBest ? <span className="text-[10px] font-bold uppercase tracking-wide text-accent-fg">★ cheapest</span> : null}
+            {isBest ? <span className="text-[10px] font-bold uppercase tracking-label text-accent-fg">★ cheapest</span> : null}
             <span className="font-semibold text-fg">{ch.name}</span>
             <span className="text-[10px] rounded-full bg-surface-muted text-fg-muted px-1.5 py-0.5">{ch.mode}</span>
             {marked ? (
@@ -231,7 +231,7 @@ function ChannelRow({
             )}
           </div>
           {/* waterfall line */}
-          <div className="mt-1 text-xs text-fg-muted tabular-nums">
+          <div className="mt-1 text-xs text-fg-muted num">
             {isPoints ? (
               <>burns ~{Math.round(row.pointsBurned).toLocaleString("en-IN")} pts worth {formatInr(Math.round(row.pointsBurned * (ch.pointAlt ?? 1)))} elsewhere</>
             ) : (
@@ -258,7 +258,7 @@ function ChannelRow({
               <span className="text-fg-muted">Real price for this channel:</span>
               <span className="flex items-center gap-1">
                 <span className="text-fg-muted">₹</span>
-                <input type="number" value={quote} onChange={(e) => setQuote(e.target.value)} className="w-24 rounded border border-line-strong px-1.5 py-0.5 tabular-nums focus:border-accent focus:outline-none" />
+                <input type="number" value={quote} onChange={(e) => setQuote(e.target.value)} className="w-24 rounded border border-line-strong px-1.5 py-0.5 num focus:border-accent focus:outline-none" />
               </span>
               <button
                 type="button"
@@ -277,12 +277,12 @@ function ChannelRow({
           ) : null}
         </div>
         <div className="text-right shrink-0">
-          <div className="text-lg font-semibold tabular-nums text-success">
+          <div className="text-lg font-semibold num text-success">
             {marked && !hasOverride ? "~" : ""}
             {formatInr(Math.round(row.netMid))}
           </div>
           {marked && !hasOverride && rangeSpread > 50 ? (
-            <div className="text-[10px] text-fg-muted tabular-nums">
+            <div className="text-[10px] text-fg-muted num">
               {formatInr(Math.round(row.netLo))}–{formatInr(Math.round(row.netHi))}
             </div>
           ) : null}
@@ -290,7 +290,7 @@ function ChannelRow({
             tie ? (
               <div className="text-[11px] text-warn">≈ tie</div>
             ) : (
-              <div className="text-[11px] text-fg-muted tabular-nums">+{formatInr(Math.round(delta))}</div>
+              <div className="text-[11px] text-fg-muted num">+{formatInr(Math.round(delta))}</div>
             )
           ) : null}
         </div>

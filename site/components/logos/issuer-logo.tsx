@@ -53,7 +53,7 @@ export function IssuerLogo({
   // Text fallback
   return (
     <span
-      className={`${wrapperClass} text-xs uppercase tracking-wide text-fg-muted`}
+      className={`${wrapperClass} text-xs uppercase tracking-label text-fg-muted`}
       aria-label={issuer.name}
     >
       {variant === "with-name" ? issuer.name : displayName}

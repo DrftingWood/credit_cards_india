@@ -48,7 +48,7 @@ export function HistoryTimeline({ card }: { card: EnrichedCard }) {
       <ol className="mt-3 space-y-3 text-sm">
         {items.map((item, i) => (
           <li key={i} className="border-l-2 border-line pl-3">
-            <div className="text-xs uppercase tracking-wide text-fg-muted">
+            <div className="text-xs uppercase tracking-label text-fg-muted">
               {formatDate(item.date)}
             </div>
             <div className="text-fg">{item.label}</div>

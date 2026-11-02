@@ -305,7 +305,7 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
         </colgroup>
         <thead>
           <tr className="border-b border-line bg-surface-subtle">
-            <th className="text-left p-3 text-xs uppercase tracking-wide text-fg-muted sticky left-0 bg-surface-subtle z-10">
+            <th className="text-left p-3 text-xs uppercase tracking-label text-fg-muted sticky left-0 bg-surface-subtle z-10">
               Field
             </th>
             {cards.map((c) => (
@@ -331,13 +331,13 @@ export function CompareTable({ cards }: { cards: EnrichedCard[] }) {
               : null;
             return (
               <tr key={i} className="border-b border-line last:border-0">
-                <td className="p-3 text-xs uppercase tracking-wide text-fg-muted align-top sticky left-0 bg-surface z-10">
+                <td className="p-3 text-xs uppercase tracking-label text-fg-muted align-top sticky left-0 bg-surface z-10">
                   {row.label}
                 </td>
                 {cards.map((c, ci) => (
                   <td
                     key={c.id}
-                    className={`p-3 align-top text-fg${win?.[ci] ? ` ${WINNER_CLASS}` : ""}`}
+                    className={`p-3 align-top num text-fg${win?.[ci] ? ` ${WINNER_CLASS}` : ""}`}
                   >
                     {row.render(c)}
                   </td>

@@ -257,7 +257,7 @@ export function CardImage({ card, size = "tile", className }: CardImageProps) {
               <div
                 className={`${
                   isHero ? "text-base sm:text-lg" : "text-xs sm:text-sm"
-                } font-bold text-white tracking-tight leading-snug drop-shadow-md line-clamp-1`}
+                } font-bold text-white tracking-heading leading-snug drop-shadow-md line-clamp-1`}
               >
                 {card.name}
               </div>

@@ -19,8 +19,8 @@ export function RankedRow({ rank, score }: { rank: number; score: DecoupledScore
         <p className="truncate text-xs text-fg-muted">{score.reason}</p>
       </div>
       <div className="text-right shrink-0">
-        <div className="text-sm font-semibold text-fg tabular-nums">{inr(score.net_rewards_inr)}</div>
-        <div className="text-[10px] uppercase tracking-wide text-fg-muted">est. net /yr</div>
+        <div className="text-sm font-semibold text-fg num">{inr(score.net_rewards_inr)}</div>
+        <div className="text-[10px] uppercase tracking-label text-fg-muted">est. net /yr</div>
       </div>
     </li>
   );

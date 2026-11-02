@@ -17,10 +17,10 @@ export default function HomePage() {
     <div className="space-y-12">
       {/* hero */}
       <section className="rounded-2xl border border-line bg-gradient-to-br from-surface to-accent-subtle p-8 md:p-10">
-        <div className="text-[11px] font-semibold uppercase tracking-wide text-accent-fg">
+        <div className="text-[11px] font-semibold uppercase tracking-label text-accent-fg">
           {n} cards · sourced from issuer T&amp;C · no affiliate links
         </div>
-        <h1 className="mt-3 max-w-2xl text-3xl md:text-4xl font-semibold tracking-tight text-fg">
+        <h1 className="mt-3 max-w-2xl text-3xl md:text-4xl font-semibold tracking-heading text-fg">
           Every card, ranked by what it actually pays you.
         </h1>
         <p className="mt-3 max-w-2xl text-fg-secondary">
@@ -41,7 +41,7 @@ export default function HomePage() {
 
       {/* credibility band */}
       <section className="rounded-2xl bg-inverse p-8 text-on-inverse">
-        <div className="text-[11px] font-semibold uppercase tracking-wide text-on-inverse-accent">Why you can trust the numbers</div>
+        <div className="text-[11px] font-semibold uppercase tracking-label text-on-inverse-accent">Why you can trust the numbers</div>
         <div className="mt-4 grid grid-cols-2 gap-6 md:grid-cols-4">
           <Trust k={String(n)} v="cards — every fee & reward links to the issuer's own page" />
           <Trust k="Net ₹/yr" v="ranked on what you keep; fees & caps in, 'up to' rates out" />
@@ -52,7 +52,7 @@ export default function HomePage() {
 
       {/* methodology */}
       <section className="rounded-2xl border border-warn-line bg-warn-subtle p-8">
-        <div className="text-[11px] font-semibold uppercase tracking-wide text-warn">How we rank — in one line</div>
+        <div className="text-[11px] font-semibold uppercase tracking-label text-warn">How we rank — in one line</div>
         <p className="mt-2 text-lg font-semibold text-fg">
           What you keep = rewards − annual fee − the caps you&apos;ll actually hit → <span className="text-success">net ₹/yr</span>
         </p>
@@ -77,7 +77,7 @@ export default function HomePage() {
 }
 
 function Trust({ k, v }: { k: string; v: string }) {
-  return (<div><div className="text-2xl font-semibold text-on-inverse tabular-nums">{k}</div><div className="mt-1.5 text-xs text-on-inverse-muted">{v}</div></div>);
+  return (<div><div className="text-2xl font-semibold text-on-inverse num">{k}</div><div className="mt-1.5 text-xs text-on-inverse-muted">{v}</div></div>);
 }
 function Tool({ href, t, d }: { href: string; t: string; d: string }) {
   return (

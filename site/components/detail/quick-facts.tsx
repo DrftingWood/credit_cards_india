@@ -70,7 +70,7 @@ function Group({ title, children }: { title?: string; children: React.ReactNode 
   return (
     <div>
       {title ? (
-        <div className="text-xs uppercase tracking-wide text-fg-muted mb-2">{title}</div>
+        <div className="text-xs uppercase tracking-label text-fg-muted mb-2">{title}</div>
       ) : null}
       <ul className="space-y-1.5 list-none">{children}</ul>
     </div>

@@ -112,9 +112,9 @@ export function AcceleratorRow({ item }: { item: AcceleratorExplain }) {
     <li className="rounded-lg border border-line bg-surface p-3">
       <div className="flex items-baseline justify-between gap-3">
         <span className="text-sm font-semibold text-fg">{item.label}</span>
-        <span className="text-sm font-semibold text-fg tabular-nums">{inr(item.net_value_inr)}/mo</span>
+        <span className="text-sm font-semibold text-fg num">{inr(item.net_value_inr)}/mo</span>
       </div>
-      <p className="mt-1 text-xs text-fg-muted tabular-nums">
+      <p className="mt-1 text-xs text-fg-muted num">
         You spend {inr(item.monthly_spend)} ·{" "}
         {item.applicability != null && item.applicability < 1 ? `${Math.round(item.applicability * 100)}% at ` : "earns "}
         {item.rate_pct.toFixed(1)}% ={" "}
@@ -197,7 +197,7 @@ export function AccelerationBreakdown({
             {CATEGORY_LABELS[cat] ?? cat}
             <input type="number" min={0} max={MAX_MONTHLY_SPEND} inputMode="numeric" value={spend[cat]}
               onChange={(e) => setSpend((s) => ({ ...s, [cat]: Math.max(0, Math.min(MAX_MONTHLY_SPEND, Number(e.target.value) || 0)) }))}
-              className="mt-0.5 w-full rounded-md border border-line-strong px-2 py-1 text-sm text-fg tabular-nums" />
+              className="mt-0.5 w-full rounded-md border border-line-strong px-2 py-1 text-sm text-fg num" />
           </label>
         ))}
       </div>
@@ -232,7 +232,7 @@ export function AccelerationBreakdown({
                 <li key={b.category} className="rounded-lg border border-line bg-surface-subtle p-2.5">
                   <div className="flex items-baseline justify-between gap-3 text-xs">
                     <span className="font-medium text-fg-secondary">{b.label}</span>
-                    <span className="tabular-nums text-fg-muted">
+                    <span className="num text-fg-muted">
                       {inr(b.monthly_spend)} · {b.rate_pct.toFixed(1)}% = {inr(b.value_inr)}/mo
                     </span>
                   </div>
@@ -249,9 +249,9 @@ export function AccelerationBreakdown({
           <span className="mr-1 rounded border border-warn-line bg-warn-subtle px-1 text-[10px] font-bold uppercase text-warn">Est.</span>
           <span className="text-sm text-fg-muted">net rewards for this spend, {layer.label.toLowerCase()}</span>
         </div>
-        <span className="text-lg font-semibold text-fg tabular-nums">{inr(ex.annual_net_inr)}/yr</span>
+        <span className="text-lg font-semibold text-fg num">{inr(ex.annual_net_inr)}/yr</span>
       </div>
-      <p className="mt-1 text-[11px] text-fg-muted tabular-nums">
+      <p className="mt-1 text-[11px] text-fg-muted num">
         {inr(ex.annual_gross_inr)} rewards − {inr(ex.annual_fee_inr)} annual fee
         {ex.annual_forex_inr > 0 ? <> − {inr(ex.annual_forex_inr)} forex markup on international spend</> : null}. Estimate for the spend you entered.
       </p>

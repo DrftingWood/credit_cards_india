@@ -34,7 +34,7 @@ function LedgerLines({ ledger }: { ledger: Ledger }) {
       {ledger.lines.map((l) => (
         <li key={l.key} data-ledger-line className="flex items-baseline justify-between gap-2 text-[11px] text-fg-muted">
           <span>{l.label}</span>
-          <span className="tabular-nums">{signedInr(l.inr)}</span>
+          <span className="num">{signedInr(l.inr)}</span>
         </li>
       ))}
     </ul>
@@ -54,7 +54,7 @@ function WelcomeRow({ w }: { w: WelcomeItem }) {
     <li className="rounded-lg border border-line bg-surface-subtle p-2.5">
       <div className="flex items-baseline justify-between gap-3 text-xs">
         <span className="font-medium text-fg-secondary">{w.benefit}</span>
-        <span className={w.status === "counted" ? "tabular-nums text-fg" : "tabular-nums text-fg-muted"}>{right}</span>
+        <span className={w.status === "counted" ? "num text-fg" : "num text-fg-muted"}>{right}</span>
       </div>
       {note ? <p className="mt-1 text-[11px] text-fg-muted">{note}</p> : null}
     </li>
@@ -81,7 +81,7 @@ function MilestoneRow({ m }: { m: MilestoneItem }) {
     <li className="rounded-lg border border-line bg-surface-subtle p-2.5">
       <div className="flex items-baseline justify-between gap-3 text-xs">
         <span className="font-medium text-fg-secondary">{m.benefit}</span>
-        <span className={m.status === "reached" ? "tabular-nums text-fg" : "tabular-nums text-fg-muted"}>{milestoneRight(m)}</span>
+        <span className={m.status === "reached" ? "num text-fg" : "num text-fg-muted"}>{milestoneRight(m)}</span>
       </div>
       <p className="mt-1 text-[11px] text-fg-muted">
         {trigger}
@@ -110,7 +110,7 @@ function NumberInput({ label, value, max, onChange }: { label: string; value: nu
         type="number" min={0} max={max} inputMode="numeric" value={value}
         readOnly={!onChange}
         onChange={onChange ? (e) => onChange(Math.max(0, Math.min(max, Number(e.target.value) || 0))) : undefined}
-        className="mt-0.5 w-full rounded-md border border-line-strong px-2 py-1 text-xs text-fg tabular-nums"
+        className="mt-0.5 w-full rounded-md border border-line-strong px-2 py-1 text-xs text-fg num"
       />
     </label>
   );
@@ -127,7 +127,7 @@ function LoungeRow({ l, prefs, onPrefsChange }: { l: LoungeItem; prefs: ValuePre
     <li className="rounded-lg border border-line bg-surface-subtle p-2.5">
       <div className="flex items-baseline justify-between gap-3 text-xs">
         <span className="font-medium text-fg-secondary">{SCOPE_LABEL[l.scope]} lounge · {allowanceText(l)}</span>
-        <span className={l.value_inr > 0 ? "tabular-nums text-fg" : "tabular-nums text-fg-muted"}>{inr(l.value_inr)}/yr</span>
+        <span className={l.value_inr > 0 ? "num text-fg" : "num text-fg-muted"}>{inr(l.value_inr)}/yr</span>
       </div>
       {gate ? <p className={l.unlocked ? "mt-1 text-[11px] text-fg-muted" : "mt-1 text-[11px] text-warn"}>{gate}</p> : null}
       <div className="mt-2 grid grid-cols-2 gap-2">
@@ -135,7 +135,7 @@ function LoungeRow({ l, prefs, onPrefsChange }: { l: LoungeItem; prefs: ValuePre
         <NumberInput label="₹ a visit is worth to you" value={prefs.lounge_value_inr[l.scope]} max={MAX_LOUNGE_VALUE_INR} onChange={set("lounge_value_inr")} />
       </div>
       {l.used_visits > 0 ? (
-        <p className="mt-1 text-[11px] text-fg-muted tabular-nums">{l.used_visits} visits × {inr(l.value_per_visit_inr)}</p>
+        <p className="mt-1 text-[11px] text-fg-muted num">{l.used_visits} visits × {inr(l.value_per_visit_inr)}</p>
       ) : null}
     </li>
   );
@@ -165,21 +165,21 @@ export function ValueComponentsPanel({
 
       {vc.welcome.items.length > 0 ? (
         <div className="mt-3">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-fg-muted">Welcome · year 1 only</h4>
+          <h4 className="text-xs font-semibold uppercase tracking-label text-fg-muted">Welcome · year 1 only</h4>
           <ul className="mt-1.5 space-y-1.5">{vc.welcome.items.map((w, i) => <WelcomeRow key={i} w={w} />)}</ul>
         </div>
       ) : null}
 
       {vc.milestones.items.length > 0 ? (
         <div className="mt-3">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-fg-muted">Spend milestones</h4>
+          <h4 className="text-xs font-semibold uppercase tracking-label text-fg-muted">Spend milestones</h4>
           <ul className="mt-1.5 space-y-1.5">{vc.milestones.items.map((m, i) => <MilestoneRow key={i} m={m} />)}</ul>
         </div>
       ) : null}
 
       {vc.lounge.items.length > 0 ? (
         <div className="mt-3">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-fg-muted">Airport lounges</h4>
+          <h4 className="text-xs font-semibold uppercase tracking-label text-fg-muted">Airport lounges</h4>
           <ul className="mt-1.5 space-y-1.5">
             {vc.lounge.items.map((l) => <LoungeRow key={l.scope} l={l} prefs={prefs} onPrefsChange={onPrefsChange} />)}
           </ul>
@@ -189,12 +189,12 @@ export function ValueComponentsPanel({
       <dl className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
         <div className="rounded-lg border border-line p-2.5">
           <dt className="text-[11px] text-fg-muted">Year 1</dt>
-          <dd className="text-sm font-semibold text-fg tabular-nums">{inr(vc.ledger.first_year.total_inr)}</dd>
+          <dd className="text-sm font-semibold text-fg num">{inr(vc.ledger.first_year.total_inr)}</dd>
           <dd><LedgerLines ledger={vc.ledger.first_year} /></dd>
         </div>
         <div className="rounded-lg border border-line p-2.5">
           <dt className="text-[11px] text-fg-muted">Year 2 onward</dt>
-          <dd className="text-sm font-semibold text-fg tabular-nums">{inr(vc.ledger.steady_state.total_inr)}</dd>
+          <dd className="text-sm font-semibold text-fg num">{inr(vc.ledger.steady_state.total_inr)}</dd>
           <dd><LedgerLines ledger={vc.ledger.steady_state} /></dd>
         </div>
         <div className="rounded-lg border border-line p-2.5">
@@ -212,7 +212,7 @@ export function ValueComponentsPanel({
             ) : vc.tenure_years}{" "}
             {vc.tenure_years === 1 ? "year" : "years"}
           </dt>
-          <dd className="text-sm font-semibold text-fg tabular-nums">{inr(vc.ledger.tenure_avg.total_inr)}</dd>
+          <dd className="text-sm font-semibold text-fg num">{inr(vc.ledger.tenure_avg.total_inr)}</dd>
           <dd><LedgerLines ledger={vc.ledger.tenure_avg} /></dd>
         </div>
       </dl>

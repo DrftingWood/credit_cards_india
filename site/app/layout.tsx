@@ -3,6 +3,8 @@ import Link from "next/link";
 import "../styles/globals.css";
 import { BetaBanner } from "@/components/beta-banner";
 import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { NavLink } from "@/components/nav-link";
+import { SkipLink } from "@/components/skip-link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
@@ -40,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body>
+        <SkipLink />
         <BetaBanner />
         <header className="border-b border-line bg-surface">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3">
@@ -50,18 +53,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 viewport; they flow to a second line instead of clipping (C3). */}
             <div className="flex items-center gap-x-4 sm:gap-x-5">
             <nav className="flex flex-wrap gap-x-4 gap-y-1 text-sm sm:gap-x-5">
-              <Link href="/browse">Browse</Link>
-              <Link href="/compare">Compare</Link>
-              <Link href="/calculator">Calculator</Link>
-              <Link href="/booking">Booking</Link>
-              <Link href="/recommend">Recommend</Link>
-              <Link href="/about">About</Link>
+              <NavLink href="/browse">Browse</NavLink>
+              <NavLink href="/compare">Compare</NavLink>
+              <NavLink href="/calculator">Calculator</NavLink>
+              <NavLink href="/booking">Booking</NavLink>
+              <NavLink href="/recommend">Recommend</NavLink>
+              <NavLink href="/about">About</NavLink>
             </nav>
             <ThemeToggle />
             </div>
           </div>
         </header>
-        <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
+        <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 py-8 focus:outline-none">{children}</main>
         <footer className="border-t border-line bg-surface-subtle">
           <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-fg-muted flex flex-wrap justify-between gap-3">
             <div>

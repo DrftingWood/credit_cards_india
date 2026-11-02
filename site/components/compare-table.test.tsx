@@ -1,6 +1,19 @@
-// site/components/compare-table.test.ts
-import { describe, test, expect } from "vitest";
-import { winners } from "./compare-table";
+// @vitest-environment jsdom
+import { afterEach, describe, test, expect } from "vitest";
+import { cleanup, render } from "@testing-library/react";
+import { getAllCards } from "@/lib/data";
+import { CompareTable, winners } from "./compare-table";
+
+afterEach(cleanup);
+
+describe("CompareTable scroll wrapper", () => {
+  test("is a focusable, named region so keyboard users can scroll it", () => {
+    const { getByRole } = render(<CompareTable cards={getAllCards().slice(0, 2)} />);
+    const region = getByRole("region", { name: "Comparison table, scrolls horizontally" });
+    expect(region.getAttribute("tabindex")).toBe("0");
+    expect(region.querySelector("table")).not.toBeNull();
+  });
+});
 
 describe("winners()", () => {
   test("flags the single lowest value when lower wins (fee comparison)", () => {

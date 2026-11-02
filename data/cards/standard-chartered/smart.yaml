@@ -1,111 +1,170 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: standard-chartered-smart
 name: Standard Chartered Smart Credit Card
+image_path: /cards/standard-chartered/smart.webp
 issuer: standard-chartered
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Cashback + EMI card. Eligible transactions convert to 3-24 month EMIs at 0.99% p.m. special rate with nil processing fee."
-    source:
-      url: https://www.sc.bank.in/credit-cards/smart-credit-card/
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  renewal_fee_inr: 499
+  supplementary_card_fee_inr: 0
+  fee_waiver:
+    spend_inr: 120000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 3.0
+    min_inr: 300
+  gst_applicable: true
+  notes: >-
+    Published joining/first-year fee is INR 499 + GST, currently waived as an acquisition special offer for applicants
+    who are not existing SCB credit-card holders. Renewal is INR 499 + GST and is reversed at preceding-year Smart
+    spend of at least INR 120,000. General issuer tariffs set 3.5% forex, 3.75% monthly finance and cash advance fee
+    of 3% or INR 300 minimum; fuel surcharge is ordinarily charged and no Smart-specific fuel surcharge waiver was
+    found. Rent transactions (MCC 6513) incur a 1% processing fee plus taxes.
+  source:
+    url: https://www.sc.bank.in/credit-cards/smart-credit-card/
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.supplementary_card_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Card page verifies Smart fees and annual waiver; current bank tariff verifies general card charges.
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: online-spend
-        canonical_categories: [online]
-        multiplier: 2
-        effective_rate: 2
-        cap_per_cycle: 1000
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "2% cashback on online spends (capped ₹1,000/month); 1% on other spends (capped ₹500/month). Fuel not eligible."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    reward_cap:
-      max_units: 18000
-      cap_unit: cashback-inr
-      cycle: annual
-    capping_rules:
-      - "Total cashback capped at ₹18,000 annually; online 2% ≤ ₹1,000/month, other 1% ≤ ₹500/month."
-    redemption:
-      - type: statement-credit
-        program: Cashback
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.sc.bank.in/credit-cards/smart-credit-card/
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1.0
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    notes: 1% cashback on eligible other/offline spends; online transactions earn 2% total.
+  accelerated:
+  - category: online-spend
+    canonical_categories:
+    - online
+    multiplier: 2
+    effective_rate: 2
+    cap_per_cycle: 1000
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: 2% online cashback capped at INR 1,000 per statement cycle; issuer FAQs supersede the product page's older monthly wording.
+  exclusions:
+  - fuel
+  - cash-advance
+  mcc_exclusions: []
+  reward_cap: null
+  capping_rules:
+  - 1% offline/other eligible cashback is capped at INR 500 per statement cycle; online cap is INR 1,000 per statement cycle.
+  - Cashback caps are consolidated across primary and supplementary cards at customer level, not an additional INR 1,500 card-level cap.
+  - BillDesk/SC Bill Pay telecom and electricity, water or gas billers are eligible for online cashback; eligibility of other bill-payment channels/categories is not established by the cited FAQ.
+  - Cashback redemption requires at least INR 2,500, then is in increments of INR 1,000; redeemed cashback is applied to the card account within three working days. No INR 99 redemption handling fee applies.
+  redemption:
+  - type: statement-credit
+    program: Cashback
+    rate_inr_per_unit: 1.0
+    min_units: 2500
+    fee_inr: 0
+    constraints: Minimum INR 2,500; subsequent redemption amounts in INR 1,000 increments; credited to card account within three working days.
+  source:
+    url: https://www.sc.bank.in/credit-cards/smart-card-faqs/
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.reward_cap
+    - rewards.capping_rules
+    - rewards.redemption
+    notes: Current FAQ effective 25-Aug-2024 sets cycle caps, customer-level consolidation, channel-specific bill-pay eligibility and redemption conditions; product page's monthly wording and INR 18,000 annual illustration are inconsistent with FAQ cycle caps and are not encoded as a contractual annual cap.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.sc.bank.in/credit-cards/smart-credit-card/
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver: null
+  concierge: null
+  other:
+  - name: Extended interest-free period
+    description: >-
+      Available only during the first 90 days after card issuance. Cardholder must pay the minimum amount due on the
+      first three statements by each due date, then clear the full amount due on the fourth statement by its due date.
+      Applies to retail transactions only; not cash advances, EMI or loan-on-card products. Missing a required minimum
+      payment withdraws the extension and interest applies under the card terms.
+    value_inr: null
+  - name: Kuch Bhi on EMI offer
+    description: >-
+      Eligible transactions of INR 2,000 or more can be converted into a three-month EMI at 0.99% monthly interest
+      with no processing fee, subject to current bank eligibility and EMI terms. This is a financing offer, not a
+      general reward or unconditional benefit.
+    value_inr: null
+  source:
+    url: https://av.sc.bank.in/content/docs/in-smartcard-product-terms-and-conditions.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    - benefits.concierge
+    - benefits.other
+    notes: Smart-specific terms dated 30-Sep-2024 verify cashback terms, 90-day interest-free period and eligible 3-month EMI. No Smart-specific lounge, fuel waiver or concierge entitlement identified.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 360000
-    self_employed: 360000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: >-
+    Card-specific issuer page requires age 21-65, stable monthly income, residence in a bank card-sourcing location
+    and satisfactory credit/policy checks. Numeric income and bureau-score cutoffs and the sourcing-location list are
+    not specified on the product page. Issuer page provides generic salaried/self-employed document lists but no
+    separate age ranges by employment type.
+  source:
+    url: https://www.sc.bank.in/credit-cards/smart-credit-card/
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    notes: Card-specific eligibility section states age 21-65, stable income, sourcing-city requirement and bank policy checks.
 application:
   apply_url: https://www.sc.bank.in/credit-cards/smart-credit-card/
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, cashback, online, emi]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - cashback
+  - online
+  - emi

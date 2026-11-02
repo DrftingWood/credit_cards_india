@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: bob-snapdeal
+﻿id: bob-snapdeal
 name: Snapdeal BOBCARD Credit Card
+image_path: /cards/bob/snapdeal.webp
 issuer: bob
 network: rupay
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -19,111 +11,208 @@ co_brand:
   category: ecommerce
   partner_website: https://www.snapdeal.com
 status: active
-launched_on: 2021-01-01
+launched_on: 2022-09-02
 discontinued_on: null
-
 fees:
-  - effective_from: 2021-01-01
-    effective_until: null
-    joining_fee_inr: 249
-    annual_fee_inr: 249
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-01-15
+  effective_until: null
+  joining_fee_inr: 249
+  annual_fee_inr: 249
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: "Current Snapdeal page states INR 249 joining and annual fees with no waiver. Jan-2026 MITC lists 3.75% monthly finance charges for all variants other than Eterna/Tiara; generic MITC also lists 3.5% forex and 2.5% cash advance with INR 500 minimum. BOBCARD's 1-Apr-2026 tariff revision adds transaction-specific charges not modeled by the card schema: 1% on third-party-app online education payments (max INR 5,000), 1% on toll/bus MCC 4784 transactions of INR 5,000 or more, and 1% on railway MCC 4112 transactions of INR 30,000 or more (max INR 5,000)."
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2021-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 4
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: snapdeal
-        canonical_categories: [online]
-        multiplier: 5
-        effective_rate: 20
-        cap_per_cycle: 2000
-        cap_unit: points
-        cycle: statement
-        channel:
-          class: cobrand-merchant
-          merchants: [snapdeal]
-        notes: "5% unlimited cashback (20 RP per ₹100) on Snapdeal website & app. Accelerated RP on Snapdeal ecom/dept-store capped at 2,000 RP/statement cycle (shared with online-departmental) per BOBCARD central Features & T&C 01-Apr-2026; core 4 RP/₹100 continues after."
-      - category: online-departmental
-        canonical_categories: [online, groceries]
-        multiplier: 2.5
-        effective_rate: 10
-        cap_per_cycle: 2000
-        cap_unit: points
-        cycle: statement
-        notes: "10 RP per ₹100 on online shopping & departmental stores, capped 2,000 RP/statement."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: BOBCARD Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
+- effective_from: 2026-04-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 4
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: snapdeal
+    canonical_categories:
+    - online
+    multiplier: 5
+    effective_rate: 20
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - snapdeal
+    notes: Snapdeal website and app earn 20 Reward Points per INR 100 (5% at INR 0.25 per point), described as unlimited on the current issuer page. UPI does not qualify for accelerated Snapdeal rewards.
+  - category: online-departmental
+    canonical_categories:
+    - online
+    - groceries
+    multiplier: 2.5
+    effective_rate: 10
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: statement
+    notes: 10 Reward Points per INR 100 on online shopping and departmental stores, capped at 2,000 points per statement. Beyond the cap, eligible spend earns the 4-point core rate. UPI transactions earn core points only.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  capping_rules:
+  - Transactions below INR 100 do not earn points. UPI earns core points only and does not qualify for accelerated rewards or joining/activation benefits.
+  mcc_exclusions:
+  - '0763'
+  - '0780'
+  - '0820'
+  - '0821'
+  - '0822'
+  - '0823'
+  - '0824'
+  - '0825'
+  - '1520'
+  - '1711'
+  - '1731'
+  - '1740'
+  - '1750'
+  - '1761'
+  - '1771'
+  - '1799'
+  - '4111'
+  - '4112'
+  - '4131'
+  - '4784'
+  - '4789'
+  - '5261'
+  - '5331'
+  - '5411'
+  - '5499'
+  - '5814'
+  - '5960'
+  - '6300'
+  - '6513'
+  - '6539'
+  - '6540'
+  - '6541'
+  - '6542'
+  - '6543'
+  - '7211'
+  - '7230'
+  - '7276'
+  - '7349'
+  - '8011'
+  - '8062'
+  - '8111'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8398'
+  - '8641'
+  - '8661'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  redemption:
+  - type: statement-credit
+    program: BOBCARD Rewards
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.mcc_exclusions
+    - rewards.redemption.rate_inr_per_unit
+    notes: Current product page confirms 20 points per INR 100 on Snapdeal website/app without a stated cap, 10 points per INR 100 on eligible online shopping/department stores capped at 2,000 per statement, and 4 points per INR 100 core earn. Above the 10-point cap, core earn applies. April-2026 issuer terms supply core rates and Annexure 1 exclusions; transactions below INR 100 do not earn points. UPI earns core points only and is excluded from accelerated and activation rewards. Points expire after 24 months per issuer FAQ. Auto-redemption ended 1-Jul-2025; statement-credit redemption has a 1,000-point minimum. The product page does not explicitly clarify whether Snapdeal transactions also enter the separate capped online-shopping bucket; merchant-specific 20-point earning is recorded as the Snapdeal rate.
 benefits:
-  - effective_from: 2021-01-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Card usage within first 30 days of issuance"
-        benefit: "Snapdeal vouchers worth up to ₹500 (activation benefit)"
-        value_inr: 500
-        window_days: 30
-      - condition: "Spend ₹5,000 or more within 60 days of issuance"
-        benefit: "500 bonus reward points"
-        value_inr: 125
-        window_days: 60
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    other:
-      - name: Add-on cards
-        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
-    concierge: false
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-04-01
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Card usage within first 30 days of issuance
+    benefit: Snapdeal vouchers worth up to INR 500 on card usage within first 30 days; offer applies only where joining fee is paid.
+    value_inr: 500
+    window_days: 30
+  - condition: Spend INR 5,000 or more within 60 days of issuance
+    benefit: 500 bonus reward points on at least INR 5,000 eligible spend within 60 days; RuPay UPI transactions do not qualify for this bonus or the voucher activation benefit.
+    value_inr: 125
+    window_days: 60
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: Add-on cards
+    description: Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+).
+  - name: Reward point expiry and redemption
+    description: Points expire 24 months after accrual. Auto-redemption was discontinued from 1-Jul-2025; manual redemption is required, with at least 1,000 points for statement credit.
+  - name: Smart EMI
+    description: Eligible purchases above INR 2,500 can be converted to Smart EMI for 6–48 months.
+  concierge: false
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    fields_verified:
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Salaried 21–60 yrs; self-employed 24–65 yrs."
-
+  notes: BOBCARD Snapdeal page states Indian resident; salaried ages 21–60 and self-employed ages 24–65. The schema has a single age range, so 21–65 spans the two issuer ranges. Income-document requirements are listed, but minimum income and a bureau-score floor are not published.
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/snapdeal-bobcard
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [entry, points, online, ecommerce, co-brand]
+  last_verified_on: 2026-10-27
+  tags:
+  - entry
+  - points
+  - online
+  - ecommerce
+  - co-brand
+  - network-tier-unverified
+
+
+

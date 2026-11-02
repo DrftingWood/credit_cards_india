@@ -8,8 +8,15 @@ currency: miles
 currency_name: IndiGo BluChips
 
 unit_value_inr:
-  face: 1.0
-  realized: 0.5
+  # 2026-10-21 (D-27): face 1.0 -> 0.6 and realized 0.5 -> 0.45 to match the
+  # 2026-07-05 remediation of all seven IndiGo co-brand cards (REMEDIATION_2026-07.md:
+  # "IndiGo BluChip Rs1 -> 0.45" and "IndiGo voucher rates 1.0 -> 0.6"; each card's
+  # rewards source note reads "BluChip voucher rate corrected 1.0->0.6 to match
+  # floating value"). BluChips have no fixed rupee value: they float at about
+  # Rs 0.40-0.60 against IndiGo fares (this file's own range and cardtrail.in
+  # reference). Face is the top of that band, realized sits inside it.
+  face: 0.6
+  realized: 0.45
   realized_source:
     method: midpoint
     range: [0.4, 0.6]
@@ -18,7 +25,8 @@ unit_value_inr:
       ₹0.40-₹0.60 per chip across reported user redemptions, with a
       typical mid-route value near ₹0.41-0.50. Some users report >₹1.0
       on rationalised post-2025 routes but this isn't the median case.
-      Midpoint 0.5 is the stable choice for ranking math; band documented.
+      0.45 (inside the typical ₹0.41-0.50 band) is the value the seven
+      IndiGo co-brand cards were set to on 2026-07-05; band documented.
     references:
       - url: https://cardtrail.in/travel/indigo-bluchips-worth-it-india/
         retrieved_on: 2026-04-30
@@ -68,9 +76,9 @@ redemption_paths:
   - type: voucher
     program: IndiGo flights and 6E Prime add-ons
     rate_inr_per_unit:
-      face: 1.0
-      realized: 0.5
-    constraints: "Redeemable on IndiGo bookings only. No transfer partners."
+      face: 0.6
+      realized: 0.45
+    constraints: "Redeemable on IndiGo bookings only. No transfer partners. Floats ~Rs 0.40-0.60 per BluChip."
 
 metadata:
   last_verified_on: 2026-04-30

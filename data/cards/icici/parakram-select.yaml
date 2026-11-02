@@ -1,16 +1,7 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-parakram-select
 name: ICICI Bank Parakram Select Credit Card
 issuer: icici
-network: visa
+network: null
 network_tier: null
 tier: mid
 card_type: credit
@@ -18,113 +9,154 @@ co_brand: null
 status: active
 launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    supplementary_card_fee_inr: 0
-    gst_applicable: true
-    notes: "Lifetime-free for defence personnel: joining fee Nil, annual fee Nil. Up to 3 free add-on cards. Late payment fee ranges from ₹100 to ₹1300. Cash advance 2.5% (min ₹500) and finance charge 3.75%/mo per ICICI MITC."
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  supplementary_card_fee_inr: 0
+  gst_applicable: true
+  notes: 'Lifetime-free for defence personnel: joining fee Nil, annual fee Nil. Up to 3 free add-on cards. Late
+    payment fee ranges from ₹100 to ₹1300. Cash advance 2.5% (min ₹500) and finance charge 3.75%/mo per ICICI MITC.'
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/parakram-select/parakram-select-tnc-retrieved-2026-10-27.pdf
+    - docs/sources/icici/parakram-select/mitc-cc-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: points
-    currency_name: ICICI Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: grocery-department-stores
-        canonical_categories: [groceries]
-        multiplier: 5
-        effective_rate: 10
-        cap_per_cycle: 1000
-        cap_unit: points
-        cycle: monthly
-        notes: "10 Reward Points per ₹100 on grocery & department stores (capped at 1,000 RP/month, w.e.f Apr 15, 2024)."
-    exclusions:
-      - insurance-premiums
-      - utilities
-      - emi
-      - cash-advance
-    redemption:
-      - type: catalog
-        program: ICICI Rewards
-        rate_inr_per_unit: 0.25
-        fee_inr: 99
-        constraints: "Redeem for Health & Beauty, Travel & Luggage, shopping vouchers, home appliances, electronics, fashion & lifestyle. Redemption handling fee ₹99 + GST."
-    notes: "Base 2 RP/₹100 on all categories; 10 RP/₹100 on grocery & department stores (cap 1,000 RP/month). Insurance, utility and international spends earn 0 RP (w.e.f Apr 15, 2024)."
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: Standard ICICI RP ~Rs 0.25, realistic Rs 0.22.
-    mcc_exclusions: ['6513']
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: ICICI Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+  accelerated:
+  - category: grocery-department-stores
+    canonical_categories:
+    - groceries
+    multiplier: 5
+    effective_rate: 10
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: monthly
+    notes: 10 Reward Points per ₹100 on grocery & department stores (capped at 1,000 RP/month, w.e.f Apr 15, 2024).
+  exclusions:
+  - insurance-premiums
+  - utilities
+  - emi
+  - cash-advance
+  - international
+  redemption:
+  - type: catalog
+    program: ICICI Rewards
+    fee_inr: 99
+    constraints: Redeem for Health & Beauty, Travel & Luggage, shopping vouchers, home appliances, electronics,
+      fashion & lifestyle. Redemption handling fee ₹99 + GST.
+  notes: Base 2 RP per INR100 on other eligible domestic categories; 10 RP per INR100 on grocery, department stores
+    and CSD, capped at 1,000 RP/month. Insurance, utility and international spends earn 0 points. Points have no
+    cash value; catalogue redemption value varies. Fuel treatment is not stated as an exclusion in card-specific
+    T&C.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    notes: Card-specific issuer T&C and current product FAQ; redemption handling fee INR99 plus GST. No fixed point-to-rupee
+      value asserted.
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.0.effective_rate
+    - rewards.accelerated.0.cap_per_cycle
+    - rewards.redemption.0.fee_inr
+    local_refs:
+    - docs/sources/icici/parakram-select/parakram-select-tnc-retrieved-2026-10-27.pdf
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-      international:
-        visits_per_cycle: 1
-        cycle: annual
-        guests_per_visit: 0
-    golf:
-      rounds_per_cycle: 4
-      cycle: monthly
-      notes: "1 complimentary golf round for every ₹50,000 spent on the card, up to a maximum of 4 rounds per month."
-    insurance:
-      - type: personal-accident
-        sum_insured_inr: 200000
-      - type: air-accident
-        sum_insured_inr: 2000000
-        conditions: "Air Accident Insurance cover up to ₹20 lakh."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-      notes: "1% fuel surcharge waiver on transactions of ₹400–₹4,000 at all petrol pumps; max ₹250/month."
-    other:
-      - name: Title embossing
-        description: "Defence Services title embossed on the card."
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via: []
+    international:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via: []
+  golf:
+    rounds_per_cycle: 1
+    cycle: monthly
+    notes: One round or lesson for each INR50,000 eligible retail spend in the previous calendar month; current
+      card FAQ says maximum 1 round/month while card T&C says maximum 4. Conservative encoded limit follows current
+      FAQ; conflict retained for follow-up.
+  insurance:
+  - type: personal-accident
+    sum_insured_inr: 200000
+  - type: air-accident
+    sum_insured_inr: 2000000
+    conditions: Air Accident Insurance cover up to ₹20 lakh.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 250
+    cycle: monthly
+    notes: 1% fuel surcharge waiver on transactions of ₹400–₹4,000 at all petrol pumps; max ₹250/month.
+  other:
+  - name: Title embossing
+    description: Defence Services title embossed on the card.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.insurance.0.sum_insured_inr
+    - benefits.insurance.1.sum_insured_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    local_refs:
+    - docs/sources/icici/parakram-select/parakram-select-tnc-retrieved-2026-10-27.pdf
 eligibility:
-  min_age: 21
+  min_age: null
   max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 720
+  credit_score_min: null
   residency: resident-indian
-  notes: "For Indian Defence and Paramilitary personnel. Indian citizen over 21 years of age."
-
+  notes: Current product page specifies an Indian citizen over 21 years of age and Indian Defence or Paramilitary
+    personnel. Income and credit-score cutoffs are not published in the reviewed product material.
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/parakram-cards/parakram-select
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [defence, lifetime-free, points, golf, mid]
+  last_verified_on: '2026-10-27'
+  tags:
+  - defence
+  - lifetime-free
+  - points
+  - golf
+  - mid

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { allCardRouteParams, cardHref, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
+import { allCardRouteParams, cardHref, getAllLoyaltyPrograms, getCardById, getCardByIssuerAndSlug } from "@/lib/data";
+import { cardTierProgram } from "@/lib/usage";
 import { formatDate, formatInr } from "@/lib/utils";
 import { pickTopAccelerated, formatAcceleratedRate } from "@/lib/detail-derivations";
 import { HistoryTimeline } from "@/components/history-timeline";
@@ -16,7 +17,9 @@ import { ProductDetails } from "@/components/detail/product-details";
 import { ProsCons } from "@/components/detail/pros-cons";
 import { DeepDive } from "@/components/detail/deep-dive";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
+import { CardImage } from "@/components/card-image";
 import type { EnrichedCard } from "@/lib/types";
+import { DEFAULT_OG_IMAGE, SITE_NAME } from "@/lib/site-config";
 
 interface Params {
   issuer: string;
@@ -37,8 +40,9 @@ export async function generateMetadata({
   if (!card) return { title: "Card not found", robots: { index: false } };
   const description = composeMetaDescription(card);
   // Per-card OG/Twitter so share previews aren't identical across all 150+ pages.
-  // Falls back to the layout's site-level images when the card has no licensed art.
-  const images = card.image_path ? [{ url: card.image_path, alt: card.name }] : undefined;
+  // Falls back to the site-level share image when the card has no licensed art
+  // (a page-level openGraph replaces the layout's, so the fallback is explicit).
+  const images = card.image_path ? [{ url: card.image_path, alt: card.name }] : [DEFAULT_OG_IMAGE];
   // Keyword-led title (owner decision 2026-10-20): what people search for is
   // the card plus "fees" / "rewards", not the bare name. Share previews keep
   // the plain name below.
@@ -51,13 +55,15 @@ export async function generateMetadata({
       description,
       type: "article",
       url: cardHref(card),
-      ...(images ? { images } : {}),
+      siteName: SITE_NAME,
+      locale: "en_IN",
+      images,
     },
     twitter: {
-      card: images ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: card.name,
       description,
-      ...(images ? { images } : {}),
+      images: images.map((i) => i.url),
     },
   };
 }
@@ -156,10 +162,10 @@ export default async function CardPage({
 
       {/* Title strip */}
       <header className="space-y-2">
-        <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 leading-tight">
+        <h1 className="text-2xl md:text-3xl font-semibold text-fg leading-tight">
           {card.name}
         </h1>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-fg-muted">
           <span>Updated {formatDate(verified)}</span>
           <span aria-hidden>·</span>
           <span>Source-linked</span>
@@ -168,11 +174,14 @@ export default async function CardPage({
 
       <StatusNotice card={card} />
 
-      {/* Summary prose */}
-      <SummaryProse card={card} />
-
-      {/* Quick facts box */}
-      <QuickFacts card={card} />
+      {/* Hero Visual + Facts Strip */}
+      <div className="grid grid-cols-1 md:grid-cols-[340px_1fr] gap-6 items-start">
+        <CardImage card={card} size="hero" className="shadow-xl" />
+        <div className="space-y-4">
+          <SummaryProse card={card} />
+          <QuickFacts card={card} />
+        </div>
+      </div>
 
       {/* Identity + actions strip */}
       <section className="flex flex-wrap items-center justify-between gap-3">
@@ -211,13 +220,13 @@ export default async function CardPage({
             <>
               <Link
                 href={`/calculator?card=${card.id}`}
-                className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
+                className="inline-flex items-center rounded-lg border border-line-strong bg-surface px-3 py-2 text-sm font-medium text-fg no-underline hover:bg-surface-subtle hover:text-fg"
               >
                 Calculate rewards
               </Link>
               <Link
                 href={`/compare?cards=${card.id}`}
-                className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
+                className="inline-flex items-center rounded-lg border border-line-strong bg-surface px-3 py-2 text-sm font-medium text-fg no-underline hover:bg-surface-subtle hover:text-fg"
               >
                 + Compare
               </Link>
@@ -228,7 +237,7 @@ export default async function CardPage({
               href={card.application.apply_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-medium text-white no-underline hover:bg-brand-700 hover:text-white"
+              className="inline-flex items-center rounded-lg bg-accent px-3.5 py-2 text-sm font-medium text-on-accent no-underline hover:bg-accent-hover hover:text-on-accent"
             >
               Apply Now ↗
             </a>
@@ -238,7 +247,7 @@ export default async function CardPage({
 
       {/* Scannable grids */}
       <RewardsBenefitsGrid card={card} />
-      <AccelerationBreakdown card={card} />
+      <AccelerationBreakdown card={card} programs={programsFor(card)} />
       <FeesChargesGrid card={card} />
 
       {/* Product details + pros/cons */}
@@ -257,12 +266,12 @@ export default async function CardPage({
       {/* Tag chips for discoverability */}
       {(card.metadata.tags ?? []).length > 0 ? (
         <section className="flex flex-wrap items-center gap-1.5 pt-1">
-          <span className="text-xs uppercase tracking-wide text-slate-500 mr-1">Tags</span>
+          <span className="text-xs uppercase tracking-wide text-fg-muted mr-1">Tags</span>
           {(card.metadata.tags ?? []).map((t) => (
             <Link
               key={t}
               href={`/browse?tag=${t}`}
-              className="chip no-underline hover:bg-slate-100 hover:text-slate-900"
+              className="chip no-underline hover:bg-surface-muted hover:text-fg"
             >
               {t.replace(/-/g, " ")}
             </Link>
@@ -290,7 +299,7 @@ function StatusNotice({ card }: { card: EnrichedCard }) {
 
   if (card.status === "invite-only") {
     return (
-      <aside className="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+      <aside className="rounded-xl border border-line-strong bg-surface-subtle px-4 py-3 text-sm text-fg-secondary">
         <strong>Invite-only.</strong> This card is not available through an open
         application — it is extended by the issuer to select customers.
       </aside>
@@ -299,7 +308,7 @@ function StatusNotice({ card }: { card: EnrichedCard }) {
 
   const discontinued = card.status === "discontinued";
   return (
-    <aside className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+    <aside className="rounded-xl border border-warn-line bg-warn-subtle px-4 py-3 text-sm text-warn">
       <strong>
         {discontinued ? "This card was discontinued" : "Closed to new applicants"}
         {discontinued && card.discontinued_on
@@ -320,9 +329,9 @@ function EligibilitySection({ card }: { card: ReturnType<typeof getCardByIssuerA
   const replacesId = card.application?.replaces_card ?? null;
   const replaces = replacesId ? getCardById(replacesId) : null;
   return (
-    <section className="rounded-xl border border-slate-200 bg-white">
-      <header className="border-b border-slate-200 bg-slate-50 px-5 py-3">
-        <h2 className="text-sm font-semibold text-slate-900">Eligibility</h2>
+    <section className="rounded-xl border border-line bg-surface">
+      <header className="border-b border-line bg-surface-subtle px-5 py-3">
+        <h2 className="text-sm font-semibold text-fg">Eligibility</h2>
       </header>
       <dl className="p-5 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-3 text-sm">
         <Fact label="Age" value={e.min_age && e.max_age ? `${e.min_age}–${e.max_age}` : "—"} />
@@ -343,18 +352,18 @@ function EligibilitySection({ card }: { card: ReturnType<typeof getCardByIssuerA
         />
       </dl>
       {replaces ? (
-        <p className="px-5 pb-3 text-sm text-slate-700">
+        <p className="px-5 pb-3 text-sm text-fg-secondary">
           Supersedes{" "}
           <Link
             href={cardHref(replaces)}
-            className="text-brand-700 hover:text-brand-800"
+            className="text-accent-fg hover:text-accent-strong"
           >
             {replaces.name}
           </Link>
           .
         </p>
       ) : null}
-      {e.notes ? <p className="px-5 pb-5 text-sm text-slate-700">{e.notes}</p> : null}
+      {e.notes ? <p className="px-5 pb-5 text-sm text-fg-secondary">{e.notes}</p> : null}
     </section>
   );
 }
@@ -362,8 +371,14 @@ function EligibilitySection({ card }: { card: ReturnType<typeof getCardByIssuerA
 function Fact({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-xs uppercase tracking-wide text-slate-500">{label}</dt>
+      <dt className="text-xs uppercase tracking-wide text-fg-muted">{label}</dt>
       <dd className="prose-card-value text-sm">{value}</dd>
     </div>
   );
+}
+
+/** Only this card's own loyalty programme (D-27: unit values, stacking and tiers): keeps the page payload small. */
+function programsFor(card: Parameters<typeof cardTierProgram>[0]) {
+  const id = card.current_rewards?.loyalty_program;
+  return id ? getAllLoyaltyPrograms().filter((p) => p.id === id) : [];
 }

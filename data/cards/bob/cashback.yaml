@@ -1,109 +1,201 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: bob-cashback
 name: BOBCARD Cashback Credit Card
+image_path: /cards/bob/cashback.webp
 issuer: bob
 network: mastercard
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Cardholder chooses either a monthly fee of ₹49 or a joining & annual fee of ₹499/year."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/bobcard-cashback
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-01-15
+  effective_until: null
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Cardholder chooses either a monthly fee of INR 49 or a joining and annual fee of INR 499/year; the plan can be changed once during the card lifetime. The schema has one joining/annual fee pair and cannot encode this mutually exclusive plan choice, so 499 is the annual-plan value.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/bobcard-cashback
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Current issuer MITC (15-Jan-2026) lists 3.75% monthly finance charges and the monthly INR 49 or annual INR 499 fee choice; fee-plan change is allowed once during card lifetime.
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: online
-        canonical_categories: [online]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 1500
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "5% cashback on eligible domestic online spends, up to ₹1,500/month."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    capping_rules:
-      - "Transactions below ₹100 and select MCCs are not eligible for cashback."
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: BOBCARD Cashback
-        rate_inr_per_unit: 1.0
-        constraints: "Cashback auto-credited to the card statement every month; no redemption needed."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/bobcard-cashback
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2025-10-31
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: online
+    canonical_categories:
+    - online
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 1500
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: Domestic e-commerce earns 1% base plus 4% accelerated, total 5%; the 4% accelerator is capped at INR 1,500 per statement. At least four transactions in the statement cycle are required for accelerated cashback; otherwise eligible spend earns only base.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - cash-advance
+  capping_rules:
+  - Transactions below INR 100, the listed MCC categories, fuel, ATM cash withdrawals and quasi-cash earn no cashback. At least four transactions in a statement cycle are required to receive the accelerated domestic online cashback. Cashback is posted to the following statement; returns and reversals debit the associated cashback. Merchant online/international flags and MCC coding determine eligibility. Pending cashback may be forfeited on cancellation, conversion to another BOBCARD variant, non-payment blockage or breach of card terms.
+  mcc_exclusions:
+  - '6513'
+  - '0763'
+  - '0780'
+  - '0820'
+  - '0821'
+  - '0822'
+  - '0823'
+  - '0824'
+  - '0825'
+  - '1520'
+  - '1711'
+  - '1731'
+  - '1740'
+  - '1750'
+  - '1761'
+  - '1771'
+  - '1799'
+  - '4111'
+  - '4112'
+  - '4131'
+  - '4784'
+  - '4789'
+  - '7349'
+  - '7211'
+  - '7230'
+  - '7276'
+  - '8111'
+  - '8641'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8011'
+  - '8062'
+  - '6539'
+  - '6540'
+  - '6541'
+  - '6542'
+  - '6543'
+  - '5261'
+  - '5331'
+  - '5411'
+  - '5499'
+  - '5960'
+  - '6300'
+  - '8398'
+  - '8661'
+  - '5814'
+  redemption:
+  - type: statement-credit
+    program: BOBCARD Cashback
+    rate_inr_per_unit: 1.0
+    constraints: Cashback auto-credited to the card statement every month; no redemption needed.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/bobcard-cashback
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.mcc_exclusions
+    notes: The April 2026 feature terms set 1% base plus 4% accelerated cashback on domestic e-commerce; the feature table describes the INR 1,500 cap as accelerated cashback per statement, while the current marketing page says 5% cashback up to INR 1,500/month. The record models the 4% accelerator cap and 5% total rate; the marketing wording leaves whether its displayed cap means total or bonus cashback unclear. Minimum four transactions per statement cycle unlock the accelerator. The detailed terms say cashback posts to the following statement, reversals debit cashback, and merchant online/MCC flags determine eligibility.
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    other:
-      - name: Add-on cards
-        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
-    concierge: false
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/bobcard-cashback
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-01-15
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: Add-on cards
+    description: Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+).
+  - name: Lost-card zero liability
+    description: The issuer advertises zero liability for fraudulent transactions when card loss is reported immediately; subject to issuer reporting and claim terms.
+  - name: Smart EMI
+    description: Purchases above INR 2,500 may be converted to Smart EMI for 6 to 48 months, subject to issuer approval and applicable charges.
+  concierge: false
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/bobcard-cashback
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    notes: "The current page confirms the 1% fuel surcharge waiver for INR 400-5,000 transactions, capped at INR 250 per statement, and excludes fuel from cashback. Add-on cards are available for family aged over 18; zero liability is conditional on immediate lost-card reporting. The 15-Jan-2026 MITC confirms 3.75% monthly finance charges (45% annualized), 2.5% cash advance fee subject to INR 500 minimum, and 3.5% foreign currency fee for this card class. BOBCARD's 1-Apr-2026 revision notice adds fees the schema cannot model: 1% on third-party-app online education payments (max INR 5,000), 1% on toll/bus MCC 4784 transactions of INR 5,000 or more, and 1% on railway MCC 4112 transactions of INR 30,000 or more (max INR 5,000)."
 eligibility:
   min_age: 25
   max_age: 55
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Current issuer page lists age 25-55 and resident India; lower or higher age cutoffs may be allowed at BOBCARD discretion. The accessible issuer page truncates its income criteria and no score floor is published, so those thresholds remain unknown.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/bobcard-cashback
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/bobcard-cashback
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, cashback, online]
+  last_verified_on: 2026-10-27
+  tags:
+  - entry
+  - cashback
+  - online

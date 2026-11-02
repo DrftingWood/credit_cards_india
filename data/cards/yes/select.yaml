@@ -1,126 +1,251 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-select
 name: YES Bank SELECT Credit Card
-issuer: "yes"
-network: mastercard
-network_tier: world
+image_path: /cards/yes/select.webp
+issuer: 'yes'
+network:
+network_tier:
 tier: mid
 card_type: credit
-co_brand: null
+co_brand:
 status: active
-launched_on: 2019-01-01
-discontinued_on: null
-
+launched_on:
+discontinued_on:
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 599
-    annual_fee_inr: 599
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Formerly YES PROSPERITY EDGE. First-year fee ₹599 waived on ₹10,000 retail spend within 1 month of setup; renewal fee waived on ₹1,00,000 annual spend."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-06-15'
+  effective_until:
+  joining_fee_inr: 599
+  annual_fee_inr: 599
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+  forex_markup_pct: 2.75
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: Formerly YES PROSPERITY EDGE. First-year fee INR599 + GST waived on
+    INR10,000 retail spend within one month; renewal INR599 + GST waived on
+    INR100,000 retail spend in the 12 months before renewal. Current MITC v18
+    gives 3.99% monthly finance, 2.5%/INR650-min cash advance and 2.75% forex
+    from 15-Jun-2026 (3.5% DCC). Detail-page carousel/listing displays an
+    inconsistent 3.50% forex headline; conflict retained in the source extract.
+  source:
+    url:
+      https://pri1.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/select/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: YES Rewardz Points
-    base:
-      rate: 2
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: online-shopping
-        canonical_categories: [online]
-        multiplier: 4
-        effective_rate: 8
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "8 YES Rewardz per ₹200 on online shopping (except Select categories)."
-      - category: offline-shopping
-        canonical_categories: [other]
-        multiplier: 2
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "4 YES Rewardz per ₹200 on offline shopping; 2 per ₹200 on Select categories (base)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - government
-      - education
-      - jewellery
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: YES Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-06-15'
+  effective_until:
+  currency: points
+  currency_name: YES Rewardz Points
+  base:
+    rate: 2
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized:
+  accelerated:
+  - category: online-shopping
+    canonical_categories:
+    - online
+    multiplier: 4
+    effective_rate: 8
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: statement
+    notes: 8 points/INR200 on online shopping except Select categories; shares
+      the overall 5,000-point statement-cycle cap.
+  - category: offline-shopping
+    canonical_categories:
+    - other
+    multiplier: 2
+    effective_rate: 4
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: statement
+    notes: 4 points/INR200 on offline shopping except Select categories; shares
+      the overall 5,000-point statement-cycle cap.
+  - category: select-categories
+    canonical_categories:
+    - utilities
+    multiplier: 1
+    effective_rate: 2
+    cap_per_cycle: 150
+    cap_unit: points
+    cycle: statement
+    notes: 2 points/INR200 on Select categories; utility MCC 4900 capped at 150
+      points per statement cycle.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - government
+  - education
+  - jewellery
+  - road-fees-and-tolls
+  - cash-advance
+  - other
+  mcc_exclusions:
+  - '6513'
+  - '6540'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '9752'
+  - '9034'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '9700'
+  - '9701'
+  - '9702'
+  - '9751'
+  - '9754'
+  - '9950'
+  - '5960'
+  - '5962'
+  - '5964'
+  - '5965'
+  - '5966'
+  - '5967'
+  - '5968'
+  - '5969'
+  - '7311'
+  - '6300'
+  - '6381'
+  - '8211'
+  - '8220'
+  - '8249'
+  - '8299'
+  - '8241'
+  - '8244'
+  - '7911'
+  - '4112'
+  - '4011'
+  - '4784'
+  - '4111'
+  - '5094'
+  - '5944'
+  redemption:
+  - type: catalog
+    program: YES Rewardz
+    rate_inr_per_unit: 0.25
+  source:
+    url:
+      https://pri1.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/select/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+  notes: 'Effective 15-Jun-2026 issuer exclusions: rental, wallet, fuel, government,
+    marketing/advertising, cash withdrawals, post-purchase and instant EMI, insurance,
+    education, railways, toll, ferry and jewellery. Online/offline/select rates are
+    8/4/2 points per INR200. Total cap 5,000 points per statement; utility MCC 4900
+    cap 150. Points value is up to INR0.25, not a guaranteed or realized value. UPI
+    transactions are not eligible for the standard physical card; issuer offers a
+    separate virtual RuPay variant.'
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    movies:
-      type: bogo
-      partner: District
-      max_per_cycle: null
-      cycle: monthly
-      cap_inr: null
-      notes: "Buy 1 Get 1 on movie tickets via District."
-    dining:
-      program: "Buy 1 Get 1 on coffee at malls"
-      notes: "BOGO coffee at malls."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-06-15'
+  effective_until:
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+  movies:
+    type: bogo
+    partner: District
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 150
+    notes: Buy 1 get 1; maximum discount up to INR150 on second ticket once per
+      user/calendar month.
+  dining:
+    program: Buy 1 get 1 coffee at eligible outlets inside select malls across
+      India; terms apply.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 125
+    cycle: monthly
+    notes: Current MITC v18 band INR500-3,000, cap INR125 per statement; GST not
+      reversed and no UPI fuel waiver.
+  concierge:
+  source:
+    url:
+      https://pri1.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/select/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.movies
+    - benefits.dining
+    - benefits.fuel_surcharge_waiver
 eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
     salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
-  residency: resident-indian
-
+    self_employed: 750000
+  credit_score_min:
+  residency:
+  notes: Issuer requires salaried net salary at least INR50,000/month or
+    self-employed ITR at least INR750,000/year. Existing YES Bank cardholders
+    are ineligible for standard SELECT; existing Mastercard/Visa holders may
+    apply for separate virtual RuPay variant. Bureau threshold and residence
+    criterion not published.
+  source:
+    url:
+      https://pri1.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/select/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual
 application:
-  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/select-credit-card
-
+  apply_url:
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, online, shopping, points, movies]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - online
+  - shopping
+  - points
+  - movies

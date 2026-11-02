@@ -1,0 +1,112 @@
+id: utkarsh-supercard
+name: Utkarsh SuperCard RuPay Credit Card
+image_path: /cards/utkarsh/supercard.webp
+issuer: utkarsh
+network: rupay
+network_tier: classic
+tier: entry
+card_type: secured
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee:
+    pct: 5.0
+    min_inr: 25
+  gst_applicable: true
+  source:
+    url: https://www.utkarsh.bank.in/personal/cards/credit-card/supercard
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: 'No joining/annual membership fee. Finance charge for unpaid dues is 3.5% monthly effective 2026-06-21; cash-advance interest is 3% monthly and ATM withdrawal interest 2.5% monthly effective 2026-05-21. Cash advance fee is 5% or ₹25 minimum domestic; 5% or ₹500 minimum international. Forex markup 3.5%. Physical-card fee varies by FD: nil at eligible ₹10,000+ deposit, ₹99 + GST for ₹5,000–<₹10,000, ₹249 + GST for other FD bands; additional fees may apply if deposit falls below threshold or card closes within 12 months. See current MITC: https://www.utkarsh.bank.in/xsite/assests/personal_credit_card/SuperCard_Most_Important_Terms_%26_Conditions_MITC.pdf and KFS: https://www.utkarsh.bank.in/xsite/assests/personal_credit_card/SuperCard_Key_Fact_Statement_KFS.pdf.'
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+rewards:
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback INR
+  base:
+    rate: 1.0
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated: []
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - cash-advance
+  - government
+  - insurance-premiums
+  - utilities
+  - education
+  - jewellery
+  - emi
+  - other
+  mcc_exclusions: []
+  redemption:
+  - type: statement-credit
+    program: Direct Cashback
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.utkarsh.bank.in/personal/cards/credit-card/supercard
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: 'MITC v21-May-2026 confirms 1% cashback on UPI and non-UPI spends from 2025-08-11; UPI is capped at ₹500 per statement month and must be through super.money; non-UPI capped ₹10,000 per month. Each transaction must be at least ₹100. Myntra 5%/Flipkart 2% preferred merchant campaign expired 2026-06-30 unless extended in app; removed from active rewards. MITC source: https://www.utkarsh.bank.in/xsite/assests/personal_credit_card/SuperCard_Most_Important_Terms_%26_Conditions_MITC.pdf.'
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].base.unit_value_inr_realized
+    - rewards[0].redemption[0].rate_inr_per_unit
+benefits:
+- effective_from: 2026-10-27
+  effective_until: null
+  fuel_surcharge_waiver: null
+  concierge: null
+  source:
+    url: https://www.utkarsh.bank.in/personal/cards/credit-card/supercard
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: Current product page/MITC do not confirm the prior 1% fuel-surcharge waiver; removed as unsupported. The secured card is FD-backed and has no published welcome, lounge, insurance or lifestyle offer in reviewed current terms.
+eligibility:
+  min_age: 18
+  max_age: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: FD-backed secured card. Current product page states age 18+ and a minimum deposit of ₹100, subject to bank discretion. No numeric income or bureau-score threshold is published; no additional income documents are listed.
+  source:
+    url: https://www.utkarsh.bank.in/personal/cards/credit-card/supercard
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+application:
+  apply_url: https://www.utkarsh.bank.in/personal/cards/credit-card/supercard
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - secured
+  - fd-backed
+  - rupay
+  - ltf
+  - entry
+  - utkarsh

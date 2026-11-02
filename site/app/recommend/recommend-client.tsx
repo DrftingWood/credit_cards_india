@@ -326,14 +326,14 @@ export function RecommendClient({
 
       <section
         key={step}
-        className="rounded-xl border border-slate-200 bg-white p-5 sm:p-6 animate-step-in"
+        className="rounded-xl border border-line bg-surface p-5 sm:p-6 animate-step-in"
         aria-labelledby="step-heading"
       >
         <h2
           id="step-heading"
           ref={stepHeadingRef}
           tabIndex={-1}
-          className="text-lg font-semibold text-slate-900 outline-none"
+          className="text-lg font-semibold text-fg outline-none"
         >
           Step {step} of {TOTAL_STEPS} · {STEP_LABELS[step - 1]}
         </h2>
@@ -420,7 +420,7 @@ function Step2({ state, setState }: { state: FormState; setState: SetState }) {
 
   return (
     <div className="space-y-5">
-      <p className="text-sm text-slate-600">
+      <p className="text-sm text-fg-muted">
         Roughly how much do you spend each month in each category? Brand-specific
         questions in the next step only appear for categories above ₹5k.
       </p>
@@ -428,8 +428,8 @@ function Step2({ state, setState }: { state: FormState; setState: SetState }) {
         {MACRO_CATEGORIES.map((cat) => (
           <div key={cat.id}>
             <div className="mb-1.5 flex items-baseline justify-between gap-2">
-              <label className="text-sm font-medium text-slate-800">{cat.label}</label>
-              <span className="text-xs text-slate-500">{cat.sub}</span>
+              <label className="text-sm font-medium text-fg">{cat.label}</label>
+              <span className="text-xs text-fg-muted">{cat.sub}</span>
             </div>
             <PillGroup
               name={`spend-${cat.id}`}
@@ -464,7 +464,7 @@ function Step3({ state, setState }: { state: FormState; setState: SetState }) {
 
   return (
     <div className="space-y-6">
-      <p className="text-sm text-slate-600">
+      <p className="text-sm text-fg-muted">
         Brand preferences for the categories where you spend most. Co-branded
         cards earn meaningfully more on their partner brand than generic cards.
       </p>
@@ -528,7 +528,7 @@ function Step3({ state, setState }: { state: FormState; setState: SetState }) {
       ) : null}
 
       {!d.shopping && !d.airline && !d.food && !d.fuel ? (
-        <div className="rounded-md border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
+        <div className="rounded-md border border-dashed border-line-strong bg-surface-subtle p-4 text-sm text-fg-muted">
           No brand-specific questions for your spend pattern — tap{" "}
           <strong>Next</strong> to continue.
         </div>
@@ -557,7 +557,7 @@ function Step4Tiers({
 
   if (programs.length === 0) {
     return (
-      <div className="rounded-md border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
+      <div className="rounded-md border border-dashed border-line-strong bg-surface-subtle p-4 text-sm text-fg-muted">
         No loyalty programs to ask about — tap <strong>Next</strong> to continue.
       </div>
     );
@@ -565,7 +565,7 @@ function Step4Tiers({
 
   return (
     <div className="space-y-5">
-      <p className="text-sm text-slate-600">
+      <p className="text-sm text-fg-muted">
         Higher-tier members of these programs earn extra rewards. Default is &quot;None&quot; —
         we&apos;ll only credit the bonus if you tell us you have status.
       </p>
@@ -581,8 +581,8 @@ function Step4Tiers({
                 className={
                   "rounded-lg border px-2 py-2 text-xs sm:text-sm font-medium transition-colors text-center " +
                   (current === null
-                    ? "border-brand-500 bg-brand-50 text-brand-900"
-                    : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50")
+                    ? "border-accent bg-accent-subtle text-accent-strong"
+                    : "border-line-strong bg-surface text-fg-secondary hover:bg-surface-subtle")
                 }
               >
                 None
@@ -595,8 +595,8 @@ function Step4Tiers({
                   className={
                     "rounded-lg border px-2 py-2 text-xs sm:text-sm font-medium transition-colors text-center " +
                     (current === t.id
-                      ? "border-brand-500 bg-brand-50 text-brand-900"
-                      : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50")
+                      ? "border-accent bg-accent-subtle text-accent-strong"
+                      : "border-line-strong bg-surface text-fg-secondary hover:bg-surface-subtle")
                   }
                 >
                   {t.name ?? t.id}
@@ -675,9 +675,9 @@ function ResultsView({
 
   return (
     <section className="space-y-4 animate-step-in">
-      <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
-        <h2 className="text-lg font-semibold text-emerald-900">Top picks for you</h2>
-        <p className="mt-1 text-sm text-emerald-800">
+      <div className="rounded-xl border border-success-line bg-success-subtle p-5">
+        <h2 className="text-lg font-semibold text-success">Top picks for you</h2>
+        <p className="mt-1 text-sm text-success">
           Ranked by <strong>net annual rewards</strong> on your spend (card rate × your
           spend, less the annual fee). Co-brand rates count only for brands you selected.
           Sign-up bonuses, milestones and lounge access are shown <em>separately</em> —
@@ -694,13 +694,13 @@ function ResultsView({
       ) : null}
 
       {results.length === 0 ? (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
+        <div className="rounded-xl border border-warn-line bg-warn-subtle p-5 text-sm text-warn">
           No cards passed the eligibility filters. Try widening your income band
           or removing the lounge requirement.
         </div>
       ) : (
         <div>
-          <h3 className="mb-2 mt-2 text-sm font-semibold text-slate-700">All ranked results</h3>
+          <h3 className="mb-2 mt-2 text-sm font-semibold text-fg-secondary">All ranked results</h3>
           <ol className="space-y-2">
             {results.map((r, i) => (
               <RankedRow key={r.card.id} rank={i + 1} score={r} />
@@ -710,11 +710,11 @@ function ResultsView({
       )}
 
       {process.env.NODE_ENV !== "production" ? (
-        <details className="rounded-xl border border-slate-200 bg-white p-4">
-          <summary className="cursor-pointer text-xs font-semibold text-slate-700">
+        <details className="rounded-xl border border-line bg-surface p-4">
+          <summary className="cursor-pointer text-xs font-semibold text-fg-secondary">
             Debug: payload
           </summary>
-          <pre className="mt-2 overflow-x-auto rounded-md bg-slate-900 p-3 text-xs text-slate-100">
+          <pre className="mt-2 overflow-x-auto rounded-md bg-inverse p-3 text-xs text-on-inverse">
             {JSON.stringify(payload, null, 2)}
           </pre>
         </details>
@@ -723,20 +723,20 @@ function ResultsView({
       <div className="flex flex-wrap items-center gap-2">
         <Link
           href="/browse"
-          className="inline-flex items-center rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-medium text-white no-underline hover:bg-brand-700 hover:text-white"
+          className="inline-flex items-center rounded-lg bg-accent px-3.5 py-2 text-sm font-medium text-on-accent no-underline hover:bg-accent-hover hover:text-on-accent"
         >
           Browse all cards
         </Link>
         <Link
           href="/calculator"
-          className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 no-underline hover:bg-slate-50 hover:text-slate-900"
+          className="inline-flex items-center rounded-lg border border-line-strong bg-surface px-3 py-2 text-sm font-medium text-fg no-underline hover:bg-surface-subtle hover:text-fg"
         >
           Open calculator
         </Link>
         <button
           type="button"
           onClick={onReset}
-          className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 hover:bg-slate-50 hover:text-slate-900"
+          className="inline-flex items-center rounded-lg border border-line-strong bg-surface px-3 py-2 text-sm font-medium text-fg hover:bg-surface-subtle hover:text-fg"
         >
           Start over
         </button>
@@ -765,11 +765,11 @@ function Field({
 }) {
   return (
     <fieldset>
-      <legend className="text-sm font-medium text-slate-800">
+      <legend className="text-sm font-medium text-fg">
         {label}
-        {required ? <span className="text-rose-600 ml-0.5">*</span> : null}
+        {required ? <span className="text-danger ml-0.5">*</span> : null}
       </legend>
-      {hint ? <p className="text-xs text-slate-500 mt-0.5">{hint}</p> : null}
+      {hint ? <p className="text-xs text-fg-muted mt-0.5">{hint}</p> : null}
       <div className="mt-2">{children}</div>
     </fieldset>
   );
@@ -801,8 +801,8 @@ function RadioGroup<T extends string>({
             className={
               "flex items-center gap-2 rounded-lg border px-3 py-2.5 text-sm cursor-pointer select-none transition-colors " +
               (checked
-                ? "border-brand-500 bg-brand-50 text-brand-900"
-                : "border-slate-300 bg-white text-slate-800 hover:bg-slate-50")
+                ? "border-accent bg-accent-subtle text-accent-strong"
+                : "border-line-strong bg-surface text-fg hover:bg-surface-subtle")
             }
           >
             <input
@@ -811,7 +811,7 @@ function RadioGroup<T extends string>({
               value={opt.id}
               checked={checked}
               onChange={() => onChange(opt.id)}
-              className="border-slate-400 text-brand-600 focus:ring-brand-500"
+              className="border-line-strong text-accent-fg focus:ring-focus"
             />
             <span>{opt.label}</span>
           </label>
@@ -846,8 +846,8 @@ function PillGroup<T extends string>({
             className={
               "rounded-lg border px-2 py-2 text-xs sm:text-sm font-medium transition-colors text-center " +
               (checked
-                ? "border-brand-500 bg-brand-50 text-brand-900"
-                : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50")
+                ? "border-accent bg-accent-subtle text-accent-strong"
+                : "border-line-strong bg-surface text-fg-secondary hover:bg-surface-subtle")
             }
           >
             {opt.label}
@@ -878,10 +878,10 @@ function CheckboxCard({
       className={
         "flex items-start gap-2 rounded-lg border px-3 py-2.5 text-sm transition-colors " +
         (disabled
-          ? "border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed"
+          ? "border-line bg-surface-subtle text-fg-disabled cursor-not-allowed"
           : checked
-          ? "border-brand-500 bg-brand-50 text-brand-900 cursor-pointer"
-          : "border-slate-300 bg-white text-slate-800 hover:bg-slate-50 cursor-pointer")
+          ? "border-accent bg-accent-subtle text-accent-strong cursor-pointer"
+          : "border-line-strong bg-surface text-fg hover:bg-surface-subtle cursor-pointer")
       }
     >
       <input
@@ -889,18 +889,18 @@ function CheckboxCard({
         checked={checked}
         disabled={disabled}
         onChange={onChange}
-        className="mt-0.5 border-slate-400 text-brand-600 focus:ring-brand-500"
+        className="mt-0.5 border-line-strong text-accent-fg focus:ring-focus"
       />
       <span className="flex-1">
         <span className="flex items-center justify-between gap-2">
           <span className="font-medium">{label}</span>
           {badge ? (
-            <span className="text-xs font-semibold text-brand-700 bg-white border border-brand-200 rounded-full px-1.5 py-0.5">
+            <span className="text-xs font-semibold text-accent-fg bg-surface border border-accent-line rounded-full px-1.5 py-0.5">
               {badge}
             </span>
           ) : null}
         </span>
-        {hint ? <span className="block text-xs text-slate-500 mt-0.5">{hint}</span> : null}
+        {hint ? <span className="block text-xs text-fg-muted mt-0.5">{hint}</span> : null}
       </span>
     </label>
   );
@@ -935,12 +935,12 @@ function ProgressStepper({
               className={
                 "flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold border " +
                 (done
-                  ? "bg-brand-600 text-white border-brand-600"
+                  ? "bg-accent text-on-accent border-accent"
                   : skipped
-                  ? "bg-slate-50 text-slate-300 border-dashed border-slate-300"
+                  ? "bg-surface-subtle text-fg-disabled border-dashed border-line-strong"
                   : active
-                  ? "bg-white text-brand-700 border-brand-500 ring-2 ring-brand-100"
-                  : "bg-white text-slate-400 border-slate-300")
+                  ? "bg-surface text-accent-fg border-accent ring-2 ring-accent-line"
+                  : "bg-surface text-fg-muted border-line-strong")
               }
             >
               {done ? "✓" : skipped ? "–" : n}
@@ -948,7 +948,7 @@ function ProgressStepper({
             <span
               className={
                 "hidden sm:inline text-xs " +
-                (active ? "text-slate-900 font-medium" : skipped ? "text-slate-400 line-through" : "text-slate-500")
+                (active ? "text-fg font-medium" : skipped ? "text-fg-disabled line-through" : "text-fg-muted")
               }
             >
               {labels[i]}
@@ -957,7 +957,7 @@ function ProgressStepper({
               <span
                 aria-hidden
                 className={
-                  "flex-1 h-px " + (done ? "bg-brand-500" : "bg-slate-200")
+                  "flex-1 h-px " + (done ? "bg-accent" : "bg-line")
                 }
               />
             ) : null}
@@ -988,7 +988,7 @@ function NavButtons({
         type="button"
         onClick={onBack}
         disabled={step === 1}
-        className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 hover:bg-slate-50 hover:text-slate-900 disabled:opacity-40 disabled:cursor-not-allowed"
+        className="inline-flex items-center rounded-lg border border-line-strong bg-surface px-3 py-2 text-sm font-medium text-fg hover:bg-surface-subtle hover:text-fg disabled:opacity-40 disabled:cursor-not-allowed"
       >
         ← Back
       </button>
@@ -996,7 +996,7 @@ function NavButtons({
         type="button"
         onClick={isLast ? onSubmit : onNext}
         disabled={!canProceed}
-        className="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="inline-flex items-center rounded-lg bg-accent px-4 py-2 text-sm font-medium text-on-accent hover:bg-accent-hover disabled:cursor-not-allowed disabled:bg-accent-disabled disabled:text-on-accent-disabled"
       >
         {isLast ? "Get my recommendation" : "Next →"}
       </button>

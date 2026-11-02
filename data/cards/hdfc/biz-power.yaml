@@ -1,0 +1,252 @@
+id: hdfc-biz-power
+name: HDFC Bank BizPower Credit Card
+image_path: /cards/hdfc/biz-power.png
+issuer: hdfc
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-02-06
+discontinued_on: null
+fees:
+- effective_from: 2024-02-06
+  effective_until: null
+  joining_fee_inr: 2500
+  annual_fee_inr: 2500
+  fee_waiver:
+    spend_inr: 400000
+    cycle: annual
+    conditions: Current fee page says spend INR 4 lakh in the 12 billing cycles of an anniversary year to waive the next renewal fee.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-power-credit-card/fees-and-charges
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current fee page confirms INR 2,500 joining/renewal, INR 4 lakh waiver, 2% forex and 2.5%/INR 500 minimum cash advance. HDFC Business MITC (updated 2025-07-14) supports 3.75% monthly finance charge; details at docs/sources/hdfc/biz-power/issuer-extract-2026-10-27.md.
+rewards:
+- effective_from: 2024-02-06
+  effective_until: 2026-05-14
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 4
+    per_inr: 150
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  accelerated:
+  - category: business-tax-utilities
+    canonical_categories:
+    - utilities
+    - government
+    multiplier: 5
+    effective_rate: 20
+    effective_per_inr: 150
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: monthly
+    notes: Historical 5X (20 points per INR 150) on eligible business essential spends after INR 25,000 eligible statement-cycle spends; capped at 5,000 points per statement cycle. Superseded 2026-05-15.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - education
+  - emi
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    program: HDFC Reward Points
+    rate_inr_per_unit: null
+    constraints: Historical exact statement-credit value not established by current issuer evidence.
+  source:
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/biz-power-credit-card/biz-power-rewards-programme-tnc.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    notes: Historical terms dated 2024 specify 4 points per INR 150; 5X business earn with INR 25,000 minimum and 5,000-point cap. Superseded by issuer change effective 2026-05-15.
+- effective_from: 2026-05-15
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 200
+    unit_value_inr: 0.15
+    unit_value_inr_realized: 0.15
+  accelerated:
+  - category: business-tax-utilities
+    canonical_categories:
+    - utilities
+    - government
+    multiplier: 5
+    effective_rate: 25
+    effective_per_inr: 200
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: monthly
+    notes: 5X business earn on selected categories, capped at 7,500 points per billing cycle, after INR 25,000 or more non-tax eligible spend in a statement cycle (IT/GST excluded from unlock threshold). Once unlocked, GST/advance-tax earn is subject to first two transactions per billing cycle; categories include SmartPay/PayZapp, MMT MyBiz, Nuclei, Google/Meta Ads and Reliance Digital.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - education
+  - emi
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    program: HDFC Reward Points
+    rate_inr_per_unit: 0.15
+    min_units: 2500
+    constraints: INR 0.15 per point; minimum 2,500 points.
+  - type: catalog
+    program: SmartBuy Flights and Hotels
+    rate_inr_per_unit: 0.5
+    constraints: Up to INR 0.50 per point; redemption limited to 50% of booking value.
+  - type: catalog
+    program: Product Catalogue
+    rate_inr_per_unit: 0.35
+    constraints: Up to INR 0.35 per point on selected catalogue items/vouchers.
+  - type: catalog
+    program: Business Catalogue
+    rate_inr_per_unit: 0.65
+    constraints: Up to INR 0.65 per point.
+  - type: airmiles
+    program: HDFC Bank airline transfer
+    rate_inr_per_unit: null
+    constraints: Up to 0.5 air miles per Reward Point; eligible partner and conversion terms apply.
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-power-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    notes: Current page and 2026-05-15 issuer change notice support the new accrual rates, category threshold, cap and redemption table. Overall accrual limit is 60,000 points per statement cycle.
+  capping_rules:
+  - Overall Reward Points accrual capped at 60,000 per statement cycle.
+  - 5X business-category accrual capped at 7,500 per billing cycle.
+benefits:
+- effective_from: 2026-07-01
+  effective_until: null
+  welcome:
+  - condition: One eligible IT/GST, travel or advertising transaction within 30 days of card issuance; first-time cardholders only, not upgrades, migrations or conversions (rule effective 2025-10-25).
+    benefit: Amazon Prime membership or INR 1,500 Amazon voucher
+    value_inr: 1500
+    window_days: 30
+  milestones:
+  - spend_inr: 250000
+    cycle: quarterly
+    benefit: INR 5,000 MakeMyTrip or Reliance Digital voucher on eligible retail spend
+    value_inr: 5000
+    reward_kind: voucher
+    reward_units: 1
+    reward_currency_name: Voucher
+    is_repeatable: true
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - visa
+    international:
+      visits_per_cycle: 6
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  concierge: false
+  other:
+  - name: Domestic flight cancellation voucher
+    description: One MakeMyTrip domestic flight cancellation voucher per calendar quarter; lounge and voucher benefits unlock after INR 75,000 eligible spend in the previous calendar quarter.
+  - name: Credit liability cover
+    description: INR 9 lakh credit liability cover; policy terms apply.
+  - name: Lost-card liability
+    description: Zero liability for fraudulent transactions if lost or stolen card is reported immediately to HDFC customer care.
+  - name: Optional business insurance
+    description: Optional business insurance package starts at INR 3,785 per year; this is a paid add-on, not complimentary card cover.
+  - name: SmartPay offer
+    description: Current issuer page advertises up to INR 1,800 first-year cashback and e-vouchers up to INR 800 for adding two or more bills; offer terms apply.
+  - name: Dining offer
+    description: 10% discount on dining bills at participating restaurants through Swiggy Dineout; offer terms apply.
+  - name: SmartBuy platform benefits
+    description: Up to 10X Reward Points on selected SmartBuy purchases, capped at 4,000 points per month; terms apply.
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-power-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.other
+    notes: >-
+      Current benefits snapshot from 2026-07-01. Domestic lounge and MMT voucher each require INR 75,000 spend in the
+      preceding calendar quarter. Six international visits require Priority Pass; application follows four retail
+      transactions. Voucher milestone: INR 5,000 on INR 2.5 lakh quarterly retail spend excluding fuel, IT, GST and EMI.
+      Welcome benefit is limited to first-time cardholders since 2025-10-25. The issuer also lists INR 9 lakh credit
+      cover, immediate lost-card reporting, optional paid business insurance and current platform/dining offers.
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: 1200000
+  credit_score_min: null
+  residency: resident-indian
+  notes: Current issuer page describes self-employed Indian citizens aged 21-65 with annual ITR above INR 12 lakh. Salaried criteria and minimum bureau score remain unknown; bank approval is discretionary.
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-power-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
+application:
+  apply_url: https://www.hdfc.bank.in/business-credit-cards/biz-power-credit-card
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - premium
+  - business
+  - commercial
+  - lounge
+  - tax
+  - points

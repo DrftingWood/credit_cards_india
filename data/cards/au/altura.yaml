@@ -1,116 +1,186 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: au-altura
 name: AU Bank Altura Credit Card
+image_path: null
 issuer: au
-network: rupay
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2021-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2021-01-01
-    effective_until: null
-    joining_fee_inr: 199
-    annual_fee_inr: 199
-    fee_waiver:
-      spend_inr: 40000
-      cycle: annual
-    forex_markup_pct: 3.49
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 199
+  annual_fee_inr: 199
+  fee_waiver:
+    spend_inr: 40000
+    cycle: annual
+    conditions: Renewal fee waiver after INR 40,000 eligible retail spend in the preceding card anniversary year; first-year fee waiver separately requires INR 10,000 retail spend within 90 days of card setup.
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  late_payment_slabs: null
+  gst_applicable: true
+  notes: Current issuer Key Fact Statement also states cash-advance limit up to 40% of the credit limit. Late-payment charge is 15% of total amount due, minimum INR 10, maximum INR 1,300; schema cannot represent the percentage formula with bounds.
+  source:
+    url: https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Annual fee and waiver thresholds are stated on the current card page; 3.75% monthly finance charge and current fee formulas are in the issuer's 30 Sep 2026 Key Fact Statement. Forex markup is 3.49% per issuer MITC (https://www.au.bank.in/content/dam/aubank/in/en/pdf/credit-card/MITC%28with-Schedule-of-Charges%29.pdf). First-year waiver spend is noted because the fee schema stores only one threshold.
 rewards:
-  - effective_from: 2021-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: grocery-departmental-utility
-        canonical_categories: [groceries, utilities]
-        multiplier: 2
-        effective_rate: 2
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "2% cashback on groceries, departmental stores & utility spends; 1% on other retail."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1.0
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    applies_to_categories:
+    - online
+    - dining
+    - travel
+    - international
+    - entertainment
+    - other
+  accelerated:
+  - category: grocery-departmental-utility
+    canonical_categories:
+    - groceries
+    - utilities
+    multiplier: 2
+    effective_rate: 2
+    cap_status: not-published
+    notes: 2% cashback on groceries, departmental stores and utility bill payments. The issuer does not publish a cap. The calculator has no departmental-store spend bucket, so that portion of the 2% offer remains unscored.
+  exclusions:
+  - fuel
+  - cash-advance
+  - wallet-loads
+  - rent
+  - emi
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.base.applies_to_categories
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_status
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption.rate_inr_per_unit
+    notes: The current page states 1% on other retail and 2% on groceries, departmental stores and utility bill payments. Base earn is scoped away from the two categories with an accelerated rate so scoring does not add 1% on top of 2%. Departmental stores have no canonical spend bucket and are not scored at the elevated rate. The page does not publish a cashback cap. AU's current card FAQ limits cashback/reward earning to POS and online retail and excludes cash withdrawal, fuel, EMI and charges. Rent MCC 6513 and wallet MCC 6540 are excluded by AU's Altura usage terms (https://www.au.bank.in/cc-ausfb-credit-card-usage-terms-condition.pdf). Cashback is returned on statement in the next month per issuer FAQ. Government and education buckets are outside the modeled base-earn scope because current card terms do not identify them as eligible retail.
 benefits:
-  - effective_from: 2021-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [rupay]
-        notes: "8 complimentary Railway Lounge visits per year (not airport lounges)."
-    milestones:
-      - spend_inr: 10000
-        cycle: monthly
-        benefit: "₹50 cashback on ₹10,000 retail spend every statement cycle"
-        value_inr: 50
-        reward_kind: cashback
-        trigger_window: rolling
-        is_repeatable: true
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 100
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: annual
+      guests_per_visit: null
+      via: []
+      notes: 8 complimentary Railway Lounge visits per year (not airport lounges).
+  milestones:
+  - spend_inr: 10000
+    cycle: monthly
+    benefit: ₹50 cashback on ₹10,000 retail spend every statement cycle
+    value_inr: 50
+    reward_kind: cashback
+    trigger_window: rolling
+    is_repeatable: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: monthly
+  concierge: false
+  other:
+  - name: Device protection plan
+    description: Issuer advertises insurance and extended warranty on mobile and other electronic purchases; coverage limits, exclusions and claim conditions are not established here.
+  - name: Card liability cover
+    description: Issuer advertises protection against card misuse; coverage amount and claim terms are not established here.
+  - name: Contactless payments
+    description: Issuer advertises contactless payments up to INR 5,000 without PIN at participating merchants.
+  - name: Xpress EMI
+    description: Issuer advertises conversion of transactions of INR 2,000 or more to EMI with zero processing fee.
+  - name: Add-on cards
+    description: Issuer states add-on cards are free.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.milestones.spend_inr
+    - benefits.milestones.value_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.other[2].description
+    - benefits.other[3].description
+    notes: Current product page confirms eight railway lounge visits yearly, INR 50 additional cashback at INR 10,000 retail spend each statement cycle, and 1% fuel surcharge waiver for INR 400-INR 5,000 fuel transactions up to INR 100. Current KFS v1.9 (30 Sep 2026) says GST on fuel surcharge is not reversed. Page also advertises device protection, card liability cover, contactless payments, zero-processing-fee Xpress EMI at INR 2,000+, and free add-on cards; insurance details remain unquantified. These are railway lounges, not airport lounges. Current product materials reviewed do not specify a network or tier.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  notes: Current card page gives salaried and self-employed age ranges; generic min_age/max_age remain null because
+    the issuer publishes occupation-specific limits. Income and bureau-score thresholds are not published and remain
+    unknown; this does not imply that no underwriting thresholds apply.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, cashback, rupay]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - cashback

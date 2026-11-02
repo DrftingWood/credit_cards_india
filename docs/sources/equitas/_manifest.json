@@ -1,0 +1,16 @@
+{
+  "_source": "Equitas Bank official Selfe card product page, linked FAQ and issuer documents",
+  "verified_on": "2026-10-26",
+  "selfe": {
+    "result": "Reviewed live product page/FAQ, current indexed issuer MITC/pricing form/application form; corrected card data and documented inaccessible PDF archive endpoints.",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/equitas/",
+    "unresolved": [
+      "exact launch date not established",
+      "age, income and credit-score cutoffs not published in reviewed sources",
+      "issuer-hosted PDF endpoints returned HTTP 503 during direct retrieval",
+      "membership posting timing varies within product-page FAQ (T+1 vs T+3 working days)",
+      "network and card design are selectable; scalar schema cannot represent both variants"
+    ]
+  }
+}

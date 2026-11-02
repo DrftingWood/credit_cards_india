@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: hdfc-infinia
+﻿id: hdfc-infinia
 name: HDFC Bank Infinia Credit Card (Metal Edition)
+image_path: /cards/hdfc/infinia.webp
 issuer: hdfc
 network: visa
 network_tier: infinite
@@ -16,414 +8,260 @@ tier: super-premium
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2017-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2017-01-01
-    effective_until: null
-    joining_fee_inr: 12500
-    annual_fee_inr: 12500
-    fee_waiver:
-      spend_inr: 1000000
-      cycle: annual
-      conditions: "Renewal fee waived on spends of ₹10L in the preceding membership year."
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 1.99
-    cash_advance_fee: null
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2017-01-01
+  effective_until: null
+  joining_fee_inr: 12500
+  annual_fee_inr: 12500
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+    conditions: Renewal fee waived on spends of ₹10L in the preceding membership year.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 1.99
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/infinia/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    notes: Current 12,500 fee/10 lakh waiver applies to Infinia Metal cards sourced after 2021-10-18; earlier Infinia variants have a different fee schedule. Cash advance transaction fee is exempt for Infinia, while finance charges still apply.
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
 rewards:
-  - effective_from: 2017-01-01
-    effective_until: 2026-06-30
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 5
-      per_inr: 150
-      unit_value_inr: 1.1
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: smartbuy-flights-hotels
-        canonical_categories: [travel]
-        multiplier: 10
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [smartbuy]
-        notes: "10x reward points on flight + hotel bookings via HDFC SmartBuy. Rate applies only when booked via SmartBuy; direct/OTA bookings drop to the base 5/₹150."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: catalog
-        program: SmartBuy
-        rate_inr_per_unit: 1.0
-      - type: airmiles
-        program: Multiple (Airmiles hub)
-        ratio: "1:1"
-        constraints: "22 transfer partners; ratios are card-point : partner-unit. realized Rs 1.00 = guaranteed non-transfer floor; best documented transfer Rs 1.10. 3 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.10/pt
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.05/pt
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.90/pt
-          - partner_name: Vietnam LotusMiles
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.80/pt [below floor — avoid]
-          - partner_name: SpiceJet SpiceClub
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: AirAsia Rewards
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.22/pt [below floor — avoid]
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Radisson Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.16/pt [below floor — avoid]
-          - partner_name: Wyndham Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: Etihad Guest
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Thai Royal Orchid Plus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: United MileagePlus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Avianca LifeMiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Turkish Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.55/pt [below floor — avoid]
-          - partner_name: Accor ALL
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
-        min_units: 100
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
-  - effective_from: 2026-07-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 5
-      per_inr: 150
-      unit_value_inr: 1.1
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: smartbuy-hotels
-        canonical_categories: [travel]
-        multiplier: 10
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [smartbuy]
-        notes: "10X reward points on HOTEL bookings via HDFC SmartBuy (booked via SmartBuy only). Shares the overall 15,000 RP/calendar-month SmartBuy cap with flights; a 3,000 RP/month brand-voucher (Gyftr/Woohoo) sub-cap sits inside it (effective 2026-07-01)."
-      - category: smartbuy-flights
-        canonical_categories: [travel]
-        multiplier: 5
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [smartbuy]
-        notes: "5X reward points on FLIGHT bookings via HDFC SmartBuy — reduced from 10X effective 2026-07-01 (hotels remain 10X). Booked via SmartBuy only; shares the overall 15,000 RP/calendar-month cap with hotels."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: catalog
-        program: SmartBuy
-        rate_inr_per_unit: 1.0
-      - type: airmiles
-        program: Multiple (Airmiles hub)
-        ratio: "1:1"
-        constraints: "22 transfer partners; ratios are card-point : partner-unit. realized Rs 1.00 = guaranteed non-transfer floor; best documented transfer Rs 1.10. 3 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.10/pt
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.05/pt
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.90/pt
-          - partner_name: Vietnam LotusMiles
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.80/pt [below floor — avoid]
-          - partner_name: SpiceJet SpiceClub
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: AirAsia Rewards
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.22/pt [below floor — avoid]
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Radisson Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.16/pt [below floor — avoid]
-          - partner_name: Wyndham Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: Etihad Guest
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Thai Royal Orchid Plus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: United MileagePlus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Avianca LifeMiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Turkish Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.55/pt [below floor — avoid]
-          - partner_name: Accor ALL
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
-        min_units: 100
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      notes: "SmartBuy flights 10X->5X + 3,000 RP brand-voucher sub-cap confirmed vs HDFC's live SmartBuy T&C (offers.smartbuy.hdfcbank.com offer 15282, effective 2026-07-01); hotels 10X and the 15,000 RP/month overall cap unchanged."
+- effective_from: 2017-01-01
+  effective_until: 2026-06-30
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 0.3
+  accelerated:
+  - category: smartbuy-flights-hotels
+    canonical_categories:
+    - travel
+    multiplier: 10
+    cap_per_cycle: 15000
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - smartbuy
+    notes: 10x reward points on flight + hotel bookings via HDFC SmartBuy. Rate applies only when booked via SmartBuy;
+      direct/OTA bookings drop to the base 5/₹150.
+  exclusions:
+  - wallet-loads
+  - rent
+  - government
+  - emi
+  redemption:
+  - type: catalog
+    program: SmartBuy flights/hotels and Apple/Tanishq
+    rate_inr_per_unit: 1.0
+    constraints: Product/voucher catalogue redemptions are up to INR0.50 per point; SmartBuy travel and listed Apple/Tanishq redemptions are INR1 per point.
+  - type: cashback-bank
+    program: Statement balance redemption
+    rate_inr_per_unit: 0.3
+    constraints: Maximum 50,000 points per month; 1.5 lakh/month for flights, hotels and airmiles; overall 2 lakh points per statement cycle.
+  - type: airmiles
+    program: Multiple (Airmiles hub)
+    ratio: '1:1'
+    constraints: HDFC states conversion of up to 1 Airmile per Reward Point; partner availability and redemption value vary.
+    min_units: 100
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    local_refs:
+    - docs/sources/hdfc/infinia/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].base.unit_value_inr_realized
+    - rewards[0].accelerated[0].multiplier
+    - rewards[0].accelerated[0].cap_per_cycle
+    - rewards[0].redemption[0].rate_inr_per_unit
+    - rewards[0].redemption[1].rate_inr_per_unit
+    - rewards[1].redemption[0].rate_inr_per_unit
+    - rewards[1].redemption[1].rate_inr_per_unit
+    notes: Historical SmartBuy and redemption details are retained only for the period ending 2026-06-30; point values now reflect current issuer-published redemption paths.
+- effective_from: 2026-07-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 0.3
+  accelerated:
+  - category: smartbuy-hotels
+    canonical_categories:
+    - travel
+    multiplier: 10
+    cap_per_cycle: 15000
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - smartbuy
+    notes: 10X reward points on HOTEL bookings via HDFC SmartBuy (booked via SmartBuy only). Shares the overall
+      15,000 RP/calendar-month SmartBuy cap with flights; a 3,000 RP/month brand-voucher (Gyftr/Woohoo) sub-cap
+      sits inside it (effective 2026-07-01).
+  - category: smartbuy-flights
+    canonical_categories:
+    - travel
+    multiplier: 5
+    cap_per_cycle: 15000
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - smartbuy
+    notes: 5X reward points on FLIGHT bookings via HDFC SmartBuy — reduced from 10X effective 2026-07-01 (hotels
+      remain 10X). Booked via SmartBuy only; shares the overall 15,000 RP/calendar-month cap with hotels.
+  exclusions:
+  - wallet-loads
+  - rent
+  - government
+  - emi
+  redemption:
+  - type: catalog
+    program: SmartBuy flights/hotels and Apple/Tanishq
+    rate_inr_per_unit: 1.0
+    constraints: Product/voucher catalogue redemptions are up to INR0.50 per point; SmartBuy travel and listed Apple/Tanishq redemptions are INR1 per point.
+  - type: cashback-bank
+    program: Statement balance redemption
+    rate_inr_per_unit: 0.3
+    constraints: Maximum 50,000 points per month; 1.5 lakh/month for flights, hotels and airmiles; overall 2 lakh points per statement cycle.
+  - type: airmiles
+    program: Multiple (Airmiles hub)
+    ratio: '1:1'
+    constraints: HDFC states conversion of up to 1 Airmile per Reward Point; partner availability and redemption value vary.
+    min_units: 100
+    rate_inr_per_unit: null
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: medium
+    local_refs:
+    - docs/sources/hdfc/infinia/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards[1].base.rate
+    - rewards[1].base.per_inr
+    - rewards[1].base.unit_value_inr
+    - rewards[1].base.unit_value_inr_realized
+    - rewards[1].accelerated[0].multiplier
+    - rewards[1].accelerated[0].cap_per_cycle
+    - rewards[1].accelerated[1].multiplier
+    - rewards[1].accelerated[1].cap_per_cycle
+    - rewards[1].redemption[0].rate_inr_per_unit
+    - rewards[1].redemption[1].rate_inr_per_unit
+    notes: HDFC's current card page states up to 10x on SmartBuy and publishes redemption values by path. The live page does not specify the separate flight/hotel multipliers or voucher sub-cap. Retained the dated 2026-07-01 split from the prior SmartBuy offer capture; live offer 15282 could not be fetched during this review and needs rechecking. Insurance transactions earn points subject to a 10,000-point monthly cap; utilities and telecom are subject to 2,000 points/month each; third-party-app education payments do not earn. HDFC MITC excludes rent, government transactions, e-wallet loads and Easy EMI; fuel exclusions for Infinia are not present in the current MITC list, so fuel was removed as an unsupported blanket exclusion.
 benefits:
-  - effective_from: 2024-04-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [visa, priority-pass]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: unlimited
-      cycle: monthly
-      lessons_per_cycle: unlimited
-    milestones: []
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "12,500 bonus Reward Points"
-        value_inr: 12500
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 30000000
-      - type: travel-medical
-        sum_insured_inr: 5000000
-      - type: credit-shield
-        sum_insured_inr: 900000
-      - type: lost-card-liability
-        sum_insured_inr: 900000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 100000
-      cap_per_cycle_inr: 1000
-      cycle: statement
-    concierge: true
-    other:
-      - name: Club Marriott membership
-        description: Complimentary Club Marriott membership for the first year.
-        value_inr: 5000
-      - name: Renewal benefit
-        description: "12,500 Reward Points on renewal-fee realisation and card activation (separate from the joining welcome points)."
-        value_inr: 12500
-      - name: ITC hotels buffet
-        description: "1+1 complimentary buffet at participating ITC hotels."
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2024-04-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - visa
+      - priority-pass
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - priority-pass
+  golf:
+    rounds_per_cycle: unlimited
+    cycle: monthly
+    lessons_per_cycle: unlimited
+  milestones: []
+  welcome:
+  - condition: Joining fee realized and card activated
+    benefit: 12,500 bonus Reward Points
+    window_days: 90
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 30000000
+  - type: travel-medical
+    sum_insured_inr: 5000000
+  - type: credit-shield
+    sum_insured_inr: 900000
+  - type: lost-card-liability
+    sum_insured_inr: 900000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 100000
+    cap_per_cycle_inr: 1000
+    cycle: statement
+  concierge: true
+  other:
+  - name: Club Marriott membership
+    description: Complimentary Club Marriott membership for the first year.
+  - name: Renewal benefit
+    description: 12,500 Reward Points on renewal-fee realisation and card activation (separate from the joining
+      welcome points).
+  - name: ITC hotels buffet
+    description: 1+1 complimentary buffet at participating ITC hotels.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/infinia-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: medium
+    local_refs:
+    - docs/sources/hdfc/infinia/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.welcome[0].window_days
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.insurance[1].sum_insured_inr
+    - benefits.insurance[2].sum_insured_inr
+    - benefits.insurance[3].sum_insured_inr
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 800
+  credit_score_min: null
   residency: resident-indian
-  notes: "Invite-only. Typically extended to HDFC Preferred/Imperia/Private Banking customers or high-net-worth profiles."
-
+  notes: HDFC states the card is offered to select customers by invitation only; numeric application eligibility cutoffs are unpublished. Effective 2026-04-01, the issuer states continued Infinia programme access requires INR18 lakh in primary-plus-add-on card spend or INR50 lakh relationship value. This is a retention condition, not a published application cutoff.
 application:
   apply_url: null
   pre_approval_check_url: null
   replaces_card: null
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [metal, travel, forex-friendly, invite-only, points]
+  last_verified_on: 2026-10-26
+  tags:
+  - metal
+  - travel
+  - forex-friendly
+  - invite-only
+  - points
+

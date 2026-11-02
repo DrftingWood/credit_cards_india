@@ -1,131 +1,185 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: bob-tiara
 name: BOBCARD Tiara Credit Card
+image_path: /cards/bob/tiara.webp
 issuer: bob
-network: visa
-network_tier: signature
+network: rupay
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01
+launched_on: 2024-09-29
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 2499
-    annual_fee_inr: 2499
-    fee_waiver:
-      spend_inr: 250000
-      cycle: annual
-      conditions: "Annual fee waived on ₹2,50,000 spend per anniversary year. Joining fee waived on ₹25,000 spend in first 60 days."
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Women-only credit card."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/tiara
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 2499
+  annual_fee_inr: 2499
+  fee_waiver:
+    spend_inr: 250000
+    cycle: annual
+    conditions: Annual fee waived on INR250,000 spend in each card anniversary year; only non-delinquent cardholders qualify. Joining fee waived on INR25,000 spend within the first 60 days.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/tiara
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: medium
+    local_refs:
+    - docs/sources/bob/tiara/generic-mitc-july-2025.pdf
+    - docs/sources/bob/tiara/july-revision.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Product page confirms INR2,499 joining/annual fees, INR25,000 joining waiver spend in first 60 days, INR250,000 annual waiver spend, and 2% forex. BOBCARD's 15-Jul-2026 revision notice raises Tiara's monthly finance charge from 3.25% to 3.75%; the archived generic issuer MITC (document version 1.6, July 2025) lists cash advance at 2.5% or INR500 minimum. The issuer's current MITC index lists a 2026 edition, but that newer PDF could not be retrieved for this review; the cash advance fee retains the last locally verifiable issuer term. Finance charge effective date is 2026-07-15; fee effective_from here is the 2026-10-26 verification snapshot. All fees/charges are GST-applicable.
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: dining-travel-international
-        canonical_categories: [dining, travel, international]
-        multiplier: 5
-        effective_rate: 15
-        cap_per_cycle: 5000
-        cap_unit: points
-        cycle: statement
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    capping_rules:
-      - "Reward Points on Credit Card UPI spends capped at 500 RP per statement cycle."
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: BOBCARD Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/tiara
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 3
+    per_inr: 100
+    unit_value_inr: 0.25
+  accelerated:
+  - category: dining-travel-international
+    canonical_categories:
+    - dining
+    - travel
+    - international
+    multiplier: 5
+    effective_rate: 15
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: statement
+    notes: Eligible dining MCC 5812, travel MCC 4722 and international transactions earn 15 points per INR100; subsequent eligible spend earns the core rate after the 5,000-point statement-cycle cap.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  capping_rules:
+  - Reward points on credit-card UPI spends are capped at 500 points per statement cycle; UPI transactions earn core points only, not accelerated points.
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    program: BOBCARD Rewards
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/tiara
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption.rate_inr_per_unit
+    notes: Current Tiara page confirms 3 points/INR100 core, 15 points/INR100 eligible dining/travel/international spend, 5,000-point cycle cap, UPI cap of 500 points/cycle and INR0.25 cashback value per point. No points on fuel or selected MCCs. Removed unsupported INR0.18 realized value. Detailed exclusions and merchant-category scope are in BOBCARD's shared Features and Rewards T&C effective 01-Apr-2026.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-    movies:
-      type: discount
-      partner: BookMyShow
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
       cycle: quarterly
-      cap_inr: 250
-      notes: "Flat ₹250 off on min. 2 movie/non-movie tickets per quarter."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    other:
-      - name: Women's health package
-        description: "Complimentary women's health package incl. Pap Smear, blood tests and mammography."
-      - name: Quarterly shopping vouchers
-        description: "₹500/qtr each at Myntra, Nykaa, Flipkart; ₹1,500/qtr at Lakmé Salon; ₹250/qtr at BigBasket."
-        value_inr: 1500
-      - name: OTT & music memberships
-        description: "Complimentary annual Amazon Prime / JioHotstar, Gaana Plus; Swiggy One 3-month membership once p.a."
-      - name: Add-on cards
-        description: "Up to 3 lifetime-free add-on cards for female family members (18+)."
-    concierge: false
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/tiara
-      retrieved_on: 2026-07-03
-
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      guests_per_visit: null
+      notes: Unlimited domestic lounge visits after at least INR75,000 eligible spend in the preceding calendar quarter. Current issuer page confirms the threshold; the exact implementation date is not stated in the accessible current page. A BOBCARD revision notice initially scheduled this threshold for 15-Jul-2026.
+  movies:
+    type: discount
+    partner: BookMyShow
+    cycle: quarterly
+    cap_inr: 250
+    notes: Flat INR250 off with a minimum purchase of two movie or non-movie tickets; current issuer page says quarterly.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  welcome:
+  - condition: Card issued on or after 2026-08-01.
+    benefit: Complimentary 12-month FITPASS PRO membership; code sent to the registered email within 30 days of card issuance.
+    window_days: 30
+  insurance: []
+  other:
+  - name: Women's health package
+    description: Complimentary women's health package including Pap Smear, blood tests and mammography; detailed appointment terms are available to existing Tiara customers.
+  - name: Quarterly shopping vouchers
+    description: Primary cardholders can redeem quarterly vouchers of INR500 each at Myntra, Nykaa and Flipkart, INR1,500 at Lakme Salon, and INR250 at BigBasket. Quarterly period is calendar quarter.
+  - name: OTT and music memberships
+    description: Complimentary annual memberships including Amazon Prime, JioHotstar and Gaana Plus; primary-cardholder benefit, redemption and availability conditions apply.
+  - name: Swiggy One membership
+    description: Three-month Swiggy One membership once per annum for the primary cardholder.
+  - name: Lifetime-free add-on cards
+    description: Up to three add-on cards for female family members aged 18 or older.
+  concierge: false
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/tiara
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/tiara/july-revision.pdf
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    - docs/sources/bob/tiara/annual-report-2024-25.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.movies.cap_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.welcome
+    - benefits.other
+    notes: Current issuer page confirms lounge spend threshold INR75,000 in the previous calendar quarter, movies, fuel surcharge waiver, FITPASS (for cards issued from 01-Aug-2026), health, shopping, memberships and Swiggy benefits. BOBCARD's 15-Jul-2026 notice proposed the lounge threshold change from INR40,000 to INR75,000 effective 15-Jul, but current issuer page does not show the effective date. Lounge implementation date is therefore treated as unresolved; current minimum spend is recorded. Older rewards T&C list INR40,000 and are superseded by the current card page. RuPay Tiara was launched in the official 2024-25 annual report; no current network tier was confirmed. Concierge is not described on the current page; false is a schema placeholder, not evidence of absence.
 eligibility:
   min_age: 25
   max_age: 55
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Women applicants only."
-
+  notes: Women applicants only. The current issuer page states age 25-55 and says BOBCARD may consider lower or higher cutoffs at its discretion. The page's income text is incomplete in the accessible version, so no annual-income threshold is encoded. No credit-score floor is published in the reviewed issuer source.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/tiara
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/tiara
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, women, travel, lounge]
+  last_verified_on: '2026-10-26'
+  tags:
+  - premium
+  - points
+  - women
+  - travel
+  - lounge

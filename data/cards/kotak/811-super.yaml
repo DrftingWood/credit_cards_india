@@ -1,0 +1,123 @@
+id: kotak-811-super
+name: Kotak 811 Super Money Credit Card
+image_path: /cards/kotak/811-super.webp
+issuer: kotak
+network: rupay
+network_tier: null
+tier: entry
+card_type: credit
+co_brand:
+  partner: super.money
+  category: other
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-03-12
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee: null
+  gst_applicable: true
+  source:
+    url: https://www.kotak811.bank.in/credit-cards/811-super-money-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: No annual fee. Joining charge ₹249 only if FD is below ₹5,000 on activation and customer opts for physical card; otherwise nil. Current product KFS gives 3.5% monthly interest, 2% foreign markup and no cash withdrawal facility. KFS version dated 12-Mar-2026.
+rewards:
+- effective_from: 2026-03-12
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 0
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: UPI transactions through super.money app
+    canonical_categories:
+    - other
+    multiplier: 1
+    effective_rate: 1.0
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 1% cashback, minimum transaction ₹100, capped at ₹500 per monthly cycle.
+  - category: Myntra non-UPI card transactions
+    canonical_categories:
+    - online
+    multiplier: 5
+    effective_rate: 5.0
+    notes: 5% cashback on Myntra non-UPI card transactions; current terms don't publish a separate transaction cap for Myntra. Shared/aggregate category cap language requires issuer clarification.
+  - category: Flipkart non-UPI card transactions
+    canonical_categories:
+    - online
+    multiplier: 2
+    effective_rate: 2.0
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 2% cashback; maximum ₹100 cashback per Flipkart transaction. ₹500/cycle is stated for the non-UPI partner category; whether this is combined with Myntra is not clear.
+  - category: Other non-UPI platforms
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 1.0
+    cap_per_cycle: 10000
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 1% cashback on other platforms, minimum transaction ₹100, maximum ₹10,000 per monthly cycle.
+  exclusions:
+  - wallet-loads
+  - utilities
+  - emi
+  - rent
+  redemption:
+  - type: cashback-bank
+    program: super.money savings account credit
+    rate_inr_per_unit: 1.0
+    constraints: Redeem through super.money app only; cashback becomes redeemable after 35 days and is credited to the default savings account linked to super.money UPI. Unredeemed cashback is cancelled on card closure/account freeze or prolonged overdue status. Cashback is lost after two consecutive missed billing cycles.
+  notes: Cashback eligibility requires an active card and active Kotak811 Savings Account. Cashback cycle runs calendar-month wise and rounds down to two decimals per transaction. Total cashback across modes is capped at ₹11,000 per cycle. No general cashback rate is stated for other everyday card spends except the 1% other-platform rate.
+  source:
+    url: https://www.kotak811.bank.in/credit-cards/811-super-money-credit-card/terms-and-conditions
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Current issuer cashback terms specify mode/platform rates, thresholds and caps; current product page links these terms. Excludes loan repayment, wallet loads, utility/bill payment, credit-card bills and card EMIs.
+benefits:
+- effective_from: 2026-03-12
+  effective_until: null
+  fuel_surcharge_waiver: null
+  concierge: null
+  source:
+    url: https://www.kotak811.bank.in/credit-cards/811-super-money-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Product-specific public page lists secured-card and cashback features; no separate lounge, insurance or lifestyle benefits are published.
+eligibility:
+  min_age: 18
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: Requires Kotak811 Savings Account and fixed deposit of at least ₹1,000; credit limit up to 90% of FD. Valid KYC required. Issuer says instant approval without CIBIL score and no income proof; issuance remains subject to bank discretion.
+application:
+  apply_url: https://www.kotak811.bank.in/credit-cards/811-super-money-credit-card
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - secured
+  - fd-backed
+  - rupay
+  - upi
+  - cashback
+  - ltf

@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-phonepe-ultimo
 name: PhonePe HDFC Bank Ultimo Credit Card
+image_path: /cards/hdfc/phonepe-ultimo.webp
 issuer: hdfc
 network: rupay
 network_tier: null
@@ -18,140 +10,238 @@ co_brand:
   partner: PhonePe
   category: other
 status: active
-launched_on: null
+launched_on: '2025-06-26'
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 999
-    annual_fee_inr: 999
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-      conditions: "Renewal/annual membership fee waived on spends of ₹2,00,000 in the preceding 12 months."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-pdf
-      confidence: high
-      local_refs:
-        - docs/sources/hdfc/phonepe-ultimo/phonepe-hdfc-bank-ultimo-cc-faqs.pdf
-      fields_verified:
-        - fees.annual_fee_inr
-        - fees.fee_waiver
-    notes: "Fee amounts not shown on product page crawl; welcome benefits apply only to cardholders for whom joining fee is applicable."
-
+- effective_from: 2025-06-26
+  effective_until: null
+  joining_fee_inr: 999
+  annual_fee_inr: 999
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: Renewal/annual membership fee waived on spends of ₹2,00,000 in the preceding 12 months.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/phonepe-ultimo/ultimo-faqs-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: No joining-fee waiver; renewal fee waiver at INR2 lakh eligible annual spend. Fee-waiver spend excludes cash advances, card fees/charges, EMI spends and other issuer-excluded categories.
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-      cap_per_cycle: 500   # 1% Scan & Pay capped at 500 RP/calendar month
-      cap_unit: points
-      cycle: monthly
-    accelerated:
-      - category: phonepe-select-categories
-        canonical_categories: [utilities, travel]
-        multiplier: 10
-        effective_rate: 10
-        cap_per_cycle: 1000
-        cap_unit: points
-        cycle: monthly
-        merchants: [phonepe-recharges, phonepe-utilities, phonepe-bill-payments, phonepe-travel]
-        channel:
-          class: cobrand-merchant
-          merchants: [phonepe-app]
-        mcc_list: ["4111", "4112", "4511", "4722", "4784", "4814", "4899", "4900"]
-        notes: "10% Reward Points on select PhonePe categories (Recharges, Utilities, Bill Payments and Travel). Capped at 1000 Reward Points per calendar month. Rewards on PhonePe PINCODE valid until 5th Dec'25."
-      - category: online-brands
-        canonical_categories: [online, dining]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 500
-        cap_unit: points
-        cycle: monthly
-        merchants: [amazon, flipkart, myntra, ajio, swiggy, zomato, uber]
-        channel:
-          class: cobrand-merchant
-          merchants: [amazon, flipkart, myntra, ajio, swiggy, zomato, uber]
-        mcc_list: ["4121", "4214", "5137", "5262", "5311", "5399", "5691", "5699", "5732", "5811", "5812", "5814"]
-        notes: "5% Reward Points on select online brands (Amazon, Flipkart, Myntra, Ajio, Swiggy, Zomato, Uber). Capped at 500 Reward Points per calendar month."
-    exclusions:
-      - emi
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - education
-      - gift-cards
-      - cash-advance
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-      confidence: high
-      notes: 'Research-verified: co-brand RP = Rs1 HDFC statement credit (liquid), Rs0.30 catalogue -> NOT closed-loop. Tag removed.'
-    notes: "Base rate models the 1% Reward Points on UPI Scan & Pay spends. Reward points posted monthly for eligible transactions settled in the previous calendar month."
-
-    reward_cap:
-      max_units: 2000
-      cap_unit: points
-      cycle: monthly
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-        constraints: 1 CashPoint = Rs1 statement credit via HDFC NetBanking; min 500 pts, capped Rs7,500/mo.
+- effective_from: 2025-06-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    cap_per_cycle: 500
+    cap_unit: points
+    cycle: monthly
+  accelerated:
+  - category: phonepe-select-categories
+    canonical_categories:
+    - utilities
+    - travel
+    multiplier: 10
+    effective_rate: 10
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - phonepe-recharges
+    - phonepe-utilities
+    - phonepe-bill-payments
+    - phonepe-travel
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - phonepe-app
+    mcc_list:
+    - '4111'
+    - '4112'
+    - '4511'
+    - '4722'
+    - '4784'
+    - '4814'
+    - '4899'
+    - '4900'
+    notes: 10% Reward Points on eligible PhonePe categories (Recharges & Bills, Travel & Stays), subject to the published eligible MCC list and 1,000-point calendar-month cap. Pincode offer is expired and not included in the current category list.
+  - category: online-brands
+    canonical_categories:
+    - online
+    - dining
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 500
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - amazon
+    - flipkart
+    - myntra
+    - ajio
+    - swiggy
+    - zomato
+    - uber
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - amazon
+      - flipkart
+      - myntra
+      - ajio
+      - swiggy
+      - zomato
+      - uber
+    mcc_list:
+    - '4121'
+    - '4214'
+    - '5137'
+    - '5262'
+    - '5311'
+    - '5399'
+    - '5691'
+    - '5699'
+    - '5732'
+    - '5811'
+    - '5812'
+    - '5814'
+    notes: 5% Reward Points on select online brands (Amazon, Flipkart, Myntra, Ajio, Swiggy, Zomato, Uber). Capped
+      at 500 Reward Points per calendar month.
+  exclusions:
+  - emi
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - education
+  - gift-cards
+  - cash-advance
+  - jewellery
+  - financial-institutions
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    local_refs:
+    - docs/sources/hdfc/phonepe-ultimo/phonepe-ultimo-cc-reward-points-t-cs-v-3-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/phonepe-ultimo/ultimo-faqs-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].base.unit_value_inr_realized
+    - rewards[0].base.cap_per_cycle
+    - rewards[0].accelerated[0].multiplier
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].accelerated[0].cap_per_cycle
+    - rewards[0].accelerated[1].multiplier
+    - rewards[0].accelerated[1].effective_rate
+    - rewards[0].accelerated[1].cap_per_cycle
+    - rewards[0].reward_cap.max_units
+    - rewards[0].redemption[0].rate_inr_per_unit
+    - rewards[0].redemption[1].rate_inr_per_unit
+    notes: Current issuer terms specify INR1 per point as statement credit (500-point minimum; INR7,500 monthly cap) and INR0.30 per point on SmartBuy. Current page says Pincode rewards expired after 2025-12-05. Card-specific FAQ/reward terms say points expire after 2 years, while the consolidated HDFC MITC v3.9 updated 2026-05-08 lists Ultimo points as valid for 1 year; expiry is unresolved and not modeled. The T&C also excludes credit-card bill payments, charges, investments and jewellery from earning; see exclusions for schema-mapped categories.
+  reward_cap:
+    max_units: 2000
+    cap_unit: points
+    cycle: monthly
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+    constraints: 1 Reward Point = INR1 statement credit; minimum 500 points, capped at INR7,500 per calendar month; no redemption fee.
+  - type: catalog
+    program: HDFC SmartBuy
+    rate_inr_per_unit: 0.3
+    constraints: Card-specific reward terms state INR0.30 per point for SmartBuy flights, hotels, airmiles and product catalogue.
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        spend_threshold_inr: 75000
-        spend_threshold_cycle: quarterly
-        via: [issuer-direct]
-        notes: "8 complimentary domestic lounge visits per year (2 per quarter). Milestone-based: a lounge voucher is issued via Gyftr on ₹75,000 net spend in the preceding calendar quarter."
-    welcome:
-      - condition: "Joining fee applicable; first RuPay CC on UPI transaction (min ₹100)"
-        benefit: "PhonePe Gift card worth ₹499"
-        value_inr: 499
-      - condition: "Next 10 RuPay CC on UPI transactions (min ₹100 each)"
-        benefit: "Additional scratch cards worth ₹50 each"
-        value_inr: 500
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-08-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: annual
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      via:
+      - issuer-direct
+      notes: '8 complimentary domestic lounge visits per year (2 per quarter). Milestone-based: a lounge voucher
+        is issued via Gyftr on ₹75,000 net spend in the preceding calendar quarter.'
+  welcome:
+  - condition: For applications on or after 2026-08-01, joining fee must be applicable; first five PhonePe UPI-on-credit-card transactions of at least INR100 each
+    benefit: Five PhonePe scratch cards worth INR200 each
+    value_inr: 1000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/phonepe-ultimo/ultimo-faqs-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/phonepe-ultimo/phonepe-ultimo-cc-lounge-access-t-and-cs.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits[0].welcome[0].value_inr
+    - benefits[0].lounge_access.domestic.visits_per_cycle
+    - benefits[0].lounge_access.domestic.spend_threshold_inr
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.min_txn_inr
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: 240000
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: HDFC's co-branded credit-card listing publishes a minimum salary of INR20,000/month; annualized to INR240,000 for this schema. HDFC approval remains subject to its internal policy. Applications are through the PhonePe app only. Exact age, self-employed income and credit-score thresholds are unpublished. Reward expiry conflicts between the April card-specific FAQ/reward T&Cs (2 years) and HDFC MITC v3.9 updated May 2026 (1 year) and is left unresolved.
+  source:
+    url: https://www.hdfc.bank.in/ps/credit-cards-in-india/co-branded-credit-card-offers
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.income_inr_annual.salaried
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/phonepe-hdfc-bank-ultimo-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, phonepe, rupay, upi, reward-points, mid-tier]
+  last_verified_on: '2026-10-26'
+  tags:
+  - co-branded
+  - phonepe
+  - rupay
+  - upi
+  - reward-points
+  - mid-tier

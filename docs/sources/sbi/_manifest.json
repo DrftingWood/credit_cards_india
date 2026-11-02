@@ -15,21 +15,32 @@
     "url": "https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-platinum-card.html",
     "pdfs": [
       "_shared/Air-india-tnc.pdf",
-      "_shared/mitc-english.pdf"
+      "_shared/mitc-english.pdf",
+      "air-india-platinum/air-india-launch-2013.pdf",
+      "air-india-platinum/air-india-platinum-reward-terms.pdf",
+      "air-india-platinum/lounge-benefits.pdf",
+      "air-india-platinum/mitc-english-2026-10-27.pdf"
     ]
   },
   "air-india-sbi-signature-card": {
     "slug": "air-india-sbi-signature-card",
     "url": "https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html",
     "pdfs": [
-      "_shared/mitc-english.pdf"
+      "_shared/mitc-english.pdf",
+      "air-india-signature/air-india-launch-2013.pdf",
+      "air-india-signature/mitc-english-2026-10-27.pdf",
+      "air-india-signature/signature-air-india-reward-terms.pdf",
+      "air-india-signature/signature-combined-terms.pdf",
+      "air-india-signature/signature-mileage-milestone-update.pdf"
     ]
   },
   "apollo-sbi-card": {
     "slug": "apollo-sbi-card",
     "url": "https://www.sbicard.com/en/personal/credit-cards/apollo-sbi-card.html",
     "pdfs": [
-      "_shared/mitc-english.pdf"
+      "_shared/mitc-english.pdf",
+      "apollo/apollo-terms-ekit.pdf",
+      "apollo/launch-news-2018-09-27.pdf"
     ]
   },
   "apollo-sbi-card-select": {
@@ -39,7 +50,11 @@
       "_shared/mitc-english.pdf",
       "_shared/Apollo-SBI-Card-SELECT-tnc-Booklet.pdf",
       "_shared/B-NOISE-ColorFit-Pulse-4-Pro-Smartwatch-tnc.pdf",
-      "_shared/B-tnc-Apollo-Vocuher.pdf"
+      "_shared/B-tnc-Apollo-Vocuher.pdf",
+      "apollo-select/apollo-select-faq.pdf",
+      "apollo-select/apollo-select-terms.pdf",
+      "apollo-select/health-checkup-fitpass-terms.pdf",
+      "apollo-select/launch-filing-may-2025.pdf"
     ]
   },
   "bpcl-sbi-card": {
@@ -47,23 +62,34 @@
     "url": "https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card.html",
     "pdfs": [
       "bpcl-sbi-card/BPCL-VISA-Rupay-TnC.pdf",
-      "_shared/mitc-english.pdf"
-    ]
+      "_shared/mitc-english.pdf",
+      "bpcl-sbi-card/bpcl-terms-current.pdf",
+      "bpcl-sbi-card/bpcl-fee-revision-may-2026.pdf",
+      "bpcl-sbi-card/launch-announcement-2017-12-20.pdf"
+    ],
+    "note": "Reviewed current BPCL product/fee page, card booklet, 1-May-2026 fee revision, MITC and BPCL launch record on 2026-10-27; network wording and legacy booklet limitations documented."
   },
   "bpcl-octane": {
     "slug": "bpcl-sbi-card-octane",
     "url": "https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html",
     "pdfs": [
       "_shared/BPCLOctanetnc.pdf",
-      "_shared/mitc-english.pdf"
-    ]
+      "_shared/mitc-english.pdf",
+      "bpcl-octane/bpcl-octane-terms-current.pdf",
+      "bpcl-octane/launch-disclosure-dec-2020.pdf"
+    ],
+    "note": "Reviewed current fees, reward earn/caps, redemption, welcome trigger, voucher milestone, lounge, fuel waiver, insurance, network variants and eligibility on 2026-10-27; historical welcome-fee trigger conflict documented."
   },
   "cashback": {
     "slug": "cashback-sbi-card",
     "url": "https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html",
     "pdfs": [
-      "cashback/cashback-tnc-ekit.pdf"
-    ]
+      "cashback/cashback-tnc-ekit.pdf",
+      "cashback/cashback-terms-current.pdf",
+      "cashback/cashback-revision-apr-2026.pdf",
+      "cashback/cashback-brochure.pdf"
+    ],
+    "note": "Reviewed current Cashback page, FAQ, Feb-2026 revision notice, card terms, fee/MITC and launch records on 2026-10-27; corrected launch date and unsupported Visa tier."
   },
   "club-vistara-sbi-card": {
     "slug": "club-vistara-sbi-card",
@@ -94,7 +120,8 @@
     "url": "https://www.sbicard.com/en/personal/credit-cards/doctors-sbi-card.html",
     "pdfs": [
       "_shared/mitc-english.pdf",
-      "_shared/non-ima-tnc.pdf"
+      "doctors/non-ima-tnc-current.pdf",
+      "doctors/non-ima-brochure.pdf"
     ]
   },
   "etihad-guest-sbi-card": {
@@ -129,7 +156,11 @@
     "url": "https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html",
     "pdfs": [
       "_shared/mitc-english.pdf",
-      "ERROR Cleartrip-SBIC-TnCs.pdf APIRequestContext.get: socket hang up\nCa"
+      "flipkart/flipkart-card-terms.pdf",
+      "flipkart/flipkart-launch-press-release.pdf",
+      "flipkart/kfs-current.pdf",
+      "flipkart/cleartrip-offer-terms.pdf",
+      "flipkart/issuance-policy-current.pdf"
     ]
   },
   "hc-sbi-card-prime": {
@@ -140,14 +171,25 @@
   "indigo": {
     "slug": "indigo-sbi-card",
     "url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html",
-    "pdfs": [],
-    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card.html\", waiting until \"domcontentloaded\"\n"
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "indigo/indigo-base-tnc.pdf",
+      "indigo/indigo-launch-filing.pdf",
+      "indigo/indigo-launch-press-release.pdf"
+    ],
+    "note": "Product URL fetch fails; reviewed current card e-kit terms, launch filing/release and MITC on 2026-10-27."
   },
   "indigo-elite": {
     "slug": "indigo-sbi-card-elite",
     "url": "https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html",
-    "pdfs": [],
-    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/indigo-sbi-card-elite.html\", waiting until \"domcontentloaded\"\n"
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "indigo-elite/indigo-elite-tnc.pdf",
+      "indigo-elite/indigo-launch-filing.pdf",
+      "indigo-elite/indigo-launch-press-release.pdf",
+      "indigo-elite/kfs-current.pdf"
+    ],
+    "note": "Reviewed card e-kit T&C, launch filing/release, current KFS and MITC on 2026-10-27."
   },
   "irctc-premier": {
     "slug": "irctc-premier-card",
@@ -163,8 +205,12 @@
   "irctc-sbi-platinum-card": {
     "slug": "irctc-sbi-platinum-card",
     "url": "https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html",
-    "pdfs": [],
-    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/irctc-sbi-platinum-card.html\", waiting until \"domcontentloaded\"\n"
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "irctc-platinum/irctc-card-terms.pdf",
+      "irctc-platinum/irctc-faq.pdf"
+    ],
+    "note": "Reviewed live product page, current card-specific T&C, IRCTC FAQ and MITC on 2026-10-27; archived field comparison."
   },
   "krisflyer-sbi-card": {
     "slug": "krisflyer-sbi-card",
@@ -270,8 +316,13 @@
   "elite": {
     "slug": "sbi-card-elite",
     "url": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html",
-    "pdfs": [],
-    "note": "goto fail Page.goto: net::ERR_EMPTY_RESPONSE at https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html\nCall log:\n  - navigating to \"https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html\", waiting until \"domcontentloaded\"\n"
+    "pdfs": [
+      "elite/kfs-current.pdf",
+      "elite/mitc-current.pdf",
+      "elite/elite-launch-2016-07-06.pdf",
+      "elite/issuance-policy-2023.pdf"
+    ],
+    "note": "Current product page and key issuer terms archived under elite/. Current page lists Mastercard, Visa and AmEx privileges; tier is not specified."
   },
   "sbi-card-elite-advantage": {
     "slug": "sbi-card-elite-advantage",
@@ -427,5 +478,51 @@
     "slug": "yatra-sbi-card",
     "url": "https://www.sbicard.com/en/personal/credit-cards/travel/yatra-sbi-card.page",
     "pdfs": []
+  },
+  "aurum": {
+    "slug": "aurum",
+    "url": "https://www.sbicard.com/aurum/",
+    "pdfs": [
+      "aurum/aurum-reward-portal-terms.pdf",
+      "aurum/government-reward-exclusion-list-apr-2024.pdf",
+      "aurum/launch-disclosure-2021-02-03.pdf",
+      "_shared/mitc-english.pdf"
+    ]
+  },
+  "elite-advantage": {
+    "slug": "sbi-card-elite-advantage",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite-advantage.page",
+    "pdfs": [
+      "elite-advantage/kfs-2026-05.pdf"
+    ],
+    "note": "Product page currently redirects to standard SBI Card ELITE; local capture archived under elite-advantage/."
+  },
+  "elite-business": {
+    "slug": "sbi-card-elite-business",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-elite-business.page",
+    "pdfs": [
+      "elite-business/elite-business-tnc-2019.pdf",
+      "elite-business/mitc-current.pdf"
+    ],
+    "note": "Current product URL returned 404 on 2026-10-27; current fee/reward/benefit data not found. Historical booklet archived."
+  },
+  "eternal": {
+    "slug": "eternal-sbi",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/eternal-sbi-card.html",
+    "pdfs": [
+      "eternal/eternal-card-terms.pdf",
+      "eternal/issuer-launch-filing.pdf",
+      "eternal/kfs-2026-05.pdf",
+      "eternal/issuance-policy-current.pdf"
+    ]
+  },
+  "google-pay-flex": {
+    "slug": "google-pay-flex-sbi-card",
+    "url": "https://www.sbicard.com/en/personal/credit-cards/lifestyle/google-pay-flex-sbi-card.page",
+    "pdfs": [
+      "_shared/mitc-english.pdf",
+      "google-pay-flex/google-pay-flex-tnc.pdf"
+    ],
+    "note": "Product URL returned 404 on 2026-10-27. Reviewed current card e-kit terms, current MITC and issuer-hosted launch coverage."
   }
 }

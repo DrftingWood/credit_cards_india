@@ -1,1 +1,36 @@
-{"_source":"getonecard.app product page","verified_on":"2026-07-04","result":"OneCard Metal confirmed LTF + 5X top-2 categories + 1% forex during audit; single unified product","pdfs_downloaded":0}
+{
+  "_source": "OneCard product FAQ/fees pages and partner-bank MITC/terms.",
+  "verified_on": "2026-10-27",
+  "result": "OneCard Metal reviewed as an aggregate product across six issuer partners and three network variants. Corrected unsupported network/tier and launch date, removed unverified lounge access and point conversion, refreshed shared fee/reward/fuel terms, and documented issuer-specific variation and unreviewed SBM/Indian Bank agreements.",
+  "pdfs_downloaded": 5,
+  "metal": {
+    "retrieved_on": "2026-10-27",
+    "faq_url": "https://www.getonecard.app/faq/",
+    "fees_url": "https://www.getonecard.app/metal-credit-card/fees-and-charges/",
+    "partner_terms": {
+      "BOBCARD": "BOBCARD_MITC.pdf (effective 2026-09-11) and BOBCARD_TnC.pdf",
+      "CSB Bank": "CSB_TnC.pdf (effective 2026-07-11)",
+      "Federal Bank": "Federal_TnC.pdf",
+      "South Indian Bank": "English_TnC_SIB.pdf",
+      "SBM Bank": "linked agreement not reviewed",
+      "Indian Bank": "linked agreement not reviewed"
+    },
+    "pdfs": [
+      "metal/bobcard-mitc-2026-09-11.pdf",
+      "metal/bobcard-terms-2026-10-27.pdf",
+      "metal/csb-terms-2026-07-11.pdf",
+      "metal/federal-terms-2026-10-27.pdf",
+      "metal/sib-terms-current.pdf"
+    ],
+    "other_sources": [
+      "metal/faq-2026-10-27.html",
+      "metal/fees-page-2026-10-27.html"
+    ],
+    "unresolved": [
+      "Current generic FAQ lists six issuing banks and Visa/Mastercard/RuPay variants, but this single data record cannot model per-bank or per-network differences.",
+      "Finance and cash-advance fees vary by partner; SBM and Indian Bank agreements were not reviewed during this pass.",
+      "No fixed public rupee redemption value, exact product launch date or shared underwriting thresholds found.",
+      "Current public sources do not advertise lounge access; no lounge quota is encoded."
+    ]
+  }
+}

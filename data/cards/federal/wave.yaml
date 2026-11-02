@@ -1,0 +1,127 @@
+id: federal-wave
+name: Federal Bank RuPay Wave Credit Card
+image_path: /cards/federal/wave.webp
+issuer: federal
+network: rupay
+network_tier: null
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-06-19
+discontinued_on: null
+fees:
+  - effective_from: 2026-10-27
+    effective_until: null
+    joining_fee_inr: 0
+    annual_fee_inr: 0
+    renewal_fee_inr: 0
+    fee_waiver: null
+    forex_markup_pct: 3.5
+    finance_charge_monthly_pct: null
+    finance_charge_tiers:
+      - min_amb_inr: 0
+        max_amb_inr: 49999
+        monthly_rate_pct: 3.75
+        annual_rate_pct: 45
+        basis: prior-quarter average monthly balance in Federal Bank operative account
+      - min_amb_inr: 50000
+        max_amb_inr: 300000
+        monthly_rate_pct: 2.69
+        annual_rate_pct: 32.28
+        basis: prior-quarter average monthly balance in Federal Bank operative account
+      - min_amb_inr: 300001
+        max_amb_inr: 1000000
+        monthly_rate_pct: 1.99
+        annual_rate_pct: 23.88
+        basis: prior-quarter average monthly balance in Federal Bank operative account
+      - min_amb_inr: 1000001
+        max_amb_inr: null
+        monthly_rate_pct: 0.69
+        annual_rate_pct: 8.28
+        basis: prior-quarter average monthly balance in Federal Bank operative account
+    cash_advance_fee: null
+    gst_applicable: true
+    source:
+      url: https://www.federal.bank.in/rupay-wave-credit-card-kfs
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      method: rendered-page
+      fields_verified: [fees.joining_fee_inr, fees.annual_fee_inr, fees.renewal_fee_inr, fees.forex_markup_pct, fees.finance_charge_tiers]
+      notes: 'Current Wave KFS lists nil joining and annual fees; Wave MITC lists INR 199 joining fee if physical card is opted and INR 199 annual fee, while its waiver column says NIL. Current specific terms allow virtual or physical issuance; annual-fee discrepancy remains unresolved, so current KFS nil fees are recorded and the MITC conflict is noted. Wave is a floater linked to an existing Federal Visa/Mastercard primary card, sharing its credit limit with separate bill/reward account. Cash-advance documents conflict: KFS and MITC narrative say not applicable, while Wave MITC schedule lists 2.5%/INR 500; cash_advance_fee remains unknown. Revised APR notice effective 10 Jan 2026 supplies all four rates; no-account APR is 3.75% monthly, with quarterly prior-quarter AMB updates. No official network tier found.'
+rewards:
+  - effective_from: 2026-10-27
+    effective_until: null
+    currency: points
+    currency_name: Reward Points
+    base:
+      rate: 1
+      per_inr: 200
+      unit_value_inr: 0.25
+      unit_value_inr_realized: null
+      notes: Point face value ₹0.25; statement credit is ₹0.10 per point. Redemption fee of ₹99 per request applies; actual value depends on route.
+    exclusions: [fuel, wallet-loads, rent, government, financial-institutions, cash-advance]
+    mcc_exclusions: ['5541', '7983', '5172', '5542', '9399', '4784', '9311', '9222', '9402', '4011', '9405', '9211', '6012', '6051', '6050', '6513']
+    category_caps:
+      - category: insurance
+        mcc_list: ['6300', '5960']
+        cap_per_cycle: 250
+        cap_unit: points
+        cycle: monthly
+        conditions: Maximum 250 points per card per calendar month on insurance transactions in MCC 6300.
+    redemption:
+      - type: catalog
+        program: FedRewards
+        rate_inr_per_unit: 0.25
+      - type: statement-credit
+        rate_inr_per_unit: 0.10
+    source:
+      url: https://www.federal.bank.in/rupay-wave-credit-card-mitc
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      method: rendered-page
+      fields_verified: [rewards.base.rate, rewards.base.per_inr, rewards.base.unit_value_inr, rewards.exclusions, rewards.mcc_exclusions, rewards.category_caps, rewards.redemption]
+      notes: Wave-specific MITC states 1 point/₹200. It excludes cash, fuel, wallet loading, government, financial-institution/quasi-cash MCCs and rent; insurance MCCs 6300/5960 earn up to 250 points/card/month. Reward points are separate from the primary card. The current spend profile cannot isolate credit-on-UPI versus other Wave transactions.
+benefits:
+  - effective_from: 2026-10-27
+    effective_until: null
+    welcome:
+      - condition: One eligible UPI transaction of at least ₹150 within the first 30 days from issuance; cashback terms effective 1-Sep-2026.
+        benefit: 10% cashback on one transaction, capped at ₹100
+        value_inr: 100
+        window_days: 30
+    milestones:
+      - spend_inr: 50000
+        cycle: quarterly
+        benefit: 1,000 bonus points after ₹50,000 spend in the first quarter after card issuance; not a recurring quarterly benefit
+        value_inr: 250
+        reward_kind: points
+        reward_units: 1000
+        reward_currency_name: Reward Points
+        trigger_window: one-time
+        is_repeatable: false
+    lounge_access: null
+    fuel_surcharge_waiver: null
+    concierge: false
+    source:
+      url: https://www.federal.bank.in/-/credit-card-tc
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      method: rendered-page
+      fields_verified: [benefits.welcome, benefits.milestones]
+      notes: 'Current Wave-specific T&C says 10% cashback only on one UPI transaction of INR 150 or more within 30 days, up to INR 100, effective 1 Sep 2026; general FAQ still says first five transactions. Follow the current card-specific T&C and product headline. Milestone T&C limits 1,000 points to INR 50,000 spend in the first quarter after issuance; product headline omits this first-quarter limit. Wave is restricted to existing Federal Visa or Mastercard primary cardholders; RuPay-primary holders are ineligible. Floater shares primary credit limit but has separate billing and rewards. No lounge or fuel waiver is advertised.'
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual: { salaried: null, self_employed: null }
+  credit_score_min: null
+  residency: either
+  notes: Must already hold a Federal Bank Visa or Mastercard primary credit card; primary card limit is shared. Age, income and bureau cutoffs are unpublished in Wave-specific issuer terms. General issuer FAQ permits Indian residents and NRIs; Wave requires existing eligible Federal Visa or Mastercard primary card status.
+application:
+  apply_url: https://www.federal.bank.in/rupay-wave-credit-card
+metadata:
+  last_verified_on: 2026-10-27
+  tags: [entry, upi, rupay, floater, network-tier-unverified]

@@ -1,103 +1,142 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: au-instapay
 name: AU Bank InstaPay RuPay Credit Card
+image_path: /cards/au/instapay.webp
 issuer: au
 network: rupay
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.49
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Lifetime-free RuPay card, UPI-enabled (scan & pay on any merchant QR)."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee: null
+  gst_applicable: true
+  notes: 'Lifetime-free, virtual-only RuPay card available to selected existing AU credit-card holders. It shares the primary card credit limit but has a separate statement and bill payment. The product page does not publish an InstaPay-specific cash advance limit or cash-advance fee; leave these unknown. KFS v1.9 lists 3.75% monthly for all AU retail cards and 3.49% as the general foreign-currency markup, with separately listed exceptions. General late fee is 15% of amount due (INR 10 minimum, INR 1,300 maximum). Exact InstaPay cash-advance treatment should be confirmed.'
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: 'Lifetime-free and virtual card details from the card page; KFS v1.9 establishes the general AU retail finance and forex rates; InstaPay-specific cash-advance availability/fee is not resolved in the checked public sources. Source: https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf.'
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: dining-grocery-upi
-        canonical_categories: [dining, groceries]
-        multiplier: 1
-        effective_rate: 1
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "1% cashback on dining, grocery and UPI transactions."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: Cashback
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 0
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: UPI-cashback-departmental-dining-pharmacy-grocery
+    canonical_categories:
+    - dining
+    - groceries
+    - online
+    - other
+    multiplier: 1
+    effective_rate: 1
+    cap_per_cycle: 100
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: 1% cashback only on domestic UPI transactions at eligible departmental stores, dining, pharmacy, grocery and supermarkets. Minimum transaction INR 200. One shared INR 100 cap per statement cycle across all eligible categories. Issuer has not published the exact eligible MCC list for InstaPay; broad category estimates are therefore approximate.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - government
+  - education
+  - cash-advance
+  mcc_exclusions:
+  - '6010'
+  - '6011'
+  reward_cap: null
+  capping_rules:
+  - Cashback eligibility requires domestic RuPay credit-card UPI payment; non-UPI card transactions do not receive cashback. Only stated eligible merchant categories count, with a minimum INR 200 transaction and a shared INR 100 statement-cycle cap.
+  - Merchants must be UPI-enabled and cashback eligibility depends on merchant classification; the issuer does not list exact InstaPay MCCs. Broad calculator buckets may overestimate applicability.
+  redemption:
+  - type: statement-credit
+    program: Cashback
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.redemption.rate_inr_per_unit
+    notes: 'Current card page says 1% cashback on domestic RuPay UPI transactions at selected merchant categories, minimum INR 200 and INR 100 per-statement cap; it does not publish a complete MCC list. Cashback is credited as statement credit.'
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: monthly
+  concierge: false
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: 'Fuel waiver is 1% on INR 400-INR 5,000 transactions capped at INR 100 per statement month per current AU MITC/KFS; GST on the fuel surcharge is not reversed.'
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Exclusively available to selected existing AU credit-card primary holders; no card-specific age, income or bureau-score floor is stated on the current InstaPay page. Approval is limited to the bank's selected base.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.residency
+    notes: Current product page limits eligibility to selected existing AU credit-card holders; it does not publish a separate residency criterion.
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/instapay-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, cashback, upi, rupay, lifetime-free]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - cashback
+  - upi
+  - rupay
+  - lifetime-free

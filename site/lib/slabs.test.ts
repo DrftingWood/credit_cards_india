@@ -97,7 +97,11 @@ describe("channel-scoped base rate (E4)", () => {
     const cards = await load();
     const scoped = cards.filter((c) => c.current_rewards?.base.applies_to_categories?.length);
     // Only records with T&C evidence should carry the restriction.
-    expect(scoped.map((c) => c.id)).toEqual(["axis-cashback"]);
+    // The 2026-10 issuer-verified catalogue added base scopes from T&C evidence (each card's
+    // base notes / capping_rules cite the issuer list).
+    expect(scoped.map((c) => c.id)).toEqual([
+      "au-altura", "au-altura-plus", "au-kosmo", "axis-ace", "axis-cashback", "idfc-first-indigo", "idfc-first-lic-select",
+    ]);
   });
 });
 
@@ -105,28 +109,23 @@ describe("incremental-threshold accelerators (E5)", () => {
   test("a 5%-above-threshold rate does not pay 5% on the whole bucket", async () => {
     const cards = await load();
     const [c] = cards.filter((x) => x.id === "idfc-first-hello-cashback");
-    // "5% on incremental online spends above ₹10,000/month": at ₹15,000 the real
-    // earn is ₹100 (1% base on the first 10k) + ₹250 (5% on the 5k excess) = ₹350.
-    // Encoded as a flat 5% the card claimed ₹750 — more than double.
+    // Current issuer terms (2026-10 catalogue): 3% on the first ₹10,000 of online spend, 5% on
+    // the increment above it. At ₹15,000: ₹300 + ₹250 = ₹550. A flat 5% would claim ₹750.
     const monthly = scoreCard(c, spend({ online: 15_000 })).annual_gross_inr / 12;
-    expect(monthly).toBeCloseTo(350, 0);
+    expect(monthly).toBeCloseTo(550, 0);
     expect(monthly).toBeLessThan(15_000 * 0.05);
   });
 
   test("the online cap saturates the incremental slab at the documented point", async () => {
     const cards = await load();
     const [c] = cards.filter((x) => x.id === "idfc-first-hello-cashback");
-    // ₹1,000 online cap / 5% = ₹20,000 of incremental spend, i.e. ₹30,000 total.
-    const atCap = scoreCard(c, spend({ online: 30_000 })).annual_gross_inr / 12;
+    // ₹300 on the 3% slab + ₹700 on the 5% slab = the ₹1,000 cap, reached at ₹24,000 total.
+    const atCap = scoreCard(c, spend({ online: 24_000 })).annual_gross_inr / 12;
     const past = scoreCard(c, spend({ online: 60_000 })).annual_gross_inr / 12;
-    // Uncapped the schedule would pay ₹1,100 (₹100 on the 1% slab + ₹1,000 on the
-    // 5% slab); the ₹1,000 accelerator cap binds first.
-    expect(atCap).toBeLessThan(1100);
-    // Known delta: the issuer caps TOTAL online cashback at ₹1,000, while the
-    // engine still pays base on over-cap spend — worth ~₹20 here. Generic over-cap
-    // base behaviour is right for most cards, so this is bounded, not silent.
-    expect(atCap).toBeGreaterThanOrEqual(1000);
-    expect(atCap).toBeLessThanOrEqual(1030);
+    expect(atCap).toBeCloseTo(1000, 0);
+    // Known delta: the issuer caps TOTAL online cashback at ₹1,000, while the engine
+    // still pays base on over-cap spend. Generic over-cap base behaviour is right for
+    // most cards, so this is bounded, not silent.
     expect(past).toBeGreaterThanOrEqual(atCap); // base continues; accelerator does not grow
     expect(past - atCap).toBeLessThan(1000);
   });

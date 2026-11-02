@@ -8,8 +8,18 @@ currency: points
 currency_name: IRCTC Reward Points
 
 unit_value_inr:
+  # 2026-10-21 (D-27): realized 0.95 -> 1.0. This file is marked PROVISIONAL
+  # (metadata below). The four cards that earn IRCTC points directly
+  # (hdfc-irctc-hdfc, rbl-irctc, sbi-irctc-platinum / -premier) are all
+  # redemption_scope: closed-loop, the card schema values closed-loop
+  # currencies at realized = face with no haircut, and each card's rewards
+  # source was research-verified on 2026-07-05 at "IRCTC Reward Point = Rs1 on
+  # rail fare (regulated -> no premium)" (hdfc.bank.in, rbl.bank.in,
+  # sbicard.com). The 50%-refund-on-cancellation rule stays a noted
+  # constraint, not a haircut. bob-irctc earns BOBCARD points (4 = 1 IRCTC
+  # point) and sets unit_value_from_program: false, so it never uses this value.
   face: 1.0
-  realized: 0.95
+  realized: 1.0
   realized_source:
     method: midpoint
     range: [0.9, 1.0]
@@ -24,7 +34,7 @@ unit_value_inr:
       - url: https://contents.irctc.co.in/en/AboutLoyalty.pdf
         retrieved_on: 2026-04-30
         notes: "Official IRCTC Loyalty programme T&Cs."
-      - url: https://cardmaven.in/irctc-sbi-premier-credit-card/
+      - url: https://cardmaven.in/irctc-sbi-premier-credit-card-review/
         retrieved_on: 2026-04-30
         notes: "Confirms 1 RP = ₹1 against AC tickets and the 50%-on-cancel rule."
 
@@ -45,7 +55,7 @@ redemption_paths:
     program: IRCTC ticket bookings on irctc.co.in / IRCTC rail app
     rate_inr_per_unit:
       face: 1.0
-      realized: 0.95
+      realized: 1.0
     constraints: "Redeemable only on IRCTC rail bookings."
 
 metadata:

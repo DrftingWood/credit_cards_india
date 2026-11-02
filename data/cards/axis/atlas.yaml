@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-atlas
 name: Axis Bank Atlas Credit Card
+image_path: /cards/axis/atlas.webp
 issuer: axis
 network: visa
 network_tier: signature
@@ -16,208 +8,225 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-08-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-08-01
-    effective_until: null
-    joining_fee_inr: 5000
-    annual_fee_inr: 5000
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2022-08-01
+  effective_until: null
+  joining_fee_inr: 5000
+  annual_fee_inr: 5000
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current fee page confirms INR 5,000 joining/annual fees, 3.75% monthly finance, 2.5% cash advance (INR 500 minimum), and 3.5% forex. Dynamic currency conversion markup is 3.5%, revised effective 21-Aug-2026. Fuel waiver cap is INR 400 per statement cycle. Reward redemption costs are recorded under the reward options.
 rewards:
-  - effective_from: 2022-08-01
-    effective_until: null
-    currency: miles
-    currency_name: EDGE Miles
-    base:
-      rate: 2
-      per_inr: 100
-      # Full-visibility model (no blend): realized = the guaranteed Rs 1.0 Travel EDGE
-      # portal floor any user gets with no transfer; face = the single best documented
-      # transfer (KrisFlyer/Turkish at 1:2 -> ~Rs 2.20/EDGE Mile). Every partner's own
-      # ratio and Rs/point is itemised in redemption[airmiles].transfer_partners — the
-      # value is NOT collapsed to one number.
-      unit_value_inr: 2.20
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: travel-airline-hotel-portal
-        canonical_categories: [travel]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 200000
-        cap_unit: spend-inr
-        cycle: monthly
-        channel:
-          required: false
-          class: issuer-portal
-          merchants: [edge-travel]
-        notes: "5 EDGE Miles per ₹100 on Axis Travel EDGE portal, direct airline and direct hotel bookings (identified by MCC), capped at ₹2,00,000 spend per calendar month; base 2 Miles thereafter. Bookings via travel agents/OTAs earn only base 2 Miles."
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 1
-        effective_rate: 2
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - utilities
-      - jewellery
-    redemption:
-      - type: airmiles
-        program: Multiple (EDGE Miles transfer)
-        ratio: "1:2"   # STANDARD: 1 EDGE Mile -> 2 partner miles. Penalty partners are 2:1 (see below).
-        constraints: "Standard partners transfer 1 EDGE Mile -> 2 partner units (1:2). Three partners added Apr-2026 (British Airways, Finnair, Vietnam LotusMiles) transfer at 2:1 (2 EDGE Miles -> 1 partner unit) — value-destroying vs the Rs 1.0 portal floor, avoid. Marriott Bonvoy, Accor ALL and Qatar Privilege Club were REMOVED on 2026-04-02. Group A partners share a ~30,000 EDGE Mile/yr transfer cap; Group B ~1,20,000."
-        transfer_partners:
-          - partner_name: Singapore Airlines KrisFlyer
-            partner_type: airline
-            transfer_ratio: "1:2"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 2.0/EDGE Mile economy, up to ~Rs 4-5 on long-haul Saver business. Best all-round outlet."
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "1:2"
-            last_verified_on: 2026-07-05
-            notes: "Club ITC Green Point fixed at Rs 1 -> ~Rs 2.0/EDGE Mile, reliable and non-aspirational."
-          - partner_name: Turkish Airlines Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "1:2"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 2.0-2.6/EDGE Mile economy; strong Star Alliance business sweet spots."
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "1:2"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 1.8-2.2/EDGE Mile; no fuel surcharges, good India->Europe business."
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "1:2"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 1.6-2.0/EDGE Mile; 25% Promo Rewards ex-India lift business value."
-          - partner_name: Japan Airlines Mileage Bank
-            partner_type: airline
-            transfer_ratio: "1:2"
-            last_verified_on: 2026-07-05
-            notes: "High business value (~Rs 5-7/EDGE Mile) but hard to transfer into from India; niche."
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "1:2"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 1.0-1.3/EDGE Mile post Apr-2026 revaluation; usable 12k-pt Gulf/SE-Asia economy floors."
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "1:2"
-            last_verified_on: 2026-07-05
-            notes: "~Rs 1.0/EDGE Mile (IHG point ~Rs 0.5). Barely beats the portal floor."
-          - partner_name: British Airways Executive Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: 2026-07-05
-            notes: "PENALTY partner (added Apr-2026). ~Rs 0.45-0.55/EDGE Mile — below portal floor, avoid. Route to Qatar Avios for free after transfer."
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: 2026-07-05
-            notes: "PENALTY partner (added Apr-2026). ~Rs 0.5-0.6/EDGE Mile — below portal floor, avoid."
-          - partner_name: Vietnam Airlines LotusMiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: 2026-07-05
-            notes: "PENALTY partner (added Apr-2026). ~Rs 0.35-0.45/EDGE Mile — worst outlet, avoid."
-      - type: catalog
-        program: Axis Travel EDGE
-        rate_inr_per_unit: 1.0
-        constraints: "Direct flight/hotel bookings on the Axis Travel EDGE portal at 1 EDGE Mile = Rs 1.0. Guaranteed floor requiring an actual booking; still Rs 1.0 in 2026."
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-      confidence: high
-      fields_verified:
-        - rewards.redemption.airmiles.transfer_partners
-        - rewards.base.unit_value_inr
-      notes: "Rewritten 2026-07-05 from cross-verified research (6+ sources): airmiles ratio corrected 2:1 -> 1:2 standard with per-partner transfer_partners; BA/Finnair/LotusMiles flagged as 2:1 penalty; Marriott/Accor/Qatar removed 2026-04-02; unit_value 1.0/0.5 -> 2.0/1.2 to sit at/above the Rs 1.0 portal floor. Earn rates, caps and milestones unchanged."
-
-    mcc_exclusions: ['6513']
+- effective_from: 2024-04-20
+  effective_until: null
+  currency: miles
+  currency_name: EDGE Miles
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: travel-airline-hotel-portal
+    canonical_categories:
+    - travel
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 200000
+    cap_unit: spend-inr
+    cycle: monthly
+    channel:
+      required: false
+      class: issuer-portal
+      merchants:
+      - edge-travel
+    notes: 5 EDGE Miles per INR 100 on Travel EDGE MID VERNMAKRUPCYB21, airline MCCs 3000-3350 and 4511, and hotel MCCs 3501-3838 and 7011, up to cumulative INR 200,000 eligible spend per month. Eligible travel spend above the cap earns the 2-mile base rate. Travel agents and OTAs earn base only.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - utilities
+  - telecom
+  - jewellery
+  - emi
+  redemption:
+  - type: airmiles
+    program: Multiple (EDGE Miles transfer)
+    ratio: varies-by-partner
+    constraints: Current issuer program terms use partner-specific dynamic ratios. Atlas has a 150,000 EDGE Mile annual transfer cap, split into 30,000 Group A and 120,000 Group B. See the current Axis Miles Transfer Program.
+    rate_inr_per_unit: null
+    fee_inr: 199
+  - type: catalog
+    program: Axis Travel EDGE
+    rate_inr_per_unit: 1.0
+    fee_inr: 99
+    constraints: Direct flight/hotel bookings on the Axis Travel EDGE portal at 1 EDGE Mile = Rs 1.0. Guaranteed
+      floor requiring an actual booking; still Rs 1.0 in 2026.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card/rewards-benefits
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
+    - rewards.redemption.fee_inr
+    - rewards.mcc_exclusions
+    notes: EDGE Miles face value is â‚¹1 on issuer materials. Partner conversion ratios are dynamic and differ by
+      partner; fixed rupee redemption values are not asserted. Annual partner transfer cap is 150,000 EDGE Miles,
+      split into 30,000 Group A and 120,000 Group B.
+  mcc_exclusions:
+  - '5094'
+  - '5944'
+  - '6513'
+  - '6540'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '6300'
+  - '6381'
+  - '5960'
+  - '6012'
+  - '6051'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '4814'
+  - '4816'
+  - '4899'
+  - '4900'
 benefits:
-  - effective_from: 2022-08-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    milestones:
-      - spend_inr: 300000
-        cycle: annual
-        benefit: "2,500 EDGE Miles on ₹3L annual spend"
-        value_inr: 2500
-        reward_kind: miles
-        reward_units: 2500
-        trigger_window: anniversary-year
-      - spend_inr: 750000
-        cycle: annual
-        benefit: "Gold tier (₹7.5L): additional 2,500 EDGE Miles; lounge upgraded to 12 domestic + 6 international visits/year"
-        value_inr: 2500
-        reward_kind: miles
-        reward_units: 2500
-        trigger_window: anniversary-year
-      - spend_inr: 1500000
-        cycle: annual
-        benefit: "Platinum tier (₹15L): additional 5,000 EDGE Miles; lounge upgraded to 18 domestic + 12 international visits/year"
-        value_inr: 5000
-        reward_kind: miles
-        reward_units: 5000
-        trigger_window: anniversary-year
-    welcome:
-      - condition: "First transaction within 37 days of card issuance (cards sourced from 20th April 2024)"
-        benefit: "2,500 EDGE Miles"
-        value_inr: 2500
-        window_days: 37
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2024-04-20
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - dreamfolks
+    international:
+      visits_per_cycle: 4
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - priority-pass
+  milestones:
+  - spend_inr: 300000
+    cycle: annual
+    benefit: 2,500 EDGE Miles on â‚¹3L annual spend
+    value_inr: 2500
+    reward_kind: miles
+    reward_units: 2500
+    trigger_window: anniversary-year
+  - spend_inr: 0
+    cycle: annual
+    benefit: Annual fee paid after anniversary year; Silver receives no EDGE Miles, Gold receives 2,500, Platinum receives 5,000
+    value_inr: null
+    reward_kind: miles
+    reward_units: null
+    trigger_window: anniversary-year
+  - spend_inr: 750000
+    cycle: annual
+    benefit: 'Gold tier (â‚¹7.5L): additional 2,500 EDGE Miles; lounge upgraded to 12 domestic + 6 international visits/year'
+    value_inr: 2500
+    reward_kind: miles
+    reward_units: 2500
+    trigger_window: anniversary-year
+  - spend_inr: 1500000
+    cycle: annual
+    benefit: 'Platinum tier (â‚¹15L): additional 5,000 EDGE Miles; lounge upgraded to 18 domestic + 12 international
+      visits/year'
+    value_inr: 5000
+    reward_kind: miles
+    reward_units: 5000
+    trigger_window: anniversary-year
+  welcome:
+  - condition: First transaction within 37 days of card issuance (cards sourced from 20th April 2024)
+    benefit: 2,500 EDGE Miles
+    value_inr: 2500
+    window_days: 37
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 400
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.lounge_access.domestic.guests_per_visit
+    - benefits.lounge_access.international.guests_per_visit
+    - benefits.milestones
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
+    notes: >-
+      Lounge totals include primary-cardholder and guest entries; Silver allows 8 combined visits (illustrated as
+      6 primary plus 2 guests or all 8 for primary). No fixed guest count per visit is stated, so guests_per_visit
+      is unknown. The lounge app booking journey is suspended, but card swipe remains available. Annual-fee miles
+      require successful payment of Rs 5,000 + GST and depend on tier; the schema cannot encode the tier gate.
+      Milestone and tier spend excludes gold/jewellery, rent, wallet, government, insurance, fuel, utilities and
+      telecom from 20 Apr 2024.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
     salaried: 1200000
     self_employed: 1500000
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
+    notes: Published criteria are marked indicative; Axis reserves the right to approve or decline applications.
+  notes: Issuer criteria state age 18-70, resident India, salaried net annual income at least INR 12 lakh and self-employed net annual income at least INR 15 lakh. Criteria are indicative; final approval is at bank discretion. No minimum credit-score threshold is published.
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [travel, miles, premium]
+  last_verified_on: 2026-10-27
+  tags:
+  - travel
+  - miles
+  - premium

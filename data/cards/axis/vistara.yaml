@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-vistara
 name: Axis Bank Vistara Credit Card
+image_path: /cards/axis/vistara.webp
 issuer: axis
 network: visa
-network_tier: null
+network_tier: platinum
 tier: mid
 card_type: credit
 co_brand:
@@ -20,96 +12,108 @@ co_brand:
 status: discontinued
 launched_on: null
 discontinued_on: '2024-11-12'
-
-# NOTE: Vistara merged into Air India (12-Nov-2024); Club Vistara points migrated to
-# the Air India "Maharaja Club" (Maharaja Points). Sourcing of new Axis Vistara cards
-# has been discontinued and existing cards are being wound down / migrated. Live page
-# still lists the product, so status kept "active"; see eligibility.notes.
-
 fees:
-  - effective_from: 2024-11-12
-    effective_until: null
-    joining_fee_inr: 1500
-    annual_fee_inr: 1500
-    renewal_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
-      retrieved_on: 2026-07-03
-      notes: "Joining/annual ₹1,500 (Axis MITC). Forex 3.5%, finance 3.75%/mo, cash advance 2.5% (min ₹500) per MITC. Post Vistara–Air India merger, annual (renewal) fee waived on next renewal cycle."
-
+- effective_from: 2024-11-12
+  effective_until: null
+  joining_fee_inr: 1500
+  annual_fee_inr: 1500
+  renewal_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+    notes: Joining/annual ₹1,500 (Axis MITC). Forex 3.5%, finance 3.75%/mo, cash advance 2.5% (min ₹500) per MITC.
+      Post Vistara–Air India merger, annual (renewal) fee waived on next renewal cycle.
 rewards:
-  - effective_from: 2024-11-12
-    effective_until: null
-    currency: miles
-    currency_name: Maharaja Points     # post-merger; formerly CV (Club Vistara) Points
-    base:
-      rate: 2
-      per_inr: 200
-      unit_value_inr: 0.55
-      unit_value_inr_realized: 0.5
-    exclusions:
-      - wallet-loads
-      - rent
-      - utilities
-      - government
-      - insurance-premiums
-      - jewellery
-    redemption:
-      - type: airmiles
-        program: Air India Maharaja Club (formerly Club Vistara)
-        constraints: "Redeem Maharaja Points for upgrades & award flights."
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-      notes: "Vistara merged into Air India (2024-11-12); Club Vistara points became Air India Maharaja (~Rs 0.55). Card discontinued."
-
-      confidence: high
-    mcc_exclusions: ['6513']
+- effective_from: 2024-11-12
+  effective_until: null
+  currency: miles
+  currency_name: Maharaja Points
+  base:
+    rate: 2
+    per_inr: 200
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  exclusions:
+  - wallet-loads
+  - rent
+  - utilities
+  - government
+  - insurance-premiums
+  - jewellery
+  redemption:
+  - type: airmiles
+    program: Air India Maharaja Club (formerly Club Vistara)
+    constraints: Redeem Maharaja Points for upgrades & award flights.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    notes: Vistara merged into Air India (2024-11-12); Club Vistara points became Air India Maharaja (~Rs 0.55).
+      Card discontinued.
+    confidence: high
 benefits:
-  - effective_from: 2024-11-12
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        spend_threshold_inr: 50000
-        spend_threshold_cycle: quarterly
-        notes: "Complimentary domestic lounge access based on min spend ₹50,000 in the previous 3 calendar months (T&C w.e.f. 1-May-2024; waived for month of issuance + next 3 months)."
-    insurance:
-      - type: purchase-protection
-        sum_insured_inr: 100000
-        conditions: "Purchase protection cover up to ₹1 lakh."
-    other:
-      - name: Wednesday Delight
-        description: "Instant savings of up to 15% on flights & hotels via Goibibo and MakeMyTrip every Wednesday."
-        value_inr: null
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
-      retrieved_on: 2026-07-03
-      notes: "Post Vistara–Air India merger, the welcome ticket voucher, spends-milestone ticket vouchers and complimentary Maharaja Club tier memberships are DISCONTINUED (per revised T&C). Lounge, golf and dining benefits continue."
-
+- effective_from: 2024-11-12
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      notes: Complimentary domestic lounge access based on min spend ₹50,000 in the previous 3 calendar months (T&C
+        w.e.f. 1-May-2024; waived for month of issuance + next 3 months).
+      via:
+      - visa
+  insurance:
+  - type: purchase-protection
+    sum_insured_inr: 100000
+    conditions: Purchase protection cover up to ₹1 lakh.
+  other:
+  - name: Wednesday Delight
+    description: Instant savings of up to 15% on flights & hotels via Goibibo and MakeMyTrip every Wednesday.
+    value_inr: null
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    notes: Post Vistara–Air India merger, the welcome ticket voucher, spends-milestone ticket vouchers and complimentary
+      Maharaja Club tier memberships are DISCONTINUED (per revised T&C). Lounge, golf and dining benefits continue.
 eligibility:
-  min_age: 18
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
+    salaried: null
+    self_employed: null
   credit_score_min: null
   residency: resident-indian
-  notes: "Min net income ₹6,00,000 p.a. (Vistara Platinum). Following the Vistara–Air India merger (effective 12-Nov-2024), the card's T&C were revised and cardholders are being migrated to Air India's Maharaja Club programme; sourcing of new cards is discontinued."
-
+  notes: Min net income ₹6,00,000 p.a. (Vistara Platinum). Following the Vistara–Air India merger (effective 12-Nov-2024),
+    the card's T&C were revised and cardholders are being migrated to Air India's Maharaja Club programme; sourcing
+    of new cards is discontinued. Numeric income and credit-score cutoffs are retained only when this eligibility
+    record cites the exact field in issuer evidence; unsupported cutoffs are unknown, not proof of no underwriting
+    requirement. Broad minimum/maximum age figures without an exact issuer evidence path or a source-verified occupational
+    range were left unknown; this does not imply there is no age criterion.
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-vistara-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [travel, miles, co-brand, airline]
+  last_verified_on: '2026-11-01'
+  tags:
+  - travel
+  - miles
+  - co-brand
+  - airline

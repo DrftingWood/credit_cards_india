@@ -1,101 +1,161 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-neo
 name: Axis Bank NEO Credit Card
+image_path: /cards/axis/neo.webp
 issuer: axis
-network: visa
-network_tier: classic
+network: null
+network_tier: entry
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2018-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2018-01-01
-    effective_until: null
-    joining_fee_inr: 250
-    annual_fee_inr: 250
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-08-28
+  effective_until: null
+  joining_fee_inr: 250
+  annual_fee_inr: 250
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/neo/sosc-credit-cards-retrieved-2026-10-27.pdf
+    - docs/sources/axis/neo/mitc-credit-cards-retrieved-2026-10-27.pdf
+    - docs/sources/axis/neo/neo-terms-effective-2026-08-28.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: 'Standard joining fee is INR 250; first-year annual fee is nil and INR 250 is charged from year two. Lifetime-free fees are available through select channels, whose eligibility is not published on the card page. Add-on fees nil. Finance 3.75% monthly (55.55% p.a.); cash advance 2.5% (min INR 500); forex 3.5%. Current product schedule also lists INR 175 cash payment, replacement nil, duplicate statement/charge slip/outstation cheque waived, mobile alerts free, hotlisting nil, balance enquiry waived, 2.5% overlimit (min INR 500), cheque/auto-debit reversal 2% (min INR 500), railway surcharge as prescribed, and reward redemption fee (amount unspecified). DCC revised from 1.5% to 3.5% plus tax effective 28-Aug-2026. Late fee from the same revision: nil below INR 500, INR 500 for INR 501-5,000, INR 750 for INR 5,001-10,000, INR 1,200 for INR 10,001-50,000, INR 1,300 above INR 50,000, plus INR 100 after two consecutive missed MAD cycles until cleared. Exactly INR 500 is not assigned. Payment allocation order: fees/taxes, EMIs, interest, purchases, then cash advances. Other transaction fees: rent 1% per transaction; third-party education 1%; wallet 1% at cumulative INR 10,000 per statement; fuel 1% at INR 50,000 per statement; utility 1% at INR 25,000 per statement; online skill gaming 1% at INR 10,000 per statement. Network selection may vary; current record does not assume Visa or RuPay.'
 rewards:
-  - effective_from: 2018-01-01
-    effective_until: null
-    currency: points
-    currency_name: EDGE Reward Points
-    base:
-      rate: 1
-      per_inr: 200
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.18
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-    redemption:
-      - type: catalog
-        program: EDGE Rewards
-        rate_inr_per_unit: 0.2
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
+- effective_from: 2026-08-28
+  effective_until: null
+  currency: points
+  currency_name: EDGE Reward Points
+  base:
+    rate: 1
+    per_inr: 200
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated: []
+  exclusions:
+  - utilities
+  - telecom
+  - education
+  - insurance-premiums
+  - government
+  - wallet-loads
+  - rent
+  - fuel
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
+  - cash-advance
+  - jewellery
+  redemption:
+  - type: catalog
+    program: EDGE Rewards
+    rate_inr_per_unit: null
+    constraints: Redeem through EDGE Rewards catalogue; redemption fee applies and amount is not published. No universal INR-per-point value is established.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/neo/neo-edge-rewards-mcc-exclusions-retrieved-2026-10-27.pdf
+    - docs/sources/axis/neo/neo-specific-revision-retrieved-2026-10-27.pdf
+    - docs/sources/axis/neo/neo-terms-effective-2026-08-28.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.exclusions
+  notes: 1 EDGE point per INR 200. Current issuer reward T&Cs exclude utilities, education, insurance, government, wallet, rent, fuel, gift cards, bridge fees and road fees/tolls. The June 2025 NEO-specific revision also excludes utility/telecom, cash advances and repayments; cash advance is structured, repayment has no schema enum and is recorded here. Rent points are excluded up to INR 50,000/month per the card-specific revision. Point balance may be forfeited 30 days after card closure or when MAD is overdue more than 90 days. No universal point value is published.
+  mcc_exclusions: []
 benefits:
-  - effective_from: 2018-01-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "First utility bill payment within 30 days of card issuance"
-        benefit: "100% cashback up to ₹300 on first utility bill payment"
-        value_inr: 300
-        window_days: 30
-    fuel_surcharge_waiver: null
-    other:
-      - name: Zomato instant discount
-        description: Flat ₹120 off on food delivery at Zomato with NEO Credit Card.
-      - name: Paytm utility bill discount
-        description: 5% off on mobile recharges, broadband and DTH recharges done through Paytm.
-      - name: Blinkit discount
-        description: 10% off on Blinkit, up to ₹250 off on minimum spend of ₹750, valid once per month.
-      - name: Cleartrip travel benefit
-        description: Flat 7% off (up to ₹2,000) on domestic and international flight bookings and flat 18% off (up to ₹4,000) on hotel bookings via Cleartrip, once per month each.
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-08-28
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: First utility bill payment within 30 days of issuance; one-time first-year offer
+    benefit: 100% cashback on the first utility payment, up to INR 300; issuer lists eligible utility MCCs 4814, 4812, 4899 and 4900; cashback within 5 days
+    value_inr: 300
+    window_days: 30
+  movies:
+    type: discount
+    partner: BookMyShow
+    max_per_cycle: null
+    cycle: monthly
+    cap_inr: 100
+    notes: 10% discount per transaction on direct BookMyShow site/app, capped at INR 100 per month. From 1-Nov-2026 eligibility requires INR 25,000 settled spend in the preceding 3 calendar months; new-card gate waived during issuance month plus next 3 calendar months. Only billed/settled spends count; fees, interest, reversals/refunds excluded. EMI spend counts only billed instalments. Current page provides the 10% offer; no distinct movie MCC is published.
+  concierge: false
+  other:
+  - name: Zomato discount
+    description: INR 120 off per order, twice per card per month, minimum INR 499 item total, code AXISNEO. Not available on UPI-linked NEO RuPay card; excludes GST, restaurant charges and delivery fee.
+  - name: Paytm utility discount
+    description: 5% off mobile recharge, broadband and DTH; min INR 299, maximum INR 150 per month, once monthly, code AXISNEO.
+  - name: Blinkit discount
+    description: 10% off once per card per month on minimum INR 750 transaction, maximum INR 250, code AXISNEO. Excludes milk, tobacco, cigarettes and baby needs.
+  - name: Cleartrip travel discount
+    description: 7% off domestic/international flights up to INR 2,000 and 18% off hotels up to INR 4,000; each once per use per month, code CTAXISNEO.
+  - name: Zero lost-card liability
+    description: Issuer states protection against fraudulent use from time loss is reported, subject to cardmember terms.
+  - name: EMI conversion
+    description: Eligible purchases exceeding INR 1,500 may be converted to EMI through the bank.
+  - name: Wednesday Delight
+    description: Rotating offers; current product page lists up to 15% off flights/hotels via MakeMyTrip, 10% off Swiggy and 10% off Tira up to INR 1,000. Offers vary and are not encoded as fixed savings.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/neo/axis-bank-neo-credit-card-activation-benefit.pdf
+    - docs/sources/axis/neo/zomato-offer-retrieved-2026-10-27.pdf
+    - docs/sources/axis/neo/power-of-10-offers-retrieved-2026-10-27.pdf
+    - docs/sources/axis/neo/paytm-offer-retrieved-2026-10-27.pdf
+    - docs/sources/axis/neo/neo-terms-effective-2026-08-28.pdf
+    fields_verified:
+    - benefits.welcome
+    - benefits.movies
+    - benefits.other
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 180000
-    self_employed: 180000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: either
-
+  notes: Primary cardholder 18-70; resident Indian or NRI. Add-on holder must be over 18. Income documents are requested but no card-specific minimum income or bureau-score cutoff is published; approval remains subject to bank discretion.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
-  apply_url: https://www.axisbank.com/retail/cards/credit-card/neo-credit-card
-
+  apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, bill-payments]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - points
+  - bill-payments
+  - network-unverified
+  - network-tier-unverified

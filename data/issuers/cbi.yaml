@@ -1,0 +1,8 @@
+id: cbi
+name: Central Bank of India
+short_name: CBI
+legal_name: Central Bank of India
+website: https://www.centralbankofindia.co.in
+customer_care:
+  phone: "1800-22-1911"
+type: bank

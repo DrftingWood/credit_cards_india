@@ -1,109 +1,223 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : RBL central CardsScheduleCharges.pdf + per-card T&C PDFs (docs/sources/rbl/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: rbl-cookies
 name: RBL Bank Cookies Credit Card
+image_path: /cards/rbl/cookies.webp
 issuer: rbl
-network: mastercard
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: null
+  annual_fee_inr: null
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: 'Current Cookies card is billed a monthly membership fee of INR100 + GST (not an INR500 annual fee); RBL
+    waives the subsequent month fee when eligible settled calendar-month purchases reach INR5,000. The schema has
+    no monthly-fee field, so joining_fee_inr, annual_fee_inr and annual fee_waiver are null rather than misrepresenting
+    the charge. Add-on card fee is INR200 in the current MITC; schedule of charges permits INR0-5,000 by card/variant.
+    Forex markup is up to 3.5%. Finance charges are bureau-category dependent: current MITC lists 3.35% p.m. for
+    >775, 3.85% for 725-775, and 3.99% for <725; record stores maximum. Other current charges include reward redemption
+    INR99 + GST, branch cash payment INR100, and late fee 12.5% of outstanding (INR5-INR1,300); schedule charges
+    say overlimit NIL. GST applies to fees/charges.'
+  source:
+    url: https://webassets.rbl.bank.in/document/Credit%20Cards/RBL-MITC-final.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    local_refs:
+    - docs/sources/rbl/cookies/mitc-retrieved-2026-10-26.pdf
+    - docs/sources/rbl/cookies/schedule-charges-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Cookies current variant monthly fee and spend waiver appear on product terms and MITC; the schedule of
+      charges provides common fees and current network variants.
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    accelerated:
-      - category: online-spend
-        canonical_categories: [online]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Unlimited 5X reward points on online purchases."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "10% cashback on select 'favourite' brands (eat/ride/shop/watch), capped ₹300 per brand per month; vouchers up to ₹7,000/year."
-    redemption:
-      - type: catalog
-        program: RBL Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 0.2
+    unit_value_inr_realized: 0.2
+  accelerated:
+  - category: online-spend
+    canonical_categories:
+    - online
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: Terms specify 5 points per INR100 on eligible online spend (not 5 bonus points plus base); settled transactions
+      only. Select MCC exclusions apply.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - education
+  - government
+  - emi
+  - cash-advance
+  - utilities
+  - other
+  mcc_exclusions:
+  - '6513'
+  - '4900'
+  - '6540'
+  - '6300'
+  - '6310'
+  - '4112'
+  - '4011'
+  - '0066'
+  - '8220'
+  - '8244'
+  - '8249'
+  - '8211'
+  - '8241'
+  - '8299'
+  - '6011'
+  - '6010'
+  - '5960'
+  capping_rules:
+  - Reward rate is 1 point per INR100 eligible offline spend and 5 points per INR100 eligible online spend; points
+    post within 60 days of settlement.
+  - Current issuer page states redemption value up to INR0.20 per point; a redemption fee of INR99 + GST applies
+    per the current schedule of charges.
+  - Reward points are not awarded on excluded MCCs, cash withdrawals or EMI; issuer terms list category/MCC exclusions
+    effective 15-Oct-2024.
+  redemption:
+  - type: catalog
+    program: RBL Rewards
+    rate_inr_per_unit: 0.2
+    constraints: Current issuer page says redeem up to INR0.20 per point; INR99 + GST redemption fee per schedule
+      of charges.
+  - type: statement-credit
+    program: RBL Rewards
+    rate_inr_per_unit: 0.2
+    constraints: Current issuer page states up to INR0.20 per point; actual realization can vary by redemption option.
+  source:
+    url: https://webassets.rbl.bank.in/document/credit-cards/terms-conditions-cookies.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    local_refs:
+    - docs/sources/rbl/cookies/cookies-terms-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Card T&Cs specify 5/INR100 online and 1/INR100 offline. Redemption value is up to INR0.20 per point;
+      RBL Rewards redemption fee is separate.
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access: null
-    other:
-      - name: 10% brand cashback
-        description: "10% cashback on favourite brands across eat / ride / shop / watch, up to ₹300 per brand per month (vouchers up to ₹7,000/year)."
-        value_inr: 7000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 500
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Make an eligible transaction within 30 days of card issuance and pay first month membership fee by
+      due date
+    benefit: INR1,000 voucher from Amazon, Flipkart, Myntra, Croma or Shoppers Stop; delivered within 90 days of
+      issuance
+    value_inr: 1000
+    window_days: 30
+  milestones:
+  - spend_inr: 200000
+    cycle: annual
+    benefit: INR1,000 voucher at eligible spend of INR2 lakh in membership year
+    value_inr: 1000
+    reward_kind: voucher
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 500000
+    cycle: annual
+    benefit: INR5,000 voucher at eligible spend of INR5 lakh in membership year
+    value_inr: 5000
+    reward_kind: voucher
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  other:
+  - name: 10% cashback at Myntra, Uber and Zomato
+    description: 10% cashback on settled purchases over INR100, capped at INR300 per merchant per calendar month
+      (INR900 aggregate); credited to statement within 60 days.
+  - name: BookMyShow movie discount
+    description: 10% instant discount on one eligible movie booking per calendar month, capped at INR300; primary
+      card only.
+  - name: Monthly membership fee waiver
+    description: INR100 + GST subsequent-month membership fee waived after at least INR5,000 eligible settled spend
+      in the previous calendar month.
+  fuel_surcharge_waiver:
+    pct: null
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 150
+    cycle: monthly
+    notes: Eligible fuel surcharge is first charged then reversed; max INR150 monthly. GST on fuel purchase/surcharge
+      is not reversed; fuel transaction surcharge waived from qualifying transaction only.
+  concierge: null
+  source:
+    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/rbl/cookies/cookies-terms-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.fuel_surcharge_waiver
+    - benefits.concierge
+    - benefits.milestones
+    - benefits.other
+    notes: Current product page and detailed T&Cs confirm welcome voucher, membership-year milestone vouchers, cashback
+      offers, BookMyShow monthly discount and fuel surcharge reversal. No lounge or concierge benefit is published.
+      Detailed T&Cs specify eligible settled spend, exclusions and delivery/credit windows.
 eligibility:
-  min_age: 18
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current card-specific issuer page, terms, network guide and application form reviewed do not publish minimum/maximum
+    age, minimum income, residency cutoff or bureau-score cutoff. Network guide/application form show Visa and Mastercard
+    variants; scalar network fields are therefore unknown. Network variants are documented by RBL network guide
+    and 17-Nov-2025 common card application form archived at docs/sources/rbl/cookies/common-application-form-retrieved-2026-10-26.pdf.
 application:
   apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/cookies-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, online, cashback, lifestyle]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - points
+  - online
+  - cashback
+  - lifestyle
+  - monthly-fee

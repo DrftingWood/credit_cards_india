@@ -1,0 +1,8 @@
+id: dbs
+name: DBS Bank India
+short_name: DBS
+legal_name: DBS Bank India Limited
+website: https://www.dbs.com/in
+customer_care:
+  phone: "1860-267-1234"
+type: bank

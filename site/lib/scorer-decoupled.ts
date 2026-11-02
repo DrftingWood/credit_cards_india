@@ -21,7 +21,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 import type { EnrichedCard, LoyaltyProgram, BenefitRecord } from "./types";
-import { scoreCard, type ScoringContext, type SpendProfile } from "./calculator";
+import { forexCost, scoreCard, type ScoringContext, type SpendProfile } from "./calculator";
 import { pointsToPct } from "./rate-math.mjs";
 import { CanonicalCategory } from "./category-mapping";
 import type { RecommendPayload } from "./recommender";
@@ -198,7 +198,7 @@ export function scoreDecoupled(
 ): DecoupledScore[] {
   const spend = opts.exactSpend ? { ...emptySpend(), ...opts.exactSpend } : spendFromPayload(payload);
   const channelMix = channelMixFromPayload(payload);
-  const topBucket = (Object.keys(spend) as CanonicalCategory[]).filter((k) => spend[k] > 0).sort((a, b) => spend[b] - spend[a])[0] ?? null;
+  const topBucket = (Object.keys(spend) as CanonicalCategory[]).filter((k) => (spend[k] ?? 0) > 0).sort((a, b) => (spend[b] ?? 0) - (spend[a] ?? 0))[0] ?? null;
 
   // Brand-aware, optimistic-on-selected-brand: a co-brand rate fires (at its real
   // rate) only if the user selected that brand's channel. No applicability fudge.
@@ -221,7 +221,7 @@ export function scoreDecoupled(
     // Welcome + milestones come from the shared value-components engine, so /recommend,
     // /calculator and the card page tell one story (trigger-gated, max_awards-aware,
     // fee-waiver milestones not double-counted, welcome gated by its stated spend).
-    const vc = explainValueComponents(card, spend, { annual_gross_inr: s.annual_gross_inr, annual_fee_inr: s.annual_fee_effective_inr });
+    const vc = explainValueComponents(card, spend, { annual_gross_inr: s.annual_gross_inr, annual_fee_inr: s.annual_fee_effective_inr, forex: forexCost(card, spend) });
     const flags = ratesFlags(card, topBucket, rewardedBuckets, uv);
     if (vc.milestones.items.some((m) => m.kind === "recurring" && m.status === "reached" && m.implausible)) {
       flags.push("Milestone value implausibly large vs its spend trigger — likely a data error");
@@ -230,7 +230,8 @@ export function scoreDecoupled(
     const welcome = vc.welcome.total_inr;
     return {
       card,
-      net_rewards_inr: Math.round(s.annual_gross_inr - s.annual_fee_effective_inr),
+      // D-26: the rank key nets the forex markup on international spend too (0 when none is entered).
+      net_rewards_inr: Math.round(s.annual_net_inr),
       annual_rewards_inr: Math.round(s.annual_gross_inr),
       annual_fee_inr: s.annual_fee_effective_inr,
       first_year_bonus_inr: welcome,

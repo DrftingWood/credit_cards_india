@@ -255,8 +255,9 @@ function allocateOnce(
   spend: SpendProfile,
   ctx: ScoringContext,
   opts: PortfolioOpts,
+  trancheCache?: Map<string, Tranche[]>,
 ): Portfolio {
-  const buckets = (Object.keys(spend) as CanonicalCategory[]).filter((b) => spend[b] > 0);
+  const buckets = (Object.keys(spend) as CanonicalCategory[]).filter((b) => (spend[b] ?? 0) > 0);
   const held = new Set(opts.heldCardIds ?? []);
 
   // Pre-claim the groups of cards the user already holds: a held Swiggy HDFC
@@ -274,12 +275,23 @@ function allocateOnce(
     // Flatten every card's value curve into individually-rated segments, then
     // fill the highest-rate segment first. Greedy is optimal because segments
     // are independent — each draws on its own card's cap.
+    const getTranches = (card: EnrichedCard, b: CanonicalCategory): Tranche[] => {
+      if (!trancheCache) return tranches(card, b, ctx);
+      const key = `${card.id}:${b}`;
+      let cached = trancheCache.get(key);
+      if (cached === undefined) {
+        cached = tranches(card, b, ctx);
+        trancheCache.set(key, cached);
+      }
+      return cached;
+    };
+
     const segments = candidates
-      .flatMap((card) => tranches(card, bucket, ctx).map((t) => ({ card, ...t })))
+      .flatMap((card) => getTranches(card, bucket).map((t) => ({ card, ...t })))
       .filter((s) => s.ratePct > 0)
       .sort((a, b) => b.ratePct - a.ratePct || a.card.id.localeCompare(b.card.id));
 
-    let remaining = spend[bucket];
+    let remaining = spend[bucket] ?? 0;
 
     for (const seg of segments) {
       if (remaining <= 0) break;
@@ -409,19 +421,40 @@ export function allocatePortfolio(
   ctx: ScoringContext = {},
   opts: PortfolioOpts = {},
 ): Portfolio {
-  if (opts.dropFeeNegative === false) return allocateOnce(candidates, spend, ctx, opts);
+  const buckets = (Object.keys(spend) as CanonicalCategory[]).filter((b) => (spend[b] ?? 0) > 0);
+  if (buckets.length === 0) {
+    return {
+      slots: [],
+      monthly_value_inr: 0,
+      annual_value_inr: 0,
+      annual_fee_inr: 0,
+      annual_net_inr: 0,
+      unallocated_monthly_spend_inr: 0,
+      cap_constrained_categories: [],
+    };
+  }
+
+  const trancheCache = new Map<string, Tranche[]>();
+
+  // Filter out candidates that have zero earn in all requested categories
+  const viableCandidates = candidates.filter((c) => {
+    if (opts.heldCardIds?.includes(c.id)) return true;
+    return buckets.some((b) => valueAt(c, b, PROBE_SPEND_INR, ctx) > 0);
+  });
+
+  if (opts.dropFeeNegative === false) return allocateOnce(viableCandidates, spend, ctx, opts, trancheCache);
 
   /** Allocate, then repeatedly drop cards that do not clear their own fee and rebuild. */
   const allocateSolvent = (from: EnrichedCard[]): { result: Portfolio; pool: EnrichedCard[] } => {
     let pool = from;
-    let result = allocateOnce(pool, spend, ctx, opts);
+    let result = allocateOnce(pool, spend, ctx, opts, trancheCache);
     for (let i = 0; i < FEE_REALLOCATION_PASSES; i++) {
       const losers = new Set(
         result.slots.filter((s) => s.monthly_value_inr * 12 <= s.annual_fee_inr).map((s) => s.card.id),
       );
       if (losers.size === 0) break;
       pool = pool.filter((c) => !losers.has(c.id));
-      result = allocateOnce(pool, spend, ctx, opts);
+      result = allocateOnce(pool, spend, ctx, opts, trancheCache);
     }
     // A survivor of the final pass may still be fee-negative if the loop ran out
     // of passes; drop those rather than report a stack that loses money.
@@ -436,7 +469,7 @@ export function allocatePortfolio(
   };
 
   const dropped = new Set<string>();
-  let result = allocateSolvent(candidates).result;
+  let result = allocateSolvent(viableCandidates).result;
 
   // Clearing its own fee is not the same as being worth holding. A card can pay
   // for itself and still shrink the stack, because the spend it takes would have
@@ -453,7 +486,7 @@ export function allocatePortfolio(
     for (const slot of result.slots) {
       if (opts.heldCardIds?.includes(slot.card.id)) continue; // a held card costs nothing to keep
       const trial = allocateSolvent(
-        candidates.filter((c) => !dropped.has(c.id) && c.id !== slot.card.id),
+        viableCandidates.filter((c) => !dropped.has(c.id) && c.id !== slot.card.id),
       ).result;
       if (trial.annual_net_inr > best.annual_net_inr) {
         best = trial;

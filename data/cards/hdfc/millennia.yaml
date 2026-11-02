@@ -1,124 +1,237 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-millennia
 name: HDFC Bank Millennia Credit Card
+image_path: /cards/hdfc/millennia.webp
 issuer: hdfc
 network: visa
-network_tier: platinum
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2020-02-01
+launched_on: 2019-08-22
 discontinued_on: null
-
 fees:
-  - effective_from: 2020-02-01
-    effective_until: null
-    joining_fee_inr: 1000
-    annual_fee_inr: 1000
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-      conditions: "Renewal fee waived on spends of ₹1L in the preceding year."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2019-08-22
+  effective_until: null
+  joining_fee_inr: 1000
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+    conditions: Renewal fee waived on spends of ₹1L in the preceding year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.6
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    - docs/sources/hdfc/millennia/Terms-and-Conditions-Millennia-Credit-Card.pdf
+    - docs/sources/hdfc/millennia/millennia-tnc-20th-jul26.pdf
+    - docs/sources/hdfc/millennia/hdfc-millennia-launch-2019-08-22.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current Millennia page quotes 3.6% monthly finance; archived HDFC personal MITC gives 3.75%, so the card-page figure is retained and the issuer conflict documented. Current fees page has no effective date; the required row date is the documented product launch-date anchor, not a claim that these fee terms began then. HDFC's launch release establishes 22-Aug-2019 for the Millennia card range; it does not establish the effective date of current fee terms.
 rewards:
-  - effective_from: 2020-02-01
-    effective_until: null
-    currency: cashback
-    currency_name: CashPoints
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-    accelerated:
-      - category: online-partner-merchants
-        canonical_categories: [online, dining, entertainment]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 1000
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [amazon, bookmyshow, cult.fit, flipkart, myntra, sony-liv, swiggy, tata-cliq, uber, zomato]
-        channel:
-          class: cobrand-merchant
-          merchants: [amazon, bookmyshow, cult-fit, flipkart, myntra, sony-liv, swiggy, tata-cliq, uber, zomato]
-        mcc_list: ["4121"]
-        notes: "5% cashback (as CashPoints) at 10 partner merchants. Uber earns 5% only on travel/commute MCC 4121."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - government
-      - emi
-      - utilities
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-        min_units: 500
-      - type: catalog
-        program: HDFC SmartBuy / NetBanking
-        rate_inr_per_unit: 0.3
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
-    mcc_exclusions: ['6540', '8211', '8220', '8241', '8244', '8249', '8299']
+- effective_from: 2019-08-22
+  effective_until: null
+  currency: cashback
+  currency_name: CashPoints
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    cap_per_cycle: 1000
+    cap_unit: cashback-inr
+    cycle: monthly
+  accelerated:
+  - category: online-partner-merchants
+    canonical_categories:
+    - online
+    - dining
+    - entertainment
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 1000
+    cap_unit: cashback-inr
+    cycle: monthly
+    merchants:
+    - amazon
+    - bookmyshow
+    - cult.fit
+    - flipkart
+    - myntra
+    - sony-liv
+    - swiggy
+    - tata-cliq
+    - zomato
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - amazon
+      - bookmyshow
+      - cult-fit
+      - flipkart
+      - myntra
+      - sony-liv
+      - swiggy
+      - tata-cliq
+      - zomato
+    cap_group: millennia-partner-cashback
+    notes: 5% cashback (as CashPoints) on eligible non-EMI spends at nine named partner merchants. The monthly cap is shared with Uber; settlement and merchant ID determine eligibility.
+  - category: Uber eligible travel/commute
+    canonical_categories:
+    - travel
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 1000
+    cap_unit: cashback-inr
+    cycle: monthly
+    merchants:
+    - uber
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - uber
+    mcc_list:
+    - '4121'
+    cap_group: millennia-partner-cashback
+    notes: Uber receives 5% only when the transaction is classified under MCC 4121. Shares one ₹1,000 monthly cap across all partner merchants.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - emi
+  - cash-advance
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+    min_units: 500
+    fee_inr: 50
+    constraints: Maximum 3,000 CashPoints per calendar month; ₹50 redemption fee applies to statement cashback from 1-Aug-2024.
+  - type: catalog
+    program: HDFC SmartBuy / NetBanking
+    rate_inr_per_unit: 0.3
+    fee_inr: 99
+    constraints: ₹99 plus tax per redemption; unredeemed CashPoints expire after two years. Product/voucher redemption can cover up to 70% of selected value.
+  - type: airmiles
+    rate_inr_per_unit: 0.3
+    constraints: Issuer lists ₹0.30 equivalent value per CashPoint for AirMiles; transfer ratio/provider is not stated on card page.
+  - type: other
+    program: HDFC SmartBuy flights and hotels
+    rate_inr_per_unit: 0.3
+    constraints: Maximum 50% of booking value payable with points and 50,000 points per calendar month.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/millennia/Terms-and-Conditions-Millennia-Credit-Card.pdf
+    - docs/sources/hdfc/millennia/millennia-tnc-20th-jul26.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.cap_per_cycle
+    - rewards.base.cap_unit
+    - rewards.base.cycle
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cap_unit
+    - rewards.accelerated.cycle
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    - rewards.redemption.fee_inr
+    notes: "Current card terms exclude wallet loads and all EMI transactions from earning effective 1-Sep-2024; direct school/college website and POS education payments earn, while third-party education-app payments do not. The Jul-2026 linked terms conflict internally on gift/prepaid/voucher purchases: summary table calls them 1% other spend, while detailed sections variously say they earn 1% and that MCC 6540 loads do not. The source says transactions over the 5% cap do not post CashPoints, but does not state whether they fall back to base earn; removed the previous affirmative fallback flag. For current fee/reward/benefit rows without a published start date, the schema-required effective_from is the product launch-date anchor, not a claim that current terms applied from launch. Wallet loads are excluded from base earn as stated in the current summary; MCC 6540 is explicitly barred from 5% but conflicting issuer language prevents a reliable blanket 1% exclusion rule for gift/prepaid/voucher purchases. Product and eligibility pages conflict on headline ages/income; the card-page criteria and eligibility FAQ agree on 21-40 and income thresholds."
 benefits:
-  - effective_from: 2020-02-01
-    effective_until: null
-    lounge_access: null
-    milestones:
-      - spend_inr: 100000
-        cycle: quarterly
-        benefit: "Millennia Milestone Voucher: cardholder's choice of a ₹1,000 brand gift voucher OR one complimentary airport lounge access voucher (DreamFolks lounge program discontinued 01 Dec 2023)."
-        value_inr: 1000
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "1,000 CashPoints"
-        value_inr: 1000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2019-08-22
+  effective_until: null
+  lounge_access: null
+  milestones:
+  - spend_inr: 100000
+    cycle: quarterly
+    benefit: 'After INR 100,000 net spend (spends less reversals) in a calendar quarter, choose one INR 1,000 brand gift voucher or one HOI airport lounge access voucher. EMI principal counts; SmartEMI/Dial-an-EMI does not. Voucher message is sent within 30 working days and remains claimable for 120 days. Direct complimentary lounge swipes ended 1 Dec 2023.'
+    value_inr: 1000
+  welcome:
+  - condition: Joining membership fee paid; no reward points on renewal fee.
+    benefit: 1,000 CashPoints
+    value_inr: 1000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  concierge: false
+  other:
+  - name: Swiggy Dineout discount
+    description: 10% discount with coupon code HDFCCARDS; offer terms apply.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/millennia/lounge-voucher-on-millennia-credit-card.pdf
+    - docs/sources/hdfc/millennia/quarterly-spends-milestone-program.pdf
+    - docs/sources/hdfc/millennia/millennia-tnc-20th-jul26.pdf
+    fields_verified:
+    - benefits.milestones.spend_inr
+    - benefits.milestones.value_inr
+    - benefits.welcome.value_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 40
   income_inr_annual:
     salaried: 420000
     self_employed: 600000
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 40
+    self_employed:
+      min_age: 21
+      max_age: 40
+  notes: Product page specifies salaried net monthly income over INR 35,000 and self-employed ITR over INR 6 lakh, age 21-40. Current eligibility page conflicts in its headline (salaried age up to 60 and gross monthly income over INR 25,000; self-employed age up to 65) but its FAQ repeats the product-page 21-40 criteria. The salaried annual amount is the monthly net threshold annualized; actual criterion is monthly.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/millennia-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [cashback, online-spend, mid-tier]
+  last_verified_on: 2026-10-27
+  tags:
+  - cashback
+  - online-spend
+  - mid-tier

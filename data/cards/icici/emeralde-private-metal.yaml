@@ -1,191 +1,280 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-emeralde-private-metal
 name: ICICI Bank Emeralde Private Metal Credit Card
+image_path: /cards/icici/emeralde-private-metal.webp
 issuer: icici
-network: visa
-network_tier: infinite
+network: null
+network_tier: null
 tier: super-premium
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2023-08-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-08-01
-    effective_until: null
-    joining_fee_inr: 12499
-    annual_fee_inr: 12499
-    fee_waiver:
-      spend_inr: 1000000
-      cycle: annual
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 12499
+  annual_fee_inr: 12499
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/emeralde-private-metal/metal-gifts-tc-retrieved-2026-10-27.pdf
+    - docs/sources/icici/_shared/mitc_cc_2026-10-09.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: 2026-10-27 is the verification snapshot date; it is not an issuer-published effective date.
+  notes: Joining and annual fees INR12,499 plus GST; annual fee waiver from year two for annual spend over INR1,000,000.
+    Foreign-currency markup 2%; monthly finance charge 3.75%; cash advance fee 2.5% of amount (minimum INR500).
+    Current card page says no late-payment charge.
 rewards:
-  - effective_from: 2023-08-01
-    effective_until: null
-    currency: points
-    currency_name: ICICI Reward Points
-    base:
-      rate: 6
-      per_inr: 200
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 1
-        effective_rate: 6
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: ishop-hotels
-        canonical_categories:
-          - travel
-        multiplier: 12
-        cap_per_cycle: 18000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 12X reward points on HOTEL bookings via ICICI iShop (booked via iShop only). Shares the 18,000 RP/calendar-month iShop cap (ICICI capping PDF, WEF 1-Oct-2025) with iShop flights; iShop also gives 6X on bus + shopping vouchers (not modelled).
-      - category: ishop-flights
-        canonical_categories:
-          - travel
-        multiplier: 6
-        cap_per_cycle: 18000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 6X reward points on FLIGHT bookings via ICICI iShop (booked via iShop only). Shares the 18,000 RP/calendar-month iShop cap with iShop hotels.
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    capping_rules:
-      - "Grocery, Utilities and Education: max 1,000 Reward Points per category per statement cycle"
-      - "Insurance payments: max 5,000 Reward Points per statement cycle"
-    redemption:
-      - type: catalog
-        program: ICICI Rewards
-        rate_inr_per_unit: 1.0
-      - type: airmiles
-        program: Multiple
-        ratio: "1:1"
-        constraints: 1 transfer partner(s); ratios card-point:partner-unit. realized Rs 1.00 = non-transfer floor; best transfer Rs 0.55; 0 beat the floor. Only transfer partner is Air India (1:1); at ~Rs 0.55 it is BELOW the Rs 1.0 iShop floor — iShop is better.
-        transfer_partners:
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.55/pt [below floor — avoid]
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
-      confidence: high
-    mcc_exclusions: ['6513']
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: ICICI Reward Points
+  base:
+    rate: 6
+    per_inr: 200
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 0.4
+  exclusions:
+  - government
+  - other
+  - rent
+  - fuel
+  - wallet-loads
+  - emi
+  capping_rules:
+  - 'Grocery, utilities, education: 1,000 Reward Points/category/statement cycle. Insurance: 5,000 points/statement
+    cycle (card product page; detailed T&C MCC table contains 1,000-point language, unresolved conflict).'
+  - Statement-credit redemption capped at 50,000 Reward Points per statement cycle.
+  - 'iShop cap per current linked issuer cap PDF: 18,000 points per month and 10,000 per day; current iShop FAQ
+    says rates vary by card and offer. Exact current Emeralde Private Metal iShop category rates require current
+    card-specific offer confirmation.'
+  redemption:
+  - type: voucher
+    program: ICICI Rewards travel and listed partner vouchers
+    rate_inr_per_unit: 1.0
+    constraints: Card-specific T&C lists INR1/point for flight and hotel vouchers and named partner vouchers; availability
+      and catalogue may change.
+  - type: catalog
+    program: ICICI Rewards catalogue
+    rate_inr_per_unit: 0.6
+    constraints: Card-specific T&C lists INR0.60/point for other catalogue products.
+  - type: statement-credit
+    program: ICICI Rewards statement credit
+    rate_inr_per_unit: 0.4
+    constraints: Card-specific T&C lists INR0.40/point; maximum 50,000 points per statement cycle.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    notes: 2026-10-27 is the verification snapshot date, not an issuer-published effective date. Card-specific T&C
+      last updated 2026-05-21.
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.redemption.0.rate_inr_per_unit
+    - rewards.redemption.1.rate_inr_per_unit
+    - rewards.redemption.2.rate_inr_per_unit
+    - rewards.redemption_floor_value_inr
+    - rewards.redemption_ceiling_value_inr
+    local_refs:
+    - docs/sources/icici/emeralde-private-metal/metal-gifts-tc-retrieved-2026-10-27.pdf
+    - docs/sources/icici/_shared/capping-retrieved-2026-10-27.pdf
+  mcc_exclusions:
+  - '7014'
+  - '7407'
+  - '5271'
+  - '6513'
+  - '6760'
+  - '9222'
+  - '9211'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '9313'
+  - '9311'
+  - '1361'
+  - '3851'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '9752'
+  - '5555'
+  - '7276'
+  - '1520'
+  - '1750'
+  - '1740'
+  - '1711'
+  - '1761'
+  - '1771'
+  - '1731'
+  redemption_floor_value_inr: 0.4
+  redemption_ceiling_value_inr: 1.0
+  notes: 'Earn 6 Reward Points per INR200 eligible retail spend. Reward points have category-specific redemption
+    values: INR1 for flights/hotels and named partner vouchers, INR0.60 for other catalogue products and INR0.40
+    as statement credit. Product page gives 5,000-point insurance cap; detailed card T&C has an MCC table with lower
+    1,000-point insurance wording, discrepancy documented. iShop current FAQ advertises up to 6X flights/12X hotels
+    but exact card-specific category multipliers require the dynamically linked card table; they are not asserted
+    here.'
 benefits:
-  - effective_from: 2023-08-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass, dragonpass]
-    golf:
-      rounds_per_cycle: unlimited
-      cycle: monthly
-      lessons_per_cycle: unlimited
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "12,500 ICICI Reward Points + Taj Epicure + EazyDiner Prime memberships"
-        value_inr: 25000
-        window_days: 90
-    milestones:
-      - spend_inr: 1000000
-        cycle: annual
-        benefit: "Renewal-fee waiver + bonus points"
-        value_inr: 12499
-      - spend_inr: 800000
-        cycle: annual
-        benefit: "2 EaseMyTrip vouchers"
-        value_inr: 6000
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 30000000
-      - type: travel-medical
-        sum_insured_inr: 5000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    dining:
-      program: Culinary Treats / EazyDiner Prime
-      discount_pct: 25
-    movies:
-      type: bogo
-      partner: BookMyShow
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 750
-    concierge: true
-    other:
-      - name: Taj Epicure Plus membership
-        description: Complimentary Taj Epicure Plus enrolment.
-      - name: EazyDiner Prime membership
-        description: Complimentary EazyDiner Prime for 1 year.
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via: []
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Unlimited for primary and add-on Priority Pass members; guests are charged USD29 plus GST per guest
+        per visit.
+  golf:
+    rounds_per_cycle: unlimited
+    cycle: monthly
+    lessons_per_cycle: unlimited
+    notes: Current card terms say primary cardmember only. Monthly round(s) appear in Golftripz after the 10th day
+      of the following month and remain usable during the next two months; booking availability and course terms
+      apply.
+  welcome:
+  - condition: Joining fee realised and card activated
+    benefit: 12,500 ICICI Reward Points as joining bonus; 1-year Taj Epicure Plus membership; 12-month EazyDiner
+      Prime membership. Annual bonus of 12,500 points and memberships renew subject to annual fee receipt. Points/membership
+      details are sent within 45 business days.
+    window_days: null
+  milestones:
+  - spend_inr: 1000000
+    cycle: annual
+    benefit: Annual fee waiver from second year onward.
+  - spend_inr: 400000
+    cycle: annual
+    benefit: First EaseMyTrip flight voucher worth INR3,000; a second INR3,000 voucher is issued on reaching INR800,000
+      annual spend.
+    value_inr: 3000
+  - spend_inr: 800000
+    cycle: annual
+    benefit: Two EaseMyTrip flight vouchers worth INR3,000 each in total INR6,000.
+    value_inr: 6000
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 30000000
+    conditions: Primary cardholder only; current card FAQ says card must have been used at least once in prior 60
+      days and international travel ticket must be purchased using the card. Linked group policy has a general 90-day
+      active-card clause; card-specific FAQ timing is recorded, discrepancy retained.
+  - type: travel-medical
+    sum_insured_inr: 50000
+    conditions: Medical expenses for bodily injury caused by and arising out of rail/road accident, per current
+      linked ICICI Lombard policy; this is not INR5,000,000 general medical cover.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 1000
+    cycle: statement
+    notes: 1% on fuel transactions; current page states transactions up to INR4,000, card terms cap total waiver
+      at INR1,000 per statement cycle. No minimum transaction band stated in current reviewed card terms.
+  dining:
+    program: EazyDiner Prime
+    discount_pct: 25
+    notes: 12-month Prime membership, primary cardmember. Prime discounts apply at participating restaurants; PayEazy-enabled
+      venues may have an additional 25% discount up to INR1,000 under EazyDiner terms.
+  movies:
+    type: bogo
+    partner: BookMyShow
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 750
+    notes: Up to INR750 off the second ticket, twice per month on eligible movie, sport, theatre or concert bookings;
+      minimum two tickets.
+  concierge: true
+  other:
+  - name: Taj Epicure Plus membership
+    description: Complimentary one-year membership for primary cardmember; renewal linked to fee payment and current
+      voucher terms.
+  - name: EazyDiner Prime membership
+    description: Complimentary 12-month membership for primary cardmember, renewable subject to annual fee receipt.
+  - name: EaseMyTrip flight cancellation cover
+    description: No cancellation charges / reimbursement up to INR12,000 for eligible non-refundable domestic flight,
+      hotel and movie bookings; primary cardmember and card payment conditions apply. Current card terms limit coverage
+      to first two cancellations and eligible India bookings.
+  - name: Fraud protection
+    description: Counterfeit card liability and account takeover cover are advertised on the current product page;
+      detailed limits are subject to issuer terms.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    local_refs:
+    - docs/sources/icici/emeralde-private-metal/metal-gifts-tc-retrieved-2026-10-27.pdf
+    - docs/sources/icici/emeralde-private-metal/Comprehensive-Insurance-Cover-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.welcome.0.window_days
+    - benefits.milestones.0.spend_inr
+    - benefits.milestones.1.spend_inr
+    - benefits.milestones.2.spend_inr
+    - benefits.milestones.2.value_inr
+    - benefits.insurance.0.sum_insured_inr
+    - benefits.insurance.1.sum_insured_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.movies.max_per_cycle
+    - benefits.movies.cap_inr
+    notes: 2026-10-27 is the verification snapshot date, not an issuer-published effective date. Card-specific T&C
+      last updated 2026-05-21; insurance policy last updated December 2025.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 4200000
-    self_employed: 4200000
-  credit_score_min: 780
-  residency: resident-indian
-  notes: "By invitation only; contact your Relationship Manager."
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Invitation-only; contact a Relationship Manager. Current card FAQ states age 21?65; no income or credit-score
+    cutoff is published in reviewed card material.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [super-premium, metal, travel, dining, points]
+  last_verified_on: '2026-10-27'
+  tags:
+  - super-premium
+  - metal
+  - travel
+  - dining
+  - points

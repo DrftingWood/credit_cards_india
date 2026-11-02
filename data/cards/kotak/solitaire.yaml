@@ -1,178 +1,310 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: kotak-solitaire
 name: Kotak Solitaire Credit Card
+image_path: /cards/kotak/solitaire.webp
 issuer: kotak
 network: visa
-network_tier: infinite
+network_tier: null
 tier: invite-only
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2021-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2021-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 1.0
-      min_inr: 0
-    gst_applicable: true
-    notes: "Invite-only. Zero forex markup; 1% cash-withdrawal fee with zero interest till payment due date."
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-06-04'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 25000
+  fee_waiver:
+    spend_inr: 0
+    cycle: annual
+    conditions: Annual fee waived while the cardholder remains in the Kotak Solitaire Program; INR25,000 + GST charged
+      if downgraded.
+  forex_markup_pct: 0.0
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee:
+    pct: 1.0
+    min_inr: 0
+  gst_applicable: true
+  notes: 'Current KFS version KFSKS04062026: joining fee NIL; annual fee INR25,000, waived while cardholder remains
+    in the Kotak Solitaire Program and charged after downgrade. The KFS and card page differ in presentation (the
+    page says no joining/annual fee for program members; KFS shows annual fee plus program waiver). Cash withdrawal
+    fee is 1%, with no interest through payment due date; annual finance rate 42%. No forex markup. KFS lists no
+    additional fuel, utility, wallet, education, rent or gaming transaction fees for this card.'
+  source:
+    url: https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/key-fact-statement-kfs-solitaire.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/solitaire/kfs-solitaire-2026-10-27.pdf
+    - docs/sources/kotak/air/mitc-wealth-white-reserve-2026-10-26.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].fee_waiver.spend_inr
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    - fees[0].gst_applicable
 rewards:
-  - effective_from: 2021-01-01
-    effective_until: null
-    currency: miles
-    currency_name: Air Miles
-    base:
-      rate: 3
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: travel-via-unbox
-        canonical_categories: [travel]
-        multiplier: 3.33
-        effective_rate: 10
-        cap_per_cycle: 100000
-        cap_unit: miles
-        cycle: statement
-        notes: "10 Air Miles per ₹100 on travel bookings via Kotak Unbox; 3 per ₹100 on other purchases. Accelerated Air Miles capped at 1,00,000 per statement cycle; base 3/₹100 continues after cap (Solitaire detailed T&C)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: miles
+  currency_name: Kotak Air Miles
+  base:
+    rate: 3
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    notes: 3 Air Miles per INR100 on other eligible purchases. Transactions are rounded down to completed INR100
+      units. Air Miles expire three years after credit.
+  accelerated:
+  - category: Kotak Unbox flights and hotels
+    canonical_categories:
+    - travel
+    multiplier: 3.33
+    effective_rate: 10
+    card_attributable_rate: 7
+    card_attributable_per_inr: 100
+    cap_per_cycle: 100000
+    cap_unit: miles
+    cycle: statement
+    merchants:
+    - kotak-unbox
+    notes: 10 total Air Miles/INR100 (3 base + 7 accelerated) on flight, flight add-on, hotel and hotel add-on bookings
+      via Kotak Unbox. The 100,000 Air Mile statement-cycle cap applies to accelerated miles; after reaching it,
+      base 3/INR100 continues. Miles post within 5 days after settlement.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - education
+  - government
+  - utilities
+  - international
+  - other
+  mcc_exclusions:
+  - '4900'
+  - '4814'
+  - '4899'
+  - '5960'
+  - '6300'
+  - '6540'
+  - '6513'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '5541'
+  - '5542'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '5816'
+  - '4111'
+  - '4112'
+  - '4784'
+  - '2741'
+  - '2791'
+  - '2842'
+  - '5021'
+  - '5039'
+  - '5046'
+  - '5051'
+  - '5065'
+  - '5072'
+  - '5074'
+  - '5085'
+  - '5099'
+  - '5111'
+  - '5131'
+  - '5137'
+  - '5139'
+  - '5169'
+  - '5199'
+  - '7311'
+  - '7361'
+  - '7372'
+  - '7375'
+  - '7379'
+  - '7395'
+  - '7399'
+  - '8734'
+  - '0763'
+  - '0780'
+  - '5261'
+  - '1520'
+  - '1711'
+  - '1731'
+  - '1740'
+  - '1750'
+  - '1761'
+  - '1771'
+  - '1799'
+  redemption:
+  - type: airmiles
+    program: Kotak Unbox travel bookings
+    rate_inr_per_unit: 1.0
+    min_units: 500
+    constraints: 1 Air Mile = INR1 for flights, hotels and add-ons booked through Kotak Unbox; minimum 500 Air Miles.
+      International transactions do not earn Air Miles.
+  - type: voucher
+    program: Kotak Unbox vouchers and gift cards
+    rate_inr_per_unit: 0.5
+    min_units: 500
+    constraints: 1 Air Mile = INR0.50 for vouchers; minimum 500 Air Miles.
+  - type: airmiles
+    program: Kotak airline and hotel partners
+    rate_inr_per_unit: null
+    min_units: 2000
+    constraints: 'Current issuer terms: partner transfers require at least 2,000 Air Miles and have no maximum cap.
+      Partner conversion ratios are provided individually below.'
     transfer_partners:
-      - program: Airline & hotel partners
-        category: airline
-        ratio: "1:1"
-        notes: "Air Miles transferable to preferred airline/hotel programmes; 1 Air Mile = ₹1 on travel redemptions."
-    redemption:
-      - type: airmiles
-        program: Kotak Air Miles
-        constraints: "9 transfer partner(s); ratios card-point:partner-unit. realized Rs 1.00 = non-transfer floor; best transfer Rs 0.55; 0 beat the floor. Every transfer is BELOW the Rs 1.0 Kotak Unbox floor — Unbox travel redemption beats all transfers."
-        ratio: "2:1"
-        transfer_partners:
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.55/pt [below floor — avoid]
-          - partner_name: Etihad Guest
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: United MileagePlus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Accor ALL
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "3:1"
-            last_verified_on: '2026-07-05'
-            notes: 3:1 -> ~Rs 0.18/pt [below floor — avoid]
-        min_units: 2000
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      notes: 'Encoded 2026-07-05, full-visibility: per-partner ratios; realized=floor, face=best transfer. No blend.'
-      confidence: high
+    - partner_name: Air India
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-27'
+      notes: Current Solitaire detailed terms.
+    - partner_name: British Airways
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current Solitaire detailed terms.
+    - partner_name: United MileagePlus
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current Solitaire detailed terms.
+    - partner_name: Cathay Pacific
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current Solitaire detailed terms.
+    - partner_name: Air France-KLM Flying Blue
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current Solitaire detailed terms.
+    - partner_name: Accor Live Limitless
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current Solitaire detailed terms.
+    - partner_name: Qatar Airways Privilege Club
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-27'
+      notes: Current Solitaire detailed terms.
+    - partner_name: Marriott Bonvoy
+      partner_type: hotel
+      transfer_ratio: '3:1'
+      last_verified_on: '2026-10-27'
+      notes: Current Solitaire detailed terms.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card/rewards.html
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/air/mitc-wealth-white-reserve-2026-10-26.pdf
+    - docs/sources/kotak/indigo-xl/kotak-reward-mcc-schedule-2025-06-01.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].base.unit_value_inr_realized
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].accelerated[0].card_attributable_rate
+    - rewards[0].accelerated[0].cap_per_cycle
+    - rewards[0].mcc_exclusions
+    - rewards[0].redemption[0].rate_inr_per_unit
+    - rewards[0].redemption[0].min_units
+    - rewards[0].redemption[1].rate_inr_per_unit
+    - rewards[0].redemption[1].min_units
+    - rewards[0].redemption[2].min_units
+  notes: Air Miles do not accrue on fuel transactions (despite a separate fuel-surcharge waiver), international
+    transactions, rent, wallet, utility/telecom, insurance, education, government except tax payments, digital gaming
+    or EMI. Card-specific page says both up to 3 add-on cards and up to 4 add-on cards in different sections; add-on
+    count omitted.
 benefits:
-  - effective_from: 2021-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: "unlimited"
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: "unlimited"
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
-    concierge: true
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 3500
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
       cycle: annual
-    other:
-      - name: Hotel benefit
-        description: "50% off on the 2nd night at partner hotels."
-      - name: Unlimited lounge for add-on members
-        description: "Unlimited global lounge access for primary and add-on cardholders."
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
-      retrieved_on: 2026-07-03
-
+      guests_per_visit: 2
+      via:
+      - visa
+      notes: Unlimited for primary and add-on cardholders. Primary cardholder has two guest lounge visits per year;
+        both guest visits may be used at once. INR2 visit-validation charge applies.
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 2
+      via:
+      - priority-pass
+      notes: Unlimited for primary and add-on cardholders. Primary cardholder has two guest lounge visits per year;
+        both guest visits may be used at once. USD1 validation charge is automatically reversed within 7 working
+        days.
+  concierge: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 7500
+    cap_per_cycle_inr: 10000
+    cycle: annual
+  other:
+  - name: Visa hotel privileges
+    description: 'ITC Hotels and Elivaas Villas: complimentary third night after two consecutive paid nights, or
+      50% off the second night. Visa-provided; terms can change.'
+  - name: Kotak Solitaire Table dining and lifestyle offer
+    description: 20% off up to INR5,000 per transaction, twice per month on eligible District by Zomato Play/Activities/Shopping/Movies/Dining
+      transactions; issuer page states offer validity 2026-04-01 through 2027-03-31.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/kotak/solitaire/kfs-solitaire-2026-10-27.pdf
+    - docs/sources/kotak/air/mitc-wealth-white-reserve-2026-10-26.pdf
+    fields_verified:
+    - benefits[0].lounge_access.domestic.visits_per_cycle
+    - benefits[0].lounge_access.domestic.guests_per_visit
+    - benefits[0].lounge_access.international.visits_per_cycle
+    - benefits[0].lounge_access.international.guests_per_visit
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.min_txn_inr
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
-  min_age: 21
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 780
-  residency: resident-indian
-  notes: "Invite-only to Kotak Private Banking / Solitaire banking customers."
-
+  credit_score_min: null
+  residency: null
+  notes: Issuer describes the card as a benefit of Kotak Solitaire Program membership. Numerical age, income and
+    credit-score cutoffs, and residency requirement were not published in the reviewed product pages.
 application:
-  apply_url: null
-
+  apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [invite-only, super-premium, miles, travel, zero-forex, private-banking]
+  last_verified_on: '2026-10-27'
+  tags:
+  - invite-only
+  - super-premium
+  - miles
+  - travel
+  - zero-forex
+  - private-banking

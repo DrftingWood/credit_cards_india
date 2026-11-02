@@ -1,115 +1,230 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: au-laksya
+﻿id: au-laksya
 name: AU Bank Laksya Credit Card
+image_path: null
 issuer: au
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: '2026-05-06'
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-    forex_markup_pct: 3.49
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Lifetime-free add-on card. Up to 15% instant discount + BOGO offers at partner merchants."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/laksya-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 1000
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: No joining-fee waiver. Renewal annual fee waived after at least INR 200,000 retail spend in the
+      card anniversary year.
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Current terms verified 2026-10-26; issuer does not publish their exact effective date. AU announced Laksya in its new card portfolio launch on 6-May-2026 (https://www.au.bank.in/pdfs/press-release/2026/AU-Small-Finance-Bank-unveils-a-curated-Credit-Cards-portfolio-aligned-with-Indias-evolving-aspirations.pdf). Public product materials do not establish the exact network variant or tier issued to each applicant; Laksya lounge terms allow Visa/RuPay cards. Visa tier is not published.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/laksya-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current Laksya product page confirms INR 1,000 joining/annual fee and renewal waiver at INR 200,000 card-anniversary-year retail spend, with no joining waiver. Current Sep 2026 KFS lists 3.49% forex, 3.75% monthly finance and cash advance 2.5% or INR 500 minimum.
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: grocery-departmental
-        canonical_categories: [groceries]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Up to 5 Reward Points per ₹100 on Grocery, Departmental Stores & select categories; 1 RP per ₹100 base."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: AU Rewardz
-        rate_inr_per_unit: 0.25
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.0025
+    unit_value_inr_realized: 0.0025
+    notes: AU's current Rewardz FAQ values general catalogue rewards at 0.25 paise per point; e-vouchers are 0.20 paise. Utility, insurance and telecom earn a separate 1 RP/INR 100 (max 100 per transaction); these are omitted from the calculator's base estimate because the schema cannot represent this lower per-category rate and per-transaction cap.
+    excluded_categories:
+    - utilities
+    - insurance
+    - telecom
+  accelerated:
+  - category: grocery-departmental
+    canonical_categories:
+    - groceries
+    multiplier: 2.5
+    effective_rate: 5
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: statement
+    notes: 5 Reward Points/INR 100 on grocery and departmental stores, capped at 1,000 points in the statement cycle.
     source:
       url: https://www.au.bank.in/personal-banking/credit-cards/laksya-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-11-01'
       type: issuer-page
-
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[0].multiplier
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].cap_per_cycle
+  exclusions:
+  - fuel
+  - rent
+  - emi
+  - cash-advance
+  - government
+  - education
+  - road-fees-and-tolls
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: AU Rewardz
+    rate_inr_per_unit: 0.0025
+    constraints: INR 0.0025 (0.25 paise) per point outside e-vouchers; e-vouchers INR 0.002 (0.20 paise). Minimum
+      200 points; INR 99 + GST per successful redemption.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/laksya-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated[0].multiplier
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].cap_per_cycle
+    - rewards.capping_rules
+    - rewards.reward_cap.max_units
+    - rewards.redemption
+    - rewards.base.excluded_categories
+    notes: 'Current AU Laksya page: base 2 RP/INR 100; 5 RP/INR 100 on grocery/departmental and contactless. Grocery/departmental
+      cap 1,000 RP per statement; contactless has no maximum; 1 RP/INR 100 on insurance, utility, telecom, max 100
+      RP per transaction. General AU Rewardz conversion is 0.25 paise (INR 0.0025) per point, 0.20 paise on e-vouchers;
+      200-point minimum and INR 99 + GST redemption fee. For calculator accuracy, contactless and utility/insurance/telecom
+      rates with input/cap granularity limits are retained in capping_rules but not modeled as accelerators. Current
+      AU Rewardz FAQ at https://www.au.bank.in/personal-banking/credit-cards confirms general catalogue conversion
+      of 0.25 paise (INR 0.0025) per point, or 0.20 paise for e-vouchers; the lower rate and redemption fee remain
+      in the redemption constraint.'
+  capping_rules:
+  - 'Overall cap: 25,000 Reward Points per statement cycle under the current AU Card Member Agreement. Grocery/departmental
+    accelerator has a 1,000-point statement cap; contactless has no category cap.'
+  - Reward Points do not accrue on cash, rent, education/government, EMI, fuel, BBPS, transportation or quasi-cash.
+  - Issuer also grants 5 RP/INR 100 on contactless with no maximum, but the calculator cannot isolate contactless
+    spend; this rate is documented but omitted from modeled accelerators.
+  - Utility, telecom and insurance earn 1 RP/INR 100 with at most 100 RP per transaction; transaction-level cap
+    cannot be modeled from aggregate spend input, so these categories are excluded from the base calculator estimate
+    rather than overestimated.
+  reward_cap:
+    max_units: 25000
+    cap_unit: points
+    cycle: statement
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa]
-    welcome:
-      - condition: "Card activation"
-        benefit: "4,000 bonus Reward Points or ₹1,000 brand voucher"
-        value_inr: 1000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/laksya-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: annual
+      guests_per_visit: null
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+  welcome:
+  - condition: Successful card activation and first transaction within 30 days of issuance; choose one option.
+    benefit: 4,000 Reward Points or INR 1,000 brand voucher
+    value_inr: null
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 150
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/laksya-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.domestic.spend_threshold_cycle
+    - benefits.welcome[0].window_days
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    - benefits.insurance
+    - benefits.other
+    notes: 'Airport lounge: 2 per quarter after INR 50,000 prior-quarter retail spend (8/year); qualifying spend threshold is primary-cardholder spend and the threshold is used as a profile proxy in calculator estimates. The older lounge PDF states the threshold applies in the same calendar quarter and waives it for the first 30 days after activation, conflicting with the product page previous-quarter wording. Welcome is a customer choice between 4,000 Reward Points (worth INR 10 using the general AU Rewardz catalogue conversion) and a INR 1,000 voucher; no single option is assumed in the calculator. Fuel 1% on INR 400-5,000, capped INR 150 per statement cycle. Current issuer page advertises insurance coverage, card liability cover, credit shield and a device-protection plan, but does not publish limits, exclusions, insurer terms or claim conditions there; values remain unknown. Merchant offers, Xpress EMI and contactless terms are documented in other.'
+  other:
+  - name: Partner merchant offers
+    description: 15% discount on Amazon Fresh/Amazon Now grocery and Zomato food delivery, capped INR 250 per month
+      per category, once monthly; minimum transaction INR 500. District movie offer is Buy One Get One, max INR
+      250 per month, once monthly; minimum transaction INR 250. Offers apply to add-on card spends.
+  - name: Xpress EMI processing-fee waiver
+    description: Issuer advertises zero processing fee for eligible Xpress EMI conversions of INR 2,000 or more; up to 20 billed or unbilled transactions may be clubbed. Other EMI products or charges may differ.
+  - name: Contactless payments
+    description: Contactless and digitally tokenized POS transactions up to INR 5,000 are advertised as PIN-free; these transactions earn 5 Reward Points per INR 100 under the card's contactless reward rule.
+  insurance:
+  - type: other
+    sum_insured_inr: null
+    conditions: Issuer page advertises insurance coverage; sum insured, covered events, exclusions and policy terms are not stated on the product page and remain unverified.
+  - type: lost-card-liability
+    sum_insured_inr: null
+    conditions: Issuer page advertises Card Liability Cover; limits, reporting window and exclusions are not stated on the product page and remain unverified.
+  - type: credit-shield
+    sum_insured_inr: null
+    conditions: Issuer page advertises Credit Shield; sum insured, eligibility and policy conditions are not stated on the product page and remain unverified.
+  - type: other
+    sum_insured_inr: null
+    conditions: Issuer page advertises a Device Protection Plan; covered devices, limits, exclusions and claim conditions are not stated on the product page and remain unverified.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 400000
-    self_employed: 400000
-  credit_score_min: 730
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: 'Resident Indian; published age bands: salaried 21–60, self-employed 25–65. Income and score thresholds
+    are not published for this card.'
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/laksya-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.residency
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/laksya-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, groceries, points, lounge]
+  last_verified_on: '2026-11-01'
+  tags:
+  - mid
+  - groceries
+  - points
+  - lounge

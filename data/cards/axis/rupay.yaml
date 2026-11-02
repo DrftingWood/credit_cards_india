@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: axis-rupay
+﻿id: axis-rupay
 name: Axis Bank RuPay Credit Card
+image_path: /cards/axis/rupay.webp
 issuer: axis
 network: rupay
 network_tier: null
@@ -18,64 +10,97 @@ co_brand: null
 status: active
 launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-06-20
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: null
-    cash_advance_fee: null
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-08-28'
+  effective_until: null
+  joining_fee_inr: null
+  annual_fee_inr: null
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards-retrieved-2026-10-26.pdf
+    - docs/sources/axis/lic-platinum/axis-credit-card-terms-update-effective-2026-08-28.pdf
+    - docs/sources/axis/lic-platinum/axis-credit-card-terms-update-effective-2026-08-28.pdf
+    fields_verified:
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: This is a generic RuPay variant landing page, not one fee-bearing card SKU. Joining/annual fees and over-limit
+      charges depend on the selected card variant and are null here. The 3.5% forex_markup_pct is the non-DCC foreign-currency
+      transaction markup. DCC differs; the page still lists 1.5%, but Axis's issuer-wide notice effective
+      2026-08-28 revises DCC from 1.5% to 3.5%; no separate DCC field exists in the schema. Other fees vary by variant.
 rewards:
-  - effective_from: 2025-06-20
-    effective_until: null
-    currency: points
-    currency_name: EDGE Reward Points
-    base:
-      rate: 0
-      per_inr: 100
-      unit_value_inr_realized: 0.18
-      unit_value_inr: 0.2
-    notes: "Generic RuPay landing page; earn rates depend on the specific Axis RuPay card selected. Verify per underlying product."
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: medium
-      notes: EDGE Reward Points Rs 0.20 nominal / Rs 0.18 realistic (base earn is 0).
-    mcc_exclusions: ['6513']
+- effective_from: '2026-08-28'
+  effective_until: null
+  currency: points
+  currency_name: Variant-specific; see selected Axis RuPay card
+  base:
+    rate: null
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated: []
+  exclusions: []
+  redemption: []
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified: []
+    notes: The generic listing says reward programs vary by selected Axis RuPay card; it does not publish a common earn rate
+      or point value. No EDGE rate, fixed INR0.20 value, or MCC 6513 exclusion is asserted for this wrapper record.
+  mcc_exclusions: []
+  notes: Select and validate the underlying Axis card SKU for any reward earning or redemption estimate.
 benefits:
-  - effective_from: 2025-06-20
-    effective_until: null
-    lounge_access: null
-    concierge: false
-    other:
-      - name: UPI on RuPay
-        description: "RuPay Credit Card can be linked to UPI-enabled apps for cashless payments online and in-store without swiping the card."
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-08-28'
+  effective_until: null
+  lounge_access: null
+  concierge: false
+  other:
+  - name: RuPay credit on UPI
+    description: Eligible Axis RuPay credit cards can be linked to supported UPI apps for merchant payments. The generic page
+      does not state a card-specific reward rate for UPI.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.other
+    notes: This page lists different Axis RuPay card products. Lounge access, fuel waivers and other benefits depend on the
+      selected card variant and are not assigned to the generic wrapper.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: The generic RuPay landing page instructs applicants to select an underlying card and submit income/date-of-birth
+    details; it does not publish card-specific eligibility thresholds. The `entry` tier is a project classification only.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified: []
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/rupay-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [rupay, upi, entry]
+  last_verified_on: '2026-11-01'
+  tags:
+  - rupay
+  - upi
+  - entry

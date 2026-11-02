@@ -1,1 +1,56 @@
-{"_source":"union .bank.in (card page redirects to home; no extractable fee table)","verified_on":"2026-07-04","result":"seeded RuPay-Select values retained as plausible-unconfirmed; domain+MCC verified in audit","pdfs_downloaded":0}
+{
+  "_source": "Union Bank official credit card pages and current MITC v1.4",
+  "verified_on": "2026-10-26",
+  "result": "DIVAA ICON, NEXTERIA, Union Unicorn, RuPay Select and UNI-CARBON refreshed; other Union card records remain queued.",
+  "pdfs_downloaded": 5,
+  "divaa_icon": {
+    "result": "Current fees, benefits and shared card eligibility verified. Launch date, full MCC exclusions and cancer insurance amount/terms remain unknown.",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/union/divaa-icon/",
+    "unresolved": [
+      "launch date not found",
+      "full eligible MCC list not stated",
+      "cancer insurance amount and detailed terms not stated"
+    ]
+  },
+  "nexteria": {
+    "result": "Product page, eligibility page and current MITC reviewed; unsupported launch date removed and current lifestyle/insurance benefits represented.",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/union/nexteria/",
+    "unresolved": [
+      "exact launch date not stated",
+      "age and score thresholds refer to extant policy/SOP rather than a numeric card-specific value",
+      "Hotel Luxe and network-program terms can change"
+    ]
+  },
+  "unicorn": {
+    "result": "Union Unicorn refreshed from current product page, latest MITC and eligibility page; rewards proposal-status conflict documented.",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/union/unicorn/",
+    "unresolved": [
+      "product page labels reward structure proposed while current MITC lists current reward offers",
+      "exact launch date not found",
+      "age/score not stated on card-specific eligibility page"
+    ]
+  },
+  "rupay_select": {
+    "result": "Current card page and MITC reviewed; old migration-only audit superseded. Exact eligibility remains unresolved because card page and general policy paths conflict and current FY2025-26 policy could not be retrieved.",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/union/rupay-select/",
+    "unresolved": [
+      "launch date not found",
+      "legacy card-specific eligibility conflicts with general policy; current FY2025-26 policy inaccessible",
+      "complete MCC exclusions and exact fuel transaction threshold unpublished"
+    ]
+  },
+  "uni_carbon": {
+    "result": "Current UNI-CARBON page and MITC v1.4 reviewed; current fee, rewards, HPCL fuel benefits and insurance corrected. Age/income/score eligibility remains unverified.",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/union/uni-carbon/",
+    "unresolved": [
+      "card-specific age, income and credit-score criteria not verified",
+      "full MCC exclusions not listed",
+      "historical launch-release URL returned 404 during download"
+    ]
+  }
+}

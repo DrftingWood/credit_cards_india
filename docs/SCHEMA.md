@@ -46,9 +46,28 @@ validator section below for what warns and what `--strict-provenance` fails.
 
 `scripts/validate.py` cross-checks these: a `local_refs` entry must live under
 `docs/sources/`, should be paired with `fields_verified`, and is flagged if it
-resolves to no file on disk (warn-only — PDFs are legitimately absent in CI).
+resolves to no file on disk (warn-only — PDFs are legitimately absent in CI;
+when none of them resolve the archive is absent and the validator prints one
+summary line instead of one warning per ref).
 See `data/cards/sbi/cashback.yaml` and `data/cards/hdfc/swiggy-hdfc.yaml` for
 worked examples.
+
+**Backfilling (D3).** Two scripts fill these fields only from what the repo already
+states, never by re-reading sources: `scripts/backfill_source_type.py` derives
+`type` from the cited URL host, and `scripts/backfill_source_confidence.py` copies
+a card's `# PROVENANCE & CONFIDENCE` header tier (`HIGH (pdf)` / `MEDIUM (web)` /
+`LOW (unconfirmed)`, see `docs/PROVENANCE.md`) into `confidence` on the open `fees`
+and `rewards` records it covers: issuer-owned source, the header-vouched values
+(fees, earn rates, caps, categories, exclusions) unchanged since the commit that
+wrote the headers, no hedging in the notes, and no `# TODO verify` marker on the
+record before the 2026-07-03 TODO cleanup (which stripped markers without
+re-reading sources). `benefits`, closed records, TODO-flagged records and records
+edited after the wave are left for a person. `local_refs` and
+`fields_verified` claim that a specific document supports specific fields, so
+`scripts/backfill_local_evidence.py` writes them only from claims an audit doc or
+verification commit already makes (each claim in the script cites it), and only
+where the field still holds the value that claim says the document states and
+carried no TODO marker the audit left unresolved.
 
 For an `active` or `invite-only` card, exactly **one** record in each array must be open-ended (`effective_until: null`). Records must not overlap.
 
@@ -117,6 +136,13 @@ under `data/loyalty_programs/<type>/<id>.yaml` and carry:
   identify a co-brand card as belonging to this programme. The validator
   warns when a card with a matching `co_brand.partner` doesn't reference
   the programme via `rewards[].loyalty_program`.
+
+A rewards record linked to a programme normally takes the programme's
+`unit_value_inr`. Set `rewards[].unit_value_from_program: false` when the card
+earns its own currency that converts into the programme's at a ratio other than
+1:1 (e.g. `bob-irctc`: 4 BOBCARD points = 1 IRCTC point). The calculator then
+uses the record's own `base.unit_value_inr` / `unit_value_inr_realized`
+(DECISIONS D-27).
 
 A card-side accelerator can opt into stacking via:
 

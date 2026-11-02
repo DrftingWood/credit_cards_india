@@ -1,6 +1,342 @@
 {
-  "_source": "Kotak Mahindra Bank per-card Fees & Charges pages, central MITC (/credit-cards/mitc-and-ca.html) and GSFC (HTML, JS-rendered; no downloadable PDFs)",
-  "verified_on": "2026-07-04",
-  "result": "HTML-sourced. Kotak serves fees/MITC as HTML, not PDF. Reward structures verified against live pages during the 2026-07-03 audit (PR #42). Correction: League Platinum is lifetime-free (Fees & Charges page titled 'No Joining & Annual Fees') — YAML corrected from Rs 499/499 to Rs 0/0. Remaining JS-rendered fee tables could not be fully machine-extracted; values are HTML-sourced. See docs/kotak-audit.md and INDEX.md.",
-  "pdfs_downloaded": 0
+  "_source": "Kotak Mahindra Bank product/FAQ pages, central MITC and KFS; card-specific issuer PDFs are archived where available.",
+  "verified_on": "2026-10-27",
+  "result": "Kotak card reviews use current product/FAQ pages and downloadable issuer KFS/MITC PDFs. IndianOil Kotak and Myntra Kaching were reviewed against current fee, reward and benefit evidence; see INDEX.md. 811 #DreamDifferent reviewed against the current KFS, MITC/RCAS and FAQs; reward and milestone cessation on 2026-04-01 recorded. Kotak Air+ Prime reviewed against the current card KFS, Prime T&Cs, MITC and product pages; voucher value conflict documented. Kotak Air+ reviewed against current product/FAQ pages, 12-Mar-2026 KFS, detailed T&Cs and consolidated MITC; annual-waiver conflict documented. Kotak Air reviewed against its current product/FAQ pages, current KFS and consolidated MITC; conflicting annual-fee waiver statements documented. Kotak League Platinum reviewed against current card/FAQ/fee/eligibility pages, KFSLP04062026 and consolidated MITC; unsupported launch date, Visa Platinum tier, lounge benefit and old fee/reward values corrected. PVR INOX Kotak reviewed against current PVR product page, KFSPIO12032026, current consolidated MITC/PVR terms, eligibility and a live PVR-app acquisition offer; unsupported airport-lounge/fuel-waiver/general-point claims removed. Kotak UPI RuPay reviewed against current card page, KFSKUR12032026 and consolidated MITC; corrected fee, rewards, exclusions, redemption and unsupported tier/launch/eligibility assertions. A utility fee threshold conflict between KFS (INR35,000) and consolidated MITC (INR50,000) remains recorded. Kotak Infinite reviewed against current card, fee, reward-redemption, eligibility and lounge pages, KFS, current MITC and the June 2025 change notice. The card is closed to new sourcing; age and legacy fee/reward page conflicts are recorded. Campaign PDF fetch for PVR offer returned HTTP 403; offer page is cited. Kotak White reviewed 2026-10-26; corrected milestone-only rewards, lounge spend gate, fees and eligibility, removed unsupported network/tier and launch date; source conflicts documented. Kotak Cashback+ Prime reviewed 2026-10-27 against current product page, card-specific Cashback+ Prime terms, and KFS KCB+PKFS04062026; corrected fees/APR/cash advance status, rewards cap/exclusions, fuel waiver and cleared unsupported network/launch claims. Kotak Cashback+ reviewed 2026-10-27 against the current product/claim pages, card-specific Cashback+ terms and KCBKFS04062026; corrected finance/cash-advance terms, rewards cap/exclusions, RuPay variant note and fuel waiver; the live claim page now states a 500-point redemption minimum from 16-Oct-2026. Kotak IndiGo XL reviewed 2026-10-27 against current product/fees/value/offers pages, card-specific terms, KFSIKXL12032026, consolidated MITC, MCC schedule, lounge list/terms and 2025 relaunch announcement; corrected fees, BluChip earn, lounge and milestone/welcome terms, removed unsupported network/eligibility/fuel waiver, and documented welcome-offer and lounge-variant conflicts. Kotak IndiGo base card reviewed 2026-10-27 using current product/fees pages, MITC, co-brand terms, rewards MCC schedule and relaunch announcement; corrected fee schedule, 3-card-BluChip flight component, milestones, welcome/renewal, network and lounge/fuel-waiver claims. Co-brand terms and MCC schedule referenced from adjacent XL archive after CDN 403; migrated-card fee and meal-welcome discrepancies documented. Kotak Solitaire reviewed 2026-10-27 against current product/rewards/fees pages, KFSKS04062026, retail MITC, detailed terms, reward MCC schedule and lounge documents; corrected fees/program waiver, travel earn cap, transfer ratios/redemption, guest-lounge quota and fuel waiver. Detailed T&C browser-readable but direct file download returned HTTP 403; add-on-card count conflict documented. Kotak Zen Signature reviewed against current card, fee, reward, milestone, redemption and eligibility pages, KFSZS12032026 and consolidated MITC; corrected fee/APR/cash advance, redemption values, lounge quotas, fuel waiver, milestones and published eligibility; unsupported launch date/network tier cleared.",
+  "pdfs_downloaded": 38,
+  "myntra-kaching": {
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/myntra-kotak-credit-card.html",
+    "faq_url": "https://www.kotak.bank.in/en/get-help/myntra-kotak-credit-card-faq.html",
+    "pdfs": [
+      "myntra-kaching/cashback-terms.pdf",
+      "myntra-kaching/launch-announcement-2023-06-01.pdf"
+    ],
+    "retrieved_on": "2026-10-26"
+  },
+  "indianoil-kotak": {
+    "retrieved_on": "2026-10-26",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card.html",
+    "rewards_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card/rewards-redemption.html",
+    "faq_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card/faqs.html",
+    "eligibility_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card/eligibility-criteria.html",
+    "pdfs": [
+      "indianoil-kotak/kfs-indian-oil-retrieved-2026-10-26.pdf",
+      "indianoil-kotak/mitc-english-rcas-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "No current issuer evidence found for exact launch date, income cutoff, or credit-score threshold.",
+      "Welcome 1,000 points value is INR250 at catalogue rate, but INR200 if redeemed as cashback; value depends on redemption path.",
+      "Card page confirms RuPay services/concierge; network tier is not specified."
+    ]
+  },
+  "811-dreamdifferent": {
+    "retrieved_on": "2026-10-26",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/811-dream-different-credit-card.html",
+    "fees_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/DreamDifferent.pdf",
+    "rewards_faq_url": "https://www.kotak.bank.in/en/help-center/credit-card/811-dream-different-credit-card/product-features-and-limitations/q11.html",
+    "eligibility_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/credit-card-faqs.html",
+    "pdfs": [
+      "811-dreamdifferent/kfs-dream-different-2026-10-26.pdf",
+      "811-dreamdifferent/mitc-wealth-white-reserve-2026-10-26.pdf",
+      "811-dreamdifferent/reward-card-agreement-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "The current KFS lists a ?424 joining fee from 1-Sep-2026 but does not say whether it includes GST.",
+      "No current Dream Different reward or milestone program; both stopped 1-Apr-2026.",
+      "Issuer does not publish the numeric income cutoff.",
+      "MITC contains card-number/design-specific historical milestone variants; no single historic offer can be safely attributed to every Dream Different card."
+    ]
+  },
+  "air-plus-prime": {
+    "retrieved_on": "2026-10-26",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-prime-credit-card/features.html",
+    "fees_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-prime-credit-card/fees-and-charges.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/kfs-kotak-air-plus-prime-credit-card.pdf",
+    "pdfs": [
+      "air-plus-prime/kfs-air-plus-prime-2026-10-26.pdf",
+      "air-plus-prime/air-plus-prime-terms-2026-10-26.pdf",
+      "air-plus-prime/mitc-wealth-white-reserve-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Kotak detailed Prime T&Cs give voucher redemption at INR0.50/Air Mile while the current product page says INR5/Air Mile.",
+      "No issuer launch date or Prime-specific age, income or credit-score cutoffs located.",
+      "Visa network is supported; product page/KFS do not publish a Visa tier."
+    ]
+  },
+  "air-plus": {
+    "retrieved_on": "2026-10-26",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-plus-credit-card/value.html",
+    "faq_url": "https://www.kotak.bank.in/en/get-help/kotak-air-plus-credit-card-faqs.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/Key-fact-statement-kfs-kotak-air-plus-cc.pdf",
+    "pdfs": [
+      "air-plus/kfs-air-plus-2026-10-26.pdf",
+      "air-plus/air-plus-terms-2026-10-26.pdf",
+      "air-plus/mitc-wealth-white-reserve-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Current Air+ FAQ says no annual-fee waiver but current KFS and consolidated MITC say INR400,000 anniversary-year retail spend waiver.",
+      "No issuer launch date or Air+-specific numerical income/credit-score minimum found.",
+      "Visa tier is not identified in current issuer evidence."
+    ]
+  },
+  "air": {
+    "retrieved_on": "2026-10-26",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-credit-card.html",
+    "faq_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-credit-card/faqs.html",
+    "fees_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-air-credit-card/fees-and-charges.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/Key-fact-statement-kfs-kotak-air-cc.pdf",
+    "pdfs": [
+      "air/kfs-kotak-air-2026-10-26.pdf",
+      "air/mitc-wealth-white-reserve-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "KFS/MITC states an INR250,000 qualifying retail spend annual-fee waiver; card FAQ says above INR200,000; product fee page says no waiver. YAML follows KFS/MITC at medium confidence.",
+      "No issuer launch date, card-specific income threshold or bureau-score cutoff found.",
+      "Current product material does not identify a Visa tier."
+    ]
+  },
+  "league-platinum": {
+    "retrieved_on": "2026-10-26",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card.html",
+    "faq_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card/league-platinum-card-faqs.html",
+    "eligibility_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card/eligibility.html",
+    "fees_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card/fees-and-charges.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/key-fact-statement-kfs-league-platinum.pdf",
+    "pdfs": [
+      "league-platinum/kfs-league-platinum-2026-10-26.pdf",
+      "air/mitc-wealth-white-reserve-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "General Kotak FAQ gives League maximum age 65; card-specific page says 60. YAML follows card-specific page.",
+      "Issuer publishes INR500,000 annual income requirement without salaried/self-employed split; structured split thresholds remain null.",
+      "Reward terms show 8 points per INR150 after INR200,000 anniversary spend but do not state whether higher rate is retroactive.",
+      "No issuer launch date or card-specific bureau-score cutoff located."
+    ]
+  },
+  "pvr-inox": {
+    "retrieved_on": "2026-10-26",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-credit-card.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/key-fact-statement-kfs-pvr-inox.pdf",
+    "eligibility_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/pvr-inox-kotak-credit-card.html",
+    "acquisition_offer_url": "https://www.kotak.bank.in/en/offers/offer-details-netbank/1234583111/pvr-inox.html",
+    "campaign_terms_pdf_url": "https://images.kotak.bank.in/bank/mailers/2026/files/PVR_Acqui%20Campaign_%20AugtoDec%2726.pdf",
+    "pdfs": [
+      "pvr-inox/kfs-pvr-inox-2026-10-26.pdf",
+      "air/mitc-wealth-white-reserve-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "No current issuer launch date, card network variant or network tier established.",
+      "No card-specific numeric income or bureau threshold found.",
+      "Card page prose promises one M-Coupon per INR10,000 but its exact spend table begins at INR10,001; boundary at exactly INR10,000 is unspecified.",
+      "General PVR terms reserve bank right to impose a maximum ticket count; current product page shows continued accrual but no numeric maximum.",
+      "INR400 PVR-app acquisition offer valid through 31-Dec-2026; official linked PDF returned HTTP 403, so accessible offer webpage is source."
+    ]
+  },
+  "upi-rupay": {
+    "retrieved_on": "2026-10-26",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-upi-rupay-credit-card.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/KFS-Kotak-UPI-Rupay-CC.pdf",
+    "network_enablement_announcement_url": "https://www.kotak.bank.in/en/about-us/media/media-list/rupay-cc-goes-live-on-upi.html",
+    "mitc_url": "https://www.kotak.bank.in/content/dam/Kotak/files/english-rcas.pdf",
+    "pdfs": [
+      "upi-rupay/kfs-upi-rupay-2026-10-26.pdf",
+      "air/mitc-wealth-white-reserve-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "The product page's generic redemption prose still says INR0.10 per point and a 1,000-point minimum for cash; current Kotak Rewards notice and consolidated MITC show INR0.07 and a 2,000-point minimum for this card group.",
+      "Card-specific KFS gives a INR35,000 utility-fee threshold while the current consolidated MITC lists INR50,000 for Kotak UPI RuPay; reward earning is separately capped at INR35,000.",
+      "No card-specific launch date, RuPay network tier, or age, residency, income or bureau-score eligibility criteria found. The 2023 press release concerns RuPay credit cards on UPI generally."
+    ]
+  },
+  "infinite": {
+    "retrieved_on": "2026-10-26",
+    "features_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/wealth-management-infinite-credit-card/features.html",
+    "fees_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/wealth-management-infinite-credit-card/fees-and-charges.html",
+    "eligibility_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/wealth-management-infinite-credit-card/eligibility.html",
+    "reward_redemption_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/wealth-management-infinite-credit-card/reward-redemption.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/Kotak-Infinite-Credit-Card.pdf",
+    "change_notice_url": "https://images.kotak.bank.in/bank/mailers/2025/files/KotakWealthInfiniteCC_010625.pdf",
+    "lounge_list_url": "https://images.kotak.com/bank/mailers/2022/files/Kotak%20Domestic%20Lounge%20List.pdf",
+    "pdfs": [
+      "infinite/kfs-infinite-2026-10-26.pdf",
+      "infinite/infinite-changes-effective-2025-06-01.pdf",
+      "infinite/domestic-lounge-list-2022.pdf",
+      "air/mitc-wealth-white-reserve-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "The issuer closes the card to new sourcing but publishes no effective discontinuation date; YAML uses on-hold and leaves discontinued_on null.",
+      "Features page and eligibility page conflict on primary-holder maximum age: 65 versus 60; numeric max_age is left null.",
+      "Current fee page and June 2025 notice set monthly finance at 3.5%, superseding older KFS and residual feature-page text that show 3.1%; legacy late-payment tables also differ from current consolidated MITC.",
+      "Card feature text calls the monthly 800-point interim benefit worth INR800, but consolidated MITC sets cashback redemption at INR0.70 per point; benefit value is modeled at INR560 for cashback and nominal page wording is preserved in notes.",
+      "No official Kotak source reviewed confirms the card's network or network tier, exact launch date, or numeric income/score requirements."
+    ]
+  },
+  "white": {
+    "retrieved_on": "2026-10-26",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-credit-card.html",
+    "rewards_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-credit-card/whitepass.html",
+    "pdfs": [
+      "white/kfs-white-2026-10-26.pdf",
+      "white/domestic-lounge-list-2022.pdf",
+      "white/lounge-mitc-2023.pdf",
+      "white/priority-pass-lounge-list-2023.pdf"
+    ],
+    "other_sources": [
+      "white/white-changes-effective-2026-04-01.html"
+    ],
+    "unresolved": [
+      "network variant and launch date unpublished",
+      "annual surcharge cap cycle differs between product page and KFS/MITC",
+      "income threshold not split by employment type; score cutoff and concierge unconfirmed"
+    ]
+  },
+  "cashback-plus-prime": {
+    "retrieved_on": "2026-10-27",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-prime-credit-card.html",
+    "terms_url": "https://www.kotak.bank.in/content/dam/Kotak/files/t-and-c-cb-plus-prime.pdf",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/kfs-cashback-plus-prime-credit-card.pdf",
+    "pdfs": [
+      "cashback-plus-prime/kfs-cashback-plus-prime-2026-10-27.pdf",
+      "cashback-plus-prime/cashback-plus-prime-terms-2026-10-27.pdf"
+    ],
+    "other_sources": [
+      "cashback-plus-prime/product-page-2026-10-27.html"
+    ],
+    "unresolved": [
+      "Issuer publishes Visa and RuPay variants; aggregate record does not model network-specific earn separately, so network and tier are null.",
+      "No card-specific launch date, age, income or credit-score threshold established; residency assertion not independently checked in this pass.",
+      "Accelerated eligibility and restrictions depend on MCCs; see card terms annexure and issuer extract."
+    ]
+  },
+  "cashback-plus": {
+    "retrieved_on": "2026-10-27",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html",
+    "claim_cashback_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card/claim-your-cashback.html",
+    "terms_url": "https://images.kotak.bank.in/bank/mailers/2025/files/CC%2B_TC.pdf",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/Key-fact-statement-kfs-cashback-credit-card.pdf",
+    "pdfs": [
+      "cashback-plus/kfs-cashback-plus-2026-10-27.pdf",
+      "cashback-plus/cashback-plus-terms-2026-10-27.pdf"
+    ],
+    "other_sources": [
+      "cashback-plus/product-page-2026-10-27.html",
+      "cashback-plus/claim-cashback-page-2026-10-27.html"
+    ],
+    "unresolved": [
+      "Issuer terms describe a separate RuPay variant; network/tier and variant-specific earn cannot be represented as one fixed network value.",
+      "No card-specific launch date or numerical age/income/credit-score requirements found; card-specific residency requirement not published.",
+      "Claim page states min redemption of 500 points effective 16-Oct-2026, while generic reward-help pages contain older thresholds; no increment beyond the minimum asserted.",
+      "Issuer product page has expired PVR INOX/BookMyShow offer text through 30-Sep-2026; not treated as a current benefit."
+    ]
+  },
+  "indigo-xl": {
+    "retrieved_on": "2026-10-27",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card.amp.html",
+    "fees_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card/fees-and-charges.html",
+    "offers_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-xl-credit-card/exclusive-offers.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/kfs-indigo-kotak-xl-new.pdf",
+    "terms_url": "https://images.kotak.bank.in/bank/mailers/2025/files/Kotak%20IndiGo%20Credit%20Card%20TnC.pdf",
+    "pdfs": [
+      "indigo-xl/kfs-indigo-xl-2026-10-27.pdf",
+      "indigo-xl/indigo-kotak-card-terms-2026-10-27.pdf",
+      "indigo-xl/indigo-kotak-relaunch-2025-07-10.pdf",
+      "indigo-xl/kotak-domestic-lounge-list-2026-10-27.pdf",
+      "indigo-xl/kotak-lounge-program-terms-2026-10-27.pdf",
+      "indigo-xl/kotak-reward-mcc-schedule-2025-06-01.pdf",
+      "air/mitc-wealth-white-reserve-2026-10-26.pdf"
+    ],
+    "other_sources": [
+      "indigo-xl/product-page-2026-10-27.html",
+      "indigo-xl/fees-page-2026-10-27.html",
+      "indigo-xl/value-chart-2026-10-27.html",
+      "indigo-xl/exclusive-offers-2026-10-27.html"
+    ],
+    "unresolved": [
+      "Limited offer promises joining-fee waiver/reversal and welcome vouchers while generic co-brand terms deny welcome benefit when joining fee is waived.",
+      "Current lounge list names IndiGo Premium and IndiGo 6E Rewards XL; exact current card-name mapping is unclear.",
+      "Issuer does not guarantee a fixed BluChip rupee redemption value; global program estimates are modeled only.",
+      "Product advertises multiple network variants; aggregate record does not normalize them.",
+      "No card-specific numeric age, income or credit-score threshold/residency criterion found."
+    ]
+  },
+  "indigo": {
+    "retrieved_on": "2026-10-27",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card.html",
+    "fees_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indigo-credit-card/fees-and-charges.html",
+    "mitc_url": "https://www.kotak.bank.in/content/dam/Kotak/files/english-rcas.pdf",
+    "terms_url": "https://images.kotak.bank.in/bank/mailers/2025/files/Kotak%20IndiGo%20Credit%20Card%20TnC.pdf",
+    "terms_archive": "indigo-xl/indigo-kotak-card-terms-2026-10-27.pdf",
+    "pdfs": [
+      "indigo/mitc-2026-10-27.pdf",
+      "indigo/indigo-kotak-relaunch-2025-07-10.pdf"
+    ],
+    "shared_pdfs": [
+      "indigo-xl/indigo-kotak-card-terms-2026-10-27.pdf",
+      "indigo-xl/kotak-reward-mcc-schedule-2025-06-01.pdf"
+    ],
+    "other_sources": [
+      "indigo/product-page-2026-10-27.html",
+      "indigo/fees-page-2026-10-27.html"
+    ],
+    "unresolved": [
+      "Current base product page advertises a 2,500-BluChip welcome voucher; shared co-brand terms generically mention a 6E Meals add-on not confirmed for base card.",
+      "Legacy migrated 6E Rewards base cardholders may have INR700 annual fees and no welcome/renewal benefits; standard current issue fees are INR1,500.",
+      "Multiple network variants, including RuPay UPI terms, mean the aggregate network scalar remains null.",
+      "No fixed BluChip INR redemption value or numerical card-specific eligibility thresholds found.",
+      "CDN rejected direct download of shared co-brand terms (HTTP 403); the PDF is archived under indigo-xl and contains both base and premium card tables."
+    ]
+  },
+  "solitaire": {
+    "retrieved_on": "2026-10-27",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card.html",
+    "rewards_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card/rewards.html",
+    "fees_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-solitaire-credit-card/fees-and-charges.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/key-fact-statement-kfs-solitaire.pdf",
+    "detailed_terms_url": "https://images.kotak.bank.in/bank/mailers/2026/files/detailed-tc-kotak-solitaire-cc_07_04_2026_Final.pdf",
+    "detailed_terms_download": "HTTP 403; read via issuer PDF browser view",
+    "pdfs": [
+      "solitaire/kfs-solitaire-2026-10-27.pdf",
+      "air/mitc-wealth-white-reserve-2026-10-26.pdf",
+      "indigo-xl/kotak-reward-mcc-schedule-2025-06-01.pdf",
+      "white/domestic-lounge-list-2022.pdf",
+      "white/priority-pass-lounge-list-2023.pdf"
+    ],
+    "other_sources": [
+      "solitaire/product-page-2026-10-27.html",
+      "solitaire/rewards-page-2026-10-27.html",
+      "solitaire/fees-page-2026-10-27.html"
+    ],
+    "unresolved": [
+      "Product fees page says program members pay no annual fee and INR25,000 is charged after downgrade; KFS sets annual INR25,000 with fee waiver for Solitaire Program membership. Encoded as annual fee with condition-based waiver.",
+      "Issuer page sections disagree whether maximum add-on cards are three or four; omitted.",
+      "Exact launch date, Visa tier, and numeric underwriting requirements are unpublished/not established.",
+      "Detailed terms PDF was readable from issuer but direct archive download was blocked HTTP 403."
+    ]
+  },
+  "zen-signature": {
+    "retrieved_on": "2026-10-27",
+    "product_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card.html",
+    "fees_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card/fees-and-charges.html",
+    "rewards_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card/rewards-redemption.html",
+    "milestones_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card/milestone-program.html",
+    "eligibility_url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/zen-signature-credit-card/eligibility-criteria.html",
+    "kfs_url": "https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/key-fact-statement-kfs-zensignature.pdf",
+    "mitc_url": "https://www.kotak.bank.in/content/dam/Kotak/Customer-Service/others/mitc-wealth-and-white-reserve.pdf",
+    "pdfs": [
+      "zen-signature/kfs-zen-signature-2026-10-27.pdf",
+      "zen-signature/mitc-wealth-and-white-reserve-2026-10-27.pdf",
+      "indigo-xl/kotak-reward-mcc-schedule-2025-06-01.pdf"
+    ],
+    "other_sources": [
+      "zen-signature/product-page-2026-10-27.html",
+      "zen-signature/fees-page-2026-10-27.html",
+      "zen-signature/rewards-page-2026-10-27.html",
+      "zen-signature/milestone-page-2026-10-27.html"
+    ],
+    "unresolved": [
+      "Exact launch date and current Visa tier are not established in card-specific issuer evidence.",
+      "Card eligibility gives one annual net-income threshold, not separate salaried/self-employed cutoffs; no bureau-score minimum published.",
+      "Product page does not specify domestic lounge guest entitlement.",
+      "Milestone page uses anniversary-year wording but gives a calendar-year example for settlement; record follows anniversary-year heading."
+    ]
+  }
 }

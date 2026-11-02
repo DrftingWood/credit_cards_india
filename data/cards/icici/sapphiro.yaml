@@ -1,173 +1,262 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-sapphiro
 name: ICICI Bank Sapphiro Credit Card
+image_path: /cards/icici/sapphiro.webp
 issuer: icici
-network: visa
-network_tier: infinite
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2014-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2014-01-01
-    effective_until: null
-    joining_fee_inr: 6500
-    annual_fee_inr: 3500
-    fee_waiver:
-      spend_inr: 600000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 6500
+  annual_fee_inr: 3500
+  fee_waiver:
+    spend_inr: 600000
+    cycle: annual
+    conditions: Issuer says spend over INR600,000 in a year waives the next year annual fee.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee: null
+  gst_applicable: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/sapphiro/sapphiro-mitc-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+  notes: Joining INR6,500 + GST; annual INR3,500 + GST. Spend over INR600,000 in a year waives next year annual
+    fee. Forex 3.5%; monthly finance 3.75%. Card-specific cash-advance transaction fee not found in current readable
+    MITC tariff.
 rewards:
-  - effective_from: 2014-01-01
-    effective_until: null
-    currency: points
-    currency_name: PAYBACK Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: ishop-hotels
-        canonical_categories:
-          - travel
-        multiplier: 12
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 12X reward points on HOTEL bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap (ICICI capping PDF, WEF 1-Oct-2025) with iShop flights; iShop also gives 6X on bus + shopping vouchers (not modelled).
-      - category: ishop-flights
-        canonical_categories:
-          - travel
-        multiplier: 6
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 6X reward points on FLIGHT bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap with iShop hotels.
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    capping_rules:
-      - "Utility and insurance spends earn 1 Reward Point per ₹100"
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-      - type: catalog
-        program: ICICI Rewards / PAYBACK
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: ICICI Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+  accelerated:
+  - category: international-spend
+    canonical_categories:
+    - international
+    multiplier: 2
+    effective_rate: 4
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: 4 RP/INR100 on international spend; domestic base is 2 RP/INR100.
+  - category: utility-and-insurance
+    canonical_categories:
+    - utilities
+    - insurance
+    multiplier: 0.5
+    effective_rate: 1
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: 1 RP/INR100 on utility and insurance spend.
+  - category: ishop-hotels
+    canonical_categories:
+    - travel
+    multiplier: 12
+    effective_rate: 24
+    cap_per_cycle: 15000
+    cap_unit: points
+    cycle: monthly
+    cap_group: ishop-monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - ishop
+    notes: Up to 12X base points on iShop hotel bookings; with Sapphiro 2 RP/INR100 base this is up to 24 RP/INR100.
+      Shares monthly iShop cap. Current cap sheet also lists 8,000 daily points, not represented by schema.
+  - category: ishop-flights-buses-vouchers
+    canonical_categories:
+    - travel
+    multiplier: 6
+    effective_rate: 12
+    cap_per_cycle: 15000
+    cap_unit: points
+    cycle: monthly
+    cap_group: ishop-monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - ishop
+    notes: Up to 6X base points on iShop flights, buses and shopping vouchers; with Sapphiro 2 RP/INR100 base this
+      is up to 12 RP/INR100. Shares monthly iShop cap; active offers may vary.
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  - other
+  capping_rules:
+  - iShop up to 15,000 points per month across iShop categories and 8,000 points per day per current issuer cap
+    sheet.
+  - Cash withdrawal, EMI, fees/charges and balance transfer are ineligible for points under current general credit
+    card T&Cs.
+  redemption:
+  - type: catalog
+    program: ICICI Bank Rewards
+    fee_inr: 99
+    constraints: Current page lists health and beauty, travel and luggage, shopping vouchers, appliances, electronics,
+      fashion and lifestyle. Issuer T&Cs state points have no cash value; redemption rate varies by offer. INR99
+      + GST handling fee per request.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/sapphiro/sapphiro-terms-retrieved-2026-10-27.pdf
+    - docs/sources/icici/sapphiro/sapphiro-ishop-caps-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.0.effective_rate
+    - rewards.accelerated.1.effective_rate
+    - rewards.accelerated.2.effective_rate
+    - rewards.accelerated.2.cap_per_cycle
+    - rewards.accelerated.3.effective_rate
+    - rewards.accelerated.3.cap_per_cycle
+    - rewards.redemption.0.fee_inr
+  notes: 2 RP/INR100 domestic eligible spend; 4 international; 1 utility and insurance; fuel earns no points. Current
+    issuer labels currency ICICI Reward Points (not PAYBACK). Removed fixed INR0.25 valuation, unsupported wallet/rent
+    exclusions and MCC 6513.
 benefits:
-  - effective_from: 2014-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-        spend_threshold_inr: 75000
-        spend_threshold_cycle: quarterly
-        notes: "w.e.f. Jan 01, 2025 complimentary domestic lounge access requires Rs 75,000 spend in the preceding calendar quarter (MITC §8; Sapphiro not on the exemption list)."
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-    golf:
-      rounds_per_cycle: 4
-      cycle: monthly
-      lessons_per_cycle: 0
-    movies:
-      type: bogo
-      partner: BookMyShow
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 500
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome vouchers: Tata CLiQ ₹3,000 + EaseMyTrip ₹4,000 (4×₹1,000) + Croma ₹1,500 (3×₹500) + EazyDiner 3-month Prime membership"
-        value_inr: 8500
-        window_days: 90
-    milestones:
-      - spend_inr: 400000
-        cycle: annual
-        benefit: "4,000 Reward Points; +2,000 RP per additional ₹1 lakh, up to 20,000 RP per anniversary year"
-        reward_kind: points
-        reward_units: 4000
-        trigger_window: anniversary-year
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 10000000
-      - type: personal-accident
-        sum_insured_inr: 200000
-        conditions: "RuPay variant"
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 4
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      notes: Primary cardholder only; INR75,000 or more in preceding quarter unlocks following quarter. FAQ says
+        paired Mastercard+Amex dual variants receive 2 visits/quarter per variant.
+    international:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Primary cardholder only; two complimentary international visits per year.
+  golf:
+    rounds_per_cycle: 4
+    lessons_per_cycle: 4
+    cycle: monthly
+    notes: One round or lesson for every INR50,000 retail spend in previous calendar month, maximum 4/month. Credited
+      by 10th of following month and usable for next two months; primary cardholder.
+  movies:
+    type: bogo
+    partner: BookMyShow
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 500
+    notes: Buy one ticket and get up to INR500 off the second ticket, twice monthly. From Apr 1, 2026 requires INR25,000+
+      spend in preceding quarter to unlock following quarter; add-on cardholder must individually meet threshold.
+      Paired dual-network products get one offer per month per variant per issuer FAQ.
+  welcome:
+  - condition: Joining fee paid; issuer emails within 45 days; claim through ICICI Rewards.
+    benefit: 'Core vouchers: Tata CLiQ INR3,000; EaseMyTrip domestic flights INR4,000 (four INR1,000); Croma INR1,500
+      (three INR500). Da Milano coupon offers INR5,000 off purchases INR19,999+, plus 3-month EazyDiner Prime membership.
+      Da Milano is a conditional discount, not unconditional cash voucher value.'
+    value_inr: 8500
+    window_days: 45
+  milestones:
+  - spend_inr: 400000
+    cycle: annual
+    benefit: 4,000 Reward Points on INR400,000 spend; 2,000 points for each additional INR100,000, up to 20,000
+      points in an anniversary year.
+    reward_kind: points
+    reward_units: 4000
+    reward_currency_name: ICICI Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: false
+  - spend_inr: 100000
+    cycle: annual
+    benefit: 2,000 points per additional INR100,000 annual spend after INR400,000 initial milestone, subject to
+      20,000 points/year maximum.
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: ICICI Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 30000000
+    conditions: Primary cardholder, international travel only, ticket purchased using card. Product FAQ says card
+      used at least once in prior 60 days; linked policy updated Dec 2025 defines active card as transaction within
+      prior 90 days. Preserve conflict; policy excludes on-duty armed forces, pilots, police and air crew and terrorism.
+  - type: personal-accident
+    sum_insured_inr: 200000
+    conditions: RuPay variant only, per current product page.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: 4000
+    cap_per_cycle_inr: null
+    cycle: monthly
+    notes: 1% waiver on fuel transactions up to INR4,000 at fuel outlets in India; primary and Plus/supplementary
+      cardholders eligible. Current issuer page does not specify a lower transaction threshold or monthly cap.
+  concierge: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/sapphiro/sapphiro-insurance-retrieved-2026-10-27.pdf
+    - docs/sources/icici/sapphiro/sapphiro-golf-terms-retrieved-2026-10-27.pdf
+    - docs/sources/icici/sapphiro/sapphiro-welcome-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.golf.lessons_per_cycle
+    - benefits.movies.cap_inr
+    - benefits.welcome.0.value_inr
+    - benefits.welcome.0.window_days
+    - benefits.milestones.0.spend_inr
+    - benefits.milestones.0.reward_units
+    - benefits.milestones.1.spend_inr
+    - benefits.milestones.1.reward_units
+    - benefits.insurance.0.sum_insured_inr
+    - benefits.insurance.1.sum_insured_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.max_txn_inr
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
     salaried: 900000
     self_employed: 900000
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Indian citizen aged 21?65; salaried monthly income INR75,000 (annualized here to INR900,000) or self-employed
+    annual income INR900,000; income proof required. No numeric credit-score threshold is published.
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/sapphiro-card
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [premium, lifestyle, golf, movies]
+  last_verified_on: '2026-10-27'
+  tags:
+  - premium
+  - lifestyle
+  - golf
+  - movies

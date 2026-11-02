@@ -1,150 +1,110 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: sbi-prime-business
 name: SBI Card PRIME Business
+image_path: /cards/sbi/prime-business.webp
 issuer: sbi
-network: visa
+network: mastercard
 network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
 launched_on: null
-
-# Link check 2026-10-20: the cited sbi-card-prime-business.page URL (also apply_url) is a 404.
-# SBI Card has no current page for SBI Card Prime Business: every candidate URL 404s, the
-# live credit-card listing doesn't include it, and sitemap.xml still lists only the
-# dead .page URL. No discontinuation notice was found (SBI customer notices,
-# aggregator discontinued lists), so status stays as is: not listed by the
-# issuer, not confirmed discontinued.
-
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 2999
-    annual_fee_inr: 2999
-    renewal_fee_inr: 2999
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
-      retrieved_on: 2026-07-03
-      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
-
+- effective_from: '2026-10-25'
+  effective_until: null
+  joining_fee_inr: null
+  annual_fee_inr: null
+  renewal_fee_inr: null
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.sbicard.com/en/most-important-terms-and-conditions.page
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current SBI MITC sets 3.5% foreign-currency fee except for its expressly listed exclusions; PRIME Business is not listed as an exception. The 3.75% monthly charge applies to unsecured cards, and 2.5%/INR 500 minimum cash-advance fees are stated generally. The current PRIME Business page returns 404 and the card is absent from the current annual-fee table, so joining, annual, renewal and waiver amounts are unknown; the 2019 card booklet defers those fees to prevailing rates. Card-specific applicability of general terms should be confirmed from a current cardholder schedule.
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: dining-grocery-departmental-movies
-        canonical_categories: [groceries, dining, entertainment]
-        multiplier: 1
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10 Reward Points per Rs. 100 on Dining, Groceries, Departmental Stores and Movies."
-      - category: birthday-spend
-        multiplier: 1
-        effective_rate: 20
-        cap_per_cycle: 2000
-        cap_unit: points
-        cycle: annual
-        notes: "20x points on the birthday day, capped 2,000 points."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-      - type: catalog
-        program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
-      retrieved_on: 2026-07-03
-      type: issuer-page
-      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
-
-    mcc_exclusions: ['6513']
+- effective_from: '2026-10-25'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: 'Historical card-specific SBI booklet dated 2019-04-04: 2 RP/INR100 general earn; total 10 RP/INR100
+      on dining MCC 5812/5813/5814, office supplies MCC 5111/5943, and listed utility MCCs. Current application
+      of these rates is unverified; keep rate fields null and do not estimate. 2019 booklet says points have no
+      cash/monetary value, cannot pay card charges or be exchanged for cash/credit, and expire after 24 months.
+      It states no monthly cap; current cap status is unknown.'
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/Business/prime-business-t-and-c-booklet.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: medium
+    notes: The linked current product page returns 404. This card-specific issuer booklet is dated 2019-04-04 and
+      establishes historical rates and redemption restrictions only; it does not establish that those terms remain
+      current.
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa, mastercard, dreamfolks]
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    milestones:
-      - spend_inr: 50000
-        cycle: quarterly
-        benefit: "Pizza Hut voucher worth Rs. 1,000"
-        value_inr: 1000
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "Yatra / Pantaloons e-voucher worth Rs. 7,000"
-        value_inr: 7000
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome e-Gift voucher worth Rs. 3,000"
-        value_inr: 3000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: true
-    other:
-      - name: Club ITC Silver tier membership
-        description: Complimentary 1-year Club ITC Silver Tier Membership.
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
-      retrieved_on: 2026-07-03
-      notes: "Crawl page returned only navigation; values mirrored from parent SBI Card PRIME."
-
+- effective_from: '2026-10-25'
+  effective_until: null
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/Business/prime-business-t-and-c-booklet.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: medium
+    notes: Historical card-specific 2019 booklet lists a INR 3,000 Yatra for Business welcome voucher after annual
+      fee payment (sent within 30 days, account must be in good standing), 4 complimentary Priority Pass visits/year
+      outside India (max 2/quarter, primary cardholder only; visits in India chargeable), a one-time Club Vistara
+      Silver membership, INR 50 lakh air-accident cover, and INR 2 lakh fraud cover per cardholder / INR 20 lakh
+      per entity. These historical benefits are not modeled as current. Current product link returns 404; no current
+      numerical lounge, milestone, welcome, fuel or coverage benefits verified.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 65
+    self_employed:
+      min_age: 25
+      max_age: 70
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-
+  notes: SBI issuance policy supports the occupation-specific age ranges recorded here. No card-specific income
+    minimum or credit-score cutoff is published. PRIME Business appears in the current SBI sitemap, but its product
+    page URL returns 404; applicant and business-specific criteria are not established.
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges
+    notes: Age ranges from SBI issuance policy only. Business-specific income and underwriting cutoffs remain unpublished.
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/business/sbi-card-prime-business.page
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, everyday-spend, business]
+  last_verified_on: '2026-11-01'
+  tags:
+  - premium
+  - points
+  - everyday-spend
+  - business

@@ -1,122 +1,216 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: au-ca
 name: AU Bank CA Metal Credit Card
+image_path: /cards/au/ca.webp
 issuer: au
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: 2025-12-02
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 2999
-    annual_fee_inr: 2999
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Metal card exclusively for Chartered Accountants (ICAI members). Flat 25% cashback on annual ICAI membership renewal fee."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/ca-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 1.99
+  finance_charge_monthly_pct: 2.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  late_payment_slabs: null
+  gst_applicable: true
+  notes: Lifetime-free card. The 30 Sep 2026 KFS confirms 1.99% forex markup, 2.99% monthly finance charge for AU CA/AU CS, cash-advance fee 2.5% or INR 500 minimum, and late fee 15% of total due (INR 10 minimum, INR 1,300 maximum). The card-specific product page also says 1.99%; the prior 3.49% transcription resulted from misreading the KFS table columns.
+  source:
+    url: https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: 'KFS v1.9 dated 30 Sep 2026 is the primary fee schedule; current AU CA page independently confirms lifetime-free membership and 1.99% forex markup. Current material confirms zero joining/annual fee, 2.99% monthly finance, 2.5% cash-advance fee with INR 500 minimum, and late-charge formula.'
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: dining-travel-tax-software
-        canonical_categories: [dining, travel]
-        multiplier: 4
-        effective_rate: 8
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "8 Reward Points per ₹100 on Dining, Travel, Tax Payments & Software (business & personal); 2 RP per ₹100 base."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: AU Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/ca-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.0025
+    unit_value_inr_realized: null
+    excluded_categories:
+    - utilities
+    - telecom
+    - insurance
+    - dining
+    - travel
+  accelerated:
+  - category: dining-travel-tax-software
+    canonical_categories:
+    - dining
+    - travel
+    multiplier: 4
+    effective_rate: 8
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: statement
+    over_cap_earns_base: false
+    notes: '8 points per INR 100 is the total rate, not additive to the 2-point retail base. Issuer caps this MCC group at 5,000 points per statement cycle; whether base points resume after the group cap is not specified, so post-cap base points are suppressed. OTA accelerated rewards apply only to airline and hotel bookings. MCC 9311 appears both under eligible tax and excluded education/government MCCs in the same issuer PDF, so affected tax transactions remain ambiguous.'
+  - category: insurance-utility-telecom
+    canonical_categories:
+    - utilities
+    - telecom
+    - insurance
+    effective_rate: 1
+    effective_per_inr: 100
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: statement
+    notes: Utility and telecom earn is capped at 100 points per transaction; insurance earns at the same 1 RP/INR100 rate. Category MCCs are specified in issuer terms.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  - education
+  - government
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  - '6540'
+  - '6010'
+  - '6011'
+  reward_cap:
+    max_units: 25000
+    cap_unit: points
+    cycle: statement
+  capping_rules:
+  - Accelerated dining/travel/tax/software group is capped at 5,000 points per statement cycle; utility/telecom are additionally capped at 100 points per transaction; overall AU card agreement cap is 25,000 points per statement cycle.
+  - Transportation MCCs stopped earning on 1 Apr 2026. Exact applicability is determined by acquiring-bank MCC. Issuer CA T&C lists MCC 9311 as both eligible tax and excluded education/government; ambiguous instances should not be confidently scored.
+  - Redemption requires at least 200 points; INR 99 plus GST is charged per successful redemption per current KFS.
+  redemption:
+  - type: catalog
+    program: AU Rewardz
+    rate_inr_per_unit: 0.0025
+    constraints: AU general FAQ states 0.25 paise per point (INR 0.0025); e-voucher value is 0.20 paise (INR 0.002). Values depend on redemption option.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/ca-credit-card
+    retrieved_on: '2026-10-25'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.effective_per_inr
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.cap_per_cycle
+    - rewards.reward_cap.max_units
+    - rewards.redemption.rate_inr_per_unit
+    notes: 'Card-specific MCC terms dated 6 Mar 2026 define eligible MCCs, 5,000 accelerated cap, utility/telecom transaction cap and exclusions: https://www.au.bank.in/content/dam/aubank/in/en/pdf/ca-credit-card/AU-CA-Credit-Card-Reward-Points-Terms-and-Conditions.pdf. AU Rewardz point value is 0.25 paise per point for catalogue and 0.20 paise for e-vouchers (INR 0.0025 and INR 0.002 respectively). Current KFS charges INR 99 + GST per successful redemption. AU member agreement sets a 25,000 overall statement cap. Point expiry differs between the generic FAQ (two years from statement month) and 16 May 2026 member agreement (two years after accrual); no expiry field exists in this schema.'
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-    welcome:
-      - condition: "Spend ₹5,000 within 30 days of activation"
-        benefit: "2,000 bonus Reward Points"
-        value_inr: 500
-        window_days: 30
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 5000000
-    other:
-      - name: "ICAI membership renewal cashback"
-        description: "Flat 25% cashback on annual ICAI membership renewal fee; exclusive ICAI member discounts."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/ca-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: null
+      via:
+      - issuer-direct
+      notes: 'Two domestic visits per calendar quarter. From 1 Oct 2026, access requires INR 50,000 spend in the previous calendar quarter. Card must remain purchase-active during the qualifying quarter; access applies only within India.'
+  welcome:
+  - condition: Spend INR 5,000 within 30 days of card activation
+    benefit: 2,000 bonus Reward Points
+    value_inr: 5
+    window_days: 30
+  - condition: Spend INR 10,000 within 30 days of card activation
+    benefit: Dining membership; issuer sends a claim link via email/SMS. Membership type and duration are not specified in the card welcome terms.
+    value_inr: null
+    window_days: 30
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 5000000
+  other:
+  - name: ICAI membership renewal cashback
+    description: Flat 25% cashback on annual ICAI membership renewal fee; card-specific transaction conditions and a cashback cap are not stated on the issuer page.
+  - name: Xpress EMI
+    description: Zero processing fee for eligible Xpress EMI conversions of transactions of at least INR 2,000; up to 20 billed or unbilled transactions can be clubbed. Interest and other EMI terms still apply.
+  - name: Protection covers
+    description: Card page lists INR 5 lakh credit shield, INR 25,000 purchase protection, card liability and travel covers (baggage loss/delay, flight delay, passport loss and plane hijack). Insurance applies to primary cardholders with active card; air accident death cover requires ticket purchase on the AU card. Detailed limits for travel covers not established.
+  - name: Curated merchant offers
+    description: Issuer lists offers on MakeMyTrip, Times Prime and Alaya stays; offer values, dates and eligibility vary and are not specified on the core card page.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: monthly
+  concierge: true
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/ca-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.welcome[1].window_days
+    - benefits.insurance.sum_insured_inr
+    - benefits.other[0].description
+    - benefits.other[2].description
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+  notes: 'Current product page sets 2 quarterly visits and a prior-quarter INR 50,000 lounge spend gate effective 1 Oct 2026; 30 Sep KFS confirms fuel waiver and cap. Welcome value is a model-derived proxy using the 2,000 points and INR 0.0025 catalogue rate, not a guaranteed rupee payout. Card welcome T&C also has a dining-membership offer on INR 10,000 spend in 30 days but does not identify membership type/duration. Insurance details: https://www.au.bank.in/pdf/credit-card/insurance-terms-and-conditions.pdf.'
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 740
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Exclusive to Chartered Accountants (ICAI members)."
-
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 75
+  notes: Exclusive to Chartered Accountants/ICAI members. Card page gives salaried 21-60, self-employed 25-75, add-on cardholders 18+, resident Indian. Income and credit-score floors remain unpublished.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/ca-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/ca-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, metal, professional, dining, travel, points, concierge]
+  last_verified_on: '2026-10-27'
+  tags:
+  - premium
+  - metal
+  - professional
+  - dining
+  - travel
+  - points
+  - concierge

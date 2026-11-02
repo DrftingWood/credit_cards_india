@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Federal Bank HTML MITC fee table, /credit-cards-mitc
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: federal-scapia
 name: Scapia Federal Bank Credit Card
+image_path: /cards/federal/scapia.webp
 issuer: federal
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -19,108 +11,213 @@ co_brand:
   category: travel-agency
   partner_website: https://www.scapia.cards
 status: active
-launched_on: 2023-04-01
+launched_on: '2023-06-15'
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-04-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Lifetime-free card; zero forex markup is a headline feature."
-    source:
-      url: https://www.scapia.cards
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: No joining or annual fee; add-on fee is nil. Zero foreign-currency markup. Finance rate is 3.75% monthly
+    (45% p.a.); cash advance is 2.5% or INR500 minimum. Fuel surcharge waiver is 1% on transactions up to INR5,000,
+    capped INR500/month; fuel spend above INR50,000/month incurs a 1% convenience fee plus GST. Other schedule charges
+    may apply.
+  source:
+    url: https://www.federal.bank.in/documents/d/guest/mitc_v11-30_04_26
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.supplementary_card_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current card-specific MITC v11 (last updated 2026-06-01) and Federal Bank schedule of charges effective
+      2026-04-01.
+  supplementary_card_fee_inr: 0
 rewards:
-  - effective_from: 2023-04-01
-    effective_until: null
-    currency: cashback
-    currency_name: Scapia Coins
-    base:
-      rate: 10
-      per_inr: 100
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: scapia-app-bookings
-        multiplier: 2
-        effective_rate: 20
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [scapia-app]
-        channel:
-          class: cobrand-merchant
-          merchants: [scapia-app]
-        notes: "20 Scapia Coins per Rs100 (~4% value at Rs0.20/coin) on flight & hotel bookings via the Scapia app. Base is 10 coins/Rs100 (~2%) on other eligible spends (min Rs20/txn). No overall cap, but utilities/telecom rewards capped/removed (Feb-2026 devaluation)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-      - education
-      - government
-      - gift-cards
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: voucher
-        program: Scapia travel
-        rate_inr_per_unit: 0.2
-        constraints: "1 Scapia Coin = Rs 0.20 (5 coins = Rs 1); redeemable ONLY on Scapia-app travel, up to 100% of a booking. Closed-loop."
-    source:
-      url: https://www.scapia.cards
-      retrieved_on: '2026-07-05'
-
-      confidence: high
-      notes: "Rebuilt 2026-07-05: 1 Scapia Coin = Rs 0.20 (was wrongly Rs 1.0 -> 5x value overstatement). '10%/20% coins' are coin COUNTS = ~2%/4% real value. Min Rs20/txn (Visa). Post-Feb-2026 devaluation: utilities/insurance rewards removed."
-    capping_rules:
-      - "Accelerated Scapia-app travel earning is uncapped per Scapia's own blog + 2026 reviews (retrieved 2026-07-05): 5 Scapia Coins = Rs1 (Rs0.20/coin), up to 100% of an app booking payable via coins, coins valid 36 months. Realized approximately equals face at the coin level; the real value-erosion vector is Scapia-app fare variance vs open-market prices, not a coin markup or earn cap. (Utility/telecom/cable earning is separately capped at Rs20,000 combined spend/month.)"
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Scapia Rewards (converted 1:1 to Scapia Coins)
+  base:
+    rate: 5
+    per_inr: 100
+    unit_value_inr: 0.2
+    unit_value_inr_realized: 0.2
+  accelerated:
+  - category: scapia-app-bookings
+    multiplier: 4
+    effective_rate: 20
+    effective_per_inr: 100
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - scapia-app
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - scapia-app
+    notes: 20 Rewards per INR100 on travel purchases on the Scapia app; 1 Reward converts to 1 Scapia Coin. 5 coins
+      redeem for INR1, so real value is about 4% of spend.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - utilities
+  - education
+  - government
+  - gift-cards
+  - international
+  - crypto
+  - financial-institutions
+  mcc_exclusions:
+  - '4812'
+  - '4814'
+  - '4816'
+  - '4900'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '6011'
+  - '6012'
+  - '6051'
+  - '6300'
+  - '6513'
+  - '6540'
+  - '7311'
+  - '7372'
+  - '7392'
+  - '7399'
+  - '7538'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  redemption:
+  - type: voucher
+    program: Scapia app
+    rate_inr_per_unit: 0.2
+    fee_inr: 0
+    constraints: Rewards convert to Scapia Coins at 1:1 on statement date. 5 Scapia Coins = INR1; use on Scapia
+      app bookings/services. Coins valid 36 months; may be forfeited after 365 days of card inactivity or account
+      closure.
+  source:
+    url: https://www.federal.bank.in/documents/d/guest/cardholder_agreement-v11-30_04_26
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/federal/scapia/cardholder-agreement-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Cardholder Agreement v11, last updated 2026-06-01, supplies reward rates, excluded MCCs, 1:1 conversion
+      and coin value/expiry.
+  capping_rules:
+  - 'No overall rewards cap established in current terms. The record cannot encode separate Visa and RuPay base
+    rates/minimum transactions: Visa earns 10 Rewards per INR100 on eligible transactions of INR20+, RuPay earns
+    5 Rewards per INR100 on eligible transactions of INR500+. Scapia-app travel earns 20 Rewards per INR100. Utility/telecom/cable
+    rewards are excluded; high-spend transaction convenience fees are described in notes. Government-service MCC
+    exclusion is a range (9099-9999) and cannot be enumerated exactly in mcc_exclusions.'
+  notes: 'Current terms vary by network variant: Visa earns 10 Rewards per INR100 on eligible purchases of INR20+;
+    RuPay earns 5 Rewards per INR100 on eligible purchases of INR500 or more. The product record cannot encode network-specific
+    base rates and minimum transaction thresholds; the structured base is the conservative RuPay rate and the Visa
+    rate is documented here. Scapia-app travel bookings earn 20 Rewards per INR100. Rewards convert 1:1 to Scapia
+    Coins, worth INR0.20 each (5 coins=INR1), so 10/20 Rewards per INR100 represent about 2%/4% value. Ineligible
+    categories and published MCCs are listed; the agreement also excludes business services and government-service
+    MCCs 9099-9999. Utility, telecom and cable spend over INR50,000 per billing cycle may incur a 1% convenience
+    fee. Fuel spend over INR50,000 per cycle may incur a 1% convenience fee.'
 benefits:
-  - effective_from: 2023-04-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-        spend_threshold_inr: 10000
-        spend_threshold_cycle: monthly
-        notes: "Lounge access unlocked on ₹10k monthly spend."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 500
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
       cycle: monthly
-    concierge: false
-    source:
-      url: https://www.scapia.cards
-      retrieved_on: 2026-07-03
-
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      notes: Spend INR20,000 on Scapia Federal card(s) in the billing cycle to unlock unlimited access, retained
+        with monthly activity. Terms conflict on whether spends across Visa/RuPay variants can be combined; lounge
+        entry is via Scapia app QR and cardholder only.
+  fuel_surcharge_waiver:
+    pct: 1
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 500
+    cycle: monthly
+    notes: Current MITC gives a 1% surcharge waiver for transactions up to INR5,000, maximum waiver INR500/month;
+      no lower transaction threshold specified. Fuel spend above INR50,000/month attracts a separate 1% convenience
+      fee plus GST.
+  concierge: false
+  source:
+    url: https://www.federal.bank.in/documents/d/guest/cardholder_agreement-v11-30_04_26
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/federal/scapia/cardholder-agreement-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+    notes: Current terms specify unlimited domestic lounge with INR20,000 monthly spend and monthly activity, cardholder-only
+      QR entry, zero forex and travel EMI; MITC v11 specifies fuel waiver. Product page also advertises dining/shopping/spa
+      airport privileges.
+  other:
+  - name: Airport privileges
+    description: Federal Bank product page advertises complimentary dining, shopping or spa privileges with the
+      monthly INR20,000 airport-access spend condition; availability and options are surfaced in the Scapia app.
+  - name: Travel booking EMI
+    description: No-cost EMI is available on eligible Scapia app flight/hotel bookings at a 3-month tenure or as
+      otherwise set by the bank/Scapia; bank interest is credited back, while processing fee may apply.
 eligibility:
-  min_age: 18
-  max_age: 60
+  min_age: 21
+  max_age: 65
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Application via Scapia mobile app; issued by Federal Bank."
-
+  notes: Federal Bank product page specifies primary applicant age 21-65 for salaried applicants and 25-65 for self-employed
+    applicants; the schema stores only broad 21-65 range. Applicant must be a resident Indian citizen. Income and
+    bureau-score cutoffs remain unpublished; other bank underwriting rules apply.
+  source:
+    url: https://www.federal.bank.in/scapia
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.scapia.cards
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [lifetime-free, co-branded, fintech, travel, zero-forex]
+  last_verified_on: '2026-10-26'
+  tags:
+  - lifetime-free
+  - co-branded
+  - fintech
+  - travel
+  - zero-forex

@@ -1,0 +1,93 @@
+id: dbs-superx
+name: DBS SuperX Credit Card
+image_path: /cards/dbs/superx.webp
+issuer: dbs
+network: null
+network_tier: null
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: '2026-04-01'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 1499
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.dbs.bank.in/in/credit-cards/credit-card-consolidated-mitc.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/dbs/superx/consolidated-mitc-retrieved-2026-10-27.pdf
+    - docs/sources/dbs/superx/schedule-of-charges-retrieved-2026-10-27.pdf
+    notes: Current DBS fee schedule marks joining fee NA, annual fee INR1,499 + GST and no waiver. DBS consolidated MITC and April 2026 Schedule of Charges set forex markup at 3.5%, cash advance at 2.5% or INR500 minimum, and SuperX finance at 3.5%-4% monthly (42%-48% APR) depending on cardholder factors. Exact assigned APR varies by account. Fee start date is not stated; effective_from tracks the April 2026 schedule snapshot.
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].fee_waiver
+    - fees[0].forex_markup_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+rewards:
+- effective_from: '2026-04-01'
+  effective_until: null
+  currency: points
+  currency_name: null
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: DBS lists SuperX for the DBS Delights rewards redemption fee but publishes no SuperX-specific earn rate, accelerator, exclusions or point value in reviewed public terms.
+  accelerated: []
+  exclusions: []
+  mcc_exclusions: []
+  redemption:
+  - type: catalog
+    program: DBS Delights
+    rate_inr_per_unit: null
+  source:
+    url: https://www.dbs.bank.in/in/credit-cards/credit-card-consolidated-mitc.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: medium
+    notes: SuperX appears in the shared rewards-redemption fee schedule and is listed as eligible for DBS Delights, but no public product-specific reward earn, reward currency nomenclature, exclusions, expiry, redemption ratio or value was found. Do not infer old SuperCard earn terms. Exact reward terms are unpublished in reviewed public issuer sources.
+benefits:
+- effective_from: '2026-04-01'
+  effective_until: null
+  concierge: null
+  other: []
+  source:
+    url: https://www.dbs.bank.in/in/credit-cards/credit-card-consolidated-mitc.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: medium
+    notes: DBS SuperX is included in its charge documents but public card-specific welcome, lounge, movie, fuel-waiver, insurance, concierge and milestone terms were not found. Prior record claims are unsupported for SuperX and have been removed.
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: No public SuperX-specific applicant age, income, score or residency criteria were found in DBS sources reviewed. Issuance criteria are unpublished in these sources.
+application:
+  apply_url: null
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - dbs
+  - superx
+  - replacement-card
+  - rewards-unpublished

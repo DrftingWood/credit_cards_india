@@ -1,16 +1,8 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-mmt
 name: MakeMyTrip ICICI Bank Credit Card
+image_path: /cards/icici/mmt.webp
 issuer: icici
-network: rupay
+network: null
 network_tier: null
 tier: mid
 card_type: credit
@@ -19,135 +11,248 @@ co_brand:
   category: travel-agency
   partner_website: https://www.makemytrip.com
 status: active
-launched_on: null
+launched_on: '2024-10-03'
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 999
-    annual_fee_inr: 999
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-      conditions: "Spend over ₹3 lakh in a year to get next year's annual fee waived."
-    forex_markup_pct: 0.99
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Late payment fee ranges from ₹100 to ₹1300. Cash advance 2.5% (min ₹500) and finance charge 3.75%/mo per ICICI MITC."
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 999
+  annual_fee_inr: 999
+  fee_waiver:
+    spend_inr: 300000
+    cycle: annual
+    conditions: Primary cardholder gets the next year's annual fee reversed from year two onward after at least
+      INR300,000 total card spend in the previous anniversary year; EMI transactions do not count.
+  forex_markup_pct: 0.99
+  finance_charge_monthly_pct: 3.75
+  gst_applicable: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/mmt/mmt-icici-terms-retrieved-2026-10-27.pdf
+    - docs/sources/icici/mmt/mitc-cc-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    notes: 2026-10-27 is the verification snapshot date, not an issuer-published effective date. Late-payment charges
+      are INR100-INR1,300. The card-specific terms say the annual waiver excludes EMI transactions. The current MMT
+      partner page advertises zero forex markup effective 2026-11-10; ICICI's live page still says 0.99%, so the
+      upcoming partner-page change is documented for recheck and is not applied before its stated date. Current
+      readable MITC text does not establish the cash-advance transaction fee/minimum, so it is omitted.
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: cashback
-    currency_name: myCash
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-    accelerated:
-      - category: makemytrip-hotel-booking
-        canonical_categories: [travel]
-        multiplier: 6
-        effective_rate: 6
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [mmt]
-        channel:
-          class: third-party-ota
-          merchants: [mmt]
-        notes: "6% myCash (6 points per ₹100) on hotel bookings via MakeMyTrip."
-      - category: makemytrip-flight-bus-cab
-        canonical_categories: [travel]
-        multiplier: 3
-        effective_rate: 3
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [mmt]
-        channel:
-          class: third-party-ota
-          merchants: [mmt]
-        notes: "3% myCash (3 points per ₹100) on flight, bus and cab spends via MakeMyTrip."
-    exclusions:
-      - rent
-      - emi
-    redemption:
-      - type: cashback-bank
-        program: MakeMyTrip myCash
-        rate_inr_per_unit: 1.0
-        constraints: "Reward points credited to MakeMyTrip account as myCash; redeemable on MakeMyTrip for flight / hotel / holiday bookings. myCash never expires."
-    notes: "Base 1% on other retail (excl rent & EMI). Insurance spends earn 1% capped at 1,000 myCash/anniversary year. Train bookings earn 25 myCash each."
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - 'No per-cycle cap on MakeMyTrip My Cash documented in the ICICI-hosted Signature card T&C (retrieved 2026-07-05); only exclusions + rounding stated (confidence: medium).'
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: myCash
+  redemption_scope: closed-loop
+  ecosystem_label: MakeMyTrip
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: makemytrip-hotel-bookings
+    canonical_categories:
+    - travel
+    multiplier: 6
+    effective_rate: 6
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - mmt
+    channel:
+      class: third-party-ota
+      merchants:
+      - mmt
+    notes: 6 myCash per INR100 on eligible hotel bookings made on MakeMyTrip. No cap is stated in current card T&Cs.
+  - category: makemytrip-flights-holidays-cabs-buses
+    canonical_categories:
+    - travel
+    multiplier: 3
+    effective_rate: 3
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - mmt
+    channel:
+      class: third-party-ota
+      merchants:
+      - mmt
+    notes: 3 myCash per INR100 on eligible MakeMyTrip flight, holiday, cab and bus bookings. No cap is stated in
+      current card T&Cs.
+  - category: insurance-spend
+    canonical_categories:
+    - insurance
+    multiplier: 1
+    effective_rate: 1
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: annual
+    notes: 1 myCash per INR100 of insurance spend, capped at 1,000 myCash per anniversary year.
+  exclusions:
+  - rent
+  - emi
+  - cash-advance
+  capping_rules:
+  - 'Train bookings on MakeMyTrip earn a fixed 25 myCash per booking; this transaction-based amount is not representable
+    in the per-INR accelerator fields.'
+  - 'From 2026-11-10, card-specific T&Cs state no myCash on international spends and a 24-month validity period
+    for new myCash credits; myCash credited before that date remains non-expiring. These future terms are recorded
+    here as an upcoming change, not current terms on the 2026-10-27 snapshot.'
+  redemption:
+  - type: other
+    program: MakeMyTrip myCash
+    rate_inr_per_unit: 1.0
+    constraints: INR1 per myCash is spendable only on the personal MakeMyTrip account for eligible bookings and
+      partner vouchers; it cannot be encashed or transferred to a bank account. Eligible booking types include
+      flights, hotels, holidays, trains, buses, cabs and visas. It cannot buy gift cards or foreign currency, and
+      cannot be used on myPartner or myBiz. Up to 100% of an eligible booking can be paid with myCash. As of
+      2026-10-27, credited myCash does not expire; card-specific terms announce 24-month expiry for credits on
+      or after 2026-11-10, while credits before that date remain non-expiring.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/mmt/mmt-icici-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.currency
+    - rewards.currency_name
+    - rewards.redemption_scope
+    - rewards.ecosystem_label
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.0.effective_rate
+    - rewards.accelerated.1.effective_rate
+    - rewards.accelerated.2.effective_rate
+    - rewards.accelerated.2.cap_per_cycle
+    - rewards.redemption.0.rate_inr_per_unit
+    notes: >-
+      Current reward terms are effective as of the 2026-10-27 verification snapshot. The card-specific T&C
+      announces the 2026-11-10 change: no rewards for international spends, new myCash expires 24 months after
+      credit, and pre-change credits remain non-expiring. The MMT partner page also says zero forex markup from
+      2026-11-10, but ICICI's current product page continues to display 0.99%; verify the realized fee on/after
+      that date. Current T&C says earn is rounded down to the nearest integer and reversed retail transactions
+      earn nothing.
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-      international:
-        visits_per_cycle: 1
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "MakeMyTrip voucher worth ₹1,000 (valid 12 months)"
-        value_inr: 1000
-        window_days: 365
-      - condition: "Annual fee paid"
-        benefit: "MakeMyTrip hotel voucher worth ₹1,000 (valid for 3 months)"
-        value_inr: 1000
-        window_days: 90
-    movies:
-      type: discount
-      partner: INOX / BookMyShow
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 150
-      notes: "25% off up to ₹150 on 2 movie tickets per month via INOX & BookMyShow."
-    dining:
-      program: Culinary Treats
-      discount_pct: null
-    concierge: true
-    other:
-      - name: MMTBLACK Gold membership
-        description: "Complimentary 1-year MMTBLACK Gold membership (excludes myCash benefit of MMTBLACK)."
-      - name: No-cost EMI on MakeMyTrip
-        description: "3 months' no-cost EMI on MakeMyTrip bookings."
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      via:
+      - mastercard
+      - rupay
+      notes: Primary cardholder only; requires at least INR75,000 spend in the preceding calendar quarter for access
+        in the next quarter. Add-on cardholders are not eligible for complimentary access.
+    international:
+      visits_per_cycle: 1
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: One complimentary visit per calendar year for the primary cardholder only; add-on cardholders are not
+        eligible.
+  welcome:
+  - condition: Primary cardholder; joining fee paid.
+    benefit: MakeMyTrip voucher worth INR1,000, valid for 12 months from issuance; applicable on eligible MMT flight,
+      hotel, holiday, bus and cab bookings.
+    value_inr: 1000
+    window_days: null
+  - condition: Primary cardholder; annual fee paid.
+    benefit: MakeMyTrip hotel voucher worth INR1,000, valid for 3 months from issuance; hotel and homestay bookings
+      only.
+    value_inr: 1000
+    window_days: null
+  movies:
+    type: discount
+    partner: BookMyShow
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 150
+    notes: Buy one ticket and get 25% off up to INR150 on the second ticket, once per month on each network variant
+      (Mastercard and RuPay); minimum two tickets. The two variant offers are shared with add-on cards. Current
+      product FAQ and BookMyShow terms say INR25,000 or more prior-quarter spend; the linked card-specific PDF says
+      over INR25,000, so the exact threshold boundary is unresolved.
+  other:
+  - name: MMTBLACK Gold membership
+    description: Primary cardholder receives 12 months of complimentary MMTBLACK Gold membership on card activation;
+      the MMTBLACK myCash benefit is excluded. Continued membership depends on MMTBLACK programme eligibility.
+  - name: Three-month no-cost EMI on MakeMyTrip transactions
+    description: Issuer advertises 3-month no-cost EMI on eligible MakeMyTrip transactions; transaction and EMI terms
+      apply. EMI transactions are excluded from card reward earn and annual fee waiver spend.
+  - name: Culinary Treats dining programme
+    description: Access to ICICI Bank Culinary Treats dining offers; discount depends on participating outlet and
+      current offer terms.
+  - name: INOX movie discount
+    description: Current ICICI product page advertises 25% off up to INR150 on INOX movie tickets twice monthly.
+      The linked card-specific T&C gives detailed frequency and prior-quarter spend terms for BookMyShow but does
+      not clarify whether INOX shares the BookMyShow offer quota.
+  - name: RuPay concierge service
+    description: Current product page advertises 24x7 concierge assistance for the RuPay variant.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/mmt/mmt-icici-terms-retrieved-2026-10-27.pdf
+    - docs/sources/icici/mmt/mitc-cc-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome.0.value_inr
+    - benefits.welcome.1.value_inr
+    - benefits.movies.max_per_cycle
+    - benefits.movies.cap_inr
+    notes: Current product page and card T&C support dual Mastercard/RuPay issuance. Product page lists domestic lounge
+      access as quarterly and FAQ supplies the INR75,000 previous-quarter spend threshold; card-specific T&C confirms
+      two domestic visits per quarter, one international visit per calendar year, primary cardholder only, and no
+      add-on access. Dining discount is not assigned a numeric value because no stable amount is published.
 eligibility:
   min_age: 21
   max_age: null
   income_inr_annual:
     salaried: 240000
     self_employed: 240000
-  credit_score_min: 720
+  credit_score_min: null
   residency: resident-indian
-  notes: "Salaried: monthly income of ₹20,000. Self-employed: annual income of at least ₹2,40,000."
-
+  notes: Current page says Indian citizen over 21, salaried monthly income INR20,000 and self-employed annual income
+    at least INR240,000. The salaried amount is annualized from the issuer's monthly figure; maximum age and credit
+    score cutoff are not published on the current card page.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/makemytrip-icici-bank-credit-card
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [co-branded, travel, mmt, cashback, forex-friendly]
+  last_verified_on: '2026-10-27'
+  tags:
+  - co-branded
+  - travel
+  - mmt
+  - closed-loop-rewards
+  - forex-friendly

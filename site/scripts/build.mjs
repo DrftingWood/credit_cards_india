@@ -123,7 +123,7 @@ function hasMeaningfulLounge(lounge) {
 
 function enrichCard(card, issuers, networks, programsById) {
   const issuer = issuers[card.issuer] ?? null;
-  const network = networks[card.network] ?? null;
+  const network = card.network ? networks[card.network] ?? null : null;
   const currentFees = openRecord(card.fees);
   const currentRewards = openRecord(card.rewards);
   const currentBenefits = openRecord(card.benefits);

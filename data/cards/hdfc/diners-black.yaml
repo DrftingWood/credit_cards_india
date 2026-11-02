@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-diners-black
 name: HDFC Bank Diners Club Black Metal Edition Credit Card
+image_path: /cards/hdfc/diners-black.webp
 issuer: hdfc
 network: diners
 network_tier: black
@@ -16,425 +8,561 @@ tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2014-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2014-01-01
-    effective_until: null
-    joining_fee_inr: 10000
-    annual_fee_inr: 10000
-    fee_waiver:
-      spend_inr: 800000
-      cycle: annual
-      conditions: "Renewal fee waived on spends of ₹8L in the preceding 12 months."
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 1.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2014-01-01
+  effective_until: null
+  joining_fee_inr: 10000
+  annual_fee_inr: 10000
+  fee_waiver:
+    spend_inr: 800000
+    cycle: annual
+    conditions: Renewal fee waived on spends of ₹8L in the preceding 12 months.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 1.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card/fees-and-charges
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current charges were checked 27-Oct-2026. The 2014-01-01 effective_from date is inherited from the legacy record and is not confirmed by current issuer evidence.
 rewards:
-  - effective_from: 2014-01-01
-    effective_until: 2026-06-30
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 5
-      per_inr: 150
-      unit_value_inr: 1.1
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: smartbuy-flights-hotels
-        canonical_categories: [travel]
-        multiplier: 10
-        cap_per_cycle: 7500
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [smartbuy]
-      - category: weekend-dining
-        canonical_categories: [dining]
-        multiplier: 2
-        effective_rate: 10
-        cap_unit: points
-        mcc_list: ["5812", "5813", "5814"]
-        notes: "2X weekend dining capped 2,000 pts/month (1,000/day)."
-        cap_per_cycle: 2000
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: catalog
-        program: SmartBuy
-        rate_inr_per_unit: 1.0
-      - type: airmiles
-        program: Multiple (Airmiles hub)
-        ratio: "1:1"
-        constraints: "22 transfer partners; ratios are card-point : partner-unit. realized Rs 1.00 = guaranteed non-transfer floor; best documented transfer Rs 1.10. 3 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.10/pt
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.05/pt
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.90/pt
-          - partner_name: Vietnam LotusMiles
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.80/pt [below floor — avoid]
-          - partner_name: SpiceJet SpiceClub
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: AirAsia Rewards
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.22/pt [below floor — avoid]
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Radisson Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.16/pt [below floor — avoid]
-          - partner_name: Wyndham Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: Etihad Guest
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Thai Royal Orchid Plus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: United MileagePlus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Avianca LifeMiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Turkish Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.55/pt [below floor — avoid]
-          - partner_name: Accor ALL
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
-        min_units: 100
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05."
-  - effective_from: 2026-07-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 5
-      per_inr: 150
-      unit_value_inr: 1.1
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: smartbuy-hotels
-        canonical_categories: [travel]
-        multiplier: 10
-        cap_per_cycle: 7500
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [smartbuy]
-        notes: 10X reward points on HOTEL bookings via HDFC SmartBuy (booked via SmartBuy only). Shares the overall 7,500 RP/calendar-month SmartBuy cap with flights; a 3,000 RP/month brand-voucher (Gyftr/Woohoo) sub-cap sits inside it (effective 2026-07-01).
-      - category: smartbuy-flights
-        canonical_categories: [travel]
-        multiplier: 5
-        cap_per_cycle: 7500
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants: [smartbuy]
-        notes: 5X reward points on FLIGHT bookings via HDFC SmartBuy — reduced from 10X effective 2026-07-01 (hotels remain 10X). Booked via SmartBuy only; shares the overall 7,500 RP/calendar-month cap with hotels.
-      - category: weekend-dining
-        canonical_categories: [dining]
-        multiplier: 2
-        effective_rate: 10
-        cap_unit: points
-        mcc_list: ["5812", "5813", "5814"]
-        notes: "2X weekend dining capped 2,000 pts/month (1,000/day)."
-        cap_per_cycle: 2000
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: catalog
-        program: SmartBuy
-        rate_inr_per_unit: 1.0
-      - type: airmiles
-        program: Multiple (Airmiles hub)
-        ratio: "1:1"
-        constraints: "22 transfer partners; ratios are card-point : partner-unit. realized Rs 1.00 = guaranteed non-transfer floor; best documented transfer Rs 1.10. 3 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.10/pt
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.05/pt
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.90/pt
-          - partner_name: Vietnam LotusMiles
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.80/pt [below floor — avoid]
-          - partner_name: SpiceJet SpiceClub
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: AirAsia Rewards
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.22/pt [below floor — avoid]
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Radisson Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.16/pt [below floor — avoid]
-          - partner_name: Wyndham Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: Etihad Guest
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Thai Royal Orchid Plus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.30/pt [below floor — avoid]
-          - partner_name: United MileagePlus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Avianca LifeMiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
-          - partner_name: Turkish Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.55/pt [below floor — avoid]
-          - partner_name: Accor ALL
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
-        min_units: 100
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      notes: "SmartBuy flights 10X->5X + 3,000 RP brand-voucher sub-cap confirmed vs HDFC's live SmartBuy T&C (offers.smartbuy.hdfcbank.com offer 15282, effective 2026-07-01); hotels 10X and the 7,500 RP/month overall cap unchanged."
+- effective_from: 2014-01-01
+  effective_until: 2026-06-30
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: 1.1
+    unit_value_inr_realized: 1.0
+  accelerated:
+  - category: smartbuy-flights-hotels
+    canonical_categories:
+    - travel
+    multiplier: 10
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - smartbuy
+  - category: weekend-dining
+    canonical_categories:
+    - dining
+    multiplier: 2
+    effective_rate: 10
+    cap_unit: points
+    mcc_list:
+    - '5812'
+    - '5813'
+    - '5814'
+    notes: 2X weekend dining capped 2,000 pts/month (1,000/day).
+    cap_per_cycle: 2000
+    cycle: monthly
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - emi
+  redemption:
+  - type: catalog
+    program: SmartBuy
+    rate_inr_per_unit: 1.0
+  - type: airmiles
+    program: Multiple (Airmiles hub)
+    ratio: '1:1'
+    constraints: '22 transfer partners; ratios are card-point : partner-unit. realized Rs 1.00 = guaranteed non-transfer
+      floor; best documented transfer Rs 1.10. 3 partners beat the floor. Full per-partner values below.'
+    transfer_partners:
+    - partner_name: Singapore KrisFlyer
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 1.10/pt
+    - partner_name: Finnair Plus (Avios)
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 1.05/pt
+    - partner_name: Air France-KLM Flying Blue
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 0.90/pt
+    - partner_name: Vietnam LotusMiles
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 0.80/pt [below floor — avoid]
+    - partner_name: SpiceJet SpiceClub
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 0.30/pt [below floor — avoid]
+    - partner_name: AirAsia Rewards
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 0.22/pt [below floor — avoid]
+    - partner_name: IHG One Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
+    - partner_name: Radisson Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 0.16/pt [below floor — avoid]
+    - partner_name: Wyndham Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: 1:1 -> ~Rs 0.50/pt [below floor — avoid]
+    - partner_name: Air Canada Aeroplan
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+    - partner_name: Air India Maharaja Club
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
+    - partner_name: British Airways Avios
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+    - partner_name: Cathay Asia Miles
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
+    - partner_name: Etihad Guest
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+    - partner_name: Qatar Privilege Club (Avios)
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+    - partner_name: Thai Royal Orchid Plus
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.30/pt [below floor — avoid]
+    - partner_name: United MileagePlus
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+    - partner_name: Avianca LifeMiles
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.45/pt [below floor — avoid]
+    - partner_name: Turkish Miles&Smiles
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.55/pt [below floor — avoid]
+    - partner_name: Accor ALL
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.47/pt [below floor — avoid]
+    - partner_name: ITC Hotels (Club ITC)
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.50/pt [below floor — avoid]
+    - partner_name: Marriott Bonvoy
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: 2:1 -> ~Rs 0.28/pt [below floor — avoid]
+    min_units: 100
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
+    retrieved_on: '2026-07-05'
+    type: issuer-page
+    notes: Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05.
+- effective_from: 2026-07-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    excluded_categories:
+    - groceries
+    - utilities
+    - telecom
+  accelerated:
+  - category: grocery-utility-telecom
+    canonical_categories:
+    - groceries
+    - utilities
+    - telecom
+    multiplier: 1
+    cap_per_cycle: 2000
+    cap_unit: points
+    cap_group: grocery-utility-telecom
+    cycle: monthly
+    notes: Earn the base rate, with a shared 2,000-point monthly cap across grocery, utility and telecom spends.
+  - category: smartbuy-hotels
+    canonical_categories:
+    - travel
+    multiplier: 10
+    cap_per_cycle: 7500
+    cap_unit: points
+    cap_group: smartbuy-monthly
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - smartbuy
+    notes: 10X reward points on HOTEL bookings via HDFC SmartBuy (booked via SmartBuy only). Shares the overall
+      7,500 RP/calendar-month SmartBuy cap with flights; a 3,000 RP/month brand-voucher (Gyftr/Woohoo) sub-cap sits
+      inside it (effective 2026-07-01).
+  - category: smartbuy-flights
+    canonical_categories:
+    - travel
+    multiplier: 5
+    cap_per_cycle: 7500
+    cap_unit: points
+    cap_group: smartbuy-monthly
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - smartbuy
+    notes: 5X reward points on FLIGHT bookings via HDFC SmartBuy — reduced from 10X effective 2026-07-01 (hotels
+      remain 10X). Booked via SmartBuy only; shares the overall 7,500 RP/calendar-month cap with hotels.
+  - category: weekend-dining
+    canonical_categories:
+    - dining
+    multiplier: 2
+    effective_rate: 10
+    cap_unit: points
+    mcc_list:
+    - '5812'
+    - '5813'
+    - '5814'
+    notes: 2X total (10 points per INR 150) at standalone restaurants on Saturdays and Sundays; minimum transaction INR 150, direct card payment required. Current 1-Jun-2026 terms state no numerical reward cap; calculator cannot filter by day or merchant.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - emi
+  category_caps:
+  - category: insurance
+    mcc_list:
+    - '1411'
+    - '1235'
+    - '5960'
+    - '6300'
+    - '6381'
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: monthly
+    conditions: Insurance transactions accrue Reward Points up to 5,000 per month for Diners Black Metal Edition under HDFC MITC effective 1 July 2025.
+  reward_cap:
+    max_units: 75000
+    cap_unit: points
+    cycle: statement
+  capping_rules:
+  - Grocery, utility and telecom rewards share a combined 2,000-point monthly cap; the calculator applies this conservatively as one shared cap.
+  - Weekend dining earns 2X total (10 points per INR 150) on Saturday/Sunday at standalone restaurants MCC 5812, 5813 or 5814, with an INR 150 minimum and direct card payment. Current card-specific terms dated 1-Jun-2026 state no numerical reward cap; the previous record carried daily/monthly caps that are not stated in these current terms. Calculator cannot filter by day and merchant.
+  - Insurance transactions earn points up to 5,000 per month for this card, effective 1-Jul-2025. The current MITC and issuer SMS notice identify MCCs 1411, 1235, 5960, 6300 and 6381; the monthly cap replaces the older daily cap.
+  - Reward points expire three years after accumulation. SmartBuy flight/hotel redemption is capped at 75,000 points/month and at 70% of booking value. Products/vouchers redeem at up to 0.50 per point and cashback at 0.30 per point.
+  redemption:
+  - type: catalog
+    program: SmartBuy
+    rate_inr_per_unit: 1.0
+  - type: airmiles
+    program: Multiple (Airmiles hub)
+    ratio: '1:1'
+    constraints: HDFC states up to 1 air mile per reward point; transfer value depends on partner award pricing and availability and is not a guaranteed INR value.
+    transfer_partners:
+    - partner_name: Singapore KrisFlyer
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Finnair Plus (Avios)
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Air France-KLM Flying Blue
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Vietnam LotusMiles
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: SpiceJet SpiceClub
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: AirAsia Rewards
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: IHG One Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Radisson Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Wyndham Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Air Canada Aeroplan
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Air India Maharaja Club
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: British Airways Avios
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Cathay Asia Miles
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Etihad Guest
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Qatar Privilege Club (Avios)
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Thai Royal Orchid Plus
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: United MileagePlus
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Avianca LifeMiles
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Turkish Miles&Smiles
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Accor ALL
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: ITC Hotels (Club ITC)
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    - partner_name: Marriott Bonvoy
+      partner_type: hotel
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-07-05'
+      notes: Illustrative transfer value varies with partner award pricing and is not guaranteed; compare current redemption terms before transferring.
+    min_units: 100
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/diners-black/diners-club-metal-tandc.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.cap_per_cycle
+    - rewards.category_caps.cap_per_cycle
+    - rewards.reward_cap.max_units
+    - rewards.redemption.rate_inr_per_unit
+    notes: Current issuer page and 1-Jun-2026 card terms support SmartBuy earn, weekend dining, quarterly milestone and redemption terms. MITC v4.15 and issuer SMS notice support the 5,000-point monthly insurance cap and 75,000-point statement-cycle ceiling. The shared SmartBuy/brand-voucher caps are recorded from archived card terms; partner-specific ratios and values were last reviewed 5-Jul-2026 and are not reverified in this review.
 benefits:
-  - effective_from: 2024-04-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass, issuer-direct]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 6
-      cycle: quarterly
-      lessons_per_cycle: 0
-    milestones:
-      - spend_inr: 400000
-        cycle: quarterly
-        benefit: "10,000 bonus Reward Points"
-        value_inr: 10000
-        reward_kind: points
-        reward_units: 10000
-    welcome:
-      - condition: "₹1.5 lakh spend within first 90 days"
-        benefit: "Complimentary annual memberships of Club Marriott, Amazon Prime and Swiggy One"
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 20000000
-      - type: travel-medical
-        sum_insured_inr: 5000000
-      - type: credit-shield
-        sum_insured_inr: 900000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 1000
-      cycle: statement
-    concierge: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2024-04-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      - issuer-direct
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  golf:
+    rounds_per_cycle: 6
+    cycle: quarterly
+    lessons_per_cycle: 0
+  milestones:
+  - spend_inr: 400000
+    cycle: quarterly
+    benefit: 10,000 bonus Reward Points
+    value_inr: 10000
+    reward_kind: points
+    reward_units: 10000
+  welcome:
+  - condition: Spend ₹1.5 lakh within first 90 days from issuance; memberships are unlocked after the qualifying spend and voucher download is time limited.
+    benefit: Complimentary Club Marriott and Amazon Prime memberships plus Swiggy One (3 months)
+    window_days: 90
+    value_inr: null
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 20000000
+    sum_insured_amount: 250000
+    sum_insured_currency: USD
+    conditions: Primary cardholder only; air tickets must be purchased using the Diners card; death from bodily injury due to an air accident must occur within 12 months. Policy 2999204800579204000, valid 23-Jul-2026 to 22-Jul-2027.
+  - type: travel-medical
+    sum_insured_inr: 5000000
+    sum_insured_amount: 62500
+    sum_insured_currency: USD
+    conditions: Primary cardholder only; sudden illness or bodily injury during international travel outside India; pre-existing illness excluded. Policy 2999204800579204000, valid 23-Jul-2026 to 22-Jul-2027.
+  - type: lost-card-liability
+    sum_insured_inr: 900000
+    conditions: Primary cardholder; liability cover is INR 900,000 for the 2 days before card block and 30 days after block, subject to policy terms.
+  - type: other
+    sum_insured_inr: 55000
+    sum_insured_amount: 688
+    sum_insured_currency: USD
+    conditions: Primary cardholder only; international flight baggage delay beyond 8 hours; maximum payment USD 10 per hour. International travel originating in India, Diners-card ticket purchase, trip duration up to 30 days; current policy valid 23-Jul-2026 to 22-Jul-2027.
+  - type: credit-shield
+    sum_insured_inr: 900000
+    conditions: Credit Shield of up to INR 900,000 for the primary cardholder under policy valid 23-Jul-2026 to 22-Jul-2027.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 688
+    sum_insured_currency: USD
+    conditions: Loss of personal documents during international travel; actual duplicate-document expenses, per-article sublimit 10%, under policy valid 23-Jul-2026 to 22-Jul-2027.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 688
+    sum_insured_currency: USD
+    conditions: International-flight hijacking cover of USD 75 per 6 hours after a 12-hour deductible; primary cardholder, policy valid 23-Jul-2026 to 22-Jul-2027.
+  fuel_surcharge_waiver: null
+  concierge: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/diners-black/insurance.pdf
+    - docs/sources/hdfc/diners-black/lounge-tnc.pdf
+    - docs/sources/hdfc/diners-black/diners-club-metal-tandc.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.guests_per_visit
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.lounge_access.international.guests_per_visit
+    - benefits.golf.rounds_per_cycle
+    - benefits.milestones.spend_inr
+    - benefits.milestones.reward_units
+    - benefits.welcome.window_days
+    - benefits.insurance
+    notes: Current issuer page confirms lounge access for primary and add-on members, six golf rounds per quarter and insurance headline amounts. Current insurer policy 2999204800579204000 is effective 23-Jul-2026 to 22-Jul-2027 and limits listed cover to the primary cardholder. June-2026 card terms support welcome, milestone and dining details. MITC v4.15 lists fuel surcharge waiver as Not Applicable for Diners Black Metal Edition. Lounge and golf terms impose additional booking/guest conditions.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 65
   income_inr_annual:
-    salaried: 3000000
-    self_employed: 3000000
-  credit_score_min: 780
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Net monthly income > ₹2.5 lakh (salaried); net income > ₹30 lakh p.a. (self-employed, per ITR)."
-
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  notes: Issuer states net monthly income above ₹2.5 lakh for salaried applicants and net annual income above ₹30 lakh (per ITR) for self-employed applicants; these are not annualized into the annual-income fields.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card/eligibility
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [metal, diners, travel, super-premium, points]
+  last_verified_on: 2026-10-27
+  tags:
+  - metal
+  - diners
+  - travel
+  - super-premium
+  - points

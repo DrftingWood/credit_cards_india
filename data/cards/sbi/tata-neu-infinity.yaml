@@ -1,16 +1,8 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: sbi-tata-neu-infinity
 name: Tata Neu Infinity SBI Card
+image_path: /cards/sbi/tata-neu-infinity.webp
 issuer: sbi
-network: rupay
+network: null
 network_tier: null
 tier: premium
 card_type: credit
@@ -19,133 +11,177 @@ co_brand:
   category: conglomerate
   partner_website: https://www.tataneu.com
 status: active
-launched_on: null
+launched_on: 2025-04-16
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 1499
-    annual_fee_inr: 1499
-    renewal_fee_inr: 1499
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-      conditions: "Annual/renewal fee reversed on net retail spends of Rs. 3 lakh in the preceding 365 days."
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null
-    gst_applicable: true
-    supplementary_card_fee_inr: 0
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-07-03
+  effective_until: null
+  joining_fee_inr: 1499
+  annual_fee_inr: 1499
+  renewal_fee_inr: 1499
+  fee_waiver:
+    spend_inr: 300000
+    cycle: annual
+    conditions: Annual/renewal fee reversed on net retail spends of Rs. 3 lakh in
+      the preceding 365 days.
+  forex_markup_pct: 1.99
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  supplementary_card_fee_inr: 0
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html
+    retrieved_on: 2026-11-01
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/sbi/_shared/mitc-english.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Issuer page and current MITC confirm INR 1,499 annual/renewal fee, reversal at INR 3 lakh net retail spend in the preceding 365 days, 1.99% forex, and common charges.
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: cashback
-    currency_name: NeuCoins
-    redemption_scope: closed-loop
-    ecosystem_label: Tata Neu
-    base:
-      rate: 1.5
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    loyalty_program: tata-neu-points
-    accelerated:
-      - category: tata-neu-and-partner-tata-brands
-        canonical_categories: [online]
-        multiplier: 1
-        effective_rate: 5
-        merchants: [tata-neu]
-        channel:
-          class: cobrand-merchant
-          merchants: [tata-neu]
-        notes: "5% NeuCoins on Tata Neu app & partner Tata brands (BigBasket/Croma/CLiQ/Air India), capped 1,500 NeuCoins/month."
-        cap_per_cycle: 1500
-        cap_unit: points
-        cycle: monthly
-      - category: tata-neu-select-categories
-        canonical_categories: [online]
-        multiplier: 1
-        effective_rate: 10
-        card_attributable_rate: 10
-        card_attributable_per_inr: 100
-        merchants: [tata-neu]
-        channel:
-          class: cobrand-merchant
-          merchants: [tata-neu]
-        notes: "10% total (5% NeuCoins capped 1,500/mo + 5% instant discount capped 500/mo) on select Tata categories. Base 1.5% (grocery/utility/telecom capped 2,000 NeuCoins/mo each; UPI 500/mo on RuPay)."
-        cap_per_cycle: 1500
-        cap_unit: points
-        cycle: monthly
-        stacks_with_program: false
-    exclusions:
-      - emi
-    capping_rules:
-      - "5% accrual applies only to non-EMI spends. NeuCoins auto-credited to NeuPass within 7 working days of the monthly statement."
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-      - type: voucher
-        program: Tata Neu App/Website and partner Tata brands
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: 'Research-verified: 1 NeuCoin = Rs1 across Tata Neu, no cash conversion. Layer-3: Croma electronics ~5% premium.'
-    mcc_exclusions: ['6513']
+- effective_from: 2026-07-03
+  effective_until: null
+  currency: cashback
+  currency_name: NeuCoins
+  redemption_scope: closed-loop
+  ecosystem_label: Tata Neu
+  base:
+    rate: 1.5
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  loyalty_program: tata-neu-points
+  accelerated:
+  - category: tata-neu-and-partner-tata-brands
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 5
+    merchants: [tata-neu]
+    channel:
+      class: cobrand-merchant
+      merchants: [tata-neu]
+    notes: 5% NeuCoins on non-EMI spends on Tata Neu app/website and participating partner Tata brands. Issuer terms do not publish a general cap for this earn stream; partner MID recognition applies.
+  - category: tata-neu-select-categories
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 10
+    card_attributable_rate: 10
+    card_attributable_per_inr: 100
+    merchants:
+    - tata-neu
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - tata-neu
+    notes: 5% partner-brand NeuCoins plus up to 5% additional NeuCoins on issuer-designated select categories through Tata Neu App/Website. The issuer booklet does not enumerate these select categories or state a combined cap; this is not a guaranteed 10% on every Tata transaction.
+    stacks_with_program: false
+  exclusions: [fuel, wallet-loads, rent, government, cash-advance, emi, education, gift-cards]
+  capping_rules:
+  - 5% partner-brand earn applies to non-EMI eligible transactions; partner MID matching applies. NeuCoins transfer to NeuPass within 7 working days of statement cycle.
+  - Additional up-to-5% Tata Neu select-category earn has no published category-specific list or combined cap in the card booklet; this is conditional issuer-page language.
+  - "Monthly NeuCoin caps: grocery 2,000; insurance 2,000; utility 2,000; telecom and cable 2,000; RuPay UPI 500. Fractional NeuCoins round down."
+  - Closed-loop redemption only. NeuCoins cannot be exchanged for cash/credit or applied to SBI card charges. Eligible redemption channels are specified Tata Neu and partner apps/stores; 1 NeuCoin = INR 1 savings.
+  redemption:
+  - type: voucher
+    program: Tata Neu App/Website and partner Tata brands
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/Tata-neu-infinty-tnc.pdf
+    retrieved_on: '2026-11-01'
+    type: issuer-pdf
+    confidence: high
+    fields_verified: [rewards.base.rate, rewards.accelerated, rewards.exclusions, rewards.mcc_exclusions, rewards.redemption, rewards.capping_rules]
+    notes: 'NeuCoins are closed-loop and redeemable only on Tata Neu and specified partner channels/stores. The current booklet forbids cash, statement-credit, and card-charge redemption; 1 NeuCoin = INR 1 savings within eligible redemption channels.'
+  mcc_exclusions:
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '6540'
+  - '6541'
+  - '6513'
+  - '9311'
+  - '9399'
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        spend_threshold_inr: 75000
-        spend_threshold_cycle: quarterly
-        notes: "8 per year (2 per quarter), each quarter's visits unlocked on Rs. 75,000 spend in the previous quarter."
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-        notes: "1 per quarter. Complimentary Priority Pass membership (worth $99); $27 + taxes per visit after complimentary visits."
-    welcome:
-      - condition: "Within 15 days of joining fee realisation"
-        benefit: "1,499 NeuCoins (1 NeuCoin = Re. 1)"
-        value_inr: 1499
-        window_days: 15
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 500
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-07-03
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: annual
+      guests_per_visit: 0
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      notes: 8 per year (2 per quarter), each quarter's visits unlocked on Rs. 75,000
+        spend in the previous quarter.
+      via:
+      - visa
+      - rupay
+    international:
+      visits_per_cycle: 4
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: 1 per quarter outside India; complimentary Priority Pass membership for two years. After complimentary visits, $27 + GST per visit; guests are chargeable.
+  welcome:
+  - condition: Within 15 days of joining fee realisation
+    benefit: 1,499 NeuCoins (1 NeuCoin = Re. 1)
+    value_inr: 1499
+    window_days: 15
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 500
+    cycle: statement
+  concierge: false
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html
+    retrieved_on: 2026-11-01
+    type: issuer-page
+    confidence: high
+    fields_verified: [benefits.lounge_access, benefits.welcome, benefits.fuel_surcharge_waiver]
+    notes: Current issuer page confirms welcome NeuCoins, 8 domestic visits conditional on INR 75,000 previous-quarter spend, 4 international visits/year, Priority Pass, 1% fuel waiver capped INR 500 per statement, and annual-fee waiver conditions.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Eligibility criteria not published on the product page; verify from MITC."
-
+  notes: "SBI Card policy states age 21-65 for salaried applicants and 25-70 for self-employed applicants; broad bounds preserve occupation-specific ranges. SBI does not publish card-specific minimum income or fixed credit-score cutoff; approval depends on issuer underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/tata-neu-infinity-sbi-card.html
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, conglomerate, tata-neu, premium, cashback, low-forex]
+  last_verified_on: '2026-11-01'
+  tags:
+  - co-branded
+  - conglomerate
+  - tata-neu
+  - premium
+  - cashback
+  - low-forex

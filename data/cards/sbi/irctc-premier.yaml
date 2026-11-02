@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
 #   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
+#   Verified   : 2026-11-01   Confidence: HIGH (issuer booklet, product and IRCTC pages)
 #   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
 # Eligibility income bands, min credit score & some launch dates are tier-standard
 # defaults (not individually source-verified). Exact monthly caps on some cashback
@@ -9,9 +9,10 @@
 # ---------------------------------------------------------------------------
 id: sbi-irctc-premier
 name: IRCTC SBI Card Premier
+image_path: /cards/sbi/irctc-premier.webp
 issuer: sbi
-network: rupay
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -19,7 +20,7 @@ co_brand:
   category: railway
   partner_website: https://www.irctc.co.in
 status: active
-launched_on: 2021-01-01
+launched_on: null
 discontinued_on: null
 
 fees:
@@ -38,7 +39,14 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
 
 rewards:
   - effective_from: 2021-01-01
@@ -58,6 +66,7 @@ rewards:
         canonical_categories: [travel]
         multiplier: 1
         effective_rate: 10
+        effective_per_inr: 100
         card_attributable_rate: 10
         card_attributable_per_inr: 100
         stacks_with_program: false
@@ -69,34 +78,75 @@ rewards:
           required: true
           class: cobrand-merchant
           merchants: [irctc-direct]
-        notes: "10% value-back (as points) on AC class bookings via IRCTC."
+        notes: "10% value back as points on eligible AC-class base fare booked on IRCTC website/app; cardholder must be a passenger and link the IRCTC loyalty number. Excludes reservation/superfast charges, taxes, cancelled/modified tickets; points credit after travel."
+      - category: irctc-air-bookings
+        canonical_categories: [travel]
+        multiplier: 1
+        effective_rate: 5
+        effective_per_inr: 125
+        card_attributable_rate: 5
+        card_attributable_per_inr: 125
+        stacks_with_program: false
+        cap_per_cycle: 750
+        cap_unit: points
+        cycle: monthly
+        merchants: [irctc]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [irctc-air]
+        notes: "5 Reward Points per ₹125 spent on eligible Air IRCTC bookings; maximum 750 points each monthly statement cycle."
+      - category: irctc-e-catering
+        canonical_categories: [dining]
+        multiplier: 1
+        effective_rate: 5
+        effective_per_inr: 125
+        card_attributable_rate: 5
+        card_attributable_per_inr: 125
+        stacks_with_program: false
+        cap_per_cycle: unlimited
+        cap_unit: points
+        cycle: monthly
+        merchants: [irctc]
+        channel:
+          required: true
+          class: cobrand-merchant
+          merchants: [irctc-ecatering]
+        notes: "5 Reward Points per ₹125 spent on e-catering through IRCTC. The issuer's monthly cap is stated for Air ticket bookings; no separate e-catering cap is published."
       - category: dining-utilities
-        canonical_categories: [dining, utilities]
+        canonical_categories: [dining]
         multiplier: 1
         effective_rate: 3
+        effective_per_inr: 125
+        card_attributable_rate: 3
+        card_attributable_per_inr: 125
+        stacks_with_program: false
         cap_per_cycle: "unlimited"
         cap_unit: points
         cycle: monthly
-        notes: "3 Reward Points per ₹125 on Dining and on standing-instruction Utility spends."
+        notes: "3 Reward Points per ₹125 on dining and standing-instruction utility spends. Only dining is scored because the calculator cannot distinguish standing instructions from other utilities."
     exclusions:
       - fuel
       - wallet-loads
       - rent
+      - government
       - emi
     redemption:
       - type: voucher
         program: IRCTC
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      notes: 'Research-verified: dedicated IRCTC RP = Rs1 on rail fare (regulated -> no premium).'
+      url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/IRCTCPremiertnc.pdf
+      retrieved_on: '2026-11-01'
+      type: issuer-pdf
       confidence: high
+      method: pdf-extract
+      fields_verified: [rewards.base, rewards.accelerated, rewards.exclusions, rewards.redemption, rewards.capping_rules]
+      notes: "Current issuer booklet verifies 10% on eligible AC rail fare with no monthly/annual value-back cap; 5 points/₹125 on Air and e-catering (Air capped at 750 points/month); 3 points/₹125 on dining and standing-instruction utilities; and 1 point/₹125 on other eligible non-fuel retail. Rent rewards stopped 2024-04-15; government rewards stopped 2024-07-15."
     mcc_exclusions: ['6513']
     capping_rules:
-      - "No capping on monthly/annual value-back per SBI Card IRCTC Premier T&C (ekit-tncs, FY22): 'There is no capping on monthly/annual value back amount.'"
+      - "No capping on monthly/annual IRCTC rail value-back per current IRCTC Premier booklet; Air booking rewards have a separate cap of 750 points per monthly statement cycle."
+      - "The current booklet states no separate cap for e-catering rewards; this no-published-cap status should be rechecked whenever the issuer revises the booklet."
 benefits:
   - effective_from: 2021-01-01
     effective_until: null
@@ -129,24 +179,37 @@ benefits:
       cycle: monthly
     other:
       - name: IRCTC transaction charge waiver
-        description: 1% + GST transaction charge waiver on IRCTC ticket bookings.
+        description: IRCTC advertises a 1% transaction-charge waiver on rail bookings; the SBI Premier booklet FAQ states IRCTC rail transactions carry a 1.8% fee plus GST. Issuer sources conflict, so the effective waiver is not established.
     concierge: false
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
+      type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 720
+  credit_score_min: null
   residency: resident-indian
-
+  notes: "Income requirement based on aggregator/tier consensus (not published on product page). SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-11-01'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/irctc-premier-card.html
 
 metadata:
-  last_verified_on: '2026-07-05'
+  last_verified_on: '2026-11-01'
   tags: [co-branded, railway, irctc, rupay, entry]

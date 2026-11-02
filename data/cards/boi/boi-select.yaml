@@ -1,15 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Bank of India RuPay Select brochure
-#                (docs/sources/boi/rupay-select/Rupay_Select.pdf) + issuer page.
-#   Verified   : 2026-07-04   Confidence: HIGH (rewards/benefits) / MEDIUM (fees)
-#   Reward rate (2 RP/Rs 100), lounge (8 domestic + 2 international/yr) and the
-#   co-brand perks are confirmed in the issuer brochure. Prior record understated
-#   the earn rate (1 RP/Rs 100) and omitted the international lounge + perks. Fees
-#   (annual Rs 800, waiver Rs 2L) are aggregator-corroborated, not in the brochure.
-# ---------------------------------------------------------------------------
 id: boi-boi-select
 name: Bank of India RuPay Select Credit Card
+image_path: /cards/boi/boi-select.webp
 issuer: boi
 network: rupay
 network_tier: select
@@ -17,122 +8,140 @@ tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-01-01
+launched_on:
 discontinued_on: null
-
 fees:
-  - effective_from: 2023-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 800
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 2.50
-    cash_advance_fee:
-      pct: 3.0
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://bankofindia.bank.in/credit-card/rupay-select
-      retrieved_on: 2026-07-05
-      type: issuer-page
-      confidence: high
-      notes: "Fees (AMC Rs800, joining Nil) verified verbatim vs BOI issuer brochure bankofindia.bank.in/.../Rupay_Select.pdf 2026-07-05. The previously-modelled Rs2L annual-fee waiver is NOT documented by the issuer (brochure states a flat AMC with no spend-based waiver; aggregators disagree Rs1L vs Rs2L) -> removed per no-fabrication rule."
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 800
+  fee_waiver: null
+  forex_markup_pct:
+  finance_charge_monthly_pct:
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 75
+  gst_applicable: true
+  notes: Current BOI card page lists issuance as Nil and AMC INR800 (principal)/INR600 (add-on). An official BOI MITC lists cash advance fees as BOI ATM 2%/INR50 minimum, other Indian ATM 2.5%/INR75 minimum and overseas ATM 2.5%/INR125 minimum; the scalar stores the common other-Indian-ATM case. A 2024 MITC says unsecured revolving finance is 2% monthly, while BOI's general credit-card FAQ gives 1.70% for revolving-credit opt-in and 2.5% when the full amount is overdue; the current card-specific rate is unresolved and left null. Current card-specific forex markup is not published in the reviewed issuer materials and is left null. Effective date is not stated; 2026-10-26 is the verification snapshot.
+  source:
+    url: https://bankofindia.bank.in/documents/20121/23409404/BOI_CREDITCARD_MITC_2024.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: BOI current card page confirms nil issuance, INR800 principal AMC, INR600 add-on AMC and INR500 replacement fee. BOI MITC search-index text gives channel-dependent cash advance charges. Finance and forex fields are not asserted because current official materials conflict or omit a card-specific figure.
 rewards:
-  - effective_from: 2023-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: BoI Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://bankofindia.bank.in/credit-card/rupay-select
-      retrieved_on: 2026-07-04
-      type: issuer-pdf
-      confidence: high
-      local_refs:
-        - docs/sources/boi/rupay-select/Rupay_Select.pdf
-      fields_verified:
-        - rewards.base.rate
-        - rewards.base.per_inr
-      notes: "BOI RuPay Select brochure: earn 2 Reward Points per Rs 100 spent on POS/e-commerce."
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Star Rewardz Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr:
+    unit_value_inr_realized:
+    notes: Current Star Rewards table states 2 points per INR100 in the standard category on transactions of INR100 or more. The current BOI card page describes 2X rewards on POS/e-commerce. The source also lists 3 points per INR100 for preferred category and a card-wise 3-points-per-INR100 bonus for RuPay Select, but category membership and stacking are not explained; these rates are recorded as unresolved rather than summed into the structured rate.
+  exclusions: []
+  mcc_exclusions: []
+  redemption:
+  - type: catalog
+    program: BOI Star Rewardz
+    rate_inr_per_unit:
+    constraints: BOI directs customers to the Star Rewardz catalog for goods, services, travel tickets, movie tickets, merchandise, gift vouchers and mobile/DTH recharge. Current issuer materials reviewed do not publish a fixed INR-per-point redemption value.
+  source:
+    url: https://bankofindia.bank.in/star-rewards
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    notes: Current Star Rewards page states standard 2 points/INR100, preferred category 3/INR100, and a 3-points/INR100 card-wise bonus for RuPay Select and Visa Platinum; minimum INR100 transaction value. It also says UPI credit transactions of INR2,000 or less do not accrue points from 2025-09-01, maximum 10,000 points monthly per customer ID/CIF, and POS/e-commerce exclusions were removed from 2025-09-01. The current product page's phrase “excluding restricted categories” conflicts with the rewards page's later no-exclusions notice. Preferred categories and stacking of the card-wise bonus are not defined in the reviewed source, and fixed point value is unpublished.
+  capping_rules:
+  - Star Rewards page states a maximum of 10,000 points per month per customer ID/CIF. Credit-card UPI transactions of INR2,000 or less do not earn from 2025-09-01. The issuer lists 3 points/INR100 as a RuPay Select card-wise bonus alongside standard and preferred-category rates; category mapping and whether this bonus stacks with base earn are not specified, so only the 2-point standard rate is structured.
 benefits:
-  - effective_from: 2023-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [rupay]
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [rupay]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 150
-      cycle: monthly
-    movies:
-      type: discount
-      partner: BookMyShow
-      cap_inr: 250
-      cycle: monthly
-      notes: "Rs 250 off on min 2 tickets/month via BookMyShow (issuer brochure)."
-    concierge: true
-    other:
-      - name: Amazon Prime membership
-        description: "Complimentary annual Amazon Prime membership."
-      - name: BigBasket voucher
-        description: "Rs 200 discount voucher per month on BigBasket."
-        value_inr: 2400
-      - name: Swiggy One
-        description: "3-month Swiggy One membership per annum (free deliveries + discounts)."
-      - name: Health check-up
-        description: "Annual customised health check-up package (once per annum)."
-    source:
-      url: https://bankofindia.bank.in/credit-card/rupay-select
-      retrieved_on: 2026-07-04
-      type: issuer-pdf
-      confidence: high
-      local_refs:
-        - docs/sources/boi/rupay-select/Rupay_Select.pdf
-      fields_verified:
-        - lounge_access.domestic.visits_per_cycle
-        - lounge_access.international.visits_per_cycle
-      notes: "Brochure: 8 domestic + 2 international lounge visits per annum; BigBasket Rs 200/mo, BookMyShow Rs 250/mo, Amazon Prime, 3-month Swiggy One, 24x7 concierge, Rs 10L RuPay accident cover."
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - rupay
+      notes: BOI's current card page and RuPay's Select Credit Card program state two domestic airport/railway lounge accesses per calendar quarter per card, subject to network/issuer changes. No BOI credit-card spend threshold is stated on the current BOI page; do not copy the separate BOI RuPay Select debit-card threshold.
+    international:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - rupay
+      notes: BOI's current card page and RuPay Select Credit Card program state two international lounge accesses per calendar year per card, subject to network/issuer changes.
+  fuel_surcharge_waiver:
+  movies:
+    type: discount
+    partner: BookMyShow
+    cap_inr: 250
+    cycle: monthly
+    notes: BOI product page advertises INR250 off on a minimum two tickets per month through BookMyShow.
+  concierge: true
+  other:
+  - name: Amazon Prime membership
+    description: Complimentary annual membership of Amazon Prime, as stated on the current BOI card page.
+  - name: Swiggy One membership
+    description: Three-month membership per annum, as stated on the current BOI card page.
+  - name: BigBasket voucher
+    description: INR200 discount voucher per month (up to INR2,400 nominal value across twelve monthly vouchers).
+    value_inr: 2400
+  - name: Annual health check-up
+    description: Annual membership of customized health check-up packages, usable once per annum. Current BOI page does not publish a monetary valuation.
+  - name: RuPay personal accident and permanent disability insurance
+    description: Insurance cover up to INR1,000,000 provided by RuPay, subject to the applicable insurance program terms.
+  source:
+    url: https://bankofindia.bank.in/credit-card/rupay-select
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/boi/rupay-select/Rupay_Select.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.movies.cap_inr
+    - benefits.other.value_inr
+    notes: Current BOI page confirms current counts and terms for lounges, BookMyShow, Amazon Prime, Swiggy One, BigBasket, annual check-up, RuPay insurance and 24x7 concierge. No current issuer source found for the previously encoded fuel-waiver amount, so that benefit is no longer asserted.
 eligibility:
   min_age: 21
-  max_age: 70
+  max_age:
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried:
+    self_employed:
+  credit_score_min:
+  residency: either
+  notes: Current BOI product page states minimum age 21, a valid active BOI savings account, regular income with proof, salaried or self-employed status, good credit history, and eligibility for Indian residents or NRIs. It does not publish a maximum age, minimum income or numeric bureau-score threshold.
+  source:
+    url: https://bankofindia.bank.in/credit-card/rupay-select
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.residency
+    notes: BOI's current product page gives a 21-year minimum and allows resident Indians and NRIs; no upper age or numeric income/score threshold is published.
 application:
   apply_url: https://bankofindia.bank.in/credit-card/rupay-select
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [mid, rupay, points, lounge, upi-linkable, psu-bank]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - rupay
+  - points
+  - lounge
+  - upi-linkable
+  - psu-bank

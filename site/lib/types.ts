@@ -11,7 +11,7 @@ export type Network = "visa" | "mastercard" | "rupay" | "amex" | "diners";
 export type RewardCurrency = "points" | "cashback" | "miles";
 export type CardTier = "entry" | "mid" | "premium" | "super-premium" | "invite-only";
 export type CardStatus = "active" | "invite-only" | "on-hold" | "discontinued";
-export type CardType = "credit" | "charge" | "secured";
+export type CardType = "credit" | "charge" | "secured" | null;
 export type Cycle = "monthly" | "quarterly" | "annual" | "statement" | "per-txn";
 
 export interface Source {
@@ -60,13 +60,21 @@ export interface FeeWaiver {
 export interface FeeRecord {
   effective_from: string;
   effective_until: string | null;
-  joining_fee_inr: number;
+  joining_fee_inr: number | null;
   annual_fee_inr: number;
   renewal_fee_inr?: number | null;
   fee_waiver?: FeeWaiver | null;
   forex_markup_pct?: number | null;
   finance_charge_monthly_pct?: number | null;
-  cash_advance_fee?: { pct?: number; min_inr?: number } | null;
+  finance_charge_tiers?: Array<{
+    min_amb_inr: number;
+    max_amb_inr: number | null;
+    monthly_rate_pct: number | null;
+    annual_rate_pct?: number | null;
+    basis?: string;
+    conditions?: string;
+  }>;
+  cash_advance_fee?: { pct?: number; min_inr?: number; flat_inr?: number } | null;
   late_payment_slabs?: Array<{ up_to_inr: number | "any"; fee_inr: number }> | null;
   overlimit_fee?: { pct?: number; min_inr?: number; max_inr?: number } | null;
   gst_applicable?: boolean;
@@ -90,11 +98,12 @@ export interface FeeRecord {
 }
 
 export interface RewardBase {
-  rate: number;
-  per_inr: number;
+  rate: number | null;
+  per_inr: number | null;
   unit_value_inr?: number | null;
   unit_value_inr_realized?: number | null;
   cap_per_cycle?: number | "unlimited";
+  cap_status?: "issuer-stated-unlimited" | "not-published" | "unknown";
   cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
   cycle?: Cycle;
   /**
@@ -105,6 +114,9 @@ export interface RewardBase {
    * nothing instead of falling back to base.
    */
   applies_to_categories?: string[] | null;
+  /** Categories excluded from base earn while a separately scoped accelerator may still earn. */
+  excluded_categories?: string[] | null;
+  notes?: string;
 }
 
 export type ChannelClass =
@@ -156,6 +168,12 @@ export interface AcceleratedReward {
    */
   slabs?: RateSlab[] | null;
   cap_per_cycle?: number | "unlimited";
+  /** Cap equals a multiple of cashback earned on base-eligible spend in the same cycle. */
+  cap_base_multiplier?: number;
+  /** Groups accelerator rules that consume the same issuer-defined cap pool. */
+  cap_group?: string;
+  /** Whether over-cap spend falls back to base earn; defaults to true. */
+  over_cap_earns_base?: boolean;
   cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
   cycle?: Cycle;
   merchants?: string[];
@@ -256,10 +274,20 @@ export interface RewardRecord {
   /** Ecosystem name shown in the closed-loop badge tooltip (e.g. "Adani One"). */
   ecosystem_label?: string | null;
   loyalty_program?: string | null;
+  /** D-27: false = the card's own currency converts into the programme's at a non-1:1 ratio, so the card's base unit values are used. */
+  unit_value_from_program?: boolean;
   base: RewardBase;
   accelerated?: AcceleratedReward[];
   exclusions?: string[];
   mcc_exclusions?: string[];
+  category_caps?: Array<{
+    category: string;
+    mcc_list?: string[];
+    cap_per_cycle: number;
+    cap_unit: "points" | "cashback-inr" | "miles" | "spend-inr";
+    cycle: Cycle;
+    conditions?: string;
+  }>;
   reward_cap?: {
     max_units: number;
     cap_unit?: "points" | "cashback-inr" | "miles" | "spend-inr";
@@ -275,7 +303,7 @@ export interface RewardRecord {
 export interface LoungeDetails {
   visits_per_cycle?: number | "unlimited";
   cycle?: Cycle;
-  guests_per_visit?: number | "unlimited";
+  guests_per_visit?: number | "unlimited" | null;
   via?: string[];
   spend_threshold_inr?: number | null;
   spend_threshold_cycle?: Cycle;
@@ -320,11 +348,14 @@ export interface BenefitRecord {
   }>;
   insurance?: Array<{
     type: string;
-    sum_insured_inr: number;
+    sum_insured_inr: number | null;
+    sum_insured_amount?: number | null;
+    sum_insured_currency?: "INR" | "USD" | null;
+    coverage_duration_days?: number | null;
     conditions?: string;
   }>;
   fuel_surcharge_waiver?: {
-    pct: number;
+    pct: number | null;
     min_txn_inr?: number | null;
     max_txn_inr?: number | null;
     cap_per_cycle_inr?: number | null;
@@ -344,7 +375,7 @@ export interface BenefitRecord {
     cap_inr?: number | null;
     notes?: string;
   } | null;
-  concierge?: boolean;
+  concierge?: boolean | null;
   surcharge_waivers?: Array<{
     category: "railway" | "utilities" | "telecom" | "education" | "online" | "wallet-loads" | "rent" | "other";
     pct: number;
@@ -367,7 +398,7 @@ export interface Eligibility {
     self_employed?: number | null;
   };
   credit_score_min?: number | null;
-  residency?: "resident-indian" | "nri" | "either";
+  residency?: "resident-indian" | "nri" | "either" | null;
   notes?: string;
 }
 
@@ -382,7 +413,7 @@ export interface CardRecord {
   id: string;
   name: string;
   issuer: string;
-  network: Network;
+  network: Network | null;
   network_tier?: string | null;
   tier: CardTier;
   card_type?: CardType;
@@ -410,7 +441,7 @@ export interface CardRecord {
 /** Enriched shape produced by scripts/build.py under dist/cards.json. */
 export interface EnrichedCard extends CardRecord {
   issuer_detail: IssuerRecord;
-  network_detail: NetworkRecord;
+  network_detail: NetworkRecord | null;
   current_fees: FeeRecord | null;
   current_rewards: RewardRecord | null;
   current_benefits: BenefitRecord | null;

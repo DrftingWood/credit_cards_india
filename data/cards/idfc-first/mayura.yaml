@@ -1,148 +1,318 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-mayura
 name: IDFC FIRST Mayura Credit Card
+image_path: /cards/idfc-first/mayura.webp
 issuer: idfc-first
-network: visa
-network_tier: infinite
+network: mastercard
+network_tier: world
 tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-05-01
+launched_on: 2024-09-19
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-05-01
-    effective_until: null
-    joining_fee_inr: 5999
-    annual_fee_inr: 5999
-    fee_waiver:
-      spend_inr: 1200000
-      cycle: annual
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Metal card; joining fee payable upfront (non-refundable) for card dispatch. Zero forex markup."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-06-18
+  effective_until: null
+  joining_fee_inr: 5999
+  annual_fee_inr: 5999
+  fee_waiver: null
+  forex_markup_pct: 0.0
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: >-
+    Current fee is INR 5,999 + GST joining and annual (annual fee from the second card anniversary year).
+    Joining fee is upfront and non-refundable. INR 12 lakh is not an annual-fee waiver: the issuer describes
+    conditional annual-fee reward points at INR 8 lakh and INR 15 lakh previous anniversary-year spend. No fixed
+    card-specific monthly APR is published. ATM advance is flat INR 199 + GST, up to 45 interest-free days, with a
+    INR 10,000 per-transaction cash withdrawal limit. Zero forex applies to purchases.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.flat_inr
+    local_refs:
+    - docs/sources/idfc-first/mayura/zero-forex-notice-2026-09-17.pdf
+    notes: >-
+      Current issuer page and FAQ. Purchase APR varies by account and is not stated as a single Mayura rate.
+      Bank-wide zero-forex announcement effective 17-Sep-2026 also applies to this card.
 rewards:
-  - effective_from: 2024-05-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 5
-      per_inr: 150
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.5
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: dining-online-travel
-        canonical_categories: [online, dining, travel]
-        multiplier: 2
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.5
-        constraints: "Up to ₹0.50 per reward point when redeemed for hotel & flight bookings via FIRST Rewards Gallery."
+- effective_from: 2026-06-18
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: null
+    unit_value_inr_realized: 0.5
+    notes: >-
+      5 points per INR 150 on eligible spend up to INR 20,000 per statement cycle; incremental eligible spend above
+      INR 20,000 earns 10 points per INR 150. Travel bookings through Travel & Shop redeem at INR 0.50 per point;
+      other redemptions at INR 0.25, so a single universal realized value is not asserted.
+  accelerated:
+  - category: Mayura threshold-based eligible spend (unmapped)
+    effective_rate: 10
+    cap_status: not-published
+    cap_unit: points
+    cycle: statement
+    notes: >-
+      Total earn rate on eligible incremental spend above INR 20,000 in the statement cycle. The schema has no
+      cumulative-spend threshold field, so this rule intentionally has no canonical categories and is not exposed
+      as a blanket 10-point accelerator in scoring.
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      notes: '2026-07-05: closed-loop, no transfer partners. IDFC app Travel&Shop Rs 0.50/pt travel, Rs 0.25 other.'
-    capping_rules:
-      - No monthly RP cap on the general accelerated 10 RP/₹150 international and dining/online/travel earning per the Mayura Rewards Structure T&C (28-05-25, retrieved 2026-07-05); only limit is spends up to credit limit/cycle. The 25,000 bonus-RP/calendar-month cap is scoped ONLY to app hotel/flight bookings (Travel & Shop section), which these general accelerators are not.
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+  - category: international transactions
+    canonical_categories:
+    - international
+    effective_rate: 5
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    notes: Eligible international spend counts toward the INR 20,000 threshold.
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[1].effective_rate
+  - category: rent-government-wallet-education
+    canonical_categories:
+    - rent
+    - government
+    - wallet-loads
+    - education
+    effective_rate: 3
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    notes: These categories do not count toward the INR 20,000 threshold.
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[2].effective_rate
+  - category: insurance-utility-railway-fastag
+    canonical_categories:
+    - insurance
+    - utilities
+    effective_rate: 1
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Mayura-CC-Rewards-Structure-TnC-28-05-25.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[3].effective_rate
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.5
+    constraints: INR 0.50 per point for Travel & Shop app hotel/flight bookings; INR 0.25 per point for other redemption options.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[1].effective_rate
+    - rewards.accelerated[2].effective_rate
+    - rewards.accelerated[3].effective_rate
+    - rewards.redemption[0].rate_inr_per_unit
+    local_refs:
+    - docs/sources/idfc-first/mayura/Mayura-Rewards-Structure-TnC.pdf
+    notes: >-
+      Cross-checked to the issuer Mayura Rewards Structure T&C and 18-Jun-2026 update. App hotel/flight bonuses
+      are 30 additional points per INR 150 on hotels and 15 additional points per INR 150 on flights, with a shared
+      25,000 bonus-point monthly cap in the linked 2025 reward structure/current FAQ. However, the May-2026 update says app travel bonus is 20% of applicable base hotel points and 10% of base flight points; current page continues to advertise 30X/15X bonus points. No single current travel-booking rate can be reconciled, so this remains an unresolved issuer conflict. Redeemable points are capped at 150,000 per month and 300,000 per year.
+      Rewards accrue only up to the credit limit per billing cycle and are reversed if MAD is unpaid by due date.
+      Associated FIRST Digital RuPay UPI earns 3 points/INR 150 above INR 2,000 and 1 point/INR 150 at or below
+      INR 2,000; UPI spend counts toward the INR 20,000 threshold. The model cannot represent the linked UPI rail.
+  capping_rules:
+  - App hotel/flight bonus earn has a shared 25,000 bonus-point monthly cap; redeemable points separately cap at 150,000 monthly and 300,000 annually.
+  - Rewards accrue only on spend up to the credit limit per billing cycle; excess spend earns no points, and cycle points reverse if MAD is unpaid by due date.
+  - Associated FIRST Digital RuPay UPI earns 3 points per INR 150 above INR 2,000 and 1 point per INR 150 at or below INR 2,000; the card model cannot express the associated network/payment rail precisely.
 benefits:
-  - effective_from: 2024-05-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 1
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [priority-pass, loungekey]
-    golf:
-      rounds_per_cycle: 4
-      cycle: monthly
-      lessons_per_cycle: 2
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "12,000 reward points (worth up to ₹6,000)"
-        value_inr: 6000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 25000000
-      - type: travel-medical
-        sum_insured_inr: 5000000
-      - type: trip-delay
-        sum_insured_inr: 50000
-        conditions: "Reimbursement for non-refundable flight & hotel cancellations, up to ₹50,000, twice a year."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    other:
-      - name: Railway lounge access
-        description: "4 complimentary railway lounge visits per quarter across India."
-      - name: Hotel booking discount
-        description: "Flat ₹5,000 off on a minimum hotel booking of ₹25,000."
-        value_inr: 5000
-    concierge: true
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-06-18
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 4
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - mastercard
+      - dreamfolks
+    international:
+      visits_per_cycle: 4
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+  golf:
+    rounds_per_cycle: 4
+    cycle: annual
+    lessons_per_cycle: 12
+  welcome:
+  - condition: Mayura card generated on or after 1 Sep 2025; joining fee realized; once per customer. 4,000 points on fee payment, then 4,000 each for net spend of â‚¹20,000+ in the second and third statement cycles.
+    benefit: Up to 12,000 Reward Points; later tranches depend on the stated cycle-spend conditions.
+    value_inr: 6000
+    window_days: null
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 10000000
+    conditions: INR 1 crore air accident cover; at least one card transaction in preceding 30 days, subject to insurer policy terms.
+  - type: personal-accident
+    sum_insured_inr: 1000000
+    conditions: INR 10 lakh personal accident cover; at least one card transaction in preceding 30 days, subject to insurer policy terms.
+  - type: lost-card-liability
+    sum_insured_inr: 50000
+    conditions: INR 50,000 lost-card liability cover; active-card condition and policy terms apply.
+  - type: baggage-loss
+    sum_insured_inr: null
+    sum_insured_amount: 500
+    sum_insured_currency: USD
+    conditions: Checked-in baggage loss; card page states USD 500. Policy terms apply.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 100
+    sum_insured_currency: USD
+    conditions: Checked-in baggage delay; card page states USD 100. Classified as trip delay; policy terms apply.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: Flight delay cover; card page states USD 300. Policy terms apply.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: Lost passport and travel documents; card page states USD 300. Policy terms apply.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 300
+    cycle: monthly
+  other:
+  - name: Railway lounge access
+    description: 4 complimentary visits per quarter at select Indian railway lounges, available next month after INR 20,000 spend in the current calendar month.
+  - name: Hotel booking discount
+    description: Flat â‚¹5,000 off on a minimum hotel booking of â‚¹25,000.
+    value_inr: 5000
+  - name: Movie offer
+    description: Buy one, get one movie ticket via District by Zomato, up to INR 500 off the second ticket, twice per calendar month; requires INR 20,000 current-month spend for following-month access.
+  - name: Trip cancellation
+    description: Cancel-for-any-reason cover for non-refundable flight and hotel bookings, up to INR 50,000, twice per year; linked policy terms determine claim eligibility.
+  concierge: null
+  milestones:
+  - spend_inr: 800000
+    cycle: annual
+    benefit: 7,500 Reward Points after paying the next annual fee when previous anniversary-year net spend is at least INR 8 lakh; mutually exclusive with the INR 15 lakh tier.
+    value_inr: 3750
+    reward_kind: points
+    reward_units: 7500
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+  - spend_inr: 1500000
+    cycle: annual
+    benefit: 15,000 Reward Points after paying the next annual fee when previous anniversary-year net spend is at least INR 15 lakh; mutually exclusive with the INR 8 lakh tier.
+    value_inr: 7500
+    reward_kind: points
+    reward_units: 15000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.guests_per_visit
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.golf.lessons_per_cycle
+    - benefits.welcome[0].benefit
+    - benefits.welcome[0].value_inr
+    - benefits.milestones[0].reward_units
+    - benefits.milestones[1].reward_units
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.insurance[1].sum_insured_inr
+    - benefits.insurance[2].sum_insured_inr
+    - benefits.insurance[3].sum_insured_amount
+    - benefits.insurance[4].sum_insured_amount
+    - benefits.insurance[5].sum_insured_amount
+    - benefits.insurance[6].sum_insured_amount
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.other[1].value_inr
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[1].spend_inr
+    - benefits.milestones[0].value_inr
+    - benefits.milestones[1].value_inr
+    local_refs:
+    - docs/sources/idfc-first/mayura/Mayura-Credit-Card-Communication-May-26.pdf
+    - docs/sources/idfc-first/mayura/Mayura-Rewards-Structure-TnC.pdf
+    notes: >-
+      Current issuer page, FAQ, May-2026 update notice, and linked card benefit terms. Airport (domestic and international)
+      and railway lounge access require INR 20,000 current-calendar-month spend for following-month access. One domestic
+      guest visit per quarter is included within the domestic quota but cannot be represented separately. Airport and railway lounge,
+      movie, and spend-triggered golf benefits require monthly spend gates; golf includes four Mastercard rounds and
+      12 lessons annually plus separate spend-unlocked benefits. The page also surfaces Visa Infinite benefits, which are not applicable to this Mastercard product. Insurance amounts and claim exclusions remain
+      subject to policy terms; full current policy schedules are not machine-readable on the product page. Trip
+      cancellation is advertised at up to INR 50,000 twice per year; precise conditions require linked insurer terms.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 2500000
-    self_employed: 2500000
-  credit_score_min: 750
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Income and bureau-score figures in the previous record were issuer-tier estimates, not card-specific issuer
+    evidence; thresholds remain unknown pending verification. Broad minimum/maximum age figures without an exact
+    issuer evidence path or a source-verified occupational range were left unknown; this does not imply there is
+    no age criterion.
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [super-premium, metal, travel, zero-forex, lounge]
+  last_verified_on: 2026-10-27
+  tags:
+  - super-premium
+  - metal
+  - travel
+  - zero-forex
+  - lounge
+

@@ -1,118 +1,165 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-fibe
 name: Fibe Axis Bank Credit Card
+image_path: /cards/axis/fibe.webp
 issuer: axis
 network: rupay
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
   partner: Fibe
   category: other
 status: active
-launched_on: null
+launched_on: 2023-10-10
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-06-20
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.0
-    cash_advance_fee: null
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
-      retrieved_on: 2026-07-03
-    notes: "Lifetime free card - zero joining and annual fee (confirmed Nil/Nil in Axis MITC). Forex 3.5%, finance charge 3.0%/mo (extended credit) per Axis MITC (eff 20 Dec 2024). RuPay Credit Card on UPI. T&C updated w.e.f 20 June 2025."
-
+- effective_from: 2025-06-20
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.forex_markup_pct
+    notes: Current product page confirms lifetime-free fees, 3.75% monthly finance charge, 2.5% cash withdrawal fee (minimum INR 500), and 3.5% foreign-currency markup. The Axis generic revision effective 28 Aug 2026 sets DCC markup to 3.5%. The product page also lists threshold-based rent, wallet, fuel, utility, education and gaming fees that the current card fee fields do not separately model.
 rewards:
-  - effective_from: 2025-06-20
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-    accelerated:
-      - category: food-delivery-entertainment-local-commute
-        canonical_categories: [dining, entertainment, travel]
-        multiplier: 3
-        effective_rate: 3
-        cap_unit: cashback-inr
-        cycle: statement
-        merchants: [swiggy, zomato]
-        channel:
-          class: food-delivery
-          merchants: [swiggy, zomato]
-        notes: "3% capped Rs1,500/billing cycle; no cashback on txns < Rs100."
-        cap_per_cycle: 1500
-    exclusions:
-      - fuel
-      - rent
-      - wallet-loads
-      - jewellery
-      - gift-cards
-      - emi
-      - insurance-premiums
-      - education
-      - government
-      - cash-advance
-    reward_cap:
-      max_units: 1500
-      cap_unit: cashback-inr
-      cycle: statement
-    capping_rules:
-      - "Total cashback capped at INR 1,500 per statement cycle across all categories."
-      - "No cashback on transactions below INR 100."
-      - "No cashback on CC-on-UPI transactions below INR 2,000 or CC-on-UPI transactions at small merchants."
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-      notes: Added missing monthly cap(s) on accelerated categories (were uncapped) — 2026-07-05.
-    notes: "Cashback T&C table: 3% on online food delivery/entertainment/local commute, 1% other spends; capped INR 1,500 per statement cycle."
-
-    mcc_exclusions: ['6513']
+- effective_from: 2026-08-28
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    notes: 1% cashback on other eligible spend; the advertised INR 1,500 statement cap applies across all cashback categories.
+  accelerated:
+  - category: food-delivery-entertainment-local-commute
+    canonical_categories:
+    - dining
+    - entertainment
+    - travel
+    multiplier: 3
+    effective_rate: 3
+    channel:
+      class: online-any
+      merchants:
+      - any
+    mcc_list:
+    - '5499'
+    - '5812'
+    - '5814'
+    - '7841'
+    - '7829'
+    - '7832'
+    - '7922'
+    - '4121'
+    - '4131'
+    - '4111'
+    - '7512'
+    cap_per_cycle: 1500
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: 3% applies to online food delivery, online entertainment and online local-commute transactions on the listed MCCs; the rule is both channel- and MCC-scoped, not limited to named apps.
+  exclusions:
+  - fuel
+  - rent
+  - wallet-loads
+  - jewellery
+  - gift-cards
+  - emi
+  - insurance-premiums
+  - education
+  - government
+  - cash-advance
+  - bridge-fees
+  - road-fees-and-tolls
+  reward_cap:
+    max_units: 1500
+    cap_unit: cashback-inr
+    cycle: statement
+  capping_rules:
+  - Total cashback is capped at INR 1,500 per statement cycle across all categories.
+  - No cashback on transactions below INR 100.
+  - CC-on-UPI transactions below INR 2,000 and CC-on-UPI transactions at small merchants are excluded.
+  - Same-statement refunds reduce net eligible spend; later reversals adjust subsequent periods. EMI purchases and post-facto EMI conversions earn no cashback. Per-transaction cashback rounds down and posts T+3 days after statement generation.
+  - 'Cashback excludes wallet load, fuel, cash withdrawal, gold/jewellery, gift cards, EMI, rent, repayments, insurance, education, government services, qualifying low/small-merchant CC-on-UPI, and bridge/road fees and tolls. Terms specify excluded categories, not their exact MCCs.'
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-cashback-on-fibe-axis-bank-credit-card.pdf?sfvrsn=7cc42032_3
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/axis/fibe/terms-and-conditions-cashback-on-fibe-axis-bank-credit-card.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].accelerated[0].mcc_list
+    - rewards[0].accelerated[0].cap_per_cycle
+    - rewards[0].reward_cap.max_units
+    - rewards[0].exclusions
+    - rewards[0].redemption
+    notes: Current cashback T&C PDF version 7cc42032_3 reviewed 2026-10-27. It specifies rates, eligible MCCs, transaction minimum, UPI limits, cap, reversal/EMI behavior, rounding and posting. The PDF does not state its effective date; the existing recorded effective-from date is retained.
 benefits:
-  - effective_from: 2025-06-20
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-        notes: "1 complimentary domestic airport lounge visit per quarter (Axis Bank airport lounge access program)."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: statement
-    concierge: false
-    other:
-      - name: Wednesday Delight
-        description: "Exciting offers every Wednesday for cardholders."
-        value_inr: null
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2024-05-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      guests_per_visit: 0
+      notes: One visit per quarter; at least INR 50,000 eligible settled spend in the previous three calendar months is required. Newly issued cards receive a waiver during the issuance month and following three calendar months. Lounge access is for the cardholder only; nominal network validation swipe charges may apply.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 400
+    cycle: monthly
+    notes: On certain transactions the surcharge may be INR 10 plus GST rather than 1% plus GST; GST charged on the surcharge is not refundable.
+  concierge: false
+  other:
+  - name: Wednesday Delight
+    description: Current issuer page lists up to 15% off MakeMyTrip flights/hotels, 10% off Swiggy orders, and 10% off Tira up to INR 1,000; merchant offer terms apply.
+    value_inr: null
+  dining:
+    program: Axis Bank Dining Delights
+    discount_pct: null
+    notes: Current card page advertises the program and links general EazyDiner terms; no fixed card-specific discount rate is published on the page.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/axis-bank-airport-lounge-access-program.pdf
+    fields_verified:
+    - benefits[0].lounge_access.domestic.visits_per_cycle
+    - benefits[0].lounge_access.domestic.spend_threshold_inr
+    - benefits[0].fuel_surcharge_waiver
+    - benefits[0].dining
+    - benefits[0].other
+    notes: Product page lists 4 domestic lounge visits per calendar year; current lounge program specifies 1 per quarter. INR 50,000 settled eligible spend in the previous three calendar months is required, with a new-card waiver for issuance month plus the next three months.
 eligibility:
   min_age: 18
   max_age: 70
@@ -121,11 +168,23 @@ eligibility:
     self_employed: null
   credit_score_min: null
   residency: either
-  notes: "Sourced only to existing Fibe customers. Resident Indian or NRI. Criteria indicative."
-
+  notes: Primary cardholder age 18-70, resident or non-resident Indian. Card is sourced only to existing Fibe customers; criteria are indicative and Axis retains approval discretion. Income and credit-score cutoffs are not published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/fibe-axis-bank-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [entry, cashback, co-branded, upi, lifetime-free]
+  last_verified_on: 2026-10-27
+  tags:
+  - entry
+  - cashback
+  - co-branded
+  - upi
+  - lifetime-free

@@ -1,129 +1,231 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : RBL central CardsScheduleCharges.pdf + per-card T&C PDFs (docs/sources/rbl/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: rbl-insignia
 name: RBL Bank Insignia Preferred Banking Credit Card
+image_path: /cards/rbl/insignia.webp
 issuer: rbl
-network: visa
-network_tier: infinite
+network:
+network_tier:
 tier: invite-only
 card_type: credit
-co_brand: null
+co_brand:
 status: invite-only
-launched_on: 2018-01-01
-discontinued_on: null
-
+launched_on:
+discontinued_on:
 fees:
-  - effective_from: 2018-01-01
-    effective_until: null
-    joining_fee_inr: 7000
-    annual_fee_inr: 7000
-    fee_waiver:
-      spend_inr: 1000000
-      cycle: annual
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/insignia-preferred-banking-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until:
+  joining_fee_inr: 7000
+  annual_fee_inr: 7000
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+  forex_markup_pct: 1.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url:
+      https://webassets.rbl.bank.in/document/Credit%20Cards/RBL-MITC-final.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/rbl/insignia/mitc-retrieved-2026-10-27.pdf
+    - docs/sources/rbl/insignia/schedule-charges-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    method: pdf-extract
+  notes: Standard Insignia Preferred Banking card fee is INR7,000 + GST, waived
+    for subsequent membership years after INR10 lakh eligible spend in the
+    preceding membership year. Schedule of Charges also states NIL fee for
+    Insignia Banking customers; the welcome offer and spend waiver do not apply
+    to those NIL-fee customers. Central MITC lists up to 3.99% monthly finance
+    and 2.5% cash advance/min INR500; MITC lists 1.5% forex for Insignia. Values
+    represent standard Preferred Banking card; customer-segment fee exception
+    documented.
 rewards:
-  - effective_from: 2018-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 5
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.25
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: RBL Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/insignia-preferred-banking-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "2026-07-05: catalogue-only, no airline/hotel transfers. Hotel 'partners' are elite-status perks, not point transfers."
+- effective_from: '2026-10-27'
+  effective_until:
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 100
+    unit_value_inr:
+    unit_value_inr_realized:
+  accelerated:
+  - category: international-retail-transactions
+    canonical_categories:
+    - international
+    multiplier: 2
+    effective_rate: 10
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: 10 points per INR100 on international eligible retail spend; billing
+      cycle for posting, with no cap stated.
+  exclusions: []
+  redemption:
+  - type: catalog
+    program: RBL Rewards
+    rate_inr_per_unit:
+    constraints: Redeem on RBL Rewards portal. Current RBL terms vary point
+      requirement by card and redemption category; no universal INR value. No
+      redemption fee for Insignia. Rewards points do not expire while the
+      account remains open; points lapse on card closure. Eligible Insignia
+      holders can transfer 3 reward points to 1 active partner mile/point;
+      partner terms and account-name matching apply.
+  source:
+    url:
+      https://webassets.rbl.bank.in/document/credit-cards/terms-conditions-insignia-credit-card.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    local_refs:
+    - docs/sources/rbl/insignia/product-terms-retrieved-2026-10-27.pdf
+    - docs/sources/rbl/insignia/miles-transfer-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption
+  capping_rules:
+  - Domestic retail earn is 5 points per INR100; eligible international retail
+    earn is 10 points per INR100. Reward points post within 45 days of
+    settlement.
+  - Reward program terms allow category and card-specific redemption rates,
+    exempt Insignia from the 24-month point expiry, and exempt it from the
+    reward redemption fee. Generic retail transactions exclude cash withdrawals
+    and fund transfers.
+  - Miles Transfer Programme conversion ratio for Insignia is 3 reward points
+    per partner mile/point; primary cardmember only. Up to 50,000 points per
+    request and two requests per month.
 benefits:
-  - effective_from: 2018-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: unlimited
-      cycle: monthly
-      lessons_per_cycle: unlimited
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "10,000 bonus Reward Points + luxury voucher"
-        value_inr: 15000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 40000000
-      - type: travel-medical
-        sum_insured_inr: 25000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/insignia-preferred-banking-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until:
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+      notes: Two complimentary visits per calendar quarter. Primary/cardmember
+        only; guests incur charge after complimentary visits are exhausted. Up
+        to INR25 validation authorization is reversed in same month.
+    international:
+      visits_per_cycle: 6
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      - loungekey
+      notes: Six complimentary visits per calendar year (not unlimited).
+        Activate international online transactions and present card/Priority
+        Pass membership. Up to USD1 validation authorization reversed. After
+        complimentary visits, charges up to USD35 per visit; accompanying guests
+        are charged after free visits are used. Additionally one Lounge Key
+        voucher can be claimed for each calendar month with INR100,000 eligible
+        spend in that month, over and above the six; voucher becomes available
+        in first week of next month and is valid 180 days.
+  golf:
+    rounds_per_cycle: 4
+    cycle: annual
+    lessons_per_cycle: 1
+    notes: 'Mastercard variant only: four complimentary rounds/year and one lesson/month;
+      50% discount beyond four rounds. No free quota published for Visa variant.'
+  welcome:
+  - condition: Make an eligible retail transaction within 30 days of card
+      issuance and pay annual membership fee shown on first statement by payment
+      due date. Not available to Insignia Banking customers whose annual fee is
+      nil.
+    benefit: 28,000 reward points; credited within 60 days of issuance
+    value_inr:
+    window_days: 30
+  insurance: []
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 500
+    cycle: monthly
+    notes: Eligible fuel purchase amount excludes surcharge. GST is not
+      reversed. Not available on delinquent, over-limit or closed cards.
+  concierge: true
+  source:
+    url:
+      https://webassets.rbl.bank.in/document/credit-cards/terms-conditions-insignia-credit-card.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    local_refs:
+    - docs/sources/rbl/insignia/product-terms-retrieved-2026-10-27.pdf
+    - docs/sources/rbl/insignia/insignia-milestone-benefits-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.golf
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.fuel_surcharge_waiver
+    - benefits.movies
+    - benefits.insurance
+    - benefits.concierge
+  milestones:
+  - spend_inr: 800000
+    cycle: annual
+    benefit: INR8,000 e-gift voucher at Amazon, Myntra, Croma, MakeMyTrip or Taj
+      Experiences at INR8 lakh eligible spend in membership year
+    value_inr: 8000
+    reward_kind: voucher
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  movies:
+    type: discount
+    partner: BookMyShow
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 500
+    notes: Flat INR500 discount per transaction on movie tickets, up to twice
+      per calendar month; primary card only.
+  notes: RBL product page also advertises EazyDiner Prime dining privileges and
+    property-dependent benefits at 2,400+ hotels; specific
+    discounts/availability vary and are not encoded as fixed numeric
+    entitlements. The 28,000-point welcome, INR8,000 milestone voucher, six
+    annual international lounge visits and INR500 twice-monthly BookMyShow
+    benefit are the current product terms.
 eligibility:
-  min_age: 21
-  max_age: 70
+  min_age:
+  max_age:
   income_inr_annual:
-    salaried: 3500000
-    self_employed: 3500000
-  credit_score_min: 780
-  residency: resident-indian
-  notes: "Available only to RBL Preferred Banking customers."
-
+    salaried:
+    self_employed:
+  credit_score_min:
+  residency:
+  notes: Current product/terms require Insignia Preferred Banking eligibility
+    but do not publish card-specific age, income, bureau score or residency
+    cutoffs. Insignia Banking customers have a separate nil-fee variant; network
+    guide lists Visa and Mastercard, so scalar network/tier remain unknown.
 application:
-  apply_url: null
-
+  apply_url:
+    https://www.rbl.bank.in/personal-banking/cards/credit-cards/insignia-preferred-banking-credit-card
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [invite-only, super-premium, preferred-banking, low-forex]
+  last_verified_on: '2026-10-27'
+  tags:
+  - invite-only
+  - super-premium
+  - preferred-banking
+  - low-forex

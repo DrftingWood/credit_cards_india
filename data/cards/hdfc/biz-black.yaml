@@ -1,0 +1,223 @@
+id: hdfc-biz-black
+name: HDFC Bank BizBlack Metal Edition Credit Card
+image_path: /cards/hdfc/biz-black.png
+issuer: hdfc
+network: diners
+network_tier: black
+tier: super-premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 10000
+  annual_fee_inr: 10000
+  renewal_fee_inr: 10000
+  fee_waiver:
+    spend_inr: 750000
+    cycle: annual
+    conditions: First-year joining fee waived on ₹1.5 lakh within 90 days of issuance;
+      renewal fee waived on ₹7.5 lakh during 12 billing cycles of the anniversary
+      year.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 1.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-black-credit-card/fees-and-charges
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    notes: Current issuer page confirms ₹10,000 plus tax joining and renewal fees,
+      first-year waiver at ₹1.5 lakh in 90 days, renewal waiver at ₹7.5 lakh during
+      12 billing cycles of the anniversary year, 2% foreign currency markup, and cash
+      advance fee 2.5% or ₹500 minimum.
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+rewards:
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 5
+    per_inr: 150
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: business-tax-utility-smartbuy
+    canonical_categories:
+    - utilities
+    - government
+    - travel
+    - online
+    multiplier: 5
+    effective_rate: 25
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: statement
+    channel:
+      required: false
+      class: issuer-portal
+      merchants:
+      - smartbuy
+    notes: 5X Reward Points (25 RP per ₹150) on eligible bill payments via SmartPay/PayZapp,
+      Income Tax/Advance Tax, GST, MMT MyBiz bookings via SmartBuy BizDeals, and business
+      software via SmartBuy BizDeals. Requires ₹50,000 minimum spend per statement
+      cycle; accelerated earn capped at 7,500 RP per statement cycle. Fixed rupee
+      value varies by redemption route.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - education
+  - emi
+  - cash-advance
+  capping_rules:
+  - 5X accelerated earn on business essentials requires a minimum statement-cycle
+    spend of ₹50,000 and is capped at 7,500 accelerated Reward Points per statement
+    cycle.
+  - Flight and hotel redemptions via SmartBuy / BizDeals are listed at 1 RP = ₹1 (up
+    to 70% of booking value, capped at 50,000 RP per calendar month); confirm current
+    portal terms before redemption.
+  redemption:
+  - type: catalog
+    program: SmartBuy Flights, Hotels & BizDeals
+    rate_inr_per_unit: 1.0
+    constraints: 1 RP = ₹1 on flights, hotels, and SmartBuy BizDeals (up to 70% of
+      booking value, max 50,000 RP/month); issuer portal terms may vary.
+  - type: airmiles
+    program: Airline & Hotel Transfer Partners
+    rate_inr_per_unit: null
+    ratio: '1:1'
+    constraints: 1:1 transfer ratio to select airline/hotel loyalty programmes via
+      HDFC NetBanking; realized rupee value varies by partner and use.
+  - type: statement-credit
+    program: Cashback Redemption
+    rate_inr_per_unit: null
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-black-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    notes: Current issuer reward-program PDF and FAQ confirm 5 RP per ₹150 on other
+      eligible spends and 25 RP per ₹150 (5X) for defined business categories when
+      statement-cycle spend reaches ₹50,000; accelerated earn capped at 7,500 RP per
+      statement cycle. Fixed point value and exclusion detail require route-specific
+      terms; base exclusions include petrol, wallet, rent, education and EMI.
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].accelerated[0].cap_per_cycle
+    - rewards[0].redemption[0].rate_inr_per_unit
+  mcc_exclusions:
+  - '6513'
+benefits:
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - diners
+      notes: Unlimited access for active cardholders. Current issuer page defines
+        active as at least one online or in-store transaction in the preceding month;
+        access starts from the 5th of the current month. Access is available for primary
+        and add-on holders; international list is via Diners Travel Tool.
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - diners
+      notes: Unlimited access for active cardholders. Current issuer page defines
+        active as at least one online or in-store transaction in the preceding month;
+        access starts from the 5th of the current month. International participating
+        lounges are listed in Diners Travel Tool.
+  golf:
+    rounds_per_cycle: 6
+    lessons_per_cycle: 0
+    cycle: quarterly
+    notes: 6 complimentary golf games per calendar quarter across premier golf courses
+      worldwide.
+  milestones:
+  - spend_inr: 500000
+    cycle: annual
+    benefit: ₹5,000 SmartBuy flight or Taj stay voucher on each ₹5 lakh milestone
+      (excluding EMI, rent and petrol), up to ₹20,000 on ₹20 lakh spend in a calendar
+      year.
+    value_inr: 5000
+    reward_kind: voucher
+    is_repeatable: true
+    max_awards_per_cycle: 4
+  welcome:
+  - condition: Spend Rs. 1.5 lakh within first 90 days of card issuance
+    benefit: All Accor+ Explorer membership on ₹1.5 lakh spend within 90 days; effective
+      for cards set up from 15 September 2026 and limited to first-time cardholders
+      (not conversions, migrations or upgrades).
+    value_inr: 5000
+    window_days: 90
+  insurance: []
+  fuel_surcharge_waiver: null
+  concierge: true
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-black-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    notes: Business insurance is described by issuer as an optional package at a separate
+      annual premium of ₹3,785 including GST, not as complimentary card cover. Issuer
+      fee schedule lists fuel-surcharge waiver as not applicable. Current FAQ lists
+      golf 6 games per quarter and 24/7 concierge.
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: 4500000
+  credit_score_min: null
+  residency: resident-indian
+  notes: Current product page lists a self-employed Indian citizen aged 21–65, annual
+    business ITR above ₹45 lakh and a mandatory liability relationship. FAQ dated
+    29 Nov 2024 instead says ITR above ₹30 lakh and permits ITR, GST returns, bank
+    statements or merchant payment report; this is a material source conflict. The
+    current page is treated as controlling; verify against application underwriting.
+    No numeric bureau-score minimum is published in reviewed current sources.
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-black-credit-card
+    retrieved_on: '2026-10-27'
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.self_employed
+    notes: Current product page criteria; older issuer FAQ (29-Nov-2024) conflicts
+      on ITR threshold (₹30 lakh) and omits mandatory liability relationship. Current
+      page states ₹45 lakh and mandatory liability relationship.
+application:
+  apply_url: https://www.hdfc.bank.in/business-credit-cards/bizblack-metal-edition-credit-card
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - metal
+  - diners
+  - business
+  - super-premium
+  - points
+  - travel
+  - lounge

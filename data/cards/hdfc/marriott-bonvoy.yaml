@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-marriott-bonvoy
 name: Marriott Bonvoy HDFC Bank Credit Card
+image_path: /cards/hdfc/marriott-bonvoy.png
 issuer: hdfc
 network: diners
-network_tier: privilege
+network_tier: null
 tier: premium
 card_type: credit
 co_brand:
@@ -19,142 +11,254 @@ co_brand:
   category: hotel
   partner_website: https://www.marriott.com/loyalty.mi
 status: active
-launched_on: 2022-10-01
+launched_on: 2023-08-24
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-10-01
-    effective_until: null
-    joining_fee_inr: 3000
-    annual_fee_inr: 3000
-    fee_waiver: null
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "No spend-based fee waiver; paying the renewal fee grants a Free Night Award (up to 15,000 points) instead."
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card
-      retrieved_on: 2026-06-12
-      notes: "Waiver corrected 2026-06: the earlier ₹6L spend waiver was wrong."
-
+- effective_from: 2023-08-24
+  effective_until: null
+  joining_fee_inr: 3000
+  annual_fee_inr: 3000
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.6
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: No spend-based fee waiver. The annual fee triggers a renewal Free Night Award; this is a benefit, not a fee waiver.
+  source:
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/co-branded-most-important-terms-and-conditions-for-credit-cards.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current card page and HDFC co-branded MITC support INR 3,000 joining/renewal fee, no spend-based renewal waiver and 3.5% forex. The product FAQ lists 3.6% monthly finance; the MITC sets cash advance at 2.5% or INR 500 minimum and DCC at 1.75% from 15-May-2026. Launch date is 24-Aug-2023 per the official Diners Club launch announcement and HDFC Bank launch video; DCC has no dedicated schema field.
 rewards:
-  - effective_from: 2022-10-01
-    effective_until: null
-    currency: points
-    currency_name: Marriott Bonvoy Points
-    loyalty_program: marriott-bonvoy
-    base:
-      rate: 2
-      per_inr: 150
-      unit_value_inr: 0.8
-      unit_value_inr_realized: 0.55
-    accelerated:
-      - category: marriott-properties
-        canonical_categories: [travel]
-        effective_rate: 8
-        card_attributable_rate: 8
-        card_attributable_per_inr: 150
-        stacks_with_program: true
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: cobrand-merchant
-          merchants: [marriott-direct]
-        notes: "8 Bonvoy points per ₹150 on spends at participating Marriott hotels. Stacks with Bonvoy member earn (handled via loyalty_program: marriott-bonvoy at calculator time)."
-      - category: travel-dining
-        canonical_categories: [travel, dining]
-        effective_rate: 4
-        card_attributable_rate: 4
-        card_attributable_per_inr: 150
-        stacks_with_program: false
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-      - utilities
-    redemption:
-      - type: hotel-points
-        program: Marriott Bonvoy
-        rate_inr_per_unit: 0.8
-        constraints: "Points credited directly to Marriott Bonvoy account."
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card
-      retrieved_on: 2026-04-15
-      type: issuer-page
-
+- effective_from: 2026-10-19
+  effective_until: null
+  currency: points
+  currency_name: Marriott Bonvoy Points
+  loyalty_program: marriott-bonvoy
+  base:
+    rate: 2
+    per_inr: 150
+    unit_value_inr: 0.85
+    unit_value_inr_realized: 0.55
+  accelerated:
+  - category: marriott-properties
+    canonical_categories:
+    - travel
+    effective_rate: 8
+    card_attributable_rate: 8
+    card_attributable_per_inr: 150
+    stacks_with_program: false
+    cap_per_cycle: 1000000
+    cap_unit: spend-inr
+    cycle: monthly
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - marriott-direct
+    notes: 8 points per INR 150 up to INR 10 lakh eligible monthly spend, then 2 points per INR 150. Participating properties and Marriott-owned/managed branded retail and online stores only; excludes Homes & Villas. No additional 4-point travel/dining earn applies to the same transaction. Hotel-stay program points are excluded from estimates because the calculator cannot isolate eligible hotel stays from other Marriott-branded retail spend.
+  - category: travel-dining
+    canonical_categories:
+    - travel
+    - dining
+    - entertainment
+    effective_rate: 4
+    card_attributable_rate: 4
+    card_attributable_per_inr: 150
+    stacks_with_program: false
+    cap_per_cycle: 500000
+    cap_unit: spend-inr
+    cycle: monthly
+    notes: 4 points per INR 150 up to INR 5 lakh eligible monthly spend; above the threshold, base 2 points per INR 150 applies. Category assignment follows network MCCs.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - emi
+  - cash-advance
+  capping_rules:
+  - Grocery earn stops after INR 1,50,000 eligible grocery spend per month (maximum 2,000 points); generic base earn must not continue above this cap.
+  - Only primary cardmember receives Marriott points; supplementary-card spend credits the primary member's Marriott account.
+  - Points are rounded to the nearest integer; fractional points are not accrued.
+  - Online gaming transactions are excluded from earning.
+  - Cash advances, card fees, other charges and outstanding-balance payments do not earn points. Only an eligible down-payment amount earns points; EMI amounts, interest, processing fees and GST do not.
+  redemption:
+  - type: hotel-points
+    program: Marriott Bonvoy
+    rate_inr_per_unit: 0.85
+    constraints: Points credited directly to Marriott Bonvoy account.
+  source:
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/marriott-bonvoy-credit/terms-and-condition.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/marriott-bonvoy/terms-and-condition-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.capping_rules
+    notes: Published 19-Oct-2026 card-specific terms confirm 8/150 Marriott earn up to INR 10 lakh monthly; 4/150 travel, dining and entertainment up to INR 5 lakh monthly; base 2/150 otherwise; grocery earn capped at INR 1.5 lakh monthly; and the exclusion list. Reward valuations come from the separate Marriott Bonvoy loyalty-program record, not HDFC.
 benefits:
-  - effective_from: 2022-10-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 12
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-      international:
-        visits_per_cycle: 12
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    milestones:
-      - spend_inr: 600000
-        cycle: annual
-        benefit: "Free Night Award worth up to 15,000 Bonvoy points"
-        value_inr: 8250
-      - spend_inr: 900000
-        cycle: annual
-        benefit: "additional Free Night Award (up to 15,000 points)"
-        value_inr: 8250
-      - spend_inr: 1500000
-        cycle: annual
-        benefit: "additional Free Night Award (up to 15,000 points)"
-        value_inr: 8250
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "1 Free Night Award (up to 15,000 points) + Silver Elite status + 10 Elite Night Credits"
-        value_inr: 8250
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 10000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    other:
-      - name: Marriott Bonvoy Silver Elite status
-        description: Complimentary Silver Elite status on the Marriott Bonvoy programme.
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card
-      retrieved_on: 2026-06-12
-      notes: "2026-06 corrections: lounge is 12 dom + 12 intl/yr; FNA-based milestones/welcome (Marriott dropped category awards; FNAs valued at 15,000 pts × realized ₹0.55). FNA top-up with up to 25,000 extra points allowed since 2025-26."
-
+- effective_from: 2026-10-19
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 12
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+    international:
+      visits_per_cycle: 12
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+  milestones:
+  - spend_inr: 600000
+    cycle: annual
+    benefit: Free Night Award worth up to 15,000 Bonvoy points
+    value_inr: 8250
+  - spend_inr: 900000
+    cycle: annual
+    benefit: additional Free Night Award (up to 15,000 points)
+    value_inr: 8250
+  - spend_inr: 1500000
+    cycle: annual
+    benefit: additional Free Night Award (up to 15,000 points)
+    value_inr: 8250
+  welcome:
+  - condition: Primary cardmember with linked active Marriott Bonvoy account; new accounts from 1-Oct-2026 receive the benefit on fee levy. Earlier onboarded accounts qualify on INR 500 eligible spend or fee levy, whichever occurs first. LTF accounts are excluded.
+    benefit: 1 Free Night Award (up to 15,000 points) + Silver Elite status + 10 Elite Night Credits
+    value_inr: 8250
+  insurance:
+  - type: baggage-loss
+    sum_insured_inr: null
+    sum_insured_amount: 250
+    sum_insured_currency: USD
+    conditions: Primary cardmember only; summary lists checked baggage delay/loss and loss of travel documents. Product page requires ticket purchase using this card for travel insurance activation. Summary says cover valid through 22-Jul-2027; detailed policy limitations apply.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 250
+    sum_insured_currency: USD
+    conditions: Primary cardmember only; flight-delay cover. Summary describes USD 10 per hour after an 8-hour deductible. Product page requires ticket purchase using this card for travel insurance activation. Summary says cover valid through 22-Jul-2027; detailed policy limitations apply.
+  - type: air-accident
+    sum_insured_inr: null
+    sum_insured_amount: 12500
+    sum_insured_currency: USD
+    conditions: Primary cardmember only; air ticket must be purchased using this card. Cover requires card activation and is stated as valid through 22-Jul-2027; detailed policy limitations apply.
+  - type: travel-medical
+    sum_insured_inr: null
+    sum_insured_amount: 18750
+    sum_insured_currency: USD
+    coverage_duration_days: 30
+    conditions: Primary cardmember only; international travel originating from India; ticket must be purchased using this card; maximum trip duration 30 days; card activation required; stated valid through 22-Jul-2027.
+  - type: credit-shield
+    sum_insured_inr: 100000
+    sum_insured_amount: null
+    sum_insured_currency: INR
+    conditions: Primary cardmember only; accidental death or permanent disability; card activation required; stated valid through 22-Jul-2027.
+  - type: other
+    sum_insured_inr: 900000
+    sum_insured_amount: null
+    sum_insured_currency: INR
+    conditions: Financial liability cover for the primary card only; card activation required; stated valid through 22-Jul-2027.
+  fuel_surcharge_waiver: null
+  golf:
+    rounds_per_cycle: 2
+    lessons_per_cycle: 2
+    cycle: quarterly
+    notes: Select courses in India and internationally; two lessons and two course accesses per quarter, subject to terms.
+  concierge: true
+  other:
+  - name: Marriott Bonvoy Silver Elite status
+    description: Primary cardmember receives Silver Elite status on approval and each anniversary year while the card is active and in good standing.
+  - name: Annual Free Night Award
+    description: One FNA worth up to 15,000 Bonvoy points after annual fee levy each subsequent anniversary year; primary cardmember only, valid 12 months.
+    value_inr: 8250
+  - name: Annual Elite Night Credits
+    description: Ten Elite Night Credits after annual fee levy each year; primary cardmember only. Credits expire 31 December of the posting year.
+  - name: Insurance limits advertised by HDFC
+    description: HDFC card page and insurance cover summary advertise checked baggage delay/loss and travel document loss USD 250, flight delay USD 250, air accident USD 12,500, international emergency medical USD 18,750, credit shield INR 100,000 and primary-card financial liability INR 900,000. The issuer summary states validity through 22-Jul-2027; see structured cover entries for primary-card, activation and travel conditions. Full policy limitations apply.
+  - name: Anniversary Special Offer 2026 (time limited)
+    description: Primary cardmembers who enroll can choose 15,000 Marriott Bonvoy points after INR 1,50,000 eligible spend or 30,000 points after INR 2,50,000 spend during 1-Oct-2026 to 30-Nov-2026. Enrollment closes 10-Nov-2026; post-1-Oct enrollment counts eligible spend only from enrollment date. Not modeled as a permanent reward or milestone.
+  - name: Concierge service
+    description: Concierge assistance is available 9am-9pm via 1800 309 3100 or support@marriotthdfcbank.com, per the current HDFC product page.
+  source:
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/marriott-bonvoy-credit/terms-and-condition.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/marriott-bonvoy/terms-and-condition-retrieved-2026-10-27.pdf
+    - docs/sources/hdfc/marriott-bonvoy/lounge-terms-and-condition.pdf
+    - docs/sources/hdfc/marriott-bonvoy/golf-access-terms-and-conditions.pdf
+    - docs/sources/hdfc/marriott-bonvoy/insurance-cover-summary.pdf
+    - docs/sources/hdfc/marriott-bonvoy/hdfc-ergo-payment-protection-package-policy-wording.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.milestones.spend_inr
+    - benefits.milestones.cycle
+    - benefits.golf
+    - benefits.insurance
+    - benefits.concierge
+    - benefits.other[0]
+    - benefits.other[2]
+    - benefits.other[4]
+    - benefits.other[5]
+    notes: 19-Oct-2026 card terms confirm lounge, Free Night Awards, Elite Night Credits, Silver status and golf. FNA permits up to 15,000 additional Bonvoy points (not 25,000). HDFC's current product page also lists concierge and an enrollment-based Oct-Nov 2026 anniversary offer; campaign dates and thresholds are captured in benefits.other because schema lacks date-windowed benefits. The issuer insurance cover summary says these advertised covers remain valid through 22-Jul-2027; structured coverage and primary-card/travel conditions are recorded below. INR 8,250 FNA values are estimates derived from the separate Marriott Bonvoy realized point value (INR 0.55/point), not issuer-guaranteed rupee values. Current co-branded MITC says fuel surcharge waiver is not applicable.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: 65
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
   income_inr_annual:
-    salaried: 1500000
-    self_employed: 1800000
-  credit_score_min: 750
+    salaried: 1200000
+    self_employed: 1500000
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Salaried criterion is net monthly income over INR 100,000; annual field is the arithmetic annualized equivalent, not a gross-income threshold. Self-employed criterion is annual ITR over INR 15 lakh. No minimum bureau-score cutoff is published.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card/eligibility
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges.salaried
+    - eligibility.age_ranges.self_employed
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/marriott-bonvoy-credit-card
-
 metadata:
-  last_verified_on: 2026-06-12
-  tags: [co-branded, hotel, marriott, premium, points]
+  last_verified_on: 2026-10-27
+  tags:
+  - co-branded
+  - hotel
+  - marriott
+  - premium
+  - points

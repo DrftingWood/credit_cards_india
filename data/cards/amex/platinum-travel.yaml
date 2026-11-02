@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : American Express live product pages, americanexpress.com/in
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: amex-platinum-travel
+﻿id: amex-platinum-travel
 name: American Express Platinum Travel Credit Card
+image_path: /cards/amex/platinum-travel.png
 issuer: amex
 network: amex
 network_tier: platinum
@@ -16,175 +8,184 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2014-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2014-01-01
-    effective_until: null
-    joining_fee_inr: 5000
-    annual_fee_inr: 5000
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 3.5
-      min_inr: 250
-    gst_applicable: true
-    source:
-      url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 5000
+  annual_fee_inr: 5000
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee:
+    pct: 3.5
+    min_inr: 250
+  late_payment_slabs: null
+  gst_applicable: true
+  notes: Issuer fee schedule lists INR 5,000 first-year/renewal fee, 3.5% monthly finance, 3.5% forex, 3.5% cash-advance
+    fee (minimum INR 250), and late-payment charge 30% of minimum due (minimum INR 500; maximum INR 1,000); schema
+    cannot represent the late-fee formula. Cash withdrawal services in India have been paused since 31 Jan 2022.
+    Exact effective start date of current terms is unpublished; effective_from is the evidence snapshot date required by schema.
+  source:
+    url: https://www.americanexpress.com/content/dam/amex/in/legal-disclosures/Schedule-of-Fee-and-Charges.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.forex_markup_pct
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.late_payment_slabs
+    notes: 'Issuer FAQ states foreign-currency transactions incur a 3.5% markup. Separate current issuer FAQ support
+      for the 3.5% foreign-currency markup: https://www.americanexpress.com/in/customer-service/faq.travel.can-i-use-my-card-abroard.html?inav=en_in_menu_travel_help_with_travel_can_i_use_my_card_abroad.'
 rewards:
-  - effective_from: 2014-01-01
-    effective_until: null
-    currency: points
-    currency_name: Membership Rewards
-    base:
-      rate: 1
-      per_inr: 50
-      unit_value_inr: 0.55
-      unit_value_inr_realized: 0.3
-    exclusions:
-      - fuel
-      - wallet-loads
-      - insurance-premiums
-      - emi
-      - cash-advance
-      - utilities
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-      - type: airmiles
-        program: Multiple (MR transfer)
-        ratio: "2:1"
-        constraints: "8 transfer partners; ratios are card-point : partner-unit. realized Rs 0.30 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 8 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.55/pt
-          - partner_name: Hilton Honors
-            partner_type: hotel
-            transfer_ratio: "1:0.9"
-            last_verified_on: '2026-07-05'
-            notes: 1:0.9 -> ~Rs 0.32/pt
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.55/pt
-          - partner_name: Emirates Skywards
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt
-          - partner_name: Virgin Atlantic Flying Club
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt
-      - type: voucher
-        program: Amex gift vouchers
-        rate_inr_per_unit: 0.5
-    source:
-      url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: Membership Rewards
+  base:
+    rate: 1
+    per_inr: 50
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  exclusions:
+  - fuel
+  - insurance-premiums
+  - cash-advance
+  - utilities
+  capping_rules:
+  - No points on merchant-selected/POS EMI; SafeKey EMI and post-purchase EMI continue earning points. Points do not expire while the card remains active and in good standing; cancellation forfeits them within 30 days.
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    constraints: Issuer offers Pay with Points for eligible purchases; a general conversion value is not stated
+      on the current product page.
+  - type: voucher
+    program: Platinum Travel Collection
+    constraints: 'Published examples vary: Air India INR 6,000 voucher for 20,000 points; Taj INR 10,000 voucher
+      for 25,000 points; Postcard INR 10,000 voucher for 20,000 points. These are catalog-specific values, not a
+      universal point valuation.'
+  source:
+    url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.exclusions
+    - rewards.capping_rules
+    notes: Current issuer page confirms 1 point per INR 50; fuel, insurance, utilities, cash transactions and merchant/POS
+      EMI do not earn. SafeKey and post-purchase EMI continue earning. Points do not expire while account remains active
+      and in good standing; cancellation forfeits within 30 days. Reward Multiplier 3X is merchant-specific and not
+      represented as general online earn. Current catalogue redemption values vary and are not a universal point value.
 benefits:
-  - effective_from: 2014-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: 0
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-        notes: "Complimentary Priority Pass membership (US$99 fee waived); international lounge visits are pay-per-use."
-    milestones:
-      - spend_inr: 190000
-        cycle: annual
-        benefit: "7,500 Membership Rewards points (Platinum Travel Collection)"
-        value_inr: 2250
-        reward_kind: points
-        reward_units: 7500
-        reward_currency_name: Membership Rewards
-        trigger_window: anniversary-year
-      - spend_inr: 400000
-        cycle: annual
-        benefit: "10,000 Membership Rewards points"
-        value_inr: 3000
-        reward_kind: points
-        reward_units: 10000
-        reward_currency_name: Membership Rewards
-        trigger_window: anniversary-year
-      - spend_inr: 700000
-        cycle: annual
-        benefit: "22,500 Membership Rewards points + Taj Experiences E-Gift Card worth ₹10,000"
-        value_inr: 16750
-        reward_kind: points
-        reward_units: 22500
-        reward_currency_name: Membership Rewards
-        trigger_window: anniversary-year
-    welcome:
-      - condition: "Spend ₹15,000 within 90 days (1st year, on fee payment)"
-        benefit: "10,000 Membership Rewards points"
-        value_inr: 3000
-        window_days: 90
-    insurance:
-      - type: travel-medical
-        sum_insured_inr: 5000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: false
-    other:
-      - name: Taj Epicure membership
-        description: Complimentary enrolment in Taj Epicure Plus programme.
-    source:
-      url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-27
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      spend_threshold_inr: 100000
+      spend_threshold_cycle: quarterly
+      guests_per_visit: null
+      via:
+      - dreamfolks
+      notes: Effective 1 October 2026, two visits per quarter require eligible spend in the preceding quarter. INR
+        70,000 spend in Q3 2026 qualifies for Q4 2026; INR 1 lakh per quarter applies from Q4 2026 spend for Q1
+        2027 access.
+    international:
+      visits_per_cycle: 0
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - priority-pass
+      notes: Priority Pass membership fee is waived; issuer's current card page describes complimentary domestic
+        visits only. Do not treat international PP visits as free.
+  milestones:
+  - spend_inr: 400000
+    cycle: annual
+    benefit: 10,000 Membership Rewards points redeemable across Platinum Travel Collection
+    reward_kind: points
+    reward_units: 10000
+    reward_currency_name: Membership Rewards
+    trigger_window: anniversary-year
+    is_repeatable: true
+  - spend_inr: 700000
+    cycle: annual
+    benefit: INR 20,000 Taj Experiences E-Gift Card from Taj, SeleQtions, and Vivanta Hotels
+    value_inr: 20000
+    reward_kind: voucher
+    trigger_window: anniversary-year
+    is_repeatable: true
+  welcome:
+  - condition: First year only; annual fee paid and INR 15,000 spend within first 90 days
+    benefit: 10,000 Membership Rewards points redeemable for Platinum Travel Collection
+    window_days: 90
+  insurance: []
+  fuel_surcharge_waiver: null
+  dining: null
+  other:
+  - name: Reward Multiplier
+    description: 3X points through issuer Reward Multiplier at participating online merchants; eligibility is merchant-specific
+      and not applied to broad online category spend in the calculator.
+  - name: HPCL fuel convenience
+    description: 0% convenience fee for HPCL fuel transactions below INR 5,000; 1% fee applies at INR 5,000 and
+      above. Fuel earns no Membership Rewards points.
+  - name: Application availability
+    description: Issuer currently says acceptance of new India applications is temporarily paused.
+  source:
+    url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.milestones.spend_inr
+    - benefits.milestones.value_inr
+    - benefits.milestones.reward_units
+    - benefits.welcome.window_days
+    - benefits.welcome.condition
+    - benefits.welcome.benefit
+    notes: >-
+      Current source confirms staged lounge spend gate: INR 70,000 in Q3 2026 qualifies for Q4 visits; INR 1
+      lakh/quarter beginning Q4 2026 qualifies for Q1 2027 visits. From 15 Nov 2026 milestone eligibility will use
+      transaction posting date and credit points/vouchers by month-end. EMI processing is temporarily disrupted
+      11-16 Nov. New India applications are paused. Priority Pass membership fee is waived but lounge usage remains
+      chargeable at prevailing rates.
 eligibility:
   min_age: 18
-  max_age: 70
+  max_age: null
   income_inr_annual:
     salaried: 600000
     self_employed: 600000
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-  notes: "Amex acceptance in India is narrower than Visa/Mastercard; factor into suitability."
-
+  notes: 'Issuer criteria: over 18, personal annual income INR 6 lakh or above for salaried or self-employed applicants,
+    an Indian bank account, good credit history, permanent Indian address and resident Indian status. Self-employed
+    business must have traded for over 12 months. Serviceable-city list applies; credit score floor is not published.'
+  source:
+    url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [travel, points, amex, milestone-heavy]
+  last_verified_on: '2026-10-27'
+  tags:
+  - travel
+  - points
+  - amex
+  - milestone-heavy

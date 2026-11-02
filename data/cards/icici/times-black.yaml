@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-times-black
 name: Times Black ICICI Bank Credit Card
+image_path: /cards/icici/times-black.webp
 issuer: icici
 network: visa
-network_tier: infinite
+network_tier: null
 tier: super-premium
 card_type: credit
 co_brand:
@@ -19,150 +11,333 @@ co_brand:
   category: lifestyle
   partner_website: https://www.timesprime.com
 status: invite-only
-launched_on: 2024-03-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-03-01
-    effective_until: null
-    joining_fee_inr: 20000
-    annual_fee_inr: 20000
-    fee_waiver:
-      spend_inr: 2500000
-      cycle: annual
-    forex_markup_pct: 1.49
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 20000
+  annual_fee_inr: 20000
+  fee_waiver:
+    spend_inr: 2500000
+    cycle: annual
+  forex_markup_pct: 1.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    flat_inr: 0
+  gst_applicable: true
+  notes: 'Current issuer page: joining and annual fee INR20,000 + GST; annual fee waived from the second year on
+    INR2,500,000 prior-year spend; 1.49% forex markup; 3.75% monthly finance charge when only minimum due is paid.
+    Fee table lists ATM withdrawal as Nil. Card-specific cash advance fee is represented as INR0; cash withdrawals
+    may still accrue finance charges under MITC.'
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.flat_inr
+    method: manual-read
+    local_refs: &id001
+    - docs/sources/icici/times-black/times-black-terms-retrieved-2026-10-27.pdf
+    - docs/sources/icici/times-black/insurance-retrieved-2026-10-27.pdf
+    - docs/sources/icici/times-black/cancellation-cfar-retrieved-2026-10-27.pdf
+    - docs/sources/icici/times-black/mitc-retrieved-2026-10-27.pdf
 rewards:
-  - effective_from: 2024-03-01
-    effective_until: null
-    currency: points
-    currency_name: ICICI Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 0.5
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 1.25
-        effective_rate: 2.5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.4
-      - type: catalog
-        program: ICICI Rewards
-        rate_inr_per_unit: 1.0
-        constraints: Rs 1.0/pt applies to iShop flights/hotels & select premium-brand vouchers; general catalogue ~Rs 0.60.
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: ICICI Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 0.4
+    notes: 2% reward points on eligible domestic transactions; 1 point is worth up to INR1 in eligible redemption
+      categories, but statement redemption is INR0.40 per point.
+  accelerated:
+  - category: eligible-international-transactions
+    canonical_categories:
+    - international
+    multiplier: 1.25
+    effective_rate: 2.5
+    effective_per_inr: 100
+    cap_status: not-published
+    cap_unit: points
+    notes: 2.5% reward points on eligible international transactions.
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: '2026-10-27'
       type: issuer-page
-
       confidence: high
-      notes: 'Corrected 2026-07-05: statement-credit is Rs 0.40/pt (was Rs 1.0). Rs 1.0 only for travel/voucher redemptions; realized 0.5 kept as blend.'
-    mcc_exclusions: ['6513']
-benefits:
-  - effective_from: 2024-03-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: unlimited
-        via: [priority-pass, dragonpass]
-    golf:
-      rounds_per_cycle: unlimited
-      cycle: monthly
-      lessons_per_cycle: unlimited
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Luxury Stay Gift Card from EaseMyTrip (₹10,000) or Lohono (₹12,000)"
-        value_inr: 12000
-        window_days: 90
-      - benefit: "Lifestyle Gift Cards from Toni & Guy (₹3,000) and Interflora (₹1,000)"
-        value_inr: 4000
-      - benefit: "Travel visa benefits with Atlys and OneVasco"
-        value_inr: 10000
-      - benefit: "Zomato Gold annual membership"
-    milestones:
-      - spend_inr: 200000
-        cycle: annual
-        benefit: "Klook international experiences voucher"
-        value_inr: 10000
-        trigger_window: anniversary-year
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "WeWork day passes (India) or airport transfers (Thumby Aviation / Avis / Indian Travel House)"
-        value_inr: 10000
-        trigger_window: anniversary-year
-      - spend_inr: 1000000
-        cycle: annual
-        benefit: "Tata CLiQ Luxury Gift Card"
-        value_inr: 10000
-        trigger_window: anniversary-year
-      - spend_inr: 2000000
-        cycle: annual
-        benefit: "One night luxury stay at Ayatana or Lohono"
-        value_inr: 20000
-        trigger_window: anniversary-year
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 30000000
-      - type: travel-medical
-        sum_insured_inr: 5000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    other:
-      - name: The Quorum Club
-        description: Special membership offers and access to events at The Quorum Club, plus dining discounts at select restaurants.
-      - name: CribLife lifestyle management
-        description: Lifestyle management services from CribLife with 6 exclusive offerings.
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].effective_per_inr
+      method: manual-read
+      local_refs: *id001
+  - category: utilities-insurance-education-government
+    canonical_categories:
+    - utilities
+    - insurance
+    - education
+    - government
+    effective_rate: 2
+    effective_per_inr: 100
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: monthly
+    notes: Earn at the domestic rate; combined cap of 5,000 points per statement cycle across utility, insurance,
+      education and government-payment categories.
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
-      retrieved_on: 2026-07-03
-
+      retrieved_on: '2026-10-27'
+      type: issuer-page
+      confidence: high
+      fields_verified:
+      - rewards.accelerated[1].effective_rate
+      - rewards.accelerated[1].effective_per_inr
+      method: manual-read
+      local_refs: *id001
+  exclusions:
+  - fuel
+  - rent
+  - wallet-loads
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  - '7349'
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 0.4
+    fee_inr: 99
+    constraints: Statement-credit redemption is INR0.40 per point. Issuer general card FAQ lists INR99 + GST redemption
+      handling fee per request.
+  - type: catalog
+    program: ICICI Bank Rewards
+    rate_inr_per_unit: 1.0
+    fee_inr: 99
+    constraints: Value varies by eligible redemption; up to INR1 per point. Travel, vouchers and catalogue items
+      are redeemable through iMobile/Internet Banking; INR99 + GST fee per redemption request.
+  source:
+    url: https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/times-black-icici-credit-card-terms-conditions.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].effective_per_inr
+    - rewards.accelerated[1].effective_rate
+    - rewards.accelerated[1].effective_per_inr
+    - rewards.accelerated[1].cap_per_cycle
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    method: manual-read
+    local_refs: *id001
+    notes: 'Card-specific terms updated 02-May-2025 plus current card FAQ confirm the points schedule. Points have
+      3-year validity under the issuer general FAQ; card-specific terms do not publish a different expiry. Reward
+      values are points, not rupees. Wallet loading is also excluded under the issuer change notice effective 05-Feb-2024:
+      https://www.icici.bank.in/personal-banking/cards/credit-card/upcoming-changes-features-and-charges. Issuer
+      general card FAQ lists the INR99 + GST redemption handling fee: https://www.icici.bank.in/personal-banking/cards/credit-card/faqs.'
+benefits:
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - visa
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  welcome:
+  - condition: Joining benefits activate after joining fee + GST is paid within first two statement cycles; select
+      one of the stay vouchers
+    benefit: Luxury Stay Gift Card from EaseMyTrip (INR10,000) or Lohono (INR12,000)
+    value_inr: 12000
+  - condition: Joining benefits after joining fee + GST is paid
+    benefit: Lifestyle gift cards from Toni & Guy (INR3,000) and Interflora (INR1,000)
+    value_inr: 4000
+  - condition: Joining benefit; Times Black Visa wallet balance for eligible service fees
+    benefit: Atlys and OneVasco travel visa services, up to INR10,000 wallet balance
+    value_inr: 10000
+  - condition: Joining benefit
+    benefit: Annual Zomato Gold membership
+    value_inr: null
+  milestones:
+  - spend_inr: 200000
+    cycle: annual
+    benefit: Klook international experiences wallet/voucher
+    value_inr: 10000
+    trigger_window: anniversary-year
+  - spend_inr: 500000
+    cycle: annual
+    benefit: WeWork day passes (India) or airport transfers through eligible partners
+    value_inr: 10000
+    trigger_window: anniversary-year
+  - spend_inr: 1000000
+    cycle: annual
+    benefit: Tata CLiQ Luxury Gift Card
+    value_inr: 10000
+    trigger_window: anniversary-year
+  - spend_inr: 2000000
+    cycle: annual
+    benefit: One night luxury stay at Ayatana or Lohono
+    value_inr: 20000
+    trigger_window: anniversary-year
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 30000000
+    conditions: Accidental death only. Covered air ticket must be purchased with the card; primary cardholder only;
+      active-card clause requires card activity within preceding 90 days.
+  - type: purchase-protection
+    sum_insured_inr: 140000
+    coverage_duration_days: 90
+    conditions: Eligible tangible goods; residential fire/burglary cover in India under policy terms; primary cardholder
+      only.
+  - type: other
+    sum_insured_inr: 100000
+    conditions: Plane hijacking cover; primary cardholder only, subject to policy terms.
+  - type: credit-shield
+    sum_insured_inr: 100000
+    conditions: Cover for card debit balance on accidental death; primary cardholder only.
+  - type: lost-card-liability
+    sum_insured_inr: 50000
+    conditions: Lost card, counterfeit/skimming/phishing and online fraud cover; primary cardholder only and subject
+      to reporting windows.
+  - type: travel-medical
+    sum_insured_inr: 84000
+    conditions: Loss of checked-in baggage; international travel policy conditions apply.
+  - type: travel-medical
+    sum_insured_inr: 50000
+    conditions: Medical expense for bodily injury caused by rail/road accident; primary cardholder only.
+  - type: other
+    sum_insured_inr: 35000
+    conditions: Loss of passport and travel documents; policy terms and police reporting timelines apply.
+  - type: other
+    sum_insured_inr: 25000
+    conditions: Baggage insurance within India; subject to policy terms.
+  - type: travel-medical
+    sum_insured_inr: 21000
+    conditions: Delay of checked-in baggage; eligible international journey and policy conditions apply.
+  - type: other
+    sum_insured_inr: 21000
+    conditions: Missing connecting international flight during transit; policy conditions apply.
+  - type: other
+    sum_insured_inr: 17500
+    conditions: Delay in international flight; 12-hour delay and policy conditions apply.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: null
+    cap_per_cycle_inr: 1000
+    cycle: monthly
+  concierge: true
+  other:
+  - name: The Quorum Club
+    description: Membership offers, event access and dining discounts at select restaurants.
+  - name: CribLife lifestyle management
+    description: Lifestyle management services with six offerings.
+  - name: Cancellation for any reason cover
+    description: Up to INR12,000 per card for first two eligible domestic flight, hotel and movie cancellations;
+      primary cardholder bookings paid with Times Black. Non-refundable eligible booking amount only, subject to
+      policy terms.
+    value_inr: 12000
+  source:
+    url: https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/Comprehensive-Insurance-Cover-and-t-and-c.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.insurance
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.welcome[0].value_inr
+    - benefits.welcome[1].value_inr
+    - benefits.welcome[2].value_inr
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[0].value_inr
+    - benefits.milestones[1].spend_inr
+    - benefits.milestones[1].value_inr
+    - benefits.milestones[2].spend_inr
+    - benefits.milestones[2].value_inr
+    - benefits.milestones[3].spend_inr
+    - benefits.milestones[3].value_inr
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.insurance[1].sum_insured_inr
+    - benefits.insurance[2].sum_insured_inr
+    - benefits.insurance[3].sum_insured_inr
+    - benefits.insurance[4].sum_insured_inr
+    - benefits.insurance[5].sum_insured_inr
+    - benefits.insurance[6].sum_insured_inr
+    - benefits.insurance[7].sum_insured_inr
+    - benefits.insurance[8].sum_insured_inr
+    - benefits.insurance[9].sum_insured_inr
+    - benefits.insurance[10].sum_insured_inr
+    - benefits.insurance[11].sum_insured_inr
+    - benefits.other[2].value_inr
+    method: manual-read
+    local_refs: *id001
+    notes: Insurance schedule updated December 2025. Older YAML incorrectly called the INR30,000,000 death-only
+      air cover permanent-disability cover and used an unsupported INR5,000,000 travel-medical limit. Domestic lounge
+      access is unlimited for primary/add-on cardholders; international Priority Pass access is unlimited for primary/add-on
+      cardholders, while guests are chargeable. Current issuer card-specific T&C (updated 02-May-2025) confirms
+      unlimited domestic and international access for primary and add-on cardholders. International Priority Pass
+      guest visits are charged USD29 + GST per guest. The lounge schema cannot encode per-guest charges or add-on
+      cardholder access separately. The T&C confirms 1% fuel waiver with maximum INR1,000 per statement cycle; it
+      prints numeric terms in bracketed template form. The issuer says joining benefit communication is sent within
+      45 business days after the joining fee is paid; T&Cs require joining fee + GST within the first two statement
+      cycles. Milestone vouchers/services unlock at the annual spend thresholds and remain available for six months
+      from notification.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: null
   income_inr_annual:
     salaried: 2400000
     self_employed: 2400000
-  credit_score_min: 780
+  credit_score_min: null
   residency: resident-indian
-  notes: "Invite-only / by application; curated customer base."
-
+  notes: Issuer lists an Indian citizen aged over 21, salaried monthly income INR200,000 or self-employed annual
+    income INR2,400,000, and income proof. Invite-only/curated issuance; bank approval applies. No numeric credit-score
+    threshold is published.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.credit_score_min
+    - eligibility.residency
+    method: manual-read
+    local_refs: *id001
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/times-black-icici-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [super-premium, invite-only, co-branded, times-prime, lifestyle]
+  last_verified_on: '2026-10-27'
+  tags:
+  - super-premium
+  - invite-only
+  - co-branded
+  - times-prime
+  - lifestyle

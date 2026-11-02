@@ -1,1 +1,17 @@
-{"_source":"idbi .bank.in (card page redirects to home; no extractable fee table)","verified_on":"2026-07-04","result":"seeded RuPay-Select values retained as plausible-unconfirmed; domain+MCC verified in audit","pdfs_downloaded":0}
+{
+  "_source": "IDBI Bank official Winnings product page, FAQ, KFS, MITC and Usage Guide",
+  "verified_on": "2026-10-26",
+  "result": "Winnings reviewed against current issuer page and FAQ plus archived official PDFs. Redemption unit-value ambiguity and milestone stacking remain documented.",
+  "cards": {
+    "winnings": {
+      "url": "https://www.idbi.bank.in/winnings-credit-card.aspx",
+      "retrieved_on": "2026-10-26",
+      "local_refs": [
+        "docs/sources/idbi/winnings/key-fact-statement.pdf",
+        "docs/sources/idbi/winnings/MITC-CC.pdf",
+        "docs/sources/idbi/winnings/Winnings-Card-Usage-Guide.pdf",
+        "docs/sources/idbi/winnings/winnings-issuer-extract-2026-10-26.md"
+      ]
+    }
+  }
+}

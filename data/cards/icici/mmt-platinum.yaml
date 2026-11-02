@@ -1,16 +1,8 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-mmt-platinum
 name: MakeMyTrip ICICI Bank Platinum Credit Card
+image_path: /cards/icici/mmt-platinum.webp
 issuer: icici
-network: visa
+network: null
 network_tier: null
 tier: entry
 card_type: credit
@@ -19,11 +11,10 @@ co_brand:
   category: travel-agency
   partner_website: https://www.makemytrip.com
 status: active
-launched_on: null
+launched_on: '2018-09-27'
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-07-03
+  - effective_from: 2026-10-26
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 0
@@ -34,132 +25,215 @@ fees:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
-    notes: "One-time joining fee ₹500; annual fee Nil. Late payment fee ranges from ₹100 to ₹1300. Cash advance 2.5% (min ₹500) and finance charge 3.75%/mo per ICICI MITC."
+    notes: Current verification snapshot, not an issuer-published effective date. Joining fee is INR 500 plus GST; annual fee is nil. Late payment charge is INR 100–1,300. Other shared charges are per the October 2026 MITC.
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
-      retrieved_on: 2026-07-03
-
+      retrieved_on: 2026-10-26
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/icici/_shared/mitc_cc_2026-10-09.pdf
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee.pct
+        - fees.cash_advance_fee.min_inr
+      verified_by: agent
+      method: rendered-page
 rewards:
-  - effective_from: 2026-07-03
+  - effective_from: 2026-10-26
     effective_until: null
-    currency: cashback
+    currency: points
     currency_name: myCash
+    redemption_scope: closed-loop
+    ecosystem_label: MakeMyTrip
     base:
       rate: 1
       per_inr: 200
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
     accelerated:
       - category: makemytrip-hotel-booking
-        canonical_categories: [travel]
+        canonical_categories:
+          - travel
         multiplier: 3
         effective_rate: 3
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
+        cap_per_cycle: unlimited
+        cap_unit: points
         cycle: monthly
-        merchants: [mmt]
+        merchants:
+          - mmt
         channel:
           class: third-party-ota
-          merchants: [mmt]
-        notes: "3 myCash per ₹200 on hotel bookings via MakeMyTrip."
+          merchants:
+            - mmt
+        notes: 3 myCash per INR 200 on MakeMyTrip hotel and holiday bookings; closed-loop myCash is usable only in its stated MakeMyTrip redemption context.
       - category: makemytrip-flight-booking
-        canonical_categories: [travel]
+        canonical_categories:
+          - travel
         multiplier: 2
         effective_rate: 2
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
+        cap_per_cycle: unlimited
+        cap_unit: points
         cycle: monthly
-        merchants: [mmt]
+        merchants:
+          - mmt
         channel:
           class: third-party-ota
-          merchants: [mmt]
-        notes: "2 myCash per ₹200 on flight bookings via MakeMyTrip."
+          merchants:
+            - mmt
+        notes: 2 myCash per INR 200 on MakeMyTrip flight bookings.
       - category: international-spends
-        canonical_categories: [international]
+        canonical_categories:
+          - international
         multiplier: 1.25
         effective_rate: 1.25
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
+        cap_per_cycle: unlimited
+        cap_unit: points
         cycle: monthly
-        notes: "₹1.25 myCash per ₹200 on international spends outside MakeMyTrip."
+        notes: 1.25 myCash per INR 200 on international spends outside MakeMyTrip.
     exclusions:
       - fuel
       - emi
+      - cash-advance
     redemption:
-      - type: cashback-bank
+      - type: other
         program: MakeMyTrip myCash
         rate_inr_per_unit: 1.0
-        constraints: "Reward points credited to MakeMyTrip account as myCash; redeemable on MakeMyTrip."
+        constraints: INR 1 per myCash applies to MakeMyTrip bookings or eligible partner vouchers only; closed-loop, non-cashable and non-transferable to a bank account. Cannot be used for rail, offline holiday bookings or Pay-at-Hotel; Pay-at-Hotel bookings also do not earn myCash. myCash expires one year after credit. Transaction earn is rounded to nearest integer; reversed transactions earn nothing. Other exclusions include fees, interest, late charges, joining/renewal fees, balance transfers and card personal loans.
     source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
+      url: https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/mmt_platinum_tnc.pdf
+      retrieved_on: 2026-10-26
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/icici/mmt-platinum/mmt_platinum_tnc.pdf
+      fields_verified:
+        - rewards.currency
+        - rewards.currency_name
+        - rewards.redemption_scope
+        - rewards.ecosystem_label
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.base.unit_value_inr
+        - rewards.accelerated.effective_rate
+        - rewards.exclusions
+        - rewards.redemption
+      verified_by: agent
+      method: pdf-extract
+    mcc_exclusions:
+      - '6513'
 benefits:
-  - effective_from: 2026-07-03
+  - effective_from: 2026-10-26
     effective_until: null
     lounge_access:
       domestic:
         visits_per_cycle: 1
         cycle: quarterly
         guests_per_visit: 0
-        via: [dreamfolks]
+        spend_threshold_inr: 75000
+        spend_threshold_cycle: quarterly
+        notes: Only primary cardholders; requires INR 75,000 or more card spend in the preceding calendar quarter, for access in the following quarter.
+        via:
+          - dreamfolks
     milestones:
       - spend_inr: 50000
         cycle: annual
-        benefit: "1,000 myCash on ₹50,000 spend on flights/hotels/holidays on MakeMyTrip"
-        reward_kind: cashback
+        benefit: Earn 1,000 myCash each anniversary year after INR 50,000 qualifying flight, hotel or holiday booking spend through MakeMyTrip. Primary and add-on qualifying retail spend counts; reversals and cash advances, charges, fees, EMI, balance transfers and card personal loans are excluded. Credit is within 10 business days after anniversary cycle completion if the account is active and not delinquent.
+        reward_kind: points
         reward_units: 1000
         reward_currency_name: myCash
         trigger_window: anniversary-year
+        value_inr: 1000
+        is_repeatable: true
+        max_awards_per_cycle: 1
       - spend_inr: 250000
         cycle: annual
-        benefit: "1,000 myCash on total card spends of ₹2.5 lakh"
-        reward_kind: cashback
+        benefit: Earn 1,000 myCash each anniversary year after INR 2.5 lakh qualifying card spend. Primary and add-on qualifying retail spend counts; reversals and cash advances, charges, fees, EMI, balance transfers and card personal loans are excluded. Credit is within 10 business days after anniversary cycle completion if the account is active and not delinquent.
+        reward_kind: points
         reward_units: 1000
         reward_currency_name: myCash
         trigger_window: anniversary-year
+        value_inr: 1000
+        is_repeatable: true
+        max_awards_per_cycle: 1
     welcome:
-      - condition: "Joining fee paid"
-        benefit: "₹500 myCash + MakeMyTrip holiday voucher worth ₹3,000"
+      - condition: Primary cardholder; joining fee payment conditions apply. INR 500 myCash posts within 10 business days after eligible joining-fee payment if account is not delinquent or cancelled; holiday voucher is in the welcome kit.
+        benefit: INR 500 MakeMyTrip myCash and MakeMyTrip holiday voucher worth INR 3,000.
         value_inr: 3500
-        window_days: 10
+        window_days: null
     movies:
       type: discount
       partner: BookMyShow / INOX
       max_per_cycle: 2
       cycle: monthly
       cap_inr: 100
-      notes: "25% off up to ₹100 on min two tickets per transaction, up to twice a month."
+      notes: 25% discount up to INR 100 per transaction, minimum two tickets, up to twice a month.
     dining:
       program: Culinary Treats
+      notes: Issuer names Culinary Treats; discounts and merchant offers vary. No fixed value modeled.
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 400
       max_txn_inr: 4000
       cap_per_cycle_inr: null
       cycle: monthly
-      notes: "1% waiver on fuel transactions of ₹400–₹4,000 at HPCL pumps on ICICI Bank POS machines."
+      notes: At HPCL outlets on ICICI Bank POS machines in India; primary and supplementary cards qualify. Fuel does not earn myCash.
     other:
       - name: Railway lounge access
-        description: "4 complimentary railway lounge accesses annually."
+        description: One complimentary access to select Indian railway lounges per quarter, primary cardholder only (up to four per year).
+      - name: Card security coverage
+        description: Issuer advertises Counterfeit Card Liability and Account Takeover Cover; coverage limits and detailed conditions are not established in the accessed material.
     source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
-      retrieved_on: 2026-07-03
-
+      url: https://www.icici.bank.in/content/dam/icicibank/india/managed-assets/revamp-page-images/docs/pdf/mmt_platinum_tnc.pdf
+      retrieved_on: 2026-10-26
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+        - docs/sources/icici/mmt-platinum/mmt_platinum_tnc.pdf
+        - docs/sources/icici/_shared/domestic_consolidated_lounge_list-1.pdf
+        - docs/sources/icici/_shared/railway-lounge-programme.pdf
+      fields_verified:
+        - benefits.lounge_access.domestic.visits_per_cycle
+        - benefits.lounge_access.domestic.spend_threshold_inr
+        - benefits.milestones
+        - benefits.welcome
+        - benefits.movies
+        - benefits.dining
+        - benefits.fuel_surcharge_waiver
+        - benefits.other
+      verified_by: agent
+      method: pdf-extract
 eligibility:
   min_age: 21
   max_age: null
   income_inr_annual:
     salaried: 240000
     self_employed: 20000
-  credit_score_min: 700
+  credit_score_min: null
   residency: resident-indian
-  notes: "Salaried: monthly income of ₹20,000. Self-employed: annual income of at least ₹20,000 (per crawl)."
-
+  notes: Issuer page says Indian citizen over 21, salaried monthly income INR 20,000, and self-employed annual income at least INR 20,000. The unusually low self-employed threshold is recorded as published; it is not replaced with a generic ICICI criterion. Credit-score cutoff is unpublished. Age wording is reproduced as an issuer threshold and may mean older than 21.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+      - eligibility.min_age
+      - eligibility.income_inr_annual.salaried
+      - eligibility.income_inr_annual.self_employed
+      - eligibility.residency
+    verified_by: agent
+    method: rendered-page
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/makemytrip/platinum-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [co-branded, travel, mmt, cashback, entry]
+  last_verified_on: 2026-10-26
+  tags:
+    - co-branded
+    - travel
+    - mmt
+    - points
+    - entry

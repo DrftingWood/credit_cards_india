@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-irctc-hdfc
 name: IRCTC HDFC Bank Credit Card
+image_path: /cards/hdfc/irctc-hdfc.webp
 issuer: hdfc
 network: rupay
-network_tier: select
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -19,112 +11,249 @@ co_brand:
   category: railway
   partner_website: https://www.irctc.co.in
 status: active
-launched_on: 2022-08-01
+launched_on: 2023-03-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-08-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2023-03-01
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 150000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/_shared/mitc-in-english.pdf
+    - docs/sources/hdfc/_shared/mitc-v4.15-retrieved-2026-10-27.pdf
+    - docs/sources/hdfc/_shared/hdfc-card-changes-effective-2026-05-15.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2022-08-01
-    effective_until: null
-    currency: points
-    currency_name: IRCTC Reward Points
-    redemption_scope: closed-loop
-    ecosystem_label: IRCTC
-    loyalty_program: irctc-loyalty
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: irctc-rail-bookings
-        canonical_categories: [travel]
-        multiplier: 1
-        effective_rate: 5
-        card_attributable_rate: 5
-        card_attributable_per_inr: 100
-        stacks_with_program: false
-        cap_per_cycle: 1000
-        cap_unit: points
-        cycle: monthly
-        merchants: [irctc]
-        channel:
-          required: true
-          class: cobrand-merchant
-          merchants: [irctc-direct]
-        notes: "IRCTC rail accelerator capped at 1,000 Reward Points per month (12,000 per year)."
-    capping_rules:
-      - "Grocery/departmental spends earn base 1× only (no 3× accelerator), subject to a monthly cap."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: voucher
-        program: IRCTC
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: 'Research-verified: dedicated IRCTC Reward Point = Rs1 on rail fare (regulated/fixed -> NO price premium). HDFC caps redemption at 70% of fare.'
-      confidence: high
-    mcc_exclusions: ['5816', '6540']
+- effective_from: 2023-03-01
+  effective_until: null
+  currency: points
+  currency_name: IRCTC Reward Points
+  redemption_scope: closed-loop
+  ecosystem_label: IRCTC
+  loyalty_program: irctc-loyalty
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    notes: 1 point per INR 100 on eligible other spends; points post on settled transactions. Category-specific monthly caps are listed below. Fuel, wallet/gift/prepaid loads, cash advances, government, education, rent, card fees, Smart EMI/Dial-an-EMI transactions and merchant EMI interest/fees/GST are excluded; merchant EMI principal earns points.
+  accelerated:
+  - category: irctc-rail-bookings
+    canonical_categories:
+    - travel
+    multiplier: 5
+    effective_rate: 5
+    card_attributable_rate: 5
+    card_attributable_per_inr: 100
+    stacks_with_program: false
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - irctc
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - irctc-direct
+    notes: 5X total (1X base + 4X additional) on IRCTC ticketing website/Rail Connect and HDFC SmartBuy IRCTC rail bookings recognized by IRCTC MIDs/TIDs. Total 5X reward points are capped at 1,000/month and 12,000/year; points beyond cap do not post.
+  category_caps:
+  - category: irctc-rail-bookings
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: monthly
+    conditions: Total 5X IRCTC reward points are capped at 1,000/month and 12,000/year; the terms illustrate 1X base plus 4X additional.
+  - category: groceries
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: monthly
+    conditions: Eligible grocery transactions; eligible spend limited to INR 100,000/month. 12,000 points/year also stated.
+  - category: insurance
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: Card-specific cap table says INR 2,000 monthly effective 1 July 2025; another line says INR 2,000/day. Modeled monthly per the cap table; conflict unresolved.
+  - category: upi
+    cap_per_cycle: 500
+    cap_unit: points
+    cycle: monthly
+    conditions: Calendar-month UPI reward cap.
+  - category: utility-bill-payments
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: Eligible spend limited to INR 200,000/month.
+  - category: telecom
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    conditions: Eligible spend limited to INR 200,000/calendar month.
+  - category: other-spends
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: monthly
+    conditions: 12,000 points/year also stated for other spends. Broader base earn is not separately represented due to schema cap scope.
+  capping_rules:
+  - Monthly reward caps and spend limits are recorded in category_caps; issuer terms state that reward points are not awarded for spends beyond monthly feature caps.
+  - Insurance cap conflicts within the issuer PDF (INR 2,000/month in the product cap table and INR 2,000/day in a related line); monthly is modeled pending clarification.
+  - Reward points expire two years after the last eligible earning/use transaction per product terms; the live card page instead describes validity as two years from earning.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  redemption:
+  - type: voucher
+    program: IRCTC
+    rate_inr_per_unit: 1.0
+    min_units: 100
+    fee_inr: 99
+    constraints: Redeem only against train ticket bookings through HDFC SmartBuy; points can cover up to 70% of total fare including IRCTC service charges. INR 99 plus GST is charged per successful redemption.
+  source:
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/irctc-credit-card/irctc-tnc-09-10-25.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/irctc-hdfc/irctc-tnc-09-10-25.pdf
+    - docs/sources/hdfc/irctc-hdfc/terms-and-conditions-current-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cycle
+    - rewards.accelerated.channel
+    - rewards.category_caps
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    - rewards.redemption.fee_inr
+    notes: Current product-specific terms and live card page were checked. The redemption rule is limited to SmartBuy train bookings, with a 70% fare ceiling, INR 99 plus GST fee, and 100-point minimum. Merchant EMI principal earns points; Smart EMI/Dial-an-EMI and merchant EMI interest/fees/GST do not. Insurance earns points subject to category spend and points caps; the issuer PDF conflicts on whether its point cap is monthly or daily, so the monthly table value is modeled.
+  mcc_exclusions:
+  - '5816'
+  - '6540'
 benefits:
-  - effective_from: 2022-08-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [issuer-direct]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    other:
-      - name: IRCTC transaction charge waiver
-        description: 1% + GST transaction charge waiver on IRCTC ticket bookings.
-    concierge: false
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2023-03-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: annual
+      guests_per_visit: null
+      via:
+      - issuer-direct
+      notes: Select IRCTC Executive Lounges; maximum 2 complimentary visits per quarter. INR 2 card validation charge is non-refundable.
+  milestones:
+  - spend_inr: 30000
+    cycle: quarterly
+    benefit: INR 500 gift voucher for INR 30,000 eligible spend each calendar quarter (from 1-Jan-2026)
+    value_inr: 500
+    reward_kind: voucher
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  welcome:
+  - condition: Current card page advertises INR 500 after one transaction of any amount within 37 days of issuance. October 2025 terms limit the specific offer to LTF cards issued 1 Oct–31 Dec 2025 and exclude some older LTF/fee-reversal cohorts; applicability for other cohorts is not stated consistently.
+    benefit: INR 500 activation gift voucher
+    value_inr: 500
+    window_days: 37
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: IRCTC transaction charge waiver
+    description: 1% transaction surcharge reversed for IRCTC website/mobile app, Rail Connect and HDFC SmartBuy bookings; capped at INR 1,000 per calendar month. Reversal is adjusted proportionally if a ticket is cancelled/refunded.
+  - name: SmartBuy train booking cashback
+    description: Additional 5% cashback on IRCTC train tickets booked via HDFC SmartBuy, on top of 5X reward points; capped at INR 1,000/month and INR 12,000/year. Offer terms can change dynamically.
+  concierge: false
+  source:
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/irctc-credit-card/irctc-tnc-09-10-25.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/irctc-hdfc/irctc-tnc-09-10-25.pdf
+    - docs/sources/hdfc/irctc-hdfc/terms-and-conditions-current-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.milestones.spend_inr
+    - benefits.milestones.value_inr
+    - benefits.milestones.cycle
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    - benefits.other
+    notes: Current product page and October 2025 product terms reviewed. Milestone shifted from 90-day issuance anniversaries for cards issued through 30-Sep-2025 to calendar quarters from 1-Jan-2026 for all customers. Welcome-offer cohort wording differs between current card page/FAQ and the PDF; condition retains the ambiguity.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
+    salaried: 144000
     self_employed: 600000
-  credit_score_min: 720
+  credit_score_min: null
   residency: resident-indian
-
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  notes: Current card page states salaried age 21–60 and monthly income INR 12,000, without an explicit greater-than sign; annualized to INR 144,000 because schema only supports annual income. Self-employed age 21–65 and ITR greater than INR 6 lakh. Bank approval is subject to internal policy; minimum score is unpublished. Launch date 1-Mar-2023 is per issuer press release.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/irctc-hdfc/launch-release-2023-03-01.pdf
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
+    - launched_on
+    notes: The main card page lists salaried monthly income of INR 12,000 with no comparator, while the dedicated eligibility page says gross monthly income greater than INR 25,000. The record preserves INR 12,000 from the main product page; the live issuer pages conflict. Self-employed ITR is greater than INR 6 lakh. The eligibility FAQ excludes NRIs and publishes no numeric score floor.
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/irctc-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, railway, irctc, rupay, entry]
+  last_verified_on: '2026-10-27'
+  tags:
+  - co-branded
+  - railway
+  - irctc
+  - rupay
+  - entry

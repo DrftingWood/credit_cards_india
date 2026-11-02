@@ -1,0 +1,109 @@
+id: indusind-eazydiner-signature
+name: IndusInd Bank EazyDiner Signature Credit Card
+image_path: /cards/indusind/eazydiner-signature.webp
+issuer: indusind
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand:
+  partner: EazyDiner
+  category: lifestyle
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 2999
+  annual_fee_inr: 2999
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.83
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  source:
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/schedule-of-charges/credit-cards/MITC_Premium.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    notes: Current 13-Oct-2026 MITC lists ₹2,999 joining and annual fee, no waiver (NA), 3.83% monthly interest, 2.5% cash advance fee/₹300 minimum, and 3.5% foreign currency markup.
+rewards:
+- effective_from: 2025-07-15
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 4
+    per_inr: 100
+    unit_value_inr: 0.1
+    unit_value_inr_realized: 0.1
+  accelerated:
+  - category: travel-booking
+    canonical_categories:
+    - travel
+    multiplier: 2.5
+    effective_rate: 10
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: monthly
+    notes: 10 Reward Points per ₹100 on eligible hotel/travel, shopping and entertainment spends; the monthly Reward Points cap is 7,500. Dining and fuel do not earn Reward Points.
+  exclusions:
+  - fuel
+  redemption:
+  - type: statement-credit
+    program: EazyDiner PayEazy and app catalogue
+    rate_inr_per_unit: 0.1
+  source:
+    url: https://www.indusind.com/content/dam/indusind-corporate/Other/Changes-to-Your-EazyDiner-Signature-CreditCard.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: 'Effective 15-Jul-2025 changes: point value ₹0.10; hotel/travel accelerated earn 10 per ₹100. Issuer reward guide specifies 4 per ₹100 on other eligible spends and 10 on shopping/entertainment; current issuer reward program caps Signature at 7,500 points/month. Points expire at anniversary-year end and can only be redeemed via the EazyDiner app; no cash redemption.'
+benefits:
+- effective_from: 2025-07-15
+  effective_until: null
+  welcome:
+  - condition: Card issuance and fee payment
+    benefit: 12-month EazyDiner Prime membership, 2,000 bonus points and The Postcard Hotel stay voucher valued by issuer at ₹7,500; renewal fee payment also renews Prime and provides these benefits.
+    window_days: 365
+  dining:
+    program: EazyDiner Prime
+    discount_pct: 25
+    notes: Extra 25% off up to ₹1,000 per PayEazy transaction at eligible restaurants. Monthly discount cap ₹2,000 without spend condition; earn up to another ₹3,000 (₹5,000 total monthly) after ₹30,000 eligible non-dining spend in the previous calendar month. App/PayEazy payment required; not physical card payment, UPI or wallets; same restaurant payments within 120 minutes excluded.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    notes: Current issuer product page states 1% waiver across fuel stations; card-specific minimum, transaction ceiling and cap not published in the source reviewed.
+  concierge: null
+  other:
+  - name: BookMyShow tickets and domestic lounge access
+    description: Discontinued effective 15 July 2025 per issuer notice; excluded from current benefits.
+  - name: Premium beverage offer
+    description: Issuer product page describes complimentary beverages at select restaurants when booking through EazyDiner; restaurant participation, serving and availability apply.
+  source:
+    url: https://www.indusind.com/content/dam/indusind-corporate/Other/Changes-to-Your-EazyDiner-Signature-CreditCard.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    notes: July 2025 notice changes dining cap and discontinues BookMyShow/movie ticket and domestic lounge benefits. Current issuer product page also describes fee-paid Prime/bonus/voucher package and fuel waiver.
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: Product-specific age, income and credit-score cutoffs were not published in the sources reviewed.
+application:
+  apply_url: https://www.indusind.com/in/en/personal/cards/credit-cards/eazydiner-credit-card.html
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - premium
+  - dining
+  - eazydiner
+  - travel
+  - lifestyle

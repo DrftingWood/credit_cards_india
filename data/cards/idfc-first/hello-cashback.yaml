@@ -1,135 +1,300 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-hello-cashback
 name: IDFC FIRST Hello Cashback Credit Card
+image_path: /cards/idfc-first/hello-cashback.webp
 issuer: idfc-first
-network: visa
-network_tier: platinum
+network: rupay
+network_tier: null
 tier: entry
 card_type: secured
 co_brand: null
 status: active
-launched_on: 2025-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "FD-backed secured card — credit limit = FD value (FD from ₹10,000); no joining fee. Interest-free cash withdrawal up to 45 days at ₹199 + GST per transaction."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-25
+  effective_until: '2026-10-31'
+  joining_fee_inr: 0
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: >-
+      Annual fee applies from the second year; 100% reversed at INR 2 lakh annual
+      purchases, or 50% reversed from INR 1 lakh to below INR 2 lakh. Excludes ATM,
+      EMIs, balance transfers, fees/charges and reversals/refunds as specified by issuer.
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: >-
+    Joining fee is INR 0 under the current limited-time offer through 31-Oct-2026. The original offer start is unpublished; the fee period is dated from first verification, not asserted promotion start;
+    issuer's stated standard joining fee is INR 1,000 + GST. Annual fee is INR 1,000
+    + GST from year two. The bank page currently says zero forex markup. Secured by a
+    FD; minimum initial FD INR 10,000. The issuer says additional FDs from INR 5,000
+    can be linked to increase the limit; limit is 100% of linked FD value. ATM advance
+    fee is INR 199 + GST; the issuer advertises
+    0% interest for up to 45 days. Current card-specific purchase APR is not stated
+    on the product page; the stale fixed 3.5% monthly rate is not retained.
+      Merchant or ATM Dynamic Currency Conversion is a separate charge and may
+      apply if the customer chooses to pay in INR abroad.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.flat_inr
+    local_refs:
+    - docs/sources/idfc-first/hello-cashback/hello-cashback-product-feature-terms.pdf
+    - docs/sources/idfc-first/hello-cashback/current-customer-mitc.pdf
+    - docs/sources/idfc-first/hello-cashback/zero-forex-announcement-2026-09-17.pdf
+    notes: >-
+      The issuer FAQ gives the joining offer end date and standard fee. The linked
+      Hello Cashback Product Feature PDF specifies annual fee reversal tiers and
+      the fuel-waiver terms. Current zero-forex claim is on the live product page;
+      the bank-wide announcement made it effective for existing and new cards on
+      17-Sep-2026. The current live issuer page says the joining-fee offer expires
+      30-Oct-2026, while its live page advertises the offer through 31-Oct-2026. The fee
+      schedule follows the later live-page validity date; confirm before relying on
+      the offer after 30-Oct. The initial offer start date was not published.
+- effective_from: 2026-11-01
+  effective_until: null
+  joining_fee_inr: 1000
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: >-
+      Annual fee applies from the second year; 100% reversed at INR 2 lakh annual
+      purchases, or 50% reversed from INR 1 lakh to below INR 2 lakh. Excludes ATM,
+      EMIs, balance transfers, fees/charges and reversals/refunds as specified by issuer.
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: >-
+    Standard joining fee INR 1,000 + GST after the issuer's current limited-time
+    joining-fee waiver ends on 31-Oct-2026. Other terms follow the live issuer page
+    and current Hello Cashback Product Feature PDF.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.flat_inr
+    local_refs:
+    - docs/sources/idfc-first/hello-cashback/hello-cashback-product-feature-terms.pdf
+    - docs/sources/idfc-first/hello-cashback/current-customer-mitc.pdf
 rewards:
-  - effective_from: 2025-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: incremental-online-above-10k
-        canonical_categories: [online]
-        multiplier: 5
-        effective_rate: 5
-        # The 5% is INCREMENTAL — it applies only to online spend above the
-        # ₹10,000/month threshold, not to the whole bucket. Encoded as marginal
-        # slabs (E3): the first ₹10,000 earns the 1% base, the excess earns 5%.
-        # A flat 5% overstated the card ~2x for a mid-volume online spender
-        # (₹15,000/month: ₹750 claimed vs ₹350 real).
-        slabs:
-          - upto_spend_inr: 10000
-            rate_pct: 1
-          - upto_spend_inr: null
-            rate_pct: 5
-        cap_per_cycle: 1000
-        cap_unit: cashback-inr
-        cycle: statement
-        notes: "5% cashback on INCREMENTAL online spends above ₹10,000/month — the first ₹10,000 earns the 1% base, only the excess earns 5% (online cashback capped ₹1,000/statement, so the 5% slab saturates at ₹20,000 of incremental spend). Essentials & fuel do not count toward the ₹10,000 milestone."
-      - category: hotel-flight-app
-        canonical_categories: [travel]
-        multiplier: 1
-        effective_rate: 1
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: statement
-        notes: "Additional 1% cashback on hotel & flight bookings via the IDFC FIRST Bank app (total up to 6%)."
-    exclusions:
-      - fuel
-      - emi
-      - wallet-loads
-    mcc_exclusions: ['6513']
-    reward_cap:
-      max_units: 1500
-      cap_unit: cashback-inr
-      cycle: statement
-    capping_rules:
-      - "Online-spend cashback capped at ₹1,000/statement; total cashback capped at ₹1,500/statement."
-      - "No cashback on fuel, ATM cash withdrawals, EMI, or UPI spends via third-party apps (GPay/PhonePe/Paytm)."
-    redemption:
-      - type: statement-credit
-        program: IDFC FIRST Cashback
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-25
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1
+    unit_value_inr_realized: 1
+    notes: >-
+      1% on in-store card swipes, UPI purchases made through IDFC FIRST Bank's app,
+      and issuer-defined essential categories. Cashback is credited to the card
+      account after the payment due date once MAD is paid on time; cashback for a
+      cycle is forfeited when MAD is not paid by the due date. Refunds/reversals
+      reverse the associated cashback. Earn is limited to spend up to the credit limit.
+      Essential categories include rent, utilities, jewellery, wallet loads,
+      insurance, education, gift cards, government services, FASTag and railway.
+      The issuer advertises up to 5% cashback on eligible international online spends;
+      such transactions follow the online tiers, category rules and caps.
+  accelerated:
+  - category: tiered-online-spends
+    canonical_categories:
+    - online
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 1000
+    cap_unit: cashback-inr
+    cycle: statement
+    slabs:
+    - upto_spend_inr: 10000
+      rate_pct: 3
+    - upto_spend_inr:
+      rate_pct: 5
+    notes: >-
+      3% cashback on eligible online spending up to INR 10,000 in a statement cycle,
+      then 5% on incremental eligible online spending above INR 10,000. Combined
+      online cashback is capped at INR 1,000 per statement cycle. Online fuel and
+      essential-category spending do not count toward the INR 10,000 threshold.
+  - category: app-travel-bookings-bonus
+    canonical_categories:
+    - travel
+    multiplier: 1
+    effective_rate: 1
+    cap_unit: cashback-inr
+    cycle: statement
+    notes: >-
+      Additional 1% bonus cashback on flight/hotel bookings through the IDFC FIRST
+      Bank app. Because these are online transactions, their base rate is 3% up to
+      the INR 10,000 threshold or 5% on incremental spend; total rate is 4%/6% before
+      caps. Bonus is included in the total INR 1,500 cashback cap per statement cycle.
+      Bonus applies to full-swipe e-commerce bookings, posts after completed travel or
+      hotel check-in, and is not paid on cancelled bookings or EMI transactions.
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions: []
+  reward_cap:
+    max_units: 1500
+    cap_unit: cashback-inr
+    cycle: statement
+  capping_rules:
+  - >-
+    Online cashback has a combined INR 1,000 per-statement cap; total cashback across
+    eligible categories, including app travel bonus, is INR 1,500 per statement.
+  - >-
+    Third-party UPI-app transactions earn no cashback. Essential categories earn 1%
+    but do not count toward the INR 10,000 online-spend threshold even when processed
+    online. The schema cannot express all channel/category interactions exactly.
+  redemption:
+  - type: statement-credit
+    program: IDFC FIRST Cashback
+    rate_inr_per_unit: 1
+    constraints: >-
+      Cashback is applied to the card account and adjusted against the next statement;
+      one cashback unit equals INR 1. It does not expire while eligible for posting.
+  source:
+    url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.reward_cap.max_units
+    - rewards.redemption.rate_inr_per_unit
+    local_refs:
+    - docs/sources/idfc-first/hello-cashback/hello-cashback-product-feature-terms.pdf
+    - docs/sources/idfc-first/hello-cashback/hello-cashback-product-guide.pdf
+    notes: >-
+      Current live product page and the issuer's Hello Cashback Product Feature
+      Document match on 3%/5% online earn, 1% base categories, 1% travel bonus and
+      caps. The cashback feature PDF does not give its original effective date; the
+      effective_from date here is the date verified, not an assertion of launch date.
 benefits:
-  - effective_from: 2025-01-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Introductory offer on early spends"
-        benefit: "₹1,000 introductory cashback offer"
-        value_inr: 1000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    other:
-      - name: UPI on credit card
-        description: "1% cashback on UPI spends made by scanning via the IDFC FIRST Bank app."
-    concierge: false
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-25
+  effective_until: null
+  welcome: []
+  fuel_surcharge_waiver:
+    pct: 1
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: statement
+    notes: 1% fuel surcharge reversal on fuel transactions from INR 200 to INR 5,000; capped at INR 100 per statement cycle.
+  insurance:
+  - type: personal-accident
+    sum_insured_inr: 200000
+    conditions: >-
+      Accidental death/permanent disability; card must have had at least one purchase
+      or ATM withdrawal in the prior 30 days. Claim payable once across the cardholder's
+      IDFC FIRST cards; policy exclusions and deadlines apply.
+  - type: lost-card-liability
+    sum_insured_inr: 25000
+    conditions: >-
+      Lost-card liability, counterfeit/skimming and online fraud protection. Card
+      must have had at least one purchase or ATM withdrawal in the prior 30 days;
+      PIN-based transactions are excluded except where PIN acquisition was under duress.
+  - type: credit-shield
+    sum_insured_inr: 50000
+    conditions: >-
+      Credit Shield covers card-account debits established from card use in the event
+      of accidental death; active-card requirement and policy terms apply.
+  - type: purchase-protection
+    sum_insured_inr: 25000
+    coverage_duration_days: 60
+    conditions: >-
+      Standard fire/allied perils and burglary at the cardholder's recorded residential
+      premises for purchases made on the card. At least one purchase or ATM withdrawal
+      in the preceding 30 days is required; policy terms apply.
+  other:
+  - name: Roadside assistance
+    description: >-
+      Complimentary RSA described by the issuer as worth INR 1,399, usable up to four
+      times per year. Some parts, taxi/fuel and incidental costs remain chargeable.
+  - name: RuPay UPI
+    description: >-
+      RuPay card can be linked to supported UPI apps for merchant payments. 1% cashback
+      is specified only for UPI payments made through the IDFC FIRST Bank app; third-party
+      UPI-app transactions are excluded from cashback. UPI is merchant-only and subject
+      to NPCI-restricted categories.
+  - name: FD-backed credit limit
+    description: >-
+      Credit limit is 100% of linked FD value, starting with an FD of INR 10,000;
+      issuer page allows linking additional FDs from INR 5,000 to raise the limit.
+  concierge: false
+  source:
+    url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Hello-Cashback-Terms-and-Conditions.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.insurance
+    local_refs:
+    - docs/sources/idfc-first/hello-cashback/hello-cashback-product-feature-terms.pdf
+    - docs/sources/idfc-first/hello-cashback/hello-cashback-product-guide.pdf
+    notes: >-
+      The currently linked Hello Cashback feature PDF gives the insurance limits and
+      RSA detail; the live issuer page repeats the principal insurance benefits. No
+      airport lounge or trip-cancellation cover was found for this card. The source
+      document does not state an original effective date; effective_from is the review
+      date, not an asserted benefit launch date.
 eligibility:
   min_age: 18
-  max_age: 70
+  max_age: 80
   income_inr_annual:
-    salaried: null  # secured against FD — no income requirement
+    salaried: null
     self_employed: null
   credit_score_min: null
   residency: resident-indian
-  notes: "FD-backed — issued against a fixed deposit (from ₹10,000); no income/credit-score requirement."
-
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
+  notes: >-
+    Current issuer page requires an Indian resident citizen with current and permanent
+    residential addresses in India, age 18–80 and a minimum INR 10,000
+    fixed deposit; it states no income proof or credit history is required. The bank
+    retains discretion to approve after its internal assessment. Credit limit is
+    100% of FD value.
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/hello-cashback-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, secured, cashback, online]
+  last_verified_on: 2026-10-27
+  tags:
+  - entry
+  - secured
+  - cashback
+  - upi
+  - rupay

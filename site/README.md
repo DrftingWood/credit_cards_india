@@ -70,10 +70,11 @@ the production host.
 - Guided recommender.
 - Side-by-side comparison for up to four cards.
 - Beta banner, SEO metadata, sitemap, and robots.
+- Light/dark themes from semantic design tokens (`styles/tokens.css`; see
+  `docs/design/TOKENS.md`), with a header toggle.
 
 ## Not Yet
 
 - Full source-evidence mapping from each rendered field to a local archived PDF
   or issuer page.
-- Dark mode.
 - Analytics.

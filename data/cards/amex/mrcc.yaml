@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : American Express live product pages, americanexpress.com/in
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: amex-mrcc
 name: American Express Membership Rewards Credit Card
+image_path: /cards/amex/mrcc.png
 issuer: amex
 network: amex
 network_tier: green
@@ -16,161 +8,186 @@ tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2010-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2010-01-01
-    effective_until: null
-    joining_fee_inr: 1000
-    annual_fee_inr: 4500
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-      conditions: "Renewal fee (₹4,500) 100% waived on ₹1,50,000+ spend in the preceding membership year; 50% waived on ₹90,000–₹1,49,999. Per cardmember notices reported by LiveFromALounge (9-Oct-2026) and InsideFlyer, the 50% tier is being removed (effective 15-Nov-2026, postponed from 11-Oct-2026). First-year fee may be separately waived on welcome offers."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 3.5
-      min_inr: 250
-    gst_applicable: true
-    source:
-      url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
-      retrieved_on: 2026-10-20
-      type: issuer-page
-      confidence: high
-      notes: Fee waiver re-verified 2026-10-20 on the official product page (Fee Waiver section). Earlier ₹90,000 was the 50%-waiver tier, not the full-waiver threshold. Page also shows a banner pausing new applications in India.
-
+- effective_from: 2010-01-01
+  effective_until: null
+  joining_fee_inr: 1000
+  annual_fee_inr: 4500
+  fee_waiver:
+    spend_inr: 150000
+    cycle: annual
+    conditions: Renewal fee INR 4,500 is 100% waived on INR 150,000 or more spend in the preceding membership year.
+      The 50% waiver for INR 90,000–149,999 remains listed on the product page through 14 Nov 2026; Amex states
+      it will end effective 15 Nov 2026. First-year fee may be separately waived on offers.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee:
+    pct: 3.5
+    min_inr: 250
+  gst_applicable: true
+  source:
+    url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].fee_waiver.spend_inr
+    - fees[0].fee_waiver.conditions
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    notes: Current product page supports annual fees and waiver terms; the official Schedule of Fee and Charges
+      (https://www.americanexpress.com/content/dam/amex/in/legal-disclosures/Schedule-of-Fee-and-Charges.pdf; updated
+      31 Aug 2025) supports monthly finance charge 3.5%, forex markup 3.5%, and cash advance fee 3.5% with INR 250
+      minimum. The issuer update states the 50% INR 90,000 tier ends 15 Nov 2026 while the product page still displays
+      it on 27 Oct. New applications are temporarily paused. Cash withdrawals have been paused in India since 31
+      Jan 2022; fee schedule is a contractual charge, not confirmation of ATM availability.
 rewards:
-  - effective_from: 2010-01-01
-    effective_until: null
-    currency: points
-    currency_name: Membership Rewards
-    base:
-      rate: 1
-      per_inr: 50
-      unit_value_inr: 0.55
-      unit_value_inr_realized: 0.25
-    exclusions:
-      - fuel
-      - wallet-loads
-      - insurance-premiums
-      - emi
-      - cash-advance
-      - utilities
-    capping_rules:
-      - "Spends on utility bills and insurance earn 0 MR points."
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-      - type: airmiles
-        program: Multiple (MR transfer)
-        ratio: "2:1"
-        constraints: "8 transfer partners; ratios are card-point : partner-unit. realized Rs 0.25 = guaranteed non-transfer floor; best documented transfer Rs 0.55. 8 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.55/pt
-          - partner_name: Hilton Honors
-            partner_type: hotel
-            transfer_ratio: "1:0.9"
-            last_verified_on: '2026-07-05'
-            notes: 1:0.9 -> ~Rs 0.32/pt
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.55/pt
-          - partner_name: Emirates Skywards
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt
-          - partner_name: Virgin Atlantic Flying Club
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.50/pt
-          - partner_name: Cathay Asia Miles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.47/pt
-      - type: voucher
-        program: Amex gift vouchers
-        rate_inr_per_unit: 0.5
-    source:
-      url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
+- effective_from: 2010-01-01
+  effective_until: null
+  currency: points
+  currency_name: Membership Rewards
+  base:
+    rate: 1
+    per_inr: 50
+    unit_value_inr: 0.5833
+    unit_value_inr_realized: 0.3333
+  exclusions:
+  - fuel
+  - insurance-premiums
+  - emi
+  - cash-advance
+  - utilities
+  capping_rules:
+  - No Membership Rewards points on fuel, insurance, utilities, cash transactions, or merchant/POS EMI.
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: Amex 18/24 Karat Gold Collection
+    rate_inr_per_unit: 0.3333
+    constraints: Current issuer page lists 18,000-point vouchers worth INR 6,000 to INR 9,000 and 24,000-point vouchers
+      worth INR 8,000 to INR 14,000; value depends on the selected voucher and catalogue.
+  source:
+    url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].base.unit_value_inr
+    - rewards[0].base.unit_value_inr_realized
+    - rewards[0].exclusions
+    - rewards[0].capping_rules
+    - rewards[0].redemption[0].rate_inr_per_unit
+    notes: Issuer page confirms 1 point per INR 50; excludes fuel, insurance, utilities, cash transactions and merchant/POS
+      EMI. Gold Collection options range INR 6,000–9,000 for 18,000 points and INR 8,000–14,000 for 24,000 points.
+      The stored range is catalogue-dependent, not a cash equivalent. Post-purchase EMI and SafeKey EMI continue
+      earning per issuer terms.
 benefits:
-  - effective_from: 2010-01-01
-    effective_until: null
-    lounge_access: null
-    milestones:
-      - spend_inr: 6000
-        cycle: monthly
-        benefit: "1,000 bonus MR points for 4 transactions of ₹1,500+ in a calendar month"
-        value_inr: 250
-        reward_kind: points
-        reward_units: 1000
-        reward_currency_name: Membership Rewards
-        trigger_window: rolling
-        is_repeatable: true
-      - spend_inr: 900000
-        cycle: annual
-        benefit: "Annual spend-milestone vouchers (Taj / Shoppers Stop / Tata Cliq / Tanishq / Amazon / Flipkart etc.), tiered by annual spend up to ₹14,000"
-        value_inr: 14000
-        reward_kind: voucher
-        trigger_window: anniversary-year
-        is_repeatable: false
-    welcome:
-      - condition: "On joining (fee payment + eligible spend)"
-        benefit: "4,000 bonus Membership Rewards points"
-        value_inr: 1000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    dining:
-      program: Amex Dining Partners
-      discount_pct: 15
-    concierge: false
-    source:
-      url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
-      retrieved_on: 2026-07-03
-
+- effective_from: 2010-01-01
+  effective_until: null
+  lounge_access: null
+  milestones:
+  - spend_inr: 6000
+    cycle: monthly
+    benefit: 1,000 bonus Membership Rewards points for 4 transactions of INR 1,500 or more in a calendar month
+    value_inr: null
+    reward_kind: points
+    reward_units: 1000
+    reward_currency_name: Membership Rewards
+    is_repeatable: true
+  - spend_inr: 20000
+    cycle: monthly
+    benefit: 1,000 additional Membership Rewards points after enrollment, on INR 20,000 monthly spend
+    value_inr: null
+    reward_kind: points
+    reward_units: 1000
+    reward_currency_name: Membership Rewards
+    is_repeatable: true
+  - spend_inr: 0
+    cycle: annual
+    benefit: 5,000 bonus Membership Rewards points upon first-year card renewal, on payment of annual membership
+      fee; issuer says credit within 90 days of renewal
+    value_inr: null
+    reward_kind: points
+    reward_units: 5000
+    reward_currency_name: Membership Rewards
+    is_repeatable: false
+  welcome:
+  - condition: Pay joining fee and spend INR 15,000 within first 90 days of Cardmembership
+    benefit: 4,000 bonus Membership Rewards points
+    value_inr: null
+    window_days: 90
+  fuel_surcharge_waiver: null
+  dining:
+    program: Amex Fine Dining
+    discount_pct: 20
+    notes: Up to 20% discount at select restaurants; offers and participating restaurants vary.
+  concierge: false
+  source:
+    url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits[0].milestones[0].spend_inr
+    - benefits[0].milestones[0].reward_units
+    - benefits[0].milestones[1].spend_inr
+    - benefits[0].milestones[1].reward_units
+    - benefits[0].milestones[2].reward_units
+    - benefits[0].welcome[0].reward_units
+    - benefits[0].welcome[0].window_days
+    - benefits[0].dining.discount_pct
+    notes: The issuer lists a 5,000-point bonus upon first-year renewal when the annual fee is paid; issuer states
+      credit within 90 days. Effective 15 Nov 2026, monthly milestone eligibility is assessed by transaction posting
+      date and points are credited by the end of the qualifying month (per Amex Consumer Experience Updates). Fuel
+      pricing is a 0% HPCL convenience fee below INR 5,000 and 1% at/above INR 5,000, not a general surcharge waiver.
+      New applications in India are temporarily paused; existing card use continues.
 eligibility:
   min_age: 18
-  max_age: 70
+  max_age: null
+  age_ranges:
+    salaried:
+      min_age: 18
+      max_age: null
+    self_employed:
+      min_age: 18
+      max_age: null
   income_inr_annual:
     salaried: 450000
     self_employed: 600000
-  credit_score_min: 720
+  credit_score_min: null
   residency: resident-indian
-  notes: "Amex acceptance in India is narrower than Visa/Mastercard."
-
+  notes: Issuer also limits issuance to listed serviced cities, requires a bank account in India and good credit
+    history; self-employed applicants must have traded for more than 12 months. No numeric credit-score cutoff is
+    published.
+  source:
+    url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    notes: Issuer page lists resident Indian, over 18, serviced-city residence, personal income INR 4.5 lakh salaried
+      / INR 6 lakh self-employed, bank account in India, good credit history/no defaults, and 12+ months trading
+      if self-employed. No numeric credit score floor.
 application:
   apply_url: https://www.americanexpress.com/in/credit-cards/membership-rewards-card/
-
 metadata:
-  last_verified_on: '2026-10-20'
-  tags: [entry, points, amex, mr-points]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - points
+  - amex
+  - mr-points

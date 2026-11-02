@@ -4,7 +4,7 @@ import type { CanonicalCategory } from "./category-mapping";
 
 export const DEFAULT_SPEND: SpendProfile = {
   online: 15000, groceries: 8000, dining: 8000, fuel: 4000, travel: 10000,
-  utilities: 5000, rent: 0, international: 0,
+  utilities: 5000, telecom: 0, rent: 0, international: 0,
 };
 
 /**
@@ -18,10 +18,11 @@ export const MAX_MONTHLY_SPEND = 1_00_00_000;
 function sanitize(raw: unknown): SpendProfile {
   const p = (raw && typeof raw === "object" ? raw : {}) as Partial<SpendProfile>;
   const out = { ...DEFAULT_SPEND };
+  const writable = out as Record<CanonicalCategory, number>;
   (Object.keys(out) as CanonicalCategory[]).forEach((k) => {
     const v = Number(p[k]);
     // merge over defaults so a new category key is never undefined
-    out[k] = p[k] !== undefined && Number.isFinite(v) && v >= 0 ? Math.min(MAX_MONTHLY_SPEND, v) : DEFAULT_SPEND[k];
+    writable[k] = p[k] !== undefined && Number.isFinite(v) && v >= 0 ? Math.min(MAX_MONTHLY_SPEND, v) : (DEFAULT_SPEND[k] ?? 0);
   });
   return out;
 }

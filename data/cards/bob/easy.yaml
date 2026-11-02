@@ -1,115 +1,236 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: bob-easy
 name: BOBCARD Easy Credit Card
+image_path: /cards/bob/easy.webp
 issuer: bob
 network: visa
-network_tier: classic
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2019-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2019-01-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 35000
-      cycle: annual
-      conditions: "Annual fee waived on ₹35,000 spend per anniversary year. Joining fee waived on ₹6,000 spend in first 60 days. Limited-period lifetime-free offer also running."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Standard fee ₹500 (not permanently lifetime-free); a limited-period LTF offer is currently advertised."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/easy
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-09-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 35000
+    cycle: annual
+    conditions: Annual fee waived on ₹35,000 spend in the preceding card anniversary year, for non-delinquent
+      cardholders. Issuer page states ₹0 joining/first-year fee effective 2026-09-01 as a limited-period offer;
+      standard ₹500 joining fee is waived on ₹6,000 spend within 60 days where applicable.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Current limited-period joining/first-year fee offer has no published end date. Annual fee applies from
+    year two unless waived. Current generic BOBCARD MITC gives 3.75% monthly finance charge and 2.5% cash
+    advance fee (minimum ₹500).
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/easy
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Product page dates the zero joining/first-year fee offer from 2026-09-01; its end date is not stated.
+      The 2026 MITC schedule lists the standard ₹500 joining fee with ₹6,000 spend in 60 days to waive it.
 rewards:
-  - effective_from: 2019-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.20
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: departmental-stores-movies
-        canonical_categories: [groceries, entertainment]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 1000
-        cap_unit: points
-        cycle: statement
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: BOBCARD Rewards
-        rate_inr_per_unit: 0.20
-      - type: statement-credit
-        rate_inr_per_unit: 0.20
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/easy
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-04-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 0.2
+    unit_value_inr_realized: 0.2
+  accelerated:
+  - category: departmental-stores-movies
+    canonical_categories:
+    - groceries
+    - entertainment
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: statement
+  exclusions:
+  - fuel
+  - bridge-fees
+  - road-fees-and-tolls
+  - government
+  - education
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - other
+  mcc_exclusions:
+  - '0763'
+  - '0780'
+  - '0820'
+  - '0821'
+  - '0822'
+  - '0823'
+  - '0824'
+  - '0825'
+  - '1520'
+  - '1711'
+  - '1731'
+  - '1740'
+  - '1750'
+  - '1761'
+  - '1771'
+  - '1799'
+  - '4111'
+  - '4112'
+  - '4131'
+  - '4784'
+  - '4789'
+  - '6513'
+  - '7349'
+  - '7211'
+  - '7230'
+  - '7276'
+  - '8111'
+  - '8641'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8011'
+  - '8062'
+  - '6539'
+  - '6540'
+  - '6541'
+  - '6542'
+  - '6543'
+  - '5261'
+  - '5331'
+  - '5411'
+  - '5499'
+  - '5960'
+  - '6300'
+  - '8398'
+  - '8661'
+  - '5814'
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 0.2
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/easy
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption.rate_inr_per_unit
+    notes: No points below ₹100 per transaction; fuel earns none. The 5X MCCs are departmental stores (5311)
+      and cinemas (7832), capped at 1,000 accelerated points per statement cycle; UPI earns core points only.
+      Eligibility depends on acquirer-reported MCC/flags. Points expire after two years; statement redemption
+      requires 1,000 points. Other excluded MCC groups in BOBCARD Annexure 1 include transportation, government,
+      education, hospitals, personal services, supermarkets/variety/retail, charity, and fast-food. BOBCARD
+      SmartDeal adds 4 points/₹100 for flights and 10 points/₹100 for hotels booked in the logged-in app/portal.
 benefits:
-  - effective_from: 2019-01-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Spend ₹5,000 within 60 days of issuance"
-        benefit: "500 reward points"
-        value_inr: 100
-        window_days: 60
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    other:
-      - name: Add-on cards
-        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
-    concierge: false
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/easy
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Spend ₹5,000 within 60 days of issuance
+    benefit: 500 reward points
+    value_inr: 100
+    window_days: 60
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: Add-on cards
+    description: Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+).
+  - name: BOBCARD SmartDeal flight rewards
+    description: Additional 4 reward points per ₹100 for eligible flight bookings in the logged-in BOBCARD app/portal.
+  - name: BOBCARD SmartDeal hotel rewards
+    description: Additional 10 reward points per ₹100 for eligible hotel bookings in the logged-in BOBCARD app/portal.
+  - name: Smart EMI
+    description: Purchases above ₹2,500 can be converted to Smart EMI for 6–48 months; applicable charges are not
+      stated on the Easy product page.
+  - name: Lost-card liability
+    description: Issuer advertises zero liability for fraudulent transactions when the card loss is reported immediately.
+  - name: Contactless payments
+    description: Contactless-enabled card; issuer advertises wireless-chip payments.
+  concierge: false
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/easy
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    fields_verified:
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    - benefits.other
 eligibility:
   min_age: 25
   max_age: 55
   income_inr_annual:
-    salaried: 240000
-    self_employed: 240000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Numeric income and credit-score thresholds are not published in the reviewed Easy materials. BOBCARD
+    lists age 25–55 and Indian residency; it may consider ages outside that band at its discretion. The 2024
+    application form lists Easy under Visa, Mastercard, and RuPay. This record retains Visa as the represented
+    variant because the schema has no multi-network product field; RuPay UPI transactions earn core points only.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/easy
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/easy
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, shopping]
+  last_verified_on: 2026-10-26
+  tags:
+  - entry
+  - points
+  - shopping

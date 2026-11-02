@@ -1,33 +1,33 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
 #   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+#   Verified   : 2026-10-27   Confidence: HIGH for published current terms
+#   Current cashback terms and exclusions were rechecked against SBI issuer sources.
+#   Joining fee was checked against the current SBI application flow; historical
+#   start dates for the current fee schedule remain unverified.
 # ---------------------------------------------------------------------------
 id: sbi-cashback
 name: SBI Cashback Credit Card
+image_path: /cards/sbi/cashback.webp
 issuer: sbi
 network: visa
-network_tier: platinum
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2023-03-01
+launched_on: 2022-09-01
 discontinued_on: null
 
 fees:
-  - effective_from: 2023-03-01
+  - effective_from: 2022-09-01
     effective_until: null
     joining_fee_inr: 999
     annual_fee_inr: 999
     fee_waiver:
       spend_inr: 200000
       cycle: annual
-      conditions: "Renewal fee waived on spends of ₹2L in the preceding year."
+      conditions: "Renewal fee waived on annual spends of INR200,000 or more in the preceding year."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -36,10 +36,24 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+        - docs/sources/sbi/cashback/cashback-brochure.pdf
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.fee_waiver.spend_inr
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee.pct
+        - fees.cash_advance_fee.min_inr
+      notes: "Current SBI application flow requires INR999 + taxes as joining fee and INR999 + taxes annually; the current MITC lists renewal fee INR999, waived at preceding-year annual spends of INR2 lakh or more. MITC confirms 3.5% foreign-currency markup, unsecured finance charges up to 3.75% monthly, and cash-advance fee of 2.5% with INR500 minimum. Historical start dates for current fees are not independently established. Application flow: https://www.sbicard.com/eapply/campaign.page?CHN=901&GEMID1=e&GEMID2=f&path=personal%2Fcredit-cards%2Frewards%2Fcashback-sbi-card.dcr"
 
 rewards:
-  - effective_from: 2023-03-01
+  - effective_from: 2026-04-01
     effective_until: null
     currency: cashback
     currency_name: Cashback
@@ -47,6 +61,7 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 1.0
+      unit_value_inr_realized: 1.0
       # 1% offline earn is ALSO capped at Rs 2,000/cycle; with the 5% online cap
       # that puts a hard Rs 4,000/cycle ceiling on the whole card (1 Apr 2026).
       cap_per_cycle: 2000
@@ -64,16 +79,15 @@ rewards:
         cap_unit: cashback-inr
         cycle: statement
         notes: >-
-          5% on online (card-not-present) spend, capped Rs 2,000/cycle — devalued from Rs 5,000 on
-          1 Apr 2026, so the 5% now saturates at Rs 40,000 of online spend per cycle. Scope is the
-          CHANNEL, not a merchant category: there is no merchant list and no MCC allowlist, and
-          e-commerce, food-delivery apps and streaming all qualify (Amazon, Flipkart, Myntra, Ajio,
-          Swiggy, Zomato, Blinkit, BigBasket are the merchants named in issuer-adjacent listings).
-          Retagged 2026-07-28 from canonical_categories [online] — the old tag meant food delivery
-          and online groceries scored ZERO here despite qualifying. Provenance caveat: the channel
-          definition and merchant examples come from the product/review tier, not SBI's MITC PDF
-          (docs/sources/sbi/cashback/cashback-tnc-ekit.pdf is gitignored and absent), so this is
-          web-tier confidence — see docs/TODO.md E13.
+          5% on eligible online transactions, capped at INR 2,000 per statement cycle; this cap
+          is reached at INR 40,000 eligible online spend. SBI identifies online transactions using
+          online indicators sent by the card network and acquirer; any transaction not classified
+          as online is offline. This is a payment-channel rule rather than an MCC/merchant allowlist.
+          Classification is best-effort, network-defined and can change. The calculator's current
+          spend profile does not capture this channel for every category; see E17. Cashback accrues
+          on posting/settlement date, reversals/returns may reverse cashback, and credit occurs within
+          two working days after statement generation. Cashback above the online cap does not earn
+          the offline 1% rate.
     exclusions:
       - fuel
       - wallet-loads
@@ -86,24 +100,29 @@ rewards:
       - government
       - other
     capping_rules:
-      - "Cashback credited automatically to statement within 2 days of next statement."
-      - "5% online cashback capped at Rs 2,000 per statement cycle (saturates at Rs 40,000 of online spend)."
-      - "1% base is paid on OFFLINE (card-present) spend and is capped at Rs 2,000 per statement cycle. It does NOT backstop online spend, so qualifying online spend past the Rs 2,000 accelerated cap earns nothing. The canonical buckets have no card-present axis, so `base.applies_to_categories` cannot express this and the calculator still credits 1% on online overflow — overstating the card above Rs 40,000/month of online spend. See docs/TODO.md E17."
-      - "Aggregate online + offline cashback capped at Rs 4,000 per statement cycle (archived SBI T&C e-kit)."
+      - "Current structure effective 1-Apr-2026: 5% online transactions (network/acquirer online indicator), capped at INR 2,000 per statement cycle; 1% offline/POS transactions, separately capped at INR 2,000 per statement cycle; aggregate cashback cannot exceed INR 4,000 per statement cycle."
+      - "Online transactions beyond the online cap do not earn the offline 1% rate; the two channel caps are independent."
+      - "Transactions below INR 100 do not earn cashback. Cashback is rounded down separately for each transaction, so estimates from aggregated spend can overstate the result; the calculator currently cannot reproduce per-transaction rounding without transaction detail."
+      - "Cashback accrues by posting/settlement date, is reduced/reversed for returns, refunds and reversals, and is automatically credited within two working days after statement generation."
+      - "Excluded transactions include fuel, balance transfers, cash advances, financial charges, wallet loads, rent, jewelry, education, utilities, insurance, gift/novelty shops, railways, quasi-cash, SBI platform standing instructions/fetch-and-pay, Flexipay and merchant EMI. Effective 1-Apr-2026 additions: digital gaming MCC 7993/7994/5816, toll MCC 4784, and government MCC 9222/9311/9402. MCC assignment is network-defined and best-effort."
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 1.0
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
-      retrieved_on: '2026-07-05'
+      url: https://www.sbicard.com/en/faq/cashback-sbi-card-faq.page
+      retrieved_on: '2026-10-27'
       type: issuer-page
-
-      notes: Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/cashback/cashback-terms-current.pdf
+        - docs/sources/sbi/cashback/cashback-revision-apr-2026.pdf
+      fields_verified: [rewards.base.rate, rewards.base.per_inr, rewards.base.unit_value_inr, rewards.base.cap_per_cycle, rewards.base.cap_unit, rewards.base.cycle, rewards.accelerated.effective_rate, rewards.accelerated.cap_per_cycle, rewards.accelerated.cap_unit, rewards.accelerated.cycle, rewards.exclusions, rewards.capping_rules, rewards.mcc_exclusions]
+      notes: "SBI's current Cashback FAQ confirms 5% online and 1% offline rates, separate INR 2,000 statement-cycle caps, INR 4,000 aggregate cap, posting/settlement-date accrual, reversals and credit within two working days of statement generation. Cardholder terms define online/offline using network/acquirer online indicators. SBI's 25-Feb-2026 revision notice makes the current caps and additional MCC exclusions effective 1-Apr-2026."
     # 1 Apr 2026 additions: digital gaming (7993/7994/5816), tolls (4784),
     # government (9222/9311/9402). 6513 = real estate (pre-existing).
-    mcc_exclusions: ['6513', '7993', '7994', '5816', '4784', '9222', '9311', '9402']
+    mcc_exclusions: ['5172', '5541', '5542', '5983', '6540', '6541', '6513', '7349', '5051', '5094', '7631', '5944', '5111', '5192', '5942', '5943', '8211', '8220', '8241', '8244', '8249', '8299', '8351', '4900', '4814', '4816', '4899', '9399', '5960', '6300', '6381', '5947', '4011', '4112', '6011', '6012', '6051', '7993', '7994', '5816', '4784', '9222', '9311', '9402']
 benefits:
-  - effective_from: 2023-03-01
+  - effective_from: 2022-09-01
     effective_until: null
     lounge_access: null
     fuel_surcharge_waiver:
@@ -111,34 +130,46 @@ benefits:
       min_txn_inr: 500
       max_txn_inr: 3000
       cap_per_cycle_inr: 100
-      cycle: monthly
+      cycle: statement
     concierge: false
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
-      retrieved_on: 2026-07-03
+      url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/cashback-tnc-ekit.pdf
+      retrieved_on: 2026-10-27
       type: issuer-pdf
       confidence: high
       local_refs:
         - docs/sources/sbi/cashback/cashback-tnc-ekit.pdf
+        - docs/sources/sbi/cashback/cashback-terms-current.pdf
       fields_verified:
-        - rewards.accelerated.cap_per_cycle
-        - rewards.accelerated.cap_unit
-        - rewards.accelerated.cycle
-      notes: "Archived SBI T&C e-kit states aggregate online + offline cashback is capped at ₹4,000 per statement cycle (per docs/LOCAL_DATA_PDF_REVIEW_2026-07-04.md)."
+        - benefits.fuel_surcharge_waiver.pct
+        - benefits.fuel_surcharge_waiver.min_txn_inr
+        - benefits.fuel_surcharge_waiver.max_txn_inr
+        - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+      notes: "Current issuer cardholder T&C states 1% waiver per eligible transaction from INR500 through INR3,000, maximum INR100 per statement cycle per credit-card account; fuel MCCs 5172, 5541, 5542 and 5983. Fuel transactions do not earn cashback."
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-  notes: "Specific income threshold not published; internal underwriting applies."
-
+  notes: "No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting. SBI Card's general policy states age 21 to 65 for salaried applicants and 25 to 70 for self-employed applicants; the broad 21 to 70 range preserves the occupation-specific detail in age_ranges."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html
 
 metadata:
-  last_verified_on: '2026-07-28'
+  last_verified_on: '2026-10-27'
   tags: [cashback, online-spend, mid-tier]

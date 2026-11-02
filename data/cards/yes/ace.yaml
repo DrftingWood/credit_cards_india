@@ -1,111 +1,258 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-ace
 name: YES Bank ACE Credit Card
-issuer: "yes"
-network: visa
-network_tier: platinum
+image_path: /cards/yes/ace.webp
+issuer: 'yes'
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2020-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2020-01-01
-    effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Formerly YES PROSPERITY REWARDS PLUS."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-06-15'
+  effective_until: null
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  fee_waiver:
+    spend_inr: 50000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: >-
+    Current card page states the INR 499 first-year membership fee is reversed after INR 5,000 spend within one month
+    of setup, and INR 499 renewal fee is reversed after INR 50,000 spend in the preceding 12 months. Current MITC
+    sets the cash-advance charge at 2.5% or INR 650, whichever is higher, effective 15-Jun-2026; finance is 3.99%
+    monthly for standard ACE and forex is 3.5% effective 15-Jun-2026. The separately issued FD-backed variant has
+    2.49% monthly finance and is not represented here. General MITC also sets fees on high utility, rent, fuel,
+    education, toll and railway transactions; see issuer terms for thresholds and conditions.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/ace/ybl-mitc-v18-2026-10-05.pdf
+    - docs/sources/yes/ace/credit-card-features-update-june-2026.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Card page verifies ACE membership fees and spend waivers; current MITC and June change notice verify forex, APR and updated cash-advance minimum.
 rewards:
-  - effective_from: 2020-01-01
-    effective_until: null
-    currency: points
-    currency_name: YES Rewardz Points
-    base:
-      rate: 2
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    accelerated:
-      - category: online-shopping
-        canonical_categories: [online]
-        multiplier: 4
-        effective_rate: 8
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "8 YES Rewardz per ₹200 on online shopping."
-      - category: offline-shopping
-        canonical_categories: [other]
-        multiplier: 2
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "4 YES Rewardz per ₹200 on offline shopping; 2 per ₹200 on other spends."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: YES Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-06-15'
+  effective_until: null
+  currency: points
+  currency_name: YES Rewardz Points
+  base:
+    rate: 2
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+    notes: 2 YES Rewardz points per INR 200 on issuer-defined select-category eligible transactions; issuer says point value is up to INR 0.25 and actual value depends on redemption channel.
+  accelerated:
+  - category: online-shopping
+    canonical_categories:
+    - online
+    multiplier: 4
+    effective_rate: 8
+    cap_unit: points
+    cycle: statement
+    notes: 8 points per INR 200 online shopping, except select categories. Overall card reward cap is 5,000 points per statement cycle.
+  - category: offline-shopping
+    canonical_categories:
+    - other
+    multiplier: 2
+    effective_rate: 4
+    cap_unit: points
+    cycle: statement
+    notes: 4 points per INR 200 offline shopping, except select categories. Overall card reward cap is 5,000 points per statement cycle.
+  exclusions:
+  - rent
+  - wallet-loads
+  - fuel
+  - government
+  - insurance-premiums
+  - education
+  - emi
+  - cash-advance
+  - jewellery
+  mcc_exclusions:
+  - '6513'
+  - '6540'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '9752'
+  - '9034'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '9700'
+  - '9701'
+  - '9702'
+  - '9751'
+  - '9754'
+  - '9950'
+  - '5960'
+  - '5962'
+  - '5964'
+  - '5965'
+  - '5966'
+  - '5967'
+  - '5968'
+  - '5969'
+  - '7311'
+  - '6300'
+  - '6381'
+  - '8211'
+  - '8220'
+  - '8249'
+  - '8299'
+  - '8241'
+  - '8244'
+  - '7911'
+  - '4112'
+  - '4011'
+  - '4784'
+  - '4111'
+  - '5094'
+  - '5944'
+  reward_cap:
+    max_units: 5000
+    cap_unit: points
+    cycle: statement
+  category_caps:
+  - category: utility-select-categories
+    mcc_list:
+    - '4900'
+    cap_per_cycle: 150
+    cap_unit: points
+    cycle: statement
+    conditions: Utility MCC 4900 points are limited to 150 per statement cycle.
+  capping_rules:
+  - Card-wide maximum is 5,000 YES Rewardz points per statement cycle.
+  - Utility MCC 4900 earning is capped at 150 points per statement cycle.
+  - UPI transactions do not earn points effective 15-Jun-2026.
+  - Effective 15-Jun-2026, issuer terms exclude rent, wallet, fuel, government and marketing/advertising, cash withdrawals, post-purchase/instant EMI, insurance, education, railways, toll, ferry and jewellery transactions from points.
+  - YES Bank states 1 point is worth up to INR 0.25; value varies by redemption channel. Current MITC permits flights/hotels, statement credit, vouchers and merchandise, subject to channel-specific caps; redemption fee INR 100 + GST per request, plus INR 99 + GST for flight booking.
+  - Standard YES Rewardz points expire three years after earning under the current MITC.
+  redemption:
+  - type: other
+    program: YES Rewardz
+    rate_inr_per_unit: 0.25
+    fee_inr: 100
+    constraints: >-
+      Value is up to INR 0.25 per point depending on redemption channel. Current MITC allows flight/hotel booking,
+      statement credit, vouchers and merchandise, subject to channel-specific limits. INR 100 + GST redemption fee
+      applies per request; flight booking adds INR 99 + GST. Reward points expire after three years.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/ace/ybl-mitc-v18-2026-10-05.pdf
+    - docs/sources/yes/ace/credit-card-features-update-june-2026.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.reward_cap
+    - rewards.category_caps
+    - rewards.capping_rules
+    - rewards.redemption
+    notes: Rendered ACE page states 8/4/2 points per INR 200, point cap, eligible select-category treatment, current exclusions and 150 utility-point cap. Current MITC verifies redemption, expiry and redemption fees.
 benefits:
-  - effective_from: 2020-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-06-15'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 100
+    cycle: statement
+    notes: 1% reversal on fuel transactions from INR 500 to INR 3,000, capped at INR 100 per statement cycle; GST on surcharge is not waived. Current MITC excludes UPI fuel transactions from surcharge reversal where applicable.
+  concierge: null
+  insurance:
+  - type: purchase-protection
+    sum_insured_inr: null
+    coverage_duration_days: null
+    conditions: >-
+      Current ACE page lists purchase protection. The linked current coverage document and exact coverage limit,
+      eligible purchases, exclusions and coverage period were not available in the rendered page; no numeric cover
+      is asserted.
+  other:
+  - name: Buy-one-get-one coffee offer
+    description: Buy-one-get-one offer on coffee at eligible outlets inside select malls across India; offer terms and participating outlets apply.
+    value_inr: null
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/ace/ybl-mitc-v18-2026-10-05.pdf
+    - docs/sources/yes/ace/credit-card-features-update-june-2026.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    - benefits.concierge
+    - benefits.insurance
+    - benefits.other
+    notes: Current card page lists fuel surcharge waiver, purchase protection and BOGO coffee. The current MITC sets the revised fuel band/cap. No ACE lounge or concierge benefit is listed.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 60
   income_inr_annual:
     salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    self_employed: 750000
+  credit_score_min: null
   residency: resident-indian
-
+  notes: >-
+    Current card-specific page states age 21-60, salaried or self-employed, minimum net salary INR 25,000 per month
+    (annualized here as INR 300,000) or ITR INR 750,000 and above. It states existing YES BANK credit-card holders
+    are ineligible for the regular ACE card; a virtual RuPay variant is offered only to existing Mastercard/Visa
+    ACE holders. No minimum credit score is published.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    notes: Current ACE product page provides age, occupation and income/ITR eligibility cutoffs.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/ace-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, online, shopping]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - points
+  - online
+  - shopping

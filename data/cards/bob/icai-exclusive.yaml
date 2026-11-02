@@ -1,138 +1,205 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: bob-icai-exclusive
 name: ICAI Exclusive BOBCARD Credit Card
+image_path: /cards/bob/icai-exclusive.webp
 issuer: bob
-network: visa
-network_tier: signature
+network: rupay
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
   partner: ICAI
   category: other
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free. Exclusively for ICAI (Institute of Chartered Accountants of India) members."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Lifetime-free. Exclusively for ICAI (Institute of Chartered Accountants of India) members.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current BOBCARD product page confirms zero joining/annual fees and 2% forex. Jan-2026 BOBCARD MITC confirms
+      3.75% monthly finance, 2.5%/INR 500 minimum cash advance. effective_from is observation date; exact fee start
+      and card launch date are unpublished. Application form offers Mastercard and RuPay network choices for ICAI
+      Exclusive; record uses RuPay as representative because schema accepts only one network and current product
+      page does not identify the individual issued network. Network tier is not established.
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: dining-online-utilities
-        canonical_categories: [dining, online, utilities]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 1000
-        cap_unit: points
-        cycle: statement
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: BOBCARD Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: dining-online-utilities
+    canonical_categories:
+    - dining
+    - online
+    - utilities
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: statement
+    notes: 5 total BOBCARD Reward Points per INR 100 on dining, online and utility spend; capped at 1,000 accelerated
+      points per statement, with subsequent eligible spend earning base rate. UPI earns core points only; no bonus
+      points.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    program: BOBCARD Rewards
+    rate_inr_per_unit: 0.25
+    constraints: Statement cashback at INR 0.25 per point; minimum 1,000 points for statement cashback redemption.
+      BOBCARD points expire 24 months after accrual. Current product page does not provide the full select-MCC appendix.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Current BOBCARD ICAI product page confirms 1 RP/INR 100 base, 5X total/INR 100 dining, online and utility,
+      1,000 accelerator cap per statement, and INR 0.25 cashback value. Product page and shared feature T&Cs state
+      UPI earns core points only and fuel earns none. Shared BOBCARD terms state redemption threshold 1,000 points
+      and reward point validity 24 months. Full current select-MCC appendix is not exposed on the product page;
+      only rent MCC 6513 and known wallet/fuel exclusions are modeled.
+  capping_rules:
+  - Accelerated dining/online/utility points capped at 1,000 points per statement; thereafter eligible transactions
+    earn base points.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 3
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-    welcome:
-      - condition: "Spend ₹5,000 or more within 60 days of issuance"
-        benefit: "500 reward points"
-        value_inr: 125
-        window_days: 60
-    milestones:
-      - spend_inr: 100000
-        cycle: quarterly
-        benefit: "4,000 reward points on quarterly spend above ₹1,00,000 or credit limit (whichever higher)"
-        reward_kind: points
-        reward_units: 4000
-        reward_currency_name: Reward Points
-        trigger_window: rolling
-        is_repeatable: true
-        max_awards_per_cycle: 1
-    insurance:
-      - type: other
-        sum_insured_inr: 500000
-        conditions: "Professional indemnity insurance cover up to ₹5 Lakhs."
-      - type: air-accident
-        sum_insured_inr: 1500000
-        conditions: "Air accidental death cover."
-      - type: personal-accident
-        sum_insured_inr: 500000
-        conditions: "Non-air accidental death cover."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    other:
-      - name: Add-on cards
-        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
-    concierge: false
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 3
+      cycle: quarterly
+      guests_per_visit: null
+  welcome:
+  - condition: Spend INR 5,000 or more within 60 days of card issuance
+    benefit: 500 BOBCARD Reward Points
+    value_inr: 125
+    window_days: 60
+  milestones:
+  - spend_inr: 100000
+    cycle: quarterly
+    benefit: 4,000 reward points each quarter on eligible spend greater than INR 100,000 or the credit limit, whichever
+      is higher; available once per quarter.
+    reward_kind: points
+    reward_units: 4000
+    reward_currency_name: Reward Points
+    trigger_window: rolling
+    is_repeatable: true
+    max_awards_per_cycle: 1
+    value_inr: 1000
+  insurance:
+  - type: other
+    sum_insured_inr: 500000
+    conditions: Professional indemnity cover applies only to ICAI individual members in practice holding a valid
+      Certificate of Practice at issuance and at claim; full policy terms apply.
+  - type: air-accident
+    sum_insured_inr: 1500000
+    conditions: Air accidental death cover. Primary cardholder only; full insurer terms apply.
+  - type: personal-accident
+    sum_insured_inr: 500000
+    conditions: Non-air accidental death cover. Primary cardholder only; full insurer terms apply.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+    notes: 1% waiver on INR 400-5,000 fuel transactions, capped at INR 250 per statement; fuel earns no reward points.
+  other:
+  - name: FITPASS PRO
+    description: 12-month FITPASS PRO membership for cards issued on or after 1-Aug-2026. The code is sent to the
+      registered email within 30 days of issuance; primary cardholder only.
+  - name: Lost-card liability
+    description: Product page advertises zero liability for fraudulent transactions if loss is reported immediately;
+      detailed terms apply.
+  - name: Network variant
+    description: The BOBCARD universal application form lists both Mastercard and RuPay options for ICAI Exclusive;
+      product-level schema supports one network, so RuPay is used as the representative value. Customer-specific
+      network may differ.
+  - name: Professional indemnity cover condition
+    description: PI cover applies only to practicing individual ICAI members with a valid Certificate of Practice
+      at issuance and claim. Accident covers are primary-cardholder benefits; full policy conditions apply.
+  concierge: false
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.insurance
+    - benefits.other
+    notes: Current product page reviewed 2026-10-26. It states 3 lounge visits per quarter (spend gate INR 40,000
+      net eligible spend in preceding calendar quarter), fuel waiver, insurance limits, 2026 FITPASS Pro condition
+      and ICAI membership eligibility. Product application form lists multiple network choices. PI policy requires
+      valid practice Certificate of Practice at both issuance and claim; full accident/PI policy terms and exclusions
+      are not in the product page. The product record cannot encode the individual network variant. Application-form
+      PI condition was rechecked; product page does not publish all claim exclusions, policy period, or insured-event
+      definitions.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 75
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 720
+    salaried: 300000
+    self_employed: 300000
+  credit_score_min: null
   residency: resident-indian
-  notes: "Exclusively for ICAI members."
-
+  notes: 'Current BOBCARD page requires resident India and active eligible ICAI membership; age 21-75 for salaried
+    and self-employed. Published minimums: salaried net annual income INR 300,000; self-employed annual ITR INR
+    300,000. Valid ICAI membership card is required; professional indemnity cover separately requires active practice
+    and a valid CoP.'
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/icai-exclusive-bobcard
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, professional, lifetime-free, lounge, co-brand]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - points
+  - professional
+  - lifetime-free
+  - lounge
+  - co-brand

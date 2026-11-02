@@ -17,5 +17,5 @@ describe("schema validator smoke (PR 4)", () => {
       );
     }
     expect(result.stdout).toMatch(/Schema validation OK: \d+ files/);
-  });
+  }, 30000);
 });

@@ -1,16 +1,8 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-shoppers-stop-black
 name: Shoppers Stop Black HDFC Bank Credit Card
+image_path: /cards/hdfc/shoppers-stop-black.png
 issuer: hdfc
-network: visa
+network: null
 network_tier: null
 tier: premium
 card_type: credit
@@ -18,136 +10,249 @@ co_brand:
   partner: Shoppers Stop
   category: retail
 status: active
-launched_on: null
+launched_on: '2022-03-30'
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 4500
-    annual_fee_inr: 4500
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    gst_applicable: true
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
-      retrieved_on: 2026-07-03
-      notes: "Membership fee ₹4,500 + applicable taxes, joining and renewal."
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 4500
+  annual_fee_inr: 4500
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/shoppers-stop-black/shoppers-stop-black-terms-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current issuer fee page confirms ?4,500 + tax joining/renewal, ?99 + tax redemption handling fee, 1%
+      DCC markup and 1% rent transaction fee from the second calendar-month rent transaction. HDFC co-branded MITC
+      v3.9 gives standard cash advance 2.5% (min ?500), 3.75% monthly finance and 3.5% foreign currency markup.
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  notes: No annual-fee waiver appears in current HDFC pricing/MITC. Issuer-specific fees page additionally lists
+    1% international DCC markup; this is distinct from the foreign currency markup.
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    redemption_scope: closed-loop
-    ecosystem_label: Shoppers Stop
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 1.0
-      cap_per_cycle: 2000
-      cap_unit: points
-      cycle: monthly
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: shoppers-stop-purchases
-        canonical_categories: [other]
-        multiplier: 3.5
-        effective_rate: 7
-        merchants: [shoppers-stop]
-        channel:
-          class: cobrand-merchant
-          merchants: [shoppers-stop]
-        notes: "7% Reward Points on every Shoppers Stop purchase (vs 2% base on non-Shoppers Stop spends)."
-        cap_per_cycle: 2000
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: voucher
-        program: Shoppers Stop
-        rate_inr_per_unit: 1.0
-        constraints: "1 Reward Point = ₹1 when redeemed against a Shoppers Stop voucher."
-      - type: catalog
-        rate_inr_per_unit: 0.35
-      - type: airmiles
-        rate_inr_per_unit: 0.5
-      - type: other
-        program: SmartBuy
-        rate_inr_per_unit: 0.5
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: 'Research-verified: HDFC Reward Point = Rs1 Shoppers Stop voucher, store-only. Layer-3: ~20-40% cheaper online in sales.'
-    mcc_exclusions: ['6513', '1361', '5172', '5541', '5542', '5983', '9752']
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  redemption_scope: open
+  ecosystem_label: null
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 0.2
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    notes: 2% on eligible non-Shoppers Stop spend, minimum transaction ?150, capped at 2,000 points/month. Realized
+      value uses issuer-listed statement-credit value; points can reach ?1 each against Shoppers Stop vouchers.
+  accelerated:
+  - category: shoppers-stop-purchases
+    canonical_categories:
+    - other
+    multiplier: 3.5
+    effective_rate: 7
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - shoppers-stop
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - shoppers-stop
+    notes: 7% on eligible Shoppers Stop online/in-store transactions of ?150 or more; capped at 2,000 points/month.
+      Eligibility depends on Shoppers Stop TIDs/MIDs registered with HDFC.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - emi
+  - cash-advance
+  redemption:
+  - type: voucher
+    program: Shoppers Stop
+    rate_inr_per_unit: 1.0
+    constraints: 1 point = ?1 for Shoppers Stop vouchers; voucher use is within Shoppers Stop. Current issuer fees
+      page lists ?99 + taxes for reward redemption handling.
+  - type: cashback-bank
+    program: HDFC statement credit
+    rate_inr_per_unit: 0.2
+    min_units: 500
+    fee_inr: null
+    constraints: ?0.20/point. Current issuer fees page lists ?99 + tax handling fee; card-specific T&Cs say ?50
+      + tax for statement-credit redemption. Redemption fee remains unresolved.
+  - type: product
+    program: HDFC Reward Catalogue
+    rate_inr_per_unit: 0.35
+    constraints: Current fees page lists ?99 + tax redemption handling fee.
+  - type: airmiles
+    program: HDFC Airmiles
+    rate_inr_per_unit: 0.5
+    constraints: Up to ?0.50/point per issuer redemption table.
+  - type: other
+    program: HDFC SmartBuy Flights/Hotels
+    rate_inr_per_unit: 0.5
+    constraints: Points capped at 50% of booking value; issuer lists monthly redemption caps.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/shoppers-stop-black/shoppers-stop-black-terms-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.cap_per_cycle
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.redemption
+    - rewards.redemption_floor_value_inr
+    - rewards.redemption_ceiling_value_inr
+    notes: Current issuer page lists 7% Shoppers Stop / 2% non-Shoppers Stop and 2,000 monthly cap for each reward
+      category; points expire after two years. The current page advertises ?2,000 weekend points/month; linked detailed
+      terms say ?1,500 and max five/year. Detailed T&C heading refers to 1% non-Shopper earning, but table/example
+      and live product page say 2%. See issuer extract for conflicts.
+  mcc_exclusions: []
+  capping_rules:
+  - No reward points on supermarkets, tax, vending-machine miscellaneous food, package stores/liquor, bakeries,
+    travelers cheques, and categories HDFC excludes from time to time.
+  - Reward eligibility is transaction/MID/TID based for Shoppers Stop; transactions under ?150 do not qualify.
+  redemption_floor_value_inr: 0.2
+  redemption_ceiling_value_inr: 1.0
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        notes: "16 domestic lounge accesses per calendar year (4 per quarter)."
-      international:
-        visits_per_cycle: 2
-        cycle: quarterly
-        notes: "8 international lounge accesses per calendar year (2 per quarter)."
-    milestones:
-      - spend_inr: 50000
-        cycle: monthly
-        benefit: "Reward Points worth ₹2,000 for a purchase of ₹50,000 or above on Shoppers Stop on weekends"
-        value_inr: 2000
-        reward_kind: points
-    welcome:
-      - condition: "Any transaction at Shoppers Stop"
-        benefit: "Shoppers Stop voucher worth ₹1,500 as welcome benefit"
-        value_inr: 1500
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 30000000
-        conditions: "Accidental air death cover worth ₹3 crore."
-      - type: travel-medical
-        sum_insured_inr: 5000000
-        conditions: "Emergency overseas hospitalisation up to ₹50 lakh."
-      - type: credit-shield
-        sum_insured_inr: 900000
-        conditions: "Credit liability cover up to ₹9 lakh."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      cap_per_cycle_inr: 500
-      cycle: statement
-      notes: "1% fuel surcharge waiver of up to ₹500 across all fuel stations in India."
-    concierge: false
-    other:
-      - name: Shoppers Stop Black membership
-        description: "Complimentary Shoppers Stop Black membership."
-        value_inr: 4500
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 4
+      cycle: quarterly
+      notes: 16 domestic accesses per calendar year, 4 per quarter, per current product page.
+    international:
+      visits_per_cycle: 2
+      cycle: quarterly
+      notes: 8 international accesses per calendar year, 2 per quarter, per current product page.
+  milestones:
+  - spend_inr: 50000
+    cycle: monthly
+    benefit: 2,000 Reward Points for a single Shoppers Stop purchase of ?50,000 or more on a weekend; linked detailed
+      terms say at most five times per year
+    value_inr: 2000
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: Reward Points
+    trigger_window: rolling
+    is_repeatable: true
+    max_awards_per_cycle: 1
+    redemption_constraint_ref: hdfc-shoppers-stop-reward-redemption
+  welcome:
+  - condition: Any transaction at Shoppers Stop; issuer sends the welcome message within 3 working days after onboarding.
+    benefit: Shoppers Stop voucher worth ?1,500, redeemable on a Shoppers Stop transaction using this card.
+    value_inr: 1500
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 30000000
+    conditions: Accidental air death cover worth ?3 crore.
+  - type: travel-medical
+    sum_insured_inr: 5000000
+    conditions: Emergency overseas hospitalisation cover up to ?50 lakh.
+  - type: credit-shield
+    sum_insured_inr: 900000
+    conditions: Credit liability cover up to ?9 lakh.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 500
+    cycle: statement
+    notes: Current issuer page caps waiver at ?500/statement; co-branded MITC lists ?400??5,000 qualifying transactions.
+      GST on fuel surcharge is not reversed.
+  concierge: false
+  other:
+  - name: Shoppers Stop Black membership
+    description: Complimentary Shoppers Stop Black membership, issuer stated value ?4,500.
+    value_inr: 4500
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hdfc/shoppers-stop-black/shoppers-stop-black-terms-retrieved-2026-10-26.pdf
+    - docs/sources/hdfc/_shared/co-branded-mitc-v3.9-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.milestones.spend_inr
+    - benefits.milestones.reward_units
+    - benefits.welcome.value_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.insurance.sum_insured_inr
+    - benefits.other.value_inr
+    notes: Current page states 2,000 Reward Points monthly for a single ?50,000+ weekend purchase. Linked card-specific
+      PDF states ?1,500 and max five awards/year. Modeled current page amount; annual count/amount conflict is documented
+      in source extract.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
     salaried: 840000
     self_employed: 840000
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-  notes: "Salaried: age 21-60, monthly income ₹70,000 (₹8,40,000 p.a.). Self-employed: age 21-65, annual income > ₹8,40,000."
-
+  notes: HDFC lists Indian nationality, salaried age 21?60 and monthly income ?70,000; self-employed age 21?65 and
+    annual income strictly greater than ?8,40,000. The schema stores the annualized salaried minimum and self-employed
+    income floor.
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/shoppers-stop-black-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, shoppers-stop, retail, points, premium, lounge, shopping]
+  last_verified_on: '2026-10-26'
+  tags:
+  - co-branded
+  - shoppers-stop
+  - retail
+  - points
+  - premium
+  - lounge
+  - shopping

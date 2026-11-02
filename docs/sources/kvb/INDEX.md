@@ -1,3 +1,5 @@
-# kvb — source verification (2026-07-04)
+# KVB source index
 
-Single card (honour), a RuPay/Visa program card (RuPay Select / Winnings / Honour). Post-`.bank.in` migration the card pages redirect to the bank homepage and expose no machine-readable fee/reward table or PDF, so the seeded values (annual Rs.1000, forex 3.5%, 1-2 RP/Rs100 per the RuPay-Select program) are RETAINED as plausible-unconfirmed. Domain + rent-MCC were verified during the audit.
+## KVB Honour Credit Card — reviewed 2026-10-27
+
+Compared the current Honour product page, March-2025 retail MITC and reward-redemption page; also checked the May-2026 premium-card portfolio announcement. Corrected fees/waiver, finance/cash withdrawal charges, reward rates, redemption conditions, lounge description and fuel waiver; cleared the unsupported launch date and underwriting fields. The headline travel multiplier and lounge cadence are not fully specified. Full comparison: `honour/issuer-extract-2026-10-27.md`.

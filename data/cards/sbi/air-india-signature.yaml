@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: sbi-air-india-signature
 name: Air India SBI Signature Card
+image_path: /cards/sbi/air-india-signature.jpg
 issuer: sbi
 network: visa
 network_tier: signature
@@ -18,144 +10,206 @@ co_brand:
   partner: Air India
   category: airline
   partner_website: https://www.airindia.com
-status: active
-launched_on: null
-discontinued_on: null
-
+status: discontinued
+launched_on: 2013-09-16
+discontinued_on: '2024-10-10'
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 4999
-    annual_fee_inr: 4999
-    renewal_fee_inr: 4999
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    supplementary_card_fee_inr: 0
-    gst_applicable: true
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 4999
+  annual_fee_inr: 4999
+  renewal_fee_inr: 4999
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  supplementary_card_fee_inr: null
+  gst_applicable: true
+  source:
+    url: https://www.sbicard.com/en/most-important-terms-and-conditions.page
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    notes: Current MITC continues to list INR4,999 joining, annual and renewal fees for legacy accounts. New card issuance was discontinued 10-Oct-2024. Finance charges are 3.75% monthly from 01-Nov-2024; exact historical fee effective dates are not published. The Signature T&C says additional-card fees are at the prevailing rate, while SBI's generic add-on FAQ says there is no fee; the Signature-specific fee is unresolved.
+    local_refs:
+    - docs/sources/sbi/air-india-signature/mitc-english-2026-10-27.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.renewal_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: miles
-    currency_name: Reward Points
-    loyalty_program: air-india-flying-returns
-    base:
-      rate: 4
-      per_inr: 100
-      unit_value_inr: 0.7
-      unit_value_inr_realized: 0.55
-    accelerated:
-      - category: air-india-bookings
-        canonical_categories: [travel]
-        multiplier: 2.5
-        effective_rate: 10
-        card_attributable_rate: 10
-        card_attributable_per_inr: 100
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-        merchants: [air-india]
-        channel:
-          required: true
-          class: cobrand-merchant
-          merchants: [air-india-direct]
-        notes: "10 Reward Points per Rs. 100 on Air India tickets booked via website, app, booking offices or call centres (including Super Saver tickets for self and others)."
-        stacks_with_program: false
-    exclusions:
-      - fuel
-      - wallet-loads
-      - emi
-    redemption:
-      - type: airmiles
-        program: Air India Maharaja Club
-        ratio: "1:1"
-        constraints: "Convert Reward Points into Air India Maharaja Points; 1 Reward Point = 1 Air India Maharaja Point."
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-      confidence: medium
-      notes: 'Verified 2026-07-05: Reward Points convert 1:1 to Air India Maharaja (~Rs0.5-0.7 economy post Apr-2026 chart; 20-50% conversion bonuses lift value). Was face Rs1.0.'
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - No per-month/statement/annual cap on Air India accelerated Reward Points per the card's own Combined T&C (Air-India-Signature-Combined-TC-16JUL2025, sec 11.4); earn is 10 RP/₹100 (cut from 30 RP w.e.f. 31-Mar-25).
+- effective_from: '2013-09-16'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  loyalty_program: air-india-flying-returns
+  base:
+    rate: 4
+    per_inr: 100
+  accelerated:
+  - category: air-india-bookings
+    canonical_categories:
+    - travel
+    multiplier: 2.5
+    effective_rate: 10
+    card_attributable_rate: 10
+    card_attributable_per_inr: 100
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - air-india
+    channel:
+      required: true
+      class: cobrand-merchant
+      merchants:
+      - air-india-direct
+    notes: From 31-Mar-2025, earn 10 Reward Points per INR100 of eligible base fare on Air India website, app, booking offices or call centres, using primary or add-on card. 4 points post initially; 6 points post within 60 working days after merchant-ID mapping, subject to Maharaja Club number and exact name/KYC match.
+    stacks_with_program: false
+  exclusions:
+  - fuel
+  - cash-advance
+  - rent
+  - government
+  - wallet-loads
+  - emi
+  redemption:
+  - type: airmiles
+    program: Air India Maharaja Club
+    ratio: '1:1'
+    constraints: Current Air India co-brand terms specify 1 SBI Reward Point = 1 Maharaja Point. Signature conversion requires at least 10,000 points. Converted points post within 7 days and expire 24 months after credit. SBI terms also say redemption minimums of 5,000 or 10,000 may apply; no fixed INR value is published.
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/Air-India-Signature-Combined-TC-16JULY2025.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    notes: Current Air India co-brand page confirms the 1:1 transfer and 24-month Maharaja Points validity; SBI combined terms confirm 4 base points, Air India exclusions including balance transfers and charges, and accelerated earn conditions. SBI terms explicitly state Reward Points have no cash or monetary value.
+    local_refs:
+    - docs/sources/sbi/air-india-signature/signature-combined-terms.pdf
+    - docs/sources/sbi/air-india-signature/signature-air-india-reward-terms.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
+  mcc_exclusions:
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '6513'
+  - '6540'
+  - '6541'
+  - '9311'
+  - '9399'
+  capping_rules:
+  - No per-month/statement/annual cap on Air India accelerated Reward Points per the
+    card's own Combined T&C (Air-India-Signature-Combined-TC-16JUL2025, sec 11.4);
+    earn is 10 RP/₹100 (cut from 30 RP w.e.f. 31-Mar-25).
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa]
-        notes: "8 complimentary domestic lounge visits per year (max. 2 per quarter)."
-      international:
-        visits_per_cycle: 0
-        cycle: annual
-        via: [priority-pass]
-        notes: "Complimentary Priority Pass Program membership worth $99; each lounge visit post membership is chargeable at up to $27."
-    milestones:
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "20,000 bonus Reward Points"
-        reward_kind: points
-        reward_units: 20000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-      - spend_inr: 1000000
-        cycle: annual
-        benefit: "30,000 bonus Reward Points"
-        reward_kind: points
-        reward_units: 30000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-      - spend_inr: 2000000
-        cycle: annual
-        benefit: "50,000 bonus Reward Points"
-        reward_kind: points
-        reward_units: 50000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "20,000 Reward Points and complimentary Air India Maharaja Club membership"
-        value_inr: null
-        window_days: 15
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    other:
-      - name: Anniversary gift
-        description: "5,000 Reward Points every year on card anniversary."
-        value_inr: null
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: '2013-09-16'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - visa
+      notes: 8 complimentary domestic Visa lounge visits per year, maximum 2 per quarter. The 10-Jan-2026 quota revision explicitly excludes this card, and SBI says other card quotas remain unchanged.
+    international:
+      visits_per_cycle: 0
+      cycle: annual
+      via:
+      - priority-pass
+      notes: One complimentary Priority Pass membership, valid 24 months. No complimentary visits; all visits are chargeable up to USD27 plus taxes. Complimentary visits do not apply to Priority Pass lounges inside India.
+  milestones:
+  - spend_inr: 500000
+    cycle: annual
+    benefit: 20,000 bonus Reward Points
+    reward_kind: points
+    reward_units: 20000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+  - spend_inr: 1000000
+    cycle: annual
+    benefit: 30,000 bonus Reward Points
+    reward_kind: points
+    reward_units: 30000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+  - spend_inr: 2000000
+    cycle: annual
+    benefit: 50,000 bonus Reward Points
+    reward_kind: points
+    reward_units: 50000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+  welcome:
+  - condition: Joining fee paid
+    benefit: 20,000 Reward Points and complimentary Air India Maharaja Club membership
+  fuel_surcharge_waiver: null
+  insurance:
+  - type: lost-card-liability
+    sum_insured_inr: 100000
+    conditions: Current SBI card terms cover up to INR100,000 for fraudulent loss; reporting terms specify 3 days before and 7 days after reporting, subject to policy terms. Air India's co-brand page states 48 hours before reporting, creating a source conflict.
+  concierge: false
+  other:
+  - name: Anniversary gift
+    description: 5,000 Reward Points every year on card anniversary.
+    value_inr: null
+  source:
+    url: https://www.airindia.com/in/en/maharaja-club/partner-offers/sbi.html
+    retrieved_on: '2026-10-27'
+    type: other
+    confidence: high
+    notes: Air India's current SBI co-brand page publishes Signature earn, conversion, milestones, fees, domestic lounge visits, membership and anniversary points. SBI's card-specific terms and Priority Pass FAQ support reward exclusions, insurance and paid international lounge details. No current Signature-specific fuel waiver schedule was found, so the unsupported legacy values were cleared.
+    local_refs:
+    - docs/sources/sbi/air-india-signature/signature-combined-terms.pdf
+    - docs/sources/sbi/air-india-signature/signature-mileage-milestone-update.pdf
+    - docs/sources/sbi/air-india-signature/signature-air-india-reward-terms.pdf
+    - docs/sources/sbi/air-india-signature/air-india-launch-2013.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.other[0]
 eligibility:
   min_age: 21
   max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: "SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/air-india-sbi-signature-card.html
-
+  apply_url: null
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, airline, air-india, miles, premium, lounge]
+  last_verified_on: '2026-10-27'
+  tags:
+  - co-branded
+  - airline
+  - air-india
+  - miles
+  - premium
+  - lounge

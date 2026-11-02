@@ -1,0 +1,159 @@
+id: rbl-bfl-platinum-plus
+name: Bajaj Finserv RBL Bank Platinum Plus SuperCard
+image_path: /cards/rbl/bfl-platinum-plus.webp
+issuer: rbl
+network: mastercard
+network_tier: platinum
+tier: mid
+card_type: credit
+co_brand:
+  partner: Bajaj Finserv
+  category: retail
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 999
+  annual_fee_inr: 999
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+    conditions: Annual fee waived on spending ₹1,00,000 or more in the preceding year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/platinum-plus-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: 'Current RBL Platinum Plus page and MITC list ₹999 annual fee (years 1+), waived on eligible annual spends of ₹1 lakh or more; add-on fee ₹200 per card. Forex markup 3.5%, cash advance fee 2.5% (minimum ₹500). Finance varies by bureau category: 3.35%, 3.85% or 3.99% monthly; schema stores the maximum 3.99%. Current terms: https://www.rbl.bank.in/personal-banking/cards/credit-cards/platinum-plus-credit-card and https://webassets.rbl.bank.in/document/Credit%20Cards/RBL-MITC-final.pdf.'
+    fields_verified:
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+rewards:
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: null
+  accelerated:
+  - category: online-spends
+    canonical_categories:
+    - online
+    multiplier: 2
+    effective_rate: 2
+    cap_per_cycle: 1000
+    cap_unit: points
+    cycle: monthly
+    notes: 2 Reward Points per ₹100 online spend, capped at 1,000 points per month/billing cycle per the Platinum Plus guide.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - utilities
+  - insurance-premiums
+  - education
+  - cash-advance
+  - government
+  - other
+  - emi
+  mcc_exclusions: []
+  redemption:
+  - type: catalog
+    program: RBL Rewards
+    rate_inr_per_unit: null
+    constraints: RBL says point value varies by redemption category from ₹0.11 to ₹0.25; no universal or realized unit value is established.
+  source:
+    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/platinum-plus-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: 'RBL page lists 1 RP per ₹100 and 2 RP per ₹100 online up to 1,000 points monthly. Current product page exclusions include Fuel & Auto, Utilities, Insurance, Rent, Wallet Load, Education, Quasi-Cash, Railways, Real Estate, Service Providers, Government Services, Contracted Services, Bills2Pay, EMI, Miscellaneous and Cash; schema categories are normalized and unsupported finer distinctions remain in these notes. Online cap cycle confirmed in Platinum Plus guide PDF: https://webassets.rbl.bank.in/document/Credit%20Cards/platinumplusguide.pdf. Redemption value varies ₹0.11–₹0.25 by category. Redemption fee ₹99 + GST applies under current RBL Rewardz terms. No exact launch date found.'
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].accelerated[0].cap_per_cycle
+    - rewards[0].base.unit_value_inr
+    - rewards[0].redemption[0].rate_inr_per_unit
+benefits:
+- effective_from: 2026-10-27
+  effective_until: null
+  welcome:
+  - condition: Pay annual fee and spend ₹2,000 within 30 days of card issuance; no welcome reward on first-year-free cards
+    benefit: 4,000 Reward Points
+    window_days: 30
+  milestones:
+  - spend_inr: 150000
+    cycle: annual
+    benefit: 10,000 Bonus Reward Points on annual spend of ₹1,50,000
+    value_inr: 2500
+    reward_kind: points
+    reward_units: 10000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+  lounge_access: null
+  movies:
+    type: bogo
+    partner: BookMyShow
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 200
+    notes: 1+1 free movie ticket up to ₹200 off once a month (Monday to Friday).
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 100
+    cycle: monthly
+  concierge: false
+  source:
+    url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/platinum-plus-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: 'RBL current page explicitly says Platinum Plus lounge benefits were discontinued effective 2025-07-01; removed prior lounge access. Welcome offer is 4,000 points after annual fee payment and ₹2,000 spend within 30 days; no welcome points on first-year-free cards. BMS offer is 1+1 up to ₹200, one day/month, weekdays. Fuel surcharge waiver up to ₹100/month on ₹500–₹4,000 transactions. Current product page: https://www.rbl.bank.in/personal-banking/cards/credit-cards/platinum-plus-credit-card. The page does not publish current fee for the monthly BMS benefit or terms for every benefit.'
+    fields_verified:
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.movies
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: Numeric income and credit-score cutoffs are retained only when this eligibility record cites the exact
+    field in issuer evidence; unsupported cutoffs are unknown, not proof of no underwriting requirement. Broad minimum/maximum
+    age figures without an exact issuer evidence path or a source-verified occupational range were left unknown;
+    this does not imply there is no age criterion.
+application:
+  apply_url: https://www.rbl.bank.in/personal-banking/cards/credit-cards/platinum-plus-credit-card
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - co-branded
+  - bajaj-finserv
+  - supercard
+  - movies
+  - lounge
+  - mid

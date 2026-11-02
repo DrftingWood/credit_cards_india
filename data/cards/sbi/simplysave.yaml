@@ -1,14 +1,7 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
+# Current card terms and numeric evidence are recorded in the source blocks below.
 id: sbi-simplysave
 name: SimplySAVE SBI Card
+image_path: /cards/sbi/simplysave.png
 issuer: sbi
 network: visa
 network_tier: platinum
@@ -20,13 +13,14 @@ launched_on: 2015-08-01
 discontinued_on: null
 
 fees:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-10-25
     effective_until: null
     joining_fee_inr: 499
     annual_fee_inr: 499
     fee_waiver:
       spend_inr: 100000
       cycle: annual
+      conditions: Renewal fee reversed if annual spend in the preceding year is at least INR 1 lakh.
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
     cash_advance_fee:
@@ -35,10 +29,23 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplysave-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-25
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.fee_waiver.spend_inr
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee.pct
+        - fees.cash_advance_fee.min_inr
+      notes: Current SimplySAVE page confirms INR 499 joining/annual fees and renewal reversal at INR 1 lakh preceding-year spend. Current MITC confirms 3.5% forex markup, up to 3.75% monthly finance charges, and 2.5%/INR 500 cash-advance fee. The issuer sources reviewed do not state when this fee schedule began; 2026-10-25 is the observation date.
 
 rewards:
-  - effective_from: 2015-08-01
+  - effective_from: 2022-03-01
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -46,7 +53,7 @@ rewards:
       rate: 1
       per_inr: 150
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr_realized: null
     accelerated:
       - category: dining-movies-grocery-departmental
         canonical_categories: [groceries, dining, entertainment]
@@ -55,31 +62,51 @@ rewards:
         cap_per_cycle: 5000
         cap_unit: points
         cycle: monthly
-        notes: "10 RP per Rs.150 on Dining, Movies, Groceries, Departmental Stores. Capped at 5,000 RP per month; thereafter 1 RP per Rs.150."
+        over_cap_earns_base: true
+        notes: "10 total Reward Points per INR 150 on dining, movies, groceries and departmental-store transactions recognized under eligible MCCs. Accelerated points cap at 5,000 per calendar month; thereafter these categories earn the 1-point-per-INR-150 base rate. The customer spend profile has no separate departmental-store bucket, so that part of the eligible scope cannot be isolated in estimates."
     exclusions:
       - fuel
       - wallet-loads
-      - rent
-      - insurance-premiums
+      - cash-advance
       - emi
     redemption:
       - type: statement-credit
         rate_inr_per_unit: 0.25
       - type: catalog
         program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
+        rate_inr_per_unit: null
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplysave-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-25
       type: issuer-page
-
-    mcc_exclusions: ['6513']
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/SimplySAVE-TnC.pdf
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.base.unit_value_inr
+        - rewards.accelerated.effective_rate
+        - rewards.accelerated.cap_per_cycle
+        - rewards.accelerated.cap_unit
+        - rewards.accelerated.cycle
+        - rewards.exclusions
+        - rewards.mcc_exclusions
+        - rewards.redemption.rate_inr_per_unit
+        - rewards.capping_rules
+      notes: Current SimplySAVE product page and card-specific T&C confirm 1 point per INR 150 generally, 10 per INR 150 on dining, movies, grocery and departmental stores, and a 5,000-point calendar-month cap on accelerated points with base earn after the cap. Current page values statement-credit redemption at 4 points per INR 1. General SBI rewards FAQ/MITC states INR 99 plus tax redemption fee where applicable, 24-month point expiry and (from 1-Apr-2026) 4,000-point statement-credit increments and a 60,000-point monthly cap. Catalogue value is item-specific; realized value is left unknown because applicable fees depend on redemption type and batch timing.
+    mcc_exclusions: ['5172', '5541', '5542', '5983']
+    capping_rules:
+      - Accelerated earn is 10 total points per INR 150 on dining MCC 5812/5813/5814, grocery MCC 5411, departmental-store MCC 5311 and movie-theatre MCC 7832. The monthly 5,000-point cap applies to accelerated points in aggregate; after the cap, base earn of 1 point per INR 150 continues.
+      - Fuel MCCs 5172/5541/5542/5983 do not earn points. Cash advance, balance transfer, Encash and Flexipay transactions are excluded under card terms. General SBI wallet-load exclusions are identified under MCCs 6540/6541.
+      - Statement-credit redemption is INR 0.25 per point before applicable fee. From 1-Apr-2026 it requires 4,000-point increments and is capped at 60,000 points per card per calendar month. INR 99 plus tax batch fee may apply; points expire after 24 months. Aggregate inputs cannot calculate redemption batch fees or catalogue-specific value.
 benefits:
-  - effective_from: 2015-08-01
+  - effective_from: 2026-10-25
     effective_until: null
     lounge_access: null
     welcome:
-      - condition: "Spend ₹2,000 within 60 days"
+      - condition: "Spend at least INR 2,000 in the first 60 days; offer terms apply"
         benefit: "2,000 Reward Points"
         value_inr: 500
         window_days: 60
@@ -92,20 +119,41 @@ benefits:
     concierge: false
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/simplysave-sbi-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-25
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - benefits.welcome.value_inr
+        - benefits.welcome.window_days
+        - benefits.fuel_surcharge_waiver.pct
+        - benefits.fuel_surcharge_waiver.min_txn_inr
+        - benefits.fuel_surcharge_waiver.max_txn_inr
+        - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+      notes: Current SimplySAVE page confirms the 2,000-point offer worth INR 500 after at least INR 2,000 spend in the first 60 days (offer terms apply), 1% fuel surcharge waiver on INR 500-INR 3,000 transactions capped at INR 100 per statement cycle/account, and renewal-fee reversal threshold. Fuel waiver excludes applicable taxes/other charges per card terms.
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 700
+  credit_score_min: null
   residency: resident-indian
-
+  notes: "SBI Card policy states ages 21 to 65 for salaried applicants and 25 to 70 for self-employed applicants; the broad bounds preserve those occupation-specific ranges. The card-specific issuer sources reviewed do not state a fixed minimum income or credit-score cutoff; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/simplysave-sbi-card.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: '2026-10-25'
   tags: [entry, everyday-spend, points]

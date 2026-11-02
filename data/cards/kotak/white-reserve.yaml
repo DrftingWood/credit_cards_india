@@ -1,126 +1,267 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Kotak live pages + per-card fees-and-charges / central MITC (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: kotak-white-reserve
 name: Kotak White Reserve Credit Card
+image_path: /cards/kotak/white-reserve.webp
 issuer: kotak
-network: mastercard
-network_tier: world
+network: null
+network_tier: null
 tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2020-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2020-01-01
-    effective_until: null
-    joining_fee_inr: 3000
-    annual_fee_inr: 3000
-    fee_waiver:
-      spend_inr: 750000
-      cycle: annual
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-03-12
+  effective_until: null
+  joining_fee_inr: 12500
+  annual_fee_inr: 12500
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.5
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.kotak.bank.in/content/dam/Kotak/files/key-fact-statement/key-fact-statement-kfs-white-reserve.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: 'Current White Reserve KFS version KFSWR12032026 (12-Mar-2026) confirms INR 12,500 joining/annual fees, annual-fee waiver at INR 10 lakh retail spend, 2% foreign-currency markup, 3.50% monthly/42% annual finance charge, and cash-advance fee 2.5% (minimum INR 500). It also lists 2% DCC; over-limit, rent, utility, education, fuel, wallet-loading, online gaming, branch cash-payment, replacement-card, and credit-limit-increase fees waived; standing-instruction failure fee 2% (minimum INR 450, maximum INR 5,000); cheque-return fee 2% (minimum INR 500); and late-payment slabs INR 0 up to 100, INR 100 for 101-500, INR 500 for 501-1,000, INR 600 for 1,001-5,000, INR 750 for 5,001-10,000, INR 900 for 10,001-25,000, INR 1,100 for 25,001-50,000, and INR 1,300 above 50,000. Dedicated schema fields do not represent all these charges. The KFS identifies its version date; no separate effective date for each charge is stated.'
 rewards:
-  - effective_from: 2020-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Whites Pass
-    base:
-      rate: 3
-      per_inr: 200
-      unit_value_inr: 1.0
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 6
-        cap_per_cycle: "unlimited"
-        cap_unit: cashback-inr
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: Whites Catalogue
-        rate_inr_per_unit: 1.0
-        constraints: "Whites Pass redeemable on curated lifestyle catalogue."
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: White Pass
+  base:
+    rate: 0
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 0.7
+  accelerated: []
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - education
+  - government
+  - utilities
+  - emi
+  - cash-advance
+  mcc_exclusions: []
+  capping_rules:
+  - White Pass is earned on settled spend milestones in the card-anniversary year; the live White Pass page states an annual maximum of INR 250,000.
+  - The dedicated White Pass page says balances are valid for 15 months from credit; Kotak's general cardholder terms state validity through 90 days after the anniversary cycle. These validity rules conflict and need issuer clarification.
+  - The live White Pass milestone ladder differs from the schedule in Kotak's general cardholder terms. Record follows the live card-specific White Pass page; applicability/effective date of the change is unpublished.
+  - Multiple active White and/or White Reserve cards are not eligible to receive White Pass, per current card page.
+  redemption:
+  - type: catalog
+    program: Kotak White Pass catalogue
+    rate_inr_per_unit: 1.0
+    constraints: Current White Pass page lists gift vouchers, flights, hotels and transfer to airline/hotel partners; specific transfer partners and ratios are not published there.
+  - type: cashback-bank
+    program: Kotak White Pass cashback
+    rate_inr_per_unit: 0.7
+    constraints: White Pass page states INR 0.70 per point for cashback; catalogue redemption is INR 1 per point.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card/whitepass.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.capping_rules
+    - rewards.redemption
+    notes: 'The current dedicated White Pass page describes milestone-based earning only (no flat transaction earn), INR 1 per White Pass for catalogue redemptions and INR 0.70 for cashback, 15-month validity, and an INR 250,000 annual maximum. It does not state a published effective date for the current terms. General Kotak terms contain a different milestone ladder and a different expiry rule. Fuel, wallet-load, rent, insurance, education, government, utility and online skill-based transactions are excluded from milestone calculation in Kotak terms; the rule may be revised. The current White Pass page also says settled anniversary-year spend only.'
 benefits:
-  - effective_from: 2020-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
-      international:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "3,000 Whites Pass"
-        value_inr: 3000
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 15000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 3500
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
       cycle: annual
-    concierge: true
-    source:
-      url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-      retrieved_on: 2026-07-03
-
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  golf:
+    rounds_per_cycle: 2
+    cycle: monthly
+    lessons_per_cycle: 0
+    notes: Two complimentary rounds per month for the primary cardholder only; participating course list and advance booking through GolfTripz apply.
+  welcome:
+  - condition: Primary cardholder; activation code provided in the welcome letter
+    benefit: Annual Club Marriott membership. Membership is for the primary cardholder; renewal from 1-Sep-2026 requires at least INR 6 lakh spend in the previous card-anniversary year. Participating hotel, dining and spa discounts/certificates are subject to Club Marriott terms.
+    value_inr: null
+    window_days: null
+  milestones:
+  - spend_inr: 300000
+    cycle: annual
+    benefit: 5,000 White Pass at INR 3 lakh settled spend in the card-anniversary year
+    value_inr: 5000
+    reward_kind: points
+    reward_units: 5000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 600000
+    cycle: annual
+    benefit: 6,000 additional White Pass at INR 6 lakh settled spend in the card-anniversary year
+    value_inr: 6000
+    reward_kind: points
+    reward_units: 6000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 1000000
+    cycle: annual
+    benefit: 9,000 additional White Pass at INR 10 lakh settled spend in the card-anniversary year
+    value_inr: 9000
+    reward_kind: points
+    reward_units: 9000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 1500000
+    cycle: annual
+    benefit: 10,000 additional White Pass at INR 15 lakh settled spend in the card-anniversary year
+    value_inr: 10000
+    reward_kind: points
+    reward_units: 10000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 2000000
+    cycle: annual
+    benefit: 12,000 additional White Pass at INR 20 lakh settled spend in the card-anniversary year
+    value_inr: 12000
+    reward_kind: points
+    reward_units: 12000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 3000000
+    cycle: annual
+    benefit: 24,000 additional White Pass at INR 30 lakh settled spend in the card-anniversary year
+    value_inr: 24000
+    reward_kind: points
+    reward_units: 24000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 4000000
+    cycle: annual
+    benefit: 26,000 additional White Pass at INR 40 lakh settled spend in the card-anniversary year
+    value_inr: 26000
+    reward_kind: points
+    reward_units: 26000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 5000000
+    cycle: annual
+    benefit: 28,000 additional White Pass at INR 50 lakh settled spend in the card-anniversary year
+    value_inr: 28000
+    reward_kind: points
+    reward_units: 28000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 7500000
+    cycle: annual
+    benefit: 63,000 additional White Pass at INR 75 lakh settled spend in the card-anniversary year
+    value_inr: 63000
+    reward_kind: points
+    reward_units: 63000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 10000000
+    cycle: annual
+    benefit: 67,000 additional White Pass at INR 1 crore settled spend in the card-anniversary year
+    value_inr: 67000
+    reward_kind: points
+    reward_units: 67000
+    reward_currency_name: White Pass
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  - spend_inr: 600000
+    cycle: annual
+    benefit: Club Marriott membership renewal for the primary cardholder after at least INR 6 lakh spend in the previous card-anniversary year (effective 1-Sep-2026)
+    value_inr: null
+    reward_kind: other
+    reward_units: null
+    reward_currency_name: null
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  concierge: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 7500
+    cap_per_cycle_inr: 4500
+    cycle: annual
+    notes: The card-specific issuer change notice (https://images.kotak.bank.in/bank/mailers/2025/files/KotakWhiteReserveCC010625.pdf) effective 1-Jun-2025 and current White Reserve feature/lounge pages specify INR 400-7,500 transactions and a maximum INR 4,500 waiver in a calendar year; the later KFS (version KFSWR12032026) says anniversary year. The record follows the explicit dated change notice and current product pages, while preserving the KFS cycle conflict for issuer clarification. GST on fuel surcharge is borne by customer.
+  source:
+    url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.golf.rounds_per_cycle
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.concierge
+    - benefits.fuel_surcharge_waiver
+    notes: 'Current card page and feature pages confirm unlimited domestic and international lounge visits for primary/add-on cardholders, Priority Pass internationally, 2 golf rounds/month for primary cardholder, concierge/lifestyle manager, Club Marriott membership, and 1% fuel waiver on transactions INR 400-7,500. The card-specific issuer notice effective 1-Jun-2025 and current feature pages state a INR 4,500 calendar-year fuel-waiver maximum; the KFS version KFSWR12032026 instead says anniversary year. Lounge page quotes USD 35 per international guest and INR 2 domestic validation (auto-reversal not stated for domestic); its October notice says guest/visits-after-complimentary charges revised to USD 35, while also advertising unlimited primary/add-on visits. Club Marriott renewal requires INR 6 lakh prior-year spend effective 1-Sep-2026; membership term states primary-cardholder only. Current White Pass page milestone amounts differ from general cardholder terms; current page is used provisionally. White Pass expiry also conflicts between 15 months from credit on the dedicated page and 90 days after the anniversary cycle in general terms. The specific network/tier, effective dates of the live benefits, insurance coverage, Club Marriott membership price and scope of lounge guest entitlements are not confirmed.'
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 3000000
-    self_employed: 3000000
-  credit_score_min: 780
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current product and KFS pages reviewed do not publish card-specific age, income, residency or bureau-score criteria. Network and launch date also remain unknown because the current product is offered in network variants and no dated launch source was found.
 application:
   apply_url: https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-reserve-credit-card.html
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [super-premium, lifestyle, travel, whites-pass]
+  last_verified_on: '2026-10-26'
+  tags:
+  - super-premium
+  - lifestyle
+  - travel
+  - white-pass

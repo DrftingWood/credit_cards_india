@@ -1,201 +1,250 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-select
 name: Axis Bank Select Credit Card
+image_path: /cards/axis/select.webp
 issuer: axis
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2015-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2015-01-01
-    effective_until: null
-    joining_fee_inr: 3000
-    annual_fee_inr: 3000
-    fee_waiver:
-      spend_inr: 600000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-08-28
+  effective_until: null
+  joining_fee_inr: 3000
+  annual_fee_inr: 3000
+  fee_waiver:
+    spend_inr: 800000
+    cycle: annual
+    conditions: Anniversary-year spend excludes insurance, rent, fuel, educational services, utilities and telecom, government services, wallet, gold and gift cards. Burgundy customers receive the card complimentary while Burgundy status continues; INR 3,000 annual fee applies if Burgundy status ends.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
+    retrieved_on: 2026-11-01
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    - docs/sources/axis/select/select-revision-effective-2026-08-28.pdf
+    - docs/sources/axis/select/sosc-credit-cards-updated-2026.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.forex_markup_pct
+    notes: Standard joining and annual fees are INR 3,000; Burgundy customers have nil joining and annual fees while status continues. Foreign currency transaction fee is 3.5%. Dynamic currency conversion markup became 3.5% on 28 Aug 2026 (previously 1.5%). Product page also lists a INR 99 reward redemption fee and transaction fees on qualifying wallet, fuel, utility, education and online skill-gaming spends; these transaction-specific fees are not separate schema fields.
 rewards:
-  - effective_from: 2015-01-01
-    effective_until: null
-    currency: points
-    currency_name: EDGE Reward Points
-    base:
-      rate: 10
-      per_inr: 200
-      unit_value_inr: 0.44
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: dining-international
-        canonical_categories: [dining, international]
-        multiplier: 2
-        effective_rate: 20
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - utilities
-      - jewellery
-      - education
-    redemption:
-      - type: catalog
-        program: EDGE Rewards
-        rate_inr_per_unit: 0.2
-      - type: airmiles
-        program: Multiple (EDGE transfer)
-        ratio: "5:2"
-        constraints: "10 transfer partners; ratios are card-point : partner-unit. realized Rs 0.20 = guaranteed non-transfer floor; best documented transfer Rs 0.44. 9 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.44/pt
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.22/pt
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.36/pt
-          - partner_name: Turkish Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.44/pt
-          - partner_name: ITC Hotels (Club ITC)
-            partner_type: hotel
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.40/pt
-          - partner_name: Air Canada Aeroplan
-            partner_type: airline
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.40/pt
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "5:2"
-            last_verified_on: '2026-07-05'
-            notes: 5:2 -> ~Rs 0.20/pt
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "5:1"
-            last_verified_on: '2026-07-05'
-            notes: 5:1 -> ~Rs 0.20/pt
-          - partner_name: Finnair Plus (Avios)
-            partner_type: airline
-            transfer_ratio: "5:1"
-            last_verified_on: '2026-07-05'
-            notes: 5:1 -> ~Rs 0.21/pt
-          - partner_name: Vietnam LotusMiles
-            partner_type: airline
-            transfer_ratio: "5:1"
-            last_verified_on: '2026-07-05'
-            notes: 5:1 -> ~Rs 0.16/pt [below floor — avoid]
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: "EDGE Reward Points: Rs 0.18 catalogue floor (uniform); face Rs 0.44 = best 5:2 transfer to airline/hotel partners."
-      confidence: high
-    mcc_exclusions: ['6513']
+- effective_from: 2026-08-28
+  effective_until: null
+  currency: points
+  currency_name: EDGE Reward Points
+  base:
+    rate: 10
+    per_inr: 200
+  accelerated:
+  - category: retail-shopping
+    canonical_categories:
+    - other
+    multiplier: 2
+    effective_rate: 20
+    cap_per_cycle: 20000
+    cap_unit: spend-inr
+    cycle: monthly
+    mcc_list:
+    - '5311'
+    - '5411'
+    - '5611'
+    - '5621'
+    - '5641'
+    - '5691'
+    - '5699'
+    notes: Earn 20 EDGE Reward Points per INR 200 on eligible retail-shopping transactions up to cumulative retail-shopping spend of INR 20,000 per calendar month; additional qualifying retail-shopping spend earns the base 10 points per INR 200. MCCs are from earlier Select-specific terms; current product page confirms the same department-store, grocery and apparel groups.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - utilities
+  - telecom
+  - gift-cards
+  - jewellery
+  - bridge-fees
+  - road-fees-and-tolls
+  - education
+  redemption:
+  - type: catalog
+    program: EDGE Rewards
+    rate_inr_per_unit: null
+    fee_inr: 99
+    constraints: Catalogue value varies by item. The issuer's INR 0.20/point statement applies to the Select welcome benefit rather than a universal catalogue rate. The product page lists a INR 99 reward redemption fee.
+  - type: airmiles
+    program: Axis Bank Points/Miles Transfer Program
+    ratio: null
+    constraints: "Current Select/Privilege/Rewards group ratios vary by partner (currently 10:1 or 5:1); the program has a 500,000 EDGE-point annual transfer cap per customer ID, split into 100,000 Group A and 400,000 Group B. Partner roster and ratios can change; consult the live transfer table."
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/select/select-revision-effective-2025-06-20.pdf
+    - docs/sources/axis/select/select-revision-effective-2026-08-28.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.cap_per_cycle
+    - rewards.redemption
+    notes: "Current spend exclusions are category-based: insurance, rent, fuel, educational services, utilities/telecom, wallet, government, gold/jewellery, gift cards, bridge fees and road fees/tolls. EMI-converted purchases have points debited and cancellation does not restore them. No universal catalogue point value is stated. Transfer partners and ratios are dynamic; the older fixed 5:2 rates were removed."
+  mcc_exclusions: []
 benefits:
-  - effective_from: 2015-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: 6
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-        notes: "6 complimentary Priority Pass visits/anniversary year; additional 6 visits on spends > ₹3L in the anniversary year (up to 12)."
-    dining:
-      program: EazyDiner Prime
-      discount_pct: 25
-      notes: "Up to 25% off at partner restaurants."
-    welcome:
-      - condition: "First card transaction (not for lifetime-free / Burgundy holders)"
-        benefit: "10,000 EDGE Reward Points worth ₹2,000"
-        value_inr: 2000
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 25000000
-      - type: travel-medical
-        sum_insured_inr: 2500000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
-    concierge: true
-    movies:
-      type: bogo
-      partner: District
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 250
-      notes: "100% off (up to ₹250) on second movie ticket via District app, twice per month on min purchase of two tickets."
-    other:
-      - name: BigBasket offer
-        description: "Flat ₹500 off per month on minimum purchase of ₹2,500 on BigBasket app/website."
-        value_inr: 500
-      - name: Swiggy discount
-        description: "Flat ₹200 off on Swiggy app/website."
-        value_inr: 200
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
-      retrieved_on: 2026-07-03
+- effective_from: 2026-10-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      notes: Two visits per quarter after INR 50,000 eligible settled spend in the preceding 3 calendar months. New-card spend gate is waived for the issue month and following 3 calendar months. Free entry is for the cardholder only; guests pay at the lounge. From 28 Aug 2026, use the physical Select card (not Priority Pass) for domestic entry in India. Domestic lounge terms charge a nominal swipe fee depending on network.
+      via:
+      - issuer-direct
+    international:
+      visits_per_cycle: 6
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Six complimentary visits per card-anniversary year. Up to six more visits and renewal for the next year are tied to INR 3 lakh anniversary-year spend; from 1 Oct 2026, insurance, utilities/telecom, gold/jewellery, education, government services, rent, fuel, wallet and gift-card spends do not count toward this threshold. Guests are chargeable. The card page and 28 Aug 2026 revision say achieving INR 3 lakh, while the linked Priority Pass terms specify strictly greater than INR 3 lakh for the extra visits; the exact boundary remains inconsistent in issuer materials.
+  golf:
+    rounds_per_cycle: 6
+    cycle: annual
+    notes: Current Select page gives 6 complimentary rounds per year and 6 additional rounds on achieving INR 3 lakh anniversary-year spend. The 28 Aug 2026 revision applies the same excluded-category list as lounge renewal to this spend gate. Book through Extraordinary Weekends/Golflan at least 4 days ahead, subject to availability; this is not a golf-club membership. The linked older golf PDF describes the extra-round threshold against preceding-year spend, unlike the current page's same-anniversary-year rule.
+  milestones:
+  - spend_inr: 300000
+    cycle: annual
+    benefit: 5,000 EDGE Reward Points plus up to 6 additional international Priority Pass visits, 6 additional golf rounds, and Priority Pass renewal for the next anniversary year on eligible anniversary-year spend.
+    value_inr: null
+    reward_kind: points
+    reward_units: 5000
+    trigger_window: anniversary-year
+  dining:
+    program: Dining Delights (EazyDiner)
+    notes: Current terms give 25% off up to INR 800, minimum order INR 2,500, once per card per month at participating restaurants through EazyDiner.
+  welcome:
+  - condition: First card transaction within 30 days of issuance; not for lifetime-free or Burgundy account holders.
+    benefit: 10,000 EDGE Reward Points worth â‚¹2,000
+    value_inr: 2000
+    window_days: 30
 
+  insurance:
+  - type: purchase-protection
+    sum_insured_inr: 100000
+    conditions: FY2026-27 issuer table lists INR 100,000 purchase protection; subject to policy terms.
+  - type: baggage-loss
+    sum_insured_inr: null
+    sum_insured_amount: 500
+    sum_insured_currency: USD
+    conditions: Cumulative cover for loss/delay of baggage and travel documents, subject to policy terms.
+  - type: credit-shield
+    sum_insured_inr: 100000
+    conditions: FY2026-27 issuer insurance table lists INR 100,000 credit shield; subject to policy terms.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 400
+    cycle: statement
+  concierge: true
+  movies:
+    type: bogo
+    partner: District
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 250
+    notes: 100% off the second ticket up to INR 250, twice monthly, on a minimum two-ticket District app booking. From 1 Nov 2026, requires INR 25,000 eligible settled spend in the preceding 3 calendar months; newly issued cards receive a threshold waiver for the issue month and following 3 calendar months.
+  other:
+  - name: BigBasket offer
+    description: Flat â‚¹500 off per month on minimum purchase of â‚¹2,500 on BigBasket app/website.
+    value_inr: 500
+  - name: Swiggy discount
+    description: Flat INR 200 off per order on Swiggy app/website; twice per month on a minimum INR 1,000 order, with code AXIS200.
+    value_inr: 200
+  - name: Extraordinary Weekends
+    description: Curated experiences and golf bookings through the issuer's Extraordinary Weekends service; terms and availability vary.
+  - name: Wednesday Delight
+    description: Issuer advertises rotating Wednesday offers on travel, Swiggy and Tira; current offer conditions are time-sensitive.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
+    retrieved_on: 2026-11-01
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.milestones.spend_inr
+    - benefits.milestones.reward_units
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.cap_per_cycle
+    - benefits.dining
+    - benefits.welcome
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.movies.max_per_cycle
+    - benefits.movies.cap_inr
+    local_refs:
+    - docs/sources/axis/select/select-revision-effective-2025-06-20.pdf
+    - docs/sources/axis/select/select-revision-effective-2026-08-28.pdf
+    - docs/sources/axis/select/domestic-lounge-program-current.pdf
+    - docs/sources/axis/select/select-priority-pass-terms-current.pdf
+    - docs/sources/axis/select/golf-terms-current.pdf
+    - docs/sources/axis/select/credit-card-insurance-benefit-fy25-26.pdf
+    - docs/sources/axis/select/dining-delights-terms-2026.pdf
+    notes: Current source page and 28 Aug 2026 revision confirm changes effective through 1 Nov 2026. From 15 Nov 2026, linked complimentary memberships renew only with explicit consent.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
     salaried: 600000
     self_employed: 600000
-  credit_score_min: 750
-  residency: resident-indian
-
+  credit_score_min: null
+  residency: either
+  notes: Select page states minimum net income INR 6 lakh/year and age 18-70; it gives no employment-specific distinction or score cutoff. Axis's current credit-card application guide permits resident and NRI applicants and includes Select in its NRI credit-card lineup. Criteria are indicative; approval is discretionary.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
+    retrieved_on: 2026-11-01
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-select-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [premium, dining, lounge, points]
+  last_verified_on: '2026-11-01'
+  tags:
+  - premium
+  - dining
+  - lounge
+  - points
+  - network-unverified
+  - network-tier-unverified

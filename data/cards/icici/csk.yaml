@@ -1,28 +1,19 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-csk
 name: Chennai Super Kings ICICI Bank Credit Card
+image_path: /cards/icici/csk.webp
 issuer: icici
-network: visa
+network: null
 network_tier: null
 tier: entry
 card_type: credit
 co_brand:
   partner: Chennai Super Kings
   category: other
-status: on-hold  # crawl: "no longer accepting applications"
-launched_on: null
+status: on-hold
+launched_on: '2022-03-23'
 discontinued_on: null
-
 fees:
-  - effective_from: 2020-01-01
+  - effective_from: 2026-10-26
     effective_until: null
     joining_fee_inr: 500
     annual_fee_inr: 500
@@ -31,87 +22,154 @@ fees:
       cycle: annual
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
-    notes: "Late payment fee ranges ₹100–₹1,300 depending on outstanding."
+    notes: Current verification snapshot, not an issuer-published effective date. Joining and annual fees are INR 500 plus GST. Annual fee is reversed for the subsequent year after INR 1.5 lakh qualifying anniversary-year spend; the card-specific T&C says equal to or more than the threshold while the page says over INR 1.5 lakh. The issuer is no longer accepting new applications.
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card
-      retrieved_on: 2026-07-03
-
+      retrieved_on: 2026-10-26
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/icici/_shared/mitc_cc_2026-10-09.pdf
+        - docs/sources/icici/csk/csk-tnc.pdf
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.fee_waiver.spend_inr
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee.pct
+        - fees.cash_advance_fee.min_inr
+      verified_by: agent
+      method: rendered-page
 rewards:
-  - effective_from: 2020-01-01
+  - effective_from: 2026-10-26
     effective_until: null
     currency: points
     currency_name: ICICI Bank Reward Points
     base:
       rate: 2
       per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
+      excluded_categories:
+        - utilities
+        - insurance
     accelerated:
       - category: match-day-spend
+        canonical_categories:
+          - other
         multiplier: 5
         effective_rate: 10
-        notes: "10 Reward Points per ₹100 on all retail spends (except fuel) on CSK match days."
+        cap_per_cycle: unlimited
+        cap_unit: points
+        cycle: monthly
+        notes: Current product page advertises up to 10 points per INR 100 on CSK match days. The card-specific T&C last updated 21-May-2026 says match-day bonus points equal regular points earned and are credited separately, which implies 4 total points per INR 100 when regular earn is 2. The exact current match-day rate is unresolved; the product-page value is retained as the current advertised maximum and should not be treated as reconciled with the T&C.
       - category: utility-insurance
-        canonical_categories: [utilities, insurance]
+        canonical_categories:
+          - utilities
+          - insurance
         multiplier: 0.5
         effective_rate: 1
-        notes: "1 Reward Point per ₹100 on utility and insurance spends."
+        cap_per_cycle: unlimited
+        cap_unit: points
+        cycle: monthly
+        notes: Current product page says 1 point per INR 100 on utility and insurance spends; the card-specific T&C dated 21-May-2026 appears to state 2 per INR 100 on utility purchases. Page and T&C conflict; 1 is the conservative page-listed rate pending clarification. Government payments classified as utility transactions follow ICICI's general utility-payment update.
     exclusions:
       - fuel
+      - rent
+      - wallet-loads
+      - emi
+      - cash-advance
     redemption:
-      - type: voucher
+      - type: catalog
         program: ICICI Bank Rewards
-        constraints: "Redeemable for health & beauty, travel & luggage, shopping vouchers, home appliances, electronics, fashion & lifestyle."
+        rate_inr_per_unit: null
+        constraints: Redeem for products, vouchers and other catalogue options; point value varies by item and points are not equivalent to currency. The current ICICI Rewards FAQ states a INR 99 plus GST handling fee per redemption request and a three-year points validity period. Exact CSK-specific redemption value is unpublished.
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-26
       type: issuer-page
-
-    mcc_exclusions: ['6513']
+      confidence: medium
+      local_refs:
+        - docs/sources/icici/csk/csk-tnc.pdf
+      fields_verified:
+        - rewards.currency
+        - rewards.currency_name
+        - rewards.base.rate
+        - rewards.base.per_inr
+        - rewards.accelerated.effective_rate
+        - rewards.exclusions
+        - rewards.mcc_exclusions
+        - rewards.capping_rules
+      verified_by: agent
+      method: pdf-extract
+      notes: Also checked the current ICICI Rewards FAQ for variable point value, fees and expiry, and the issuer changes page (https://www.icici.bank.in/personal-banking/cards/credit-card/upcoming-changes-features-and-charges) for rent/e-wallet reward exclusions and rent MCC mapping. Product page and current card-specific T&C conflict on utility and match-day rates; see card confidence audit.
+    mcc_exclusions:
+      - '6513'
+      - '7349'
+    capping_rules:
+      - ICICI's current issuer update says rent and e-wallet load transactions do not earn points; MCC 6513 and 7349 are classified as rent payments. Government payments are included within utility transactions from 5-Feb-2024 and earn at the card's applicable utility rate.
 benefits:
-  - effective_from: 2020-01-01
+  - effective_from: 2026-10-26
     effective_until: null
     lounge_access:
       domestic:
-        visits_per_cycle: 4
-        cycle: annual
+        visits_per_cycle: 1
+        cycle: quarterly
         guests_per_visit: 0
-        via: [issuer-direct]
+        spend_threshold_inr: 75000
+        spend_threshold_cycle: quarterly
+        notes: Primary cardholder only. Requires INR 75,000 or more spend in a calendar quarter for access in the following calendar quarter.
+        via:
+          - issuer-direct
+    welcome:
+      - condition: Primary cardholder; pay the INR 500 joining fee and spend INR 5,000 in the first 45 days. Welcome gift is available only on cards charged a joining fee.
+        benefit: 2,000 ICICI Bank Reward Points; dispatched within 60 days after becoming eligible.
+        value_inr: null
+        window_days: 45
     movies:
       type: discount
-      partner: BookMyShow
+      partner: BookMyShow / INOX
       max_per_cycle: 2
       cycle: monthly
       cap_inr: 100
-      notes: "25% off up to ₹100 on BookMyShow & INOX, twice a month."
-    welcome:
-      - condition: "Pay joining fee and spend ₹5,000 within first 45 days (renewal gift on annual fee payment)"
-        benefit: "2,000 ICICI Bank Reward Points as a joining/renewal gift"
-        value_inr: 500
-        window_days: 45
+      notes: 25% off up to INR 100 with a minimum two tickets. INOX offer is listed twice a month. From 1-Apr-2026 BookMyShow requires INR 25,000 spend in the preceding quarter for access in the next quarter; add-on holders must individually meet the gate. ICICI says dual-network cardholders may use one BookMyShow offer per month per network variant. The page's generic twice-monthly line does not reconcile that variant rule.
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: null
-      max_txn_inr: null
+      max_txn_inr: 4000
       cap_per_cycle_inr: null
       cycle: monthly
-      notes: "1% fuel surcharge waiver at all HPCL petrol pumps."
-    concierge: false
+      notes: Current FAQ says 1% waiver on fuel transactions up to INR 4,000 at any fuel outlet in India, for primary and supplementary cards; the feature summary narrows this to HPCL pumps. No minimum transaction amount or cycle cap is published on the card page.
+    concierge: null
     other:
-      - name: Meet and Greet
-        description: "Exclusive meet and greet session with select CSK players."
-        value_inr: null
-      - name: Autographed merchandise
-        description: "Monthly top spenders receive a marquee player's autographed memorabilia."
-        value_inr: null
-      - name: Complimentary match tickets
-        description: "Complimentary tickets to a CSK home match."
-        value_inr: null
+      - name: Annual reward gift
+        description: 2,000 ICICI Bank Reward Points within 45 business days of annual-fee payment. Not applicable when the annual fee is waived.
+      - name: CSK top spender experiences
+        description: Current issuer page describes meet-and-greet, practice-session and complimentary home-match ticket experiences, with campaign-specific terms and availability. The archived 2023-24 top-spender campaign terms are not treated as current campaign rules.
+      - name: Monthly top-spender memorabilia
+        description: Five monthly top spenders can receive signed memorabilia. Add-on spends count for the primary cardholder; only primary cardholders are selected. Cash advances, fees, EMI, reversals, tax, mutual funds, wallet and business transactions are excluded; delinquent accounts are ineligible.
+      - name: Card security coverage
+        description: Issuer advertises Counterfeit Card Liability and Account Takeover Cover; coverage limits and detailed conditions are not established in the accessed material.
     source:
       url: https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card
-      retrieved_on: 2026-07-03
-
+      retrieved_on: 2026-10-26
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/icici/csk/csk-tnc.pdf
+        - docs/sources/icici/csk/csk-top-spenders-t-c.pdf
+      fields_verified:
+        - benefits.lounge_access.domestic.visits_per_cycle
+        - benefits.lounge_access.domestic.spend_threshold_inr
+        - benefits.welcome
+        - benefits.movies
+        - benefits.fuel_surcharge_waiver
+        - benefits.other
+      verified_by: agent
+      method: rendered-page
 eligibility:
   min_age: 21
   max_age: null
@@ -120,11 +178,26 @@ eligibility:
     self_employed: 240000
   credit_score_min: null
   residency: resident-indian
-  notes: "Salaried: monthly income ₹20,000. Self-employed: annual income ₹2,40,000. No longer accepting new applications."
-
+  notes: Issuer lists Indian citizens over 21, salaried monthly income INR 20,000 and self-employed annual income at least INR 2,40,000. The issuer is no longer accepting applications. Credit-score cutoff and maximum age are unpublished.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+      - eligibility.min_age
+      - eligibility.income_inr_annual.salaried
+      - eligibility.income_inr_annual.self_employed
+      - eligibility.residency
+    verified_by: agent
+    method: rendered-page
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/csk-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, co-brand, cricket, movies, points]
+  last_verified_on: 2026-10-26
+  tags:
+    - entry
+    - co-brand
+    - cricket
+    - movies
+    - points

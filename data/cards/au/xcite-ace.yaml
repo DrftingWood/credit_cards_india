@@ -1,111 +1,163 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: au-xcite-ace
+﻿id: au-xcite-ace
 name: AU Bank Xcite Ace Credit Card
 issuer: au
-network: visa
-network_tier: platinum
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 749
-    annual_fee_inr: 749
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-    forex_markup_pct: 3.49
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "SwipeUp program (mid tier). Renewal fee waived from 2nd year on ₹2,00,000 retail spend."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 749
+  annual_fee_inr: 749
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: AU's current KFS lists INR 749 joining and annual fees. Product page lists the INR 200,000 prior-anniversary-year retail-spend renewal waiver. Finance and cash-advance values follow current AU general card charges.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Product page lists ₹749 annual fee and ₹2 lakh prior-anniversary-year waiver; current 30 Sep 2026 KFS lists ₹749 joining and annual fees, 3.49% forex, 3.75% monthly finance charge and 2.5%/₹500 cash advance. KFS link https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "Up to 3% cashback on monthly spends, earned progressively as you complete monthly spend milestones"
-    redemption:
-      - type: statement-credit
-        program: Cashback
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated: []
+  capping_rules:
+  - Current page advertises cashback up to 3% as cardholders complete milestones, but does not publish the milestone cadence, qualifying-spend thresholds, rates by tier, exclusions or redemption method. No base earn or redemption value is inferred.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.capping_rules
+    notes: Current product page advertises cashback up to 3% through milestones but does not publish the milestone cadence, qualifying tiers, categories, cashback exclusions, redemption method, or a generic/base cashback rate. Previous statement-credit and face-value redemption claims are not confirmed by current public evidence.
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-        notes: "2 domestic lounge visits on ₹50,000 previous-quarter spend; plus 8 complimentary lounge (incl. Railway) per annum."
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 5000000
-    other:
-      - name: "Device Protection Plan"
-        description: "Complimentary device protection plan."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 200
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
-      retrieved_on: 2026-07-03
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: null
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      notes: 2 domestic visits per quarter after at least INR 50,000 spend in the previous quarter. Guest entitlements are not published.
 
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 5000000
+    conditions: Current product page advertises INR 50 lakh air-accident cover. The linked policy (last updated 16-Apr-2021) says primary cardholder only, active card required, and the air ticket must be purchased with the AU card; it covers accidental death only. Treat detailed conditions as stale pending a current policy.
+  - type: credit-shield
+    sum_insured_inr: 200000
+    conditions: Current product page advertises cover up to INR 2 lakh. The linked 16-Apr-2021 policy describes cover for card debits resulting from cardholder accidental death; confirm current policy before relying on it.
+  - type: purchase-protection
+    sum_insured_inr: 25000
+    conditions: Current product page advertises cover up to INR 25,000. The linked 16-Apr-2021 policy limits this to specified household/electronic goods (excluding mobiles, laptops and tablets), fire/allied perils or burglary at the registered residence, within 90 days; current applicability is unconfirmed.
+  - type: lost-card-liability
+    sum_insured_inr: null
+    conditions: Current product page advertises zero liability after reporting loss and counterfeit/skimming/online-fraud protection. The linked 16-Apr-2021 policy adds activation, reporting deadlines and exclusions; it does not state a monetary limit in the accessible text. Confirm current terms.
+  - type: baggage-loss
+    sum_insured_inr: null
+    conditions: Current product page advertises baggage loss and delay cover. The linked 16-Apr-2021 policy requires an international-airline international flight booked with the AU card; baggage delay is over 12 hours and limited to emergency essentials. Current limits/terms remain unconfirmed.
+  - type: trip-delay
+    sum_insured_inr: null
+    conditions: The current product page describes delay of flight cover but publishes no limit. The linked 16-Apr-2021 policy text accessible from that page details baggage delay, not a separate flight-delay benefit; current terms are unconfirmed.
+  - type: other
+    sum_insured_inr: null
+    conditions: Current product page advertises loss-of-passport and plane-hijack cover. The linked 16-Apr-2021 policy describes reimbursement for replacement passport/visa and up to USD 250 per hour for hijacking, capped at an unspecified sum insured; current limits/terms are unconfirmed.
+  other:
+  - name: Device Protection Plan
+    description: Complimentary protection plan for mobile phones and one-year extended warranty for mobiles, tablets, laptops and white goods. AU's detailed-plan link redirects to a registered-mobile-number login, so coverage values and terms are not publicly accessible.
+  - name: Railway lounge access
+    description: 8 complimentary visits per annum, maximum 2 per calendar quarter. Active AU Visa/RuPay card and valid train ticket required; INR 2 validation fee applies, guests are chargeable.
+  - name: Xpress EMI
+    description: Eligible individual transactions of INR 500 or more; total conversion must be at least INR 2,000. Up to 20 billed or unbilled transactions can be clubbed.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: statement
+    notes: Product page states INR 100 per statement cycle effective 1-Oct-2026. The 30-Sep-2026 KFS still lists INR 200 for the SwipeUp-Xcite series; the newer card page explicitly dates the reduction.
+  concierge: true
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.insurance[0].sum_insured_inr
+    - benefits.insurance[1].sum_insured_inr
+    - benefits.insurance[2].sum_insured_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: Current product page states domestic lounge gate, rail visits and insurance benefit amounts/categories; rail validation and guest rules are from the linked 1-May-2026 terms. Fuel waiver changed to INR 100 per statement cycle effective 1-Oct-2026; the 30-Sep-2026 KFS still lists INR 200, so the dated later product-page revision governs. The linked insurance policy is dated 16-Apr-2021 and the device-plan details require login; no current policy wording or insurer schedule was publicly accessible on 1-Nov-2026. Amounts/categories are current-page claims, while detailed insurance conditions remain unverified.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 400000
-    self_employed: 400000
-  credit_score_min: 730
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  notes: Income and bureau-score thresholds previously stored were issuer-tier estimates without card-specific evidence;
+    keep unknown until the issuer publishes or confirms a product threshold. Broad minimum/maximum age figures without
+    an exact issuer evidence path or a source-verified occupational range were left unknown; this does not imply
+    there is no age criterion. Current product page gives salaried ages 21–60 and self-employed ages 25–65.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    fields_verified:
+    - eligibility.residency
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/swipeup-program/xcite-ace-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, cashback, swipeup]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - cashback
+  - swipeup

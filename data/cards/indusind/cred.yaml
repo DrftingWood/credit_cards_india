@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-cred
 name: CRED IndusInd Bank RuPay Credit Card
+image_path: /cards/indusind/cred.webp
 issuer: indusind
 network: rupay
 network_tier: platinum
@@ -19,81 +11,176 @@ co_brand:
   category: other
   partner_website: https://cred.club
 status: active
-launched_on: 2024-01-01
-discontinued_on: null
-
+launched_on: '2025-09-15'
+discontinued_on:
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Co-branded with CRED; RuPay, UPI-enabled. Reward detail behind tabs —"
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: '2025-09-15'
+  effective_until:
+  joining_fee_inr: 0
+  annual_fee_inr: 499
+  fee_waiver:
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.95
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  notes: 'Current 13-Oct-2026 MITC: NIL joining fee, INR499 annual fee (not waived under the standard schedule), but annual fee does not apply to targeted limited-time lifetime-free promotions. CRED product launch announcement describes zero joining fees; it does not state an annual-fee waiver. Current bank-wide MITC sets this card at 3.95% monthly / 47.40% annual interest, 2.5% cash advance fee (minimum INR300), and 3.5% forex markup. Current MITC also sets 1% + GST rent fee per transaction, 1% + GST utility fee on cumulative statement-cycle spend above INR25,000, and 1% + GST fuel fee on cumulative statement-cycle spend above INR30,000 effective 2026-06-15. Dynamic currency conversion is 2% + GST effective 2026-06-15.'
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.gst_applicable
+    method: manual-read
+    local_refs:
+    - docs/sources/indusind/cred/mitc-premium-retrieved-2026-10-26.pdf
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    capping_rules:
-      - "CRED-app spends earn accelerated rewards; exact rates/caps"
-    redemption:
-      - type: catalog
-        program: CRED / IndusMoments
-        rate_inr_per_unit: 0.25
+- effective_from: '2025-09-15'
+  effective_until:
+  currency: points
+  currency_name: CRED Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+  accelerated:
+  - category: eligible-ecommerce-cred-and-online-upi
+    canonical_categories:
+    - online
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: statement
+    notes: '5 CRED points per INR100 (5% points) on e-commerce purchases, CRED Pay/Store/Travel/Gift Cards, and CRED UPI online payments. Cap: 5,000 points per statement cycle at the accelerated 5% rate. Minimum transaction value INR100. CRED UPI Scan & Pay is separately uncapped at 1%.'
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-10-26'
       type: issuer-page
-
-benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
+      confidence: high
+  - category: cred-scan-and-pay-upi
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 1
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: statement
+    notes: 1% points on Scan & Pay through CRED; no cap on these points. Scan & Pay outside CRED earns no points.
     source:
       url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html
-      retrieved_on: 2026-07-03
-
+      retrieved_on: '2026-10-26'
+      type: issuer-page
+      confidence: high
+  exclusions:
+  - road-fees-and-tolls
+  - fuel
+  - other
+  - emi
+  - education
+  - government
+  - wallet-loads
+  - rent
+  - jewellery
+  mcc_exclusions: []
+  redemption:
+  - type: catalog
+    program: CRED app - flights, hotels, CRED Store, eligible CRED Pay merchants
+    rate_inr_per_unit: 1.0
+    constraints: Up to 70% of available points may be used per transaction; governed by CRED terms. Points expire 24 months after issue.
+  - type: statement-credit
+    program: CRED app credit-card bill payment and utility bill payment
+    rate_inr_per_unit: 0.5
+    constraints: Up to 100% of points may be used per transaction; issuer page says card bill payment uses CRED Cashback as a separate point. Redemption fee is waived for this card under current MITC.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].cap_per_cycle
+    - rewards.accelerated[1].effective_rate
+    - rewards.exclusions
+    - rewards.redemption
+    method: manual-read
+    local_refs:
+    - docs/sources/indusind/cred/mitc-premium-retrieved-2026-10-26.pdf
+  notes: 'Issuer page distinguishes earning from redemption: 1 CRED point per INR100 base; e-commerce and qualifying online CRED/UPI transactions earn 5% points, capped at 5,000 points per statement cycle. CRED Scan & Pay earns uncapped 1%; CRED app utility/insurance payments earn 1%, while utility/insurance outside CRED earn zero. Other eligible transactions, international transactions, and travel/gift card purchases outside CRED earn 1%. 1 point is worth INR1 for CRED flights/hotels, Store and eligible CRED Pay; 1 point is worth INR0.50 for bill and utility payments. The displayed overview says “5% on CRED transactions” broadly, while the detailed table and notes specify categories; detailed table governs.'
+benefits:
+- effective_from: '2025-09-15'
+  effective_until:
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 5000
+    cap_per_cycle_inr:
+    cycle: monthly
+    notes: Fuel transactions INR500-INR5,000 at all fuel stations in India. The current product page does not specify a monthly cap; no cap is asserted.
+  other:
+  - name: Total Protect
+    description: Insurance protection for unauthorized loss/theft transactions reported within 48 hours and counterfeit fraud; cover amount equals the card's assigned credit limit. Add-on cards are covered. See policy terms for exclusions and claim conditions.
+    value_inr:
+  - name: RuPay credit card on UPI
+    description: Link the card to supported UPI apps and pay merchants using the card's UPI PIN; merchant eligibility and RuPay/NPCI limits apply.
+    value_inr:
+  concierge: false
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.other
+    method: manual-read
+    local_refs:
+    - docs/sources/indusind/cred/fuel-surcharge-waiver-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/cred/mitc-premium-retrieved-2026-10-26.pdf
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age:
+  max_age:
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 750
-  residency: resident-indian
-
+    salaried:
+    self_employed:
+  credit_score_min:
+  residency:
+  notes: Current card product page and accessible terms do not publish numeric age, income, credit-score, or residency thresholds for this co-branded product. Application is subject to issuer approval.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.credit_score_min
+    - eligibility.residency
+    method: manual-read
 application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, rupay, upi, co-brand, cred]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - points
+  - rupay
+  - upi
+  - co-brand
+  - cred

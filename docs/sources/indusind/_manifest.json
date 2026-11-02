@@ -1,6 +1,376 @@
 {
-  "_source": "IndusInd Bank card pages + central Schedule of Charges and Terms & Conditions hubs (HTML, JS-rendered; no downloadable credit-card PDFs)",
-  "verified_on": "2026-07-04",
-  "result": "HTML-sourced. IndusInd publishes no per-card MITC/T&C PDFs — fees/rewards/MITC are JS-rendered HTML tables. Reward structures, forex (1.8% discounted) and 2025 lounge/redemption changes verified against the live card-page tabs during the 2026-07-03 audit; Legend spot-checked 2026-07-04. See docs/indusind-audit.md and INDEX.md.",
-  "pdfs_downloaded": 0
+  "_source": "IndusInd Bank issuer product pages, current central MITC PDF, fuel-surcharge terms PDF, and Schedule of Charges / T&C pages.",
+  "verified_on": "2026-10-27",
+  "result": "Current issuer reviews include Pioneer Private, Platinum, Poonawalla eLITE transition, Samman and Tiger; see INDEX.md and card-specific review objects.",
+  "pdfs_downloaded": 65,
+  "cred_review": {
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html",
+    "launch_release": "https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2025-2026/September/launch-of-cred-indusInd-bank-rupay-credit-card.html",
+    "pdfs": [
+      "cred/mitc-premium-retrieved-2026-10-26.pdf",
+      "cred/fuel-surcharge-waiver-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Issuer launch release describes no joining fee but does not specify annual fee; current MITC lists INR499 annual fee and exempts targeted lifetime-free campaigns.",
+      "Product page and current CRED rewards/app screens can differ in descriptions; issuer card page detailed rewards table and terms used.",
+      "Eligibility criteria not published on accessible current issuer product page."
+    ]
+  },
+  "celesta_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/celesta-credit-card.html",
+    "charges_page": "https://www.indusind.bank.in/in/en/microsites/celesta/schedule-of-charges.html",
+    "rewards_page": "https://www.indusind.bank.in/in/en/microsites/celesta/celesta-rewards.html",
+    "pdfs": [
+      "celesta/mitc-premium-retrieved-2026-10-26.pdf",
+      "celesta/lounge-terms-retrieved-2026-10-26.pdf",
+      "celesta/golf-terms-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Exact commercial launch date not established.",
+      "Current card-specific fuel-waiver transaction band and cap not established.",
+      "Numeric eligibility cutoffs and complete earnings exclusions not published in the accessible specific card pages.",
+      "Card rewards page states cash redemption at INR 0.75 per point; additional current redemption fee is listed in MITC, while Celesta's exemption status is unclear because the MITC exemption list is not explicit for cash redemption."
+    ]
+  },
+  "crest_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/crest-credit-card.html",
+    "charges_page": "https://www.indusind.bank.in/in/en/microsites/crest/schedule-of-charges.html",
+    "rewards_page": "https://www.indusind.bank.in/in/en/microsites/crest/crest-rewards-and-redemption.html/1000",
+    "network_policy": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Issuance-and-Conduct-of-Credit-Cards.pdf",
+    "pdfs": [
+      "crest/mitc-premium-retrieved-2026-10-26.pdf",
+      "crest/lounge-terms-retrieved-2026-10-26.pdf",
+      "crest/golf-terms-retrieved-2026-10-26.pdf",
+      "crest/fuel-waiver-retrieved-2026-10-26.pdf",
+      "crest/issuance-policy-fy2026-27-retrieved-2026-10-26.pdf",
+      "crest/crest-benefit-guide-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Exact launch date not verified.",
+      "The current FY2026-27 policy list of cards actively issued omits Crest, but the issuer continues to publish current benefit pages and fee schedule; application status treated as on-hold, not discontinued.",
+      "Current Crest page and revised 2026 golf terms state two games and lessons monthly while the live Crest-specific golf subpage states three; the dated product-page update and current shared terms are followed.",
+      "No current Crest-specific reward exclusion list was found beyond fuel-exclusion language on the still-live Crest Freedom page.",
+      "Income threshold period/occupation split and credit-score cutoff are not published."
+    ]
+  },
+  "duo_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/duo-card.html",
+    "rewards_terms": "https://www.indusind.bank.in/in/en/personal/tnc-duoProduct.html",
+    "benefit_guide": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Duo-Benefit-Guide_20-12-2025.pdf",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/schedule-of-charges/credit-cards/MITC_Premium.pdf",
+    "pdfs": [
+      "duo/mitc-premium-retrieved-2026-10-26.pdf",
+      "duo/fuel-surcharge-waiver-retrieved-2026-10-26.pdf",
+      "duo/issuance-policy-fy2026-27-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Duo product page displays INR249 issuance fee but MITC lists NIL joining fee; scope is unclear.",
+      "Duo product page states 2% cross-currency markup while generalized MITC default is 3.5%.",
+      "Duo guide states no earning cap on credit-card points while current reward update lists Duo under a 2,500 monthly cap; card page explicitly caps cash redemption at 2,500/month.",
+      "No numeric age, income, or credit-score cutoffs verified.",
+      "Duo benefit guide PDF download endpoint returned a webpage during local retrieval; the online URL remains cited but is not listed as an archived local PDF."
+    ]
+  },
+  "iconia_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-amex-credit-card.html",
+    "cash_redemption": "https://www.indusind.bank.in/in/en/personal/cash-credit-iconia-amex.html",
+    "reward_updates": "https://www.indusind.bank.in/in/en/personal/credit-card-related/important-updates-reward-points-program.html",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/schedule-of-charges/credit-cards/MITC_Premium.pdf",
+    "pdfs": [
+      "iconia/iconia-amex-benefit-guide-2022.pdf",
+      "iconia/mitc-premium-retrieved-2026-10-26.pdf",
+      "iconia/fuel-waiver-retrieved-2026-10-26.pdf",
+      "iconia/credit-card-product-program-policy-2023.pdf",
+      "iconia/priority-pass-usage-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Exact new-sourcing cessation date is not published; MITC snapshot dated 13-Oct-2026 explicitly lists Iconia among discontinued products.",
+      "The Iconia Amex page claims complimentary Amex lounge visits without a quota, while Priority Pass is not available; no specific Amex lounge quota was verified.",
+      "Current Amex product page shows INR3,499 issuance and NIL annual renewal, although the MITC classifies the product as discontinued; actual existing-cardholder fee plans may differ.",
+      "No age limit or credit-score cutoff verified."
+    ]
+  },
+  "indulge_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://bank.indusind.bank.in/in/en/personal/cards/credit-card/indulge-credit-card.html",
+    "rewards_page": "https://www.indusind.bank.in/in/en/microsites/indulge/freedom.html",
+    "movie_and_lounge_page": "https://www.indusind.bank.in/in/en/microsites/indulge/life.html",
+    "pdfs": [
+      "indulge/mitc-premium-retrieved-2026-10-26.pdf",
+      "indulge/lounge-terms-retrieved-2026-10-26.pdf",
+      "indulge/golf-terms-retrieved-2026-10-26.pdf",
+      "indulge/fuel-surcharge-waiver-retrieved-2026-10-26.pdf",
+      "indulge/indulge-benefit-guide-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Exact commercial launch date and card-specific bureau/age cutoffs are unpublished in the reviewed public material.",
+      "The issuer 2026 rewards update table labels Indulge at a 10,000 monthly points cap, while the Indulge-specific rewards terms say 10,000 points maximum for cash redemption and the current benefit guide says there is no earning cap; modeled as a cash-redemption cap.",
+      "The INR149 cash-redemption fee is listed in consolidated MITC; fee applicability to Indulge is assumed from its inclusion among cards, with no Indulge-specific exemption stated."
+    ]
+  },
+  "jio_bp_mobility_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html",
+    "launch_release": "https://www.jiobp.com/news/indusind-jio-bp-mobility-plus",
+    "pdfs": [
+      "jio-bp-mobility/mitc-premium-retrieved-2026-10-26.pdf",
+      "jio-bp-mobility/fuel-surcharge-waiver-retrieved-2026-10-26.pdf",
+      "jio-bp-mobility/jio-bp-card-benefit-guide-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "The 10-Dec-2025 launch release says the conditional INR499 joining fee is waived after INR10,000 spend within 30 days; the current bank MITC and card FAQ state 90 days. The YAML follows the current bank MITC/FAQ and preserves the conflict.",
+      "The current shared fuel-waiver table does not name Jio-bp Mobility+; INR500-INR3,000 transactions and INR100 billing-cycle cap are modeled from the table?s general other-card row, while the product page restricts waiver scope to Jio-bp stations.",
+      "The card page states that only Jio-bp ecosystem Smiles are capped at 1,200 per statement cycle. A single 12-Smiles/INR100 earn rule is modeled only on the fuel bucket; additional participating Jio-bp merchant categories are documented but are not independently represented in calculator categories.",
+      "No fixed INR value per Smile is stated in the current card page; redemption is modeled as closed-loop Jio-bp ecosystem usage without a unit valuation.",
+      "Exact RuPay network is confirmed by the partner launch release; no network tier is established, so it is null."
+    ]
+  },
+  "nexxt_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/nexxt-credit-card.html",
+    "launch_release": "https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2018-2019/November/press-release-indusInd-bank-records111.html",
+    "pay_by_rewards_terms": "https://www.indusind.bank.in/in/en/personal/tnc-pay-by-rewards-nexxt.html",
+    "cash_credit_terms": "https://www.indusind.bank.in/in/en/personal/tnc-reward-redemption.html",
+    "reward_cap_update": "https://www.indusind.bank.in/in/en/personal/credit-card-related/important-updates-reward-points-program.html",
+    "bank_wide_updates": "https://www.indusind.bank.in/in/en/personal/credit-card-related/important-updates.html",
+    "pdfs": [
+      "nexxt/mitc-premium-retrieved-2026-10-26.pdf",
+      "nexxt/fuel-surcharge-waiver-retrieved-2026-10-26.pdf",
+      "nexxt/nexxt-benefit-guide-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Current MITC lists joining fee ?10,000 and NIL annual fee; actual fee may vary by application plan.",
+      "The Dec-2025 guide says INR1/point for POS Pay with Rewards, while current Pay by Rewards terms say INR0.75/point. General and POS point value remain unset; cash credit is INR0.75/point.",
+      "Cash-credit redemption has a 500-point minimum and 2,500-point monthly maximum; a separate reward update lists 2,500 monthly points for Nexxt without clarifying whether the cap applies to earning or redemption.",
+      "Five travel-cover amounts are published, but full policy terms and exclusions were not verified. Total Protect is described as up to the card limit; exact amount depends on the credit limit.",
+      "The live card page still advertises INR25 lakh air-accident cover, but bank-wide notice discontinues that cover effective 21-Dec-2025; it is not modeled as current.",
+      "No card-specific age, income, credit-score or residency cutoffs were established."
+    ]
+  },
+  "pioneer_heritage_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html",
+    "rewards_terms": "https://www.indusind.bank.in/in/en/personal/tnc-pioneer-heritage-rewards-program.html",
+    "category_revision": "https://www.indusind.bank.in/in/en/personal/revision-indusInd-bank-credit-card-rewards-program.html",
+    "launch_release": "https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2020-2021/December/IBL-launches-metal-credit-card-PIONEER-Heritage-for-affluent-segment.html",
+    "pdfs": [
+      "pioneer-heritage/mitc-premium-retrieved-2026-10-26.pdf",
+      "pioneer-heritage/fuel-surcharge-waiver-retrieved-2026-10-26.pdf",
+      "pioneer-heritage/heritage-benefit-guide-retrieved-2026-10-26.pdf",
+      "pioneer-heritage/pioneer-program-revision-2026.pdf"
+    ],
+    "unresolved": [
+      "The current product page distinguishes a newer Heritage variant from an erstwhile one. Current record models newer variant entitlements; new and old variants differ in lounge and movie terms.",
+      "Current product page still states a 30,000-point monthly cash-credit limit, while current Pioneer reward terms state a 50,000 monthly cap across eligible redemption options. Current reward terms followed; conflict retained.",
+      "Network variants are not represented as separate card records. Current product material mentions Mastercard and Visa-network perks; normalized network and tier are null.",
+      "Joining fee and welcome voucher value may depend on a particular offer/application plan. The standard MITC and live product page values are recorded with this caveat.",
+      "Full travel insurance policy conditions were not reviewed; issuer publishes cover amounts but policy exclusions remain unavailable in the benefit guide."
+    ]
+  },
+  "pioneer_legacy_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-legacy-credit-card.html",
+    "rewards_terms": "https://www.indusind.bank.in/in/en/personal/legacy-cc-tnc.html",
+    "cash_credit_terms": "https://www.indusind.bank.in/in/en/personal/cash-credit-pioneer-legacy-cc.html",
+    "bonus_terms": "https://www.indusind.bank.in/in/en/personal/tnc-signature-legend-bonus-rewards-on-spends.html",
+    "category_revision": "https://www.indusind.bank.in/pioneer/personal-banking/cards/pioneer-legacy-credit-card1.html",
+    "pdfs": [
+      "pioneer-legacy/mitc-premium-retrieved-2026-10-26.pdf",
+      "pioneer-legacy/fuel-surcharge-waiver-retrieved-2026-10-26.pdf",
+      "pioneer-legacy/legacy-benefit-guide-retrieved-2026-10-26.pdf",
+      "pioneer-legacy/pioneer-program-revision-2026.pdf"
+    ],
+    "unresolved": [
+      "Joining fee offers differ across MITC and product page; actual fee is confirmed at application. Fee alternatives and welcome-voucher conditions are recorded in notes.",
+      "Forex depends on paid versus complimentary variant (1.8% versus 3.5%). Card network also has multiple variants; normalized network/tier are null.",
+      "Product page and Jan-2026 program revision agree on one domestic lounge visit per quarter, gated by INR150,000 prior-quarter spend from July 2026. International two visits per quarter apply only to paid variants.",
+      "A 2022-era card guide contains personal air-accident cover; the bank discontinued air-accident coverage across cards from 21-Dec-2025, so this is excluded from current benefits.",
+      "Current card page lists the BOGO movie quota but the free-ticket monetary cap was not established."
+    ]
+  },
+  "pioneer_private_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-private.html",
+    "detailed_terms": "https://bank.indusind.bank.in/content/dam/ipbprivate/attachments/Pioneer-Private-Card-detailed-TNCs.pdf",
+    "reward_page": "https://www.indusind.bank.in/in/en/personal/cards/pioneer-private-rewards.html",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf",
+    "fuel_waiver": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf",
+    "benefit_guide": "https://indie.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Pioneer-Private-BG.pdf",
+    "pdfs": [
+      "pioneer-private/pioneer-private-detailed-tnc-retrieved-2026-10-26.pdf",
+      "pioneer-private/pioneer-private-benefit-guide-retrieved-2026-10-26.pdf",
+      "pioneer-private/mitc-premium-retrieved-2026-10-26.pdf",
+      "pioneer-private/fuel-surcharge-waiver-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "The current fetched reward page says no monthly redemption cap across eligible options, while an indexed older version of the same issuer page showed a 30,000-point monthly cash-credit cap. Card-specific detailed T&Cs also state no cap; treat the older amount as stale/uncertain and confirm at redemption.",
+      "The card-specific T&Cs and product page describe 2 complimentary BookMyShow movie tickets/month without a ticket-price cap and 3 non-movie tickets/quarter capped at INR1,000 each. The current product page also displays a Visa Infinite BOGO movie offer capped at INR300/transaction; offer eligibility/relationship is unclear.",
+      "The detailed card T&Cs were created in Jan-2025; the benefit guide metadata dates to Aug-2026. The T&Cs and current product page align on core card benefits, but not every partner benefit has a public effective date.",
+      "Exact card launch date, numeric age/income/credit-score threshold and total-protect policy limits were not established. Air-accident insurance is not carried forward because the bank states that feature ended 21-Dec-2025."
+    ]
+  },
+  "platinum_review": {
+    "verified_on": "2026-10-26",
+    "visa_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-visa-credit-card.html/",
+    "mastercard_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-master-credit-card.html/1000",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf",
+    "fuel_waiver": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf",
+    "benefit_guide": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Platinum-Benefit-Guide_06-01-2026.pdf",
+    "pdfs": [
+      "platinum/mitc-premium-retrieved-2026-10-26.pdf",
+      "platinum/fuel-surcharge-waiver-retrieved-2026-10-26.pdf",
+      "platinum/platinum-benefit-guide-2026-01-06.pdf"
+    ],
+    "unresolved": [
+      "Issuer confirms cardholder chooses Visa or Mastercard; single-record network and network tier are null.",
+      "No exact launch date or card-specific eligibility cutoffs found.",
+      "Issuer guide describes Total Protect up to credit limit; full policy terms/limits not reviewed. No current lounge entitlement was found; BMS offer was discontinued in 2022.",
+      "Current card page advertises redemption channels and values; catalog-item-specific conversion values can vary, so INR0.60 is a general non-cash reference excluding air miles."
+    ]
+  },
+  "poonawalla_platinum_rupay_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/poonawalla-platinum-rupay-credit-card.html",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/Poonawala-e-LITE-MITC.pdf",
+    "pdfs": [
+      "poonawalla-platinum-rupay/poonawalla-elite-mitc.pdf",
+      "poonawalla-platinum-rupay/poonawalla-elite-benefit-guide.pdf",
+      "poonawalla-platinum-rupay/poonawalla-elite-cardholder-agreement.pdf",
+      "poonawalla-platinum-rupay/fuel-surcharge-waiver-current.pdf"
+    ],
+    "unresolved": [
+      "Issuer migration notice says Poonawalla eLITE cards upgraded to IndusInd Platinum RuPay effective 2025-10-05; legacy page remains live and describes historical benefits.",
+      "Exact launch date and eligibility cutoffs unknown.",
+      "No card-specific fuel waiver cap or RuPay DEL T3 lounge quota confirmed."
+    ]
+  },
+  "samman_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card.html",
+    "launch_release": "https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2023-2024/January/samman-rupay-credit-card.html",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf",
+    "surcharge_terms": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card/tnc-railway-fuel-surcharge-waiver.html",
+    "pdfs": [
+      "samman/mitc-premium-retrieved-2026-10-26.pdf",
+      "samman/samman-benefit-guide-retrieved-2026-10-26.pdf",
+      "samman/fuel-surcharge-waiver-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Issuer does not publish card-specific numeric eligibility thresholds.",
+      "No current lounge benefit was found. Insurance policy conditions were not reviewed beyond the published cover schedule.",
+      "The issuer reserves the right to impose a monthly fuel waiver cap; the current shared schedule lists Samman as uncapped."
+    ]
+  },
+  "tiger_review": {
+    "verified_on": "2026-10-26",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/tiger-credit-card.html",
+    "launch_release": "https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2023-2024/August/IndusInd-Bank-partners-with-TigerFintech-co-brandedcreditcard.html",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf",
+    "benefit_guide": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Bajaj-Tiger-CC-Benefit-Guide.pdf",
+    "pdfs": [
+      "tiger/mitc-premium-retrieved-2026-10-26.pdf",
+      "tiger/tiger-benefit-guide-retrieved-2026-10-26.pdf",
+      "tiger/fuel-surcharge-waiver-retrieved-2026-10-26.pdf"
+    ],
+    "unresolved": [
+      "Card page conflicts on whether BookMyShow frequency resets by calendar or financial year; overview calendar-year copy used and conflict retained.",
+      "Exact income/age/score cutoffs and detailed Total Protect policy conditions not established.",
+      "Annual spend slab multiplier is represented as incremental bonus above 1-point-per-INR100 base."
+    ]
+  },
+  "avios_review": {
+    "verified_on": "2026-10-27",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/avios-visa-infinite-credit-card.html",
+    "launch_release": "https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2023-2024/August/IndusInd-Bank-Launches-Multi-Branded-Credit-Card-in-Partnership-with-Qatar-Airways-and-British-Airways.html",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf",
+    "pdfs": [
+      "avios/MITC-Premium-retrieved-2026-10-27.pdf",
+      "avios/Qatar-Avios-Cardholder-Agreement.pdf",
+      "avios/British-Airways-Benefit-Guide.pdf"
+    ],
+    "captures": [
+      "avios/product-page-retrieved-2026-10-27.html",
+      "avios/launch-announcement-2023-08-17.html",
+      "avios/five-avios-terms-retrieved-2026-10-27.html",
+      "avios/fuel-waiver-terms-retrieved-2026-10-27.html",
+      "avios/meet-and-greet-terms-retrieved-2026-10-27.html",
+      "avios/travel-insurance-terms-retrieved-2026-10-27.html",
+      "avios/total-protect-terms-retrieved-2026-10-27.html",
+      "avios/qatar-airline-offer-terms-retrieved-2026-10-27.html"
+    ],
+    "unresolved": [
+      "Issuer product page inconsistently calls the USD25,000 international travel-health hospitalization benefit personal air-accident cover; the card model records the specific hospitalization description and preserves the naming ambiguity.",
+      "The Qatar 10% airfare offer remains on the product page but its linked promotion terms expired 2026-03-31; not treated as current.",
+      "No card-specific age, income or credit-score eligibility thresholds are published on the reviewed issuer page.",
+      "Fuel waiver terms reserve ability to impose a monthly cap; no current numeric Avios-specific fuel waiver cap/band was verified."
+    ]
+  },
+  "legend_review": {
+    "verified_on": "2026-10-27",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf",
+    "benefit_guide": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Legend_Benefit_Guide_19-12-2025.pdf",
+    "reward_update": "https://www.indusind.bank.in/in/en/personal/credit-card-related/important-updates-reward-points-program.html",
+    "fuel_terms": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf",
+    "pdfs": [
+      "legend/MITC-Premium-retrieved-2026-10-27.pdf",
+      "legend/Legend-Benefit-Guide-19-12-2025.pdf",
+      "legend/Fuel-Surcharge-Waiver-retrieved-2026-10-27.pdf"
+    ],
+    "captures": [
+      "legend/product-page-retrieved-2026-10-27.html",
+      "legend/reward-points-update-retrieved-2026-10-27.html",
+      "legend/reward-revision-retrieved-2026-10-27.html",
+      "legend/cash-credit-terms-retrieved-2026-10-27.html",
+      "legend/krisflyer-redemption-terms-retrieved-2026-10-27.html",
+      "legend/maharaja-redemption-terms-retrieved-2026-10-27.html",
+      "legend/travel-insurance-terms-retrieved-2026-10-27.html"
+    ],
+    "unresolved": [
+      "The standard MITC lists INR5,000 joining fee / NIL annual fee, while current bank marketing labels Legend lifetime-free; application-specific or targeted LTF fee plans may differ.",
+      "The product page says the lounge-access feature ended 7-Mar-2025; the Dec-2025 benefit guide still describes paid lounge access and optional Travel Plus, so complimentary lounge visits are not claimed.",
+      "The reward update lists a 5,000 monthly cap but does not state whether it limits point earning or the overall program; the separate cash-credit terms explicitly cap cash redemption at 5,000/calendar month.",
+      "The live page still lists up to three monthly BMS tickets, but its own note says one/month effective 1-Jun-2023; one/month modeled.",
+      "No card-specific numeric eligibility cutoffs or exact launch date verified.",
+      "Issuer legacy benefit/insurance guide lists travel-medical cover but currently accessible insurer terms and operating conditions were not independently established; excluded standalone travel-medical/air-accident insurance assertions."
+    ]
+  },
+  "pinnacle_review": {
+    "verified_on": "2026-10-27",
+    "product_page": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-world-credit-card.html",
+    "mitc": "https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf",
+    "reward_update": "https://www.indusind.bank.in/in/en/personal/credit-card-related/important-updates-reward-points-program.html",
+    "reward_revision": "https://www.indusind.bank.in/in/en/personal/revision-indusInd-bank-credit-card-rewards-program.html",
+    "lounge_terms": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Lounge-Terms-and-Conditions.pdf",
+    "fuel_terms": "https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf",
+    "pdfs": [
+      "pinnacle/MITC-Premium-retrieved-2026-10-27.pdf",
+      "pinnacle/Fuel-Surcharge-Waiver-retrieved-2026-10-27.pdf",
+      "pinnacle/Lounge-Terms-retrieved-2026-10-27.pdf",
+      "pinnacle/Golf-Terms-retrieved-2026-10-27.pdf"
+    ],
+    "captures": [
+      "pinnacle/product-page-retrieved-2026-10-27.html",
+      "pinnacle/reward-update-retrieved-2026-10-27.html",
+      "pinnacle/reward-revision-retrieved-2026-10-27.html",
+      "pinnacle/rewards-terms-retrieved-2026-10-27.html",
+      "pinnacle/cash-credit-terms-retrieved-2026-10-27.html",
+      "pinnacle/krisflyer-terms-retrieved-2026-10-27.html",
+      "pinnacle/maharaja-terms-retrieved-2026-10-27.html",
+      "pinnacle/bms-terms-retrieved-2026-10-27.html",
+      "pinnacle/priority-pass-terms-retrieved-2026-10-27.html",
+      "pinnacle/travel-insurance-terms-retrieved-2026-10-27.html",
+      "pinnacle/total-protect-terms-retrieved-2026-10-27.html"
+    ],
+    "unresolved": [
+      "MITC lists standard joining fee INR15,000 / INR5,000 variant (Pinnacle Grande customers); application-specific actual fee is conveyed at application.",
+      "Bank-wide reward update table lists 7,500 monthly capping; Pinnacle-specific current cash-credit terms clarify the cash redemption cap is 7,500/calendar month. An independent total earn cap is not verified.",
+      "Current card page markets travel insurance but full current policy terms and claim triggers were not independently confirmed; captured amounts are retained as issuer-published schedules, subject to policy terms.",
+      "No exact launch date or card-specific numeric age/credit-score limit published."
+    ]
+  }
 }

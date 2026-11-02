@@ -9,8 +9,15 @@ currency: points
 currency_name: NeuCoins
 
 unit_value_inr:
+  # 2026-10-21 (D-27): realized 0.95 -> 1.0. Every card linked here is
+  # redemption_scope: closed-loop, and the card schema's rule for closed-loop
+  # currencies is "shown at full in-ecosystem value (realized = face) rather
+  # than an arbitrary haircut; the restriction is conveyed by the badge". The
+  # 0.95 haircut below was never sourced (its own note asks for a study), and
+  # all four Tata Neu cards' rewards sources were research-verified on
+  # 2026-07-05 at 1 NeuCoin = Rs 1 (HDFC: cardmaven.in; SBI: sbicard.com).
   face: 1.0
-  realized: 0.95
+  realized: 1.0
   realized_source:
     method: midpoint
     range: [0.85, 1.0]
@@ -54,7 +61,7 @@ redemption_paths:
     program: Tata Neu ecosystem (Croma, BigBasket, Air India, Taj, Westside, Tata CLiQ)
     rate_inr_per_unit:
       face: 1.0
-      realized: 0.95
+      realized: 1.0
     constraints: "1 NeuCoin = ₹1 within the ecosystem; not transferable to airlines or hotels outside Tata."
 
 metadata:

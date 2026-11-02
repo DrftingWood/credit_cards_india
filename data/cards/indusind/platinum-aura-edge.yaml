@@ -1,0 +1,184 @@
+id: indusind-platinum-aura-edge
+name: IndusInd Bank Platinum Aura Edge Credit Card
+image_path: /cards/indusind/platinum-aura-edge.webp
+issuer: indusind
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.95
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  source:
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/schedule-of-charges/credit-cards/MITC_Premium.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    notes: 'Current 13-Oct-2026 MITC: nil joining and annual fees, no waiver; 3.95% monthly finance; 2.5% cash advance fee/₹300 minimum; 3.5% foreign markup.'
+rewards:
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 0.5
+    per_inr: 100
+    unit_value_inr: 0.4
+    unit_value_inr_realized: 0.4
+  accelerated:
+  - category: Shop Plan — departmental stores
+    canonical_categories:
+    - other
+    multiplier: 8
+    effective_rate: 4
+    notes: Plan option; 4 points/₹100 on department-store shopping.
+  - category: Shop Plan — consumer durables and electronics
+    canonical_categories:
+    - other
+    multiplier: 4
+    effective_rate: 2
+    notes: Plan option; 2 points/₹100 on consumer durables and electronics.
+  - category: Shop Plan — books
+    canonical_categories:
+    - other
+    multiplier: 3
+    effective_rate: 1.5
+    notes: Plan option; 1.5 points/₹100 on books.
+  - category: Home Plan — telecom, electricity and insurance
+    canonical_categories:
+    - utilities
+    multiplier: 2.8
+    effective_rate: 1.4
+    notes: Plan option; 1.4 points/₹100 on mobile bills, electricity bills and insurance premiums.
+  - category: Home Plan — medical
+    canonical_categories:
+    - other
+    multiplier: 3
+    effective_rate: 1.5
+    notes: Plan option; 1.5 points/₹100 on medical spends.
+  - category: Home Plan — groceries, bills and medical
+    canonical_categories:
+    - groceries
+    - utilities
+    multiplier: 8
+    effective_rate: 4
+    notes: Plan option; 4 points/₹100 on groceries.
+  - category: Travel Plan — hotels and travel
+    canonical_categories:
+    - travel
+    multiplier: 8
+    effective_rate: 4
+    notes: Plan option; 4 points/₹100 on hotel spends.
+  - category: Travel Plan — airline tickets
+    canonical_categories:
+    - travel
+    multiplier: 5
+    effective_rate: 2.5
+    notes: Plan option; 2.5 points/₹100 on airline tickets.
+  - category: Travel Plan — car rental and IRCTC tickets
+    canonical_categories:
+    - travel
+    multiplier: 3
+    effective_rate: 1.5
+    notes: Plan option; 1.5 points/₹100 on car rentals and IRCTC railway tickets.
+  - category: Party Plan — dining, shopping and entertainment
+    canonical_categories:
+    - dining
+    - other
+    - entertainment
+    multiplier: 8
+    effective_rate: 4
+    notes: Plan option; 4 points/₹100 on restaurant spends.
+  - category: Party Plan — departmental stores and bars/pubs
+    canonical_categories:
+    - other
+    - dining
+    multiplier: 4
+    effective_rate: 2
+    notes: Plan option; 2 points/₹100 on departmental stores and bars/pubs.
+  - category: Party Plan — movie tickets
+    canonical_categories:
+    - entertainment
+    multiplier: 3
+    effective_rate: 1.5
+    notes: Plan option; 1.5 points/₹100 on movie tickets.
+  exclusions:
+  - fuel
+  redemption:
+  - type: statement-credit
+    program: IndusMoments cash credit
+    rate_inr_per_unit: 0.4
+    constraints: Maximum 2,500 Reward Points for cash credit redemption per calendar month effective 1-Sep-2024; other channels include airline miles and the shopping portal.
+  notes: Four mutually exclusive reward plans (Shop, Home, Travel, Party); one plan applies at a time. Choose during application; plan change only after six months, with a ₹250 reconfiguration fee. Points above assigned credit limit are not earned. Rates reflect the Jan-2026 issuer guide.
+  source:
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Platinum-Aura-Edge-Benefit-Guide-14-01-2026.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    notes: Current issuer benefit guide dated 14-Jan-2026 lists all four reward plans and values cash credit at ₹0.40/point. Product page states 2,500-point monthly cash-redemption cap.
+benefits:
+- effective_from: 2026-10-27
+  effective_until: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cycle: monthly
+    notes: 1% waiver at any petrol pump in India. Issuer says a monthly cap exists but does not state its amount; GST on fuel surcharge is not waived.
+  insurance:
+  - type: baggage-loss
+    sum_insured_inr: 100000
+    conditions: Travel Plus cover for lost checked baggage on international airline travel; notify bank at least 48 hours before travel and within 48 hours after return; policy terms apply.
+  - type: baggage-loss
+    sum_insured_inr: 25000
+    conditions: Travel Plus cover for delayed checked baggage over 12 hours on an international flight; emergency essentials; activation notice required 48 hours before travel and within 48 hours after return.
+  - type: other
+    sum_insured_inr: 50000
+    conditions: Travel Plus loss-of-passport cover for international travel; notification and policy conditions apply.
+  - type: other
+    sum_insured_inr: 25000
+    conditions: Travel Plus lost-ticket cover for international travel; notification and policy conditions apply.
+  - type: trip-delay
+    sum_insured_inr: 25000
+    conditions: Travel Plus missed-connection cover for qualifying missed connection after over six-hour delay of another international flight; notification and policy conditions apply.
+  - type: fraud-liability
+    sum_insured_inr: null
+    conditions: Complimentary Total Protect covers unauthorised merchant transactions from loss/theft up to 48 hours before card loss is reported, and counterfeit fraud, up to assigned credit limit; claim documentation includes FIR and dispute forms.
+  concierge: null
+  source:
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Platinum-Aura-Edge-Benefit-Guide-14-01-2026.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: Current issuer sources reviewed did not publish product-specific age, income or credit-score requirements.
+application:
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-aura-edge-visa-and-mastercard-credit-card-easy-credit.html
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - ltf
+  - zero-annual-fee
+  - cashback
+  - points

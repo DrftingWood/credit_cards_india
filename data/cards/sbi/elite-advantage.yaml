@@ -1,184 +1,99 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
+# Data confidence review 2026-10-25: current SBI schedules name ELITE Advantage
+# for renewal fee and waiver. Product classification and card-specific rewards,
+# benefits, joining fee and some other charges remain unverified.
 id: sbi-elite-advantage
 name: SBI Card ELITE Advantage
+image_path: /cards/sbi/elite-advantage.webp
 issuer: sbi
-network: visa
+network: null
 network_tier: null
 tier: premium
-card_type: secured
+card_type: credit
 co_brand: null
 status: active
 launched_on: null
 discontinued_on: null
 
 fees:
-  - effective_from: 2024-01-01
+  - effective_from: '2026-10-27'
     effective_until: null
-    joining_fee_inr: 4999
+    joining_fee_inr: null
     annual_fee_inr: 4999
     renewal_fee_inr: 4999
     fee_waiver:
       spend_inr: 1000000
       cycle: annual
       conditions: "Spend-based reversal of annual fee on spends of ₹10 lakhs."
-    forex_markup_pct: 1.99
-    finance_charge_monthly_pct: 3.75
+    forex_markup_pct: null
+    finance_charge_monthly_pct: null
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
-    supplementary_card_fee_inr: 0
+    supplementary_card_fee_inr: null
     gst_applicable: true
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
-      retrieved_on: 2026-07-03
-    notes: "Secured 'Advantage' variant of SBI Card ELITE (FD-backed). Fees mirror SBI Card ELITE per crawl; TODO verify dedicated Advantage page/URL and any fee differences."
+      url: https://www.sbicard.com/en/most-important-terms-and-conditions.page
+      retrieved_on: '2026-10-27'
+      type: issuer-page
+      confidence: high
+      fields_verified:
+        - fees.annual_fee_inr
+        - fees.renewal_fee_inr
+        - fees.fee_waiver.spend_inr
+        - fees.cash_advance_fee.pct
+        - fees.cash_advance_fee.min_inr
+      local_refs:
+        - docs/sources/sbi/elite-advantage/kfs-2026-05.pdf
+    notes: "Current SBI MITC identifies ELITE Advantage at INR4,999 annual/renewal fee with INR10 lakh preceding-year spend waiver. Current KFS also lists this variant at the same annual and renewal amounts. Joining fee from generic ELITE is not independently verified for Advantage. Current MITC cash-advance fee is 2.5%/INR500 minimum. Finance rate is unknown because issuer evidence reviewed does not establish whether ELITE Advantage is secured or unsecured; forex and add-on fee remain unverified for this exact variant. The product link redirects to standard ELITE. effective_from is the 2026-10-27 observation date, not a claim about when these terms began."
 
 rewards:
-  - effective_from: 2024-01-01
+  - effective_from: 2026-10-27
     effective_until: null
     currency: points
     currency_name: Reward Points
     base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: dining-grocery-departmental
-        canonical_categories: [groceries, dining]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "5X Reward Points on dining, departmental stores and grocery spends."
-      - category: international-spends
-        canonical_categories: [international]
-        multiplier: 1
-        effective_rate: 2
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "2 Reward Points per ₹100 on international transactions."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-        constraints: "Pay outstanding bill with points: 4 Reward Points = Re.1."
-      - type: catalog
-        program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
+      rate: null
+      per_inr: null
+      unit_value_inr: null
+      unit_value_inr_realized: null
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
-      retrieved_on: 2026-07-03
+      url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite-advantage.page
+      retrieved_on: '2026-10-27'
       type: issuer-page
+      confidence: low
+      notes: SBI's ELITE Advantage link redirects to standard SBI Card ELITE. No current Advantage-specific reward earn, category rules, caps, or redemption terms were found; the prior ELITE reward schedule is not assumed to apply. The SBI general agreement governs common reward mechanics but does not establish this variant's earn schedule.
 
-    mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2024-01-01
+  - effective_from: 2026-10-27
     effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: 6
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-        notes: "Max 2 visits per quarter. Priority Pass membership worth $99."
-    golf:
-      rounds_per_cycle: 4
-      lessons_per_cycle: 1
-      cycle: monthly
-      notes: "4 complimentary green fee rounds and up to 50% off on golf games; 1 complimentary lesson per month at selected courses."
-    milestones:
-      - spend_inr: 300000
-        cycle: annual
-        benefit: "10,000 Bonus Reward Points on annual spends of ₹3 lakhs"
-        value_inr: 2500
-        reward_kind: points
-        reward_units: 10000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-      - spend_inr: 400000
-        cycle: annual
-        benefit: "10,000 Bonus Reward Points on annual spends of ₹4 lakhs"
-        value_inr: 2500
-        reward_kind: points
-        reward_units: 10000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "15,000 Bonus Reward Points on annual spends of ₹5 lakhs"
-        value_inr: 3750
-        reward_kind: points
-        reward_units: 15000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-      - spend_inr: 800000
-        cycle: annual
-        benefit: "15,000 Bonus Reward Points on annual spends of ₹8 lakhs"
-        value_inr: 3750
-        reward_kind: points
-        reward_units: 15000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome e-Gift voucher worth ₹5,000 (Yatra / Hush Puppies / Bata / Pantaloons / Aditya Birla Fashion / Shoppers Stop)"
-        value_inr: 5000
-        window_days: 90
-    movies:
-      type: free
-      partner: BookMyShow
-      cap_inr: 6000
-      cycle: annual
-      notes: "Free movie tickets worth ₹6,000 every year (primary card only)."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: true
-    other:
-      - name: Club ITC Silver Tier Membership
-        description: "Complimentary 1-year Club ITC Silver Tier Membership after first transaction within 60 days of card issuance."
-        value_inr: null
     source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
-      retrieved_on: 2026-07-03
+      url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite-advantage.page
+      retrieved_on: '2026-10-27'
+      type: issuer-page
+      confidence: low
+      notes: SBI's current ELITE Advantage link redirects to standard ELITE terms. No Advantage-specific benefits are recorded until issuer terms for this variant are available.
 
 eligibility:
-  min_age: 18
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
   credit_score_min: null
   residency: resident-indian
-  notes: "Secured 'Advantage' variant issued against a fixed deposit (FD-backed). TODO verify minimum FD amount and eligibility."
+  notes: "The live SBI page redirects to standard ELITE and does not establish whether ELITE Advantage is secured/FD-backed or its collateral minimum; age, income and credit-score criteria are also not published on the redirect page. The Advantage apply link is therefore not retained as an application URL."
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/lifestyle/sbi-card-elite-advantage.page
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: low
+    fields_verified:
+      - eligibility.notes
+    notes: "SBI sitemap lists ELITE Advantage, but its product link redirects to standard ELITE. No Advantage-specific applicant criteria, rewards or benefits are published on the destination page."
 
 application:
-  apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-elite.html
+  apply_url: null
 
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, secured, fd-backed]
+  last_verified_on: 2026-10-27
+  tags: [premium, points]

@@ -1,1 +1,343 @@
-{"_source":"yes.bank.in page text + session-gated MITC/T&C PDFs","verified_on":"2026-07-04","result":"Marquee fee 9999 confirmed; 28 cards verified vs live pages in audit (PR #46)","pdfs_downloaded":0}
+{
+  "_source": "YES Bank current MITC, card listing, Premia/ELITE+ value charts and rebranding information",
+  "verified_on": "2026-10-26",
+  "result": "ELITE+ fees, rewards and benefits refreshed from current issuer MITC/value chart; YES Premia marked as the legacy name and existing-card alias of ELITE+.",
+  "pdfs_downloaded": 0,
+  "retrieval_note": "YES Bank's PDF URLs were opened and read through web search, but direct downloads returned the session HTML shell. Exact issuer URLs and retrieved dates are recorded in the card YAML sources.",
+  "paisabazaar-rupay": {
+    "result": "Current RuPay page and card terms reviewed; updated cashback cap/UPI handling/MCC exclusions, fees, FX, cash-advance facility, fuel waiver and eligibility.",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/paisabazaar-rupay/",
+    "retrieval_note": "YES Bank current generic MITC (version 18, 05-Oct-2026) downloaded and validated locally. Product page terms are indexed on issuer pri1 subdomain; co-brand card MITC URL returned YES Bank JavaScript shell, so the official indexed card-specific terms were used for the cash advance limit and reward conditions."
+  },
+  "ace": {
+    "result": "Current ACE page reviewed via rendered browser text; refreshed rewards, exclusions/caps, fee terms, APR/forex/cash advance, fuel waiver and eligibility. Unsupported launch/network assignments cleared; purchase-protection limits remain unverified.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 3,
+    "local_directory": "docs/sources/yes/ace/",
+    "files": [
+      "ybl-mitc-v18-2026-10-05.pdf",
+      "credit-card-features-update-june-2026.pdf",
+      "ace-page-rendered-extract.md"
+    ],
+    "retrieval_note": "Issuer card page downloads as a JavaScript shell. Current rendered page evidence is summarized in ace-page-rendered-extract.md; both archived PDFs were signature-checked."
+  },
+  "ai-inside-rupay": {
+    "result": "Reviewed current rendered product page and MITC v18; removed unsupported generic 1% cashback rate and Visa/network-tier/date precision, corrected current cashback evidence and fuel waiver cap, refreshed fee/forex/APR and existing-cardholder eligibility.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/ai-inside-rupay/",
+    "files": [
+      "ybl-mitc-v18-2026-10-05.pdf",
+      "ai-inside-rupay-rendered-extract.md"
+    ],
+    "retrieval_note": "The consolidated MITC v18 PDF was copied from the YES ACE review archive and signature-checked; both card records cite the same issuer document. The rendered current product-page evidence is preserved as a text extract because the page download is a JavaScript shell."
+  },
+  "ai-inside": {
+    "result": "Current rendered page and MITC v18 reviewed; removed generic 1% cashback and unsupported network/tier/date precision, confirmed headline-only cashback evidence, updated current fuel waiver, fees/forex/APR and unknown eligibility.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/ai-inside/",
+    "files": [
+      "ybl-mitc-v18-2026-10-05.pdf",
+      "ai-inside-rendered-extract.md"
+    ],
+    "retrieval_note": "Current consolidated MITC v18 copied from the ACE review archive and signature-checked. Rendered card-page text summarized locally because downloaded HTML is a JavaScript shell."
+  },
+  "anq-phi": {
+    "result": "Current card page, indexed issuer product guide, current MITC v18 and June-2026 fee/feature update reviewed. Corrected fees, APR, forex, cash advance, reward base/category rates/exclusions, redemption terms, lounge quota and fuel waiver; cleared unsupported network/date/eligibility values.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 2,
+    "local_directory": "docs/sources/yes/anq-phi/",
+    "verified_pdf_files": [
+      "ybl-mitc-v18-2026-10-05.pdf",
+      "credit-card-features-june-2026.pdf"
+    ],
+    "invalid_download_shells": [
+      "yb_yes_bank_anq_phi_credit_card_one_pager.pdf",
+      "ybl_fintech_mitc_2024.pdf"
+    ],
+    "retrieval_note": "Current MITC v18 was copied from the YES ACE archive; the June-2026 issuer update downloaded and both valid PDFs passed %PDF- signature checks. Direct /pdf?name links for the issuer product guide and fintech MITC returned 5,640-byte JavaScript shells, preserved but not used as evidence. The product guide text is documented in an extract based on current browser-rendered/page-indexed issuer material."
+  },
+  "emi": {
+    "result": "Reviewed current EMI Card listing/page, issuer-indexed card-specific EMI T&Cs and current MITC v18. Corrected membership fees/waiver, finance/forex/cash advance, cashback cap and exclusions, fuel waiver; cleared unsupported network/tier, launch date and eligibility assumptions.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/emi/",
+    "verified_pdf_files": [
+      "ybl-mitc-v18-2026-10-05.pdf"
+    ],
+    "files": [
+      "ybl-mitc-v18-2026-10-05.pdf",
+      "ybl-mitc-v18-2026-10-05.txt",
+      "emi-rendered-extract.md"
+    ],
+    "retrieval_note": "MITC v18 was downloaded and its %PDF- signature checked. EMI card-specific T&C endpoint returned a JavaScript/404 shell; current issuer-indexed text was reviewed and its terms/capture limitation are summarized in emi-rendered-extract.md. No failed T&C shell is represented as a PDF."
+  },
+  "essence": {
+    "result": "Reviewed current rendered Essence product page, card-specific MITC v17, May-2026 value chart and current consolidated MITC v18. Corrected fees, forex, cash advance, reward rates/cap/exclusions, redemption, lounge, fuel and eligibility; cleared unsupported network/tier and launch date.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 3,
+    "local_directory": "docs/sources/yes/essence/",
+    "verified_pdf_files": [
+      "essence-mitc.pdf",
+      "essence-value-chart-may-2026.pdf",
+      "ybl-mitc-v18-2026-10-05.pdf"
+    ],
+    "files": [
+      "essence-mitc.pdf",
+      "essence-mitc.txt",
+      "essence-value-chart-may-2026.pdf",
+      "essence-value-chart-may-2026.txt",
+      "ybl-mitc-v18-2026-10-05.pdf",
+      "ybl-mitc-v18-2026-10-05.txt",
+      "essence-rendered-extract.md"
+    ],
+    "retrieval_note": "All three archived PDFs were signature-checked. Current product page is JavaScript-rendered and direct product-protection FAQ was not available as a verifiable PDF; rendered statements and remaining unknowns are documented in essence-rendered-extract.md."
+  },
+  "finbooster": {
+    "result": "Reviewed current issuer listing, June-2026 charges/features update and MITC v18. Updated current reward categories, NIL membership fees, forex, cash-advance, fuel waiver and MCC exclusions; cleared unsupported network/tier and launch-date assumptions.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 2,
+    "local_directory": "docs/sources/yes/finbooster/",
+    "verified_pdf_files": [
+      "credit-card-features-update-june-2026.pdf",
+      "ybl-mitc-v18-2026-10-05.pdf",
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "credit-card-features-update-june-2026.pdf",
+      "ybl-mitc-v18-2026-10-05.pdf",
+      "ybl-mitc-v18-2026-10-05.txt",
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "finbooster-rendered-extract.md"
+    ],
+    "retrieval_note": "The June update and MITC were copied from verified YES Bank issuer archives; the current MITC was also downloaded directly on 2026-10-26. All three PDF artifacts passed %PDF- signature checks. The dated and current MITC copies are byte-identical by SHA-256. The current product detail page is JavaScript-rendered; indexed listing contents and remaining unknowns are documented in finbooster-rendered-extract.md."
+  },
+  "first-preferred": {
+    "result": "Reviewed the rendered current product page, current MITC v18, June-2026 charges/features update and issuer-indexed value chart. Corrected card issuance status, fee waivers, FX/APR/cash-advance charges, reward schedule/exclusions, lounge/golf/movie/fuel benefits and unknown identity/eligibility fields.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 2,
+    "local_directory": "docs/sources/yes/first-preferred/",
+    "verified_pdf_files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "credit-card-features-update-june-2026.pdf"
+    ],
+    "files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "credit-card-features-update-june-2026.pdf",
+      "first-preferred-rendered-extract.md"
+    ],
+    "retrieval_note": "Both archived PDFs were copied from verified YES Bank archives and signature-checked. The product page is JavaScript-rendered; current visible details and glossary are captured in first-preferred-rendered-extract.md. The older value chart is linked from the official issuer asset index, but a direct download returned an HTML shell and is not treated as an archived PDF."
+  },
+  "prosperity-rewards": {
+    "result": "Reviewed the current rendered YES Prosperity Rewards page, current MITC v18, current card listing and indexed issuer terms. Corrected issuance status, unsupported network/date, fee schedule, current reward schedule/exclusions and select MCCs, fuel waiver and current redemption terms. Cleared unsupported eligibility assumptions and documented purchase-protection applicability and older cash-advance fee conflicts.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/prosperity-rewards/",
+    "verified_pdf_files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "prosperity-rewards-rendered-extract.md"
+    ],
+    "failed_downloads": [
+      "Card-specific Prosperity MITC, purchase-protection FAQ and value-chart URLs returned 404/JavaScript shells; not archived as PDFs."
+    ],
+    "retrieval_note": "Current page is JavaScript-rendered; current product terms and unresolved claims are recorded in prosperity-rewards-rendered-extract.md. General MITC v18 passed %PDF- signature validation and is used for current common fees and redemption terms."
+  },
+  "pop-club": {
+    "result": "Reviewed the current rendered POP-CLUB page and current MITC v18. Corrected the unsupported exact launch date/network tier, standard fee/waiver schedule, cashback/POPcoin reward rates, minimum earn transaction, exclusions and expiry, eligibility and current fuel waiver. Captured the card-page versus consolidated-MITC fuel-cap conflict and the card-specific coin-expiry conflict.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/pop-club/",
+    "verified_pdf_files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "pop-club-rendered-extract.md"
+    ],
+    "retrieval_note": "The consolidated issuer MITC v18 archive passed a %PDF- signature check. The current POP-CLUB page is JavaScript-rendered; visible product terms and conflicts with the consolidated MITC are preserved in pop-club-rendered-extract.md."
+  },
+  "klick": {
+    "result": "Reviewed the current rendered Klick product page and user guide, current MITC v18 and YES Bank credit-card listing. Corrected network/virtual-card identity, removed unsupported launch date and tier, corrected virtual-card cash-advance fee treatment, reward evidence, exclusions and fuel waiver; recorded current eligibility restriction.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 2,
+    "local_directory": "docs/sources/yes/klick/",
+    "verified_pdf_files": [
+      "klick-user-guide.pdf",
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "klick-user-guide.pdf",
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "klick-rendered-extract.md"
+    ],
+    "retrieval_note": "Both PDFs passed %PDF- signature checks. Current card page is JavaScript-rendered; its relevant visible terms and remaining unknowns are captured in klick-rendered-extract.md. An independently indexed guide mentions UPI reward points, but that conflicts with the current linked guide/page; UPI earning is left unasserted."
+  },
+  "freo": {
+    "result": "Reviewed the current rendered YES BANK FREO product page and MITC v18. Corrected issuance status, current fees and waivers, forex/APR/cash-advance terms, cashback restrictions, fuel waiver and published eligibility; cleared unsupported network/tier and launch date.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/freo/",
+    "verified_pdf_files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "freo-rendered-extract.md"
+    ],
+    "failed_downloads": [
+      "Current issuer-linked Freo-specific MITC PDF endpoint returned an HTML/JavaScript shell; not saved as PDF evidence."
+    ],
+    "retrieval_note": "The current product page is captured via rendered browser text and states that new applications are closed. Current generic MITC v18 was copied from a verified issuer archive and signature-checked. The current card-specific PDF link is a JavaScript shell, so older indexed FREO-specific terms are not used to override the current rendered page or MITC v18."
+  },
+  "reserv": {
+    "result": "Reviewed current YES Bank listing, indexed Reserv product terms, current MITC v18 and official legacy value chart. Corrected APR, cash advance fee, FX, reward caps/exclusions, fuel waiver, lounge spend gate; cleared unsupported Mastercard/World and exact launch-date assignments.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/reserv/",
+    "verified_pdf_files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "reserv-rendered-extract.md"
+    ],
+    "failed_downloads": [
+      "Official Nov-2023 Reserv value-chart URL returned a YES Bank JavaScript session shell; indexed issuer PDF content was inspected, but no shell was archived as a PDF."
+    ],
+    "retrieval_note": "MITC v18 copied from the verified current YES archive and passed %PDF- signature check. Current card details are JavaScript-rendered; issuer listing and indexed official product text are summarized in the rendered extract."
+  },
+  "select": {
+    "result": "Reviewed current SELECT page/listing and MITC v18. Corrected fees, APR, cash advance, current reward caps/exclusions, fuel waiver, lounge spend gate, published eligibility and cleared unsupported network/tier/date assignments. Recorded the current markup headline/table conflict.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/select/",
+    "verified_pdf_files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "select-rendered-extract.md"
+    ],
+    "retrieval_note": "Current MITC v18 copied from the verified YES archive and signature-checked; card page is JavaScript-rendered. Current visible/indexed terms and the forex markup conflict are captured in select-rendered-extract.md."
+  },
+  "wellness": {
+    "result": "Reviewed current YES Bank listing, official Wellness usage guide and MITC v18. Updated current fees, APR/forex/cash advance, pharmacy rewards/exclusions, health benefits and current fuel waiver; cleared unsupported network/tier/date/residency assignments and documented older fuel-cap conflict.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/wellness/",
+    "verified_pdf_files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "wellness-rendered-extract.md"
+    ],
+    "retrieval_note": "The official usage guide is indexed/rendered as issuer PDF content but direct download was not verified as PDF bytes and was not archived. Current MITC v18 copied from verified issuer archive and signature-checked. Product details and capture limitations are documented in the extract."
+  },
+  "wellness-plus": {
+    "result": "Reviewed current YES Bank listing, official Wellness Plus usage guide/value chart and current MITC v18. Updated fees, APR/forex/cash advance, pharmacy rewards, health/lounges and current fuel waiver; cleared unsupported network/tier/date/residency and corrected fuel cap from INR500 in legacy guide to INR250 in current v18.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/wellness-plus/",
+    "verified_pdf_files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "wellness-plus-rendered-extract.md"
+    ],
+    "retrieval_note": "Official guide/value-chart contents were inspected as indexed issuer PDF text but direct guide download was not verified as valid PDF bytes. MITC v18 copied from verified archive and signature-checked; capture limitations documented."
+  },
+  "byoc": {
+    "result": "Reviewed current BYOC product listing and card page, consolidated MITC v18 (05-Oct-2026), BYOC-specific MITC text, value chart and current domestic lounge schedule. Corrected modular fees, cashback and merchant-plan caps, lounge spend threshold, fuel-waiver range/cap and cash-advance minimum; cleared unsupported network/tier/date and ET Prime. Record models Cashback module; Rewards module is described in extract because schema cannot represent both currencies.",
+    "verified_on": "2026-10-27",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/yes/byoc/",
+    "files": [
+      "byoc-rendered-extract-2026-10-27.md"
+    ],
+    "retrieval_note": "Current product page is JavaScript-rendered; direct YES BANK PDF downloads timed out or redirected to a JavaScript/404 shell. Current MITC v18 and lounge schedule were reviewed through issuer web-document extraction. Exact URLs and caveats are documented in the rendered extract."
+  },
+  "zagg": {
+    "result": "Reviewed current YES Bank Zagg page, Zagg/Rivpe rewards policy and FAQ, co-brand network page and current MITC v18. Corrected RuPay identity, current Zagg Coins program/cap/redemption, eligibility, fees, lounges and fuel waiver. Cleared unsupported Mastercard/Platinum/date and YES Rewardz currency assumptions; documented pre-2025 legacy Rio terms separately.",
+    "verified_on": "2026-10-26",
+    "pdfs_downloaded": 1,
+    "local_directory": "docs/sources/yes/zagg/",
+    "verified_pdf_files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf"
+    ],
+    "files": [
+      "yesbank-mitc-v18-current-2026-10-26.pdf",
+      "zagg-rendered-extract.md"
+    ],
+    "failed_downloads": [
+      "Zagg-linked current card MITC PDF route redirected to the YES Bank JavaScript shell; current generic MITC v18 was used for common charges and lounge/fuel terms."
+    ],
+    "retrieval_note": "Current issuer and co-brand terms are HTML pages, preserved by source URLs and dated extract. Generic MITC v18 copied from verified YES archive and PDF signature checked."
+  },
+  "marquee": {
+    "result": "Current Marquee review completed against card listing, MITC v18, Schedule of Charges, value chart and lounge schedule; corrected fee waiver, APR/cash advance, earn rates/caps, lounges/spend gate, fuel waiver and unsupported benefit claims.",
+    "verified_on": "2026-10-27",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/yes/marquee/",
+    "files": [
+      "issuer-extract-2026-10-27.md"
+    ],
+    "retrieval_note": "Issuer PDFs were reviewed through indexed/rendered web extraction; direct PDF downloads were not archived. Exact unknowns and source conflicts are described in the evidence extract."
+  },
+  "prosperity-cashback-plus": {
+    "result": "Current card review completed; issuance discontinued, record set on-hold, updated cashback/utility caps, fees, welcome offer and fuel waiver; removed unsupported network/date/eligibility claims.",
+    "verified_on": "2026-10-27",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/yes/prosperity-cashback-plus/",
+    "files": [
+      "issuer-extract-2026-10-27.md"
+    ],
+    "retrieval_note": "Primary issuer page and terms reviewed from rendered/indexed extraction; MITC and revision notice are linked in evidence extract and were not locally archived."
+  },
+  "prosperity-cashback": {
+    "result": "Reviewed current catalogue, MITC v18, cashback revision notice and indexed legacy issuer product text; updated current charges/waiver/welcome and removed unsupported network/date/eligibility assumptions. Exact variant-specific cashback caps/details remain unresolved.",
+    "verified_on": "2026-10-27",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/yes/prosperity-cashback/",
+    "files": [
+      "issuer-extract-2026-10-27.md"
+    ],
+    "retrieval_note": "Legacy issuer product page direct fetch returned 503; indexed issuer text is distinguished from captured current MITC and disclaimer details are in evidence extract."
+  },
+  "uni-rupay": {
+    "result": "Reviewed current YES BANK catalogue, UNI/UNI RuPay Key Fact Statement, consolidated MITC and virtual RuPay listing. Corrected fees/cash advance, fuel waiver and unsupported network tier/date/residency/apply URL; removed unsupported Uni Coin value/redemption and unsubstantiated exclusions.",
+    "verified_on": "2026-10-27",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/yes/uni-rupay/",
+    "files": [
+      "issuer-extract-2026-10-27.md"
+    ],
+    "retrieval_note": "Official issuer pages inspected through indexed/rendered content. Accessible current evidence does not establish the UNI RuPay coin conversion or full reward terms."
+  },
+  "private": {
+    "result": "Reviewed current YES Private page/catalogue, KFS, consolidated MITC, older Private Usage Guide and Purchase Protection FAQ. Updated fees/APR/forex, waiver, rewards, lounge guest allowance, fuel waiver and purchase protection; documented conflicts on current rewards/welcome values.",
+    "verified_on": "2026-10-27",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/yes/private/",
+    "files": [
+      "issuer-extract-2026-10-27.md"
+    ],
+    "retrieval_note": "Issuer PDF text reviewed through indexed web extraction; accessible KFS PDF URL returned 404 in browser open. Conflicts and evidence dates are stated in the extract."
+  },
+  "uni": {
+    "result": "Reviewed current YES BANK catalogue, UNI KFS and co-brand MITC. Corrected annual fee/waiver, cash advance, fuel waiver and unsupported network/date/residency; left unverified Uni Coin conversion/redemption null.",
+    "verified_on": "2026-10-27",
+    "pdfs_downloaded": 0,
+    "local_directory": "docs/sources/yes/uni/",
+    "files": [
+      "issuer-extract-2026-10-27.md"
+    ],
+    "retrieval_note": "Issuer catalogue/product and indexed KFS/MITC terms inspected through web extraction. Accessible current card-specific Uni Coin redemption terms were not found."
+  }
+}

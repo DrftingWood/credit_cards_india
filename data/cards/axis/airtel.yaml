@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-airtel
 name: Airtel Axis Bank Credit Card
+image_path: /cards/axis/airtel.webp
 issuer: axis
-network: mastercard
-network_tier: platinum
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -19,122 +11,223 @@ co_brand:
   category: telecom
   partner_website: https://www.airtel.in
 status: active
-launched_on: 2021-01-01
+launched_on: 2022-03-07
 discontinued_on: null
-
 fees:
-  - effective_from: 2021-01-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.0
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2021-01-01
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: Eligible annual spend must exceed Rs 200,000; rent (MCC 6513) and wallet (MCC 6540) transactions do not count.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.fee_waiver.conditions
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: The fee waiver is strictly greater than Rs 200,000; the schema stores the threshold but cannot represent the strict boundary, so a spend exactly at Rs 200,000 must not be treated as qualifying. Current page lists additional wallet, fuel, education, utility and online skill-based gaming transaction fees; see issuer extract.
 rewards:
-  - effective_from: 2021-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-    accelerated:
-      - category: airtel-thanks-utility
-        canonical_categories: [utilities]
-        multiplier: 1
-        effective_rate: 25
-        cap_per_cycle: 250
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [airtel-thanks-app]
-        channel:
-          class: cobrand-merchant
-          merchants: [airtel-thanks-app]
-        notes: "25% cashback on Airtel bill payments (mobile, DTH, broadband) via Airtel Thanks app, capped at ₹250/month (official Airtel value chart; from Apr-2026 also limited to 2× base cashback that month)."
-      - category: preferred-partners-zomato-blinkit-district
-        canonical_categories: [dining, groceries, entertainment]
-        multiplier: 1
-        effective_rate: 10
-        cap_per_cycle: 200
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [zomato, blinkit, district]
-        channel:
-          class: cobrand-merchant
-          merchants: [zomato, blinkit, district]
-        notes: "10% value back at preferred partners Zomato, Blinkit & District Movies — capped at ₹200 per partner per month (Apr-2026 revision; credited as partner-wallet value-back, min order ₹499 for Zomato/Blinkit). Only these merchants qualify, not general dining/grocery spend."
-      - category: utility-bills-airtel-thanks
-        canonical_categories: [utilities]
-        multiplier: 1
-        effective_rate: 10
-        cap_per_cycle: 250
-        cap_unit: cashback-inr
-        cycle: monthly
-        merchants: [airtel-thanks-app]
-        channel:
-          class: cobrand-merchant
-          merchants: [airtel-thanks-app]
-        notes: "10% cashback on utility/other bill payments made via the Airtel Thanks app (capped ₹250/mo per Airtel value chart) — not on utility spends outside the Airtel Thanks app."
-    capping_rules:
-      - "25% Airtel bill/recharge cashback capped at twice the base cashback earned in the same statement month."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
+- effective_from: 2026-04-12
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    excluded_categories:
+    - utilities
+    - telecom
+  accelerated:
+  - category: airtel-thanks-telecom
+    canonical_categories:
+    - telecom
+    multiplier: 1
+    effective_rate: 25
+    cap_base_multiplier: 2
+    cap_unit: cashback-inr
+    cycle: statement
+    over_cap_earns_base: false
+    merchants:
+    - airtel-thanks-telecom
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - airtel-thanks-telecom
+    notes: 25% on Airtel mobile, broadband, WiFi and DTH bills/recharges via Thanks app, capped at 2x base cashback in the same statement cycle. Active connections only. New or inactive connections, hardware, installation and advance recharge are ineligible. MID/VPA recognition applies; disputed reconciliation may take up to 90 days.
+  - category: zomato-value-back
+    canonical_categories:
+    - dining
+    multiplier: 1
+    effective_rate: 10
+    cap_per_cycle: 200
+    cap_unit: cashback-inr
+    cycle: monthly
+    over_cap_earns_base: false
+    merchants:
+    - zomato
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - zomato
+    notes: 10% online value back at Zomato, up to Rs 200 per primary card per calendar month. Minimum order Rs 499; credited to Zomato wallet with no expiry and usable only there. E-commerce payment only; UPI excluded. This is not card cashback.
+  - category: blinkit-value-back
+    canonical_categories:
+    - groceries
+    multiplier: 1
+    effective_rate: 10
+    cap_per_cycle: 200
+    cap_unit: cashback-inr
+    cycle: monthly
+    over_cap_earns_base: false
+    merchants:
+    - blinkit
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - blinkit
+    notes: 10% online value back at Blinkit, up to Rs 200 per primary card per calendar month. Minimum order Rs 499; credited to Blinkit wallet with no expiry and usable only there. E-commerce payment only; UPI excluded. This is not card cashback.
+  - category: district-movies-value-back
+    canonical_categories:
+    - entertainment
+    multiplier: 1
+    effective_rate: 10
+    cap_per_cycle: 200
+    cap_unit: cashback-inr
+    cycle: monthly
+    over_cap_earns_base: false
+    merchants:
+    - district
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - district
+    notes: 10% online value back at District Movies, up to Rs 200 per primary card per calendar month. Credited to District wallet with no expiry and usable only there. E-commerce payment only; UPI excluded. This is not card cashback.
+  - category: airtel-thanks-utilities
+    canonical_categories:
+    - utilities
+    multiplier: 1
+    effective_rate: 10
+    cap_base_multiplier: 1
+    cap_unit: cashback-inr
+    cycle: statement
+    over_cap_earns_base: false
+    merchants:
+    - airtel-thanks-utilities
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - airtel-thanks-utilities
+    notes: 10% on eligible utility bills (including BBPS-enabled billers) via Thanks app, capped at 1x base cashback earned in the same statement cycle. Utilities outside the app are excluded from all cashback.
+  capping_rules:
+  - Base cashback is 1% on eligible other spends, uncapped; it determines the Airtel and utility app cashback caps. If base cashback is zero, the app bill categories earn zero.
+  - Per-transaction cashback is rounded down. Revised caps appear on statements generated on/after 2026-06-12. April 2026 terms contain both a 60-day credit-cycle statement and a more detailed next-cycle posting example; current product page says statement credit. Timing discrepancy is documented.
+  - Zomato, Blinkit and District benefits are partner-wallet value back, not Axis statement cashback. They are retained in the rewards structure as a schema workaround, so reward totals must not count them as statement cashback.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  - cash-advance
+  - financial-institutions
+  - jewellery
+  - education
+  - government
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
+  - utilities
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-cashback-for-airtel-axis-bank-credit-card.pdf?sfvrsn=3192829c_5
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.excluded_categories
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption
+    notes: Card-specific cashback and partner value-back terms effective 2026-04-12. Current product page reflects these categories and caps, but announces a further 2026-08-28 terms update whose linked generic PDF is inaccessible (HTTP 403); verify any detailed exclusions or secondary terms against cardmember notices. The source note documents this limitation.
 benefits:
-  - effective_from: 2021-01-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "First transaction within 30 days of card issuance"
-        benefit: "Amazon eVoucher worth ₹250"
-        value_inr: 250
-        window_days: 30
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 500
-      cycle: statement
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2021-01-01
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: First transaction within 30 days of card issuance; not applicable when issued without joining fee
+    benefit: Amazon eVoucher worth Rs 250
+    value_inr: 250
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 500
+    cycle: statement
+    notes: GST on surcharge is not refunded; fuel earns no cashback.
+  concierge: false
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: Airtel Axis domestic lounge access was discontinued effective 2026-04-12. Current product page offers a Rs 250 Amazon eVoucher after first transaction within 30 days, only if joining fee was charged. Fuel waiver is 1% for Rs 400-Rs 4,000, maximum Rs 500 per statement; GST is not refunded and fuel earns no cashback.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Indicative issuer criteria state age 18-70 and resident Indian. No published card-specific minimum income or credit score was located.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
-  apply_url: https://www.axisbank.com/retail/cards/credit-card/airtel-axis-bank-credit-card
-
+  apply_url: https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [co-branded, telecom, airtel, cashback, bill-payments, entry]
+  last_verified_on: 2026-10-27
+  tags:
+  - co-branded
+  - telecom
+  - airtel
+  - cashback
+  - bill-payments
+  - entry

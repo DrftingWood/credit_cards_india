@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-indulge
 name: IndusInd Bank Indulge Credit Card
+image_path: /cards/indusind/indulge.webp
 issuer: indusind
 network: visa
 network_tier: infinite
@@ -16,93 +8,173 @@ tier: invite-only
 card_type: credit
 co_brand: null
 status: invite-only
-launched_on: 2011-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2011-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Invite-only ultra-premium card for IndusInd's top-tier clients; metal, no pre-set spending limit on some variants."
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/indulge-credit-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 75000
+  annual_fee_inr: 10000
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+    conditions: Annual fee waived on annual spend of INR 1,000,000.
+  forex_markup_pct: 1.8
+  finance_charge_monthly_pct: 1.79
+  cash_advance_fee:
+    pct: 0
+    min_inr: 0
+  gst_applicable: true
+  notes: Current consolidated MITC lists Indulge joining and annual charges, waiver threshold, forex markup and monthly interest. Cash advance fee is waived for Indulge. Dynamic currency conversion and other transaction fees may apply separately.
+  source:
+    url: https://www.indusind.bank.in/content/dam/indusind-corporate/schedule-of-charges/credit-cards/MITC_Premium.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    local_refs:
+    - docs/sources/indusind/indulge/mitc-premium-retrieved-2026-10-26.pdf
 rewards:
-  - effective_from: 2011-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1.5
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.20
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IndusMoments
-        rate_inr_per_unit: 0.25
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1.5
+    per_inr: 100
+    unit_value_inr: null
+  accelerated:
+  - category: reduced-earn-categories
+    canonical_categories:
+    - utilities
+    - insurance
+    - government
+    - education
+    multiplier: 0.4666666667
+    effective_rate: 0.7
+    cap_status: not-published
+    cap_unit: points
+    cycle: monthly
+    notes: Since 1 August 2019, utility bill payments, insurance premiums, government services/charges/payments and education institute fees earn 0.7 points per INR100. Rent/real-estate payments retain the card's regular rate. Fuel earns no points. No earning cap is stated in the current Indulge benefit guide.
     source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/indulge-credit-card.html
-      retrieved_on: 2026-07-03
+      url: https://www.indusind.bank.in/in/en/personal/revision-indusInd-bank-credit-card-rewards-program.html
+      retrieved_on: 2026-10-26
       type: issuer-page
-
+      confidence: high
+  exclusions:
+  - fuel
+  capping_rules:
+  - Cash redemption is capped at 10,000 points per calendar month, effective 2024-09-01; this is a redemption cap, not an earning cap. The current MITC lists a INR149 cash-redemption fee effective 2025-04-01.
+  redemption:
+  - type: cashback-bank
+    program: Cash credit
+    rate_inr_per_unit: 1.0
+    constraints: One point equals INR 1 cash value; minimum 500 points and maximum 10,000 points for cash redemption per calendar month. Current MITC lists a INR149 cash-redemption fee effective 2025-04-01.
+  - type: airmiles
+    program: KrisFlyer and Maharaja Club
+    rate_inr_per_unit: null
+    constraints: Airline-mile redemption is offered; current conversion ratios were not verified.
+  - type: catalog
+    program: IndusMoments
+    rate_inr_per_unit: null
+    constraints: Catalog redemption value varies by option and is not represented as a fixed cash value.
+  source:
+    url: https://www.indusind.bank.in/in/en/microsites/indulge/freedom.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.redemption[0].rate_inr_per_unit
+    local_refs:
+    - docs/sources/indusind/indulge/indulge-benefit-guide-retrieved-2026-10-26.pdf
 benefits:
-  - effective_from: 2011-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 1
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 1
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: "unlimited"
-      cycle: monthly
-    concierge: true
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/indulge-credit-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 6
+      cycle: quarterly
+      spend_threshold_inr: 500000
+      spend_threshold_cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - visa
+      notes: Primary cardholder complimentary visits, subject to INR500,000 eligible settled spend in the preceding calendar quarter. Tracking began in April 2026; qualifying spend unlocks access from the following quarter.
+    international:
+      visits_per_cycle: 4
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Complimentary visits at participating lounges outside India only. Priority Pass visits within India and guest visits are chargeable, up to USD35 per person per visit.
+  golf:
+    rounds_per_cycle: 4
+    cycle: monthly
+    lessons_per_cycle: 4
+    notes: Effective 2026-03-10; primary cardholder only.
+  concierge: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 10000
+    cap_per_cycle_inr: null
+    cycle: monthly
+    notes: Published waiver band is INR500-INR10,000; current shared issuer schedule does not publish a waiver cap. Taxes on the surcharge are not waived.
+  other:
+  - name: BookMyShow offer
+    description: Buy one ticket and receive one free/discounted ticket, up to three free or discounted tickets monthly per card account. Free ticket discount is capped at INR700; F&B discount is INR50 per pair of tickets.
+  - name: Total Protect
+    description: Covers unauthorized transactions reported within 48 hours of loss/theft and counterfeit fraud, up to the assigned credit limit, subject to program terms.
+  source:
+    url: https://bank.indusind.bank.in/in/en/personal/cards/credit-card/indulge-credit-card.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.golf.rounds_per_cycle
+    - benefits.golf.lessons_per_cycle
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    local_refs:
+    - docs/sources/indusind/indulge/lounge-terms-retrieved-2026-10-26.pdf
+    - docs/sources/indusind/indulge/golf-terms-retrieved-2026-10-26.pdf
 eligibility:
-  min_age: 21
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: null
-    self_employed: null
-  credit_score_min: 800
+    salaried: 3600000
+    self_employed: 4200000
+  credit_score_min: null
   residency: resident-indian
-  notes: "Invite-only to IndusInd Pioneer / top-tier banking clients."
-
+  notes: Issuer lists annual income/ITR of INR36 lakh salaried and INR42 lakh self-employed. Card is strictly invite-only. Card-specific minimum age and bureau cutoff were not found in current public issuer material.
+  source:
+    url: https://bank.indusind.bank.in/in/en/personal/cards/credit-card/indulge-credit-card.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
 application:
-  apply_url: null
-
+  apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/indulge-credit-card.html
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [invite-only, super-premium, metal, lounge, golf, points]
+  last_verified_on: 2026-10-26
+  tags:
+  - invite-only
+  - super-premium
+  - metal
+  - lounge
+  - golf
+  - points

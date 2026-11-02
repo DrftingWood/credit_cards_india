@@ -1,0 +1,21 @@
+# BOBCARD Scapia issuer evidence extract (26 Oct 2026)
+
+Reviewed the current [BOBCARD Scapia product page](https://www.bobcard.co.in/credit-card-types/bobcard-scapia-credit-card), Scapia-specific BOBCARD [MITC](https://media.bobcard.co.in/media/wldj0y5t/bobcard-scapia-mitc-1.pdf), [KFS](https://media.bobcard.co.in/media/gj3mfwnu/bobcard-scapia-kfs-1.pdf), and [cardholder agreement](https://media.bobcard.co.in/media/atehw542/bobcard-scapia-tc.pdf). Captures are archived in this directory. The current agreement/product page do not state an effective date for the modeled terms; YAML date boundaries record the 26-Oct-2026 verification snapshot, not a claimed issuer effective date.
+
+## Modeled facts
+
+- BOBCARD offers Visa and RuPay variants. Network and network tier are variant-specific and the record leaves the scalar network fields unknown. No issuer-supported exact launch date was found; the prior synthetic 2024-01-01 date was cleared.
+- Joining and annual fees are Nil; forex markup is 0%; revolving and cash advance finance is 3.75% monthly; cash withdrawal fee is 2.5% or INR500 minimum.
+- Visa variant earns 10 Scapia Coins per INR100 on eligible purchases of INR20 or more. RuPay variant earns 5 per INR100 on eligible offline, online and UPI purchases above INR500. Scapia app travel earns 20 per INR100 on either variant. BOBCARD cardholder terms convert 1 Reward to 1 Scapia Coin on statement date. The structured base uses the conservative RuPay rate because the card record cannot represent network-specific base earn and minimum transaction thresholds; Visa terms are stated in notes.
+- Coins are valued at 5 per INR1 for flights, hotel/stay, bus and other Scapia app services. They are closed-loop and cannot be redeemed as statement credit. Coins are valid for 36 months; inactivity over 365 days and account closure can cause forfeiture. Current BOBCARD terms allow coins to cover up to 100% of eligible Scapia app bookings and permit the value to change with one month's notice.
+- Rewards are excluded on money transfers, rent, cash withdrawals, EMI, forex, education/school fees, gift cards, credit-card repayments, crypto/digital assets, utilities, insurance, fuel/fuel surcharge and wallet loads. The product page additionally lists government, professional, real-estate and business services. Exact excluded MCCs are not published in these Scapia-specific terms; no MCC exclusions are asserted.
+- Unlimited domestic lounge access unlocks after INR20,000 spend in a billing cycle and requires monthly activity to retain eligibility. Access is generated through the Scapia app after billing, uses a QR code, and is cardholder-only. The issuer's terms say activation can take 3-5 working days after the billing date.
+- Domestic airport privileges provide Scapia Coins equal to eligible outlet spend, capped at 5,000 coins in Delhi, Mumbai, Bengaluru, Chennai, Kolkata and Hyderabad and 2,500 coins elsewhere. The product page separately lists international-terminal privileges up to INR2,000 for international Scapia app bookings above INR50,000.
+- Fuel surcharge waiver is 1% on fuel transactions up to INR5,000, capped at INR500/month. Fuel transactions do not earn rewards; monthly fuel spend over INR50,000 incurs a separate convenience fee. KFS also lists convenience fees for monthly utility spends above INR50,000 and for rent/wallet loads.
+- Current BOBCARD application guidelines list resident Indians aged 21-60, salaried or self-employed. Numeric income and credit-score thresholds are not published.
+
+## Modeling limits and source gaps
+
+- Visa/RuPay minimum transaction amounts and earning rates cannot both be represented as a single base. The model uses RuPay's lower rate and records Visa's rate and threshold in the reward notes.
+- Current Scapia-specific terms do not state a general reward-earning cap. No cap is encoded beyond the schema's `unlimited` published-cap value; the issuer retains discretion to change its loyalty program.
+- A current Q4 2026 BOBCARD lounge reminder PDF was archived for review, but it lists Eterna/Tiara/Varunah products and does not apply to Scapia; Scapia-specific lounge criteria are sourced from its own cardholder agreement and product page.

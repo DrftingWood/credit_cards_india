@@ -1,136 +1,310 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: bob-indian-navy-varunah
 name: Indian Navy VARUNAH Premium BOBCARD Credit Card
+image_path: /cards/bob/indian-navy-varunah.webp
 issuer: bob
 network: rupay
-network_tier: select
+network_tier: null
 tier: premium
 card_type: credit
 co_brand:
   partner: Indian Navy
   category: other
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 2499
-    annual_fee_inr: 2499
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-      conditions: "Annual fee reversed on ₹1,50,000 spend per anniversary year. Joining fee reversed on ₹25,000 spend in first 180 days."
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "For Indian Navy personnel. VARUNAH Premium variant."
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 2499
+  annual_fee_inr: 2499
+  fee_waiver:
+    spend_inr: 150000
+    cycle: annual
+    conditions: Annual fee reversed on INR 150,000 eligible spend in the card anniversary
+      year. Joining fee is reversed after INR 25,000 spend within 180 days. Both reversals
+      require the account to be non-delinquent; joining-fee reversal appears in the
+      fourth bill statement.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Premium variant for designated Indian Navy sailors/officers and veterans.
+    Do not apply these premium terms to Varunah or Varunah Plus.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current product page confirms INR 2,499 joining/annual fees, 2% forex,
+      joining-fee reversal on INR 25,000 spend within 180 days and annual-fee reversal
+      at INR 150,000 per card anniversary year, subject to non-delinquent status.
+      January-2026 MITC confirms 3.75% monthly finance and 2.5%/INR 500 cash advance.
+      Finance charge change from the prior 3.49% record is corrected. Launch date
+      and RuPay tier are not established.
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: travel-online-dining-international
-        canonical_categories: [travel, online, dining, international]
-        multiplier: 5
-        effective_rate: 15
-        cap_per_cycle: 5000
-        cap_unit: points
-        cycle: statement
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: BOBCARD Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 3
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: travel-online-dining-international
+    canonical_categories:
+    - travel
+    - online
+    - dining
+    - international
+    multiplier: 5
+    effective_rate: 15
+    cap_per_cycle: 2500
+    cap_unit: points
+    cycle: statement
+    notes: 15 total points per INR 100 on eligible travel, online, dining and international
+      transactions; 2,500 accelerated-point cap per statement, then base earn of 3
+      points per INR 100. Online/international flags and qualifying MCCs depend on
+      merchant acquirer reporting; MCC 4900 utility is not accelerated.
+  - category: flights
+    canonical_categories:
+    - travel
+    multiplier: 4
+    effective_rate: 12
+    notes: 'SmartDeal portal earn: 12 points per INR 100 for flight bookings through
+      the logged-in BOBCARD app/portal, after fulfilment; not general flight spend.'
+  - category: hotels
+    canonical_categories:
+    - travel
+    multiplier: 10
+    effective_rate: 30
+    notes: 'SmartDeal portal earn: 30 points per INR 100 for hotel bookings through
+      the logged-in BOBCARD app/portal, after fulfilment; not general hotel spend.'
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - education
+  - insurance-premiums
+  - road-fees-and-tolls
+  - bridge-fees
+  - other
+  mcc_exclusions:
+  - '0763'
+  - '0780'
+  - '0820'
+  - '0821'
+  - '0822'
+  - '0823'
+  - '0824'
+  - '0825'
+  - '1520'
+  - '1711'
+  - '1731'
+  - '1740'
+  - '1750'
+  - '1761'
+  - '1771'
+  - '1799'
+  - '4111'
+  - '4112'
+  - '4131'
+  - '4784'
+  - '4789'
+  - '6513'
+  - '7349'
+  - '7211'
+  - '7230'
+  - '7276'
+  - '8111'
+  - '8641'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8011'
+  - '8062'
+  - '6539'
+  - '6540'
+  - '6541'
+  - '6542'
+  - '6543'
+  - '5261'
+  - '5331'
+  - '5411'
+  - '5499'
+  - '5960'
+  - '6300'
+  - '8398'
+  - '8661'
+  - '5814'
+  redemption:
+  - type: statement-credit
+    program: BOBCARD Rewards
+    rate_inr_per_unit: 0.25
+    constraints: Statement cashback redemption requires at least 1,000 points. Points
+      expire two years after accrual; other forfeiture conditions apply.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cycle
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Current product page confirms 3 core points/INR 100, 15 total points/INR
+      100 on travel, online, dining and international spend, 2,500 accelerated-point
+      cap per statement (base thereafter), INR 0.25 cashback and full reward exclusions.
+      UPI earns core only. Shared BOBCARD feature terms (local Apr-2026 issuer PDF)
+      list SmartDeal rates of 12 points/INR 100 flights and 30/INR 100 hotels, posted
+      after journey fulfilment. Reward points expire after two years; statement cashback
+      minimum is 1,000 points. Full Annexure 1 exclusions are included. MCC4900 is
+      excluded from accelerator only.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 0
-        via: [rupay]
-    welcome:
-      - condition: "Spend ₹5,000 or more within 60 days of issuance"
-        benefit: "500 bonus reward points"
-        value_inr: 125
-        window_days: 60
-    milestones:
-      - spend_inr: 100000
-        cycle: annual
-        benefit: "12 months Amazon Prime membership"
-        value_inr: 1499
-        reward_kind: other
-        trigger_window: first-year
-        is_repeatable: false
-    insurance:
-      - type: personal-accident
-        sum_insured_inr: 10000000
-        conditions: "Air accidental death cover."
-      - type: personal-accident
-        sum_insured_inr: 1000000
-        conditions: "Non-air (incl. sea) accidental death cover."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    other:
-      - name: Add-on cards
-        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
-    concierge: true
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: quarterly
+      guests_per_visit: null
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      via:
+      - rupay
+      notes: Unlimited domestic lounge access after INR 75,000 net eligible spend
+        in the preceding calendar quarter, effective 15-Jul-2026. New-card issue-quarter
+        waiver applies under shared BOBCARD lounge terms; upgrade waiver is not available.
+  welcome:
+  - condition: Spend INR 5,000 or more within 60 days of issuance
+    benefit: 500 bonus BOBCARD Reward Points
+    value_inr: 125
+    window_days: 60
+  milestones:
+  - spend_inr: 100000
+    cycle: annual
+    benefit: 12-month Amazon Prime membership after at least INR 100,000 spend within
+      90 days of issuance; activation code is delivered after milestone and time limited.
+    reward_kind: other
+    trigger_window: first-year
+    is_repeatable: false
+  insurance:
+  - type: air-accident
+    sum_insured_inr: 10000000
+    conditions: Air accidental-death cover; product page states INR 1 crore. Full
+      insurance policy terms apply.
+  - type: personal-accident
+    sum_insured_inr: 1000000
+    conditions: Non-air accidental-death cover, including sea accidents; product page
+      states INR 10 lakh. Full policy terms apply.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+    notes: 1% waiver on INR 400-5,000 fuel transactions up to INR 250 per statement;
+      GST on surcharge is not reversed. Fuel earns no points.
+  other:
+  - name: FITPASS PRO
+    description: 12-month membership for primary cards issued on or after 1-Aug-2026;
+      code is sent to registered email within 30 days.
+  - name: Smart EMI
+    description: Eligible purchases above INR 2,500 may be converted to 6-48 month
+      EMIs; charges apply.
+  - name: Add-on cards
+    description: Up to three lifetime-free add-on cards for spouse, parents, siblings
+      or children above 18.
+  - name: Lost-card liability
+    description: Issuer advertises zero liability on fraudulent transactions if loss
+      is reported immediately; detailed terms apply.
+  - name: Contactless payments
+    description: Contactless card capability is advertised by BOBCARD; network transaction
+      limits apply.
+  concierge: true
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.welcome
+    - benefits.milestones
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.other
+    notes: Current product page confirms 12 months Prime on INR 100,000 spend within
+      90 days, 500-point welcome, unlimited domestic lounges (with INR 75,000 prior-quarter
+      net spend effective 15-Jul-2026), 2,500-point reward cap, 1% fuel waiver, INR
+      1 crore air and INR 10 lakh non-air/sea accident cover, FITPASS issue-date gate,
+      add-ons and Smart EMI. Shared lounge terms confirm fresh-card issue-quarter
+      waiver and exclusion for upgrades. Lounge guest rules/list and full insurer
+      conditions are not established.
 eligibility:
   min_age: 18
-  max_age: 65
+  max_age: 70
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
-  residency: resident-indian
-  notes: "Designated personnel of the Indian Navy."
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Premium card is for designated Indian Navy sailors/officers and Navy veterans.
+    Issuer product page states primary-cardholder age 18-70 and add-on cardholders
+    above 18. Numeric income and bureau-score cutoffs are unpublished. Product page
+    does not state residency; universal application includes multiple nationality
+    choices, while generic BOBCARD guidelines say resident Indian, so card-specific
+    residency remains unclear.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    notes: Current page gives designated Navy personnel/veterans and primary age 18-70.
+      No numeric income or bureau-score minimum found. Card-specific residency requirement
+      not stated.
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/indian-navy-varunah
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, defense, travel, lounge, co-brand]
+  last_verified_on: '2026-10-26'
+  tags:
+  - premium
+  - points
+  - defense
+  - travel
+  - lounge
+  - co-brand

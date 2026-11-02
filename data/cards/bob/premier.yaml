@@ -1,119 +1,242 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: bob-premier
+﻿id: bob-premier
 name: BOBCARD Premier Credit Card
+image_path: /cards/bob/premier.webp
 issuer: bob
 network: visa
-network_tier: platinum
+network_tier: null
 tier: mid
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2020-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2020-01-01
-    effective_until: null
-    joining_fee_inr: 1000
-    annual_fee_inr: 1000
-    fee_waiver:
-      spend_inr: 120000
-      cycle: annual
-      conditions: "Annual fee waived on ₹1,20,000 spend per anniversary year. Joining fee waived on ₹10,000 spend in first 60 days. Limited-period lifetime-free offer also running."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/premier
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-09-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 120000
+    cycle: annual
+    conditions: NIL joining and first-year fee from 1-Sep-2026. From the second year onward the INR 1,000 annual fee is waived at INR 120,000 eligible spend in the preceding card anniversary year; non-delinquent accounts only.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/premier
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    notes: NIL joining and first-year fee applies from 1-Sep-2026. From year two, INR 1,000 annual fee is waived after INR 120,000 eligible spend in the prior anniversary year for non-delinquent accounts. BOBCARD MITC lists 3.75% monthly finance charge for cards other than Eterna/Tiara.
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2020-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: travel-international-dining
-        canonical_categories: [travel, international, dining]
-        multiplier: 5
-        effective_rate: 10
-        cap_per_cycle: 2000
-        cap_unit: points
-        cycle: statement
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: BOBCARD Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/premier
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2025-10-31
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: travel-international-dining
+    canonical_categories:
+    - travel
+    - international
+    - dining
+    multiplier: 5
+    effective_rate: 10
+    cap_per_cycle: 2000
+    cap_unit: points
+    cycle: statement
+    notes: 10 Reward Points per INR 100 on eligible travel MCC 4722, dining MCC 5812 and international-flag transactions; capped at 2,000 points per statement, after which qualifying spend earns the 2-point core rate.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - government
+  - education
+  - bridge-fees
+  - road-fees-and-tolls
+  - other
+  mcc_exclusions:
+  - '6513'
+  - '0763'
+  - '0780'
+  - '0820'
+  - '0821'
+  - '0822'
+  - '0823'
+  - '0824'
+  - '0825'
+  - '1520'
+  - '1711'
+  - '1731'
+  - '1740'
+  - '1750'
+  - '1761'
+  - '1771'
+  - '1799'
+  - '4111'
+  - '4112'
+  - '4131'
+  - '4784'
+  - '4789'
+  - '7349'
+  - '7211'
+  - '7230'
+  - '7276'
+  - '8111'
+  - '8641'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8011'
+  - '8062'
+  - '6539'
+  - '6540'
+  - '6541'
+  - '6542'
+  - '6543'
+  - '5261'
+  - '5331'
+  - '5411'
+  - '5499'
+  - '5960'
+  - '6300'
+  - '8398'
+  - '8661'
+  - '5814'
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/premier
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.mcc_exclusions
+    - rewards.exclusions
+    - rewards.redemption.rate_inr_per_unit
+    notes: Eterna/Tiara are the BOBCARD evergreen-point exceptions; Premier points otherwise expire after 24 months, subject to account-status and other forfeiture terms. The Annexure 1 MCC exclusions apply to core and accelerated rewards. Cashback redemption is INR 0.25 per point.
 benefits:
-  - effective_from: 2020-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-    welcome:
-      - condition: "Spend ₹5,000 or more within 60 days of issuance"
-        benefit: "500 bonus reward points"
-        value_inr: 125
-        window_days: 60
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    other:
-      - name: Add-on cards
-        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
-    concierge: false
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/premier
-      retrieved_on: 2026-07-03
-
+- effective_from: 2025-01-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - visa
+  welcome:
+  - condition: Spend at least INR 5,000 within 60 days of issuance for 500 bonus Reward Points; settled eligible spend is counted.
+    benefit: 500 bonus reward points
+    value_inr: 125
+    window_days: 60
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: Add-on cards
+    description: Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids above age 18.
+  - name: BOBCARD SmartDeal flight rewards
+    description: Additional 8 reward points per ₹100 for eligible flight bookings in the logged-in BOBCARD app/portal.
+  - name: BOBCARD SmartDeal hotel rewards
+    description: Additional 20 reward points per ₹100 for eligible hotel bookings in the logged-in BOBCARD app/portal.
+  - name: Smart EMI
+    description: Purchases above ₹2,500 can be converted to Smart EMI for 6–48 months; applicable charges are not
+      stated on the Premier product page.
+  - name: Contactless payments
+    description: Contactless-enabled card; issuer advertises wireless-chip payments.
+  - name: Lost-card zero liability
+    description: The issuer advertises zero liability for fraudulent transactions when card loss is reported immediately; subject to issuer reporting and claim terms.
+  concierge: false
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/premier
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.other
+    notes: Premier offers one domestic lounge visit per quarter after ₹20,000 net eligible spend in the previous
+      calendar quarter; fresh cards receive a temporary waiver for the issuance quarter and, when issued in the
+      last month, the following quarter. Upgrades do not receive this waiver.
 eligibility:
   min_age: 25
   max_age: 55
   income_inr_annual:
     salaried: 720000
     self_employed: 720000
-  credit_score_min: 720
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Current issuer page lists resident India, age 25–55 (lower/higher limits may be allowed at discretion),
+    and salaried/self-employed net annual income greater than ₹720,000. No card-specific score minimum is
+    published. The issuer application form (https://media.bobcard.co.in/media/isqiuclw/bobcards_universal-application-form_14oct2024_15k.pdf)
+    lists both Visa Premier and RuPay Premier; this record represents Visa, and a RuPay variant is not separately
+    modeled. The available issuer sources do not establish a Visa tier.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/premier
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/premier
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, travel, dining]
+  last_verified_on: 2026-10-26
+  tags:
+  - mid
+  - points
+  - travel
+  - dining

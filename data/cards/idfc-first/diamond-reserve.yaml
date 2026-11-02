@@ -1,131 +1,393 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: idfc-first-diamond-reserve
 name: IDFC FIRST Diamond Reserve Credit Card
+image_path: /cards/idfc-first/diamond-reserve.webp
 issuer: idfc-first
 network: visa
-network_tier: signature
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2025-01-01
+launched_on: 2026-01-06
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-01-01
-    effective_until: null
-    joining_fee_inr: 3000
-    annual_fee_inr: 3000
-    fee_waiver:
-      spend_inr: 600000
-      cycle: annual
-      conditions: "Annual fee waived on ₹6,00,000 annual spend."
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Premium zero-forex travel card; joining fee payable upfront."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-01-06
+  effective_until: null
+  joining_fee_inr: 3000
+  annual_fee_inr: 3000
+  fee_waiver:
+    spend_inr: 600000
+    cycle: annual
+    conditions: Annual fee waived at INR 6 lakh annual spend.
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: null
+  cash_advance_fee:
+    flat_inr: 199
+  gst_applicable: true
+  notes: >-
+    Current issuer terms show INR 3,000 + GST joining and annual fees, with annual-fee
+    waiver at INR 6 lakh annual spends. The issuer's product announcement says zero
+    forex markup; its current product page also says zero markup. Finance charges
+    are dynamic, with an issuer-published range of 8.5%-42% p.a.; the exact
+    cardholder rate is not published here. ATM cash advance fee is flat INR 199 +
+    GST per transaction irrespective of amount/location; the issuer FAQ says ATM
+    withdrawals have up to 45 interest-free days and a INR 10,000 per-transaction
+    limit. Add-on card
+    fee INR 499 + GST, UPI fee INR 199 + GST, and replacement fee INR 199 + GST are
+    listed separately by the issuer and are retained in notes because the schema
+    only represents core-card joining/annual fees.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.flat_inr
+    local_refs:
+    - docs/sources/idfc-first/diamond-reserve/diamond-reserve-launch-2026-01-06.pdf
+    - docs/sources/idfc-first/diamond-reserve/diamond-reserve-privileges-2026-06-18.pdf
+    - docs/sources/idfc-first/diamond-reserve/current-customer-mitc.pdf
+    notes: >-
+      Current fee and add-on details are on the product page. Diamond Reserve launched
+      on 6-Jan-2026 already with zero forex. The zero-forex and cash-advance terms also
+      appear in the issuer launch announcement:
+      https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/news-media/press-release/Press-Release-Diamond-Reserve-Credit-Card.pdf
 rewards:
-  - effective_from: 2025-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: travel-app-bookings
-        canonical_categories: [travel]
-        multiplier: 1
-        effective_rate: 3
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Base 3X reward points (up to ~1.67% value back). Bonus 20% RP on hotels / 10% on flights via IDFC FIRST app."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
+- effective_from: 2026-06-18
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 150
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+    notes: >-
+      One point is valued at INR 0.25. The ordinary tier is 3 points per INR 150
+      for eligible spends up to INR 20,000 in a monthly statement cycle and 10
+      points per INR 150 on eligible incremental spends above INR 20,000. Reward
+      accrual is limited to the assigned credit limit. Current product terms
+      separately give 1 point per INR 150 for transactions up to INR 2,000 and 3
+      points per INR 150 above INR 2,000 on the linked FIRST Digital Credit Card;
+      do not conflate that UPI-linked product term with the regular card earn.
+  accelerated:
+  - category: eligible-incremental-spend-above-20000
+    canonical_categories:
+    - other
+    multiplier: 10
+    effective_rate: 10
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
     source:
-      url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Diamond-Reserve-Terms%26Conditions.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: >-
+      Applies to eligible incremental spends above INR 20,000 per monthly statement
+      cycle. Birthday transactions also earn 10X per current issuer FAQ. The schema
+      cannot express either the incremental threshold or birthday window exactly.
+  - category: eligible-general-spend-up-to-threshold
+    canonical_categories:
+    - online
+    - groceries
+    - entertainment
+    - other
+    multiplier: 3
+    effective_rate: 3
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Diamond-Reserve-Terms%26Conditions.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: Eligible general spends up to INR 20,000 in the monthly statement cycle.
+  - category: rent-government-wallet-education
+    canonical_categories:
+    - rent
+    - government
+    - wallet-loads
+    - education
+    effective_rate: 3
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Diamond-Reserve-Terms%26Conditions.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: Earn 3 points per INR 150 and do not count toward the 10X spend threshold.
+  - category: insurance-utilities-railway-fastag
+    canonical_categories:
+    - insurance
+    - utilities
+    - other
+    effective_rate: 1
+    effective_per_inr: 150
+    cap_status: not-published
+    cap_unit: points
+    source:
+      url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Diamond-Reserve-Terms%26Conditions.pdf
+      retrieved_on: 2026-10-27
+      type: issuer-pdf
+      confidence: high
+      fields_verified:
+      - rewards.accelerated.effective_rate
+      - rewards.accelerated.effective_per_inr
+    notes: Earn 1 point per INR 150 and do not count toward the 10X spend threshold.
+  exclusions:
+  - international
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions: []
+  redemption:
+  - type: other
+    program: IDFC FIRST Rewards
+    rate_inr_per_unit: 0.25
+    fee_inr: 99
+    constraints: INR 99 + GST redemption fee; points may be used toward eligible online and in-store payments.
+  source:
+    url: https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Diamond-Reserve-Terms%26Conditions.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    local_refs:
+    - docs/sources/idfc-first/diamond-reserve/diamond-reserve-privileges-2026-06-18.pdf
+    - docs/sources/idfc-first/diamond-reserve/diamond-reserve-may-2026-communication.pdf
+    - docs/sources/idfc-first/diamond-reserve/revised-international-rewards-notice-2026-09-13.pdf
+    notes: >-
+      The current Diamond Reserve FAQ and June-2026 card terms explicitly exclude
+      international spends from rewards. IDFC's revised 13-Sep bank-wide notice says
+      international rewards continue as applicable for each card, creating an
+      unresolved broad-versus-card-specific conflict; this record follows the
+      specific Diamond terms. Birthday 10X wording and redemption fee also appear
+      in the current FAQ. App-booking bonuses are not scored: the May-2026 notice and
+      live product page describe 20%/10% percentage bonuses, while detailed terms
+      give 30/15 bonus points per INR150 and an 8,000 monthly cap; the terms' flight
+      illustration is inconsistent with the rate table.
 benefits:
-  - effective_from: 2025-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-      international:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [priority-pass, loungekey]
-    welcome:
-      - condition: "Joining fee payment (limited period)"
-        benefit: "100% cashback up to ₹200 on joining fee"
-        value_inr: 200
-        window_days: 30
-    insurance:
-      - type: trip-delay
-        sum_insured_inr: 25000
-        conditions: "Reimbursement for non-refundable flight & hotel cancellations, up to ₹25,000."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    other:
-      - name: Railway lounge access
-        description: "Complimentary railway lounge access."
-      - name: Golf/spa privilege
-        description: "1 complimentary service a year and 10% off on the rest."
-    concierge: true
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-06-18
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - visa
+      - dreamfolks
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      notes: >-
+        Two visits at Indian airport terminals (domestic and international terminals
+        within India) per quarter, unlocked by at least INR 20,000 eligible spend in
+        the current calendar month for access in the following month. Primary and
+        add-on cards share the quota; guests/additional services may be charged.
+    international:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      notes: >-
+        Two visits per quarter at select global airport terminals, with the same
+        monthly spend gate and shared primary/add-on quota. Guests/additional services
+        may be charged.
+  insurance:
+  - type: other
+    sum_insured_inr: null
+    conditions: >-
+      Issuer currently advertises trip cancellation cover up to INR 25,000/year,
+      but the linked card-specific policy ended 7-May-2026. No replacement active
+      policy was located in this review, so current coverage is unresolved and this
+      amount is not treated as confirmed active insurance.
+  - type: air-accident
+    sum_insured_inr: 10000000
+    conditions: >-
+      INR 1 crore personal air accident cover. Ticket must be bought using the
+      covered card, and the card must have had at least one purchase or ATM
+      withdrawal in the prior 30 days; policy terms/exclusions apply.
+  - type: personal-accident
+    sum_insured_inr: 500000
+    conditions: >-
+      INR 5 lakh personal accident cover in the Aug-2026 insurer schedule; the Jan-2026
+      launch announcement advertised INR10 lakh. The later schedule supersedes that
+      amount. At least one purchase or ATM withdrawal
+      in the prior 30 days is required; the claim is payable once across the
+      cardholder's IDFC FIRST cards.
+  - type: credit-shield
+    sum_insured_inr: 50000
+    conditions: >-
+      INR 50,000 cover for eligible card debits following accidental death. The
+      card must have had at least one purchase or ATM withdrawal in the prior
+      30 days; detailed insurer terms apply.
+  - type: lost-card-liability
+    sum_insured_inr: 50000
+    conditions: >-
+      INR 50,000 card liability cover including lost card, counterfeit/skimming,
+      phishing and online fraud. Active-card requirement and detailed terms apply.
+  - type: purchase-protection
+    sum_insured_inr: 50000
+    coverage_duration_days: 60
+    conditions: >-
+      INR 50,000 purchase protection for fire/allied perils and burglary at the
+      cardholder's recorded residence. Purchases must be made on the card and it
+      must have been used at least once in the prior 30 days; detailed conditions apply.
+  - type: baggage-loss
+    sum_insured_inr: null
+    sum_insured_amount: 500
+    sum_insured_currency: USD
+    conditions: >-
+      Loss of checked-in baggage; travel ticket must be purchased using the covered
+      card and active-card requirements apply.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: Flight delay cover; travel ticket must be purchased using covered card.
+  - type: trip-delay
+    sum_insured_inr: null
+    sum_insured_amount: 100
+    sum_insured_currency: USD
+    conditions: Checked-in baggage delay cover; travel ticket must be purchased using covered card.
+  - type: other
+    sum_insured_inr: null
+    sum_insured_amount: 300
+    sum_insured_currency: USD
+    conditions: Loss of passport and other travel documents; ticket must be purchased using covered card.
+  fuel_surcharge_waiver:
+    pct: 1
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 300
+    cycle: monthly
+  movies:
+    type: bogo
+    partner: District by Zomato
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 250
+    notes: >-
+      Twice per calendar month; up to INR 250 off the second ticket per transaction,
+      INR 500 monthly maximum. Spend INR 20,000 in the current calendar month to
+      unlock next-month use.
+  welcome:
+  - condition: Joining fee paid; active primary card; claim through IDFC FIRST app; merchant-specific terms apply
+    benefit: Multiple claim-based brand offers advertised by issuer as worth over INR 5,000
+    value_inr: null
+    window_days: null
+  concierge: true
+  other:
+  - name: Railway lounge access
+    description: >-
+      Four complimentary participating Indian railway lounge visits per quarter,
+      shared by primary and add-on cards. At least INR 20,000 eligible spend in the
+      current calendar month unlocks next-month access; a valid train ticket is required.
+    value_inr: null
+  - name: Roadside assistance
+    description: >-
+      Complimentary roadside assistance up to four times per year for active cards;
+      issuer-stated value INR 1,399; exclusions and conditions apply.
+    value_inr: 1399
+  - name: Airport meet and greet
+    description: Issuer launch announcement lists one complimentary service annually subject to annual-spend qualification; current full terms need confirmation.
+    value_inr: null
+  - name: Golf
+    description: >-
+      Up to two complimentary golf rounds or golf lessons monthly: first after
+      INR 20,000 fresh statement spend, second after INR 40,000. Benefit appears
+      next month and expires after 60 days. The terms do not guarantee two rounds
+      and two lessons independently.
+    value_inr: null
+  - name: Hotel privileges
+    description: >-
+      Current card page advertises hotel partner privileges, including third-night
+      offers and 900+ luxury hotel benefits. Current partner-specific eligibility,
+      rates and offer periods vary; verify at booking.
+    value_inr: null
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.lounge_access.international.spend_threshold_inr
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver
+    - benefits.movies
+    - benefits.welcome
+    local_refs:
+    - docs/sources/idfc-first/diamond-reserve/diamond-reserve-privileges-2026-06-18.pdf
+    - docs/sources/idfc-first/diamond-reserve/diamond-reserve-may-2026-communication.pdf
+    - docs/sources/idfc-first/diamond-reserve/diamond-reserve-product-guide-2025-12-12.pdf
+    - docs/sources/idfc-first/diamond-reserve/insurance-privileges-2026-08-31.pdf
+    notes: >-
+      The current insurer schedule (Aug-2026) sets Diamond Reserve personal accident
+      cover at INR500,000, superseding the INR1,000,000 figure in the Jan-2026 launch
+      release; the schedule also supports the listed baggage, delay, air-accident,
+      lost-card and purchase-protection covers. The June-2026 privileges document
+      contains a CFAR policy that ended 7-May-2026; the current product page and
+      May-2026 communication continue to advertise cover, but no replacement policy
+      period was found, so active CFAR remains unresolved. Detailed card-specific
+      benefits are in the linked privileges document:
+      https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Diamond-Reserve-Terms%26Conditions.pdf
+      The issuer's general insurance page also confirms credit-shield cover, while
+      the archived card-specific schedule supplies the INR50,000 limit.
 eligibility:
   min_age: 21
-  max_age: 60
+  max_age: null
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1200000
-  credit_score_min: 750
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/lounge-access-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+  notes: >-
+    The issuer's current general lounge-card eligibility page states age 21 or
+    older and a stable income source; it does not publish a Diamond-specific
+    numeric income or bureau-score threshold. No residence requirement was
+    verified: separate general guidance states Indian citizenship, which is not
+    equivalent to residence. Approval remains subject to bank underwriting.
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/diamond-reserve-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, travel, zero-forex, lounge]
+  last_verified_on: 2026-10-27
+  tags:
+  - premium
+  - points
+  - travel
+  - zero-forex
+  - lounge

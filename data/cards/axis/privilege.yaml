@@ -1,129 +1,186 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-privilege
 name: Axis Bank Privilege Credit Card
+image_path: /cards/axis/privilege.webp
 issuer: axis
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2010-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2010-01-01
-    effective_until: null
-    joining_fee_inr: 1500
-    annual_fee_inr: 1500
-    fee_waiver:
-      spend_inr: 500000
-      cycle: annual
-      conditions: "Annual fee waived on spends of ₹5 lakh in a card anniversary year."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/privilege-credit-card-with-unlimited-benefits
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-08-28
+  effective_until: null
+  joining_fee_inr: 1500
+  annual_fee_inr: 1500
+  fee_waiver:
+    spend_inr: 500000
+    cycle: annual
+    conditions: Annual fee reversed after INR 5 lakh eligible spend in the preceding card anniversary year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/privilege-credit-card-with-unlimited-benefits
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    - docs/sources/axis/privilege/sosc-credit-cards-retrieved-2026-10-27.pdf
+    - docs/sources/axis/privilege/mitc-credit-cards-retrieved-2026-10-27.pdf
+    - docs/sources/axis/privilege/privilege-revision-effective-2026-08-28.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: 'Standard joining and renewal fees are INR 1,500 (joining fee waived for Priority account holders per KFS); the issuer page separately advertises a limited-period INR 0 joining and renewal offer on the American Express network only. Annual fee is reversed at INR 500,000 eligible anniversary-year spend; utility/telecom, rent, wallet, government, insurance, gold/jewellery, fuel, education, gift-card and bridge/road/toll spends are excluded. From 28-Aug-2026, DCC is 3.5% plus taxes; foreign-currency transaction markup is 3.5%. Additional issuer-listed charges: cash payment INR 175; replacement/add-on cards nil; duplicate statement, charge-slip retrieval, outstation cheque, mobile alerts, hotlisting and balance enquiry waived; late fee nil below INR 500, INR 500 at INR 501-5,000, INR 750 at INR 5,001-10,000, INR 1,200 at INR 10,001-50,000, INR 1,300 above INR 50,000 (the exact INR 500 boundary is unspecified), plus INR 100 after two consecutive missed MAD cycles until cured; overlimit 2.5% (minimum INR 500); cheque return/auto-debit reversal 2% (minimum INR 500); railway surcharge as set by IRCTC; rent 1%; wallet 1% at INR 10,000/cycle; fuel 1% at INR 50,000/cycle; third-party education 1%; utility 1% at INR 25,000/cycle; online skill gaming 1% at INR 10,000/cycle. Reward redemption fee is marked Yes but no amount is published. The product page reports standard annual fee INR 1,500 and also lists Amex-network limited-time nil fees.'
 rewards:
-  - effective_from: 2010-01-01
-    effective_until: null
-    currency: points
-    currency_name: EDGE Reward Points
-    base:
-      rate: 10
-      per_inr: 200
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.18
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - government
-      - insurance-premiums
-      - utilities
-      - jewellery
-      - education
-    redemption:
-      - type: catalog
-        program: EDGE Rewards
-        rate_inr_per_unit: 0.2
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/privilege-credit-card-with-unlimited-benefits
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
+- effective_from: 2026-08-28
+  effective_until: null
+  currency: points
+  currency_name: EDGE Reward Points
+  base:
+    rate: 10
+    per_inr: 200
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - insurance-premiums
+  - utilities
+  - telecom
+  - jewellery
+  - education
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
+  redemption:
+  - type: catalog
+    program: EDGE Rewards
+    rate_inr_per_unit: null
+    constraints: Redeemable through the changing EDGE Rewards catalogue; no universal cash conversion is published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/privilege-credit-card-with-unlimited-benefits
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    local_refs:
+    - docs/sources/axis/privilege/privilege-revision-effective-2025-06-20.pdf
+    - docs/sources/axis/privilege/privilege-revision-effective-2026-08-28.pdf
+  notes: 'Issuer terms effective 20-Jun-2025 define category-based exclusions for utility and telecom, rent, wallet, government services, insurance, gold and jewellery, fuel and education. The 28-Aug-2026 revision separately excludes gift-card purchases and bridge fees, road fees and tolls. EDGE points are debited for EMI conversions and not restored if the EMI transaction is cancelled. No universal point value is stated; fixed redemption values removed.'
 benefits:
-  - effective_from: 2010-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    milestones:
-      - spend_inr: 250000
-        cycle: annual
-        benefit: "Additional 10,000 EDGE Reward Points worth ₹2,000"
-        value_inr: 2000
-        reward_kind: points
-        reward_units: 10000
-        trigger_window: anniversary-year
-    movies:
-      type: bogo
-      partner: District
-      max_per_cycle: 1
-      cycle: monthly
-      cap_inr: 250
-      notes: "100% off (up to ₹250) on second movie ticket via District app, once per month on min purchase of two tickets."
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Shopping or Travel voucher on welcome"
-        value_inr: 2500
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 400
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/privilege-credit-card-with-unlimited-benefits
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-08-28
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      notes: Current general Axis domestic lounge program lists Privilege under Set A for 2 visits per quarter. Requires INR 50,000 eligible spend in the prior 3 calendar months; new-card issuance waives this gate for issue month and the next 3 calendar months. Free entry is for the cardholder only; guests are paid. The product-page linked Mastercard-specific PDF has expired, so lounge variants and provider/network treatment are not established for the Amex offer variant.
+  milestones:
+  - spend_inr: 250000
+    cycle: annual
+    benefit: Additional 10,000 EDGE Reward Points worth INR 2,000 on INR 250,000 anniversary-year eligible spend; primary and add-on card spend counts. Excludes Utility & Telecom, Rent, Wallet, Government, Insurance, Gold & Jewellery, Fuel, Education, Gift Cards, Bridge Fees, Road Fees and Tolls.
+    value_inr: 2000
+    reward_kind: points
+    reward_units: 10000
+    trigger_window: anniversary-year
+  movies:
+    type: bogo
+    partner: District
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 250
+    notes: 100% discount on the second ticket up to INR 250, minimum two tickets. From 01-Nov-2026, also requires INR 25,000 eligible settled spend in the preceding three months; new card issuance waives the threshold for issue month and following three calendar months.
+  welcome:
+  - condition: Joining fee levied and first transaction completed within 30 days of card issuance; free cards, first-year-free cards and priority-segment customers are excluded.
+    benefit: 12,500 EDGE Reward Points redeemable against vouchers, stated value INR 2,500
+    value_inr: 2500
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 400
+    cycle: statement
+    notes: Fuel surcharge refund on India fuel MCC transactions; surcharge tax is non-refundable and fuel earns no EDGE points.
+  dining:
+    program: Dining Delights
+    notes: Product page links to the Dining Delights program but gives no card-specific discount rate, cap, minimum spend or frequency; do not treat as a quantified benefit.
+  other:
+  - name: Purchase and travel protection
+    description: Product page lists purchase protection up to INR 1 lakh, credit shield INR 1 lakh, loss of travel documents up to USD 300, delayed check-in baggage up to USD 300 and lost check-in baggage up to USD 500; coverage terms are linked separately.
+    value_inr: null
+  - name: Wednesday Delight
+    description: Issuer page advertises changing Wednesday offers; current deals are time-sensitive.
+    value_inr: null
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/privilege-credit-card-with-unlimited-benefits
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/privilege/domestic-lounge-program-retrieved-2026-10-27.pdf
+    - docs/sources/axis/privilege/privilege-revision-effective-2025-06-20.pdf
+    - docs/sources/axis/privilege/privilege-revision-effective-2026-08-28.pdf
+    - docs/sources/axis/privilege/terms-and-conditions-for-axis-bank-privilege-credit-card.pdf
+    - docs/sources/axis/privilege/milestone-benefit-terms-retrieved-2026-10-27.pdf
+    - docs/sources/axis/privilege/insurance-terms-retrieved-2026-10-27.pdf
+    - docs/sources/axis/privilege/amex-network-offers-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.lounge_access.domestic.spend_threshold_cycle
+    - benefits.lounge_access.domestic.guests_per_visit
+    - benefits.milestones.0.spend_inr
+    - benefits.milestones.0.value_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 600000
-    self_employed: 600000
-  credit_score_min: 730
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Primary applicants age 18-70; Indian resident. The issuer page publishes no numerical income or credit-score threshold; eligibility criteria are indicative and approval is at the bank's discretion.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/privilege-credit-card-with-unlimited-benefits
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/privilege-credit-card-with-unlimited-benefits
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, travel, points]
+  last_verified_on: 2026-10-27
+  tags:
+  - premium
+  - travel
+  - points
+  - network-unverified
+  - network-tier-unverified

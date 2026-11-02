@@ -1,0 +1,137 @@
+﻿id: canara-visa-signature
+name: Canara Bank Visa Signature Credit Card
+image_path: /cards/canara/visa-signature.webp
+issuer: canara
+network: visa
+network_tier: signature
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.0
+  finance_charge_monthly_pct: 2.5
+  cash_advance_fee:
+    pct: 3.0
+    min_inr: 150
+  gst_applicable: true
+  source:
+    url: https://www.canarabank.bank.in/visa-signature-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Issuer lists nil joining and annual fees, forex markup up to 3%, unsecured finance charge 2.5% monthly and cash withdrawal fee 3% with INR150 minimum at Canara ATMs. INR1,000 inactivity fee applies if card-year turnover is below INR200,000; schema has no dedicated field. The date is the page retrieval/record observation date because actual term effective dates are not stated.
+rewards:
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  accelerated: []
+  exclusions: []
+  redemption:
+  - type: catalog
+    program: Canara Rewardz
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.canarabank.bank.in/visa-signature-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    notes: Current product page states 2 Reward Points per INR100 spent at POS/e-commerce and permits cashback or goods redemption through Canara Rewardz. The issuer user manual states INR0.25 per point, but current Rewardz redemption terms could not be inspected; realized value is unknown. Previous spend exclusions and MCC 6513 lacked current card-specific support and were removed.
+benefits:
+- effective_from: 2026-10-27
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 3
+      cycle: quarterly
+      guests_per_visit: null
+      via:
+      - visa
+      notes: Current issuer page states 3 domestic lounge visits per quarter; guest quota is not specified.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: null
+    cap_per_cycle_inr: 100
+    cycle: monthly
+    notes: Fuel reimbursement is capped at INR100 per billing month, requires at least INR2,500 in purchase transactions during the month, and fuel purchases must be at least INR400 each; reimbursement posts the following month.
+  concierge: null
+  insurance:
+  - type: fraud-liability
+    sum_insured_inr: 500000
+    conditions: Issuer page lists fraudulent charge cover up to INR5 lakh; detailed terms are not stated.
+  - type: purchase-protection
+    sum_insured_inr: 25000
+    conditions: Issuer page lists purchase protection up to INR25,000; detailed policy terms are not stated.
+  - type: baggage-loss
+    sum_insured_inr: 25000
+    conditions: Issuer page lists baggage insurance up to INR25,000; covered events and policy terms are not stated.
+  - type: air-accident
+    sum_insured_inr: 800000
+    conditions: Issuer page lists cover of INR8 lakh for self and INR4 lakh for spouse; detailed terms are not stated.
+  - type: personal-accident
+    sum_insured_inr: 400000
+    conditions: Issuer page lists cover of INR4 lakh for self and INR2 lakh for spouse for accidents other than air accidents; detailed terms are not stated.
+  source:
+    url: https://www.canarabank.bank.in/visa-signature-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.insurance.sum_insured_inr
+    notes: Issuer page publishes three domestic lounge visits each quarter, fuel reimbursement terms and insurance amounts. Guest lounge quota and international access are not stated on this card page. Fuel waiver conditions are described in the nested benefit field. No current product-page concierge claim found.
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: 1000000
+    self_employed: 1000000
+  credit_score_min: null
+  residency: null
+  notes: Issuer states minimum independent gross income of INR10 lakh per annum for individuals; separate thresholds by employment type are not published. Age, credit-score and residency criteria are not published on the product page.
+  source:
+    url: https://www.canarabank.bank.in/visa-signature-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+application:
+  apply_url: https://www.canarabank.bank.in/Credit-Cards
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - premium
+  - visa-signature
+  - lounge
+  - travel
+  - points

@@ -1,0 +1,25 @@
+# Airtel Axis Bank Credit Card ? issuer comparison (27 Oct 2026)
+
+## Sources checked
+
+- [Current Axis Airtel card page](https://www.axis.bank.in/cards/credit-card/airtel-axis-bank-credit-card): current category/rate summary, fee schedule, welcome offer, fuel waiver and eligibility. It announces another terms update effective 28 Aug 2026; the linked generic PDF is blocked (HTTP 403).
+- [Current card-specific cashback and value-back terms](https://www.axis.bank.in/docs/default-source/default-document-library/credit-cards/terms-and-conditions-for-cashback-for-airtel-axis-bank-credit-card.pdf?sfvrsn=3192829c_5), effective 12 Apr 2026: base/accelerator formulas, exclusions, cashback mechanics and separate partner-wallet value-back terms.
+- [12 Apr 2026 changes notice](https://www.axis.bank.in/docs/default-source/default-document-library/terms-and-conditions-for-airtel-cbcc-cvp.pdf): new base-linked caps, wallet value-back merchants, and end of complimentary lounge access.
+- [Axis MITC/Schedule of Charges](https://www.axis.bank.in/docs/default-source/credit-cards/terms-and-conditions/sosc-credit-cards.pdf): Airtel fee schedule and other common charges.
+- [Axis/Airtel launch announcement](https://www.axis.bank.in/about-us/press-releases/axis-bank-and-airtel-announce-partnership-to-bolster-indias-digital-ecosystem): dated 7 Mar 2022 and announces the card launch.
+
+## Field comparison and corrections
+
+- Corrected launch date from 1 Jan 2021 to 7 Mar 2022, the date Axis announced launch. Cleared Mastercard and Platinum network claims because current card-specific issuer pages do not state a network/network tier.
+- Confirmed joining/annual fee Rs 500, with annual fee from year two waived for annual spend strictly greater than Rs 200,000; rent MCC 6513 and wallet MCC 6540 are excluded from waiver spend. The schema records the numeric boundary but cannot express `>` distinctly from `>=`; notes now warn against counting exactly Rs 200,000 as qualifying. The card page announces an Aug 28, 2026 terms update, but its generic linked PDF returned HTTP 403, so any additional current fee-waiver exclusions are unresolved.
+- Confirmed 3.75% monthly finance charge, 3.5% forex markup and cash withdrawal fee of 2.5% (minimum Rs 500). The product page separately lists charges for rent, wallet loads, fuel, third-party education, utilities and online skill-based gaming. These transaction fees are not represented as structured fee rows; see page for thresholds and current rates.
+- Confirmed the Apr 12, 2026 reward design: 1% uncapped base cashback on eligible other spend; 25% Airtel Thanks Airtel telecom bills capped at 2x base cashback; 10% Airtel Thanks utility bills capped at 1x base cashback. Airtel bill category eligibility depends on active connections and issuer MID/VPA recognition; issuer reconciliation can take 90 days.
+- Confirmed 10% value back at Zomato, Blinkit and District Movies, up to Rs 200 per partner per calendar month, credited to partner wallets and not Axis cashback. Zomato/Blinkit have Rs 499 minimum order value; Ecom/app/website payment is required, UPI is ineligible, and wallet loads/gift cards are excluded. Existing reward records retain these offers in the rewards structure because no separate offer schema exists; consumers must not treat them as statement cashback.
+- Cashback exclusions in the accessible Apr 2026 terms include EMI and post-facto EMI, outstanding balance, fees/charges, cash advance/financial institutions, fuel, rent, wallet recharge, jewellery, insurance, education, government, utility/telecom outside Airtel Thanks, gift cards, bridge fees, road fees and tolls. The inaccessible Aug 2026 generic notice creates a freshness caveat for detailed exclusions.
+- Reconciled benefit removal: four complimentary domestic lounge visits ended effective 12 Apr 2026. Confirmed current welcome offer is an Amazon eVoucher worth Rs 250 on first transaction within 30 days; it is not available for cards issued without a joining fee. Fuel waiver is 1% on Rs 400-Rs 4,000 transactions, capped at Rs 500 per statement; surcharge GST is not refunded and fuel earns no cashback.
+- Confirmed published eligibility: primary applicant age 18-70 and Indian resident, both stated as indicative. Income documents may be requested but numerical income and credit-score thresholds are not published.
+- Cashback posting timing is inconsistent within the Apr 2026 issuer terms: one line says existing 60-day credit cycle, while detailed terms include next-billing-cycle timing; product page says statement credit. Record flags this rather than asserting one exact credit interval.
+
+## Scope note
+
+The current page announces an Aug 2026 update but the linked generic terms were inaccessible at review time. The overview therefore matches details against the latest readable card-specific April 2026 terms and visible current product-page claims. Seek the cardmember notice before treating detailed exclusions or timing as definitive. This field review is not a dataset-wide accuracy claim.

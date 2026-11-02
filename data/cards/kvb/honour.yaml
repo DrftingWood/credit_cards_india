@@ -1,16 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Aggregator consensus (BankBazaar + Card Insider, 2026) — the KVB
-#                issuer catalogue (kvb.bank.in/personal/cards/kvb-credit-cards/)
-#                currently lists only a generic "KVB Credit Card" plus KVB-SBI
-#                co-brands and does not expose an "Honour" product page/PDF.
-#   Verified   : 2026-07-04   Confidence: MEDIUM (aggregator, issuer page absent)
-#   Fee/earn corrected from two independent aggregators; NOT issuer-PDF confirmed.
-#   The Honour card may have been renamed/withdrawn on the .bank.in site — needs
-#   direct issuer re-confirmation.
-# ---------------------------------------------------------------------------
 id: kvb-honour
 name: KVB Honour Credit Card
+image_path: /cards/kvb/honour.webp
 issuer: kvb
 network: visa
 network_tier: signature
@@ -18,104 +8,136 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 1299
-    fee_waiver:
-      spend_inr: 500000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.25
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    source:
-      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
-      retrieved_on: 2026-07-05
-      type: aggregator
-      confidence: medium
-      notes: "Card confirmed still actively offered 2026-07-05 (live KVB product page kvb.bank.in/.../kvb-honour-credit-card/, Visa network) -- withdrawal concern (D2) refuted, status kept active. The Rs1,299 annual fee + 'Signature' sub-tier are not shown on the product page (fee lives on the separate charges schedule); retained at medium confidence pending that schedule."
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 999
+  fee_waiver:
+    spend_inr: 300000
+    cycle: annual
+    conditions: Waived when the previous year's spend exceeds INR300,000; current product page and Signature retail MITC use INR3 lakh.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.25
+  cash_advance_fee:
+    pct: 2.0
+    min_inr: 300
+  gst_applicable: true
+  notes: Current Honour page lists joining fee free, annual fee INR999, 3.25% monthly finance rate and cash withdrawal fee 2% or INR300, whichever is higher. Retail Signature MITC supports INR999 annual fee and INR3 lakh annual retail-spend waiver.
+  source:
+    url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-honour-credit-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/kvb/honour/retail-credit-card-mitc-2025-03-04.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].fee_waiver.spend_inr
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    - fees[0].gst_applicable
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: travel-hotel-air
-        canonical_categories: [travel]
-        multiplier: 1
-        effective_rate: 4
-        effective_per_inr: 150
-        notes: "4x reward points on hotel bookings and air tickets (domestic + international) per aggregator listings."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: KVB Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
-      retrieved_on: 2026-07-04
-      type: aggregator
-      confidence: medium
-      notes: "BankBazaar + Card Insider (2026): 3x reward points per Rs 150 base; 4x on hotel/air bookings; 700 bonus points on activation. Base earn was previously modelled as 2/Rs 100 — corrected."
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: KVB Reward Points
+  base:
+    rate: 3
+    per_inr: 150
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: Current card page lists 3 Reward Points for every INR150 spent. No current issuer value per point was found.
+  accelerated:
+  - category: domestic and international travel, hotels and air tickets
+    canonical_categories:
+    - travel
+    multiplier: 4
+    effective_rate: 12
+    effective_per_inr: 150
+    notes: Page hero states 4x rewards on domestic/international travel, hotels and air tickets but does not define base stacking or finer MCC scope.
+  - category: restaurants, medical, books, insurance, rail tickets, movie tickets and car rentals
+    canonical_categories:
+    - dining
+    - other
+    - entertainment
+    multiplier: 2
+    effective_rate: 6
+    effective_per_inr: 150
+    notes: Current feature list says 2x rewards on these categories; detailed eligible MCCs are not published on the page.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  redemption:
+  - type: catalog
+    program: KVB Rewards catalogue
+    rate_inr_per_unit: null
+    min_units: 2000
+    constraints: INR99 redemption fee per request. Minimum 2,000 points for first redemption and 250 points for subsequent redemption requests. Points lapse every three years or if MAD remains unpaid for over 60 days, per current card page.
+  source:
+    url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-honour-credit-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    local_refs:
+    - docs/sources/kvb/honour/retail-credit-card-mitc-2025-03-04.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].accelerated[0].effective_rate
+    - rewards[0].accelerated[1].effective_rate
+    - rewards[0].redemption[0].min_units
+  notes: Issuer page headline and feature bullets both advertise travel rewards but do not specify earning calculation or eligible MCCs; no fixed point-to-rupee value found. Reward redemption information is published on KVB's current card page; the general redemption page provides redemption channels but no conversion value.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-    welcome:
-      - condition: "Card activation"
-        benefit: "700 bonus reward points on activation"
-        value_inr: 175
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
-      retrieved_on: 2026-07-04
-      type: aggregator
-      confidence: medium
-      notes: "Aggregator listings; lounge/fuel are Visa Signature program-standard, not issuer-PDF confirmed."
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  welcome:
+  - condition: Card activation
+    benefit: 700 bonus Reward Points on card activation.
+    value_inr: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 200
+    cycle: statement
+  concierge: false
+  other:
+  - name: Domestic airport lounge access
+    description: Honour product page advertises four complimentary airport lounge accesses within India but does not state cadence, guest entitlement or a spend gate.
+  source:
+    url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-honour-credit-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.min_txn_inr
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
+  notes: Product page states 700 activation bonus points and 4 complimentary airport lounge accesses within India. It does not state lounge cadence or lounge guest terms; retain null rather than infer a Visa Signature standard. Fuel surcharge waiver is 1% on single transactions INR500-INR4,000, maximum INR200 per billing cycle.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 500000
-    self_employed: 500000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Numerical age, income and bureau score criteria and residency requirements are not specified on the current Honour page.
 application:
-  apply_url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/
-
+  apply_url: https://www.kvb.bank.in/personal/cards/kvb-credit-cards/kvb-credit-card/kvb-honour-credit-card/
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [premium, points, lounge, travel]
+  last_verified_on: '2026-10-27'
+  tags:
+  - premium
+  - points
+  - lounge
+  - travel

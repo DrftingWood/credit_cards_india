@@ -26,9 +26,11 @@ function effectivePctOf(a: AcceleratedReward, rewards: RewardRecord | null): num
   if (a.effective_rate != null) {
     if (unitValue == null) return 0;
     const perInr = a.effective_per_inr ?? rewards.base.per_inr;
+    if (perInr == null) return 0;
     return pointsToPct(a.effective_rate, perInr, unitValue);
   }
   if (a.multiplier != null) {
+    if (rewards.base.rate == null || rewards.base.per_inr == null) return 0;
     return pointsToPct(rewards.base.rate, rewards.base.per_inr, unitValue ?? 1) * a.multiplier;
   }
   return 0;
@@ -40,7 +42,8 @@ function effectivePctOf(a: AcceleratedReward, rewards: RewardRecord | null): num
  */
 export function formatAcceleratedRate(a: AcceleratedReward, rewards: RewardRecord | null): string {
   if (a.effective_rate == null) return `${a.multiplier}×`;
-  const perInr = a.effective_per_inr ?? rewards?.base.per_inr ?? 100;
+  const perInr = a.effective_per_inr ?? rewards?.base.per_inr;
+  if (perInr == null) return "Rate unavailable";
   if (!rewards || rewards.currency === "cashback") {
     // Cashback units are worth ₹1; route through pointsToPct so the
     // per_inr <= 0 guard applies (a YAML typo must not render "Infinity%").
@@ -187,7 +190,8 @@ export function productDetails(card: EnrichedCard): string[] {
       }.`,
     );
   }
-  bullets.push(`Available on the ${networkName} network.`);
+  if (networkName) bullets.push(`Available on the ${networkName} network.`);
+  else bullets.push("The issuer has not stated the card's network variant.");
   const lounge = card.current_benefits?.lounge_access;
   if (lounge?.domestic || lounge?.international) {
     const parts: string[] = [];

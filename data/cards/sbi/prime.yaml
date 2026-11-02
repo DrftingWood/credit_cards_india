@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: sbi-prime
+﻿id: sbi-prime
 name: SBI Card PRIME
+image_path: /cards/sbi/prime.webp
 issuer: sbi
 network: visa
 network_tier: signature
@@ -18,123 +10,232 @@ co_brand: null
 status: active
 launched_on: 2016-09-01
 discontinued_on: null
-
 fees:
-  - effective_from: 2016-09-01
-    effective_until: null
-    joining_fee_inr: 2999
-    annual_fee_inr: 2999
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-25
+  effective_until: null
+  joining_fee_inr: 2999
+  annual_fee_inr: 2999
+  fee_waiver:
+    spend_inr: 300000
+    cycle: annual
+    conditions: Renewal fee waived on annual spends of INR 3 lakh or more in the preceding year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
+    retrieved_on: 2026-11-01
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current SBI PRIME page and live application flow state INR 2,999 joining and annual fees; current MITC
+      (https://www.sbicard.com/en/most-important-terms-and-conditions.page) gives INR 2,999 annual/renewal fee,
+      INR 3 lakh renewal waiver, 3.5% foreign-currency markup, unsecured finance charges up to 3.75% monthly, and
+      2.5%/INR 500 cash-advance fee. Issuer pages do not publish when the current fee schedule began; 2026-10-25
+      is the observation date.
 rewards:
-  - effective_from: 2016-09-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: dining-grocery-departmental-movies
-        canonical_categories: [groceries, dining, entertainment]
-        multiplier: 1
-        effective_rate: 10
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "10 Reward Points per ₹100 on Dining, Groceries, Departmental Stores and Movies."
-      - category: birthday-spend
-        multiplier: 1
-        effective_rate: 20
-        cap_per_cycle: 2000
-        cap_unit: points
-        cycle: annual
-        notes: "20x points on the birthday day, capped 2,000 points."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-      - type: catalog
-        program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
+- effective_from: 2026-10-25
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  accelerated:
+  - category: dining-grocery-departmental-movies
+    canonical_categories:
+    - groceries
+    - dining
+    - entertainment
+    multiplier: 1
+    effective_rate: 10
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: monthly
+    over_cap_earns_base: true
+    notes: Total 10 points per INR 100 (including 2 base points) for dining MCC 5812/5813/5814, departmental stores
+      MCC 5311, grocery/supermarkets MCC 5411 and movie theatres MCC 7832. Cardholder terms cap accelerated points
+      at 7,500 per calendar month; after that, base 2 points per INR 100 continue on these eligible purchases.
+  - category: birthday-spend
+    canonical_categories: []
+    multiplier: 1
+    effective_rate: null
+    cap_unit: points
+    cycle: annual
+    notes: Issuer page advertises total 20 points per INR 100 for eligible purchases on the day before, day of and
+      day after the primary cardholder birthday, with 2,000 points per calendar year cap. Current PRIME cardholder
+      booklet states a 1,800-point annual cap. No birthday rate or cap is used in estimates until SBI resolves this
+      conflict; the spend profile also has no birthday-date/channel input.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - cash-advance
+  - emi
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/rewards/sbi-card-prime/prime-tnc-booklet-combined.pdf
+    retrieved_on: 2026-11-01
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cap_unit
+    - rewards.accelerated.cycle
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.mcc_exclusions
+    notes: Current PRIME-specific issuer booklet supports 2 points/INR 100 base, total 10/INR 100 in dining, grocery,
+      departmental and movie MCCs, the 7,500-point calendar-month accelerator cap, and the fuel/wallet exclusions.
+      The live PRIME page (https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html) gives 4 points
+      = INR 1 on outstanding-bill redemption and currently advertises a birthday cap of 2,000, conflicting with
+      the booklet 1,800 cap. Current MITC (https://www.sbicard.com/en/most-important-terms-and-conditions.page)
+      supplies general 24-month points validity and applicable INR 99 + tax statement-credit redemption fee. The
+      source does not state effective commencement dates; 2026-10-25 is the observation date.
+  mcc_exclusions:
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '6540'
+  - '6541'
+  capping_rules:
+  - The dining, departmental, grocery and movie accelerator is 10 total points per INR 100 and has a shared 7,500-point-per-calendar-month
+    accelerated-points cap. After this cap, eligible transactions continue to earn 2 base points per INR 100.
+  - Birthday earn is 20 total points per INR 100 over three days (birthday minus one day through plus one day);
+    no other accelerated points accrue during this period. The current product page says 2,000 points/year, while
+    the current cardholder booklet says 1,800; omitted from estimation pending issuer clarification.
+  - Utility standing instructions registered through SBI Card platforms earn 20 points per INR 100, capped at 3,000
+    points/month, but new autopay registrations on SBI Card platforms were discontinued from 1-Apr-2021. Only registrations
+    made by 31-Mar-2021 may continue; this conditional legacy benefit is not modeled.
+  - Card-specific terms exclude fuel MCCs 5172, 5541, 5542 and 5983; wallet loads MCC 6540/6541 do not earn points.
+    Current MITC states SBI Reward Points expire after 24 months; redemption against the outstanding card bill is
+    4 points per INR 1 and carries a INR 99 plus applicable tax fee per qualifying redemption request.
 benefits:
-  - effective_from: 2016-09-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 8
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa, mastercard, dreamfolks]
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    milestones:
-      - spend_inr: 50000
-        cycle: quarterly
-        benefit: "Pizza Hut voucher worth ₹1,000"
-        value_inr: 1000
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "Yatra / Pantaloons e-voucher worth ₹7,000"
-        value_inr: 7000
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome e-Gift voucher worth ₹3,000 (Yatra / Hush Puppies / Bata / Pantaloons / Aditya Birla Fashion / Shoppers Stop)"
-        value_inr: 3000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: true
-    other:
-      - name: Club ITC Silver tier membership
-        description: Complimentary 1-year Club ITC Silver Tier Membership.
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-25
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 8
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - visa
+      - mastercard
+      - rupay
+    international:
+      visits_per_cycle: 4
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  milestones:
+  - spend_inr: 50000
+    cycle: quarterly
+    benefit: Pizza Hut e-voucher
+    value_inr: 1000
+  - spend_inr: 500000
+    cycle: annual
+    benefit: Yatra.com or Pantaloons e-gift voucher
+    value_inr: 7000
+  welcome:
+  - condition: Annual fee payment realized
+    benefit: Welcome e-gift voucher from eligible travel/lifestyle brands
+    value_inr: 3000
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: Club ITC Silver membership
+    description: Complimentary one-year Club ITC Silver tier membership.
+  - name: Network golf benefits
+    description: Issuer product page advertises four complimentary golf rounds and one complimentary lesson per
+      month at selected courses; network and participating-course terms apply.
+  - name: Fraud liability cover conditions
+    description: Issuer product page states coverage from 48 hours before loss reporting through 7 days after reporting.
+      See current cover terms for claim conditions.
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
+    retrieved_on: 2026-11-01
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.milestones.spend_inr
+    - benefits.milestones.value_inr
+    - benefits.welcome.value_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.insurance.sum_insured_inr
+    notes: Current SBI Card PRIME page confirms 8 domestic lounge visits/year (max 2/quarter), 4 Priority Pass visits/year
+      outside India (max 2/quarter, primary cardholder only), INR 1,000 voucher at INR 50,000 quarterly spend, INR
+      7,000 voucher at INR 5 lakh annual spend, renewal-fee waiver at INR 3 lakh, INR 3,000 welcome voucher following
+      annual-fee realization, 1% fuel-surcharge waiver for INR 500 to 4,000 transactions capped INR 250 per statement
+      cycle, INR 1 lakh fraud-liability cover, and Club ITC Silver membership. Domestic access is via participating
+      network program; Priority Pass access requires membership and has charges for guests/visits after the allowance
+      (see https://www.sbicard.com/en/most-important-terms-and-conditions.page and SBI Priority Pass FAQ). Issuer
+      page does not state commencement dates; 2026-10-25 is the observation date.
+  insurance:
+  - type: fraud-liability
+    sum_insured_inr: 100000
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 65
+    self_employed:
+      min_age: 25
+      max_age: 70
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-
+  notes: SBI Card does not publish a card-specific minimum income or fixed credit-score cutoff in the issuer material
+    reviewed; approval is subject to underwriting. SBI Card policy states salaried applicants ages 21 to 65 and self-employed
+    applicants ages 25 to 70; broad 21?70 bounds preserve these occupation-specific limits.
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges
+    notes: Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums
+      vary; this policy does not publish a fixed credit-score cutoff.
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-prime.html
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, everyday-spend]
+  last_verified_on: 2026-11-01
+  tags:
+  - premium
+  - points
+  - everyday-spend

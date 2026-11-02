@@ -1,0 +1,168 @@
+id: axis-scapia
+name: Scapia Axis Bank Credit Card
+image_path: /cards/axis/scapia.webp
+issuer: axis
+network: null
+network_tier: null
+tier: mid
+card_type: credit
+co_brand:
+  partner: Scapia
+  category: travel-agency
+  partner_website: https://www.scapia.cards
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 0.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Current Axis product page lists zero joining/annual fees, 0% foreign-currency/DCC markup, 3.75% monthly
+    finance, and 2.5% cash withdrawal fee (minimum INR500). The card is offered in Mastercard and RuPay variants;
+    network scalar cleared. Current page lists different rewards for each network.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/scapia-axis-bank-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current issuer page reviewed; Mastercard and RuPay variants are both described.
+rewards:
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: Scapia Coins
+  redemption_scope: closed-loop
+  ecosystem_label: Scapia travel
+  base:
+    rate: 25
+    per_inr: 100
+    unit_value_inr: 0.2
+    unit_value_inr_realized: 0.2
+    notes: 'Conservative RuPay variant: 5% value back on eligible transactions of INR500 or more. Mastercard variant
+      earns 10% in Scapia Coins; both cannot fit a single base rate.'
+  accelerated:
+  - category: scapia-app-travel
+    canonical_categories:
+    - travel
+    multiplier: 4
+    effective_rate: 100
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: statement
+    merchants:
+    - scapia-app
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - scapia-app
+    notes: 20% reward value in Scapia Coins on Scapia app flights, hotels, experiences and e-commerce; uncapped
+      per Axis issuer page.
+  exclusions: []
+  mcc_exclusions: []
+  capping_rules:
+  - Scapia Coins redemption is in the Scapia app; Scapia partner page states 5 coins = INR 1. Earn caps are not
+    imposed on listed base or app accelerated rewards, but complete ineligible transaction schedule was not located.
+  redemption:
+  - type: voucher
+    program: Scapia travel
+    rate_inr_per_unit: 0.2
+    constraints: 5 Scapia Coins = INR 1; redeem on Scapia app for eligible bookings and store purchases.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/scapia-axis-bank-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Current Axis product page supports variant-specific percentages and app earn. Scapia partner page supports
+      coin redemption ratio; variant exclusions remain unresolved.
+  notes: Axis issuer page currently states 10% Scapia Coin rewards on eligible Mastercard online/offline spends
+    and 5% on eligible RuPay UPI/online/offline transactions of INR500 or more, with no maximum reward cap; the
+    structured base uses the lower RuPay variant conservatively. Current Axis page states 20% rewards on flights,
+    hotels, experiences and e-commerce on Scapia app, uncapped. Scapia partner page states 5 coins = INR1 and lists
+    app redemption. Full per-card excluded-transaction list was not accessible, so exclusions are left empty.
+benefits:
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: monthly
+      guests_per_visit: null
+      via:
+      - issuer-direct
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      notes: Unlimited domestic lounge access unlocks after INR20,000 spend in the previous billing cycle; privileges
+        activate next statement date.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: 5000
+    cap_per_cycle_inr: null
+    cycle: statement
+    notes: Axis page states 1% waiver for fuel transactions up to INR5,000; GST on surcharge is not refunded. No
+      statement-cycle waiver cap published.
+  concierge: null
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/scapia-axis-bank-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+    notes: Axis product page and Scapia platform privilege details cross-checked; guest quota not specified.
+  other:
+  - name: Domestic airport privileges
+    description: After INR20,000 eligible spend in previous billing cycle, eligible domestic airport lounge access
+      is unlimited; alternative dining, shopping or spa transactions can earn up to INR1,000 back in Scapia Coins
+      per eligible visit. App activation and participating outlets apply.
+  - name: International terminal privileges
+    description: Scapia advertises up to INR2,000 back in Scapia Coins on dining/shopping at international terminals
+      in India after booking a qualifying international flight of at least INR50,000 on Scapia app; terms effective
+      27-Feb-2026.
+eligibility:
+  min_age: 18
+  max_age: 70
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: Axis current product page requires primary cardholder aged 18?70 and resident in India; numeric income/score
+    thresholds are not stated.
+application:
+  apply_url: https://www.axis.bank.in/cards/credit-card/scapia-axis-bank-credit-card
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - lifetime-free
+  - co-branded
+  - fintech
+  - travel
+  - zero-forex
+  - lounge
+  - upi

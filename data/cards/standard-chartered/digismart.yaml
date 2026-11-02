@@ -1,116 +1,134 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Standard Chartered per-card T&C PDFs, av.sc.com (docs/sources/standard-chartered/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: standard-chartered-digismart
 name: Standard Chartered DigiSmart Credit Card
+image_path: /cards/standard-chartered/digismart.webp
 issuer: standard-chartered
 network: visa
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2019-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-01-01
-    effective_until: null
-    joining_fee_inr: 49
-    annual_fee_inr: 588  # ₹49/month subscription
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Subscription card: ₹49/month membership fee (annualised ₹588). Online-shopping / lifestyle discount card."
-    source:
-      url: https://www.sc.bank.in/credit-cards/digismart-card/
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: null
+  annual_fee_inr: null
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 3.0
+    min_inr: 300
+  gst_applicable: true
+  notes: Issuer charges INR49 per month (not an annual fee) on primary and supplementary cards. Monthly
+    fee is reversed within 90 days when that card exceeds INR5,000 spend in the next calendar month after
+    fee levy. Schema has no monthly recurring fee field, so joining/annual fee remain null and no INR588
+    annualized amount is invented.
+  source:
+    url: https://www.sc.bank.in/credit-cards/digismart-card/
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/digismart/product-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Monthly fee and waiver are from current product page FAQ; general tariff page supports 3.5%
+      forex, 3.75% monthly finance and cash-advance fee 3%, minimum INR300.
 rewards:
-  - effective_from: 2026-01-01
-    effective_until: null
-    currency: points
-    currency_name: 360 Reward Points
-    base:
-      rate: 1
-      per_inr: 150
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: 360 Rewards
-        rate_inr_per_unit: 0.25
-    notes: "Value comes from partner discounts (see benefits) rather than a high base reward rate."
-    source:
-      url: https://www.sc.bank.in/credit-cards/digismart-card/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      confidence: high
-      notes: 'Verified 2026-07-05: generic SC 360 Reward Point = Rs0.25 catalogue (was placeholder Rs0.5).'
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: 360 Reward Points
+  base:
+    rate: 0
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: Card-specific DigiSmart T&C says the bank shall not award reward points on spends; campaign
+      offers may award points separately.
+  accelerated: []
+  exclusions: []
+  mcc_exclusions: []
+  redemption: []
+  notes: Zero earn represented because schema requires at least one reward record. The 360 Rewards catalogue
+    link is not a spend-based points earning entitlement.
+  source:
+    url: https://av.sc.bank.in/content/docs/in-digismart-product-terms-and-conditions.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/digismart/product-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards.base.rate
+    notes: Product terms ?4 expressly state no reward points are awarded on card spends.
 benefits:
-  - effective_from: 2026-01-01
-    effective_until: null
-    lounge_access: null
-    dining:
-      program: Zomato
-      discount_pct: 10
-      notes: "10% off on Zomato (max ₹150/txn); 20% off on Zomato/Blinkit and more."
-    movies:
-      type: free
-      partner: BookMyShow
-      max_per_cycle: null
-      cycle: monthly
-      cap_inr: 200
-      notes: "Free movie ticket (max ₹200/txn)."
-    other:
-      - name: "Blinkit discount"
-        description: "10% off at Blinkit with no minimum spend (max ₹1,000)."
-      - name: "Ola cashback"
-        description: "15% cashback on Ola cab bookings (max ₹600/month)."
-      - name: "Yatra travel discounts"
-        description: "20% off Yatra domestic flights (up to ₹750), 10% off international flights (up to ₹10,000), 25% off domestic hotels (up to ₹4,000)."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.sc.bank.in/credit-cards/digismart-card/
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  dining:
+    program: Zomato
+    discount_pct: 10
+    notes: 10% instant discount, no minimum spend; up to 5 transactions per calendar month, maximum INR150
+      per transaction.
+  movies:
+    type: bogo
+    partner: INOX
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 200
+    notes: Buy one get one on weekend shows; up to two transactions per calendar month; maximum discount
+      INR200 per transaction.
+  other:
+  - name: Blinkit discount
+    description: 10% instant discount, no minimum spend; five transactions/month; aggregate discount cap
+      INR1,000 per calendar month.
+  - name: Ola cashback
+    description: 15% cashback on cab rides excluding bikes, auto and shared rides; joint primary/supplementary
+      monthly cap INR600; cashback within 60 days after transaction month. Not for NRE account holders.
+  - name: Yatra discounts
+    description: Domestic flights 20% up to INR750; international flights 10% up to INR10,000 (minimum
+      transaction INR20,000); domestic hotels 25% up to INR4,000. Each category limited to one transaction
+      per quarter.
+  fuel_surcharge_waiver: null
+  concierge: false
+  source:
+    url: https://av.sc.bank.in/content/docs/in-digismart-product-terms-and-conditions.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/standard-chartered/digismart/product-terms-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits.dining.discount_pct
+    - benefits.movies.max_per_cycle
+    - benefits.movies.cap_inr
+    notes: Current card page and 2025 product terms replace stale Zomato/Blinkit partner rates and BookMyShow
+      benefit; no card-specific lounge or fuel waiver advertised.
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
-    salaried: 360000
-    self_employed: 360000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: 600000
+    self_employed: 600000
+  credit_score_min: null
+  residency: null
+  notes: Current card page requires stable monthly income of at least INR50,000 and residence in the bank?s
+    card-sourcing cities/locations; applications remain subject to credit and policy checks. Add-on applicants
+    must be at least 18, outside primary-cardholder age fields.
 application:
   apply_url: https://www.sc.bank.in/credit-cards/digismart-card/
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [entry, subscription, online, dining, movies]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - subscription
+  - online
+  - dining
+  - movies

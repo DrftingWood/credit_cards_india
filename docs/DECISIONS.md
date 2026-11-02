@@ -126,7 +126,9 @@ The programme owns:
 
 Cards opt into stacking via `accelerated[].stacks_with_program: true`.
 When set, calculator adds programme baseline + matching channel bonus +
-matching tier bonus to the card's slice.
+matching tier bonus to the card's slice. Since 2026-10-21 this happens only
+on `/recommend`. Card pages and `/calculator` use programme unit values without
+stacking (D-27).
 
 ### D-10. Internal card currencies stay inline
 
@@ -321,6 +323,14 @@ steady-state rewards, never summed into a rank (`site/lib/value-components.ts`).
   proxies stay removed.
 - All milestone/threshold checks assume all of the user's entered spend counts
   toward the trigger; issuer-specific trigger exclusions are not modelled.
+- **Every rupee is itemised (added 2026-10-20, `calc/phase-2`).** Each total
+  carries a `ledger`: labelled, signed, whole-rupee lines (spend rewards, fee,
+  welcome, milestones, lounge) that sum exactly to the displayed total. Lines are
+  rounded by largest remainder, so a ledger total equals the rounded engine total
+  and no line moves by ₹1 or more. Rewards and fee lines always show; zero-valued
+  optional lines are omitted. A renewal fee cleared by spend reads "waived at your
+  spend", not a bare ₹0. Later phases (forex, redemption fees) add ledger lines
+  rather than adjusting a total silently.
 
 ### D-24. A user's own merchant share is authored applicability (CALC-3)
 
@@ -340,6 +350,136 @@ state it, and that is evidence, not invention.
 - `/calculator` stays channel-optimistic by default (D-3). Gating on declared
   shares is an explicit opt-in (`UsageProfile.gate_calculator`). Ecosystem ticks
   are shared with the card pages' Realistic layer.
+- **Loyalty tiers (added 2026-10-20, `calc/phase-3-tiers`).** The tier a user
+  holds is stored as `UsageProfile.loyalty_tiers` in the same usage store. Per
+  D-9 a tier bonus is programme earn, not card earn, so it is never added to
+  spend rewards or the rank (`annual_net_inr`). It is a separate value-components
+  line (`loyalty_tier`, ledger key `tier`) in Year 1, Year 2+ and the average.
+  It is earned only on spend through the card's `stacks_with_program`
+  accelerators and valued at the layer's own unit value. It is shown in every
+  layer except Absolute. Programme records reach it through the narrow
+  `ScoringContext.tierPrograms`, which never changes rates or unit values.
+  *Updated 2026-10-21 (D-27):* the card page and `/calculator` now get the full
+  `programs` map for unit values, with `stackProgramEarn: false`, and the
+  declared tier travels as `ScoringContext.tierLine`, so it stays a separate
+  line. Only `/recommend` puts tiers in `tierMap`, where they are stacked into
+  the rate and no separate line is added.
+
+### D-25. Authored `applicability_pct` = published market share, as a floor (D12)
+
+D-18 allows an authored `applicability_pct` only "from evidence". The method:
+
+1. **Evidence is a published market share** of the accelerator's merchant,
+   from a company filing, regulator data or a named research firm (press
+   reports of a named brokerage are acceptable; unsourced blogs are not).
+2. **Within the bucket the accelerator sits in.** If the share is of a
+   narrower market than the bucket (food delivery vs all dining), multiply by
+   that market's published share of the bucket. If either factor is missing,
+   leave the field unset (base rate + caveat, as D-18).
+3. **Take the lowest current figure, rounded down** to a whole percent, and
+   record source, period and denominator in a comment beside the value.
+4. **It is a floor, not an estimate of the user.** A market share is a
+   population average, and /recommend only counts the accelerator for users
+   who picked the brand, who will usually route more than average through it.
+   A user-declared share (D-24) always wins.
+
+Applied 2026-10-20:
+
+| Card / accelerator | Bucket | Value | Derivation |
+|---|---|---|---|
+| `icici-amazon-pay` Amazon.in Prime 5% and non-Prime 3% | online | 25 | Amazon India 25-30% of e-commerce GMV (ICICI Securities, FY25 market; Entrackr, 14-May-2026), lower bound |
+| `hdfc-swiggy-hdfc` Swiggy ecosystem 10% | dining | 3 | Swiggy 42% of food-delivery GOV (Motilal Oswal Q1 FY25 via Inc42, 20-Nov-2024; Bernstein Jan-2025) x online delivery ~8% of food services (Bernstein Jan-2025; Swiggy-Bain's 12% not used) = 3.4% |
+
+Left unset, with reasons:
+
+- `icici-amazon-pay` Amazon Pay partners 2%: no share data for the partner set.
+- Tata Neu cards (HDFC and SBI Infinity/Plus), partner-brand accelerators in
+  the online bucket: no 2024-26 published share for Tata Neu, Tata CLiQ,
+  Croma or IHCL; BigBasket (2022) and 1mg (2023) figures are stale; Air
+  India's DGCA domestic share (23.9-26.7%, Jun-Aug 2026) is a travel-market
+  figure and the accelerator sits in online.
+- Swiggy HDFC 5% online-MCC accelerator: an MCC accelerator, not a co-brand
+  merchant; out of D12's scope.
+
+Sources: https://entrackr.com/report/flipkart-leads-gmv-maus-as-india-e-comm-market-may-hit-214-bn-by-fy30-icici-securities-11833061 ;
+https://inc42.com/?p=487118 ;
+https://ts.yourstory.com/2025/01/swiggy-food-delivery-quick-commerce-market-share-bernstein-brokerage ;
+https://cwv.yourstory.com/2024/07/online-food-delivery-make-up-one-fifth-food-services-market-fy31-study .
+Re-check yearly; food-delivery and e-commerce shares move a few points a year.
+
+### D-26. Forex markup is a cost that lowers the rank (CALC-4 B1)
+
+Accepted by the owner on 2026-10-21. A card's `forex_markup_pct` is charged on
+the user's international spend and **subtracted from the ranking total**, not
+just shown beside it. Unlike a welcome bonus or a milestone, the markup is a
+recurring cost that grows with spend. Before this, a 3.5%-markup card could
+outrank a 0%-markup card for someone who spends heavily abroad.
+
+- **Formula.** `international monthly spend × 12 × forex_markup_pct / 100 ×
+  (1 + GST)`. It is `annual_forex_inr` on `scoreCard` and `explainCard`.
+  `annual_net_inr` (the /calculator rank, and the /recommend rank via
+  `scorer-decoupled`) is now rewards − effective annual fee − forex.
+- **GST is an assumption, not yet verified.** The GST rate on the markup is
+  one named constant, `GST_ON_FOREX_MARKUP = 0.18` in `site/lib/calculator.ts`.
+  It assumes the usual 18% GST on card fees and charges. The rate and the
+  practice of charging GST on the markup amount still need checking against an
+  issuer MITC or a CBIC source before this ships. GST is added only when the
+  fee record's `gst_applicable` is not `false`. No active card sets it to
+  `false` today.
+- **Every rupee is on the ledger.** The Year 1, Year 2+ and tenure-average
+  totals each get a negative `forex` line, labelled "Forex markup on
+  international spend (x% + 18% GST, assumed)". It appears only when the cost is
+  non-zero, so a 0%-markup card or a user with no international spend sees no
+  line.
+- **Missing data stays at ₹0 and is labelled.** A card with no stated markup
+  (one active card, `equitas-selfe`) is charged ₹0. When the user has
+  international spend, the card gets the disclaimer "Forex markup not stated,
+  counted as ₹0". No markup is guessed.
+- **Not covered yet.** The `/recommend` wizard sends no international spend
+  unless an exact spend is passed, so its rank only moves when that happens.
+  The portfolio optimiser (`site/lib/portfolio.ts`) still nets only rewards
+  and fees. Cross-currency or DCC surcharges are not modelled.
+
+### D-27. Card pages and /calculator use programme unit values, not programme earn
+
+Accepted by the owner on 2026-10-21, after the review of the 19 co-brand cards
+in `docs/PROGRAMME-VALUES-REVIEW-2026-10-21.md`. The card page and `/calculator`
+now receive the full loyalty-programme records (`ScoringContext.programs`), as
+`/recommend` already did. A co-brand card's points are valued at the
+programme's `unit_value_inr` (D-9), so one programme file sets the value for
+every card linked to it.
+
+- **Programme data was corrected first.** Four programme files were stale or
+  broke the closed-loop rule. Each fix cites its source beside the value:
+  - IndiGo BluChip: 0.45 realized / 0.60 face.
+  - Air India Maharaja: 0.55 / 0.70.
+  - IRCTC and Tata NeuCoins: realized 1.0.
+
+  After the fixes, the realized value of all 19 linked cards is unchanged.
+  Marriott Bonvoy's face value goes from 0.80 to 0.85, which affects only the
+  Absolute layer.
+- **A card can opt out of programme unit values.** The rewards field
+  `unit_value_from_program: false` is for a card that earns its own currency and
+  converts it into the programme's at a ratio other than 1:1. `bob-irctc` (4
+  BOBCARD points = 1 IRCTC point) is the only card that sets it. Before this,
+  `/recommend` valued its points at ₹0.95 instead of ₹0.18.
+- **Programme earn stays out of the rank on these pages.** They pass
+  `stackProgramEarn: false`, so D-9 stacking (programme baseline + channel +
+  tier earn on `stacks_with_program` accelerators) is not added. That earn comes
+  with programme membership whichever card pays, so crediting it to the co-brand
+  card brings back the overcredit D-8 removed. Stacking would have moved
+  `kotak-indigo` on /calculator from ₹3,900 to ₹16,860 (rank 169 to 36). This
+  also matches D-24's rule for tiers. A declared tier is still its own ledger
+  line, now carried in `ScoringContext.tierLine`. `tierMap` (stacked into the
+  rate) is used only by the `/recommend` wizard.
+- **Open question for the owner.** `/recommend` still stacks programme earn
+  (D-9). On a ₹20k online + ₹20k travel profile, `kotak-indigo` nets ₹15,780 on
+  /recommend and ₹3,900 on /calculator. Decide whether /recommend should also set
+  `stackProgramEarn: false`, which would retire D-9 stacking in the rank, or
+  keep it on as the wizard's "everything you'd receive" view.
+- `site/lib/program-values.test.ts` pins the 19 cards' values on live data.
+  Linking a new card to a programme, or changing a programme value, means
+  updating that test and the review doc.
 
 ### D-17. Build pipeline is pure Node
 

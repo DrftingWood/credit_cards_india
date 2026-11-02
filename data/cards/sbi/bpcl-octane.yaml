@@ -1,4 +1,4 @@
-# ---------------------------------------------------------------------------
+﻿# ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
 #   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
 #   Verified   : 2026-07-04   Confidence: HIGH (pdf)
@@ -9,9 +9,10 @@
 # ---------------------------------------------------------------------------
 id: sbi-bpcl-octane
 name: BPCL SBI Card OCTANE
+image_path: /cards/sbi/bpcl-octane.webp
 issuer: sbi
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: mid
 card_type: credit
 co_brand:
@@ -19,7 +20,7 @@ co_brand:
   category: fuel
   partner_website: https://www.bharatpetroleum.in
 status: active
-launched_on: 2021-04-01
+launched_on: 2020-12-15
 discontinued_on: null
 
 fees:
@@ -38,7 +39,19 @@ fees:
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.fee_waiver.spend_inr
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
+      notes: Current SBI product page and MITC confirm INR1,499 joining/annual fee, INR2 lakh preceding-year renewal waiver, nil add-on fee, 3.5% forex, up to 3.75% monthly finance charge and 2.5%/INR500-minimum cash advance fee.
 
 rewards:
   - effective_from: 2021-04-01
@@ -49,20 +62,20 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr_realized: 0.25
     accelerated:
-      - category: bpcl-fuel
+      - category: bpcl-fuel-and-lubricants
         canonical_categories: [fuel]
         multiplier: 1
         effective_rate: 25
         cap_per_cycle: 2500
         cap_unit: points
-        cycle: monthly
+        cycle: statement
         merchants: [bpcl-fuel-stations]
         channel:
           class: fuel-network
           merchants: [bpcl]
-        notes: "25 Reward Points per ₹100 on fuel purchases at BPCL petrol pumps (capped at 2,500 points/month)."
+        notes: "25 Reward Points per INR100 at BPCL petrol pumps on eligible fuel and lubricant purchases; capped at 2,500 points per billing cycle. Merchant-ID recognition applies."
       - category: dining-movies-department-grocery
         canonical_categories: [groceries, dining, entertainment]
         multiplier: 1
@@ -70,23 +83,42 @@ rewards:
         cap_per_cycle: 7500
         cap_unit: points
         cycle: monthly
-        notes: "10 Reward Points per ₹100 on Dining, Departmental stores, Grocery & Movies (up to 7,500 points/month)."
+        notes: "10 Reward Points per INR100; eligible MCCs are grocery 5411, departmental stores 5311, movies 7832/7922 and dining 5812/5813/5814. Combined cap is 7,500 points per month."
+      - category: bharat-gas-web-app
+        canonical_categories: [utilities]
+        multiplier: 1
+        effective_rate: 25
+        cap_per_cycle: 500
+        cap_unit: points
+        cycle: statement
+        merchants: [bharat-gas]
+        channel:
+          class: cobrand-merchant
+          merchants: [bharat-gas-website, bharat-gas-app]
+        notes: "25 Reward Points per INR100 on Bharat Gas LPG cylinder bookings through website/app only, capped at 500 points per billing cycle."
     exclusions:
       - wallet-loads
       - rent
       - emi
+      - cash-advance
     redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
       - type: catalog
-        program: SBI Card Rewards
+        program: SBI Shop n Smile Rewards Catalogue
         rate_inr_per_unit: 0.25
+      - type: voucher
+        program: BPCL fuel redemption / fuel vouchers
+        rate_inr_per_unit: 0.25
+        constraints: 4 Reward Points = INR1 of free fuel; instant redemption at select authorized BPCL outlets.
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
       type: issuer-page
+      confidence: high
+      local_refs: [docs/sources/sbi/bpcl-octane/bpcl-octane-terms-current.pdf]
+      fields_verified: [rewards.base, rewards.accelerated, rewards.exclusions, rewards.redemption]
+      notes: Current product page and linked card terms confirm BPCL/lubricants, Bharat Gas and category caps; eligible reward recognition depends on merchant IDs. The booklet also says Reward Points can be earned for a maximum spend of INR10,000/month but does not define the scope; this ambiguous overall-sounding limit is not modeled. Points are INR0.25 each for fuel/catalog redemption, have no general cash value, and may lapse under terms.
 
-    mcc_exclusions: ['6513']
+    mcc_exclusions: ['6513', '6540', '6541']
 benefits:
   - effective_from: 2021-04-01
     effective_until: null
@@ -100,10 +132,10 @@ benefits:
     milestones:
       - spend_inr: 300000
         cycle: annual
-        benefit: "e-Gift voucher worth ₹2,000 (Aditya Birla Fashion / Yatra / Hush Puppies)"
+        benefit: "INR2,000 e-Gift voucher (Aditya Birla Fashion, Yatra or Bata/Hush Puppies)"
         value_inr: 2000
     welcome:
-      - condition: "Joining fee paid"
+      - condition: "Annual fee paid"
         benefit: "6,000 bonus Reward Points"
         value_inr: 1500
         window_days: 30
@@ -111,25 +143,51 @@ benefits:
       pct: 1.0
       max_txn_inr: 4000
       cap_per_cycle_inr: 100
-      cycle: monthly
-      notes: "No minimum transaction threshold; 1% waiver on BPCL fuel up to ₹4,000, max ₹100/month."
+      cycle: statement
+      notes: "No minimum transaction threshold; waiver applies only on BPCL fuel transactions up to INR4,000. Not available on BPCL fuel paid through RuPay UPI."
     concierge: false
+    insurance:
+      - type: fraud-liability
+        sum_insured_inr: 100000
+        conditions: Fraud liability cover up to INR1 lakh. Immediately block and report the card; booklet states claims should be reported within 45 days of the fraud transaction, subject to insurer terms.
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-27
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/bpcl-octane/bpcl-octane-terms-current.pdf
+      fields_verified:
+        - benefits.lounge_access.domestic
+        - benefits.milestones
+        - benefits.welcome
+        - benefits.fuel_surcharge_waiver
+        - benefits.insurance
+      notes: Current issuer page confirms the annual-fee-triggered welcome points, voucher milestone, Visa domestic lounge quota and BPCL-only fuel surcharge waiver. Card booklet specifies the fraud-liability cover and 45-day reporting requirement; final claim decisions remain subject to insurer terms.
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 730
+  credit_score_min: null
   residency: resident-indian
-
+  notes: "No OCTANE-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting. SBI Card's general policy states age 21 to 65 for salaried applicants and 25 to 70 for self-employed applicants; the broad 21 to 70 range preserves the occupation-specific detail in age_ranges."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card-octane.html
 
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [co-branded, fuel, bpcl, mid-tier, points]
+  last_verified_on: '2026-10-27'
+  tags: [co-branded, fuel, bpcl, mid-tier, points, multi-network]

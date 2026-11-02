@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-indianoil-premium
 name: IndianOil Axis Bank Premium Credit Card
+image_path: /cards/axis/indianoil-premium.webp
 issuer: axis
-network: rupay
-network_tier: select
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -19,121 +11,252 @@ co_brand:
   category: fuel
   partner_website: https://www.iocl.com
 status: active
-launched_on: 2020-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2020-01-01
-    effective_until: null
-    joining_fee_inr: 1000
-    annual_fee_inr: 1000
-    fee_waiver:
-      spend_inr: 30000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 1000
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 30000
+    cycle: annual
+    conditions: INR 30,000 settled spend in an anniversary year. The 2025-06-20 issuer update excludes rent and wallet loads from fee-waiver spend; a current linked card-terms copy also mentions insurance, so confirm applicability with Axis where relevant.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  late_payment_slabs:
+  - up_to_inr: 500
+    fee_inr: 0
+  - up_to_inr: 5000
+    fee_inr: 500
+  - up_to_inr: 10000
+    fee_inr: 750
+  - up_to_inr: 50000
+    fee_inr: 1200
+  - up_to_inr: any
+    fee_inr: 1300
+  overlimit_fee:
+    pct: 2.5
+    min_inr: 500
+  supplementary_card_fee_inr: 0
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/indianoil-premium/terms-and-conditions-indianoil-premium-retrieved-2026-10-26.pdf
+    - docs/sources/axis/_shared/mitc-credit-cards-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].fee_waiver.spend_inr
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    - fees[0].late_payment_slabs[0].fee_inr
+    - fees[0].late_payment_slabs[1].fee_inr
+    - fees[0].late_payment_slabs[2].fee_inr
+    - fees[0].late_payment_slabs[3].fee_inr
+    - fees[0].late_payment_slabs[4].fee_inr
+    - fees[0].overlimit_fee.pct
+    - fees[0].overlimit_fee.min_inr
+    - fees[0].supplementary_card_fee_inr
+    notes: Product page lists INR 1,000 + GST joining/annual fees, INR 30,000 annual waiver, 3.5% foreign-currency and DCC fees, 3.75% monthly finance, cash advance 2.5%/INR 500 minimum and the encoded late slabs. A 20-Dec-2024 issuer notice raises returned-payment fee minimum to INR 500 with no maximum, while the live product page still says INR 450; the dated notice is followed. Other page-listed charges documented in the source extract include 1% rent fee, education-app, wallet, fuel, utility and gaming transaction fees, cash payment, and repeated-MAD charge. The page and the linked legacy copy differ from the 2025 fee-waiver exclusion notice on insurance. RuPay/Select was unsupported for this Premium variant and is cleared. The 2019-12-17 launch announcement refers to the earlier standard IndianOil Axis card, not this Premium variant; no primary-source Premium launch date was found.
+  notes: Current issuer page is the live fee snapshot; exact source effective dates are used only where Axis published them. Historical and current waiver/exclusion conflicts remain documented in the card evidence extract.
 rewards:
-  - effective_from: 2020-01-01
-    effective_until: null
-    currency: miles
-    currency_name: EDGE Miles
-    base:
-      rate: 1
-      per_inr: 150
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: indianoil-fuel
-        canonical_categories: [fuel]
-        multiplier: 6
-        effective_rate: 6
-        cap_per_cycle: 600
-        cap_unit: miles
-        cycle: monthly
-        merchants: [indianoil-fuel-stations]
-        channel:
-          class: fuel-network
-          merchants: [iocl]
-        notes: "6X EDGE Miles (5X accelerated + 1X base) per ₹150 at registered IndianOil fuel pumps, up to ₹15,000 spend/statement month; capped at 600 EDGE Miles/month. Beyond ₹15,000, only 1X base earned."
-      - category: grocery-supermarket
-        canonical_categories: [groceries]
-        multiplier: 2
-        effective_rate: 2
-        cap_per_cycle: 66
-        cap_unit: miles
-        cycle: monthly
-        notes: "2X EDGE Miles (1X accelerated + 1X base) per ₹150 on grocery & supermarket spends, up to ₹5,000 spend/statement month; capped at 66 EDGE Miles/month. Beyond ₹5,000, only 1X base earned."
-    exclusions:
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-      - education
-      - government
-      - jewellery
-      - cash-advance
-    redemption:
-      - type: catalog
-        program: Axis EDGE Miles
-        rate_inr_per_unit: 1.0
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: miles
+  currency_name: EDGE Miles
+  base:
+    rate: 1
+    per_inr: 150
+    unit_value_inr: 1.0
+    unit_value_inr_realized: null
+  accelerated:
+  - category: indianoil-fuel
+    canonical_categories:
+    - fuel
+    multiplier: 6
+    effective_rate: 6
+    cap_per_cycle: 600
+    cap_unit: miles
+    cycle: monthly
+    merchants:
+    - indianoil-fuel-stations
+    channel:
+      class: fuel-network
+      merchants:
+      - iocl
+    notes: 6 total EDGE Miles per INR 150 at listed IndianOil outlets using authorized IOCL EDCs, up to INR 15,000 fuel spend per statement month; total earn is capped at 600 miles in that accelerated band. Above INR 15,000, earn only 1 base mile per INR 150. Actual outlet eligibility depends on IOCL merchant data.
     source:
       url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
-      retrieved_on: '2026-07-05'
+      retrieved_on: 2026-10-26
       type: issuer-page
-
       confidence: high
-      notes: EDGE Miles redeem at Rs 1.0 via Axis Travel EDGE (portal-only, no transfer). realized Rs0.5->Rs1.0 (was below the guaranteed Rs1 floor).
-    mcc_exclusions: ['6513']
-benefits:
-  - effective_from: 2020-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-    welcome:
-      - condition: "First spend within 30 days of card issuance"
-        benefit: "500 EDGE Miles"
-        value_inr: 500
-        window_days: 30
-    dining:
-      program: Zomato
-      discount_pct: 30
-      notes: "30% off on Zomato, up to ₹150 per order, twice a month, on minimum order of ₹200."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-      notes: "Unlimited 1% fuel surcharge waiver on fuel purchases at IOCL fuel outlets."
-    concierge: false
+      local_refs:
+      - docs/sources/axis/indianoil-premium/terms-and-conditions-indianoil-premium-retrieved-2026-10-26.pdf
+      - docs/sources/axis/_shared/iocl-fuel-outlet-list-retrieved-2026-10-26.pdf
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].cap_per_cycle
+      notes: Card terms state 6X total (5X accelerated plus 1X base) up to INR 15,000/month, after which base miles continue.
+  - category: grocery-supermarket
+    canonical_categories:
+    - groceries
+    multiplier: 2
+    effective_rate: 2
+    cap_per_cycle: 33
+    cap_unit: miles
+    cycle: monthly
+    notes: 2 total EDGE Miles per INR 150 on eligible grocery and supermarket MCCs up to INR 5,000 per statement month, for up to 33 total miles. Above INR 5,000, earn only 1 base mile per INR 150. This is not a 66-mile total cap.
     source:
       url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
-      retrieved_on: 2026-07-03
-
+      retrieved_on: 2026-10-26
+      type: issuer-page
+      confidence: high
+      local_refs:
+      - docs/sources/axis/indianoil-premium/terms-and-conditions-indianoil-premium-retrieved-2026-10-26.pdf
+      fields_verified:
+      - rewards.accelerated[1].effective_rate
+      - rewards.accelerated[1].cap_per_cycle
+      notes: Product page and card terms agree on up to 33 miles for INR 5,000 eligible spend.
+  exclusions:
+  - utilities
+  - education
+  - rent
+  - wallet-loads
+  - government
+  - insurance-premiums
+  - jewellery
+  - financial-institutions
+  - cash-advance
+  - other
+  - bridge-fees
+  - road-fees-and-tolls
+  reward_cap: null
+  capping_rules:
+  - Base earn is uncapped. No EDGE Miles are awarded for a transaction below INR 150; reversals adjust the reward and accelerated cap in the statement month posted, with no accelerated adjustment after 60 days.
+  - Grocery identification depends on merchant MCC; where an outlet is not classified as grocery/supermarket, base earn applies.
+  redemption_floor_value_inr: null
+  redemption_ceiling_value_inr: null
+  redemption:
+  - type: cashback-bank
+    program: Axis Pay by Rewards
+    rate_inr_per_unit: 1.0
+    min_units: 10000
+    constraints: Current EDGE Rewards FAQ lists INR 1 per EDGE Mile applied against card outstanding, with 10,000 minimum and 50,000 maximum per redemption; credit is expected within 7 working days. Axis confirms no redemption fee for this card.
+  - type: catalog
+    program: IndianOil fuel redemption
+    rate_inr_per_unit: 1.0
+    min_units: 500
+    constraints: INR 1 per EDGE Mile for fuel at listed IOCL outlets with authorized EDCs; outlet availability depends on IOCL merchant data.
+  - type: airmiles
+    program: Axis EDGE Miles transfer partners
+    rate_inr_per_unit: null
+    constraints: Partner transfer value varies by program and current conversion ratio; issuer terms include 2 EDGE Miles to 1 partner point for listed partners and 3 EDGE Miles to 10 IOCL XTRAREWARDS. Rates may change.
+  - type: catalog
+    program: Travel EDGE and Axis catalogue
+    rate_inr_per_unit: null
+    min_units: 500
+    constraints: Miles may be redeemed for Travel EDGE bookings and catalogue items; value depends on selected booking or item.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/indianoil-premium/terms-and-conditions-indianoil-premium-retrieved-2026-10-26.pdf
+    - docs/sources/axis/indianoil-premium/indianoil-premium-reward-exclusions-update-effective-2025-06-20.pdf
+    - docs/sources/axis/google-pay-flex/axis-credit-card-terms-update-effective-2026-08-28.pdf
+    - docs/sources/axis/_shared/mitc-credit-cards-retrieved-2026-10-26.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].cap_per_cycle
+    - rewards.accelerated[1].effective_rate
+    - rewards.accelerated[1].cap_per_cycle
+    - rewards.exclusions
+    - rewards.redemption
+    notes: Axis terms specify 1 EDGE Mile/INR 150, with 1 mile = INR 1 in specified fuel redemption; statement credit is also INR 1/mile via Axis Pay by Rewards. Other transfer/catalogue value varies, so realized unit value and global floor/ceiling are unknown. From 2025-06-20, exclusions are identified by spend category rather than MCC. The separate bankwide 2026 terms update also excludes bridge fees, road fees and tolls. Exact excluded MCC 6513 has been removed. Reward conversion details and current Pay by Rewards minimum/maximum are captured in the issuer evidence extract.
+  mcc_exclusions: []
+benefits:
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - issuer-direct
+      notes: Two visits per quarter at participating domestic lounges. Requires at least INR 50,000 eligible settled spend in the previous 3 calendar months; newly issued cards receive a waiver for the issue month and the next 3 calendar months. Guests pay separately. Current lounge list and program rules govern.
+  welcome:
+  - condition: First transaction within 30 days of card issuance; no minimum spend. Not applicable to existing-card swaps or customers migrated to Premium before 31-Jul-2024.
+    benefit: 500 EDGE Miles, credited by T+12 days.
+    value_inr: 500
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: null
+    cap_per_cycle_inr: null
+    cycle: monthly
+    notes: Unlimited 1% waiver at listed IndianOil outlets with authorized IOCL EDCs. GST charged on fuel surcharge is not refunded; on some transactions the acquiring fee may be INR 10 plus GST instead of 1% plus GST.
+  other:
+  - name: Zomato discount
+    description: 30% off orders with minimum INR 200 spend, maximum INR 150 discount per order, up to twice per calendar month per card; use coupon AXISIOCL. Current offer terms apply.
+    value_inr: null
+  - name: Wednesday Delight and Dining Delights
+    description: Current product page lists rotating Wednesday offers (MakeMyTrip flights/hotels, Swiggy and Tira) and access to Axis Dining Delights. Merchant participation, offer limits and availability depend on current program terms.
+    value_inr: null
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/indianoil-premium/terms-and-conditions-indianoil-premium-retrieved-2026-10-26.pdf
+    - docs/sources/axis/_shared/axis-bank-airport-lounge-access-program-retrieved-2026-10-26.pdf
+    - docs/sources/axis/_shared/iocl-fuel-outlet-list-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+  notes: The general Axis domestic lounge program applies a prior-three-calendar-month INR 50,000 spend gate. Product page states 2 visits/quarter but does not surface that gate. Fuel-waiver outlet/EDC list controls qualification. Offer rates are not annualized or assigned fixed value.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Product page gives age 18-70 and resident of India; criteria are indicative and approval remains at Axis discretion. No numeric income or credit-score threshold is published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/indianoil-premium-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [co-branded, fuel, indianoil, rupay, entry]
+  last_verified_on: 2026-10-26
+  tags:
+  - co-branded
+  - fuel
+  - indianoil
+  - entry

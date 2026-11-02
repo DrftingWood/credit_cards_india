@@ -5,7 +5,11 @@ import type { RecommendPayload } from "./recommender";
 import type { EnrichedCard, LoyaltyProgram } from "./types";
 
 async function load() {
-  const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
+  const { default: raw } = await import("../../dist/cards.json", { with: { type: "json" } });
+  // icici-amazon-pay is invite-only per ICICI's page (2026-10 catalogue), so the eligibility
+  // filter drops it. These tests exercise brand and rate logic on it, not eligibility.
+  const cards = (raw as unknown as EnrichedCard[]).map((c) =>
+    c.id === "icici-amazon-pay" ? { ...c, computed: { ...c.computed, is_invite_only: false } } : c);
   const { default: progs } = await import("../../dist/loyalty_programs.json", { with: { type: "json" } });
   return {
     cards: cards as unknown as EnrichedCard[],

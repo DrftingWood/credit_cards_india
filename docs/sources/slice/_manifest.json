@@ -1,1 +1,5 @@
-{"_source":"slice.bank.in","verified_on":"2026-07-04","result":"slice UPI RuPay confirmed LTF + 1% base + 2% UPI cashback cap 500/mo during audit; single product","pdfs_downloaded":0}
+{
+  "_source": "slice.bank.in",
+  "verified_on": "2026-10-26",
+  "result": "Current MITC replaces stale 2026-07-04 audit assumptions: 1 monies per INR1 eligible card spend, balance-based 1%-3% redemption, zero forex markup, 3.5% monthly finance rate, and no issuer fuel-waiver benefit established. Launch announcement dated 2025-06-28."
+}

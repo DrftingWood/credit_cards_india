@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-kwik
 name: Axis Bank Kwik Credit Card
+image_path: /cards/axis/kwik.webp
 issuer: axis
 network: rupay
 network_tier: null
@@ -16,79 +8,122 @@ tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
+launched_on: 2023-08-02
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
-      retrieved_on: 2026-07-03
-    notes: "Lifetime free card - zero joining and annual fees (confirmed Nil/Nil in Axis MITC). Forex 3.5%; finance charge 3.75%/mo (extended credit) per Axis MITC (eff 20 Dec 2024, KWIK listed at 55.55% p.a.). Instant virtual RuPay Credit Card on UPI."
+- effective_from: 2026-08-28
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.7
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/kwik/sosc-credit-cards-retrieved-2026-10-27.pdf
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  notes: 'Current product page and 8-Oct-2026 Axis KFS confirm zero joining/annual fees, 3.7% monthly finance charge (55.55% p.a.), 2.5% cash advance fee (minimum INR 500), 3.5% forex and DCC, INR 175 cash payment, waived duplicate statement/charge-slip/outstation-cheque fees, free mobile alerts and balance enquiry, 2.5% overlimit fee (minimum INR 500), 2% cheque/auto-debit reversal (minimum INR 500), and railway surcharges as prescribed. Redemption fees: INR 99 per EDGE Rewards redemption; INR 199 for transfer to partner miles. Other transaction fees: rent 1% per transaction; wallet loads 1% at cumulative INR 10,000 per statement; fuel 1% at INR 50,000 per statement; third-party education 1% per transaction; utilities 1% at INR 25,000 per statement; online skill-based gaming 1% at INR 10,000 per statement. Late-fee slabs: nil below INR 500, INR 500 for INR 501-5,000, INR 750 for INR 5,001-10,000, INR 1,200 for INR 10,001-50,000 and INR 1,300 above INR 50,000, plus INR 100 after two consecutive unpaid MAD cycles until cleared. Issuer wording leaves exactly INR 500 unassigned. The KFS states standard Kwik fees of zero; campaign/application-specific fee profile is not modeled.'
 
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: points
-    currency_name: EDGE REWARD Points
-    base:
-      rate: 2
-      per_inr: 200
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.18
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-    redemption:
-      - type: catalog
-        program: EDGE Rewards
-        rate_inr_per_unit: 0.2
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-    notes: "Earn 2 EDGE REWARD Points on every Rs 200 spent on domestic and international transactions."
+- effective_from: 2026-08-28
+  effective_until: null
+  currency: points
+  currency_name: EDGE REWARD Points
+  base:
+    rate: 2
+    per_inr: 200
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated: []
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - jewellery
+  - education
+  - government
+  - emi
+  redemption:
+  - type: catalog
+    program: EDGE Rewards
+    rate_inr_per_unit: null
+    constraints: Redeemable through EDGE Rewards; no universal cash conversion is published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.exclusions
+  notes: 'Issuer page says 2 EDGE Reward Points per INR 200 on domestic and international spend. It excludes wallet loads, fuel, rent, cash withdrawals, insurance, repayments, jewellery, education, government services, EMI and RuPay credit-card UPI transactions below INR 2,000. Eligible points post to EDGE Rewards within 7 working days of the following week. No card-specific MCC exclusion list is published; do not invent one. Generic Axis schedules/terms may exclude other categories (including gift cards and road/bridge tolls) whose specific Kwik applicability is not independently clear from the product page. EDGE point cash value and universal redemption rate are unpublished.'
 
-    mcc_exclusions: ['6513']
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 150
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
-      retrieved_on: 2026-07-03
-    notes: "1% fuel surcharge waiver on fuel spends between Rs 400 and Rs 4,000, up to Rs 150 per month."
+- effective_from: 2026-08-28
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 150
+    cycle: monthly
+  concierge: false
+  other:
+  - name: Credit card on UPI
+    description: Virtual Axis Bank RuPay credit card that can be linked to a UPI app; eligible UPI transactions of INR 2,000 or more may earn EDGE Reward Points, subject to exclusions.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+  notes: Fuel surcharge waiver is 1% on fuel transactions of INR 400-4,000, capped at INR 150 per month. Certain transactions incur INR 10 plus GST instead of 1% plus GST; GST on the surcharge is not refundable. Card is virtual and can be linked to a UPI app; issuer describes RuPay credit-card linkage. The product page lists no other quantified evergreen benefit. UPI merchant/category restrictions follow applicable network/regulatory rules and are not all encoded here.
 
 eligibility:
-  min_age: 18
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
   credit_score_min: null
-  residency: resident-indian
-  notes: "Eligibility criteria not published on the product page -"
-
+  residency: either
+  notes: Axis does not publish card-specific age, income or bureau-score thresholds on the product page; these remain unknown. Axis general credit-card eligibility information allows resident Indian or NRI applicants.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-kwik-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, points, upi, lifetime-free]
+  last_verified_on: 2026-10-27
+  tags:
+  - entry
+  - points
+  - upi
+  - lifetime-free
+  - network-tier-unverified

@@ -1,169 +1,217 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : ICICI per-card T&C PDFs (docs/sources/icici/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: icici-coral
 name: ICICI Bank Coral Credit Card
+image_path: /cards/icici/coral.webp
 issuer: icici
-network: visa
-network_tier: classic
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2014-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2014-01-01
-    effective_until: null
-    joining_fee_inr: 500
-    annual_fee_inr: 500
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2024-11-15
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 150000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/_shared/mitc_cc_2026-10-09.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.cash_advance_fee
+    - fees.finance_charge_monthly_pct
+    - fees.forex_markup_pct
 rewards:
-  - effective_from: 2014-01-01
-    effective_until: null
-    currency: points
-    currency_name: ICICI Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.2
-    accelerated:
-      - category: utility-and-insurance
-        canonical_categories: [utilities, insurance]
-        multiplier: 0.5
-        effective_rate: 1
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-      - category: ishop-hotels
-        canonical_categories:
-          - travel
-        multiplier: 12
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 12X reward points on HOTEL bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap (ICICI capping PDF, WEF 1-Oct-2025) with iShop flights; iShop also gives 6X on bus + shopping vouchers (not modelled).
-      - category: ishop-flights
-        canonical_categories:
-          - travel
-        multiplier: 6
-        cap_per_cycle: 15000
-        cap_unit: points
-        cycle: monthly
-        channel:
-          required: true
-          class: issuer-portal
-          merchants:
-            - ishop
-        notes: Up to 6X reward points on FLIGHT bookings via ICICI iShop (booked via iShop only). Shares the 15,000 RP/calendar-month iShop cap with iShop hotels.
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-      - type: catalog
-        program: ICICI Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
-      retrieved_on: 2026-07-05
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: points
+  currency_name: ICICI Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: utility-and-insurance
+    canonical_categories:
+    - utilities
+    - insurance
+    multiplier: 0.5
+    effective_rate: 1
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+  - category: ishop-hotels
+    canonical_categories:
+    - travel
+    multiplier: 12
+    cap_per_cycle: 15000
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - ishop
+    notes: Up to 12X reward points on HOTEL bookings via ICICI iShop (booked via iShop only). Shares the 15,000
+      RP/calendar-month iShop cap (ICICI capping PDF, WEF 1-Oct-2025) with iShop flights; iShop also gives 6X on
+      bus + shopping vouchers (not modelled).
+  - category: ishop-flights
+    canonical_categories:
+    - travel
+    multiplier: 6
+    cap_per_cycle: 15000
+    cap_unit: points
+    cycle: monthly
+    channel:
+      required: true
+      class: issuer-portal
+      merchants:
+      - ishop
+    notes: Up to 6X reward points on FLIGHT bookings via ICICI iShop (booked via iShop only). Shares the 15,000
+      RP/calendar-month iShop cap with iShop hotels.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  redemption:
+  - type: catalog
+    program: ICICI Rewards
+    rate_inr_per_unit: null
+    constraints: Current product page lists catalog redemption categories but does not publish a fixed rupee-per-point rate. ICICI's current general Rewards FAQ states a ₹99 plus GST handling fee per redemption and three-year point expiry; check the live catalog for option-specific conversion values.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    notes: Issuer does not publish an effective-from date for the full reward schedule; 2026-10-26 is the verification snapshot, while individual terms may have earlier dates.
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
+  mcc_exclusions:
+  - '6513'
 benefits:
-  - effective_from: 2014-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [dreamfolks]
-        spend_threshold_inr: 75000
-        spend_threshold_cycle: quarterly
-        notes: "Complimentary domestic lounge access requires ₹75,000 spend in the preceding calendar quarter (MITC, w.e.f. Jan 1, 2025)."
-    milestones:
-      - spend_inr: 200000
-        cycle: annual
-        benefit: "2,000 Reward Points on ₹2 lakh spend"
-        reward_kind: points
-        reward_units: 2000
-        reward_currency_name: ICICI Reward Points
-        trigger_window: anniversary-year
-      - spend_inr: 100000
-        cycle: annual
-        benefit: "1,000 Reward Points for every additional ₹1 lakh spend (max 10,000 points per anniversary year)"
-        reward_kind: points
-        reward_units: 1000
-        reward_currency_name: ICICI Reward Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-    movies:
-      type: discount
-      partner: BookMyShow and INOX
-      max_per_cycle: 2
-      cycle: monthly
-      cap_inr: 100
-      notes: "25% off up to ₹100 on movie tickets, twice a month each on BookMyShow and INOX."
-    dining:
-      program: Culinary Treats
-      discount_pct: 15
-    insurance:
-      - type: personal-accident
-        sum_insured_inr: 200000
-        conditions: "RuPay variant"
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-      notes: "At HPCL pumps."
-    concierge: true
-    source:
-      url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
-      retrieved_on: 2026-07-03
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      notes: One complimentary domestic visit per quarter for the primary cardholder after INR 75,000 spend in the preceding calendar quarter; availability depends on the issued network variant.
 
+  milestones:
+  - spend_inr: 200000
+    cycle: annual
+    benefit: 2,000 Reward Points on ₹2 lakh spend
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: ICICI Reward Points
+    trigger_window: anniversary-year
+    value_inr: null
+  - spend_inr: 100000
+    cycle: annual
+    benefit: 1,000 Reward Points for every additional ₹1 lakh spend (max 10,000 points per anniversary year)
+    reward_kind: points
+    reward_units: 1000
+    reward_currency_name: ICICI Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+    value_inr: null
+  movies:
+    type: discount
+    partner: BookMyShow and INOX
+    max_per_cycle: 2
+    cycle: monthly
+    cap_inr: 100
+    notes: 25% off up to INR 100 twice monthly on BookMyShow and INOX. BookMyShow requires INR 25,000 spend in the preceding quarter from 1-Apr-2026; no spend gate is stated for INOX.
+  dining:
+    program: Culinary Treats
+    discount_pct: null
+    notes: Issuer describes partner and platform offers whose terms vary by partner, location, and availability; no fixed Coral discount is published. Historical 15% campaign is expired.
+  other:
+  - name: Railway lounge access
+    description: One complimentary railway lounge visit per quarter, up to four per year; verify participating stations and current access terms.
+    value_inr: null
+  insurance:
+  - type: personal-accident
+    sum_insured_inr: 200000
+    conditions: RuPay variant
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 50000
+    cycle: monthly
+    notes: At HPCL pumps.
+  concierge: true
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/icici/_shared/mitc_cc_2026-10-09.pdf
+    - docs/sources/icici/coral/coral-membership-guide-retrieved-2026-10-26.pdf
+    notes: 2026-10-26 is the verification snapshot for this bundle; the issuer does not publish one start date for all listed terms. The BookMyShow spend gate separately took effect 1-Apr-2026. Insurance and 24/7 concierge are RuPay-variant-only. The page states one railway visit per quarter and an HPCL fuel-waiver cap of INR 50,000 per statement cycle. Airport access is one per quarter subject to INR 75,000 preceding-quarter spend.
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.milestones
+    - benefits.movies
+    - benefits.dining
+    - benefits.other
+    - benefits.insurance
+    - benefits.fuel_surcharge_waiver
+    - benefits.concierge
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
     salaried: 240000
     self_employed: 240000
-  credit_score_min: 700
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Issuer lists Indian citizen, minimum age 21, salaried income INR 20,000/month or self-employed annual income INR 2.4 lakh. Maximum age 65 is issuer-card FAQ guidance. Monthly salaried threshold is annualized in the schema. Credit-score cutoff is unpublished.
+  source:
+    url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual
+    - eligibility.residency
 application:
   apply_url: https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [entry, points, movies, everyday]
+  last_verified_on: 2026-10-26
+  tags:
+  - entry
+  - points
+  - movies
+  - everyday

@@ -43,9 +43,9 @@
       "pattern": "^[a-z][a-z0-9-]*$"
     },
     "network": {
-      "type": "string",
-      "description": "Slug of an entry under data/networks/.",
-      "enum": ["visa", "mastercard", "rupay", "amex", "diners"]
+      "type": ["string", "null"],
+      "description": "Slug of an entry under data/networks/. Null when the issuer does not identify the issued or selected network variant.",
+      "enum": ["visa", "mastercard", "rupay", "amex", "diners", null]
     },
     "network_tier": {
       "type": ["string", "null"],
@@ -58,9 +58,9 @@
       "enum": ["entry", "mid", "premium", "super-premium", "invite-only"]
     },
     "card_type": {
-      "type": "string",
-      "description": "Credit behaviour. 'charge' means no revolving credit (Amex).",
-      "enum": ["credit", "charge", "secured"],
+      "type": ["string", "null"],
+      "description": "Credit behaviour. 'charge' means no revolving credit (Amex). Null when issuer evidence does not establish the classification.",
+      "enum": ["credit", "charge", "secured", null],
       "default": "credit"
     },
     "co_brand": {
@@ -203,8 +203,12 @@
       "properties": {
         "effective_from": { "type": "string", "format": "date" },
         "effective_until": { "type": ["string", "null"], "format": "date" },
-        "joining_fee_inr": { "type": "integer", "minimum": 0 },
-        "annual_fee_inr": { "type": "integer", "minimum": 0 },
+        "joining_fee_inr": { "type": ["integer", "null"], "minimum": 0 },
+        "annual_fee_inr": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Null when available issuer evidence does not establish the annual fee."
+        },
         "renewal_fee_inr": {
           "type": ["integer", "null"],
           "minimum": 0,
@@ -227,6 +231,23 @@
         },
         "forex_markup_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 10 },
         "finance_charge_monthly_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 10 },
+        "finance_charge_tiers": {
+          "type": "array",
+          "description": "Relationship- or balance-dependent monthly finance rates. Use alongside a null flat finance_charge_monthly_pct when no single rate applies.",
+          "items": {
+            "type": "object",
+            "required": ["min_amb_inr", "max_amb_inr", "monthly_rate_pct"],
+            "additionalProperties": false,
+            "properties": {
+              "min_amb_inr": { "type": "integer", "minimum": 0 },
+              "max_amb_inr": { "type": ["integer", "null"], "minimum": 0 },
+              "monthly_rate_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 10 },
+              "annual_rate_pct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+              "basis": { "type": "string" },
+              "conditions": { "type": "string" }
+            }
+          }
+        },
         "cash_advance_fee": {
           "oneOf": [
             { "type": "null" },
@@ -235,7 +256,8 @@
               "additionalProperties": false,
               "properties": {
                 "pct": { "type": "number", "minimum": 0 },
-                "min_inr": { "type": "integer", "minimum": 0 }
+                "min_inr": { "type": "integer", "minimum": 0 },
+                "flat_inr": { "type": "integer", "minimum": 0 }
               }
             }
           ]
@@ -349,14 +371,19 @@
           "description": "Slug of an entry under data/loyalty_programs/. When set, the card's reward currency is the program's currency, and stacking accelerators may credit program baseline/tier/channel earn on top of the card's slice.",
           "pattern": "^[a-z][a-z0-9-]*$"
         },
+        "unit_value_from_program": {
+          "type": "boolean",
+          "default": true,
+          "description": "Set false when the card earns its own currency that converts into the loyalty_program's currency at a ratio other than 1:1 (e.g. 4 BOBCARD Reward Points = 1 IRCTC point). The calculator then values each unit with this record's base.unit_value_inr / unit_value_inr_realized, not the programme's unit_value_inr. Stacking (stacks_with_program) is unaffected. See DECISIONS D-27."
+        },
         "base": {
           "type": "object",
           "required": ["rate", "per_inr"],
           "additionalProperties": false,
           "dependentRequired": { "cap_per_cycle": ["cycle"] },
           "properties": {
-            "rate": { "type": "number", "minimum": 0 },
-            "per_inr": { "type": "integer", "minimum": 1 },
+            "rate": { "type": ["number", "null"], "minimum": 0 },
+            "per_inr": { "type": ["integer", "null"], "minimum": 1 },
             "unit_value_inr": {
               "type": ["number", "null"],
               "minimum": 0,
@@ -393,6 +420,7 @@
                   "fuel",
                   "travel",
                   "utilities",
+                  "telecom",
                   "rent",
                   "international",
                   "entertainment",
@@ -405,7 +433,14 @@
                 ]
               },
               "description": "Restricts where the base rate is paid at all. Omit (the default) when base is earned on every eligible rupee. Set it only when the issuer scopes base earn more narrowly than the card's exclusions already do — e.g. Axis Cashback pays its 0.75% base ONLY on card-present spend and travel, so online spend past the accelerator cap earns nothing rather than falling back to base. The canonical buckets carry no card-present/card-not-present axis, so a card whose base is channel-scoped must enumerate the buckets where that channel realistically dominates; prefer the conservative (smaller) list."
-            }
+            },
+            "excluded_categories": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "type": "string", "enum": ["online", "groceries", "dining", "fuel", "travel", "utilities", "telecom", "rent", "international", "entertainment", "government", "insurance", "education", "wallet-loads", "emi", "other"] },
+              "description": "Buckets excluded from base earn while still allowing a separately scoped accelerator to earn, such as utility spends eligible only through a named channel."
+            },
+            "notes": { "type": "string", "description": "Evidence caveats for this base earn rule; use null for unverified numeric values rather than a guess." }
           }
         },
         "accelerated": {
@@ -420,7 +455,8 @@
             ],
             "additionalProperties": false,
             "dependentRequired": {
-              "cap_per_cycle": ["cycle"]
+              "cap_per_cycle": ["cycle"],
+              "cap_base_multiplier": ["cycle"]
             },
             "properties": {
               "category": { "type": "string", "minLength": 1 },
@@ -467,6 +503,25 @@
                   { "type": "string", "const": "unlimited" }
                 ]
               },
+              "cap_status": {
+                "type": "string",
+                "enum": ["issuer-stated-unlimited", "not-published", "unknown"],
+                "description": "Distinguishes a verified unlimited rate from a cap that the available issuer terms do not state."
+              },
+              "cap_group": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Identifier for accelerator rules that share one issuer-defined cap pool within the same reward record and cycle."
+              },
+              "cap_base_multiplier": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Cap in cashback currency equals this multiple of base cashback earned on eligible base-rate spend in the same cycle."
+              },
+              "over_cap_earns_base": {
+                "type": "boolean",
+                "description": "Whether spend beyond this accelerator's cap earns the card's base rate. Defaults to true; set false when issuer terms exclude the preferred merchant/category from base earn."
+              },
               "cap_unit": {
                 "type": "string",
                 "enum": ["points", "cashback-inr", "miles", "spend-inr"],
@@ -485,6 +540,7 @@
                     "fuel",
                     "travel",
                     "utilities",
+                    "telecom",
                     "rent",
                     "international",
                     "entertainment",
@@ -595,9 +651,10 @@
           "items": {
             "type": "string",
             "enum": [
-              "fuel", "wallet-loads", "rent", "government", "utilities",
+              "fuel", "wallet-loads", "rent", "government", "utilities", "telecom", "international",
               "insurance-premiums", "education", "jewellery", "emi",
-              "cash-advance", "gift-cards", "mutual-funds", "crypto", "other"
+              "cash-advance", "gift-cards", "mutual-funds", "crypto", "other",
+              "jewelry", "bridge-fees", "road-fees-and-tolls", "financial-institutions"
             ]
           },
           "uniqueItems": true
@@ -607,6 +664,23 @@
           "description": "Specific 4-digit MCCs that earn ZERO rewards on this card (from the card's T&C). Machine-readable complement to the category-level `exclusions`; the calculator scores spend on these MCCs at 0.",
           "items": { "type": "string", "pattern": "^[0-9]{4}$" },
           "uniqueItems": true
+        },
+        "category_caps": {
+          "type": "array",
+          "description": "Issuer-defined reward caps scoped to a category or MCC set, including caps on total points earned in that category.",
+          "items": {
+            "type": "object",
+            "required": ["category", "cap_per_cycle", "cap_unit", "cycle"],
+            "additionalProperties": false,
+            "properties": {
+              "category": { "type": "string", "minLength": 1 },
+              "mcc_list": { "type": "array", "items": { "type": "string", "pattern": "^[0-9]{4}$" }, "uniqueItems": true },
+              "cap_per_cycle": { "type": "integer", "minimum": 0 },
+              "cap_unit": { "type": "string", "enum": ["points", "cashback-inr", "miles", "spend-inr"] },
+              "cycle": { "$ref": "#/$defs/Cycle" },
+              "conditions": { "type": "string" }
+            }
+          }
         },
         "reward_cap": {
           "description": "Card-wide ceiling on reward units earned per cycle across ALL categories (e.g. 50,000 points per statement cycle). Distinct from per-accelerator caps and base.cap_per_cycle.",
@@ -734,13 +808,13 @@
           "properties": {
             "rounds_per_cycle": {
               "oneOf": [
-                { "type": "integer", "minimum": 0 },
+                { "type": ["integer", "null"], "minimum": 0 },
                 { "type": "string", "const": "unlimited" }
               ]
             },
             "lessons_per_cycle": {
               "oneOf": [
-                { "type": "integer", "minimum": 0 },
+                { "type": ["integer", "null"], "minimum": 0 },
                 { "type": "string", "const": "unlimited" }
               ]
             },
@@ -804,7 +878,10 @@
                   "baggage-loss", "credit-shield", "fraud-liability", "other"
                 ]
               },
-              "sum_insured_inr": { "type": "integer", "minimum": 0 },
+              "sum_insured_inr": { "type": ["integer", "null"], "minimum": 0 },
+              "sum_insured_amount": { "type": ["number", "null"], "minimum": 0 },
+              "sum_insured_currency": { "type": ["string", "null"], "enum": ["INR", "USD", null] },
+              "coverage_duration_days": { "type": ["integer", "null"], "minimum": 0 },
               "conditions": { "type": "string" }
             }
           }
@@ -814,7 +891,12 @@
           "required": ["pct"],
           "additionalProperties": false,
           "properties": {
-            "pct": { "type": "number", "minimum": 0, "maximum": 5 },
+            "pct": {
+              "type": ["number", "null"],
+              "minimum": 0,
+              "maximum": 5,
+              "description": "Null when the issuer publishes a surcharge reversal but does not state a fixed percentage rate."
+            },
             "min_txn_inr": { "type": ["integer", "null"], "minimum": 0 },
             "max_txn_inr": { "type": ["integer", "null"], "minimum": 0 },
             "cap_per_cycle_inr": { "type": ["integer", "null"], "minimum": 0 },
@@ -843,7 +925,7 @@
             "notes": { "type": "string" }
           }
         },
-        "concierge": { "type": "boolean", "default": false },
+        "concierge": { "type": ["boolean", "null"], "description": "Whether concierge service is offered; use null when current issuer evidence does not establish availability." },
         "surcharge_waivers": {
           "type": "array",
           "description": "Surcharge waivers other than fuel (e.g. railway booking, utility bill, online education). Fuel has its own dedicated `fuel_surcharge_waiver` field.",
@@ -902,6 +984,7 @@
         "cycle": { "$ref": "#/$defs/Cycle" },
         "guests_per_visit": {
           "oneOf": [
+            { "type": "null" },
             { "type": "integer", "minimum": 0 },
             { "type": "string", "const": "unlimited" }
           ]
@@ -930,6 +1013,36 @@
       "properties": {
         "min_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 },
         "max_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 },
+        "age_ranges": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "salaried": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "min_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 },
+                "max_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 }
+              }
+            },
+            "self_employed": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "min_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 },
+                "max_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 }
+              }
+            },
+            "retired_pensioner": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "min_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 },
+                "max_age": { "type": ["integer", "null"], "minimum": 18, "maximum": 100 }
+              }
+            }
+          }
+        },
         "income_inr_annual": {
           "type": "object",
           "additionalProperties": false,
@@ -940,11 +1053,11 @@
         },
         "credit_score_min": { "type": ["integer", "null"], "minimum": 300, "maximum": 900 },
         "residency": {
-          "type": "string",
-          "enum": ["resident-indian", "nri", "either"],
-          "default": "resident-indian"
+          "type": ["string", "null"],
+          "enum": ["resident-indian", "nri", "either", null]
         },
-        "notes": { "type": "string" }
+        "notes": { "type": "string" },
+        "source": { "$ref": "#/$defs/Source" }
       }
     },
 

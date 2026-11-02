@@ -1,16 +1,8 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: sbi-doctors-ima
 name: Doctor's SBI Card (IMA)
+image_path: /cards/sbi/doctors-ima.webp
 issuer: sbi
-network: visa
+network: null
 network_tier: null
 tier: mid
 card_type: credit
@@ -18,126 +10,197 @@ co_brand:
   partner: IMA
   category: healthcare
 status: active
-launched_on: null
+launched_on: 2018-03-28
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 1499
-    annual_fee_inr: 1499
-    fee_waiver:
-      spend_inr: 200000
-      cycle: annual
-      conditions: "Renewal fee reversed on annual spends of Rs. 2 lakhs."
-    forex_markup_pct: 3.5 # verified: MITC — 3.5% foreign currency txn fee (standard cards)
-    finance_charge_monthly_pct: 3.75 # verified: MITC — up to 3.75% p.m. (45% p.a.)
-    cash_advance_fee:
-      pct: 2.5 # verified: MITC — 2.5% or Rs.500 whichever higher
-      min_inr: 500
-    gst_applicable: true
-    supplementary_card_fee_inr: 0
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-07-03
+  effective_until: null
+  joining_fee_inr: 1499
+  annual_fee_inr: 1499
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: Renewal fee reversed on annual spends of Rs. 2 lakhs.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  supplementary_card_fee_inr: 0
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/sbi/_shared/mitc-english.pdf
+    - docs/sources/sbi/doctors-ima/ima-tnc-current.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current SBI Card MITC confirms INR1,499 joining/annual fees, renewal reversal at INR2 lakh preceding-year spend, 3.5% forex markup and current finance/cash-advance charges. Historical start date of the current fee schedule is not established.
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated:
-      - category: medical-supplies-travel-international
-        canonical_categories: [travel, international, other]
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: 7500
-        cap_unit: points
-        cycle: monthly
-        notes: "5 RP per Rs.100 on Medical Supplies, Travel Bookings & International Spends. Medical+Travel capped 7,500 RP/month and International capped 7,500 RP/month (separately); thereafter 1 RP per Rs.100."
-      - category: doctors-day-spends
-        multiplier: 5
-        effective_rate: 5
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: annual
-        notes: "5X Reward Points on all spends on Doctor's Day, i.e. 1 July."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-        constraints: "4 Reward Points = Re. 1. Pay card outstanding with Reward Points."
-      - type: catalog
-        program: SBI Card Rewards
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
-    mcc_exclusions: ['6513']
+- effective_from: 2026-07-03
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+  accelerated:
+  - category: medical-supplies-travel
+    canonical_categories:
+    - travel
+    - other
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: monthly
+    notes: 5 Reward Points per INR100 on Medical Supplies and Travel Agent/Booking spends; combined cap 7,500 points per month, then base 1 point per INR100 continues.
+  - category: international-spends
+    canonical_categories: [international]
+    multiplier: 5
+    effective_rate: 5
+    cap_per_cycle: 7500
+    cap_unit: points
+    cycle: monthly
+    notes: 5 Reward Points per INR100 on international spends; separate cap of 7,500 points per month, then base 1 point per INR100 continues.
+  - category: doctors-day-spends
+    multiplier: 5
+    effective_rate: 5
+    notes: 5 Reward Points per INR100 on all eligible spends made on Doctor's Day (1 July); ordinary program exclusions continue to apply. No separate Doctor's Day cap is stated in current terms.
+    canonical_categories:
+    - online
+    - groceries
+    - dining
+    - travel
+    - international
+    - entertainment
+    - utilities
+    - telecom
+    - education
+    - other
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  - cash-advance
+  - government
+  capping_rules:
+  - Medical Supplies and Travel Booking 5X earn share one 7,500 point monthly cap; International 5X earn has a separate 7,500 point monthly cap. Base points continue after each cap.
+  - Doctor's Day (1 July) earns 5X on all otherwise eligible spend; current issuer terms do not state a separate cap.
+  - The IMA-specific terms say points cannot be exchanged for credit or applied to card charges, while SBI's current general cardholder agreement lists statement-credit redemption for eligible cards. Treat statement-credit eligibility for the IMA card as unresolved; no fixed cash value is asserted.
+  - The IMA terms state points expire 24 months after accrual. General SBI terms add rent MCC 6513, government MCCs 9399/9311 and wallet MCCs 6540/6541 exclusions; all MCC identification is best-effort.
+  redemption:
+  - type: catalog
+    program: SBI Card Rewards
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/sbi/doctors-ima/ima-tnc-current.pdf
+    - docs/sources/sbi/doctors-ima/ima-brochure.pdf
+    fields_verified: [rewards.base, rewards.accelerated, rewards.exclusions, rewards.capping_rules, rewards.redemption]
+    notes: Current IMA-specific terms and SBI's reward-accrual cap policy confirm the separate monthly 7,500-point caps. The specific terms' redemption restrictions conflict with the brochure's outstanding-balance wording and SBI's general statement-credit page; catalog redemption is retained, but statement-credit eligibility and fixed point value remain unresolved.
+  mcc_exclusions:
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '6513'
+  - '6540'
+  - '6541'
+  - '9311'
+  - '9399'
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access:
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-        notes: "Max 2 per quarter, international lounges outside India only. Complimentary Priority Pass Membership; post free visits USD 27 + taxes per visit. No complimentary domestic lounge access (domestic PP lounges chargeable at USD 27)."
-    milestones:
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "E-Gift Voucher from Yatra.com / Bata / Shoppers Stop worth Rs. 5,000"
-        value_inr: 5000
-        reward_kind: voucher
-        trigger_window: anniversary-year
-    welcome:
-      - condition: "On joining"
-        benefit: "Welcome e-Gift Voucher worth Rs. 1,500 from Yatra.com"
-        value_inr: 1500
-    insurance:
-      - type: other
-        sum_insured_inr: 2000000
-        conditions: "Professional Indemnity Insurance cover of Rs. 20 lakhs; reimburses legal & defence costs, out-of-court settlement expenses and court awards; 0% deductible."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 500
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    concierge: false
-    other:
-      - name: IMA Association
-        description: "Exclusive association with the Indian Medical Association (IMA)."
-        value_inr: null
-    source:
-      url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-07-03
+  effective_until: null
+  lounge_access:
+    international:
+      visits_per_cycle: 4
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Max 2 per quarter, international lounges outside India only. Complimentary
+        Priority Pass Membership; post free visits USD 27 + taxes per visit. No complimentary
+        domestic lounge access (domestic PP lounges chargeable at USD 27).
+  milestones:
+  - spend_inr: 500000
+    cycle: annual
+    benefit: E-Gift Voucher from Yatra.com / Bata / Shoppers Stop worth Rs. 5,000
+    value_inr: 5000
+    reward_kind: voucher
+    trigger_window: anniversary-year
+  welcome:
+  - condition: On joining
+    benefit: Welcome e-Gift Voucher worth Rs. 1,500 from Yatra.com
+    value_inr: 1500
+  insurance:
+  - type: other
+    sum_insured_inr: 2000000
+    conditions: Professional Indemnity Insurance cover of Rs. 20 lakhs; reimburses
+      legal & defence costs, out-of-court settlement expenses and court awards; 0%
+      deductible.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  concierge: false
+  other:
+  - name: IMA Association
+    description: Exclusive association with the Indian Medical Association (IMA).
+    value_inr: null
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/sbi/doctors-ima/ima-brochure.pdf
+    - docs/sources/sbi/doctors-ima/ima-tnc-current.pdf
+    fields_verified: [benefits.lounge_access, benefits.milestones, benefits.welcome, benefits.insurance, benefits.fuel_surcharge_waiver]
+    notes: Current brochure supports the welcome and milestone vouchers, professional indemnity cover, and Priority Pass visit quota; its domestic lounge offer is explicitly time-limited and is not represented as a current entitlement. The terms confirm surcharge waiver amount band and statement-cycle cap.
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
     salaried: null
     self_employed: null
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-
+  notes: "Exclusively for registered doctors (IMA members). No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting. SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/doctors-ima-sbi-card.html
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, professional, co-brand, lounge, insurance]
+  last_verified_on: '2026-10-27'
+  tags:
+  - mid
+  - multi-network
+  - points
+  - professional
+  - co-brand
+  - lounge
+  - insurance

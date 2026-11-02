@@ -42,3 +42,7 @@ Universal rent (MCC 6513) exclusion on all RBL cards. See
 RBL's tab-based site resists deep extraction, so several new-card fields (exact fees,
 RP/₹100 rates and caps, lounge counts, income) carry `# TODO verify` markers — close
 from each card's MITC / rate-card PDF.
+
+## Zomato Edition Classic validation (2026-10-26)
+
+Corrected `data/cards/rbl/zomato-edition.yaml` to represent the Edition Classic variant and its actual replacement history. RBL's 20-Sep-2022 terms set final earn to 5% on Zomato/Blinkit apps (500 Edition Cash/day cap), 1% elsewhere and a 2,000 Edition Cash anniversary-year milestone at INR 2 lakh. Edition Cash is closed-loop Zomato value at INR 1/unit, and RBL's official transition notice retired access on 14-May-2023 and replaced cards with lifetime-free Shoprite effective 15-May-2023. Archived launch, card terms, benefit update, replacement notice and shared MITC under `docs/sources/rbl/`. Historical card-specific fee and qualification terms remain unknown where surviving issuer material does not establish them.

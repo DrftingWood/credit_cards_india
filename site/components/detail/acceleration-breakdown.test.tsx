@@ -1,6 +1,7 @@
 import { describe, test, expect } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
-import { AcceleratorRow, baseRowCutNote, breakdownLayers } from "./acceleration-breakdown";
+import { AcceleratorRow, baseRowCutNote, breakdownLayers, explainContext } from "./acceleration-breakdown";
+import type { LoyaltyProgram } from "@/lib/types";
 import type { AcceleratorExplain, ScoringContext } from "@/lib/calculator";
 import { DEFAULT_USAGE, setFamilyShare, toggleEcosystem } from "@/lib/usage";
 
@@ -89,6 +90,50 @@ describe("breakdownLayers — host context wins when one is supplied", () => {
     const layers = breakdownLayers({}, "Best-case");
     expect(layers.map((l) => l.id)).toEqual(["host", "absolute"]);
     expect(layers[1].ctx.valueBasis).toBe("face");
+  });
+});
+
+describe("explainContext — the user's loyalty tier joins every layer except Absolute", () => {
+  const PROG = { id: "test-air", name: "Test Air", earn: { tiers: [{ id: "gold", name: "Gold", bonus_rate: 4, bonus_per_inr: 100 }] } } as unknown as LoyaltyProgram;
+  const tiers = { "test-air": "gold" };
+
+  test("Absolute gets the programme data (D-27) but no tier", () => {
+    const [, absolute] = breakdownLayers();
+    const ctx = explainContext(absolute, tiers, [PROG]);
+    expect(ctx.programs?.["test-air"]).toBe(PROG);
+    expect(ctx.stackProgramEarn).toBe(false);
+    expect(ctx.tierLine).toBeUndefined();
+    expect(ctx.valueBasis).toBe("face");
+    expect(explainContext(absolute, tiers, [])).toBe(absolute.ctx);
+  });
+
+  test("Realistic gains the tier fields and keeps its own", () => {
+    const [realistic] = breakdownLayers(undefined, undefined, setFamilyShare(DEFAULT_USAGE, "amazon", 40));
+    const ctx = explainContext(realistic, tiers, [PROG]);
+    expect(ctx.tierLine).toEqual({ "test-air": "gold" });
+    expect(ctx.tierMap).toBeUndefined(); // a tier never enters the rate here (D-24)
+    expect(ctx.tierPrograms?.["test-air"]).toBe(PROG);
+    expect(ctx.programs?.["test-air"]).toBe(PROG);
+    expect(ctx.merchantShares).toEqual(realistic.ctx.merchantShares);
+    expect(ctx.applyApplicability).toBe(true);
+  });
+
+  test("a host ctx is copied, never mutated, so the ranking's own object stays as it was", () => {
+    const hostCtx: ScoringContext = { enabledEcosystems: new Set(["Tata Neu"]) };
+    const [host] = breakdownLayers(hostCtx, "Realistic");
+    const ctx = explainContext(host, tiers, [PROG]);
+    expect(ctx).not.toBe(hostCtx);
+    expect(hostCtx.tierLine).toBeUndefined();
+    expect(hostCtx.programs).toBeUndefined();
+    expect(ctx.enabledEcosystems).toBe(hostCtx.enabledEcosystems);
+  });
+
+  test("no tiers and no programmes → the layer's ctx unchanged; programmes only → just the programme map added", () => {
+    const [realistic] = breakdownLayers();
+    expect(explainContext(realistic, {}, [])).toBe(realistic.ctx);
+    const ctx = explainContext(realistic, {}, [PROG]);
+    expect(ctx.programs?.["test-air"]).toBe(PROG);
+    expect(ctx.tierLine).toBeUndefined();
   });
 });
 

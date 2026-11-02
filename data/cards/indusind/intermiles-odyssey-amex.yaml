@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IndusInd live card-page tabs (HTML; issuer publishes no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: indusind-intermiles-odyssey-amex
 name: InterMiles IndusInd Bank Odyssey Amex Credit Card
+image_path: /cards/indusind/intermiles-odyssey-amex.webp
 issuer: indusind
 network: amex
-network_tier: null
+network_tier: platinum
 tier: super-premium
 card_type: credit
 co_brand:
@@ -20,98 +12,108 @@ co_brand:
   partner_website: https://www.intermiles.com
 status: discontinued
 launched_on: 2021-01-01
-discontinued_on: '2025-01-21'
-
+discontinued_on: '2024-08-24'
 fees:
-  - effective_from: 2021-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 1.5
-    finance_charge_monthly_pct: 3.83
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "InterMiles co-brand (odyssey tier, Amex network). Earns InterMiles."
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-odyssey-amex-credit-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2021-01-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 1.5
+  finance_charge_monthly_pct: 3.83
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 300
+  gst_applicable: true
+  notes: InterMiles co-brand (odyssey tier, Amex network). Earns InterMiles.
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-odyssey-amex-credit-card.html
+    retrieved_on: '2026-11-01'
+    type: issuer-page
 rewards:
-  - effective_from: 2021-01-01
-    effective_until: null
-    currency: miles
-    currency_name: InterMiles
-    base:
-      rate: 4
-      per_inr: 100
-      unit_value_inr: 0.40
-      unit_value_inr_realized: 0.30
-    accelerated:
-      - category: flight-amazon-hotel-portal
-        canonical_categories: [travel, online]
-        multiplier: 2
-        effective_rate: 8
-        cap_per_cycle: "unlimited"
-        cap_unit: miles
-        cycle: monthly
-        notes: "2X InterMiles on flights & hotels via intermiles.com / interbook.intermiles.com and Amazon"
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: airmiles
-        program: InterMiles
-        rate_inr_per_unit: 0.40
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-odyssey-amex-credit-card.html
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: IndusInd-InterMiles co-brand discontinued; cards migrated (Voyage Visa->Legend, Voyage Amex/Odyssey->Celesta) and no longer earn InterMiles. Residual InterMile ~Rs 0.17-0.25.
+- effective_from: 2021-01-01
+  effective_until: null
+  currency: miles
+  currency_name: InterMiles
+  base:
+    rate: 4
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: flight-amazon-hotel-portal
+    canonical_categories:
+    - travel
+    - online
+    multiplier: 2
+    effective_rate: 8
+    cap_per_cycle: unlimited
+    cap_unit: miles
+    cycle: monthly
+    notes: 2X InterMiles on flights & hotels via intermiles.com / interbook.intermiles.com and Amazon
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - emi
+  redemption:
+  - type: airmiles
+    program: InterMiles
+    rate_inr_per_unit: null
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-odyssey-amex-credit-card.html
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    notes: IndusInd-InterMiles co-brand discontinued; cards migrated (Voyage Visa->Legend, Voyage Amex/Odyssey->Celesta)
+      and legacy InterMiles terms end 20-Jan-2025; issuer states existing as well as new cards were discontinued and cards migrated to replacement variants. InterMiles redemption ended effective 21-Jan-2025. Residual InterMile ~Rs 0.17-0.25.
 benefits:
-  - effective_from: 2021-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [amex, dreamfolks]
-    welcome:
-      - condition: "On joining (fee payment + eligible spend)"
-        benefit: "15,000 InterMiles welcome bonus"
-        value_inr: 6000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-odyssey-amex-credit-card.html
-      retrieved_on: 2026-07-03
-
+- effective_from: 2021-01-01
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - amex
+      - dreamfolks
+  welcome:
+  - condition: On joining (fee payment + eligible spend)
+    benefit: 15,000 InterMiles welcome bonus
+    value_inr: 6000
+    window_days: 90
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: null
+    cycle: monthly
+  concierge: true
+  source:
+    url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-odyssey-amex-credit-card.html
+    retrieved_on: '2026-11-01'
+    type: issuer-page
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 2500000
-    self_employed: 2500000
-  credit_score_min: 750
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Numeric income and credit-score cutoffs are retained only when this eligibility record cites the exact
+    field in issuer evidence; unsupported cutoffs are unknown, not proof of no underwriting requirement. Broad minimum/maximum
+    age figures without an exact issuer evidence path or a source-verified occupational range were left unknown;
+    this does not imply there is no age criterion.
 application:
   apply_url: https://www.indusind.bank.in/in/en/personal/cards/credit-card/intermiles-odyssey-amex-credit-card.html
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [super-premium, miles, airline, intermiles, travel, co-brand]
+  last_verified_on: '2026-11-01'
+  tags:
+  - super-premium
+  - miles
+  - airline
+  - intermiles
+  - travel
+  - co-brand

@@ -1,16 +1,14 @@
 # ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
+#   Source     : SBI Card Unnati page, e-kit terms, current MITC and cardholder agreement
+#   Verified   : 2026-11-01   Confidence: HIGH (issuer)
+#   Field comparison and limits: docs/sources/sbi/unnati/issuer-extract-2026-11-01.md
 # ---------------------------------------------------------------------------
 id: sbi-unnati
 name: SBI Unnati Credit Card
+image_path: /cards/sbi/unnati.webp
 issuer: sbi
-network: visa
+network: null
 network_tier: null
 tier: entry
 card_type: secured
@@ -27,15 +25,26 @@ fees:
     renewal_fee_inr: 499
     fee_waiver: null
     forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
+    finance_charge_monthly_pct: 2.75
     cash_advance_fee:
       pct: 2.5
       min_inr: 500
     gst_applicable: true
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
-      retrieved_on: 2026-07-03
-    notes: "Annual fee of ₹499 waived for the first 4 years; renewal fee of ₹499 applies from the 5th year onwards. Finance charge shown at SBI standard; TODO verify."
+      retrieved_on: 2026-11-01
+      type: issuer-page
+      confidence: high
+      local_refs:
+        - docs/sources/sbi/_shared/mitc-english.pdf
+      fields_verified:
+        - fees.joining_fee_inr
+        - fees.annual_fee_inr
+        - fees.renewal_fee_inr
+        - fees.forex_markup_pct
+        - fees.finance_charge_monthly_pct
+        - fees.cash_advance_fee
+    notes: "Annual fee of INR499 is waived for the first 4 years; renewal fee of INR499 applies from the 5th year onwards. Current SBI MITC sets secured-card finance charges at 2.75% monthly (33% p.a.). Exact launch day and fee schedule effective date are not established by reviewed issuer sources."
 
 rewards:
   - effective_from: 2018-01-01
@@ -46,22 +55,30 @@ rewards:
       rate: 1
       per_inr: 100
       unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
+      unit_value_inr_realized: null
     exclusions:
       - fuel
       - emi
       - cash-advance
+      - rent
+      - government
+      - wallet-loads
+    capping_rules:
+      - "1 Reward Point per INR 100 eligible spend. Minimum redemption is 2,000 points; statement credit value is INR 0.25 per point."
     redemption:
-      - type: catalog
-        program: SBI Card Rewards
+      - type: statement-credit
         rate_inr_per_unit: 0.25
+        min_units: 2000
+        fee_inr: 99
+        constraints: "Minimum redemption of 2,000 points; 2,000 points = INR500 statement credit. Current SBI MITC applies its fee to statement-credit redemptions, subject to account-status exceptions."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
       type: issuer-page
-    notes: "Cash Advance, Balance Transfer, Flexipay and Fuel transactions are excluded from the Reward Points programme."
+      confidence: high
+    notes: "Cash Advance, Balance Transfer, Encash, Flexipay and Fuel transactions are excluded. Rent MCC 6513 is excluded from 1-Apr-2024; Government MCCs 9399 and 9311 are excluded from 1-Jun-2024. Points expire after 24 months. Minimum redemption 2,000 points; statement credit value INR0.25 per point."
 
-    mcc_exclusions: ['6513']
+    mcc_exclusions: ['5172', '5541', '5542', '5983', '6513', '6540', '6541', '9399', '9311']
 benefits:
   - effective_from: 2018-01-01
     effective_until: null
@@ -72,6 +89,8 @@ benefits:
         value_inr: 500
         reward_kind: cashback
         trigger_window: anniversary-year
+        is_repeatable: true
+        max_awards_per_cycle: 1
     fuel_surcharge_waiver:
       pct: 1.0
       min_txn_inr: 500
@@ -81,21 +100,31 @@ benefits:
       notes: "1% fuel surcharge waiver on transactions between ₹500 and ₹3,000; max ₹100 per statement cycle."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
+      type: issuer-page
+      confidence: high
 
 eligibility:
-  min_age: 18
-  max_age: 70
+  min_age: null
+  max_age: null
   income_inr_annual:
     salaried: null
     self_employed: null
   credit_score_min: null
   residency: resident-indian
-  notes: "Secured card issued against a lien on the cardholder's SBI fixed deposit of ₹25,000 or more."
+  notes: "Issuer material describes Unnati as a secured card against a lien on an SBI term deposit. Do not infer a card-specific minimum deposit, age, income or credit-score cutoff from the available public terms."
+  source:
+    url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
+    retrieved_on: 2026-11-01
+    type: issuer-page
+    confidence: high
+    fields_verified:
+      - eligibility.notes
+    notes: "Source confirms secured/Advantage product existence or FD lien context; it does not publish the omitted applicant thresholds."
 
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/sbi-card-unnati.html
 
 metadata:
-  last_verified_on: 2026-07-03
+  last_verified_on: 2026-11-01
   tags: [entry, secured, points, fd-backed]

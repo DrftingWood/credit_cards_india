@@ -1,108 +1,225 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Axis per-card T&C PDFs (docs/sources/axis/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: axis-aura
 name: Axis Bank Aura Credit Card
+image_path: /cards/axis/aura.webp
 issuer: axis
 network: visa
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: on-hold
-launched_on: 2021-06-01
+launched_on: 2021-01-19
 discontinued_on: null
-
 fees:
-  - effective_from: 2021-06-01
-    effective_until: null
-    joining_fee_inr: 749
-    annual_fee_inr: 749
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-25
+  effective_until: null
+  joining_fee_inr: 749
+  annual_fee_inr: 749
+  fee_waiver: null
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  late_payment_slabs:
+  - up_to_inr: 500
+    fee_inr: 0
+  - up_to_inr: 5000
+    fee_inr: 500
+  - up_to_inr: 10000
+    fee_inr: 750
+  - up_to_inr: 50000
+    fee_inr: 1200
+  - up_to_inr: any
+    fee_inr: 1300
+  overlimit_fee:
+    pct: 2.5
+    min_inr: 500
+  supplementary_card_fee_inr: 0
+  gst_applicable: true
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
+    retrieved_on: 2026-10-25
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].forex_markup_pct
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    - fees[0].late_payment_slabs[0].up_to_inr
+    - fees[0].late_payment_slabs[0].fee_inr
+    - fees[0].late_payment_slabs[1].up_to_inr
+    - fees[0].late_payment_slabs[1].fee_inr
+    - fees[0].late_payment_slabs[2].up_to_inr
+    - fees[0].late_payment_slabs[2].fee_inr
+    - fees[0].late_payment_slabs[3].up_to_inr
+    - fees[0].late_payment_slabs[3].fee_inr
+    - fees[0].late_payment_slabs[4].fee_inr
+    - fees[0].overlimit_fee.pct
+    - fees[0].overlimit_fee.min_inr
+    - fees[0].supplementary_card_fee_inr
+    notes: Current product page lists no annual fee waiver, no add-on fee, 3.5% forex and DCC fees, 3.75% monthly finance charge, 2.5%/INR 500 cash fee, late-fee slabs, and a 2.5%/INR 500 over-limit fee. It also lists INR 175 cash payment, INR 99 reward redemption, rent/education/wallet/fuel/utility/online gaming transaction fees. Detailed non-schema fees and the INR 100 repeated-MAD charge are documented in the confidence audit. The exact INR 500 late-fee boundary is unclear on the issuer page. The launch date is from Axis' official 19-Jan-2021 press release. Current issuer page does not state the network or tier; the legacy Visa network remains unresolved and network tier is left null.
 rewards:
-  - effective_from: 2021-06-01
-    effective_until: null
-    currency: points
-    currency_name: EDGE Reward Points
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 0.2
-      unit_value_inr_realized: 0.18
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-    redemption:
-      - type: catalog
-        program: EDGE Rewards
-        rate_inr_per_unit: 0.2
+- effective_from: 2026-10-25
+  effective_until: null
+  currency: points
+  currency_name: EDGE Reward Points
+  base:
+    rate: 2
+    per_inr: 200
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: insurance-spends
+    canonical_categories:
+    - insurance
+    multiplier: 5
+    effective_rate: 10
+    mcc_list:
+    - '6051'
+    - '6300'
+    - '6381'
+    - '5960'
+    - '6012'
+    notes: 5X EDGE points on eligible insurance transactions. The current product page says the maximum transaction amount is INR 10,000 but does not clarify whether spend above INR 10,000 earns base points or is ineligible.
     source:
       url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-10-25
       type: issuer-page
-
-    mcc_exclusions: ['6513']
+      confidence: high
+      fields_verified:
+      - rewards[0].accelerated[0].multiplier
+      - rewards[0].accelerated[0].effective_rate
+      notes: Product page specifies 5X EDGE REWARDS on insurance spend and a maximum transaction amount of INR 10,000; the separate Aura reward terms list insurance MCCs 6051, 6300, 6381, 5960 and 6012 as eligible for accelerated rewards.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - utilities
+  - education
+  - government
+  - gift-cards
+  - bridge-fees
+  - road-fees-and-tolls
+  - cash-advance
+  mcc_exclusions:
+  - '4814'
+  - '4816'
+  - '4899'
+  - '4900'
+  - '8241'
+  - '8211'
+  - '8299'
+  - '8244'
+  - '8249'
+  - '9311'
+  - '9399'
+  - '9222'
+  - '9402'
+  - '9211'
+  - '9405'
+  - '8220'
+  - '6540'
+  - '6513'
+  - '5542'
+  - '5541'
+  - '5983'
+  capping_rules:
+  - Insurance earn is 5X on eligible transactions up to the issuer's INR 10,000 maximum transaction amount; treatment of transactions above this amount is not specified.
+  redemption:
+  - type: catalog
+    program: EDGE Rewards
+    rate_inr_per_unit: null
+    fee_inr: 99
+    constraints: No universal INR value per point is published; value depends on the selected redemption. Axis' current reward-fee schedule charges INR 99 plus GST per eligible EDGE portal, Travel EDGE or POS redemption; partner-point transfers carry a separate fee where supported.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
+    retrieved_on: 2026-10-25
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/axis/aura/aura-edge-rewards-mcc-exclusions.pdf
+    - docs/sources/axis/_shared/mitc-credit-cards.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].mcc_exclusions
+    - rewards[0].exclusions
+    - rewards[0].redemption[0].fee_inr
+    notes: The product page publishes the base and insurance earn rates; the linked Aura EDGE T&Cs support eligible insurance MCCs and exclusions. Axis' current fees schedule states INR 99 plus GST per EDGE Rewards redemption and INR 199 plus GST for point/mile transfers; the current Aura redemption catalogue does not supply one fixed rupee value for an EDGE point. Insurance exclusion wording in Axis' June 2025 generic revision is expressly not applicable to Aura.
 benefits:
-  - effective_from: 2021-06-01
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Card welcome benefit"
-        benefit: "Decathlon & Amazon voucher worth ₹750"
-        value_inr: 750
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    other:
-      - name: Free doctor consultations
-        description: 4 video doctor consultations free per month via Practo.
-      - name: Free fitness sessions
-        description: 4 interactive video fitness sessions free per month via Fitternity.
-      - name: Health checkup discount
-        description: Annual discount up to ₹500 on health checkup.
-        value_inr: 500
-      - name: Nutrition consultation discount
-        description: Minimum 30% discount on nutritional/diet consultation from renowned nutritionists.
-    concierge: false
-    source:
-      url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-25
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Welcome voucher issued with eligible card issuance
+    benefit: Decathlon OMNI Gift Card worth INR 750; card page also mentions Amazon but the detailed welcome T&C names Decathlon only
+    value_inr: 750
+    window_days: 60
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: Free doctor consultations
+    description: Four free Practo video consultations per month (48/year), shared across the cardholder and up to three family members; unused consultations do not carry over. Practo Plus also provides 20% off eligible prescriptions, lab tests and health check-ups, with delivery charges applicable.
+  - name: Free fitness sessions
+    description: Four interactive personal training sessions and 16 prerecorded fitness sessions per month via Fitternity.
+  - name: Health checkup discount
+    description: Annual discount up to ₹500 on health checkup.
+    value_inr: 500
+  - name: Nutrition consultation discount
+    description: At least 30% discount on nutritional or diet consultations and nutritional foods.
+  dining:
+    program: Axis Bank Dining Delights
+    discount_pct: 15
+    notes: Current Aura page lists 15% off up to INR 500, minimum order INR 2,500, once per card per month at participating restaurants; offer conditions and restaurant availability apply.
+  concierge: false
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
+    retrieved_on: 2026-10-25
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits[0].welcome[0].value_inr
+    - benefits[0].welcome[0].window_days
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.min_txn_inr
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits[0].other[2].value_inr
+    - benefits[0].dining.discount_pct
+    notes: The detailed welcome T&C calls the INR 750 reward a Decathlon OMNI gift card valid for 60 days; current page wording also mentions Amazon, but the detailed terms do not confirm an Amazon voucher. Wednesday Delight offers are time-sensitive and have no end date on the card page, so they are not encoded as evergreen benefits.
 eligibility:
   min_age: 18
   max_age: 70
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: either
-
+  notes: The issuer states age 18–70 and allows resident or non-resident Indian applicants. It publishes no numeric income or minimum credit-score threshold on the current card page. The product is no longer available for new applications; the withdrawal date is not stated. The record retains on-hold status because no dated discontinuation evidence is published.
+  source:
+    url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
+    retrieved_on: 2026-10-25
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
 application:
   apply_url: https://www.axis.bank.in/cards/credit-card/axis-bank-aura-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, health-wellness, points]
+  last_verified_on: 2026-10-25
+  tags:
+  - entry
+  - health-wellness
+  - points

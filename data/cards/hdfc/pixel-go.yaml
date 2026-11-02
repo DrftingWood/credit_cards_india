@@ -1,123 +1,232 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HDFC per-card T&C/MITC PDFs (docs/sources/hdfc/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hdfc-pixel-go
 name: HDFC Bank PIXEL Go Credit Card
+image_path: /cards/hdfc/pixel-go.png
 issuer: hdfc
-network: rupay
-network_tier: null            # page silent on RuPay tier; not confirmable against data/networks/rupay.yaml
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: null
-
+launched_on: '2024-05-14'
 fees:
-  - effective_from: 2026-07-03
-    effective_until: null
-    joining_fee_inr: 250
-    annual_fee_inr: 250
-    fee_waiver:
-      spend_inr: 50000
-      cycle: annual
-      conditions: "Renewal/annual membership fee waived on spends of ₹50,000 in the preceding 12 months."
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.75
-    gst_applicable: true
-    notes: "RuPay variant supports UPI linkage. Interest-free credit period of up to 50 days. Fee amounts not disclosed on the product page."
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-15
+  effective_until: null
+  joining_fee_inr: 250
+  annual_fee_inr: 250
+  fee_waiver:
+    spend_inr: 50000
+    cycle: annual
+    conditions: Renewal fee waived on eligible spend of INR 50,000 in the preceding 12 months before renewal; cash withdrawals are excluded from waiver spend. Joining fee is waived on INR 10,000 eligible spend in the first 90 days.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  gst_applicable: true
+  notes: RuPay variant supports UPI linkage. Interest-free credit period is up to 50 days. Current Pixel MITC also lists 1.75% dynamic currency conversion markup effective 20 May 2026; schema has no dedicated DCC fee field.
+  source:
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/MITC-PIXEL-Credit-Card-12Aug-26-1.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
 rewards:
-  - effective_from: 2026-07-03
-    effective_until: null
-    currency: cashback
-    currency_name: CashPoints
-    base:
-      rate: 1
-      per_inr: 100
-      unit_value_inr: 1.0
-    accelerated:
-      - category: smartbuy
-        canonical_categories: [online]
-        multiplier: 1
-        effective_rate: 5
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: monthly
-        channel:
-          class: issuer-portal
-          merchants: [smartbuy]
-        notes: "5% CashBack on eligible transactions via HDFC SmartBuy. Capped at 500 CashPoints per calendar month."
-      - category: upi-spends
-        multiplier: 1
-        effective_rate: 1
-        cap_per_cycle: 500
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "1% Cashback on UPI spends (RuPay variant). Capped at 500 CashPoints per calendar month."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-      - insurance-premiums
-      - government
-    redemption:
-      - type: statement-credit
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
-    mcc_exclusions: ['1361', '5172', '5541', '5542', '5983', '9752', '6513', '6540', '7349', '9211', '9222', '9223', '9311', '9399', '9402', '9405', '9950']
+- effective_from: 2026-10-15
+  effective_until: null
+  currency: cashback
+  currency_name: CashPoints
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+    notes: 1% CashPoints on eligible spends; minimum transaction INR 100 and fractional points round down. SmartBuy cashback cannot combine with 1% merchant cashback. Current October 2026 MITC caps this feature at INR 15,000/month; the product page and older feature terms call it unlimited.
+  accelerated:
+  - category: smartbuy
+    canonical_categories:
+    - online
+    multiplier: 1
+    effective_rate: 5
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    channel:
+      class: issuer-portal
+      merchants:
+      - smartbuy
+    over_cap_earns_base: false
+    notes: 5% cashback on successful full-payment transactions in SmartBuy IGP, flights, hotels, bus, rail, instant vouchers and Apple Imagine Tresor; capped at 500 CashPoints/calendar month. Excludes individual merchant offers and cannot be clubbed with the 1% merchant cashback; transactions beyond the cap earn no CashPoints.
+  - category: upi-spends
+    multiplier: 1
+    effective_rate: 1
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: 1% cashback on eligible UPI spends only for the RuPay variant; capped at 500 CashPoints/calendar month. The terms do not state whether this stacks with the 1% all-spends feature.
+    canonical_categories:
+    - other
+  category_caps:
+  - category: eligible-other-spends
+    cap_per_cycle: 15000
+    cap_unit: cashback-inr
+    cycle: monthly
+    conditions: Current Pixel MITC updated 15 Oct 2026 caps the 1% all-other-spends feature at INR 15,000/calendar month; older product feature terms and FAQ describe it as unlimited.
+  - category: smartbuy
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    conditions: Calendar-month cap; no 1% base earn on SmartBuy and no earn beyond this cap.
+  - category: upi-spends
+    cap_per_cycle: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+    conditions: RuPay PIXEL Go UPI feature; calendar-month cap.
+  - category: insurance
+    cap_per_cycle: 2000
+    cap_unit: cashback-inr
+    cycle: monthly
+    conditions: Current Pixel MITC says 2,000 CashPoints/month effective 1 Oct 2025; older card-specific feature terms say 2,000/day. Current MITC value is modeled.
+  capping_rules:
+  - Transactions below INR 100 do not earn CashPoints; fractional CashPoints are rounded down.
+  - CashPoints expire two years after accumulation. Current MITC also says points are nullified after 365 days without card use and may be forfeited for specified delinquency, fraud, death, or inactive blocked-card conditions.
+  - If a redemption reversal leaves a negative CashPoints balance for over 60 days, its rupee equivalent may be debited to the card account.
+  - Outstanding-balance payments, card fees/charges and online skill-based gaming are excluded; the former two lack dedicated schema categories, while gaming MCC 5816 is listed in mcc_exclusions.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  - government
+  - cash-advance
+  redemption:
+  - type: cashback-bank
+    program: PayZapp CashPoints balance
+    rate_inr_per_unit: 1.0
+    min_units: 500
+    constraints: Redeem through PayZapp; CashPoints transfer to the PayZapp CashPoints balance, not directly as statement credit.
+  source:
+    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/MITC-PIXEL-Credit-Card-12Aug-26-1.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.accelerated.cap_unit
+    - rewards.accelerated.cycle
+    - rewards.accelerated.over_cap_earns_base
+    - rewards.category_caps
+    - rewards.exclusions
+    - rewards.capping_rules
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    - rewards.mcc_exclusions
+    notes: Current Pixel MITC updated 15 Oct 2026 was checked; it supports the 1% category cap and current insurance cap. The live card page and product-specific terms (https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/pixel-go-credit-card/pdfs/terms-n-conditions-pixel-go-credit-card.pdf) support the earn rates, SmartBuy/UPI caps, exclusions and redemption. Older feature terms say 1% is unlimited and insurance cap is 2,000/day; the current Pixel MITC says 15,000/month and 2,000/month. The current card page also calls the 1% feature unlimited. The effective date uses the latest MITC update date as the snapshot because feature-level effective dates are not published here.
+  mcc_exclusions:
+  - '1361'
+  - '5172'
+  - '5541'
+  - '5542'
+  - '5983'
+  - '9752'
+  - '6513'
+  - '6540'
+  - '7349'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '9950'
 benefits:
-  - effective_from: 2026-07-03
-    effective_until: null
-    lounge_access: null
-    welcome:
-      - condition: "Spend ₹10,000 within 90 days of issuance"
-        benefit: "Joining fee waiver"
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: statement
-    dining:
-      program: Dineout Pay
-      discount_pct: 25
-      notes: "Save up to 25% on restaurant bills via Dineout Pay, capped at ₹300 per month. Offer stated valid till 31 Dec 2024 in the T&C, so may be time-limited/expired."
-    concierge: false
-    other:
-      - name: Digital-first card
-        description: "Fully digital onboarding and management via PayZapp; EMI conversion, EMI dashboard and rewards in one app. Contactless Tap & Pay, Swipe to Pay (OTP-free online) and Scan & Pay (UPI, RuPay variant)."
-    source:
-      url: https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-15
+  effective_until: null
+  lounge_access: null
+  welcome:
+  - condition: Spend INR 10,000 in the first 90 days; cash withdrawals are excluded.
+    benefit: Joining fee waiver
+    value_inr: 250
+    window_days: 90
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  dining:
+    program: Swiggy Dineout
+    discount_pct: 10
+    notes: Current HDFC PIXEL Go page advertises 10% savings on restaurant bill payments via Swiggy Dineout; the PIXEL FAQ advertises up to 20% and says its offer is valid through 31 Dec 2026. The current terms/cap and whether both statements describe the same campaign are unclear.
+  concierge: false
+  other:
+  - name: Digital-first card
+    description: Fully digital onboarding and management via PayZapp; EMI conversion, EMI dashboard and rewards
+      in one app. Contactless Tap & Pay, Swipe to Pay (OTP-free online) and Scan & Pay (UPI, RuPay variant).
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.welcome.value_inr
+    - benefits.welcome.window_days
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.fuel_surcharge_waiver.cycle
+    - benefits.dining.discount_pct
 eligibility:
   min_age: 21
   max_age: 65
   income_inr_annual:
     salaried: 144000
     self_employed: 600000
-  credit_score_min: 700
-  residency: resident-indian
-  notes: "Salaried: Indian, age 21-60, monthly income ₹12,000. Self-employed: Indian, age 21-65, annual ITR > ₹6,00,000. An FD-backed variant is available with no credit score/income proof."
-
+  credit_score_min: null
+  residency: null
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 21
+      max_age: 65
+  notes: Current product page lists salaried age 21-60 and monthly income INR 12,000 without a comparator; annualized to INR 144,000 for the schema. It lists self-employed age 21-65 and ITR greater than INR 6 lakh. A separate issuer FAQ (https://v.hdfc.bank.in/pixel-credit-card/index.html) lists self-employed maximum age 60; the current card page figure is modeled and the discrepancy retained. HDFC says Indian applicants but does not explicitly establish a residency requirement, so residency is null. No bureau-score minimum is published. FD-backed PIXEL is a separate application variant and is not modeled here.
+  source:
+    url: https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.hdfc.bank.in/credit-cards/pixel-go-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [digital-first, rupay, entry, cashback, upi, smartbuy]
+  last_verified_on: 2026-10-27
+  exclusive_group: hdfc-pixel
+  tags:
+  - digital-first
+  - multi-network
+  - entry
+  - cashback
+  - upi
+  - smartbuy

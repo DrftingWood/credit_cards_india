@@ -1,0 +1,85 @@
+id: indian-bank-rupay-platinum
+name: Indian Bank RuPay Platinum Credit Card
+issuer: indian-bank
+network: rupay
+network_tier: platinum
+tier: mid
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 250
+  fee_waiver:
+    spend_inr: 50000
+    cycle: annual
+    conditions: No AMC in year one; from year two annual fee is ₹250, waived when prior-year transaction usage exceeds ₹50,000.
+  forex_markup_pct: 3.0
+  finance_charge_monthly_pct: 1.66
+  cash_advance_fee:
+    flat_inr: 50
+  gst_applicable: true
+  source:
+    url: https://indianbank.bank.in/documents/d/guest/MITC-FINAL
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: 'Current MITC: no joining fee; ₹250 AMC from year two, waived above ₹50,000 prior-year usage; 3% foreign markup; 1.66% monthly purchase interest; ₹50 cash-advance fee and 2.25% monthly cash-advance interest.'
+rewards:
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  redemption:
+  - type: statement-credit
+    program: Indian Bank Rewardz
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://indianbank.bank.in/documents/d/guest/credit-card-features-and-benefits-6-1-
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: Issuer feature sheet lists 1 point valued at ₹1 for every ₹100. Exact exclusions and redemption terms not confirmed in current issuer sources.
+benefits:
+- effective_from: 2026-10-27
+  effective_until: null
+  lounge_access: null
+  other:
+  - name: Credit card benefit availability
+    description: Older issuer feature sheet says airport lounge access is included, but current generic credit-card sources reviewed do not confirm the present entitlement or visit quota. RuPay insurance program document found applies only through 31 March 2026; current cover not confirmed.
+  source:
+    url: https://indianbank.bank.in/documents/d/guest/credit-card-features-and-benefits-6-1-
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: Numeric income and credit-score cutoffs are retained only when this eligibility record cites the exact
+    field in issuer evidence; unsupported cutoffs are unknown, not proof of no underwriting requirement. Broad minimum/maximum
+    age figures without an exact issuer evidence path or a source-verified occupational range were left unknown;
+    this does not imply there is no age criterion.
+application:
+  apply_url: https://indianbank.bank.in/en/Credit-Cards
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - mid
+  - rupay
+  - upi
+  - lounge
+  - points

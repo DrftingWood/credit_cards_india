@@ -21,6 +21,7 @@ export const CANONICAL_CATEGORIES = [
   "fuel",
   "travel",
   "utilities",
+  "telecom",
   "rent",
   "international",
 ] as const;
@@ -48,6 +49,7 @@ export const CATEGORY_LABELS: Record<CanonicalCategory, string> = {
   fuel: "Fuel",
   travel: "Travel & hotels",
   utilities: "Utilities & bills",
+  telecom: "Mobile, broadband & DTH",
   rent: "Rent",
   international: "International / forex",
 };

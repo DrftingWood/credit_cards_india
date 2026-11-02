@@ -1,146 +1,288 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : BOBCARD central Features & Rewards T&C PDF, 01-Apr-2026 (docs/sources/bob/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: bob-eterna
+﻿id: bob-eterna
 name: BOBCARD Eterna Credit Card
+image_path: /cards/bob/eterna.webp
 issuer: bob
 network: visa
-network_tier: signature
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2022-01-01
-    effective_until: null
-    joining_fee_inr: 2499
-    annual_fee_inr: 2499
-    fee_waiver:
-      spend_inr: 250000
-      cycle: annual
-      conditions: "Annual fee waived on ₹2,50,000 spend per anniversary year. Joining fee waived on ₹25,000 spend in first 60 days. Limited-period lifetime-free offer also running."
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/eterna
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-09-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 2499
+  fee_waiver:
+    spend_inr: 250000
+    cycle: annual
+    conditions: Current limited-period offer has ₹0 joining/first-year fee from 1-Sep-2026 (expiry unpublished). The
+      standard joining fee is ₹2,499, waived on ₹25,000 spend within 60 days where the offer does not apply. From
+      the second year, the ₹2,499 annual fee is waived on ₹250,000 eligible spend in the preceding card anniversary
+      year for non-delinquent accounts.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/eterna
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Monthly finance charge changed to 3.75% effective 15-Jul-2026 per BOBCARD's official product revision
+      notice (https://media.bobcard.co.in/media/0aqczg5p/final-revision-in-charges-benefits-effective-july-202615.pdf).
+      The limited-period ₹0 joining/first-year fee offer began 2026-09-01; its end date is unpublished. The
+      generic Jan-2026 MITC (https://media.bobcard.co.in/media/gaudahay/bob_mitc_a4-booklet_ver-19jan26_15jan2026.pdf)
+      lists cash advance at 2.5% / ₹500 minimum; the issuer application form lists the
+      standard joining fee and first-60-day waiver terms (https://media.bobcard.co.in/media/isqiuclw/bobcards_universal-application-form_14oct2024_15k.pdf).
 rewards:
-  - effective_from: 2022-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: dining-travel-international-shopping
-        canonical_categories: [dining, travel, international, online]
-        multiplier: 5
-        effective_rate: 15
-        cap_per_cycle: 5000
-        cap_unit: points
-        cycle: statement
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: BOBCARD Rewards
-        rate_inr_per_unit: 0.25
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/eterna
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: 2025-07-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 3
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: dining-travel-international-shopping
+    canonical_categories:
+    - dining
+    - travel
+    - international
+    - online
+    multiplier: 5
+    effective_rate: 15
+    cap_per_cycle: 5000
+    cap_unit: points
+    cycle: statement
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - government
+  - education
+  - bridge-fees
+  - road-fees-and-tolls
+  - insurance-premiums
+  - other
+  mcc_exclusions:
+  - '0763'
+  - '0780'
+  - '0820'
+  - '0821'
+  - '0822'
+  - '0823'
+  - '0824'
+  - '0825'
+  - '1520'
+  - '1711'
+  - '1731'
+  - '1740'
+  - '1750'
+  - '1761'
+  - '1771'
+  - '1799'
+  - '4111'
+  - '4112'
+  - '4131'
+  - '4784'
+  - '4789'
+  - '6513'
+  - '7349'
+  - '7211'
+  - '7230'
+  - '7276'
+  - '8111'
+  - '8641'
+  - '9211'
+  - '9222'
+  - '9311'
+  - '9399'
+  - '9402'
+  - '9405'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8011'
+  - '8062'
+  - '6539'
+  - '6540'
+  - '6541'
+  - '6542'
+  - '6543'
+  - '5261'
+  - '5331'
+  - '5411'
+  - '5499'
+  - '5960'
+  - '6300'
+  - '8398'
+  - '8661'
+  - '5814'
+  redemption:
+  - type: statement-credit
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/eterna
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption.rate_inr_per_unit
+    notes: Accelerated earn applies to e-commerce online-flag transactions, international-flag transactions, dining
+      MCC 5812, and travel MCC 4722. Points under ₹100 do not earn; fuel earns no points; UPI receives core points
+      only. Utility MCC 4900 earns core points but is not accelerated. Eterna points do not expire by age, but
+      points carried over from a prior card keep their former expiry; card closure, NPA, delinquency over 90 days,
+      settlement, fraud, death, 365 days' inactivity, or failure to activate a replacement card within six months
+      can forfeit points. Refunds/reversals reduce earned points.
+      A 1,000-point statement-redemption minimum applies. BOBCARD SmartDeal adds 12 points/₹100 on flights and
+      30 points/₹100 on hotels booked in the logged-in app/portal. Catalog redemption is not valued here because
+      the issuer page confirms ₹0.25 specifically for cashback/statement credit.
 benefits:
-  - effective_from: 2022-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: "unlimited"
-        cycle: annual
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-    milestones:
-      - spend_inr: 50000
-        cycle: annual
-        benefit: "10,000 bonus reward points on ₹50,000 spend within first 60 days"
-        value_inr: 2500
-        reward_kind: points
-        reward_units: 10000
-        reward_currency_name: Reward Points
-        trigger_window: first-year
-        is_repeatable: false
-      - spend_inr: 500000
-        cycle: annual
-        benefit: "20,000 bonus reward points on ₹5,00,000 annual spend"
-        value_inr: 5000
-        reward_kind: points
-        reward_units: 20000
-        reward_currency_name: Reward Points
-        trigger_window: anniversary-year
-        is_repeatable: true
-    movies:
-      type: bogo
-      partner: District
-      cycle: monthly
-      cap_inr: 250
-      notes: "Buy One Get One on movie tickets via District, up to ₹250/month."
-    insurance:
-      - type: personal-accident
-        sum_insured_inr: 10000000
-        conditions: "Air accidental death cover."
-      - type: personal-accident
-        sum_insured_inr: 1000000
-        conditions: "Non-air accidental death cover."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    other:
-      - name: Add-on cards
-        description: "Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+)."
-    concierge: false
-    source:
-      url: https://www.bobcard.co.in/credit-card-types/eterna
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-07-15
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: quarterly
+      spend_threshold_inr: 75000
+      spend_threshold_cycle: quarterly
+      guests_per_visit: null
+      notes: Unlimited visits require at least INR 75,000 spend in the preceding calendar quarter, effective 15-Jul-2026.
+  milestones:
+  - spend_inr: 50000
+    cycle: annual
+    benefit: 10,000 bonus Reward Points after INR 50,000 eligible settled spend within 60 days of issuance; points credited within 30 days after the offer window.
+    value_inr: 2500
+    reward_kind: points
+    reward_units: 10000
+    reward_currency_name: Reward Points
+    trigger_window: one-time
+    is_repeatable: false
+  - spend_inr: 500000
+    cycle: annual
+    benefit: 20,000 bonus Reward Points after ₹5,00,000 eligible spend in the anniversary year.
+    value_inr: 5000
+    reward_kind: points
+    reward_units: 20000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  movies:
+    type: bogo
+    partner: District
+    cycle: monthly
+    cap_inr: 250
+    notes: Buy One Get One on movie tickets via District, up to ₹250 per month.
+  insurance: []
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  other:
+  - name: FITPASS PRO membership
+    description: Complimentary 12-month membership advertised at INR 48,000 after INR 10,000 eligible spend within 30 days of card issuance; applies to cards issued on or after 1-Aug-2026. Code may arrive within 30 days after the spend window.
+  - name: Add-on cards
+    description: Up to 3 lifetime-free add-on cards for spouse, parents, siblings or kids (18+).
+  - name: BOBCARD SmartDeal flight rewards
+    description: Additional 12 reward points per ₹100 for eligible flight bookings in the logged-in BOBCARD app/portal.
+  - name: BOBCARD SmartDeal hotel rewards
+    description: Additional 30 reward points per ₹100 for eligible hotel bookings in the logged-in BOBCARD app/portal.
+  - name: Smart EMI
+    description: Purchases above ₹2,500 can be converted to Smart EMI for 6–48 months; applicable charges are not
+      stated on the Eterna product page.
+  - name: Lost-card zero liability
+    description: BOBCARD advertises zero liability for fraudulent transactions when card loss is reported immediately; subject to issuer reporting and claim terms.
+  - name: Contactless payments
+    description: Contactless-enabled card; issuer advertises wireless-chip payments.
+  concierge: false
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/eterna
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/bob/_shared/features-and-rewards-important-terms-conditions-01042026.pdf
+    - docs/sources/bob/eterna/eterna-milestone-rewards-know-more.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.milestones
+    - benefits.movies
+    - benefits.fuel_surcharge_waiver
+    - benefits.fuel_surcharge_waiver.cycle
+    - benefits.other
+    notes: Unlimited domestic lounge access requires ₹75,000 net eligible spend in the preceding calendar quarter,
+      effective 15-Jul-2026. Newly issued cards are exempt in the issuance quarter and the next quarter if issued
+      in the last month; upgrades do not receive the waiver. Accident cover was discontinued for newly issued
+      Eterna cards effective 25-Aug-2026. FITPASS PRO applies only to cards issued from 1-Aug-2026. The lounge
+      revision is at https://media.bobcard.co.in/media/0aqczg5p/final-revision-in-charges-benefits-effective-july-202615.pdf;
+      lounge activation conditions are at https://media.bobcard.co.in/media/1funxwuy/airpor-lounge-benefit-tc.pdf.
+      Other lounge access channels and complimentary guest entitlement were not established by the reviewed issuer sources.
+      Concierge is not advertised on the current product page; the schema's boolean false cannot distinguish an
+      unpublished service from a confirmed absence, so treat that flag as unresolved.
 eligibility:
   min_age: 25
   max_age: 55
   income_inr_annual:
     salaried: 1200000
     self_employed: 1200000
-  credit_score_min: 750
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Issuer lists minimum net annual income greater than ₹1,200,000 for salaried or self-employed applicants
+    and age 25–55, with lower/higher age cutoffs possible at issuer discretion. The numeric income fields encode
+    that threshold; no credit-score minimum is published. The issuer application form
+    (https://media.bobcard.co.in/media/isqiuclw/bobcards_universal-application-form_14oct2024_15k.pdf) offers
+    Eterna on Visa, Mastercard, and RuPay. This record represents Visa; the schema cannot model all three
+    variants. Visa tier is unset because the reviewed issuer sources do not establish one.
+  source:
+    url: https://www.bobcard.co.in/credit-card-types/eterna
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.salaried
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
 application:
   apply_url: https://www.bobcard.co.in/credit-card-types/eterna
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, points, travel, dining, lounge]
+  last_verified_on: 2026-10-26
+  tags:
+  - premium
+  - points
+  - travel
+  - dining
+  - lounge

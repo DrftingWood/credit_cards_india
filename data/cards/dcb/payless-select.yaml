@@ -1,0 +1,200 @@
+id: dcb-payless-select
+name: DCB PayLess RuPay Select Credit Card
+issuer: dcb
+network: rupay
+network_tier: select
+tier: mid
+card_type: secured
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: '2025-09-30'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 1000
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+    conditions: Annual fee from the 13th month is waived on INR200,000 spend.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.0
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 250
+  gst_applicable: true
+  source:
+    url: https://www.dcbbank.com/api/dcb/assets/2025-09/DCB-PayLess-Credit-Card-MITC-Multilingual.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/dcb/payless-platinum/payless-mitc-2025-09-retrieved-2026-10-27.pdf
+    fields_verified:
+    - fees[0].joining_fee_inr
+    - fees[0].annual_fee_inr
+    - fees[0].fee_waiver
+    - fees[0].finance_charge_monthly_pct
+    - fees[0].forex_markup_pct
+    - fees[0].cash_advance_fee.pct
+    - fees[0].cash_advance_fee.min_inr
+    - fees[0].late_payment_slabs[0].up_to_inr
+    - fees[0].late_payment_slabs[0].fee_inr
+    notes: September 2025 MITC gives nil joining fee, INR1,000 annual fee from month
+      13, INR200,000 waiver, 3% monthly finance, ATM fee 2.5%/INR250 minimum and 3.5%
+      forex. GST applies. Closure fee INR250 within a year is documented in issuer
+      extract because the schema has no closure-fee field. Effective_from records
+      the MITC version snapshot, not the separately undisclosed term start date.
+  late_payment_slabs:
+  - up_to_inr: 100
+    fee_inr: 0
+  - up_to_inr: 1000
+    fee_inr: 100
+  - up_to_inr: any
+    fee_inr: 500
+rewards:
+- effective_from: '2025-09-30'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: No per-transaction base rate is published; the current MITC reward is a
+      quarterly cashback milestone represented under benefits.
+  exclusions:
+  - rent
+  - wallet-loads
+  - fuel
+  - cash-advance
+  - other
+  mcc_exclusions: []
+  redemption: []
+  source:
+    url: https://www.dcbbank.com/api/dcb/assets/2025-09/DCB-PayLess-Credit-Card-MITC-Multilingual.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/dcb/payless-platinum/payless-mitc-2025-09-retrieved-2026-10-27.pdf
+    fields_verified:
+    - rewards[0].base.rate
+    - rewards[0].base.per_inr
+    - rewards[0].exclusions
+    notes: Select receives INR1,000 cashback after INR100,000 qualifying spend per
+      quarter. Excludes rent, wallet load, online gaming, gambling, fuel and cash
+      withdrawal. Cashback is given in the first month of the following quarter. No
+      Reward Point currency or point redemption values are published. Effective_from
+      uses the September 2025 MITC version snapshot.
+  accelerated: []
+benefits:
+- effective_from: '2025-09-30'
+  effective_until: null
+  milestones:
+  - spend_inr: 100000
+    cycle: quarterly
+    benefit: INR1,000 cashback after INR100,000 qualifying quarterly spend; credited
+      in the first month of the following quarter. Excludes rent, wallet loads, online
+      gaming, gambling, fuel and cash withdrawals.
+    value_inr: 1000
+    reward_kind: cashback
+    reward_units: 1000
+    reward_currency_name: INR
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - rupay
+      notes: Two complimentary visits each quarter at participating domestic airport
+        lounges listed by RuPay.
+    international:
+      visits_per_cycle: 1
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - rupay
+      notes: One complimentary visit per year at participating international airport
+        lounges listed by RuPay. MITC states total annual lounge quota is nine (eight
+        domestic and one international).
+  insurance:
+  - type: lost-card-liability
+    sum_insured_inr: null
+    conditions: DCB MITC states zero lost-card purchase liability, excluding PIN-based
+      ATM withdrawals. Fraudulent purchase protection applies to transactions up to
+      30 days before reporting, subject to FIR and policy terms; primary cardholder,
+      active account and updated nomination details required. No monetary amount is
+      published.
+  - type: other
+    sum_insured_inr: null
+    conditions: MITC says the Platinum and Select variants have complimentary insurance
+      cover from activation, subject to active-card and nomination conditions and
+      policy terms; benefit type and coverage amount are not specified in the reviewed
+      source.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: statement
+    notes: 1% waiver up to INR100 per statement cycle for eligible fuel transaction
+      values up to INR5,000. Current MITC does not specify a minimum transaction amount.
+  concierge: false
+  source:
+    url: https://www.dcbbank.com/api/dcb/assets/2025-09/DCB-PayLess-Credit-Card-MITC-Multilingual.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/dcb/payless-platinum/payless-mitc-2025-09-retrieved-2026-10-27.pdf
+    fields_verified:
+    - benefits[0].milestones[0].spend_inr
+    - benefits[0].milestones[0].value_inr
+    - benefits[0].lounge_access.domestic.visits_per_cycle
+    - benefits[0].lounge_access.international.visits_per_cycle
+    - benefits[0].fuel_surcharge_waiver.pct
+    - benefits[0].fuel_surcharge_waiver.max_txn_inr
+    - benefits[0].fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: MITC Select-variant row sets 2 domestic visits/quarter and 1 international/year
+      (9 total per year), cashback milestone, fuel waiver and general insurance terms.
+      Coverage type/amount and fuel minimum are unpublished. Effective_from uses the
+      September 2025 MITC version snapshot.
+eligibility:
+  min_age: 18
+  max_age: 75
+  credit_score_min: null
+  residency: resident-indian
+  notes: DCB PayLess FAQ requires a DCB Fixed Deposit of at least INR15,000; eligible
+    deposits must be held in one applicant name and excludes HUF, NRI, partnership/society/trust,
+    minor, joint and tax-saver deposits. Income proof is not required, but bank credential
+    assessment applies; no numeric credit-score threshold is published. FAQ gives
+    up to 90% of linked deposit as credit limit subject to bank determination. Minimum
+    FD requirement is stated generically for PayLess, not separately by variant.
+  source:
+    url: https://www.dcbbank.com/api/dcb/assets/2024-12/DCB-Bank-Payless-Credit-Credit-Card-FAQs_0.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/dcb/payless-platinum/payless-faq-2024-12-retrieved-2026-10-27.pdf
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    notes: FAQ states age 18-75, Indian residency, minimum DCB FD INR15,000 and no
+      income-proof requirement; account issuance remains subject to internal assessment.
+application:
+  apply_url: https://www.dcb.bank.in/personal/cards/secured-card/dcb-payless-platinum-card
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - secured
+  - fd-backed
+  - rupay
+  - select
+  - cashback
+  - lounge
+  - dcb

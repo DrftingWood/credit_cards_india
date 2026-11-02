@@ -64,3 +64,30 @@ variant), `au-ixigo` (rate), `rbl-irctc` (rail earn model).
 2026-10-20 | link check: sbi/aurum historical sources | SKIPPED: aurum.page was never archived; the current page (aurum-sbi-card.html) cannot back pre-Nov-2024 records | user decision
 2026-10-20 | link check: sbi/elite-business, sbi/prime-business | SKIPPED: no issuer page and no discontinuation notice found; status left active | user decision
 2026-10-20 | rbl/zomato-edition discontinued_on | SKIPPED: evidence puts sunset ~2023-05-14 but launched_on is 2023-03-01 (inconsistent); date fix left for a dedicated pass | user decision
+
+## 2026-10-20 TODO items D4 / D5 / D11 / D12 (remediate/d4-d5-d11-d12)
+
+2026-10-20 | D11 axis/burgundy-private | still open (relationship-gated, already held); annual fee Rs 50k -> Rs 1 lakh + GST from 01-09-2026 (only if TRV < Rs 5 Cr), Priority Pass dropped for domestic lounges from 28-08-2026; records closed and appended from the Axis revision-notice PDF | d2c983e
+2026-10-20 | D11 icici Mine, kotak Mojo Platinum | not added: Mine pages redirect and it is absent from ICICI's 09-10-2026 MITC; Kotak labels Mojo "(Discontinued)" | d2c983e
+2026-10-20 | D4 source-URL audit | 379 URLs checked; 10 redirects + 7 issuer/network websites + 2 IndusInd soft 404s repointed; 6E Rewards (100 RP dining cap, discontinued_on 2025-11-01), Tata Neu Infinity (fuel cap Rs 500) and Aurum re-sourced from issuer pages; report docs/SOURCE-URL-AUDIT-2026-10-20.md | e7c249b
+2026-10-20 | D4 idfc-first/indigo, yes/paisabazaar rate revisions | SKIPPED: issuer pages show new earn structures with no effective date or caps; logged as TODO P8/P9 | no fabrication
+2026-10-20 | D4 axis/olympus, kotak/myntra-kaching, icici/manchester-united-signature status | SKIPPED: no issuer status notice; logged as TODO P10/P11 | needs decision
+2026-10-20 | D5 PSU premium tier | added pnb-rupay-platinum, pnb-luxura-rupay, pnb-luxura-visa, union-nexteria, union-unicorn, union-divaa-icon (326 cards); RuPay `ekaa` tier; union-rupay-select fees corrected from MITC v1.4 | 0cca697
+2026-10-20 | D5 PNB Rakshak Platinum/Select, Wave & Pay | SKIPPED: base earn rate not issuer-stated (Rakshak), fees unclear (Wave & Pay) | no fabrication
+2026-10-20 | D12 applicability_pct | method DECISIONS D-25; Amazon Pay ICICI Amazon.in accelerators = 25, Swiggy HDFC Swiggy accelerator = 3; Tata Neu left unset (no published share) | 516ed16
+
+Gates on every commit: `validate.py` OK; `npm --prefix site run prebuild` OK;
+`npm --prefix site test` 234/234.
+
+## 2026-10-20 D3 evidence fields (remediate/d3-evidence)
+
+Backfilled from repo information only (headers, audit docs, PDF-verify commits, git history); no source was re-read and no value changed.
+
+2026-10-20 | D3 tooling | backfill_source_confidence.py + backfill_local_evidence.py with rule tests in CI; backfill_source_type.py gains --issuers | f5d177c, 9aa2d79, 1a67156, fcb2c6a
+2026-10-20 | D3 validator | missing local_refs fold into one summary warning when the PDF archive is absent (35 -> 17 warnings on a fresh checkout) | e08958b
+2026-10-20 | D3 type | source.type on fees/benefits sources of every issuer (URL-host rule); 2 Business Standard sources typed press; scapia.cards left untyped | 0dcc3a4..a72a104, d630af2
+2026-10-20 | D3 confidence | header tier copied onto open fees/rewards records that are issuer-sourced, unchanged since 4091c6d and unhedged; 156 TODO-flagged and 3 audit-doubted records withdrawn again | 0dcc3a4..dc2017d, bd1c004, 055fc1b
+2026-10-20 | D3 local evidence | local_refs + fields_verified from HDFC/Axis/SBI/ICICI MITC, RBL schedule of charges, BoB features T&C claims (131 sources); 13 SBI blocks dropped where the audit left the field TODO-flagged | d93ae81..649f35a, 4b7ee6e
+2026-10-20 | D3 IDFC Ashva/Mayura local evidence | SKIPPED: the archived Communication PDFs do not show the fees commit bedb1ad says were confirmed; reward claim would leave accelerators unvouched | needs a re-read
+2026-10-20 | D3 benefits confidence | SKIPPED: no PROVENANCE header or audit claim covers benefits per record | needs a re-read
+2026-10-20 | D3 coverage | strict-scope reward rules with confidence 37% -> 66%, strict-ready 236 -> 425 of 666; cards with every open fees/rewards record confident 13 -> 152 of 320 | -

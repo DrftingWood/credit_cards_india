@@ -32,6 +32,14 @@ Every "high-value gap" the previous review listed has been added and is active:
 | **ICICI Mine** | icici | Customisable card; may have been withdrawn post-2024. | low — confirm status first |
 | **Kotak Mojo Platinum** | kotak | Likely a casualty of the 2024 RBI issuance pause. | low — likely discontinued |
 
+**D11 outcome (2026-10-20)** — all three resolved; none left to add:
+
+| Candidate | Status found | Evidence | Action |
+|---|---|---|---|
+| Axis Burgundy Private | Open, relationship-gated (Burgundy Private clients, TRV ≥ ₹5 Cr) | axis.bank.in/burgundyprivate/creditcard (enquiry form, no standalone apply); revision notice campaign.axis.bank.in/generic/terms-and-conditions-burgundy.pdf (PDF dated 2026-07-27) | Already held as `axis-burgundy-private` (`invite-only`, added 2026-07-28). Appended fee record (annual ₹1,00,000 + GST from 01-09-2026, only if TRV < ₹5 Cr) and benefits record (domestic lounges by card, not Priority Pass, from 28-08-2026) |
+| ICICI Mine | Withdrawn | Old `/millennial-banking/credit-card/*` URLs redirect to icici.bank.in's generic credit-card page with no Mine content; the current credit-card MITC (icici.bank.in/terms-condition/tnc-for-mitc, "MITC_CSA_09-10-2026") has no Mine/MineCash entry. A TechnoFino forum repost of a bank message says it was retired 30-Nov-2025 (forum-only, not issuer-published) | Not added. No issuer page to source terms from |
+| Kotak Mojo Platinum | Discontinued for new applications | kotak.bank.in/en/personal-banking/cards/credit-cards/mojo-platinum-credit-card.html — breadcrumb "Mojo Platinum Credit Card (Discontinued)", no apply link; card listing tags it "Discontinued for new applications" | Not added (D11 adds only cards open to new applicants) |
+
 These are the only mainstream candidates from the previous review that remain
 absent. No new gap candidates are asserted here without a sourced basis.
 
@@ -66,6 +74,36 @@ remaining work is small and status-first: **confirm whether Axis Burgundy Privat
 ICICI Mine, and Kotak Mojo Platinum are still open**, and only then source and add
 them. Defer network-variant additions until the one-card-per-network convention is
 recorded in `docs/DECISIONS.md` (task C2).
+
+## D5 — 2026-10-20 update
+
+Both blockers below are resolved and the cards are now in the dataset, with
+four more PSU cards:
+
+| Card | File | Key sources |
+|---|---|---|
+| PNB RuPay Platinum | `pnb/rupay-platinum.yaml` | creditcard.pnb.bank.in/types5.html ("1 pt on Rs 100", "1 pt = Rs.0.25"); PNB KFS |
+| PNB LUXURA (RuPay Ekaa metal) | `pnb/luxura-rupay.yaml` | types16.html; LUXURA RuPay product sheet; KFS |
+| PNB LUXURA (Visa Infinite metal) | `pnb/luxura-visa.yaml` | types17.html; KFS |
+| Union NEXTERIA | `union/nexteria.yaml` | MITC v1.4 (25-Sep-2025); NEXTERIA card page |
+| Union UNICORN | `union/unicorn.yaml` | MITC v1.4; UNICORN card page ("1 Reward point = Rs. 0.25") |
+| Union DIVAA ICON | `union/divaa-icon.yaml` | MITC v1.4; DIVAA ICON card page |
+
+Still not added (issuer-sourced research, 2026-10-20):
+
+- **PNB Rakshak RuPay Platinum / Select** (defence personnel): no base earn rate
+  on the card page, rewards page, MITC or KFS ("300+ reward points on 1st
+  usage", "2X rewards points on retail merchandise" only). Rakshak Select's
+  joining fee conflicts: card page "No joining fee" vs KFS w.e.f. 1-Nov-2026 Rs 500.
+- **PNB Wave & Pay**: card page gives only contactless details; fee row unclear.
+- Fully sourced but not yet authored (lower priority than the premium tier):
+  PNB RuPay Millennial (Rs 399 / Rs 999, 2 pts per Rs 150), Visa Signature
+  (Rs 1,500 / Rs 2,000, 2 pts per Rs 100), Visa Gold, Visa Platinum (earn-rate
+  conflict: card page 1 per Rs 100 vs rewards page 2 per Rs 150), PNB LUXURA
+  for Army officers and PNB Parakram (JCO/OR ranks).
+- PNB's `rewards.html` still says 1 point = Rs 0.50; superseded by the Reward
+  Point Notice (Rs 0.25 from 1-Sep-2024) and MITC. From 1-Nov-2026 PNB charges
+  Rs 99 + GST per redemption.
 
 ## D5 candidates — sourced 2026-07-05, blocked on ONE missing value each
 

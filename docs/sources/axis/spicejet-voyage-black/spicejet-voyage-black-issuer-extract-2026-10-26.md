@@ -1,0 +1,21 @@
+# SpiceJet Axis Bank Voyage Black issuer evidence extract (26 Oct 2026)
+
+Sources reviewed: [current Axis product page](https://www.axis.bank.in/cards/credit-card/spicejet-axis-bank-voyage-black-credit-card), [Axis and SpiceJet launch announcement](https://www.axis.bank.in/about-us/press-releases/spicejet-and-axis-bank-launch-co-branded-credit-card), the current Axis MITC, 28-Aug-2026 issuer terms update, card-specific SpiceClub earning terms, 20-Jun-2025 reward exclusion update, activation benefit terms, SpiceClub membership terms, milestone/renewal terms and the current Axis airport lounge access program. Issuer PDFs and the launch announcement capture are archived in this directory.
+
+## Current modeled facts
+
+- Visa is identified in the 2022 launch announcement; it does not establish a Visa tier, so `network_tier` is unknown. The announcement dates the card launch to 12-May-2022.
+- The product page lists INR2,000 joining fee, first-year annual fee NIL and INR2,000 annual fee from year two onward. Standard foreign currency markup is 3.5%; the current page and MITC list finance charges of 3.75% monthly and cash withdrawal fees of 2.5%, minimum INR500.
+- Earn 3 SpiceClub Points per INR100 of other retail spend (the issuer terms specify 6 per INR200); 6 per INR100 on eligible online utility, food delivery and entertainment (12 per INR200). The eligible online MCCs are 4900, 5499, 5812, 5814, 7829 and 7832. SpiceJet app/web spend earns 12 card-benefit points plus 16 membership points per INR200 while the member has active Gold status. The card-benefit component is capped at INR100,000 monthly app/web spend; membership points continue beyond that cap. Membership points are contingent on active tier status; the complimentary Gold period is one year. Points round down to the lower multiple of INR200. The issuer's chart models INR0.50 per point and allows SpiceJet flight/meal-voucher redemptions.
+- The 2025 terms identify exclusions by transaction category (including wallet, government, insurance, gold/jewellery, fuel and cash advance), and the earning terms also exclude financial institutions, gift cards, EMI, education, rent, outstanding payments and card fees. They do not publish exact MCCs for the exclusions; `mcc_exclusions` is therefore empty.
+- The current product page presents eight domestic lounge visits/year, while the currently linked Axis lounge program lists Voyage Black for two visits per quarter in Set B, subject to INR50,000 eligible spend in the previous three calendar months. The quarterly program is modeled; the page/program wording discrepancy is retained here and in YAML notes.
+- The INR4,000 activation voucher requires two POS, online or contactless transactions within 30 days of issuance and applies only where the INR2,000 joining fee plus tax was charged. It is sent within 30 working days and expires after one year. Card issuance also carries complimentary Gold membership and SpiceJet add-on vouchers valued at INR7,500.
+- Anniversary-year milestones award 4,000 points at INR200,000 spend and 6,000 at INR400,000. Renewal awards 2,000 points after successful renewal-fee payment. Fuel surcharge waiver is 1% on INR400-INR4,000 transactions, capped at INR400/month; GST on fuel surcharge is non-refundable.
+- Issuer-published eligibility: primary cardholder age 18-70 and resident of India. No numeric income or bureau-score threshold is published; income proof is listed among application documents.
+
+## Unresolved / interpretive notes
+
+- The product page itself has conflicting lounge counts (eight in the feature summary vs four in its value chart); the linked current program table gives two per quarter. Applied the detailed program table and recorded the page conflict.
+- The current product page's generic “up to 28 points” line refers to 12 card-benefit + 16 Gold-membership points per INR200. The modeled effective rate of 14/INR100 applies only while the complimentary/eligible Gold membership is active; it must not be read as permanent card-only earning.
+- The product page lists a current add-on voucher value but does not publish underlying voucher-level terms in the reviewed materials; value is retained as issuer-stated advertised value.
+- Wednesday and Dining Delights offers are dynamic portfolio promotions and are not modeled as permanent numeric card benefits.

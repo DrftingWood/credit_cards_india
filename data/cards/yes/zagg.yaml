@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-zagg
 name: YES Bank Zagg Credit Card
-issuer: "yes"
-network: mastercard
-network_tier: platinum
+image_path: /cards/yes/zagg.webp
+issuer: 'yes'
+network: rupay
+network_tier:
 tier: mid
 card_type: credit
 co_brand:
@@ -19,85 +11,146 @@ co_brand:
   category: other
   partner_website: https://www.zaggle.in
 status: active
-launched_on: 2023-01-01
-discontinued_on: null
-
+launched_on:
+discontinued_on:
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Lifetime-free (zero renewal). Co-branded with Zaggle. Lounge access is spends-threshold-based per calendar quarter."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-06-15'
+  effective_until:
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver:
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: 'Current Zagg YES Bank card has zero joining and annual fee. Current MITC
+    v18: 3.99% monthly finance, cash advance fee 2.5%/INR650 minimum, forex markup
+    3.50%. Zagg card page lists only zero membership fees; ignore older pre-10-Jan-2025
+    Rio/annual-fee offer.'
+  source:
+    url:
+      https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/zagg/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: YES Rewardz Points
-    base:
-      rate: 2
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: YES Rewardz
-        rate_inr_per_unit: 0.25
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until:
+  currency: points
+  currency_name: Zagg Coins
+  base:
+    rate: 3
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated: []
+  exclusions:
+  - rent
+  - wallet-loads
+  - utilities
+  - insurance-premiums
+  - education
+  - government
+  - jewellery
+  - fuel
+  - other
+  mcc_exclusions: []
+  redemption: []
+  source:
+    url: https://zagg.money/rewards-policy
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: manual-read
+    local_refs: []
+    fields_verified:
+    - rewards.base
+    - rewards.exclusions
+  notes: 'Current program is operated by Zagg/Rivpe, not YES Rewardz. 3 Zagg Coins
+    per INR100 on eligible UPI transactions through the Zagg app only (minimum INR50,
+    coins rounded down); 4 coins = INR1, so headline rupee return is 0.75%. Maximum
+    coin count per statement cycle is 1.5% of assigned credit limit. No coins on UPI
+    paid through other apps, Bharat QR, mandates, or excluded categories: rent, POI
+    funding, utilities, insurance, education, government, fines/taxes, jewellery,
+    cable/satellite TV and fuel. Credited within 7 business days after statement.
+    Expiry/complete redemption constraints not stated in reviewed policy.'
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [mastercard, dreamfolks]
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until:
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - dreamfolks
+      notes: Requires INR50,000 spend in preceding quarter; newly issued card is
+        not eligible in issuance quarter. INR2 non-refundable lounge validation
+        authorization applies.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: monthly
+    notes: 'Current issuer terms: cap INR250 per statement cycle; GST on fuel surcharge
+      is not reversed.'
+  concierge:
+  source:
+    url:
+      https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/zagg/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
 eligibility:
   min_age: 21
   max_age: 60
   income_inr_annual:
-    salaried: 400000
-    self_employed: 400000
-  credit_score_min: 720
-  residency: resident-indian
-
+    salaried: 300000
+    self_employed: 750000
+  credit_score_min:
+  residency:
+  notes: Issuer requires salaried net salary of at least INR25,000/month or
+    self-employed ITR of at least INR750,000/year. Existing YES Bank credit
+    cardholders are ineligible. Bureau threshold and residency rule are
+    unpublished.
+  source:
+    url:
+      https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/zagg/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual
 application:
-  apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/zagg-credit-card
-
+  apply_url:
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, points, co-brand, lifetime-free, lounge]
+  last_verified_on: '2026-10-26'
+  tags:
+  - mid
+  - points
+  - co-brand
+  - lifetime-free
+  - lounge

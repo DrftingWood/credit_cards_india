@@ -66,14 +66,14 @@ export function BrowseClient({
 
       <div className="order-1 md:order-none">
         <div className="flex items-center justify-between mb-3">
-          <div className="text-sm text-slate-600">
+          <div className="text-sm text-fg-muted">
             Showing <strong>{filtered.length}</strong> of {cards.length}
           </div>
           {hasAny(state) ? (
             <button
               type="button"
               onClick={() => setState(EMPTY_FILTERS)}
-              className="text-sm text-brand-600 hover:text-brand-700"
+              className="text-sm text-accent-fg hover:text-accent-strong"
             >
               Reset filters
             </button>

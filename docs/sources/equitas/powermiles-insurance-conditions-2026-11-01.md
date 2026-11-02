@@ -1,0 +1,13 @@
+# Equitas PowerMiles insurance policy conditions (2026-11-01)
+
+## Issuer and insurer sources reviewed
+
+- [PowerMiles comprehensive protection summary](https://equitas.bank.in/strapi-dev/uploads/Insurance_Power_Miles_Website_1_5c2327d59b.pdf): INR 1 crore air-accident death cover; credit shield up to the card credit limit or INR 8 lakh, whichever is higher; lost-card liability up to INR 10 lakh for the primary cardholder. The summary says cover is primary-cardholder-only and starts after card activation; air ticket must be purchased using an Equitas credit card. It identifies Royal Sundaram as claims insurer and says notification/documents are due within 30 days.
+- [Suraksha Kawach air-accident policy](https://equitas.bank.in/strapi-dev/uploads/Air_Accident_Policy_83c2adde67.pdf), UIN RSAHLGP19010V011819: the optional air-accident benefit is death-only; death must occur within 365 days of the covered accident; proof/claim documents are generally due within 30 days. The amount is the sum insured in the individual policy schedule/certificate, which is not published in the accessible policy text.
+- [Suraksha Kawach credit-shield wording](https://equitas.bank.in/strapi-dev/uploads/Credit_Shield_Policy_304f89b270.pdf), same UIN: reviewed claim procedure and exclusions. Claim documents are generally due within 30 days; admissibility depends on the policy schedule/certificate.
+- [Secure Wallet wording for lost-card cover](https://equitas.bank.in/strapi-dev/uploads/Lost_Card_Policy_c5b9320efd.pdf), UIN IRDAN102CP0001V02201617: reviewed exclusions, deductible/limit mechanism and claims timeline. The accessible wording uses per-occurrence and per-policy limits set in the insurance schedule; the current card-specific certificate is not publicly available.
+- [Current Cardmember Agreement dated 28-Nov-2025](https://equitas.bank.in/strapi-dev/uploads/Card_Member_Agreement_21b39ee7dc.pdf): insurance is governed by the insurer policy in force and can cease when card membership ends; the bank can modify or withdraw cover with notice.
+
+## Data treatment and remaining uncertainty
+
+The card-level coverage amounts and primary-cardholder/activation conditions remain those in Equitas's PowerMiles insurance summary. Added the policy-backed death-only air-accident scope and claim timing. Do not present the 2026 insurance-summary benefit amounts as unconditional claim guarantees: the per-card schedule/certificate, specific deductibles and complete claim eligibility remain unavailable. The Equitas product page itself still returns HTTP 503; this review resolves the previous insurer-wording gap using the issuer-linked indexed PDFs, but the exact current certificate remains an open limitation.

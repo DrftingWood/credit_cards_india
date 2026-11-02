@@ -1,102 +1,152 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: au-spont
+﻿id: au-spont
 name: AU Bank Spont Credit Card
+image_path: null
 issuer: au
 network: rupay
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: '2024-04-23'
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 299
-    annual_fee_inr: 299
-    fee_waiver: null
-    forex_markup_pct: 3.49
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "UPI-enabled RuPay card. Annual fee ₹299."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 299
+  annual_fee_inr: 299
+  fee_waiver: null
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: UPI-enabled RuPay card. Annual fee â‚¹299.
+  source:
+    url: https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf
+    retrieved_on: '2026-11-01'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current AU product page lists INR 299 joining/annual fees. The 30-Sep-2026 KFS lists SPONT at 3.49%
+      forex, 3.75% monthly finance, and cash advance 2.5% or INR 500 minimum. Current effective dates are unpublished;
+      26-Oct-2026 records the review snapshot.
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: Cashback
-        rate_inr_per_unit: 1.0
-    notes: "1% cashback on all transactions; additional coins on UPI spends."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1
+    unit_value_inr_realized: 1
+  accelerated: []
+  redemption:
+  - type: statement-credit
+    program: Cashback
+    rate_inr_per_unit: 1.0
+  notes: 1% cashback is advertised on e-commerce, POS, contactless and UPI transactions through any UPI channel; full exclusions and a numeric cap are not stated in accessible current card-page text. Separate non-expiring coins are advertised for UPI through AU 0101, but their earn and redemption values are unpublished.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.capping_rules
+    notes: Product page advertises 1% cashback on e-commerce, POS, contactless and UPI transactions through any UPI
+      channel. Separate non-expiring Spont Coins are earned on UPI via AU 0101; coin rate and conversion value are
+      unpublished. The issuer mentions selected-category exclusions but does not enumerate them or publish a cashback
+      cap; no unsupported exclusion list is modeled.
+  capping_rules:
+  - 1% cashback on e-commerce, POS, contactless and UPI via any UPI channel. No numeric cap or complete exclusion list
+    is published; selected-category exclusions are mentioned but not specified.
+  - Separate Spont Coins are earned on UPI transactions only via AU 0101. Coins never expire; coin earn rate and
+    redemption value are not published, so excluded from calculator estimates.
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [rupay]
-        notes: "2 domestic airport lounges per quarter on ₹50,000 spend; plus Railway Lounge access per calendar quarter."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 100
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: null
+      spend_threshold_inr: 50000
+      spend_threshold_cycle: quarterly
+      via:
+      - rupay
+      notes: 2 domestic airport visits per quarter after INR 50,000 net retail spend in the preceding calendar quarter, per the lounge terms effective 10-Apr-2026. Primary cardholders only; add-on cardholders are excluded, and guests are chargeable. A non-reversible INR 2 validation transaction applies.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: statement
+  concierge: false
+  other:
+  - name: Milestone benefits
+    description: AU's current credit-card listing advertises milestone benefits for SPONT, but does not publish a qualifying spend amount or award details; not modeled.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: 'Current issuer page: 2 domestic airport visits per quarter after INR 50,000 spend in the same calendar
+      quarter; 2 railway lounge visits per calendar quarter. Fuel waiver is 1% on INR 400-5,000 transactions,
+      capped at INR 100 per statement cycle.'
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Resident Indian; indicative primary-cardholder ages salaried 21-60, self-employed 25-65. Income and credit
+    score thresholds are not published.
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card
+    retrieved_on: '2026-11-01'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.residency
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/au-spont-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, cashback, upi, rupay]
+  last_verified_on: '2026-11-01'
+  tags:
+  - entry
+  - cashback
+  - upi
+  - rupay

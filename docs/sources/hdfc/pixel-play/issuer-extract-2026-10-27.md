@@ -1,0 +1,23 @@
+﻿# HDFC Bank PIXEL Play — issuer field review (27 Oct 2026)
+
+## Sources compared
+
+- Current HDFC PIXEL Play page: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card
+- Current HDFC fees page and October 2026 Pricing MID: https://www.hdfc.bank.in/credit-cards/pixel-play-credit-card/fees-and-charges and https://www.hdfc.bank.in/credit-cards/services/fee-waiver-condition
+- PIXEL Play-specific terms, updated 30-Jul-2026: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/fifa-pixel-credit-card/pdf/terms-and-conditions-pixel-play-credit-card-08072026.pdf (archived here)
+- Current PIXEL MITC, updated 15-Oct-2026: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/personal-mitc/MITC-PIXEL-Credit-Card-12Aug-26-1.pdf (archived here)
+- HDFC PIXEL launch release, dated 14-May-2024: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/pdf/press-release/2024/q2-apr-jun/may/hdfc-bank-introduces-pixel-a-new-generation-of-digital-credit-cards.pdf (archived here)
+
+## Material field decisions
+
+- `launched_on`: changed from unsupported 1-Mar-2024 to 14-May-2024, the dated announcement for the PIXEL card range. HDFC does not separately date the PIXEL Play variant, so this is a range-launch proxy.
+- `network`, `network_tier`: cleared to null. Current HDFC page and MITC say standard issuance is both RuPay (digital) and Visa (physical), with a Visa/RuPay/both selection window for three days after approval. No single tier is established. The original launch release said the initial range was on Visa; the current issuance statement is later and governs current configuration.
+- Standard fees: INR 500 joining and renewal fee; INR 20,000 eligible spend in first 90 days waives joining fee; INR 100,000 eligible annual spend before renewal waives annual fee; 3.5% forex, 3.75% monthly finance, cash-advance fee 2.5% or INR 500 minimum, and 1.75% DCC from 20-May-2026. Current MITC also lists INR 199 + GST physical reissue from 20-May-2026 and INR 249 + GST SmartEMI processing from 1-Oct-2026. The October Pricing MID separately says Pixel Play is lifetime free through 31-Oct-2026; the published standard fees remain in structured fee fields and this dated offer is documented in notes.
+- Rewards: 5% on two selected fixed merchant packs, shared 500 CashPoints/month; 3% on one selected ecommerce platform, 500/month; 5% SmartBuy, 500/month; RuPay UPI 1%, 500/month; and all-other 1%, capped at 15,000 points/month per current October MITC. PIXEL Play terms say spend beyond the selected-pack, ecommerce, SmartBuy and UPI accelerator caps earns no CashPoints; it does not fall back to 1%. Corrected the record's incorrect base-fallback claims for selected pack/ecommerce spend. Pack and ecommerce eligibility depends on issuer-shared merchant IDs, calendar-month settlement, and selected merchant/channel restrictions. RuPay UPI Scan & Pay/ecommerce is excluded from 3% ecommerce and receives the separate 1% UPI treatment.
+- Other reward terms: transactions below INR 100 do not earn; fractional points round down; fuel, wallet/prepaid/voucher loads, rent, government, EMI, cash advances, fees and outstanding-balance payments are excluded. Two-year point expiry and 365-day inactivity nullification are described in the current MITC; merchant settlement date governs earning/caps.
+- Benefits: fuel surcharge waiver 1% on INR 400–5,000 transactions, max INR 250 per statement cycle. Current PIXEL Play page advertises up to 10% savings on Swiggy Dineout payments via the Swiggy app (inclusive of restaurant and Swiggy discounts). The product page gives no cap/end date; the 30-Jul-2026 terms retain a previous offer capped at INR 200/transaction twice monthly that expired 31-Dec-2025. Current campaign mechanics remain unresolved.
+- Eligibility: product page specifies Indian nationality, salaried age 21–60 and monthly income INR 25,000 (comparator not stated); self-employed age 21–65 and ITR > INR 6 lakh. Annual salaried income is annualized to INR 300,000 for the schema. Nationality does not establish residency, so residency is null. No minimum bureau score is published. FD-backed route is separate and unmodeled.
+
+## Limits
+
+The selected-pack and ecommerce over-cap correction follows the current card-specific terms, which say spends beyond the cap are not considered for CashPoints. The row remains subject to merchant settlement/MID eligibility, and actual pricing can vary by account-specific offer. HDFC's current Dineout headline is not reconciled by the older expired offer terms. A full clause-level legal review of the generic Cardmember Agreement was outside the modeled product fields.

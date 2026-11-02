@@ -1,14 +1,6 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HSBC live product pages, hsbc.co.in (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hsbc-travelone
 name: HSBC TravelOne Credit Card
+image_path: /cards/hsbc/travelone.webp
 issuer: hsbc
 network: mastercard
 network_tier: world
@@ -16,225 +8,357 @@ tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 4999
-    annual_fee_inr: 4999
-    fee_waiver:
-      spend_inr: 800000
-      cycle: annual
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Travel rewards card. Renewal fee waived on ₹8,00,000 annual spend."
-    source:
-      url: https://www.hsbc.bank.in/credit-cards/products/travelone/
-      retrieved_on: 2026-07-05
-      type: issuer-page
-      confidence: high
-      fields_verified:
-        - fees.fee_waiver
-        - fees.forex_markup_pct
-      notes: "Corrected vs issuer page + cardexpert/paisabazaar: fee waiver Rs 8L (was Rs 12L), forex 3.5% (was 2%), Mastercard World (was modelled Visa/Signature)."
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 4999
+  annual_fee_inr: 4999
+  supplementary_card_fee_inr: 0
+  fee_waiver:
+    spend_inr: 800000
+    cycle: annual
+    conditions: Annual fee including applicable GST is fully reversed when eligible spend across primary and add-on
+      cards during the relevant card anniversary year exceeds INR800,000.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Snapshot verified 2026-10-26. HSBC KFS lists NIL add-on fees. MITC cash-advance transaction fee is 2.5%
+    or INR500 minimum; cash advances also accrue finance charges from transaction date.
+  source:
+    url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/most-important-terms-and-conditions.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/travelone/mitc.pdf
+    - docs/sources/hsbc/travelone/kfs.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.supplementary_card_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    method: pdf-extract
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 2
-      per_inr: 100
-      # Primary redemption is 1:1 transfer to airline/hotel partners, not the
-      # HSBC catalogue (₹0.25/RP). Valued on the transfer path: ₹0.75 achievable
-      # via good 1:1 partner redemptions; ₹0.50 realized (conservative, mirrors
-      # Axis EDGE Miles realized value — TravelOne draws on an overlapping
-      # partner pool). Catalogue redemption remains ₹0.25 (see redemption[]).
-      unit_value_inr: 1.1
-      unit_value_inr_realized: 0.25
-    accelerated:
-      - category: flights-travel-agg-forex
-        canonical_categories: [travel, international]
-        multiplier: 2
-        effective_rate: 4
-        cap_per_cycle: 50000
-        cap_unit: points
-        cycle: annual
-        notes: "4 Reward Points per ₹100 on flights, travel aggregators and foreign-currency spends (capped 50,000 RP/year, then 2 RP/₹100); 2 RP per ₹100 on everything else (no cap). 1:1 transfer to 15+ airline & hotel partners."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: HSBC Rewards
-        rate_inr_per_unit: 0.25
-      - type: airmiles
-        program: HSBC India Rewards (20+ airline & hotel loyalty partners)
-        ratio: "1:1"
-        constraints: "20 transfer partners; ratios are card-point : partner-unit. realized Rs 0.25 = guaranteed non-transfer floor; best documented transfer Rs 1.10. 19 partners beat the floor. Full per-partner values below."
-        transfer_partners:
-          - partner_name: Singapore KrisFlyer
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.10/pt
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.55/pt
-          - partner_name: Air France-KLM Flying Blue
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.90/pt
-          - partner_name: British Airways Avios
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.00/pt
-          - partner_name: Etihad Guest
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.90/pt
-          - partner_name: EVA Air Infinity
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.90/pt
-          - partner_name: JAL Mileage Bank
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.95/pt
-          - partner_name: Qantas Frequent Flyer
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.80/pt
-          - partner_name: Qatar Privilege Club (Avios)
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 1.00/pt
-          - partner_name: Thai Royal Orchid Plus
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.60/pt
-          - partner_name: Vietnam LotusMiles
-            partner_type: airline
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.80/pt
-          - partner_name: Accor ALL
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.95/pt
-          - partner_name: IHG One Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt
-          - partner_name: Marriott Bonvoy
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.55/pt
-          - partner_name: Wyndham Rewards
-            partner_type: hotel
-            transfer_ratio: "1:1"
-            last_verified_on: '2026-07-05'
-            notes: 1:1 -> ~Rs 0.50/pt
-          - partner_name: AirAsia Rewards
-            partner_type: airline
-            transfer_ratio: "1:3"
-            last_verified_on: '2026-07-05'
-            notes: 1:3 -> ~Rs 0.66/pt
-          - partner_name: Hainan Fortune Wings
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.25/pt
-          - partner_name: Turkish Miles&Smiles
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.55/pt
-          - partner_name: United MileagePlus
-            partner_type: airline
-            transfer_ratio: "2:1"
-            last_verified_on: '2026-07-05'
-            notes: 2:1 -> ~Rs 0.45/pt
-          - partner_name: Shangri-La Circle
-            partner_type: hotel
-            transfer_ratio: "5:1"
-            last_verified_on: '2026-07-05'
-            notes: 5:1 -> ~Rs 0.10/pt [below floor — avoid]
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: flights-travel-agg-forex
+    canonical_categories:
+    - travel
+    - international
+    multiplier: 2
+    effective_rate: 4
+    cap_per_cycle: 50000
+    cap_unit: points
+    cycle: monthly
+    notes: 4 points per INR100 (2 base + 2 additional) on issuer-eligible airline and travel-aggregator MCCs and
+      non-DCC foreign-currency transactions, capped at 50,000 accelerated points per calendar month. After the cap,
+      eligible spend earns base rate only. The issuer carries qualifying spend remainder at the transaction level
+      in INR50 increments. Airline/travel-aggregator purchases in foreign currency earn only one additional bonus
+      point per INR50; DCC transactions do not receive foreign-currency bonus.
     source:
-      url: https://www.hsbc.bank.in/credit-cards/products/travelone/
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-      confidence: medium
+      url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/hsbc-rewards-tcs.pdf
+      retrieved_on: '2026-10-26'
+      type: issuer-pdf
+      confidence: high
+      local_refs:
+      - docs/sources/hsbc/travelone/rewards-program-tnc.pdf
+      method: pdf-extract
       fields_verified:
-        - rewards.base.unit_value_inr
-      notes: "Encoded 2026-07-05, full-visibility model: every transfer partner is listed with its own ratio and Rs/point. No blended or averaged value. realized = the guaranteed non-transfer floor; face = the single best documented transfer (ceiling). See transfer_partners for the complete per-partner spread. Earn rates unchanged."
-
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].cap_per_cycle
+      - rewards.accelerated[0].cycle
+  exclusions:
+  - fuel
+  - utilities
+  - government
+  - education
+  - wallet-loads
+  - insurance-premiums
+  - jewellery
+  - financial-institutions
+  - emi
+  - cash-advance
+  - other
+  mcc_exclusions:
+  - '4900'
+  - '5541'
+  - '5983'
+  - '5172'
+  - '5542'
+  - '5552'
+  - '9311'
+  - '6513'
+  - '6051'
+  - '4829'
+  - '5944'
+  - '5094'
+  - '6300'
+  - '5960'
+  - '6010'
+  - '6011'
+  - '6012'
+  - '6540'
+  - '9223'
+  - '9399'
+  - '8299'
+  - '8220'
+  - '8211'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '9222'
+  - '9402'
+  - '9211'
+  - '9405'
+  redemption:
+  - type: catalog
+    program: HSBC Rewards
+    rate_inr_per_unit: null
+    constraints: Issuer states reward point redemption value varies by card and redemption category; its general
+      page gives a range of INR0.25-INR1.00 and says points are not exchangeable for cash or credit. This range
+      is not encoded as a fixed TravelOne value.
+  - type: airmiles
+    program: HSBC India Rewards
+    ratio: varies by partner
+    constraints: 20 current airline and hotel transfer partners. Ratios below are HSBC-published card points to
+      partner loyalty units. Partner loyalty redemption value depends on the partner program and itinerary; no INR
+      value is asserted.
+    transfer_partners:
+    - partner_name: Air India Maharaja Club
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: airasia rewards
+      partner_type: airline
+      transfer_ratio: '1:3'
+      last_verified_on: '2026-10-26'
+    - partner_name: Air France-KLM Flying Blue
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: The British Airways Club
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Etihad Guest
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: EVA Air Infinity MileageLands
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Hainan Airlines Fortune Wings Club
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: JAL Mileage Bank
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Singapore Airlines KrisFlyer
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Qantas Frequent Flyer
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Qatar Airways Privilege Club
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Thai Airways Royal Orchid Plus
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Turkish Airlines Miles&Smiles
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: United MileagePlus
+      partner_type: airline
+      transfer_ratio: '2:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Vietnam Airlines Lotusmiles
+      partner_type: airline
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: ALL ? Accor Live Limitless
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: IHG One Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Marriott Bonvoy
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Shangri-La Circle
+      partner_type: hotel
+      transfer_ratio: '5:1'
+      last_verified_on: '2026-10-26'
+    - partner_name: Wyndham Rewards
+      partner_type: hotel
+      transfer_ratio: '1:1'
+      last_verified_on: '2026-10-26'
+  notes: Settled eligible transactions earn points; amounts not divisible by INR50 carry forward, and refunds/reversals
+    reverse points. HSBC also excludes cash advances, fees/charges and disputed transactions. IEMI transactions
+    do not earn points. MCC exclusions are transcribed from the current HSBC TravelOne Rewards T&C. Issuer product
+    page lists accelerated categories; the linked program T&C provides their eligible MCCs.
+  source:
+    url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/hsbc-rewards-tcs.pdf
+    retrieved_on: '2026-10-26'
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/travelone/rewards-program-tnc.pdf
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].cap_per_cycle
+    - rewards.accelerated[0].cycle
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    method: pdf-extract
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 6
-        cycle: annual
-        guests_per_visit: 0
-        via: [loungekey]
-      international:
-        visits_per_cycle: 4
-        cycle: annual
-        guests_per_visit: 0
-        via: [loungekey]
-    welcome:
-      - condition: "Spend ₹25,000 within first 30 days"
-        benefit: "₹1,000 cashback + ₹3,000 PostCard voucher (promo HSBCTRAVEL)"
-        value_inr: 4000
-        window_days: 30
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.hsbc.bank.in/credit-cards/products/travelone/
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 6
+      cycle: annual
+      guests_per_visit: 0
+    international:
+      visits_per_cycle: 4
+      cycle: annual
+      guests_per_visit: 0
+  welcome:
+  - condition: New primary TravelOne cardholders who apply 1 July?31 December 2026, download and log in to the HSBC
+      India Mobile app, and spend at least INR25,000 within 30 calendar days of opening the account; KYC must be
+      updated and minimum due paid within 30 days of its due date.
+    benefit: INR1,000 cashback, INR3,000 Postcard Hotels voucher and 3 months EazyDiner Prime membership.
+    value_inr: 4000
+    window_days: 30
+  - condition: Apply online and complete video self-verification with card issuance during 1 January?31 October
+      2026.
+    benefit: INR250 Amazon eGift Voucher; offer is limited-period and voucher is delivered within 45 days after
+      offer end.
+    value_inr: 250
+    window_days: null
+  milestones:
+  - spend_inr: 1200000
+    cycle: annual
+    benefit: 10,000 bonus Reward Points after net eligible spend of INR1,200,000 in a card anniversary year. T&C
+      says spend of INR1,200,000; product page says more than INR1,200,000.
+    value_inr: null
+    reward_kind: points
+    reward_units: 10000
+    reward_currency_name: Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+    max_awards_per_cycle: 1
+  insurance:
+  - type: purchase-protection
+    sum_insured_inr: null
+    sum_insured_amount: 20000
+    sum_insured_currency: USD
+    conditions: Up to USD20,000 purchase protection every year; terms, covered items and claims conditions apply.
+  other:
+  - name: Travel booking discounts
+    description: Issuer product page advertises 15% savings on domestic and international holiday bookings through
+      Yatra, EaseMyTrip, Paytm Travel and Cleartrip; booking-specific terms and promo codes apply.
+  - name: StayVista hotel discount
+    description: Issuer page lists StayVista savings; maximum 2 bookings per card per year and INR3,000 maximum
+      saving per booking.
+  - name: AdaniOne duty-free discount
+    description: Issuer page advertises up to 20% off at select duty-free stores in India; offer terms apply.
+  - name: Dining, events and movies
+    description: Issuer page advertises up to 10% off events and dining via District by Zomato and buy-one-get-one
+      movie tickets twice per month; offer terms and codes apply.
+  - name: Mastercard World platform
+    description: Issuer page advertises Mastercard World platform privileges including complimentary golf and holiday
+      discounts; specific partner terms apply.
+  fuel_surcharge_waiver: null
+  concierge: false
+  source:
+    url: https://www.hsbc.bank.in/credit-cards/products/travelone/
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/travelone/service-guide.pdf
+    - docs/sources/hsbc/travelone/introductory-benefits-tnc.pdf
+    - docs/sources/hsbc/travelone/milestone-benefits-tnc.pdf
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.international.visits_per_cycle
+    - benefits.welcome
+    - benefits.milestones[0].spend_inr
+    - benefits.milestones[0].reward_units
+    - benefits.insurance[0].sum_insured_amount
+    - benefits.other
+    method: manual-read
+    notes: Amazon voucher ends 2026-10-31; introductory offer application period ends 2026-12-31. These are time-bounded
+      offers, not permanent card guarantees.
 eligibility:
   min_age: 18
   max_age: 65
+  age_ranges:
+    salaried:
+      min_age: 18
+      max_age: 65
+    self_employed:
+      min_age: 25
+      max_age: 65
   income_inr_annual:
     salaried: 600000
-    self_employed: 600000
-  credit_score_min: 730
+    self_employed: 1200000
+  credit_score_min: null
   residency: resident-indian
-
+  notes: Issuer lists resident Indian applicants in Chennai, Gurgaon, Delhi NCR, Pune, Noida, Hyderabad, Mumbai,
+    Bengaluru, Kochi, Coimbatore, Jaipur, Chandigarh, Ahmedabad, Kolkata, Amritsar, Baroda, Indore, Lucknow, Nagpur,
+    Surat or Trivandrum. Published age ranges differ by occupation. No minimum credit score is published on the
+    eligibility page.
+  source:
+    url: https://www.hsbc.bank.in/credit-cards/products/travelone/
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.age_ranges
+    - eligibility.income_inr_annual
+    - eligibility.residency
+    method: manual-read
 application:
   apply_url: https://www.hsbc.bank.in/credit-cards/products/travelone/
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [premium, points, travel, airmiles, lounge]
+  last_verified_on: '2026-10-26'
+  tags:
+  - premium
+  - points
+  - travel
+  - airmiles
+  - lounge

@@ -1,0 +1,10 @@
+# IRCTC SBI Platinum Card field comparison (27 Oct 2026)
+
+Reviewed the live SBI Card product page (current URL redirects from the membership e-kit route), card-specific IRCTC Visa/RuPay terms, IRCTC FAQ, current SBI MITC and the IRCTC Platinum calculator. Archived files: `product-page-2026-10-27.html`, `irctc-card-terms.pdf` / `.txt`, `irctc-faq.pdf` / `.txt`; current common MITC is in `../_shared/mitc-english.pdf`.
+
+- SBI product page confirms INR 500 annual/renewal fees, 1 RP per INR 125 on non-fuel retail, seasonal up-to-10% IRCTC rail value-back, 1 RP = INR 1 for eligible IRCTC fare redemption, 4 railway lounge visits (one per quarter, primary cardholder), 1% fuel waiver for INR 500-3,000 spend capped at INR 100 per statement, and 1% direct irctc.co.in transaction-charge waiver.
+- Card terms date the INR 500 membership/renewal fee from 26-Dec-2024 and confirm Visa/RuPay variants. Since the card's exact original launch date is not established by current primary source, `launched_on` is null. No network tier is asserted.
+- Rail value-back is seasonal: 4% on travel dates 1-Apr to 14-Jul and 16-Sep to 14-Jan; 10% on 15-Jan to 31-Mar and 15-Jul to 15-Sep. The schema does not encode travel-date seasons, so the structured accelerated earn uses the conservative 4% rate and the notes retain the full calendar. Terms state no monthly/annual cap. Points transfer to the linked IRCTC loyalty account and cannot be used as cash.
+- Issuer product page gives activation reward of 350 points for a retail transaction of INR 500+ within 60 days; fuel and cash excluded. An older offer page advertises a 45-day window, so the current product page/card T&C's 60-day condition is used. Annual renewal fee realization earns 500 points.
+- Added current exclusions and MCCs from the card terms, including fuel, wallet, rent and government categories; captured 13-month card inactivity and 24-month loyalty validity terms in provenance notes. Removed the prior unsupported exact launch date and Visa/Platinum network metadata.
+- Cleared the aggregator-derived income minimum and unsupported concierge flag; card-specific minimum income/score are not published.

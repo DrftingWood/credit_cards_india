@@ -1,0 +1,121 @@
+id: jk-bank-rupay-platinum
+name: J&K Bank RuPay Platinum Credit Card
+image_path: /cards/jk-bank/rupay-platinum.webp
+issuer: jk-bank
+network: rupay
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-05-01
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+    conditions: Annual fee for the subsequent year waived at annual spends of ₹1,00,000 during the card anniversary year.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.0
+  cash_advance_fee:
+    pct: 3
+    min_inr: 300
+  gst_applicable: true
+  source:
+    url: https://www.jkb.bank.in/transactions/services/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Current issuer page states nil joining, ₹500 annual fee, waiver at ₹1,00,000 annual spend, 3.5% FX markup, 3% monthly finance and cash advance fee 3%/₹300 minimum in current general schedule. Updated fee cycle effective 1-May-2026.
+rewards:
+- effective_from: 2026-04-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: online, department stores, pharmacy/medical and utility payments
+    canonical_categories:
+    - online
+    - other
+    - utilities
+    multiplier: 2
+    effective_rate: 2
+    notes: 2 Reward Points per ₹100 on online transactions, department stores, pharmacy and medical spends, and utility payments.
+  exclusions:
+  - fuel
+  - cash-advance
+  - rent
+  - wallet-loads
+  - education
+  - insurance-premiums
+  notes: Issuer's current card page says 1 point/₹100 base and 2 points/₹100 on the listed categories. Fuel, cash withdrawal, rent, wallet, education and insurance exclusions appear in issuer's cross-variant exclusion list. Point value/redemption conversion is not published on the reviewed page. General terms state three-year validity from transaction date.
+  redemption: []
+  source:
+    url: https://www.jkb.bank.in/transactions/services/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Revised reward structure effective 1-Apr-2026. Current issuer page does not state point INR value.
+benefits:
+- effective_from: 2026-03-12
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - rupay
+      notes: 2 complimentary domestic airport lounge visits per year, limited to one visit per half-year. Current issuer page does not state guest or network validation terms.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: null
+    cap_per_cycle_inr: null
+    cycle: monthly
+    notes: Issuer says 1% waiver up to ₹5,000 on fuel transactions per month; wording does not clarify whether ₹5,000 is fuel spend or waiver value. Transaction range not published.
+  other:
+  - name: Welcome voucher
+    description: ₹250 gift voucher after the first eligible transaction for newly issued cards; issuer says effective from 1-Apr-2026.
+    value_inr: 250
+  - name: Quarterly milestone voucher
+    description: ₹500 gift voucher on quarterly spends exceeding ₹75,000; calculations from 1-Apr-2026.
+    value_inr: 500
+  - name: Monthly utility discount
+    description: 10% discount up to ₹50 on eligible utility bill payments, once per month.
+    value_inr: 50
+  concierge: null
+  source:
+    url: https://www.jkb.bank.in/transactions/services/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Travel/lifestyle benefits effective 12-Mar-2026, welcome benefit from 1-Apr-2026 and quarterly milestone calculations from 1-Apr-2026. Some issuer page wording is generic across card variants.
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: Current issuer page does not publish product-specific age, income or credit-score cutoffs.
+application:
+  apply_url: https://www.jkb.bank.in/transactions/services/credit-cards
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - rupay
+  - platinum
+  - jk-bank
+  - lounge

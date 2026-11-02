@@ -1,0 +1,174 @@
+id: pnb-luxura-visa
+name: PNB LUXURA Metal Credit Card (Visa Infinite)
+image_path: /cards/pnb/luxura-visa.webp
+issuer: pnb
+network: visa
+network_tier: infinite
+tier: premium
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2026-02-02
+discontinued_on: null
+fees:
+- effective_from: 2026-02-02
+  effective_until: null
+  joining_fee_inr: 4999
+  annual_fee_inr: 1999
+  fee_waiver:
+    spend_inr: 600000
+    cycle: annual
+    conditions: Annual fee (Rs 1,999 + GST) waived if annual spends exceed Rs 6 lakh. Joining fee (Rs 4,999 + GST)
+      is charged only if spend stays under Rs 1.5 lakh within three billing cycles, or the card is closed within
+      90 days.
+  forex_markup_pct: 0.0
+  finance_charge_monthly_pct: 2.95
+  cash_advance_fee:
+    pct: 2.0
+    min_inr: 150
+  gst_applicable: true
+  source:
+    url: https://creditcard.pnb.bank.in/types17.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    notes: 'Card page confirms joining INR4,999 and annual INR1,999 + GST with stated waivers and nil forex; current PNB MITC confirms standard finance and cash advance charges for Luxura Visa Infinite. Fee period starts at official 2-Feb-2026 launch.'
+rewards:
+- effective_from: 2026-02-02
+  effective_until: null
+  currency: points
+  currency_name: PNB Reward Points
+  base:
+    rate: 4
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: travel-dining
+    canonical_categories:
+    - travel
+    - dining
+    multiplier: 3
+    effective_rate: 12
+    cap_status: not-published
+    notes: '''3X Reward Point on travel & dining spends'' (card page).'
+  exclusions:
+  - fuel
+  - cash-advance
+  capping_rules:
+  - Issuer product page publishes no cap for 3X travel and dining.
+  - PNB schedules INR99 + GST per redemption effective 1-Nov-2026; applicability to LUXURA requires confirmation after that date.
+  - Exact MCC exclusions are not published in reviewed Visa-specific sources.
+  redemption:
+  - type: catalog
+    program: PNB Credit Card Rewards
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://creditcard.pnb.bank.in/types17.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.accelerated.effective_rate
+    notes: '''Earn 4 rewards points (Worth Rs. 1) for every Rs100/- spent'' and ''3X Reward Point on travel & dining
+      spends''.'
+benefits:
+- effective_from: 2026-02-02
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - visa
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - visa
+  welcome:
+  - condition: Spend Rs 50,000 within 90 days of activation
+    benefit: 20,000 reward points
+    value_inr: 5000
+    window_days: 90
+  milestones:
+  - spend_inr: 500000
+    cycle: annual
+    benefit: 10,000 reward points (worth Rs 2,500) on Rs 5 lakh annual spend
+    value_inr: 2500
+    reward_kind: points
+    reward_units: 10000
+    reward_currency_name: PNB Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  - spend_inr: 1000000
+    cycle: annual
+    benefit: 14,000 reward points (worth Rs 3,500) on Rs 10 lakh annual spend
+    value_inr: 3500
+    reward_kind: points
+    reward_units: 14000
+    reward_currency_name: PNB Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  - spend_inr: 1500000
+    cycle: annual
+    benefit: 26,000 reward points (worth Rs 6,500) on Rs 15 lakh annual spend
+    value_inr: 6500
+    reward_kind: points
+    reward_units: 26000
+    reward_currency_name: PNB Reward Points
+    trigger_window: anniversary-year
+    is_repeatable: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 350
+    cycle: statement
+  concierge: true
+  other:
+  - name: Ixigo
+    description: 'Monthly offer once per card: 12% off domestic flights/hotels up to INR1200 on INR5000 minimum; 10% off international flights/hotels up to INR2500 on INR10000 minimum; full swipe.'
+  - name: Visa Infinite travel and lifestyle offers
+    description: 'Visa Luxury Hotel Collection perks, Visa Dine and Save up to 20% at participating restaurants in 12 markets, Elivaas villa offers, ITC offers, Agoda up to 30% capped USD200, GHA Discovery, and one complimentary international meet-and-greet at leading Indian airports; offers and availability vary.'
+  - name: BookMyShow
+    description: Buy one ticket, get one up to INR200 once a month.
+  source:
+    url: https://creditcard.pnb.bank.in/types17.html
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: medium
+    notes: 'Card page: lounge ''Complementary - Unlimited Domestic & International'' (access programme not named),
+      welcome 20,000 points on Rs 50k in 90 days, milestones 10,000 / 14,000 / 26,000 points at Rs 5 / 10 / 15 lakh,
+      fuel 1% on Rs 500-4,000 capped at Rs 350 per billing cycle. Visa-specific travel/concierge offers added from product sheet. No card-specific insurance amount was confirmed, so none is recorded.'
+eligibility:
+  min_age: 21
+  max_age: 70
+  income_inr_annual:
+    salaried: 1800000
+    self_employed: 1800000
+  credit_score_min: 700
+  residency: resident-indian
+  notes: 'Salaried gross monthly income INR150,000+ (INR1.8m annualized); non-salaried annual income INR1.8m+. Salaried/pension applicants require CIBIL 700+; others 750+. Staff/ex-staff officer exception applies. FD-backed minimum INR150,000; credit limit INR100,000-5,000,000. Eligibility from official LUXURA FAQ.'
+application:
+  apply_url: https://creditcard.pnb.bank.in/types17.html
+metadata:
+  last_verified_on: 2026-10-26
+  tags:
+  - premium
+  - metal
+  - visa
+  - points
+  - zero-forex
+  - lounge
+  - psu-bank

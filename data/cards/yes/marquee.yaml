@@ -1,146 +1,209 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-marquee
 name: YES Bank Marquee Credit Card
-issuer: "yes"
-network: mastercard
-network_tier: world-elite
+image_path: /cards/yes/marquee.webp
+issuer: 'yes'
+network: null
+network_tier: null
 tier: super-premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2021-05-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2021-05-01
-    effective_until: null
-    joining_fee_inr: 9999
-    annual_fee_inr: 4999
-    fee_waiver:
-      spend_inr: 2500000
-      cycle: annual
-    forex_markup_pct: 1.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 9999
+  annual_fee_inr: 4999
+  fee_waiver:
+    spend_inr: 1000000
+    cycle: annual
+    conditions: Renewal fee waived after INR 10,00,000 spend in a year; current issuer
+      source does not define the exact measurement window.
+  forex_markup_pct: 1.0
+  finance_charge_monthly_pct: 2.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  source:
+    url: https://www.yes.bank.in/content/published/api/v1.1/assets/CONT8A070F73DE3E4A338CB32A9D90F5E1B3/native/yes_first_schedule_of_charges_1st_oct25.pdf?channelToken=21f7ccfa2fc3401091938f541a6f8f2a&download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+  notes: Current YES BANK MITC V18 sets APR at 2.99% monthly and cash advance fee
+    at 2.5% or INR650 minimum, effective 15-Jun-2026. Current Schedule of Charges
+    lists joining fee INR9,999, annual fee INR4,999 and renewal waiver after INR10
+    lakh annual spend. Official card listing advertises 40,000 joining points on fee
+    realization; schedule adds 20,000 renewal points on renewal fee realization. The
+    exact fee-waiver measurement window is not stated; prior INR25 lakh claim was
+    unsupported.
 rewards:
-  - effective_from: 2021-05-01
-    effective_until: null
-    currency: points
-    currency_name: YES Reward Points
-    base:
-      rate: 12
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.25
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 2
-        effective_rate: 24
-        cap_per_cycle: 100000
-        cap_unit: points
-        cycle: statement
-        notes: Online (incl. intl online) capped 1,00,000 YES Rewardz pts/cycle, then offline rate.
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - utilities
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: YES Rewardz
-        rate_inr_per_unit: 0.25
-      - type: airmiles
-        program: Multiple
-        ratio: "15:1"
-        constraints: 2 transfer partner(s); ratios card-point:partner-unit. realized Rs 0.25 = non-transfer floor; best transfer Rs 0.04; 0 beat the floor. Both transfers far below floor (InterMiles ~Rs 0.02, Air India ~Rs 0.04). Vistara removed (defunct 2024).
-        transfer_partners:
-          - partner_name: InterMiles
-            partner_type: airline
-            transfer_ratio: "10:1"
-            last_verified_on: '2026-07-05'
-            notes: 10:1 -> ~Rs 0.02/pt [below floor — avoid]
-          - partner_name: Air India Maharaja Club
-            partner_type: airline
-            transfer_ratio: "15:1"
-            last_verified_on: '2026-07-05'
-            notes: 15:1 -> ~Rs 0.04/pt [below floor — avoid]
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: YES Reward Points
+  base:
+    rate: 18
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  accelerated:
+  - category: online-spend
+    canonical_categories:
+    - other
+    multiplier: 2
+    effective_rate: 36
+    cap_per_cycle: 100000
+    cap_unit: points
+    cycle: statement
+    notes: Issuer value chart gives 36 points per INR200 on online shopping and 18
+      per INR200 offline. Online points apply only for MCCs declared by Mastercard,
+      Visa and RuPay and are capped at 100,000 points per statement cycle; the card-specific
+      qualifying MCC list was not found in current issuer materials reviewed.
     source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
-      notes: 'Added missing accelerated-category cap(s) (were uncapped) - 2026-07-05.'
-      confidence: high
+      url: https://www.yes.bank.in/content/published/api/v1.1/assets/CONT49316C1151134FA58F444AF08712C/native/yesbank_marquee_credit_card.pdf?channelToken=21f7ccfa2fc3401091938f541a6f8f2a&download=false
+      retrieved_on: '2026-10-27'
+      type: issuer-pdf
+      confidence: medium
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+  - category: select-categories
+    canonical_categories:
+    - utilities
+    multiplier: 0.56
+    effective_rate: 10
+    cap_per_cycle: 1250
+    cap_unit: points
+    cycle: statement
+    notes: Issuer value chart illustrates 10 points per INR200 on select categories.
+      Current MITC caps Marquee utility rewards at 1,250 points per statement cycle;
+      exact select-MCC list was not published in reviewed current materials.
+    source:
+      url: https://www.yes.bank.in/content/published/api/v1.1/assets/CONT49316C1151134FA58F444AF08712C/native/yesbank_marquee_credit_card.pdf?channelToken=21f7ccfa2fc3401091938f541a6f8f2a&download=false
+      retrieved_on: '2026-10-27'
+      type: issuer-pdf
+      confidence: medium
+      fields_verified:
+      - rewards.accelerated[1].effective_rate
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - cash-advance
+  - emi
+  redemption:
+  - type: catalog
+    program: YES Rewardz
+    rate_inr_per_unit: 0.25
+    constraints: Issuer says point value is up to INR0.25; realized value is unverified.
+  - type: airmiles
+    program: Multiple
+    ratio: '15:1'
+    constraints: Current MITC permits flight/hotel redemption up to 70% of invoice
+      value or 300,000 points per calendar month, whichever is lower. Transfer partners
+      and effective ratios need fresh source confirmation.
+    transfer_partners:
+    - partner_name: InterMiles
+      partner_type: airline
+      transfer_ratio: '10:1'
+      last_verified_on: '2026-07-05'
+      notes: 10:1 -> ~Rs 0.02/pt [below floor — avoid]
+    - partner_name: Air India Maharaja Club
+      partner_type: airline
+      transfer_ratio: '15:1'
+      last_verified_on: '2026-07-05'
+      notes: 15:1 -> ~Rs 0.04/pt [below floor — avoid]
+    rate_inr_per_unit: 0.25
+  source:
+    url: https://www.yes.bank.in/content/published/api/v1.1/assets/CONT49316C1151134FA58F444AF08712C/native/yesbank_marquee_credit_card.pdf?channelToken=21f7ccfa2fc3401091938f541a6f8f2a&download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: medium
+    notes: Value chart supports the illustrative earn rates and maximum point value;
+      flight/hotel redemption caps are from the separately linked current MITC.
+  notes: 'Issuer value chart labels its reward table illustrative: 36 points per INR200
+    online, 18 offline, 10 on select categories; online feature is capped at 100,000
+    points per statement cycle. MITC caps utility rewards at 1,250 points per statement
+    cycle. Exclusions in issuer chart include rent, wallet, fuel, cash withdrawals,
+    post-purchase EMI and instant EMI. Current MITC caps flight/hotel redemption;
+    the exact select MCCs and whether the online cap is shared with other earn remain
+    unclear.'
 benefits:
-  - effective_from: 2021-05-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: 2
-        via: [mastercard, dreamfolks]
-      international:
-        visits_per_cycle: unlimited
-        cycle: annual
-        guests_per_visit: 2
-        via: [priority-pass]
-    golf:
-      rounds_per_cycle: 2
-      cycle: monthly
-      lessons_per_cycle: 0
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "10,000 YES Reward Points + Amazon / Flipkart voucher worth ₹10,000"
-        value_inr: 12500
-        window_days: 90
-    insurance:
-      - type: air-accident
-        sum_insured_inr: 30000000
-      - type: travel-medical
-        sum_insured_inr: 25000000
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: true
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 6
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 100000
+      spend_threshold_cycle: quarterly
+      notes: Six visits each quarter for primary and add-on cardmembers, after INR1,00,000
+        eligible spend in previous quarter.
+    international:
+      visits_per_cycle: unlimited
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+      notes: Current card listing says unlimited international visits. Access depends
+        on programme/cardmember conditions; MITC separately allows four complimentary
+        international guest entries per calendar year.
+  welcome:
+  - condition: Joining fee realization
+    benefit: 40,000 YES Rewardz points and annual ET Prime subscription
+    value_inr: null
+    window_days: null
+  - condition: Renewal fee realization
+    benefit: 20,000 YES Rewardz points
+    value_inr: 5000
+    window_days: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 1000
+    cycle: statement
+    notes: Effective 15-Jun-2026; GST on surcharge is not waived.
+  concierge: null
+  source:
+    url: https://www.yes.bank.in/sites/web/content/published/api/v1.1/assets/CONT23CDBE6F27E4444AA0A336DDB2885343/native/ybl_yes_bank_domestic_lounge_access.pdf?channelToken=21f7ccfa2fc3401091938f541a6f8f2a&download=false
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+  notes: Current issuer listing says 6 domestic lounge visits per quarter and unlimited
+    international access. Domestic visits require INR1,00,000 eligible prior-quarter
+    spend. MITC allows 2 complimentary domestic guest and 4 international guest entries
+    per calendar year. Current schedule advertises up to 3 BookMyShow BOGO uses monthly,
+    golf lessons and green-fee waivers at select courses. Old accident and travel-medical
+    insurance sums and exact golf quotas were not corroborated and removed.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 3000000
-    self_employed: 3000000
-  credit_score_min: 780
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Income and minimum bureau-score figures previously stored here were tier-derived
+    defaults, not card-specific issuer evidence; leave them unknown until the issuer
+    publishes or confirms a threshold. Broad minimum/maximum age figures without an
+    exact issuer evidence path or a source-verified occupational range were left unknown;
+    this does not imply there is no age criterion.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/marquee-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [super-premium, low-forex, points, travel]
+  last_verified_on: '2026-10-27'
+  tags:
+  - super-premium
+  - low-forex
+  - points
+  - travel

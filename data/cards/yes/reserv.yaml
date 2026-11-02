@@ -1,129 +1,188 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-reserv
 name: YES Bank Reserv Credit Card
-issuer: "yes"
-network: mastercard
-network_tier: world
+image_path: /cards/yes/reserv.webp
+issuer: 'yes'
+network:
+network_tier:
 tier: premium
 card_type: credit
-co_brand: null
+co_brand:
 status: active
-launched_on: 2018-01-01
-discontinued_on: null
-
+launched_on:
+discontinued_on:
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 2499
-    annual_fee_inr: 2499
-    fee_waiver:
-      spend_inr: 300000
-      cycle: annual
-    forex_markup_pct: 2.0
-    finance_charge_monthly_pct: 2.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "Formerly YES FIRST EXCLUSIVE. First-year fee ₹2,499 waived on ₹40,000 retail spend within 1 month of setup; renewal fee waived on ₹3,00,000 spend in prior 12 months. Preferential 2.00% forex markup."
-    source:
-      url: https://www.yes.bank.in/personal-banking/cards/credit-card/reserv-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-06-15'
+  effective_until:
+  joining_fee_inr: 2499
+  annual_fee_inr: 2499
+  fee_waiver:
+    spend_inr: 300000
+    cycle: annual
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 2.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: Formerly YES FIRST EXCLUSIVE. Joining and renewal fee INR 2,499 + GST.
+    Joining fee waived on INR 40,000 retail spend within 30 days of setup;
+    renewal waived on INR 300,000 retail spend in the 12 months before renewal.
+    Current MITC v18 sets standard APR at 2.99% monthly (35.88% annual) and cash
+    advance at 2.5% or INR 650 minimum, effective 15-Jun-2026; older
+    card-specific terms listed INR 500 minimum. Foreign currency markup is 2.00%
+    from 15-Jun-2026.
+  source:
+    url:
+      https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/reserv/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: points
-    currency_name: YES Rewardz Points
-    base:
-      rate: 6
-      per_inr: 200
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.18
-    accelerated:
-      - category: online-shopping
-        canonical_categories: [online]
-        multiplier: 4
-        effective_rate: 24
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "24 YES Rewardz per ₹200 on online shopping (except Select categories)."
-      - category: offline-shopping
-        canonical_categories: [other]
-        multiplier: 2
-        effective_rate: 12
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "12 YES Rewardz per ₹200 on offline shopping; 6 per ₹200 on Select categories (base)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-      - government
-      - education
-      - utilities
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: YES Rewardz
-        rate_inr_per_unit: 0.25
-    notes: "Effective 15-Jun-2026, no Reward Points on Rent, Wallet, Fuel, UPI, Government, Marketing/Advertising, cash withdrawals, EMI (Post Purchase/On-Call/Instant), Insurance, Education, Railways, Toll & Ferry."
-    source:
-      url: https://www.yes.bank.in/personal-banking/cards/credit-card/reserv-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-06-15'
+  effective_until:
+  currency: points
+  currency_name: YES Rewardz Points
+  base:
+    rate: 12
+    per_inr: 200
+    unit_value_inr: 0.25
+    unit_value_inr_realized:
+  accelerated:
+  - category: online-shopping
+    canonical_categories:
+    - online
+    multiplier: 2
+    effective_rate: 24
+    cap_per_cycle: 36000
+    cap_unit: points
+    cycle: statement
+    notes: 24 points per INR 200 on online shopping except Select categories;
+      total reward cap is 36,000 points per statement cycle.
+  - category: select-categories
+    canonical_categories:
+    - utilities
+    multiplier: 0.5
+    effective_rate: 6
+    cap_per_cycle: 750
+    cap_unit: points
+    cycle: statement
+    notes: 6 points per INR 200 on Select categories; utility MCC 4900 capped at
+      750 points per statement cycle. Other Select MCC mapping retained in
+      issuer-rendered extract.
+  exclusions:
+  - rent
+  - wallet-loads
+  - fuel
+  - government
+  - emi
+  - insurance-premiums
+  - education
+  - jewellery
+  - road-fees-and-tolls
+  - cash-advance
+  - other
+  mcc_exclusions: []
+  redemption:
+  - type: catalog
+    program: YES Rewardz
+    rate_inr_per_unit: 0.25
+  notes: 24 points/INR200 online retail except Select categories; 12/INR200
+    offline retail except Select categories; 6/INR200 on Select categories.
+    Overall cap 36,000 per statement; MCC 4900 utility cap 750 per statement.
+    Effective 15-Jun-2026 exclusions per current card page include rent, wallet,
+    fuel, UPI, government, marketing/advertising, cash withdrawal, EMI,
+    insurance, education, railways, toll, ferry, and jewellery. Current generic
+    MITC lists redemption fee exception for Reserv; older legacy charts show
+    other redemption features and are not treated as current. Up to INR0.25
+    point value is indicative, not a realized value.
+  source:
+    url:
+      https://pri1.yes.bank.in/personal-banking/nri/credit-cards/reserv-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/reserv/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.exclusions
+    - rewards.redemption
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access:
-      international:
-        visits_per_cycle: 2
-        cycle: annual
-        guests_per_visit: 0
-        via: [priority-pass]
-    movies:
-      type: discount
-      partner: BookMyShow
-      max_per_cycle: null
-      cycle: monthly
-      cap_inr: null
-      notes: "25% discount on BookMyShow."
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/cards/credit-card/reserv-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-06-15'
+  effective_until:
+  lounge_access:
+    domestic:
+      visits_per_cycle: 3
+      cycle: quarterly
+      guests_per_visit: 0
+    international:
+      visits_per_cycle: 6
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - priority-pass
+  movies:
+    type: discount
+    partner: BookMyShow
+    max_per_cycle: 250
+    cycle: monthly
+    cap_inr: 250
+    notes: Legacy official value chart reports 25% discount, up to INR250/month
+      with INR1,000 monthly spend; current general card listing also advertises
+      25% discount, but detailed current booking terms not independently
+      visible.
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 4000
+    cap_per_cycle_inr: 500
+    cycle: monthly
+    notes: 'Current MITC v18: INR500?4,000 transaction band, INR500 per statement
+      cycle. GST on surcharge is not reversed; UPI fuel transactions do not receive
+      waiver.'
+  concierge:
+  source:
+    url:
+      https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    method: rendered-page
+    local_refs:
+    - docs/sources/yes/reserv/yesbank-mitc-v18-current-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age:
+  max_age:
   income_inr_annual:
-    salaried: 2400000
-    self_employed: 1800000
-  credit_score_min: 730
-  residency: resident-indian
-
+    salaried:
+    self_employed:
+  credit_score_min:
+  residency:
+  notes: Card-specific age, income and bureau thresholds are not established by
+    the current public product material reviewed. Residency criterion remains
+    unknown; the product has an NRI variant but that does not prove a
+    resident-only criterion for this record.
 application:
-  apply_url: https://www.yes.bank.in/personal-banking/cards/credit-card/reserv-credit-card
-
+  apply_url:
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [premium, online, shopping, points]
+  last_verified_on: '2026-10-26'
+  tags:
+  - premium
+  - online
+  - shopping
+  - points

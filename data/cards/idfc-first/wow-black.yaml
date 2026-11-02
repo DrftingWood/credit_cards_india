@@ -1,119 +1,263 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : IDFC FIRST per-card Communication PDFs (docs/sources/idfc-first/)
-#   Verified   : 2026-07-04   Confidence: HIGH (pdf)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
-id: idfc-first-wow-black
+﻿id: idfc-first-wow-black
 name: IDFC FIRST WOW! Black Credit Card
+image_path: /cards/idfc-first/wow-black.webp
 issuer: idfc-first
-network: visa
-network_tier: signature
+network: mastercard
+network_tier: null
 tier: mid
 card_type: secured
 co_brand: null
 status: active
-launched_on: 2024-06-01
+launched_on: '2025-12-08'
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-06-01
-    effective_until: null
-    joining_fee_inr: 750
-    annual_fee_inr: 750
-    fee_waiver:
-      spend_inr: 150000
-      cycle: annual
-      conditions: "Annual fee waived on ₹1,50,000 annual spend."
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "FD-backed premium secured card — credit limit = FD value; zero forex markup."
-    source:
-      url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2025-12-08'
+  effective_until: null
+  joining_fee_inr: 750
+  annual_fee_inr: 750
+  fee_waiver:
+    spend_inr: 150000
+    cycle: annual
+    conditions: Waived at INR150,000 spend in the card anniversary year.
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: 3.85
+  cash_advance_fee:
+  gst_applicable: true
+  notes: Customer-specific APR is stated as 8.5%-46.2% annually; schema stores the 3.85% monthly upper bound. Cash advance fee is flat INR199 plus taxes per transaction, irrespective of amount; schema only supports percentage/minimum and is left null. Cash withdrawal interest-free period is up to 45 days, subject to terms.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/wow-black/mitc-retrieved-2026-10-26.pdf
 rewards:
-  - effective_from: 2024-06-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 4
-      per_inr: 150
-      unit_value_inr: 0.50
-      unit_value_inr_realized: 0.25
-    accelerated:
-      - category: travel-app-bookings
-        canonical_categories: [travel]
-        multiplier: 1
-        effective_rate: 4
-        cap_per_cycle: "unlimited"
-        cap_unit: points
-        cycle: monthly
-        notes: "Base 4X on all spends. Up to 16.7% bonus RP on hotels / 10% on flights via IDFC FIRST app. 1 RP = ₹0.50 on travel redemptions via app."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: catalog
-        program: IDFC FIRST Rewards
-        rate_inr_per_unit: 0.25
-        constraints: "Up to ₹0.50 per reward point on travel bookings via the IDFC FIRST Bank app."
-      - type: statement-credit
-        rate_inr_per_unit: 0.25
+- effective_from: '2025-12-08'
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: 4
+    per_inr: 150
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+  accelerated:
+  - category: travel-app-hotels
+    canonical_categories:
+    - travel
+    multiplier: 7.25
+    effective_rate: 29
+    effective_per_inr: 150
+    cap_per_cycle: 8000
+    cap_unit: points
+    cycle: monthly
+    notes: "Total earning is 29 points per INR150: base 4 plus approximately 25 bonus points per INR150 (16.7 bonus points per INR100). The 8,000 monthly cap applies to bonus points, not base points. Travel redemption is INR0.50/RP; reward page describes the hotel bonus as 16.7% of booking amount in reward points."
     source:
       url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
-      retrieved_on: 2026-07-03
+      retrieved_on: '2026-10-26'
       type: issuer-page
-
-benefits:
-  - effective_from: 2024-06-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 4
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa, dreamfolks]
-    welcome:
-      - condition: "Joining fee paid"
-        benefit: "Welcome benefits worth ₹5,000+ (Lenskart Gold Max, EazyDiner Prime, 5% cashback up to ₹1,000, ₹500 voucher, discounts)"
-        value_inr: 5000
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 200
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 300
-      cycle: monthly
-    concierge: false
+      confidence: medium
+  - category: travel-app-flights
+    canonical_categories:
+    - travel
+    multiplier: 4.75
+    effective_rate: 19
+    effective_per_inr: 150
+    cap_per_cycle: 8000
+    cap_unit: points
+    cycle: monthly
+    notes: "Total earning is 19 points per INR150: base 4 plus 15 bonus points per INR150 (10 bonus points per INR100). The 8,000 monthly cap applies to bonus points, not base points. Travel redemption is INR0.50/RP; issuer examples state 10 bonus points per INR100 flight spend."
     source:
       url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
-      retrieved_on: 2026-07-03
-
+      retrieved_on: '2026-10-26'
+      type: issuer-page
+      confidence: medium
+  - category: digital-rupay-upi-over-2000
+    canonical_categories:
+    - other
+    multiplier: 3
+    effective_rate: 3
+    effective_per_inr: 150
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: 3 points per INR150 on eligible UPI purchases above INR2,000; 1 point per INR150 at or below INR2,000. Utility, railway, FASTag and insurance are 1 point per INR150 irrespective of amount. Points from the linked RuPay card redeem through the primary card. Fuel, EMI and cash withdrawals excluded.
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
+      retrieved_on: '2026-10-26'
+      type: issuer-page
+      confidence: high
+  - category: utility-railway-fastag-insurance
+    canonical_categories:
+    - utilities
+    - insurance
+    multiplier: 0.25
+    effective_rate: 1
+    effective_per_inr: 150
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    notes: 1 point per INR150 on utility, railway, FASTag and insurance spends across eligible card channels.
+    source:
+      url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
+      retrieved_on: '2026-10-26'
+      type: issuer-page
+      confidence: high
+  exclusions:
+  - fuel
+  - emi
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: FIRST Rewards Gallery
+    rate_inr_per_unit: 0.25
+    constraints: INR0.25 per point on non-travel redemptions; INR99 plus GST convenience charge may apply per redemption; points are evergreen.
+  - type: catalog
+    program: FIRST Rewards Gallery
+    rate_inr_per_unit: 0.5
+    constraints: INR0.50 per point on eligible app flight/hotel bookings; redemption capped at 100,000 points monthly and 200,000 yearly. Bonus points capped at 8,000 per month. Redemption convenience charge INR99 plus GST may apply.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[1].effective_rate
+    - rewards.accelerated[2].effective_rate
+    - rewards.accelerated[3].effective_rate
+    - rewards.exclusions
+    - rewards.redemption
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/wow-black/privileges-retrieved-2026-10-26.pdf
+  notes: Base 4 points per INR150 on eligible online/offline/international spends. One point per INR150 on utility, railway, FASTag and insurance. Digital RuPay UPI earns 3 points per INR150 above INR2,000 and 1 point at/below INR2,000; 1 point per INR150 on listed utility/railway/FASTag/insurance regardless of transaction size. No points on fuel, EMI or cash withdrawal; transactions below INR150 do not earn points. Rewards accrue only up to the credit limit per cycle; points can be reversed if MAD is unpaid by due date. Points never expire. The travel-bonus UI copy uses percentages but examples specify the amount of bonus points per INR100; the modeled total rates are calculated from those examples, with medium confidence due to wording ambiguity.
+benefits:
+- effective_from: '2025-12-08'
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 1
+      cycle: quarterly
+      guests_per_visit: 0
+      spend_threshold_inr: 20000
+      spend_threshold_cycle: monthly
+      via:
+      - mastercard
+  welcome:
+  - condition: Joining fee paid; redeem within 90 days
+    benefit: INR500 off first in-app flight/hotel booking with INR5,000 minimum spend
+    value_inr: 500
+    window_days: 90
+  - condition: Joining fee paid; according to offer terms
+    benefit: MakeMyTrip discounts up to INR1,500 on flights, hotels and bus bookings
+    value_inr: 1500
+    window_days: 90
+  - condition: Joining fee paid
+    benefit: Three-month EazyDiner Prime membership (issuer-stated value INR1,095)
+    value_inr: 1095
+    window_days: 90
+  - condition: Joining fee paid; one-time
+    benefit: 10% discount at Mokobara
+    value_inr:
+    window_days: 90
+  - condition: Joining fee paid
+    benefit: One-year Lenskart Gold Max membership (issuer-stated value INR800)
+    value_inr: 800
+    window_days: 90
+  - condition: First EMI within 30 days of card generation
+    benefit: 5% cashback on first EMI transaction, capped at INR1,000
+    value_inr: 1000
+    window_days: 30
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 200
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 200
+    cycle: monthly
+  movies:
+    type: discount
+    partner: District by Zomato
+    max_per_cycle: 1
+    cycle: monthly
+    cap_inr: 100
+    notes: 25% off movie tickets up to INR100, once per calendar month; must make at least one transaction in the preceding calendar month to unlock.
+  other:
+  - name: Trip cancellation cover
+    description: Up to INR10,000 reimbursement for eligible non-refundable hotel/flight cancellations, up to two claims per policy period. Requires an eligible card transaction in the preceding month and booking/cancellation during policy period.
+    value_inr: 10000
+  - name: Personal accident insurance
+    description: Personal accident cover up to INR200,000, subject to policy terms.
+    value_inr: 200000
+  - name: Lost card liability cover
+    description: Cover up to INR25,000, subject to policy terms.
+    value_inr: 25000
+  - name: Roadside assistance
+    description: "Complimentary roadside assistance; issuer states service value INR1,399. Limit: up to four uses yearly."
+    value_inr: 1399
+  - name: Digital RuPay card
+    description: Complimentary virtual FIRST Digital RuPay card linked to the primary Mastercard with shared credit limit and reward pool; enables domestic UPI payments. Network tier of primary card is not published.
+    value_inr:
+  - name: Mastercard privileges
+    description: Mastercard Culinary Club, golf programme and one-year Little Emperors Travel Tier membership; partner conditions, limits, booking requirements and renewal terms apply. Membership may auto-renew unless cancelled within the stated window.
+    value_inr:
+  concierge: false
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.lounge_access.domestic.visits_per_cycle
+    - benefits.lounge_access.domestic.spend_threshold_inr
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
+    - benefits.movies
+    - benefits.other
+    method: manual-read
+    local_refs:
+    - docs/sources/idfc-first/wow-black/privileges-retrieved-2026-10-26.pdf
+  notes: Issuer product page currently says one complimentary domestic lounge visit each calendar quarter, unlocked by INR20,000 spend in the current calendar month for next-month access; another FAQ sentence ambiguously says previous month, consistent with next-month unlock. Product page has contradictory broad headline "up to 16.7% Bonus Rewards" and specific travel examples; modeled hotel/flight earning uses explicit bonus points per INR100 examples and is marked medium confidence. Welcome package advertised as over INR5,000; value is conditional and some partner values/discounts are not cash equivalents. Current movie offer requires preceding-month spend activity. Roadside assistance up to four uses yearly. Trip cancellation cover has eligibility and claims terms. Travel bonuses are separate from base rewards and capped monthly.
 eligibility:
   min_age: 18
-  max_age: 70
+  max_age: 80
   income_inr_annual:
-    salaried: null  # secured against FD — no income requirement
-    self_employed: null
-  credit_score_min: null
+    salaried:
+    self_employed:
+  credit_score_min:
   residency: resident-indian
-  notes: "FD-backed — issued against a fixed deposit; no income/credit-score requirement."
-
+  notes: Indian citizen with current and permanent Indian residential address; must hold a singly-held IDFC FIRST Bank FD of at least INR20,000, linked to the account. Issuer says no income proof or prior credit history is required; final approval remains subject to bank assessment.
+  source:
+    url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.residency
+    method: manual-read
 application:
   apply_url: https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [mid, secured, points, zero-forex, travel, lounge]
+  last_verified_on: '2026-10-26'
+  tags:
+  - secured
+  - points
+  - zero-forex
+  - travel
+  - lounge

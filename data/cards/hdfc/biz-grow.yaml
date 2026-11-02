@@ -1,0 +1,226 @@
+id: hdfc-biz-grow
+name: HDFC Bank BizGrow Credit Card
+image_path: /cards/hdfc/biz-grow.png
+issuer: hdfc
+network: visa
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: 2024-02-06
+discontinued_on: null
+fees:
+- effective_from: 2024-02-06
+  effective_until: null
+  joining_fee_inr: 500
+  annual_fee_inr: 500
+  fee_waiver:
+    spend_inr: 100000
+    cycle: annual
+    conditions: Current fee page says spend INR 1 lakh in 12 billing cycles in the anniversary year; FAQ wording says INR 1 lakh or more. Older 2024 FAQ says the joining fee is charged after 120 days, but the current page does not confirm timing.
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-grow/fees-and-charges
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver.spend_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: Current BizGrow fee page confirms INR 500 joining and renewal fees, INR 1 lakh annual renewal waiver, 3.5% forex markup and 2.5%/INR 500 cash advance fee. HDFC Business MITC updated 2025-07-14 confirms 3.75% monthly finance charge. Sources differ at the exact waiver boundary (INR 1 lakh vs more than INR 1 lakh); current threshold stored as INR 100,000 pending clarification.
+rewards:
+- effective_from: 2024-02-06
+  effective_until: 2026-05-14
+  currency: points
+  currency_name: CashPoints
+  base:
+    rate: 2
+    per_inr: 150
+    unit_value_inr: 0.25
+    unit_value_inr_realized: null
+  accelerated:
+  - category: business-bills-tax
+    canonical_categories:
+    - utilities
+    - groceries
+    multiplier: 10
+    effective_rate: 20
+    effective_per_inr: 150
+    cap_per_cycle: 1500
+    cap_unit: points
+    cycle: monthly
+    notes: Historical 10X (20 CashPoints per INR 150) on selected business-essential spending after INR 10,000 eligible spend per statement cycle; capped at 1,500 per statement cycle.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - education
+  - emi
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    program: CashPoints Statement Credit
+    rate_inr_per_unit: null
+    constraints: Historical realized statement-credit value not established; product FAQ only described up to INR 0.25 per point.
+  source:
+    url: https://v.hdfcbank.com/content/dam/hdfc-aem-microsites/biz-cards/bizgrow-credit-card-tnc.pdf
+    retrieved_on: 2026-10-27
+    type: issuer-pdf
+    confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.accelerated.multiplier
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    notes: Historical terms dated 2024-08-28; base accrual multiples were changed from INR 150 to INR 200 effective 2026-05-15. See the dated source comparison under docs/sources/hdfc/biz-grow/.
+  capping_rules:
+  - Historical 10X business-essential CashPoints capped at 1,500 per statement cycle; superseded 2026-05-15.
+- effective_from: 2026-05-15
+  effective_until: null
+  currency: points
+  currency_name: CashPoints
+  base:
+    rate: 2
+    per_inr: 200
+    unit_value_inr: 0.2
+    unit_value_inr_realized: 0.2
+  accelerated:
+  - category: business-bills-tax
+    canonical_categories:
+    - utilities
+    - groceries
+    multiplier: 10
+    effective_rate: 20
+    effective_per_inr: 200
+    cap_per_cycle: 1500
+    cap_unit: points
+    cycle: monthly
+    notes: 10X (20 CashPoints per INR 200) on selected business spends after at least INR 10,000 eligible spend per statement cycle; capped at 1,500 CashPoints per statement cycle. Eligible routes include SmartPay/PayZapp bills, income/advance tax, GST, MMT MyBiz travel, Nuclei software, Dmart and ClearTax.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - education
+  - emi
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: statement-credit
+    program: CashPoints Statement Credit
+    rate_inr_per_unit: 0.2
+    min_units: 2500
+    constraints: 1 CashPoint = INR 0.20; minimum 2,500 points for statement balance redemption.
+  - type: catalog
+    program: SmartBuy Flights and Hotels
+    rate_inr_per_unit: 0.25
+    constraints: Up to INR 0.25 per CashPoint; redemption limited to 50% of booking value.
+  - type: catalog
+    program: Product Catalogue
+    rate_inr_per_unit: 0.25
+    constraints: Up to INR 0.25 per CashPoint on select catalogue items/vouchers.
+  - type: catalog
+    program: Business Catalogue
+    rate_inr_per_unit: 0.3
+    constraints: Up to INR 0.30 per CashPoint.
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-grow-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated.effective_rate
+    - rewards.accelerated.cap_per_cycle
+    - rewards.exclusions
+    - rewards.redemption.rate_inr_per_unit
+    - rewards.redemption.min_units
+    notes: Current product page reflects the 2026-05-15 base accrual revision and lists redemption values. It also confirms the 10X categories, INR 10,000 statement-cycle minimum and 1,500-point statement-cycle cap.
+  capping_rules:
+  - Overall CashPoints earned capped at 15,000 per statement cycle.
+benefits:
+- effective_from: 2024-02-06
+  effective_until: null
+  milestones:
+  - spend_inr: 100000
+    cycle: quarterly
+    benefit: 2,000 Bonus CashPoints on quarterly spend of ₹1 Lakh
+    value_inr: 500
+    reward_kind: points
+    reward_units: 2000
+    reward_currency_name: CashPoints
+    is_repeatable: true
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 250
+    cycle: monthly
+  concierge: false
+  other:
+  - name: Activation voucher
+    description: INR 250 gift voucher after one transaction within 37 days of card issuance.
+  - name: Credit liability cover
+    description: INR 3 lakh credit liability cover; policy terms apply.
+  - name: Lost-card liability
+    description: Zero liability for fraudulent transactions if the lost or stolen card is reported immediately to HDFC customer care.
+  - name: Optional business insurance
+    description: Optional business insurance package starts at INR 3,785 per year including GST; this is a paid add-on, not complimentary card cover.
+  - name: Dining offer
+    description: 10% extra discount on dining bills at participating restaurants through Swiggy Dineout; offer terms apply.
+  - name: SmartPay offer
+    description: Current issuer page advertises up to INR 1,800 first-year cashback and e-vouchers up to INR 800 for adding two or more bills; offer terms apply.
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-grow-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.milestones
+    - benefits.fuel_surcharge_waiver
+    - benefits.other
+    notes: Current BizGrow page confirms 2,000 CashPoints each calendar quarter on INR 1 lakh retail spend (rent and petrol excluded) and fuel surcharge waiver of 1%, INR 400-INR 5,000 transaction range, capped at INR 250 per statement cycle. Other listed benefits and their conditions are summarized under docs/sources/hdfc/biz-grow/.
+eligibility:
+  min_age: 21
+  max_age: 65
+  income_inr_annual:
+    salaried: null
+    self_employed: 600000
+  credit_score_min: null
+  residency: resident-indian
+  notes: Current issuer page describes self-employed Indian citizens aged 21-65 with annual ITR above INR 6 lakh. Salaried criteria and minimum bureau score remain unknown; bank approval is discretionary.
+  source:
+    url: https://www.hdfc.bank.in/business-credit-cards/biz-grow-credit-card
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.min_age
+    - eligibility.max_age
+    - eligibility.income_inr_annual.self_employed
+    - eligibility.residency
+application:
+  apply_url: https://www.hdfc.bank.in/business-credit-cards/biz-grow-credit-card
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - business
+  - commercial
+  - cashpoints

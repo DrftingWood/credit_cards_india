@@ -1,0 +1,123 @@
+id: boi-rupay-platinum
+name: Bank of India RuPay Platinum Credit Card
+image_path: /cards/boi/rupay-platinum.webp
+issuer: boi
+network: rupay
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: null
+  finance_charge_monthly_pct: 2.0
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 75
+  gst_applicable: true
+  source:
+    url: https://bankofindia.bank.in/documents/20121/27694131/KFS__MITC.pdf
+    retrieved_on: '2026-10-27'
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Current card page and 2025 KFS. Scalar fee fields do not express ATM-specific withdrawal charges; notes
+      retain the schedule. Forex markup for purchases was not verified.
+  notes: 'Current BOI card page/KFS: issuance nil and principal annual fee nil (add-on fee ?200). Current 2025 KFS
+    sets unsecured revolving finance at 2% monthly. Cash withdrawal fee varies by ATM: BOI ATM 2% min ?50; other
+    domestic ATM 2.5% min ?75; overseas 2.5% min ?125 plus currency conversion. No single foreign-currency markup
+    for purchases was established; left null.'
+rewards:
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: points
+  currency_name: BOI Star Rewardz Points
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+    notes: 'Current BOI Star Rewards schedule: 2 points per ?100 for standard category transactions of ?100+; page
+      separately lists 3 points/?100 for a preferred category whose card-specific definition is not available. BOI
+      RuPay Platinum page says 2X on POS/ECOM.'
+  exclusions: []
+  mcc_exclusions: []
+  redemption:
+  - type: catalog
+    program: BOI Star Rewardz
+    rate_inr_per_unit: null
+    constraints: Redeem through BOI Omni Neo/Star Rewardz catalogue; current rupee value per point is not published
+      in accessible issuer terms.
+  source:
+    url: https://bankofindia.bank.in/star-rewards
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+    - rewards.redemption
+    notes: Official Star Rewards page indexed; direct access returned 403. Current RuPay Platinum product page says
+      2X POS/ECOM; Star Rewards supplies general earning schedule. Exact preferred category and point INR value
+      not published in accessible content.
+  accelerated: []
+  notes: Current BOI RuPay Platinum page advertises 2X loyalty points on POS and e-commerce. BOI Star Rewards credit
+    schedule (live 01-Sep-2025) specifies 2 points/?100 standard and 3 points/?100 preferred, ?100 transaction minimum,
+    10,000-point monthly customer/CIF cap, and no POS/e-commerce exclusions from 01-Sep-2025; UPI credit transactions
+    ??2,000 do not earn points. Preferred-category definition for this card and point rupee/redemption value are
+    unresolved.
+  capping_rules:
+  - Maximum 10,000 Star Rewardz points per month per customer/CIF per current Star Rewards page.
+  - UPI credit-card transactions of ?2,000 or less do not accrue points from 01-Sep-2025. Preferred category earns
+    3 points/?100; card-specific preferred categories unavailable.
+benefits:
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver: null
+  concierge: true
+  source:
+    url: https://bankofindia.bank.in/credit-card/rupay-platinum-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: medium
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    - benefits.concierge
+    notes: Current BOI RuPay Platinum credit page confirms 24x7 concierge. No current credit-card lounge or fuel
+      surcharge waiver is stated; RuPay Platinum debit card lounge information was excluded.
+eligibility:
+  min_age: 21
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current BOI credit card page requires minimum age 21, regular income, active BOI savings account and good
+    credit history; it accepts Indian residents or NRIs. No numeric income/score threshold was published.
+application:
+  apply_url: https://bankofindia.bank.in/credit-card/rupay-platinum-credit-card
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - rupay
+  - platinum
+  - psu
+  - lounge

@@ -1,23 +1,123 @@
 # IndusInd Bank — source verification (2026-07-04)
 
-**Finding: IndusInd publishes NO downloadable credit-card PDFs.** Checked the card
-pages (`.../credit-card/<slug>.html`), the central **Schedule of Charges**
-(`/personal/schedule-of-charges.html`), and the **Terms & Conditions** hub
-(`/personal/terms-and-conditions.html`) — all serve fees/rewards/MITC as
-JS-rendered HTML tables, not PDFs. Only 3 generic corporate PDFs exist site-wide.
+IndusInd publishes some card details as HTML and also provides downloadable shared PDFs for MITC, lounge, golf, and fuel terms. The relevant current PDFs are archived beside card-specific reviews where needed.
 
-Reward structures, forex markup (1.8% discounted), and the 2025 lounge/redemption
-changes were already verified against the live card-page tabs during the 2026-07-03
-audit (see `docs/indusind-audit.md`). Exact fee figures live in the HTML Schedule of
-Charges tab.
+This index previously stated that IndusInd had no downloadable card PDFs. That was an outdated observation from July 2026: the bank publishes central MITC, lounge, golf, fuel and issuance-policy PDFs as well as HTML product pages. Archived current copies are linked in each review section below.
 
-**Implication:** "PDF verification" is not literally possible for IndusInd (and, so far,
-Federal) — the authoritative source is HTML, not PDF.
+## Historical spot-check (2026-07-04)
+The Legend page was checked against the then-current record: 1 Reward Point per INR100 on weekdays, 2 per INR100 on weekends, and a discounted 1.8% forex markup. Treat that observation as specific to Legend and the 2026-07-04 review date, not a general current IndusInd fee rule.
 
-## Re-verification (2026-07-04)
-Spot-checked Legend against the live page via `textContent`: forex **1.8%** ✓,
-base **1 RP/₹100 weekday + 2 RP/₹100 weekend** ✓ — matches the YAML. IndusInd's
-reward/forex/lounge data was accurately captured from these same HTML tabs during
-the 2026-07-03 audit; no corrections needed on the spot-check. Exact per-card fee
-figures are not shown on the card pages (buried behind a JS "fees & charges" link)
-and there is no downloadable MITC — recorded as HTML-sourced.
+## CRED IndusInd Bank RuPay (reviewed 2026-10-26)
+
+Reviewed the current [card product/rewards page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/CRED-IndusInd-Bank-ruPay-credit-card.html), official [launch announcement dated 15-Sep-2025](https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2025-2026/September/launch-of-cred-indusInd-bank-rupay-credit-card.html), current [13-Oct-2026 consolidated MITC](https://bank.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf), and [fuel surcharge terms](https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf). PDFs archived in `cred/`.
+
+Corrected launch date from unsupported 2024-01-01 to 2025-09-15; annual fee from NIL to INR499 (joining fee remains NIL), finance charge from 3.83% to 3.95% monthly, and replaced the previous generic reward points model with the current CRED Rewards structure. Current issuer page: 5% points on eligible online/CRED categories up to 5,000 accelerated points per statement cycle; 1% on other eligible transactions, with uncapped CRED Scan & Pay. Points expire after 24 months and have category-dependent redemption value. Fuel waiver applies to INR500-INR5,000 fuel transactions; current page does not state a monthly cap. No numeric eligibility criteria found. The general MITC offers annual-fee exemption for targeted limited-time LTF campaigns; card-by-card campaign status is not published.
+
+## Celesta (reviewed 2026-10-26)
+
+Reviewed the current [Celesta card page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/celesta-credit-card.html), [card schedule](https://www.indusind.bank.in/in/en/microsites/celesta/schedule-of-charges.html), [rewards page](https://www.indusind.bank.in/in/en/microsites/celesta/celesta-rewards.html), [travel/lounges page](https://www.indusind.bank.in/in/en/microsites/celesta/celesta-travel.html), [golf page](https://www.indusind.bank.in/in/en/microsites/celesta/celesta-golf.html), and the current consolidated MITC plus lounge and golf PDFs archived in `celesta/`.
+
+Corrected network to American Express, removed unsupported launch date, updated the INR 25,000 joining/INR 5,000 annual fees and INR 10 lakh annual waiver, 2.99% monthly interest, 3.5% forex, and 2.5% cash advance fee (INR 300 minimum). Replaced the obsolete reward rate/value with 1 point/INR 100 domestic, 3 points/INR 100 international, and INR 0.75 per point for cash credit subject to stated caps. Updated domestic lounge to unlimited only after INR 1.5 lakh preceding-quarter spend, international Priority Pass to 2 visits per quarter, and golf to 1 game plus 1 lesson monthly. Exact launch date, eligibility cutoffs, current fuel-waiver transaction band and cap, and full reward exclusions remain unresolved. The current MITC's redemption fee-exemption wording does not clearly establish whether Celesta is exempt for cash redemption, so that is flagged in the manifest rather than asserted in the YAML.
+
+
+## Crest (reviewed 2026-10-26)
+
+Reviewed the current [Crest product page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/crest-credit-card.html), [schedule of charges](https://www.indusind.bank.in/in/en/microsites/crest/schedule-of-charges.html), [rewards page](https://www.indusind.bank.in/in/en/microsites/crest/crest-rewards-and-redemption.html/1000), [lounge page](https://www.indusind.bank.in/in/en/microsites/crest/travel/international-airport-lounge-access.html), [concierge page](https://www.indusind.bank.in/in/en/microsites/crest/crest-assistance.html), current bank-wide MITC, lounge/golf/fuel PDFs, current FY2026-27 issuance policy and current benefit guide. Archived six issuer PDFs under `crest/`.
+
+Corrected the network from Visa Infinite to Mastercard World Elite, removed the unsupported exact launch date, updated fees to INR75,000 joining/INR10,000 annual with an INR10 lakh annual waiver, 3.5% forex, 2.99% monthly finance, and 2.5% cash advance (INR300 minimum). Updated rewards to 1 point/INR100 domestic and 2.5/INR100 international, cash-credit value INR0.75, and the 10,000-point cash-redemption monthly cap; removed unsupported old reward value, weekend accelerator, and MCC exclusions. Corrected lounges to two domestic and two international visits per quarter, with a preceding-quarter INR5 lakh spend gate for domestic access. Corrected fuel waiver band to INR500-INR10,000 with no cap, and updated golf to two games and two lessons monthly per the dated 10-Mar-2026 notice/current revised terms.
+
+The Crest-specific golf subpage still says three games and lessons monthly, in conflict with the newer product-page notice and current shared golf terms. The FY2026-27 policy listing cards currently actively issued omits Crest, while current card and benefits pages remain published; application status is marked on-hold, not discontinued, pending clearer issuer confirmation. Exact launch date, income period/split and bureau cutoff remain unknown.
+
+
+## Duo (reviewed 2026-10-26)
+
+Reviewed the current [Duo credit-card page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/duo-card.html), [Duo rewards terms](https://www.indusind.bank.in/in/en/personal/tnc-duoProduct.html), [Duo benefit guide](https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Duo-Benefit-Guide_20-12-2025.pdf), current MITC, fuel-waiver terms and FY2026-27 issuance policy. The current Duo product page says the card is discontinued for new sourcing and shown for existing holders; its live features therefore remain relevant to existing accounts. Archived shared MITC, fuel and issuance-policy PDFs under `duo/`.
+
+Corrected network tier to unknown, removed the unsupported launch date, and marked status on-hold. Current terms show 1 Reward Point per INR150, INR0.75 cash-credit value and 500-point minimum; cash redemption is capped at 2,500 points/month. The Duo guide says no earning cap for credit-card points, while the bank's general reward-update table lists Duo under a 2,500 monthly cap; recorded as unresolved. Fuel surcharge waiver is 1% on INR500-INR3,000 transactions, capped at INR250 per statement cycle. BookMyShow BOGO is once a month, with INR200 free-ticket value since 1-Jun-2023 and limited inventory. Concierge, lounges, golf, Travel Plus and Auto Assist ended 30-Nov-2021. Current product page's 2% forex and INR249 issuance fee conflict with the consolidated MITC's 3.5% generic forex default and NIL joining fee; notes preserve both.
+
+
+## Iconia American Express (reviewed 2026-10-26)
+
+Reviewed the current [Iconia Amex page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/iconia-amex-credit-card.html), [cash-redemption terms](https://www.indusind.bank.in/in/en/personal/cash-credit-iconia-amex.html), current cash redemption/reward updates, current MITC, Priority Pass terms, product-program policy, the 2022 benefit guide and the 2025 insurance discontinuation notice. Archived five relevant issuer PDFs under `iconia/`.
+
+The current consolidated MITC expressly lists Iconia among discontinued cards, and the live product page says new sourcing has stopped; status is `discontinued`. The exact cessation date is unpublished; 13-Oct-2026 is the current MITC snapshot date, not an asserted effective date. Updated weekend points to 2 per INR100 and weekday points to 1.5; fuel earns no points. Non-cash conversion is INR0.75, cash INR0.50 with 5,000-point monthly cash redemption cap. Updated the fee snapshot to the current Amex page's INR3,499 issuance / NIL annual renewal, 3.83% monthly interest, 3.5% forex and 2.5% cash advance (INR300 minimum); existing cardholder fee plans may differ. Fuel surcharge waiver is 1% on INR500-INR3,000 transactions, max INR250 per billing cycle. Removed old 8/year lounge quota (Priority Pass unavailable; Amex lounge quota is not stated), golf (product policy marks not applicable), welcome voucher (only select plans, no current amount), and air-accident insurance (discontinued bank-wide from 21-Dec-2025). Current page lists annual salaried income INR360,000 and self-employed INR480,000.
+
+
+## Indulge (reviewed 2026-10-26)
+
+Reviewed the current [Indulge card page](https://bank.indusind.bank.in/in/en/personal/cards/credit-card/indulge-credit-card.html), [rewards page](https://www.indusind.bank.in/in/en/microsites/indulge/freedom.html), [Life/BookMyShow page](https://www.indusind.bank.in/in/en/microsites/indulge/life.html), current consolidated MITC, lounge terms, revised golf terms, fuel-waiver schedule and 2026 Indulge Benefit Guide. Archived five PDFs under `indulge/`.
+
+Removed the unsupported 2011 launch date. Current MITC shows INR75,000 joining and INR10,000 annual fee, annual-fee waiver at INR10 lakh anniversary-year spend, 1.79% monthly finance charge, 1.8% forex and waived cash-advance fee. Rewards are 1.5 points per INR100, INR1 per point for cash credit, with a 500-point minimum and 10,000-point monthly cash redemption cap; reduced categories earn 0.7 points per INR100 and fuel earns no points. Cash redemption charge is INR149 per current MITC. Domestic lounges are six per quarter after INR5 lakh qualifying spend in the prior quarter; international Priority Pass is four per quarter outside India. Golf is four games and four lessons monthly for primary cardholder. Fuel waiver is 1% on INR500-INR10,000 transactions, without a published cap. BMS BOGO offers up to three discounted tickets monthly with INR700 maximum free-ticket value. Salaried/self-employed income thresholds are INR36 lakh/INR42 lakh. Exact launch date and public age/bureau cutoffs remain unpublished. The 2026 bank reward-update table is ambiguous about the 10,000-point cap; card-specific terms and the current guide support treating it as a cash-redemption cap, not an earning cap.
+
+
+## Jio-bp Mobility+ (reviewed 2026-10-26)
+
+Reviewed the current [IndusInd Jio-bp product page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/jio-bp-mobility-credit-card.html), the current consolidated MITC, shared fuel-waiver table, current benefit guide and Jio-bp?s [10-Dec-2025 launch release](https://www.jiobp.com/news/indusind-jio-bp-mobility-plus). Archived three current issuer PDFs and the launch HTML under `jio-bp-mobility/`. The launch release confirms RuPay and the 10-Dec-2025 launch; network tier was not established and is now null.
+
+Corrected the unsupported 2024 launch date, conditional joining fee and finance rate. The current MITC/FAQ lists INR499 joining fee only when INR10,000 spend is not met within 90 days, NIL annual fee, 3.95% monthly finance, 3.5% forex and 2.5% cash advance (INR300 minimum). The older launch release says 30 days; the current bank MITC/FAQ is followed and the conflict is noted in the card record. Current card-page rewards are 2 Smiles/INR100 on other spends, 5 on dining/supermarket/grocery and 12 at eligible Jio-bp ecosystem merchants capped at 1,200 Smiles per statement cycle; fuel at non-Jio-bp stations, insurance, government, utilities and rent are excluded. No fixed Smiles valuation is published; redemptions are in the Jio-bp ecosystem. Added the INR200 wildbean Cafe coupon and updated welcome/statement and anniversary milestones. Fuel surcharge waiver is limited to Jio-bp stations; the shared waiver table does not name this card, so the general other-card INR500-INR3,000 band / INR100 cycle cap is modeled with that limitation noted. Current roadside assistance is recorded. Eligibility age, income and bureau thresholds remain unpublished in reviewed card material.
+
+
+## Nexxt (reviewed 2026-10-26)
+
+Reviewed the current [Nexxt product page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/nexxt-credit-card.html), current consolidated [MITC](https://www.indusind.bank.in/content/dam/indusind-corporate/schedule-of-charges/credit-cards/MITC_Premium.pdf), [fuel-waiver schedule](https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf), Dec-2025 benefit guide and current reward redemption terms; archived three issuer PDFs plus a rendered evidence extract in `nexxt/`. The issuer's dated [launch announcement](https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2018-2019/November/press-release-indusInd-bank-records111.html) establishes 14-Nov-2018 (correcting the former 10-Oct-2018 value) and identifies Mastercard partnership; the Dec-2025 guide shows Mastercard Platinum. Current MITC lists INR10,000 joining and NIL annual fee. Reward earning is 1 point/INR150. Pay by Rewards terms say INR0.75 per point, while the Dec-2025 guide says INR1 per point for POS Pay with Rewards; the general/POS value is left unknown and the conflict is recorded. Cash credit is INR0.75 per point with a 500-point minimum and 2,500-point monthly cap. A separate bank update lists a 2,500 monthly capping value for Nexxt but does not define earning vs redemption scope, so no uncapped-earning assertion is made. Current fuel terms give 1% on INR500-INR3,000, capped at INR250 per billing cycle. The bank-wide notice discontinues personal air-accident cover effective 21-Dec-2025, despite stale card-page copy. Full travel policy conditions and applicant cutoffs remain unverified; see the YAML, evidence extract and manifest.
+
+
+## Pioneer Heritage (reviewed 2026-10-26)
+
+Reviewed the current [card page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-heritage-credit-card.html), [Pioneer reward terms](https://www.indusind.bank.in/in/en/personal/tnc-pioneer-heritage-rewards-program.html), [merchant-category reward revision](https://www.indusind.bank.in/in/en/personal/revision-indusInd-bank-credit-card-rewards-program.html), current consolidated MITC, [fuel waiver schedule](https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf), March-2026 benefit guide and Jan-2026 Pioneer program revision. Four current PDFs are archived under `pioneer-heritage/`. The issuer launch release dates the original metal Heritage launch to 17-Dec-2020.
+
+Corrected fees to INR100,000 joining and INR25,000 annual (annual waiver at INR1,000,000), 2.99% monthly finance, 0 forex, and waived cash-advance fee. Current domestic and international base points are 1 and 2.5 per INR100; selected utilities, insurance, government, education and rent spend earn 0.7 per INR100. The current rewards terms set a 500-point redemption minimum and 50,000 monthly cap, though the product page retains a 30,000-point cash-credit cap. Current Heritage benefits include unlimited lounge access, 4 quarterly movie tickets capped at INR1,000 each, four golf games and lessons monthly subject to INR25,000 latest-statement spend, and a 1% fuel waiver on INR500?INR10,000 with no cap. The page distinguishes a newer card variant from an erstwhile variant (2 lounge visits/quarter and 3 monthly BOGO movie tickets capped at INR700); YAML models the newer variant and documents the distinction. Network variants are not separately represented, so network and tier are null. The ITC membership ended in 2025 and is not listed as current.
+
+
+## Pioneer Legacy (reviewed 2026-10-26)
+
+Reviewed the current [card page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-legacy-credit-card.html), [Legacy reward terms](https://www.indusind.bank.in/in/en/personal/legacy-cc-tnc.html), [cash-credit terms](https://www.indusind.bank.in/in/en/personal/cash-credit-pioneer-legacy-cc.html), current MITC, [fuel waiver schedule](https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf), [bonus terms](https://www.indusind.bank.in/in/en/personal/tnc-signature-legend-bonus-rewards-on-spends.html), [merchant-category rates](https://www.indusind.bank.in/pioneer/personal-banking/cards/pioneer-legacy-credit-card1.html) and January-2026 Pioneer benefit revision. Four PDFs are archived under `pioneer-legacy/`. The card page lists weekday 1 / weekend 2 points per INR100, 1 point = INR1 cash credit, 20,000 monthly cash-credit maximum, and a 500-point minimum. Current bonus terms replace the stale older 6,000 points on INR600,000 offer with 4,000 points on INR500,000 in the first year (low-MCC spends excluded). The current MITC sets 3.83% monthly finance charge and waives cash-advance fees; joining fee and forex depend on the selected paid/complimentary plan. Fuel waiver is 1% on INR500?INR10,000 with no cap. Domestic lounge access is 1/quarter after INR150,000 prior-quarter spend; international access is 2/quarter on paid variants only. Golf is 2 games and 2 lessons monthly after INR25,000 latest-statement spend. The 2022 guide's personal air-accident cover was removed because bank-wide coverage ended in Dec-2025. Network/tier remain null because both Mastercard and Visa-related variants are referenced and no single network can be represented.
+
+
+## Pioneer Private (reviewed 2026-10-26)
+
+Reviewed the current [Pioneer Private card page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/pioneer-private.html), [current Pay with Rewards page](https://www.indusind.bank.in/in/en/personal/cards/pioneer-private-rewards.html), 34-page [card-specific T&Cs](https://bank.indusind.bank.in/content/dam/ipbprivate/attachments/Pioneer-Private-Card-detailed-TNCs.pdf), 2026 benefit guide, current MITC, fuel-waiver schedule and [bank notice discontinuing air-accident cover](https://www.indusind.bank.in/in/en/personal/credit-card-related/important-updates.html). Four issuer PDFs are archived under `pioneer-private/`.
+
+Removed the unsupported 2015 launch date. The card-specific guide identifies Visa Infinite. Corrected fees to no joining fee, INR25,000 annual (waived at INR10 lakh previous-year spend), 2% monthly interest, 0% forex and waived cash advance. Corrected rewards to 3 points/INR100, 0.7/INR100 for the listed low-MCC categories, INR1 per point, 500-point redemption minimum and no general earning cap. Recorded no monthly cap in the currently fetched issuer reward page and detailed T&Cs, while noting that an indexed older page showed 30,000/month for cash credit. Updated unlimited domestic/international lounge access and 12 complimentary international guest visits, unlimited domestic golf and four international games/year after INR50,000 latest-statement spend, fuel waiver (1% on INR500-INR10,000), movie/dining/hotel/airport benefits, 6,000 welcome points for INR1 lakh spend in first 30 days, and INR1 lakh Taj certificate after INR75 lakh membership-year spend. ITC membership issuance is currently on hold. Air-accident cover was omitted per the bank-wide discontinuation notice.
+
+The product-specific movie terms give two uncapped complimentary movie tickets/month plus three non-movie tickets/quarter capped at INR1,000 each; the live product page also displays a Visa Infinite BOGO movie offer capped INR300/transaction. The association/stacking of those offers is unclear. Exact launch date, card-specific age/income/score cutoffs and Total Protect monetary policy limits remain unpublished.
+
+
+## Platinum (reviewed 2026-10-26)
+
+Reviewed the live [Visa](https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-visa-credit-card.html/) and [Mastercard](https://www.indusind.bank.in/in/en/personal/cards/credit-card/platinum-master-credit-card.html/1000) pages, 6-Jan-2026 [benefit guide](https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Platinum-Benefit-Guide_06-01-2026.pdf), 13-Oct-2026 [MITC](https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf), and [fuel-waiver schedule](https://www.indusind.bank.in/content/dam/indusind-corporate/Other/Fuel_Surcharge_Waiver.pdf). Three PDFs are archived under `platinum/`. Removed the unsupported 2015 launch date and single Mastercard/Platinum-tier assignment. Corrected monthly finance charge to 3.95%, current fee details, rewards and fuel waiver. Removed unsupported reward exclusions and retained unknown eligibility values. No current lounge offer was found; BookMyShow was discontinued effective 1-Oct-2022. Air-accident cover was omitted per bank-wide discontinuation from 21-Dec-2025. Exact launch date, eligibility cutoffs and full Total Protect terms remain unconfirmed.
+
+## Poonawalla eLITE RuPay (reviewed 2026-10-26)
+
+The current [issuer card page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/poonawalla-platinum-rupay-credit-card.html) says the partnership concluded and existing cards were upgraded to IndusInd Platinum RuPay effective 5-Oct-2025. The card is therefore marked discontinued. Reviewed its historical card-specific [MITC](https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/Poonawala-e-LITE-MITC.pdf), reward, milestone and fuel terms; four PDFs archived in `poonawalla-platinum-rupay/`. Exact launch date, eligibility thresholds, fuel-waiver cap and RuPay lounge quota remain unknown.
+
+## Samman RuPay (reviewed 2026-10-26)
+
+Reviewed the current [card page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card.html), [launch announcement](https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2023-2024/January/samman-rupay-credit-card.html), current [MITC](https://www.indusind.bank.in/content/dam/indusind-corporate/credit-cards/MITC_Premium.pdf), [benefit guide](https://www.indusind.bank.in/content/dam/indusind-corporate/Other/welcomekit/credit-card-benefits/Samman_Benefit_Guide.pdf), [railway/fuel terms](https://www.indusind.bank.in/in/en/personal/cards/credit-card/samman-credit-card/tnc-railway-fuel-surcharge-waiver.html), and shared fuel schedule. Three PDFs are archived under `samman/`. Corrected the false points model to cashback, annual fee and waiver, cash-advance fee, milestone/offer terms, insurance and railway/fuel waivers. Exact age/income/score thresholds and any lounge access remain unpublished.
+
+## Tiger Credit Card (reviewed 2026-10-26)
+
+Reviewed the current [card page](https://www.indusind.bank.in/in/en/personal/cards/credit-card/tiger-credit-card.html), [3-Aug-2023 launch release](https://www.indusind.bank.in/in/en/about-us/mediabrand/FY/2023-2024/August/IndusInd-Bank-partners-with-TigerFintech-co-brandedcreditcard.html), consolidated MITC, current Tiger benefit guide and shared fuel terms. Three PDFs are archived under `tiger/`. Corrected APR to 3.5% monthly and encoded anniversary-year 1x/2x/4x/6x spend tiers as incremental points above base earn. Updated cash-credit value/cap, 24-month expiry, quarterly golf, lounge access, concierge, fuel and insurance notes. The page conflicts on movie frequency being counted by calendar versus financial year; the primary overview's calendar-year version is retained with the conflict noted.
+
+
+## Avios Visa Infinite (reviewed 2026-10-27)
+
+Reviewed the current product page, 13-Oct-2026 premium MITC, launch release, Qatar/BA Avios terms, fuel waiver, meet-and-greet, travel insurance and Total Protect terms. Archived three issuer PDFs and current HTML captures in `avios/`. Corrected launch date, fees, foreign markup, cash advance fee, reward rates and selected-program redemption; removed unsupported point valuations and five-scheme transfer/pooling assertions. Updated lounge quota to two domestic and two international visits per calendar quarter, welcome/milestone/renewal Avios, insurance, meet-and-greet and fuel-waiver claims. The expired Qatar airfare promotion is omitted; issuer insurance terminology is ambiguous; eligibility cutoffs and numeric fuel waiver cap remain unknown. Full claim-level comparison: `avios/issuer-extract-2026-10-27.md`.
+
+
+## Legend (reviewed 2026-10-27)
+
+Reviewed the live Legend card page, 13-Oct-2026 consolidated MITC, 19-Dec-2025 benefit guide, reward revisions/update, current fuel schedule and cash/mileage redemption terms. Archived three current issuer PDFs and dated captures under `legend/`. Corrected fees/APR, reward cap/values, removed unsubstantiated exclusions and old launch/network assertions, ended lounge access, corrected BMS frequency and fuel-waiver band/cap, and removed expired air-accident cover. The MITC standard joining fee conflicts with bank ?lifetime-free? marketing; monthly reward cap scope and legacy insurance applicability remain unresolved. Field-by-field comparison: `legend/issuer-extract-2026-10-27.md`.
+
+
+## Pinnacle Mastercard World (reviewed 2026-10-27)
+
+Reviewed current Pinnacle product page, 13-Oct-2026 MITC, reward update/revision, redemption terms, lounge spend gate, fuel schedule, golf and Priority Pass terms, and issuer-published travel insurance schedule. Archived four issuer PDFs and current HTML captures under `pinnacle/`. Corrected fees/APR/forex, multichannel rewards, cash/miles redemption, lounge quotas and spend gate, fuel waiver, golf, eligibility and insurance. Removed unsupported launch date and stale ?2 crore accident/?75 lakh medical cover; documented joining-fee variant and monthly-capping scope. Full claim comparison: `pinnacle/issuer-extract-2026-10-27.md`.
+
+InterMiles co-brand cards (Odyssey and Voyage, Amex and Visa) were rechecked on 2026-11-01 against current issuer product/update pages. Legacy card terms are now bounded before the 21-Jan-2025 redemption cutoff and issuer-confirmed discontinuation of existing cards. See `intermiles/issuer-extract-2026-11-01.md`.
+
+Duo and Crest card-specific issuer field maps and conflicts are summarized in `duo/issuer-review-2026-10-26.md` and `crest/issuer-review-2026-10-26.md`; source PDFs are retained in each card directory.
+
+EazyDiner IndusInd Platinum's existing issuer field map and limits are formalized at `eazydiner-platinum/issuer-review-2026-10-26.md`; the mapped check is inside the one-month freshness window.
+
+Indulge and Iconia recent issuer field reviews are formalized at `indulge/issuer-review-2026-10-26.md` and `iconia/issuer-review-2026-10-26.md`. Their underlying checks remain within the one-month freshness window.

@@ -1,4 +1,4 @@
-# ---------------------------------------------------------------------------
+﻿# ---------------------------------------------------------------------------
 # PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
 #   Source     : SBI Card per-card T&C PDFs (docs/sources/sbi/)
 #   Verified   : 2026-07-04   Confidence: HIGH (pdf)
@@ -9,20 +9,21 @@
 # ---------------------------------------------------------------------------
 id: sbi-phonepe-purple
 name: "PhonePe SBI Card Purple"
+image_path: /cards/sbi/phonepe-purple.webp
 issuer: sbi
 network: rupay
-network_tier: null
+network_tier: platinum
 tier: entry
 card_type: credit
 co_brand:
   partner: "PhonePe"
   category: other
 status: active
-launched_on: null
+launched_on: 2025-07-22
 discontinued_on: null
 
 fees:
-  - effective_from: 2026-07-03
+  - effective_from: 2025-07-22
     effective_until: null
     joining_fee_inr: 499
     annual_fee_inr: 499
@@ -33,16 +34,20 @@ fees:
       conditions: "Annual fee reversal on spends of Rs. 1 lakh or more in the previous membership year."
     forex_markup_pct: 3.5
     finance_charge_monthly_pct: 3.75
-    cash_advance_fee: null
+    cash_advance_fee:
+      pct: 2.5
+      min_inr: 500
     gst_applicable: true
     supplementary_card_fee_inr: 0
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
+      type: issuer-page
+      confidence: high
     notes: "Annual Fee Rs. 499 + taxes; Renewal Fee Rs. 499 + taxes from second year onwards; Add-on card fee Nil. RuPay card usable on UPI."
 
 rewards:
-  - effective_from: 2026-07-03
+  - effective_from: 2026-07-01
     effective_until: null
     currency: points
     currency_name: Reward Points
@@ -60,17 +65,29 @@ rewards:
         canonical_categories: [online]
         multiplier: 3
         effective_rate: 3
-        cap_per_cycle: 750
+        cap_per_cycle: 1000
         cap_unit: points
         cycle: monthly
-        notes: "3 Reward Points per Rs. 100 on eligible PhonePe App spends. Accelerated PhonePe points (3 RP/₹100) hard-capped at 750 RP/calendar month (non-insurance) per the PhonePe SBI Card PURPLE Reward Program T&C; a tighter 250 RP/calendar-month sub-cap applies to insurance paid via PhonePe."
+        notes: "3 Reward Points per Rs. 100 on eligible PhonePe/Pincode app spends in select categories (recharges, utilities, bill payments, insurance and travel). Monthly cap 1,000 points."
       - category: online-spends
         canonical_categories: [online]
         multiplier: 2
         effective_rate: 2
+        cap_per_cycle: 1000
+        cap_unit: points
+        cycle: monthly
         notes: "2 Reward Points per Rs. 100 on eligible online spends."
+      - category: other-spends
+        canonical_categories: [other]
+        multiplier: 1
+        effective_rate: 1
+        cap_per_cycle: 750
+        cap_unit: points
+        cycle: monthly
+        notes: "1 Reward Point per Rs. 100 on other eligible spends; monthly cap 750 points."
     redemption:
-      - type: voucher
+      - type: catalog
+        program: SBI Card e-gift voucher catalogue
         rate_inr_per_unit: 1.0
         constraints: "1 Reward Point = Re. 1. Redeem against a wide array of vouchers."
       - type: cashback-bank
@@ -78,15 +95,18 @@ rewards:
         constraints: "Reward Points redeemable for cash."
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
-      retrieved_on: 2026-07-05
+      retrieved_on: 2026-11-01
       type: issuer-page
       confidence: high
-      notes: 'Research-verified: co-brand Reward Points redeem as SBI statement credit at Rs1 = liquid cash -> NOT closed-loop (only in-app PhonePe cashback vouchers are). Tag removed.'
-    notes: "1 Reward Point per Rs. 100 on other spends (base). Eligible-spend exclusions not detailed on crawl."
+      notes: "SBI's July 2025 launch disclosure confirms points may settle outstanding card bills or redeem against SBI e-gift vouchers. July 2026 revision caps eligible PhonePe and online categories at 1,000 points each monthly; other spends at 750 points; certain outside-app insurance and utilities at 250 points."
+    notes: "Eligible PhonePe, online and other-spend categories have separate monthly caps; selected PhonePe categories and MCCs are subject to exclusions."
 
-    mcc_exclusions: ['6513']
+    mcc_exclusions: ['6513', '5172', '5541', '5542', '5983', '6540', '6541', '8211', '8241', '8244', '8249', '8299', '9311', '9399', '5816', '7993', '7994', '4784', '5947', '5094', '5944', '8220', '4900', '4814', '4899', '5960', '6300', '6380']
+    capping_rules:
+      - "Effective 1-Jul-2026: eligible PhonePe and online spends capped at 1,000 RPs/month each; other spends capped at 750 RPs/month; outside-PhonePe insurance and utility spends have a 250 RP/month cap and earn base rate."
+      - "Effective 1-Jul-2026 exclusions include tolls/bridges (MCC 4784), gifts/souvenirs (5947), jewellery (5094, 5944), educational institutions (8220), and non-PhonePe utilities, insurance, and UPI."
 benefits:
-  - effective_from: 2026-07-03
+  - effective_from: 2025-07-22
     effective_until: null
     lounge_access: null
     milestones:
@@ -97,7 +117,7 @@ benefits:
         reward_kind: voucher
         trigger_window: anniversary-year
     welcome:
-      - condition: "Card issued"
+      - condition: "Joining fee paid"
         benefit: "PhonePe gift card worth Rs. 500."
         value_inr: 500
     fuel_surcharge_waiver:
@@ -109,21 +129,33 @@ benefits:
     concierge: false
     source:
       url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
-      retrieved_on: 2026-07-03
+      retrieved_on: 2026-11-01
+      type: issuer-page
+      confidence: high
 
 eligibility:
   min_age: 21
-  max_age: 65
+  max_age: 70
+  age_ranges:
+    salaried: {min_age: 21, max_age: 65}
+    self_employed: {min_age: 25, max_age: 70}
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-  notes: "Eligibility criteria not published on the product page."
-
+  notes: "Eligibility criteria not published on the product page. SBI Card policy states age 21?65 for salaried applicants and 25?70 for self-employed applicants; the broad 21?70 range preserves the occupation-specific detail in age_ranges. No card-specific minimum income or fixed credit-score cutoff is published; approval depends on SBI Card underwriting."
+  source:
+    url: https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/policy-for-the-issuance-and-conduct-of-credit-cards-2023.pdf
+    retrieved_on: '2026-10-25'
+    type: issuer-pdf
+    confidence: high
+    method: pdf-extract
+    fields_verified: [eligibility.min_age, eligibility.max_age, eligibility.age_ranges]
+    notes: "Issuer policy section 3 gives the occupation-specific age ranges. SBI states card-specific income minimums vary; this policy does not publish a fixed credit-score cutoff."
 application:
   apply_url: https://www.sbicard.com/en/personal/credit-cards/phonepe-sbi-card-purple.html
 
 metadata:
-  last_verified_on: 2026-07-05
+  last_verified_on: '2026-11-01'
   tags: [points, co-brand, entry, upi]

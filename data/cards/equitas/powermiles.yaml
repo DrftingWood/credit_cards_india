@@ -1,126 +1,159 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : Equitas issuer page (equitas.bank.in PowerMiles) captured via
-#                Playwright + paisabazaar/cardinsider/cardmaven cross-check.
-#   Verified   : 2026-07-05   Confidence: HIGH (issuer page) for forex/lounge/
-#                international/waiver/transfer; MEDIUM for base rate + eligibility.
-#   Eligibility income/age are premium-tier defaults (not individually sourced).
-#   Modelled as the Visa variant (also issued on RuPay); metal card, Blue base tier.
-# ---------------------------------------------------------------------------
 id: equitas-powermiles
 name: Equitas PowerMiles Credit Card
+image_path: /cards/equitas/powermiles.webp
 issuer: equitas
-network: visa
-network_tier: signature
+network: null
+network_tier: null
 tier: premium
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2025-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2025-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 5000
-    fee_waiver:
-      spend_inr: 480000
-      cycle: annual
-      conditions: "First year free; renewal fee waived on spends of Rs 4,80,000 in the previous anniversary year."
-    forex_markup_pct: 2.0
-    gst_applicable: true
-    source:
-      url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
-      retrieved_on: 2026-07-05
-      type: issuer-page
-      confidence: high
-      fields_verified:
-        - fees.annual_fee_inr
-        - fees.fee_waiver
-        - fees.forex_markup_pct
-      notes: "Issuer page: annual fee first-year-free, Rs 5,000 + GST renewal waived on Rs 4.8L annual spend; 2% forex markup."
-
+- effective_from: 2026-01-01
+  effective_until: null
+  joining_fee_inr: 5000
+  annual_fee_inr: 5000
+  fee_waiver:
+    spend_inr: 480000
+    cycle: annual
+    conditions: Joining fee is waived on eligible spends of INR 120,000 within the first 90 days; renewal fee is waived on INR 480,000 spends in the anniversary year. Confirm exact fee treatment at application.
+  forex_markup_pct: 2.0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 250
+  gst_applicable: true
+  source:
+    url: https://equitas.bank.in/strapi-dev/uploads/MITC_V1_2_Track_change_8ed95eca57.pdf
+    retrieved_on: 2026-11-01
+    type: issuer-pdf
+    confidence: high
+    notes: 'Issuer Product & Pricing MID labelled Jan 2026 lists INR 5,000 joining/annual membership fees, a joining-fee waiver for INR 120,000 eligible spend in the first 90 days, and renewal waiver at INR 480,000 in an anniversary year. Current MITC v1.2 confirms 3.75% monthly finance charges, 2.5%/INR 250 minimum cash-advance fee and 2% PowerMiles foreign-currency markup. The separate paid-fee and FYF options are not conflated. Review: docs/sources/equitas/powermiles-issuer-extract-2026-11-01.md.'
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
 rewards:
-  - effective_from: 2025-01-01
-    effective_until: null
-    currency: points
-    currency_name: Reward Points
-    base:
-      rate: 3
-      per_inr: 100
-      unit_value_inr: 0.5
-      unit_value_inr_realized: 0.5
-    accelerated:
-      - category: international-spend
-        canonical_categories: [international]
-        multiplier: 3
-        effective_rate: 9
-        effective_per_inr: 100
-        cycle: monthly
-        notes: "3x reward points (9 RP per Rs 100) on all international POS & online transactions — ~4.5% value at 1 RP = Rs 0.50 (Blue base tier)."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption: []
+- effective_from: 2025-01-01
+  effective_until: null
+  currency: points
+  currency_name: Reward Points
+  base:
+    rate: null
+    per_inr: 100
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  accelerated:
+  - category: international-spend
+    canonical_categories:
+    - international
+    multiplier: 3
+    effective_rate: null
+    effective_per_inr: 100
+    cycle: monthly
+    notes: The issuer MITC/agreement confirms 3X accelerated rewards on international POS transactions, best-effort and subject to MCC. It does not state the base earn rate in the accessible text; the absolute points per INR are therefore unverified and not calculated here. Online transactions are not included in the issuer's stated 3X feature.
     source:
-      url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
-      retrieved_on: 2026-07-05
-      type: issuer-page
-      confidence: medium
-      fields_verified:
-        - rewards.accelerated.effective_rate
-      notes: "2026-07-05: 1:1 transfer program ANNOUNCED (BA/United/Finnair/Aeroplan/Etihad/Thai/AirAsia/Air India/JAL/IHG/Wyndham) but NOT LIVE (expected ~Sep 2026). Current value Rs 0.50/pt via portal."
-
-    capping_rules:
-      - No reward-points cap of any kind on the 3X international accelerated points per the official PowerMiles T&C (dated 23-Jun-2026, read end-to-end; retrieved 2026-07-05). Aggregator 2000-RP grocery/utility caps are not in the issuer document.
-benefits:
-  - effective_from: 2025-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-      international:
-        visits_per_cycle: 1
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [visa]
-    concierge: false
-    other:
-      - name: Club Marriott membership
-        description: "Complimentary Club Marriott membership — discounts on hotel stays, dining and spa."
-      - name: EazyDiner membership
-        description: "Complimentary EazyDiner Prime membership — up to 50% savings + welcome 2,000 EazyPoints, 2X EazyPoints per meal."
-    source:
-      url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
-      retrieved_on: 2026-07-05
-      type: issuer-page
+      url: https://equitas.bank.in/strapi-dev/uploads/Card_Member_Agreement_21b39ee7dc.pdf
+      retrieved_on: 2026-11-01
+      type: issuer-pdf
       confidence: high
       fields_verified:
-        - lounge_access.domestic.visits_per_cycle
-        - lounge_access.international.visits_per_cycle
-      notes: "Issuer page: 2 domestic + 1 international lounge visits per calendar quarter; Club Marriott + EazyDiner memberships; travel insurance (sum not published — omitted rather than estimated)."
-
+      - rewards.accelerated[0].multiplier
+      notes: Agreement section 34 confirms 3X accelerated rewards on international POS transactions, best-effort and subject to MCC; it does not state the absolute base earn rate.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - emi
+  - cash-advance
+  - government
+  mcc_exclusions:
+  - '6513'
+  redemption:
+  - type: catalog
+    program: Equitas Xchange Rewards
+    rate_inr_per_unit: null
+    constraints: Current issuer MITC describes quarterly cardmember tiers and says redemption value increases with tier; no universal INR-per-point value is stated in the reviewed issuer terms. Portal value and any transfer partners require confirmation.
+  source:
+    url: https://equitas.bank.in/strapi-dev/uploads/MITC_V1_2_Track_change_8ed95eca57.pdf
+    retrieved_on: 2026-11-01
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base.per_inr
+    - rewards.accelerated[0].multiplier
+    notes: Current Equitas MITC v1.2/cardmember agreement confirms INR 100 transaction multiples, 3X accelerated rewards on international POS (best effort/MCC), 3-year PowerMiles point validity, exclusions and category caps. It does not state the base earn rate, absolute point earn per INR, universal point value, or transfer partners; these remain unverified while the product page returns HTTP 503.
+  capping_rules:
+  - The card-specific issuer T&C dated 23-Jun-2026 does not state a cap on 3X international POS points; this is an
+    absence in the reviewed text, not a bank guarantee that no operational cap can apply. The current MITC separately
+    caps grocery and utility at 2,000 points/month each and insurance at 2,000 points/day.
+  - Current MITC states points accrue only in multiples of INR 100, PowerMiles points expire after 3 years, and no rewards accrue on rent, wallet loads, EMI, fuel, cash advances or government transactions for consumer retail cards. Grocery/utility are capped at 2,000 points per month each; insurance at 2,000 points per day. Minimum redemption is 500 points and redemption fee is INR 99.
+benefits:
+- effective_from: 2025-01-01
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: null
+    max_txn_inr: null
+    cap_per_cycle_inr: 450
+    cycle: monthly
+    notes: Current MITC v1.2 states 1% of eligible fuel transaction amounts, capped at INR 450/month and INR 5,400/year; GST on the surcharge is not reversed. Transaction thresholds are not stated in the accessible current issuer terms.
+  concierge: null
+  other:
+  - name: Luxury memberships
+    description: >-
+      The current issuer MITC/agreement describes third-party luxury memberships, conditional on joining/annual fee
+      payment or spend milestones: INR 120,000 in the first 3 months for year 1, then INR 480,000 annually from year 2
+      (effective 24-Nov-2025). The accessible current terms do not name the membership brands or establish their
+      specific benefit values; older product-page claims naming Club Marriott and EazyDiner remain unconfirmed.
+  - name: Complimentary insurance covers
+    description: >-
+      Issuer insurance document lists air accident death cover up to INR 1 crore (air tickets must be purchased using an
+      Equitas credit card), credit shield up to the credit limit or INR 8 lakh, whichever is higher, and lost card
+      liability up to INR 10 lakh for the primary cardholder. The linked insurer wording limits air-accident cover to
+      accidental death, requires death within 365 days of the covered accident, and requires claim documents within 30
+      days. Cover is after card activation and for the primary cardholder only. Exact policy-schedule limits and other
+      exclusions remain subject to the insurer certificate; see the 2026-11-01 policy review.
+  source:
+    url: https://equitas.bank.in/strapi-dev/uploads/MITC_V1_2_Track_change_8ed95eca57.pdf
+    retrieved_on: 2026-11-01
+    type: issuer-pdf
+    confidence: medium
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    - benefits.other
+    notes: 'MITC v1.2/agreement supports the generic third-party luxury-membership feature and its spend conditions; current accessible issuer terms do not identify brands or quantify lounge visits. Previously listed 2 domestic/1 international quarterly visit counts are unverified and have been removed pending access to the product-page terms. Insurance summary and linked policy wording were reviewed 2026-11-01; the current per-card certificate/schedule and exact limits/deductibles remain unavailable. The product page returns HTTP 503.'
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 1200000
-    self_employed: 1500000
-  credit_score_min: 750
-  residency: resident-indian
-  notes: "Eligibility income/age are premium-tier defaults, not published on the product page."
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Eligibility income/age are premium-tier defaults, not published on the product page. Numeric income and
+    credit-score cutoffs are retained only when this eligibility record cites the exact field in issuer evidence;
+    unsupported cutoffs are unknown, not proof of no underwriting requirement. Broad minimum/maximum age figures
+    without an exact issuer evidence path or a source-verified occupational range were left unknown; this does not
+    imply there is no age or residency criterion. The product page is currently inaccessible, and the reviewed
+    agreement/MITC do not establish applicant residency.
 application:
   apply_url: https://equitas.bank.in/personal-banking/pay/credit-cards/powermiles-credit-card/
-
 metadata:
-  last_verified_on: 2026-07-05
-  tags: [premium, points, travel, miles, lounge, metal, forex]
+  last_verified_on: 2026-11-01
+  tags:
+  - premium
+  - points
+  - travel
+  - miles
+  - lounge
+  - metal
+  - forex

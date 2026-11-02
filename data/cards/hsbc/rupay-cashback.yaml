@@ -1,126 +1,209 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : HSBC live product pages, hsbc.co.in (HTML)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: hsbc-rupay-cashback
 name: HSBC RuPay Cashback Credit Card
+image_path: /cards/hsbc/rupay-cashback.webp
 issuer: hsbc
 network: rupay
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2024-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 499
-    annual_fee_inr: 499
-    fee_waiver:
-      spend_inr: 100000
-      cycle: annual
-    forex_markup_pct: 0.0
-    finance_charge_monthly_pct: 3.5
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 500
-    gst_applicable: true
-    notes: "UPI-enabled RuPay cashback card. 0% FX markup (promotional, until 31-Jul-2026)."
-    source:
-      url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-26
+  effective_until: null
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  fee_waiver:
+    spend_inr: 200000
+    cycle: annual
+  forex_markup_pct: 0
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: >-
+    Standard foreign currency conversion markup is 3.5%. HSBC currently waives it under a
+    card-specific offer on eligible foreign currency transactions from 2025-07-15 through
+    2026-12-31; the current snapshot therefore records 0% through that offer period. HSBC
+    charges the annual fee when eligible anniversary-year spend does not exceed INR200,000;
+    the fee is reversed in full when eligible primary plus add-on spend exceeds that threshold.
+    Finance charge is 3.75% monthly (45% p.a.).
+  source:
+    url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/credit-cards/rupay-cashback/hsbc-rupay-most-important-tncs.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/rupay-cashback/hsbc-rupay-mitc-retrieved-2026-10-26.pdf
+    - docs/sources/hsbc/rupay-cashback/forex-offer-terms-retrieved-2026-10-26.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    - fees.forex_markup_pct
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated:
-      - category: dining-food-grocery
-        canonical_categories: [dining, groceries]
-        multiplier: 10
-        effective_rate: 10
-        cap_per_cycle: 400
-        cap_unit: cashback-inr
-        cycle: monthly
-        notes: "10% cashback on dining, food delivery & grocery; 1% on all other eligible spends. Total monthly cashback (10% + 1% combined) is capped at ₹400."
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    reward_cap:
-      max_units: 400
-      cap_unit: cashback-inr
-      cycle: monthly
-    capping_rules:
-      - "Total cashback (10% accelerated + 1% base) capped at ₹400 per statement cycle."
-    redemption:
-      - type: statement-credit
-        program: Cashback
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
-      retrieved_on: 2026-07-04
-      type: issuer-page
-      confidence: high
-      fields_verified:
-        - rewards.accelerated.cap_per_cycle
-        - rewards.reward_cap
-      notes: "HSBC issuer page + paisabazaar/cardinsider (2026): 10% on dining/grocery/food + 1% other, total capped at ₹400/month. Prior record left the cap 'unlimited'."
-
+- effective_from: 2026-10-26
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1
+    per_inr: 100
+    unit_value_inr: 1
+    unit_value_inr_realized: 1
+  accelerated:
+  - category: dining-food-grocery
+    canonical_categories:
+    - dining
+    - groceries
+    multiplier: 10
+    effective_rate: 10
+    cap_per_cycle: 400
+    cap_unit: cashback-inr
+    cycle: monthly
+    notes: >-
+      10% cashback on dining, food delivery and grocery transactions; 1% on other eligible
+      transactions. Combined cashback from both rates is capped at INR400 per billing cycle,
+      including eligible UPI transactions. No separate UPI accelerator. Cashback is credited
+      as statement credit. Exclusions are extensive and depend on MCC; consult the linked HSBC
+      Service Guide. Excluded groups include fuel, wallets, rent/property management, B2B,
+      education, government, insurance, jewellery/antiques, cash withdrawals, credit
+      repayments, foreign currency, liquid/crypto assets, securities brokers, collections,
+      charity, money transfers, wholesale clubs, utilities and other listed MCCs. Reversals,
+      cancellations and delinquency may result in cashback recovery.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - education
+  - government
+  - utilities
+  - emi
+  - international
+  - jewellery
+  - cash-advance
+  mcc_exclusions:
+  - '6513'
+  reward_cap:
+    max_units: 400
+    cap_unit: cashback-inr
+    cycle: monthly
+  capping_rules:
+  - Total cashback across the base and accelerated rates is capped at INR400 per billing cycle.
+  redemption:
+  - type: statement-credit
+    program: Cashback
+    rate_inr_per_unit: 1
+  source:
+    url: https://www.hsbc.bank.in/content/dam/hsbc/in/documents/credit-cards/rupay-cashback/rupay-cashback-credit-card-services-guide.pdf
+    retrieved_on: 2026-10-26
+    type: issuer-pdf
+    confidence: high
+    fields_verified:
+    - rewards.base
+    - rewards.accelerated
+    - rewards.accelerated.cap_per_cycle
+    - rewards.reward_cap
+    local_refs:
+    - docs/sources/hsbc/rupay-cashback/service-guide-retrieved-2026-10-26.pdf
+    notes: HSBC Service Guide directly states the 10%/1% rates and combined INR400 billing-cycle cap.
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access:
-      domestic:
-        visits_per_cycle: 2
-        cycle: quarterly
-        guests_per_visit: 0
-        via: [rupay]
-    welcome:
-      - condition: "Download & log in + link to UPI and make 2 transactions"
-        benefit: "₹500 welcome cashback + ₹250 Amazon voucher"
-        value_inr: 750
-        window_days: 90
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 4000
-      cap_per_cycle_inr: 250
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
-      retrieved_on: 2026-07-03
-
+- effective_from: 2026-10-26
+  effective_until: null
+  lounge_access:
+    domestic:
+      visits_per_cycle: 2
+      cycle: quarterly
+      guests_per_visit: 0
+      via:
+      - rupay
+    international:
+      visits_per_cycle: 2
+      cycle: annual
+      guests_per_visit: 0
+      via:
+      - rupay
+  welcome:
+  - condition: Apply by 2026-12-31; card may be issued subsequently; download and log in to HSBC India Mobile Banking app and complete eligible transactions totalling INR10,000 within 30 calendar days of issuance; primary card only, updated KYC, no minimum due unpaid over 30 days.
+    benefit: INR500 introductory cashback, credited within 60 days after the 30-day spend window.
+    value_inr: 500
+    window_days: 30
+  - condition: Apply online, complete Video KYC and receive the card during 2026-01-01 to 2026-10-31.
+    benefit: INR250 Amazon eGift Voucher.
+    value_inr: 250
+  - condition: Activate an HSBC RuPay credit card during 2025-07-15 to 2026-12-31; primary card only and register as an EazyDiner user.
+    benefit: Complimentary EazyDiner Prime membership for two months.
+    value_inr: null
+  fuel_surcharge_waiver: null
+  other:
+  - name: UPI linkage
+    description: Link the RuPay credit card to HSBC SimplyPay or another UPI app and pay eligible merchants, subject to the network and issuer terms.
+  - name: 0% foreign currency markup offer
+    description: HSBC waives the standard 3.5% foreign currency markup on eligible transactions from 2025-07-15 to 2026-12-31; DCC and network/merchant conversion rates are separate.
+  concierge: false
+  notes: >-
+    Current HSBC product page advertises two local lounge visits per quarter and two
+    international visits per year. The linked Service Guide's older key-summary text says
+    four complimentary lounge visits per year; retained the current page's counts and logged
+    the discrepancy. Confirm current card-specific lounge roster/access conditions before use.
+  source:
+    url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/hsbc/rupay-cashback/service-guide-retrieved-2026-10-26.pdf
+    - docs/sources/hsbc/rupay-cashback/welcome-offer-retrieved-2026-10-26.pdf
+    - docs/sources/hsbc/rupay-cashback/forex-offer-terms-retrieved-2026-10-26.pdf
+    - docs/sources/hsbc/rupay-cashback/eazydiner-offer-retrieved-2026-10-26.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.welcome
+    - benefits.fuel_surcharge_waiver
 eligibility:
   min_age: 18
   max_age: 65
+  age_ranges:
+    salaried:
+      min_age: 18
+      max_age: 65
+    self_employed:
+      min_age: 25
+      max_age: 65
   income_inr_annual:
-    salaried: 400000
-    self_employed: 400000
-  credit_score_min: 720
+    salaried: 600000
+    self_employed: 1200000
+  credit_score_min: null
   residency: resident-indian
-
+  notes: >-
+    Applicants must reside in issuer-specified cities: Chennai, Gurgaon, Delhi NCR, Pune,
+    Noida, Hyderabad, Mumbai, Bengaluru, Kochi, Coimbatore, Jaipur, Chandigarh, Ahmedabad,
+    Kolkata, Amritsar, Baroda, Indore, Lucknow, Nagpur, Surat or Trivandrum. No minimum
+    credit score is published on the reviewed product page.
+  source:
+    url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
+    retrieved_on: 2026-10-26
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.age_ranges
+    - eligibility.income_inr_annual
+    - eligibility.residency
 application:
   apply_url: https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/
-
 metadata:
-  last_verified_on: 2026-07-04
-  tags: [entry, cashback, dining, groceries, upi, rupay, zero-forex]
+  last_verified_on: 2026-10-26
+  tags:
+  - entry
+  - cashback
+  - dining
+  - groceries
+  - upi
+  - rupay
+  - zero-forex

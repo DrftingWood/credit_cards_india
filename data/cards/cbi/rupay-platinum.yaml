@@ -1,0 +1,83 @@
+id: cbi-rupay-platinum
+name: Central Bank of India RuPay Platinum Credit Card
+issuer: cbi
+network: rupay
+network_tier: platinum
+tier: entry
+card_type: credit
+co_brand: null
+status: on-hold
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: null
+  annual_fee_inr: null
+  fee_waiver: null
+  forex_markup_pct: null
+  finance_charge_monthly_pct: null
+  cash_advance_fee: null
+  gst_applicable: true
+  source:
+    url: https://centralbank.bank.in/en/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: low
+    fields_verified: []
+    notes: Current CBI credit-card page publishes no standalone RuPay Platinum terms. The bank's FY2019-20 annual report says standalone-card issuance was discontinued as co-branded issuance started in October 2019. Joining fee, annual fee, forex, finance and cash-advance charges for this specific card are not verifiable from current issuer evidence. Effective_from is the required record observation date, not a published pricing effective date.
+rewards:
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: null
+  base:
+    rate: null
+    per_inr: null
+    unit_value_inr: null
+    unit_value_inr_realized: null
+  source:
+    url: https://centralbank.bank.in/en/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: low
+    fields_verified: []
+    notes: No current card-specific issuer reward schedule or redemption value is published on the current credit-card page. Legacy third-party claims are not carried forward as issuer-verified facts. Effective_from is the required record observation date, not an issuer-published schedule start.
+benefits:
+- effective_from: 2026-10-27
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver: null
+  concierge: null
+  source:
+    url: https://centralbank.bank.in/en/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: low
+    fields_verified: []
+    notes: No current card-specific benefit schedule is published on the CBI credit-card page. Do not transfer the RuPay Platinum debit-card lounge or insurance benefits to this credit card. The current legacy Central Platinum application form is specifically for Visa Platinum and is not evidence for this RuPay card. Effective_from is the required record observation date.
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current card-specific eligibility is unpublished. The Central Platinum Visa form's eligibility must not be transferred to this RuPay card.
+  source:
+    url: https://centralbank.bank.in/en/credit-cards
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: low
+    fields_verified: []
+application:
+  apply_url: null
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - legacy
+  - rupay
+  - platinum
+  - cbi
+  - terms-unverified

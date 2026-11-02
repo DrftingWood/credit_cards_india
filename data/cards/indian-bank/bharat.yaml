@@ -1,0 +1,68 @@
+id: indian-bank-bharat
+name: Indian Bank Bharat Credit Card
+issuer: indian-bank
+network: rupay
+network_tier: classic
+tier: entry
+card_type: credit
+co_brand: null
+status: active
+launched_on: null
+discontinued_on: null
+fees:
+- effective_from: 2026-10-27
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  forex_markup_pct: null
+  finance_charge_monthly_pct: 1.79
+  cash_advance_fee:
+    flat_inr: 25
+  gst_applicable: true
+  source:
+    url: https://indianbank.bank.in/documents/d/guest/MITC-FINAL
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: Current issuer MITC lists nil joining and annual fees for Bharat, ₹25 fixed cash advance fee, no foreign-currency markup (N/A), and 1.79% monthly purchase finance charge; Bharat cash-advance interest is 1.99% monthly. Cash-advance fee represented as fixed minimum in this schema.
+rewards:
+- effective_from: 2026-10-27
+  effective_until: null
+  currency: points
+  currency_name: null
+  base:
+    rate: 0
+    per_inr: 100
+  source:
+    url: https://indianbank.bank.in/documents/d/guest/credit-card-features-and-benefits-6-1-
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: high
+    notes: Issuer feature sheet explicitly states that Bharat has no reward points program; zero rate encodes that no points are earned.
+benefits:
+- effective_from: 2026-10-27
+  effective_until: null
+  source:
+    url: https://indianbank.bank.in/documents/d/guest/credit-card-features-and-benefits-6-1-
+    retrieved_on: 2026-10-27
+    type: issuer-page
+    confidence: medium
+    notes: No card-specific benefits are claimed from the reviewed product feature sheet. Current fee MITC lists fuel surcharge charges, with no Bharat fuel waiver.
+eligibility:
+  min_age: null
+  max_age: null
+  income_inr_annual:
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: resident-indian
+  notes: Issuer sources reviewed do not publish card-specific age, income or credit-score criteria. The features sheet describes Bharat as having ₹10,000–₹19,999 revolving credit limit, 25% cash limit, no EMI, no add-on card and no reward points.
+application:
+  apply_url: https://indianbank.bank.in/en/Credit-Cards
+metadata:
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - rupay
+  - bharat
+  - psu

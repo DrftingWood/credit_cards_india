@@ -17,10 +17,10 @@ export function CategoryTiles() {
     <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
       {TILES.map(({ href, Icon, t, d }) => (
         <Link key={href} href={href as never}
-          className="group rounded-xl border border-slate-200 bg-white p-4 no-underline transition-colors hover:border-brand-500/50">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon /></span>
-          <div className="mt-2.5 text-sm font-semibold text-slate-900">{t}</div>
-          <div className="text-xs text-slate-500">{d}</div>
+          className="group rounded-xl border border-line bg-surface p-4 no-underline transition-colors hover:border-accent/50">
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-accent-subtle text-accent-fg"><Icon /></span>
+          <div className="mt-2.5 text-sm font-semibold text-fg">{t}</div>
+          <div className="text-xs text-fg-muted">{d}</div>
         </Link>
       ))}
     </div>

@@ -1,17 +1,9 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : AU Small Finance Bank live pages, au.bank.in (HTML; no card PDFs)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: au-kosmo
 name: AU Bank Kosmo Credit Card
+image_path: /cards/au/kosmo.webp
 issuer: au
 network: rupay
-network_tier: platinum
+network_tier: null
 tier: entry
 card_type: credit
 co_brand:
@@ -19,84 +11,287 @@ co_brand:
   category: other
   partner_website: https://www.gokiwi.in
 status: active
-launched_on: 2024-01-01
+launched_on: '2025-09-18'
 discontinued_on: null
-
 fees:
-  - effective_from: 2024-01-01
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.49
-    finance_charge_monthly_pct: 3.49
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Lifetime-free RuPay card, UPI-enabled; co-branded with Kiwi. Rewards accrue as Kiwi rewards via the Kiwi app."
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  joining_fee_inr: 0
+  annual_fee_inr: 0
+  fee_waiver: null
+  forex_markup_pct: 3.49
+  finance_charge_monthly_pct: 3.75
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 500
+  gst_applicable: true
+  notes: Lifetime-free AU/Kiwi co-branded RuPay card. KFS v1.9 lists general AU retail-card forex markup 3.49%,
+    finance charge 3.75% monthly, and cash advance charge 2.5% or INR 500 minimum; KOSMO is not listed as an exception.
+    KFS v1.9 lists KOSMO cash withdrawal limit at 20% of assigned credit limit.
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee.pct
+    - fees.cash_advance_fee.min_inr
+    notes: 'KOSMO product page confirms no joining/renewal fee. AU KFS v1.9 (https://www.au.bank.in/pdf/credit-card/Schedule-of-Charges-CC.pdf)
+      lists the applicable general rate table: 3.49% forex, 3.75% monthly finance, cash advance charge 2.5% or INR
+      500 minimum; KOSMO is not listed as a rate exception.'
 rewards:
-  - effective_from: 2024-01-01
-    effective_until: null
-    currency: points
-    currency_name: Kiwi Rewards
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 0.25
-      unit_value_inr_realized: 0.22
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    redemption:
-      - type: statement-credit
-        program: Kiwi Rewards
-        rate_inr_per_unit: 0.25
-        constraints: 4 Kiwis = Rs 1; statement credit only, 500-Kiwi (Rs125) minimum in multiples of 500.
-    notes: "Kiwi rewards on UPI Scan & Pay (via Kiwi app) and on e-commerce, POS & contactless transactions. Exact rates"
+- effective_from: '2026-10-27'
+  effective_until: null
+  currency: cashback
+  currency_name: Kiwi Kiwis
+  base:
+    rate: 2
+    per_inr: 100
+    unit_value_inr: 0.25
+    unit_value_inr_realized: 0.25
+    applies_to_categories:
+    - online
+    notes: 'For cards issued through Kiwi on/after 4 Jul 2024 without Kiwi Neon: online transactions earn 2 Kiwis
+      per INR 100 (0.5% at INR 0.25/Kiwi), rounded down to INR 100 spend increments. Product page also lists Ecom,
+      POS and contactless as eligible, but current Kiwi rate policy does not clearly specify the POS/contactless
+      rate; those are not included in the quantified base estimate.'
+  accelerated:
+  - category: upi-scan-and-pay
+    canonical_categories:
+    - other
+    multiplier: 3
+    effective_rate: 6
+    cap_per_cycle: unlimited
+    cap_unit: points
+    cycle: monthly
+    merchants:
+    - Kiwi
+    channel:
+      class: cobrand-merchant
+      merchants:
+      - kiwi-app
+    over_cap_earns_base: false
+    notes: Kiwi Rewards Policy gives 6 Kiwis per INR 100 (1.5%) on eligible Scan & Pay transactions for cards issued
+      through Kiwi since 4 Jul 2024, without Neon. Requires payment through Kiwi app; current schema approximates
+      app channel as co-brand merchant Kiwi and category other, so category-specific UPI estimates may be incomplete.
+      Monthly aggregate Kiwi cap is 1% of assigned card credit limit; individualized cap is not representable as
+      a fixed numeric cap.
+    cap_status: unknown
     source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
-      retrieved_on: '2026-07-05'
-      type: issuer-page
-
+      url: https://gokiwi.in/rewards-policy-v2/
+      retrieved_on: '2026-10-27'
+      type: other
       confidence: high
-      notes: 'Corrected 2026-07-05: Kiwi = Rs0.25 (4 Kiwis=Rs1), not Rs1.0. face/realized 1.0->0.25/0.22.'
+      fields_verified:
+      - rewards.accelerated[0].effective_rate
+      - rewards.accelerated[0].multiplier
+      - rewards.accelerated[0].cap_per_cycle
+      notes: Kiwi Rewards Policy section 3 defines Scan & Pay rate and monthly cap as 1% of credit limit; fixed
+        numeric cap varies per account.
+  exclusions:
+  - fuel
+  - wallet-loads
+  - rent
+  - insurance-premiums
+  - utilities
+  - education
+  - government
+  - jewellery
+  - cash-advance
+  mcc_exclusions:
+  - '0742'
+  - '0743'
+  - '0744'
+  - '0763'
+  - '0780'
+  - '0820'
+  - '0821'
+  - '0822'
+  - '0823'
+  - '0824'
+  - '0825'
+  - '4784'
+  - '4789'
+  - '4812'
+  - '4813'
+  - '4814'
+  - '4816'
+  - '4821'
+  - '4829'
+  - '4899'
+  - '4900'
+  - '5094'
+  - '5172'
+  - '5451'
+  - '5511'
+  - '5521'
+  - '5531'
+  - '5532'
+  - '5533'
+  - '5541'
+  - '5542'
+  - '5599'
+  - '5944'
+  - '5947'
+  - '5960'
+  - '5962'
+  - '5964'
+  - '5965'
+  - '5967'
+  - '5968'
+  - '5969'
+  - '5983'
+  - '6011'
+  - '6012'
+  - '6051'
+  - '6300'
+  - '6381'
+  - '6399'
+  - '6513'
+  - '6529'
+  - '6540'
+  - '7311'
+  - '7512'
+  - '7523'
+  - '7531'
+  - '7535'
+  - '7538'
+  - '7631'
+  - '8111'
+  - '8211'
+  - '8220'
+  - '8241'
+  - '8244'
+  - '8249'
+  - '8299'
+  - '8675'
+  - '8931'
+  - '9211'
+  - '9222'
+  - '9223'
+  - '9311'
+  - '9399'
+  - '9400'
+  - '9402'
+  - '9405'
+  - '9700'
+  - '9701'
+  - '9702'
+  - '9751'
+  - '9754'
+  - '9950'
+  reward_cap: null
+  redemption:
+  - type: cashback-bank
+    program: Kiwi app linked UPI ID
+    rate_inr_per_unit: 0.25
+    constraints: Each Kiwi is currently worth INR 0.25. Minimum redemption 500 Kiwis, in multiples of 500, to the
+      user?s linked goaxb UPI ID.
+  capping_rules:
+  - 'Kiwi Rewards Policy: monthly aggregate cap is Kiwis up to 1% of assigned credit limit. The cap is individualized;
+    numeric value cannot be represented in the current fixed cap field.'
+  - Kiwis accrue only on multiples of INR 100 spent.
+  - Minimum redemption 500 Kiwis, redeemable only in multiples of 500 to linked goaxb UPI ID.
+  - Kiwi Rewards Policy states EMI-on-UPI earns Kiwi rewards unless a specific offer excludes it. The treatment
+    of other EMI transactions is not clearly resolved by the public sources.
+  - Current product page lists Ecom, POS and contactless as reward-eligible channels, but the Kiwi policy gives
+    a specific numeric rate only for online transactions and Scan & Pay. POS/contactless numeric rates remain unmodeled.
+  source:
+    url: https://gokiwi.in/rewards-policy-v2/
+    retrieved_on: '2026-10-27'
+    type: other
+    confidence: high
+    notes: 'Current Kiwi Rewards Policy effective from 1 Jun 2025 covers credit cards issued via Kiwi since 4 Jul
+      2024: 0.5% online and 1.5% Kiwi-app Scan & Pay for non-Neon members, INR 0.25/Kiwi, INR 100 increments, monthly
+      limit of 1% of credit limit, excluded MCC table, minimum 500 redemption. AU product page independently confirms
+      KOSMO earns on Kiwi-app Scan & Pay and Ecom/POS/contactless. Optional Neon/Boost rates are not modeled as
+      standard card earn.'
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.accelerated[0].effective_rate
+    - rewards.accelerated[0].multiplier
+    - rewards.redemption[0].rate_inr_per_unit
+    - rewards.exclusions
+    - rewards.mcc_exclusions
+  notes: Kiwi Rewards earned through Kiwi app; base and Scan & Pay figures are Kiwi program terms, not AU-issued
+    bank points. Optional paid Kiwi membership programs can change rewards and are not included.
 benefits:
-  - effective_from: 2024-01-01
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: 100
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-27'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 400
+    max_txn_inr: 5000
+    cap_per_cycle_inr: 100
+    cycle: monthly
+  concierge: false
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - benefits.fuel_surcharge_waiver.pct
+    - benefits.fuel_surcharge_waiver.min_txn_inr
+    - benefits.fuel_surcharge_waiver.max_txn_inr
+    - benefits.fuel_surcharge_waiver.cap_per_cycle_inr
+    notes: AU KOSMO page confirms 1% fuel waiver ?400??5,000 up to ?100 per month, contactless transactions up to
+      ?5,000, Xpress EMI on transactions ?500+ with minimum total ?2,000, and add-on card availability.
+  other:
+  - name: Contactless payment
+    description: Tap-to-pay up to INR 5,000 without PIN, including digitally added card.
+  - name: Xpress EMI
+    description: Eligible transactions of INR 500 or more can be converted to EMI if total transaction value is
+      at least INR 2,000.
+  - name: Add-on cards
+    description: AU KOSMO supports add-on cards; pricing/limits not published on checked product page.
+  notes: No complimentary lounge access is advertised on the current AU KOSMO page. Kiwi Neon is a separate paid
+    membership, not a base-card benefit.
 eligibility:
-  min_age: 21
-  max_age: 65
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 720
+    salaried: null
+    self_employed: null
+  credit_score_min: null
   residency: resident-indian
-
+  notes: 'Resident Indian. Published primary-cardholder age ranges: salaried 21?60; self-employed 25?65.'
+  age_ranges:
+    salaried:
+      min_age: 21
+      max_age: 60
+    self_employed:
+      min_age: 25
+      max_age: 65
+  source:
+    url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
+    retrieved_on: '2026-10-27'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - eligibility.residency
+    - eligibility.age_ranges.salaried.min_age
+    - eligibility.age_ranges.salaried.max_age
+    - eligibility.age_ranges.self_employed.min_age
+    - eligibility.age_ranges.self_employed.max_age
+    notes: Current KOSMO product page lists salaried 21?60, self-employed 25?65, add-on cardholder over 18, resident
+      Indian. Income and score thresholds are not published.
 application:
   apply_url: https://www.au.bank.in/personal-banking/credit-cards/kosmo-credit-card
-
 metadata:
-  last_verified_on: '2026-07-05'
-  tags: [entry, points, co-brand, upi, rupay, lifetime-free]
+  last_verified_on: '2026-10-27'
+  tags:
+  - entry
+  - points
+  - co-brand
+  - upi
+  - rupay
+  - lifetime-free

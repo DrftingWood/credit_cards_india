@@ -1,101 +1,136 @@
-# ---------------------------------------------------------------------------
-# PROVENANCE & CONFIDENCE  (full matrix: docs/PROVENANCE.md)
-#   Source     : YES Bank live pages, yes.bank.in (HTML; MITC PDF is session-gated)
-#   Verified   : 2026-07-04   Confidence: MEDIUM (web)
-#   Fees, reward rate, forex & caps cross-checked vs the source above where extractable.
-# Eligibility income bands, min credit score & some launch dates are tier-standard
-# defaults (not individually source-verified). Exact monthly caps on some cashback
-# cards remain source/HTML-noted. See docs/sources/<issuer>/ for evidence.
-# ---------------------------------------------------------------------------
 id: yes-emi
 name: YES Bank EMI Credit Card
-issuer: "yes"
-network: mastercard
-network_tier: platinum
+image_path: /cards/yes/emi.webp
+issuer: 'yes'
+network: null
+network_tier: null
 tier: entry
 card_type: credit
 co_brand: null
 status: active
-launched_on: 2022-01-01
+launched_on: null
 discontinued_on: null
-
 fees:
-  - effective_from: 2026-06-15
-    effective_until: null
-    joining_fee_inr: 0
-    annual_fee_inr: 0
-    fee_waiver: null
-    forex_markup_pct: 3.5
-    finance_charge_monthly_pct: 3.99
-    cash_advance_fee:
-      pct: 2.5
-      min_inr: 300
-    gst_applicable: true
-    notes: "Automatic EMI-conversion card: transactions auto-convert to 3-12 month EMIs at 18% p.a. + 1% processing fee. 1% cashback on transactions not converted to EMI."
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/emi-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  joining_fee_inr: 499
+  annual_fee_inr: 499
+  fee_waiver:
+    spend_inr: 120000
+    cycle: annual
+  forex_markup_pct: 3.5
+  finance_charge_monthly_pct: 3.99
+  cash_advance_fee:
+    pct: 2.5
+    min_inr: 650
+  gst_applicable: true
+  notes: Current issuer listing shows INR 499 joining and renewal fees; renewal is waived after INR 120,000 spend
+    in the preceding year. The exact fee effective date is not published in reviewed page/MITC, so 2026-10-26 is
+    the verification snapshot date. Current MITC v18 sets 3.99% monthly finance, 3.5% forex and cash-advance fee
+    at 2.5% or INR 650, whichever is higher, effective 15-Jun-2026. Card-specific EMI terms state eligible retail
+    transactions INR 5,000-10,000 convert to 3 months, INR 10,001-20,000 to 6 months, and INR 20,001-500,000 to
+    12 months at 18% p.a. reducing balance with 1% processing fee plus GST. Merchant EMI, cash, fees and excluded
+    categories do not convert; see issuer terms.
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/emi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/yes/emi/ybl-mitc-v18-2026-10-05.pdf
+    fields_verified:
+    - fees.joining_fee_inr
+    - fees.annual_fee_inr
+    - fees.fee_waiver
+    - fees.forex_markup_pct
+    - fees.finance_charge_monthly_pct
+    - fees.cash_advance_fee
+    notes: Issuer listing verifies fees and waiver; MITC v18 verifies forex, APR and cash-advance terms. EMI conversion
+      terms were reviewed from the indexed issuer card-specific terms; no fee effective date was disclosed for the
+      membership schedule.
 rewards:
-  - effective_from: 2026-06-15
-    effective_until: null
-    currency: cashback
-    currency_name: Cashback
-    base:
-      rate: 1.0
-      per_inr: 100
-      unit_value_inr: 1.0
-      unit_value_inr_realized: 1.0
-    accelerated: []
-    exclusions:
-      - fuel
-      - wallet-loads
-      - rent
-      - insurance-premiums
-      - emi
-    mcc_exclusions: ['6513']
-    reward_cap:
-      max_units: 500
-      cap_unit: cashback-inr
-      cycle: monthly
-    capping_rules:
-      - "1% cashback capped at ₹500 per month; applies only to transactions not converted into EMIs."
-    redemption:
-      - type: statement-credit
-        program: Cashback
-        rate_inr_per_unit: 1.0
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/emi-credit-card
-      retrieved_on: 2026-07-03
-      type: issuer-page
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  currency: cashback
+  currency_name: Cashback
+  base:
+    rate: 1.0
+    per_inr: 100
+    unit_value_inr: 1.0
+    unit_value_inr_realized: 1.0
+  accelerated: []
+  exclusions:
+  - fuel
+  - cash-advance
+  - emi
+  reward_cap:
+    max_units: 500
+    cap_unit: cashback-inr
+    cycle: monthly
+  capping_rules:
+  - 1% cashback on transactions not converted to EMI; capped at INR 500 per calendar month.
+  - Card-specific terms exclude fuel, cash withdrawals and other categories under the issuer's internal policy;
+    the issuer does not publish a complete current MCC list for this cashback feature.
+  redemption:
+  - type: statement-credit
+    program: Cashback
+    rate_inr_per_unit: 1.0
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/emi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    fields_verified:
+    - rewards.base.rate
+    - rewards.base.per_inr
+    - rewards.base.unit_value_inr
+    - rewards.base.unit_value_inr_realized
+    - rewards.exclusions
+    - rewards.reward_cap
+    - rewards.capping_rules
+    - rewards.redemption
+    notes: Current issuer listing and card-specific terms confirm 1% cashback on non-EMI transactions and a calendar-month
+      INR 500 cap; exact further select-category exclusions are not published. The record date is the review snapshot;
+      no effective date for these cashback terms was published.
 benefits:
-  - effective_from: 2026-06-15
-    effective_until: null
-    lounge_access: null
-    fuel_surcharge_waiver:
-      pct: 1.0
-      min_txn_inr: 400
-      max_txn_inr: 5000
-      cap_per_cycle_inr: null
-      cycle: monthly
-    concierge: false
-    source:
-      url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/emi-credit-card
-      retrieved_on: 2026-07-03
-
+- effective_from: '2026-10-26'
+  effective_until: null
+  lounge_access: null
+  fuel_surcharge_waiver:
+    pct: 1.0
+    min_txn_inr: 500
+    max_txn_inr: 3000
+    cap_per_cycle_inr: 250
+    cycle: statement
+  concierge: null
+  source:
+    url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/emi-credit-card
+    retrieved_on: '2026-10-26'
+    type: issuer-page
+    confidence: high
+    local_refs:
+    - docs/sources/yes/emi/ybl-mitc-v18-2026-10-05.pdf
+    fields_verified:
+    - benefits.lounge_access
+    - benefits.fuel_surcharge_waiver
+    notes: MITC v18 groups EMI Card with the INR 500-3,000 fuel transaction band and INR 250 statement-cycle cap.
+      No lounge or concierge entitlement was located in reviewed current issuer material. Record date is the review
+      snapshot because the issuer did not state the feature effective date.
 eligibility:
-  min_age: 21
-  max_age: 60
+  min_age: null
+  max_age: null
   income_inr_annual:
-    salaried: 300000
-    self_employed: 300000
-  credit_score_min: 700
-  residency: resident-indian
-
+    salaried: null
+    self_employed: null
+  credit_score_min: null
+  residency: null
+  notes: Current reviewed card material does not publish card-specific age, residency, income or bureau-score cutoffs.
 application:
   apply_url: https://www.yes.bank.in/personal-banking/yes-individual/cards/credit-cards/emi-credit-card
-
 metadata:
-  last_verified_on: 2026-07-03
-  tags: [entry, cashback, emi, lifetime-free]
+  last_verified_on: '2026-10-26'
+  tags:
+  - entry
+  - cashback
+  - emi
+  - annual-fee-waiver

@@ -8,8 +8,15 @@ currency: miles
 currency_name: Maharaja Points
 
 unit_value_inr:
-  face: 1.0
-  realized: 0.5
+  # 2026-10-21 (D-27): face 1.0 -> 0.7 and realized 0.5 -> 0.55 to match the
+  # 2026-07-05 re-verification after Air India's April 2026 award-chart change.
+  # Both SBI Air India cards' rewards sources (sbicard.com, retrieved 2026-07-05)
+  # read "Air India Maharaja ~Rs0.5-0.7 economy post Apr-2026 chart ... Was face
+  # Rs1.0", and docs/TRANSFER_PARTNERS.md (verified 2026-07-05) values Air India
+  # Maharaja at 0.55 "post-Apr-2026 revaluation". Face is the top of the
+  # post-change band; 0.55 stays inside this file's range.
+  face: 0.7
+  realized: 0.55
   realized_source:
     method: midpoint
     range: [0.35, 0.70]
@@ -19,8 +26,10 @@ unit_value_inr:
       Community-sourced optimal redemption hacks extract up to ₹1.30/pt
       on specific Star Alliance partner sweet spots; typical award
       redemptions on Air India directly are much lower (~₹0.35-0.50/pt
-      after tax/fuel-surcharge drag). The 0.50 midpoint reflects a
-      realistic blend of typical-case and occasional optimisation.
+      after tax/fuel-surcharge drag). The 0.50 midpoint reflected a
+      realistic blend of typical-case and occasional optimisation; it was
+      raised to 0.55 on 2026-10-21 to match the post-April-2026 value the
+      repo verified on 2026-07-05 (see the comment above).
     references:
       - url: https://thepointsguy.com/loyalty-programs/air-india-flying-returns/
         retrieved_on: 2026-04-30
@@ -62,7 +71,7 @@ redemption_paths:
   - type: airmiles
     program: Air India award flights and Star Alliance partners
     rate_inr_per_unit:
-      face: 1.0
+      face: 0.7
       realized: 0.45
     constraints: "Award taxes/surcharges are significant; partner redemptions can yield better cents-per-mile."
 

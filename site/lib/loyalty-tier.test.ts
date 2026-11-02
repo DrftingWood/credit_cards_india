@@ -131,6 +131,9 @@ describe("loyalty tier on live data", () => {
       const stacking = r?.accelerated?.filter((a) => a.stacks_with_program) ?? [];
       const prog = programs.find((p) => p.id === r?.loyalty_program);
       if (!stacking.length || !prog?.earn?.tiers?.length) continue;
+      // A card with no card-level point value has no rupee tier line to show. The 2026-10
+      // catalogue removed idfc-first-indigo's value (issuer: redemption value varies by route).
+      if (r?.base.unit_value_inr == null && r?.base.unit_value_inr_realized == null) continue;
       const tokens = stacking.flatMap((a) => [...(a.merchants ?? []), ...(a.channel?.merchants ?? [])]);
       const ctx: ScoringContext = {
         applyApplicability: true, valueBasis: "realized",
@@ -146,6 +149,6 @@ describe("loyalty tier on live data", () => {
       }
       seen++;
     }
-    expect(seen).toBeGreaterThanOrEqual(3);
+    expect(seen).toBeGreaterThanOrEqual(2); // was 3 before idfc-first-indigo lost its point value (2026-10)
   });
 });

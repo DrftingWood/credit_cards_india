@@ -98,14 +98,14 @@ describe("D-24 still holds with programme data: a declared tier is a line, not t
 const EXPECTED: Record<string, [number, number]> = {
   "axis-indigo": [0.45, 0.6], "axis-indigo-premium": [0.45, 0.6], "idfc-first-indigo": [0.45, 0.6],
   "kotak-indigo": [0.45, 0.6], "kotak-indigo-xl": [0.45, 0.6], "sbi-indigo": [0.45, 0.6], "sbi-indigo-elite": [0.45, 0.6],
-  "bob-irctc": [0.18, 0.25],
+  "bob-irctc": [0.25, 0.25], // 2026-10 catalogue: realized raised 0.18 -> 0.25 (data/cards/bob/irctc.yaml)
   "hdfc-irctc-hdfc": [1, 1], "rbl-irctc": [1, 1], "sbi-irctc-platinum": [1, 1], "sbi-irctc-premier": [1, 1],
   "hdfc-marriott-bonvoy": [0.55, 0.85],
   "hdfc-tata-neu-infinity": [1, 1], "hdfc-tata-neu-infinity-rupay": [1, 1], "hdfc-tata-neu-plus": [1, 1], "hdfc-tata-neu-plus-rupay": [1, 1], "sbi-tata-neu-infinity": [1, 1], "sbi-tata-neu-plus": [1, 1],
-  "sbi-air-india-platinum": [0.55, 0.7], "sbi-air-india-signature": [0.55, 0.7],
+  // sbi-air-india-platinum and -signature left this list: inactive in the 2026-10 catalogue.
 };
 
-describe("live data: the 19 reviewed co-brand cards", () => {
+describe("live data: the reviewed co-brand cards", () => {
   test("every card linked to a programme is in the reviewed list, with the reviewed values", async () => {
     const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
     const { default: progs } = await import("../../dist/loyalty_programs.json", { with: { type: "json" } });

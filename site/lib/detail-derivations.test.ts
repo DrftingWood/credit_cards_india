@@ -10,10 +10,10 @@ describe("accelerator presentation helpers — units-correct, not raw effective_
     const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
     const reserve = (cards as unknown as EnrichedCard[]).find((c) => c.id === "axis-reserve")!;
     const pct = bestAcceleratedPct(reserve);
-    // 30 pts per ₹200 at ₹0.18/pt realized (EDGE Reward Points, uniform 2026-07) = 2.7% — NOT 30.
-    expect(pct).not.toBeNull();
-    expect(pct!).toBeGreaterThan(2);
-    expect(pct!).toBeLessThan(4);
+    // The 2026-10 issuer-verified catalogue removed Reserve's point value ("No universal point
+    // redemption value is published"), so there is no percent to show. The point is that the raw
+    // 30 (points per ₹200) is never presented as 30%.
+    expect(pct === null || pct < 4).toBe(true);
   });
 
   test("formatAcceleratedRate shows receipt-visible points rate, not a percent, for points cards", async () => {

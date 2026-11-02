@@ -10,7 +10,7 @@ export default defineConfig({
     },
   },
   test: {
-    include: ["lib/**/*.test.ts", "components/**/*.test.tsx"],
+    include: ["lib/**/*.test.ts", "components/**/*.test.tsx", "scripts/**/*.test.mjs"],
     environment: "node",
     testTimeout: 20000,
   },

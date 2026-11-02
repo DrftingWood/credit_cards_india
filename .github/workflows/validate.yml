@@ -84,6 +84,12 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Escape-hatch ratchet
+        run: npm run ratchet
+
+      - name: File-size gate
+        run: npm run file-size
+
       - name: Build
         run: npm run build
 

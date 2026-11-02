@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { EnrichedCard, LoyaltyProgram } from "@/lib/types";
-import { CANONICAL_CATEGORIES, CATEGORY_LABELS, type CanonicalCategory } from "@/lib/category-mapping";
+import { CANONICAL_CATEGORIES, CATEGORY_LABELS } from "@/lib/category-mapping";
 import { cardHref } from "@/lib/data";
 import { IssuerLogo } from "@/components/logos/issuer-logo";
 import { NetworkLogo } from "@/components/logos/network-logo";
@@ -17,7 +17,7 @@ import { useUsageProfile } from "@/lib/use-usage-profile";
 import { tierContext, toggleEcosystem, usageContext } from "@/lib/usage";
 import { DeclaredUsageSummary } from "@/components/detail/usage-panel";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
-import { allocatePortfolio, type Portfolio, type PortfolioSlot } from "@/lib/portfolio";
+import { allocatePortfolio, type PortfolioSlot } from "@/lib/portfolio";
 import { formatInr, formatPct } from "@/lib/utils";
 import {
   IconCashback, IconCheck, IconDining, IconFuel, IconGroceries, IconHealth, IconLightbulb,

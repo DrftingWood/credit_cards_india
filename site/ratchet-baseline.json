@@ -1,3 +1,7 @@
 {
+  "any": 1,
+  "asUnknownAs": 6,
+  "nonNull": 11,
+  "eslintDisable": 3,
   "lintWarnings": 116
 }

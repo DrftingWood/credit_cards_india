@@ -1,6 +1,6 @@
 import { describe, test, expect } from "vitest";
 import { allocatePortfolio } from "./portfolio";
-import { scoreCard, rankCards, type SpendProfile } from "./calculator";
+import { rankCards, type SpendProfile } from "./calculator";
 import type { EnrichedCard } from "./types";
 import { usageContext, type UsageProfile } from "./usage";
 

@@ -2,14 +2,21 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/site-config";
 import { Suspense } from "react";
 import { getActiveCards, getAllIssuers } from "@/lib/data";
+import { browseCanonical } from "@/lib/paginate";
 import { BrowseClient } from "./browse-client";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Browse every Indian credit card",
-  description:
-    "Filter Indian credit cards by issuer, network, tier, reward currency, lifetime-free, lounge access, and co-brand.",
-  path: "/browse",
-});
+type Search = Record<string, string | string[] | undefined>;
+
+// Reading searchParams makes this route render per request, which is what lets page N carry its own
+// canonical in the initial HTML. Filtering itself stays client-side.
+export async function generateMetadata({ searchParams }: { searchParams: Promise<Search> }): Promise<Metadata> {
+  return pageMetadata({
+    title: "Browse every Indian credit card",
+    description:
+      "Filter Indian credit cards by issuer, network, tier, reward currency, lifetime-free, lounge access, and co-brand.",
+    path: browseCanonical(await searchParams, getActiveCards().length),
+  });
+}
 
 export default function BrowsePage() {
   const cards = getActiveCards();

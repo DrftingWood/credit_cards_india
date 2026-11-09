@@ -2,7 +2,7 @@ import { describe, test, expect } from "vitest";
 import { computeHeadlineRatePct } from "./headline-rate.mjs";
 import { scoreCard } from "./calculator";
 import { bestAcceleratedPct } from "./detail-derivations";
-import type { EnrichedCard, RewardRecord } from "./types";
+import type { EnrichedCard, LoyaltyProgram, RewardRecord } from "./types";
 
 const SOURCE = { url: "https://example.test", retrieved_on: "2024-01-01" };
 
@@ -90,5 +90,29 @@ describe("computeHeadlineRatePct — the build-time badge shares the engines' ra
     expect(headline).toBeCloseTo(5, 6);
     expect(calc).toBeCloseTo(headline!, 6);
     expect(derived).toBeCloseTo(headline!, 6);
+  });
+});
+
+describe("headline rate honours unit_value_from_program: false (D-27)", () => {
+  // bob-irctc: the card's own points convert into the programme at a non-1:1 ratio, so the
+  // programme's unit value is not the card's. The badge used the programme value anyway and
+  // showed 4x the rate the calculator scored on the same record.
+  const programs = { prog: { id: "prog", name: "Prog", unit_value_inr: { realized: 1, face: 1 } } } as unknown as Record<string, LoyaltyProgram>;
+  const rewards = {
+    ...rewardsOf({ currency: "points", rate: 2, per_inr: 100, unit_value_inr_realized: 0.25 }),
+    loyalty_program: "prog",
+    unit_value_from_program: false,
+  } as unknown as RewardRecord;
+
+  test("badge uses the card's own unit value and matches the calculator", () => {
+    const badge = computeHeadlineRatePct(rewards, programs);
+    expect(badge).toBeCloseTo(0.5, 6);
+    const scored = scoreCard(cardOf(rewards), { online: 10_000, groceries: 0, dining: 0, fuel: 0, travel: 0, utilities: 0, rent: 0, international: 0 }, { programs });
+    expect(scored.buckets[0]!.effective_rate_pct).toBeCloseTo(badge!, 6);
+  });
+
+  test("without the opt-out the programme value still wins", () => {
+    const stacked = { ...rewards, unit_value_from_program: undefined } as unknown as RewardRecord;
+    expect(computeHeadlineRatePct(stacked, programs)).toBeCloseTo(2, 6);
   });
 });

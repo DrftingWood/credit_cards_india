@@ -94,7 +94,8 @@ export interface PortfolioOpts {
 }
 
 function emptySpend(): SpendProfile {
-  return { online: 0, groceries: 0, dining: 0, fuel: 0, travel: 0, utilities: 0, rent: 0, international: 0 };
+  // telecom is optional on SpendProfile but routed sums index every bucket, so it must start at 0.
+  return { online: 0, groceries: 0, dining: 0, fuel: 0, travel: 0, utilities: 0, rent: 0, international: 0, telecom: 0 };
 }
 
 function valueAt(card: EnrichedCard, bucket: CanonicalCategory, amount: number, ctx: ScoringContext): number {
@@ -237,9 +238,16 @@ function annualFeeForRouted(card: EnrichedCard, routedMonthly: SpendProfile, ctx
   return scoreCard(card, routedMonthly, ctx).annual_fee_effective_inr;
 }
 
-/** Two cards are variants when one id extends the other (yes-paisabazaar / -rupay). */
+const NETWORK_SUFFIXES = ["rupay", "visa", "mastercard", "amex", "diners"];
+
+/**
+ * Two cards are variants when one id is the other plus a network suffix
+ * (yes-paisabazaar / yes-paisabazaar-rupay): one product on two rails. A bare prefix
+ * match is not enough: hdfc-regalia / hdfc-regalia-gold are different products.
+ */
 function isVariantOf(a: string, b: string): boolean {
-  return b.startsWith(a + "-") || a.startsWith(b + "-");
+  const [short, long] = a.length <= b.length ? [a, b] : [b, a];
+  return NETWORK_SUFFIXES.some((n) => long === `${short}-${n}`);
 }
 
 /**
@@ -498,4 +506,17 @@ export function allocatePortfolio(
     result = best;
   }
   return result;
+}
+
+/**
+ * What the stack earns a year over the best single card, compared like for like. The
+ * allocator does not net forex markup (CALC-4, open), while a card score does, so the
+ * single card's forex cost is added back; otherwise any international spend inflated the
+ * "stacking advantage" by exactly that cost.
+ */
+export function stackingGainAnnual(
+  portfolio: Pick<Portfolio, "annual_net_inr">,
+  bestSingle: { annual_net_inr: number; annual_forex_inr: number },
+): number {
+  return portfolio.annual_net_inr - (bestSingle.annual_net_inr + bestSingle.annual_forex_inr);
 }

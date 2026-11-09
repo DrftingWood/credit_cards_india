@@ -21,7 +21,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 import type { EnrichedCard, LoyaltyProgram, BenefitRecord } from "./types";
-import { forexCost, scoreCard, type ScoringContext, type SpendProfile } from "./calculator";
+import { forexCost, scoreCard, unitValueFor, type ScoringContext, type SpendProfile } from "./calculator";
 import { pointsToPct } from "./rate-math.mjs";
 import { CanonicalCategory } from "./category-mapping";
 import type { RecommendPayload } from "./recommender";
@@ -105,9 +105,8 @@ function loungeVisits(b: BenefitRecord | null): DecoupledScore["lounge_visits"] 
 function realizedUnitValue(card: EnrichedCard, programs: Record<string, LoyaltyProgram>): number {
   const r = card.current_rewards;
   if (!r) return 0;
-  const lp = r.loyalty_program ? programs[r.loyalty_program] : null;
-  if (lp) return lp.unit_value_inr.realized;
-  return r.base.unit_value_inr_realized ?? r.base.unit_value_inr ?? (r.currency === "cashback" ? 1 : 0);
+  // Same resolution the rank uses (programme value unless the record opts out, D-27).
+  return unitValueFor(r, programs, "realized") ?? (r.currency === "cashback" ? 1 : 0);
 }
 
 export function ratesFlags(card: EnrichedCard, topBucket: CanonicalCategory | null, rewardedBuckets: Set<CanonicalCategory>, uv: number): string[] {

@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { allocatePortfolio } from "./portfolio";
+import { allocatePortfolio, stackingGainAnnual } from "./portfolio";
 import { scoreCard, type SpendProfile } from "./calculator";
 import type { EnrichedCard } from "./types";
 
@@ -179,5 +179,41 @@ describe("cap-aware portfolio allocation", () => {
     });
     const naiveNet = naive.slots.reduce((t, s) => t + s.monthly_value_inr * 12 - s.annual_fee_inr, 0);
     expect(p.annual_net_inr).toBeGreaterThanOrEqual(naiveNet);
+  });
+});
+
+describe("card variants in a stack", () => {
+  // One capped product cloned under three ids, so only the id relationship differs.
+  async function clones(ids: string[]) {
+    const cards = await load();
+    const proto = cards.find((c) => c.id === "axis-cashback")!;
+    return ids.map((id) => ({ ...proto, id, metadata: { ...proto.metadata, exclusive_group: undefined } }) as EnrichedCard);
+  }
+  const HEAVY_ONLINE = spend({ online: 400_000 });
+  const opts = { dropFeeNegative: false };
+
+  test("a network variant (x / x-rupay) is the same product and is held once", async () => {
+    const p = allocatePortfolio(await clones(["zz-card", "zz-card-rupay"]), HEAVY_ONLINE, {}, opts);
+    expect(p.slots.length).toBe(1);
+  });
+
+  test("a sibling whose id merely extends another (x / x-plus) is a different product and can stack", async () => {
+    // 52 real pairs share a prefix this way (hdfc-regalia / -gold, sbi-elite / -advantage);
+    // issuer co-holding rules belong in metadata.exclusive_group, not in a string match.
+    const p = allocatePortfolio(await clones(["zz-card", "zz-card-plus"]), HEAVY_ONLINE, {}, opts);
+    expect(p.slots.map((s) => s.card.id).sort()).toEqual(["zz-card", "zz-card-plus"]);
+  });
+});
+
+describe("stacking advantage", () => {
+  test("is not inflated by the single card's forex cost, which the allocator does not net", async () => {
+    const cards = await load();
+    const profile = spend({ dining: 150_000, international: 100_000 });
+    const pool = byId(cards, STACKABLE);
+    const p = allocatePortfolio(pool, profile);
+    const best = pool.map((c) => scoreCard(c, profile)).sort((a, b) => b.annual_net_inr - a.annual_net_inr)[0]!;
+    expect(best.annual_forex_inr).toBeGreaterThan(0);
+    expect(stackingGainAnnual(p, best)).toBeCloseTo(p.annual_net_inr - best.annual_net_inr - best.annual_forex_inr, 6);
+    expect(stackingGainAnnual(p, best)).toBeLessThan(p.annual_net_inr - best.annual_net_inr);
   });
 });

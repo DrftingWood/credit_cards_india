@@ -48,7 +48,7 @@ const capped = (acc: number, capSpend: number, base: number, ptval = 1.0): EarnF
 export interface Channel {
   name: string;
   card: string; // representative card, or "" for card-agnostic
-  markupLevel: "sb" | "edge" | "none"; // which route markup range applies
+  markupLevel: "sb" | "edge" | "ota" | "none"; // which route markup applies
   discPct: number;
   discCap: number;
   mode: "cash" | "points";
@@ -63,7 +63,7 @@ export function channelsFor(r: Route, pt: PointValues): Channel[] {
   return [
     { name: "Cheapest OTA + bank 10% off + 1.5% cashback", card: "", markupLevel: "none", discPct: r.inst, discCap: r.cap, mode: "cash", earn: flat(0.015) },
     { name: "Cheapest OTA + Atlas base + bank 10% off", card: "axis-atlas", markupLevel: "none", discPct: r.inst, discCap: r.cap, mode: "cash", earn: flat(0.02, pt.atlasFloor) },
-    { name: "MakeMyTrip + myCash + MMT 10% off", card: "icici-mmt", markupLevel: "none", discPct: r.inst, discCap: r.cap, mode: "cash", earn: flat(r.mmtEarn, pt.mmtMyCash), closedLoopNote: "myCash is spendable only on MakeMyTrip — counted at ₹1 only if you'll book there again." },
+    { name: "MakeMyTrip + myCash + MMT 10% off", card: "icici-mmt", markupLevel: "ota", discPct: r.inst, discCap: r.cap, mode: "cash", earn: flat(r.mmtEarn, pt.mmtMyCash), closedLoopNote: "myCash is spendable only on MakeMyTrip — counted at ₹1 only if you'll book there again." },
     { name: "HDFC SmartBuy + Infinia 10X + 10% off (cap ₹500)", card: "hdfc-infinia", markupLevel: "sb", discPct: 0.1, discCap: 500, mode: "cash", earn: capped(0.3333, 22500, 0.0333, pt.rp), note: "10X ≈ 33% up to ₹22,500/mo, then ~3.33%." },
     { name: "HDFC SmartBuy · pay with points (Infinia)", card: "hdfc-infinia", markupLevel: "sb", discPct: 0.1, discCap: 500, mode: "points", pointAlt: pt.rp, note: "Burns Reward Points worth ₹1 each — a leak if the portal is marked up." },
     { name: "Axis Travel EDGE + Atlas 5X (miles @ floor)", card: "axis-atlas", markupLevel: "edge", discPct: 0, discCap: 0, mode: "cash", earn: flat(0.05, pt.atlasFloor) },
@@ -88,6 +88,8 @@ function markupAt(ch: Channel, r: Route, band: 0 | 1 | 2, override?: number): nu
   if (override != null) return override;
   if (ch.markupLevel === "sb") return r.sb[band];
   if (ch.markupLevel === "edge") return r.edge[band];
+  // A single sourced estimate, not a range: the priciest OTA's sticker premium over the cheapest.
+  if (ch.markupLevel === "ota") return r.ota;
   return 0;
 }
 

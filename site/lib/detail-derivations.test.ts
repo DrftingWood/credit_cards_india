@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { bestAcceleratedPct, formatAcceleratedRate } from "./detail-derivations";
+import { bestAcceleratedPct, derivePros, formatAcceleratedRate, productDetails, summaryProse } from "./detail-derivations";
 import type { EnrichedCard } from "./types";
 
 // These functions feed the listing tile, the compare table and the SEO meta
@@ -45,5 +45,44 @@ describe("accelerator presentation helpers — units-correct, not raw effective_
       rewards,
     );
     expect(label).not.toMatch(/Infinity|NaN/);
+  });
+});
+
+describe("card-page text does not state what the record does not say", () => {
+  async function card(id: string) {
+    const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
+    return structuredClone((cards as unknown as EnrichedCard[]).find((c) => c.id === id)!);
+  }
+  const text = (c: EnrichedCard) => [...summaryProse(c), ...productDetails(c), ...derivePros(c)].join(" ");
+
+  test("a lounge record with zero visits is not described as lounge access", async () => {
+    // The build's has_*_lounge flags already treat visits_per_cycle: 0 as no lounge; the page
+    // text tested only that the object existed and printed "0 annual international".
+    const c = await card("sbi-cashback");
+    (c as { current_benefits: unknown }).current_benefits = { lounge_access: { international: { visits_per_cycle: 0, cycle: "annual" } } };
+    c.computed = { ...c.computed, has_domestic_lounge: false, has_international_lounge: false };
+    expect(text(c)).not.toMatch(/lounge/i);
+
+    (c as { current_benefits: unknown }).current_benefits = { lounge_access: { domestic: { visits_per_cycle: 4, cycle: "annual" }, international: { visits_per_cycle: 0, cycle: "annual" } } };
+    c.computed = { ...c.computed, has_domestic_lounge: true };
+    expect(text(c)).toMatch(/domestic/);
+    expect(text(c)).not.toMatch(/international/i);
+  });
+
+  test.each([
+    [0, /with no annual fee\./],
+    [999, /with an annual fee of ₹999 \+ GST\./],
+    [null, /credit card from [^,]+\.$/],
+  ])("annual fee %s is worded as what it is", async (fee, expected) => {
+    const c = await card("sbi-cashback");
+    (c.current_fees as { annual_fee_inr: number | null }).annual_fee_inr = fee;
+    expect(summaryProse(c)[0]).toMatch(expected);
+    expect(summaryProse(c)[0]).not.toMatch(/joining fee|₹0 \+ GST/);
+  });
+
+  test("a waiver with no stated spend threshold does not print a blank amount", async () => {
+    const c = await card("sbi-cashback");
+    c.computed = { ...c.computed, has_fee_waiver: true, fee_waiver_spend_inr: null };
+    expect(derivePros(c).join(" ")).not.toMatch(/waivable on — spend|waivable on\s+spend/);
   });
 });

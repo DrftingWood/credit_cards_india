@@ -97,6 +97,25 @@ export function rewardTypeLabel(card: EnrichedCard): string {
   return cur;
 }
 
+/** How the opening sentence states the annual fee; silent when the record has none. */
+function feeClause(annualFee: number | null): string {
+  if (annualFee === null) return ".";
+  return annualFee === 0 ? ", with no annual fee." : `, with an annual fee of ${formatInr(annualFee)} + GST.`;
+}
+
+/**
+ * Lounge entries that are real access. The build's has_*_lounge flags are the one
+ * definition (a record with visits_per_cycle: 0 and no spend path is not access), so the
+ * page text cannot contradict the listing badge and the filter.
+ */
+function realLounge(card: EnrichedCard) {
+  const lounge = card.current_benefits?.lounge_access;
+  return {
+    domestic: card.computed.has_domestic_lounge ? lounge?.domestic ?? null : null,
+    international: card.computed.has_international_lounge ? lounge?.international ?? null : null,
+  };
+}
+
 /** 2–3 sentence prose summary derived from card attributes. */
 export function summaryProse(card: EnrichedCard): string[] {
   const sentences: string[] = [];
@@ -110,12 +129,12 @@ export function summaryProse(card: EnrichedCard): string[] {
   if (partner) {
     sentences.push(
       `The ${card.name} is a ${tierLabel} co-branded credit card from ${issuer} and ${partner}` +
-        (fee !== null ? `, with a joining fee of ${formatInr(fee)} + GST.` : "."),
+        feeClause(fee),
     );
   } else {
     sentences.push(
       `The ${card.name} is a ${tierLabel} credit card from ${issuer}` +
-        (fee !== null ? `, with a joining fee of ${formatInr(fee)} + GST.` : "."),
+        feeClause(fee),
     );
   }
 
@@ -138,9 +157,9 @@ export function summaryProse(card: EnrichedCard): string[] {
   }
 
   // Sentence 3: lounge / welcome
-  const lounge = card.current_benefits?.lounge_access;
+  const lounge = realLounge(card);
   const welcome = card.current_benefits?.welcome?.[0];
-  if (lounge?.domestic || lounge?.international) {
+  if (lounge.domestic || lounge.international) {
     const parts: string[] = [];
     if (lounge.domestic) {
       const v = lounge.domestic.visits_per_cycle;
@@ -192,8 +211,8 @@ export function productDetails(card: EnrichedCard): string[] {
   }
   if (networkName) bullets.push(`Available on the ${networkName} network.`);
   else bullets.push("The issuer has not stated the card's network variant.");
-  const lounge = card.current_benefits?.lounge_access;
-  if (lounge?.domestic || lounge?.international) {
+  const lounge = realLounge(card);
+  if (lounge.domestic || lounge.international) {
     const parts: string[] = [];
     if (lounge.domestic) parts.push(`domestic (${lounge.domestic.visits_per_cycle}/${lounge.domestic.cycle ?? "yr"})`);
     if (lounge.international) parts.push(`international (${lounge.international.visits_per_cycle}/${lounge.international.cycle ?? "yr"})`);
@@ -210,7 +229,7 @@ export function productDetails(card: EnrichedCard): string[] {
 export function derivePros(card: EnrichedCard): string[] {
   const pros: string[] = [];
   if (card.computed.is_lifetime_free) pros.push("Lifetime-free — no joining or annual fee.");
-  if (card.computed.has_fee_waiver) {
+  if (card.computed.has_fee_waiver && card.computed.fee_waiver_spend_inr != null) {
     pros.push(`Annual fee waivable on ${formatInr(card.computed.fee_waiver_spend_inr)} spend.`);
   }
   const base = card.computed.headline_rate_pct;
@@ -222,10 +241,11 @@ export function derivePros(card: EnrichedCard): string[] {
   if (forex !== null && forex !== undefined && forex < 3) {
     pros.push(`Low forex markup of ${formatPct(forex, 2)} — suited to international spends.`);
   }
-  if (card.current_benefits?.lounge_access?.international) {
+  const lounge = realLounge(card);
+  if (lounge.international) {
     pros.push("Complimentary international airport lounge access.");
-  } else if (card.current_benefits?.lounge_access?.domestic) {
-    const d = card.current_benefits.lounge_access.domestic;
+  } else if (lounge.domestic) {
+    const d = lounge.domestic;
     pros.push(
       `Complimentary domestic airport lounge access (${d.visits_per_cycle}/${d.cycle ?? "year"}).`,
     );
@@ -258,7 +278,7 @@ export function deriveCons(card: EnrichedCard): string[] {
   if (card.current_rewards?.exclusions?.includes("fuel")) {
     cons.push("No rewards on fuel spends.");
   }
-  if (!card.current_benefits?.lounge_access?.domestic && !card.current_benefits?.lounge_access?.international) {
+  if (!card.computed.has_domestic_lounge && !card.computed.has_international_lounge) {
     cons.push("No complimentary airport lounge access.");
   }
   if (card.computed.is_invite_only) cons.push("Invite-only — limited availability.");

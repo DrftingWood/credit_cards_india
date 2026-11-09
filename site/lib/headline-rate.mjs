@@ -8,16 +8,25 @@
  */
 import { pointsToPct } from "./rate-math.mjs";
 
+/**
+ * Unit-value preference mirrors unitValueFor in site/lib/accelerators.ts — programme
+ * realized > base realized > base face — so the listing badge and the recommender score
+ * the same card on the same basis. A record that opts out (unit_value_from_program: false,
+ * D-27) uses its own values.
+ */
+function realizedUnitValue(rewards, programsById) {
+  const b = rewards.base ?? {};
+  const program = rewards.loyalty_program && rewards.unit_value_from_program !== false
+    ? programsById?.[rewards.loyalty_program]
+    : null;
+  return program?.unit_value_inr?.realized ?? program?.unit_value_inr?.face ?? b.unit_value_inr_realized ?? b.unit_value_inr;
+}
+
 export function computeHeadlineRatePct(rewards, programsById) {
   if (!rewards) return null;
   const b = rewards.base ?? {};
   const { rate, per_inr } = b;
-  // Unit-value preference mirrors site/lib/calculator.ts unitValueFor —
-  // programme realized > base realized > base face — so the listing badge
-  // and the recommender score the same card on the same basis.
-  const program = rewards.loyalty_program ? programsById?.[rewards.loyalty_program] : null;
-  const unitValue =
-    program?.unit_value_inr?.realized ?? b.unit_value_inr_realized ?? b.unit_value_inr;
+  const unitValue = realizedUnitValue(rewards, programsById);
   // KEEP this guard — pointsToPct returns 0 for per_inr <= 0, but this
   // caller's contract is to return null (so the site renders "—" not "0.00%").
   if (rate == null || !per_inr || unitValue == null) return null;

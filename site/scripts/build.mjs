@@ -182,7 +182,8 @@ function buildIndex(cards, issuers, networks) {
     tiers.set(c.tier, (tiers.get(c.tier) ?? 0) + 1);
     statuses.set(c.status, (statuses.get(c.status) ?? 0) + 1);
     byIssuer.set(c.issuer, (byIssuer.get(c.issuer) ?? 0) + 1);
-    byNetwork.set(c.network, (byNetwork.get(c.network) ?? 0) + 1);
+    // network is null when the issuer names no variant; a Map key of null became the string "null".
+    if (c.network) byNetwork.set(c.network, (byNetwork.get(c.network) ?? 0) + 1);
     const cur = c.computed?.primary_reward_currency;
     if (cur) byCurrency.set(cur, (byCurrency.get(cur) ?? 0) + 1);
     for (const t of c.metadata?.tags ?? []) {

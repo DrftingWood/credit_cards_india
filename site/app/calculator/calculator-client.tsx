@@ -19,7 +19,7 @@ import { useUsageProfile } from "@/lib/use-usage-profile";
 import { tierContext, toggleEcosystem, usageContext } from "@/lib/usage";
 import { DeclaredUsageSummary } from "@/components/detail/usage-panel";
 import { AccelerationBreakdown } from "@/components/detail/acceleration-breakdown";
-import { allocatePortfolio, type PortfolioSlot } from "@/lib/portfolio";
+import { allocatePortfolio, stackingGainAnnual, type PortfolioSlot } from "@/lib/portfolio";
 import { formatInr, formatPct } from "@/lib/utils";
 
 /** Parse an input value to a finite rupee amount in [0, MAX_MONTHLY_SPEND]. The ceiling
@@ -137,15 +137,17 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
     return { ranked: top, pinnedSelected: pinned };
   }, [cards, spend, selectedId, rankCtx]);
 
-  // Cap-aware multi-card portfolio
+  // Cap-aware multi-card portfolio. Only while its tab is open: it re-scores every card many
+  // times over, which is wasted on each keystroke when the single-card list is showing.
   const portfolio = useMemo(() => {
+    if (strategy !== "portfolio") return null;
     return allocatePortfolio(cards, spend, rankCtx, { dropFeeNegative: true });
-  }, [cards, spend, rankCtx]);
+  }, [cards, spend, rankCtx, strategy]);
 
   const monthlyTotal = Object.values(spend).reduce((a, b) => a + (b || 0), 0);
 
   const topSingleScore = ranked[0] ?? null;
-  const portfolioGainAnnual = topSingleScore ? portfolio.annual_net_inr - topSingleScore.annual_net_inr : 0;
+  const portfolioGainAnnual = portfolio && topSingleScore ? stackingGainAnnual(portfolio, topSingleScore) : 0;
 
   const applyPreset = (preset: SpendPreset) => {
     setSpend(() => preset.spend);
@@ -374,7 +376,7 @@ export function CalculatorClient({ cards, programs = [] }: { cards: EnrichedCard
           <div className="rounded-md border border-dashed border-line-strong bg-surface-subtle p-8 text-center text-fg-muted">
             Enter spend on the left or click a quick scenario above to see comparisons.
           </div>
-        ) : strategy === "portfolio" ? (
+        ) : portfolio ? (
           /* Multi-Card Stack View */
           <div className="space-y-4">
             {/* Value Header Stats */}

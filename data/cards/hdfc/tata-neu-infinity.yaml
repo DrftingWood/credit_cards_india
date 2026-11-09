@@ -93,15 +93,6 @@ rewards:
     program: Tata Neu App/Website and eligible Tata brands
     rate_inr_per_unit: 1.0
     constraints: NeuCoins are redeemable at INR 1 on eligible Tata Neu transactions and are not cash convertible.
-  source:
-    url: https://www.hdfc.bank.in/content/dam/hdfcbankpws/in/en/personal-banking/discover-products/cards/credit-cards/tata-neu-infinity-credit-card/pdf/tata-neu-infinity-hdfc-bank-credit-card-terms-and-conditions.pdf
-    retrieved_on: 2026-10-27
-    type: issuer-pdf
-    confidence: high
-    local_refs:
-    - docs/sources/hdfc/tata-neu-infinity/tata-neu-infinity-terms-2024-08-14.pdf
-    - docs/sources/hdfc/tata-neu-infinity/tata-neu-infinity-card-faq.pdf
-    - docs/sources/hdfc/tata-neu-infinity/tata-neu-hdfc-launch-2022-08-24.pdf
   capping_rules:
   - >-
     Historical partner-brand 5% earn is subject to separate merchant spend ceilings in Annex 1, not an aggregate reward-point cap. In the 14-Aug-2024 terms, monthly/annual spend ceilings were: Croma 600,000/1,800,000; Tata CliQ and Westside 300,000/1,800,000; IHCL, Air India Express, and Air India 800,000/3,000,000; 1Mg, Cult, and Tata Play 200,000/1,500,000; Tata Pay 100,000/600,000 (raised from 50,000 monthly effective 1-Aug-2024); Big Basket 100,000/1,200,000; Titan and Tanishq 600,000/1,800,000; Qmin 50,000/600,000. Some brands were added later: Titan/Tanishq from 1-Jan-2023 and Qmin from 1-Mar-2024. Transactions must be recognized by eligible merchant IDs/terminal IDs. These are spend ceilings, not NeuCoin reward caps.

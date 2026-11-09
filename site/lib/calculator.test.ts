@@ -536,12 +536,14 @@ describe("scoreCard — base rate unit correctness (bonus blocker)", () => {
     expect(score.annual_gross_inr).toBe(0);
   });
 
-  test("real card: HDFC Infinia @ ₹50k/mo dining (5pt/₹150 * ₹1.0 realized = 3.33% base) ≈ ₹20k/yr", async () => {
+  test("real card: HDFC Infinia @ ₹50k/mo dining (5pt/₹150 * ₹0.30 realized = 1% base) ≈ ₹6k/yr", async () => {
     const { default: cards } = await import("../../dist/cards.json", { with: { type: "json" } });
     const infinia = (cards as unknown as EnrichedCard[]).find((c) => c.id === "hdfc-infinia")!;
     const score = scoreCard(infinia, spend({ dining: 50000 }));
-    // 5 points per ₹150 * ₹1.0/point realized (SmartBuy ₹1 floor, source-backed) * 50000 * 12 = 20000
-    expect(score.annual_gross_inr).toBeCloseTo(20000, 0);
+    // 5 points per ₹150 * ₹0.30/point realized * 50000 * 12 = 6000. The 2026-10 issuer-verified
+    // catalogue (278c51c) dropped the ₹1 SmartBuy floor after 2026-06-30 for the issuer's
+    // published redemption paths (data/cards/hdfc/infinia.yaml, fields_verified).
+    expect(score.annual_gross_inr).toBeCloseTo(6000, 0);
   });
 });
 

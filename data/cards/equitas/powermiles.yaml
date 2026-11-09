@@ -39,7 +39,6 @@ fees:
     - fees.finance_charge_monthly_pct
     - fees.cash_advance_fee.pct
     - fees.cash_advance_fee.min_inr
-    notes: 'The issuer Product & Pricing MID labelled Jan 2026 lists INR 5,000 joining/annual membership fees, a joining-fee waiver for INR 120,000 eligible spend in the first 90 days, and renewal waiver at INR 480,000 in an anniversary year. Current MITC v1.2 confirms 3.75% monthly finance charges, 2.5%/INR 250 minimum cash-advance fee and 2% PowerMiles foreign-currency markup. The separate paid-fee and FYF options are not conflated.'
 rewards:
 - effective_from: 2025-01-01
   effective_until: null

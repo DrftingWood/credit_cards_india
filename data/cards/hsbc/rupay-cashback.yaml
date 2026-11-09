@@ -38,6 +38,7 @@ fees:
     confidence: high
     local_refs:
     - docs/sources/hsbc/rupay-cashback/hsbc-rupay-mitc-retrieved-2026-10-26.pdf
+    - docs/sources/hsbc/rupay-cashback/forex-offer-terms-retrieved-2026-10-26.pdf
     fields_verified:
     - fees.joining_fee_inr
     - fees.annual_fee_inr
@@ -45,8 +46,6 @@ fees:
     - fees.finance_charge_monthly_pct
     - fees.cash_advance_fee
     - fees.forex_markup_pct
-    local_refs:
-    - docs/sources/hsbc/rupay-cashback/forex-offer-terms-retrieved-2026-10-26.pdf
 rewards:
 - effective_from: 2026-10-26
   effective_until: null
@@ -77,8 +76,6 @@ rewards:
       repayments, foreign currency, liquid/crypto assets, securities brokers, collections,
       charity, money transfers, wholesale clubs, utilities and other listed MCCs. Reversals,
       cancellations and delinquency may result in cashback recovery.
-    canonical_categories:
-    - other
   exclusions:
   - fuel
   - wallet-loads

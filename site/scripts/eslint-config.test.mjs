@@ -1,7 +1,10 @@
 import { ESLint } from "eslint";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
-const eslint = new ESLint({ cwd: new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1") });
+// fileURLToPath, not URL.pathname: pathname stays percent-encoded, so a checkout under a
+// folder with a space ("My Projects") pointed ESLint at a directory that does not exist.
+const eslint = new ESLint({ cwd: fileURLToPath(new URL("..", import.meta.url)) });
 
 async function messages(code, filePath) {
   const [r] = await eslint.lintText(code, { filePath });

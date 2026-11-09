@@ -1135,3 +1135,27 @@ describe("user-declared merchant shares (value-capture Phase 3)", () => {
     expect(row.factors.join(" ")).toMatch(/40% of this bucket via amazon \(your estimate\)/i);
   });
 });
+
+describe("inputs the engine must not trust", () => {
+  test("a negative bucket is no spend: it cannot undo a fee waiver or earn negative rewards", () => {
+    const card = makeCard({ base: { rate: 1, per_inr: 100, unit_value_inr: 1 }, annualFee: 5000, feeWaiverSpend: 500_000 });
+    const clean = scoreCard(card, spend({ online: 50_000 }));
+    const dirty = scoreCard(card, spend({ online: 50_000, rent: -30_000 }));
+    expect(clean.fee_waived).toBe(true);
+    expect(dirty.fee_waived).toBe(true);
+    expect(dirty.annual_net_inr).toBe(clean.annual_net_inr);
+  });
+
+  test("an unstated annual fee is flagged as unknown in the score and the explanation (CALC-7)", () => {
+    const card = makeCard({ base: { rate: 1, per_inr: 100, unit_value_inr: 1 } });
+    (card.current_fees as { annual_fee_inr: number | null }).annual_fee_inr = null;
+    const s = scoreCard(card, spend({ online: 10_000 }));
+    expect(s.annual_fee_effective_inr).toBe(0);
+    expect(s.fee_unknown).toBe(true);
+    expect(s.disclaimer).toContain("Annual fee not stated");
+    expect(explainCard(card, spend({ online: 10_000 })).fee_unknown).toBe(true);
+
+    const known = scoreCard(makeCard({ base: { rate: 1, per_inr: 100, unit_value_inr: 1 } }), spend({ online: 10_000 }));
+    expect(known.fee_unknown).toBeUndefined();
+  });
+});

@@ -488,8 +488,8 @@ export interface BenefitRecord {
     international?: LoungeDetails;
   } | null;
   golf?: {
-    rounds_per_cycle?: number | "unlimited";
-    lessons_per_cycle?: number | "unlimited";
+    rounds_per_cycle?: (number | null) | "unlimited";
+    lessons_per_cycle?: (number | null) | "unlimited";
     cycle?: Cycle;
     notes?: string;
   } | null;

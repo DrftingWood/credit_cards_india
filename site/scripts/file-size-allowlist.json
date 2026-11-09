@@ -1,9 +1,4 @@
 {
-  "site/lib/calculator.ts": {
-    "max": 1060,
-    "since": "2026-11-01",
-    "reason": "Existing oversize calculator engine; split into modules before it grows. Lower max as it shrinks."
-  },
   "site/app/recommend/recommend-client.tsx": {
     "max": 1005,
     "since": "2026-11-01",

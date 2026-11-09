@@ -1,8 +1,8 @@
 {
-  "any": 1,
+  "any": 0,
   "asUnknownAs": 6,
   "nonNull": 11,
   "eslintDisable": 3,
-  "lintWarnings": 119,
+  "lintWarnings": 118,
   "setStateInEffect": 4
 }

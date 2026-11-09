@@ -1159,3 +1159,21 @@ describe("inputs the engine must not trust", () => {
     expect(known.fee_unknown).toBeUndefined();
   });
 });
+
+describe("cap_base_multiplier — accelerator capped at a multiple of base cashback", () => {
+  // The pool is base cashback per MONTH. A quarterly cap of 2x the quarter's base is
+  // 2 x 3 months of base, which is 2x the monthly base once spread back over the months:
+  // the cycle cancels out. The engine used to divide by the cycle length a second time.
+  test.each(["monthly", "statement", "quarterly", "annual"] as const)("%s cycle allows the same monthly earn", (cycle) => {
+    const card = makeCard({
+      base: { rate: 1, per_inr: 100, unit_value_inr: 1 },
+      accelerated: [
+        { category: "dining", effective_rate: 10, effective_per_inr: 100, cap_base_multiplier: 2, cycle, over_cap_earns_base: false } as unknown as AcceleratedReward,
+      ],
+    });
+    // Base pool: Rs 20,000 of groceries at 1% = Rs 200/mo, so dining earn is capped at Rs 400/mo.
+    const s = scoreCard(card, spend({ groceries: 20_000, dining: 50_000 }));
+    const dining = s.buckets.find((b) => b.category === "dining")!;
+    expect(dining.monthly_value_inr).toBeCloseTo(400, 6);
+  });
+});

@@ -377,9 +377,9 @@ export function acceleratedRateForBucket(
 
     let capMonthlyInr: number | null = null;
     if (typeof a.cap_base_multiplier === "number") {
+      // capBaseCashback is already per month, and the cap is a multiple of the base earned
+      // in the SAME cycle, so the cycle length cancels: no further division.
       capMonthlyInr = a.cap_base_multiplier * capBaseCashback;
-      if (a.cycle === "quarterly" && capMonthlyInr != null) capMonthlyInr /= 3;
-      if (a.cycle === "annual" && capMonthlyInr != null) capMonthlyInr /= 12;
     } else if (typeof a.cap_per_cycle === "number") {
       // Match cap_unit explicitly; the unitValue branch is the points/miles fallback (schema default is "points").
       // Cashback units are worth ₹1 — same fallback the rate path uses, so a

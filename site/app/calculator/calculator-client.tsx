@@ -592,7 +592,9 @@ function PortfolioSlotRow({ slot, index }: { slot: PortfolioSlot; index: number 
         <div>
           <span className="text-fg-muted block">Net Annual Fee</span>
           <strong className="text-fg num text-sm">
-            {slot.annual_fee_inr === 0 ? "₹0 (Waived / Free)" : formatInr(slot.annual_fee_inr)}
+            {slot.card.current_fees?.annual_fee_inr == null
+              ? "Not stated"
+              : slot.annual_fee_inr === 0 ? "₹0 (Waived / Free)" : formatInr(slot.annual_fee_inr)}
           </strong>
         </div>
       </div>
@@ -688,7 +690,9 @@ function ResultRow({
           </div>
           <div className="text-xs text-fg-muted num">
             gross {formatInr(Math.round(score.annual_gross_inr))} − fee{" "}
-            {score.fee_waived ? (
+            {score.fee_unknown ? (
+              "not stated"
+            ) : score.fee_waived ? (
               <span className="text-success">waived</span>
             ) : (
               formatInr(score.annual_fee_effective_inr)

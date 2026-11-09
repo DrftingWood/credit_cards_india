@@ -1,7 +1,1 @@
-{
-  "site/app/recommend/recommend-client.tsx": {
-    "max": 1005,
-    "since": "2026-11-01",
-    "reason": "Existing oversize recommend client component; split into components and hooks before it grows. Lower max as it shrinks."
-  }
-}
+{}

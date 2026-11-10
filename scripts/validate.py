@@ -50,6 +50,8 @@ from validate_extras import (  # noqa: E402
     find_stale,
     parse_stale_days,
     ratchet_result,
+    IMPOSSIBLE_RATE_PCT,
+    implied_accelerator_pct,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -529,6 +531,13 @@ def main() -> int:
                     f"'{program_ref}' not found in data/loyalty_programs/"
                 )
             for a_idx, acc in enumerate(rec.get("accelerated", []) or []):
+                implied = implied_accelerator_pct(rec, acc, loyalty_programs.get(program_ref)) if rec.get("effective_until") is None else None
+                if implied is not None and implied > IMPOSSIBLE_RATE_PCT:
+                    warnings.append(
+                        f"[warn] {path.relative_to(ROOT)} :: rewards[{r_idx}].accelerated[{a_idx}] "
+                        f"returns {implied:.0f}% of spend as authored, more than the spend itself: "
+                        f"check effective_per_inr / card_attributable_per_inr against base.per_inr"
+                    )
                 ch = acc.get("channel")
                 if isinstance(ch, dict):
                     cls = ch.get("class")

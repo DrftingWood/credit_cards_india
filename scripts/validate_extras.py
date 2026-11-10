@@ -143,3 +143,34 @@ def ratchet_result(count: int, baseline_path: Path = LINT_BASELINE_PATH) -> tupl
             f"{_rel(baseline_path)} to {count}"
         )
     return 0, f"[ratchet] {count} warning(s) = baseline {baseline}"
+
+
+# An accelerator cannot pay back more than the spend it is earned on. A rate above this is
+# a unit slip (reward units per Rs 100 authored against a per-Rs-1 base), not a rich card.
+IMPOSSIBLE_RATE_PCT = 100
+
+
+def implied_accelerator_pct(rec: dict, acc: dict, program: dict | None = None) -> float | None:
+    """Percent of spend an accelerator returns, the way the site calculator reads it.
+
+    None when the record carries no usable rate or unit value. `program` is the loyalty
+    programme record, used for the unit value unless the record opts out (D-27).
+    """
+    base = rec.get("base") or {}
+    if program and rec.get("unit_value_from_program") is not False:
+        uv_rec = program.get("unit_value_inr") or {}
+        unit_value = uv_rec.get("realized", uv_rec.get("face"))
+    else:
+        unit_value = base.get("unit_value_inr_realized", base.get("unit_value_inr"))
+    if unit_value is None and rec.get("currency") == "cashback":
+        unit_value = 1
+    if acc.get("card_attributable_rate") is not None:
+        rate, per_inr = acc["card_attributable_rate"], acc.get("card_attributable_per_inr", 100)
+    elif acc.get("effective_rate") is not None:
+        rate, per_inr = acc["effective_rate"], acc.get("effective_per_inr", base.get("per_inr"))
+    else:
+        return None
+    numeric = all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in (rate, per_inr, unit_value))
+    if not numeric or per_inr <= 0:
+        return None
+    return rate * unit_value / per_inr * 100

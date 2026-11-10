@@ -5,8 +5,12 @@ underlying source backs — usually a bulk sweep moved the stamp without a field
 diff. Read-only.
 """
 import datetime
-import glob
+from pathlib import Path
+
 import yaml
+
+# From this file, not the CWD; a backslash glob also matched nothing off Windows.
+CARDS_DIR = Path(__file__).resolve().parent.parent / "data" / "cards"
 
 
 def _as_date(v):
@@ -38,17 +42,22 @@ def newest_retrieved(d):
     return best
 
 
-rows = []
-for fp in glob.glob(r"data\cards\**\*.yaml", recursive=True):
-    d = yaml.safe_load(open(fp, encoding="utf-8"))
-    if not d:
-        continue
-    lv = _as_date((d.get("metadata") or {}).get("last_verified_on"))
-    nr = newest_retrieved(d)
-    if lv and nr and lv > nr:
-        rows.append((d["id"], lv, nr, (lv - nr).days))
+def find_rows(cards_dir: Path = CARDS_DIR):
+    rows = []
+    for fp in sorted(Path(cards_dir).rglob("*.yaml")):
+        d = yaml.safe_load(fp.read_text(encoding="utf-8"))
+        if not d:
+            continue
+        lv = _as_date((d.get("metadata") or {}).get("last_verified_on"))
+        nr = newest_retrieved(d)
+        if lv and nr and lv > nr:
+            rows.append((d["id"], lv, nr, (lv - nr).days))
+    rows.sort(key=lambda r: -r[3])
+    return rows
 
-rows.sort(key=lambda r: -r[3])
-print(f"{len(rows)} cards where last_verified_on > newest source.retrieved_on")
-for cid, lv, nr, gap in rows:
-    print(f"  {cid:35} verified={lv}  newest_retrieved={nr}  (+{gap}d)")
+
+if __name__ == "__main__":
+    rows = find_rows()
+    print(f"{len(rows)} cards where last_verified_on > newest source.retrieved_on")
+    for cid, lv, nr, gap in rows:
+        print(f"  {cid:35} verified={lv}  newest_retrieved={nr}  (+{gap}d)")

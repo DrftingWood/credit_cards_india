@@ -12,12 +12,15 @@ scripts/test_crawl_diff.py. The --issuer shell renders live pages via Playwright
 Usage: python scripts/crawl_diff.py --issuer <id>
   exit 0 if every field is MATCHED / NOT-FOUND / SKIPPED
   exit 1 if any field is CONFLICTING-NUMBER-NEARBY
+  exit 2 if a page could not be checked (non-2xx, render failure, Playwright missing)
 """
 import argparse
-import glob
 import re
 import sys
 from collections import namedtuple
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
 
 Expectation = namedtuple("Expectation", "field needle keyword needle2")
 Result = namedtuple("Result", "field status needle detail")
@@ -31,11 +34,16 @@ def _int_needle_regex(digits: str) -> re.Pattern:
     return re.compile(",?".join(re.escape(d) for d in digits))
 
 
+# A needle must not sit inside a longer number: no digit, "d," or "d." right before it
+# and no digit, ",d" or ".d" right after, so 500 never matches in "15,000" or "5,000".
+_NUM_BEFORE = r"(?<!\d)(?<!\d[,.])"
+_NUM_AFTER = r"(?!\d)(?![,.]\d)"
+
+
 def _num_regex(needle: str) -> re.Pattern:
-    """Regex for a needle: comma-tolerant if integer, literal if decimal."""
-    if needle.isdigit():
-        return _int_needle_regex(needle)
-    return re.compile(re.escape(needle))
+    """Regex for a needle: comma-tolerant if integer, literal if decimal; digit-bounded."""
+    core = _int_needle_regex(needle).pattern if needle.isdigit() else re.escape(needle)
+    return re.compile(_NUM_BEFORE + core + _NUM_AFTER)
 
 
 def _open_record(records):
@@ -116,7 +124,7 @@ def check_page(text: str, exps):
 # Live shell (Playwright). Kept below the pure core so the unit tests never
 # import a browser. Network failures degrade to SKIPPED rows, never crash.
 # --------------------------------------------------------------------------
-def _render(url: str, timeout_s: int = 15) -> str:
+def _render(url: str, timeout_s: int = 15):
     from playwright.sync_api import sync_playwright  # local import: optional dep
     with sync_playwright() as p:
         browser = p.chromium.launch()
@@ -130,11 +138,11 @@ def _render(url: str, timeout_s: int = 15) -> str:
             browser.close()
 
 
-def _load_cards(issuer: str):
+def _load_cards(issuer: str, root: Path = ROOT):
     import yaml
     cards = []
-    for fp in sorted(glob.glob(f"data/cards/{issuer}/*.yaml")):
-        d = yaml.safe_load(open(fp, encoding="utf-8"))
+    for fp in sorted((root / "data" / "cards" / issuer).glob("*.yaml")):
+        d = yaml.safe_load(fp.read_text(encoding="utf-8"))
         if d and d.get("status") in ("active", "invite-only"):
             cards.append(d)
     return cards
@@ -148,12 +156,22 @@ def _source_url(card):
     return None
 
 
-def run_issuer(issuer: str, date_str: str) -> int:
-    cards = _load_cards(issuer)
+def run_issuer(issuer: str, date_str: str, root: Path = ROOT, render=None) -> int:
+    if render is None:
+        # Without a browser every page would be SKIPPED and the run would look clean.
+        try:
+            import playwright.sync_api  # noqa: F401
+        except ImportError:
+            print("error: Playwright is not installed, so no page can be checked "
+                  "(pip install playwright && playwright install chromium)", file=sys.stderr)
+            return 2
+        render = _render
+    cards = _load_cards(issuer, root)
     lines = [f"# Crawl-diff drift report — {issuer} — {date_str}", ""]
     lines.append("| card | field | status | needle |")
     lines.append("| --- | --- | --- | --- |")
     any_conflict = False
+    unchecked = 0
     from urllib.parse import urlparse
     for card in cards:
         cid = card.get("id")
@@ -163,9 +181,15 @@ def run_issuer(issuer: str, date_str: str) -> int:
             continue
         exps = expectations_for(card)
         try:
-            text, final_url, status_code = _render(url)
-        except Exception as exc:  # network / render failure -> SKIPPED
-            lines.append(f"| {cid} | (render) | SKIPPED | {exc.__class__.__name__} |")
+            text, final_url, status_code = render(url)
+        except Exception as exc:  # network / render failure: reported, never a crash
+            unchecked += 1
+            lines.append(f"| {cid} | (render) | FETCH-FAILED | {exc.__class__.__name__} |")
+            continue
+        # An error page's text is not the card's page, so matching against it means nothing.
+        if status_code is not None and not 200 <= status_code < 300:
+            unchecked += 1
+            lines.append(f"| {cid} | (http) | FETCH-FAILED | HTTP {status_code} |")
             continue
         if urlparse(final_url).hostname != urlparse(url).hostname:
             lines.append(f"| {cid} | (redirect) | DRIFT | {urlparse(final_url).hostname} |")
@@ -173,10 +197,14 @@ def run_issuer(issuer: str, date_str: str) -> int:
             if r.status == "CONFLICTING-NUMBER-NEARBY":
                 any_conflict = True
             lines.append(f"| {cid} | {r.field} | {r.status} | {r.needle} |")
-    out = f"docs/drift/{issuer}-{date_str}.md"
+    out = root / "docs" / "drift" / f"{issuer}-{date_str}.md"
+    out.parent.mkdir(parents=True, exist_ok=True)
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(lines) + "\n")
-    print(f"wrote {out} ({len(cards)} active cards; conflicts={'yes' if any_conflict else 'no'})")
+    print(f"wrote {out} ({len(cards)} active cards; conflicts={'yes' if any_conflict else 'no'}; "
+          f"unchecked={unchecked})")
+    if unchecked:
+        return 2
     return 1 if any_conflict else 0
 
 

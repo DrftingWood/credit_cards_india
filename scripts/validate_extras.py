@@ -17,14 +17,21 @@ CHANGELOG_TOP_RE = re.compile(r"^## \[(\d[^\]]*)\]", re.MULTILINE)
 
 
 def as_date(value):
-    """Coerce a value (date, datetime, or ISO string) to date."""
+    """Coerce a value (date, datetime, or ISO string) to date; None when it is not one.
+
+    A malformed string ("TBD") is already a schema error; raising here would kill the
+    run with a traceback before that error list is printed.
+    """
     if value is None:
         return None
     if isinstance(value, date) and not isinstance(value, datetime):
         return value
     if isinstance(value, datetime):
         return value.date()
-    return datetime.fromisoformat(value).date()
+    try:
+        return datetime.fromisoformat(value).date()
+    except (TypeError, ValueError):
+        return None
 
 
 def collect_sources(node):

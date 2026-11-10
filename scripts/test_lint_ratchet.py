@@ -137,6 +137,45 @@ def test_warn_stale_non_integer_is_a_usage_error_not_a_traceback():
     assert "--warn-stale" in r.stderr and "integer" in r.stderr
 
 
+def test_malformed_date_is_none_not_a_crash():
+    from validate_extras import as_date
+    assert as_date("TBD") is None
+    assert as_date("2026-13-40") is None
+    assert as_date("2026-10-01") == date(2026, 10, 1)
+    assert validate.find_stale([_card(verified="TBD", retrieved="TBD")], 365, TODAY) == []
+
+
+def test_malformed_date_ends_in_the_error_list_not_a_traceback():
+    # A temp copy of the reference data plus one card whose last_verified_on is "TBD":
+    # the run must finish, print the schema error it recorded, and exit non-zero.
+    import contextlib
+    import io
+    import shutil
+    import yaml
+    real = Path(__file__).resolve().parent.parent / "data"
+    with tempfile.TemporaryDirectory() as tmp:
+        data = Path(tmp) / "data"
+        for sub in ("issuers", "networks", "loyalty_programs", "channels"):
+            if (real / sub).exists():
+                shutil.copytree(real / sub, data / sub)
+        card_path = sorted((real / "cards").rglob("*.yaml"))[0]
+        card = yaml.safe_load(card_path.read_text(encoding="utf-8"))
+        card["metadata"]["last_verified_on"] = "TBD"
+        out = data / "cards" / card_path.parent.name / card_path.name
+        out.parent.mkdir(parents=True)
+        out.write_text(yaml.safe_dump(card, sort_keys=False, allow_unicode=True), encoding="utf-8")
+        saved = validate.ROOT, validate.DATA_DIR, sys.argv
+        validate.ROOT, validate.DATA_DIR, sys.argv = Path(tmp), data, ["validate.py"]
+        buf = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+                code = validate.main()
+        finally:
+            validate.ROOT, validate.DATA_DIR, sys.argv = saved
+    assert code != 0, buf.getvalue()[-2000:]
+    assert "last_verified_on" in buf.getvalue() and "TBD" in buf.getvalue(), buf.getvalue()[-2000:]
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):

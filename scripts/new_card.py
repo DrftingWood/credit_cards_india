@@ -9,12 +9,16 @@ Example:
 """
 from __future__ import annotations
 
+import json
 import re
 import sys
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+# Slugs become path parts, so anything else ("../x", "a/b") could write outside data/cards.
+SLUG_RE = re.compile(r"[a-z0-9-]+")
 
 # Heuristic: when a card slug or name contains any of these substrings, it is
 # probably a co-brand of the listed loyalty programme. The scaffold prints a
@@ -99,36 +103,41 @@ application:
 
 metadata:
   last_verified_on: {today}
-  maintainers: []
   tags: []
 """
 
 
-def main(argv: list[str]) -> int:
+def main(argv: list[str], root: Path = ROOT) -> int:
     if len(argv) != 4:
         print(__doc__, file=sys.stderr)
         return 2
     _, issuer, slug, name = argv
+    for label, value in (("issuer", issuer), ("card slug", slug)):
+        if not SLUG_RE.fullmatch(value):
+            print(f"error: {label} '{value}' must match [a-z0-9-]+.", file=sys.stderr)
+            return 2
 
-    issuer_file = ROOT / "data" / "issuers" / f"{issuer}.yaml"
+    issuer_file = root / "data" / "issuers" / f"{issuer}.yaml"
     if not issuer_file.exists():
-        print(f"error: issuer '{issuer}' not seeded. Add {issuer_file.relative_to(ROOT)} first.", file=sys.stderr)
+        print(f"error: issuer '{issuer}' not seeded. Add {issuer_file.relative_to(root)} first.", file=sys.stderr)
         return 2
 
-    out_dir = ROOT / "data" / "cards" / issuer
+    out_dir = root / "data" / "cards" / issuer
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{slug}.yaml"
     if out_path.exists():
-        print(f"error: {out_path.relative_to(ROOT)} already exists.", file=sys.stderr)
+        print(f"error: {out_path.relative_to(root)} already exists.", file=sys.stderr)
         return 2
 
-    content = TEMPLATE.format(issuer=issuer, slug=slug, name=name, today=date.today().isoformat())
-    out_path.write_text(content, encoding="utf-8")
-    print(f"Created {out_path.relative_to(ROOT)}. Fill in the TODOs, then run scripts/validate.py.")
+    # A JSON string is a valid YAML double-quoted scalar, so a name with ':' or quotes stays a string.
+    content = TEMPLATE.format(issuer=issuer, slug=slug, name=json.dumps(name, ensure_ascii=False),
+                              today=date.today().isoformat())
+    out_path.write_text(content, encoding="utf-8", newline="\n")
+    print(f"Created {out_path.relative_to(root)}. Fill in the TODOs, then run scripts/validate.py.")
 
     program = infer_program(slug, name)
     if program is not None:
-        program_path = ROOT / "data" / "loyalty_programs"
+        program_path = root / "data" / "loyalty_programs"
         if any(program_path.rglob(f"{program}.yaml")):
             print(
                 f"\nHint: this card looks like a co-brand of '{program}' "
